@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:polished_volcanic_rock"
+    }
+  },
+  "result": {
+    "item": "lostworlds:polished_volcanic_rock_stairs",
+    "count": 4
+  }
+}

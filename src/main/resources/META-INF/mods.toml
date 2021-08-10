@@ -1,0 +1,54 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="Creative Commons"
+issueTrackerURL="https://github.com/willatendo/Lost-Worlds/issues"
+
+[[mods]]
+modId="lostworlds"
+version="v11-alpha"
+displayName="Lost Worlds"
+updateJSONURL="https://github.com/willatendo/Lost-Worlds/raw/Forge-1.16.5/updates.json"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/the-lost-worlds-forge"
+logoFile="lostworlds.png"
+authors="All Names Credited in Description"
+description='''
+The Lost Worlds is a 1.16.5 dinosaur mod that adds tons of lore, building blocks, items, prehistoric creatures, and so much more. The Lost Worlds mod allows to explore the past, from the Permian to the Jurassic. The mod also adds dinosaurs for you to raise from birth. Going for dead fossils to mighty Tyrannosaurus to dying once again.
+
+Authors:
+Lead Developer:
+- Willatendo
+
+Modlers:
+- Jooji
+- Dapper Dino
+- bAbA
+- Godzilla
+
+Animator:
+- Irishjevil
+
+2d Artists:
+- Santispik3
+- Emilosaurus65
+'''
+
+[[dependencies.lostworlds]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.lostworlds]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5,1.17)"
+    ordering="NONE"
+    side="BOTH"
+    
+[[dependencies.lostworlds]]
+    modId="geckolib3"
+    mandatory=true
+    versionRange="[3.0.30,)"
+    ordering="NONE"
+    side="BOTH"

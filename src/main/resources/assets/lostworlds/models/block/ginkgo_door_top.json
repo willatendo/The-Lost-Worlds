@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/door_top",
+	"textures": {
+		"top": "lostworlds:blocks/ginkgo_door_top",
+		"bottom": "lostworlds:blocks/ginkgo_door_bottom"
+	}
+}

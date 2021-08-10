@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$",
+    "$#",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "$": {
+      "item": "minecraft:black_stained_glass_pane"
+    }
+  },
+  "result": {
+    "item": "lostworlds:visitor_centre_door",
+    "count": 3
+  }
+}

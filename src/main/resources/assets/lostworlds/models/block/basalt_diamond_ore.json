@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "block/basalt_top",
+		"side": "lostworlds:blocks/basalt_diamond_ore_side"
+	}
+}

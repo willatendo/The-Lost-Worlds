@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:wooden_planks",
+    "lostworlds:wooden_planks_button",
+    "lostworlds:wooden_planks_fence",
+    "lostworlds:wooden_planks_fence_gate",
+    "lostworlds:wooden_planks_pressure_plate",
+    "lostworlds:wooden_planks_slab",
+    "lostworlds:wooden_planks_stairs"
+  ]
+}

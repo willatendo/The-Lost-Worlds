@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:araucaria_trapdoor"
+    ]
+  },
+  "criteria": {
+    "has_result": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:araucaria_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:araucaria_trapdoor"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_result",
+      "has_the_recipe"
+    ]
+  ]
+}

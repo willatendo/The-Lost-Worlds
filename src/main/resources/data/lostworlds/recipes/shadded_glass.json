@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "lostworlds:volcanic_ash"
+  },
+  "result": "lostworlds:shaded_glass",
+  "experience": 0.7,
+  "cookingtime": 200
+}

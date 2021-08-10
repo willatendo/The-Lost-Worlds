@@ -1,0 +1,13 @@
+{
+	"variants": {
+		"type=bottom": {
+			"model": "lostworlds:block/volcanic_rock_slab"
+		},
+		"type=double": {
+			"model": "lostworlds:block/volcanic_rock"
+		},
+		"type=top": {
+			"model": "lostworlds:block/volcanic_rock_slab_top"
+		}
+	}
+}

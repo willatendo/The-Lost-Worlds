@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "$$$",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:black_carpet"
+    },
+    "$": {
+      "item": "lostworlds:copper_nugget"
+    }
+  },
+  "result": {
+    "item": "lostworlds:copper_wire"
+  }
+}

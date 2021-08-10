@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/wall_inventory",
+	"textures": {
+		"wall": "lostworlds:blocks/mossy_jurassic_cobblestone"
+	}
+}

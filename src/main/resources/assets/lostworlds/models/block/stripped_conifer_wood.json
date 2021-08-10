@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "lostworlds:blocks/stripped_conifer_log",
+		"side": "lostworlds:blocks/stripped_conifer_log"
+	}
+}

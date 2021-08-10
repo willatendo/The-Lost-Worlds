@@ -1,0 +1,19 @@
+{
+	"variants": {
+		"small_eggs=1": {
+			"model": "lostworlds:block/great_auk_egg_one"
+		},
+		"small_eggs=2": {
+			"model": "lostworlds:block/great_auk_egg_two"
+		},
+		"small_eggs=3": {
+			"model": "lostworlds:block/great_auk_egg_three"
+		},
+		"small_eggs=4": {
+			"model": "lostworlds:block/great_auk_egg_four"
+		},
+		"small_eggs=5": {
+			"model": "lostworlds:block/great_auk_egg_five"
+		}
+	}
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:araucaria_slab",
+    "lostworlds:conifer_slab",
+    "lostworlds:ginkgo_slab",
+    "lostworlds:scorched_slab"
+  ]
+}

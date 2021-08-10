@@ -1,0 +1,13 @@
+{
+	"variants": {
+		"type=bottom": {
+			"model": "lostworlds:block/raised_gravel_road"
+		},
+		"type=double": {
+			"model": "lostworlds:block/gravel_road"
+		},
+		"type=top": {
+			"model": "lostworlds:block/raised_gravel_road_top"
+		}
+	}
+}

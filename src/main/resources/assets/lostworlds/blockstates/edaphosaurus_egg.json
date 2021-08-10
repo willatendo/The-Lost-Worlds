@@ -1,0 +1,13 @@
+{
+	"variants": {
+		"medium_eggs=1": {
+			"model": "lostworlds:block/medium_egg_sandy_one"
+		},
+		"medium_eggs=2": {
+			"model": "lostworlds:block/medium_egg_sandy_two"
+		},
+		"medium_eggs=3": {
+			"model": "lostworlds:block/medium_egg_sandy_three"
+		}
+	}
+}

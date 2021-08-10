@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"half=lower": {
+			"model": "lostworlds:block/alethopteris_stem"
+		},
+		"half=upper": {
+			"model": "lostworlds:block/alethopteris_leaves"
+		}
+	}
+}

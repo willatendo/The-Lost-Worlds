@@ -1,0 +1,13 @@
+{
+	"variants": {
+		"type=bottom": {
+			"model": "lostworlds:block/polished_light_concrete_slab"
+		},
+		"type=double": {
+			"model": "lostworlds:block/polished_light_concrete"
+		},
+		"type=top": {
+			"model": "lostworlds:block/polished_light_concrete_slab_top"
+		}
+	}
+}

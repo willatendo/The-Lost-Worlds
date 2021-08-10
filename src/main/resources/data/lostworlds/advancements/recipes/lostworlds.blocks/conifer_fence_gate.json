@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:conifer_fence_gate"
+    ]
+  },
+  "criteria": {
+    "has_result": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:conifer_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:conifer_fence_gate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_result",
+      "has_the_recipe"
+    ]
+  ]
+}

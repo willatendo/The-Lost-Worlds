@@ -1,0 +1,13 @@
+{
+	"variants": {
+		"type=bottom": {
+			"model": "lostworlds:block/mossy_jurassic_stone_brick_slab"
+		},
+		"type=double": {
+			"model": "lostworlds:block/mossy_jurassic_stone_bricks"
+		},
+		"type=top": {
+			"model": "lostworlds:block/mossy_jurassic_stone_brick_slab_top"
+		}
+	}
+}

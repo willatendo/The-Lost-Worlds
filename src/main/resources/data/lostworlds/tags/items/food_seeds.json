@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:cephalotaxus_seeds",
+    "lostworlds:cycad_seeds",
+    "lostworlds:dillhoffia_seeds",
+    "lostworlds:duisbergia_seeds",
+    "lostworlds:lycophyta_seeds",
+    "lostworlds:osmunda_seeds"
+  ]
+}

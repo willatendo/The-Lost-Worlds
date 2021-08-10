@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/door_bottom",
+	"textures": {
+		"top": "lostworlds:blocks/innovation_centre_door_top",
+		"bottom": "lostworlds:blocks/innovation_centre_door_bottom"
+	}
+}

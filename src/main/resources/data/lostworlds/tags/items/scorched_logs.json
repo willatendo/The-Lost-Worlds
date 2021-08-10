@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:scorched_log",
+    "lostworlds:stripped_scorched_log",
+    "lostworlds:scorched_wood",
+    "lostworlds:stripped_scorched_wood"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:jurassic_stone"
+    }
+  },
+  "result": {
+    "item": "lostworlds:jurassic_stone_stairs",
+    "count": 4
+  }
+}

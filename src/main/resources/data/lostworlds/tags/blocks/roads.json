@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:dirt_road",
+    "lostworlds:gravel_road",
+    "lostworlds:paved_road",
+    "lostworlds:raised_dirt_road",
+    "lostworlds:raised_gravel_road",
+    "lostworlds:raised_paved_road"
+  ]
+}

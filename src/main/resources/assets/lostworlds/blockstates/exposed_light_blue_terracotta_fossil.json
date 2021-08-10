@@ -1,0 +1,19 @@
+{
+	"variants": {
+		"facing=north": {
+			"model": "lostworlds:block/exposed_light_blue_terracotta_fossil"
+		},
+		"facing=south": {
+			"model": "lostworlds:block/exposed_light_blue_terracotta_fossil",
+			"y": 180
+		},
+		"facing=west": {
+			"model": "lostworlds:block/exposed_light_blue_terracotta_fossil",
+			"y": 270
+		},
+		"facing=east": {
+			"model": "lostworlds:block/exposed_light_blue_terracotta_fossil",
+			"y": 90
+		}
+	}
+}

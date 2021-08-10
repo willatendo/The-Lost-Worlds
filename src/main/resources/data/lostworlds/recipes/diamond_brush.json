@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "@@@",
+    "$$$",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "$": {
+      "item": "minecraft:diamond"
+    },
+    "@": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "lostworlds:diamond_brush"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:araucaria_button",
+    "lostworlds:conifer_button",
+    "lostworlds:ginkgo_button",
+    "lostworlds:scorched_button"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#lostworlds:araucaria_logs",
+    "#lostworlds:conifer_logs",
+    "#lostworlds:ginkgo_logs",
+    "#lostworlds:scorched_logs"
+  ]
+}

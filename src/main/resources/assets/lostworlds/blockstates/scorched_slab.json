@@ -1,0 +1,13 @@
+{
+	"variants": {
+		"type=bottom": {
+			"model": "lostworlds:block/scorched_slab"
+		},
+		"type=double": {
+			"model": "lostworlds:block/scorched_planks"
+		},
+		"type=top": {
+			"model": "lostworlds:block/scorched_slab_top"
+		}
+	}
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$",
+    "$#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:gray_concrete"
+    },
+    "$": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "lostworlds:grey_decoration_block",
+    "count": 4
+  }
+}

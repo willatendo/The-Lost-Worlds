@@ -1,0 +1,13 @@
+{
+	"variants": {
+		"type=bottom": {
+			"model": "lostworlds:block/refined_wooden_planks_slab"
+		},
+		"type=double": {
+			"model": "lostworlds:block/refined_wooden_planks"
+		},
+		"type=top": {
+			"model": "lostworlds:block/refined_wooden_planks_slab_top"
+		}
+	}
+}

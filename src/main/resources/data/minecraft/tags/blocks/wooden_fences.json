@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:araucaria_fence",
+    "lostworlds:conifer_fence",
+    "lostworlds:ginkgo_fence",
+    "lostworlds:scorched_fence"
+  ]
+}

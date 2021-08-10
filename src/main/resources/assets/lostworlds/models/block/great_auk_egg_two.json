@@ -1,0 +1,146 @@
+{
+	"textures": {
+		"1": "lostworlds:blocks/great_auk_egg",
+		"particle": "lostworlds:blocks/great_auk_egg"
+	},
+	"elements": [
+		{
+			"from": [
+				6,
+				0,
+				7
+			],
+			"to": [
+				8,
+				4,
+				9
+			],
+			"color": 3,
+			"faces": {
+				"north": {
+					"uv": [
+						0,
+						0,
+						2,
+						4
+					],
+					"texture": "#1"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						2,
+						4
+					],
+					"texture": "#1"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						2,
+						4
+					],
+					"texture": "#1"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						2,
+						4
+					],
+					"texture": "#1"
+				},
+				"up": {
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					],
+					"texture": "#1"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					],
+					"texture": "#1"
+				}
+			}
+		},
+		{
+			"from": [
+				9,
+				0,
+				5
+			],
+			"to": [
+				11,
+				4,
+				7
+			],
+			"color": 3,
+			"faces": {
+				"north": {
+					"uv": [
+						0,
+						0,
+						2,
+						4
+					],
+					"texture": "#1"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						2,
+						4
+					],
+					"texture": "#1"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						2,
+						4
+					],
+					"texture": "#1"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						2,
+						4
+					],
+					"texture": "#1"
+				},
+				"up": {
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					],
+					"texture": "#1"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					],
+					"texture": "#1"
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,21 @@
+{
+	"variants": {
+		"quintuple_halfs=bottom": {
+			"model": "lostworlds:block/tempskya_base"
+		},
+		"quintuple_halfs=middle_bottom": {
+			"model": "lostworlds:block/tempskya_mid"
+		},
+		"quintuple_halfs=middle_middle": {
+			"model": "lostworlds:block/tempskya_mid",
+			"y": 270
+		},
+		"quintuple_halfs=middle_top": {
+			"model": "lostworlds:block/tempskya_mid",
+			"y": 90
+		},
+		"quintuple_halfs=top": {
+			"model": "lostworlds:block/tempskya_top"
+		}
+	}
+}

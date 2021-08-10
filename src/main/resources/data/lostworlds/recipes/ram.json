@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "$$$"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "$": {
+      "item": "lostworlds:copper_wire"
+    }
+  },
+  "result": {
+    "item": "lostworlds:ram"
+  }
+}

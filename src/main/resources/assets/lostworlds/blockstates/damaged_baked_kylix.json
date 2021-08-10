@@ -1,0 +1,19 @@
+{
+	"variants": {
+		"facing=north": {
+			"model": "lostworlds:block/damaged_baked_kylix"
+		},
+		"facing=south": {
+			"model": "lostworlds:block/damaged_baked_kylix",
+			"y": 180
+		},
+		"facing=west": {
+			"model": "lostworlds:block/damaged_baked_kylix",
+			"y": 270
+		},
+		"facing=east": {
+			"model": "lostworlds:block/damaged_baked_kylix",
+			"y": 90
+		}
+	}
+}

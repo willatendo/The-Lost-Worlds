@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:mossy_jurassic_stone"
+    }
+  },
+  "result": {
+    "item": "lostworlds:mossy_jurassic_stone_slab",
+    "count": 6
+  }
+}

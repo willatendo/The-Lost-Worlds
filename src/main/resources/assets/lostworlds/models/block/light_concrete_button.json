@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/button",
+	"textures": {
+		"texture": "lostworlds:blocks/light_concrete"
+	}
+}

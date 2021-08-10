@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "$@$",
+    "P#$",
+    "$%$"
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:computer_core"
+    },
+    "$": {
+      "item": "minecraft:iron_ingot"
+    },
+    "@": {
+      "item": "minecraft:redstone"
+    },
+    "%": {
+      "item": "minecraft:redstone_lamp"
+    },
+    "P": {
+      "item": "minecraft:polished_andesite"
+    }
+  },
+  "result": {
+    "item": "lostworlds:analyser"
+  }
+}

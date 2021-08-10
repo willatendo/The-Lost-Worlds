@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:araucaria_planks",
+    "lostworlds:conifer_planks",
+    "lostworlds:ginkgo_planks",
+    "lostworlds:refined_wooden_planks",
+    "lostworlds:scorched_planks",
+    "lostworlds:wooden_planks"
+  ]
+}

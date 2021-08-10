@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "lostworlds:netherite_brush"
+  },
+  "addition": {
+    "item": "lostworlds:charged_crystal_scarab_gem"
+  },
+  "result": {
+    "item": "lostworlds:crystal_scarab_brush"
+  }
+}

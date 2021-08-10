@@ -1,0 +1,13 @@
+{
+	"variants": {
+		"type=bottom": {
+			"model": "lostworlds:block/conifer_slab"
+		},
+		"type=double": {
+			"model": "lostworlds:block/conifer_planks"
+		},
+		"type=top": {
+			"model": "lostworlds:block/conifer_slab_top"
+		}
+	}
+}

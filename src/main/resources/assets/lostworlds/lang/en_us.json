@@ -1,0 +1,483 @@
+{
+	//Items
+	"item.lostworlds.leather_brush": "Leather Brush",
+	"item.lostworlds.iron_brush": "Iron Brush",
+	"item.lostworlds.gold_brush": "Gold Brush",
+	"item.lostworlds.diamond_brush": "Diamond Brush",
+	"item.lostworlds.netherite_brush": "Netherite Brush",
+	"item.lostworlds.crystal_scarab_brush": "Crystal Scarab Brush",
+
+	"item.lostworlds.wet_paper": "Wet Paper",
+
+	"item.lostworlds.field_guide": "Field Guide",
+	"toolTip.lostworlds.field_guide": "By Willatendo - Volume 2",
+	
+	"item.lostworlds.empty_vile": "Empty Vile",
+	
+	"item.lostworlds.permian_period_time_book": "Permian Period Time Book",
+	
+	"item.lostworlds.fern_leaves": "Fern Leaves",
+	"item.lostworlds.cooked_fern_leaves": "Cooked Fern Leaves",
+	"item.lostworlds.cycad_seeds": "Cycad Seeds",
+	"item.lostworlds.osmunda_seeds": "Osmunda Seeds",
+	"item.lostworlds.duisbergia_seeds": "Duisbergia Seeds",
+	"item.lostworlds.cephalotaxus_seeds": "Cephalotaxus Seeds",
+	"item.lostworlds.lycophyta_seeds": "Lycophyta Seeds",
+	"item.lostworlds.dillhoffia_seeds": "Dillhoffia Seeds",
+	
+	"item.lostworlds.paleo_salad": "Paleo Salad",
+	
+	"item.lostworlds.ground_fossil": "Ground Fossil",
+
+	"item.lostworlds.amber": "Amber",
+	
+	"item.lostworlds.mud_ball": "Mud Ball",
+	
+	"item.lostworlds.copper_ingot": "Copper Ingot",
+	"item.lostworlds.copper_nugget": "Copper Nugget",
+	
+	"item.lostworlds.copper_wire": "Copper Wire",
+	"item.lostworlds.computer_fan": "Computer Fan",
+	"item.lostworlds.computer_screen": "Computer Screen",
+	"item.lostworlds.computer_frame": "Computer Frame",
+	"item.lostworlds.computer_storage_port": "Computer Storage Port",
+	"item.lostworlds.motherboard": "Motherboard",
+	"item.lostworlds.cpu": "CPU",
+	"item.lostworlds.ram": "RAM",
+	
+	"item.lostworlds.computer_core": "Computer Core",
+	
+	"item.lostworlds.storage_disc": "Storage Disc",
+	
+	"item.lostworlds.broken_crystal_scarab_gem": "Broken Crystal Scarab Gem",
+	"item.lostworlds.uncharged_crystal_scarab_gem": "Uncharged Crystal Scarab Gem",
+	"item.lostworlds.charged_crystal_scarab_gem": "Charged Crystal Scarab Gem",
+	
+	"item.lostworlds.crystal_scarab_sword": "Crystal Scarab Sword",
+	"item.lostworlds.crystal_scarab_shovel": "Crystal Scarab Shovel",
+	"item.lostworlds.crystal_scarab_pickaxe": "Crystal Scarab Pickaxe",
+	"item.lostworlds.crystal_scarab_axe": "Crystal Scarab Axe",
+	"item.lostworlds.crystal_scarab_hoe": "Crystal Scarab Hoe",
+	
+	//Blocks
+	"block.lostworlds.ashy_shrub": "Ashy Shrub",
+	"block.lostworlds.cephalotaxus": "Cepgalotaxus",
+	"block.lostworlds.cycad": "Cycad",
+	"block.lostworlds.dicksonia": "Dicksonia",
+	"block.lostworlds.tall_dicksonia": "Tall Dicksonia",
+	"block.lostworlds.dillhoffia": "Dillhoffia",
+	"block.lostworlds.duisbergia": "Duisbergia",
+	"block.lostworlds.ground_ferns": "Ground Ferns",
+	"block.lostworlds.horsetail": "Horsetail",
+	"block.lostworlds.lycophyta": "Lycohyta",
+	"block.lostworlds.osmunda": "Osmund",
+	"block.lostworlds.small_permian_desert_plant": "Small Permian Desert Plant",
+	"block.lostworlds.medium_permian_desert_plant": "Medium Permian Desert Plant",
+	"block.lostworlds.large_permian_desert_plant": "Large Permian Desert Plant",
+	"block.lostworlds.lush_permian_desert_plant": "Lush Permian Desert Plant",
+	"block.lostworlds.dead_permian_shrub": "Dead Permian Shrub",
+	"block.lostworlds.dead_large_permian_shrub": "Dead Large Permian Shrub",
+	"block.lostworlds.tempskya": "Tempskya",
+	
+	"block.lostworlds.diictodon_burrow": "Diictodon Burrow",
+
+	"block.lostworlds.dried_soil": "Dried Soil",
+	"block.lostworlds.cracked_soil": "Cracked Soil",
+
+	"block.lostworlds.geyser_block": "Geyser Block",
+	
+	"block.lostworlds.mossy_dirt": "Mossy Dirt",
+
+	"block.lostworlds.mud": "Mud",
+	
+	"block.lostworlds.nesting_block": "Nesting Block",
+
+	"block.lostworlds.dead_sponge_colony": "Dead Sponge Colony",
+	"block.lostworlds.sponge_colony": "Sponge Colony",
+	
+	"block.lostworlds.silt": "Silt",
+	
+	"block.lostworlds.tunneled_soil": "Tunneled Soil",
+	
+	"block.lostworlds.volcanic_ash": "Volcanic Ash",
+	"block.lostworlds.volcanic_ash_layer": "Volcanic Ash Layer",
+	
+	"block.lostworlds.copper_ore": "Copper Ore",
+
+	"block.lostworlds.basalt_diamond_ore": "Basalt Diamond Ore",
+		
+	"block.lostworlds.stone_fossil": "Stone Fossil",
+	"block.lostworlds.exposed_stone_fossil": "Exposed Stone Fossil",
+	
+	"block.lostworlds.sandstone_fossil": "Sandstone Fossil",
+	"block.lostworlds.exposed_sandstone_fossil": "Exposed Sandstone Fossil",
+	
+	"block.lostworlds.plastered_fossil": "Plastered Fossil",
+	
+	"block.lostworlds.fossil_cleaner": "Fossil Cleaner",
+	"container.lostworlds.fossil_cleaner": "Fossil Cleaner",
+	"block.lostworlds.fossil_grinder": "Fossil Grinder",
+	"container.lostworlds.fossil_grinder": "Fossil Grinder",
+	"block.lostworlds.dna_extractor": "DNA Extractor",
+	"container.lostworlds.dna_extractor": "DNA Extractor",
+	"block.lostworlds.analyser": "Analyser",
+	"container.lostworlds.analyser": "Analyser",
+	"block.lostworlds.dna_injector": "DNA Injector",
+	"container.lostworlds.dna_injector": "DNA Injector",
+
+	"block.lostworlds.archaeology_table": "Archaeology Table",
+	
+	"block.lostworlds.power_supply_block": "Power Supply Block",
+
+	"block.lostworlds.araucaria_log": "Araucaria Log",
+	"block.lostworlds.stripped_araucaria_log": "Stripped Araucaria Log",
+	"block.lostworlds.araucaria_wood": "Araucaria Wood",
+	"block.lostworlds.stripped_araucaria_wood": "Stripped Araucaria Wood",
+	"block.lostworlds.araucaria_leaves": "Araucaria Leaves",
+	"block.lostworlds.araucaria_sapling": "Araucaria Sapling",
+	"block.lostworlds.araucaria_planks": "Araucaria Planks",
+	"block.lostworlds.araucaria_stairs": "Araucaria Stairs",
+	"block.lostworlds.araucaria_slab": "Araucaria Slab",
+	"block.lostworlds.araucaria_fence": "Araucaria Fence",
+	"block.lostworlds.araucaria_fence_gate": "Araucaria Fence Gate",
+	"block.lostworlds.araucaria_pressure_plate": "Araucaria Pressure Plate",
+	"block.lostworlds.araucaria_button": "Araucaria Button",
+	"block.lostworlds.araucaria_trapdoor": "Araucaria Trapdoor",
+	"block.lostworlds.araucaria_door": "Araucaria Door",
+	"block.lostworlds.araucaria_sign": "Araucaria Sign",
+
+	"block.lostworlds.conifer_log": "Conifer Log",
+	"block.lostworlds.stripped_conifer_log": "Stripped Conifer Log",
+	"block.lostworlds.conifer_wood": "Conifer Wood",
+	"block.lostworlds.stripped_conifer_wood": "Stripped Conifer Wood",
+	"block.lostworlds.conifer_leaves": "Conifer Leaves",
+	"block.lostworlds.conifer_sapling": "Conifer Sapling",
+	"block.lostworlds.conifer_planks": "Conifer Planks",
+	"block.lostworlds.conifer_stairs": "Conifer Stairs",
+	"block.lostworlds.conifer_slab": "Conifer Slab",
+	"block.lostworlds.conifer_fence": "Conifer Fence",
+	"block.lostworlds.conifer_fence_gate": "Conifer Fence Gate",
+	"block.lostworlds.conifer_pressure_plate": "Conifer Pressure Plate",
+	"block.lostworlds.conifer_button": "Conifer Button",
+	"block.lostworlds.conifer_trapdoor": "Conifer Trapdoor",
+	"block.lostworlds.conifer_door": "Conifer Door",
+	"block.lostworlds.conifer_sign": "Conifer Sign",
+
+	"block.lostworlds.conifer_sticks": "Conifer Sticks",
+
+	"block.lostworlds.ginkgo_log": "Ginkgo Log",
+	"block.lostworlds.stripped_ginkgo_log": "Stripped Ginkgo Log",
+	"block.lostworlds.ginkgo_wood": "Ginkgo Wood",
+	"block.lostworlds.stripped_ginkgo_wood": "Stripped Ginkgo Wood",
+	"block.lostworlds.ginkgo_leaves": "Ginkgo Leaves",
+	"block.lostworlds.ginkgo_sapling": "Ginkgo Sapling",
+	"block.lostworlds.ginkgo_planks": "Ginkgo Planks",
+	"block.lostworlds.ginkgo_stairs": "Ginkgo Stairs",
+	"block.lostworlds.ginkgo_slab": "Ginkgo Slab",
+	"block.lostworlds.ginkgo_fence": "Ginkgo Fence",
+	"block.lostworlds.ginkgo_fence_gate": "Ginkgo Fence Gate",
+	"block.lostworlds.ginkgo_pressure_plate": "Ginkgo Pressure Plate",
+	"block.lostworlds.ginkgo_button": "Ginkgo Button",
+	"block.lostworlds.ginkgo_trapdoor": "Ginkgo Trapdoor",
+	"block.lostworlds.ginkgo_door": "Ginkgo Door",
+	"block.lostworlds.ginkgo_sign": "Ginkgo Sign",
+
+	"block.lostworlds.scorched_log": "Scorched Log",
+	"block.lostworlds.stripped_scorched_log": "Stripped Scorched Log",
+	"block.lostworlds.scorched_wood": "Scorched Wood",
+	"block.lostworlds.stripped_scorched_wood": "Stripped scorched Wood",
+	"block.lostworlds.scorched_leaves": "Scorched Leaves",
+	"block.lostworlds.scorched_sapling": "Scorched Sapling",
+	"block.lostworlds.scorched_planks": "Scorched Planks",
+	"block.lostworlds.scorched_stairs": "Scorched Stairs",
+	"block.lostworlds.scorched_slab": "Scorched Slab",
+	"block.lostworlds.scorched_fence": "Scorched Fence",
+	"block.lostworlds.scorched_fence_gate": "Scorched Fence Gate",
+	"block.lostworlds.scorched_pressure_plate": "Scorched Pressure Plate",
+	"block.lostworlds.scorched_button": "Scorched Button",
+	"block.lostworlds.scorched_trapdoor": "Scorched Trapdoor",
+	"block.lostworlds.scorched_door": "Scorched Door",
+	"block.lostworlds.scorched_sign": "Scorched Sign",
+
+	"block.lostworlds.scorched_sticks": "Scorched Sticks",
+
+	"block.lostworlds.permian_sand": "Permian Sand",
+
+	"block.lostworlds.permian_stone": "Permian Stone",
+	"block.lostworlds.permian_stone_stairs": "Permian Stone Stairs",
+	"block.lostworlds.permian_stone_slab": "Permian Stone Slab",
+	
+	"block.lostworlds.permian_cobblestone": "Permian Cobblestone",
+	"block.lostworlds.permian_cobblestone_stairs": "Permian Cobblestone Stairs",
+	"block.lostworlds.permian_cobblestone_slab": "Permian Cobblestone Slab",
+	"block.lostworlds.permian_cobblestone_wall": "Permian Cobblestone Wall",	
+
+	"block.lostworlds.permian_stone_bricks": "Permian Stone Bricks",
+	"block.lostworlds.permian_stone_brick_stairs": "Permian Stone Brick Stairs",
+	"block.lostworlds.permian_stone_brick_slab": "Permian Stone Brick Slab",
+	"block.lostworlds.permian_stone_brick_wall": "Permian Stone Brick Wall",
+		
+	"block.lostworlds.permian_copper_ore": "Permian Copper Ore",
+	"block.lostworlds.permian_gold_ore": "Permian Gold Ore",
+	"block.lostworlds.permian_iron_ore": "Permian Iron Ore",
+	"block.lostworlds.permian_coal_ore": "Permian Coal Ore",
+	"block.lostworlds.permian_lapis_ore": "Permian Lapis Ore",
+	"block.lostworlds.permian_diamond_ore": "Permian Diamond Ore",
+	"block.lostworlds.permian_redstone_ore": "Permian Redstone Ore",
+	"block.lostworlds.permian_emerald_ore": "Permian Emerald Ore",	
+	
+	"block.lostworlds.jurassic_stone": "Jurassic Stone",
+	"block.lostworlds.jurassic_stone_stairs": "Jurassic Stone Stairs",
+	"block.lostworlds.jurassic_stone_slab": "Jurassic Stone Slab",
+		
+	"block.lostworlds.mossy_jurassic_stone": "Mossy Jurassic Stone",
+	"block.lostworlds.mossy_jurassic_stone_stairs": "Mossy Jurassic Stone Stairs",
+	"block.lostworlds.mossy_jurassic_stone_slab": "Mossy Jurassic Stone Slab",
+
+	"block.lostworlds.jurassic_cobblestone": "Jurassic Cobblestone",
+	"block.lostworlds.jurassic_cobblestone_stairs": "Jurassic Cobblestone Stairs",
+	"block.lostworlds.jurassic_cobblestone_slab": "Jurassic Cobblestone Slab",
+	"block.lostworlds.jurassic_cobblestone_wall": "Jurassic Cobblestone Wall",	
+
+	"block.lostworlds.mossy_jurassic_cobblestone": "Mossy Jurassic Cobblestone",
+	"block.lostworlds.mossy_jurassic_cobblestone_stairs": "Mossy Jurassic Cobblestone Stairs",
+	"block.lostworlds.mossy_jurassic_cobblestone_slab": "Mossy Jurassic Cobblestone Slab",
+	"block.lostworlds.mossy_jurassic_cobblestone_wall": "Mossy Jurassic Cobblestone Wall",	
+
+	"block.lostworlds.jurassic_stone_bricks": "Jurassic Stone Bricks",
+	"block.lostworlds.jurassic_stone_brick_stairs": "Jurassic Stone Brick Stairs",
+	"block.lostworlds.jurassic_stone_brick_slab": "Jurassic Stone Brick Slab",
+	"block.lostworlds.jurassic_stone_brick_wall": "Jurassic Stone Brick Wall",
+
+	"block.lostworlds.mossy_jurassic_stone_bricks": "Mossy Jurassic Stone Bricks",
+	"block.lostworlds.mossy_jurassic_stone_brick_stairs": "Mossy Jurassic Stone Brick Stairs",
+	"block.lostworlds.mossy_jurassic_stone_brick_slab": "Mossy Jurassic Stone Brick Slab",
+	"block.lostworlds.mossy_jurassic_stone_brick_wall": "Mossy Jurassic Stone Brick Wall",
+	
+	"block.lostworlds.jurassic_copper_ore": "Jurassic Copper Ore",
+	"block.lostworlds.jurassic_gold_ore": "Jurassic Gold Ore",
+	"block.lostworlds.jurassic_iron_ore": "Jurassic Iron Ore",
+	"block.lostworlds.jurassic_coal_ore": "Jurassic Coal Ore",
+	"block.lostworlds.jurassic_lapis_ore": "Jurassic Lapis Ore",
+	"block.lostworlds.jurassic_diamond_ore": "Jurassic Diamond Ore",
+	"block.lostworlds.jurassic_redstone_ore": "Jurassic Redstone Ore",
+	"block.lostworlds.jurassic_emerald_ore": "Jurassic Emerald Ore",
+	
+	"block.lostworlds.volcanic_rock": "Volcanic Rock",
+	"block.lostworlds.volcanic_rock_stairs": "Volcanic Rock Stairs",
+	"block.lostworlds.volcanic_rock_slab": "Volcanic Rock Slab",
+	"block.lostworlds.volcanic_rock_wall": "Volcanic Rock Wall",
+
+	"block.lostworlds.polished_volcanic_rock": "Polished Volcanic Rock",
+	"block.lostworlds.polished_volcanic_rock_stairs": "Polished Volcanic Rock Stairs",
+	"block.lostworlds.polished_volcanic_rock_slab": "Polished Volcanic Rock Slab",
+	
+	"block.lostworlds.shaded_glass": "Shaded Glass",
+	"block.lostworlds.shaded_glass_pane": "Shaded Glass Pane",
+	
+	"block.lostworlds.light_concrete": "Light Concrete",
+	"block.lostworlds.light_concrete_stairs": "Light Concrete Stairs",
+	"block.lostworlds.light_concrete_slab": "Light Concrete Slab",
+	"block.lostworlds.light_concrete_wall": "Light Concrete Fence",
+	"block.lostworlds.light_concrete_pressure_plate": "Light Concrete Pressure Plate",
+	"block.lostworlds.light_concrete_button": "Light Concrete Button",
+	
+	"block.lostworlds.polished_light_concrete": "Polished Light Concrete",
+	"block.lostworlds.polished_light_concrete_stairs": "Polished Light Concrete Stairs",
+	"block.lostworlds.polished_light_concrete_slab": "Polished Light Concrete Slab",
+	
+	"block.lostworlds.wooden_planks": "Wooden Planks",
+	"block.lostworlds.wooden_planks_stairs": "Wooden Planks Stairs",
+	"block.lostworlds.wooden_planks_slab": "Wooden Planks Slab",
+	"block.lostworlds.wooden_planks_fence": "Wooden Planks Fence",
+	"block.lostworlds.wooden_planks_fence_gate": "Wooden Planks Fence Gate",
+	"block.lostworlds.wooden_planks_pressure_plate": "Wooden Planks Pressure Plate",
+	"block.lostworlds.wooden_planks_button": "Wooden Planks Button",
+	
+	"block.lostworlds.metal_fence": "Metal Fence",
+
+	"block.lostworlds.tinted_glass": "Tinted Glass",
+	"block.lostworlds.tinted_glass_pane": "Tinted Glass Pane",
+
+	"block.lostworlds.thatch_block": "Thatch Block",
+
+	"block.lostworlds.outdoor_toilet_door": "Outdoor Toilet Door",
+	"block.lostworlds.visitor_centre_door": "Visitor Centre Block",
+	"block.lostworlds.security_door": "Security Door",
+
+	"block.lostworlds.dark_concrete": "Dark Concrete",
+	"block.lostworlds.dark_concrete_stairs": "Dark Concrete Stairs",
+	"block.lostworlds.dark_concrete_slab": "Dark Concrete Slab",
+	"block.lostworlds.dark_concrete_wall": "Dark Concrete Fence",
+	"block.lostworlds.dark_concrete_pressure_plate": "Dark Concrete Pressure Plate",
+	"block.lostworlds.dark_concrete_button": "Dark Concrete Button",
+	
+	"block.lostworlds.polished_dark_concrete": "Polished Dark Concrete",
+	"block.lostworlds.polished_dark_concrete_stairs": "Polished Dark Concrete Stairs",
+	"block.lostworlds.polished_dark_concrete_slab": "Polished Dark Concrete Slab",
+	
+	"block.lostworlds.refined_wooden_planks": "Refined Wooden Planks",
+	"block.lostworlds.refined_wooden_planks_stairs": "Refined Wooden Planks Stairs",
+	"block.lostworlds.refined_wooden_planks_slab": "Refined Wooden Planks Slab",
+	"block.lostworlds.refined_wooden_planks_fence": "Refined Wooden Planks Fence",
+	"block.lostworlds.refined_wooden_planks_fence_gate": "Refined Wooden Planks Fence Gate",
+	"block.lostworlds.refined_wooden_planks_pressure_plate": "Refined Wooden Planks Pressure Plate",
+	"block.lostworlds.refined_wooden_planks_button": "Refined Wooden Planks Button",
+	
+	"block.lostworlds.tile": "Tile",
+	"block.lostworlds.tile_stairs": "Tile Stairs",
+	"block.lostworlds.tile_slab": "Tile Slab",
+	
+	"block.lostworlds.clear_glass": "Clear Glass",
+	"block.lostworlds.clear_glass_pane": "Clear Glass Pane",
+	
+	"block.lostworlds.white_glass": "White Glass",
+	"block.lostworlds.white_glass_pane": "White Glass Pane",
+	
+	"block.lostworlds.light_grey_glass": "Light Grey Glass",
+	"block.lostworlds.light_grey_glass_pane": "Light Grey Glass Pane",
+	
+	"block.lostworlds.grey_glass": "Grey Glass",
+	"block.lostworlds.grey_glass_pane": "Grey Glass Pane",
+	
+	"block.lostworlds.black_glass": "Black Glass",
+	"block.lostworlds.black_glass_pane": "Black Glass Pane",
+	
+	"block.lostworlds.red_glass": "Red Glass",
+	"block.lostworlds.red_glass_pane": "Red Glass Pane",
+	
+	"block.lostworlds.orange_glass": "Orange Glass",
+	"block.lostworlds.orange_glass_pane": "Orange Glass Pane",
+	
+	"block.lostworlds.yellow_glass": "Yellow Glass",
+	"block.lostworlds.yellow_glass_pane": "Yellow Glass Pane",
+	
+	"block.lostworlds.lime_glass": "Lime Glass",
+	"block.lostworlds.lime_glass_pane": "Lime Glass Pane",
+	
+	"block.lostworlds.green_glass": "Green Glass",
+	"block.lostworlds.green_glass_pane": "Green Glass Pane",
+	
+	"block.lostworlds.cyan_glass": "Cyan Glass",
+	"block.lostworlds.cyan_glass_pane": "Cyan Glass Pane",
+	
+	"block.lostworlds.light_blue_glass": "Light Blue Glass",
+	"block.lostworlds.light_blue_glass_pane": "Light Blue Glass Pane",
+	
+	"block.lostworlds.blue_glass": "Blue Glass",
+	"block.lostworlds.blue_glass_pane": "Blue Glass Pane",
+	
+	"block.lostworlds.purple_glass": "Purple Glass",
+	"block.lostworlds.purple_glass_pane": "Purple Glass Pane",
+	
+	"block.lostworlds.magenta_glass": "Magenta Glass",
+	"block.lostworlds.magenta_glass_pane": "Magenta Glass Pane",
+	
+	"block.lostworlds.pink_glass": "Pink Glass",
+	"block.lostworlds.pink_glass_pane": "Pink Glass Pane",
+	
+	"block.lostworlds.brown_glass": "Brown Glass",
+	"block.lostworlds.brown_glass_pane": "Brown Glass Pane",
+	
+	"block.lostworlds.white_decoration_block": "White Decoration Block",
+	"block.lostworlds.light_grey_decoration_block": "Light Grey Decoration Block",
+	"block.lostworlds.grey_decoration_block": "Grey Decoration Block",
+	"block.lostworlds.black_decoration_block": "Black Decoration Block",
+	"block.lostworlds.red_decoration_block": "Red Decoration Block",
+	"block.lostworlds.orange_decoration_block": "Orange Decoration Block",
+	"block.lostworlds.yellow_decoration_block": "Yellow Decoration Block",
+	"block.lostworlds.lime_decoration_block": "Lime Decoration Block",	
+	"block.lostworlds.green_decoration_block": "Green Decoration Block",
+	"block.lostworlds.cyan_decoration_block": "Cyan Decoration Block",
+	"block.lostworlds.light_blue_decoration_block": "Light Blue Decoration Block",
+	"block.lostworlds.blue_decoration_block": "Blue Decoration Block",
+	"block.lostworlds.purple_decoration_block": "Purple Decoration Block",
+	"block.lostworlds.magenta_decoration_block": "Magenta Decoration Block",
+	"block.lostworlds.pink_decoration_block": "Pink Decoration Block",
+	"block.lostworlds.brown_decoration_block": "Brown Decoration Block",
+
+	"block.lostworlds.glass_shop_door": "Glass Shop Door",
+	"block.lostworlds.innovation_centre_door": "Innovation Centre Block",
+	"block.lostworlds.back_door": "Back Door",
+	
+	"block.lostworlds.pavement": "Pavement",
+	"block.lostworlds.pavement_slope": "Pavement Slope",
+	"block.lostworlds.raised_pavement": "Raised Pavement",
+	
+	"block.lostworlds.gravel_road": "Gravel Road",
+	"block.lostworlds.raised_gravel_road": "Raised Gravel Road",
+	
+	"block.lostworlds.dirt_road": "Dirt Road",
+	"block.lostworlds.raised_dirt_road": "Raised Dirt Road",
+	
+	"block.lostworlds.paved_road": "Paved Road",
+	"block.lostworlds.raised_paved_road": "Raised Paved Road",
+	
+	//Sounds
+	"subtitle.lostworlds.machine_whirling": "Machine Whirling",
+	
+	//Event
+	"event.lostworlds.dev_load": "You are running Lost Worlds: Alpha 11 Developer Edition. DO NOT REDISTRIBUTE.",
+	"event.lostworlds.player_load": "We thank you for downloading and installing the Lost Worlds Mod. Enjoy. Please note: You Are Running Public Alpha 11",
+	
+	//Deaths
+	"death.attack.ashyLung": "Your lungs filled with ash and you died!",
+	"death.attack.suffication": "You ran out of breath! Next time, where a mask!",
+	
+	//Effects
+	"item.minecraft.potion.effect.ashy_lung_potion": "Potion of Ashy Lung",
+	"item.minecraft.splash_potion.effect.ashy_lung_potion": "Splash Potion of Ashy Lung",
+	"item.minecraft.tipped_arrow.effect.ashy_lung_potion": "Arrow of Ashy Lung",
+	"item.minecraft.lingering_potion.effect.ashy_lung_potion": "Lingering Potion of Ashy Lung",
+	"effect.lostworlds.ashy_lung_effect": "Ashy Lung",
+	
+	//Entities
+	"entity.minecraft.villager.lostworlds.archaeologist": "Archaeologist",
+	
+	//Biomes
+	"biome.lostworlds.permian_desert": "Permian Desert",
+	"biome.lostworlds.permian_desert_hills": "Permian Desert Hills",
+	"biome.lostworlds.permian_desert_lake": "Permian Desert Lake",
+
+	"biome.lostworlds.permian_dried_plains": "Permian Dried Plains",
+	"biome.lostworlds.permian_dried_plains_hills": "Permian Dried Plains Hills",
+
+	"biome.lostworlds.permian_ashy_medows": "Permian Ashy Medows",
+
+	"biome.lostworlds.permian_flood_basalts": "Permian Flood Basalts",
+
+	"biome.lostworlds.permian_mountains": "Permian Mountains",
+
+	"biome.lostworlds.permian_conifer_forest": "Permian Conifer Forest",
+	"biome.lostworlds.permian_conifer_forest_hills": "Permian Conifer Forest Hills",
+
+	"biome.lostworlds.permian_ginkgo_forest": "Permian Ginkgo Forest",
+	"biome.lostworlds.permian_ginkgo_forest_hills": "Permian Ginkgo Forest Hills",
+
+	"biome.lostworlds.permian_plains_forest": "Permian Plains",
+	"biome.lostworlds.permian_plains_forest_hills": "Permian Plains Hills",
+	
+	//World Types
+	"generator.lostworlds.rift_world_type": "Rift",
+	
+	//Config
+	"config.lostworlds.allosaurusHeath": "Allosaurus Heath",
+	"config.lostworlds.allosaurusMovementSpeed": "Allosaurus Movement Speed",
+	"config.lostworlds.allosaurusAttackDamage": "Allosaurus Attack Damage",
+
+	"config.lostworlds.ancientCreatureSpawnInOverworld": "Ancient Creatures Spawn in Overworld",
+
+	"config.lostworlds.shouldForestsSpawnInOverworld": "Should Forests Spawn in Overworld",
+
+	"config.lostworlds.araucaria_forest_weight": "Araucaria Forest Weight",
+	"config.lostworlds.conifer_forest_weight": "Conifer Forest Weight",
+	"config.lostworlds.ginkgo_forest_weight": "Ginkgo Forest Weight",
+	
+	"config.lostworlds.shouldVolcanosSpawnInOverworld": "Should Volcanos Spawn in Overworld",
+
+	"config.lostworlds.volcanoWeight": "Volcano Weight",
+	
+	//Item Groups
+	"itemGroup.lostworlds.items": "Lost Worlds Items",
+	"itemGroup.lostworlds.blocks": "Lost Worlds Blocks"
+}

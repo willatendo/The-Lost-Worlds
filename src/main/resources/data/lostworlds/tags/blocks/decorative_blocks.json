@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:black_decoration_block",
+    "lostworlds:blue_decoration_block",
+    "lostworlds:brown_decoration_block",
+    "lostworlds:cyan_decoration_block",
+    "lostworlds:green_decoration_block",
+    "lostworlds:grey_decoration_block",
+    "lostworlds:light_blue_decoration_block",
+    "lostworlds:light_grey_decoration_block",
+    "lostworlds:lime_decoration_block",
+    "lostworlds:magenta_decoration_block",
+    "lostworlds:orange_decoration_block",
+    "lostworlds:pink_decoration_block",
+    "lostworlds:purple_decoration_block",
+    "lostworlds:red_decoration_block",
+    "lostworlds:white_decoration_block",
+    "lostworlds:yellow_decoration_block"
+  ]
+}

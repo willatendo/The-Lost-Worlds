@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$",
+    "$#"
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:wooden_planks"
+    },
+    "$": {
+      "item": "lostworlds:refined_wooden_planks"
+    }
+  },
+  "result": {
+    "item": "lostworlds:tile",
+    "count": 4
+  }
+}

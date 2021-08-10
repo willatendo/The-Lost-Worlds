@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#$#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:wooden_planks"
+    },
+    "$": {
+      "item": "minecraft:honeycomb"
+    }
+  },
+  "result": {
+    "item": "lostworlds:refined_wooden_planks",
+    "count": 8
+  }
+}

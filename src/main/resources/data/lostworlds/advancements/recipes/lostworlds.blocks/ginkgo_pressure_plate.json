@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:ginkgo_pressure_plate"
+    ]
+  },
+  "criteria": {
+    "has_result": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:ginkgo_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:ginkgo_pressure_plate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_result",
+      "has_the_recipe"
+    ]
+  ]
+}

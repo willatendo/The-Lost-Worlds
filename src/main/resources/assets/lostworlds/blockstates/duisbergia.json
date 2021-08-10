@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"half=lower": {
+			"model": "lostworlds:block/duisbergia_stem"
+		},
+		"half=upper": {
+			"model": "lostworlds:block/duisbergia_top"
+		}
+	}
+}

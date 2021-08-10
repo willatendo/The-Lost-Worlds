@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/slab",
+	"textures": {
+		"bottom": "lostworlds:blocks/polished_volcanic_rock",
+		"top": "lostworlds:blocks/polished_volcanic_rock",
+		"side": "lostworlds:blocks/polished_volcanic_rock"
+	}
+}

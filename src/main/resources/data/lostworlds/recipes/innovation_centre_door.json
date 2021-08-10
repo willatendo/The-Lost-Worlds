@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "#$",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stone"
+    },
+    "$": {
+      "tag": "lostworlds:fossils"
+    }
+  },
+  "result": {
+    "item": "lostworlds:innovation_centre_door",
+    "count": 3
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "result",
+  "ingredients": [
+    {
+      "tag": "lostworlds:conifer_logs"
+    }
+  ],
+  "result": {
+    "item": "lostworlds:conifer_planks",
+    "count": 4
+  }
+}

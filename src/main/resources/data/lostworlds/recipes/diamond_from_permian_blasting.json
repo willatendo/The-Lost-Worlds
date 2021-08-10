@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "lostworlds:permian_diamond_ore"
+  },
+  "result": "minecraft:diamond",
+  "experience": 0.7,
+  "cookingtime": 100
+}

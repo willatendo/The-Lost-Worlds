@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"large_eggs=1": {
+			"model": "lostworlds:block/large_egg_one"
+		},
+		"large_eggs=2": {
+			"model": "lostworlds:block/large_egg_two"
+		}
+	}
+}

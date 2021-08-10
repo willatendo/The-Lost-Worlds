@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:ginkgo_log",
+    "lostworlds:stripped_ginkgo_log",
+    "lostworlds:ginkgo_wood",
+    "lostworlds:stripped_ginkgo_wood"
+  ]
+}

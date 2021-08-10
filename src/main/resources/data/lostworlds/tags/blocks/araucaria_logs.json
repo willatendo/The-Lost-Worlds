@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:araucaria_log",
+    "lostworlds:stripped_araucaria_log",
+    "lostworlds:araucaria_wood",
+    "lostworlds:stripped_araucaria_wood"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "lostworlds:permian_stone"
+    }
+  ],
+  "result": {
+    "item": "lostworlds:permian_stone_pressure_plate"
+  }
+}

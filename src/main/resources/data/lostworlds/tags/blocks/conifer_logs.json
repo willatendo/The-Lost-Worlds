@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:conifer_log",
+    "lostworlds:stripped_conifer_log",
+    "lostworlds:conifer_wood",
+    "lostworlds:stripped_conifer_wood"
+  ]
+}

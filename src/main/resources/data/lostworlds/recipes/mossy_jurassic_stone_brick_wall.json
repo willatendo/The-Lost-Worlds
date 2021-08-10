@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:mossy_jurassic_stone_bricks"
+    }
+  },
+  "result": {
+    "item": "lostworlds:mossy_jurassic_stone_brick_wall",
+    "count": 6
+  }
+}

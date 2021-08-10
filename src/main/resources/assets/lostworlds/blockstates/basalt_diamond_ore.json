@@ -1,0 +1,16 @@
+{
+	"variants": {
+		"axis=x": {
+			"model": "lostworlds:block/basalt_diamond_ore_horizontal",
+			"x": 90,
+			"y": 90
+		},
+		"axis=y": {
+			"model": "lostworlds:block/basalt_diamond_ore"
+		},
+		"axis=z": {
+			"model": "lostworlds:block/basalt_diamond_ore_horizontal",
+			"x": 90
+		}
+	}
+}

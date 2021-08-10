@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "lostworlds:scorched_planks"
+    }
+  ],
+  "result": {
+    "item": "lostworlds:scorched_button"
+  }
+}

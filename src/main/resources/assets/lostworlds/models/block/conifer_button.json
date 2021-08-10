@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/button",
+	"textures": {
+		"texture": "lostworlds:blocks/conifer_planks"
+	}
+}

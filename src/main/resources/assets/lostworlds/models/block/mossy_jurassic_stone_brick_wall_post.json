@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/template_wall_post",
+	"textures": {
+		"wall": "lostworlds:blocks/mossy_jurassic_stone_bricks"
+	}
+}

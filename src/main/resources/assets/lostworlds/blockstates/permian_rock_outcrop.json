@@ -1,0 +1,25 @@
+{
+	"variants": {
+		"sides=centre": {
+			"model": "lostworlds:block/permian_rock_outcrop_centre"
+		},
+		"sides=north": {
+			"model": "lostworlds:block/permian_rock_outcrop_north"
+		},
+		"sides=south": {
+			"model": "lostworlds:block/permian_rock_outcrop_south"
+		},
+		"sides=east": {
+			"model": "lostworlds:block/permian_rock_outcrop_east"
+		},
+		"sides=west": {
+			"model": "lostworlds:block/permian_rock_outcrop_west"
+		},
+		"sides=north_west": {
+			"model": "lostworlds:block/permian_rock_outcrop_north_west"
+		},
+		"sides=south_west": {
+			"model": "lostworlds:block/permian_rock_outcrop_south_west"
+		}
+	}
+}

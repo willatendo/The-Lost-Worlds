@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "lostworlds:light_concrete"
+    }
+  ],
+  "result": {
+    "item": "lostworlds:dark_concrete_button"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:volcanic_ash_layer"
+    }
+  },
+  "result": {
+    "item": "lostworlds:volcanic_ash_layer"
+  }
+}

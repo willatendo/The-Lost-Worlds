@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "result",
+  "ingredients": [
+    {
+      "tag": "lostworlds:scorched_logs"
+    }
+  ],
+  "result": {
+    "item": "lostworlds:scorched_planks",
+    "count": 4
+  }
+}

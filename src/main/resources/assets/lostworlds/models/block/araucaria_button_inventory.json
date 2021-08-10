@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/button_inventory",
+	"textures": {
+		"texture": "lostworlds:blocks/araucaria_planks"
+	}
+}

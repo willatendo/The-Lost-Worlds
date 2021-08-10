@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lostworlds:dark_concrete"
+  },
+  "result": "lostworlds:dark_concrete_wall",
+  "count": 1
+}

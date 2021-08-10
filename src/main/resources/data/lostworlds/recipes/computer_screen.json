@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "rgb",
+    "$$$"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:glass_pane"
+    },
+    "$": {
+      "item": "lostworlds:copper_wire"
+    },
+    "r": {
+      "item": "minecraft:red_dye"
+    },
+    "g": {
+      "item": "minecraft:green_dye"
+    },
+    "b": {
+      "item": "minecraft:blue_dye"
+    }
+  },
+  "result": {
+    "item": "lostworlds:computer_screen"
+  }
+}

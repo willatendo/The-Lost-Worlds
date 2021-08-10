@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "lostworlds:fern_leaves"
+  },
+  "result": "lostworlds:cooked_fern_leaves",
+  "experience": 0.35,
+  "cookingtime": 200
+}
