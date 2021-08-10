@@ -46,12 +46,9 @@ public class ModConfiguredFeatures
 	 
 	 */
 	
-	public static final ConfiguredFeature<?, ?> DEAD_PERMIAN_SHRUB_PATCH = register("dead_permian_shrub_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.DEAD_PERMIAN_SHRUB_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
 	public static final ConfiguredFeature<?, ?> FERN_PATCH = register("fern_patch", Feature.RANDOM_PATCH.configured(ModConfiguredFeatures.ModBlockClusterFeatureConfig.FERN_CONFIG));
-	public static final ConfiguredFeature<?, ?> SMALL_PERMIAN_DESERT_PLANT_PATCH = register("small_permian_desert_plant_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.SMALL_PERMIAN_DESERT_PLANT_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
-	public static final ConfiguredFeature<?, ?> MEDIUM_PERMIAN_DESERT_PLANT_PATCH = register("medium_permian_desert_plant_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.MEDIUM_PERMIAN_DESERT_PLANT_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
-	public static final ConfiguredFeature<?, ?> LARGE_PERMIAN_DESERT_PLANT_PATCH = register("large_permian_desert_plant_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.LARGE_PERMIAN_DESERT_PLANT_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
-	public static final ConfiguredFeature<?, ?> LUSH_PERMIAN_DESERT_PLANT_PATCH = register("lush_permian_desert_plant_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.LUSH_PERMIAN_DESERT_PLANT_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
+	public static final ConfiguredFeature<?, ?> PERMIAN_DESERT_SHRUB_PATCH = register("permian_desert_shrub_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.PERMIAN_DESERT_SHRUB_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
+	public static final ConfiguredFeature<?, ?> PERMIAN_DESERT_FERNS_PATCH = register("permian_desert_ferns_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.PERMIAN_DESERT_FERNS_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
 
 	public static final ConfiguredFeature<?, ?> CONIFER_STICKS = register("conifer_sticks", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.CONIFER_STICKS).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
 	
@@ -80,11 +77,8 @@ public class ModConfiguredFeatures
 	
 	static class ModBlockClusterFeatureConfig
 	{
-		public static final BlockClusterFeatureConfig SMALL_PERMIAN_DESERT_PLANT_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.SMALL_PERMIAN_DESERT_PLANT.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(11).build();
-		public static final BlockClusterFeatureConfig MEDIUM_PERMIAN_DESERT_PLANT_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.MEDIUM_PERMIAN_DESERT_PLANT.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(9).build();
-		public static final BlockClusterFeatureConfig LARGE_PERMIAN_DESERT_PLANT_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.LARGE_PERMIAN_DESERT_PLANT.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(4).build();
-		public static final BlockClusterFeatureConfig LUSH_PERMIAN_DESERT_PLANT_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.LUSH_PERMIAN_DESERT_PLANT.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(4).build();
-		public static final BlockClusterFeatureConfig DEAD_PERMIAN_SHRUB_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.DEAD_PERMIAN_SHRUB.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(16).build();
+		public static final BlockClusterFeatureConfig PERMIAN_DESERT_SHRUB_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.PERMIAN_DESERT_SHRUB.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(9).build();
+		public static final BlockClusterFeatureConfig PERMIAN_DESERT_FERNS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.PERMIAN_DESERT_FERNS.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(4).build();
 
 		public static final BlockClusterFeatureConfig CONIFER_STICKS = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.CONIFER_STICKS.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(1).build();
 		public static final BlockClusterFeatureConfig GEYSER_BLOCK = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.GEYSER_BLOCK.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(1).build();

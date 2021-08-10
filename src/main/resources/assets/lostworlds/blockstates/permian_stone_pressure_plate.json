@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"powered=false": {
+			"model": "lostworlds:block/permian_stone_pressure_plate"
+		},
+		"powered=true": {
+			"model": "lostworlds:block/permian_stone_pressure_plate_down"
+		}
+	}
+}

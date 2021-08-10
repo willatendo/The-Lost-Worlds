@@ -72,18 +72,14 @@ public class ModBiomeFeatures
 	//Features
 	private static void addPermianDesertPlants(BiomeGenerationSettings.Builder builder) 
 	{
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SMALL_PERMIAN_DESERT_PLANT_PATCH);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.MEDIUM_PERMIAN_DESERT_PLANT_PATCH);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.LARGE_PERMIAN_DESERT_PLANT_PATCH);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.LUSH_PERMIAN_DESERT_PLANT_PATCH);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.DEAD_PERMIAN_SHRUB_PATCH);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.PERMIAN_DESERT_SHRUB_PATCH);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.PERMIAN_DESERT_FERNS_PATCH);
 	}
 	
 	private static void addGroundClutter(BiomeGenerationSettings.Builder builder) 
 	{
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_LARGE_FERN);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.FERN_PATCH);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.DEAD_PERMIAN_SHRUB_PATCH);
 	}
 	
 	private static void addConiferTrees(BiomeGenerationSettings.Builder builder)

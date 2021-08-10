@@ -7,11 +7,6 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.IntegerProperty;
 
-/*
- * Author: Willatendo
- * Date: July 4, 2021
- */
-
 public class ModBlockStateProperties 
 {
 	public static final BooleanProperty ON = BooleanProperty.create("on");

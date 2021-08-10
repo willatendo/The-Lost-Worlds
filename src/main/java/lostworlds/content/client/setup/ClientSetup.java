@@ -46,11 +46,8 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.HORSETAIL, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.LYCOPHYTA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.OSMUNDA, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.SMALL_PERMIAN_DESERT_PLANT, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.MEDIUM_PERMIAN_DESERT_PLANT, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.LARGE_PERMIAN_DESERT_PLANT, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.LUSH_PERMIAN_DESERT_PLANT, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.DEAD_PERMIAN_SHRUB, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.PERMIAN_DESERT_FERNS, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.PERMIAN_DESERT_SHRUB, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.TEMPSKYA, RenderType.cutout());
 		
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_CLEANER, RenderType.translucent());

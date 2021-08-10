@@ -6,6 +6,7 @@ import lostworlds.library.item.BrushItem;
 import lostworlds.library.item.BrushItem.Teirs;
 import lostworlds.library.item.CrystalScarabGemItem.Variant;
 import lostworlds.library.item.CrystalScarabAxeItem;
+import lostworlds.library.item.CrystalScarabBrushItem;
 import lostworlds.library.item.CrystalScarabGemItem;
 import lostworlds.library.item.CrystalScarabHoeItem;
 import lostworlds.library.item.CrystalScarabPickaxeItem;
@@ -20,11 +21,6 @@ import lostworlds.library.item.TimeBookItem;
 import lostworlds.library.util.ModUtil;
 import net.minecraft.item.Item;
 
-/*
- * Author: Willatendo
- * Date: July 1, 2021
- */
-
 public class ItemInit
 {	
 	public static final Item LEATHER_BRUSH = BrushItem.create(Teirs.LEATHER);
@@ -32,7 +28,7 @@ public class ItemInit
 	public static final Item GOLD_BRUSH = BrushItem.create(Teirs.GOLD);
 	public static final Item DIAMOND_BRUSH = BrushItem.create(Teirs.DIAMOND);
 	public static final Item NETHERITE_BRUSH = BrushItem.create(Teirs.NETHERITE);
-	public static final Item CRYSTAL_SCARAB_BRUSH = BrushItem.create(Teirs.CRYSTAL_SCARAB);
+	public static final Item CRYSTAL_SCARAB_BRUSH = CrystalScarabBrushItem.create();
 	
 	public static final Item WET_PAPER = BasicItem.create("wet_paper");
 	

@@ -5,11 +5,6 @@ import lostworlds.library.util.ModRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
-/*
- * Author: Willatendo
- * Date: July 16, 2021
- */
-
 public class BasicBlockAndItem
 {
 	public static Block create(String id, Block block)

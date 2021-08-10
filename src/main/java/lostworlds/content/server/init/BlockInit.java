@@ -83,8 +83,8 @@ public class BlockInit
 	public static final Block PERMIAN_STONE = BasicBlockAndItem.create("permian_stone", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)));
 	public static final Block PERMIAN_STONE_STAIRS = BasicBlockAndItem.create("permian_stone_stairs", new StairsBlock(() -> BlockInit.PERMIAN_STONE.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)));
 	public static final Block PERMIAN_STONE_SLAB = BasicBlockAndItem.create("permian_stone_slab", new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)));
-	public static final Block PERMIAN_STONE_PRESSURE_PLATE = BasicBlockAndItem.create("permian_stone_pressure_plate", new PressurePlateBlock(Sensitivity.MOBS, AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)));
-	public static final Block PERMIAN_STONE_BUTTON = BasicBlockAndItem.create("permian_stone_button", new StoneButtonBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)));
+	public static final Block PERMIAN_STONE_PRESSURE_PLATE = BasicBlockAndItem.create("permian_stone_pressure_plate", new PressurePlateBlock(Sensitivity.MOBS, AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)));
+	public static final Block PERMIAN_STONE_BUTTON = BasicBlockAndItem.create("permian_stone_button", new StoneButtonBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)));
 
 	public static final Block PERMIAN_COPPER_ORE = BasicBlockAndItem.create("permian_copper_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
 	public static final Block PERMIAN_GOLD_ORE = BasicBlockAndItem.create("permian_gold_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
@@ -161,6 +161,8 @@ public class BlockInit
 	//public static final Block ARAUCARIA_SIGN = BasicBlock.create("araucaria_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).noOcclusion().sound(SoundType.WOOD), ModWoodTypes.ARAUCARIA));
 	//public static final Block ARAUCARIA_WALL_SIGN = BasicBlock.create("araucaria_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).noOcclusion().sound(SoundType.WOOD).dropsLike(ARAUCARIA_SIGN), ModWoodTypes.ARAUCARIA));
 	//public static final Item ARAUCARIA_SIGN_ITEM = BasicSignItem.create("araucaria_sign", ARAUCARIA_SIGN, ARAUCARIA_WALL_SIGN);
+	
+	//Calame
 	
 	//Conifer
 	public static final Block CONIFER_LOG = BasicBlockAndItem.create("conifer_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
@@ -240,11 +242,8 @@ public class BlockInit
 	public static final Block HORSETAIL = BasicBlockAndItem.create("horsetail", new TriplePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block LYCOPHYTA = BasicBlockAndItem.create("lycophyta", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block OSMUNDA = BasicBlockAndItem.create("osmunda", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final Block SMALL_PERMIAN_DESERT_PLANT = BasicBlockAndItem.create("small_permian_desert_plant", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_BROWN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final Block MEDIUM_PERMIAN_DESERT_PLANT = BasicBlockAndItem.create("medium_permian_desert_plant", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_BROWN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final Block LARGE_PERMIAN_DESERT_PLANT = BasicBlockAndItem.create("large_permian_desert_plant", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_BROWN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final Block LUSH_PERMIAN_DESERT_PLANT = BasicBlockAndItem.create("lush_permian_desert_plant", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final Block DEAD_PERMIAN_SHRUB = BasicBlockAndItem.create("dead_permian_shrub", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block PERMIAN_DESERT_FERNS = BasicBlockAndItem.create("permian_desert_ferns", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block PERMIAN_DESERT_SHRUB = BasicBlockAndItem.create("permian_desert_shrub", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_BROWN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block TEMPSKYA = BasicBlockAndItem.create("tempskya", new QuintuplePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 
 	//Natural Blocks
