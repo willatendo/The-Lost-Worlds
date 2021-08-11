@@ -2,7 +2,7 @@ package lostworlds.library.tab;
 
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.library.util.ModUtil;
-import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -24,11 +24,11 @@ public class ItemsTab extends ItemGroup
 	@Override
 	public void fillItemList(NonNullList<ItemStack> stack) 
 	{
-		for(Block blocks : ForgeRegistries.BLOCKS)
+		for(Item items : ForgeRegistries.ITEMS)
 		{
-			if(blocks.asItem().getItemCategory() == ModItemGroup.ITEMS)
+			if(items.getItemCategory() == ModItemGroup.ITEMS)
 			{	
-				stack.add(blocks.asItem().getDefaultInstance());
+				stack.add(items.getDefaultInstance());
 			}
 		}
 	}

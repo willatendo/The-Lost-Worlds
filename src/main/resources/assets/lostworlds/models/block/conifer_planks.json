@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/cube_all",
 	"textures": {
-		"all": "lostworlds:blocks/conifer_planks"
+		"all": "lostworlds:block/conifer_planks"
 	}
 }

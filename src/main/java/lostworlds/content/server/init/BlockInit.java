@@ -162,7 +162,7 @@ public class BlockInit
 	//public static final Block ARAUCARIA_WALL_SIGN = BasicBlock.create("araucaria_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).noOcclusion().sound(SoundType.WOOD).dropsLike(ARAUCARIA_SIGN), ModWoodTypes.ARAUCARIA));
 	//public static final Item ARAUCARIA_SIGN_ITEM = BasicSignItem.create("araucaria_sign", ARAUCARIA_SIGN, ARAUCARIA_WALL_SIGN);
 	
-	//Calame
+	//Calamite
 	
 	//Conifer
 	public static final Block CONIFER_LOG = BasicBlockAndItem.create("conifer_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
@@ -227,6 +227,8 @@ public class BlockInit
 	//public static final Item SCORCHED_SIGN_ITEM = BasicSignItem.create("scorched_sign", SCORCHED_SIGN, SCORCHED_WALL_SIGN);
 	
 	public static final Block SCORCHED_STICKS = BasicBlockAndItem.create("scorched_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
+	
+	//Sigillaria
 	
 	//Plants
 	public static final Block ASHY_SHRUB = BasicBlockAndItem.create("ashy_shrub", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
