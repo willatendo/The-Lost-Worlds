@@ -1,6 +1,6 @@
 package lostworlds.content.server;
 
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tags.BlockTags;
@@ -27,7 +27,7 @@ public class ModTags
 		
 		private static ITag.INamedTag<Item> tag(String id)
 		{
-			return ItemTags.createOptional(ModUtil.rL(id));
+			return ItemTags.createOptional(ModUtils.rL(id));
 		}
 	}
 	
@@ -50,7 +50,7 @@ public class ModTags
 		
 		private static ITag.INamedTag<Block> tag(String id)
 		{
-			return BlockTags.createOptional(ModUtil.rL(id));
+			return BlockTags.createOptional(ModUtils.rL(id));
 		}
 	}
 }

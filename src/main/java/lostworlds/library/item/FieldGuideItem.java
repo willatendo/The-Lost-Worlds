@@ -4,7 +4,7 @@ import java.util.List;
 
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,7 +30,7 @@ public class FieldGuideItem extends Item
 	@Override
 	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> toolTip, ITooltipFlag flag) 
 	{
-		toolTip.add(ModUtil.gTC("toolTip", "field_guide"));
+		toolTip.add(ModUtils.gTC("toolTip", "field_guide"));
 	}
 	
 	@Override

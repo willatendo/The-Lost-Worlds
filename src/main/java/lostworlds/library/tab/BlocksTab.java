@@ -1,7 +1,7 @@
 package lostworlds.library.tab;
 
 import lostworlds.content.server.init.BlockInit;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -12,7 +12,7 @@ public class BlocksTab extends ItemGroup
 {
 	public BlocksTab() 
 	{
-		super(ModUtil.ID + ".blocks");
+		super(ModUtils.ID + ".blocks");
 	}
 
 	@Override

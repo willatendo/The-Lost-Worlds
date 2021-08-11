@@ -5,7 +5,7 @@ import java.util.Set;
 import com.google.common.collect.ImmutableSet;
 
 import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.village.PointOfInterestType;
@@ -25,5 +25,5 @@ public class PointOfInterestInit
 	public static final PointOfInterestType ARCHAEOLOGY_TABLE_POI = ModRegistry.register("archaeology_table_poi", new PointOfInterestType("archaeology_table_poi", getBlockStates(BlockInit.ARCHAEOLOGY_TABLE), 1, 1));
 	
 	//Registry
-	public static void init() { ModUtil.LOGGER.debug("Registering Mod Points of Interest"); }
+	public static void init() { ModUtils.LOGGER.debug("Registering Mod Points of Interest"); }
 }

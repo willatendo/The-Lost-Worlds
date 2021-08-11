@@ -7,7 +7,7 @@ import com.google.common.collect.ImmutableList;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.FeatureInit;
 import lostworlds.library.foliageplacer.ConiferFoliagePlacer;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
@@ -72,7 +72,7 @@ public class ModConfiguredFeatures
 	
 	public static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String id, ConfiguredFeature<FC, ?> configuredFeature) 
 	{
-		return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, ModUtil.rL(id), configuredFeature);
+		return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, ModUtils.rL(id), configuredFeature);
 	}
 	
 	static class ModBlockClusterFeatureConfig

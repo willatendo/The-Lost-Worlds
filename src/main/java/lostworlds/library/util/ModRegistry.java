@@ -49,76 +49,76 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModRegistry 
 {				
-	public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_REGISTRY = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, ModUtil.ID);
-	public static final DeferredRegister<ContainerType<?>> CONTAINER_REGISTRY = DeferredRegister.create(ForgeRegistries.CONTAINERS, ModUtil.ID);
+	public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_REGISTRY = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, ModUtils.ID);
+	public static final DeferredRegister<ContainerType<?>> CONTAINER_REGISTRY = DeferredRegister.create(ForgeRegistries.CONTAINERS, ModUtils.ID);
 	
 	//Registers
 	public static ParticleType<BasicParticleType> register(String id, ParticleType<BasicParticleType> particle)
 	{
-		particle.setRegistryName(ModUtil.rL(id));
+		particle.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.PARTICLE_TYPES.register(particle);
 		return particle;
 	}
 	
 	public static IRecipeSerializer<?> register(String id, IRecipeSerializer<?> recipe)
 	{
-		recipe.setRegistryName(ModUtil.rL(id));
+		recipe.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.RECIPE_SERIALIZERS.register(recipe);
 		return recipe;
 	}
 	
 	public static SoundEvent register(String id, SoundEvent sound)
 	{
-		sound.setRegistryName(ModUtil.rL(id));
+		sound.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.SOUND_EVENTS.register(sound);
 		return sound;
 	}
 	
 	public static Effect register(String id, Effect effect)
 	{
-		effect.setRegistryName(ModUtil.rL(id));
+		effect.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.POTIONS.register(effect);
 		return effect;
 	}
 	
 	public static Potion register(String id, Potion potion)
 	{
-		potion.setRegistryName(ModUtil.rL(id));
+		potion.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.POTION_TYPES.register(potion);
 		return potion;
 	}
 	
 	public static Item register(String id, Item item)
 	{
-		item.setRegistryName(ModUtil.rL(id));
+		item.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.ITEMS.register(item);
 		return item;
 	}
 	
 	public static Block register(String id, Block block)
 	{
-		block.setRegistryName(ModUtil.rL(id));
+		block.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.BLOCKS.register(block);
 		return block;
 	}
 	
 	public static BlockPlacerType<?> register(String id, BlockPlacerType<?> type)
 	{
-		type.setRegistryName(ModUtil.rL(id));
+		type.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.BLOCK_PLACER_TYPES.register(type);
 		return type;
 	}
 	
 	public static PointOfInterestType register(String id, PointOfInterestType type)
 	{
-		type.setRegistryName(ModUtil.rL(id));
+		type.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.POI_TYPES.register(type);
 		return type;
 	}
 	
 	private static EntityType<?> register(String id, EntityType<?> entity) 
 	{
-		entity.setRegistryName(ModUtil.rL(id));
+		entity.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.ENTITIES.register(entity);
 		return entity;
 	}
@@ -130,35 +130,35 @@ public class ModRegistry
 	
 	public static VillagerProfession register(String id, VillagerProfession profession)
 	{
-		profession.setRegistryName(ModUtil.rL(id));
+		profession.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.PROFESSIONS.register(profession);
 		return profession;
 	}
 	
 	public static FoliagePlacerType<?> register(String id, FoliagePlacerType<?> foliagePlacer)
 	{
-		foliagePlacer.setRegistryName(ModUtil.rL(id));
+		foliagePlacer.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.FOLIAGE_PLACER_TYPES.register(foliagePlacer);
 		return foliagePlacer;
 	}
 	
 	public static Biome register(String id, Biome biome) 
 	{
-		biome.setRegistryName(ModUtil.rL(id));
+		biome.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.BIOMES.register(biome);
 		return biome;
 	}
 	
 	public static SurfaceBuilder<?> register(String id, SurfaceBuilder<?> surfaceBuilder)
 	{
-		surfaceBuilder.setRegistryName(ModUtil.rL(id));
+		surfaceBuilder.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.SURFACE_BUILDERS.register(surfaceBuilder);
 		return surfaceBuilder;
 	}
 	
 	public static Feature<?> register(String id, Feature<?> feature)
 	{
-		feature.setRegistryName(ModUtil.rL(id));
+		feature.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.FEATURES.register(feature);
 		return feature;
 	}
@@ -166,7 +166,7 @@ public class ModRegistry
 	//Registers Deferred Registers
 	public static void register(IEventBus bus)
 	{
-		ModUtil.LOGGER.debug("Starting: Initialisation");
+		ModUtils.LOGGER.debug("Starting: Initialisation");
 		
 		TILE_ENTITY_REGISTRY.register(bus);
 		CONTAINER_REGISTRY.register(bus);
@@ -191,6 +191,6 @@ public class ModRegistry
 		
 		Init.setup();
 		
-		ModUtil.LOGGER.debug("Finished: Setting Up Registries");
+		ModUtils.LOGGER.debug("Finished: Setting Up Registries");
 	}
 }

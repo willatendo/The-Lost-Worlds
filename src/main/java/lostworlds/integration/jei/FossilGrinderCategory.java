@@ -7,7 +7,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.recipe.FossilGrinderRecipe;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -24,8 +24,8 @@ import net.minecraft.util.text.TranslationTextComponent;
 
 public class FossilGrinderCategory implements IRecipeCategory<FossilGrinderRecipe>
 {
-	public static final ResourceLocation ID = ModUtil.rL("fossil_grinder_category");
-	public static final ResourceLocation DISPLAY = ModUtil.rL("textures/gui/jei/lostworlds_backgrounds.png");
+	public static final ResourceLocation ID = ModUtils.rL("fossil_grinder_category");
+	public static final ResourceLocation DISPLAY = ModUtils.rL("textures/gui/jei/lostworlds_backgrounds.png");
 	
 	private final LoadingCache<Integer, IDrawableAnimated> grinderProgessBar;
 	
@@ -71,7 +71,7 @@ public class FossilGrinderCategory implements IRecipeCategory<FossilGrinderRecip
 	@Override
 	public String getTitle() 
 	{
-		return ModUtil.tTC("jei", "fossil_grinder.title").getString();
+		return ModUtils.tTC("jei", "fossil_grinder.title").getString();
 	}
 
 	@Override
@@ -115,7 +115,7 @@ public class FossilGrinderCategory implements IRecipeCategory<FossilGrinderRecip
 	
 	public void drawChance(FossilGrinderRecipe recipe, MatrixStack matrixStack, int y)
 	{
-		TranslationTextComponent name = ModUtil.tTC("jei", "fossil_grinder.chance");
+		TranslationTextComponent name = ModUtils.tTC("jei", "fossil_grinder.chance");
 		Minecraft minecraft = Minecraft.getInstance();
 		FontRenderer fontRenderer = minecraft.font;
 		int stringWidth = fontRenderer.width(name);

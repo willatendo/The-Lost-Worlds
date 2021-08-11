@@ -5,7 +5,7 @@ import lostworlds.library.surfacebuilders.PermianDriedPlainsSurfaceBuilder;
 import lostworlds.library.surfacebuilders.PermianMoutainsSurfaceBuilder;
 import lostworlds.library.surfacebuilders.PermianPlainsSurfaceBuilder;
 import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
@@ -27,5 +27,5 @@ public class SurfaceBuilderInit
 	public static final SurfaceBuilder<?> PERMIAN_PLAINS = ModRegistry.register("permian_plains", NAKED_PERMIAN_PLAINS);
 	
 	//Registry
-	public static void init() { ModUtil.LOGGER.debug("Registering Mod Surface Builders"); }
+	public static void init() { ModUtils.LOGGER.debug("Registering Mod Surface Builders"); }
 }

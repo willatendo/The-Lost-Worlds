@@ -5,22 +5,34 @@ import java.util.function.Supplier;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
+import lostworlds.library.dimension.SeedNoiseChunkGenerator;
+import lostworlds.library.dimension.WorldSeedHolder;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.DimensionSettings;
-import net.minecraft.world.gen.NoiseChunkGenerator;
 
-public class PermianChunkGenerator extends NoiseChunkGenerator
+public class PermianChunkGenerator extends SeedNoiseChunkGenerator
 {
-	public static final Codec<PermianChunkGenerator> CODEC = RecordCodecBuilder.create((instance) -> instance.group(BiomeProvider.CODEC.fieldOf("biome_source").forGetter(ChunkGenerator::getBiomeSource), Codec.LONG.fieldOf("seed").orElseGet(() -> PermianChunkGenerator.hackSeed).forGetter((obj) -> obj.seed), DimensionSettings.CODEC.fieldOf("settings").forGetter(PermianChunkGenerator::getDimensionSettings)).apply(instance, instance.stable(PermianChunkGenerator::new)));
-	
+	public static final Codec<PermianChunkGenerator> CODEC = RecordCodecBuilder.create((c) -> 
+	{
+		return c.group(BiomeProvider.CODEC.fieldOf("biome_source").forGetter((chunkGenerator) -> 
+		{
+			return chunkGenerator.biomeSource;
+		}), Codec.LONG.fieldOf("seed").orElseGet(WorldSeedHolder::getSeed).forGetter((chunkGenerator) -> 
+		{
+			return chunkGenerator.seed;
+		}), DimensionSettings.CODEC.fieldOf("settings").forGetter((chunkGenerator) -> 
+		{
+			return chunkGenerator.settings;
+		})).apply(c, c.stable(PermianChunkGenerator::new));
+	});
 	private long seed;
 	public static long hackSeed;
 	
 	public PermianChunkGenerator(BiomeProvider provider, long seed, Supplier<DimensionSettings> settingsIn) 
 	{
 		super(provider, seed, settingsIn);
-		this.seed = seed;
+		this.seed = WorldSeedHolder.getSeed();
 	}
 	
 	@Override

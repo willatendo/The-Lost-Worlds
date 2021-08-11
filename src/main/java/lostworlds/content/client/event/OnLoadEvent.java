@@ -1,6 +1,6 @@
 package lostworlds.content.client.event;
 
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.api.distmarker.Dist;
@@ -15,21 +15,21 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
  * Date: July 11, 2021
  */
 
-@EventBusSubscriber(modid = ModUtil.ID, bus = Bus.FORGE, value = Dist.CLIENT)
+@EventBusSubscriber(modid = ModUtils.ID, bus = Bus.FORGE, value = Dist.CLIENT)
 public class OnLoadEvent 
 {
 	@SubscribeEvent
 	public static void onLoadEvent(final PlayerEvent.PlayerLoggedInEvent event)
 	{
-		if(!FMLEnvironment.production && !ModUtil.DISABLE_IN_DEV)
+		if(!FMLEnvironment.production && !ModUtils.DISABLE_IN_DEV)
 		{
 			PlayerEntity player = event.getPlayer();
-			player.sendMessage(ModUtil.gTC("event", "dev_load"), player.getUUID());
+			player.sendMessage(ModUtils.gTC("event", "dev_load"), player.getUUID());
 		}
 		else
 		{
 			PlayerEntity player = event.getPlayer();
-			player.sendMessage(ModUtil.cTC("event", "player_load", TextFormatting.GOLD), player.getUUID());
+			player.sendMessage(ModUtils.cTC("event", "player_load", TextFormatting.GOLD), player.getUUID());
 		}
 	}
 }

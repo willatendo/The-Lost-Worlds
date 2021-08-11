@@ -1,7 +1,7 @@
 package lostworlds.library.tab;
 
 import lostworlds.content.server.init.ItemInit;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -12,7 +12,7 @@ public class ItemsTab extends ItemGroup
 {
 	public ItemsTab() 
 	{
-		super(ModUtil.ID + ".items");
+		super(ModUtils.ID + ".items");
 	}
 
 	@Override

@@ -4,7 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import lostworlds.library.container.FossilGrinderContainer;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -20,7 +20,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class FossilGrinderScreen extends ContainerScreen<FossilGrinderContainer>
 {
-	private static final ResourceLocation TEXTURE = ModUtil.rL("textures/gui/machines/fossil_grinder.png");
+	private static final ResourceLocation TEXTURE = ModUtils.rL("textures/gui/machines/fossil_grinder.png");
 	
 	public FossilGrinderScreen(FossilGrinderContainer container, PlayerInventory playerInv, ITextComponent text) 
 	{

@@ -18,7 +18,7 @@ import lostworlds.library.item.FoodItem.FoodType;
 import lostworlds.library.item.basic.BasicItem;
 import lostworlds.library.item.FoodSeedsItem;
 import lostworlds.library.item.TimeBookItem;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.item.Item;
 
 public class ItemInit
@@ -84,5 +84,5 @@ public class ItemInit
 	public static final Item CRYSTAL_SCARAB_HOE = CrystalScarabHoeItem.create();
 		
 	//Registry
-	public static void init() { ModUtil.LOGGER.debug("Registering Mod Items");}
+	public static void init() { ModUtils.LOGGER.debug("Registering Mod Items");}
 }

@@ -1,6 +1,6 @@
 package lostworlds.library.biome;
 
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -27,6 +27,6 @@ public class BiomeKeys
 	
 	private static RegistryKey<Biome> register(String id)
 	{
-		return RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(ModUtil.ID, id));
+		return RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(ModUtils.ID, id));
 	}
 }

@@ -8,7 +8,7 @@ import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.DNAExtractorBlock;
 import lostworlds.library.container.DNAExtractorContainer;
 import lostworlds.library.recipe.DNAExtractorRecipe;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -395,7 +395,7 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 	@Override
 	public ITextComponent getName() 
 	{
-		return ModUtil.tTC("container", "dna_extractor");
+		return ModUtils.tTC("container", "dna_extractor");
 	}
 
 	@Override

@@ -10,7 +10,7 @@ import lostworlds.library.container.FossilCleanerContainer;
 import lostworlds.library.container.FossilGrinderContainer;
 import lostworlds.library.container.TimeMachineContainer;
 import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent;
@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.Mod;
  * Date: July 8, 2021
  */
 
-@Mod.EventBusSubscriber(modid = ModUtil.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = ModUtils.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ContainerInit 
 {
 	public static final RegistryObject<ContainerType<FossilCleanerContainer>> FOSSIL_CLEANER_CONTAINER = ModRegistry.CONTAINER_REGISTRY.register("fossil_cleaner_container", () -> IForgeContainerType.create(FossilCleanerContainer::new));
@@ -64,5 +64,5 @@ public class ContainerInit
 		}
 	}
 	
-	public static void init() { ModUtil.LOGGER.debug("Registering Mod Container"); }
+	public static void init() { ModUtils.LOGGER.debug("Registering Mod Container"); }
 }

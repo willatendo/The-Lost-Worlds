@@ -2,7 +2,7 @@ package lostworlds.library.block;
 
 import lostworlds.library.block.base.BasicBlockAndItem;
 import lostworlds.library.container.ArchaeologyTableContianer;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -37,7 +37,7 @@ import net.minecraftforge.common.ToolType;
 
 public class ArchaeologyTable extends Block implements IWaterLoggable
 {
-	private static final ITextComponent NAME = ModUtil.tTC("container", "archaeology_table");
+	private static final ITextComponent NAME = ModUtils.tTC("container", "archaeology_table");
 	private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;	
 
 	protected ArchaeologyTable() 

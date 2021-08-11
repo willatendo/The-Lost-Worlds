@@ -8,7 +8,7 @@ import lostworlds.library.enums.TimeEras;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModTeleporter;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -76,7 +76,7 @@ public class TimeBookItem extends ShootableItem
 							{	
 								if(entity.level.dimension() == World.NETHER || entity.level.dimension() == World.END)
 								{
-									entity.sendMessage(ModUtil.tTC("timeBook", "doesnt_work"), entity.getUUID());
+									entity.sendMessage(ModUtils.tTC("timeBook", "doesnt_work"), entity.getUUID());
 								}
 								
 								if(era == TimeEras.PERMIAN_PERIOD)
@@ -90,11 +90,11 @@ public class TimeBookItem extends ShootableItem
 										entity.changeDimension(serverworld1, new ModTeleporter(serverworld1));
 										if(registrykey.equals(DimensionInit.PERMIAN_WORLD))
 										{
-											entity.sendMessage(ModUtil.tTC("timeBook", "transport_to_permian"), entity.getUUID());
+											entity.sendMessage(ModUtils.tTC("timeBook", "transport_to_permian"), entity.getUUID());
 										}
 										else
 										{
-											entity.sendMessage(ModUtil.tTC("timeBook", "transport_to_overworld"), entity.getUUID());
+											entity.sendMessage(ModUtils.tTC("timeBook", "transport_to_overworld"), entity.getUUID());
 										}
 									}
 								}

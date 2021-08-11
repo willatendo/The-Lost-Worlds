@@ -7,6 +7,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import lostworlds.library.biome.BiomeKeys;
+import lostworlds.library.dimension.WorldSeedHolder;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.SharedConstants;
 import net.minecraft.util.Util;
@@ -29,7 +30,7 @@ public class PermianBiomeProvider extends BiomeProvider
 	public PermianBiomeProvider(long seed, Registry<Biome> registry) 
 	{		
 		super(BIOMES.stream().map(define -> () -> registry.getOrThrow(define)));
-		this.seed = seed;
+		this.seed = WorldSeedHolder.getSeed();
 		this.registry = registry;
 		this.genBiomes = PermianLayerUtil.makeLayers(seed, registry);
 	}

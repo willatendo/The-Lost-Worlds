@@ -2,7 +2,7 @@ package lostworlds.content.server.init;
 
 import lostworlds.library.biome.ModBiomeMaker;
 import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.world.biome.Biome;
 
 /*
@@ -39,5 +39,5 @@ public class BiomeInit
 	public static final Biome PERMIAN_DEEP_OCEAN = ModRegistry.register("permian_deep_ocean", ModBiomeMaker.permianDeepOcean());
 	
 	//Registry
-	public static void init() { ModUtil.LOGGER.debug("Registering Mod Biomes"); }
+	public static void init() { ModUtils.LOGGER.debug("Registering Mod Biomes"); }
 }

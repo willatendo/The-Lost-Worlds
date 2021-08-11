@@ -3,7 +3,7 @@ package lostworlds.library.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
  * Date: July 1, 2021
  */
 
-@Mod.EventBusSubscriber(bus = Bus.MOD, modid = ModUtil.ID)
+@Mod.EventBusSubscriber(bus = Bus.MOD, modid = ModUtils.ID)
 public class RecipeManager 
 {
     public static List<FossilCleanerRecipe> cleanerRecipes = new ArrayList<>();
@@ -188,10 +188,10 @@ public class RecipeManager
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) 
 	{
-		ModUtil.LOGGER.debug("Loading: Mod Recipes That Aren't Recipes");
+		ModUtils.LOGGER.debug("Loading: Mod Recipes That Aren't Recipes");
 		
 		initAlternateRecipes();
 		
-		ModUtil.LOGGER.debug("Finished: Mod Recipes That Aren't Recipes");		
+		ModUtils.LOGGER.debug("Finished: Mod Recipes That Aren't Recipes");		
 	}
 }

@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.container.TimeMachineContainer;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -52,7 +52,7 @@ public class TimeMachineTileEntity extends TileEntity implements INameable, INam
 	
 	public ITextComponent getName() 
 	{
-		return (ITextComponent)(this.name != null ? this.name : ModUtil.tTC("container", "time_machine"));
+		return (ITextComponent)(this.name != null ? this.name : ModUtils.tTC("container", "time_machine"));
 	}
 	
 	public void setCustomName(@Nullable ITextComponent text) 

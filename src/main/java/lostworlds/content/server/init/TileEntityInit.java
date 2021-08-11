@@ -8,7 +8,7 @@ import lostworlds.library.tileentity.FossilGrinderTileEntity;
 import lostworlds.library.tileentity.ModSignTileEntity;
 import lostworlds.library.tileentity.TimeMachineTileEntity;
 import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
 
@@ -30,5 +30,5 @@ public class TileEntityInit
 	public static final RegistryObject<TileEntityType<ModSignTileEntity>> SIGN_TILE_ENTITY = ModRegistry.TILE_ENTITY_REGISTRY.register("sign_tile_entity", () -> TileEntityType.Builder.of(ModSignTileEntity::new, /*BlockInit.CONIFER_SIGN, BlockInit.CONIFER_WALL_SIGN, BlockInit.GINKGO_SIGN, BlockInit.GINKGO_WALL_SIGN, BlockInit.ARAUCARIA_SIGN, BlockInit.ARAUCARIA_WALL_SIGN, BlockInit.SCORCHED_SIGN, BlockInit.SCORCHED_WALL_SIGN*/ BlockInit.ALETHOPTERIS).build(null));
 	
 	//Registry
-	public static void init() { ModUtil.LOGGER.debug("Registering Mod Tile Entities"); }
+	public static void init() { ModUtils.LOGGER.debug("Registering Mod Tile Entities"); }
 }

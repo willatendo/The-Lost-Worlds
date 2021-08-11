@@ -12,9 +12,9 @@ import net.minecraft.util.text.TranslationTextComponent;
  * Date: June 30, 2021
  */
 
-public class ModUtil 
+public class ModUtils 
 {
-	public static final Logger LOGGER = LogManager.getLogger(ModUtil.ID);
+	public static final Logger LOGGER = LogManager.getLogger(ModUtils.ID);
 	public static boolean DISABLE_IN_DEV = false;
 		
 	public static final String ID = "lostworlds";

@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import lostworlds.content.client.screen.FossilGrinderScreen;
 import lostworlds.content.server.init.RecipeInit;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -20,7 +20,7 @@ import net.minecraft.util.ResourceLocation;
 @JeiPlugin
 public class FossilGrinderJEIPlugin implements IModPlugin
 {
-	private static final ResourceLocation ID = ModUtil.rL("fossil_grinder_plugin");
+	private static final ResourceLocation ID = ModUtils.rL("fossil_grinder_plugin");
 	
 	@Override
 	public ResourceLocation getPluginUid() 

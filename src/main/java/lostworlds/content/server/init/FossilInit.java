@@ -1,6 +1,6 @@
 package lostworlds.content.server.init;
 
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 
 /*
  * Author: Willatendo
@@ -12,6 +12,6 @@ public class FossilInit
 	//Registry
 	public static void init() 
 	{
-		ModUtil.LOGGER.debug("Registering Fossils");
+		ModUtils.LOGGER.debug("Registering Fossils");
 	}
 }

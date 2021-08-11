@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.resources.IResource;
@@ -20,7 +20,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class FieldGuideScreen extends Screen
 {
-	private static final ResourceLocation BOOK_TEXTURE = ModUtil.rL("textures/gui/field_guide/book_base.png");
+	private static final ResourceLocation BOOK_TEXTURE = ModUtils.rL("textures/gui/field_guide/book_base.png");
 	private static final int FONT_COLOUR = 0x000000;
 	
 	private final int texWidth;
@@ -32,7 +32,7 @@ public class FieldGuideScreen extends Screen
 
 	public FieldGuideScreen(String species)
 	{
-		super(ModUtil.tTC("fieldGuide", species + "_name"));
+		super(ModUtils.tTC("fieldGuide", species + "_name"));
 		
 		this.texWidth = 255;
 		this.texHeight = 192;
@@ -49,10 +49,10 @@ public class FieldGuideScreen extends Screen
 		this.font.draw(stack, FieldGuideLang.DIET, 18.0F, 130.0F, FONT_COLOUR);
 		this.font.draw(stack, FieldGuideLang.TIME_ERA, 18.0F, 140.0F, FONT_COLOUR);
 		this.font.draw(stack, FieldGuideLang.CLADE, 18.0F, 150.0F, FONT_COLOUR);
-		this.font.draw(stack, ModUtil.tTC("fieldGuide", this.species + "_danger"), 65.0F, 120.0F, FONT_COLOUR);
-		this.font.draw(stack, ModUtil.tTC("fieldGuide", this.species + "_diet"), 65.0F, 130.0F, FONT_COLOUR);
-		this.font.draw(stack, ModUtil.tTC("fieldGuide", this.species + "_time_era"), 65.0F, 140.0F, FONT_COLOUR);
-		this.font.draw(stack, ModUtil.tTC("fieldGuide", this.species + "_clade"), 65.0F, 150.0F, FONT_COLOUR);
+		this.font.draw(stack, ModUtils.tTC("fieldGuide", this.species + "_danger"), 65.0F, 120.0F, FONT_COLOUR);
+		this.font.draw(stack, ModUtils.tTC("fieldGuide", this.species + "_diet"), 65.0F, 130.0F, FONT_COLOUR);
+		this.font.draw(stack, ModUtils.tTC("fieldGuide", this.species + "_time_era"), 65.0F, 140.0F, FONT_COLOUR);
+		this.font.draw(stack, ModUtils.tTC("fieldGuide", this.species + "_clade"), 65.0F, 150.0F, FONT_COLOUR);
 		writeGUI(stack);
 		super.render(stack, mouseX, mouseY, partialTicks);
 		this.renderComponentHoverEffect(stack, Style.EMPTY, mouseX, mouseY);
@@ -73,7 +73,7 @@ public class FieldGuideScreen extends Screen
 		String file = this.species + ".txt";
 		try
 		{
-			IResource resource = this.minecraft.getResourceManager().getResource(ModUtil.rL(translatePath + file));
+			IResource resource = this.minecraft.getResourceManager().getResource(ModUtils.rL(translatePath + file));
 			InputStream fileReader = resource.getInputStream();
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileReader));
 			String line;

@@ -31,7 +31,7 @@ import lostworlds.library.block.TriplePlantBlock;
 import lostworlds.library.block.base.BasicBlock;
 import lostworlds.library.block.base.BasicBlockAndItem;
 import lostworlds.library.tree.ConiferTree;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -446,5 +446,5 @@ public class BlockInit
 	public static final Block RAISED_PAVED_ROAD = BasicBlockAndItem.create("raised_paved_road", new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.STONE)));
 	
 	//Registry
-	public static void init() { ModUtil.LOGGER.debug("Registering Mod Blocks"); }
+	public static void init() { ModUtils.LOGGER.debug("Registering Mod Blocks"); }
 }

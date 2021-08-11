@@ -11,7 +11,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.VillagerProfessionInit;
-import lostworlds.library.util.ModUtil;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.entity.merchant.villager.VillagerTrades.ITrade;
@@ -29,7 +29,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
  * Date: July 3, 2021
  */
 
-@EventBusSubscriber(modid = ModUtil.ID, bus = Bus.MOD)
+@EventBusSubscriber(modid = ModUtils.ID, bus = Bus.MOD)
 public class FillTradeData 
 {
 	public static void fillTradeData() 
