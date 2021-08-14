@@ -1,12 +1,12 @@
-package lostworlds.library.item.basic;
+package lostworlds.library.item.builder;
 
 import lostworlds.library.tab.ModItemGroup;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 
-public class BasicBlockItem extends BlockItem
+public class BlockItemBuilder extends BlockItem
 {
-	public BasicBlockItem(Block block) 
+	public BlockItemBuilder(Block block) 
 	{
 		super(block, new Properties().tab(ModItemGroup.BLOCKS));
 	}

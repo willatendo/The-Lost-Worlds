@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import lostworlds.content.server.init.BlockInit;
-import lostworlds.library.block.base.BasicBlockAndItem;
+import lostworlds.library.block.builder.BlockAndItemBuilder;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -148,6 +148,6 @@ public class MossyDirtBlock extends Block implements IGrowable
 	
 	public static Block create()
 	{
-		return BasicBlockAndItem.create("mossy_dirt", new MossyDirtBlock());
+		return BlockAndItemBuilder.create("mossy_dirt", new MossyDirtBlock());
 	}
 }

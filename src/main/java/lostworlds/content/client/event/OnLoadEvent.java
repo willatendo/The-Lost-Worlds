@@ -10,18 +10,13 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 
-/*
- * Author: Willatendo
- * Date: July 11, 2021
- */
-
 @EventBusSubscriber(modid = ModUtils.ID, bus = Bus.FORGE, value = Dist.CLIENT)
 public class OnLoadEvent 
 {
 	@SubscribeEvent
 	public static void onLoadEvent(final PlayerEvent.PlayerLoggedInEvent event)
 	{
-		if(!FMLEnvironment.production && !ModUtils.DISABLE_IN_DEV)
+		if(!FMLEnvironment.production)
 		{
 			PlayerEntity player = event.getPlayer();
 			player.sendMessage(ModUtils.gTC("event", "dev_load"), player.getUUID());

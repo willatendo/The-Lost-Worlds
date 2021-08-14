@@ -1,4 +1,4 @@
-package lostworlds.library.item.basic;
+package lostworlds.library.item.builder;
 
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
@@ -9,16 +9,16 @@ import net.minecraft.item.Item;
  * Date: July 16, 2021
  */
 
-public class BasicItem extends Item
+public class ItemBuilder extends Item
 {
-	protected BasicItem() 
+	protected ItemBuilder() 
 	{
 		super(new Properties().tab(ModItemGroup.ITEMS));
 	}
 
 	public static Item create(String id)
 	{
-		Item item = new BasicItem();
+		Item item = new ItemBuilder();
 		ModRegistry.register(id, item);
 		return item;
 	}

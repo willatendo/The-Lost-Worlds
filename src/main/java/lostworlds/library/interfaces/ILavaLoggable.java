@@ -1,6 +1,6 @@
 package lostworlds.library.interfaces;
 
-import lostworlds.library.block.ModBlockStateProperties;
+import lostworlds.library.block.properties.ModBlockStateProperties;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IBucketPickupHandler;
 import net.minecraft.block.ILiquidContainer;

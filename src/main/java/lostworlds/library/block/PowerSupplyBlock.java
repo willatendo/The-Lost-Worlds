@@ -1,6 +1,6 @@
 package lostworlds.library.block;
 
-import lostworlds.library.block.base.BasicBlockAndItem;
+import lostworlds.library.block.builder.BlockAndItemBuilder;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -69,6 +69,6 @@ public class PowerSupplyBlock extends RedstoneBlock
 	
 	public static Block create()
 	{
-		return BasicBlockAndItem.create("power_supply_block", new PowerSupplyBlock());
+		return BlockAndItemBuilder.create("power_supply_block", new PowerSupplyBlock());
 	}
 }

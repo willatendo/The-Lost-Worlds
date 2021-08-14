@@ -1,6 +1,6 @@
 package lostworlds.library.block;
 
-import lostworlds.library.block.base.BasicBlockAndItem;
+import lostworlds.library.block.builder.BlockAndItemBuilder;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -22,6 +22,6 @@ public class ColouredDecorationBlock extends Block
 
 	public static Block create(DyeColor colour)
 	{
-		return BasicBlockAndItem.create(colour == DyeColor.GRAY ? "grey_decoration_block" : colour == DyeColor.LIGHT_GRAY ? "light_grey_decoration_block" : colour.getName().toLowerCase() + "_decoration_block", new ColouredDecorationBlock());
+		return BlockAndItemBuilder.create(colour == DyeColor.GRAY ? "grey_decoration_block" : colour == DyeColor.LIGHT_GRAY ? "light_grey_decoration_block" : colour.getName().toLowerCase() + "_decoration_block", new ColouredDecorationBlock());
 	}
 }

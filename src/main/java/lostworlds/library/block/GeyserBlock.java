@@ -2,6 +2,7 @@ package lostworlds.library.block;
 
 import java.util.Random;
 
+import lostworlds.library.block.properties.ModBlockStateProperties;
 import lostworlds.library.interfaces.ILavaLoggable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

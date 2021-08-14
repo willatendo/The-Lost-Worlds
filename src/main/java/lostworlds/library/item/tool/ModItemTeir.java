@@ -29,7 +29,7 @@ public enum ModItemTeir implements IItemTier
 	{
 		return Ingredient.of(Items.STRING);
 	}),	
-	CRYSTAL_SCARAB_GEM(0, 13616, 2.0F, 80.0F, 40, () -> 
+	CRYSTAL_SCARAB(0, 13616, 2.0F, 80.0F, 40, () -> 
 	{
 		return Ingredient.of(Items.STRING); 
 	}); 

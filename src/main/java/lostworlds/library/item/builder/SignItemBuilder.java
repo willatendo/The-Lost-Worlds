@@ -1,4 +1,4 @@
-package lostworlds.library.item.basic;
+package lostworlds.library.item.builder;
 
 import lostworlds.library.util.ModRegistry;
 import net.minecraft.block.Block;
@@ -7,7 +7,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Item.Properties;
 import net.minecraft.item.SignItem;
 
-public class BasicSignItem 
+public class SignItemBuilder 
 {
 	public static Item create(String id, Block standingSign, Block wallSign)
 	{

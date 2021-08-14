@@ -1,6 +1,6 @@
 package lostworlds.library.item;
 
-import lostworlds.library.item.basic.BasicBlockItem;
+import lostworlds.library.item.builder.BlockItemBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.world.World;
 
-public class AshLayerItem extends BasicBlockItem
+public class AshLayerItem extends BlockItemBuilder
 {
 	public AshLayerItem(Block block) 
 	{

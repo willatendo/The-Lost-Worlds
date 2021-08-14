@@ -2,7 +2,6 @@ package lostworlds.library.util;
 
 import lostworlds.content.server.init.BiomeInit;
 import lostworlds.content.server.init.BlockInit;
-import lostworlds.content.server.init.BlockPlacerInit;
 import lostworlds.content.server.init.ContainerInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.FeatureInit;
@@ -173,7 +172,6 @@ public class ModRegistry
 		TileEntityInit.init();
 		ContainerInit.init();
 		BlockInit.init();
-		BlockPlacerInit.init();
 		PointOfInterestInit.init();
 		EntityInit.init();
 		VillagerProfessionInit.init();

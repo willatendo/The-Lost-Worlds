@@ -1,15 +1,15 @@
-package lostworlds.library.block.base;
+package lostworlds.library.block.builder;
 
-import lostworlds.library.item.basic.BasicBlockItem;
+import lostworlds.library.item.builder.BlockItemBuilder;
 import lostworlds.library.util.ModRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
-public class BasicBlockAndItem
+public class BlockAndItemBuilder
 {
 	public static Block create(String id, Block block)
 	{
-		Item item = new BasicBlockItem(block);
+		Item item = new BlockItemBuilder(block);
 		ModRegistry.register(id, block);
 		ModRegistry.register(id, item);
 		return block;

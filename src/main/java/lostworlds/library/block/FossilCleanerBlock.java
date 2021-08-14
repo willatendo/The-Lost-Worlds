@@ -1,8 +1,8 @@
 package lostworlds.library.block;
 
 import lostworlds.content.server.init.TileEntityInit;
-import lostworlds.library.block.base.BaseMachineBlock;
-import lostworlds.library.block.base.BasicBlockAndItem;
+import lostworlds.library.block.builder.MachineBlockBuilder;
+import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.tileentity.FossilCleanerTileEntity;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -21,7 +21,7 @@ import net.minecraft.world.IBlockReader;
  * Date: July 8, 2021
  */
 
-public class FossilCleanerBlock extends BaseMachineBlock
+public class FossilCleanerBlock extends MachineBlockBuilder
 {
 	public static final VoxelShape SHAPE = Block.box(1, 0, 3, 15, 9, 16);
 	
@@ -65,6 +65,6 @@ public class FossilCleanerBlock extends BaseMachineBlock
 	
 	public static Block create()
 	{
-		return BasicBlockAndItem.create("fossil_cleaner", new FossilCleanerBlock());
+		return BlockAndItemBuilder.create("fossil_cleaner", new FossilCleanerBlock());
 	}
 }

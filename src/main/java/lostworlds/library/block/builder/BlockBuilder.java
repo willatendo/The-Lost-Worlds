@@ -1,4 +1,4 @@
-package lostworlds.library.block.base;
+package lostworlds.library.block.builder;
 
 import lostworlds.library.util.ModRegistry;
 import net.minecraft.block.Block;
@@ -8,7 +8,7 @@ import net.minecraft.block.Block;
  * Date: July 1, 2021
  */
 
-public class BasicBlock 
+public class BlockBuilder 
 {
 	public static Block create(String id, Block block)
 	{

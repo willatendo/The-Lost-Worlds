@@ -1,8 +1,8 @@
 package lostworlds.library.block;
 
 import lostworlds.content.server.init.TileEntityInit;
-import lostworlds.library.block.base.BaseMachineBlock;
-import lostworlds.library.block.base.BasicBlockAndItem;
+import lostworlds.library.block.builder.MachineBlockBuilder;
+import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.tileentity.DNAExtractorTileEntity;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -21,7 +21,7 @@ import net.minecraft.world.IBlockReader;
  * Date: July 8, 2021
  */
 
-public class DNAExtractorBlock extends BaseMachineBlock
+public class DNAExtractorBlock extends MachineBlockBuilder
 {
 	public static final VoxelShape SHAPE = Block.box(1, 0, 3, 15, 9, 16);
 	
@@ -65,6 +65,6 @@ public class DNAExtractorBlock extends BaseMachineBlock
 	
 	public static Block create()
 	{
-		return BasicBlockAndItem.create("dna_extractor", new DNAExtractorBlock());
+		return BlockAndItemBuilder.create("dna_extractor", new DNAExtractorBlock());
 	}
 }

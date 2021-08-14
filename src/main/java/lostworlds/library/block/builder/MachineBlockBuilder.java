@@ -1,4 +1,4 @@
-package lostworlds.library.block.base;
+package lostworlds.library.block.builder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import lostworlds.content.server.init.SoundInit;
-import lostworlds.library.block.ModBlockStateProperties;
+import lostworlds.library.block.properties.ModBlockStateProperties;
 import lostworlds.library.tileentity.AnalyserTileEntity;
 import lostworlds.library.tileentity.DNAExtractorTileEntity;
 import lostworlds.library.tileentity.DNAInjectorTileEntity;
@@ -44,18 +44,13 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
-
-public abstract class BaseMachineBlock extends Block implements ITileEntityProvider
+public abstract class MachineBlockBuilder extends Block implements ITileEntityProvider
 {
 	protected static final Map<Block, Map<Direction, VoxelShape>> SHAPES = new HashMap<Block, Map<Direction, VoxelShape>>();
 	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 	public static final BooleanProperty ON = ModBlockStateProperties.ON;
 	
-	public BaseMachineBlock(Properties properties) 
+	public MachineBlockBuilder(Properties properties) 
 	{
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(ON, Boolean.valueOf(false)).setValue(HORIZONTAL_FACING, Direction.NORTH));

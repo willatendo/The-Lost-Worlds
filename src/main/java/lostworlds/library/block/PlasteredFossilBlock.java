@@ -1,6 +1,6 @@
 package lostworlds.library.block;
 
-import lostworlds.library.block.base.BasicBlockAndItem;
+import lostworlds.library.block.builder.BlockAndItemBuilder;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -91,6 +91,6 @@ public class PlasteredFossilBlock extends Block implements IWaterLoggable
 	
 	public static Block create()
 	{
-		return BasicBlockAndItem.create("plastered_fossil", new PlasteredFossilBlock());
+		return BlockAndItemBuilder.create("plastered_fossil", new PlasteredFossilBlock());
 	}
 }

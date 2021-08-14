@@ -2,7 +2,7 @@ package lostworlds.library.block;
 
 import javax.annotation.Nullable;
 
-import lostworlds.library.block.base.BasicBlockAndItem;
+import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.item.tool.ModMaterials;
 import lostworlds.library.tileentity.FossilCleanerTileEntity;
 import lostworlds.library.tileentity.TimeMachineTileEntity;
@@ -97,6 +97,6 @@ public class TimeMachineBlock extends Block implements ITileEntityProvider
 	
 	public static Block create()
 	{
-		return BasicBlockAndItem.create("time_machine", new TimeMachineBlock());
+		return BlockAndItemBuilder.create("time_machine", new TimeMachineBlock());
 	}
 }
