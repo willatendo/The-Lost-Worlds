@@ -8,11 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.world.World;
 
-/*
- * Author: Willatendo
- * Date: July 10, 2021
- */
-
 public class CrystalScarabGemItem extends Item
 {	
 	private Variant variant;

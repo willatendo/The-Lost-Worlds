@@ -2,7 +2,6 @@ package lostworlds.library.block;
 
 import javax.annotation.Nullable;
 
-import lostworlds.library.ModBlockStateProperties;
 import lostworlds.library.enums.TripleBlockHalfs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

@@ -1,6 +1,6 @@
 package lostworlds.library.interfaces;
 
-import lostworlds.library.ModBlockStateProperties;
+import lostworlds.library.block.ModBlockStateProperties;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IBucketPickupHandler;
 import net.minecraft.block.ILiquidContainer;
@@ -10,11 +10,6 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
-
-/*
- * Author: Willatendo
- * Date: July 9, 2021
- */
 
 public interface ILavaLoggable extends IBucketPickupHandler, ILiquidContainer
 {

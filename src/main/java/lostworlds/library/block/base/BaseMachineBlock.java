@@ -7,7 +7,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import lostworlds.content.server.init.SoundInit;
-import lostworlds.library.ModBlockStateProperties;
+import lostworlds.library.block.ModBlockStateProperties;
 import lostworlds.library.tileentity.AnalyserTileEntity;
 import lostworlds.library.tileentity.DNAExtractorTileEntity;
 import lostworlds.library.tileentity.DNAInjectorTileEntity;

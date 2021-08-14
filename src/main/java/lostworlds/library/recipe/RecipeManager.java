@@ -12,11 +12,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
-/*
- * Author: Willatendo
- * Date: July 1, 2021
- */
-
 @Mod.EventBusSubscriber(bus = Bus.MOD, modid = ModUtils.ID)
 public class RecipeManager 
 {

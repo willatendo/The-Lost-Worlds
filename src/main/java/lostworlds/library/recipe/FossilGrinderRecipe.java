@@ -14,12 +14,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
-
-
 public class FossilGrinderRecipe implements IRecipe<IInventory>
 {
 	private final ResourceLocation id;

@@ -1,4 +1,4 @@
-package lostworlds.library.util;
+package lostworlds.library.block;
 
 import net.minecraft.block.WoodType;
 

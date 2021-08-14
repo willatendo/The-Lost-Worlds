@@ -5,11 +5,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 
-/*
- * Author: Willatendo
- * Date: July 1, 2021
- */
-
 public class PlasteredFossilSlot extends Slot
 {
 	public PlasteredFossilSlot(IInventory inventory, int x, int z, int y) 
@@ -19,11 +14,6 @@ public class PlasteredFossilSlot extends Slot
 	
 	@Override
 	public boolean mayPlace(ItemStack stack) 
-	{
-		return isDNADisc(stack);
-	}
-	
-	public boolean isDNADisc(ItemStack stack)
 	{
 		return stack.getItem() == BlockInit.PLASTERED_FOSSIL.asItem();
 	}

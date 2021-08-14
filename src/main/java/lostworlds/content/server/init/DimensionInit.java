@@ -21,7 +21,7 @@ public class DimensionInit
 	public static final RegistryKey<World> PERMIAN_WORLD = RegistryKey.create(Registry.DIMENSION_REGISTRY, ModUtils.rL("permian"));
 	public static final RegistryKey<DimensionType> PERMIAN_DIMENSION = RegistryKey.create(Registry.DIMENSION_TYPE_REGISTRY, ModUtils.rL("permian"));
 	
-	public static void init()
+	public static void initBiomeSourcesAndChunkGenerator()
 	{
 		Registry.register(Registry.BIOME_SOURCE, new ResourceLocation(ModUtils.ID, "permian_biome_source"), PermianBiomeProvider.CODEC);
 		Registry.register(Registry.CHUNK_GENERATOR, new ResourceLocation(ModUtils.ID, "permian_chunk_generator"), PermianChunkGenerator.CODEC);

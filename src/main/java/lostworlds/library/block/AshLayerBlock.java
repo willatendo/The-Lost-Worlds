@@ -3,7 +3,7 @@ package lostworlds.library.block;
 import javax.annotation.Nullable;
 
 import lostworlds.content.server.init.PotionInit;
-import lostworlds.library.ModDamageSources;
+import lostworlds.library.entity.ModDamageSources;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

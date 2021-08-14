@@ -15,11 +15,6 @@ import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureSpreadConfig;
 
-/*
- * Author: Willatendo
- * Date: July 10, 2021
- */
-
 public class GeyserBlockFeature extends Feature<FeatureSpreadConfig> 
 {
 	public GeyserBlockFeature(Codec<FeatureSpreadConfig> codec) 

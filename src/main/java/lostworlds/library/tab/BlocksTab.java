@@ -18,7 +18,7 @@ public class BlocksTab extends ItemGroup
 	@Override
 	public ItemStack makeIcon() 
 	{
-		return BlockInit.LIGHT_CONCRETE.asItem().getDefaultInstance();
+		return BlockInit.EXPOSED_STONE_FOSSIL.asItem().getDefaultInstance();
 	}
 	
 	@Override

@@ -2,8 +2,8 @@ package lostworlds.library.block;
 
 import javax.annotation.Nullable;
 
-import lostworlds.library.ModMaterials;
 import lostworlds.library.block.base.BasicBlockAndItem;
+import lostworlds.library.item.tool.ModMaterials;
 import lostworlds.library.tileentity.FossilCleanerTileEntity;
 import lostworlds.library.tileentity.TimeMachineTileEntity;
 import net.minecraft.block.Block;

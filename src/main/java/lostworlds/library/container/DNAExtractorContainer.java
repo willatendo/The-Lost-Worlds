@@ -6,7 +6,7 @@ import lostworlds.content.server.init.ContainerInit;
 import lostworlds.content.server.init.RecipeInit;
 import lostworlds.library.block.DNAExtractorBlock;
 import lostworlds.library.recipe.DNAExtractorRecipe;
-import lostworlds.library.slot.SoftTissueSlot;
+import lostworlds.library.slot.DNAExtractorInputSlot;
 import lostworlds.library.slot.VileSlot;
 import lostworlds.library.tileentity.DNAExtractorTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,11 +25,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
-
 public class DNAExtractorContainer extends Container
 {
 	private final IWorldPosCallable canInteractWithCallable;
@@ -46,7 +41,7 @@ public class DNAExtractorContainer extends Container
 		this.tile = tileEntity;
 		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 		
-		this.addSlot(new SoftTissueSlot(tile, 0, 56, 25));
+		this.addSlot(new DNAExtractorInputSlot(tile, 0, 56, 25));
 		this.addSlot(new VileSlot(tile, 1, 56, 45));
 		this.addSlot(new FurnaceResultSlot(playerInv.player, tile, 2, 116, 35));
 		

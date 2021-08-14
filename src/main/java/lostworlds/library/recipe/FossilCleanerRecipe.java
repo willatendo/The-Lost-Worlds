@@ -9,11 +9,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.NonNullSupplier;
 
-/*
- * Author: Willatendo
- * Date: July 1, 2021
- */
-
 public class FossilCleanerRecipe 
 {
 	private NavigableMap<Float, ItemStack> outputMap = new TreeMap<Float, ItemStack>();

@@ -1,4 +1,4 @@
-package lostworlds.library;
+package lostworlds.library.item.tool;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;

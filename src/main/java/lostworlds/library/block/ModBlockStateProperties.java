@@ -1,4 +1,4 @@
-package lostworlds.library;
+package lostworlds.library.block;
 
 import lostworlds.library.enums.QuintupleBlockHalfs;
 import lostworlds.library.enums.RockSides;

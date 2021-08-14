@@ -10,11 +10,6 @@ import net.minecraft.particles.BasicParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-/*
- * Author: Willatendo
- * Date: July 2, 2021
- */
-
 @OnlyIn(Dist.CLIENT)
 public class ModParticle extends SpriteTexturedParticle 
 {

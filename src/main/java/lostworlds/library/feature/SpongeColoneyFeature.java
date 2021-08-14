@@ -15,11 +15,6 @@ import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureSpreadConfig;
 
-/*
- * Author: Willatendo
- * Date: July 12, 2021
- */
-
 public class SpongeColoneyFeature extends Feature<FeatureSpreadConfig> 
 {
 	public SpongeColoneyFeature(Codec<FeatureSpreadConfig> codec) 

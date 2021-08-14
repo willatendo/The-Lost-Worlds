@@ -24,11 +24,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
-
 public class FossilGrinderContainer extends Container
 {
 	private final IWorldPosCallable canInteractWithCallable;

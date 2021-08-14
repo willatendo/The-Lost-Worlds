@@ -18,6 +18,7 @@ import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.BlockClusterFeatureConfig;
+import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.BlockWithContextConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
@@ -38,13 +39,7 @@ import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 
 public class ModConfiguredFeatures 
 {
-	/*
-	
-	 Sorted:
-	 - Plant Patches (A - Z)
-	 - Trees (A - Z)
-	 
-	 */
+	public static final ConfiguredFeature<?, ?> PERMIAN_ROCK = register("permian_rock", FeatureInit.PERMIAN_ROCK.configured(new BlockStateFeatureConfig(BlockInit.PERMIAN_COBBLESTONE.defaultBlockState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));
 	
 	public static final ConfiguredFeature<?, ?> FERN_PATCH = register("fern_patch", Feature.RANDOM_PATCH.configured(ModConfiguredFeatures.ModBlockClusterFeatureConfig.FERN_CONFIG));
 	public static final ConfiguredFeature<?, ?> PERMIAN_DESERT_SHRUB_PATCH = register("permian_desert_shrub_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.PERMIAN_DESERT_SHRUB_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
@@ -52,7 +47,7 @@ public class ModConfiguredFeatures
 
 	public static final ConfiguredFeature<?, ?> CONIFER_STICKS = register("conifer_sticks", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.CONIFER_STICKS).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
 	
-	public static final ConfiguredFeature<?, ?> GEYSER_BLOCK = register("geyser_block", FeatureInit.GEYSER_BLOCK_FEATURE.configured(new FeatureSpreadConfig(20)).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE).chance(16));
+	public static final ConfiguredFeature<?, ?> GEYSER_BLOCK = register("geyser_block", FeatureInit.GEYSER_BLOCK_PLACEMENT.configured(new FeatureSpreadConfig(20)).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE).chance(16));
 	
 	public static final ConfiguredFeature<?, ?> SPONGE_COLONEY = register("sponge_coloney", Feature.SIMPLE_BLOCK.configured(new BlockWithContextConfig(BlockInit.SPONGE_COLONY.defaultBlockState(), ImmutableList.of(BlockInit.PERMIAN_SAND.defaultBlockState()), ImmutableList.of(Blocks.WATER.defaultBlockState()), ImmutableList.of(Blocks.WATER.defaultBlockState()))).decorated(Placement.CARVING_MASK.configured(new CaveEdgeConfig(GenerationStage.Carving.LIQUID, 0.1F))));
 
@@ -66,7 +61,7 @@ public class ModConfiguredFeatures
 	public static final ConfiguredFeature<?, ?> SINGLE_SCORCHED_TREE = register("single_scorched_tree", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(ModConfiguredFeatures.SCORCHED_TREE.weighted(0.5F)), ModConfiguredFeatures.SCORCHED_TREE)).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(1, 0.1F, 1))));
 	
 	public static final ConfiguredFeature<?, ?> ASHY_SHRUB = register("ashy_shrub", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.ASHY_SHRUB_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
-	public static final ConfiguredFeature<?, ?> ADD_ASH_LAYER = FeatureInit.ADD_ASH.configured(IFeatureConfig.NONE);
+	public static final ConfiguredFeature<?, ?> ASH_LAYER = FeatureInit.ASH_LAYER_PLACEMENT.configured(IFeatureConfig.NONE);
 	
 	public static final ConfiguredFeature<?, ?> ORE_BASALT_DIAMOND = register("ore_basalt_diamond", Feature.ORE.configured(new OreFeatureConfig(ModFillerBlockTypes.BASALT, BlockInit.BASALT_DIAMOND_ORE.defaultBlockState(), 10)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(40, 0, 100))).squared().count(30));
 	
@@ -90,6 +85,6 @@ public class ModConfiguredFeatures
 	
 	public static void init() 
 	{
-		register("add_ash_layer", ADD_ASH_LAYER);
+		register("ash_layer", ASH_LAYER);
 	}
 }

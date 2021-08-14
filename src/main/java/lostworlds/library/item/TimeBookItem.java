@@ -87,7 +87,7 @@ public class TimeBookItem extends ShootableItem
 									ServerWorld serverworld1 = minecraftserver.getLevel(registrykey);
 									if(serverworld1 != null && !entity.isPassenger()) 
 									{
-										entity.changeDimension(serverworld1, new ModTeleporter(serverworld1));
+										playerentity.changeDimension(serverworld1, new ModTeleporter());
 										if(registrykey.equals(DimensionInit.PERMIAN_WORLD))
 										{
 											entity.sendMessage(ModUtils.tTC("timeBook", "transport_to_permian"), entity.getUUID());

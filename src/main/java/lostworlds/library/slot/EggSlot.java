@@ -20,11 +20,6 @@ public class EggSlot extends Slot
 	@Override
 	public boolean mayPlace(ItemStack stack) 
 	{
-		return isVile(stack);
-	}
-	
-	public boolean isVile(ItemStack stack)
-	{
 		return stack.getItem() == Items.EGG;
 	}
 }

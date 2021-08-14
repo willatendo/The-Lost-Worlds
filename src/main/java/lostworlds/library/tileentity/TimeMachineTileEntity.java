@@ -16,11 +16,6 @@ import net.minecraft.util.INameable;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.text.ITextComponent;
 
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
-
 public class TimeMachineTileEntity extends TileEntity implements INameable, INamedContainerProvider	
 {
 	private ITextComponent name;

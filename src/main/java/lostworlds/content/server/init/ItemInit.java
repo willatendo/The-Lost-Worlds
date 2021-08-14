@@ -2,33 +2,29 @@ package lostworlds.content.server.init;
 
 import lostworlds.library.enums.TimeEras;
 import lostworlds.library.item.BoneMealItem;
-import lostworlds.library.item.BrushItem;
-import lostworlds.library.item.BrushItem.Teirs;
-import lostworlds.library.item.CrystalScarabGemItem.Variant;
-import lostworlds.library.item.CrystalScarabAxeItem;
-import lostworlds.library.item.CrystalScarabBrushItem;
 import lostworlds.library.item.CrystalScarabGemItem;
-import lostworlds.library.item.CrystalScarabHoeItem;
-import lostworlds.library.item.CrystalScarabPickaxeItem;
-import lostworlds.library.item.CrystalScarabShovelItem;
-import lostworlds.library.item.CrystalScarabSwordItem;
+import lostworlds.library.item.CrystalScarabGemItem.Variant;
 import lostworlds.library.item.FieldGuideItem;
 import lostworlds.library.item.FoodItem;
 import lostworlds.library.item.FoodItem.FoodType;
-import lostworlds.library.item.basic.BasicItem;
 import lostworlds.library.item.FoodSeedsItem;
 import lostworlds.library.item.TimeBookItem;
+import lostworlds.library.item.basic.BasicItem;
+import lostworlds.library.item.tool.BrushItem;
+import lostworlds.library.item.tool.CrystalScarabGemBrushItem;
+import lostworlds.library.item.tool.ModItemTeir;
+import lostworlds.library.item.tool.ToolSetItem;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.item.Item;
 
 public class ItemInit
 {	
-	public static final Item LEATHER_BRUSH = BrushItem.create(Teirs.LEATHER);
-	public static final Item IRON_BRUSH = BrushItem.create(Teirs.IRON);
-	public static final Item GOLD_BRUSH = BrushItem.create(Teirs.GOLD);
-	public static final Item DIAMOND_BRUSH = BrushItem.create(Teirs.DIAMOND);
-	public static final Item NETHERITE_BRUSH = BrushItem.create(Teirs.NETHERITE);
-	public static final Item CRYSTAL_SCARAB_BRUSH = CrystalScarabBrushItem.create();
+	public static final Item LEATHER_BRUSH = BrushItem.createLeather();
+	public static final Item IRON_BRUSH = BrushItem.createIron();
+	public static final Item GOLD_BRUSH = BrushItem.createGold();
+	public static final Item DIAMOND_BRUSH = BrushItem.createDiamond();
+	public static final Item NETHERITE_BRUSH = BrushItem.createNetherite();
+	public static final Item CRYSTAL_SCARAB_BRUSH = CrystalScarabGemBrushItem.create();
 	
 	public static final Item WET_PAPER = BasicItem.create("wet_paper");
 	
@@ -77,11 +73,7 @@ public class ItemInit
 	public static final Item UNCHARGED_CRYSTAL_SCARAB_GEM = CrystalScarabGemItem.create(Variant.UNCHARGED);
 	public static final Item CHARGED_CRYSTAL_SCARAB_GEM = CrystalScarabGemItem.create(Variant.CHARGED);
 	
-	public static final Item CRYSTAL_SCARAB_SWORD = CrystalScarabSwordItem.create();
-	public static final Item CRYSTAL_SCARAB_SHOVEL = CrystalScarabShovelItem.create();
-	public static final Item CRYSTAL_SCARAB_PICKAXE = CrystalScarabPickaxeItem.create();
-	public static final Item CRYSTAL_SCARAB_AXE = CrystalScarabAxeItem.create();
-	public static final Item CRYSTAL_SCARAB_HOE = CrystalScarabHoeItem.create();
+	public static final Item CRYSTAL_SCARAB = ToolSetItem.create(ModItemTeir.CRYSTAL_SCARAB_GEM);
 		
 	//Registry
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Items");}

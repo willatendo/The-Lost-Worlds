@@ -5,11 +5,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 
-/*
- * Author: Willatendo
- * Date: July 1, 2021
- */
-
 public class DNADiscSlot extends Slot
 {
 	public DNADiscSlot(IInventory inventory, int x, int z, int y) 
@@ -20,18 +15,6 @@ public class DNADiscSlot extends Slot
 	@Override
 	public boolean mayPlace(ItemStack stack) 
 	{
-		return isDNADisc(stack);
-	}
-	
-	public boolean isDNADisc(ItemStack stack)
-	{
-		if(stack.getItem() instanceof DiscItem)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return stack.getItem() instanceof DiscItem;
 	}
 }

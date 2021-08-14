@@ -1,7 +1,5 @@
 package lostworlds.content.server.init;
 
-import lostworlds.library.ModMaterials;
-import lostworlds.library.ModToolTypes;
 import lostworlds.library.block.AnalyserBlock;
 import lostworlds.library.block.ArchaeologyTable;
 import lostworlds.library.block.AshLayerBlock;
@@ -30,8 +28,9 @@ import lostworlds.library.block.TimeMachineBlock;
 import lostworlds.library.block.TriplePlantBlock;
 import lostworlds.library.block.base.BasicBlock;
 import lostworlds.library.block.base.BasicBlockAndItem;
+import lostworlds.library.item.tool.ModMaterials;
+import lostworlds.library.item.tool.ModToolTypes;
 import lostworlds.library.tree.ConiferTree;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -64,7 +63,7 @@ import net.minecraft.potion.Effects;
 import net.minecraftforge.common.ToolType;
 
 public class BlockInit 
-{	
+{
 	//Soils
 	public static final Block DRIED_SOIL = BasicBlockAndItem.create("dried_soil", new DriedSoilBlock(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).sound(SoundType.GRAVEL).randomTicks()));
 	public static final Block CRACKED_SOIL = BasicBlockAndItem.create("cracked_soil", new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).sound(SoundType.GRAVEL)));
@@ -445,6 +444,5 @@ public class BlockInit
 	public static final Block PAVED_ROAD = BasicBlockAndItem.create("paved_road", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.STONE)));
 	public static final Block RAISED_PAVED_ROAD = BasicBlockAndItem.create("raised_paved_road", new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.STONE)));
 	
-	//Registry
-	public static void init() { ModUtils.LOGGER.debug("Registering Mod Blocks"); }
+	public static void init() { }
 }

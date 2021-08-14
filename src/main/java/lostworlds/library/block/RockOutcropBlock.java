@@ -4,7 +4,6 @@ import java.util.stream.Stream;
 
 import javax.annotation.Nullable;
 
-import lostworlds.library.ModBlockStateProperties;
 import lostworlds.library.enums.RockSides;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

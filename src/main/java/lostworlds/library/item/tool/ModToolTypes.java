@@ -1,4 +1,4 @@
-package lostworlds.library;
+package lostworlds.library.item.tool;
 
 import net.minecraftforge.common.ToolType;
 

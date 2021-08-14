@@ -1,10 +1,5 @@
 package lostworlds.library.enums;
 
-/*
- * Author: Willatendo
- * Date: July 6, 2021
- */
-
 public enum TimeEras 
 {
 	PRECAMBRIAN_EON, 

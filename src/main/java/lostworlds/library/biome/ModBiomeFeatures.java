@@ -12,12 +12,14 @@ public class ModBiomeFeatures
 	{
 		addPermianDesertPlants(builder);
 		addGroundClutter(builder);
+		addPermianRock(builder);
 	}
 	
 	public static void permianDriedPlains(BiomeGenerationSettings.Builder builder)
 	{
 		addGroundClutter(builder);
 		addConiferTrees(builder);
+		addPermianRock(builder);
 	}
 	
 	public static void permianAshyMedows(BiomeGenerationSettings.Builder builder)
@@ -25,6 +27,7 @@ public class ModBiomeFeatures
 		addScorchedTrees(builder);
 		addAshyShrub(builder);
 		addAshLayer(builder);
+		addPermianRock(builder);
 	}
 	
 	public static void permianFloodBasalts(BiomeGenerationSettings.Builder builder)
@@ -38,6 +41,7 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.LARGE_BASALT_COLUMNS);
 		addBasaltDiamondOre(builder);
 		addGeyser(builder);
+		addPermianRock(builder);
 	}
 	
 	public static void permianMountains(BiomeGenerationSettings.Builder builder)
@@ -45,28 +49,33 @@ public class ModBiomeFeatures
 		addConiferTrees(builder);
 		
 		DefaultBiomeFeatures.addSurfaceFreezing(builder);
+		addPermianRock(builder);
 	}
 	
 	public static void permianConiferForest(BiomeGenerationSettings.Builder builder)
 	{
 		addGroundClutter(builder);
 		addConiferTrees(builder);
+		addPermianRock(builder);
 	}
 	
 	public static void permianGinkgoForest(BiomeGenerationSettings.Builder builder)
 	{
 		addGroundClutter(builder);
 		addGinkgoTrees(builder);
+		addPermianRock(builder);
 	}
 	
 	public static void permianPlains(BiomeGenerationSettings.Builder builder)
 	{
 		addGroundClutter(builder);
+		addPermianRock(builder);
 	}
 	
 	public static void permianOcean(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
+		addPermianRock(builder);
 	}
 	
 	//Features
@@ -101,7 +110,7 @@ public class ModBiomeFeatures
 	
 	private static void addAshLayer(BiomeGenerationSettings.Builder builder)
 	{
-		builder.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.ADD_ASH_LAYER);
+		builder.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.ASH_LAYER);
 	}
 	
 	private static void addScorchedTrees(BiomeGenerationSettings.Builder builder)
@@ -117,5 +126,10 @@ public class ModBiomeFeatures
 	private static void addGeyser(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.GEYSER_BLOCK);
+	}
+	
+	private static void addPermianRock(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ModConfiguredFeatures.PERMIAN_ROCK);
 	}
 }

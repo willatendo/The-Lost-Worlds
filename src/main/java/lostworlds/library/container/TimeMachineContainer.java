@@ -14,11 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.IWorldPosCallable;
 
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
-
 public class TimeMachineContainer extends Container
 {
 	private final IInventory timeMachineSlots = new Inventory(2) 

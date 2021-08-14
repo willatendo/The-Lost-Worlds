@@ -12,11 +12,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-/*
- * Author: Willatendo
- * Date: July 1, 2021
- */
-
 public class DNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<DNAExtractorRecipe>
 {
 	@Override

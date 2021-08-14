@@ -5,11 +5,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 
-/*
- * Author: Willatendo
- * Date: July 1, 2021
- */
-
 public class FossilCleanerFuelSlot extends Slot
 {
 	public FossilCleanerFuelSlot(IInventory inventory, int x, int z, int y) 

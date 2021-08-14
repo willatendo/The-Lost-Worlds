@@ -42,11 +42,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-/*
- * Author: Willatendo
- * Date: July 10, 2021
- */
-
 public class ModRegistry 
 {				
 	public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_REGISTRY = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, ModUtils.ID);
@@ -166,8 +161,6 @@ public class ModRegistry
 	//Registers Deferred Registers
 	public static void register(IEventBus bus)
 	{
-		ModUtils.LOGGER.debug("Starting: Initialisation");
-		
 		TILE_ENTITY_REGISTRY.register(bus);
 		CONTAINER_REGISTRY.register(bus);
 		
@@ -190,7 +183,5 @@ public class ModRegistry
 		FeatureInit.init();
 		
 		Init.setup();
-		
-		ModUtils.LOGGER.debug("Finished: Setting Up Registries");
 	}
 }

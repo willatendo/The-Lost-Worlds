@@ -34,11 +34,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
-
 public class FossilCleanerTileEntity extends TileEntity implements IInventory, INamedContainerProvider, INameable, ITickableTileEntity	
 {
     protected NonNullList<ItemStack> items = NonNullList.withSize(3, ItemStack.EMPTY);

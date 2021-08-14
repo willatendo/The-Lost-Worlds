@@ -1,22 +1,37 @@
-package lostworlds.library.enums;
+package lostworlds.library.item.tool;
 
 import java.util.function.Supplier;
 
-import lostworlds.content.server.init.ItemInit;
 import net.minecraft.item.IItemTier;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyValue;
 
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
-
 public enum ModItemTeir implements IItemTier
 {
-	CRYSTAL_SCARAB(4, 13616, 30.0F, 80.0F, 40, () -> 
+	LEATHER(0, 59, 2.0F, 0.0F, 15, () -> 
 	{
-		return Ingredient.of(ItemInit.CHARGED_CRYSTAL_SCARAB_GEM); 
+		return Ingredient.of(Items.STRING);
+	}),
+	GOLD(0, 32, 2.0F, 0.0F, 22, () -> 
+	{
+		return Ingredient.of(Items.STRING);
+	}),
+	IRON(0, 250, 2.0F, 2.0F, 14, () -> 
+	{
+		return Ingredient.of(Items.STRING);
+	}),
+	DIAMOND(0, 1561, 2.0F, 3.0F, 10, () -> 
+	{
+		return Ingredient.of(Items.STRING);
+	}),
+	NETHERITE(0, 2031, 2.0F, 4.0F, 15, () -> 
+	{
+		return Ingredient.of(Items.STRING);
+	}),	
+	CRYSTAL_SCARAB_GEM(0, 13616, 2.0F, 80.0F, 40, () -> 
+	{
+		return Ingredient.of(Items.STRING); 
 	}); 
 	
 	private final int level;
@@ -26,7 +41,7 @@ public enum ModItemTeir implements IItemTier
 	private final int enchantmentValue;
 	private final LazyValue<Ingredient> repairIngredient;
 	
-	ModItemTeir(int level, int uses, float speed, float damage, int enchantmentValue, Supplier<Ingredient> repairIngredient) 
+	private ModItemTeir(int level, int uses, float speed, float damage, int enchantmentValue, Supplier<Ingredient> repairIngredient) 
 	{
 		this.level = level;
 		this.uses = uses;
