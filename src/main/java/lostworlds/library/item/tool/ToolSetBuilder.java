@@ -21,7 +21,7 @@ public class ToolSetBuilder
 			@Override
 			public boolean isEnchantable(ItemStack stack) 
 			{
-				return true;
+				return false;
 			};
 			
 			@Override
@@ -33,7 +33,7 @@ public class ToolSetBuilder
 			@Override
 			public boolean isFoil(ItemStack stack) 
 			{
-				return false;
+				return true;
 			};
 		};
 		Item toolShovel = new ShovelItem(tier, 1.5F, -3.0F, new Properties().tab(ModItemGroup.ITEMS).setNoRepair())
@@ -53,7 +53,7 @@ public class ToolSetBuilder
 			@Override
 			public boolean isFoil(ItemStack stack) 
 			{
-				return false;
+				return true;
 			};
 		};
 		Item toolPickaxe = new PickaxeItem(tier, 1, -2.8F, new Properties().tab(ModItemGroup.ITEMS).setNoRepair())
@@ -73,7 +73,7 @@ public class ToolSetBuilder
 			@Override
 			public boolean isFoil(ItemStack stack) 
 			{
-				return false;
+				return true;
 			};
 		};
 		Item toolAxe = new AxeItem(tier, 6.0F, -3.2F, new Properties().tab(ModItemGroup.ITEMS).setNoRepair())
@@ -93,7 +93,7 @@ public class ToolSetBuilder
 			@Override
 			public boolean isFoil(ItemStack stack) 
 			{
-				return false;
+				return true;
 			};
 		};
 		Item toolHoe = new HoeItem(tier, 0, -3.0F, new Properties().tab(ModItemGroup.ITEMS).setNoRepair())
@@ -113,7 +113,7 @@ public class ToolSetBuilder
 			@Override
 			public boolean isFoil(ItemStack stack) 
 			{
-				return false;
+				return true;
 			};
 		};
 		ModRegistry.register(tier.toString().toLowerCase() + "_sword", toolSword);

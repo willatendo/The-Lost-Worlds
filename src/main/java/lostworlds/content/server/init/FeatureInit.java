@@ -2,10 +2,10 @@ package lostworlds.content.server.init;
 
 import lostworlds.library.feature.AshFeature;
 import lostworlds.library.feature.GeyserBlockFeature;
+import lostworlds.library.feature.ModBlockBlobFeature;
 import lostworlds.library.feature.SpongeColoneyFeature;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
-import net.minecraft.world.gen.feature.BlockBlobFeature;
 import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureSpreadConfig;
@@ -18,7 +18,7 @@ public class FeatureInit
 	public static final Feature<FeatureSpreadConfig> GEYSER_BLOCK_PLACEMENT = new GeyserBlockFeature(FeatureSpreadConfig.CODEC);
 	public static final Feature<FeatureSpreadConfig> SPONGE_COLONEY_PLACEMENT = new SpongeColoneyFeature(FeatureSpreadConfig.CODEC);
 	
-	public static final Feature<BlockStateFeatureConfig> PERMIAN_ROCK = new BlockBlobFeature(BlockStateFeatureConfig.CODEC);
+	public static final Feature<BlockStateFeatureConfig> PERMIAN_ROCK = new ModBlockBlobFeature(BlockStateFeatureConfig.CODEC);
 
 	public static void init() 
 	{ 	

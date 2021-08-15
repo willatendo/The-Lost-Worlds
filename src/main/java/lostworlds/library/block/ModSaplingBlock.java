@@ -26,6 +26,6 @@ public class ModSaplingBlock extends SaplingBlock
 	{
 		Block block = state.getBlock();
 		
-		return block.is(Blocks.DIRT) || block.is(BlockInit.MOSSY_DIRT) || block.is(BlockInit.PERMIAN_SAND);
+		return block.is(Blocks.DIRT) || block.is(BlockInit.MOSSY_SOIL) || block.is(BlockInit.PERMIAN_SAND);
 	}
 }

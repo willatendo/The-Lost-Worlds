@@ -1,6 +1,7 @@
 {
-  "replace": false,
-  "values": [
-    "lostworlds:mossy_dirt"
-  ]
+	"replace": false,
+	"values": [
+		"lostworlds:mossy_soil",
+		"lostworlds:dried_soil"
+	]
 }

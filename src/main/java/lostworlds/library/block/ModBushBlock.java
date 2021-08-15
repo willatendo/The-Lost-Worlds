@@ -32,7 +32,7 @@ public class ModBushBlock extends BushBlock implements IGrowable
 	{
 		Block block = state.getBlock();
 		
-		return block.is(Blocks.DIRT) || block.is(BlockInit.MOSSY_DIRT) || block.is(BlockInit.PERMIAN_SAND) || block.is(BlockInit.DRIED_SOIL);
+		return block.is(Blocks.DIRT) || block.is(BlockInit.MOSSY_SOIL) || block.is(BlockInit.PERMIAN_SAND) || block.is(BlockInit.DRIED_SOIL);
 	}
 	
 	@Override

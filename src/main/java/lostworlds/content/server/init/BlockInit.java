@@ -18,7 +18,7 @@ import lostworlds.library.block.ModBushBlock;
 import lostworlds.library.block.ModOreBlock;
 import lostworlds.library.block.ModOreRotatedPillerBlock;
 import lostworlds.library.block.ModSaplingBlock;
-import lostworlds.library.block.MossyDirtBlock;
+import lostworlds.library.block.MossySoilBlock;
 import lostworlds.library.block.PlasteredFossilBlock;
 import lostworlds.library.block.PowerSupplyBlock;
 import lostworlds.library.block.SpongeColonyBlock;
@@ -66,7 +66,7 @@ public class BlockInit
 	public static final Block DRIED_SOIL = BlockAndItemBuilder.create("dried_soil", new DriedSoilBlock(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).sound(SoundType.GRAVEL).randomTicks()));
 	public static final Block CRACKED_SOIL = BlockAndItemBuilder.create("cracked_soil", new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).sound(SoundType.GRAVEL)));
 
-	public static final Block MOSSY_DIRT = MossyDirtBlock.create();
+	public static final Block MOSSY_SOIL = MossySoilBlock.create();
 	public static final Block MUD = BlockAndItemBuilder.create("mud", new Block(AbstractBlock.Properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)));
 
 	public static final Block PERMIAN_SAND = BlockAndItemBuilder.create("permian_sand", new SandBlock(0xaa915c, AbstractBlock.Properties.of(Material.SAND, MaterialColor.SAND).harvestTool(ToolType.SHOVEL).strength(1.5F).sound(SoundType.SAND)));

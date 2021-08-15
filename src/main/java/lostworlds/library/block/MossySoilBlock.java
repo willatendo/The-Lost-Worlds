@@ -25,14 +25,9 @@ import net.minecraft.world.lighting.LightEngine;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
 
-/*
- * Author: Willatendo
- * Date: July 2, 2021
- */
-
-public class MossyDirtBlock extends Block implements IGrowable
+public class MossySoilBlock extends Block implements IGrowable
 {
-	protected MossyDirtBlock() 
+	protected MossySoilBlock() 
 	{
 		super(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).randomTicks().sound(SoundType.GRAVEL));
 	}
@@ -148,6 +143,6 @@ public class MossyDirtBlock extends Block implements IGrowable
 	
 	public static Block create()
 	{
-		return BlockAndItemBuilder.create("mossy_dirt", new MossyDirtBlock());
+		return BlockAndItemBuilder.create("mossy_soil", new MossySoilBlock());
 	}
 }

@@ -93,7 +93,7 @@ public class ModBiomeFeatures
 	
 	private static void addConiferTrees(BiomeGenerationSettings.Builder builder)
 	{
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.TREES_CONIFER);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
 	}
 	
