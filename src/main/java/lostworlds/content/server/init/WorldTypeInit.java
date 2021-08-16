@@ -4,7 +4,7 @@ import lostworlds.library.util.ModUtils;
 import lostworlds.library.worldtype.RiftWorldType;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class Init 
+public class WorldTypeInit 
 {
 	public static RiftWorldType rift = new RiftWorldType();
 	

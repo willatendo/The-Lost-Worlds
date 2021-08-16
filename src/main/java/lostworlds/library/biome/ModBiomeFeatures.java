@@ -48,6 +48,9 @@ public class ModBiomeFeatures
 	
 	public static void permianFloodBasalts(BiomeGenerationSettings.Builder builder)
 	{
+		addBasaltDiamondOre(builder);
+		addGeyser(builder);
+		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA);
 		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Features.BASALT_PILLAR);
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, Features.ORE_MAGMA);
@@ -55,9 +58,6 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA_DOUBLE);
 		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.SMALL_BASALT_COLUMNS);
 		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.LARGE_BASALT_COLUMNS);
-		addBasaltDiamondOre(builder);
-		addGeyser(builder);
-		addPermianRock(builder);
 	}
 	
 	public static void permianMountains(BiomeGenerationSettings.Builder builder)

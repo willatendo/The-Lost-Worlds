@@ -4,11 +4,6 @@ import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.util.SoundEvent;
 
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
-
 public class SoundInit 
 {
 	public static final SoundEvent MACHINE_WHIRLING = ModRegistry.register("machine_whirling", new SoundEvent(ModUtils.rL("block.sound.machine_whirling")));

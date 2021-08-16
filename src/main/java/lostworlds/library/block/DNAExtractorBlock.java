@@ -1,8 +1,8 @@
 package lostworlds.library.block;
 
 import lostworlds.content.server.init.TileEntityInit;
-import lostworlds.library.block.builder.MachineBlockBuilder;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
+import lostworlds.library.block.builder.MachineBlockBuilder;
 import lostworlds.library.tileentity.DNAExtractorTileEntity;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;

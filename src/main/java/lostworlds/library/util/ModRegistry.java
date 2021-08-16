@@ -7,7 +7,6 @@ import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.FeatureInit;
 import lostworlds.content.server.init.FoliagePlacerInit;
 import lostworlds.content.server.init.FossilInit;
-import lostworlds.content.server.init.Init;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.ParticleInit;
 import lostworlds.content.server.init.PointOfInterestInit;
@@ -17,6 +16,7 @@ import lostworlds.content.server.init.SoundInit;
 import lostworlds.content.server.init.SurfaceBuilderInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.content.server.init.VillagerProfessionInit;
+import lostworlds.content.server.init.WorldTypeInit;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
@@ -180,6 +180,6 @@ public class ModRegistry
 		FoliagePlacerInit.init();
 		FeatureInit.init();
 		
-		Init.setup();
+		WorldTypeInit.setup();
 	}
 }

@@ -50,7 +50,7 @@ public class LostWorldsAddon
 		return instances;
 	}
 	
-	//Used in conjunction with @Init to register objects.
+	//Used in conjunction with @WorldTypeInit to register objects.
 	public interface ILostWorldsAddon { }
 	
 	//Used in conjunction with ILostWorldsAddon to register objects.

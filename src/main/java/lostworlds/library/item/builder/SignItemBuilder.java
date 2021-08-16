@@ -3,8 +3,8 @@ package lostworlds.library.item.builder;
 import lostworlds.library.util.ModRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Item.Properties;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SignItem;
 
 public class SignItemBuilder 

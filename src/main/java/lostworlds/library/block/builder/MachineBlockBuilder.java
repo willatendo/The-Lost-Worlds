@@ -224,7 +224,7 @@ public abstract class MachineBlockBuilder extends Block implements ITileEntityPr
 		if(rand.nextDouble() < 0.1D) 
 		{
 			world.playLocalSound(d0, d1, d2, SoundInit.MACHINE_WHIRLING, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
-         }
+        }
 	}
 	
 	@Override
