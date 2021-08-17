@@ -3,6 +3,8 @@ package lostworlds.content;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.DimensionInit;
 import lostworlds.content.server.init.PotionInit;
+import lostworlds.integration.quark.client.chest.QuarkChestTileEntityRender;
+import lostworlds.integration.quark.init.QuarkTileEntities;
 import lostworlds.integration.quark.util.QuarkRegistry;
 import lostworlds.integration.quark.util.QuarkUtils;
 import lostworlds.library.util.ModRegistry;
@@ -16,6 +18,7 @@ import net.minecraft.potion.Potions;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -58,5 +61,11 @@ public class LostWorlds
 		DimensionRenderInfo baseRenderer = new DimensionRenderInfo.Overworld();
 		
 		DimensionRenderInfo.EFFECTS.put(ModUtils.rL("permian_render"), baseRenderer);
+		
+		if(ModList.get().isLoaded(QuarkUtils.QUARK_ID) || !FMLEnvironment.production)
+		{
+			ClientRegistry.bindTileEntityRenderer(QuarkTileEntities.MOD_CHEST, QuarkChestTileEntityRender::new);
+			ClientRegistry.bindTileEntityRenderer(QuarkTileEntities.MOD_TRAPPED_CHEST, QuarkChestTileEntityRender::new);
+		}
 	}
 }

@@ -1,0 +1,6 @@
+{
+	"parent": "lostworlds:block/post",
+	"textures": {
+		"texture": "lostworlds:block/conifer_log"
+	}
+}
