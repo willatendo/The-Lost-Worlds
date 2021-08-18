@@ -18,9 +18,9 @@ public class QuarkTrappedChestBlock extends ChestBlock implements IChestBlock
 {
 	public final String type;
 
-	public QuarkTrappedChestBlock(String type, Properties props) 
+	public QuarkTrappedChestBlock(String type, Properties properties) 
 	{
-		super(props, () -> QuarkTileEntities.MOD_TRAPPED_CHEST);
+		super(properties, () -> QuarkTileEntities.MOD_TRAPPED_CHEST);
 		this.type = type;
 	}
 

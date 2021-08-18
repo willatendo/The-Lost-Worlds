@@ -153,8 +153,7 @@ public class QuarkChestTileEntityRender<T extends TileEntity & IChestLid> extend
 			Block inventoryBlock = itemBlock;
 			if(inventoryBlock == null)
 				inventoryBlock = t.getBlockState().getBlock();
-			ChestManager.ChestInfo chestInfo = ChestManager
-					.getInfoForChest(((IChestBlock) inventoryBlock).getChestType());
+			ChestManager.ChestInfo chestInfo = ChestManager.getInfoForChest(((IChestBlock) inventoryBlock).getChestType());
 			switch(type) 
 			{
 			default:

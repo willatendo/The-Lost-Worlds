@@ -1,0 +1,6 @@
+{
+	"parent": "lostworlds:block/post",
+	"textures": {
+		"texture": "lostworlds:blocks/stripped_scorched_log"
+	}
+}

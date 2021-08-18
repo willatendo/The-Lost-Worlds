@@ -1,5 +1,7 @@
 package lostworlds.integration.quark.init;
 
+import java.util.concurrent.Callable;
+
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.integration.quark.block.LeafCarpetBlock;
 import lostworlds.integration.quark.block.PostBlock;
@@ -8,7 +10,13 @@ import lostworlds.integration.quark.block.QuarkChestBlock;
 import lostworlds.integration.quark.block.QuarkTrappedChestBlock;
 import lostworlds.integration.quark.block.VerticalSlabBlock;
 import lostworlds.integration.quark.block.builder.QuarkBlockAndItemBuilder;
+import lostworlds.integration.quark.block.builder.QuarkBlockBuilder;
+import lostworlds.integration.quark.client.chest.ChestItemRenderer;
 import lostworlds.integration.quark.client.chest.ChestManager;
+import lostworlds.integration.quark.item.builder.QuarkItemBuilder;
+import lostworlds.integration.quark.tileentity.QuarkChestTileEntity;
+import lostworlds.integration.quark.tileentity.QuarkTrappedChestTileEntity;
+import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -16,6 +24,12 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.LadderBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item.Properties;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class QuarkBlocks 
 {
@@ -44,10 +58,14 @@ public class QuarkBlocks
 	public static final Block GINKGO_VERTICAL_PLANKS = QuarkBlockAndItemBuilder.create("ginkgo_vertical_planks", new Block(AbstractBlock.Properties.copy(BlockInit.GINKGO_PLANKS)));
 	public static final Block SCORCHED_VERTICAL_PLANKS = QuarkBlockAndItemBuilder.create("scorched_vertical_planks", new Block(AbstractBlock.Properties.copy(BlockInit.SCORCHED_PLANKS)));
 	
-	public static final Block ARAUCARIA_POST = QuarkBlockAndItemBuilder.create("araucaria_post", new PostBlock(AbstractBlock.Properties.copy(BlockInit.ARAUCARIA_PLANKS)));
-	public static final Block CONIFER_POST = QuarkBlockAndItemBuilder.create("conifer_post", new PostBlock(AbstractBlock.Properties.copy(BlockInit.CONIFER_PLANKS)));
-	public static final Block GINKGO_POST = QuarkBlockAndItemBuilder.create("ginkgo_post", new PostBlock(AbstractBlock.Properties.copy(BlockInit.GINKGO_PLANKS)));
-	public static final Block SCORCHED_POST = QuarkBlockAndItemBuilder.create("scorched_post", new PostBlock(AbstractBlock.Properties.copy(BlockInit.SCORCHED_PLANKS)));
+	public static final Block ARAUCARIA_POST = QuarkBlockAndItemBuilder.create("araucaria_post", new PostBlock(AbstractBlock.Properties.copy(BlockInit.ARAUCARIA_LOG)));
+	public static final Block STRIPPED_ARAUCARIA_POST = QuarkBlockAndItemBuilder.create("stripped_araucaria_post", new PostBlock(AbstractBlock.Properties.copy(BlockInit.ARAUCARIA_LOG)));
+	public static final Block CONIFER_POST = QuarkBlockAndItemBuilder.create("conifer_post", new PostBlock(AbstractBlock.Properties.copy(BlockInit.CONIFER_LOG)));
+	public static final Block STRIPPED_CONIFER_POST = QuarkBlockAndItemBuilder.create("stripped_conifer_post", new PostBlock(AbstractBlock.Properties.copy(BlockInit.CONIFER_LOG)));
+	public static final Block GINKGO_POST = QuarkBlockAndItemBuilder.create("ginkgo_post", new PostBlock(AbstractBlock.Properties.copy(BlockInit.GINKGO_LOG)));
+	public static final Block STRIPPED_GINKGO_POST = QuarkBlockAndItemBuilder.create("stripped_ginkgo_post", new PostBlock(AbstractBlock.Properties.copy(BlockInit.GINKGO_LOG)));
+	public static final Block SCORCHED_POST = QuarkBlockAndItemBuilder.create("scorched_post", new PostBlock(AbstractBlock.Properties.copy(BlockInit.SCORCHED_LOG)));
+	public static final Block STRIPPED_SCORCHED_POST = QuarkBlockAndItemBuilder.create("stripped_scorched_post", new PostBlock(AbstractBlock.Properties.copy(BlockInit.SCORCHED_LOG)));
 	
 	public static final Block ARAUCARIA_LEAF_CARPET = QuarkBlockAndItemBuilder.create("araucaria_leaf_carpet", new LeafCarpetBlock(AbstractBlock.Properties.copy(BlockInit.ARAUCARIA_LEAVES)));
 	public static final Block CONIFER_LEAF_CARPET = QuarkBlockAndItemBuilder.create("conifer_leaf_carpet", new LeafCarpetBlock(AbstractBlock.Properties.copy(BlockInit.CONIFER_LEAVES)));
@@ -64,17 +82,34 @@ public class QuarkBlocks
 	public static final Block SCORCHED_LADDER = QuarkBlockAndItemBuilder.create("scorched_ladder", new LadderBlock(AbstractBlock.Properties.copy(Blocks.LADDER)));
 	
 	public static final Block ARAUCARIA_CHEST = createChestBlock("araucaria_chest");
+	public static final Block ARAUCARIA_TRAPPED_CHEST = createTrappedChestBlock("araucaria_chest");
 	public static final Block CONIFER_CHEST = createChestBlock("conifer_chest");
+	public static final Block CONIFER_TRAPPED_CHEST = createTrappedChestBlock("conifer_chest");
 	public static final Block GINKGO_CHEST = createChestBlock("ginkgo_chest");
+	public static final Block GINKGO_TRAPPED_CHEST = createTrappedChestBlock("ginkgo_chest");
 	public static final Block SCORCHED_CHEST = createChestBlock("scorched_chest");
+	public static final Block SCORCHED_TRAPPED_CHEST = createTrappedChestBlock("scorched_chest");
 
 	public static Block createChestBlock(String id) 
 	{
-		Block chest = QuarkBlockAndItemBuilder.create(id, new QuarkChestBlock(ModUtils.ID + ":" + id, Block.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD)));
-		QuarkBlockAndItemBuilder.create("trapped" + id, new QuarkTrappedChestBlock(ModUtils.ID + ":" + id, Block.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD)));
+		Block chest = QuarkBlockBuilder.create(id, new QuarkChestBlock(ModUtils.ID + ":" + id, Block.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD)));
+		QuarkItemBuilder.create(id, new BlockItem(chest, new Properties().tab(ModItemGroup.BLOCKS).setISTER(() -> chestISTER(false))));
 		ChestManager.putChestInfo(ModUtils.ID, id, false);
+		return chest;
+	}
+	
+	public static Block createTrappedChestBlock(String id) 
+	{
+		Block chest = QuarkBlockBuilder.create("trapped_" + id, new QuarkTrappedChestBlock(ModUtils.ID + ":" + id + "_trapped", Block.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD)));
+		QuarkItemBuilder.create("trapped_" + id, new BlockItem(chest, new Properties().tab(ModItemGroup.BLOCKS).setISTER(() -> chestISTER(true))));
 		ChestManager.putChestInfo(ModUtils.ID, id, true);
 		return chest;
+	}
+	
+	@OnlyIn(Dist.CLIENT)
+	private static Callable<ItemStackTileEntityRenderer> chestISTER(boolean trapped) 
+	{
+		return () -> new ChestItemRenderer<TileEntity>(trapped ? QuarkTrappedChestTileEntity::new : QuarkChestTileEntity::new);
 	}
 	
 	public static void init() { }

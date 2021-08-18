@@ -1,0 +1,17 @@
+{
+	"variants": {
+		"axis=x": {
+			"model": "lostworlds:block/stripped_scorched_post",
+			"x": 90,
+			"y": 90
+		},
+		"axis=y": {
+			"model": "lostworlds:block/stripped_scorched_post"
+		},
+		"axis=z": {
+			"model": "lostworlds:block/stripped_scorched_post",
+			"x": 90
+		}
+	}
+}
+ 
