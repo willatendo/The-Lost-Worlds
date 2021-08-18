@@ -23,5 +23,8 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(QuarkBlocks.CONIFER_LADDER, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(QuarkBlocks.GINKGO_LADDER, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(QuarkBlocks.SCORCHED_LADDER, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(QuarkBlocks.ARAUCARIA_HEDGE, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(QuarkBlocks.CONIFER_HEDGE, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(QuarkBlocks.GINKGO_HEDGE, RenderType.cutout());
 	}
 }

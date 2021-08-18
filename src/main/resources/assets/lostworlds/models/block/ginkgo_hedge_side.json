@@ -1,0 +1,6 @@
+{
+	"parent": "lostworlds:block/hedge_side",
+	"textures": {
+		"leaf": "lostworlds:blocks/ginkgo_leaves"
+	}
+}

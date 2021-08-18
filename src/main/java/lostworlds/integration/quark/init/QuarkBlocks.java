@@ -3,6 +3,7 @@ package lostworlds.integration.quark.init;
 import java.util.concurrent.Callable;
 
 import lostworlds.content.server.init.BlockInit;
+import lostworlds.integration.quark.block.HedgeBlock;
 import lostworlds.integration.quark.block.LeafCarpetBlock;
 import lostworlds.integration.quark.block.PostBlock;
 import lostworlds.integration.quark.block.QuarkBookshelfBlock;
@@ -89,6 +90,10 @@ public class QuarkBlocks
 	public static final Block GINKGO_TRAPPED_CHEST = createTrappedChestBlock("ginkgo_chest");
 	public static final Block SCORCHED_CHEST = createChestBlock("scorched_chest");
 	public static final Block SCORCHED_TRAPPED_CHEST = createTrappedChestBlock("scorched_chest");
+	
+	public static final Block ARAUCARIA_HEDGE = QuarkBlockAndItemBuilder.create("araucaria_hedge", new HedgeBlock(AbstractBlock.Properties.copy(BlockInit.ARAUCARIA_FENCE)));
+	public static final Block CONIFER_HEDGE = QuarkBlockAndItemBuilder.create("conifer_hedge", new HedgeBlock(AbstractBlock.Properties.copy(BlockInit.CONIFER_FENCE)));
+	public static final Block GINKGO_HEDGE = QuarkBlockAndItemBuilder.create("ginkgo_hedge", new HedgeBlock(AbstractBlock.Properties.copy(BlockInit.GINKGO_FENCE)));
 
 	public static Block createChestBlock(String id) 
 	{
