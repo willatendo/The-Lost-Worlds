@@ -1,0 +1,19 @@
+{
+	"variants": {
+		"facing=east": {
+			"model": "lostworlds:block/conifer_beehive",
+			"y": 90
+		},
+		"facing=north": {
+			"model": "lostworlds:block/conifer_beehive"
+		},
+		"facing=south": {
+			"model": "lostworlds:block/conifer_beehive",
+			"y": 180
+		},
+		"facing=west": {
+			"model": "lostworlds:block/conifer_beehive",
+			"y": 270
+		}
+	}
+}

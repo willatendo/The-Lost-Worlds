@@ -3,6 +3,8 @@ package lostworlds.content;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.DimensionInit;
 import lostworlds.content.server.init.PotionInit;
+import lostworlds.integration.buzzierbees.util.BuzzierBeesRegistry;
+import lostworlds.integration.buzzierbees.util.BuzzierBeesUtils;
 import lostworlds.integration.quark.client.chest.QuarkChestTileEntityRender;
 import lostworlds.integration.quark.init.QuarkTileEntities;
 import lostworlds.integration.quark.util.QuarkRegistry;
@@ -38,6 +40,11 @@ public class LostWorlds
 		if(ModList.get().isLoaded(QuarkUtils.QUARK_ID) || !FMLEnvironment.production)
 		{
 			QuarkRegistry.register();
+		}
+		
+		if(ModList.get().isLoaded(BuzzierBeesUtils.BUZZIER_BEES_ID) || !FMLEnvironment.production)
+		{
+			BuzzierBeesRegistry.register();
 		}
 		
 		bus.addListener(this::commonSetup);
