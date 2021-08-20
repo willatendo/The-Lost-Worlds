@@ -28,7 +28,10 @@ public class BiomeInit
 	public static final Biome PERMIAN_MOUNTAINS = ModRegistry.register("permian_mountains", ModBiomeMaker.permianMountains());
 
 	public static final Biome PERMIAN_OCEAN = ModRegistry.register("permian_ocean", ModBiomeMaker.permianOcean());
-	public static final Biome PERMIAN_DEEP_OCEAN = ModRegistry.register("permian_deep_ocean", ModBiomeMaker.permianDeepOcean());
+	public static final Biome WARM_PERMIAN_OCEAN = ModRegistry.register("warm_permian_ocean", ModBiomeMaker.warmPermianOcean());
+	
+	public static final Biome DEEP_PERMIAN_OCEAN = ModRegistry.register("deep_permian_ocean", ModBiomeMaker.deepPermianOcean());
+	public static final Biome WARM_DEEP_PERMIAN_OCEAN = ModRegistry.register("warm_deep_permian_ocean", ModBiomeMaker.warmDeepPermianOcean());
 
 	public static final Biome PERMIAN_PLAINS = ModRegistry.register("permian_plains", ModBiomeMaker.permianPlains());
 	public static final Biome PERMIAN_PLAINS_HILLS = ModRegistry.register("permian_plains_hills", ModBiomeMaker.permianPlainsHills());

@@ -156,20 +156,42 @@ public class ModBiomeMaker
 	{
 		MobSpawnInfo.Builder spawnBuilder = new MobSpawnInfo.Builder();
 		
-		BiomeGenerationSettings.Builder generationBuilder = (new BiomeGenerationSettings.Builder()).surfaceBuilder(ModSurfaceBuilders.PERMIAN_OCEAN_BUILDER);
+		BiomeGenerationSettings.Builder generationBuilder = genSettings(SurfaceBuilderInit.NAKED_PERMIAN_OCEAN, ModSurfaceBuilders.SILT_CONFIG);
 		
 		ModBiomeFeatures.permianOcean(generationBuilder);
 				
 		return (new Biome.Builder()).precipitation(Biome.RainType.RAIN).biomeCategory(Biome.Category.OCEAN).depth(-1.0F).scale(0.1F).temperature(0.2F).downfall(0.0F).specialEffects((new BiomeAmbience.Builder()).waterColor(0x3181c6).waterFogColor(0x1c65a5).fogColor(0x77d3ea).skyColor(0x39aac6).grassColorOverride(0x2b9b33).foliageColorOverride(0x2b9b33).ambientMoodSound(MoodSoundAmbience.LEGACY_CAVE_SETTINGS).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(generationBuilder.build()).build();		
 	}
 	
-	public static Biome permianDeepOcean()
+	public static Biome warmPermianOcean()
 	{
 		MobSpawnInfo.Builder spawnBuilder = new MobSpawnInfo.Builder();
 		
-		BiomeGenerationSettings.Builder generationBuilder = (new BiomeGenerationSettings.Builder()).surfaceBuilder(ModSurfaceBuilders.PERMIAN_OCEAN_BUILDER);
+		BiomeGenerationSettings.Builder generationBuilder = (new BiomeGenerationSettings.Builder()).surfaceBuilder(ModSurfaceBuilders.PERMIAN_WARM_OCEAN_BUILDER);
+		
+		ModBiomeFeatures.permianCoralReef(generationBuilder);
+				
+		return (new Biome.Builder()).precipitation(Biome.RainType.RAIN).biomeCategory(Biome.Category.OCEAN).depth(-1.0F).scale(0.1F).temperature(0.2F).downfall(0.0F).specialEffects((new BiomeAmbience.Builder()).waterColor(4566514).waterFogColor(267827).fogColor(0x77d3ea).skyColor(0x39aac6).grassColorOverride(0x2b9b33).foliageColorOverride(0x2b9b33).ambientMoodSound(MoodSoundAmbience.LEGACY_CAVE_SETTINGS).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(generationBuilder.build()).build();		
+	}
+	
+	public static Biome deepPermianOcean()
+	{
+		MobSpawnInfo.Builder spawnBuilder = new MobSpawnInfo.Builder();
+		
+		BiomeGenerationSettings.Builder generationBuilder = genSettings(SurfaceBuilderInit.NAKED_PERMIAN_OCEAN, ModSurfaceBuilders.SILT_CONFIG);
 		
 		ModBiomeFeatures.permianOcean(generationBuilder);
+				
+		return (new Biome.Builder()).precipitation(Biome.RainType.RAIN).biomeCategory(Biome.Category.OCEAN).depth(-1.8F).scale(0.1F).temperature(0.2F).downfall(0.0F).specialEffects((new BiomeAmbience.Builder()).waterColor(0x3181c6).waterFogColor(0x1c65a5).fogColor(0x77d3ea).skyColor(0x39aac6).grassColorOverride(0x2b9b33).foliageColorOverride(0x2b9b33).ambientMoodSound(MoodSoundAmbience.LEGACY_CAVE_SETTINGS).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(generationBuilder.build()).build();		
+	}
+	
+	public static Biome warmDeepPermianOcean()
+	{
+		MobSpawnInfo.Builder spawnBuilder = new MobSpawnInfo.Builder();
+		
+		BiomeGenerationSettings.Builder generationBuilder = (new BiomeGenerationSettings.Builder()).surfaceBuilder(ModSurfaceBuilders.PERMIAN_WARM_OCEAN_BUILDER);
+		
+		ModBiomeFeatures.permianCoralReef(generationBuilder);
 				
 		return (new Biome.Builder()).precipitation(Biome.RainType.RAIN).biomeCategory(Biome.Category.OCEAN).depth(-1.8F).scale(0.1F).temperature(0.2F).downfall(0.0F).specialEffects((new BiomeAmbience.Builder()).waterColor(0x3181c6).waterFogColor(0x1c65a5).fogColor(0x77d3ea).skyColor(0x39aac6).grassColorOverride(0x2b9b33).foliageColorOverride(0x2b9b33).ambientMoodSound(MoodSoundAmbience.LEGACY_CAVE_SETTINGS).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(generationBuilder.build()).build();		
 	}

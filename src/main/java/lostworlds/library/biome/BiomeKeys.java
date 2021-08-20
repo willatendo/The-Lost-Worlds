@@ -23,7 +23,9 @@ public class BiomeKeys
 	public static final RegistryKey<Biome> PERMIAN_PLAINS = register("permian_plains");
 	public static final RegistryKey<Biome> PERMIAN_PLAINS_HILLS = register("permian_plains_hills");
 	public static final RegistryKey<Biome> PERMIAN_OCEAN = register("permian_ocean");
-	public static final RegistryKey<Biome> PERMIAN_DEEP_OCEAN = register("permian_deep_ocean");
+	public static final RegistryKey<Biome> WARM_PERMIAN_OCEAN = register("warm_permian_ocean");
+	public static final RegistryKey<Biome> DEEP_PERMIAN_OCEAN = register("deep_permian_ocean");
+	public static final RegistryKey<Biome> WARM_DEEP_PERMIAN_OCEAN = register("warm_deep_permian_ocean");
 	
 	private static RegistryKey<Biome> register(String id)
 	{

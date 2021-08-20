@@ -63,15 +63,26 @@ public class ModBiomeFeatures
 	public static void permianMountains(BiomeGenerationSettings.Builder builder)
 	{
 		addConiferTrees(builder);
+		addPermianRock(builder);
 		
 		DefaultBiomeFeatures.addSurfaceFreezing(builder);
-		addPermianRock(builder);
 	}
 	
 	public static void permianOcean(BiomeGenerationSettings.Builder builder)
 	{
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
 		addPermianRock(builder);
+
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
+	}
+	
+	public static void permianCoralReef(BiomeGenerationSettings.Builder builder)
+	{
+		addPermianRock(builder);
+
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.PERMIAN_CORAL_REEF);
 	}
 	
 	public static void permianPlains(BiomeGenerationSettings.Builder builder)

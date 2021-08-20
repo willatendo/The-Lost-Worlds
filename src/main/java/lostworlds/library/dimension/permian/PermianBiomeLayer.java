@@ -31,7 +31,7 @@ public class PermianBiomeLayer implements IAreaTransformer0
     protected int[] rareBiomes = (new int[]
     {
     	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_OCEAN),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_DEEP_OCEAN),
+    	PermianLayerUtil.getBiomeId(BiomeKeys.DEEP_PERMIAN_OCEAN),
     });
 
     public PermianBiomeLayer() { }
