@@ -8,15 +8,15 @@ import net.minecraft.potion.EffectType;
 
 public class AshyLungEffect extends Effect
 {
-	public AshyLungEffect(EffectType effectType, int colour) 
+	public AshyLungEffect() 
 	{
-		super(effectType, colour);
+		super(EffectType.HARMFUL, 0x5b5858);
 	}
 	
 	@Override
-	public void applyEffectTick(LivingEntity entity, int i) 
+	public void applyEffectTick(LivingEntity entity, int tick) 
 	{	
-		if(entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative())
+		if(entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && !((PlayerEntity) entity).isSpectator())
 		{
 			entity.hurt(ModDamageSources.ASHY_LUNG, 2);
 		}
@@ -38,7 +38,7 @@ public class AshyLungEffect extends Effect
 	
 	public static boolean canKill(PlayerEntity player)
 	{
-		if(player.isCreative())
+		if(player.isCreative() || player.isSpectator())
 		{
 			return false;
 		}

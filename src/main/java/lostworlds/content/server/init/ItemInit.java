@@ -7,6 +7,8 @@ import lostworlds.library.item.CrystalScarabGemItem.Variant;
 import lostworlds.library.item.FieldGuideItem;
 import lostworlds.library.item.FoodItem;
 import lostworlds.library.item.FoodItem.FoodType;
+import lostworlds.library.item.armour.MaskItem;
+import lostworlds.library.item.armour.OxygenTankItem;
 import lostworlds.library.item.FoodSeedsItem;
 import lostworlds.library.item.TimeBookItem;
 import lostworlds.library.item.builder.ItemBuilder;
@@ -14,6 +16,7 @@ import lostworlds.library.item.tool.BrushItem;
 import lostworlds.library.item.tool.CrystalScarabGemBrushItem;
 import lostworlds.library.item.tool.ModItemTeir;
 import lostworlds.library.item.tool.ToolSetBuilder;
+import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.item.Item;
 
@@ -75,6 +78,11 @@ public class ItemInit
 	
 	public static final Item CRYSTAL_SCARAB = ToolSetBuilder.create(ModItemTeir.CRYSTAL_SCARAB);
 		
+	public static final Item CLOTH_MASK = MaskItem.createCloth();
+	
+	public static final Item OXYGEN_MASK = MaskItem.createOxygen();
+	public static final Item OXYGEN_TANK = ModRegistry.register("oxygen_tank", new OxygenTankItem());
+	
 	//Registry
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Items");}
 }

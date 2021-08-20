@@ -1,7 +1,12 @@
 package lostworlds.library.block;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
+import com.google.common.collect.ImmutableList;
+
+import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.PotionInit;
 import lostworlds.library.entity.ModDamageSources;
 import net.minecraft.block.AbstractBlock;
@@ -14,7 +19,9 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.BoatEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.Item;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.state.IntegerProperty;
@@ -36,6 +43,7 @@ public class AshLayerBlock extends Block
 {
 	public static final IntegerProperty LAYERS = BlockStateProperties.LAYERS;
 	protected static final VoxelShape[] SHAPE_BY_LAYER = new VoxelShape[]{VoxelShapes.empty(), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
+	private static final List<Item> MASK_GEAR = ImmutableList.of(ItemInit.CLOTH_MASK);
 	
 	public AshLayerBlock() 
 	{
@@ -93,20 +101,20 @@ public class AshLayerBlock extends Block
 	public boolean canSurvive(BlockState state, IWorldReader reader, BlockPos pos) 
 	{
 		BlockState blockstate = reader.getBlockState(pos.below());
-		if(!blockstate.is(Blocks.ICE) && !blockstate.is(Blocks.PACKED_ICE) && !blockstate.is(Blocks.BARRIER)) 
+		if(!blockstate.is(Blocks.HONEY_BLOCK) && !blockstate.is(Blocks.SOUL_SAND))
 		{
-			if(!blockstate.is(Blocks.HONEY_BLOCK) && !blockstate.is(Blocks.SOUL_SAND)) 
+			if(blockstate.getBlock() instanceof SticksBlock)
+			{
+				return false;
+			}
+			else
 			{
 				return Block.isFaceFull(blockstate.getCollisionShape(reader, pos.below()), Direction.UP) || blockstate.getBlock() == this && blockstate.getValue(LAYERS) == 8;
-			} 
-			else 
-			{
-				return true;
 			}
-		} 
+		}
 		else 
 		{
-			return false;
+			return true;
 		}
 	}
 
@@ -175,9 +183,17 @@ public class AshLayerBlock extends Block
 				LivingEntity livingentity = (LivingEntity)entity;
 				if(!livingentity.isInvulnerableTo(ModDamageSources.ASHY_LUNG)) 
 				{
-					livingentity.addEffect(new EffectInstance(PotionInit.ASHY_LUNG_EFFECT, 200));
+					if(!isWearingMask(livingentity, EquipmentSlotType.HEAD))
+					{
+						livingentity.addEffect(new EffectInstance(PotionInit.ASHY_LUNG_EFFECT, 200));
+					}
 				}
 			}
 		}
+	}
+	
+	public static boolean isWearingMask(LivingEntity living, EquipmentSlotType pieceValue)
+	{
+		return MASK_GEAR.contains(living.getItemBySlot(pieceValue).getItem());
 	}
 }

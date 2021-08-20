@@ -61,6 +61,8 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_DOOR, RenderType.translucent());	
 		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_TRAPDOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_SAPLING, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.SCORCHED_DOOR, RenderType.translucent());	
+		RenderTypeLookup.setRenderLayer(BlockInit.SCORCHED_TRAPDOOR, RenderType.translucent());
 
 		RenderTypeLookup.setRenderLayer(BlockInit.TINTED_GLASS, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.TINTED_GLASS_PANE, RenderType.translucent());

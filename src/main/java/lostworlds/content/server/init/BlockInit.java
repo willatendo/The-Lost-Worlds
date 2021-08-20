@@ -24,6 +24,7 @@ import lostworlds.library.block.PowerSupplyBlock;
 import lostworlds.library.block.SpongeColonyBlock;
 import lostworlds.library.block.SticksBlock;
 import lostworlds.library.block.TimeMachineBlock;
+import lostworlds.library.block.VolcanicAshBlock;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.block.builder.BlockBuilder;
 import lostworlds.library.item.tool.ModMaterials;
@@ -73,7 +74,7 @@ public class BlockInit
 
 	public static final Block SILT = BlockAndItemBuilder.create("silt", new Block(AbstractBlock.Properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)));
 
-	public static final Block VOLCANIC_ASH = BlockAndItemBuilder.create("volcanic_ash", new SandBlock(0x888988, AbstractBlock.Properties.of(Material.SAND, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).harvestLevel(1).strength(0.5F).sound(SoundType.SAND)));
+	public static final Block VOLCANIC_ASH = BlockAndItemBuilder.create("volcanic_ash", new VolcanicAshBlock());
 	public static final Block VOLCANIC_ASH_LAYER = BlockAndItemBuilder.create("volcanic_ash_layer", new AshLayerBlock());
 	
 	//Stones
@@ -209,8 +210,6 @@ public class BlockInit
 	public static final Block STRIPPED_SCORCHED_LOG = BlockAndItemBuilder.create("stripped_scorched_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_BLACK).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
 	public static final Block SCORCHED_WOOD = BlockAndItemBuilder.create("scorched_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_BLACK).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_SCORCHED_WOOD = BlockAndItemBuilder.create("stripped_scorched_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_BLACK).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
-
-	
 	public static final Block SCORCHED_PLANKS = BlockAndItemBuilder.create("scorched_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_BLACK).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD))); 
 	public static final Block SCORCHED_STAIRS = BlockAndItemBuilder.create("scorched_stairs", new StairsBlock(() -> BlockInit.SCORCHED_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
 	public static final Block SCORCHED_SLAB = BlockAndItemBuilder.create("scorched_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
@@ -218,8 +217,8 @@ public class BlockInit
 	public static final Block SCORCHED_FENCE_GATE = BlockAndItemBuilder.create("scorched_fence_gate", new FenceGateBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
 	public static final Block SCORCHED_PRESSURE_PLATE = BlockAndItemBuilder.create("scorched_pressure_plate", new PressurePlateBlock(Sensitivity.EVERYTHING, AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).noCollission().sound(SoundType.WOOD)));
 	public static final Block SCORCHED_BUTTON = BlockAndItemBuilder.create("scorched_button", new WoodButtonBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).noCollission().sound(SoundType.WOOD)));
-	
-
+	public static final Block SCORCHED_TRAPDOOR = BlockAndItemBuilder.create("scorched_trapdoor", new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
+	public static final Block SCORCHED_DOOR = BlockAndItemBuilder.create("scorched_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
 	//public static final Block SCORCHED_SIGN = BlockBuilder.create("scorched_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).noOcclusion().sound(SoundType.WOOD), ModWoodTypes.SCORCHED));
 	//public static final Block SCORCHED_WALL_SIGN = BlockBuilder.create("scorched_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).noOcclusion().sound(SoundType.WOOD).dropsLike(SCORCHED_SIGN), ModWoodTypes.SCORCHED));
 	//public static final Item SCORCHED_SIGN_ITEM = SignItemBuilder.create("scorched_sign", SCORCHED_SIGN, SCORCHED_WALL_SIGN);

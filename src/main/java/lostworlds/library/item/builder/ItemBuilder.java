@@ -4,11 +4,6 @@ import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import net.minecraft.item.Item;
 
-/*
- * Author: Willatendo
- * Date: July 16, 2021
- */
-
 public class ItemBuilder extends Item
 {
 	protected ItemBuilder() 

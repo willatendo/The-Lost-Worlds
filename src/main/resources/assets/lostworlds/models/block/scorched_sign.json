@@ -1,5 +1,5 @@
 {
 	"textures": {
-		"particle": "lostworlds:blocks/scorched_planks"
+		"particle": "lostworlds:block/scorched_planks"
 	}
 }

@@ -1,5 +1,6 @@
 package lostworlds.content;
 
+import lostworlds.content.client.dimension.PermianDimensionRenderInfo;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.DimensionInit;
 import lostworlds.content.server.init.PotionInit;
@@ -65,7 +66,7 @@ public class LostWorlds
 	
 	private void clientSetup(FMLClientSetupEvent event) 
 	{		
-		DimensionRenderInfo baseRenderer = new DimensionRenderInfo.Overworld();
+		DimensionRenderInfo baseRenderer = new PermianDimensionRenderInfo();
 		
 		DimensionRenderInfo.EFFECTS.put(ModUtils.rL("permian_render"), baseRenderer);
 		

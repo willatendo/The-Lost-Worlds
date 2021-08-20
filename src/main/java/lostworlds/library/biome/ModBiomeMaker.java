@@ -24,7 +24,7 @@ public class ModBiomeMaker
 	{
 		MobSpawnInfo.Builder spawnBuilder = new MobSpawnInfo.Builder();
 		
-		BiomeGenerationSettings.Builder generationBuilder = genSettings(SurfaceBuilderInit.NAKED_PERMIAN_ASHY_MEDOWS, ModSurfaceBuilders.VOLCANIC_ASH_CONFIG);
+		BiomeGenerationSettings.Builder generationBuilder = (new BiomeGenerationSettings.Builder()).surfaceBuilder(ModSurfaceBuilders.PERMIAN_ASHY_MEDOWS);
 		
 		ModBiomeFeatures.permianAshyMedows(generationBuilder);
 		

@@ -15,7 +15,7 @@ import net.minecraft.world.IWorldReader;
 public class CactusBlockMixin 
 {
 	@Inject(method = "canSurvive", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/IWorldReader;getBlockState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/block/BlockState;", ordinal = 1), cancellable = true)
-	private void addCustomSands(BlockState state, IWorldReader world, BlockPos pos, CallbackInfoReturnable<Boolean> cir)
+	private void addCustomSands(BlockState state, IWorldReader world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) 
 	{
 		BlockState blockstate = world.getBlockState(pos.below());
 		if(blockstate.getBlock().is(BlockInit.PERMIAN_SAND) && !world.getBlockState(pos.above()).getMaterial().isLiquid())
