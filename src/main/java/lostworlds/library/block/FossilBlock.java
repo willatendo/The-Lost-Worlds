@@ -13,11 +13,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.server.ServerWorld;
 
-/*
- * Author: Willatendo
- * Date: July 1, 2021
- */
-
 public class FossilBlock extends Block
 {
 	private static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;

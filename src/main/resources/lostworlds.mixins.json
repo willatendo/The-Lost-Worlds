@@ -6,7 +6,8 @@
 	"mixins": [
 		"CactusBlockMixin",
 		"DimensionGeneratorSettingsMixin",
-		"SugarCaneBlockMixin"
+		"SugarCaneBlockMixin",
+		"ItemsMixin"
 	],
 	"client": [
 		"client.ServerWorldInfoMixin"

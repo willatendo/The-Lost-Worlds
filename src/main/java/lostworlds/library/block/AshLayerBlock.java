@@ -19,6 +19,7 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.BoatEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
@@ -189,6 +190,15 @@ public class AshLayerBlock extends Block
 					}
 				}
 			}
+		}
+	}
+	
+	@Override
+	public void attack(BlockState state, World world, BlockPos pos, PlayerEntity player) 
+	{
+		if(!isWearingMask(player, EquipmentSlotType.HEAD))
+		{
+			player.addEffect(new EffectInstance(PotionInit.ASHY_LUNG_EFFECT, 200));
 		}
 	}
 	

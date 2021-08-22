@@ -19,8 +19,10 @@ public class ModBiomeFeatures
 	public static void permianConiferForest(BiomeGenerationSettings.Builder builder)
 	{
 		addPermianGroundClutter(builder);
-		addConiferTrees(builder);
 		addPermianRock(builder);
+		
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
 	}
 	
 	public static void permianDesert(BiomeGenerationSettings.Builder builder)
@@ -89,6 +91,9 @@ public class ModBiomeFeatures
 	{
 		addPermianGroundClutter(builder);
 		addPermianRock(builder);
+		
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
 	}
 	
 	//Permian Features

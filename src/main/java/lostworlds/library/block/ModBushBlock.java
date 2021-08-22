@@ -15,11 +15,6 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-/*
- * Author: Willatendo
- * Date: July 2, 2021
- */
-
 public class ModBushBlock extends BushBlock implements IGrowable
 {
 	public ModBushBlock(Properties properties) 

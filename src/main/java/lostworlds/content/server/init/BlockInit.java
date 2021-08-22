@@ -3,6 +3,7 @@ package lostworlds.content.server.init;
 import lostworlds.library.block.AnalyserBlock;
 import lostworlds.library.block.ArchaeologyTable;
 import lostworlds.library.block.AshLayerBlock;
+import lostworlds.library.block.BrazileaBlock;
 import lostworlds.library.block.ColouredDecorationBlock;
 import lostworlds.library.block.DNAExtractorBlock;
 import lostworlds.library.block.DNAInjectorBlock;
@@ -19,6 +20,7 @@ import lostworlds.library.block.ModOreBlock;
 import lostworlds.library.block.ModOreRotatedPillerBlock;
 import lostworlds.library.block.ModSaplingBlock;
 import lostworlds.library.block.MossySoilBlock;
+import lostworlds.library.block.NautilusShellBlock;
 import lostworlds.library.block.PlasteredFossilBlock;
 import lostworlds.library.block.PowerSupplyBlock;
 import lostworlds.library.block.SpongeColonyBlock;
@@ -230,6 +232,7 @@ public class BlockInit
 	public static final Block ASHY_SHRUB = BlockAndItemBuilder.create("ashy_shrub", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block ALETHOPTERIS = BlockAndItemBuilder.create("alethopteris", new DoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block CEPHALOTAXUS = BlockAndItemBuilder.create("cephalotaxus", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block BRAZILEA = BlockAndItemBuilder.create("brazilea", new BrazileaBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block CYCAD = BlockAndItemBuilder.create("cycad", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block DICKSONIA = BlockAndItemBuilder.create("dicksonia", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block TALL_DICKSONIA = BlockAndItemBuilder.create("tall_dicksonia", new DoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
@@ -248,6 +251,8 @@ public class BlockInit
 	public static final Block DIICTODON_BURROW = BlockAndItemBuilder.create("diictodon_burrow", new Block(AbstractBlock.Properties.of(Material.SAND, MaterialColor.SAND).harvestTool(ToolType.SHOVEL).strength(1.5F).sound(SoundType.SAND)));
 	public static final Block TUNNELED_SOIL = BlockAndItemBuilder.create("tunneled_soil", new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
 
+	public static final Block NAUTILUS_SHELL = BlockBuilder.create("nautilus_shell", new NautilusShellBlock(AbstractBlock.Properties.of(Material.SHULKER_SHELL).instabreak().noOcclusion().sound(SoundType.ANVIL)));
+	
 	public static final Block GEYSER_BLOCK = BlockAndItemBuilder.create("geyser_block", new GeyserBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(0.75F).noOcclusion()));
 	
 	public static final Block NESTING_BLOCK = BlockAndItemBuilder.create("nesting_block", new Block(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.3F).sound(SoundType.GRASS)));

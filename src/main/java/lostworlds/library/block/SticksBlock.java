@@ -12,10 +12,6 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 
-/*
- * Author: Willatendo
- * Date: July 4, 2021
- */
 
 public class SticksBlock extends Block
 {

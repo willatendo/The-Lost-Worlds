@@ -1,53 +1,48 @@
 package lostworlds.library.block;
 
-import lostworlds.content.server.init.BlockInit;
-import lostworlds.content.server.init.ItemInit;
+import java.util.HashMap;
+import java.util.Map;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
-import net.minecraft.block.material.PushReaction;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
 
-public class ExposedFossilBlock extends Block implements IWaterLoggable
+public class NautilusShellBlock extends Block implements IWaterLoggable
 {
-	private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+	protected static final Map<Block, Map<Direction, VoxelShape>> SHAPES = new HashMap<Block, Map<Direction, VoxelShape>>();
 	private static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
-	private static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D);
+	private static final VoxelShape SHAPE = VoxelShapes.join(Block.box(4.5, 1, 4, 11.5, 9, 13), Block.box(5.5, 0, 3, 10.5, 10, 14), IBooleanFunction.OR);
+	private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	
-	public ExposedFossilBlock(Properties properties) 
+	public NautilusShellBlock(Properties properties) 
 	{
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.valueOf(false)));
+		
+		runCalculation(SHAPE);
 	}
 	
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) 
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) 
 	{
-		return SHAPE;
+		return SHAPES.get(this).get(state.getValue(HORIZONTAL_FACING));
 	}
 	
 	@Override
@@ -78,12 +73,6 @@ public class ExposedFossilBlock extends Block implements IWaterLoggable
 	}
 	
 	@Override
-	public PushReaction getPistonPushReaction(BlockState state) 
-	{
-		return PushReaction.DESTROY;
-	}
-	
-	@Override
 	public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) 
 	{
 		if(stateIn.getValue(WATERLOGGED)) 
@@ -93,44 +82,35 @@ public class ExposedFossilBlock extends Block implements IWaterLoggable
 		
 		return super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
 	}
-	 
+	
 	@Override
 	public FluidState getFluidState(BlockState state) 
 	{
 		return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
 	}
 	
-	@Override
-	public boolean isPathfindable(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) 
+	protected static VoxelShape calculateShapes(Direction to, VoxelShape shape) 
 	{
-		return false;
+		VoxelShape[] buffer = new VoxelShape[] { shape, VoxelShapes.empty() };
+
+		int times = (to.get2DDataValue() - Direction.NORTH.get2DDataValue() + 4) % 4;
+		for (int i = 0; i < times; i++) 
+		{
+			buffer[0].forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> buffer[1] = VoxelShapes.or(buffer[1], VoxelShapes.box(1 - maxZ, minY, minX, 1 - minZ, maxY, maxX)));
+			buffer[0] = buffer[1];
+			buffer[1] = VoxelShapes.empty();
+		}
+
+		return buffer[0];
 	}
-	
-	@Override
-	public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
+
+	protected void runCalculation(VoxelShape shape) 
 	{
-		if(player.getItemInHand(handIn) != null)
+		SHAPES.put(this, new HashMap<Direction, VoxelShape>());
+		Map<Direction, VoxelShape> facingMap = SHAPES.get(this);
+		for (Direction direction : Direction.values()) 
 		{
-			Item item = player.getItemInHand(handIn).getItem();
-			if(item == ItemInit.WET_PAPER)
-			{
-				worldIn.setBlockAndUpdate(pos, BlockInit.PLASTERED_FOSSIL.defaultBlockState().setValue(WATERLOGGED, state.getValue(WATERLOGGED)));
-				worldIn.playSound(player, pos, SoundEvents.WOOL_PLACE, SoundCategory.BLOCKS, 0.7F, 1.0F);
-				
-				if(!player.abilities.instabuild)
-				{
-					ItemStack stack = player.getItemInHand(handIn);
-					stack.shrink(1);
-				}
-				
-				return ActionResultType.SUCCESS;
-			}
+			facingMap.put(direction, calculateShapes(direction, shape));
 		}
-		else
-		{
-			return ActionResultType.FAIL;
-		}
-		
-		return super.use(state, worldIn, pos, player, handIn, hit);
 	}
 }

@@ -7,11 +7,6 @@ import net.minecraft.block.WoodType;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockReader;
 
-/*
- * Author: Willatendo
- * Date: July 16, 2021
- */
-
 public class ModStandingSignBlock extends WallSignBlock
 {
 	public ModStandingSignBlock(Properties properties, WoodType woodType) 

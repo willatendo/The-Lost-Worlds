@@ -21,11 +21,6 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraftforge.common.ToolType;
 
-/*
- * Author: Willatendo
- * Date: July 1, 2021
- */
-
 public class PowerSupplyBlock extends RedstoneBlock
 {
 	private static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
