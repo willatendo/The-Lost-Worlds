@@ -8,11 +8,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.DyeColor;
 
-/*
- * Author: Willatendo
- * Date: July 2, 2021
- */
-
 public class ColouredDecorationBlock extends Block
 {
 	protected ColouredDecorationBlock() 

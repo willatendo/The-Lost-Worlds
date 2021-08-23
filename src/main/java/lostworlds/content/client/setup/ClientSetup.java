@@ -42,6 +42,7 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.OSMUNDA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.PERMIAN_DESERT_FERNS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.PERMIAN_DESERT_SHRUB, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.BRAZILEA, RenderType.cutout());
 		
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_CLEANER, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_GRINDER, RenderType.translucent());

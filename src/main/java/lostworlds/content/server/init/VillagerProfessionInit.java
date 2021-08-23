@@ -7,11 +7,6 @@ import lostworlds.library.util.ModUtils;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.util.SoundEvents;
 
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
-
 public class VillagerProfessionInit 
 {
 	public static final VillagerProfession ARCHAEOLOGIST = ModRegistry.register("archaeologist", new VillagerProfession("archaeologist", PointOfInterestInit.ARCHAEOLOGY_TABLE_POI, ImmutableSet.of(), ImmutableSet.of(), SoundEvents.VILLAGER_WORK_MASON));

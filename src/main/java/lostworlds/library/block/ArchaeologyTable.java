@@ -30,11 +30,6 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
-/*
- * Author: Willatendo
- * Date: July 2, 2021
- */
-
 public class ArchaeologyTable extends Block implements IWaterLoggable
 {
 	private static final ITextComponent NAME = ModUtils.tTC("container", "archaeology_table");

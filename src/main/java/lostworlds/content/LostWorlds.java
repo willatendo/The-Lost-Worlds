@@ -4,12 +4,6 @@ import lostworlds.content.client.dimension.PermianDimensionRenderInfo;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.DimensionInit;
 import lostworlds.content.server.init.PotionInit;
-import lostworlds.integration.buzzierbees.util.BuzzierBeesRegistry;
-import lostworlds.integration.buzzierbees.util.BuzzierBeesUtils;
-import lostworlds.integration.quark.client.chest.QuarkChestTileEntityRender;
-import lostworlds.integration.quark.init.QuarkTileEntities;
-import lostworlds.integration.quark.util.QuarkRegistry;
-import lostworlds.integration.quark.util.QuarkUtils;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.client.world.DimensionRenderInfo;
@@ -20,13 +14,10 @@ import net.minecraft.potion.PotionUtils;
 import net.minecraft.potion.Potions;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLEnvironment;
 import software.bernie.geckolib3.GeckoLib;
 
 @Mod(ModUtils.ID)
@@ -37,17 +28,7 @@ public class LostWorlds
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		
 		ModRegistry.register(bus);
-		
-		if(ModList.get().isLoaded(QuarkUtils.QUARK_ID) || !FMLEnvironment.production)
-		{
-			QuarkRegistry.register();
-		}
-		
-		if(ModList.get().isLoaded(BuzzierBeesUtils.BUZZIER_BEES_ID) || !FMLEnvironment.production)
-		{
-			BuzzierBeesRegistry.register();
-		}
-		
+
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
 				
@@ -69,11 +50,5 @@ public class LostWorlds
 		DimensionRenderInfo baseRenderer = new PermianDimensionRenderInfo();
 		
 		DimensionRenderInfo.EFFECTS.put(ModUtils.rL("permian_render"), baseRenderer);
-		
-		if(ModList.get().isLoaded(QuarkUtils.QUARK_ID) || !FMLEnvironment.production)
-		{
-			ClientRegistry.bindTileEntityRenderer(QuarkTileEntities.MOD_CHEST, QuarkChestTileEntityRender::new);
-			ClientRegistry.bindTileEntityRenderer(QuarkTileEntities.MOD_TRAPPED_CHEST, QuarkChestTileEntityRender::new);
-		}
 	}
 }

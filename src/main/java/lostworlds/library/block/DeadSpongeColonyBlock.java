@@ -8,11 +8,6 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
-/*
- * Author: Willatendo
- * Date: July 12, 2021
- */
-
 public class DeadSpongeColonyBlock extends DeadCoralPlantBlock
 {
 	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 7, 16);

@@ -75,7 +75,7 @@ public class ModBiomeFeatures
 		addPermianRock(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
 	}
 	
 	public static void permianCoralReef(BiomeGenerationSettings.Builder builder)
