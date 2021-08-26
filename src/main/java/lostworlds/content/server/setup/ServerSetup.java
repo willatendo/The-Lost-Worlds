@@ -8,12 +8,16 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.VillagerProfessionInit;
+import lostworlds.library.entity.illager.FossilPoacherEntity;
 import lostworlds.library.trades.MultiItemForEmeraldsTrade;
 import lostworlds.library.util.JigsawUtils;
 import lostworlds.library.util.ModUtils;
+import net.minecraft.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -95,6 +99,20 @@ public class ServerSetup
 			{
 				ModVillagerTrades.fillTradeData();
 			});
+		}
+	}
+	
+	@EventBusSubscriber(bus = Bus.MOD)
+	static class IllagerSetup
+	{
+		@SubscribeEvent
+		public void onEntityJoin(EntityJoinWorldEvent event) 
+		{
+			if(event.getEntity() instanceof VillagerEntity) 
+			{
+				VillagerEntity villager = (VillagerEntity) event.getEntity();
+				villager.goalSelector.addGoal(1, new AvoidEntityGoal(villager, FossilPoacherEntity.class, 16.0F, 0.7D, 0.7D));
+			}
 		}
 	}
 }

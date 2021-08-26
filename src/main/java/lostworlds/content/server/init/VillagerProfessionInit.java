@@ -9,7 +9,9 @@ import net.minecraft.util.SoundEvents;
 
 public class VillagerProfessionInit 
 {
-	public static final VillagerProfession ARCHAEOLOGIST = ModRegistry.register("archaeologist", new VillagerProfession("archaeologist", PointOfInterestInit.ARCHAEOLOGY_TABLE_POI, ImmutableSet.of(), ImmutableSet.of(), SoundEvents.VILLAGER_WORK_MASON));
+	public static final VillagerProfession ARCHAEOLOGIST = ModRegistry.register("archaeologist", new VillagerProfession("archaeologist", PointOfInterestInit.ARCHAEOLOGY_TABLE, ImmutableSet.of(), ImmutableSet.of(), SoundEvents.VILLAGER_WORK_MASON));
+	public static final VillagerProfession FOSSIL_TRADER = ModRegistry.register("fossil_trader", new VillagerProfession("fossil_trader", PointOfInterestInit.FOSSIL_CRATE, ImmutableSet.of(), ImmutableSet.of(), SoundEvents.CHEST_OPEN));
+	public static final VillagerProfession PALEONTOLOGIST = ModRegistry.register("paleontologist", new VillagerProfession("paleontologist", PointOfInterestInit.PALEONTOLOGY_TABLE, ImmutableSet.of(), ImmutableSet.of(), SoundEvents.VILLAGER_WORK_MASON));
 	
 	//Registry
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Villager Professions"); }

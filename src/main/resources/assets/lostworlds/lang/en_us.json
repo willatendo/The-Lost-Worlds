@@ -464,23 +464,6 @@
 	//World Types
 	"generator.lostworlds.rift_world_type": "Rift",
 	
-	//Config
-	"config.lostworlds.allosaurusHeath": "Allosaurus Heath",
-	"config.lostworlds.allosaurusMovementSpeed": "Allosaurus Movement Speed",
-	"config.lostworlds.allosaurusAttackDamage": "Allosaurus Attack Damage",
-
-	"config.lostworlds.ancientCreatureSpawnInOverworld": "Ancient Creatures Spawn in Overworld",
-
-	"config.lostworlds.shouldForestsSpawnInOverworld": "Should Forests Spawn in Overworld",
-
-	"config.lostworlds.araucaria_forest_weight": "Araucaria Forest Weight",
-	"config.lostworlds.conifer_forest_weight": "Conifer Forest Weight",
-	"config.lostworlds.ginkgo_forest_weight": "Ginkgo Forest Weight",
-	
-	"config.lostworlds.shouldVolcanosSpawnInOverworld": "Should Volcanos Spawn in Overworld",
-
-	"config.lostworlds.volcanoWeight": "Volcano Weight",
-	
 	//Item Groups
 	"itemGroup.lostworlds.items": "Lost Worlds Items",
 	"itemGroup.lostworlds.blocks": "Lost Worlds Blocks"

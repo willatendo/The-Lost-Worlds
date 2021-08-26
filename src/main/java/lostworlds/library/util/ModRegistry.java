@@ -16,11 +16,10 @@ import lostworlds.content.server.init.SoundInit;
 import lostworlds.content.server.init.SurfaceBuilderInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.content.server.init.VillagerProfessionInit;
+import lostworlds.content.server.init.WorldCarverInit;
 import lostworlds.content.server.init.WorldTypeInit;
+import lostworlds.library.biome.ModConfiguredCarvers;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
@@ -31,10 +30,15 @@ import net.minecraft.potion.Effect;
 import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.village.PointOfInterestType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.blockplacer.BlockPlacerType;
+import net.minecraft.world.gen.carver.ConfiguredCarver;
+import net.minecraft.world.gen.carver.ICarverConfig;
+import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.ProbabilityConfig;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -110,18 +114,6 @@ public class ModRegistry
 		return type;
 	}
 	
-	private static EntityType<?> register(String id, EntityType<?> entity) 
-	{
-		entity.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.ENTITIES.register(entity);
-		return entity;
-	}
-	
-	public static <T extends Entity> EntityType<?> register(String id, EntityType.IFactory<T> entity, EntityClassification entitytype, Class<T> entityClass, float width, float height) 
-	{
-		return register(id, EntityType.Builder.of(entity, entitytype).sized(width, height).build(id));
-	}
-	
 	public static VillagerProfession register(String id, VillagerProfession profession)
 	{
 		profession.setRegistryName(ModUtils.rL(id));
@@ -157,6 +149,18 @@ public class ModRegistry
 		return feature;
 	}
 	
+	public static WorldCarver<ProbabilityConfig> register(String id, WorldCarver<ProbabilityConfig> worldCarver)
+	{
+		worldCarver.setRegistryName(ModUtils.rL(id));
+		ForgeRegistries.WORLD_CARVERS.register(worldCarver);
+		return worldCarver;
+	}	
+	
+	public static <WC extends ICarverConfig> ConfiguredCarver<WC> register(String id, ConfiguredCarver<WC> configuredCarver) 
+	{
+		return WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_CARVER, ModUtils.rL(id), configuredCarver);
+	}
+	
 	//Registers Deferred Registers
 	public static void register(IEventBus bus)
 	{
@@ -179,6 +183,8 @@ public class ModRegistry
 		SurfaceBuilderInit.init();
 		FoliagePlacerInit.init();
 		FeatureInit.init();
+		WorldCarverInit.init();
+		ModConfiguredCarvers.init();
 		
 		WorldTypeInit.setup();
 	}

@@ -45,7 +45,7 @@ public class ModBushBlock extends BushBlock implements IGrowable
 	@Override
 	public void performBonemeal(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) 
 	{
-		DoublePlantBlock doubleplantblock = (DoublePlantBlock)(this == BlockInit.DICKSONIA ? BlockInit.TALL_DICKSONIA : Blocks.TALL_GRASS);
+		DoublePlantBlock doubleplantblock = (DoublePlantBlock)(this == BlockInit.DICKSONIA ? BlockInit.TALL_DICKSONIA : this == BlockInit.GROUND_FERNS ? Blocks.LARGE_FERN : Blocks.TALL_GRASS);
 		if(doubleplantblock.defaultBlockState().canSurvive(worldIn, pos) && worldIn.isEmptyBlock(pos.above())) 
 		{
 			doubleplantblock.placeAt(worldIn, pos, 2);

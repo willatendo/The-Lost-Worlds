@@ -1,5 +1,6 @@
 package lostworlds.content.client.setup;
 
+import lostworlds.content.client.entity.render.FossilPoacherRenderer;
 import lostworlds.content.client.screen.AnalyserScreen;
 import lostworlds.content.client.screen.ArchaeologyTableScreen;
 import lostworlds.content.client.screen.DNAExtractorScreen;
@@ -9,6 +10,7 @@ import lostworlds.content.client.screen.FossilGrinderScreen;
 import lostworlds.content.client.screen.TimeMachineScreen;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
+import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.client.gui.ScreenManager;
@@ -18,6 +20,7 @@ import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -121,5 +124,7 @@ public class ClientSetup
 
 		ScreenManager.register(ContainerInit.TIME_MACHINE_CONTAINER.get(), TimeMachineScreen::new);
 		ScreenManager.register(ContainerInit.ARCHAEOLOGY_CONTAINER.get(), ArchaeologyTableScreen::new);
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.FOSSIL_POACHER, manager -> new FossilPoacherRenderer(manager));
 	}
 }

@@ -26,10 +26,13 @@ import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.MultipleRandomFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.ReplaceBlockConfig;
 import net.minecraft.world.gen.feature.SingleRandomFeature;
 import net.minecraft.world.gen.feature.TwoLayerFeature;
 import net.minecraft.world.gen.foliageplacer.FancyFoliagePlacer;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
+import net.minecraft.world.gen.placement.DepthAverageConfig;
+import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 import net.minecraft.world.gen.placement.TopSolidWithNoiseConfig;
@@ -81,6 +84,14 @@ public class ModConfiguredFeatures
 
 	public static final ConfiguredFeature<?, ?> BASALT_DIAMOND_ORE = register("basalt_diamond_ore", Feature.ORE.configured(new OreFeatureConfig(ModFillerBlockTypes.BASALT, BlockInit.BASALT_DIAMOND_ORE.defaultBlockState(), 10)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(40, 0, 100))).squared().count(30));
 	
+	public static final ConfiguredFeature<?, ?> PERMIAN_COAL_ORE = register("ore_coal", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_COAL_ORE.defaultBlockState(), 17)).range(128).squared().count(20));
+	public static final ConfiguredFeature<?, ?> PERMIAN_IRON_ORE = register("ore_iron", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_IRON_ORE.defaultBlockState(), 9)).range(64).squared().count(20));
+	public static final ConfiguredFeature<?, ?> PERMIAN_GOLD_ORE = register("ore_gold", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_GOLD_ORE.defaultBlockState(), 9)).range(32).squared().count(2));
+	public static final ConfiguredFeature<?, ?> PERMIAN_REDSTONE_ORE = register("ore_redstone", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_REDSTONE_ORE.defaultBlockState(), 8)).range(16).squared().count(8));
+	public static final ConfiguredFeature<?, ?> PERMIAN_DIAMOND_ORE = register("ore_diamond", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_DIAMOND_ORE.defaultBlockState(), 8)).range(16).squared());
+	public static final ConfiguredFeature<?, ?> PERMIAN_LAPIS_ORE = register("ore_lapis", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_LAPIS_ORE.defaultBlockState(), 7)).decorated(Placement.DEPTH_AVERAGE.configured(new DepthAverageConfig(16, 16))).squared());
+	public static final ConfiguredFeature<?, ?> PERMIAN_EMERALD_ORE = register("ore_emerald", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(BlockInit.PERMIAN_STONE.defaultBlockState(), BlockInit.PERMIAN_EMERALD_ORE.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE)));
+	   
 	public static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String id, ConfiguredFeature<FC, ?> configuredFeature) 
 	{
 		return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, ModUtils.rL(id), configuredFeature);

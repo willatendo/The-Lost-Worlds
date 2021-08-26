@@ -14,12 +14,16 @@ public class ModBiomeFeatures
 		addAshyShrub(builder);
 		addAshLayer(builder);
 		addPermianRock(builder);
+		addPermianCarvers(builder);
+		addPermianOres(builder);
 	}
 	
 	public static void permianConiferForest(BiomeGenerationSettings.Builder builder)
 	{
 		addPermianGroundClutter(builder);
 		addPermianRock(builder);
+		addPermianCarvers(builder);
+		addPermianOres(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
@@ -30,12 +34,16 @@ public class ModBiomeFeatures
 		addPermianDesertPlants(builder);
 		addPermianGroundClutter(builder);
 		addPermianRock(builder);
+		addPermianCarvers(builder);
+		addPermianOres(builder);
 	}
 	
 	public static void permianDriedPlains(BiomeGenerationSettings.Builder builder)
 	{
 		addPermianGroundClutter(builder);
 		addPermianRock(builder);
+		addPermianCarvers(builder);
+		addPermianOres(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
@@ -44,14 +52,20 @@ public class ModBiomeFeatures
 	public static void permianGinkgoForest(BiomeGenerationSettings.Builder builder)
 	{
 		addPermianGroundClutter(builder);
-		addGinkgoTrees(builder);
 		addPermianRock(builder);
+		addPermianCarvers(builder);
+		addPermianOres(builder);
+		
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.GINKGO_TREES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.GINKGO_STICKS);
 	}
 	
 	public static void permianFloodBasalts(BiomeGenerationSettings.Builder builder)
 	{
 		addBasaltDiamondOre(builder);
 		addGeyser(builder);
+		addPermianCarvers(builder);
+		addPermianOres(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA);
 		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Features.BASALT_PILLAR);
@@ -66,6 +80,9 @@ public class ModBiomeFeatures
 	{
 		addConiferTrees(builder);
 		addPermianRock(builder);
+		addPermianCarvers(builder);
+		addPermianOres(builder);
+		addPermianEmerald(builder);
 		
 		DefaultBiomeFeatures.addSurfaceFreezing(builder);
 	}
@@ -73,6 +90,8 @@ public class ModBiomeFeatures
 	public static void permianOcean(BiomeGenerationSettings.Builder builder)
 	{
 		addPermianRock(builder);
+		addPermianCarvers(builder);
+		addPermianOres(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
@@ -81,6 +100,8 @@ public class ModBiomeFeatures
 	public static void permianCoralReef(BiomeGenerationSettings.Builder builder)
 	{
 		addPermianRock(builder);
+		addPermianCarvers(builder);
+		addPermianOres(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
@@ -91,6 +112,8 @@ public class ModBiomeFeatures
 	{
 		addPermianGroundClutter(builder);
 		addPermianRock(builder);
+		addPermianCarvers(builder);
+		addPermianOres(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
@@ -113,18 +136,33 @@ public class ModBiomeFeatures
 	{
 		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ModConfiguredFeatures.PERMIAN_ROCK);
 	}
+	
+	private static void addPermianCarvers(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addCarver(GenerationStage.Carving.AIR, ModConfiguredCarvers.PERMIAN_CAVE_CARVER);
+		builder.addCarver(GenerationStage.Carving.AIR, ModConfiguredCarvers.PERMIAN_CANYON_CARVER);
+	}
+	
+	private static void addPermianOres(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_COAL_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_DIAMOND_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_GOLD_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_IRON_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_LAPIS_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_REDSTONE_ORE);
+	}
+	
+	private static void addPermianEmerald(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_EMERALD_ORE);
+	}
 
 	//General Features
 	private static void addConiferTrees(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
-	}
-	
-	private static void addGinkgoTrees(BiomeGenerationSettings.Builder builder)
-	{
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.GINKGO_TREES);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.GINKGO_STICKS);
 	}
 	
 	private static void addScorchedTrees(BiomeGenerationSettings.Builder builder)

@@ -32,6 +32,7 @@ import lostworlds.library.block.builder.BlockBuilder;
 import lostworlds.library.item.tool.ModMaterials;
 import lostworlds.library.item.tool.ModToolTypes;
 import lostworlds.library.tree.ConiferTree;
+import lostworlds.library.tree.GinkgoTree;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -192,7 +193,7 @@ public class BlockInit
 	public static final Block GINKGO_WOOD = BlockAndItemBuilder.create("ginkgo_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_GINKGO_WOOD = BlockAndItemBuilder.create("stripped_ginkgo_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
 	public static final Block GINKGO_LEAVES = BlockAndItemBuilder.create("ginkgo_leaves", new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES, MaterialColor.COLOR_GREEN).strength(0.3F).noOcclusion().sound(SoundType.GRASS)));
-	public static final Block GINKGO_SAPLING = BlockAndItemBuilder.create("ginkgo_sapling", new ModSaplingBlock(null, AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final Block GINKGO_SAPLING = BlockAndItemBuilder.create("ginkgo_sapling", new ModSaplingBlock(new GinkgoTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block GINKGO_PLANKS = BlockAndItemBuilder.create("ginkgo_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
 	public static final Block GINKGO_STAIRS = BlockAndItemBuilder.create("ginkgo_stairs", new StairsBlock(() -> BlockInit.CONIFER_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
 	public static final Block GINKGO_SLAB = BlockAndItemBuilder.create("ginkgo_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));

@@ -27,11 +27,6 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-/*
- * Author: Willatendo
- * Date: July 5, 2021
- */
-
 public class TimeBookItem extends ShootableItem
 {
 	public static final Predicate<ItemStack> FUEL = (stack) -> 

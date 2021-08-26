@@ -3,6 +3,11 @@ package lostworlds.library.util;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.google.common.collect.ImmutableSet;
+
+import lostworlds.content.server.init.BlockInit;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -12,6 +17,11 @@ public class ModUtils
 	public static final Logger LOGGER = LogManager.getLogger(ModUtils.ID);
 		
 	public static final String ID = "lostworlds";
+	
+	public static ImmutableSet<Block> permianCarverBlocks()
+	{
+		return ImmutableSet.of(BlockInit.PERMIAN_SAND, BlockInit.PERMIAN_STONE, BlockInit.PERMIAN_COBBLESTONE, BlockInit.MOSSY_SOIL, BlockInit.DRIED_SOIL, BlockInit.CRACKED_SOIL, BlockInit.VOLCANIC_ASH, BlockInit.VOLCANIC_ASH_LAYER, Blocks.BASALT, Blocks.BLACKSTONE, Blocks.DIRT, Blocks.GRAVEL, Blocks.MAGMA_BLOCK);
+	}
 	
 	public static ResourceLocation rL(String location)
 	{
