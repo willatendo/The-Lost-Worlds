@@ -10,9 +10,8 @@ import lostworlds.library.util.ModUtils;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.loot.LootTables;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.ChestTileEntity;
+import net.minecraft.tileentity.BarrelTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;
@@ -24,7 +23,6 @@ import net.minecraft.world.ISeedReader;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.feature.structure.NetherFossilStructures;
 import net.minecraft.world.gen.feature.structure.StructureManager;
 import net.minecraft.world.gen.feature.structure.StructurePiece;
 import net.minecraft.world.gen.feature.structure.TemplateStructurePiece;
@@ -40,7 +38,7 @@ public class BlackMarketPeice
 	public static void addPieces(TemplateManager manager, List<StructurePiece> piece, Random rand, BlockPos pos) 
 	{
 		Rotation rotation = Rotation.getRandom(rand);
-		piece.add(new NetherFossilStructures.Piece(manager, BLACK_MARKET_LOCATION, pos, rotation));
+		piece.add(new BlackMarketPeice.Piece(manager, BLACK_MARKET_LOCATION, pos, rotation));
 	}
 
 	public static class Piece extends TemplateStructurePiece 
@@ -72,6 +70,7 @@ public class BlackMarketPeice
 			this.setup(template, this.templatePosition, placementsettings);
 		}
 
+		@Override
 		protected void addAdditionalSaveData(CompoundNBT nbt) 
 		{
 			super.addAdditionalSaveData(nbt);
@@ -79,6 +78,7 @@ public class BlackMarketPeice
 			nbt.putString("Rot", this.rotation.name());
 		}
 
+		@Override
 		protected void handleDataMarker(String data, BlockPos pos, IServerWorld world, Random rand, MutableBoundingBox box) 
 		{
 			if("fossil_poacher_spawn".equals(data))
@@ -95,13 +95,14 @@ public class BlackMarketPeice
 			{
 				world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
 				TileEntity tileentity = world.getBlockEntity(pos.below());
-				if(tileentity instanceof ChestTileEntity) 
+				if(tileentity instanceof BarrelTileEntity) 
 				{
-					((ChestTileEntity)tileentity).setLootTable(ModUtils.rL("chests/black_market_loot"), rand.nextLong());
+					((BarrelTileEntity)tileentity).setLootTable(ModUtils.rL("chests/black_market_loot"), rand.nextLong());
 				}
 			}
 		}
 
+		@Override
 		public boolean postProcess(ISeedReader reader, StructureManager manager, ChunkGenerator chunkGenerator, Random rand, MutableBoundingBox box, ChunkPos chunkPos, BlockPos pos) 
 		{
 			box.expand(this.template.getBoundingBox(this.placeSettings, this.templatePosition));
