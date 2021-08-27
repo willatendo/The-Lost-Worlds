@@ -8,6 +8,8 @@ import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.DimensionInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.PotionInit;
+import lostworlds.content.server.init.StructurePieceInit;
+import lostworlds.library.biome.ModConfiguredStructures;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.client.world.DimensionRenderInfo;
@@ -19,7 +21,9 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.potion.Potions;
 import net.minecraft.world.raid.Raid;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -28,16 +32,19 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib3.GeckoLib;
 
 @Mod(ModUtils.ID)
-public class LostWorlds 
+public class LostWorldsMod 
 {
-	public LostWorlds() 
+	public LostWorldsMod() 
 	{
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		final IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 		
 		ModRegistry.register(bus);
 
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
+		
+		forgeBus.addListener(this::biomeModification);
 				
 		GeckoLib.initialize();
 	}
@@ -46,8 +53,13 @@ public class LostWorlds
 	{		
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(BlockInit.VOLCANIC_ASH.asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), PotionInit.ASHY_LUNG_POTION));
 		
+		
+		
 		event.enqueueWork(() -> 
 		{
+			StructurePieceInit.registerBiomeGeneration();
+			ModConfiguredStructures.init();
+			
 			DimensionInit.initBiomeSourcesAndChunkGenerator();
 		});	
 		
@@ -60,6 +72,14 @@ public class LostWorlds
 		
 		DimensionRenderInfo.EFFECTS.put(ModUtils.rL("permian_render"), baseRenderer);
 	}
+	
+	private void biomeModification(final BiomeLoadingEvent event) 
+	{
+		if(ModUtils.SIMPLE_SPAWNABLE_BIOME_CATEGORIES.contains(event.getCategory()))
+		{
+			event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_BLACK_MARKET);
+		}
+    }
 	
 	private void translateToWaves(EntityType<? extends AbstractRaiderEntity> type, List<? extends Integer> list) 
 	{

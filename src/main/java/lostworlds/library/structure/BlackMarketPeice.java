@@ -1,0 +1,98 @@
+package lostworlds.library.structure;
+
+import java.util.List;
+import java.util.Random;
+
+import lostworlds.content.server.init.EntityInit;
+import lostworlds.content.server.init.StructurePieceInit;
+import lostworlds.library.entity.illager.FossilPoacherEntity;
+import lostworlds.library.util.ModUtils;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.ILivingEntityData;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.Mirror;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Rotation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
+import net.minecraft.util.math.MutableBoundingBox;
+import net.minecraft.world.ISeedReader;
+import net.minecraft.world.IServerWorld;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.feature.structure.NetherFossilStructures;
+import net.minecraft.world.gen.feature.structure.StructureManager;
+import net.minecraft.world.gen.feature.structure.StructurePiece;
+import net.minecraft.world.gen.feature.structure.TemplateStructurePiece;
+import net.minecraft.world.gen.feature.template.BlockIgnoreStructureProcessor;
+import net.minecraft.world.gen.feature.template.PlacementSettings;
+import net.minecraft.world.gen.feature.template.Template;
+import net.minecraft.world.gen.feature.template.TemplateManager;
+
+public class BlackMarketPeice 
+{
+	private static final ResourceLocation BLACK_MARKET_LOCATION = ModUtils.rL("black_market");
+
+	public static void addPieces(TemplateManager manager, List<StructurePiece> piece, Random rand, BlockPos pos) 
+	{
+		Rotation rotation = Rotation.getRandom(rand);
+		piece.add(new NetherFossilStructures.Piece(manager, BLACK_MARKET_LOCATION, pos, rotation));
+	}
+
+	public static class Piece extends TemplateStructurePiece 
+	{
+		private final ResourceLocation templateLocation;
+		private final Rotation rotation;
+
+		public Piece(TemplateManager manager, ResourceLocation location, BlockPos pos, Rotation rotation) 
+		{
+			super(StructurePieceInit.BLACK_MARKET_PIECE, 0);
+			this.templateLocation = location;
+			this.templatePosition = pos;
+			this.rotation = rotation;
+			this.loadTemplate(manager);
+		}
+
+		public Piece(TemplateManager manager, CompoundNBT nbt) 
+		{
+			super(StructurePieceInit.BLACK_MARKET_PIECE, nbt);
+			this.templateLocation = new ResourceLocation(nbt.getString("Template"));
+			this.rotation = Rotation.valueOf(nbt.getString("Rot"));
+			this.loadTemplate(manager);
+		}
+
+		private void loadTemplate(TemplateManager manager)
+		{
+			Template template = manager.getOrCreate(this.templateLocation);
+			PlacementSettings placementsettings = (new PlacementSettings()).setRotation(this.rotation).setMirror(Mirror.NONE).addProcessor(BlockIgnoreStructureProcessor.STRUCTURE_AND_AIR);
+			this.setup(template, this.templatePosition, placementsettings);
+		}
+
+		protected void addAdditionalSaveData(CompoundNBT nbt) 
+		{
+			super.addAdditionalSaveData(nbt);
+			nbt.putString("Template", this.templateLocation.toString());
+			nbt.putString("Rot", this.rotation.name());
+		}
+
+		protected void handleDataMarker(String data, BlockPos pos, IServerWorld world, Random rand, MutableBoundingBox box) 
+		{
+			if("fossil_poacher_spawn".equals(data))
+			{
+				world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+				FossilPoacherEntity entity = EntityInit.FOSSIL_POACHER.create((World)world.getLevel());
+				entity.setPersistenceRequired();
+				entity.setPos(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D);
+				entity.finalizeSpawn(world, world.getCurrentDifficultyAt(entity.blockPosition()), SpawnReason.STRUCTURE, (ILivingEntityData)null, (CompoundNBT)null);
+				world.addFreshEntity(entity);
+			}
+		}
+
+		public boolean postProcess(ISeedReader reader, StructureManager manager, ChunkGenerator chunkGenerator, Random rand, MutableBoundingBox box, ChunkPos chunkPos, BlockPos pos) 
+		{
+			box.expand(this.template.getBoundingBox(this.placeSettings, this.templatePosition));
+			return super.postProcess(reader, manager, chunkGenerator, rand, box, chunkPos, pos);
+		}
+	}
+}

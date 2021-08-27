@@ -53,6 +53,7 @@ public class ServerSetup
 		}
 	}
 	
+	
 	@EventBusSubscriber(modid = ModUtils.ID, bus = Bus.MOD)
 	static class ModVillagerTrades 
 	{

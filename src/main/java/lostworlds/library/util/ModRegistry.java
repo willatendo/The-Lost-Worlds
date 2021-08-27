@@ -1,5 +1,7 @@
 package lostworlds.library.util;
 
+import java.util.Locale;
+
 import lostworlds.content.server.init.BiomeInit;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
@@ -13,6 +15,8 @@ import lostworlds.content.server.init.PointOfInterestInit;
 import lostworlds.content.server.init.PotionInit;
 import lostworlds.content.server.init.RecipeInit;
 import lostworlds.content.server.init.SoundInit;
+import lostworlds.content.server.init.StructureInit;
+import lostworlds.content.server.init.StructurePieceInit;
 import lostworlds.content.server.init.SurfaceBuilderInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.content.server.init.VillagerProfessionInit;
@@ -30,6 +34,7 @@ import net.minecraft.potion.Effect;
 import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.village.PointOfInterestType;
 import net.minecraft.world.biome.Biome;
@@ -38,7 +43,11 @@ import net.minecraft.world.gen.carver.ConfiguredCarver;
 import net.minecraft.world.gen.carver.ICarverConfig;
 import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
+import net.minecraft.world.gen.feature.StructureFeature;
+import net.minecraft.world.gen.feature.structure.IStructurePieceType;
+import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -135,6 +144,23 @@ public class ModRegistry
 		return biome;
 	}
 	
+	public static IStructurePieceType register(String id, IStructurePieceType type) 
+	{
+		return Registry.register(Registry.STRUCTURE_PIECE, ModUtils.rL(id.toLowerCase(Locale.ROOT)), type);
+	}
+	
+	public static Structure<NoFeatureConfig> register(String id, Structure<NoFeatureConfig> structure)
+	{
+		structure.setRegistryName(ModUtils.rL(id));
+		ForgeRegistries.STRUCTURE_FEATURES.register(structure);
+		return structure;
+	}
+	
+	public static StructureFeature<?, ?> register(String id, StructureFeature<?, ?> structureFeature)
+	{
+		return Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, ModUtils.rL(id), structureFeature);
+	}
+	
 	public static SurfaceBuilder<?> register(String id, SurfaceBuilder<?> surfaceBuilder)
 	{
 		surfaceBuilder.setRegistryName(ModUtils.rL(id));
@@ -180,6 +206,8 @@ public class ModRegistry
 		EntityInit.init();
 		VillagerProfessionInit.init();
 		BiomeInit.init();
+		StructurePieceInit.init();
+		StructureInit.init();
 		SurfaceBuilderInit.init();
 		FoliagePlacerInit.init();
 		FeatureInit.init();
