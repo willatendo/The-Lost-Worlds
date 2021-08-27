@@ -10,7 +10,10 @@ import lostworlds.library.util.ModUtils;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.loot.LootTables;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ChestTileEntity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
@@ -86,6 +89,16 @@ public class BlackMarketPeice
 				entity.setPos(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D);
 				entity.finalizeSpawn(world, world.getCurrentDifficultyAt(entity.blockPosition()), SpawnReason.STRUCTURE, (ILivingEntityData)null, (CompoundNBT)null);
 				world.addFreshEntity(entity);
+			}
+			
+			if("black_market_loot".equals(data)) 
+			{
+				world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+				TileEntity tileentity = world.getBlockEntity(pos.below());
+				if(tileentity instanceof ChestTileEntity) 
+				{
+					((ChestTileEntity)tileentity).setLootTable(ModUtils.rL("chests/black_market_loot"), rand.nextLong());
+				}
 			}
 		}
 
