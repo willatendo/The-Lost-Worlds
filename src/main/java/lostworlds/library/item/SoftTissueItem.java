@@ -1,14 +1,9 @@
 package lostworlds.library.item;
 
-import lostworlds.library.enums.DinoTypes;
+import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import net.minecraft.item.Item;
-
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
 
 public class SoftTissueItem extends Item
 {

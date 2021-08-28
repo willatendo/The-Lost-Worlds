@@ -1,6 +1,6 @@
 package lostworlds.content.server.init;
 
-import lostworlds.library.enums.TimeEras;
+import lostworlds.library.entity.TimeEras;
 import lostworlds.library.item.BoneMealItem;
 import lostworlds.library.item.CrystalScarabGemItem;
 import lostworlds.library.item.FieldGuideItem;

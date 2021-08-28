@@ -1,4 +1,4 @@
-package lostworlds.library.enums;
+package lostworlds.library.entity;
 
 public enum TimeEras 
 {

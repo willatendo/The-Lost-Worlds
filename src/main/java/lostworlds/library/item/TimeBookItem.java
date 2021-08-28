@@ -4,7 +4,7 @@ import java.util.function.Predicate;
 
 import lostworlds.content.server.ModTags;
 import lostworlds.content.server.init.DimensionInit;
-import lostworlds.library.enums.TimeEras;
+import lostworlds.library.entity.TimeEras;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModTeleporter;
@@ -73,8 +73,7 @@ public class TimeBookItem extends ShootableItem
 								{
 									entity.sendMessage(ModUtils.tTC("timeBook", "doesnt_work"), entity.getUUID());
 								}
-								
-								if(era == TimeEras.PERMIAN_PERIOD)
+								else if(era == TimeEras.PERMIAN_PERIOD)
 								{
 									ServerWorld serverworld = (ServerWorld)entity.level;
 									MinecraftServer minecraftserver = serverworld.getServer();
@@ -92,12 +91,12 @@ public class TimeBookItem extends ShootableItem
 											entity.sendMessage(ModUtils.tTC("timeBook", "transport_to_overworld"), entity.getUUID());
 										}
 									}
+									world.playSound((PlayerEntity)null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.PORTAL_TRAVEL, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 								}
 							}
 						}
 					}
 					
-					world.playSound((PlayerEntity)null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.PORTAL_TRAVEL, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 					if(!flag1 && !playerentity.abilities.instabuild) 
 					{
 						itemstack.shrink(1);
