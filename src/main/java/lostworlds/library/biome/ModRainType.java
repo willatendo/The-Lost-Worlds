@@ -1,5 +1,6 @@
 package lostworlds.library.biome;
 
-public class ModRainType {
-
+public class ModRainType
+{
+	
 }

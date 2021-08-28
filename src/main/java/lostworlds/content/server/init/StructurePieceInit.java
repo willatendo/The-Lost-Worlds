@@ -17,7 +17,7 @@ public class StructurePieceInit
 		Structure.STRUCTURES_REGISTRY.put("black_market", StructureInit.BLACK_MARKET);
 		WorldGenRegistries.NOISE_GENERATOR_SETTINGS.forEach(settings -> 
 		{
-			settings.structureSettings().structureConfig().put(StructureInit.BLACK_MARKET, new StructureSeparationSettings(32, 8, 930134351));
+			settings.structureSettings().structureConfig().put(StructureInit.BLACK_MARKET, new StructureSeparationSettings(128, 8, 930134351));
 		});
 	}
 	

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import lostworlds.content.client.dimension.PermianDimensionRenderInfo;
+import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.DimensionInit;
 import lostworlds.content.server.init.EntityInit;
@@ -25,7 +26,9 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -43,17 +46,17 @@ public class LostWorldsMod
 
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
-		
-		forgeBus.addListener(this::biomeModification);
 				
+		forgeBus.addListener(this::biomeModification);
+		
+		ModLoadingContext.get().registerConfig(Type.COMMON, LostWorldsConfig.commonSpec);
+
 		GeckoLib.initialize();
 	}
 	
 	private void commonSetup(final FMLCommonSetupEvent event)
 	{		
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(BlockInit.VOLCANIC_ASH.asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), PotionInit.ASHY_LUNG_POTION));
-		
-		
 		
 		event.enqueueWork(() -> 
 		{

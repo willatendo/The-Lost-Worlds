@@ -4,13 +4,7 @@
 	"compatibilityLevel": "JAVA_8",
 	"refmap": "lostworlds.refmap.json",
 	"mixins": [
-		"CactusBlockMixin",
-		"DimensionGeneratorSettingsMixin",
-		"SugarCaneBlockMixin",
-		"ItemsMixin"
-	],
-	"client": [
-		"client.ServerWorldInfoMixin"
+		"DimensionGeneratorSettingsMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
