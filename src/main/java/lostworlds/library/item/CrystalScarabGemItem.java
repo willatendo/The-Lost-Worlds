@@ -2,14 +2,22 @@ package lostworlds.library.item;
 
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
-import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
-import net.minecraft.world.World;
 
 public class CrystalScarabGemItem extends Item
 {	
+	public static Item charged_crystal_scarab_gem = new CrystalScarabGemItem(new Properties().tab(ModItemGroup.ITEMS).rarity(Rarity.RARE), Variant.CHARGED);
+	public static Item crystal_scarab_gem = new CrystalScarabGemItem(new Properties().tab(ModItemGroup.ITEMS).rarity(Rarity.RARE), Variant.UNCHARGED);
+	
+	public static Item crystal_scarab_abdomen = new CrystalScarabGemItem(new Properties().tab(ModItemGroup.ITEMS).rarity(Rarity.RARE), Variant.BROKEN);
+	public static Item crystal_scarab_bottom_left_leg = new CrystalScarabGemItem(new Properties().tab(ModItemGroup.ITEMS).rarity(Rarity.RARE), Variant.BROKEN);
+	public static Item crystal_scarab_bottom_right_leg = new CrystalScarabGemItem(new Properties().tab(ModItemGroup.ITEMS).rarity(Rarity.RARE), Variant.BROKEN);
+	public static Item crystal_scarab_thorax = new CrystalScarabGemItem(new Properties().tab(ModItemGroup.ITEMS).rarity(Rarity.RARE), Variant.BROKEN);
+	public static Item crystal_scarab_top_left_leg = new CrystalScarabGemItem(new Properties().tab(ModItemGroup.ITEMS).rarity(Rarity.RARE), Variant.BROKEN);
+	public static Item crystal_scarab_top_right_leg = new CrystalScarabGemItem(new Properties().tab(ModItemGroup.ITEMS).rarity(Rarity.RARE), Variant.BROKEN);
+	
 	private Variant variant;
 	
 	protected CrystalScarabGemItem(Properties properties, Variant variant)
@@ -31,20 +39,19 @@ public class CrystalScarabGemItem extends Item
 		}
 	}
 	
-	public static Item create(Variant varient)
+	public static Item createAll()
 	{
-		if(varient != Variant.CHARGED)
-		{
-			Item item = new CrystalScarabGemItem(new Properties().tab(ModItemGroup.ITEMS).rarity(Rarity.RARE), varient);
-			ModRegistry.register(varient.toString().toLowerCase() + "_crystal_scarab_gem", item);
-			return item;
-		}
-		else
-		{
-			Item item = new CrystalScarabGemItem(new Properties().tab(ModItemGroup.ITEMS).rarity(Rarity.RARE).fireResistant(), varient);
-			ModRegistry.register(varient.toString().toLowerCase() + "_crystal_scarab_gem", item);
-			return item;
-		}
+		ModRegistry.register("charged_crystal_scarab_gem", charged_crystal_scarab_gem);
+		ModRegistry.register("crystal_scarab_gem", crystal_scarab_gem);
+
+		ModRegistry.register("crystal_scarab_abdomen", crystal_scarab_abdomen);
+		ModRegistry.register("crystal_scarab_bottom_left_leg", crystal_scarab_bottom_left_leg);
+		ModRegistry.register("crystal_scarab_bottom_right_leg", crystal_scarab_bottom_right_leg);
+		ModRegistry.register("crystal_scarab_thorax", crystal_scarab_thorax);
+		ModRegistry.register("crystal_scarab_top_left_leg", crystal_scarab_top_left_leg);
+		ModRegistry.register("crystal_scarab_top_right_leg", crystal_scarab_top_right_leg);
+
+		return charged_crystal_scarab_gem;
 	}
 	
 	public enum Variant
@@ -52,11 +59,5 @@ public class CrystalScarabGemItem extends Item
 		BROKEN,
 		UNCHARGED,
 		CHARGED;
-	}
-	
-	@FunctionalInterface
-	public interface EntityFactory 
-	{
-		ItemEntity create(World w, double x, double y, double z, ItemStack is);
 	}
 }

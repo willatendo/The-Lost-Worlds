@@ -2,7 +2,7 @@ package lostworlds.library.container;
 
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
-import lostworlds.content.server.init.ItemInit;
+import lostworlds.library.item.CrystalScarabGemItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -51,7 +51,7 @@ public class TimeMachineContainer extends Container
 			@Override
 			public boolean mayPlace(ItemStack stack) 
 			{
-				return stack.getItem() == ItemInit.CHARGED_CRYSTAL_SCARAB_GEM ? true : false;
+				return stack.getItem() == CrystalScarabGemItem.charged_crystal_scarab_gem ? true : false;
 			}
 		});
 		

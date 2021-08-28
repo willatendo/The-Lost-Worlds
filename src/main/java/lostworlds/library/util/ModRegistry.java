@@ -2,6 +2,7 @@ package lostworlds.library.util;
 
 import java.util.Locale;
 
+import lostworlds.content.server.init.BannerInit;
 import lostworlds.content.server.init.BiomeInit;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
@@ -32,6 +33,7 @@ import net.minecraft.particles.BasicParticleType;
 import net.minecraft.particles.ParticleType;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.Potion;
+import net.minecraft.tileentity.BannerPattern;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.registry.Registry;
@@ -100,6 +102,11 @@ public class ModRegistry
 		item.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.ITEMS.register(item);
 		return item;
+	}
+	
+	public static BannerPattern createPattern(String id) 
+	{
+		return BannerPattern.create(id.toUpperCase(Locale.ROOT), id, id, false);
 	}
 	
 	public static Block register(String id, Block block)
@@ -198,6 +205,7 @@ public class ModRegistry
 		PotionInit.init();
 		SoundInit.init();
 		ItemInit.init();
+		BannerInit.init();
 		FossilInit.init();
 		TileEntityInit.init();
 		ContainerInit.init();

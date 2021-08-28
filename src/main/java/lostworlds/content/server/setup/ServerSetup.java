@@ -9,6 +9,7 @@ import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.VillagerProfessionInit;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
+import lostworlds.library.item.CrystalScarabGemItem;
 import lostworlds.library.trades.MultiItemForEmeraldsTrade;
 import lostworlds.library.util.JigsawUtils;
 import lostworlds.library.util.ModUtils;
@@ -83,7 +84,7 @@ public class ServerSetup
 			VillagerTrades.ITrade[] level5 = new VillagerTrades.ITrade[] 
 			{
 				new VillagerTrades.ItemsForEmeraldsTrade(Items.LODESTONE, 64, 1, 100),
-				new MultiItemForEmeraldsTrade(ImmutableList.of(Items.GOLD_INGOT, Items.DIAMOND, Items.IRON_INGOT, Items.NETHERITE_SCRAP, ItemInit.BROKEN_CRYSTAL_SCARAB_GEM), ImmutableList.of(5, 1, 3, 1, 1), ImmutableList.of(10, 30, 20, 50, 64), 1, 100)
+				new MultiItemForEmeraldsTrade(ImmutableList.of(Items.GOLD_INGOT, Items.DIAMOND, Items.IRON_INGOT, Items.NETHERITE_SCRAP, CrystalScarabGemItem.crystal_scarab_abdomen, CrystalScarabGemItem.crystal_scarab_bottom_left_leg, CrystalScarabGemItem.crystal_scarab_bottom_right_leg, CrystalScarabGemItem.crystal_scarab_thorax, CrystalScarabGemItem.crystal_scarab_top_left_leg, CrystalScarabGemItem.crystal_scarab_top_right_leg), ImmutableList.of(5, 1, 3, 1, 1), ImmutableList.of(10, 30, 20, 50, 64), 1, 100)
 			};
 			VillagerTrades.TRADES.put(VillagerProfessionInit.ARCHAEOLOGIST, toIntMap(ImmutableMap.of(1, level1, 2, level2, 3, level3, 4, level4, 5, level5)));
 		}

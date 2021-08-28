@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.util.Direction;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MutableBoundingBox;
@@ -44,28 +45,26 @@ public class BlackMarketStructure extends Structure<NoFeatureConfig>
 		}
 		
 		@Override
-		public void generatePieces(DynamicRegistries registry, ChunkGenerator chunkGenerator, TemplateManager manager, int x, int z, Biome biome, NoFeatureConfig config) 
-		{
-			ChunkPos chunkpos = new ChunkPos(x, z);
-			int i = chunkpos.getMinBlockX() + this.random.nextInt(16);
-			int j = chunkpos.getMinBlockZ() + this.random.nextInt(16);
-			int k = chunkGenerator.getSeaLevel();
-			int l = k + this.random.nextInt(chunkGenerator.getGenDepth() - 2 - k);
-			IBlockReader iblockreader = chunkGenerator.getBaseColumn(i, j);
-			
-			for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(i, l, j); l > k; --l) 
-			{
-				blockpos$mutable.move(Direction.DOWN);
-				BlockState blockstate1 = iblockreader.getBlockState(blockpos$mutable);
-				if(blockstate1.isFaceSturdy(iblockreader, blockpos$mutable, Direction.UP))
-				{
+		public void generatePieces(DynamicRegistries registries, ChunkGenerator generator, TemplateManager manager, int chunkX, int chunkY, Biome biome, NoFeatureConfig config) {
+			ChunkPos chunkpos = new ChunkPos(chunkX, chunkY);
+			int structureX = chunkpos.getMinBlockX() + this.random.nextInt(16);
+			int structureZ = chunkpos.getMinBlockZ() + this.random.nextInt(16);
+			int seaLevel = generator.getSeaLevel();
+			int structureY = seaLevel + this.random.nextInt(generator.getGenDepth() - seaLevel);
+			IBlockReader reader = generator.getBaseColumn(structureX, structureZ);
+
+			for (BlockPos.Mutable pos = new BlockPos.Mutable(structureX, structureY, structureZ); structureY > seaLevel; --structureY) {
+				BlockState blockstate = reader.getBlockState(pos);
+				pos.move(Direction.DOWN);
+				BlockState state = reader.getBlockState(pos);
+				if (blockstate.isAir() && state.isFaceSturdy(reader, pos, Direction.UP)) {
 					break;
 				}
 			}
-			
-			if(l > k) 
-			{
-				BlackMarketPeice.addPieces(manager, this.pieces, this.random, new BlockPos(i, l, j));
+
+			if (structureY > seaLevel) {
+				Rotation rotation = Rotation.getRandom(this.random);
+				this.pieces.add(new BlackMarketPeice.Piece(manager, BlackMarketPeice.BLACK_MARKET_LOCATION, new BlockPos(structureX, structureY, structureZ), rotation));
 				this.calculateBoundingBox();
 			}
 		}

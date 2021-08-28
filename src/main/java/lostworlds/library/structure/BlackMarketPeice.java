@@ -33,7 +33,7 @@ import net.minecraft.world.gen.feature.template.TemplateManager;
 
 public class BlackMarketPeice 
 {
-	private static final ResourceLocation BLACK_MARKET_LOCATION = ModUtils.rL("black_market");
+	public static final ResourceLocation BLACK_MARKET_LOCATION = ModUtils.rL("black_market");
 
 	public static void addPieces(TemplateManager manager, List<StructurePiece> piece, Random rand, BlockPos pos) 
 	{

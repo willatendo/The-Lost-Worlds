@@ -3,7 +3,6 @@ package lostworlds.content.server.init;
 import lostworlds.library.enums.TimeEras;
 import lostworlds.library.item.BoneMealItem;
 import lostworlds.library.item.CrystalScarabGemItem;
-import lostworlds.library.item.CrystalScarabGemItem.Variant;
 import lostworlds.library.item.FieldGuideItem;
 import lostworlds.library.item.FoodItem;
 import lostworlds.library.item.FoodItem.FoodType;
@@ -21,11 +20,16 @@ import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.item.AxeItem;
+import net.minecraft.item.BannerPatternItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.Properties;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemTier;
 
 public class ItemInit
 {	
+	private static final Properties PROPERTIES = new Properties().tab(ItemGroup.TAB_MISC);
+	
 	public static final Item LEATHER_BRUSH = BrushItem.createLeather();
 	public static final Item IRON_BRUSH = BrushItem.createIron();
 	public static final Item GOLD_BRUSH = BrushItem.createGold();
@@ -78,9 +82,7 @@ public class ItemInit
 	
 	public static final Item STORAGE_DISC = ItemBuilder.create("storage_disc");
 	
-	public static final Item BROKEN_CRYSTAL_SCARAB_GEM = CrystalScarabGemItem.create(Variant.BROKEN);
-	public static final Item UNCHARGED_CRYSTAL_SCARAB_GEM = CrystalScarabGemItem.create(Variant.UNCHARGED);
-	public static final Item CHARGED_CRYSTAL_SCARAB_GEM = CrystalScarabGemItem.create(Variant.CHARGED);
+	public static final Item CRYSTAL_SCARAB_GEMS = CrystalScarabGemItem.createAll();
 	
 	public static final Item CRYSTAL_SCARAB = ToolSetBuilder.create(ModItemTeir.CRYSTAL_SCARAB);
 		
@@ -88,6 +90,8 @@ public class ItemInit
 	
 	public static final Item OXYGEN_MASK = MaskItem.createOxygen();
 	public static final Item OXYGEN_TANK = ModRegistry.register("oxygen_tank", new OxygenTankItem());
+	
+	public static final Item SCARAB_BANNER_PATTERN = ModRegistry.register("scarab_banner_pattern", new BannerPatternItem(BannerInit.SCARAB, PROPERTIES.stacksTo(1)));
 	
 	public static final Item FOSSIL_POACHER_SPAWN_EGG = SpawnEggItemBuilder.create("fossil_poacher_spawn_egg", () -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031);
 	
