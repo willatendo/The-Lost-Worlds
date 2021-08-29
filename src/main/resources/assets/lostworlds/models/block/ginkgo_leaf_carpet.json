@@ -1,6 +1,6 @@
 {
 	"parent": "lostworlds:block/leaf_carpet",
 	"textures": {
-		"texture": "lostworlds:blocks/ginkgo_leaves"
+		"texture": "lostworlds:block/ginkgo_leaves"
 	}
 }

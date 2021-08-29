@@ -1,6 +1,8 @@
 package lostworlds.content.server.init;
 
 import lostworlds.library.biome.ModBiomeMaker;
+import lostworlds.library.biome.biomes.permian.forest.PermianGinkgoForest;
+import lostworlds.library.biome.biomes.permian.plains.PermianAshyMedow;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.world.biome.Biome;
@@ -8,7 +10,7 @@ import net.minecraft.world.biome.Biome;
 public class BiomeInit 
 {
 	//Permian
-	public static final Biome PERMIAN_ASHY_MEDOWS = ModRegistry.register("permian_ashy_medows", ModBiomeMaker.permianAshyMedows());
+	public static final Biome PERMIAN_ASHY_MEDOWS = ModRegistry.register("permian_ashy_medows", PermianAshyMedow.create());
 	
 	public static final Biome PERMIAN_CONIFER_FOREST = ModRegistry.register("permian_conifer_forest", ModBiomeMaker.permianConiferForest());
 	public static final Biome PERMIAN_CONIFER_FOREST_HILLS = ModRegistry.register("permian_conifer_forest_hills", ModBiomeMaker.permianConiferForestHills());
@@ -22,7 +24,7 @@ public class BiomeInit
 
 	public static final Biome PERMIAN_FLOOD_BASALTS = ModRegistry.register("permian_flood_basalts", ModBiomeMaker.permianFloodBasalts());
 
-	public static final Biome PERMIAN_GINKGO_FOREST = ModRegistry.register("permian_ginkgo_forest", ModBiomeMaker.permianGinkgoForest());
+	public static final Biome PERMIAN_GINKGO_FOREST = ModRegistry.register("permian_ginkgo_forest", PermianGinkgoForest.create());
 	public static final Biome PERMIAN_GINKGO_FOREST_HILLS = ModRegistry.register("permian_ginkgo_forest_hills", ModBiomeMaker.permianGinkgoForestHills());
 
 	public static final Biome PERMIAN_MOUNTAINS = ModRegistry.register("permian_mountains", ModBiomeMaker.permianMountains());

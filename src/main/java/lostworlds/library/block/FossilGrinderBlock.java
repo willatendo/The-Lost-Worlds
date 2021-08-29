@@ -16,11 +16,6 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
-
 public class FossilGrinderBlock extends MachineBlockBuilder
 {
 	public static final VoxelShape SHAPE = Block.box(1, 0, 3, 15, 9, 16);

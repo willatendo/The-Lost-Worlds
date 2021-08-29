@@ -13,9 +13,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ModParticle extends SpriteTexturedParticle 
 {
-	public ModParticle(ClientWorld worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn) 
+	public ModParticle(ClientWorld world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) 
 	{
-		super(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+		super(world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
 
 		float f = this.random.nextFloat() * 1.0f;
 		this.rCol = f;
@@ -67,9 +67,9 @@ public class ModParticle extends SpriteTexturedParticle
 
 
 		@Override
-		public Particle createParticle(BasicParticleType typeIn, ClientWorld worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) 
+		public Particle createParticle(BasicParticleType type, ClientWorld world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) 
 		{
-			ModParticle particle = new ModParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed);
+			ModParticle particle = new ModParticle(world, x, y, z, xSpeed, ySpeed, zSpeed);
 			particle.setColor(1.0f, 1.0f, 1.0f);
 			particle.pickSprite(this.spriteSet);
 			return particle;

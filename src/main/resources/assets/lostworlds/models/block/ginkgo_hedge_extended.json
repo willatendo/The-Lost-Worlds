@@ -1,6 +1,6 @@
 {
 	"parent": "lostworlds:block/hedge_extended",
 	"textures": {
-		"leaf": "lostworlds:blocks/ginkgo_leaves"
+		"leaf": "lostworlds:block/ginkgo_leaves"
 	}
 }

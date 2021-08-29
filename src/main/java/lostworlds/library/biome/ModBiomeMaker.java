@@ -19,18 +19,6 @@ public class ModBiomeMaker
 		return new BiomeGenerationSettings.Builder().surfaceBuilder(surfaceBuilder.configured(config));
 	}
 	
-	//Permian (A - Z)
-	public static Biome permianAshyMedows()
-	{
-		MobSpawnInfo.Builder spawnBuilder = new MobSpawnInfo.Builder();
-		
-		BiomeGenerationSettings.Builder generationBuilder = (new BiomeGenerationSettings.Builder()).surfaceBuilder(ModSurfaceBuilders.PERMIAN_ASHY_MEDOWS);
-		
-		ModBiomeFeatures.permianAshyMedows(generationBuilder);
-		
-		return (new Biome.Builder()).precipitation(Biome.RainType.NONE).biomeCategory(Biome.Category.PLAINS).depth(0.125F).scale(0.05F).temperature(2.0F).downfall(0.0F).specialEffects((new BiomeAmbience.Builder()).waterColor(0x999999).waterFogColor(0x757575).fogColor(0x494949).skyColor(0x3a3a3a).grassColorOverride(0x686868).foliageColorOverride(0x686868).ambientMoodSound(MoodSoundAmbience.LEGACY_CAVE_SETTINGS).ambientParticle(new ParticleEffectAmbience(ParticleTypes.WHITE_ASH, 0.00625F)).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(generationBuilder.build()).build();
-	}
-	
 	public static Biome permianConiferForest()
 	{
 		MobSpawnInfo.Builder spawnBuilder = new MobSpawnInfo.Builder();

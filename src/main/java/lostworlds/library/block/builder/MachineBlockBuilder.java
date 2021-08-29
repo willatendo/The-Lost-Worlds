@@ -218,13 +218,16 @@ public abstract class MachineBlockBuilder extends Block implements ITileEntityPr
 	@Override
 	public void animateTick(BlockState state, World world, BlockPos pos, Random rand) 
 	{
-		double d0 = (double)pos.getX() + 0.5D;
-		double d1 = (double)pos.getY();
-		double d2 = (double)pos.getZ() + 0.5D;
-		if(rand.nextDouble() < 0.1D) 
+		if(state.getValue(ON)) 
 		{
-			world.playLocalSound(d0, d1, d2, SoundInit.MACHINE_WHIRLING, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
-        }
+			double d0 = (double)pos.getX() + 0.5D;
+			double d1 = (double)pos.getY();
+			double d2 = (double)pos.getZ() + 0.5D;
+			if(rand.nextDouble() < 0.1D) 
+			{
+				world.playLocalSound(d0, d1, d2, SoundInit.MACHINE_WHIRLING, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+        	}
+		}
 	}
 	
 	@Override

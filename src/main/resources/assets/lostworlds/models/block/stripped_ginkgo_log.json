@@ -1,7 +1,7 @@
 {
 	"parent": "minecraft:block/cube_column",
 	"textures": {
-		"end": "lostworlds:blocks/stripped_ginkgo_log_top",
-		"side": "lostworlds:blocks/stripped_ginkgo_log"
+		"end": "lostworlds:block/stripped_ginkgo_log_top",
+		"side": "lostworlds:block/stripped_ginkgo_log"
 	}
 }

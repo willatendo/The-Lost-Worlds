@@ -1,7 +1,7 @@
 {
 	"parent": "lostworlds:block/hedge_post",
 	"textures": {
-		"log": "lostworlds:blocks/ginkgo_log",
-		"leaf": "lostworlds:blocks/ginkgo_leaves"
+		"log": "lostworlds:block/ginkgo_log",
+		"leaf": "lostworlds:block/ginkgo_leaves"
 	}
 }

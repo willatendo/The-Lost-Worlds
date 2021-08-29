@@ -1,7 +1,7 @@
 {
 	"parent": "minecraft:block/cube_column",
 	"textures": {
-		"end": "lostworlds:blocks/ginkgo_planks",
+		"end": "lostworlds:block/ginkgo_planks",
 		"side": "lostworlds:block/ginkgo_bookshelf"
 	}
 }

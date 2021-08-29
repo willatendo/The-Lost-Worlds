@@ -1,6 +1,6 @@
 {
 	"parent": "lostworlds:block/post",
 	"textures": {
-		"texture": "lostworlds:blocks/ginkgo_log"
+		"texture": "lostworlds:block/ginkgo_log"
 	}
 }
