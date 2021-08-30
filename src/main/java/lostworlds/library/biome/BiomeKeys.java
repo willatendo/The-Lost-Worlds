@@ -15,7 +15,6 @@ public class BiomeKeys
 	
 	public static final RegistryKey<Biome> PERMIAN_DESERT = register("permian_desert");
 	public static final RegistryKey<Biome> PERMIAN_DESERT_HILLS = register("permian_desert_hills");
-	public static final RegistryKey<Biome> PERMIAN_DESERT_LAKE = register("permian_desert_lake");
 	
 	public static final RegistryKey<Biome> PERMIAN_DRIED_PLAINS = register("permian_dried_plains");
 	public static final RegistryKey<Biome> PERMIAN_DRIED_PLAINS_HILLS = register("permian_dried_plains_hills");
@@ -27,6 +26,8 @@ public class BiomeKeys
 
 	public static final RegistryKey<Biome> PERMIAN_MOUNTAINS = register("permian_mountains");
 
+	public static final RegistryKey<Biome> PERMIAN_RIVER = register("permian_river");
+
 	public static final RegistryKey<Biome> PERMIAN_OCEAN = register("permian_ocean");
 	public static final RegistryKey<Biome> WARM_PERMIAN_OCEAN = register("warm_permian_ocean");
 	public static final RegistryKey<Biome> DEEP_PERMIAN_OCEAN = register("deep_permian_ocean");
@@ -34,6 +35,9 @@ public class BiomeKeys
 	
 	public static final RegistryKey<Biome> PERMIAN_PLAINS = register("permian_plains");
 	public static final RegistryKey<Biome> PERMIAN_PLAINS_HILLS = register("permian_plains_hills");
+	
+	public static final RegistryKey<Biome> PERMIAN_SHORE = register("permian_shore");
+	public static final RegistryKey<Biome> PERMIAN_STONE_SHORE = register("permian_stone_shore");
 	
 	private static RegistryKey<Biome> register(String id)
 	{

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import lostworlds.content.client.dimension.PermianDimensionRenderInfo;
+import lostworlds.content.client.setup.ClientSetup;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.DimensionInit;
@@ -22,10 +23,12 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.potion.Potions;
 import net.minecraft.world.raid.Raid;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig.Type;
@@ -36,7 +39,7 @@ import software.bernie.geckolib3.GeckoLib;
 
 @Mod(ModUtils.ID)
 public class LostWorldsMod 
-{
+{	
 	public LostWorldsMod() 
 	{
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -48,6 +51,8 @@ public class LostWorldsMod
 		bus.addListener(this::clientSetup);
 				
 		forgeBus.addListener(this::biomeModification);
+		
+		DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> bus.addListener(ClientSetup::blockColourSetup));
 		
 		ModLoadingContext.get().registerConfig(Type.COMMON, LostWorldsConfig.commonSpec);
 

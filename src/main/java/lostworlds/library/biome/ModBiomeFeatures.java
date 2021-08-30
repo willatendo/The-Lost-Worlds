@@ -90,6 +90,15 @@ public class ModBiomeFeatures
 	{
 		addPermianRock(builder);
 		addPermianOres(builder);
+		addPermianUnderwaterCarvers(builder);
+
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
+	}
+	
+	public static void permianRiver(BiomeGenerationSettings.Builder builder)
+	{
+		addPermianOres(builder);
 		addPermianCarvers(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
@@ -100,7 +109,7 @@ public class ModBiomeFeatures
 	{
 		addPermianRock(builder);
 		addPermianOres(builder);
-		addPermianCarvers(builder);
+		addPermianUnderwaterCarvers(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
@@ -155,6 +164,12 @@ public class ModBiomeFeatures
 	{
 		builder.addCarver(Carving.AIR, ModConfiguredCarvers.PERMIAN_CAVE_CARVER);
 		builder.addCarver(Carving.AIR, ModConfiguredCarvers.PERMIAN_CANYON_CARVER);
+	}
+	
+	private static void addPermianUnderwaterCarvers(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addCarver(Carving.LIQUID, ModConfiguredCarvers.PERMIAN_UNDERWATER_CAVE_CARVER);
+		builder.addCarver(Carving.LIQUID, ModConfiguredCarvers.PERMIAN_UNDERWATER_CANYON_CARVER);
 	}
 
 	//General Features

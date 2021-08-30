@@ -1,5 +1,6 @@
-package lostworlds.library.biome.biomes.permian.plains;
+package lostworlds.library.biome.biomes.permian.ocean;
 
+import lostworlds.content.server.init.SurfaceBuilderInit;
 import lostworlds.library.biome.ModBiomeMaker;
 import lostworlds.library.biome.ModBiomeFeatures;
 import lostworlds.library.biome.ModSurfaceBuilders;
@@ -10,10 +11,10 @@ import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.biome.Biome.RainType;
 
-public class PermianAshyMedow extends SimpleBiome
+public class DeepPermianOcean extends SimpleBiome
 {
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
-	public static final BiomeGenerationSettings.Builder GENERATION = new BiomeGenerationSettings.Builder();
+	public static final BiomeGenerationSettings.Builder GENERATION = genSettings(SurfaceBuilderInit.NAKED_PERMIAN_OCEAN, ModSurfaceBuilders.SILT_CONFIG);
 	
 	static
 	{
@@ -24,14 +25,12 @@ public class PermianAshyMedow extends SimpleBiome
 	static void addSpawns() { }
 	
 	static void addGeneration() 
-	{
-		GENERATION.surfaceBuilder(ModSurfaceBuilders.PERMIAN_ASHY_MEDOWS_BUILDER);
-		
-		ModBiomeFeatures.permianAshyMedows(GENERATION);
+	{			
+		ModBiomeFeatures.permianOcean(GENERATION);
 	}
 	
 	public static Biome create()
 	{
-		return ModBiomeMaker.create(RainType.NONE, Category.PLAINS, 0.125F, 0.05F, 2.0F, 0.0F, 0x999999, 0x757575, 0x494949, 0x3a3a3a, 0x686868, 0x686868, MOB_SPAWNS.build(), GENERATION.build());
+		return ModBiomeMaker.create(RainType.RAIN, Category.FOREST, -1.8F, 0.1F, 0.2F, 0.0F, 0x3181c6, 0x1c65a5, 0x77d3ea, 0x39aac6, 0x2b9b33, 0x2b9b33, MOB_SPAWNS.build(), GENERATION.build());
 	}
 }

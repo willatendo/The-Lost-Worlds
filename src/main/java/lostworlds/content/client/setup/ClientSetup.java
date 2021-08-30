@@ -13,10 +13,17 @@ import lostworlds.content.server.init.ContainerInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.util.ModUtils;
+import net.minecraft.block.BlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
+import net.minecraft.item.BlockItem;
+import net.minecraft.world.FoliageColors;
+import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -126,5 +133,17 @@ public class ClientSetup
 		ScreenManager.register(ContainerInit.ARCHAEOLOGY_CONTAINER.get(), ArchaeologyTableScreen::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.FOSSIL_POACHER, manager -> new FossilPoacherRenderer(manager));
+	}
+	
+	public static void blockColourSetup(final FMLClientSetupEvent event)
+	{
+		BlockColors blockColors = Minecraft.getInstance().getBlockColors();
+		ItemColors itemColors = Minecraft.getInstance().getItemColors();
+		
+		blockColors.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getAverageFoliageColor(world, pos) : FoliageColors.getDefaultColor(), BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES);
+		itemColors.register((stack, tintIndex) -> 
+		{
+			BlockState BlockState = ((BlockItem)stack.getItem()).getBlock().defaultBlockState();
+			return blockColors.getColor(BlockState, null, null, tintIndex); }, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES);
 	}
 }
