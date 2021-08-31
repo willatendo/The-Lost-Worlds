@@ -8,16 +8,39 @@ import java.util.Set;
 
 import org.objectweb.asm.Type;
 
+import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.forgespi.language.ModFileScanData;
+import net.minecraftforge.registries.ForgeRegistries;
 
-public class LostWorldsAddon
+public class LostWorldsAddon 
 {
-	public static List<ILostWorldsAddon> getModPlugins() 
+	//All the registers setup for your ease!
+	
+	public static Item register(String id, Item item)
 	{
-		return getInstances(Init.class, ILostWorldsAddon.class);
+		item.setRegistryName(rL(id));
+		ForgeRegistries.ITEMS.register(item);
+		return item;
 	}
-
+	
+	/*
+	 * Don't worry about anything below, if you need to know how to setup an addon, look at TestAddon.
+	 */
+	
+	public static String ID;
+	
+	private static ResourceLocation rL(String path)
+	{
+		return new ResourceLocation(ID, path);
+	}
+	
+	public static List<LostWorldsAddon> getModPlugins() 
+	{
+		return getInstances(Register.class, LostWorldsAddon.class);
+	}
+	
 	private static <T> List<T> getInstances(Class<?> annotationClass, Class<T> instanceClass) 
 	{
 		Type annotationType = Type.getType(annotationClass);
@@ -45,14 +68,8 @@ public class LostWorldsAddon
 				T instance = asmInstanceClass.newInstance();
 				instances.add(instance);
 			} 
-			catch (ClassNotFoundException | InstantiationException | IllegalAccessException | LinkageError e) { }
+			catch(ClassNotFoundException | InstantiationException | IllegalAccessException | LinkageError e) { }
 		}
 		return instances;
 	}
-	
-	//Used in conjunction with @WorldTypeInit to register objects.
-	public interface ILostWorldsAddon { }
-	
-	//Used in conjunction with ILostWorldsAddon to register objects.
-	public @interface Init { }
 }
