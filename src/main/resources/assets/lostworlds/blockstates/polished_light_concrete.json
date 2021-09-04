@@ -1,7 +1,7 @@
 {
 	"variants": {
 		"": {
-			"model": "lostworlds:block/polished_light_concrete"
+			"model": "minecraft:block/cobblestone"
 		}
 	}
 }

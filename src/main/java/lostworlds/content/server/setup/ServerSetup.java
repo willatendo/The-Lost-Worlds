@@ -45,7 +45,7 @@ public class ServerSetup
 			JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/savanna/houses"), ModUtils.rL("village/savanna/savanna_archaeologist_hut"), 25);
 			
 			//Snowy Village Structures
-			JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/snowy/houses"), ModUtils.rL("village/savanna/snowy_archaeologist_hut"), 25);
+			JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/snowy/houses"), ModUtils.rL("village/snowy/snowy_archaeologist_hut"), 25);
 			
 			//Desert Village Structures
 			JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/desert/houses"), ModUtils.rL("village/desert/desert_archaeologist_hut"), 25);
@@ -54,39 +54,42 @@ public class ServerSetup
 		}
 	}
 	
-	
 	@EventBusSubscriber(modid = ModUtils.ID, bus = Bus.MOD)
 	static class ModVillagerTrades 
 	{
 		public static void fillTradeData() 
 		{
-			VillagerTrades.ITrade[] level1 = new VillagerTrades.ITrade[] 
+			VillagerTrades.ITrade[] archaeology1 = new VillagerTrades.ITrade[] 
 			{
 				new VillagerTrades.ItemsForEmeraldsTrade(Items.CLAY_BALL, 2, 20, 12),
 				new VillagerTrades.ItemsForEmeraldsTrade(Items.CLAY, 16, 10, 12),
 				new VillagerTrades.ItemsForEmeraldsTrade(BlockInit.ARCHAEOLOGY_TABLE.asItem(), 15, 1, 20),
 				//new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.KYLIX, 5, 1, 20)
 			};
-			VillagerTrades.ITrade[] level2 = new VillagerTrades.ITrade[] 
+			
+			VillagerTrades.ITrade[] archaeology2 = new VillagerTrades.ITrade[] 
 			{
 				//new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.FEILD_GUIDE, 25, 1, 20),
 				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.WET_PAPER, 3, 5, 12)
 			};
-			VillagerTrades.ITrade[] level3 = new VillagerTrades.ITrade[] 
+			
+			VillagerTrades.ITrade[] archaeology3 = new VillagerTrades.ITrade[] 
 			{
 				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.LEATHER_BRUSH, 16, 1, 20)
 			};
-			VillagerTrades.ITrade[] level4 = new VillagerTrades.ITrade[] 
+			
+			VillagerTrades.ITrade[] archaeology4 = new VillagerTrades.ITrade[] 
 			{
 				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.PERMIAN_PERIOD_TIME_BOOK, 64, 1, 100),
 				//new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.JURASSIC_ERA_TIME_BOOK, 64, 1, 100)
 			};
-			VillagerTrades.ITrade[] level5 = new VillagerTrades.ITrade[] 
+			
+			VillagerTrades.ITrade[] archaeology5 = new VillagerTrades.ITrade[] 
 			{
 				new VillagerTrades.ItemsForEmeraldsTrade(Items.LODESTONE, 64, 1, 100),
 				new MultiItemForEmeraldsTrade(ImmutableList.of(Items.GOLD_INGOT, Items.DIAMOND, Items.IRON_INGOT, Items.NETHERITE_SCRAP, CrystalScarabGemItem.crystal_scarab_abdomen, CrystalScarabGemItem.crystal_scarab_bottom_left_leg, CrystalScarabGemItem.crystal_scarab_bottom_right_leg, CrystalScarabGemItem.crystal_scarab_thorax, CrystalScarabGemItem.crystal_scarab_top_left_leg, CrystalScarabGemItem.crystal_scarab_top_right_leg), ImmutableList.of(5, 1, 3, 1, 1), ImmutableList.of(10, 30, 20, 50, 64), 1, 100)
 			};
-			VillagerTrades.TRADES.put(VillagerProfessionInit.ARCHAEOLOGIST, toIntMap(ImmutableMap.of(1, level1, 2, level2, 3, level3, 4, level4, 5, level5)));
+			VillagerTrades.TRADES.put(VillagerProfessionInit.ARCHAEOLOGIST, toIntMap(ImmutableMap.of(1, archaeology1, 2, archaeology2, 3, archaeology3, 4, archaeology4, 5, archaeology5)));
 		}
 		
 		private static Int2ObjectMap<VillagerTrades.ITrade[]> toIntMap(ImmutableMap<Integer, VillagerTrades.ITrade[]> tradeMap) 

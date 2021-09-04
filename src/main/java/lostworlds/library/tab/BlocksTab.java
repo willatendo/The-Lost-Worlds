@@ -26,7 +26,15 @@ public class BlocksTab extends ItemGroup
 	{
 		for(Block blocks : ForgeRegistries.BLOCKS)
 		{
-			if(blocks.asItem().getItemCategory() == ModItemGroup.BLOCKS)
+			if(blocks == BlockInit.NATURE_BLOCKS)
+			{
+				stack.add(blocks.asItem().getDefaultInstance());
+			}
+		}
+		
+		for(Block blocks : ForgeRegistries.BLOCKS)
+		{
+			if(blocks.asItem().getItemCategory() == ModItemGroup.BLOCKS && blocks != BlockInit.NATURE_BLOCKS)
 			{	
 				stack.add(blocks.asItem().getDefaultInstance());
 			}

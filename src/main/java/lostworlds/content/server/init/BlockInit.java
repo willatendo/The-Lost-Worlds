@@ -1,9 +1,13 @@
 package lostworlds.content.server.init;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lostworlds.library.block.AnalyserBlock;
 import lostworlds.library.block.ArchaeologyTable;
 import lostworlds.library.block.BrazileaBlock;
 import lostworlds.library.block.ColouredDecorationBlock;
+import lostworlds.library.block.ConnectedTextureBlock;
 import lostworlds.library.block.DNAExtractorBlock;
 import lostworlds.library.block.DNAInjectorBlock;
 import lostworlds.library.block.DeadSpongeColonyBlock;
@@ -66,6 +70,13 @@ import net.minecraftforge.common.ToolType;
 
 public class BlockInit 
 {
+	public static final List<Block> NATURE_BLOCKS = new ArrayList<>();
+	public static final List<Block> ORES = new ArrayList<>();
+	public static final List<Block> MACHINES = new ArrayList<>();
+	public static final List<Block> DECORATION_BLOCKS = new ArrayList<>();
+	public static final List<Block> JP_BLOCKS = new ArrayList<>();
+	public static final List<Block> JW_BLOCKS = new ArrayList<>();
+	
 	//Soils
 	public static final Block DRIED_SOIL = BlockAndItemBuilder.create("dried_soil", new DriedSoilBlock(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).sound(SoundType.GRAVEL).randomTicks()));
 	public static final Block CRACKED_SOIL = BlockAndItemBuilder.create("cracked_soil", new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).sound(SoundType.GRAVEL)));
@@ -73,12 +84,12 @@ public class BlockInit
 	public static final Block MOSSY_SOIL = MossySoilBlock.create();
 	public static final Block MUD = BlockAndItemBuilder.create("mud", new Block(AbstractBlock.Properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)));
 
-	public static final Block PERMIAN_SAND = BlockAndItemBuilder.create("permian_sand", new SandBlock(0xaa915c, AbstractBlock.Properties.of(Material.SAND, MaterialColor.SAND).harvestTool(ToolType.SHOVEL).strength(1.5F).sound(SoundType.SAND)));
-
 	public static final Block SILT = BlockAndItemBuilder.create("silt", new Block(AbstractBlock.Properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)));
 
 	public static final Block VOLCANIC_ASH = BlockAndItemBuilder.create("volcanic_ash", new VolcanicAshBlock());
 	public static final Block VOLCANIC_ASH_LAYER = BlockAndItemBuilder.create("volcanic_ash_layer", new VolcanicAshLayerBlock());
+
+	public static final Block PERMIAN_SAND = BlockAndItemBuilder.create("permian_sand", new SandBlock(0xaa915c, AbstractBlock.Properties.of(Material.SAND, MaterialColor.SAND).harvestTool(ToolType.SHOVEL).strength(1.5F).sound(SoundType.SAND)));
 	
 	//Stones
 	public static final Block PERMIAN_STONE = BlockAndItemBuilder.create("permian_stone", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)));
@@ -302,7 +313,6 @@ public class BlockInit
 	public static final Block JURASSIC_EMERALD_ORE = BlockAndItemBuilder.create("jurassic_emerald_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));	
 	
 	//Building Blocks
-	
 	public static final Block SHADED_GLASS = BlockAndItemBuilder.create("shaded_glass", new GlassBlock(AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
 	public static final Block SHADED_GLASS_PANE = BlockAndItemBuilder.create("shaded_glass_pane", new PaneBlock(AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
 	
@@ -314,9 +324,11 @@ public class BlockInit
 	public static final Block LIGHT_CONCRETE_PRESSURE_PLATE = BlockAndItemBuilder.create("light_concrete_pressure_plate", new PressurePlateBlock(Sensitivity.MOBS, AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.0F, 8.0F).noCollission().sound(SoundType.STONE)));
 	public static final Block LIGHT_CONCRETE_BUTTON = BlockAndItemBuilder.create("light_concrete_button", new StoneButtonBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.0F, 8.0F).noCollission().sound(SoundType.STONE)));
 
-	public static final Block POLISHED_LIGHT_CONCRETE = BlockAndItemBuilder.create("polished_light_concrete", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE)));
-	public static final Block POLISHED_LIGHT_CONCRETE_STAIRS = BlockAndItemBuilder.create("polished_light_concrete_stairs", new StairsBlock(() -> BlockInit.LIGHT_CONCRETE.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE)));
-	public static final Block POLISHED_LIGHT_CONCRETE_SLAB = BlockAndItemBuilder.create("polished_light_concrete_slab", new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE)));
+	public static final ConnectedTextureBlock POLISHED_LIGHT_CONCRETE = BlockAndItemBuilder.create("polished_light_concrete", new ConnectedTextureBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE), "polished_light_concrete", true));
+	
+	public static final Block ACCENT_LIGHT_CONCRETE = BlockAndItemBuilder.create("accent_light_concrete", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE)));	
+	public static final Block ACCENT_LIGHT_CONCRETE_STAIRS = BlockAndItemBuilder.create("accent_light_concrete_stairs", new StairsBlock(() -> BlockInit.LIGHT_CONCRETE.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE)));
+	public static final Block ACCENT_LIGHT_CONCRETE_SLAB = BlockAndItemBuilder.create("accent_light_concrete_slab", new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE)));
 
 	public static final Block WOODEN_PLANKS = BlockAndItemBuilder.create("wooden_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).harvestTool(ToolType.AXE).harvestLevel(0).strength(1.2F, 0.5F).sound(SoundType.WOOD)));
 	public static final Block WOODEN_PLANKS_STAIRS = BlockAndItemBuilder.create("wooden_planks_stairs", new StairsBlock(() -> BlockInit.WOODEN_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).harvestTool(ToolType.AXE).harvestLevel(0).strength(1.2F, 0.5F).sound(SoundType.WOOD)));
@@ -447,5 +459,17 @@ public class BlockInit
 	public static final Block PAVED_ROAD = BlockAndItemBuilder.create("paved_road", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.STONE)));
 	public static final Block RAISED_PAVED_ROAD = BlockAndItemBuilder.create("raised_paved_road", new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.STONE)));
 	
-	public static void init() { }
+	public static void init() 
+	{
+		//Nature Blocks
+		NATURE_BLOCKS.add(DRIED_SOIL);
+		NATURE_BLOCKS.add(CRACKED_SOIL);
+		NATURE_BLOCKS.add(MOSSY_SOIL);
+		NATURE_BLOCKS.add(MUD);
+		NATURE_BLOCKS.add(SILT);
+		NATURE_BLOCKS.add(VOLCANIC_ASH);
+		NATURE_BLOCKS.add(VOLCANIC_ASH_LAYER);
+
+
+	}
 }
