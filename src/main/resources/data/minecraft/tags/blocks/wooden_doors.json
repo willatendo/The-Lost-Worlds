@@ -1,8 +1,8 @@
 {
-  "replace": false,
-  "values": [
-    "lostworlds:araucaria_door",
-    "lostworlds:conifer_door",
-    "lostworlds:ginkgo_door"
-  ]
+	"replace": false,
+	"values": [
+		"lostworlds:araucaria_door",
+		"lostworlds:conifer_door",
+		"lostworlds:ginkgo_door"
+	]
 }

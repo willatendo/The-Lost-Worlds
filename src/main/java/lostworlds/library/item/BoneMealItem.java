@@ -1,19 +1,21 @@
 package lostworlds.library.item;
 
+import lostworlds.library.tab.ItemCategories;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import net.minecraft.item.Item;
 
-/*
- * Author: Willatendo
- * Date: July 2, 2021
- */
-
-public class BoneMealItem extends net.minecraft.item.BoneMealItem
+public class BoneMealItem extends net.minecraft.item.BoneMealItem implements ISortableItem
 {
 	protected BoneMealItem() 
 	{
 		super(new Properties().tab(ModItemGroup.ITEMS));
+	}
+	
+	@Override
+	public ItemCategories getCategory(int meta) 
+	{
+		return ItemCategories.MISS;
 	}
 	
 	public static Item create(String id)

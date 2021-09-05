@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "lostworlds:block/ginkgo_ladder"
-  }
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "lostworlds:block/ginkgo_ladder"
+	}
 }

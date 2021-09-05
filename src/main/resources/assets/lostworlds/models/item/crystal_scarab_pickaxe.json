@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "lostworlds:item/crystal_scarab_pickaxe"
-  }
+	"parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "lostworlds:item/crystal_scarab_pickaxe"
+	}
 }

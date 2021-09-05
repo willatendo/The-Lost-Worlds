@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/cube_all",
 	"textures": {
-		"all": "lostworlds:blocks/tinted_glass"
+		"all": "lostworlds:block/tinted_glass"
 	}
 }

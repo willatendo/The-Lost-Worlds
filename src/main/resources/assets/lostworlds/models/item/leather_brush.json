@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "lostworlds:item/leather_brush"
-  }
+	"parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "lostworlds:item/leather_brush"
+	}
 }

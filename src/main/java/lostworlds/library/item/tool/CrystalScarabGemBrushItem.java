@@ -8,7 +8,7 @@ public class CrystalScarabGemBrushItem extends BrushItem
 {
 	protected CrystalScarabGemBrushItem() 
 	{
-		super(ModItemTeir.CRYSTAL_SCARAB, new Properties().setNoRepair());
+		super(ModItemTier.CRYSTAL_SCARAB, new Properties().setNoRepair());
 	}
 	
 	@Override
@@ -26,7 +26,7 @@ public class CrystalScarabGemBrushItem extends BrushItem
 	public static Item create()
 	{
 		Item item = new CrystalScarabGemBrushItem();
-		ModRegistry.register(ModItemTeir.CRYSTAL_SCARAB.toString().toLowerCase() + "_brush", item);
+		ModRegistry.register(ModItemTier.CRYSTAL_SCARAB.toString().toLowerCase() + "_brush", item);
 		return item;
 	}
 }

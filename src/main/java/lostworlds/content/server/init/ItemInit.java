@@ -7,6 +7,7 @@ import lostworlds.library.item.FieldGuideItem;
 import lostworlds.library.item.FoodItem;
 import lostworlds.library.item.FoodItem.FoodType;
 import lostworlds.library.item.FoodSeedsItem;
+import lostworlds.library.item.HammerItem;
 import lostworlds.library.item.TimeBookItem;
 import lostworlds.library.item.armour.MaskItem;
 import lostworlds.library.item.armour.OxygenTankItem;
@@ -14,12 +15,12 @@ import lostworlds.library.item.builder.ItemBuilder;
 import lostworlds.library.item.builder.SpawnEggItemBuilder;
 import lostworlds.library.item.tool.BrushItem;
 import lostworlds.library.item.tool.CrystalScarabGemBrushItem;
-import lostworlds.library.item.tool.ModItemTeir;
+import lostworlds.library.item.tool.ModItemTier;
 import lostworlds.library.item.tool.ToolSetBuilder;
+import lostworlds.library.tab.ItemCategories;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
-import net.minecraft.item.AxeItem;
 import net.minecraft.item.BannerPatternItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.Properties;
@@ -37,13 +38,13 @@ public class ItemInit
 	public static final Item NETHERITE_BRUSH = BrushItem.createNetherite();
 	public static final Item CRYSTAL_SCARAB_BRUSH = CrystalScarabGemBrushItem.create();
 	
-	public static final Item HAMMER = ModRegistry.register("hammer", new AxeItem(ItemTier.IRON, 6.0F, -3.1F, (new Item.Properties()).tab(ModItemGroup.ITEMS)));
+	public static final Item HAMMER = ModRegistry.register("hammer", new HammerItem(ItemTier.IRON, 6.0F, -3.1F, (new Item.Properties()).tab(ModItemGroup.ITEMS)));
 	
-	public static final Item WET_PAPER = ItemBuilder.create("wet_paper");
+	public static final Item WET_PAPER = ItemBuilder.create(ItemCategories.UTILITIES, "wet_paper");
 	
 	public static final Item FIELD_GUIDE = FieldGuideItem.create();
 	
-	public static final Item EMPTY_VILE = ItemBuilder.create("empty_vile");
+	public static final Item EMPTY_VILE = ItemBuilder.create(ItemCategories.ELECTRONICS, "empty_vile");
 	
 	public static final Item PERMIAN_PERIOD_TIME_BOOK = TimeBookItem.create(TimeEras.PERMIAN_PERIOD);
 	//public static final Item JURASSIC_ERA_TIME_BOOK = JurassicTimeBook.create();
@@ -62,29 +63,29 @@ public class ItemInit
 	
 	public static final Item GROUND_FOSSIL = BoneMealItem.create("ground_fossil");
 	
-	public static final Item AMBER = ItemBuilder.create("amber");
+	public static final Item AMBER = ItemBuilder.create(ItemCategories.FOSSILS, "amber");
 	
-	public static final Item MUD_BALL = ItemBuilder.create("mud_ball");
+	public static final Item MUD_BALL = ItemBuilder.create(ItemCategories.MISS, "mud_ball");
 	
-	public static final Item COPPER_INGOT = ItemBuilder.create("copper_ingot");
-	public static final Item COPPER_NUGGET = ItemBuilder.create("copper_nugget");
+	public static final Item COPPER_INGOT = ItemBuilder.create(ItemCategories.MISS, "copper_ingot");
+	public static final Item COPPER_NUGGET = ItemBuilder.create(ItemCategories.MISS, "copper_nugget");
 	
-	public static final Item COPPER_WIRE = ItemBuilder.create("copper_wire");
-	public static final Item COMPUTER_FAN = ItemBuilder.create("computer_fan");
-	public static final Item COMPUTER_SCREEN = ItemBuilder.create("computer_screen");
-	public static final Item COMPUTER_FRAME = ItemBuilder.create("computer_frame");
-	public static final Item COMPUTER_STORAGE_PORT = ItemBuilder.create("computer_storage_port");
-	public static final Item MOTHERBOARD = ItemBuilder.create("motherboard");
-	public static final Item CPU = ItemBuilder.create("cpu");
-	public static final Item RAM = ItemBuilder.create("ram");
+	public static final Item COPPER_WIRE = ItemBuilder.create(ItemCategories.ELECTRONICS, "copper_wire");
+	public static final Item COMPUTER_FAN = ItemBuilder.create(ItemCategories.ELECTRONICS, "computer_fan");
+	public static final Item COMPUTER_SCREEN = ItemBuilder.create(ItemCategories.ELECTRONICS, "computer_screen");
+	public static final Item COMPUTER_FRAME = ItemBuilder.create(ItemCategories.ELECTRONICS, "computer_frame");
+	public static final Item COMPUTER_STORAGE_PORT = ItemBuilder.create(ItemCategories.ELECTRONICS, "computer_storage_port");
+	public static final Item MOTHERBOARD = ItemBuilder.create(ItemCategories.ELECTRONICS, "motherboard");
+	public static final Item CPU = ItemBuilder.create(ItemCategories.ELECTRONICS, "cpu");
+	public static final Item RAM = ItemBuilder.create(ItemCategories.ELECTRONICS, "ram");
 	
-	public static final Item COMPUTER_CORE = ItemBuilder.create("computer_core");
+	public static final Item COMPUTER_CORE = ItemBuilder.create(ItemCategories.ELECTRONICS, "computer_core");
 	
-	public static final Item STORAGE_DISC = ItemBuilder.create("storage_disc");
+	public static final Item STORAGE_DISC = ItemBuilder.create(ItemCategories.ELECTRONICS,"storage_disc");
 	
 	public static final Item CRYSTAL_SCARAB_GEMS = CrystalScarabGemItem.createAll();
 	
-	public static final Item CRYSTAL_SCARAB = ToolSetBuilder.create(ModItemTeir.CRYSTAL_SCARAB);
+	public static final Item CRYSTAL_SCARAB = ToolSetBuilder.create(ModItemTier.CRYSTAL_SCARAB);
 		
 	public static final Item CLOTH_MASK = MaskItem.createCloth();
 	

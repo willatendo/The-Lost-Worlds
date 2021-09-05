@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/outer_stairs",
+	"textures": {
+		"bottom": "lostworlds:block/accent_dark_concrete",
+		"top": "lostworlds:block/accent_dark_concrete",
+		"side": "lostworlds:block/accent_dark_concrete"
+	}
+}

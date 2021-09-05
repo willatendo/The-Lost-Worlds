@@ -1,6 +1,6 @@
 {
-  "replace": false,
-  "values": [
-    "lostworlds:permian_sand"
-  ]
+	"replace": false,
+	"values": [
+		"lostworlds:permian_sand"
+	]
 }

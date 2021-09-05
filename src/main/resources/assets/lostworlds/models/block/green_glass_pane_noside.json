@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/template_glass_pane_noside",
 	"textures": {
-		"pane": "lostworlds:blocks/green_glass"
+		"pane": "lostworlds:block/green_glass"
 	}
 }

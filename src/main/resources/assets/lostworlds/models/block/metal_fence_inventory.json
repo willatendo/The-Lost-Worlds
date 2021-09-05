@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/fence_inventory",
 	"textures": {
-		"texture": "lostworlds:blocks/metal_fence"
+		"texture": "lostworlds:block/metal_fence"
 	}
 }

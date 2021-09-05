@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/button_inventory",
 	"textures": {
-		"texture": "lostworlds:blocks/dark_concrete"
+		"texture": "lostworlds:block/dark_concrete"
 	}
 }

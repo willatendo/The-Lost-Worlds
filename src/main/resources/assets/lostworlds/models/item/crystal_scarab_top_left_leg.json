@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "lostworlds:item/crystal_scarab_top_left_leg"
-  }
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "lostworlds:item/crystal_scarab_top_left_leg"
+	}
 }

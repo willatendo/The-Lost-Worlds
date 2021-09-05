@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/cube_all",
 	"textures": {
-		"all": "lostworlds:blocks/black_glass"
+		"all": "lostworlds:block/black_glass"
 	}
 }

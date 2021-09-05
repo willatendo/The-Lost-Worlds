@@ -23,9 +23,13 @@ public class TextureManager
 	public static void onBake(ModelBakeEvent event)
 	{
 		ConnectedTextureBlock blockone = BlockInit.POLISHED_LIGHT_CONCRETE;
+		ConnectedTextureBlock blocktwo = BlockInit.POLISHED_DARK_CONCRETE;
 		LWBakedModel modelone = new LWConnectedBakedModel(blockone);
+		LWBakedModel modeltwo = new LWConnectedBakedModel(blocktwo);
 		event.getModelRegistry().put(new ModelResourceLocation(blockone.getRegistryName(), ""), modelone);
 		event.getModelRegistry().put(new ModelResourceLocation(blockone.getRegistryName(), "inventory"), modelone);	
+		event.getModelRegistry().put(new ModelResourceLocation(blocktwo.getRegistryName(), ""), modeltwo);
+		event.getModelRegistry().put(new ModelResourceLocation(blocktwo.getRegistryName(), "inventory"), modeltwo);	
 	}
 	
 	@SubscribeEvent
@@ -34,7 +38,9 @@ public class TextureManager
 		if(event.getMap().location().toString().equals("minecraft:textures/atlas/blocks.png"))
 		{
 			ConnectedTextureBlock blockone = BlockInit.POLISHED_LIGHT_CONCRETE;
+			ConnectedTextureBlock blocktwo = BlockInit.POLISHED_DARK_CONCRETE;
 			event.addSprite(blockone.getRegistryName());
+			event.addSprite(blocktwo.getRegistryName());
         }
     }
 	
@@ -44,7 +50,9 @@ public class TextureManager
 		if(event.getMap().location().toString().equals("minecraft:textures/atlas/blocks.png"))
 		{
 			ConnectedTextureBlock blockone = BlockInit.POLISHED_LIGHT_CONCRETE;
+			ConnectedTextureBlock blocktwo = BlockInit.POLISHED_DARK_CONCRETE;
 			TEXTURES.put(blockone, event.getMap().getSprite(blockone.getRegistryName()));
+			TEXTURES.put(blocktwo, event.getMap().getSprite(blockone.getRegistryName()));
         }
     }
 }

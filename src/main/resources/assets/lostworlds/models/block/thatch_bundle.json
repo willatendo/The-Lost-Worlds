@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "block/hay_block_top",
+		"side": "lostworlds:block/thatch_bundle_side"
+	}
+}

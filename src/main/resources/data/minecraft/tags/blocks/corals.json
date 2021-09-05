@@ -1,6 +1,6 @@
 {
-  "replace": false,
-  "values": [
-    "lostworlds:sponge_colony"
-  ]
+	"replace": false,
+	"values": [
+		"lostworlds:sponge_colony"
+	]
 }

@@ -9,9 +9,12 @@ import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.DimensionInit;
 import lostworlds.content.server.init.EntityInit;
+import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.PotionInit;
 import lostworlds.content.server.init.StructurePieceInit;
 import lostworlds.library.biome.ModConfiguredStructures;
+import lostworlds.library.tab.ModItemGroup;
+import lostworlds.library.tab.OrderTabs;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.client.world.DimensionRenderInfo;
@@ -43,6 +46,7 @@ public class LostWorldsMod
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		final IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 		
+		OrderTabs.finaliseItemsSort();
 		ModRegistry.register(bus);
 		LostWorldsAddon.getModPlugins();
 		
@@ -59,6 +63,9 @@ public class LostWorldsMod
 	private void commonSetup(final FMLCommonSetupEvent event)
 	{		
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(BlockInit.VOLCANIC_ASH.asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), PotionInit.ASHY_LUNG_POTION));
+				
+		ModItemGroup.ITEMS.setIcon(ItemInit.WET_PAPER.getDefaultInstance());
+		ModItemGroup.BLOCKS.setIcon(BlockInit.ACCENT_LIGHT_CONCRETE.asItem().getDefaultInstance());
 		
 		event.enqueueWork(() -> 
 		{

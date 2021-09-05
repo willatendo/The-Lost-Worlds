@@ -1,12 +1,13 @@
 package lostworlds.library.item;
 
+import lostworlds.library.tab.ItemCategories;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 
-public class CrystalScarabGemItem extends Item
+public class CrystalScarabGemItem extends Item implements ISortableItem
 {	
 	public static Item charged_crystal_scarab_gem = new CrystalScarabGemItem(new Properties().tab(ModItemGroup.ITEMS).rarity(Rarity.RARE), Variant.CHARGED);
 	public static Item crystal_scarab_gem = new CrystalScarabGemItem(new Properties().tab(ModItemGroup.ITEMS).rarity(Rarity.RARE), Variant.UNCHARGED);
@@ -52,6 +53,12 @@ public class CrystalScarabGemItem extends Item
 		ModRegistry.register("crystal_scarab_top_right_leg", crystal_scarab_top_right_leg);
 
 		return charged_crystal_scarab_gem;
+	}
+
+	@Override
+	public ItemCategories getCategory(int meta) 
+	{
+		return ItemCategories.ARCHAEOLOGY;
 	}
 	
 	public enum Variant

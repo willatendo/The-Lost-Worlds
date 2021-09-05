@@ -1,9 +1,7 @@
 package lostworlds.library.tab;
 
-import net.minecraft.item.ItemGroup;
-
 public class ModItemGroup 
 {
-	public static final ItemGroup ITEMS = new ItemsTab();
-	public static final ItemGroup BLOCKS = new BlocksTab();
+	public static final ModTab ITEMS = new ModTab("items", null, null);
+	public static final ModTab BLOCKS = new ModTab("blocks", null, null);
 }

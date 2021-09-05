@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/wall_inventory",
 	"textures": {
-		"wall": "lostworlds:blocks/dark_concrete"
+		"wall": "lostworlds:block/dark_concrete"
 	}
 }

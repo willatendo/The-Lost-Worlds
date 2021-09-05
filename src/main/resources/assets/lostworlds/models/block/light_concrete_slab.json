@@ -1,8 +1,8 @@
 {
 	"parent": "minecraft:block/slab",
 	"textures": {
-		"bottom": "lostworlds:blocks/light_concrete",
-		"top": "lostworlds:blocks/light_concrete",
-		"side": "lostworlds:blocks/light_concrete"
+		"bottom": "lostworlds:block/light_concrete",
+		"top": "lostworlds:block/light_concrete",
+		"side": "lostworlds:block/light_concrete"
 	}
 }

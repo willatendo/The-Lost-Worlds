@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/template_glass_pane_noside_alt",
 	"textures": {
-		"pane": "lostworlds:blocks/black_glass"
+		"pane": "lostworlds:block/black_glass"
 	}
 }
