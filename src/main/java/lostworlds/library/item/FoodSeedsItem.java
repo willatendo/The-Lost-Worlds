@@ -1,12 +1,11 @@
 package lostworlds.library.item;
 
 import lostworlds.content.server.init.FoodInit;
-import lostworlds.library.tab.ItemCategories;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import net.minecraft.item.Item;
 
-public class FoodSeedsItem extends Item implements ISortableItem
+public class FoodSeedsItem extends Item
 {
 	protected FoodSeedsItem(Properties properties) 
 	{
@@ -23,11 +22,5 @@ public class FoodSeedsItem extends Item implements ISortableItem
 		Item item = new FoodSeedsItem(properties().stacksTo(1).food(FoodInit.SEEDS));
 		ModRegistry.register(plant + "_seeds", item);
 		return item;
-	}
-
-	@Override
-	public ItemCategories getCategory(int meta) 
-	{
-		return ItemCategories.FOOD;
 	}
 }

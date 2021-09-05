@@ -1,5 +1,6 @@
 package lostworlds.content.server.init;
 
+import lostworlds.library.block.ISign;
 import lostworlds.library.tileentity.AnalyserTileEntity;
 import lostworlds.library.tileentity.DNAExtractorTileEntity;
 import lostworlds.library.tileentity.DNAInjectorTileEntity;
@@ -9,13 +10,10 @@ import lostworlds.library.tileentity.ModSignTileEntity;
 import lostworlds.library.tileentity.TimeMachineTileEntity;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
+import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
-
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class TileEntityInit 
 {
@@ -27,8 +25,13 @@ public class TileEntityInit
 
 	public static final RegistryObject<TileEntityType<TimeMachineTileEntity>> TIME_MACHINE_TILE_ENTITY = ModRegistry.TILE_ENTITY_REGISTRY.register("time_machine_tile_entity", () -> TileEntityType.Builder.of(TimeMachineTileEntity::new, BlockInit.TIME_MACHINE).build(null));
 
-	public static final RegistryObject<TileEntityType<ModSignTileEntity>> SIGN_TILE_ENTITY = ModRegistry.TILE_ENTITY_REGISTRY.register("sign_tile_entity", () -> TileEntityType.Builder.of(ModSignTileEntity::new, /*BlockInit.CONIFER_SIGN, BlockInit.CONIFER_WALL_SIGN, BlockInit.GINKGO_SIGN, BlockInit.GINKGO_WALL_SIGN, BlockInit.ARAUCARIA_SIGN, BlockInit.ARAUCARIA_WALL_SIGN, BlockInit.SCORCHED_SIGN, BlockInit.SCORCHED_WALL_SIGN*/ BlockInit.ALETHOPTERIS).build(null));
+	public static final RegistryObject<TileEntityType<ModSignTileEntity>> SIGN_TILE_ENTITY = ModRegistry.TILE_ENTITY_REGISTRY.register("sign_tile_entity", () -> TileEntityType.Builder.of(ModSignTileEntity::new, collectBlocks(ISign.class)).build(null));
 	
 	//Registry
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Tile Entities"); }
+	
+	public static Block[] collectBlocks(Class<?> blockClass) 
+	{
+		return ForgeRegistries.BLOCKS.getValues().stream().filter(blockClass::isInstance).toArray(Block[]::new);
+	}
 }

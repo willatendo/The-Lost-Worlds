@@ -8,6 +8,7 @@ import java.util.Set;
 
 import org.objectweb.asm.Type;
 
+import lostworlds.library.util.ModUtils;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.ModList;
@@ -36,8 +37,10 @@ public class LostWorldsAddon
 		return new ResourceLocation(ID, path);
 	}
 	
-	public static List<LostWorldsAddon> getModPlugins() 
+	public static List<LostWorldsAddon> getAddons() 
 	{
+		ModUtils.LOGGER.debug("Loading Addons");
+		
 		return getInstances(Register.class, LostWorldsAddon.class);
 	}
 	

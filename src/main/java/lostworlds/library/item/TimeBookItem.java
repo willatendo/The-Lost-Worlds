@@ -5,7 +5,6 @@ import java.util.function.Predicate;
 import lostworlds.content.server.ModTags;
 import lostworlds.content.server.init.DimensionInit;
 import lostworlds.library.entity.TimeEras;
-import lostworlds.library.tab.ItemCategories;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModTeleporter;
@@ -28,7 +27,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-public class TimeBookItem extends ShootableItem implements ISortableItem
+public class TimeBookItem extends ShootableItem
 {
 	public static final Predicate<ItemStack> FUEL = (stack) -> 
 	{
@@ -176,11 +175,5 @@ public class TimeBookItem extends ShootableItem implements ISortableItem
 	public int getDefaultProjectileRange() 
 	{
 		return 15;
-	}
-
-	@Override
-	public ItemCategories getCategory(int meta) 
-	{
-		return ItemCategories.UTILITIES;
 	}
 }

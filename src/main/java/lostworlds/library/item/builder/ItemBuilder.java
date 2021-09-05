@@ -1,21 +1,19 @@
 package lostworlds.library.item.builder;
 
-import lostworlds.library.item.SortedItem;
-import lostworlds.library.tab.ItemCategories;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import net.minecraft.item.Item;
 
-public class ItemBuilder extends SortedItem
+public class ItemBuilder extends Item
 {
-	protected ItemBuilder(ItemCategories category) 
+	protected ItemBuilder() 
 	{
-		super(category, new Properties().tab(ModItemGroup.ITEMS));
+		super(new Properties().tab(ModItemGroup.ITEMS));
 	}
 
-	public static Item create(ItemCategories category, String id)
+	public static Item create(String id)
 	{
-		Item item = new ItemBuilder(category);
+		Item item = new ItemBuilder();
 		ModRegistry.register(id, item);
 		return item;
 	}

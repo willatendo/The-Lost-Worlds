@@ -2,7 +2,6 @@ package lostworlds.library.item;
 
 import java.util.List;
 
-import lostworlds.library.tab.ItemCategories;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
@@ -16,7 +15,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
-public class FieldGuideItem extends Item implements ISortableItem
+public class FieldGuideItem extends Item
 {
 	protected FieldGuideItem() 
 	{
@@ -40,11 +39,5 @@ public class FieldGuideItem extends Item implements ISortableItem
 		Item item = new FieldGuideItem();
 		ModRegistry.register("field_guide", item);
 		return item;
-	}
-
-	@Override
-	public ItemCategories getCategory(int meta) 
-	{
-		return ItemCategories.UTILITIES;
 	}
 }

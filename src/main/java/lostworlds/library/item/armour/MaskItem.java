@@ -1,7 +1,5 @@
 package lostworlds.library.item.armour;
 
-import lostworlds.library.item.ISortableItem;
-import lostworlds.library.tab.ItemCategories;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -9,7 +7,7 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.Item;
 
-public class MaskItem extends ArmorItem implements ISortableItem
+public class MaskItem extends ArmorItem
 {	
 	private MaskItem(IArmorMaterial material, Properties properties) 
 	{
@@ -29,12 +27,6 @@ public class MaskItem extends ArmorItem implements ISortableItem
 	public static Item createOxygen()
 	{
 		return create(Type.OXYGEN);
-	}
-	
-	@Override
-	public ItemCategories getCategory(int meta) 
-	{
-		return ItemCategories.GEAR;
 	}
 	
 	enum Type

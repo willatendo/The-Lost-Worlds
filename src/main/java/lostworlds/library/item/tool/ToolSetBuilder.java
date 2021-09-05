@@ -10,12 +10,13 @@ import net.minecraft.item.Item.Properties;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ShovelItem;
+import net.minecraft.item.SwordItem;
 
 public class ToolSetBuilder
 {
 	public static Item create(IItemTier tier)
 	{
-		Item toolSword = new SortedSwordItem(tier, 3, -2.4F, new Properties().tab(ModItemGroup.ITEMS).setNoRepair())
+		Item toolSword = new SwordItem(tier, 3, -2.4F, new Properties().tab(ModItemGroup.ITEMS).setNoRepair())
 		{
 			@Override
 			public boolean isEnchantable(ItemStack stack) 
