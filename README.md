@@ -6,9 +6,9 @@ Because the Lost Worlds is ambitious, we would always like help! You can contact
 
 # Authors:
 Current Authors:
-Lead Developer: Willatendo
-3d Artist: Dapper Dino
-2d Artist: Santipik3
-Animator: 𝙄 𝙧 𝙞 𝙨 𝙝 𝘽 𝙤 𝙞 ' 𝙨 𝙐 𝙣 𝙞 𝙩 𝙚 !
+* Lead Developer: Willatendo
+* 3d Artist: Dapper Dino
+* 2d Artist: Santipik3
+* Animator: 𝙄 𝙧 𝙞 𝙨 𝙝 𝘽 𝙤 𝙞 ' 𝙨 𝙐 𝙣 𝙞 𝙩 𝙚 !
 
-* Please note that others have worked on this mod, but if they aren't mentioned, it is because they have been kicked due to behavour or no longer needing them.
+- Please note that others have worked on this mod, but if they aren't mentioned, it is because they have been kicked due to behavour or no longer needing them.
