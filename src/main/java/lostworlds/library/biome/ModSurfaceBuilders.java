@@ -15,14 +15,16 @@ public class ModSurfaceBuilders
 	public static final SurfaceBuilderConfig DRIED_SOIL_MUD_CONFIG = new SurfaceBuilderConfig(BlockInit.DRIED_SOIL.defaultBlockState(), BlockInit.DRIED_SOIL.defaultBlockState(), BlockInit.MUD.defaultBlockState());
 	public static final SurfaceBuilderConfig CRACKED_SOIL_CONFIG = new SurfaceBuilderConfig(BlockInit.CRACKED_SOIL.defaultBlockState(), BlockInit.CRACKED_SOIL.defaultBlockState(), BlockInit.CRACKED_SOIL.defaultBlockState());
 	public static final SurfaceBuilderConfig DIRT_CONFIG = new SurfaceBuilderConfig(Blocks.DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState());
-	public static final SurfaceBuilderConfig MOSSY_DIRT_CONFIG = new SurfaceBuilderConfig(BlockInit.MOSSY_SOIL.defaultBlockState(), Blocks.DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState());
+	public static final SurfaceBuilderConfig MOSSY_SOIL_CONFIG = new SurfaceBuilderConfig(BlockInit.MOSSY_SOIL.defaultBlockState(), Blocks.DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState());
 	public static final SurfaceBuilderConfig VOLCANIC_ASH_CONFIG = new SurfaceBuilderConfig(BlockInit.VOLCANIC_ASH.defaultBlockState(), BlockInit.VOLCANIC_ASH.defaultBlockState(), BlockInit.VOLCANIC_ASH.defaultBlockState());
+	public static final SurfaceBuilderConfig MUD_CONFIG = new SurfaceBuilderConfig(BlockInit.MUD.defaultBlockState(), BlockInit.MUD.defaultBlockState(), BlockInit.MUD.defaultBlockState());
+	public static final SurfaceBuilderConfig MOSSY_SOIL_SILT_CONFIG = new SurfaceBuilderConfig(BlockInit.MOSSY_SOIL.defaultBlockState(), Blocks.DIRT.defaultBlockState(), BlockInit.SILT.defaultBlockState());
 	
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_ASHY_MEDOWS_BUILDER = SurfaceBuilder.DEFAULT.configured(VOLCANIC_ASH_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_DESERT_BUILDER = SurfaceBuilder.DEFAULT.configured(PERMIAN_SAND_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_DRIED_PLAINS_SURFACE_BUILDER = SurfaceBuilder.DEFAULT.configured(DRIED_SOIL_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_MOUNTAINS_BUILDER = SurfaceBuilder.DEFAULT.configured(PERMIAN_STONE_CONFIG);
-	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> FOREST_BUILDER = SurfaceBuilder.DEFAULT.configured(MOSSY_DIRT_CONFIG);
+	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> FOREST_BUILDER = SurfaceBuilder.DEFAULT.configured(DRIED_SOIL_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_STONE_BUILDER = SurfaceBuilder.DEFAULT.configured(PERMIAN_STONE_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_OCEAN_BUILDER = SurfaceBuilder.DEFAULT.configured(PERMIAN_SAND_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_WARM_OCEAN_BUILDER = SurfaceBuilder.DEFAULT.configured(SILT_CONFIG);

@@ -23,7 +23,7 @@ public class PermianAshyMedowsSurfaceBuilder extends SurfaceBuilder<SurfaceBuild
 	{
 		if(d > 1.0D) 
 		{
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, i1, i2, i3, d, state1, state2, i4, l, ModSurfaceBuilders.MOSSY_DIRT_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, i1, i2, i3, d, state1, state2, i4, l, ModSurfaceBuilders.DRIED_SOIL_CONFIG);
 		}
 		else
 		{

@@ -36,6 +36,7 @@ import lostworlds.library.block.builder.BlockBuilder;
 import lostworlds.library.item.tool.ModMaterials;
 import lostworlds.library.item.tool.ModToolTypes;
 import lostworlds.library.tab.ModItemGroup;
+import lostworlds.library.tree.CalamitesTree;
 import lostworlds.library.tree.ConiferTree;
 import lostworlds.library.tree.GinkgoTree;
 import lostworlds.library.util.ModRegistry;
@@ -172,10 +173,25 @@ public class BlockInit
 	public static final Block ARAUCARIA_DOOR = BlockAndItemBuilder.create("araucaria_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block ARAUCARIA_SIGN = BlockBuilder.create("araucaria_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.ARAUCARIA));
 	public static final Block ARAUCARIA_WALL_SIGN = BlockBuilder.create("araucaria_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.ARAUCARIA_SIGN), ModWoodType.ARAUCARIA));
-	public static final Item ARAUCARIA_SIGN_ITEM = ModRegistry.register("araucaria_sign", new SignItem(new Properties().tab(ModItemGroup.ITEMS).stacksTo(16), ARAUCARIA_SIGN, ARAUCARIA_WALL_SIGN));
+	public static final Item ARAUCARIA_SIGN_ITEM = ModRegistry.register("araucaria_sign", new SignItem(new Properties().tab(ModItemGroup.BLOCKS).stacksTo(16), ARAUCARIA_SIGN, ARAUCARIA_WALL_SIGN));
 	public static final Block ARAUCARIA_STICKS = BlockAndItemBuilder.create("araucaria_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
 	
 	//Calamite
+	public static final Block CALAMITES_LOG = BlockAndItemBuilder.create("calamites_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block STRIPPED_CALAMITES_LOG = BlockAndItemBuilder.create("stripped_calamites_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block CALAMITES_WOOD = BlockAndItemBuilder.create("calamites_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block STRIPPED_CALAMITES_WOOD = BlockAndItemBuilder.create("stripped_calamites_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block CALAMITES_LEAVES = BlockAndItemBuilder.create("calamites_leaves", new LeavesBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_GREEN).strength(0.3F).noOcclusion().sound(SoundType.GRASS)));
+	public static final Block CALAMITES_SAPLING = BlockAndItemBuilder.create("calamites_sapling", new ModSaplingBlock(new CalamitesTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final Block CALAMITES_PLANKS = BlockAndItemBuilder.create("calamites_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block CALAMITES_STAIRS = BlockAndItemBuilder.create("calamites_stairs", new StairsBlock(() -> BlockInit.CONIFER_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block CALAMITES_SLAB = BlockAndItemBuilder.create("calamites_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block CALAMITES_FENCE = BlockAndItemBuilder.create("calamites_fence", new FenceBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block CALAMITES_FENCE_GATE = BlockAndItemBuilder.create("calamites_fence_gate", new FenceGateBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block CALAMITES_PRESSURE_PLATE = BlockAndItemBuilder.create("calamites_pressure_plate", new PressurePlateBlock(Sensitivity.EVERYTHING, AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
+	public static final Block CALAMITES_BUTTON = BlockAndItemBuilder.create("calamites_button", new WoodButtonBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
+	public static final Block CALAMITES_TRAPDOOR = BlockAndItemBuilder.create("calamites_trapdoor", new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
+	public static final Block CALAMITES_DOOR = BlockAndItemBuilder.create("calamites_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	
 	//Conifer
 	public static final Block CONIFER_LOG = BlockAndItemBuilder.create("conifer_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -195,7 +211,7 @@ public class BlockInit
 	public static final Block CONIFER_DOOR = BlockAndItemBuilder.create("conifer_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block CONIFER_SIGN = BlockBuilder.create("conifer_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CONIFER));
 	public static final Block CONIFER_WALL_SIGN = BlockBuilder.create("conifer_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.CONIFER_SIGN), ModWoodType.CONIFER));
-	public static final Item CONIFER_SIGN_ITEM = ModRegistry.register("conifer_sign", new SignItem(new Properties().tab(ModItemGroup.ITEMS).stacksTo(16), CONIFER_SIGN, CONIFER_WALL_SIGN));
+	public static final Item CONIFER_SIGN_ITEM = ModRegistry.register("conifer_sign", new SignItem(new Properties().tab(ModItemGroup.BLOCKS).stacksTo(16), CONIFER_SIGN, CONIFER_WALL_SIGN));
 	public static final Block CONIFER_STICKS = BlockAndItemBuilder.create("conifer_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
 	
 	//Ginkgo
@@ -216,7 +232,7 @@ public class BlockInit
 	public static final Block GINKGO_DOOR = BlockAndItemBuilder.create("ginkgo_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block GINKGO_SIGN = BlockBuilder.create("ginkgo_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.GINKGO));
 	public static final Block GINKGO_WALL_SIGN = BlockBuilder.create("ginkgo_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.GINKGO_SIGN), ModWoodType.GINKGO));
-	public static final Item GINKGO_SIGN_ITEM = ModRegistry.register("ginkgo_sign", new SignItem(new Properties().tab(ModItemGroup.ITEMS).stacksTo(16), GINKGO_SIGN, GINKGO_WALL_SIGN));
+	public static final Item GINKGO_SIGN_ITEM = ModRegistry.register("ginkgo_sign", new SignItem(new Properties().tab(ModItemGroup.BLOCKS).stacksTo(16), GINKGO_SIGN, GINKGO_WALL_SIGN));
 	public static final Block GINKGO_STICKS = BlockAndItemBuilder.create("ginkgo_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
 	
 	//Scorched
@@ -235,7 +251,7 @@ public class BlockInit
 	public static final Block SCORCHED_DOOR = BlockAndItemBuilder.create("scorched_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block SCORCHED_SIGN = BlockBuilder.create("scorched_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.SCORCHED));
 	public static final Block SCORCHED_WALL_SIGN = BlockBuilder.create("scorched_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.SCORCHED_SIGN), ModWoodType.SCORCHED));
-	public static final Item SCORCHED_SIGN_ITEM = ModRegistry.register("scorched_sign", new SignItem(new Properties().tab(ModItemGroup.ITEMS).stacksTo(16), SCORCHED_SIGN, SCORCHED_WALL_SIGN));
+	public static final Item SCORCHED_SIGN_ITEM = ModRegistry.register("scorched_sign", new SignItem(new Properties().tab(ModItemGroup.BLOCKS).stacksTo(16), SCORCHED_SIGN, SCORCHED_WALL_SIGN));
 	public static final Block SCORCHED_STICKS = BlockAndItemBuilder.create("scorched_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
 	
 	//Sigillaria
@@ -445,7 +461,7 @@ public class BlockInit
 
 	public static final Block GLASS_SIGN = BlockBuilder.create("glass_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS), ModWoodType.GLASS));
 	public static final Block GLASS_WALL_SIGN = BlockBuilder.create("glass_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS).dropsLike(BlockInit.GLASS_SIGN), ModWoodType.GLASS));
-	public static final Item GLASS_SIGN_ITEM = ModRegistry.register("glass_sign", new SignItem(new Properties().tab(ModItemGroup.ITEMS).stacksTo(16), GLASS_SIGN, GLASS_WALL_SIGN));
+	public static final Item GLASS_SIGN_ITEM = ModRegistry.register("glass_sign", new SignItem(new Properties().tab(ModItemGroup.BLOCKS).stacksTo(16), GLASS_SIGN, GLASS_WALL_SIGN));
 
 	public static final Block GLASS_SHOP_DOOR = BlockAndItemBuilder.create("glass_shop_door", new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));	
 	public static final Block INNOVATION_CENTRE_DOOR = BlockAndItemBuilder.create("innovation_centre_door", new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));

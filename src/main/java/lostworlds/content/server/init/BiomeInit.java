@@ -20,6 +20,7 @@ import lostworlds.library.biome.biomes.permian.plains.PermianPlainsHills;
 import lostworlds.library.biome.biomes.permian.river.PermianRiver;
 import lostworlds.library.biome.biomes.permian.shore.PermianShore;
 import lostworlds.library.biome.biomes.permian.shore.PermianStoneShore;
+import lostworlds.library.biome.biomes.permian.swamp.PermianMarsh;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.world.biome.Biome;
@@ -42,6 +43,8 @@ public class BiomeInit
 
 	public static final Biome PERMIAN_GINKGO_FOREST = ModRegistry.register("permian_ginkgo_forest", PermianGinkgoForest.create());
 	public static final Biome PERMIAN_GINKGO_FOREST_HILLS = ModRegistry.register("permian_ginkgo_forest_hills", PermianGinkgoForestHills.create());
+
+	public static final Biome PERMIAN_MARSH = ModRegistry.register("permian_marsh", PermianMarsh.create());
 
 	public static final Biome PERMIAN_MOUNTAINS = ModRegistry.register("permian_mountains", PermianMountain.create());
 

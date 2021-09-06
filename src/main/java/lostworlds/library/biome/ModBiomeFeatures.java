@@ -96,6 +96,18 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
 	}
 	
+	public static void permianMarsh(BiomeGenerationSettings.Builder builder)
+	{
+		addPermianRock(builder);
+		addPermianOres(builder);
+		addPermianCarvers(builder);
+
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CALAMITIES_TREES);
+	}
+	
+	
 	public static void permianRiver(BiomeGenerationSettings.Builder builder)
 	{
 		addPermianOres(builder);
