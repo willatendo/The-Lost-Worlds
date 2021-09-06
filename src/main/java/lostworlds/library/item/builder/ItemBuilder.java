@@ -17,4 +17,10 @@ public class ItemBuilder extends Item
 		ModRegistry.register(id, item);
 		return item;
 	}
+
+	public static Item create(String id, Item item)
+	{
+		ModRegistry.register(id, item);
+		return item;
+	}
 }
