@@ -3,13 +3,16 @@ package lostworlds.library.dimension.permian;
 import java.util.function.LongFunction;
 
 import lostworlds.library.biome.BiomeKeys;
-import lostworlds.library.dimension.permian.layer.hills.PermianHillsLayer;
-import lostworlds.library.dimension.permian.layer.island.AddPermianIslandLayer;
-import lostworlds.library.dimension.permian.layer.island.PermianIslandLayer;
-import lostworlds.library.dimension.permian.layer.ocean.PermianDeepOceanLayer;
-import lostworlds.library.dimension.permian.layer.ocean.PermianMixOceansLayer;
-import lostworlds.library.dimension.permian.layer.ocean.PermianOceanLayer;
-import lostworlds.library.dimension.permian.layer.ocean.PermianRemoveTooMuchOceanLayer;
+import lostworlds.library.dimension.permian.layer.PermianAddInlandLayer;
+import lostworlds.library.dimension.permian.layer.PermianAddIslandLayer;
+import lostworlds.library.dimension.permian.layer.PermianAddSubBiomeLayer;
+import lostworlds.library.dimension.permian.layer.PermianAddWeightedSubBiomeLayer;
+import lostworlds.library.dimension.permian.layer.PermianIslandLayer;
+import lostworlds.library.dimension.permian.layer.PermianLookupLayer;
+import lostworlds.library.dimension.permian.layer.PermianRiverInitLayer;
+import lostworlds.library.dimension.permian.layer.PermianRiverLayer;
+import lostworlds.library.dimension.permian.layer.PermianRiverMixLayer;
+import lostworlds.library.dimension.permian.layer.PermianShoreLayer;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
@@ -26,102 +29,98 @@ import net.minecraft.world.gen.layer.traits.IAreaTransformer1;
 public class PermianLayerUtil 
 {
 	private static Registry<Biome> biomeRegistry;
-	
+
 	public static int getBiomeId(RegistryKey<Biome> define) 
 	{
 		Biome biome = biomeRegistry.get(define);
 		return biomeRegistry.getId(biome);
 	}
 	
-	public static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> zoom(long times, IAreaTransformer1 transformer, IAreaFactory<T> factory, int intager, LongFunction<C> contextFactory) 
-	{
-		IAreaFactory<T> iareafactory = factory;
-		
-		for(int i = 0; intager < i; ++i) 
-		{
-			iareafactory = transformer.run(contextFactory.apply(times + (long)i), iareafactory);
-		}
-		
-		return iareafactory;
-	}
-	
-	public static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> makeLayers(LongFunction<C> contextFactory, Registry<Biome> registry) 
+	public static Layer buildPermian(long seed, Registry<Biome> registry) 
 	{
 		biomeRegistry = registry;
 		
-		IAreaFactory<T> firstStep = PermianIslandLayer.INSTANCE.run(contextFactory.apply(1L));
-		firstStep = ZoomLayer.FUZZY.run(contextFactory.apply(2000L), firstStep);
-		firstStep = AddPermianIslandLayer.INSTANCE.run(contextFactory.apply(1L), firstStep);
-		firstStep = ZoomLayer.NORMAL.run(contextFactory.apply(2001L), firstStep);
-		firstStep = AddPermianIslandLayer.INSTANCE.run(contextFactory.apply(2L), firstStep);
-		firstStep = AddPermianIslandLayer.INSTANCE.run(contextFactory.apply(50L), firstStep);
-		firstStep = AddPermianIslandLayer.INSTANCE.run(contextFactory.apply(70L), firstStep);
-		firstStep = PermianRemoveTooMuchOceanLayer.INSTANCE.run(contextFactory.apply(2L), firstStep);
-		IAreaFactory<T> secondStep = PermianOceanLayer.INSTANCE.run(contextFactory.apply(2L));
-		secondStep = zoom(2001L, ZoomLayer.NORMAL, secondStep, 6, contextFactory);
-		firstStep = AddPermianIslandLayer.INSTANCE.run(contextFactory.apply(3L), firstStep);
-		firstStep = ZoomLayer.NORMAL.run(contextFactory.apply(2002L), firstStep);
-		firstStep = ZoomLayer.NORMAL.run(contextFactory.apply(2003L), firstStep);
-		firstStep = AddPermianIslandLayer.INSTANCE.run(contextFactory.apply(4L), firstStep);
-		firstStep = PermianDeepOceanLayer.INSTANCE.run(contextFactory.apply(4L), firstStep);
-		firstStep = zoom(1000L, ZoomLayer.NORMAL, firstStep, 0, contextFactory);
-		IAreaFactory<T> thirdStep = zoom(1000L, ZoomLayer.NORMAL, firstStep, 0, contextFactory);
-		//thirdStep = PermianStartRiverLayer.INSTANCE.run(contextFactory.apply(100L), thirdStep);
-		IAreaFactory<T> biomes = new PermianBiomeLayer().run(contextFactory.apply(1L));
-		biomes = ZoomLayer.NORMAL.run(contextFactory.apply(1000), biomes);
-		biomes = ZoomLayer.NORMAL.run(contextFactory.apply(1001), biomes);
-		biomes = ZoomLayer.NORMAL.run(contextFactory.apply(1002), biomes);
-		biomes = ZoomLayer.NORMAL.run(contextFactory.apply(1003), biomes);
-		biomes = ZoomLayer.NORMAL.run(contextFactory.apply(1004), biomes);
-		biomes = ZoomLayer.NORMAL.run(contextFactory.apply(1005), biomes);
-		IAreaFactory<T> fithStep = zoom(1000L, ZoomLayer.NORMAL, thirdStep, 2, contextFactory);
-		biomes = PermianHillsLayer.INSTANCE.run(contextFactory.apply(1000L), biomes, fithStep);
-		thirdStep = zoom(1000L, ZoomLayer.NORMAL, thirdStep, 2, contextFactory);
-		thirdStep = zoom(1000L, ZoomLayer.NORMAL, thirdStep, 4, contextFactory);
-		//thirdStep = PermianRiverLayer.INSTANCE.run(contextFactory.apply(1L), biomes);
-		thirdStep = SmoothLayer.INSTANCE.run(contextFactory.apply(1000L), thirdStep);
-		
-		for(int i = 0; i < 4; ++i) 
-		{
-			biomes = ZoomLayer.NORMAL.run(contextFactory.apply((long)(1000 + i)), biomes);
-			if(i == 0) 
-			{
-				biomes = AddPermianIslandLayer.INSTANCE.run(contextFactory.apply(3L), biomes);
-			}
-		}
-		
-		biomes = SmoothLayer.INSTANCE.run(contextFactory.apply(1000L), biomes);
-		//biomes = PermianRiverMixLayer.INSTANCE.run(contextFactory.apply(100L), biomes, thirdStep);
-
-		return PermianMixOceansLayer.INSTANCE.run(contextFactory.apply(100L), biomes, secondStep);
+		final IAreaFactory<LazyArea> noiseLayer = makeLayers(procedure -> new LazyAreaLayerContext(25, seed, procedure), registry);
+		return new PermianLookupLayer(noiseLayer);
 	}
-	
+
+	public static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> makeLayers(LongFunction<C> context, Registry<Biome> registry) 
+	{
+		IAreaFactory<T> islandLayer = new PermianIslandLayer().run(context.apply(1));
+		IAreaFactory<T> fuzzyZoomLayer = ZoomLayer.FUZZY.run(context.apply(2000), islandLayer);
+		IAreaFactory<T> addIslandLayer = PermianAddIslandLayer.desert3().run(context.apply(3), fuzzyZoomLayer);
+		IAreaFactory<T> zoomLayer = ZoomLayer.NORMAL.run(context.apply(2000), addIslandLayer);
+
+		IAreaFactory<T> oceanLayer = new PermianAddInlandLayer(20).run(context.apply(9), zoomLayer);
+		oceanLayer = ZoomLayer.NORMAL.run(context.apply(9), oceanLayer);
+		addIslandLayer = PermianAddIslandLayer.mountains().run(context.apply(6), oceanLayer);
+		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2001), addIslandLayer);
+		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2004), zoomLayer);
+		addIslandLayer = PermianAddIslandLayer.desert2().run(context.apply(8), zoomLayer);
+
+		IAreaFactory<T> biomeLayerGen = new PermianBiomeLayer().run(context.apply(15), addIslandLayer);
+		IAreaFactory<T> oceanLayerGen = PermianAddWeightedSubBiomeLayer.ocean().run(context.apply(16), biomeLayerGen);
+		IAreaFactory<T> coniferForest = PermianAddSubBiomeLayer.coniferForest().run(context.apply(17), oceanLayerGen);
+		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2002), coniferForest);
+		IAreaFactory<T> desert = PermianAddSubBiomeLayer.desert().run(context.apply(17), oceanLayerGen);
+		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2002), desert);
+		IAreaFactory<T> driedPlains = PermianAddSubBiomeLayer.driedPlains().run(context.apply(17), oceanLayerGen);
+		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2002), driedPlains);
+		IAreaFactory<T> floodBasalts = PermianAddSubBiomeLayer.floodBasalts().run(context.apply(17), oceanLayerGen);
+		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2002), floodBasalts);
+		IAreaFactory<T> ginkgoForest = PermianAddSubBiomeLayer.ginkgoForest().run(context.apply(17), oceanLayerGen);
+		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2002), ginkgoForest);
+		IAreaFactory<T> plains = PermianAddSubBiomeLayer.plains().run(context.apply(17), oceanLayerGen);
+		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2002), plains);
+
+		IAreaFactory<T> riverLayer = zoomLayer;
+		riverLayer = new PermianRiverInitLayer().run(context.apply(12), riverLayer);
+		riverLayer = magnify(2007, ZoomLayer.NORMAL, riverLayer, 5, context);
+		riverLayer = new PermianRiverLayer().run(context.apply(13), riverLayer);
+		riverLayer = SmoothLayer.INSTANCE.run(context.apply(2008L), riverLayer);
+
+		IAreaFactory<T> magnifyLayer = magnify(2007L, ZoomLayer.NORMAL, zoomLayer, 3, context);
+		IAreaFactory<T> biomeLayer = new PermianShoreLayer().run(context.apply(20), magnifyLayer);
+		biomeLayer = magnify(20, ZoomLayer.NORMAL, biomeLayer, 2, context);
+
+		biomeLayer = SmoothLayer.INSTANCE.run(context.apply(17L), biomeLayer);
+		biomeLayer = new PermianRiverMixLayer().run(context.apply(17), biomeLayer, riverLayer);
+
+		return biomeLayer;
+	}
+
 	public static boolean isSame(int biomeSeed1, int biomeSeed2) 
 	{
-		if(biomeSeed1 == biomeSeed2)
+		if(biomeSeed1 == biomeSeed2) 
 		{
 			return true;
-		} 
-		else 
-		{
+		} else {
 			return false;
 		}
 	}
-	
+
 	public static boolean isOcean(int biomeSeed) 
 	{
 		return biomeSeed == getBiomeId(BiomeKeys.PERMIAN_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.WARM_PERMIAN_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.DEEP_PERMIAN_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.WARM_DEEP_PERMIAN_OCEAN);
 	}
 	
-	public static boolean isShallowOcean(int biomeSeed) 
+	public static boolean isRiver(int biomeSeed) 
 	{
-		return biomeSeed == getBiomeId(BiomeKeys.PERMIAN_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.WARM_PERMIAN_OCEAN);
+		return biomeSeed == getBiomeId(BiomeKeys.PERMIAN_RIVER);
 	}
 
-	public static Layer makeLayers(long seed, Registry<Biome> registry) 
+	public static boolean isLand(int biomeSeed) 
 	{
-		biomeRegistry = registry;
-		IAreaFactory<LazyArea> areaFactory = makeLayers((contextSeed) -> new LazyAreaLayerContext(25, seed, contextSeed), registry);
-		return new Layer(areaFactory);
+		return biomeSeed == getBiomeId(BiomeKeys.PERMIAN_ASHY_MEDOWS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_CONIFER_FOREST) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_CONIFER_FOREST_HILLS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_DESERT) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_DESERT_HILLS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_DRIED_PLAINS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_DRIED_PLAINS_HILLS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_FLOOD_BASALTS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_GINKGO_FOREST) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_GINKGO_FOREST_HILLS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_MARSH) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_MOUNTAINS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_SHORE) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_STONE_SHORE);
+	}
+	
+	private static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> magnify(final long seed, final IAreaTransformer1 zoomLayer, final IAreaFactory<T> layer, final int count, final LongFunction<C> context) 
+	{
+		IAreaFactory<T> result = layer;
+		for(int i = 0; i < count; i++) 
+		{
+			result = zoomLayer.run(context.apply(seed + i), result);
+		}
+		return result;
 	}
 }

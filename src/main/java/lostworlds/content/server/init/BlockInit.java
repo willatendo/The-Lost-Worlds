@@ -192,6 +192,10 @@ public class BlockInit
 	public static final Block CALAMITES_BUTTON = BlockAndItemBuilder.create("calamites_button", new WoodButtonBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
 	public static final Block CALAMITES_TRAPDOOR = BlockAndItemBuilder.create("calamites_trapdoor", new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block CALAMITES_DOOR = BlockAndItemBuilder.create("calamites_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
+	public static final Block CALAMITES_SIGN = BlockBuilder.create("calamites_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CALAMITES));
+	public static final Block CALAMITES_WALL_SIGN = BlockBuilder.create("calamites_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.CALAMITES_SIGN), ModWoodType.CALAMITES));
+	public static final Item CALAMITES_SIGN_ITEM = ModRegistry.register("calamites_sign", new SignItem(new Properties().tab(ModItemGroup.BLOCKS).stacksTo(16), CALAMITES_SIGN, CALAMITES_WALL_SIGN));
+	public static final Block CALAMITES_STICKS = BlockAndItemBuilder.create("calamites_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
 	
 	//Conifer
 	public static final Block CONIFER_LOG = BlockAndItemBuilder.create("conifer_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));

@@ -24,6 +24,8 @@ public class BiomeKeys
 	public static final RegistryKey<Biome> PERMIAN_GINKGO_FOREST = register("permian_ginkgo_forest");
 	public static final RegistryKey<Biome> PERMIAN_GINKGO_FOREST_HILLS = register("permian_ginkgo_forest_hills");
 
+	public static final RegistryKey<Biome> PERMIAN_MARSH = register("permian_marsh");
+
 	public static final RegistryKey<Biome> PERMIAN_MOUNTAINS = register("permian_mountains");
 
 	public static final RegistryKey<Biome> PERMIAN_RIVER = register("permian_river");
