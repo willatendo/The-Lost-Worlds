@@ -27,8 +27,10 @@ public class LostWorldsConfig
 
 		//Biome
 		public final BooleanValue coniferForestShouldSpawn;
+		public final BooleanValue ginkgoForestShouldSpawn;
 		
 		public final IntValue coniferForestWeight;
+		public final IntValue ginkgoForestWeight;
 		
 		public Common(ForgeConfigSpec.Builder builder)
 		{
@@ -37,8 +39,10 @@ public class LostWorldsConfig
 			
 			//Biome
 			this.coniferForestShouldSpawn = builder.comment("Sets if the Conifer Forest should spawn in the overworld. To change the weight, go to coniferForestWeight").translation(TRANSLATION_TEXT + "coniferForestShouldSpawn").define("coniferForestShouldSpawn", true);
+			this.ginkgoForestShouldSpawn = builder.comment("Sets if the Ginkgo Forest should spawn in the overworld. To change the weight, go to ginkgoForestWeight").translation(TRANSLATION_TEXT + "ginkgoForestShouldSpawn").define("ginkgoForestShouldSpawn", true);
 			
 			this.coniferForestWeight = builder.comment("Sets the weight of the Conifer Forest spawning in the overworld. To disable this, got to coniferForestShouldSpawn").translation(TRANSLATION_TEXT + "coniferForestWeight").defineInRange("coniferForestWeight", 3, 1, 999);
+			this.ginkgoForestWeight = builder.comment("Sets the weight of the Ginkgo Forest spawning in the overworld. To disable this, got to ginkgoForestWeight").translation(TRANSLATION_TEXT + "ginkgoForestWeight").defineInRange("ginkgoForestWeight", 3, 1, 999);
 		}
 	}
 }

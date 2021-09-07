@@ -200,7 +200,7 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
 	}
 	
-	private static void addGinkgoTrees(BiomeGenerationSettings.Builder builder)
+	public static void addGinkgoTrees(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.GINKGO_TREES);
 	}

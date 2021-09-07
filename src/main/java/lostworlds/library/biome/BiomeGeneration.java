@@ -26,6 +26,19 @@ public class BiomeGeneration
 			}
 		}
 		
-		
+		if(LostWorldsConfig.COMMON_CONFIG.ginkgoForestShouldSpawn.get())
+		{
+			if(event.getName().equals(BiomeInit.GINKGO_FOREST.getRegistryName())) 
+			{
+				BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(BiomeKeys.GINKGO_FOREST, LostWorldsConfig.COMMON_CONFIG.ginkgoForestWeight.get()));
+				BiomeDictionary.addTypes(BiomeKeys.GINKGO_FOREST, Type.FOREST, Type.DENSE);
+			}
+			
+			if(event.getName().equals(BiomeInit.GINKGO_FOREST_HILLS.getRegistryName())) 
+			{
+				BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(BiomeKeys.GINKGO_FOREST_HILLS, LostWorldsConfig.COMMON_CONFIG.ginkgoForestWeight.get()));
+				BiomeDictionary.addTypes(BiomeKeys.GINKGO_FOREST_HILLS, Type.FOREST, Type.DENSE, Type.HILLS);
+			}
+		}
 	}
 }

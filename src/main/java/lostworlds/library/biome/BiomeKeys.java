@@ -46,6 +46,9 @@ public class BiomeKeys
 	public static final RegistryKey<Biome> CONIFER_FOREST = register("conifer_forest");
 	public static final RegistryKey<Biome> CONIFER_FOREST_HILLS = register("conifer_forest_hills");
 	
+	public static final RegistryKey<Biome> GINKGO_FOREST = register("ginkgo_forest");
+	public static final RegistryKey<Biome> GINKGO_FOREST_HILLS = register("ginkgo_forest_hills");
+	
 	private static RegistryKey<Biome> register(String id)
 	{
 		return RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(ModUtils.ID, id));

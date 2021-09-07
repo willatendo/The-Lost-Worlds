@@ -1,6 +1,7 @@
 package lostworlds.content.server.init;
 
 import lostworlds.library.biome.biomes.overworld.forest.ConiferForest;
+import lostworlds.library.biome.biomes.overworld.forest.GinkgoForest;
 import lostworlds.library.biome.biomes.permian.desert.PermianDesert;
 import lostworlds.library.biome.biomes.permian.forest.PermianConiferForest;
 import lostworlds.library.biome.biomes.permian.forest.PermianGinkgoForest;
@@ -61,6 +62,9 @@ public class BiomeInit
 	//Overworld
 	public static final Biome CONIFER_FOREST = ModRegistry.register("conifer_forest", ConiferForest.create());
 	public static final Biome CONIFER_FOREST_HILLS = ModRegistry.register("conifer_forest_hills", ConiferForest.create(0.45F, 0.3F));
+	
+	public static final Biome GINKGO_FOREST = ModRegistry.register("ginkgo_forest", GinkgoForest.create());
+	public static final Biome GINKGO_FOREST_HILLS = ModRegistry.register("ginkgo_forest_hills", GinkgoForest.create(0.45F, 0.3F));
 	
 	//Registry
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Biomes"); }
