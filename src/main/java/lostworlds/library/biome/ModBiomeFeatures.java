@@ -194,7 +194,7 @@ public class ModBiomeFeatures
 	}
 
 	//General Features
-	private static void addConiferTrees(BiomeGenerationSettings.Builder builder)
+	public static void addConiferTrees(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);

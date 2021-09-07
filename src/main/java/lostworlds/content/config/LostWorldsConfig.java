@@ -1,9 +1,9 @@
 package lostworlds.content.config;
 
-
 import org.apache.commons.lang3.tuple.Pair;
 
 import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 
 public class LostWorldsConfig 
@@ -20,13 +20,25 @@ public class LostWorldsConfig
 		COMMON_CONFIG = commonSpecPair.getLeft();
 	}
 	
-	static class Common 
+	public static class Common 
 	{
+		//Ids
 		public final IntValue blackMarketGenerationId;
 
+		//Biome
+		public final BooleanValue coniferForestShouldSpawn;
+		
+		public final IntValue coniferForestWeight;
+		
 		public Common(ForgeConfigSpec.Builder builder)
 		{
+			//Ids
 			this.blackMarketGenerationId = builder.comment("Sets the Black Market's structure Id. Minecraft requires a number id, so this may conflict with another mod. If so, change it.").translation(TRANSLATION_TEXT + "blackMarketGenerationId").defineInRange("blackMarketGenerationId", 930134351, 111111111, 999999999);
+			
+			//Biome
+			this.coniferForestShouldSpawn = builder.comment("Sets if the Conifer Forest should spawn in the overworld. To change the weight, go to coniferForestWeight").translation(TRANSLATION_TEXT + "coniferForestShouldSpawn").define("coniferForestShouldSpawn", true);
+			
+			this.coniferForestWeight = builder.comment("Sets the weight of the Conifer Forest spawning in the overworld. To disable this, got to coniferForestShouldSpawn").translation(TRANSLATION_TEXT + "coniferForestWeight").defineInRange("coniferForestWeight", 3, 1, 999);
 		}
 	}
 }

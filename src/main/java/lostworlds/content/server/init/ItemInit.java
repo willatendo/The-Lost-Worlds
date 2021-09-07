@@ -96,5 +96,5 @@ public class ItemInit
 	public static final Item FOSSIL_POACHER_SPAWN_EGG = SpawnEggItemBuilder.create("fossil_poacher_spawn_egg", () -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031);
 	
 	//Registry
-	public static void init() { ModUtils.LOGGER.debug("Registering Mod Items");}
+	public static void init() { ModUtils.LOGGER.debug("Registering Mod Items"); }
 }

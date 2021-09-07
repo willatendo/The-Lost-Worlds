@@ -8,6 +8,7 @@ import net.minecraft.world.biome.Biome;
 
 public class BiomeKeys 
 {
+	//Permian
 	public static final RegistryKey<Biome> PERMIAN_ASHY_MEDOWS = register("permian_ashy_medows");
 	
 	public static final RegistryKey<Biome> PERMIAN_CONIFER_FOREST = register("permian_conifer_forest");
@@ -40,6 +41,10 @@ public class BiomeKeys
 	
 	public static final RegistryKey<Biome> PERMIAN_SHORE = register("permian_shore");
 	public static final RegistryKey<Biome> PERMIAN_STONE_SHORE = register("permian_stone_shore");
+	
+	//Overworld
+	public static final RegistryKey<Biome> CONIFER_FOREST = register("conifer_forest");
+	public static final RegistryKey<Biome> CONIFER_FOREST_HILLS = register("conifer_forest_hills");
 	
 	private static RegistryKey<Biome> register(String id)
 	{

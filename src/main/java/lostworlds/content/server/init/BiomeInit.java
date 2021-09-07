@@ -1,5 +1,7 @@
 package lostworlds.content.server.init;
 
+import lostworlds.library.biome.biomes.overworld.forest.ConiferForest;
+import lostworlds.library.biome.biomes.overworld.forest.ConiferForestHills;
 import lostworlds.library.biome.biomes.permian.desert.PermianDesert;
 import lostworlds.library.biome.biomes.permian.desert.PermianDesertHills;
 import lostworlds.library.biome.biomes.permian.forest.PermianConiferForest;
@@ -61,6 +63,10 @@ public class BiomeInit
 
 	public static final Biome PERMIAN_SHORE = ModRegistry.register("permian_shore", PermianShore.create());
 	public static final Biome PERMIAN_STONE_SHORE = ModRegistry.register("permian_stone_shore", PermianStoneShore.create());
+	
+	//Overworld
+	public static final Biome CONIFER_FOREST = ModRegistry.register("conifer_forest", ConiferForest.create());
+	public static final Biome CONIFER_FOREST_HILLS = ModRegistry.register("conifer_forest_hills", ConiferForestHills.create());
 	
 	//Registry
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Biomes"); }

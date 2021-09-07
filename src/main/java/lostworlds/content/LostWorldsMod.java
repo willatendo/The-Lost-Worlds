@@ -12,6 +12,7 @@ import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.PotionInit;
 import lostworlds.content.server.init.StructurePieceInit;
+import lostworlds.library.biome.BiomeGeneration;
 import lostworlds.library.biome.ModConfiguredStructures;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
@@ -28,6 +29,7 @@ import net.minecraft.world.raid.Raid;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -52,6 +54,7 @@ public class LostWorldsMod
 		bus.addListener(this::clientSetup);
 				
 		forgeBus.addListener(this::biomeModification);
+		forgeBus.addListener(EventPriority.HIGH, BiomeGeneration::addBiomesToOverworld);
 				
 		ModLoadingContext.get().registerConfig(Type.COMMON, LostWorldsConfig.commonSpec);
 
