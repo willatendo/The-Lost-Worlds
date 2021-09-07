@@ -22,7 +22,9 @@ import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.ISeedReader;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.structure.StructureManager;
 import net.minecraft.world.gen.feature.structure.StructurePiece;
 import net.minecraft.world.gen.feature.structure.TemplateStructurePiece;
@@ -34,10 +36,9 @@ import net.minecraft.world.gen.feature.template.TemplateManager;
 public class BlackMarketPeice 
 {
 	public static final ResourceLocation BLACK_MARKET_LOCATION = ModUtils.rL("black_market");
-
-	public static void addPieces(TemplateManager manager, List<StructurePiece> piece, Random rand, BlockPos pos) 
+	
+	public static void addStructure(TemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> piece, Random rand, Biome biome) 
 	{
-		Rotation rotation = Rotation.getRandom(rand);
 		piece.add(new BlackMarketPeice.Piece(manager, BLACK_MARKET_LOCATION, pos, rotation));
 	}
 
@@ -66,7 +67,7 @@ public class BlackMarketPeice
 		private void loadTemplate(TemplateManager manager)
 		{
 			Template template = manager.getOrCreate(this.templateLocation);
-			PlacementSettings placementsettings = (new PlacementSettings()).setRotation(this.rotation).setMirror(Mirror.NONE).addProcessor(BlockIgnoreStructureProcessor.STRUCTURE_AND_AIR);
+			PlacementSettings placementsettings = (new PlacementSettings()).setRotation(this.rotation).setMirror(Mirror.NONE).addProcessor(BlockIgnoreStructureProcessor.STRUCTURE_BLOCK);
 			this.setup(template, this.templatePosition, placementsettings);
 		}
 
@@ -105,8 +106,13 @@ public class BlackMarketPeice
 		@Override
 		public boolean postProcess(ISeedReader reader, StructureManager manager, ChunkGenerator chunkGenerator, Random rand, MutableBoundingBox box, ChunkPos chunkPos, BlockPos pos) 
 		{
-			box.expand(this.template.getBoundingBox(this.placeSettings, this.templatePosition));
-			return super.postProcess(reader, manager, chunkGenerator, rand, box, chunkPos, pos);
+			BlockPos blockpos1 = this.templatePosition;
+			int i = reader.getHeight(Heightmap.Type.WORLD_SURFACE_WG, blockpos1.getX(), blockpos1.getZ());
+			BlockPos blockpos2 = this.templatePosition;
+			this.templatePosition = this.templatePosition.offset(0, i - 90 - 2, 0);
+			boolean flag = super.postProcess(reader, manager, chunkGenerator, rand, box, chunkPos, pos);
+			this.templatePosition = blockpos2;
+			return flag;
 		}
 	}
 }

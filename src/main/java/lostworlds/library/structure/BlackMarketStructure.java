@@ -2,14 +2,10 @@ package lostworlds.library.structure;
 
 import com.mojang.serialization.Codec;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.util.Direction;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.util.registry.DynamicRegistries;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationStage.Decoration;
@@ -23,6 +19,12 @@ public class BlackMarketStructure extends Structure<NoFeatureConfig>
 	public BlackMarketStructure(Codec<NoFeatureConfig> codec) 
 	{
 		super(codec);
+	}
+	
+	@Override
+	public String getFeatureName() 
+	{
+		return "blackmarket";
 	}
 	
 	@Override
@@ -45,28 +47,12 @@ public class BlackMarketStructure extends Structure<NoFeatureConfig>
 		}
 		
 		@Override
-		public void generatePieces(DynamicRegistries registries, ChunkGenerator generator, TemplateManager manager, int chunkX, int chunkY, Biome biome, NoFeatureConfig config) {
-			ChunkPos chunkpos = new ChunkPos(chunkX, chunkY);
-			int structureX = chunkpos.getMinBlockX() + this.random.nextInt(16);
-			int structureZ = chunkpos.getMinBlockZ() + this.random.nextInt(16);
-			int seaLevel = generator.getSeaLevel();
-			int structureY = seaLevel + this.random.nextInt(generator.getGenDepth() - seaLevel);
-			IBlockReader reader = generator.getBaseColumn(structureX, structureZ);
-
-			for (BlockPos.Mutable pos = new BlockPos.Mutable(structureX, structureY, structureZ); structureY > seaLevel; --structureY) {
-				BlockState blockstate = reader.getBlockState(pos);
-				pos.move(Direction.DOWN);
-				BlockState state = reader.getBlockState(pos);
-				if (blockstate.isAir() && state.isFaceSturdy(reader, pos, Direction.UP)) {
-					break;
-				}
-			}
-
-			if (structureY > seaLevel) {
-				Rotation rotation = Rotation.getRandom(this.random);
-				this.pieces.add(new BlackMarketPeice.Piece(manager, BlackMarketPeice.BLACK_MARKET_LOCATION, new BlockPos(structureX, structureY, structureZ), rotation));
-				this.calculateBoundingBox();
-			}
+		public void generatePieces(DynamicRegistries registries, ChunkGenerator generator, TemplateManager manager, int chunkX, int chunkY, Biome biome, NoFeatureConfig config) 
+		{
+			BlockPos blockpos = new BlockPos(chunkX * 16, 90, chunkY * 16);
+			Rotation rotation = Rotation.values()[this.random.nextInt((Rotation.values()).length)];
+			BlackMarketPeice.addStructure(manager, blockpos, rotation, pieces, random, biome);
+			this.calculateBoundingBox();
 		}
 	}
 }

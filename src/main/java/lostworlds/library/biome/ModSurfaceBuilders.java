@@ -24,7 +24,7 @@ public class ModSurfaceBuilders
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_DESERT_BUILDER = SurfaceBuilder.DEFAULT.configured(PERMIAN_SAND_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_DRIED_PLAINS_SURFACE_BUILDER = SurfaceBuilder.DEFAULT.configured(DRIED_SOIL_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_MOUNTAINS_BUILDER = SurfaceBuilder.DEFAULT.configured(PERMIAN_STONE_CONFIG);
-	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> FOREST_BUILDER = SurfaceBuilder.DEFAULT.configured(DRIED_SOIL_CONFIG);
+	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> FOREST_BUILDER = SurfaceBuilder.DEFAULT.configured(MOSSY_SOIL_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_STONE_BUILDER = SurfaceBuilder.DEFAULT.configured(PERMIAN_STONE_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_OCEAN_BUILDER = SurfaceBuilder.DEFAULT.configured(PERMIAN_SAND_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_WARM_OCEAN_BUILDER = SurfaceBuilder.DEFAULT.configured(SILT_CONFIG);

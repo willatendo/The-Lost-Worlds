@@ -12,7 +12,6 @@ public class ModBiomeFeatures
 	public static void permianAshyMedows(BiomeGenerationSettings.Builder builder)
 	{
 		addScorchedTrees(builder);
-		addAshyShrub(builder);
 		addAshLayer(builder);
 		addPermianRock(builder);
 		addPermianOres(builder);
@@ -25,6 +24,8 @@ public class ModBiomeFeatures
 		addPermianRock(builder);
 		addPermianOres(builder);
 		addPermianCarvers(builder);
+		addZamites(builder);
+		addWilliamsonia(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
@@ -45,6 +46,8 @@ public class ModBiomeFeatures
 		addPermianRock(builder);
 		addPermianOres(builder);
 		addPermianCarvers(builder);
+		addZamites(builder);
+		addWilliamsonia(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
@@ -57,6 +60,8 @@ public class ModBiomeFeatures
 		addPermianOres(builder);
 		addGinkgoTrees(builder);
 		addPermianCarvers(builder);
+		addZamites(builder);
+		addWilliamsonia(builder);
 	}
 	
 	public static void permianFloodBasalts(BiomeGenerationSettings.Builder builder)
@@ -82,6 +87,8 @@ public class ModBiomeFeatures
 		addPermianOres(builder);
 		addPermianEmerald(builder);
 		addPermianCarvers(builder);
+		addZamites(builder);
+		addWilliamsonia(builder);
 		
 		DefaultBiomeFeatures.addSurfaceFreezing(builder);
 	}
@@ -101,6 +108,8 @@ public class ModBiomeFeatures
 		addPermianRock(builder);
 		addPermianOres(builder);
 		addPermianCarvers(builder);
+		addZamites(builder);
+		addWilliamsonia(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
@@ -207,9 +216,14 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.ASH_LAYER);
 	}
 
-	private static void addAshyShrub(BiomeGenerationSettings.Builder builder)
+	private static void addZamites(BiomeGenerationSettings.Builder builder)
 	{
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.ASHY_SHRUB);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.ZAMITES);
+	}
+
+	private static void addWilliamsonia(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.WILLIAMSONIA_PATCH);
 	}
 	
 	private static void addBasaltDiamondOre(BiomeGenerationSettings.Builder builder)

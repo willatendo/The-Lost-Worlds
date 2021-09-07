@@ -32,7 +32,6 @@ public class ClientSetup
 	public static void clientSetup(FMLClientSetupEvent event)
 	{
 		RenderTypeLookup.setRenderLayer(BlockInit.ALETHOPTERIS, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.ASHY_SHRUB, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.CEPHALOTAXUS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.CYCAD, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.DICKSONIA, RenderType.cutout());
@@ -46,6 +45,8 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.PERMIAN_DESERT_FERNS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.PERMIAN_DESERT_SHRUB, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.BRAZILEA, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.WILLIAMSONIA, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.ZAMITES, RenderType.cutout());
 		
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_CLEANER, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_GRINDER, RenderType.translucent());
