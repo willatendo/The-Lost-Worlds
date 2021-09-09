@@ -14,6 +14,7 @@ import lostworlds.content.server.init.PotionInit;
 import lostworlds.content.server.init.StructurePieceInit;
 import lostworlds.library.biome.BiomeGeneration;
 import lostworlds.library.biome.ModConfiguredStructures;
+import lostworlds.library.biome.OreGeneration;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
@@ -54,7 +55,9 @@ public class LostWorldsMod
 		bus.addListener(this::clientSetup);
 				
 		forgeBus.addListener(this::biomeModification);
+		forgeBus.addListener(EventPriority.HIGH, OreGeneration::addOresToOverworld);
 		forgeBus.addListener(EventPriority.HIGH, BiomeGeneration::addBiomesToOverworld);
+		forgeBus.addListener(EventPriority.HIGH, BiomeGeneration::addFeaturesToOverworld);
 				
 		ModLoadingContext.get().registerConfig(Type.COMMON, LostWorldsConfig.commonSpec);
 

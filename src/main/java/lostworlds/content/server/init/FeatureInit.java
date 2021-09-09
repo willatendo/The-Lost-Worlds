@@ -3,6 +3,7 @@ package lostworlds.content.server.init;
 import lostworlds.library.feature.AshFeature;
 import lostworlds.library.feature.GeyserBlockFeature;
 import lostworlds.library.feature.ModBlockBlobFeature;
+import lostworlds.library.feature.PermianLakesFeature;
 import lostworlds.library.feature.ScorchedTreeFeature;
 import lostworlds.library.feature.SpongeColoneyFeature;
 import lostworlds.library.util.ModRegistry;
@@ -23,6 +24,8 @@ public class FeatureInit
 	public static final Feature<BaseTreeFeatureConfig> SCORCHED_TREE = new ScorchedTreeFeature(BaseTreeFeatureConfig.CODEC);
 
 	public static final Feature<BlockStateFeatureConfig> PERMIAN_ROCK = new ModBlockBlobFeature(BlockStateFeatureConfig.CODEC);
+	
+	public static final Feature<BlockStateFeatureConfig> PERMIAN_LAKE = new PermianLakesFeature(BlockStateFeatureConfig.CODEC);
 
 	public static void init() 
 	{ 	
@@ -33,5 +36,6 @@ public class FeatureInit
 		ModRegistry.register("sponge_coloney_placement", SPONGE_COLONEY_PLACEMENT);
 		ModRegistry.register("scorched_tree", SCORCHED_TREE);
 		ModRegistry.register("permian_rock", PERMIAN_ROCK);
+		ModRegistry.register("permian_lake", PERMIAN_LAKE);
 	}
 }

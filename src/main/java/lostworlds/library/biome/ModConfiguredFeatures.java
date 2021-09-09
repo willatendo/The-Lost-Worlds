@@ -4,6 +4,7 @@ import java.util.OptionalInt;
 
 import com.google.common.collect.ImmutableList;
 
+import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.FeatureInit;
 import lostworlds.library.foliageplacer.ConiferFoliagePlacer;
@@ -29,9 +30,11 @@ import net.minecraft.world.gen.feature.MultipleRandomFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.ReplaceBlockConfig;
 import net.minecraft.world.gen.feature.SingleRandomFeature;
+import net.minecraft.world.gen.feature.SphereReplaceConfig;
 import net.minecraft.world.gen.feature.TwoLayerFeature;
 import net.minecraft.world.gen.foliageplacer.FancyFoliagePlacer;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
+import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.DepthAverageConfig;
 import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
@@ -90,14 +93,23 @@ public class ModConfiguredFeatures
 
 	public static final ConfiguredFeature<?, ?> BASALT_DIAMOND_ORE = register("basalt_diamond_ore", Feature.ORE.configured(new OreFeatureConfig(ModFillerBlockTypes.BASALT, BlockInit.BASALT_DIAMOND_ORE.defaultBlockState(), 10)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(40, 0, 100))).squared().count(30));
 	
-	public static final ConfiguredFeature<?, ?> PERMIAN_COAL_ORE = register("ore_coal", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_COAL_ORE.defaultBlockState(), 17)).range(128).squared().count(20));
-	public static final ConfiguredFeature<?, ?> PERMIAN_IRON_ORE = register("ore_iron", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_IRON_ORE.defaultBlockState(), 9)).range(64).squared().count(20));
-	public static final ConfiguredFeature<?, ?> PERMIAN_GOLD_ORE = register("ore_gold", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_GOLD_ORE.defaultBlockState(), 9)).range(32).squared().count(2));
-	public static final ConfiguredFeature<?, ?> PERMIAN_REDSTONE_ORE = register("ore_redstone", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_REDSTONE_ORE.defaultBlockState(), 8)).range(16).squared().count(8));
-	public static final ConfiguredFeature<?, ?> PERMIAN_DIAMOND_ORE = register("ore_diamond", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_DIAMOND_ORE.defaultBlockState(), 8)).range(16).squared());
-	public static final ConfiguredFeature<?, ?> PERMIAN_LAPIS_ORE = register("ore_lapis", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_LAPIS_ORE.defaultBlockState(), 7)).decorated(Placement.DEPTH_AVERAGE.configured(new DepthAverageConfig(16, 16))).squared());
-	public static final ConfiguredFeature<?, ?> PERMIAN_EMERALD_ORE = register("ore_emerald", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(BlockInit.PERMIAN_STONE.defaultBlockState(), BlockInit.PERMIAN_EMERALD_ORE.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE)));
-	   
+	public static final ConfiguredFeature<?, ?> COPPER_ORE = register("copper_ore", Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockInit.COPPER_ORE.defaultBlockState(), LostWorldsConfig.COMMON_CONFIG.copperVeinSize.get())).range(LostWorldsConfig.COMMON_CONFIG.copperRange.get()).squared().count(LostWorldsConfig.COMMON_CONFIG.copperCountPerChunk.get()));
+
+	public static final ConfiguredFeature<?, ?> PERMIAN_COAL_ORE = register("permian_coal_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_COAL_ORE.defaultBlockState(), 17)).range(128).squared().count(20));
+	public static final ConfiguredFeature<?, ?> PERMIAN_IRON_ORE = register("permian_iron_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_IRON_ORE.defaultBlockState(), 9)).range(64).squared().count(20));
+	public static final ConfiguredFeature<?, ?> PERMIAN_GOLD_ORE = register("permian_gold_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_GOLD_ORE.defaultBlockState(), 9)).range(32).squared().count(2));
+	public static final ConfiguredFeature<?, ?> PERMIAN_REDSTONE_ORE = register("permian_redstone_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_REDSTONE_ORE.defaultBlockState(), 8)).range(16).squared().count(8));
+	public static final ConfiguredFeature<?, ?> PERMIAN_DIAMOND_ORE = register("permian_diamond_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_DIAMOND_ORE.defaultBlockState(), 8)).range(16).squared());
+	public static final ConfiguredFeature<?, ?> PERMIAN_LAPIS_ORE = register("permian_lapis_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_LAPIS_ORE.defaultBlockState(), 7)).decorated(Placement.DEPTH_AVERAGE.configured(new DepthAverageConfig(16, 16))).squared());
+	public static final ConfiguredFeature<?, ?> PERMIAN_EMERALD_ORE = register("permian_emerald_ore", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(BlockInit.PERMIAN_STONE.defaultBlockState(), BlockInit.PERMIAN_EMERALD_ORE.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE)));
+	public static final ConfiguredFeature<?, ?> PERMIAN_COPPER_ORE = register("permian_copper_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_COPPER_ORE.defaultBlockState(), LostWorldsConfig.COMMON_CONFIG.copperVeinSize.get())).range(LostWorldsConfig.COMMON_CONFIG.copperRange.get()).squared().count(LostWorldsConfig.COMMON_CONFIG.copperCountPerChunk.get()));
+
+	public static final ConfiguredFeature<?, ?> PERMIAN_WATER_LAKE = register("permian_water_lake", FeatureInit.PERMIAN_LAKE.configured(new BlockStateFeatureConfig(Blocks.WATER.defaultBlockState())).decorated(Placement.WATER_LAKE.configured(new ChanceConfig(4))));
+	public static final ConfiguredFeature<?, ?> PERMIAN_LAVA_LAKE = register("permian_lava_lake", FeatureInit.PERMIAN_LAKE.configured(new BlockStateFeatureConfig(Blocks.LAVA.defaultBlockState())).decorated(Placement.LAVA_LAKE.configured(new ChanceConfig(80))));
+	public static final ConfiguredFeature<?, ?> EXTRA_PERMIAN_LAVA_LAKE = register("extra_permian_lava_lake", FeatureInit.PERMIAN_LAKE.configured(new BlockStateFeatureConfig(Blocks.LAVA.defaultBlockState())).decorated(Placement.LAVA_LAKE.configured(new ChanceConfig(4))));
+	
+	public static final ConfiguredFeature<?, ?> MUD_DISK = register("mud_disk", Feature.DISK.configured(new SphereReplaceConfig(BlockInit.MUD.defaultBlockState(), FeatureSpread.of(2, 1), 1, ImmutableList.of(Blocks.DIRT.defaultBlockState(), BlockInit.MUD.defaultBlockState()))).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE));
+	
 	public static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String id, ConfiguredFeature<FC, ?> configuredFeature) 
 	{
 		return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, ModUtils.rL(id), configuredFeature);

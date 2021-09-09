@@ -3,7 +3,6 @@ package lostworlds.library.biome;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.GenerationStage.Carving;
 import net.minecraft.world.gen.feature.Features;
 
 public class ModBiomeFeatures 
@@ -16,6 +15,7 @@ public class ModBiomeFeatures
 		addPermianRock(builder);
 		addPermianOres(builder);
 		addPermianCarvers(builder);
+		addPermianLakes(builder);
 	}
 	
 	public static void permianConiferForest(BiomeGenerationSettings.Builder builder)
@@ -26,6 +26,7 @@ public class ModBiomeFeatures
 		addPermianCarvers(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
+		addPermianLakes(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
@@ -38,6 +39,7 @@ public class ModBiomeFeatures
 		addPermianRock(builder);
 		addPermianOres(builder);
 		addPermianCarvers(builder);
+		addPermianLakes(builder);
 	}
 	
 	public static void permianDriedPlains(BiomeGenerationSettings.Builder builder)
@@ -48,6 +50,7 @@ public class ModBiomeFeatures
 		addPermianCarvers(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
+		addPermianLakes(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
@@ -62,6 +65,7 @@ public class ModBiomeFeatures
 		addPermianCarvers(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
+		addPermianLakes(builder);
 	}
 	
 	public static void permianFloodBasalts(BiomeGenerationSettings.Builder builder)
@@ -70,6 +74,8 @@ public class ModBiomeFeatures
 		addGeyser(builder);
 		addPermianOres(builder);
 		addPermianCarvers(builder);
+		addPermianLakes(builder);
+		addPermianExtraLavaLakes(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA);
 		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Features.BASALT_PILLAR);
@@ -89,6 +95,7 @@ public class ModBiomeFeatures
 		addPermianCarvers(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
+		addPermianLakes(builder);
 		
 		DefaultBiomeFeatures.addSurfaceFreezing(builder);
 	}
@@ -98,6 +105,7 @@ public class ModBiomeFeatures
 		addPermianRock(builder);
 		addPermianOres(builder);
 		addPermianUnderwaterCarvers(builder);
+		addPermianLakes(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
@@ -110,6 +118,7 @@ public class ModBiomeFeatures
 		addPermianCarvers(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
+		addPermianLakes(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
@@ -121,6 +130,7 @@ public class ModBiomeFeatures
 	{
 		addPermianOres(builder);
 		addPermianCarvers(builder);
+		addPermianLakes(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
@@ -131,6 +141,7 @@ public class ModBiomeFeatures
 		addPermianRock(builder);
 		addPermianOres(builder);
 		addPermianUnderwaterCarvers(builder);
+		addPermianLakes(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
@@ -143,6 +154,7 @@ public class ModBiomeFeatures
 		addPermianRock(builder);
 		addPermianOres(builder);
 		addPermianCarvers(builder);
+		addPermianLakes(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
@@ -174,6 +186,7 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_IRON_ORE);
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_LAPIS_ORE);
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_REDSTONE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_COPPER_ORE);
 	}
 	
 	private static void addPermianEmerald(BiomeGenerationSettings.Builder builder)
@@ -183,14 +196,25 @@ public class ModBiomeFeatures
 	
 	private static void addPermianCarvers(BiomeGenerationSettings.Builder builder)
 	{
-		builder.addCarver(Carving.AIR, ModConfiguredCarvers.PERMIAN_CAVE_CARVER);
-		builder.addCarver(Carving.AIR, ModConfiguredCarvers.PERMIAN_CANYON_CARVER);
+		builder.addCarver(GenerationStage.Carving.AIR, ModConfiguredCarvers.PERMIAN_CAVE_CARVER);
+		builder.addCarver(GenerationStage.Carving.AIR, ModConfiguredCarvers.PERMIAN_CANYON_CARVER);
 	}
 	
 	private static void addPermianUnderwaterCarvers(BiomeGenerationSettings.Builder builder)
 	{
-		builder.addCarver(Carving.LIQUID, ModConfiguredCarvers.PERMIAN_UNDERWATER_CAVE_CARVER);
-		builder.addCarver(Carving.LIQUID, ModConfiguredCarvers.PERMIAN_UNDERWATER_CANYON_CARVER);
+		builder.addCarver(GenerationStage.Carving.LIQUID, ModConfiguredCarvers.PERMIAN_UNDERWATER_CAVE_CARVER);
+		builder.addCarver(GenerationStage.Carving.LIQUID, ModConfiguredCarvers.PERMIAN_UNDERWATER_CANYON_CARVER);
+	}
+	
+	private static void addPermianLakes(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.LAKES, ModConfiguredFeatures.PERMIAN_WATER_LAKE);
+		builder.addFeature(GenerationStage.Decoration.LAKES, ModConfiguredFeatures.PERMIAN_LAVA_LAKE);
+	}
+	
+	private static void addPermianExtraLavaLakes(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.LAKES, ModConfiguredFeatures.EXTRA_PERMIAN_LAVA_LAKE);
 	}
 
 	//General Features

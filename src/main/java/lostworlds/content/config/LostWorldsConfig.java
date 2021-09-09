@@ -25,6 +25,14 @@ public class LostWorldsConfig
 		//Ids
 		public final IntValue blackMarketGenerationId;
 
+		//Features		
+		public final BooleanValue mudDisksInSwamps;
+		
+		public final BooleanValue copperOreGeneration;
+		public final IntValue copperVeinSize;
+		public final IntValue copperRange;
+		public final IntValue copperCountPerChunk;
+		
 		//Biome
 		public final BooleanValue coniferForestShouldSpawn;
 		public final BooleanValue ginkgoForestShouldSpawn;
@@ -36,6 +44,16 @@ public class LostWorldsConfig
 		{
 			//Ids
 			this.blackMarketGenerationId = builder.comment("Sets the Black Market's structure Id. Minecraft requires a number id, so this may conflict with another mod. If so, change it.").translation(TRANSLATION_TEXT + "blackMarketGenerationId").defineInRange("blackMarketGenerationId", 930134351, 111111111, 999999999);
+			
+			//Features
+			//this.meteoritesShouldSpawn = builder.comment("Sets if meteorite structures should spawn in the overworld.").translation(TRANSLATION_TEXT + "meteoritesShouldSpawn").define("meteoritesShouldSpawn", true);
+			
+			this.mudDisksInSwamps = builder.comment("Sets if mud disks should spawn in swamp biomes.").translation(TRANSLATION_TEXT + "mudDisksInSwamps").define("mudDisksInSwamps", true);
+			
+			this.copperOreGeneration = builder.comment("Sets if copper ore should spawn.").translation(TRANSLATION_TEXT + "copperOreGeneration").define("copperOreGeneration", true);
+			this.copperVeinSize = builder.comment("Sets the size a copper vein can spawn.").translation(TRANSLATION_TEXT + "copperVeinSize").defineInRange("copperVeinSize", 9, 1, 100);
+			this.copperRange = builder.comment("Sets the rang copper can spawn in.").translation(TRANSLATION_TEXT + "copperRange").defineInRange("copperRange", 64, 1, 256);
+			this.copperCountPerChunk = builder.comment("Sets the ammount of copper veins per chunk").translation(TRANSLATION_TEXT + "copperCountPerChunk").defineInRange("copperCountPerChunk", 20, 1, 100);
 			
 			//Biome
 			this.coniferForestShouldSpawn = builder.comment("Sets if the Conifer Forest should spawn in the overworld. To change the weight, go to coniferForestWeight").translation(TRANSLATION_TEXT + "coniferForestShouldSpawn").define("coniferForestShouldSpawn", true);

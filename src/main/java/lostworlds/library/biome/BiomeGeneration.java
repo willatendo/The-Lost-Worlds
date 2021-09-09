@@ -2,9 +2,12 @@ package lostworlds.library.biome;
 
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BiomeInit;
+import net.minecraft.world.biome.Biome.Category;
+import net.minecraft.world.gen.GenerationStage;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeManager;
+import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class BiomeGeneration 
@@ -38,6 +41,19 @@ public class BiomeGeneration
 			{
 				BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(BiomeKeys.GINKGO_FOREST_HILLS, LostWorldsConfig.COMMON_CONFIG.ginkgoForestWeight.get()));
 				BiomeDictionary.addTypes(BiomeKeys.GINKGO_FOREST_HILLS, Type.FOREST, Type.DENSE, Type.HILLS);
+			}
+		}
+	}
+	
+	public static void addFeaturesToOverworld(BiomeLoadingEvent event)
+	{
+		BiomeGenerationSettingsBuilder generation = event.getGeneration();
+		
+		if(LostWorldsConfig.COMMON_CONFIG.mudDisksInSwamps.get())
+		{
+			if(event.getCategory() == Category.SWAMP)
+			{
+				generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.MUD_DISK);
 			}
 		}
 	}
