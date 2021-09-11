@@ -93,6 +93,10 @@ public class TimeBookItem extends ShootableItem
 									}
 									world.playSound((PlayerEntity)null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.PORTAL_TRAVEL, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 								}
+								else if(era == TimeEras.JURASSIC_PERIOD)
+								{
+									
+								}
 							}
 						}
 					}

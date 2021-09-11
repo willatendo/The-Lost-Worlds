@@ -46,7 +46,7 @@ public class ItemInit
 	public static final Item EMPTY_VILE = ItemBuilder.create("empty_vile");
 	
 	public static final Item PERMIAN_PERIOD_TIME_BOOK = TimeBookItem.create(TimeEras.PERMIAN_PERIOD);
-	//public static final Item JURASSIC_ERA_TIME_BOOK = JurassicTimeBook.create();
+	public static final Item JURASSIC_ERA_TIME_BOOK = TimeBookItem.create(TimeEras.JURASSIC_PERIOD);
 	
 	public static final Item FERN_LEAVES = FoodItem.create(FoodType.FERN_LEAVES);
 	public static final Item COOKED_FERN_LEAVES = FoodItem.create(FoodType.COOKED_FERN_LEAVES);

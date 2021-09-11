@@ -14,7 +14,6 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.ISeedReader;
 import net.minecraft.world.IServerWorld;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.structure.StructureManager;
@@ -29,9 +28,10 @@ public class MeteoritePeice
 {
 	public static final ResourceLocation METEORITE_LOCATION_ONE = ModUtils.rL("meteorite_one"), METEORITE_LOCATION_TWO = ModUtils.rL("meteorite_two"), METEORITE_LOCATION_THREE = ModUtils.rL("meteorite_three"), METEORITE_LOCATION_FOUR = ModUtils.rL("meteorite_four"), METEORITE_LOCATION_FIVE = ModUtils.rL("meteorite_five"), METEORITE_LOCATION_SIX = ModUtils.rL("meteorite_six");
 	
-	public static void addStructure(TemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> piece, Random rand, Biome biome) 
+	public static void addPieces(TemplateManager manager, List<StructurePiece> piece, Random rand, BlockPos pos) 
 	{
-		piece.add(new BlackMarketPeice.Piece(manager, chooseRandom(), pos, rotation));
+		Rotation rotation = Rotation.getRandom(rand);
+		piece.add(new MeteoritePeice.Piece(manager, chooseRandom(), pos, rotation));
 	}
 	
 	private static ResourceLocation chooseRandom()

@@ -91,9 +91,20 @@ public class LostWorldsMod
 	
 	private void biomeModification(final BiomeLoadingEvent event) 
 	{
-		if(ModUtils.SIMPLE_SPAWNABLE_BIOME_CATEGORIES.contains(event.getCategory()))
+		if(LostWorldsConfig.COMMON_CONFIG.blackMarketShouldSpawn.get())
 		{
-			event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_BLACK_MARKET);
+			if(ModUtils.SIMPLE_SPAWNABLE_BIOME_CATEGORIES.contains(event.getCategory()))
+			{
+				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_BLACK_MARKET);
+			}
+		}
+		
+		if(LostWorldsConfig.COMMON_CONFIG.meteoriteShouldSpawn.get())
+		{
+			if(ModUtils.SIMPLE_SPAWNABLE_BIOME_CATEGORIES.contains(event.getCategory()))
+			{
+				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_METEORITE);
+			}
 		}
     }
 	

@@ -14,9 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class TimeMachineCategory implements IRecipeCategory<TimeMachineRecipe>
-{
-	public static final ResourceLocation DISPLAY = ModUtils.rL("textures/gui/lostworlds_backgrounds.png");
-		
+{		
 	private final IDrawable background;
 	private final IDrawable icon;
 	
