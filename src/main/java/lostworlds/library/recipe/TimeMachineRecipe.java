@@ -50,6 +50,13 @@ public class TimeMachineRecipe implements IRecipe<IInventory>
 	{
 		return this.result;
 	}
+	
+	public NonNullList<ItemStack> getOutput()
+	{
+		NonNullList<ItemStack> output = NonNullList.create();
+		output.add(this.result);
+		return output;
+	}
 
 	@Override
 	public NonNullList<Ingredient> getIngredients() 
