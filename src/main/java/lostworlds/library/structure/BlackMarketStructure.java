@@ -22,12 +22,6 @@ public class BlackMarketStructure extends Structure<NoFeatureConfig>
 	}
 	
 	@Override
-	public String getFeatureName() 
-	{
-		return "blackmarket";
-	}
-	
-	@Override
 	public IStartFactory<NoFeatureConfig> getStartFactory() 
 	{
 		return BlackMarketStructure.Start::new;

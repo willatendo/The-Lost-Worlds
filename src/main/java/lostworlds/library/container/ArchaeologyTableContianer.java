@@ -37,7 +37,7 @@ public class ArchaeologyTableContianer extends Container
 
 	public ArchaeologyTableContianer(int windowId, PlayerInventory playerInv, IWorldPosCallable callable) 
 	{
-		super(ContainerInit.ARCHAEOLOGY_CONTAINER.get(), windowId);
+		super(ContainerInit.ARCHAEOLOGY_CONTAINER, windowId);
 		this.access = callable;
 		this.player = playerInv.player;
 		this.addSlot(new ArchaeologyTableResultSlot(playerInv.player, this.craftSlots, this.resultSlots, 0, 124, 35));

@@ -31,7 +31,7 @@ public class FossilCleanerContainer extends Container
 	
 	public FossilCleanerContainer(int windowID, PlayerInventory playerInv, FossilCleanerTileEntity tileEntity, IInventory tile) 
 	{
-		super(ContainerInit.FOSSIL_CLEANER_CONTAINER.get(), windowID);
+		super(ContainerInit.FOSSIL_CLEANER_CONTAINER, windowID);
 		this.data = tileEntity.getCleanerData();
 		this.tile = tileEntity;
 		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());

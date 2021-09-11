@@ -42,7 +42,7 @@ import software.bernie.geckolib3.GeckoLib;
 
 @Mod(ModUtils.ID)
 public class LostWorldsMod 
-{		
+{			
 	public LostWorldsMod() 
 	{		
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -58,9 +58,9 @@ public class LostWorldsMod
 		forgeBus.addListener(EventPriority.HIGH, OreGeneration::addOresToOverworld);
 		forgeBus.addListener(EventPriority.HIGH, BiomeGeneration::addBiomesToOverworld);
 		forgeBus.addListener(EventPriority.HIGH, BiomeGeneration::addFeaturesToOverworld);
-				
+		
 		ModLoadingContext.get().registerConfig(Type.COMMON, LostWorldsConfig.commonSpec);
-
+		
 		GeckoLib.initialize();
 	}
 	

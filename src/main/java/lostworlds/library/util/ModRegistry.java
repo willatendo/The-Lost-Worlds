@@ -26,6 +26,7 @@ import lostworlds.content.server.init.WorldTypeInit;
 import lostworlds.library.biome.ModConfiguredCarvers;
 import net.minecraft.block.Block;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
+import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -34,6 +35,7 @@ import net.minecraft.particles.ParticleType;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.BannerPattern;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.registry.Registry;
@@ -107,6 +109,20 @@ public class ModRegistry
 	public static BannerPattern createPattern(String id) 
 	{
 		return BannerPattern.create(id.toUpperCase(Locale.ROOT), id, id, false);
+	}
+	
+	public static <T extends TileEntity> TileEntityType<T> register(String id, TileEntityType<T> tileEntity)
+	{
+		tileEntity.setRegistryName(ModUtils.rL(id));
+		ForgeRegistries.TILE_ENTITIES.register(tileEntity);
+		return tileEntity;
+	}
+	
+	public static <T extends Container> ContainerType<T> register(String id, ContainerType<T> container)
+	{
+		container.setRegistryName(ModUtils.rL(id));
+		ForgeRegistries.CONTAINERS.register(container);
+		return container;
 	}
 	
 	public static Block register(String id, Block block)

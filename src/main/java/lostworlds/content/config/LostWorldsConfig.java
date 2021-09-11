@@ -22,7 +22,7 @@ public class LostWorldsConfig
 	
 	public static class Common 
 	{
-		//Ids
+		//Structures
 		public final IntValue blackMarketGenerationId;
 
 		//Features		
@@ -33,7 +33,7 @@ public class LostWorldsConfig
 		public final IntValue copperRange;
 		public final IntValue copperCountPerChunk;
 		
-		//Biome
+		//Biomes
 		public final BooleanValue coniferForestShouldSpawn;
 		public final BooleanValue ginkgoForestShouldSpawn;
 		

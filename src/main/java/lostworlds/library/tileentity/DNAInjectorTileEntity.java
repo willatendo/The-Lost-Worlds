@@ -96,7 +96,7 @@ public class DNAInjectorTileEntity extends TileEntity implements IInventory, INa
 
 	public DNAInjectorTileEntity() 
 	{
-		super(TileEntityInit.DNA_INJECTOR_TILE_ENTITY.get());
+		super(TileEntityInit.DNA_INJECTOR_TILE_ENTITY);
 	}
 
 	@Override

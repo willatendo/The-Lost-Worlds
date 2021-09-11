@@ -1,57 +1,99 @@
 package lostworlds.library.container;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
-import lostworlds.library.item.CrystalScarabGemItem;
+import lostworlds.content.server.init.RecipeInit;
+import lostworlds.library.recipe.TimeMachineRecipe;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.CraftResultInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.BookItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.IWorldPosCallable;
+import net.minecraft.util.IntReferenceHolder;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
+import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class TimeMachineContainer extends Container
 {
-	private final IInventory timeMachineSlots = new Inventory(2) 
+	private final IWorldPosCallable access;
+	private final IntReferenceHolder selectedRecipeIndex = IntReferenceHolder.standalone();
+	private final World level;
+	private List<TimeMachineRecipe> recipes = Lists.newArrayList();
+	private ItemStack input = ItemStack.EMPTY;
+	private long lastSoundTime;
+	final Slot bookSlot;
+	final Slot powerSlot;
+	final Slot resultSlot;
+	private Runnable slotUpdateListener = () -> { };
+	public final IInventory container = new Inventory(2) 
 	{
 		public void setChanged() 
 		{
 			super.setChanged();
 			TimeMachineContainer.this.slotsChanged(this);
+			TimeMachineContainer.this.slotUpdateListener.run();
 		}
 	};
-	private final IWorldPosCallable access;
+	private final CraftResultInventory resultContainer = new CraftResultInventory();
+	
+	public TimeMachineContainer(int windowId, PlayerInventory inv, PacketBuffer buffer) 
+	{
+		this(windowId, inv, IWorldPosCallable.NULL);
+	}
 	
 	public TimeMachineContainer(int windowId, PlayerInventory inv, IWorldPosCallable worldPos) 
 	{
-		super(ContainerInit.TIME_MACHINE_CONTAINER.get(), windowId);
-		
+		super(ContainerInit.TIME_MACHINE_CONTAINER, windowId);
+				
 		this.access = worldPos;
+		this.level = inv.player.level;
+		this.bookSlot = this.addSlot(new Slot(this.container, 0, 12, 33));
+		this.powerSlot = this.addSlot(new Slot(this.container, 1, 31, 33));
 		
-		this.slots.add(new Slot(timeMachineSlots, 0, 8, 34)
+		this.resultSlot = this.addSlot(new Slot(this.resultContainer, 2, 143, 33) 
 		{
 			@Override
 			public boolean mayPlace(ItemStack stack) 
 			{
-				return stack.getItem() instanceof BookItem ? true : false;
+				return false;
 			}
 			
 			@Override
-			public int getMaxStackSize() 
+			public ItemStack onTake(PlayerEntity player, ItemStack stack) 
 			{
-				return 1;
-			}
-		});
-		this.slots.add(new Slot(timeMachineSlots, 1, 29, 34)
-		{
-			@Override
-			public boolean mayPlace(ItemStack stack) 
-			{
-				return stack.getItem() == CrystalScarabGemItem.charged_crystal_scarab_gem ? true : false;
+				stack.onCraftedBy(player.level, player, stack.getCount());
+				TimeMachineContainer.this.resultContainer.awardUsedRecipes(player);
+				ItemStack book = TimeMachineContainer.this.bookSlot.remove(1);
+				ItemStack power = TimeMachineContainer.this.powerSlot.remove(1);
+				if(!book.isEmpty() && !power.isEmpty()) 
+				{
+					TimeMachineContainer.this.setupResultSlot();
+				}
+				
+				worldPos.execute((world, pos) -> 
+				{
+					long l = world.getGameTime();
+					if(TimeMachineContainer.this.lastSoundTime != l) 
+					{
+						world.playSound((PlayerEntity)null, pos, SoundEvents.BEACON_ACTIVATE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+						TimeMachineContainer.this.lastSoundTime = l;
+					}
+				});
+				return super.onTake(player, stack);
 			}
 		});
 		
@@ -67,16 +109,189 @@ public class TimeMachineContainer extends Container
 		{
 			this.addSlot(new Slot(inv, k, 8 + k * 18, 142));
 		}
+		
+		this.addDataSlot(this.selectedRecipeIndex);
 	}
 	
-	public TimeMachineContainer(int windowId, PlayerInventory inv, PacketBuffer buffer) 
+	@OnlyIn(Dist.CLIENT)
+	public int getSelectedRecipeIndex() 
 	{
-		this(windowId, inv, IWorldPosCallable.NULL);
+		return this.selectedRecipeIndex.get();
+	}
+	
+	@OnlyIn(Dist.CLIENT)
+	public List<TimeMachineRecipe> getRecipes() 
+	{
+		return this.recipes;
+	}
+	
+	@OnlyIn(Dist.CLIENT)
+	public int getNumRecipes() 
+	{
+		return this.recipes.size();
+	}
+	
+	@OnlyIn(Dist.CLIENT)
+	public boolean hasInputItem() 
+	{
+		return this.bookSlot.hasItem() && this.powerSlot.hasItem() && !this.recipes.isEmpty();
+	}
+	
+	@Override
+	public boolean stillValid(PlayerEntity entity) 
+	{
+		return stillValid(this.access, entity, BlockInit.TIME_MACHINE);
+	}
+	
+	@Override
+	public boolean clickMenuButton(PlayerEntity entity, int button) 
+	{
+		if(this.isValidRecipeIndex(button)) 
+		{
+			this.selectedRecipeIndex.set(button);
+			this.setupResultSlot();
+		}
+		
+		return true;
+	}
+	
+	private boolean isValidRecipeIndex(int index) 
+	{
+		return index >= 0 && index < this.recipes.size();
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity player) 
+	public void slotsChanged(IInventory inv) 
 	{
-		return stillValid(this.access, player, BlockInit.TIME_MACHINE);
+		ItemStack book = this.bookSlot.getItem();
+		ItemStack power = this.powerSlot.getItem();
+		if(book.getItem() != this.input.getItem()) 
+		{
+			this.input = book.copy();
+			this.setupRecipeList(inv, book);
+		}
+		if(power.getItem() != this.input.getItem()) 
+		{
+			this.input = power.copy();
+			this.setupRecipeList(inv, power);
+		}
+	}
+	
+	private void setupRecipeList(IInventory inv, ItemStack stack) 
+	{
+		this.recipes.clear();
+		this.selectedRecipeIndex.set(-1);
+		this.resultSlot.set(ItemStack.EMPTY);
+		if(!inv.isEmpty()) 
+		{
+			this.recipes = this.level.getRecipeManager().getRecipesFor(RecipeInit.TIME_MACHINE_RECIPE, inv, this.level);
+		}
+	}
+	
+	private void setupResultSlot() 
+	{
+		if(!this.recipes.isEmpty() && this.isValidRecipeIndex(this.selectedRecipeIndex.get())) 
+		{
+			TimeMachineRecipe TimeMachineRecipe = this.recipes.get(this.selectedRecipeIndex.get());
+			this.resultContainer.setRecipeUsed(TimeMachineRecipe);
+			this.resultSlot.set(TimeMachineRecipe.assemble(this.container));
+		} 
+		else 
+		{
+			this.resultSlot.set(ItemStack.EMPTY);
+		}
+		
+		this.broadcastChanges();
+	}
+
+	@Override
+	public ContainerType<?> getType() 
+	{
+		return ContainerInit.TIME_MACHINE_CONTAINER;
+	}
+	
+	@OnlyIn(Dist.CLIENT)
+	public void registerUpdateListener(Runnable run) 
+	{
+		this.slotUpdateListener = run;
+	}
+	
+	public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) 
+	{
+		return slot.container != this.resultContainer && super.canTakeItemForPickAll(stack, slot);
+	}
+	
+	@Override
+	public ItemStack quickMoveStack(PlayerEntity player, int i) 
+	{
+		ItemStack itemstack = ItemStack.EMPTY;
+		Slot slot = this.slots.get(i);
+		if(slot != null && slot.hasItem()) 
+		{
+			ItemStack itemstack1 = slot.getItem();
+			Item item = itemstack1.getItem();
+			itemstack = itemstack1.copy();
+			if(i == 2) 
+			{
+				item.onCraftedBy(itemstack1, player.level, player);
+				if(!this.moveItemStackTo(itemstack1, 3, 39, true)) 
+				{
+					return ItemStack.EMPTY;
+				}
+				
+				slot.onQuickCraft(itemstack1, itemstack);
+			} 
+			else if(i == 0 || i == 1) 
+			{
+				if(!this.moveItemStackTo(itemstack1, 3, 39, false)) 
+				{
+					return ItemStack.EMPTY;
+				}
+			} 
+			else if(this.level.getRecipeManager().getRecipeFor(RecipeInit.TIME_MACHINE_RECIPE, new Inventory(itemstack1), this.level).isPresent()) 
+			{
+				if(!this.moveItemStackTo(itemstack1, 0, 2, false)) 
+				{
+					return ItemStack.EMPTY;
+				}
+			} 
+			else if(i >= 2 && i < 29) 
+			{
+				if(!this.moveItemStackTo(itemstack1, 29, 38, false)) 
+				{
+					return ItemStack.EMPTY;
+				}
+			} 
+			else if(i >= 29 && i < 38 && !this.moveItemStackTo(itemstack1, 2, 29, false)) 
+			{
+				return ItemStack.EMPTY;
+			}
+			
+			if(itemstack1.isEmpty()) 
+			{
+				slot.set(ItemStack.EMPTY);
+			}
+			
+			slot.setChanged();
+			if(itemstack1.getCount() == itemstack.getCount()) 
+			{
+				return ItemStack.EMPTY;
+			}
+			
+			slot.onTake(player, itemstack1);
+			this.broadcastChanges();
+		}
+		
+		return itemstack;
+	}
+	
+	public void removed(PlayerEntity player) 
+	{
+		super.removed(player);
+		this.resultContainer.removeItemNoUpdate(1);
+		this.access.execute((world, pos) -> 
+		{
+			this.clearContainer(player, player.level, this.container);
+		});
 	}
 }

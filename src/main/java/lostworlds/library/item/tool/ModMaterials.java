@@ -9,4 +9,6 @@ public class ModMaterials
 	public static final Material MADE_FOR_NOTHING = (new Material.Builder(MaterialColor.STONE).build());
 
 	public static final Material MAGIC = (new Material.Builder(MaterialColor.STONE).build());
+
+	public static final Material OUT_OF_THIS_WORLD = (new Material.Builder(MaterialColor.STONE)).build();
 }

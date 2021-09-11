@@ -1,6 +1,7 @@
 package lostworlds.content.server.init;
 
 import lostworlds.library.structure.BlackMarketPeice;
+import lostworlds.library.structure.MeteoritePeice;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.util.registry.WorldGenRegistries;
@@ -11,6 +12,7 @@ import net.minecraft.world.gen.settings.StructureSeparationSettings;
 public class StructurePieceInit 
 {
 	public static final IStructurePieceType BLACK_MARKET_PIECE = ModRegistry.register("black_market_piece", BlackMarketPeice.Piece::new);
+	public static final IStructurePieceType METEORITE_PIECE = ModRegistry.register("meteorite_piece", MeteoritePeice.Piece::new);
 
 	public static void registerBiomeGeneration()
 	{

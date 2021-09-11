@@ -9,6 +9,6 @@ public class ModSignTileEntity extends SignTileEntity
 	@Override
 	public TileEntityType<?> getType() 
 	{
-		return TileEntityInit.SIGN_TILE_ENTITY.get();
+		return TileEntityInit.SIGN_TILE_ENTITY;
 	}
 }

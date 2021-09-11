@@ -119,16 +119,16 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.SECURITY_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.BACK_DOOR, RenderType.translucent());		
 		
-		ClientRegistry.bindTileEntityRenderer(TileEntityInit.SIGN_TILE_ENTITY.get(), SignTileEntityRenderer::new);
+		ClientRegistry.bindTileEntityRenderer(TileEntityInit.SIGN_TILE_ENTITY, SignTileEntityRenderer::new);
 		
-		ScreenManager.register(ContainerInit.FOSSIL_CLEANER_CONTAINER.get(), FossilCleanerScreen::new);
-		ScreenManager.register(ContainerInit.FOSSIL_GRINDER_CONTAINER.get(), FossilGrinderScreen::new);
-		ScreenManager.register(ContainerInit.DNA_EXTRACTOR_CONTAINER.get(), DNAExtractorScreen::new);
-		ScreenManager.register(ContainerInit.ANALYSER_CONTAINER.get(), AnalyserScreen::new);
-		ScreenManager.register(ContainerInit.DNA_INJECTOR_CONTAINER.get(), DNAInjectorScreen::new);
+		ScreenManager.register(ContainerInit.FOSSIL_CLEANER_CONTAINER, FossilCleanerScreen::new);
+		ScreenManager.register(ContainerInit.FOSSIL_GRINDER_CONTAINER, FossilGrinderScreen::new);
+		ScreenManager.register(ContainerInit.DNA_EXTRACTOR_CONTAINER, DNAExtractorScreen::new);
+		ScreenManager.register(ContainerInit.ANALYSER_CONTAINER, AnalyserScreen::new);
+		ScreenManager.register(ContainerInit.DNA_INJECTOR_CONTAINER, DNAInjectorScreen::new);
 
-		ScreenManager.register(ContainerInit.TIME_MACHINE_CONTAINER.get(), TimeMachineScreen::new);
-		ScreenManager.register(ContainerInit.ARCHAEOLOGY_CONTAINER.get(), ArchaeologyTableScreen::new);
+		ScreenManager.register(ContainerInit.TIME_MACHINE_CONTAINER, TimeMachineScreen::new);
+		ScreenManager.register(ContainerInit.ARCHAEOLOGY_CONTAINER, ArchaeologyTableScreen::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.FOSSIL_POACHER, manager -> new FossilPoacherRenderer(manager));
 	}

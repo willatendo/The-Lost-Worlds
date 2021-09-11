@@ -36,7 +36,7 @@ public class AnalyserContainer extends Container
 	
 	public AnalyserContainer(int windowID, PlayerInventory playerInv, AnalyserTileEntity tileEntity, IInventory tile) 
 	{
-		super(ContainerInit.ANALYSER_CONTAINER.get(), windowID);
+		super(ContainerInit.ANALYSER_CONTAINER, windowID);
 		this.level = playerInv.player.level;
 		this.data = tileEntity.getAnalysingData();
 		this.tile = tileEntity;

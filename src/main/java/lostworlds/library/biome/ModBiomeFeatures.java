@@ -4,6 +4,7 @@ import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Features;
+import net.minecraft.world.gen.feature.structure.StructureFeatures;
 
 public class ModBiomeFeatures 
 {	
@@ -66,6 +67,8 @@ public class ModBiomeFeatures
 		addZamites(builder);
 		addWilliamsonia(builder);
 		addPermianLakes(builder);
+		
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
 	}
 	
 	public static void permianFloodBasalts(BiomeGenerationSettings.Builder builder)
@@ -160,6 +163,29 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
 	}
 	
+	public static void ginkgoForest(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.GINKGO_TREES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.GINKGO_FOREST_TREES);
+
+		builder.addStructureStart(StructureFeatures.RUINED_PORTAL_STANDARD);
+		
+		DefaultBiomeFeatures.addDefaultOverworldLandStructures(builder);
+		DefaultBiomeFeatures.addDefaultCarvers(builder);
+		DefaultBiomeFeatures.addDefaultLakes(builder);
+		DefaultBiomeFeatures.addDefaultMonsterRoom(builder);
+		DefaultBiomeFeatures.addForestFlowers(builder);
+		DefaultBiomeFeatures.addDefaultUndergroundVariety(builder);
+		DefaultBiomeFeatures.addDefaultOres(builder);
+		DefaultBiomeFeatures.addDefaultSoftDisks(builder);
+		DefaultBiomeFeatures.addDefaultFlowers(builder);
+		DefaultBiomeFeatures.addForestGrass(builder);
+		DefaultBiomeFeatures.addDefaultMushrooms(builder);
+		DefaultBiomeFeatures.addDefaultExtraVegetation(builder);
+		DefaultBiomeFeatures.addDefaultSprings(builder);
+		DefaultBiomeFeatures.addSurfaceFreezing(builder);
+	}
+	
 	//Permian Features
 	private static void addPermianDesertPlants(BiomeGenerationSettings.Builder builder) 
 	{
@@ -224,7 +250,7 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
 	}
 	
-	public static void addGinkgoTrees(BiomeGenerationSettings.Builder builder)
+	private static void addGinkgoTrees(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.GINKGO_TREES);
 	}

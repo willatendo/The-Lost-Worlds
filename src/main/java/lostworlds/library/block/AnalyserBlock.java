@@ -18,7 +18,7 @@ import net.minecraft.world.IBlockReader;
 
 public class AnalyserBlock extends MachineBlockBuilder
 {
-	public static final VoxelShape SHAPE = Block.box(1, 0, 3, 15, 9, 16);
+	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 15, 11, 15);
 	
 	protected AnalyserBlock() 
 	{
@@ -42,7 +42,7 @@ public class AnalyserBlock extends MachineBlockBuilder
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) 
 	{
-		return TileEntityInit.ANALYSER_TILE_ENTITY.get().create();
+		return TileEntityInit.ANALYSER_TILE_ENTITY.create();
 	}
 	
 	@Override

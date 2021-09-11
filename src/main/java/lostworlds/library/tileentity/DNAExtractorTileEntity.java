@@ -94,7 +94,7 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 
 	public DNAExtractorTileEntity() 
 	{
-		super(TileEntityInit.DNA_EXTRACTOR_TILE_ENTITY.get());
+		super(TileEntityInit.DNA_EXTRACTOR_TILE_ENTITY);
 	}
 
 	@Override

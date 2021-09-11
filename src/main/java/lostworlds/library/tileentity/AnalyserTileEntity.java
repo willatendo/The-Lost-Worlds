@@ -93,7 +93,7 @@ public class AnalyserTileEntity extends TileEntity implements IInventory, INamed
 
 	public AnalyserTileEntity() 
 	{
-		super(TileEntityInit.ANALYSER_TILE_ENTITY.get());
+		super(TileEntityInit.ANALYSER_TILE_ENTITY);
 	}
 
 	@Override

@@ -36,7 +36,7 @@ public class DNAInjectorContainer extends Container
 	
 	public DNAInjectorContainer(int windowID, PlayerInventory playerInv, DNAInjectorTileEntity tileEntity, IInventory tile) 
 	{
-		super(ContainerInit.DNA_INJECTOR_CONTAINER.get(), windowID);
+		super(ContainerInit.DNA_INJECTOR_CONTAINER, windowID);
 		this.level = playerInv.player.level;
 		this.data = tileEntity.getInjectorData();
 		this.tile = tileEntity;

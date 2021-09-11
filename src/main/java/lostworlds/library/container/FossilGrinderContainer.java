@@ -34,7 +34,7 @@ public class FossilGrinderContainer extends Container
 	
 	public FossilGrinderContainer(int windowID, PlayerInventory playerInv, FossilGrinderTileEntity tileEntity, IInventory tile) 
 	{
-		super(ContainerInit.FOSSIL_GRINDER_CONTAINER.get(), windowID);
+		super(ContainerInit.FOSSIL_GRINDER_CONTAINER, windowID);
 		this.level = playerInv.player.level;
 		this.data = tileEntity.getGrinderData();
 		this.tile = tileEntity;

@@ -93,7 +93,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 
 	public FossilGrinderTileEntity() 
 	{
-		super(TileEntityInit.FOSSIL_GRINDER_TILE_ENTITY.get());
+		super(TileEntityInit.FOSSIL_GRINDER_TILE_ENTITY);
 	}
 	
 	public int getGrindingProgress()

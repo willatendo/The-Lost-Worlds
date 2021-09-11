@@ -35,7 +35,7 @@ public class DNAExtractorContainer extends Container
 	
 	public DNAExtractorContainer(final int windowID, final PlayerInventory playerInv, final DNAExtractorTileEntity tileEntity) 
 	{
-		super(ContainerInit.DNA_EXTRACTOR_CONTAINER.get(), windowID);
+		super(ContainerInit.DNA_EXTRACTOR_CONTAINER, windowID);
 		this.level = playerInv.player.level;
 		this.data = tileEntity.getExtractingData();
 		this.tile = tileEntity;

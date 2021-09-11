@@ -6,12 +6,10 @@ import lostworlds.library.biome.biomes.SimpleBiome;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeGenerationSettings;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
-import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.biome.Biome.RainType;
-import net.minecraft.world.gen.feature.structure.StructureFeatures;
+import net.minecraft.world.biome.BiomeGenerationSettings;
+import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilders;
 
 public class GinkgoForest extends SimpleBiome
@@ -34,23 +32,7 @@ public class GinkgoForest extends SimpleBiome
 	{	
 		GENERATION.surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
 		
-		DefaultBiomeFeatures.addDefaultOverworldLandStructures(GENERATION);
-		GENERATION.addStructureStart(StructureFeatures.RUINED_PORTAL_STANDARD);
-		DefaultBiomeFeatures.addDefaultCarvers(GENERATION);
-		DefaultBiomeFeatures.addDefaultLakes(GENERATION);
-		DefaultBiomeFeatures.addDefaultMonsterRoom(GENERATION);
-		DefaultBiomeFeatures.addForestFlowers(GENERATION);
-		DefaultBiomeFeatures.addDefaultUndergroundVariety(GENERATION);
-		DefaultBiomeFeatures.addDefaultOres(GENERATION);
-		DefaultBiomeFeatures.addDefaultSoftDisks(GENERATION);
-		DefaultBiomeFeatures.addDefaultFlowers(GENERATION);
-		DefaultBiomeFeatures.addForestGrass(GENERATION);
-		DefaultBiomeFeatures.addDefaultMushrooms(GENERATION);
-		DefaultBiomeFeatures.addDefaultExtraVegetation(GENERATION);
-		DefaultBiomeFeatures.addDefaultSprings(GENERATION);
-		DefaultBiomeFeatures.addSurfaceFreezing(GENERATION);
-		
-		ModBiomeFeatures.addGinkgoTrees(GENERATION);
+		ModBiomeFeatures.ginkgoForest(GENERATION);
 	}
 	
 	public static Biome create()

@@ -108,7 +108,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 
 	public FossilCleanerTileEntity() 
 	{
-		super(TileEntityInit.FOSSIL_CLEANER_TILE_ENTITY.get());
+		super(TileEntityInit.FOSSIL_CLEANER_TILE_ENTITY);
 	}
 
 	@Override

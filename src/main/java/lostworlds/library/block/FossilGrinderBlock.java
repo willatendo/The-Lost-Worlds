@@ -18,7 +18,7 @@ import net.minecraft.world.IBlockReader;
 
 public class FossilGrinderBlock extends MachineBlockBuilder
 {
-	public static final VoxelShape SHAPE = Block.box(1, 0, 3, 15, 9, 16);
+	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 15, 11, 15);
 	
 	protected FossilGrinderBlock() 
 	{
@@ -42,7 +42,7 @@ public class FossilGrinderBlock extends MachineBlockBuilder
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) 
 	{
-		return TileEntityInit.FOSSIL_GRINDER_TILE_ENTITY.get().create();
+		return TileEntityInit.FOSSIL_GRINDER_TILE_ENTITY.create();
 	}
 	
 	@Override
