@@ -18,7 +18,7 @@ import net.minecraft.world.IBlockReader;
 
 public class AnalyserBlock extends MachineBlockBuilder
 {
-	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 15, 11, 15);
+	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 11, 15);
 	
 	protected AnalyserBlock() 
 	{
