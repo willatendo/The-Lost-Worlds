@@ -4,11 +4,6 @@ import net.minecraft.item.Food;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 
-/*
- * Author: Willatendo
- * Date: July 1, 2021
- */
-
 public class FoodInit 
 {
 	public static final Food FERN_LEAVES = new Food.Builder().effect(() -> new EffectInstance(Effects.POISON, 10000), 0.15F).nutrition(3).saturationMod(0.7F).fast().build();

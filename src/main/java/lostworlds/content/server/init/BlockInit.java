@@ -26,6 +26,7 @@ import lostworlds.library.block.MossySoilBlock;
 import lostworlds.library.block.NautilusShellBlock;
 import lostworlds.library.block.PlasteredFossilBlock;
 import lostworlds.library.block.PowerSupplyBlock;
+import lostworlds.library.block.SoftStoneBlock;
 import lostworlds.library.block.SpongeColonyBlock;
 import lostworlds.library.block.SticksBlock;
 import lostworlds.library.block.TimeMachineBlock;
@@ -131,6 +132,8 @@ public class BlockInit
 	public static final Block POLISHED_VOLCANIC_ROCK = BlockAndItemBuilder.create("polished_volcanic_rock", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.GILDED_BLACKSTONE)));
 	public static final Block POLISHED_VOLCANIC_ROCK_STAIRS = BlockAndItemBuilder.create("polished_volcanic_rock_stairs", new StairsBlock(POLISHED_VOLCANIC_ROCK.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.GILDED_BLACKSTONE)));
 	public static final Block POLISHED_VOLCANIC_ROCK_SLAB = BlockAndItemBuilder.create("polished_volcanic_rock_slab", new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.GILDED_BLACKSTONE)));
+	
+	public static final Block SOFT_STONE = BlockBuilder.create("soft_stone", new SoftStoneBlock());
 	
 	//Overworld Ores
 	public static final Block COPPER_ORE = BlockAndItemBuilder.create("copper_ore", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.0F).sound(SoundType.STONE)));
@@ -288,6 +291,8 @@ public class BlockInit
 	public static final Block WILLIAMSONIA = BlockAndItemBuilder.create("williamsonia", new DoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block ZAMITES = BlockAndItemBuilder.create("zamites", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 
+	//Seeds
+	
 	//Natural Blocks
 	public static final Block DIICTODON_BURROW = BlockAndItemBuilder.create("diictodon_burrow", new Block(AbstractBlock.Properties.of(Material.SAND, MaterialColor.SAND).harvestTool(ToolType.SHOVEL).strength(1.5F).sound(SoundType.SAND)));
 	public static final Block TUNNELED_SOIL = BlockAndItemBuilder.create("tunneled_soil", new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
