@@ -6,10 +6,10 @@ import lostworlds.content.server.init.BannerInit;
 import lostworlds.content.server.init.BiomeInit;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
+import lostworlds.content.server.init.DinosaurInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.FeatureInit;
 import lostworlds.content.server.init.FoliagePlacerInit;
-import lostworlds.content.server.init.FossilInit;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.ParticleInit;
 import lostworlds.content.server.init.PointOfInterestInit;
@@ -54,15 +54,10 @@ import net.minecraft.world.gen.feature.structure.IStructurePieceType;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModRegistry 
-{				
-	public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_REGISTRY = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, ModUtils.ID);
-	public static final DeferredRegister<ContainerType<?>> CONTAINER_REGISTRY = DeferredRegister.create(ForgeRegistries.CONTAINERS, ModUtils.ID);
-	
+{
 	//Registers
 	public static ParticleType<BasicParticleType> register(String id, ParticleType<BasicParticleType> particle)
 	{
@@ -211,18 +206,15 @@ public class ModRegistry
 	}
 	
 	//Registers Deferred Registers
-	public static void register(IEventBus bus)
+	public static void register()
 	{
-		TILE_ENTITY_REGISTRY.register(bus);
-		CONTAINER_REGISTRY.register(bus);
-		
 		ParticleInit.init();
 		RecipeInit.init();
 		PotionInit.init();
 		SoundInit.init();
 		ItemInit.init();
+		DinosaurInit.init();
 		BannerInit.init();
-		FossilInit.init();
 		TileEntityInit.init();
 		ContainerInit.init();
 		BlockInit.init();

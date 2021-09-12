@@ -48,7 +48,7 @@ public class LostWorldsMod
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		final IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 				
-		ModRegistry.register(bus);
+		ModRegistry.register();
 		LostWorldsAddon.getAddons();
 		
 		bus.addListener(this::commonSetup);
@@ -70,6 +70,7 @@ public class LostWorldsMod
 				
 		ModItemGroup.ITEMS.setIcon(ItemInit.WET_PAPER.getDefaultInstance());
 		ModItemGroup.BLOCKS.setIcon(BlockInit.ACCENT_LIGHT_CONCRETE.asItem().getDefaultInstance());
+		ModItemGroup.DINOSAURS.setIcon(ItemInit.AMBER.getDefaultInstance());
 		
 		event.enqueueWork(() -> 
 		{
