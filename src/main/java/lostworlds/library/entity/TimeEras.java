@@ -1,70 +1,50 @@
 package lostworlds.library.entity;
 
 import net.minecraft.util.IStringSerializable;
+import net.minecraftforge.common.IExtensibleEnum;
 
-public enum TimeEras implements IStringSerializable
+public enum TimeEras implements IStringSerializable, IExtensibleEnum
 {
-	PRECAMBRIAN_EON, 
-	CAMBRIAN_PERIOD, 
-	ORDOVICIAN_PERIOD, 
-	SILURIAN_PERIOD, 
-	DEVONIAN_PERIOD, 
-	CARBONIFEROUS_PERIOD, 
-	PERMIAN_PERIOD, 
-	TRIASSIC_PERIOD, 
-	JURASSIC_PERIOD, 
-	CRETACEOUS_PERIOD, 
-	PALEOCENE_EPOCH,
-	EOCENE_EPOCH, 
-	OLIGOCENE_EPOCH, 
-	MIOCENE_EPOCH, 
-	PLIOCENE_EPOCH, 
-	PLEISTOCENE_EPOCH, 
-	HOLOCENE_EPOCH, 
-	MODERN_MINECRAFT;
+	PRECAMBRIAN_EON("precambrian_eon"), 
+	CAMBRIAN_PERIOD("cambrian_period"), 
+	ORDOVICIAN_PERIOD("ordovician_period"), 
+	SILURIAN_PERIOD("silurian_period"), 
+	DEVONIAN_PERIOD("devonian_period"), 
+	CARBONIFEROUS_PERIOD("carboniferous_period"), 
+	PERMIAN_PERIOD("permian_period"), 
+	TRIASSIC_PERIOD("triassic_period"), 
+	JURASSIC_PERIOD("jurassic_period"), 
+	CRETACEOUS_PERIOD("cretaceous_period"), 
+	PALEOCENE_EPOCH("paleocene_epoch"),
+	EOCENE_EPOCH("eocene_epoch"), 
+	OLIGOCENE_EPOCH("oligocene_epoch"), 
+	MIOCENE_EPOCH("miocene_epoch"), 
+	PLIOCENE_EPOCH("pliocene_epoch"),
+	PLEISTOCENE_EPOCH("pleistocene_epoch"), 
+	HOLOCENE_EPOCH("holocene_epoch"), 
+	MODERN_MINECRAFT("modern_minecraft");
+	
+	private final String id;
+	
+	private TimeEras(String id) 
+	{
+		this.id = id;
+	}
+	
+	//Used for addon creation. Use second one, first one is just because IExtensibleEnum is dumb.
+	public static TimeEras create(String name, String id)
+	{
+		throw new IllegalStateException("Enum not extended");
+	}
+	
+	public static TimeEras register(String id)
+	{
+		return create(id, id);
+	}
 	
 	@Override
 	public String getSerializedName() 
 	{
-		switch(this)
-		{
-			case PRECAMBRIAN_EON:
-				return "precambrian_eon";
-			case CAMBRIAN_PERIOD:
-				return "cambrian_period";
-			case ORDOVICIAN_PERIOD:
-				return "ordovician_period";
-			case SILURIAN_PERIOD:
-				return "silurian_period";
-			case DEVONIAN_PERIOD:
-				return "devonian_period";
-			case CARBONIFEROUS_PERIOD:
-				return "carboniferous_period";
-			case PERMIAN_PERIOD:
-				return "permian_period";
-			case TRIASSIC_PERIOD:
-				return "triassic_period";
-			case JURASSIC_PERIOD:
-				return "jurassic_period";
-			case CRETACEOUS_PERIOD:
-				return "cretaceous_period";
-			case PALEOCENE_EPOCH:
-				return "paleocene_epoch";
-			case EOCENE_EPOCH:
-				return "eocene_epoch";
-			case OLIGOCENE_EPOCH:
-				return "oligocene_epoch";
-			case MIOCENE_EPOCH:
-				return "miocene_epoch";
-			case PLIOCENE_EPOCH:
-				return "pliocene_epoch";
-			case PLEISTOCENE_EPOCH:
-				return "pleistocene_epoch";
-			case HOLOCENE_EPOCH:
-				return "holocene_epoch";
-			case MODERN_MINECRAFT:
-			default:
-				return "modern_minecraft";
-		}
+		return id;
 	}
 }

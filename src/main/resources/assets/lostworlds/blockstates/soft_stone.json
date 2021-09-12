@@ -1,0 +1,16 @@
+{
+	"variants": {
+		"era=modern_minecraft,damage=none": {
+			"model": "minecraft:block/stone"
+		},
+		"era=triassic_period,damage=none": {
+			"model": "minecraft:block/red_sandstone"
+		},
+		"era=jurassic_period,damage=none": {
+			"model": "minecraft:block/diorite"
+		},
+		"era=permian_period,damage=none": {
+			"model": "minecraft:block/sandstone"
+		}
+	}
+}
