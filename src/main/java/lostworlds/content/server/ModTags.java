@@ -14,6 +14,7 @@ public class ModTags
 		public static final ITag.INamedTag<Item> ARAUCARIA_LOGS = tag("araucaria_logs");
 		public static final ITag.INamedTag<Item> BLOOD_SYRINGES = tag("blood_syringes");
 		public static final ITag.INamedTag<Item> BLOOD_VILES = tag("blood_viles");
+		public static final ITag.INamedTag<Item> CALAMITES_LOGS = tag("calamties_logs");
 		public static final ITag.INamedTag<Item> CONIFER_LOGS = tag("conifer_logs");
 		public static final ITag.INamedTag<Item> DNA_DISCS = tag("dna_discs");
 		public static final ITag.INamedTag<Item> DNA = tag("dna");
@@ -34,6 +35,8 @@ public class ModTags
 	public static class ModBlockTags
 	{
 		public static final ITag.INamedTag<Block> ARAUCARIA_LOGS = tag("araucaria_logs");
+		public static final ITag.INamedTag<Block> CALAMITES_PLACEABLES = tag("calamites_placeables");
+		public static final ITag.INamedTag<Block> CALAMITES_LOGS = tag("calamites_logs");
 		public static final ITag.INamedTag<Block> CONIFER_LOGS = tag("conifer_logs");
 		public static final ITag.INamedTag<Block> DARK_CONCRETE = tag("dark_concrete");
 		public static final ITag.INamedTag<Block> DECORATIVE_BLOCKS = tag("decorative_blocks");

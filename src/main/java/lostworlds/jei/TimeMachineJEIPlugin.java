@@ -20,14 +20,14 @@ public class TimeMachineJEIPlugin implements IModPlugin
 	@Override
 	public ResourceLocation getPluginUid() 
 	{
-		return Constants.TIME_MACHINE_PLUGIN;
+		return LostWorldsConstants.TIME_MACHINE_PLUGIN;
 	}
 	
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) 
 	{
 		RecipeManager manager = Minecraft.getInstance().level.getRecipeManager();
-		registration.addRecipes(getRecipes(manager, RecipeInit.TIME_MACHINE_RECIPE), Constants.TIME_MACHINE_CATEGORY);
+		registration.addRecipes(getRecipes(manager, RecipeInit.TIME_MACHINE_RECIPE), LostWorldsConstants.TIME_MACHINE_CATEGORY);
 	}
 	
 	@Override

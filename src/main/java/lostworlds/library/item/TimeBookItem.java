@@ -33,12 +33,14 @@ public class TimeBookItem extends ShootableItem
 	{
 		return stack.getItem().is(ModTags.ModItemTags.TIME_BOOK_FUEL);
 	};
-	private static TimeEras era;
+	private final TimeEras era;
+	private final RegistryKey<World> worldToTransportTo;
 	
-	protected TimeBookItem(TimeEras eras)
+	protected TimeBookItem(TimeEras eras, RegistryKey<World> world)
 	{
 		super(new Properties().tab(ModItemGroup.ITEMS).stacksTo(1).rarity(Rarity.RARE).fireResistant());
-		era = eras;
+		this.era = eras;
+		this.worldToTransportTo = world;
 	}
 	
 	public void releaseUsing(ItemStack stack, World world, LivingEntity entity, int time) 
@@ -73,30 +75,24 @@ public class TimeBookItem extends ShootableItem
 								{
 									entity.sendMessage(ModUtils.tTC("timeBook", "doesnt_work"), entity.getUUID());
 								}
-								else if(era == TimeEras.PERMIAN_PERIOD)
+								ServerWorld serverworld = (ServerWorld)entity.level;
+								MinecraftServer minecraftserver = serverworld.getServer();
+								RegistryKey<World> registrykey = entity.level.dimension() == worldToTransportTo ? World.OVERWORLD : worldToTransportTo;
+								ServerWorld serverworld1 = minecraftserver.getLevel(registrykey);
+								if(serverworld1 != null && !entity.isPassenger()) 
 								{
-									ServerWorld serverworld = (ServerWorld)entity.level;
-									MinecraftServer minecraftserver = serverworld.getServer();
-									RegistryKey<World> registrykey = entity.level.dimension() == DimensionInit.PERMIAN_WORLD ? World.OVERWORLD : DimensionInit.PERMIAN_WORLD;
-									ServerWorld serverworld1 = minecraftserver.getLevel(registrykey);
-									if(serverworld1 != null && !entity.isPassenger()) 
+									playerentity.changeDimension(serverworld1, new ModTeleporter());
+									if(registrykey.equals(DimensionInit.PERMIAN_WORLD))
 									{
-										playerentity.changeDimension(serverworld1, new ModTeleporter());
-										if(registrykey.equals(DimensionInit.PERMIAN_WORLD))
-										{
-											entity.sendMessage(ModUtils.tTC("timeBook", "transport_to_permian"), entity.getUUID());
-										}
-										else
-										{
-											entity.sendMessage(ModUtils.tTC("timeBook", "transport_to_overworld"), entity.getUUID());
-										}
+										entity.sendMessage(ModUtils.tTC("timeBook", "transport_to_" + era.toString().toLowerCase()), entity.getUUID());
 									}
-									world.playSound((PlayerEntity)null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.PORTAL_TRAVEL, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+									else
+									{
+										entity.sendMessage(ModUtils.tTC("timeBook", "transport_to_overworld"), entity.getUUID());
+									}
 								}
-								else if(era == TimeEras.JURASSIC_PERIOD)
-								{
-									
-								}
+								world.playSound((PlayerEntity)null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.PORTAL_TRAVEL, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+
 							}
 						}
 					}
@@ -162,9 +158,9 @@ public class TimeBookItem extends ShootableItem
 		return true;
 	}
 	
-	public static Item create(TimeEras era)
+	public static Item create(TimeEras era, RegistryKey<World> world)
 	{
-		Item item = new TimeBookItem(era);
+		Item item = new TimeBookItem(era, world);
 		ModRegistry.register(era.toString().toLowerCase() + "_time_book", item);
 		return item;
 	}

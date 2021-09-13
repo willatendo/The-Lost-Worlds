@@ -3,6 +3,7 @@ package lostworlds.jei;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.recipe.TimeMachineRecipe;
 import lostworlds.library.util.ModUtils;
+import mezz.jei.api.constants.ModIds;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -15,12 +16,16 @@ import net.minecraft.util.ResourceLocation;
 
 public class TimeMachineCategory implements IRecipeCategory<TimeMachineRecipe>
 {		
+	public static final String TEXTURE_GUI_PATH = "textures/gui/";
+	public static final String TEXTURE_GUI_VANILLA = TEXTURE_GUI_PATH + "gui_vanilla.png";
+	public static final ResourceLocation RECIPE_GUI_VANILLA = new ResourceLocation(ModIds.JEI_ID, TEXTURE_GUI_VANILLA);
+	
 	private final IDrawable background;
 	private final IDrawable icon;
 	
 	public TimeMachineCategory(IGuiHelper helper) 
 	{
-		ResourceLocation location = mezz.jei.config.Constants.RECIPE_GUI_VANILLA;
+		ResourceLocation location = RECIPE_GUI_VANILLA;
 		this.background = helper.createDrawable(location, 0, 168, 125, 18);
 		this.icon = helper.createDrawableIngredient(new ItemStack(BlockInit.TIME_MACHINE.asItem()));
 	}
@@ -28,7 +33,7 @@ public class TimeMachineCategory implements IRecipeCategory<TimeMachineRecipe>
 	@Override
 	public ResourceLocation getUid() 
 	{
-		return Constants.TIME_MACHINE_CATEGORY;
+		return LostWorldsConstants.TIME_MACHINE_CATEGORY;
 	}
 
 	@Override

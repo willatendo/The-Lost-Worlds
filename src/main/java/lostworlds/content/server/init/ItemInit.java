@@ -50,12 +50,14 @@ public class ItemInit
 	public static final Item WET_PAPER = ItemBuilder.create("wet_paper");
 	public static final Item FIELD_GUIDE = FieldGuideItem.create();
 	
-	public static final Item PERMIAN_PERIOD_TIME_BOOK = TimeBookItem.create(TimeEras.PERMIAN_PERIOD);
-	public static final Item JURASSIC_ERA_TIME_BOOK = TimeBookItem.create(TimeEras.JURASSIC_PERIOD);
+	public static final Item PERMIAN_PERIOD_TIME_BOOK = TimeBookItem.create(TimeEras.PERMIAN_PERIOD, DimensionInit.PERMIAN_WORLD);
+	//public static final Item JURASSIC_ERA_TIME_BOOK = TimeBookItem.create(TimeEras.JURASSIC_PERIOD);
 
 	public static final Item AMBER = ItemBuilder.create("amber");
 	public static final Item GROUND_FOSSIL = BoneMealItem.create("ground_fossil");
 
+	public static final Item ARAUCARIA_BARK_SAMPLE = ItemBuilder.create("araucaria_bark_sample");
+	
 	public static final Item EMPTY_VILE = ItemBuilder.create("empty_vile");
 	
 	public static final Item COPPER_INGOT = ItemBuilder.create("copper_ingot");
