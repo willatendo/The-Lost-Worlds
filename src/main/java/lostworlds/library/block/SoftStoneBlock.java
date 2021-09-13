@@ -1,16 +1,20 @@
 package lostworlds.library.block;
 
+import java.util.Random;
+
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.TimeEras;
 import lostworlds.library.item.HammerItem;
 import lostworlds.library.item.tool.ModMaterials;
 import lostworlds.library.item.tool.ModToolTypes;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
+import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.EnumProperty;
@@ -79,9 +83,56 @@ public class SoftStoneBlock extends Block
 	}
 	
 	@Override
-	public void spawnAfterBreak(BlockState p_220062_1_, ServerWorld p_220062_2_, BlockPos p_220062_3_, ItemStack p_220062_4_) 
+	public void spawnAfterBreak(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) 
 	{
-		super.spawnAfterBreak(p_220062_1_, p_220062_2_, p_220062_3_, p_220062_4_);
+		ModUtils.LOGGER.debug("Detected that");
+		PotentialPart part = state.getValue(POTENTIAL_PART);
+		DinoTypes dino = state.getValue(POTENTIAL_CREATURE);
+		Damage damage = state.getValue(DAMAGE);
+		Random rand = new Random();
+	
+		if(part == PotentialPart.LEFT_ARM)
+		{
+			ModUtils.LOGGER.debug("Got to Here");
+			ArmorStandEntity leftArm = (ArmorStandEntity) dino.getLeftArm().create(world);
+			if(damage == Damage.NONE)
+			{
+				ModUtils.LOGGER.debug("Created Entity");
+				world.addFreshEntity(leftArm);
+			}
+			else if(damage == Damage.CHIPPED)
+			{
+				int chance = rand.nextInt(10);
+				if(chance < 9)
+				{
+					world.addFreshEntity(leftArm);
+				}
+			}
+			else if(damage == Damage.SLIGHTLY)
+			{
+				int chance = rand.nextInt(7);
+				if(chance < 4)
+				{
+					world.addFreshEntity(leftArm);
+				}
+			}
+			else if(damage == Damage.CRACKED)
+			{
+				int chance = rand.nextInt(2);
+				if(chance == 1)
+				{
+					world.addFreshEntity(leftArm);
+				}
+			}
+			else if(damage == Damage.DAMAGED)
+			{
+				int chance = rand.nextInt(7);
+				if(chance > 4)
+				{
+					world.addFreshEntity(leftArm);
+				}
+			}
+		}
 	}
 	
 	@Override

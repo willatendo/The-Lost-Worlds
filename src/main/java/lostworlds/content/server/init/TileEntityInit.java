@@ -1,12 +1,14 @@
 package lostworlds.content.server.init;
 
 import lostworlds.library.block.ISign;
+import lostworlds.library.block.ISleepingBag;
 import lostworlds.library.tileentity.AnalyserTileEntity;
 import lostworlds.library.tileentity.DNAExtractorTileEntity;
 import lostworlds.library.tileentity.DNAInjectorTileEntity;
 import lostworlds.library.tileentity.FossilCleanerTileEntity;
 import lostworlds.library.tileentity.FossilGrinderTileEntity;
 import lostworlds.library.tileentity.ModSignTileEntity;
+import lostworlds.library.tileentity.SleepingBagTileEntity;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.block.Block;
@@ -22,6 +24,7 @@ public class TileEntityInit
 	public static final TileEntityType<DNAInjectorTileEntity> DNA_INJECTOR_TILE_ENTITY = ModRegistry.register("dna_injector_tile_entity", TileEntityType.Builder.of(DNAInjectorTileEntity::new, BlockInit.DNA_INJECTOR).build(null));
 
 	public static final TileEntityType<ModSignTileEntity> SIGN_TILE_ENTITY = ModRegistry.register("sign_tile_entity", TileEntityType.Builder.of(ModSignTileEntity::new, collectBlocks(ISign.class)).build(null));
+	public static final TileEntityType<SleepingBagTileEntity> SLEEPING_BAG_TILE_ENTITY = ModRegistry.register("sleeping_back_tile_entity", TileEntityType.Builder.of(SleepingBagTileEntity::new, collectBlocks(ISleepingBag.class)).build(null));
 	
 	//Registry
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Tile Entities"); }
