@@ -1,6 +1,0 @@
-{
-	"parent": "minecraft:block/cube_all",
-	"textures": {
-		"all": "lostworlds:blocks/orange_terracotta_fossil"
-	}
-}

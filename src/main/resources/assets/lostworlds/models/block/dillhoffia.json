@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/tinted_cross",
 	"textures": {
-		"cross": "lostworlds:blocks/dillhoffia"
+		"cross": "lostworlds:block/dillhoffia"
 	}
 }

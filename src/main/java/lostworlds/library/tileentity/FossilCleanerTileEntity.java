@@ -226,7 +226,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 		if(!this.items.get(0).isEmpty()) 
 		{
 			ItemStack output = ItemStack.EMPTY;
-			ItemStack input = BlockInit.PLASTERED_FOSSIL.asItem().getDefaultInstance();
+			ItemStack input = BlockInit.ACCENT_DARK_CONCRETE.asItem().getDefaultInstance();
 			output = RecipeManager.getAnalyzerRecipeForItem(input).generateOutput(new Random());
 			if(output.isEmpty()) 
 			{
@@ -264,7 +264,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 		if(this.canCleanWith()) 
 		{
 			ItemStack inputSlot = this.items.get(0);
-			ItemStack input = BlockInit.PLASTERED_FOSSIL.asItem().getDefaultInstance();
+			ItemStack input = BlockInit.ACCENT_DARK_CONCRETE.asItem().getDefaultInstance();
 			ItemStack output = RecipeManager.getAnalyzerRecipeForItem(input).generateOutput(new Random());
 			ItemStack outputSlot = this.items.get(2);
 			if(outputSlot.isEmpty()) 

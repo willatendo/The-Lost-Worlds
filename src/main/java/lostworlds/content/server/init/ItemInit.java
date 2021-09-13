@@ -94,7 +94,6 @@ public class ItemInit
 	public static final Item OSMUNDA_SEEDS = FoodSeedsItem.create("osmunda");
 	public static final Item DUISBERGIA_SEEDS = FoodSeedsItem.create("duisbergia");
 	public static final Item CEPHALOTAXUS_SEEDS = FoodSeedsItem.create("cephalotaxus");
-	public static final Item LYCOPHYTA_SEEDS = FoodSeedsItem.create("lycophyta");
 	public static final Item DILLHOFFIA_SEEDS = FoodSeedsItem.create("dillhoffia");
 	
 	public static final Item SCARAB_BANNER_PATTERN = ModRegistry.register("scarab_banner_pattern", new BannerPatternItem(BannerInit.SCARAB, PROPERTIES.stacksTo(1)));

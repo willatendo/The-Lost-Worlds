@@ -23,7 +23,7 @@ public class FossilCleanerRecipe
 	
 	public ItemStack getInput() 
 	{
-		return new ItemStack(BlockInit.PLASTERED_FOSSIL.asItem());
+		return new ItemStack(BlockInit.ACCENT_DARK_CONCRETE.asItem());
 	}
 	
 	public ItemStack generateOutput(Random random) 

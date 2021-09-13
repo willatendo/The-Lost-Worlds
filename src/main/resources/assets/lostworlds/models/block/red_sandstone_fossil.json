@@ -1,8 +1,0 @@
-{
-	"parent": "minecraft:block/cube_bottom_top",
-	"textures": {
-		"top": "lostworlds:blocks/red_sandstone_fossil_top",
-		"bottom": "lostworlds:blocks/red_sandstone_fossil_bottom",
-		"side": "lostworlds:blocks/red_sandstone_fossil_side"
-	}
-}

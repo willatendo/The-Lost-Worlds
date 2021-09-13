@@ -1,7 +1,7 @@
 {
 	"textures": {
-		"1": "lostworlds:blocks/alethopteris_stem",
-		"particle": "lostworlds:blocks/alethopteris_stem"
+		"1": "lostworlds:block/alethopteris_stem",
+		"particle": "lostworlds:block/alethopteris_stem"
 	},
 	"elements": [
 		{

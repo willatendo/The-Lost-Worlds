@@ -1,7 +1,10 @@
 {
 	"variants": {
-		"": {
-			"model": "lostworlds:block/cephalotaxus"
+		"half=lower": {
+			"model": "lostworlds:block/cephalotaxus_bottom"
+		},
+		"half=upper": {
+			"model": "lostworlds:block/cephalotaxus_top"
 		}
 	}
 }

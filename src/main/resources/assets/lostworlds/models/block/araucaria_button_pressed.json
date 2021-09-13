@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/button_pressed",
 	"textures": {
-		"texture": "lostworlds:blocks/araucaria_planks"
+		"texture": "lostworlds:block/araucaria_planks"
 	}
 }

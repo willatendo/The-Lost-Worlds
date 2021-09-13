@@ -9,8 +9,6 @@ import lostworlds.library.block.DNAExtractorBlock;
 import lostworlds.library.block.DNAInjectorBlock;
 import lostworlds.library.block.DeadSpongeColonyBlock;
 import lostworlds.library.block.DriedSoilBlock;
-import lostworlds.library.block.ExposedFossilBlock;
-import lostworlds.library.block.FossilBlock;
 import lostworlds.library.block.FossilCleanerBlock;
 import lostworlds.library.block.FossilGrinderBlock;
 import lostworlds.library.block.GeyserBlock;
@@ -24,8 +22,6 @@ import lostworlds.library.block.ModWallSignBlock;
 import lostworlds.library.block.ModWoodType;
 import lostworlds.library.block.MossySoilBlock;
 import lostworlds.library.block.NautilusShellBlock;
-import lostworlds.library.block.PlasteredFossilBlock;
-import lostworlds.library.block.PowerSupplyBlock;
 import lostworlds.library.block.SoftStoneBlock;
 import lostworlds.library.block.SpongeColonyBlock;
 import lostworlds.library.block.SticksBlock;
@@ -36,7 +32,6 @@ import lostworlds.library.block.builder.BlockAndDebugItemBuilder;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.block.builder.BlockBuilder;
 import lostworlds.library.item.tool.ModMaterials;
-import lostworlds.library.item.tool.ModToolTypes;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.tree.CalamitesTree;
 import lostworlds.library.tree.ConiferTree;
@@ -141,14 +136,6 @@ public class BlockInit
 
 	public static final Block BASALT_DIAMOND_ORE = BlockAndItemBuilder.create("basalt_diamond_ore", new ModOreRotatedPillerBlock(AbstractBlock.Properties.copy(Blocks.BASALT)));
 
-	public static final Block EXPOSED_STONE_FOSSIL = BlockAndItemBuilder.create("exposed_stone_fossil", new ExposedFossilBlock(AbstractBlock.Properties.of(ModMaterials.MADE_FOR_NOTHING, MaterialColor.STONE).harvestTool(ModToolTypes.BRUSH).requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.STONE)));
-	public static final Block STONE_FOSSIL = BlockAndItemBuilder.create("stone_fossil", new FossilBlock(EXPOSED_STONE_FOSSIL, AbstractBlock.Properties.of(ModMaterials.MADE_FOR_BRUSH, MaterialColor.STONE).harvestTool(ModToolTypes.BRUSH).requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.STONE)));
-		
-	public static final Block EXPOSED_SANDSTONE_FOSSIL = BlockAndItemBuilder.create("exposed_sandstone_fossil", new ExposedFossilBlock(AbstractBlock.Properties.of(ModMaterials.MADE_FOR_NOTHING, MaterialColor.STONE).harvestTool(ModToolTypes.BRUSH).requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.STONE)));
-	public static final Block SANDSTONE_FOSSIL = BlockAndItemBuilder.create("sandstone_fossil", new FossilBlock(EXPOSED_SANDSTONE_FOSSIL, AbstractBlock.Properties.of(ModMaterials.MADE_FOR_BRUSH, MaterialColor.STONE).harvestTool(ModToolTypes.BRUSH).requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.STONE)));
-		
-	public static final Block PLASTERED_FOSSIL = PlasteredFossilBlock.create();
-
 	//Machines
 	public static final Block FOSSIL_CLEANER = FossilCleanerBlock.create();
 	public static final Block FOSSIL_GRINDER = FossilGrinderBlock.create();
@@ -159,9 +146,7 @@ public class BlockInit
 	public static final Block ARCHAEOLOGY_TABLE = ArchaeologyTable.create();
 		
 	public static final Block TIME_MACHINE = TimeMachineBlock.create();
-		
-	public static final Block POWER_SUPPLY_BLOCK = PowerSupplyBlock.create();
-	
+			
 	//Wood
 	
 	//Araucaria
@@ -274,17 +259,15 @@ public class BlockInit
 	
 	//Plants
 	public static final Block ALETHOPTERIS = BlockAndItemBuilder.create("alethopteris", new DoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final Block CEPHALOTAXUS = BlockAndItemBuilder.create("cephalotaxus", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block CEPHALOTAXUS = BlockAndItemBuilder.create("cephalotaxus", new DoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block BRAZILEA = BrazileaBlock.create("brazilea", new BrazileaBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final Block CYCAD = BlockAndItemBuilder.create("cycad", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final Block DICKSONIA = BlockAndItemBuilder.create("dicksonia", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final Block TALL_DICKSONIA = BlockAndItemBuilder.create("tall_dicksonia", new DoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+//  Cycad
+//	Dicksonia
 	public static final Block DILLHOFFIA = BlockAndItemBuilder.create("dillhoffia", new FlowerBlock(Effects.BLINDNESS, 7, AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block POTTED_DILLHOFFIA = BlockBuilder.create("potted_dillhoffia", new FlowerPotBlock(DILLHOFFIA, AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
 	public static final Block DUISBERGIA = BlockAndItemBuilder.create("duisbergia", new DoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block GROUND_FERNS = BlockAndItemBuilder.create("ground_ferns", new GroundFernsBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	//public static final Block HORSETAIL = BlockAndItemBuilder.create("horsetail", new TriplePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final Block LYCOPHYTA = BlockAndItemBuilder.create("lycophyta", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block OSMUNDA = BlockAndItemBuilder.create("osmunda", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block PERMIAN_DESERT_FERNS = BlockAndItemBuilder.create("permian_desert_ferns", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block PERMIAN_DESERT_SHRUB = BlockAndItemBuilder.create("permian_desert_shrub", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_BROWN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));

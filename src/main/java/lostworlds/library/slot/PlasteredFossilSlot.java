@@ -15,6 +15,6 @@ public class PlasteredFossilSlot extends Slot
 	@Override
 	public boolean mayPlace(ItemStack stack) 
 	{
-		return stack.getItem() == BlockInit.PLASTERED_FOSSIL.asItem();
+		return stack.getItem() == BlockInit.ACCENT_DARK_CONCRETE.asItem();
 	}
 }

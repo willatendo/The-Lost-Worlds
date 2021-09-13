@@ -1,7 +1,7 @@
 {
 	"textures": {
-		"0": "lostworlds:blocks/araucaria_log",
-		"particle": "lostworlds:blocks/araucaria_log"
+		"0": "lostworlds:block/araucaria_log",
+		"particle": "lostworlds:block/araucaria_log"
 	},
 	"elements": [
 		{

@@ -33,14 +33,10 @@ public class ClientSetup
 	{
 		RenderTypeLookup.setRenderLayer(BlockInit.ALETHOPTERIS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.CEPHALOTAXUS, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.CYCAD, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.DICKSONIA, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.TALL_DICKSONIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.DILLHOFFIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.POTTED_DILLHOFFIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.DUISBERGIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.GROUND_FERNS, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.LYCOPHYTA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.OSMUNDA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.PERMIAN_DESERT_FERNS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.PERMIAN_DESERT_SHRUB, RenderType.cutout());
