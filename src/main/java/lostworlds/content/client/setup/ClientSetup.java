@@ -3,6 +3,7 @@ package lostworlds.content.client.setup;
 import lostworlds.content.client.entity.render.FossilPoacherRenderer;
 import lostworlds.content.client.screen.AnalyserScreen;
 import lostworlds.content.client.screen.ArchaeologyTableScreen;
+import lostworlds.content.client.screen.CultivatorScreen;
 import lostworlds.content.client.screen.DNAExtractorScreen;
 import lostworlds.content.client.screen.DNAInjectorScreen;
 import lostworlds.content.client.screen.FossilCleanerScreen;
@@ -51,6 +52,7 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.DNA_EXTRACTOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.ANALYSER, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.DNA_INJECTOR, RenderType.translucent());		
+		RenderTypeLookup.setRenderLayer(BlockInit.CULTIVATOR, RenderType.translucent());		
 		
 		RenderTypeLookup.setRenderLayer(BlockInit.ARAUCARIA_LEAVES, RenderType.translucent());	
 		RenderTypeLookup.setRenderLayer(BlockInit.ARAUCARIA_DOOR, RenderType.translucent());	
@@ -124,6 +126,7 @@ public class ClientSetup
 		ScreenManager.register(ContainerInit.DNA_EXTRACTOR_CONTAINER, DNAExtractorScreen::new);
 		ScreenManager.register(ContainerInit.ANALYSER_CONTAINER, AnalyserScreen::new);
 		ScreenManager.register(ContainerInit.DNA_INJECTOR_CONTAINER, DNAInjectorScreen::new);
+		ScreenManager.register(ContainerInit.CULTIVATOR_CONTAINER, CultivatorScreen::new);
 
 		ScreenManager.register(ContainerInit.TIME_MACHINE_CONTAINER, TimeMachineScreen::new);
 		ScreenManager.register(ContainerInit.ARCHAEOLOGY_CONTAINER, ArchaeologyTableScreen::new);

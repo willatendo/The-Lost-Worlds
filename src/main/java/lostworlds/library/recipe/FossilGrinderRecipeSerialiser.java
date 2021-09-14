@@ -18,9 +18,9 @@ public class FossilGrinderRecipeSerialiser extends ForgeRegistryEntry<IRecipeSer
 	{
 		ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
 		Ingredient fossil = Ingredient.fromJson((JSONUtils.isArrayNode(json, "fossil") ? JSONUtils.getAsJsonArray(json, "fossil") : JSONUtils.getAsJsonObject(json, "fossil")));
-		//boolean plant = JSONUtils.getAsBoolean(json, "plant");
+		boolean plant = JSONUtils.getAsBoolean(json, "plant");
 		
-		return new FossilGrinderRecipe(recipeId, fossil, output);
+		return new FossilGrinderRecipe(recipeId, fossil, output, plant);
 	}
 
 	@Override
@@ -28,9 +28,9 @@ public class FossilGrinderRecipeSerialiser extends ForgeRegistryEntry<IRecipeSer
 	{
 		ItemStack output = buffer.readItem();
 		Ingredient fossil = Ingredient.fromNetwork(buffer);
-		//boolean plant = buffer.readBoolean();
+		boolean plant = buffer.readBoolean();
 
-		return new FossilGrinderRecipe(recipeId, fossil, output);
+		return new FossilGrinderRecipe(recipeId, fossil, output, plant);
 	}
 
 	@Override

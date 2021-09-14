@@ -21,14 +21,14 @@ public class FossilGrinderRecipe implements IRecipe<IInventory>
 	public final ItemStack output;
 	public final ItemStack broken_fossil = ItemInit.GROUND_FOSSIL.getDefaultInstance();
 	public final ItemStack broken_plant = ItemInit.PLANT_WASTE.getDefaultInstance();
-	//private final boolean plant;	
+	private final boolean plant;	
 	
-	public FossilGrinderRecipe(ResourceLocation id, Ingredient fossil, ItemStack output) 
+	public FossilGrinderRecipe(ResourceLocation id, Ingredient fossil, ItemStack output, boolean plant) 
 	{
 		this.id = id;
 		this.output = output;
 		this.fossil = fossil;
-		//this.plant = plant;
+		this.plant = plant;
 	}
 
 	@Override
@@ -53,14 +53,14 @@ public class FossilGrinderRecipe implements IRecipe<IInventory>
 		}
 		else
 		{
-			//if(this.plant == true)
-			//{
-			//	return this.broken_plant;
-			//}
-			//else
-			//{
+			if(this.plant == true)
+			{
+				return this.broken_plant;
+			}
+			else
+			{
 				return this.broken_fossil;
-			//}
+			}
 		}
 	}
 
@@ -76,14 +76,14 @@ public class FossilGrinderRecipe implements IRecipe<IInventory>
 		}
 		else
 		{
-			//if(this.plant == true)
-			//{
-			//	return this.broken_plant;
-			//}
-			//else
-			//{
+			if(this.plant == true)
+			{
+				return this.broken_plant;
+			}
+			else
+			{
 				return this.broken_fossil;
-			//}
+			}
 		}
 	}
 	

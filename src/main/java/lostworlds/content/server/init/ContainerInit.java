@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 import lostworlds.library.container.AnalyserContainer;
 import lostworlds.library.container.ArchaeologyTableContianer;
+import lostworlds.library.container.CultivatorContainer;
 import lostworlds.library.container.DNAExtractorContainer;
 import lostworlds.library.container.DNAInjectorContainer;
 import lostworlds.library.container.FossilCleanerContainer;
@@ -25,6 +26,7 @@ public class ContainerInit
 	public static final ContainerType<DNAExtractorContainer> DNA_EXTRACTOR_CONTAINER = ModRegistry.register("dna_extractor_container", IForgeContainerType.create(DNAExtractorContainer::new));
 	public static final ContainerType<AnalyserContainer> ANALYSER_CONTAINER = ModRegistry.register("analyser_container", IForgeContainerType.create(AnalyserContainer::new));
 	public static final ContainerType<DNAInjectorContainer> DNA_INJECTOR_CONTAINER = ModRegistry.register("dna_injector_container", IForgeContainerType.create(DNAInjectorContainer::new));
+	public static final ContainerType<CultivatorContainer> CULTIVATOR_CONTAINER = ModRegistry.register("cultivator_container", IForgeContainerType.create(CultivatorContainer::new));
 
 	public static final ContainerType<TimeMachineContainer> TIME_MACHINE_CONTAINER = ModRegistry.register("time_machine_container", IForgeContainerType.create(TimeMachineContainer::new));
 

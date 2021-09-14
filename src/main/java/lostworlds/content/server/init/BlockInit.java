@@ -7,6 +7,7 @@ import lostworlds.library.block.CalamtiesSuckowiiBlock;
 import lostworlds.library.block.CalamtiesSuckowiiSaplingBlock;
 import lostworlds.library.block.ColouredDecorationBlock;
 import lostworlds.library.block.ConnectedTextureBlock;
+import lostworlds.library.block.CultivatorBlock;
 import lostworlds.library.block.DNAExtractorBlock;
 import lostworlds.library.block.DNAInjectorBlock;
 import lostworlds.library.block.DeadSpongeColonyBlock;
@@ -145,6 +146,7 @@ public class BlockInit
 	public static final Block DNA_EXTRACTOR = DNAExtractorBlock.create();
 	public static final Block ANALYSER = AnalyserBlock.create();
 	public static final Block DNA_INJECTOR = DNAInjectorBlock.create();
+	public static final Block CULTIVATOR = CultivatorBlock.create();
 		
 	public static final Block ARCHAEOLOGY_TABLE = ArchaeologyTable.create();
 		

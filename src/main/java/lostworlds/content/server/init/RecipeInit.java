@@ -3,6 +3,8 @@ package lostworlds.content.server.init;
 import lostworlds.library.recipe.AnalyserRecipe;
 import lostworlds.library.recipe.AnalyserRecipeSerialiser;
 import lostworlds.library.recipe.ArchaeologyTableRecipe;
+import lostworlds.library.recipe.CultivatorRecipe;
+import lostworlds.library.recipe.CultivatorRecipeSerialiser;
 import lostworlds.library.recipe.DNAExtractorRecipe;
 import lostworlds.library.recipe.DNAExtractorRecipeSerialiser;
 import lostworlds.library.recipe.DNAInjectorRecipe;
@@ -25,6 +27,7 @@ public class RecipeInit
 	public static final IRecipeSerializer<DNAExtractorRecipe> DNA_EXTRACTOR_RECIPE_SERIALIZER = new DNAExtractorRecipeSerialiser();
 	public static final IRecipeSerializer<AnalyserRecipe> ANALYSER_RECIPE_SERIALIZER = new AnalyserRecipeSerialiser();
 	public static final IRecipeSerializer<DNAInjectorRecipe> DNA_INJECTOR_RECIPE_SERIALIZER = new DNAInjectorRecipeSerialiser();
+	public static final IRecipeSerializer<CultivatorRecipe> CULTIVATOR_RECIPE_SERIALIZER = new CultivatorRecipeSerialiser();
 	public static final IRecipeSerializer<ArchaeologyTableRecipe> ARCHAEOLOGY_TABLE_RECIPE_SERIALIZER = new ArchaeologyTableRecipe.Serializer();
 	public static final IRecipeSerializer<TimeMachineRecipe> TIME_MACHINE_RECIPE_SERIALIZER = new TimeMachineRecipeSerialiser();
 	
@@ -32,6 +35,7 @@ public class RecipeInit
 	public static final IRecipeType<DNAExtractorRecipe> DNA_EXTRACTOR_RECIPE = registerType(ModUtils.rL("dna_extractor"));
 	public static final IRecipeType<AnalyserRecipe> ANALYSER_RECIPE = registerType(ModUtils.rL("analyser"));
 	public static final IRecipeType<DNAInjectorRecipe> DNA_INJECTOR_RECIPE = registerType(ModUtils.rL("dna_injector"));
+	public static final IRecipeType<CultivatorRecipe> CULTIVATOR_RECIPE = registerType(ModUtils.rL("cultivator"));
 	public static final IRecipeType<ArchaeologyTableRecipe> ARCHAEOLOGY_TABLE_RECIPE = registerType(ModUtils.rL("archaeology_table"));
 	public static final IRecipeType<TimeMachineRecipe> TIME_MACHINE_RECIPE = registerType(ModUtils.rL("time_machine"));
 
@@ -39,6 +43,7 @@ public class RecipeInit
 	public static final IRecipeSerializer<?> DNA_EXTRACTOR_SERIALIZER = ModRegistry.register("dna_extractor", DNA_EXTRACTOR_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> ANALYSER_SERIALIZER = ModRegistry.register("analyser", ANALYSER_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> DNA_INJECTOR_SERIALIZER = ModRegistry.register("dna_injector", DNA_INJECTOR_RECIPE_SERIALIZER);
+	public static final IRecipeSerializer<?> CULTIVATOR_SERIALIZER = ModRegistry.register("cultivator", CULTIVATOR_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> ARCHAEOLOGY_TABLE_SERIALIZER = ModRegistry.register("archaeology_table", ARCHAEOLOGY_TABLE_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> TIME_MACHINE_SERIALIZER = ModRegistry.register("time_machine", TIME_MACHINE_RECIPE_SERIALIZER);
 	

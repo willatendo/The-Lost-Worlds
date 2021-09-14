@@ -3,6 +3,7 @@ package lostworlds.content.server.init;
 import lostworlds.library.block.ISign;
 import lostworlds.library.block.ISleepingBag;
 import lostworlds.library.tileentity.AnalyserTileEntity;
+import lostworlds.library.tileentity.CultivatorTileEntity;
 import lostworlds.library.tileentity.DNAExtractorTileEntity;
 import lostworlds.library.tileentity.DNAInjectorTileEntity;
 import lostworlds.library.tileentity.FossilCleanerTileEntity;
@@ -22,6 +23,7 @@ public class TileEntityInit
 	public static final TileEntityType<DNAExtractorTileEntity> DNA_EXTRACTOR_TILE_ENTITY = ModRegistry.register("dna_extractor_tile_entity", TileEntityType.Builder.of(DNAExtractorTileEntity::new, BlockInit.DNA_EXTRACTOR).build(null));
 	public static final TileEntityType<AnalyserTileEntity> ANALYSER_TILE_ENTITY = ModRegistry.register("analyser_tile_entity", TileEntityType.Builder.of(AnalyserTileEntity::new, BlockInit.ANALYSER).build(null));
 	public static final TileEntityType<DNAInjectorTileEntity> DNA_INJECTOR_TILE_ENTITY = ModRegistry.register("dna_injector_tile_entity", TileEntityType.Builder.of(DNAInjectorTileEntity::new, BlockInit.DNA_INJECTOR).build(null));
+	public static final TileEntityType<CultivatorTileEntity> CULTIVATOR_TILE_ENTITY = ModRegistry.register("cultivator_tile_entity", TileEntityType.Builder.of(CultivatorTileEntity::new, BlockInit.CULTIVATOR).build(null));
 
 	public static final TileEntityType<ModSignTileEntity> SIGN_TILE_ENTITY = ModRegistry.register("sign_tile_entity", TileEntityType.Builder.of(ModSignTileEntity::new, collectBlocks(ISign.class)).build(null));
 	public static final TileEntityType<SleepingBagTileEntity> SLEEPING_BAG_TILE_ENTITY = ModRegistry.register("sleeping_back_tile_entity", TileEntityType.Builder.of(SleepingBagTileEntity::new, collectBlocks(ISleepingBag.class)).build(null));

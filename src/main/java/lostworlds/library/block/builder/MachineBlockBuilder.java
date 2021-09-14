@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 import lostworlds.content.server.init.SoundInit;
 import lostworlds.library.block.properties.ModBlockStateProperties;
 import lostworlds.library.tileentity.AnalyserTileEntity;
+import lostworlds.library.tileentity.CultivatorTileEntity;
 import lostworlds.library.tileentity.DNAExtractorTileEntity;
 import lostworlds.library.tileentity.DNAInjectorTileEntity;
 import lostworlds.library.tileentity.FossilCleanerTileEntity;
@@ -146,6 +147,11 @@ public abstract class MachineBlockBuilder extends Block implements ITileEntityPr
 				NetworkHooks.openGui((ServerPlayerEntity)player, (INamedContainerProvider)tile, pos);
 				return ActionResultType.SUCCESS;
 			}
+			else if(tile instanceof CultivatorTileEntity) 
+			{
+				NetworkHooks.openGui((ServerPlayerEntity)player, (INamedContainerProvider)tile, pos);
+				return ActionResultType.SUCCESS;
+			}
 		}
 		return ActionResultType.SUCCESS;
 	}
@@ -175,6 +181,10 @@ public abstract class MachineBlockBuilder extends Block implements ITileEntityPr
 			else if(tileentity instanceof DNAInjectorTileEntity) 
 			{
 				((DNAInjectorTileEntity)tileentity).setCustomName(stack.getHoverName());
+			}
+			else if(tileentity instanceof CultivatorTileEntity) 
+			{
+				((CultivatorTileEntity)tileentity).setCustomName(stack.getHoverName());
 			}
 		}
 	}
@@ -208,6 +218,11 @@ public abstract class MachineBlockBuilder extends Block implements ITileEntityPr
 			else if(tileentity instanceof DNAInjectorTileEntity) 
 			{
 				InventoryHelper.dropContents(world, pos, (DNAInjectorTileEntity)tileentity);
+				world.updateNeighbourForOutputSignal(pos, this);
+			}
+			else if(tileentity instanceof CultivatorTileEntity) 
+			{
+				InventoryHelper.dropContents(world, pos, (CultivatorTileEntity)tileentity);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
 			
