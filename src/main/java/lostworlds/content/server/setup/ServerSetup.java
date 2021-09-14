@@ -2,6 +2,7 @@ package lostworlds.content.server.setup;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -13,9 +14,11 @@ import lostworlds.library.item.CrystalScarabGemItem;
 import lostworlds.library.trades.MultiItemForEmeraldsTrade;
 import lostworlds.library.util.JigsawUtils;
 import lostworlds.library.util.ModUtils;
+import net.minecraft.block.Block;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -115,9 +118,28 @@ public class ServerSetup
 		{
 			if(event.getEntity() instanceof VillagerEntity) 
 			{
-				VillagerEntity villager = (VillagerEntity) event.getEntity();
+				VillagerEntity villager = (VillagerEntity) event.getEntity(); 
 				villager.goalSelector.addGoal(1, new AvoidEntityGoal(villager, FossilPoacherEntity.class, 16.0F, 0.7D, 0.7D));
 			}
+		}
+	}
+
+	@EventBusSubscriber(modid = ModUtils.ID, bus = Bus.MOD)
+	static class VanillaMaps
+	{
+		@SubscribeEvent
+		public static void add(final FMLCommonSetupEvent event)
+		{
+			add(BlockInit.PETRIFIED_ARAUCARIA_LOG, BlockInit.STRIPPED_PETRIFIED_ARAUCARIA_LOG);
+			add(BlockInit.PETRIFIED_CALAMITES_LOG, BlockInit.STRIPPED_PETRIFIED_CALAMITES_LOG);
+			add(BlockInit.PETRIFIED_CONIFER_LOG, BlockInit.STRIPPED_PETRIFIED_CONIFER_LOG);
+			add(BlockInit.PETRIFIED_GINKGO_LOG, BlockInit.STRIPPED_PETRIFIED_GINKGO_LOG);
+		}
+		
+		private static void add(Block logBlock, Block strippedLogBlock)
+		{
+			AxeItem.STRIPABLES = Maps.newHashMap(AxeItem.STRIPABLES);
+			AxeItem.STRIPABLES.put(logBlock, strippedLogBlock);
 		}
 	}
 }

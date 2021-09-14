@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_grinder",
+	"output": {
+		"item": "lostworlds:araucaria_soft_tissue"
+	},
+	"fossil": {
+		"item": "lostworlds:araucaria_bark_sample"
+	}
+}

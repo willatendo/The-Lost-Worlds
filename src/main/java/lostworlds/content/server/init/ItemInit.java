@@ -55,8 +55,17 @@ public class ItemInit
 
 	public static final Item AMBER = ItemBuilder.create("amber");
 	public static final Item GROUND_FOSSIL = BoneMealItem.create("ground_fossil");
+	public static final Item PLANT_WASTE = BoneMealItem.create("plant_waste");
 
 	public static final Item ARAUCARIA_BARK_SAMPLE = ItemBuilder.create("araucaria_bark_sample");
+	public static final Item CALAMITES_BARK_SAMPLE = ItemBuilder.create("calamites_bark_sample");
+	public static final Item CONIFER_BARK_SAMPLE = ItemBuilder.create("conifer_bark_sample");
+	public static final Item GINKGO_BARK_SAMPLE = ItemBuilder.create("ginkgo_bark_sample");
+	
+	public static final Item ARAUCARIA_SOFT_TISSUE = ItemBuilder.create("araucaria_soft_tissue");
+	public static final Item CALAMITES_SOFT_TISSUE = ItemBuilder.create("calamites_soft_tissue");
+	public static final Item CONIFER_SOFT_TISSUE = ItemBuilder.create("conifer_soft_tissue");
+	public static final Item GINKGO_SOFT_TISSUE = ItemBuilder.create("ginkgo_soft_tissue");
 	
 	public static final Item EMPTY_VILE = ItemBuilder.create("empty_vile");
 	

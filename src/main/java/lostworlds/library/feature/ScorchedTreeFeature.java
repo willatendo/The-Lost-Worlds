@@ -99,7 +99,7 @@ public class ScorchedTreeFeature extends Feature<BaseTreeFeatureConfig>
 
 	public static boolean validTreePos(IWorldGenerationBaseReader reader, BlockPos pos) 
 	{
-		return isAirOrLeaves(reader, pos) || isReplaceablePlant(reader, pos) || isBlockWater(reader, pos);
+		return isAirOrLeaves(reader, pos) || isReplaceablePlant(reader, pos) || isBlockWater(reader, pos) || isValidPlacement(reader, pos);
 	}
 
 	private boolean doPlace(IWorldGenerationReader reader, Random rand, BlockPos pos, Set<BlockPos> blockPos1, Set<BlockPos> blockPos2, MutableBoundingBox box, BaseTreeFeatureConfig config) 

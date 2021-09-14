@@ -56,5 +56,26 @@ public class BiomeGeneration
 				generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.MUD_DISK);
 			}
 		}
+		
+		if(LostWorldsConfig.COMMON_CONFIG.petrifiedAraucariaTreeShouldSpawn.get())
+		{
+			generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.PETRIFIED_ARAUCARIA);
+		}
+		
+		if(LostWorldsConfig.COMMON_CONFIG.petrifiedCalamitesTreeShouldSpawn.get())
+		{
+			generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.PETRIFIED_CALAMITES);
+		}
+		
+		if(LostWorldsConfig.COMMON_CONFIG.petrifiedConiferTreeShouldSpawn.get())
+		{
+			generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.PETRIFIED_CONIFER);
+			
+		}
+		
+		if(LostWorldsConfig.COMMON_CONFIG.petrifiedGinkgoTreeShouldSpawn.get())
+		{
+			generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.PETRIFIED_GINKGO);
+		}
 	}
 }
