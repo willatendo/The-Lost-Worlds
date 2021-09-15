@@ -12,6 +12,7 @@ import lostworlds.content.server.init.FeatureInit;
 import lostworlds.content.server.init.FoliagePlacerInit;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.ParticleInit;
+import lostworlds.content.server.init.PlantInit;
 import lostworlds.content.server.init.PointOfInterestInit;
 import lostworlds.content.server.init.PotionInit;
 import lostworlds.content.server.init.RecipeInit;
@@ -214,6 +215,7 @@ public class ModRegistry
 		SoundInit.init();
 		ItemInit.init();
 		DinosaurInit.init();
+		PlantInit.init();
 		BannerInit.init();
 		TileEntityInit.init();
 		ContainerInit.init();

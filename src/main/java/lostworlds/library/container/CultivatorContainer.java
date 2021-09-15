@@ -7,7 +7,6 @@ import lostworlds.content.server.init.RecipeInit;
 import lostworlds.library.block.CultivatorBlock;
 import lostworlds.library.recipe.CultivatorRecipe;
 import lostworlds.library.tileentity.CultivatorTileEntity;
-import lostworlds.library.tileentity.FossilGrinderTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -65,16 +64,16 @@ public class CultivatorContainer extends Container
 		this(windowID, playerInv, new CultivatorTileEntity(), getTileEntity(playerInv, data));
  	}
 	
-	private static FossilGrinderTileEntity getTileEntity(final PlayerInventory playerInventory, final PacketBuffer data)
+	private static CultivatorTileEntity getTileEntity(final PlayerInventory playerInventory, final PacketBuffer data)
 	{
-		Objects.requireNonNull(playerInventory, "Error: " + FossilGrinderContainer.class.getSimpleName() + " - Player Inventory cannot be null!");
-		Objects.requireNonNull(data, "Error: " + FossilGrinderContainer.class.getSimpleName() + " - Packer Buffer Data cannot be null!");
+		Objects.requireNonNull(playerInventory, "Error: " + CultivatorContainer.class.getSimpleName() + " - Player Inventory cannot be null!");
+		Objects.requireNonNull(data, "Error: " + CultivatorContainer.class.getSimpleName() + " - Packer Buffer Data cannot be null!");
 		
 		final TileEntity tileEntityAtPos = playerInventory.player.level.getBlockEntity(data.readBlockPos());
-		if(tileEntityAtPos instanceof FossilGrinderTileEntity)
-			return (FossilGrinderTileEntity) tileEntityAtPos;
+		if(tileEntityAtPos instanceof CultivatorTileEntity)
+			return (CultivatorTileEntity) tileEntityAtPos;
 		
-		throw new IllegalStateException("Error: " + FossilGrinderContainer.class.getSimpleName() + " - TileEntity is not corrent! " + tileEntityAtPos);
+		throw new IllegalStateException("Error: " + CultivatorContainer.class.getSimpleName() + " - TileEntity is not corrent! " + tileEntityAtPos);
 	}
 	
 	@Override

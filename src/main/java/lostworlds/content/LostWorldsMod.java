@@ -69,8 +69,9 @@ public class LostWorldsMod
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(BlockInit.VOLCANIC_ASH.asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), PotionInit.ASHY_LUNG_POTION));
 				
 		ModItemGroup.ITEMS.setIcon(ItemInit.WET_PAPER.getDefaultInstance());
-		ModItemGroup.BLOCKS.setIcon(BlockInit.ACCENT_LIGHT_CONCRETE.asItem().getDefaultInstance());
 		ModItemGroup.DINOSAURS.setIcon(ItemInit.AMBER.getDefaultInstance());
+		ModItemGroup.PLANTS.setIcon(BlockInit.ALETHOPTERIS.asItem().getDefaultInstance());
+		ModItemGroup.BLOCKS.setIcon(BlockInit.ACCENT_LIGHT_CONCRETE.asItem().getDefaultInstance());
 		
 		event.enqueueWork(() -> 
 		{

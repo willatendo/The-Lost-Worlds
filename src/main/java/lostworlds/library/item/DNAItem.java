@@ -5,11 +5,6 @@ import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import net.minecraft.item.Item;
 
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
-
 public class DNAItem extends Item
 {
 	protected DNAItem() 
