@@ -9,39 +9,31 @@ import java.util.Set;
 import org.objectweb.asm.Type;
 
 import lostworlds.library.util.ModUtils;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.forgespi.language.ModFileScanData;
-import net.minecraftforge.registries.ForgeRegistries;
 
-public class LostWorldsAddon 
+public abstract class LostWorldsAddon implements IAddon
 {
-	//All the registers setup for your ease!
-	
-	public static Item register(String id, Item item)
-	{
-		item.setRegistryName(rL(id));
-		ForgeRegistries.ITEMS.register(item);
-		return item;
-	}
-	
-	/*
-	 * Don't worry about anything below, if you need to know how to setup an addon, look at TestAddon.
-	 */
-	
 	public static String ID;
+	private static String getMessage;
 	
-	private static ResourceLocation rL(String path)
+	public LostWorldsAddon() 
 	{
-		return new ResourceLocation(ID, path);
+		this.ID = this.addonId();
+		this.getMessage = this.addonLoadMessage();
 	}
 	
 	public static List<LostWorldsAddon> getAddons() 
 	{
 		ModUtils.LOGGER.debug("Loading Addons");
 		
-		return getInstances(Register.class, LostWorldsAddon.class);
+		return getInstances(RegisterAddon.class, LostWorldsAddon.class);
 	}
 	
 	private static <T> List<T> getInstances(Class<?> annotationClass, Class<T> instanceClass) 
@@ -74,5 +66,19 @@ public class LostWorldsAddon
 			catch(ClassNotFoundException | InstantiationException | IllegalAccessException | LinkageError e) { }
 		}
 		return instances;
+	}
+	
+	@EventBusSubscriber(modid = ModUtils.ID, bus = Bus.FORGE, value = Dist.CLIENT)
+	static class LoadMessages
+	{
+		@SubscribeEvent
+		public static void onLoadEvent(final PlayerEvent.PlayerLoggedInEvent event)
+		{
+			if(LostWorldsAddon.getAddons() != null)
+			{
+				PlayerEntity player = event.getPlayer();
+				player.sendMessage(ModUtils.gTC("event", LostWorldsAddon.getMessage), player.getUUID());
+			}
+		}
 	}
 }

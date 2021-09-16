@@ -6,7 +6,6 @@ import lostworlds.library.item.CrystalScarabGemItem;
 import lostworlds.library.item.FieldGuideItem;
 import lostworlds.library.item.FoodItem;
 import lostworlds.library.item.FoodItem.FoodType;
-import lostworlds.library.item.FoodSeedsItem;
 import lostworlds.library.item.HammerItem;
 import lostworlds.library.item.TimeBookItem;
 import lostworlds.library.item.armour.MaskItem;
@@ -43,7 +42,7 @@ public class ItemInit
 	public static final Item HAMMER = ModRegistry.register("hammer", new HammerItem(ItemTier.IRON, 6.0F, -3.1F, (new Item.Properties()).tab(ModItemGroup.ITEMS)));
 	
 	public static final Item CLOTH_MASK = MaskItem.createCloth();
-
+	
 	public static final Item OXYGEN_MASK = MaskItem.createOxygen();
 	public static final Item OXYGEN_TANK = ModRegistry.register("oxygen_tank", new OxygenTankItem());
 	
@@ -95,12 +94,6 @@ public class ItemInit
 	public static final Item COOKED_FERN_LEAVES = FoodItem.create(FoodType.COOKED_FERN_LEAVES);
 
 	public static final Item PALEO_SALAD = FoodItem.create(FoodType.PALEO_SALAD);
-	
-	public static final Item CYCAD_SEEDS = FoodSeedsItem.create("cycad");
-	public static final Item OSMUNDA_SEEDS = FoodSeedsItem.create("osmunda");
-	public static final Item DUISBERGIA_SEEDS = FoodSeedsItem.create("duisbergia");
-	public static final Item CEPHALOTAXUS_SEEDS = FoodSeedsItem.create("cephalotaxus");
-	public static final Item DILLHOFFIA_SEEDS = FoodSeedsItem.create("dillhoffia");
 	
 	public static final Item SCARAB_BANNER_PATTERN = ModRegistry.register("scarab_banner_pattern", new BannerPatternItem(BannerInit.SCARAB, PROPERTIES.stacksTo(1)));
 	

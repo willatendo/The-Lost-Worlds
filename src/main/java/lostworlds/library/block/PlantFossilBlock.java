@@ -17,9 +17,9 @@ import net.minecraft.world.server.ServerWorld;
 
 public class PlantFossilBlock extends Block
 {
-	private static final EnumProperty<TimeEras> ERA = EnumProperty.create("era", TimeEras.class);
-	private static final EnumProperty<Plants> POTENTIAL_PLANT = EnumProperty.create("potential_plant", Plants.class);
-	private static final EnumProperty<Damage> DAMAGE = EnumProperty.create("damage", Damage.class);
+	public static final EnumProperty<TimeEras> ERA = EnumProperty.create("era", TimeEras.class);
+	public static final EnumProperty<Plants> POTENTIAL_PLANT = EnumProperty.create("potential_plant", Plants.class);
+	public static final EnumProperty<Damage> DAMAGE = EnumProperty.create("damage", Damage.class);
 	
 	public PlantFossilBlock() 
 	{
@@ -69,6 +69,48 @@ public class PlantFossilBlock extends Block
 			{
 				popResource(world, pos, plant.getDrop().getDefaultInstance());
 			}
+		}
+	}
+	
+	public static Plants chooseRandom()
+	{
+		Random rand = new Random();
+		int chance = rand.nextInt(9);
+		if(chance == 0)
+		{
+			return Plants.ALETHOPTERIS;
+		}
+		else if(chance == 1)
+		{
+			return Plants.BRAZILEA;
+		}
+		else if(chance == 2)
+		{
+			return Plants.CALAMITES_SUCKOWII;
+		}
+		else if(chance == 3)
+		{
+			return Plants.CEPHALOTAXUS;
+		}
+		else if(chance == 4)
+		{
+			return Plants.DILLHOFFIA;
+		}
+		else if(chance == 5)
+		{
+			return Plants.DUISBERGIA;
+		}
+		else if(chance == 6)
+		{
+			return Plants.OSMUNDA;
+		}
+		else if(chance == 7)
+		{
+			return Plants.WILLIAMSONIA;
+		}
+		else
+		{
+			return Plants.ZAMITES;
 		}
 	}
 	
