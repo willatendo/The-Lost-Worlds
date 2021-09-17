@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"###"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:meteoric_stone"
+		}
+	},
+	"result": {
+		"item": "lostworlds:meteoric_stone_slab",
+		"count": 6
+	}
+}

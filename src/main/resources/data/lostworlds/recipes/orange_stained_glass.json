@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"tag": "lostworlds:permian_sand"
+	},
+	"result": "minecraft:orange_stained_glass",
+	"experience": 0.7,
+	"cookingtime": 200
+}

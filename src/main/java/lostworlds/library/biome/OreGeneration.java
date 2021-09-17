@@ -16,6 +16,14 @@ public class OreGeneration
 			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.COPPER_ORE);
 		}
 		
-		generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL);
+		generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_ALETHOPTERIS);
+		generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_BRAZILEA);
+		generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_CALAMITES_SUCKOWII);
+		generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_CEPHALOTAXUS);
+		generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_DILLHOFFIA);
+		generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_DUISBERGIA);
+		generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_OSMUNDA);
+		generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_WILLIAMSONIA);
+		generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_ZAMITES);
 	}
 }

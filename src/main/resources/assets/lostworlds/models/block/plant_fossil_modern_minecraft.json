@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"all": "lostworlds:block/plant_fossil_modern_minecraft"
+	}
+}

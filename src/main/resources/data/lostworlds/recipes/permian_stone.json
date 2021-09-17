@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "lostworlds:permian_cobblestone"
+	},
+	"result": "lostworlds:permian_stone",
+	"experience": 0.7,
+	"cookingtime": 200
+}

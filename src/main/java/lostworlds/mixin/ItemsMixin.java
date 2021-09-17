@@ -16,11 +16,11 @@ import net.minecraft.util.registry.Registry;
 public class ItemsMixin 
 {
 	@Inject(method = "registerItem", at = @At("HEAD"), cancellable = true)
-	private static void swapNautilusShell(String string, Item item, CallbackInfoReturnable<Item> cir) 
+	private static void swapNautilusShell(String id, Item item, CallbackInfoReturnable<Item> cir) 
 	{
-		if(string.equals("nautilus_shell")) 
+		if(id.equals("nautilus_shell")) 
 		{
-			cir.setReturnValue(Registry.register(Registry.ITEM, string, new BlockItem(BlockInit.NAUTILUS_SHELL, new Item.Properties().tab(ItemGroup.TAB_MATERIALS))));
+			cir.setReturnValue(Registry.register(Registry.ITEM, id, new BlockItem(BlockInit.NAUTILUS_SHELL, new Item.Properties().tab(ItemGroup.TAB_MATERIALS))));
 		}
 	}
 }

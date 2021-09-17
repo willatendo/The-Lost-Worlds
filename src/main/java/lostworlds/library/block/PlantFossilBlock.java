@@ -72,48 +72,6 @@ public class PlantFossilBlock extends Block
 		}
 	}
 	
-	public static Plants chooseRandom()
-	{
-		Random rand = new Random();
-		int chance = rand.nextInt(9);
-		if(chance == 0)
-		{
-			return Plants.ALETHOPTERIS;
-		}
-		else if(chance == 1)
-		{
-			return Plants.BRAZILEA;
-		}
-		else if(chance == 2)
-		{
-			return Plants.CALAMITES_SUCKOWII;
-		}
-		else if(chance == 3)
-		{
-			return Plants.CEPHALOTAXUS;
-		}
-		else if(chance == 4)
-		{
-			return Plants.DILLHOFFIA;
-		}
-		else if(chance == 5)
-		{
-			return Plants.DUISBERGIA;
-		}
-		else if(chance == 6)
-		{
-			return Plants.OSMUNDA;
-		}
-		else if(chance == 7)
-		{
-			return Plants.WILLIAMSONIA;
-		}
-		else
-		{
-			return Plants.ZAMITES;
-		}
-	}
-	
 	@Override
 	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) 
 	{

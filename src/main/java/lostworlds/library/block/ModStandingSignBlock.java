@@ -1,5 +1,6 @@
 package lostworlds.library.block;
 
+import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.tileentity.ModSignTileEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.StandingSignBlock;
@@ -23,6 +24,6 @@ public class ModStandingSignBlock extends StandingSignBlock implements ISign
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) 
 	{
-		return this.newBlockEntity(world);
+		return TileEntityInit.SIGN_TILE_ENTITY.create();
 	}
 }
