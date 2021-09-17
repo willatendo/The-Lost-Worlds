@@ -15,11 +15,14 @@ import lostworlds.library.trades.MultiItemForEmeraldsTrade;
 import lostworlds.library.util.JigsawUtils;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.item.AxeItem;
+import net.minecraft.item.HoeItem;
 import net.minecraft.item.Items;
+import net.minecraft.item.ShovelItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -128,18 +131,57 @@ public class ServerSetup
 	static class VanillaMaps
 	{
 		@SubscribeEvent
-		public static void add(final FMLCommonSetupEvent event)
+		public static void addToMaps(final FMLCommonSetupEvent event)
 		{
-			add(BlockInit.PETRIFIED_ARAUCARIA_LOG, BlockInit.STRIPPED_PETRIFIED_ARAUCARIA_LOG);
-			add(BlockInit.PETRIFIED_CALAMITES_LOG, BlockInit.STRIPPED_PETRIFIED_CALAMITES_LOG);
-			add(BlockInit.PETRIFIED_CONIFER_LOG, BlockInit.STRIPPED_PETRIFIED_CONIFER_LOG);
-			add(BlockInit.PETRIFIED_GINKGO_LOG, BlockInit.STRIPPED_PETRIFIED_GINKGO_LOG);
+			ModUtils.LOGGER.debug("Adding to Stripping Map");
+			
+			addToStrippingMap(BlockInit.PETRIFIED_ARAUCARIA_LOG, BlockInit.STRIPPED_PETRIFIED_ARAUCARIA_LOG);
+			addToStrippingMap(BlockInit.PETRIFIED_CALAMITES_LOG, BlockInit.STRIPPED_PETRIFIED_CALAMITES_LOG);
+			addToStrippingMap(BlockInit.PETRIFIED_CONIFER_LOG, BlockInit.STRIPPED_PETRIFIED_CONIFER_LOG);
+			addToStrippingMap(BlockInit.PETRIFIED_GINKGO_LOG, BlockInit.STRIPPED_PETRIFIED_GINKGO_LOG);
+			
+			addToStrippingMap(BlockInit.ARAUCARIA_LOG, BlockInit.STRIPPED_ARAUCARIA_LOG);
+			addToStrippingMap(BlockInit.ARAUCARIA_WOOD, BlockInit.STRIPPED_ARAUCARIA_WOOD);
+			addToStrippingMap(BlockInit.CALAMITES_LOG, BlockInit.STRIPPED_CALAMITES_LOG);
+			addToStrippingMap(BlockInit.CALAMITES_WOOD, BlockInit.STRIPPED_CALAMITES_WOOD);
+			addToStrippingMap(BlockInit.CONIFER_LOG, BlockInit.STRIPPED_CONIFER_LOG);
+			addToStrippingMap(BlockInit.CONIFER_WOOD, BlockInit.STRIPPED_CONIFER_WOOD);
+			addToStrippingMap(BlockInit.GINKGO_LOG, BlockInit.STRIPPED_GINKGO_LOG);
+			addToStrippingMap(BlockInit.GINKGO_WOOD, BlockInit.STRIPPED_GINKGO_WOOD);
+			addToStrippingMap(BlockInit.SCORCHED_LOG, BlockInit.STRIPPED_SCORCHED_LOG);
+			addToStrippingMap(BlockInit.SCORCHED_WOOD, BlockInit.STRIPPED_SCORCHED_WOOD);
+			
+			ModUtils.LOGGER.debug("Finished Adding to Stripping Map");
+			
+			ModUtils.LOGGER.debug("Adding to Tilling Map");
+			
+			addToTillingMap(BlockInit.MOSSY_SOIL);
+			
+			ModUtils.LOGGER.debug("Finished Adding to Tilling Map");
+			
+			ModUtils.LOGGER.debug("Adding to Flattening Map");
+			
+			addToFlatteningMap(BlockInit.MOSSY_SOIL);
+			
+			ModUtils.LOGGER.debug("Finished Adding to Flattening Map");
 		}
 		
-		private static void add(Block logBlock, Block strippedLogBlock)
+		private static void addToStrippingMap(Block logBlock, Block strippedLogBlock)
 		{
 			AxeItem.STRIPABLES = Maps.newHashMap(AxeItem.STRIPABLES);
 			AxeItem.STRIPABLES.put(logBlock, strippedLogBlock);
+		}
+		
+		private static void addToTillingMap(Block dirt)
+		{
+			HoeItem.TILLABLES = Maps.newHashMap(HoeItem.TILLABLES);
+			HoeItem.TILLABLES.put(dirt, Blocks.FARMLAND.defaultBlockState());
+		}
+		
+		private static void addToFlatteningMap(Block dirt)
+		{
+			ShovelItem.FLATTENABLES = Maps.newHashMap(ShovelItem.FLATTENABLES);
+			ShovelItem.FLATTENABLES.put(dirt, Blocks.GRASS_PATH.defaultBlockState());
 		}
 	}
 }

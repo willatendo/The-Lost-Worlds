@@ -1,31 +1,31 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " @$",
-    "P#\u0026",
-    "P%$"
-  ],
-  "key": {
-    "#": {
-      "item": "lostworlds:computer_core"
-    },
-    "$": {
-      "item": "minecraft:iron_ingot"
-    },
-    "@": {
-      "item": "minecraft:redstone"
-    },
-    "%": {
-      "item": "minecraft:redstone_lamp"
-    },
-    "\u0026": {
-      "item": "minecraft:gold_ingot"
-    },
-    "P": {
-      "item": "minecraft:polished_andesite"
-    }
-  },
-  "result": {
-    "item": "lostworlds:dna_extractor"
-  }
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" @$",
+		"T#G",
+		"T%$"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:computer_core"
+		},
+		"$": {
+			"item": "minecraft:iron_ingot"
+		},
+		"@": {
+			"item": "minecraft:redstone"
+		},
+		"%": {
+			"item": "minecraft:redstone_lamp"
+		},
+		"G": {
+			"item": "minecraft:gold_ingot"
+		},
+		"T": {
+			"item": "minecraft:cyan_terracotta"
+		}
+	},
+	"result": {
+		"item": "lostworlds:dna_extractor"
+	}
 }

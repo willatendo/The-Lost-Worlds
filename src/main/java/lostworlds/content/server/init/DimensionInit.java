@@ -23,6 +23,8 @@ public class DimensionInit
 	
 	public static void initBiomeSourcesAndChunkGenerator()
 	{
+		ModUtils.LOGGER.debug("Registering Mod Biome Sources and Chunk Generators");
+		
 		Registry.register(Registry.BIOME_SOURCE, new ResourceLocation(ModUtils.ID, "permian_biome_source"), PermianBiomeProvider.CODEC);
 		Registry.register(Registry.CHUNK_GENERATOR, new ResourceLocation(ModUtils.ID, "permian_chunk_generator"), PermianChunkGenerator.CODEC);
 	}

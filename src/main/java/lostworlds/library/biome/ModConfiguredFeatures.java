@@ -46,31 +46,17 @@ import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 
 public class ModConfiguredFeatures 
 {
-	//Permian
+	//Plants
+	public static final ConfiguredFeature<?, ?> BRAZILEA_PATCH = register("brazilea_patch", Feature.RANDOM_PATCH.configured((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.BRAZILEA.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(10).build()).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE).count(4));
+	public static final ConfiguredFeature<?, ?> CALAMITES_SUCKOWII = register("calamites_suckwii", FeatureInit.CALAMITES_SUCKOWII.configured(new ProbabilityConfig(0.2F)).decorated(Features.Placements.HEIGHTMAP_WORLD_SURFACE).squared().decorated(Placement.COUNT_NOISE_BIASED.configured(new TopSolidWithNoiseConfig(160, 80.0D, 0.3D))));
+	public static final ConfiguredFeature<?, ?> FERN_PATCH = register("fern_patch", Feature.RANDOM_PATCH.configured(ModConfiguredFeatures.ModBlockClusterFeatureConfig.FERN_CONFIG));	
+	public static final ConfiguredFeature<?, ?> WILLIAMSONIA_PATCH = register("williamsonia_patch", Feature.RANDOM_PATCH.configured((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.WILLIAMSONIA.defaultBlockState()), new DoublePlantBlockPlacer())).tries(64).noProjection().build()).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(7));
+	public static final ConfiguredFeature<?, ?> ZAMITES = register("zamites", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.ZAMITES_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
+
 	public static final ConfiguredFeature<?, ?> PERMIAN_DESERT_SHRUB_PATCH = register("permian_desert_shrub_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.PERMIAN_DESERT_SHRUB_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
 	public static final ConfiguredFeature<?, ?> PERMIAN_DESERT_FERNS_PATCH = register("permian_desert_ferns_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.PERMIAN_DESERT_FERNS_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
-	
-	public static final ConfiguredFeature<?, ?> PERMIAN_ROCK = register("permian_rock", FeatureInit.PERMIAN_ROCK.configured(new BlockStateFeatureConfig(BlockInit.PERMIAN_COBBLESTONE.defaultBlockState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));	
-	
-	public static final ConfiguredFeature<?, ?> PERMIAN_CORAL_REEF = register("permian_coral_reef", Feature.SIMPLE_RANDOM_SELECTOR.configured(new SingleRandomFeature(ImmutableList.of(() -> 
-	{
-		return Feature.CORAL_TREE.configured(IFeatureConfig.NONE);
-	}, () -> 
-	{
-		return Feature.CORAL_CLAW.configured(IFeatureConfig.NONE);
-	}, () -> 
-	{
-		return Feature.CORAL_MUSHROOM.configured(IFeatureConfig.NONE);
-	}))).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP).squared().decorated(Placement.COUNT_NOISE_BIASED.configured(new TopSolidWithNoiseConfig(20, 400.0D, 0.0D))));
-	
-	public static final ConfiguredFeature<?, ?> WILLIAMSONIA_PATCH = register("williamsonia_patch", Feature.RANDOM_PATCH.configured((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.WILLIAMSONIA.defaultBlockState()), new DoublePlantBlockPlacer())).tries(64).noProjection().build()).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(7));
 
-	//General
-	public static final ConfiguredFeature<?, ?> ZAMITES = register("zamites", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.ZAMITES_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
-	public static final ConfiguredFeature<?, ?> ASH_LAYER = FeatureInit.ASH_LAYER_PLACEMENT.configured(IFeatureConfig.NONE);
-	public static final ConfiguredFeature<?, ?> BRAZILEA_PATCH = register("brazilea_patch", Feature.RANDOM_PATCH.configured((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.BRAZILEA.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(10).build()).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE).count(4));
-	public static final ConfiguredFeature<?, ?> FERN_PATCH = register("fern_patch", Feature.RANDOM_PATCH.configured(ModConfiguredFeatures.ModBlockClusterFeatureConfig.FERN_CONFIG));	
-
+	//Trees
 	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CALAMITIES_TREE = register("calamties_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.CALAMITES_LOG.defaultBlockState()), new SimpleBlockStateProvider(BlockInit.CALAMITES_LEAVES.defaultBlockState()), new ConiferFoliagePlacer(FeatureSpread.of(2, 1), FeatureSpread.of(0, 2), FeatureSpread.of(1, 1)), new StraightTrunkPlacer(15, 2, 1), new TwoLayerFeature(2, 0, 2))).ignoreVines().build()));
 	public static final ConfiguredFeature<?, ?> CALAMITIES_TREES = register("calamties_trees", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(CALAMITIES_TREE.weighted(0.33333334F)), CALAMITIES_TREE)).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(10, 0.1F, 1))));
 
@@ -90,12 +76,7 @@ public class ModConfiguredFeatures
 	public static final ConfiguredFeature<?, ?> SINGLE_SCORCHED_TREE = register("single_scorched_tree", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(ModConfiguredFeatures.SCORCHED_TREE.weighted(0.33333334F)), ModConfiguredFeatures.SCORCHED_TREE)).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(0, 0.05F, 1))));
 	public static final ConfiguredFeature<?, ?> SCORCHED_STICKS = register("ginkgo_sticks", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.SCORCHED_STICKS).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
 
-	public static final ConfiguredFeature<?, ?> GEYSER_BLOCK = register("geyser_block", FeatureInit.GEYSER_BLOCK_PLACEMENT.configured(new FeatureSpreadConfig(20)).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE).chance(16));
-	
-	public static final ConfiguredFeature<?, ?> SPONGE_COLONEY = register("sponge_coloney", FeatureInit.SPONGE_COLONEY_PLACEMENT.configured(new FeatureSpreadConfig(20)).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE).chance(16));
-
-	public static final ConfiguredFeature<?, ?> BASALT_DIAMOND_ORE = register("basalt_diamond_ore", Feature.ORE.configured(new OreFeatureConfig(ModFillerBlockTypes.BASALT, BlockInit.BASALT_DIAMOND_ORE.defaultBlockState(), 10)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(40, 0, 100))).squared().count(30));
-	
+	//Ores
 	public static final ConfiguredFeature<?, ?> COPPER_ORE = register("copper_ore", Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockInit.COPPER_ORE.defaultBlockState(), LostWorldsConfig.COMMON_CONFIG.copperVeinSize.get())).range(LostWorldsConfig.COMMON_CONFIG.copperRange.get()).squared().count(LostWorldsConfig.COMMON_CONFIG.copperCountPerChunk.get()));
 
 	public static final ConfiguredFeature<?, ?> PETRIFIED_ARAUCARIA = register("petrified_araucaria", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.STONE.defaultBlockState(), BlockInit.PETRIFIED_ARAUCARIA_LOG.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE)));
@@ -103,8 +84,8 @@ public class ModConfiguredFeatures
 	public static final ConfiguredFeature<?, ?> PETRIFIED_CONIFER = register("petrified_conifer", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.STONE.defaultBlockState(), BlockInit.PETRIFIED_CONIFER_LOG.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE)));
 	public static final ConfiguredFeature<?, ?> PETRIFIED_GINKGO = register("petrified_ginkgo", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.STONE.defaultBlockState(), BlockInit.PETRIFIED_GINKGO_LOG.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE)));
 	
-	public static final ConfiguredFeature<?, ?> CALAMITES_SUCKOWII = register("calamites_suckwii", FeatureInit.CALAMITES_SUCKOWII.configured(new ProbabilityConfig(0.2F)).decorated(Features.Placements.HEIGHTMAP_WORLD_SURFACE).squared().decorated(Placement.COUNT_NOISE_BIASED.configured(new TopSolidWithNoiseConfig(160, 80.0D, 0.3D))));
-	
+	public static final ConfiguredFeature<?, ?> BASALT_DIAMOND_ORE = register("basalt_diamond_ore", Feature.ORE.configured(new OreFeatureConfig(ModFillerBlockTypes.BASALT, BlockInit.BASALT_DIAMOND_ORE.defaultBlockState(), 10)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(40, 0, 100))).squared().count(30));
+
 	public static final ConfiguredFeature<?, ?> PERMIAN_COAL_ORE = register("permian_coal_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_COAL_ORE.defaultBlockState(), 17)).range(128).squared().count(20));
 	public static final ConfiguredFeature<?, ?> PERMIAN_IRON_ORE = register("permian_iron_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_IRON_ORE.defaultBlockState(), 9)).range(64).squared().count(20));
 	public static final ConfiguredFeature<?, ?> PERMIAN_GOLD_ORE = register("permian_gold_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_GOLD_ORE.defaultBlockState(), 9)).range(32).squared().count(2));
@@ -114,14 +95,33 @@ public class ModConfiguredFeatures
 	public static final ConfiguredFeature<?, ?> PERMIAN_EMERALD_ORE = register("permian_emerald_ore", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(BlockInit.PERMIAN_STONE.defaultBlockState(), BlockInit.PERMIAN_EMERALD_ORE.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE)));
 	public static final ConfiguredFeature<?, ?> PERMIAN_COPPER_ORE = register("permian_copper_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, BlockInit.PERMIAN_COPPER_ORE.defaultBlockState(), LostWorldsConfig.COMMON_CONFIG.copperVeinSize.get())).range(LostWorldsConfig.COMMON_CONFIG.copperRange.get()).squared().count(LostWorldsConfig.COMMON_CONFIG.copperCountPerChunk.get()));
 
-	public static final ConfiguredFeature<?, ?> OVERWORLD_PLANT_FOSSIL = register("overworld_plant_fossil", Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockInit.PLANT_FOSSIL.defaultBlockState()/*.setValue(PlantFossilBlock.ERA, TimeEras.MODERN_MINECRAFT).setValue(PlantFossilBlock.POTENTIAL_PLANT, Plants.ALETHOPTERIS).setValue(PlantFossilBlock.DAMAGE, Damage.NONE)*/, 1)).range(128).squared().count(20));
+	//Rocks
+	public static final ConfiguredFeature<?, ?> PERMIAN_ROCK = register("permian_rock", FeatureInit.PERMIAN_ROCK.configured(new BlockStateFeatureConfig(BlockInit.PERMIAN_COBBLESTONE.defaultBlockState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));		
 	
+	//Lakes
 	public static final ConfiguredFeature<?, ?> PERMIAN_WATER_LAKE = register("permian_water_lake", FeatureInit.PERMIAN_LAKE.configured(new BlockStateFeatureConfig(Blocks.WATER.defaultBlockState())).decorated(Placement.WATER_LAKE.configured(new ChanceConfig(4))));
 	public static final ConfiguredFeature<?, ?> PERMIAN_LAVA_LAKE = register("permian_lava_lake", FeatureInit.PERMIAN_LAKE.configured(new BlockStateFeatureConfig(Blocks.LAVA.defaultBlockState())).decorated(Placement.LAVA_LAKE.configured(new ChanceConfig(80))));
 	public static final ConfiguredFeature<?, ?> EXTRA_PERMIAN_LAVA_LAKE = register("extra_permian_lava_lake", FeatureInit.PERMIAN_LAKE.configured(new BlockStateFeatureConfig(Blocks.LAVA.defaultBlockState())).decorated(Placement.LAVA_LAKE.configured(new ChanceConfig(4))));
 	
-	public static final ConfiguredFeature<?, ?> MUD_DISK = register("mud_disk", Feature.DISK.configured(new SphereReplaceConfig(BlockInit.MUD.defaultBlockState(), FeatureSpread.of(2, 1), 1, ImmutableList.of(Blocks.DIRT.defaultBlockState(), BlockInit.MUD.defaultBlockState()))).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE));
+	//Fossils
+	public static final ConfiguredFeature<?, ?> OVERWORLD_PLANT_FOSSIL = register("overworld_plant_fossil", Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockInit.PLANT_FOSSIL.defaultBlockState()/*.setValue(PlantFossilBlock.ERA, TimeEras.MODERN_MINECRAFT).setValue(PlantFossilBlock.POTENTIAL_PLANT, Plants.ALETHOPTERIS).setValue(PlantFossilBlock.DAMAGE, Damage.NONE)*/, 1)).range(128).squared().count(20));
 	
+	//Misc Decoration
+	public static final ConfiguredFeature<?, ?> ASH_LAYER = FeatureInit.ASH_LAYER_PLACEMENT.configured(IFeatureConfig.NONE);
+	public static final ConfiguredFeature<?, ?> PERMIAN_CORAL_REEF = register("permian_coral_reef", Feature.SIMPLE_RANDOM_SELECTOR.configured(new SingleRandomFeature(ImmutableList.of(() -> 
+	{
+		return Feature.CORAL_TREE.configured(IFeatureConfig.NONE);
+	}, () -> 
+	{
+		return Feature.CORAL_CLAW.configured(IFeatureConfig.NONE);
+	}, () -> 
+	{
+		return Feature.CORAL_MUSHROOM.configured(IFeatureConfig.NONE);
+	}))).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP).squared().decorated(Placement.COUNT_NOISE_BIASED.configured(new TopSolidWithNoiseConfig(20, 400.0D, 0.0D))));
+	public static final ConfiguredFeature<?, ?> GEYSER_BLOCK = register("geyser_block", FeatureInit.GEYSER_BLOCK_PLACEMENT.configured(new FeatureSpreadConfig(20)).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE).chance(16));
+	public static final ConfiguredFeature<?, ?> MUD_DISK = register("mud_disk", Feature.DISK.configured(new SphereReplaceConfig(BlockInit.MUD.defaultBlockState(), FeatureSpread.of(2, 1), 1, ImmutableList.of(Blocks.DIRT.defaultBlockState(), BlockInit.MUD.defaultBlockState()))).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE));
+	public static final ConfiguredFeature<?, ?> SPONGE_COLONEY = register("sponge_coloney", FeatureInit.SPONGE_COLONEY_PLACEMENT.configured(new FeatureSpreadConfig(20)).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE).chance(16));
+
 	public static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String id, ConfiguredFeature<FC, ?> configuredFeature) 
 	{
 		return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, ModUtils.rL(id), configuredFeature);
@@ -146,6 +146,8 @@ public class ModConfiguredFeatures
 	
 	public static void init() 
 	{
+		ModUtils.LOGGER.debug("Registering Mod Configured Features");
+		
 		register("ash_layer", ASH_LAYER);
 	}
 }

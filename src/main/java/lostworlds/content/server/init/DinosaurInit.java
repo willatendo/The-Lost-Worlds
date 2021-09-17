@@ -4,6 +4,7 @@ import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.item.builder.ItemBuilder;
 import lostworlds.library.item.builder.SpawnEggItemBuilder;
 import lostworlds.library.tab.ModItemGroup;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 
@@ -11,6 +12,8 @@ public class DinosaurInit
 {	
 	public static void init() 
 	{
+		ModUtils.LOGGER.debug("Registering Mod Dinosaur Items");
+		
 		for(DinoTypes dinos : DinoTypes.values())
 		{
 			ItemBuilder.create(dinos.name().toLowerCase() + "_rib_cage", ModItemGroup.DINOSAURS);

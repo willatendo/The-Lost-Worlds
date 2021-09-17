@@ -1,31 +1,31 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "$@$",
-    "P#\u0026",
-    "$%$"
-  ],
-  "key": {
-    "#": {
-      "item": "lostworlds:computer_core"
-    },
-    "$": {
-      "item": "minecraft:iron_ingot"
-    },
-    "@": {
-      "item": "minecraft:redstone"
-    },
-    "%": {
-      "item": "minecraft:redstone_lamp"
-    },
-    "\u0026": {
-      "item": "minecraft:diamond"
-    },
-    "P": {
-      "item": "minecraft:polished_andesite"
-    }
-  },
-  "result": {
-    "item": "lostworlds:fossil_grinder"
-  }
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"$@$",
+		"T#D",
+		"$%$"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:computer_core"
+		},
+		"$": {
+			"item": "minecraft:iron_ingot"
+		},
+		"@": {
+			"item": "minecraft:redstone"
+		},
+		"%": {
+			"item": "minecraft:redstone_lamp"
+		},
+		"D": {
+			"item": "minecraft:diamond"
+		},
+		"T": {
+			"item": "minecraft:cyan_terracotta"
+		}
+	},
+	"result": {
+		"item": "lostworlds:fossil_grinder"
+	}
 }

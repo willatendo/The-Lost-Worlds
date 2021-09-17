@@ -1,0 +1,31 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"G@G",
+		"T#G",
+		"$%$"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:computer_core"
+		},
+		"$": {
+			"item": "minecraft:iron_ingot"
+		},
+		"@": {
+			"item": "minecraft:redstone"
+		},
+		"%": {
+			"item": "minecraft:redstone_lamp"
+		},
+		"T": {
+			"item": "minecraft:cyan_terracotta"
+		},
+		"G": {
+			"tag": "forge:glass"
+		}
+	},
+	"result": {
+		"item": "lostworlds:cultivator"
+	}
+}

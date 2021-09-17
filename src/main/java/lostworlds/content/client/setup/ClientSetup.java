@@ -1,6 +1,7 @@
 package lostworlds.content.client.setup;
 
 import lostworlds.content.client.entity.render.FossilPoacherRenderer;
+import lostworlds.content.client.entity.render.ModBoatRenderer;
 import lostworlds.content.client.screen.AnalyserScreen;
 import lostworlds.content.client.screen.ArchaeologyTableScreen;
 import lostworlds.content.client.screen.CultivatorScreen;
@@ -132,5 +133,6 @@ public class ClientSetup
 		ScreenManager.register(ContainerInit.ARCHAEOLOGY_CONTAINER, ArchaeologyTableScreen::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.FOSSIL_POACHER, manager -> new FossilPoacherRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.MOD_BOAT, manager -> new ModBoatRenderer(manager));
 	}
 }

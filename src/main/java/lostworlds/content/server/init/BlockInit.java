@@ -17,6 +17,7 @@ import lostworlds.library.block.FossilGrinderBlock;
 import lostworlds.library.block.GeyserBlock;
 import lostworlds.library.block.GroundFernsBlock;
 import lostworlds.library.block.ModBushBlock;
+import lostworlds.library.block.ModDoublePlantBlock;
 import lostworlds.library.block.ModOreBlock;
 import lostworlds.library.block.ModOreRotatedPillerBlock;
 import lostworlds.library.block.ModSaplingBlock;
@@ -35,6 +36,8 @@ import lostworlds.library.block.VolcanicAshBlock;
 import lostworlds.library.block.VolcanicAshLayerBlock;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.block.builder.BlockBuilder;
+import lostworlds.library.entity.ModBoatType;
+import lostworlds.library.item.ModBoatItem;
 import lostworlds.library.item.tool.ModMaterials;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.tree.CalamitesTree;
@@ -46,7 +49,6 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.DoorBlock;
-import net.minecraft.block.DoublePlantBlock;
 import net.minecraft.block.FenceBlock;
 import net.minecraft.block.FenceGateBlock;
 import net.minecraft.block.FlowerBlock;
@@ -175,6 +177,7 @@ public class BlockInit
 	public static final Block ARAUCARIA_SIGN = BlockBuilder.create("araucaria_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.ARAUCARIA));
 	public static final Block ARAUCARIA_WALL_SIGN = BlockBuilder.create("araucaria_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.ARAUCARIA_SIGN), ModWoodType.ARAUCARIA));
 	public static final Item ARAUCARIA_SIGN_ITEM = ModRegistry.register("araucaria_sign", new SignItem(new Properties().tab(ModItemGroup.BLOCKS).stacksTo(16), ARAUCARIA_SIGN, ARAUCARIA_WALL_SIGN));
+	public static final Item ARAUCARIA_BOAT = ModBoatItem.create(ModBoatType.ARAUCARIA);
 	
 	public static final Block ARAUCARIA_STICKS = BlockAndItemBuilder.create("araucaria_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
 	public static final Block PETRIFIED_ARAUCARIA_LOG = BlockAndItemBuilder.create("petrified_araucaria_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND), ItemInit.ARAUCARIA_BARK_SAMPLE));
@@ -199,6 +202,7 @@ public class BlockInit
 	public static final Block CALAMITES_SIGN = BlockBuilder.create("calamites_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CALAMITES));
 	public static final Block CALAMITES_WALL_SIGN = BlockBuilder.create("calamites_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.CALAMITES_SIGN), ModWoodType.CALAMITES));
 	public static final Item CALAMITES_SIGN_ITEM = ModRegistry.register("calamites_sign", new SignItem(new Properties().tab(ModItemGroup.BLOCKS).stacksTo(16), CALAMITES_SIGN, CALAMITES_WALL_SIGN));
+	public static final Item CALAMITES_BOAT = ModBoatItem.create(ModBoatType.CALAMITES);
 	
 	public static final Block CALAMITES_STICKS = BlockAndItemBuilder.create("calamites_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
 	public static final Block PETRIFIED_CALAMITES_LOG = BlockAndItemBuilder.create("petrified_calamites_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND), ItemInit.CALAMITES_BARK_SAMPLE));
@@ -223,6 +227,7 @@ public class BlockInit
 	public static final Block CONIFER_SIGN = BlockBuilder.create("conifer_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CONIFER));
 	public static final Block CONIFER_WALL_SIGN = BlockBuilder.create("conifer_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.CONIFER_SIGN), ModWoodType.CONIFER));
 	public static final Item CONIFER_SIGN_ITEM = ModRegistry.register("conifer_sign", new SignItem(new Properties().tab(ModItemGroup.BLOCKS).stacksTo(16), CONIFER_SIGN, CONIFER_WALL_SIGN));
+	public static final Item CONIFER_BOAT = ModBoatItem.create(ModBoatType.CONIFER);
 	
 	public static final Block CONIFER_STICKS = BlockAndItemBuilder.create("conifer_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
 	public static final Block PETRIFIED_CONIFER_LOG = BlockAndItemBuilder.create("petrified_conifer_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND), ItemInit.CONIFER_BARK_SAMPLE));
@@ -251,6 +256,7 @@ public class BlockInit
 	public static final Block GINKGO_SIGN = BlockBuilder.create("ginkgo_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.GINKGO));
 	public static final Block GINKGO_WALL_SIGN = BlockBuilder.create("ginkgo_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.GINKGO_SIGN), ModWoodType.GINKGO));
 	public static final Item GINKGO_SIGN_ITEM = ModRegistry.register("ginkgo_sign", new SignItem(new Properties().tab(ModItemGroup.BLOCKS).stacksTo(16), GINKGO_SIGN, GINKGO_WALL_SIGN));
+	public static final Item GINKGO_BOAT = ModBoatItem.create(ModBoatType.GINKGO);
 	
 	public static final Block GINKGO_STICKS = BlockAndItemBuilder.create("ginkgo_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
 	public static final Block PETRIFIED_GINKGO_LOG = BlockAndItemBuilder.create("petrified_ginkgo_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND), ItemInit.GINKGO_BARK_SAMPLE));
@@ -273,25 +279,27 @@ public class BlockInit
 	public static final Block SCORCHED_SIGN = BlockBuilder.create("scorched_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.SCORCHED));
 	public static final Block SCORCHED_WALL_SIGN = BlockBuilder.create("scorched_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.SCORCHED_SIGN), ModWoodType.SCORCHED));
 	public static final Item SCORCHED_SIGN_ITEM = ModRegistry.register("scorched_sign", new SignItem(new Properties().tab(ModItemGroup.BLOCKS).stacksTo(16), SCORCHED_SIGN, SCORCHED_WALL_SIGN));
+	public static final Item SCORCHED_BOAT = ModBoatItem.create(ModBoatType.SCORCHED);
+
 	public static final Block SCORCHED_STICKS = BlockAndItemBuilder.create("scorched_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
 	
 	//Sigillaria
 	
 	//Plants
-	public static final Block ALETHOPTERIS = BlockAndItemBuilder.create("alethopteris", new DoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block ALETHOPTERIS = BlockAndItemBuilder.create("alethopteris", new ModDoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block BRAZILEA = BrazileaBlock.create("brazilea", new BrazileaBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final Block CEPHALOTAXUS = BlockAndItemBuilder.create("cephalotaxus", new DoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block CEPHALOTAXUS = BlockAndItemBuilder.create("cephalotaxus", new ModDoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block CALAMITES_SUCKOWII_SAPLING = BlockBuilder.create("calamites_suckowii_sapling", new CalamtiesSuckowiiSaplingBlock(AbstractBlock.Properties.of(Material.BAMBOO_SAPLING).randomTicks().instabreak().noCollission().strength(1.0F).sound(SoundType.BAMBOO_SAPLING)));
 	public static final Block CALAMITES_SUCKOWII = BlockAndItemBuilder.create("calamites_suckowii", new CalamtiesSuckowiiBlock(AbstractBlock.Properties.of(Material.BAMBOO, MaterialColor.PLANT).randomTicks().instabreak().strength(1.0F).sound(SoundType.BAMBOO).noOcclusion()));
 	public static final Block DILLHOFFIA = BlockAndItemBuilder.create("dillhoffia", new FlowerBlock(Effects.BLINDNESS, 7, AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block POTTED_DILLHOFFIA = BlockBuilder.create("potted_dillhoffia", new FlowerPotBlock(DILLHOFFIA, AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
-	public static final Block DUISBERGIA = BlockAndItemBuilder.create("duisbergia", new DoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block DUISBERGIA = BlockAndItemBuilder.create("duisbergia", new ModDoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block GROUND_FERNS = BlockAndItemBuilder.create("ground_ferns", new GroundFernsBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block OSMUNDA = BlockAndItemBuilder.create("osmunda", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block PERMIAN_DESERT_FERNS = BlockAndItemBuilder.create("permian_desert_ferns", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block PERMIAN_DESERT_SHRUB = BlockAndItemBuilder.create("permian_desert_shrub", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_BROWN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	//public static final Block TEMPSKYA = BlockAndItemBuilder.create("tempskya", new QuintuplePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final Block WILLIAMSONIA = BlockAndItemBuilder.create("williamsonia", new DoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block WILLIAMSONIA = BlockAndItemBuilder.create("williamsonia", new ModDoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block ZAMITES = BlockAndItemBuilder.create("zamites", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 
 	//Seeds

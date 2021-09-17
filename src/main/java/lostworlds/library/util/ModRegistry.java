@@ -55,6 +55,7 @@ import net.minecraft.world.gen.feature.structure.IStructurePieceType;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
+import net.minecraftforge.common.world.ForgeWorldType;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModRegistry 
@@ -206,6 +207,13 @@ public class ModRegistry
 		return WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_CARVER, ModUtils.rL(id), configuredCarver);
 	}
 	
+	public static ForgeWorldType register(String id, ForgeWorldType worldType)
+	{
+		worldType.setRegistryName(ModUtils.rL(id));
+		ForgeRegistries.WORLD_TYPES.register(worldType);
+		return worldType;
+	}
+	
 	//Registers Deferred Registers
 	public static void register()
 	{
@@ -231,7 +239,6 @@ public class ModRegistry
 		FeatureInit.init();
 		WorldCarverInit.init();
 		ModConfiguredCarvers.init();
-		
-		WorldTypeInit.setup();
+		WorldTypeInit.init();
 	}
 }

@@ -1,18 +1,21 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###",
-    "#$#"
-  ],
-  "key": {
-    "#": {
-      "tag": "minecraft:planks"
-    },
-    "$": {
-      "item": "minecraft:bookshelf"
-    }
-  },
-  "result": {
-    "item": "lostworlds:archaeology_table"
-  }
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"#@#",
+		"#$#"
+	],
+	"key": {
+		"@": {
+			"item": "minecraft:crafting_table"
+		},
+		"#": {
+			"tag": "minecraft:planks"
+		},
+		"$": {
+			"item": "minecraft:bookshelf"
+		}
+	},
+	"result": {
+		"item": "lostworlds:archaeology_table"
+	}
 }

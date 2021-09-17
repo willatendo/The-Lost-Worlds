@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "lostworlds:block/calamites_suckowii_stage0"
+		"layer0": "lostworlds:item/calamites_suckowii"
 	}
 }

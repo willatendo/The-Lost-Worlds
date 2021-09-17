@@ -4,6 +4,7 @@ import lostworlds.library.block.Plants;
 import lostworlds.library.block.Trees;
 import lostworlds.library.item.builder.ItemBuilder;
 import lostworlds.library.tab.ModItemGroup;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.item.Item;
 
 public class PlantInit 
@@ -20,6 +21,8 @@ public class PlantInit
 	
 	public static void init()
 	{
+		ModUtils.LOGGER.debug("Registering Mod Plant Items");
+		
 		for(Plants plants : Plants.values())
 		{
 			Item fossil = ItemBuilder.create(plants.toString().toLowerCase() + "_fossil", ModItemGroup.PLANTS);
@@ -64,7 +67,7 @@ public class PlantInit
 			ItemBuilder.create(plants.toString().toLowerCase() + "_soft_tissue", ModItemGroup.PLANTS);
 			ItemBuilder.create(plants.toString().toLowerCase() + "_dna", ModItemGroup.PLANTS);
 			ItemBuilder.create(plants.toString().toLowerCase() + "_dna_disc", ModItemGroup.PLANTS);
-			//ItemBuilder.create(plants.toString().toLowerCase() + "_seeds");
+			ItemBuilder.create(plants.toString().toLowerCase() + "_seeds");
 		}
 		
 		for(Trees trees : Trees.values())

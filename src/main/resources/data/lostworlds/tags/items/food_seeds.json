@@ -1,11 +1,14 @@
 {
-  "replace": false,
-  "values": [
-    "lostworlds:cephalotaxus_seeds",
-    "lostworlds:cycad_seeds",
-    "lostworlds:dillhoffia_seeds",
-    "lostworlds:duisbergia_seeds",
-    "lostworlds:lycophyta_seeds",
-    "lostworlds:osmunda_seeds"
-  ]
+	"replace": false,
+	"values": [
+		"lostworlds:alethopteris_seeds",
+		"lostworlds:brazilea_seeds",
+		"lostworlds:calamites_suckowii_seeds",
+		"lostworlds:cephalotaxus_seeds",
+		"lostworlds:dillhoffia_seeds",
+		"lostworlds:duisbergia_seeds",
+		"lostworlds:osmunda_seeds",
+		"lostworlds:williamsonia_seeds",
+		"lostworlds:zamites_seeds"
+	]
 }

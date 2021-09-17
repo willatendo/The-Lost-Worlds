@@ -1,16 +1,13 @@
 package lostworlds.content.server.init;
 
+import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
 import lostworlds.library.worldtype.RiftWorldType;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.common.world.ForgeWorldType;
 
 public class WorldTypeInit 
 {
-	public static RiftWorldType rift = new RiftWorldType();
+	public static final ForgeWorldType RIFT = ModRegistry.register("rift", new RiftWorldType());
 	
-	public static void setup()
-	{
-		rift.setRegistryName(ModUtils.rL("rift_world_type"));
-		ForgeRegistries.WORLD_TYPES.register(rift);
-	}
+	public static void init() { ModUtils.LOGGER.debug("Registering Mod World Types"); }
 }

@@ -9,19 +9,13 @@ import java.util.Set;
 import org.objectweb.asm.Type;
 
 import lostworlds.library.util.ModUtils;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.forgespi.language.ModFileScanData;
 
 public abstract class LostWorldsAddon implements IAddon
 {
 	public static String ID;
-	private static String getMessage;
+	public static String getMessage;
 	
 	public LostWorldsAddon() 
 	{
@@ -68,17 +62,17 @@ public abstract class LostWorldsAddon implements IAddon
 		return instances;
 	}
 	
-	@EventBusSubscriber(modid = ModUtils.ID, bus = Bus.FORGE, value = Dist.CLIENT)
-	static class LoadMessages
-	{
-		@SubscribeEvent
-		public static void onLoadEvent(final PlayerEvent.PlayerLoggedInEvent event)
-		{
-			if(LostWorldsAddon.getAddons() != null)
-			{
-				PlayerEntity player = event.getPlayer();
-				player.sendMessage(ModUtils.gTC("event", LostWorldsAddon.getMessage), player.getUUID());
-			}
-		}
-	}
+//	@EventBusSubscriber(modid = ModUtils.ID, bus = Bus.FORGE, value = Dist.CLIENT)
+//	static class LoadMessages
+//	{
+//		@SubscribeEvent
+//		public static void onLoadEvent(final PlayerEvent.PlayerLoggedInEvent event)
+//		{
+//			if(LostWorldsAddon.getAddons() != null)
+//			{
+//				PlayerEntity player = event.getPlayer();
+//				player.sendMessage(ModUtils.gTC("event", LostWorldsAddon.getMessage), player.getUUID());
+//			}
+//		}
+//	}
 }
