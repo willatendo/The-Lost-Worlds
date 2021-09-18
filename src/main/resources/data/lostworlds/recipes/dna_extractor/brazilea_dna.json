@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_extractor",
+	"output": {
+		"item": "lostworlds:brazilea_dna"
+	},
+	"fossil": {
+		"item": "lostworlds:brazilea_soft_tissue"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_extractor",
+	"output": {
+		"item": "lostworlds:duisbergia_dna"
+	},
+	"softTissue": {
+		"item": "lostworlds:duisbergia_soft_tissue"
+	}
+}

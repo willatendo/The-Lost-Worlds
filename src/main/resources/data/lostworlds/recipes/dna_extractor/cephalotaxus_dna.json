@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_extractor",
+	"output": {
+		"item": "lostworlds:cephalotaxus_dna"
+	},
+	"softTissue": {
+		"item": "lostworlds:cephalotaxus_soft_tissue"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_extractor",
+	"output": {
+		"item": "lostworlds:alethopteris_dna"
+	},
+	"softTissue": {
+		"item": "lostworlds:alethopteris_soft_tissue"
+	}
+}
