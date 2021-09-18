@@ -1,19 +1,12 @@
 package lostworlds.library.item;
 
-import lostworlds.library.entity.DinoTypes;
-import lostworlds.library.tab.ModItemGroup;
-import lostworlds.library.util.ModRegistry;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 
 public class SoftTissueItem extends Item
 {
-	protected SoftTissueItem() 
+	public SoftTissueItem(ItemGroup group) 
 	{
-		super(new Properties().tab(ModItemGroup.ITEMS));
-	}
-	
-	public static Item create(DinoTypes dino)
-	{
-		return ModRegistry.register(dino.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem());
+		super(new Properties().tab(group));
 	}
 }

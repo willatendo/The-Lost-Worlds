@@ -2,6 +2,9 @@ package lostworlds.content.server.init;
 
 import lostworlds.library.block.Plants;
 import lostworlds.library.block.Trees;
+import lostworlds.library.item.DNAItem;
+import lostworlds.library.item.DiscItem;
+import lostworlds.library.item.SoftTissueItem;
 import lostworlds.library.item.block.SeedItem;
 import lostworlds.library.item.builder.ItemBuilder;
 import lostworlds.library.tab.ModItemGroup;
@@ -27,9 +30,9 @@ public class PlantInit
 		for(Plants plants : Plants.values())
 		{
 			Item fossil = ItemBuilder.create(plants.toString().toLowerCase() + "_fossil", ModItemGroup.PLANTS);
-			ItemBuilder.create(plants.toString().toLowerCase() + "_soft_tissue", ModItemGroup.PLANTS);
-			ItemBuilder.create(plants.toString().toLowerCase() + "_dna", ModItemGroup.PLANTS);
-			ItemBuilder.create(plants.toString().toLowerCase() + "_dna_disc", ModItemGroup.PLANTS);
+			ItemBuilder.create(plants.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(ModItemGroup.PLANTS));
+			ItemBuilder.create(plants.toString().toLowerCase() + "_dna", new DNAItem(ModItemGroup.PLANTS));		
+			ItemBuilder.create(plants.toString().toLowerCase() + "_dna_disc", new DiscItem(ModItemGroup.PLANTS));
 			if(plants == Plants.ALETHOPTERIS)
 			{
 				ALETHOPTERIS_FOSSIL = fossil;
@@ -79,9 +82,9 @@ public class PlantInit
 		
 		for(Trees trees : Trees.values())
 		{
-			ItemBuilder.create(trees.toString().toLowerCase() + "_soft_tissue", ModItemGroup.PLANTS);
-			ItemBuilder.create(trees.toString().toLowerCase() + "_dna", ModItemGroup.PLANTS);		
-			ItemBuilder.create(trees.toString().toLowerCase() + "_dna_disc", ModItemGroup.PLANTS);
+			ItemBuilder.create(trees.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(ModItemGroup.PLANTS));
+			ItemBuilder.create(trees.toString().toLowerCase() + "_dna", new DNAItem(ModItemGroup.PLANTS));		
+			ItemBuilder.create(trees.toString().toLowerCase() + "_dna_disc", new DiscItem(ModItemGroup.PLANTS));
 		}
 	}
 }

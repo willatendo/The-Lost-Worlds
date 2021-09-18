@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:cultivator",
+	"output": {
+		"item": "lostworlds:conifer_sapling"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:conifer_dna_disc"
+	}
+}

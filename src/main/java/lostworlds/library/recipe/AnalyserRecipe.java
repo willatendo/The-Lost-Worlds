@@ -46,6 +46,13 @@ public class AnalyserRecipe implements IRecipe<IInventory>
 	{
 		return this.output;
 	}
+	
+	public NonNullList<ItemStack> getOutputs()
+	{
+		NonNullList<ItemStack> outputs = NonNullList.create();
+		outputs.add(this.output);
+		return outputs;
+	}
 
 	@Override
 	public ItemStack getResultItem() 

@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:cultivator",
+	"output": {
+		"item": "lostworlds:araucaria_sapling"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:araucaria_dna_disc"
+	}
+}

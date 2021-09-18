@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_extractor",
+	"output": {
+		"item": "lostworlds:araucaria_dna"
+	},
+	"softTissue": {
+		"item": "lostworlds:araucaria_soft_tissue"
+	}
+}

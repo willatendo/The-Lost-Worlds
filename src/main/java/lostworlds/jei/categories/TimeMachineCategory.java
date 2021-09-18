@@ -1,6 +1,7 @@
-package lostworlds.jei;
+package lostworlds.jei.categories;
 
 import lostworlds.content.server.init.BlockInit;
+import lostworlds.jei.LostWorldsConstants;
 import lostworlds.library.recipe.TimeMachineRecipe;
 import lostworlds.library.util.ModUtils;
 import mezz.jei.api.constants.ModIds;
@@ -16,18 +17,17 @@ import net.minecraft.util.ResourceLocation;
 
 public class TimeMachineCategory implements IRecipeCategory<TimeMachineRecipe>
 {		
-	public static final String TEXTURE_GUI_PATH = "textures/gui/";
-	public static final String TEXTURE_GUI_VANILLA = TEXTURE_GUI_PATH + "gui_vanilla.png";
-	public static final ResourceLocation RECIPE_GUI_VANILLA = new ResourceLocation(ModIds.JEI_ID, TEXTURE_GUI_VANILLA);
+	public static final String TEXTURE = "textures/gui/gui_vanilla.png";
+	public static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(ModIds.JEI_ID, TEXTURE);
 	
 	private final IDrawable background;
 	private final IDrawable icon;
 	
 	public TimeMachineCategory(IGuiHelper helper) 
 	{
-		ResourceLocation location = RECIPE_GUI_VANILLA;
+		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 0, 168, 125, 18);
-		this.icon = helper.createDrawableIngredient(new ItemStack(BlockInit.TIME_MACHINE.asItem()));
+		this.icon = helper.createDrawableIngredient(new ItemStack(BlockInit.TIME_MACHINE));
 	}
 	
 	@Override
@@ -51,13 +51,13 @@ public class TimeMachineCategory implements IRecipeCategory<TimeMachineRecipe>
 	@Override
 	public IDrawable getBackground() 
 	{
-		return background;
+		return this.background;
 	}
 
 	@Override
 	public IDrawable getIcon() 
 	{
-		return icon;
+		return this.icon;
 	}
 
 	@Override

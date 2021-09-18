@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:analyser",
+	"output": {
+		"item": "lostworlds:araucaria_dna_disc"
+	},
+	"dna": {
+		"item": "lostworlds:araucaria_dna"
+	}
+}

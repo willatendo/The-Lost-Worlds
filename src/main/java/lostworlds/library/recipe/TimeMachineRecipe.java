@@ -96,6 +96,6 @@ public class TimeMachineRecipe implements IRecipe<IInventory>
 	@Override
 	public ItemStack getToastSymbol() 
 	{
-		return BlockInit.TIME_MACHINE.asItem().getDefaultInstance();
+		return new ItemStack(BlockInit.TIME_MACHINE);
 	}
 }

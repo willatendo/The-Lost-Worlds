@@ -12,11 +12,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-/*
- * Author: Willatendo
- * Date: July 1, 2021
- */
-
 @OnlyIn(Dist.CLIENT)
 public class FossilCleanerScreen extends ContainerScreen<FossilCleanerContainer>
 {

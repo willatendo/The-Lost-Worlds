@@ -401,7 +401,7 @@ public class DNAInjectorTileEntity extends TileEntity implements IInventory, INa
 	@Override
 	public ITextComponent getName() 
 	{
-		return ModUtils.tTC("container", "dna_extractor");
+		return ModUtils.tTC("container", "dna_injector");
 	}
 
 	@Override

@@ -46,6 +46,13 @@ public class CultivatorRecipe implements IRecipe<IInventory>
 	{
 		return this.output;
 	}
+	
+	public NonNullList<ItemStack> getOutputs()
+	{
+		NonNullList<ItemStack> outputs = NonNullList.create();
+		outputs.add(this.output);
+		return outputs;
+	}
 
 	@Override
 	public ResourceLocation getId() 
@@ -55,7 +62,7 @@ public class CultivatorRecipe implements IRecipe<IInventory>
 	
 	public int getCultivatingTime() 
 	{
-		return 1000;
+		return 4000;
 	}
 
 	@Override

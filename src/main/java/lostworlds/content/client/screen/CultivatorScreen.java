@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CultivatorScreen extends ContainerScreen<CultivatorContainer>
 {
-	private static final ResourceLocation TEXTURE = ModUtils.rL("textures/gui/machines/fossil_grinder.png");
+	private static final ResourceLocation TEXTURE = ModUtils.rL("textures/gui/machines/cultivator.png");
 	
 	public CultivatorScreen(CultivatorContainer container, PlayerInventory playerInv, ITextComponent text) 
 	{
@@ -40,6 +40,6 @@ public class CultivatorScreen extends ContainerScreen<CultivatorContainer>
 		this.blit(stack, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight);
 
 		int progress = this.menu.getProgress();
-		this.blit(stack, this.leftPos + 75, this.topPos + 37, 176, 0, progress + 1, 16);
+		this.blit(stack, this.leftPos + 76, this.topPos + 34, 176, 0, progress + 1, 16);
 	}
 }

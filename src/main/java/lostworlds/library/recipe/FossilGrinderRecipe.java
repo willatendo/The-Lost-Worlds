@@ -91,6 +91,8 @@ public class FossilGrinderRecipe implements IRecipe<IInventory>
 	{
 		NonNullList<ItemStack> outputs = NonNullList.create();
 		outputs.add(this.output);
+		outputs.add(this.broken_fossil);
+		outputs.add(this.broken_plant);
 		return outputs;
 	}
 	
