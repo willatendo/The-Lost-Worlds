@@ -60,7 +60,7 @@ public class LWBakedModel implements IDynamicBakedModel
 	@Override
 	public TextureAtlasSprite getParticleIcon() 
 	{
-		return this.getTexture();
+		return this.getParticle();
 	}
 	
 	@Override
@@ -89,6 +89,11 @@ public class LWBakedModel implements IDynamicBakedModel
 	protected TextureAtlasSprite getTexture()
 	{
 		return TextureManager.TEXTURES.get(this.block);
+	}
+	
+	protected TextureAtlasSprite getParticle()
+	{
+		return TextureManager.PARTICLES.get(this.block);
 	}
 	
 	protected BakedQuad createQuads(Direction side, IModelData modelData)

@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "boat",
+	"pattern": [
+		"# #",
+		"###"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:scorched_planks"
+		}
+	},
+	"result": {
+		"item": "lostworlds:scorched_boat"
+	}
+}

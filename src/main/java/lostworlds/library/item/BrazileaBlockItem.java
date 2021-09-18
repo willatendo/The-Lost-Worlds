@@ -8,6 +8,6 @@ public class BrazileaBlockItem extends LilyPadItem
 {
 	public BrazileaBlockItem(Block block) 
 	{
-		super(block, new Properties().tab(ModItemGroup.BLOCKS));
+		super(block, new Properties().tab(ModItemGroup.PLANTS));
 	}
 }

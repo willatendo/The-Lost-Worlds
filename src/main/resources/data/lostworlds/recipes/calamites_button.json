@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"group": "wooden_button",
+	"ingredients": [
+		{
+			"item": "lostworlds:calamites_planks"
+		}
+	],
+	"result": {
+		"item": "lostworlds:calamites_button"
+	}
+}

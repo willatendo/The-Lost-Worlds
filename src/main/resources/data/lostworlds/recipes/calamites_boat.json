@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "boat",
+	"pattern": [
+		"# #",
+		"###"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:calamites_planks"
+		}
+	},
+	"result": {
+		"item": "lostworlds:calamites_boat"
+	}
+}

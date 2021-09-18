@@ -5,6 +5,7 @@ import java.util.Map;
 
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.block.ConnectedTextureBlock;
+import lostworlds.library.util.ModUtils;
 import net.minecraft.client.renderer.model.ModelResourceLocation;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraftforge.api.distmarker.Dist;
@@ -18,6 +19,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 public class TextureManager 
 {
 	public static final Map<ConnectedTextureBlock, TextureAtlasSprite> TEXTURES = new HashMap<>();
+	public static final Map<ConnectedTextureBlock, TextureAtlasSprite> PARTICLES = new HashMap<>();
 	
 	@SubscribeEvent
 	public static void onBake(ModelBakeEvent event)
@@ -37,10 +39,8 @@ public class TextureManager
 	{
 		if(event.getMap().location().toString().equals("minecraft:textures/atlas/blocks.png"))
 		{
-			ConnectedTextureBlock blockone = BlockInit.POLISHED_LIGHT_CONCRETE;
-			ConnectedTextureBlock blocktwo = BlockInit.POLISHED_DARK_CONCRETE;
-			event.addSprite(blockone.getRegistryName());
-			event.addSprite(blocktwo.getRegistryName());
+			event.addSprite(ModUtils.rL("block/polished_light_concrete"));
+			event.addSprite(ModUtils.rL("block/polished_dark_concrete"));
         }
     }
 	
@@ -51,8 +51,10 @@ public class TextureManager
 		{
 			ConnectedTextureBlock blockone = BlockInit.POLISHED_LIGHT_CONCRETE;
 			ConnectedTextureBlock blocktwo = BlockInit.POLISHED_DARK_CONCRETE;
-			TEXTURES.put(blockone, event.getMap().getSprite(blockone.getRegistryName()));
-			TEXTURES.put(blocktwo, event.getMap().getSprite(blockone.getRegistryName()));
+			TEXTURES.put(blockone, event.getMap().getSprite(ModUtils.rL("block/polished_light_concrete")));
+			PARTICLES.put(blockone, event.getMap().getSprite(ModUtils.rL("block/accent_light_concrete")));
+			TEXTURES.put(blocktwo, event.getMap().getSprite(ModUtils.rL("block/polished_dark_concrete")));
+			PARTICLES.put(blocktwo, event.getMap().getSprite(ModUtils.rL("block/accent_dark_concrete")));
         }
     }
 }

@@ -1,8 +1,8 @@
 {
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "lostworlds:volcanic_rock"
-  },
-  "result": "lostworlds:polished_volcanic_rock",
-  "count": 1
+	"type": "minecraft:stonecutting",
+	"ingredient": {
+		"item": "lostworlds:volcanic_rock"
+	},
+	"result": "lostworlds:polished_volcanic_rock",
+	"count": 1
 }

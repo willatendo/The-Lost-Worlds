@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"group": "result",
+	"ingredients": [
+		{
+			"tag": "lostworlds:calamites_logs"
+		}
+	],
+	"result": {
+		"item": "lostworlds:calamites_planks",
+		"count": 4
+	}
+}
