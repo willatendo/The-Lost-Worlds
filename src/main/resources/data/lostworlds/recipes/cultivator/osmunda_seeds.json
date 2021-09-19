@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:cultivator",
+	"output": {
+		"item": "lostworlds:osmunda_seeds"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:osmunda_dna_disc"
+	}
+}

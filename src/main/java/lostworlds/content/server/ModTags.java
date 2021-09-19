@@ -41,6 +41,7 @@ public class ModTags
 		public static final ITag.INamedTag<Block> DARK_CONCRETE = tag("dark_concrete");
 		public static final ITag.INamedTag<Block> DECORATIVE_BLOCKS = tag("decorative_blocks");
 		public static final ITag.INamedTag<Block> DECORATIVE_DOORS = tag("decorative_doors");
+		public static final ITag.INamedTag<Block> DINO_SPAWNABLES = tag("dino_spawnables");
 		public static final ITag.INamedTag<Block> FOSSILS = tag("");
 		public static final ITag.INamedTag<Block> GINKGO_LOGS = tag("ginkgo_logs");
 		public static final ITag.INamedTag<Block> GLASS = tag("glass");

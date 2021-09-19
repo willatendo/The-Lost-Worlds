@@ -77,7 +77,6 @@ public class HerbivoreEatGrassGoal extends Goal
 				{
 					this.level.destroyBlock(blockpos, false);
 				}
-
 				this.entity.ate();
 			} 
 			else 

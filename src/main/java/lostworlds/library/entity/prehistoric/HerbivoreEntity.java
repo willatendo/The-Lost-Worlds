@@ -28,7 +28,7 @@ public abstract class HerbivoreEntity extends PrehistoricEntity
 	{
 		super.defineSynchedData();
 		this.getEntityData().define(EATING, false);	
-		}
+	}
 	
 	@Override
 	public void addAdditionalSaveData(CompoundNBT nbt) 

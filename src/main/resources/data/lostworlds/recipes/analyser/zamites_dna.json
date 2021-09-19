@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:analyser",
+	"output": {
+		"item": "lostworlds:zamites_dna_disc"
+	},
+	"dna": {
+		"item": "lostworlds:zamites_dna"
+	}
+}

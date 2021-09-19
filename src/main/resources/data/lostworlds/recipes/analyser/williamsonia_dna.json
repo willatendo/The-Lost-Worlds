@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:analyser",
+	"output": {
+		"item": "lostworlds:williamsonia_dna_disc"
+	},
+	"dna": {
+		"item": "lostworlds:williamsonia_dna"
+	}
+}

@@ -13,6 +13,7 @@ import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.PotionInit;
 import lostworlds.content.server.init.StructurePieceInit;
 import lostworlds.library.biome.BiomeGeneration;
+import lostworlds.library.biome.DinosaurSpawn;
 import lostworlds.library.biome.ModConfiguredStructures;
 import lostworlds.library.biome.OreGeneration;
 import lostworlds.library.tab.ModItemGroup;
@@ -58,6 +59,7 @@ public class LostWorldsMod
 		forgeBus.addListener(EventPriority.HIGH, OreGeneration::addOresToOverworld);
 		forgeBus.addListener(EventPriority.HIGH, BiomeGeneration::addBiomesToOverworld);
 		forgeBus.addListener(EventPriority.HIGH, BiomeGeneration::addFeaturesToOverworld);
+		forgeBus.addListener(EventPriority.HIGH, DinosaurSpawn::addDinosaursToOverworld);
 		
 		ModLoadingContext.get().registerConfig(Type.COMMON, LostWorldsConfig.commonSpec);
 		

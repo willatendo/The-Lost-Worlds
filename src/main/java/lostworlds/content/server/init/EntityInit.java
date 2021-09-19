@@ -2,14 +2,17 @@ package lostworlds.content.server.init;
 
 import lostworlds.library.entity.ModBoatEntity;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
+import lostworlds.library.entity.prehistoric.PrehistoricEntity;
 import lostworlds.library.entity.prehistoric.jurassic.ChilesaurusEntity;
 import lostworlds.library.item.builder.SpawnEggItemBuilder;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -34,6 +37,11 @@ public class EntityInit
 		event.getRegistry().register(MOD_BOAT.setRegistryName(ModUtils.rL("mod_boat")));
 		
 		SpawnEggItemBuilder.initSpawnEggs();
+	}
+	
+	static
+	{
+		EntitySpawnPlacementRegistry.register(EntityInit.CHILESAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
 	}
 	
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Enitites"); }

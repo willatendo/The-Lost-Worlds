@@ -78,6 +78,8 @@ public class ItemInit
 	public static final Item COMPUTER_CORE = ItemBuilder.create("computer_core");
 	
 	public static final Item STORAGE_DISC = ItemBuilder.create("storage_disc");
+
+	public static final Item TAG = ItemBuilder.create("tag");
 	
 	public static final Item MUD_BALL = ItemBuilder.create("mud_ball");
 

@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:cultivator",
+	"output": {
+		"item": "lostworlds:williamsonia_seeds"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:williamsonia_dna_disc"
+	}
+}

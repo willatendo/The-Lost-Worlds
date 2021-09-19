@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:cultivator",
+	"output": {
+		"item": "lostworlds:dillhoffia_seeds"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:dillhoffia_dna_disc"
+	}
+}

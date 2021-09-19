@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:cultivator",
+	"output": {
+		"item": "lostworlds:duisbergia_seeds"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:duisbergia_dna_disc"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:analyser",
+	"output": {
+		"item": "lostworlds:dillhoffia_dna_disc"
+	},
+	"dna": {
+		"item": "lostworlds:dillhoffia_dna"
+	}
+}

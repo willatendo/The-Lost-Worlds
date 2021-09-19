@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:cultivator",
+	"output": {
+		"item": "lostworlds:calamites_suckowii_seeds"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:calamites_suckowii_dna_disc"
+	}
+}

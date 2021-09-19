@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:cultivator",
+	"output": {
+		"item": "lostworlds:zamites_seeds"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:zamites_dna_disc"
+	}
+}
