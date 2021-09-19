@@ -6,6 +6,7 @@ import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.library.entity.TimeEras;
 import lostworlds.library.entity.goal.HerbivoreEatGrassGoal;
+import lostworlds.library.entity.goal.NaturalBreedingGoal;
 import lostworlds.library.entity.prehistoric.HerbivoreEntity;
 import lostworlds.library.item.block.SeedItem;
 import net.minecraft.entity.AgeableEntity;
@@ -86,8 +87,9 @@ public class ChilesaurusEntity extends HerbivoreEntity
 		this.goalSelector.addGoal(3, new LookRandomlyGoal(this));
 		this.goalSelector.addGoal(4, new HerbivoreEatGrassGoal(this));
 		this.goalSelector.addGoal(5, new AvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
-		this.goalSelector.addGoal(6, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(7, new TemptGoal(this, 1.0D, false, FOOD_ITEMS));
+		this.goalSelector.addGoal(6, new NaturalBreedingGoal(this, 1.0D));
+		this.goalSelector.addGoal(7, new BreedGoal(this, 1.0D));
+		this.goalSelector.addGoal(8, new TemptGoal(this, 1.0D, false, FOOD_ITEMS));
 	}
 
 	@Override
