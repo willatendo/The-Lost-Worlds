@@ -1,11 +1,17 @@
 package lostworlds.library.entity.prehistoric.jurassic;
 
+import lostworlds.content.client.entity.model.ChilesaurusModel;
+import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
+import lostworlds.content.server.init.EntityInit;
 import lostworlds.library.entity.TimeEras;
-import lostworlds.library.entity.prehistoric.HerbivourEntity;
+import lostworlds.library.entity.goal.HerbivoreEatGrassGoal;
+import lostworlds.library.entity.prehistoric.HerbivoreEntity;
 import lostworlds.library.item.block.SeedItem;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.entity.ai.goal.BreedGoal;
 import net.minecraft.entity.ai.goal.LookAtGoal;
@@ -13,6 +19,7 @@ import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.TemptGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -27,7 +34,7 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class ChilesaurusEntity extends HerbivourEntity
+public class ChilesaurusEntity extends HerbivoreEntity
 {
 	private static final Ingredient FOOD_ITEMS = Ingredient.of(BlockInit.ALETHOPTERIS, BlockInit.BRAZILEA, BlockInit.CEPHALOTAXUS, BlockInit.CALAMITES_SUCKOWII, BlockInit.DILLHOFFIA, BlockInit.DUISBERGIA, BlockInit.GROUND_FERNS, BlockInit.OSMUNDA, BlockInit.PERMIAN_DESERT_FERNS, BlockInit.PERMIAN_DESERT_SHRUB, BlockInit.WILLIAMSONIA, BlockInit.ZAMITES);
 	private AnimationFactory factory = new AnimationFactory(this);
@@ -37,6 +44,11 @@ public class ChilesaurusEntity extends HerbivourEntity
 		if(event.isMoving())
 		{
 			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.chilesaurus.walk", true));
+			return PlayState.CONTINUE;
+		}
+		else if(this.entityData.get(this.EATING))
+		{
+			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.chilesaurus.eat", false));
 			return PlayState.CONTINUE;
 		}
 		else
@@ -51,6 +63,19 @@ public class ChilesaurusEntity extends HerbivourEntity
 		super(entity, world, TimeEras.JURASSIC_PERIOD);
 	}
 	
+	public static AttributeModifierMap createAttributes() 
+	{
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.chilesaurusHeath.get()).build();
+	}
+	
+	@Override
+	protected void defineSynchedData() 
+	{
+		super.defineSynchedData();
+		byte pattern = (byte) random.nextInt(ChilesaurusModel.textures.getFirst().size());
+		this.entityData.define(PATTERN, pattern);
+	}
+	
 	@Override
 	protected void registerGoals() 
 	{
@@ -59,9 +84,10 @@ public class ChilesaurusEntity extends HerbivourEntity
 		this.goalSelector.addGoal(1, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
 		this.goalSelector.addGoal(2, new LookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(3, new LookRandomlyGoal(this));
-		this.goalSelector.addGoal(4, new AvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
-		this.goalSelector.addGoal(5, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(6, new TemptGoal(this, 1.0D, false, FOOD_ITEMS));
+		this.goalSelector.addGoal(4, new HerbivoreEatGrassGoal(this));
+		this.goalSelector.addGoal(5, new AvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(6, new BreedGoal(this, 1.0D));
+		this.goalSelector.addGoal(7, new TemptGoal(this, 1.0D, false, FOOD_ITEMS));
 	}
 
 	@Override
@@ -85,6 +111,6 @@ public class ChilesaurusEntity extends HerbivourEntity
 	@Override
 	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
 	{
-		return null;
+		return EntityInit.CHILESAURUS.create(world);
 	}	
 }

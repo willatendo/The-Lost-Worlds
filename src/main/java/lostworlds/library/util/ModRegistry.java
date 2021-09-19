@@ -26,6 +26,10 @@ import lostworlds.content.server.init.WorldCarverInit;
 import lostworlds.content.server.init.WorldTypeInit;
 import lostworlds.library.biome.ModConfiguredCarvers;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EntityType.IFactory;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
@@ -148,6 +152,14 @@ public class ModRegistry
 		profession.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.PROFESSIONS.register(profession);
 		return profession;
+	}
+	
+	public static <T extends Entity> EntityType<T> register(String id, IFactory<T> factory, EntityClassification classification, float width, float height)
+	{
+		EntityType<T> entityType = EntityType.Builder.of(factory, classification).sized(width, height).build(id);
+		entityType.setRegistryName(ModUtils.rL(id));
+		ForgeRegistries.ENTITIES.register(entityType);
+		return entityType;
 	}
 	
 	public static FoliagePlacerType<?> register(String id, FoliagePlacerType<?> foliagePlacer)

@@ -3,7 +3,7 @@ package lostworlds.library.entity.goal;
 import java.util.EnumSet;
 import java.util.function.Predicate;
 
-import lostworlds.library.entity.prehistoric.HerbivourEntity;
+import lostworlds.library.entity.prehistoric.HerbivoreEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -13,14 +13,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 
-public class HerbivourEatGrassGoal extends Goal 
+public class HerbivoreEatGrassGoal extends Goal 
 {
 	private static final Predicate<BlockState> IS_TALL_GRASS = BlockStateMatcher.forBlock(Blocks.GRASS);
-	private final HerbivourEntity entity;
+	private final HerbivoreEntity entity;
 	private final World level;
-	private int eatAnimationTick;
 
-	public HerbivourEatGrassGoal(HerbivourEntity entity) 
+	public HerbivoreEatGrassGoal(HerbivoreEntity entity) 
 	{
 		this.entity = entity;
 		this.level = entity.level;
@@ -30,7 +29,7 @@ public class HerbivourEatGrassGoal extends Goal
 	@Override
 	public boolean canUse() 
 	{
-		if(this.entity.getRandom().nextInt(this.entity.isBaby() ? 50 : 1000) != 0 && !this.entity.isHungry()) 
+		if(!this.entity.isHungry()) 
 		{
 			return false;
 		} 
@@ -48,7 +47,6 @@ public class HerbivourEatGrassGoal extends Goal
 	@Override
 	public void start() 
 	{
-		this.eatAnimationTick = 40;
 		this.level.broadcastEntityEvent(this.entity, (byte) 10);
 		this.entity.getNavigation().stop();
 	}
@@ -56,26 +54,22 @@ public class HerbivourEatGrassGoal extends Goal
 	@Override
 	public void stop() 
 	{
-		this.eatAnimationTick = 0;
+		this.entity.setHunger(21000);
+		this.entity.setEating(false);
 	}
 
 	@Override
 	public boolean canContinueToUse() 
 	{
-		return this.eatAnimationTick > 0;
-	}
-
-	public int getEatAnimationTick() 
-	{
-		return this.eatAnimationTick;
+		return this.entity.isHungry();
 	}
 
 	@Override
 	public void tick() 
 	{
-		this.eatAnimationTick = Math.max(0, this.eatAnimationTick - 1);
-		if(this.eatAnimationTick == 4) 
+		if(this.entity.isHungry()) 
 		{
+			this.entity.setEating(true);
 			BlockPos blockpos = this.entity.blockPosition();
 			if(IS_TALL_GRASS.test(this.level.getBlockState(blockpos))) 
 			{

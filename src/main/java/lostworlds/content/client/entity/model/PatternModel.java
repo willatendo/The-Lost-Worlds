@@ -14,11 +14,16 @@ public abstract class PatternModel<T extends PrehistoricEntity> extends Animated
 	//The left side is the male textures and the right side is the female textures. NEEDS TO HAVE SAME AMMOUNT ON BOTH SIDES!!!
 	public static Pair<List<ResourceLocation>, List<ResourceLocation>> textures;
 	private ResourceLocation texture;
-	public static int entries = textures.getFirst().size();
 	
 	public PatternModel(Pair<List<ResourceLocation>, List<ResourceLocation>> textures) 
 	{
 		this.textures = textures;
+	}
+	
+	public static void addSkins(ResourceLocation male, ResourceLocation female)
+	{
+		textures.getFirst().add(male);
+		textures.getFirst().add(female);
 	}
 	
 	@Override

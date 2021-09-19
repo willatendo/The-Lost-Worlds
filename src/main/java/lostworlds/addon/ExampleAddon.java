@@ -1,36 +1,29 @@
 package lostworlds.addon;
 
-public class ExampleAddon //extends LostWorldsAddon
+import lostworlds.content.client.entity.model.ChilesaurusModel;
+import net.minecraft.util.ResourceLocation;
+
+public class ExampleAddon extends LostWorldsAddon
 {
-//	public static final String ID = "example";
-//	public static final Item EXAMPLE_ITEM = new Item(new Properties().tab(ModItemGroup.ITEMS));
-//	
-//	static
-//	{
-//		register("example_item", EXAMPLE_ITEM);
-//	}
-//	
-//	@Override
-//	public String addonId() 
-//	{
-//		return ID;
-//	}
-//
-//	@Override
-//	public String addonLoadMessage() 
-//	{
-//		return "LoadedAddon";
-//	}
-//	
-//	public static Item register(String id, Item item)
-//	{
-//		item.setRegistryName(rL(id));
-//		ForgeRegistries.ITEMS.register(item);
-//		return item;
-//	}
-//
-//	private static ResourceLocation rL(String path)
-//	{
-//		return new ResourceLocation(ID, path);
-//	}
+	public static final String ID = "example";
+	
+	private static final ResourceLocation MALE_STRIPPED = new ResourceLocation(ID, "male_stripped");
+	private static final ResourceLocation FEMALE_STRIPPED = new ResourceLocation(ID, "male_stripped");
+	
+	static
+	{
+		ChilesaurusModel.addSkins(MALE_STRIPPED, FEMALE_STRIPPED);
+	}
+	
+	@Override
+	public String addonId() 
+	{
+		return ID;
+	}
+
+	@Override
+	public String addonLoadMessage() 
+	{
+		return "LoadedAddon";
+	}
 }

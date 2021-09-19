@@ -2,7 +2,9 @@ package lostworlds.content.server.init;
 
 import lostworlds.library.entity.ModBoatEntity;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
+import lostworlds.library.entity.prehistoric.jurassic.ChilesaurusEntity;
 import lostworlds.library.item.builder.SpawnEggItemBuilder;
+import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -20,10 +22,13 @@ public class EntityInit
 	
 	public static final EntityType<ModBoatEntity> MOD_BOAT = EntityType.Builder.<ModBoatEntity>of(ModBoatEntity::new, EntityClassification.MISC).sized(1.375F, 0.5625F).build("mod_boat");
 	
+	public static final EntityType<ChilesaurusEntity> CHILESAURUS = ModRegistry.register("chilesaurs", ChilesaurusEntity::new, EntityClassification.CREATURE, 1.0F, 1.0F);
+	
 	@SubscribeEvent
 	public static void registerEntities(RegistryEvent.Register<EntityType<?>> event) 
 	{
 		GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) EntityInit.FOSSIL_POACHER, FossilPoacherEntity.createAttributes());
+		GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) EntityInit.CHILESAURUS, ChilesaurusEntity.createAttributes());
 
 		event.getRegistry().register(FOSSIL_POACHER.setRegistryName(ModUtils.rL("fossil_poacher")));
 		event.getRegistry().register(MOD_BOAT.setRegistryName(ModUtils.rL("mod_boat")));

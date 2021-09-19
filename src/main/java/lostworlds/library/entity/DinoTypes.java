@@ -1,5 +1,6 @@
 package lostworlds.library.entity;
 
+import lostworlds.content.server.init.EntityInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -10,7 +11,8 @@ import net.minecraftforge.common.IExtensibleEnum;
 public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 {
 	TEST("test", EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, Blocks.TURTLE_EGG, 0x000000, 0xFFFFFF, 1, 2, 1.0F, 2.0F),
-	TESTTWO("testtwo", EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, Blocks.TURTLE_EGG, 0x000000, 0xFFFFFF, 1, 2, 1.0F, 2.0F),;
+	TESTTWO("testtwo", EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, Blocks.TURTLE_EGG, 0x000000, 0xFFFFFF, 1, 2, 1.0F, 2.0F),
+	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, Blocks.TURTLE_EGG, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F);
 	
 	private final String id;
 	private final EntityType<? extends Entity> entitytype;

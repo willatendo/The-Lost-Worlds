@@ -1,6 +1,5 @@
 package lostworlds.library.entity.prehistoric;
 
-import lostworlds.content.client.entity.model.PatternModel;
 import lostworlds.library.entity.TimeEras;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.AnimalEntity;
@@ -32,8 +31,6 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 		super.defineSynchedData();
 		byte sex = (byte) random.nextInt(2);
 		this.entityData.define(SEX, sex);
-		byte pattern = (byte) random.nextInt(PatternModel.entries);
-		this.entityData.define(PATTERN, pattern);
 		this.getEntityData().define(ATTACKING, false);
 	}
 	
@@ -42,6 +39,7 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 	{
 		super.addAdditionalSaveData(nbt);
 		nbt.putByte(SEX_TAG, getSex());
+		nbt.putByte(PATTERN_TAG, getPattern());
 	}
 	
 	@Override
@@ -49,6 +47,7 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 	{
 		super.readAdditionalSaveData(nbt);
 		setSex(nbt.getByte(SEX_TAG));
+		setPattern(nbt.getByte(PATTERN_TAG));
 	}
 	
 	@Override

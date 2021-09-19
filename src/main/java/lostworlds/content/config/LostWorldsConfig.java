@@ -4,6 +4,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
+import net.minecraftforge.common.ForgeConfigSpec.DoubleValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 
 public class LostWorldsConfig 
@@ -49,6 +50,9 @@ public class LostWorldsConfig
 		public final IntValue coniferForestWeight;
 		public final IntValue ginkgoForestWeight;
 		
+		//Dinosaurs
+		public final DoubleValue chilesaurusHeath;
+		
 		public Common(ForgeConfigSpec.Builder builder)
 		{
 			//Ids
@@ -77,6 +81,9 @@ public class LostWorldsConfig
 			
 			this.coniferForestWeight = builder.comment("Sets the weight of the Conifer Forest spawning in the overworld. To disable this, got to coniferForestShouldSpawn").translation(TRANSLATION_TEXT + "coniferForestWeight").defineInRange("coniferForestWeight", 3, 1, 999);
 			this.ginkgoForestWeight = builder.comment("Sets the weight of the Ginkgo Forest spawning in the overworld. To disable this, got to ginkgoForestWeight").translation(TRANSLATION_TEXT + "ginkgoForestWeight").defineInRange("ginkgoForestWeight", 3, 1, 999);
+			
+			//Dinosaurs
+			this.chilesaurusHeath = builder.comment("Sets the heath of the Chilesaurs").translation(TRANSLATION_TEXT + "chilesaurusHeath").defineInRange("chilesaurusHeath", 10.0D, 0.0D, 999.0D);
 		}
 	}
 }
