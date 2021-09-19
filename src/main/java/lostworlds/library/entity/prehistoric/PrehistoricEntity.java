@@ -2,8 +2,8 @@ package lostworlds.library.entity.prehistoric;
 
 import lostworlds.content.client.entity.model.PatternModel;
 import lostworlds.library.entity.TimeEras;
-import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
@@ -12,7 +12,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
 
-public abstract class PrehistoricEntity extends CreatureEntity implements IAnimatable
+public abstract class PrehistoricEntity extends AnimalEntity implements IAnimatable
 {
 	protected static final DataParameter<Byte> SEX = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BYTE);
 	protected static final DataParameter<Boolean> ATTACKING = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BOOLEAN);	

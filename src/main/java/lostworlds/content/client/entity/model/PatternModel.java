@@ -11,7 +11,7 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public abstract class PatternModel<T extends PrehistoricEntity> extends AnimatedGeoModel<T>
 {
-	//The left side is the male textures and the right side is the female textures.
+	//The left side is the male textures and the right side is the female textures. NEEDS TO HAVE SAME AMMOUNT ON BOTH SIDES!!!
 	public static Pair<List<ResourceLocation>, List<ResourceLocation>> textures;
 	private ResourceLocation texture;
 	public static int entries = textures.getFirst().size();
@@ -26,8 +26,6 @@ public abstract class PatternModel<T extends PrehistoricEntity> extends Animated
 	{
 		return texture;
 	}
-	
-	
 	
 	@Override
 	public void setLivingAnimations(T entity, Integer uniqueID, AnimationEvent customPredicate) 
