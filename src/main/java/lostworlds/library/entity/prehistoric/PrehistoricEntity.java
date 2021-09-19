@@ -116,4 +116,26 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 	{
 		entityData.set(PATTERN, pattern);
 	}
+	
+	@Override
+	public boolean canMate(AnimalEntity entity) 
+	{
+		PrehistoricEntity prehistoric = (PrehistoricEntity) entity;
+		if(prehistoric == this)
+		{
+			return false;
+		}
+		else if(this.getSex() == prehistoric.getSex())
+		{
+			return false;
+		}
+		else if(this.getClass() != prehistoric.getClass())
+		{
+			return false;
+		}
+		else
+		{
+			return this.isInLove() && prehistoric.isInLove();
+		}
+	}
 }
