@@ -13,13 +13,13 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 
-public abstract class HerbivoreEntity extends PrehistoricEntity
+public abstract class HerbivoreEntity extends TaggedEntity
 {
 	protected static final DataParameter<Boolean> EATING = EntityDataManager.defineId(HerbivoreEntity.class, DataSerializers.BOOLEAN);
 	protected static final DataParameter<Boolean> PANICKING = EntityDataManager.defineId(HerbivoreEntity.class, DataSerializers.BOOLEAN);
 	private int hunger;
 	
-	public HerbivoreEntity(EntityType<? extends PrehistoricEntity> entity, World world, TimeEras era) 
+	public HerbivoreEntity(EntityType<? extends HerbivoreEntity> entity, World world, TimeEras era) 
 	{
 		super(entity, world, era);
 	}
