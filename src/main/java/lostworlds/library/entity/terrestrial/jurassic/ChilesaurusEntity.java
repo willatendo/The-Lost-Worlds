@@ -1,25 +1,26 @@
-package lostworlds.library.entity.prehistoric.jurassic;
+package lostworlds.library.entity.terrestrial.jurassic;
 
 import lostworlds.content.client.entity.model.ChilesaurusModel;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.library.entity.TimeEras;
-import lostworlds.library.entity.goal.HerbivoreEatGrassGoal;
-import lostworlds.library.entity.goal.NaturalBreedingGoal;
-import lostworlds.library.entity.prehistoric.HerbivoreEntity;
+import lostworlds.library.entity.goal.herbivore.HerbivoreEatGrassGoal;
+import lostworlds.library.entity.goal.herbivore.NaturalBreedingGoal;
+import lostworlds.library.entity.goal.herbivore.SleepGoal;
+import lostworlds.library.entity.goal.herbivore.SleepyAvoidEntityGoal;
+import lostworlds.library.entity.goal.herbivore.SleepyBreedGoal;
+import lostworlds.library.entity.goal.herbivore.SleepyLookAtGoal;
+import lostworlds.library.entity.goal.herbivore.SleepyLookRandomlyGoal;
+import lostworlds.library.entity.goal.herbivore.SleepySwimGoal;
+import lostworlds.library.entity.goal.herbivore.SleepyTemptGoal;
+import lostworlds.library.entity.goal.herbivore.SleepyWaterAvoidingRandomWalkingGoal;
+import lostworlds.library.entity.terrestrial.HerbivoreEntity;
 import lostworlds.library.item.block.SeedItem;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.entity.ai.goal.BreedGoal;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.ai.goal.TemptGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -52,6 +53,11 @@ public class ChilesaurusEntity extends HerbivoreEntity
 			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.chilesaurus.eat", false));
 			return PlayState.CONTINUE;
 		}
+		else if(this.entityData.get(this.SLEEPING))
+		{
+			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.chilesaurus.into_sleep", false).addAnimation("animation.chilesaurus.sleeping", false).addAnimation("animation.chilesaurus.out_of_sleep", false));
+			return PlayState.CONTINUE;
+		}
 		else
 		{
 			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.chilesaurus.idle", true));
@@ -81,15 +87,16 @@ public class ChilesaurusEntity extends HerbivoreEntity
 	protected void registerGoals() 
 	{
 		super.registerGoals();
-		this.goalSelector.addGoal(0, new SwimGoal(this));
-		this.goalSelector.addGoal(1, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-		this.goalSelector.addGoal(2, new LookAtGoal(this, PlayerEntity.class, 6.0F));
-		this.goalSelector.addGoal(3, new LookRandomlyGoal(this));
+		this.goalSelector.addGoal(0, new SleepySwimGoal(this));
+		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal(this, 1.0D));
+		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
+		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
 		this.goalSelector.addGoal(4, new HerbivoreEatGrassGoal(this));
-		this.goalSelector.addGoal(5, new AvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new SleepGoal(this));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(6, new NaturalBreedingGoal(this, 1.0D));
-		this.goalSelector.addGoal(7, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(8, new TemptGoal(this, 1.0D, false, FOOD_ITEMS));
+		this.goalSelector.addGoal(7, new SleepyBreedGoal(this, 1.0D));
+		this.goalSelector.addGoal(8, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 	}
 
 	@Override

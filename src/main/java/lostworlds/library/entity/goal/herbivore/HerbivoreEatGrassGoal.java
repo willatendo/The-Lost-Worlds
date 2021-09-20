@@ -1,9 +1,9 @@
-package lostworlds.library.entity.goal;
+package lostworlds.library.entity.goal.herbivore;
 
 import java.util.EnumSet;
 import java.util.function.Predicate;
 
-import lostworlds.library.entity.prehistoric.HerbivoreEntity;
+import lostworlds.library.entity.terrestrial.HerbivoreEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -29,7 +29,7 @@ public class HerbivoreEatGrassGoal extends Goal
 	@Override
 	public boolean canUse() 
 	{
-		if(!this.entity.isHungry()) 
+		if(!this.entity.isHungry() || this.entity.isSleeping()) 
 		{
 			return false;
 		} 

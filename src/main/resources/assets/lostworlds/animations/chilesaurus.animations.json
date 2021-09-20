@@ -447,6 +447,438 @@
 					}
 				}
 			}
+		},
+		"animation.chilesaurus.into_sleep": {
+			"animation_length": 2,
+			"bones": {
+				"body": {
+					"rotation": {
+						"vector": [
+							0,
+							0,
+							0
+						]
+					}
+				},
+				"tail": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								30,
+								70
+							]
+						}
+					}
+				},
+				"tailpart1": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						},
+						"2.0": {
+							"vector": [
+								17.5,
+								45,
+								2.5
+							]
+						}
+					}
+				},
+				"leg1": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						},
+						"2.0": {
+							"vector": [
+								-22.5,
+								0,
+								5
+							]
+						}
+					}
+				},
+				"leg2": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								0,
+								-12.5
+							]
+						}
+					}
+				},
+				"Chilesaurus": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								0,
+								-42.5
+							]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						},
+						"2.0": {
+							"vector": [
+								-5,
+								-4,
+								0
+							]
+						}
+					}
+				},
+				"neck": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						},
+						"2.0": {
+							"vector": [
+								127.5,
+								-27.5,
+								0
+							]
+						}
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								-45,
+								0
+							]
+						}
+					}
+				},
+				"arm2": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								0,
+								-22.5
+							]
+						}
+					}
+				}
+			}
+		},
+		"animation.chilesaurus.sleeping": {
+			"loop": true,
+			"bones": {
+				"Chilesaurus": {
+					"rotation": {
+						"vector": [
+							0,
+							0,
+							-42.5
+						]
+					},
+					"position": {
+						"vector": [
+							-5,
+							-4,
+							0
+						]
+					}
+				},
+				"neck": {
+					"rotation": {
+						"vector": [
+							127.5,
+							-27.5,
+							0
+						]
+					}
+				},
+				"head": {
+					"rotation": {
+						"vector": [
+							0,
+							-45,
+							0
+						]
+					}
+				},
+				"arm2": {
+					"rotation": {
+						"vector": [
+							0,
+							0,
+							-22.5
+						]
+					}
+				},
+				"tail": {
+					"rotation": {
+						"vector": [
+							0,
+							30,
+							70
+						]
+					}
+				},
+				"tailpart1": {
+					"rotation": {
+						"vector": [
+							17.5,
+							45,
+							2.5
+						]
+					}
+				},
+				"leg1": {
+					"rotation": {
+						"vector": [
+							-22.5,
+							0,
+							5
+						]
+					}
+				},
+				"leg2": {
+					"rotation": {
+						"vector": [
+							0,
+							0,
+							-12.5
+						]
+					}
+				}
+			}
+		},
+		"animation.chilesaurus.out_of_sleep": {
+			"animation_length": 2,
+			"bones": {
+				"body": {
+					"rotation": {
+						"vector": [
+							0,
+							0,
+							0
+						]
+					}
+				},
+				"tail": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								0,
+								30,
+								70
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						}
+					}
+				},
+				"tailpart1": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								17.5,
+								45,
+								2.5
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						}
+					}
+				},
+				"leg1": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								-22.5,
+								0,
+								5
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						}
+					}
+				},
+				"leg2": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								0,
+								0,
+								-12.5
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						}
+					}
+				},
+				"Chilesaurus": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								0,
+								0,
+								-42.5
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [
+								-5,
+								-4,
+								0
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						}
+					}
+				},
+				"neck": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								127.5,
+								-27.5,
+								0
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						}
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								0,
+								-45,
+								0
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						}
+					}
+				},
+				"arm2": {
+					"rotation": {
+						"0.0": {
+							"vector": [
+								0,
+								0,
+								-22.5
+							]
+						},
+						"2.0": {
+							"vector": [
+								0,
+								0,
+								0
+							]
+						}
+					}
+				}
+			}
 		}
 	}
 }

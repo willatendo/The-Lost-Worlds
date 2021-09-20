@@ -3,7 +3,7 @@ package lostworlds.content.client.entity.model;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
-import lostworlds.library.entity.prehistoric.jurassic.ChilesaurusEntity;
+import lostworlds.library.entity.terrestrial.jurassic.ChilesaurusEntity;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
@@ -39,7 +39,7 @@ public class ChilesaurusModel extends PatternModel<ChilesaurusEntity>
 		IBone head = this.getAnimationProcessor().getBone("neck");
 		
 		EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
-		if(!entity.isEating())
+		if(!(entity.isEating() || entity.isSleeping()))
 		{
 			head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
 			head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));

@@ -1,4 +1,4 @@
-package lostworlds.library.entity.prehistoric;
+package lostworlds.library.entity.terrestrial;
 
 import lostworlds.library.entity.ModDamageSources;
 import lostworlds.library.entity.TimeEras;
@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 public abstract class HerbivoreEntity extends PrehistoricEntity
 {
 	protected static final DataParameter<Boolean> EATING = EntityDataManager.defineId(HerbivoreEntity.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> PANICKING = EntityDataManager.defineId(HerbivoreEntity.class, DataSerializers.BOOLEAN);
 	private int hunger;
 	
 	public HerbivoreEntity(EntityType<? extends PrehistoricEntity> entity, World world, TimeEras era) 
@@ -28,6 +29,7 @@ public abstract class HerbivoreEntity extends PrehistoricEntity
 	{
 		super.defineSynchedData();
 		this.getEntityData().define(EATING, false);	
+		this.getEntityData().define(PANICKING, false);	
 	}
 	
 	@Override
@@ -36,6 +38,7 @@ public abstract class HerbivoreEntity extends PrehistoricEntity
 		super.addAdditionalSaveData(nbt);
 		nbt.putInt("Hunger", this.getHunger());
 		nbt.putBoolean("Eating", this.isEating());
+		nbt.putBoolean("Panicked", this.isPanicked());
 	}
 	
 	@Override
@@ -44,6 +47,7 @@ public abstract class HerbivoreEntity extends PrehistoricEntity
 		super.readAdditionalSaveData(nbt);
 		this.setHunger(nbt.getInt("Hunger"));
 		this.setEating(nbt.getBoolean("Eating"));
+		this.setPanicked(nbt.getBoolean("Panicked"));
 	}
 	
 	public boolean isEating()
@@ -69,6 +73,21 @@ public abstract class HerbivoreEntity extends PrehistoricEntity
 	public boolean isHungry()
 	{
 		return this.hunger < 0 ? true : false;
+	}
+	
+	public boolean isPanicked()
+	{
+		return entityData.get(PANICKING);
+	}
+	
+	public void setPanicked(boolean panicked)
+	{
+		entityData.set(PANICKING, panicked);
+	}
+	
+	public boolean canSleep()
+	{
+		return !this.isPanicked();
 	}
 	
 	@Override

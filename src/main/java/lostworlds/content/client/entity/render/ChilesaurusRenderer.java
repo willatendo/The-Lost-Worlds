@@ -4,7 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import lostworlds.content.client.entity.model.ChilesaurusModel;
-import lostworlds.library.entity.prehistoric.jurassic.ChilesaurusEntity;
+import lostworlds.library.entity.terrestrial.jurassic.ChilesaurusEntity;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererManager;

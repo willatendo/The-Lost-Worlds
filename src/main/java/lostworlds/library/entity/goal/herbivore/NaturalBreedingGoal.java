@@ -1,33 +1,32 @@
-package lostworlds.library.entity.goal;
+package lostworlds.library.entity.goal.herbivore;
 
 import java.util.EnumSet;
 import java.util.List;
 
 import javax.annotation.Nullable;
 
-import lostworlds.library.entity.prehistoric.PrehistoricEntity;
+import lostworlds.library.entity.terrestrial.HerbivoreEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-
 public class NaturalBreedingGoal extends Goal 
 {
 	private static final EntityPredicate PARTNER_TARGETING = (new EntityPredicate()).range(8.0D).allowInvulnerable().allowSameTeam().allowUnseeable();
-	protected final PrehistoricEntity entity;
-	private final Class<? extends PrehistoricEntity> partnerClass;
+	protected final HerbivoreEntity entity;
+	private final Class<? extends HerbivoreEntity> partnerClass;
 	protected final World level;
-	protected PrehistoricEntity partner;
+	protected HerbivoreEntity partner;
 	private int naturalLoveTime;
 	private final double speedModifier;
 
-	public NaturalBreedingGoal(PrehistoricEntity entity, double speedModifier) 
+	public NaturalBreedingGoal(HerbivoreEntity entity, double speedModifier) 
 	{
 		this(entity, speedModifier, entity.getClass());
 	}
 
-	public NaturalBreedingGoal(PrehistoricEntity entity, double speedModifier, Class<? extends PrehistoricEntity> partnerClass) 
+	public NaturalBreedingGoal(HerbivoreEntity entity, double speedModifier, Class<? extends HerbivoreEntity> partnerClass) 
 	{
 		this.entity = entity;
 		this.level = entity.level;
@@ -38,7 +37,7 @@ public class NaturalBreedingGoal extends Goal
 
 	public boolean canUse() 
 	{
-		if(!this.entity.isInNaturalLove()) 
+		if(!this.entity.isInNaturalLove() || this.entity.isSleeping()) 
 		{
 			return false;
 		} 
@@ -72,13 +71,13 @@ public class NaturalBreedingGoal extends Goal
 	}
 
 	@Nullable
-	private PrehistoricEntity getFreePartner() 
+	private HerbivoreEntity getFreePartner() 
 	{
-		List<PrehistoricEntity> list = this.level.getNearbyEntities(this.partnerClass, PARTNER_TARGETING, this.entity, this.entity.getBoundingBox().inflate(8.0D));
+		List<HerbivoreEntity> list = this.level.getNearbyEntities(this.partnerClass, PARTNER_TARGETING, this.entity, this.entity.getBoundingBox().inflate(8.0D));
 		double d0 = Double.MAX_VALUE;
-		PrehistoricEntity prehistoric = null;	
+		HerbivoreEntity prehistoric = null;	
 
-		for(PrehistoricEntity prehistoric1 : list) 
+		for(HerbivoreEntity prehistoric1 : list) 
 		{
 			if(this.entity.canMate(prehistoric1) && this.entity.distanceToSqr(prehistoric1) < d0) 
 			{

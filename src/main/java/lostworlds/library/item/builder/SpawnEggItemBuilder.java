@@ -57,7 +57,7 @@ public class SpawnEggItemBuilder extends SpawnEggItem
 			}
 		};
 
-		for (final SpawnEggItem spawnEgg : UNADDED_EGGS) 
+		for(final SpawnEggItem spawnEgg : UNADDED_EGGS) 
 		{
 			EGGS.put(spawnEgg.getType(null), spawnEgg);
 			DispenserBlock.registerBehavior(spawnEgg, dispenseBehaviour);

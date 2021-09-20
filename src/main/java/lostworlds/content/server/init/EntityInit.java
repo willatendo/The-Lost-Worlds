@@ -2,8 +2,8 @@ package lostworlds.content.server.init;
 
 import lostworlds.library.entity.ModBoatEntity;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
-import lostworlds.library.entity.prehistoric.PrehistoricEntity;
-import lostworlds.library.entity.prehistoric.jurassic.ChilesaurusEntity;
+import lostworlds.library.entity.terrestrial.PrehistoricEntity;
+import lostworlds.library.entity.terrestrial.jurassic.ChilesaurusEntity;
 import lostworlds.library.item.builder.SpawnEggItemBuilder;
 import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModUtils;

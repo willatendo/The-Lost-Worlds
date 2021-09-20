@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.mojang.datafixers.util.Pair;
 
-import lostworlds.library.entity.prehistoric.PrehistoricEntity;
+import lostworlds.library.entity.terrestrial.PrehistoricEntity;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
