@@ -10,7 +10,6 @@ import lostworlds.library.entity.TimeEras;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -34,8 +33,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public abstract class TaggedEntity extends PrehistoricEntity
 {
-	protected static final DataParameter<Byte> DATA_FLAGS_ID = EntityDataManager.defineId(TameableEntity.class, DataSerializers.BYTE);
-	protected static final DataParameter<Optional<UUID>> DATA_OWNERUUID_ID = EntityDataManager.defineId(TameableEntity.class, DataSerializers.OPTIONAL_UUID);
+	protected static final DataParameter<Byte> DATA_FLAGS_ID = EntityDataManager.defineId(TaggedEntity.class, DataSerializers.BYTE);
+	protected static final DataParameter<Optional<UUID>> DATA_OWNERUUID_ID = EntityDataManager.defineId(TaggedEntity.class, DataSerializers.OPTIONAL_UUID);
+	protected static final DataParameter<String> OWNER_NAME = EntityDataManager.defineId(TaggedEntity.class, DataSerializers.STRING);
 	
 	public TaggedEntity(EntityType<? extends TaggedEntity> entity, World world, TimeEras era) 
 	{
@@ -92,13 +92,9 @@ public abstract class TaggedEntity extends PrehistoricEntity
 	}
 	
 	@OnlyIn(Dist.CLIENT)
-	protected void spawnTamingParticles(boolean fail) 
+	protected void spawnTamingParticles() 
 	{
-		IParticleData iparticledata = ParticleTypes.HEART;
-		if(!fail) 
-		{
-			iparticledata = ParticleTypes.SMOKE;
-		}
+		IParticleData iparticledata = ParticleTypes.SMOKE;
 		
 		for(int i = 0; i < 7; ++i) 
 		{
@@ -114,12 +110,8 @@ public abstract class TaggedEntity extends PrehistoricEntity
 	{
 		if(b == 7) 
 		{
-			this.spawnTamingParticles(true);
-		} 
-		else if(b == 6) 
-		{
-			this.spawnTamingParticles(false);
-		} 
+			this.spawnTamingParticles();
+		}
 		else 
 		{
 			super.handleEntityEvent(b);

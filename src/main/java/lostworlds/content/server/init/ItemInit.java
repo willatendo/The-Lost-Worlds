@@ -7,6 +7,7 @@ import lostworlds.library.item.FieldGuideItem;
 import lostworlds.library.item.FoodItem;
 import lostworlds.library.item.FoodItem.FoodType;
 import lostworlds.library.item.HammerItem;
+import lostworlds.library.item.TabletItem;
 import lostworlds.library.item.TimeBookItem;
 import lostworlds.library.item.armour.MaskItem;
 import lostworlds.library.item.armour.OxygenTankItem;
@@ -80,6 +81,7 @@ public class ItemInit
 	public static final Item STORAGE_DISC = ItemBuilder.create("storage_disc");
 
 	public static final Item TAG = ItemBuilder.create("tag");
+	public static final Item TABLET = TabletItem.create();
 	
 	public static final Item MUD_BALL = ItemBuilder.create("mud_ball");
 
