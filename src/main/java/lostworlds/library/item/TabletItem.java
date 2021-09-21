@@ -2,7 +2,6 @@ package lostworlds.library.item;
 
 import lostworlds.content.client.screen.tablet.HerbivoreTabletScreen;
 import lostworlds.library.entity.terrestrial.HerbivoreEntity;
-import lostworlds.library.entity.terrestrial.jurassic.ChilesaurusEntity;
 import lostworlds.library.tab.ModItemGroup;
 import lostworlds.library.util.ModRegistry;
 import net.minecraft.client.Minecraft;
@@ -30,10 +29,7 @@ public class TabletItem extends Item
 		{	
 			if(herbivore.isTagged())
 			{
-				if(entity instanceof ChilesaurusEntity)
-				{
-					instance.setScreen(new HerbivoreTabletScreen(herbivore));
-				}
+				instance.setScreen(new HerbivoreTabletScreen(herbivore));
 			}
 			
 			return ActionResultType.SUCCESS;

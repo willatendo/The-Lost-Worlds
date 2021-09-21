@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.ModTags;
-import lostworlds.library.entity.TimeEras;
+import lostworlds.content.server.init.ItemInit;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.EntityType;
@@ -42,8 +42,8 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 	
 	protected static final DataParameter<Byte> SEX = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BYTE);
 	protected static final DataParameter<Boolean> ATTACKING = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BOOLEAN);	
-	protected static final DataParameter<Byte> PATTERN = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BYTE);
 	protected static final DataParameter<Boolean> SLEEPING = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> CONTRACEPTIVES = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BOOLEAN);
 	
 	public static final String SEX_TAG = "Sex";
 	public static final String PATTERN_TAG = "Pattern";
@@ -54,7 +54,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 	public int inLove;
 	public UUID loveCause;
 		
-	public PrehistoricEntity(EntityType<? extends PrehistoricEntity> entity, World world, TimeEras era) 
+	public PrehistoricEntity(EntityType<? extends PrehistoricEntity> entity, World world) 
 	{
 		super(entity, world);
 		this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 16.0F);
@@ -130,6 +130,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 		this.entityData.define(SEX, sex);
 		this.getEntityData().define(ATTACKING, false);
 		this.entityData.define(SLEEPING, false);
+		this.entityData.define(CONTRACEPTIVES, false);
 	}
 	
 	@Override
@@ -137,8 +138,8 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 	{
 		super.addAdditionalSaveData(nbt);
 		nbt.putByte(SEX_TAG, getSex());
-		nbt.putByte(PATTERN_TAG, getPattern());
 		nbt.putBoolean("Sleeping", isSleeping());
+		nbt.putBoolean("Contraceptives", isOnContraceptives());
 		nbt.putInt("InNaturalLove", this.inNaturalLove);
 		if(this.cause != null) 
 		{
@@ -156,8 +157,8 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 	{
 		super.readAdditionalSaveData(nbt);
 		setSex(nbt.getByte(SEX_TAG));
-		setPattern(nbt.getByte(PATTERN_TAG));
 		setSleeping(nbt.getBoolean("Sleeping"));
+		setOnContraceptives(nbt.getBoolean("Contraceptives"));
 		this.inNaturalLove = nbt.getInt("InNaturalLove");
 		this.cause = nbt.hasUUID("Cause") ? nbt.getUUID("Cause") : null;
 		this.inLove = nbt.getInt("InLove");
@@ -171,7 +172,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 	}
 	
 	@Override
-	protected boolean shouldDespawnInPeaceful() 
+	protected boolean shouldDespawnInPeaceful() 	
 	{
 		return false;
 	}
@@ -205,6 +206,11 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 		return stack.getItem() == Items.WHEAT;
 	}
 	
+	public boolean isContraceptives(ItemStack stack) 
+	{
+		return stack.getItem() == ItemInit.CONTRACEPTIVES;
+	}
+	
 	public byte getSex() 
 	{
 		return entityData.get(SEX);
@@ -215,6 +221,16 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 		entityData.set(SEX, sex);
 	}
 	
+	public boolean isOnContraceptives() 
+	{
+		return entityData.get(CONTRACEPTIVES);
+	}
+	
+	public void setOnContraceptives(boolean contraceptives) 
+	{
+		entityData.set(CONTRACEPTIVES, contraceptives);
+	}
+	
 	public void setAttacking(boolean attacking) 
 	{
 		this.entityData.set(ATTACKING, attacking);
@@ -223,16 +239,6 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 	public boolean isAttacking() 
 	{
 		return this.entityData.get(ATTACKING);
-	}
-	
-	public byte getPattern() 
-	{
-		return entityData.get(PATTERN);
-	}
-	
-	public void setPattern(byte pattern) 
-	{
-		entityData.set(PATTERN, pattern);
 	}
 	
 	public boolean isSleeping()
@@ -321,7 +327,16 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 				return ActionResultType.CONSUME;
 			}
 		}
-		
+		if(this.isContraceptives(itemstack)) 
+		{
+			if(!this.level.isClientSide && !this.isBaby()) 
+			{
+				this.usePlayerItem(entity, itemstack);
+				this.setOnContraceptives(true);
+				return ActionResultType.SUCCESS;
+			}
+		}
+			
 		return super.mobInteract(entity, hand);
 	}
 	
@@ -384,6 +399,10 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 	{
 		PrehistoricEntity prehistoric = entity;
 		if(prehistoric == this)
+		{
+			return false;
+		}
+		else if(this.isOnContraceptives())
 		{
 			return false;
 		}

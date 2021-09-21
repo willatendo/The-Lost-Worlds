@@ -42,6 +42,7 @@ public class HerbivoreTabletScreen extends Screen
 	{
 		this.renderBackgroundElements(stack);
 		this.font.draw(stack, this.title, 18.0F, 20.0F, FONT_COLOUR);
+		this.font.draw(stack, TabletLang.CONTRACEPTIVES, 18.0F, 110.0F, FONT_COLOUR);
 		this.font.draw(stack, TabletLang.AGE, 18.0F, 120.0F, FONT_COLOUR);
 		this.font.draw(stack, TabletLang.HEATH, 18.0F, 130.0F, FONT_COLOUR);
 		this.font.draw(stack, TabletLang.HUNGER, 18.0F, 140.0F, FONT_COLOUR);
@@ -54,11 +55,12 @@ public class HerbivoreTabletScreen extends Screen
 		{
 			this.font.draw(stack, TabletLang.TAGGED_TO, 18.0F, 160.0F, FONT_COLOUR);
 		}
-		this.font.draw(stack, age(), 78.0F, 120.0F, FONT_COLOUR);
-		this.font.draw(stack, heath(), 78.0F, 130.0F, FONT_COLOUR);
-		this.font.draw(stack, hunger(), 78.0F, 140.0F, FONT_COLOUR);
-		this.font.draw(stack, sex(), 78.0F, 150.0F, FONT_COLOUR);
-		this.font.draw(stack, owner(), 78.0F, 160.0F, FONT_COLOUR);
+		this.font.draw(stack, contraceptives(), 88.0F, 110.0F, FONT_COLOUR);
+		this.font.draw(stack, age(), 88.0F, 120.0F, FONT_COLOUR);
+		this.font.draw(stack, heath(), 88.0F, 130.0F, FONT_COLOUR);
+		this.font.draw(stack, hunger(), 88.0F, 140.0F, FONT_COLOUR);
+		this.font.draw(stack, sex(), 88.0F, 150.0F, FONT_COLOUR);
+		this.font.draw(stack, owner(), 88.0F, 160.0F, FONT_COLOUR);
 		super.render(stack, mouseX, mouseY, partialTicks);
 		this.renderComponentHoverEffect(stack, Style.EMPTY, mouseX, mouseY);
 	}
@@ -76,6 +78,11 @@ public class HerbivoreTabletScreen extends Screen
 		RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 		stack.translate((this.width / 2) - (this.texWidth / 2), (this.height / 2) - (this.texHeight / 2), 0);
 		blit(stack, 0, 0, 0, 0, this.texWidth, this.texHeight);
+	}
+	
+	private ITextComponent contraceptives()
+	{
+		return this.entity.isOnContraceptives() ? ModUtils.tTC("tablet", "on_contraceptives") : ModUtils.tTC("tablet", "off_contraceptives");
 	}
 	
 	private ITextComponent age()

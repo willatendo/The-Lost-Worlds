@@ -17,6 +17,11 @@ public class DinosaurSpawn
 			{
 				event.getSpawns().addSpawn(EntityClassification.CREATURE, new Spawners(EntityInit.CHILESAURUS, LostWorldsConfig.COMMON_CONFIG.chilesaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.chilesaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.chilesaurusSpawnGroupMaximum.get()));
 			}
+			
+			if(event.getCategory() == Category.FOREST || event.getCategory() == Category.PLAINS)
+			{
+				event.getSpawns().addSpawn(EntityClassification.CREATURE, new Spawners(EntityInit.KENTROSAURUS, LostWorldsConfig.COMMON_CONFIG.kentrosaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.kentrosaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.kentrosaurusSpawnGroupMaximum.get()));
+			}
 		}
 	}
 }

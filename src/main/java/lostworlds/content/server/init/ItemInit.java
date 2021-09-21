@@ -49,20 +49,10 @@ public class ItemInit
 	
 	public static final Item WET_PAPER = ItemBuilder.create("wet_paper");
 	public static final Item FIELD_GUIDE = FieldGuideItem.create();
+	public static final Item TABLET = TabletItem.create();
 	
 	public static final Item PERMIAN_PERIOD_TIME_BOOK = TimeBookItem.create(TimeEras.PERMIAN_PERIOD, DimensionInit.PERMIAN_WORLD);
 	//public static final Item JURASSIC_ERA_TIME_BOOK = TimeBookItem.create(TimeEras.JURASSIC_PERIOD);
-
-	public static final Item AMBER = ItemBuilder.create("amber");
-	public static final Item GROUND_FOSSIL = BoneMealItem.create("ground_fossil");
-	public static final Item PLANT_WASTE = BoneMealItem.create("plant_waste");
-
-	public static final Item ARAUCARIA_BARK_SAMPLE = ItemBuilder.create("araucaria_bark_sample", ModItemGroup.PLANTS);
-	public static final Item CALAMITES_BARK_SAMPLE = ItemBuilder.create("calamites_bark_sample", ModItemGroup.PLANTS);
-	public static final Item CONIFER_BARK_SAMPLE = ItemBuilder.create("conifer_bark_sample", ModItemGroup.PLANTS);
-	public static final Item GINKGO_BARK_SAMPLE = ItemBuilder.create("ginkgo_bark_sample", ModItemGroup.PLANTS);
-	
-	public static final Item EMPTY_VILE = ItemBuilder.create("empty_vile");
 	
 	public static final Item COPPER_INGOT = ItemBuilder.create("copper_ingot");
 	public static final Item COPPER_NUGGET = ItemBuilder.create("copper_nugget");
@@ -81,11 +71,20 @@ public class ItemInit
 	public static final Item STORAGE_DISC = ItemBuilder.create("storage_disc");
 
 	public static final Item TAG = ItemBuilder.create("tag");
-	public static final Item TABLET = TabletItem.create();
+	public static final Item CONTRACEPTIVES = ItemBuilder.create("contraceptives");
 	
 	public static final Item MUD_BALL = ItemBuilder.create("mud_ball");
 
-	public static final Item CRYSTAL_SCARAB_GEMS = CrystalScarabGemItem.createAll();
+	public static final Item AMBER = ItemBuilder.create("amber");
+	public static final Item GROUND_FOSSIL = BoneMealItem.create("ground_fossil");
+	public static final Item PLANT_WASTE = BoneMealItem.create("plant_waste");
+
+	public static final Item ARAUCARIA_BARK_SAMPLE = ItemBuilder.create("araucaria_bark_sample", ModItemGroup.PLANTS);
+	public static final Item CALAMITES_BARK_SAMPLE = ItemBuilder.create("calamites_bark_sample", ModItemGroup.PLANTS);
+	public static final Item CONIFER_BARK_SAMPLE = ItemBuilder.create("conifer_bark_sample", ModItemGroup.PLANTS);
+	public static final Item GINKGO_BARK_SAMPLE = ItemBuilder.create("ginkgo_bark_sample", ModItemGroup.PLANTS);
+	
+	public static final Item EMPTY_VILE = ItemBuilder.create("empty_vile");
 	
 	public static final Item AMBER_KEYCHAIN = ItemBuilder.create("amber_keychain");
 	public static final Item DINO_BUTTON = ItemBuilder.create("raptor_button");
@@ -100,6 +99,7 @@ public class ItemInit
 	public static final Item PALEO_SALAD = FoodItem.create(FoodType.PALEO_SALAD);
 	
 	public static final Item SCARAB_BANNER_PATTERN = ModRegistry.register("scarab_banner_pattern", new BannerPatternItem(BannerInit.SCARAB, PROPERTIES.stacksTo(1)));
+	public static final Item CRYSTAL_SCARAB_GEMS = CrystalScarabGemItem.createAll();
 	
 	public static final Item FOSSIL_POACHER_SPAWN_EGG = SpawnEggItemBuilder.create("fossil_poacher_spawn_egg", () -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031);
 	

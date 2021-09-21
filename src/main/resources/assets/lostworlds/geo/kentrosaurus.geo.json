@@ -1,0 +1,485 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.kentrosaurus",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 7,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Kentrosaurus",
+					"pivot": [
+						0,
+						12,
+						0
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Kentrosaurus",
+					"pivot": [
+						0,
+						12,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5,
+								8,
+								-10
+							],
+							"size": [
+								10,
+								8,
+								20
+							],
+							"uv": [
+								0,
+								0
+							]
+						},
+						{
+							"origin": [
+								6.37816,
+								12,
+								-7.28803
+							],
+							"size": [
+								0,
+								1,
+								8
+							],
+							"pivot": [
+								0.87816,
+								-6,
+								-2.28803
+							],
+							"rotation": [
+								0,
+								15,
+								0
+							],
+							"uv": [
+								0,
+								8
+							]
+						},
+						{
+							"origin": [
+								-2,
+								16,
+								-10
+							],
+							"size": [
+								0,
+								5,
+								18
+							],
+							"uv": [
+								25,
+								10
+							]
+						},
+						{
+							"origin": [
+								2,
+								16,
+								-10
+							],
+							"size": [
+								0,
+								5,
+								18
+							],
+							"uv": [
+								0,
+								36
+							]
+						},
+						{
+							"origin": [
+								-6.37816,
+								12,
+								-7.28803
+							],
+							"size": [
+								0,
+								1,
+								8
+							],
+							"pivot": [
+								-0.87816,
+								-6,
+								-2.28803
+							],
+							"rotation": [
+								0,
+								-15,
+								0
+							],
+							"uv": [
+								0,
+								7
+							]
+						}
+					]
+				},
+				{
+					"name": "neck",
+					"parent": "body",
+					"pivot": [
+						0,
+						13,
+						-10
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2,
+								11,
+								-20
+							],
+							"size": [
+								4,
+								4,
+								10
+							],
+							"uv": [
+								40,
+								0
+							]
+						},
+						{
+							"origin": [
+								-1,
+								15,
+								-18
+							],
+							"size": [
+								0,
+								2,
+								6
+							],
+							"uv": [
+								34,
+								27
+							]
+						},
+						{
+							"origin": [
+								1,
+								15,
+								-18
+							],
+							"size": [
+								0,
+								2,
+								6
+							],
+							"uv": [
+								0,
+								11
+							]
+						}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "neck",
+					"pivot": [
+						0,
+						13.55,
+						-18.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2.5,
+								12.05,
+								-25
+							],
+							"size": [
+								5,
+								3,
+								7
+							],
+							"uv": [
+								58,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "body",
+					"pivot": [
+						0,
+						13,
+						10
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3,
+								11,
+								10
+							],
+							"size": [
+								6,
+								5,
+								14
+							],
+							"uv": [
+								28,
+								35
+							]
+						},
+						{
+							"origin": [
+								1,
+								16,
+								10
+							],
+							"size": [
+								0,
+								5,
+								14
+							],
+							"uv": [
+								40,
+								0
+							]
+						},
+						{
+							"origin": [
+								-1,
+								16,
+								10
+							],
+							"size": [
+								0,
+								5,
+								14
+							],
+							"uv": [
+								0,
+								35
+							]
+						}
+					]
+				},
+				{
+					"name": "tailpart1",
+					"parent": "tail",
+					"pivot": [
+						0,
+						14,
+						24
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2,
+								13,
+								24
+							],
+							"size": [
+								4,
+								3,
+								17
+							],
+							"uv": [
+								0,
+								28
+							]
+						},
+						{
+							"origin": [
+								1,
+								16,
+								26
+							],
+							"size": [
+								0,
+								7,
+								14
+							],
+							"uv": [
+								0,
+								45
+							]
+						},
+						{
+							"origin": [
+								-1,
+								16,
+								26
+							],
+							"size": [
+								0,
+								7,
+								14
+							],
+							"uv": [
+								0,
+								45
+							],
+							"mirror": true
+						}
+					]
+				},
+				{
+					"name": "backleg2",
+					"parent": "Kentrosaurus",
+					"pivot": [
+						-4,
+						12,
+						6
+					],
+					"cubes": [
+						{
+							"origin": [
+								-6,
+								7,
+								3
+							],
+							"size": [
+								5,
+								7,
+								6
+							],
+							"uv": [
+								54,
+								33
+							]
+						},
+						{
+							"origin": [
+								-5,
+								0,
+								6
+							],
+							"size": [
+								3,
+								7,
+								3
+							],
+							"uv": [
+								25,
+								33
+							]
+						}
+					]
+				},
+				{
+					"name": "backleg1",
+					"parent": "Kentrosaurus",
+					"pivot": [
+						4,
+						12,
+						6
+					],
+					"cubes": [
+						{
+							"origin": [
+								1,
+								7,
+								3
+							],
+							"size": [
+								5,
+								7,
+								6
+							],
+							"uv": [
+								58,
+								55
+							]
+						},
+						{
+							"origin": [
+								2,
+								0,
+								6
+							],
+							"size": [
+								3,
+								7,
+								3
+							],
+							"uv": [
+								61,
+								19
+							]
+						}
+					]
+				},
+				{
+					"name": "frontleg2",
+					"parent": "Kentrosaurus",
+					"pivot": [
+						-4,
+						10,
+						-8
+					],
+					"cubes": [
+						{
+							"origin": [
+								-6,
+								0,
+								-9
+							],
+							"size": [
+								4,
+								12,
+								3
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "frontleg1",
+					"parent": "Kentrosaurus",
+					"pivot": [
+						4,
+						10,
+						-8
+					],
+					"cubes": [
+						{
+							"origin": [
+								2,
+								0,
+								-9
+							],
+							"size": [
+								4,
+								12,
+								3
+							],
+							"uv": [
+								0,
+								28
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -5,16 +5,15 @@ import java.util.Random;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.TimeEras;
+import lostworlds.library.entity.fossil.FossilEntity;
 import lostworlds.library.item.HammerItem;
 import lostworlds.library.item.tool.ModMaterials;
 import lostworlds.library.item.tool.ModToolTypes;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
-import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.EnumProperty;
@@ -35,7 +34,7 @@ public class SoftStoneBlock extends Block
 	public SoftStoneBlock()
 	{
 		super(AbstractBlock.Properties.of(ModMaterials.SOFT).harvestTool(ModToolTypes.HAMMER).strength(4.0F, 0.0F).noDrops().sound(SoundType.STONE));
-		this.registerDefaultState(this.stateDefinition.any().setValue(ERA, TimeEras.MODERN_MINECRAFT).setValue(POTENTIAL_PART, PotentialPart.NONE).setValue(POTENTIAL_CREATURE, DinoTypes.TEST).setValue(DAMAGE, Damage.NONE));
+		this.registerDefaultState(this.stateDefinition.any().setValue(ERA, TimeEras.MODERN_MINECRAFT).setValue(POTENTIAL_PART, PotentialPart.NONE).setValue(POTENTIAL_CREATURE, DinoTypes.CHILESAURUS).setValue(DAMAGE, Damage.NONE));
 	}
 	
 	@Override
@@ -85,7 +84,6 @@ public class SoftStoneBlock extends Block
 	@Override
 	public void spawnAfterBreak(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) 
 	{
-		ModUtils.LOGGER.debug("Detected that");
 		PotentialPart part = state.getValue(POTENTIAL_PART);
 		DinoTypes dino = state.getValue(POTENTIAL_CREATURE);
 		Damage damage = state.getValue(DAMAGE);
@@ -93,11 +91,9 @@ public class SoftStoneBlock extends Block
 	
 		if(part == PotentialPart.LEFT_ARM)
 		{
-			ModUtils.LOGGER.debug("Got to Here");
-			ArmorStandEntity leftArm = (ArmorStandEntity) dino.getLeftArm().create(world);
+			FossilEntity leftArm = (FossilEntity) dino.getLeftArm().create(world);
 			if(damage == Damage.NONE)
 			{
-				ModUtils.LOGGER.debug("Created Entity");
 				world.addFreshEntity(leftArm);
 			}
 			else if(damage == Damage.CHIPPED)

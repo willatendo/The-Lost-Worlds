@@ -1,7 +1,6 @@
 package lostworlds.library.entity.terrestrial;
 
 import lostworlds.library.entity.ModDamageSources;
-import lostworlds.library.entity.TimeEras;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.SpawnReason;
@@ -19,9 +18,9 @@ public abstract class HerbivoreEntity extends TaggedEntity
 	protected static final DataParameter<Boolean> PANICKING = EntityDataManager.defineId(HerbivoreEntity.class, DataSerializers.BOOLEAN);
 	private int hunger;
 	
-	public HerbivoreEntity(EntityType<? extends HerbivoreEntity> entity, World world, TimeEras era) 
+	public HerbivoreEntity(EntityType<? extends HerbivoreEntity> entity, World world) 
 	{
-		super(entity, world, era);
+		super(entity, world);
 	}
 	
 	@Override

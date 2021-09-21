@@ -10,19 +10,19 @@ import net.minecraftforge.common.IExtensibleEnum;
 
 public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 {
-	TEST("test", EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, Blocks.TURTLE_EGG, 0x000000, 0xFFFFFF, 1, 2, 1.0F, 2.0F),
-	TESTTWO("testtwo", EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, Blocks.TURTLE_EGG, 0x000000, 0xFFFFFF, 1, 2, 1.0F, 2.0F),
-	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, EntityType.ARMOR_STAND, Blocks.TURTLE_EGG, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F);
+	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, Blocks.TURTLE_EGG, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
+	KENTROSAURUS("kentrosaurus", EntityInit.KENTROSAURUS, Blocks.TURTLE_EGG, 0xd99760, 0x612c00, 3, 6, 0.4F, 0.66F),
+	;
 	
 	private final String id;
-	private final EntityType<? extends Entity> entitytype;
-	private final EntityType<? extends Entity> skull;
-	private final EntityType<? extends Entity> leftArm;
-	private final EntityType<? extends Entity> rightArm;
-	private final EntityType<? extends Entity> leftLeg;
-	private final EntityType<? extends Entity> rightLeg;
-	private final EntityType<? extends Entity> ribCage;
-	private final EntityType<? extends Entity> tail;
+	private EntityType<? extends Entity> entitytype;
+	private EntityType<? extends Entity> skull;
+	private EntityType<? extends Entity> leftArm;
+	private EntityType<? extends Entity> rightArm;
+	private EntityType<? extends Entity> leftLeg;
+	private EntityType<? extends Entity> rightLeg;
+	private EntityType<? extends Entity> ribCage;
+	private EntityType<? extends Entity> tail;
 	private final Block egg;
 	private final int primaryColour;
 	private final int secondaryColour;
@@ -31,17 +31,10 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	private final float rawSaturation;
 	private final float cookedSaturation;
 	
-	private DinoTypes(String id, EntityType entity, EntityType skull, EntityType leftArm, EntityType rightArm, EntityType leftLeg, EntityType rightLeg, EntityType ribCage, EntityType tail, Block egg, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
+	private DinoTypes(String id, EntityType entity, Block egg, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
 	{
 		this.id = id;
 		this.entitytype = entity;
-		this.skull = skull;
-		this.leftArm = leftArm;
-		this.rightArm = rightArm;
-		this.leftLeg = leftLeg;
-		this.rightLeg = rightLeg;
-		this.ribCage = ribCage;
-		this.tail = tail;
 		this.egg = egg;
 		this.primaryColour = primaryColour;
 		this.secondaryColour = secondaryColour;
@@ -49,6 +42,41 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 		this.cookedNutrition = cookedNutrition;
 		this.rawSaturation = rawSaturation;
 		this.cookedSaturation = cookedSaturation;
+	}
+	
+	public EntityType<? extends Entity> setSkull(EntityType<? extends Entity> entity)
+	{
+		return this.skull = entity;
+	}
+
+	public EntityType<? extends Entity> setLeftArm(EntityType<? extends Entity> entity)
+	{
+		return this.leftArm = entity;
+	}
+	
+	public EntityType<? extends Entity> setRightArm(EntityType<? extends Entity> entity)
+	{
+		return this.rightArm = entity;
+	}
+	
+	public EntityType<? extends Entity> setLeftLeg(EntityType<? extends Entity> entity)
+	{
+		return this.leftLeg = entity;
+	}
+	
+	public EntityType<? extends Entity> setRightLeg(EntityType<? extends Entity> entity)
+	{
+		return this.rightLeg = entity;
+	}
+	
+	public EntityType<? extends Entity> setRibCage(EntityType<? extends Entity> entity)
+	{
+		return this.ribCage = entity;
+	}
+	
+	public EntityType<? extends Entity> setTail(EntityType<? extends Entity> entity)
+	{
+		return this.tail = entity;
 	}
 	
 	public EntityType<? extends Entity> getEntityType()
@@ -127,14 +155,14 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	}
 	
 	//Used for addon creation. Use second one, first one is just because IExtensibleEnum is dumb.
-	public static DinoTypes create(String name, String id, EntityType entity, EntityType skull, EntityType leftArm, EntityType rightArm, EntityType leftLeg, EntityType rightLeg, EntityType ribCage, EntityType tail, Block egg, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
+	public static DinoTypes create(String name, String id, EntityType entity, Block egg, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
 	{
 		throw new IllegalStateException("Enum not extended");
 	}
 	
-	public static DinoTypes register(String id, EntityType entity, EntityType skull, EntityType leftArm, EntityType rightArm, EntityType leftLeg, EntityType rightLeg, EntityType ribCage, EntityType tail, Block egg, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
+	public static DinoTypes register(String id, EntityType entity, Block egg, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
 	{
-		return create(id, id, entity, skull, leftArm, rightArm, leftLeg, rightLeg, ribCage, tail, egg, primaryColour, secondaryColour, rawNutrition, cookedNutrition, rawSaturation, cookedSaturation);
+		return create(id, id, entity, egg, primaryColour, secondaryColour, rawNutrition, cookedNutrition, rawSaturation, cookedSaturation);
 	}
 
 	@Override

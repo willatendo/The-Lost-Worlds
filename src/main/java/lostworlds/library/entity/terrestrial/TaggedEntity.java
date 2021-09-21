@@ -6,7 +6,6 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 import lostworlds.content.server.init.ItemInit;
-import lostworlds.library.entity.TimeEras;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -35,11 +34,10 @@ public abstract class TaggedEntity extends PrehistoricEntity
 {
 	protected static final DataParameter<Byte> DATA_FLAGS_ID = EntityDataManager.defineId(TaggedEntity.class, DataSerializers.BYTE);
 	protected static final DataParameter<Optional<UUID>> DATA_OWNERUUID_ID = EntityDataManager.defineId(TaggedEntity.class, DataSerializers.OPTIONAL_UUID);
-	protected static final DataParameter<String> OWNER_NAME = EntityDataManager.defineId(TaggedEntity.class, DataSerializers.STRING);
 	
-	public TaggedEntity(EntityType<? extends TaggedEntity> entity, World world, TimeEras era) 
+	public TaggedEntity(EntityType<? extends TaggedEntity> entity, World world) 
 	{
-		super(entity, world, era);
+		super(entity, world);
 		
 		reassessTameGoals();
 	}

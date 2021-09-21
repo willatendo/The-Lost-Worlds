@@ -1,6 +1,6 @@
 package lostworlds.content.client.entity.model;
 
-import lostworlds.library.entity.terrestrial.jurassic.ChilesaurusEntity;
+import lostworlds.library.entity.terrestrial.jurassic.KentrosaurusEntity;
 import lostworlds.library.util.ModUtils;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
@@ -8,32 +8,32 @@ import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
-public class ChilesaurusModel extends AnimatedGeoModel<ChilesaurusEntity>
+public class KentrosaurusModel extends AnimatedGeoModel<KentrosaurusEntity>
 {
-	private static final ResourceLocation MALE_TEXTURE = ModUtils.rL("textures/model/entity/chilesaurus/male.png");
-	private static final ResourceLocation FEMALE_TEXTURE = ModUtils.rL("textures/model/entity/chilesaurus/female.png");
+	private static final ResourceLocation MALE_TEXTURE = ModUtils.rL("textures/model/entity/kentrosaurus/male.png");
+	private static final ResourceLocation FEMALE_TEXTURE = ModUtils.rL("textures/model/entity/kentrosaurus/female.png");
 	private ResourceLocation texture;
 
 	@Override
-	public ResourceLocation getAnimationFileLocation(ChilesaurusEntity entity) 
+	public ResourceLocation getAnimationFileLocation(KentrosaurusEntity entity) 
 	{
-		return ModUtils.rL("animations/chilesaurus.animations.json");
+		return ModUtils.rL("animations/kentrosaurus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(ChilesaurusEntity entity) 
+	public ResourceLocation getModelLocation(KentrosaurusEntity entity) 
 	{
-		return ModUtils.rL("geo/chilesaurus.geo.json");
+		return ModUtils.rL("geo/kentrosaurus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(ChilesaurusEntity entity) 
+	public ResourceLocation getTextureLocation(KentrosaurusEntity entity) 
 	{
 		return this.texture;
 	}
-
+	
 	@Override
-	public void setLivingAnimations(ChilesaurusEntity entity, Integer uniqueID, AnimationEvent customPredicate) 
+	public void setLivingAnimations(KentrosaurusEntity entity, Integer uniqueID, AnimationEvent customPredicate) 
 	{
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
