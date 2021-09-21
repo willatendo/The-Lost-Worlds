@@ -176,6 +176,11 @@ public abstract class TaggedEntity extends PrehistoricEntity
 		return entity == this.getOwner();
 	}
 	
+	public String getTaggedToName() 
+	{
+		return this.getOwner().getName().getContents();
+	}
+	
 	@Override
 	public Team getTeam() 
 	{

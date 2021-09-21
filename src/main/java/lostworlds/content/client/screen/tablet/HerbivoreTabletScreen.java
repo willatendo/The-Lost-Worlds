@@ -1,7 +1,6 @@
 package lostworlds.content.client.screen.tablet;
 
 import java.text.NumberFormat;
-import java.util.UUID;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -109,8 +108,7 @@ public class HerbivoreTabletScreen extends Screen
 	
 	private ITextComponent owner()
 	{
-		UUID taggedTo = this.entity.getTaggedToUUID();
-		String tag = taggedTo.toString();
+		String tag = this.entity.getTaggedToName();
 		return new StringTextComponent(tag);
 	}
 }
