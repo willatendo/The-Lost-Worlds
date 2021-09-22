@@ -1,22 +1,20 @@
 package lostworlds.library.item;
 
+import lostworlds.content.ModUtils;
 import lostworlds.content.client.screen.tablet.HerbivoreTabletScreen;
 import lostworlds.library.entity.terrestrial.HerbivoreEntity;
-import lostworlds.library.tab.ModItemGroup;
-import lostworlds.library.util.ModRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 
-public class TabletItem extends Item
+public class TabletItem extends ModItem
 {
-	protected TabletItem(Properties properties) 
+	public TabletItem() 
 	{
-		super(properties);
+		super(new Properties().tab(ModUtils.LOST_WORLDS).stacksTo(1));
 	}
 	
 	@Override
@@ -36,14 +34,5 @@ public class TabletItem extends Item
 		}
 		
 		return ActionResultType.FAIL;
-	}
-	
-	
-	
-	public static Item create()
-	{
-		Item item = new TabletItem(new Properties().tab(ModItemGroup.ITEMS).stacksTo(1));
-		ModRegistry.register("tablet", item);
-		return item;
 	}
 }

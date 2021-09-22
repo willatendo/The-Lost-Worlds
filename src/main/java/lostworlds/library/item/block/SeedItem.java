@@ -4,8 +4,8 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import lostworlds.library.tab.ModItemGroup;
-import lostworlds.library.util.ModRegistry;
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -35,7 +35,7 @@ public class SeedItem extends Item
 
 	public SeedItem(Block block) 
 	{
-		super(new Properties().tab(ModItemGroup.PLANTS));
+		super(new Properties().tab(ModUtils.LOST_WORLDS));
 		this.block = block;
 	}
 

@@ -1,4 +1,4 @@
-package lostworlds.library.util;
+package lostworlds.content;
 
 import java.util.Locale;
 
@@ -6,13 +6,11 @@ import lostworlds.content.server.init.BannerInit;
 import lostworlds.content.server.init.BiomeInit;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
-import lostworlds.content.server.init.DinosaurInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.FeatureInit;
 import lostworlds.content.server.init.FoliagePlacerInit;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.ParticleInit;
-import lostworlds.content.server.init.PlantInit;
 import lostworlds.content.server.init.PointOfInterestInit;
 import lostworlds.content.server.init.PotionInit;
 import lostworlds.content.server.init.RecipeInit;
@@ -234,8 +232,6 @@ public class ModRegistry
 		PotionInit.init();
 		SoundInit.init();
 		ItemInit.init();
-		DinosaurInit.init();
-		PlantInit.init();
 		BannerInit.init();
 		TileEntityInit.init();
 		ContainerInit.init();

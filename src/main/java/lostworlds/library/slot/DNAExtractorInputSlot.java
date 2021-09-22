@@ -1,7 +1,6 @@
 package lostworlds.library.slot;
 
-import lostworlds.library.item.SoftTissueItem;
-import lostworlds.library.item.VileItem;
+import lostworlds.library.item.PlantSoftTissueItem;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
@@ -16,6 +15,6 @@ public class DNAExtractorInputSlot extends Slot
 	@Override
 	public boolean mayPlace(ItemStack stack) 
 	{
-		return stack.getItem() instanceof SoftTissueItem || stack.getItem() instanceof VileItem;
+		return stack.getItem() instanceof PlantSoftTissueItem;
 	}
 }

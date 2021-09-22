@@ -1,5 +1,6 @@
 package lostworlds.content.client.setup;
 
+import lostworlds.content.ModUtils;
 import lostworlds.content.client.entity.render.ChilesaurusRenderer;
 import lostworlds.content.client.entity.render.FossilPoacherRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusRenderer;
@@ -16,7 +17,6 @@ import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.TileEntityInit;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;

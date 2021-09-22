@@ -2,10 +2,10 @@ package lostworlds.library.block;
 
 import javax.annotation.Nullable;
 
+import lostworlds.content.ModUtils;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.container.TimeMachineContainer;
 import lostworlds.library.item.tool.ModMaterials;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;

@@ -3,7 +3,6 @@ package lostworlds.content;
 import java.util.Arrays;
 import java.util.List;
 
-import lostworlds.addon.LostWorldsAddon;
 import lostworlds.content.client.dimension.PermianDimensionRenderInfo;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
@@ -16,9 +15,6 @@ import lostworlds.library.biome.BiomeGeneration;
 import lostworlds.library.biome.DinosaurSpawn;
 import lostworlds.library.biome.ModConfiguredStructures;
 import lostworlds.library.biome.OreGeneration;
-import lostworlds.library.tab.ModItemGroup;
-import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
@@ -50,8 +46,7 @@ public class LostWorldsMod
 		final IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 				
 		ModRegistry.register();
-		LostWorldsAddon.getAddons();
-		
+			
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
 				
@@ -70,10 +65,7 @@ public class LostWorldsMod
 	{		
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(BlockInit.VOLCANIC_ASH.asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), PotionInit.ASHY_LUNG_POTION));
 				
-		ModItemGroup.ITEMS.setIcon(ItemInit.WET_PAPER.getDefaultInstance());
-		ModItemGroup.DINOSAURS.setIcon(ItemInit.AMBER.getDefaultInstance());
-		ModItemGroup.PLANTS.setIcon(BlockInit.ALETHOPTERIS.asItem().getDefaultInstance());
-		ModItemGroup.BLOCKS.setIcon(BlockInit.ACCENT_LIGHT_CONCRETE.asItem().getDefaultInstance());
+		ModUtils.LOST_WORLDS.setIcon(ItemInit.ALETHOPTERIS_FOSSIL.getDefaultInstance());
 		
 		event.enqueueWork(() -> 
 		{

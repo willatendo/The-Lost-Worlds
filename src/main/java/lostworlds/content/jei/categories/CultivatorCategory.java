@@ -1,14 +1,14 @@
-package lostworlds.jei.categories;
+package lostworlds.content.jei.categories;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.mojang.blaze3d.matrix.MatrixStack;
 
+import lostworlds.content.ModUtils;
+import lostworlds.content.jei.LostWorldsConstants;
 import lostworlds.content.server.init.BlockInit;
-import lostworlds.jei.LostWorldsConstants;
 import lostworlds.library.recipe.CultivatorRecipe;
-import lostworlds.library.util.ModUtils;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;

@@ -1,8 +1,8 @@
 package lostworlds.content.server.init;
 
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import lostworlds.library.effect.AshyLungEffect;
-import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Potion;

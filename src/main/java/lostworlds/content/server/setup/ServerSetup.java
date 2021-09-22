@@ -6,25 +6,35 @@ import com.google.common.collect.Maps;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.VillagerProfessionInit;
+import lostworlds.library.block.NautilusShellBlock;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
 import lostworlds.library.item.CrystalScarabGemItem;
 import lostworlds.library.trades.MultiItemForEmeraldsTrade;
 import lostworlds.library.util.JigsawUtils;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.HoeItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.ShovelItem;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -65,6 +75,8 @@ public class ServerSetup
 	{
 		public static void fillTradeData() 
 		{
+			ModUtils.LOGGER.debug("Loading: Villager Trades");
+			
 			VillagerTrades.ITrade[] archaeology1 = new VillagerTrades.ITrade[] 
 			{
 				new VillagerTrades.ItemsForEmeraldsTrade(Items.CLAY_BALL, 2, 20, 12),
@@ -96,7 +108,9 @@ public class ServerSetup
 				new MultiItemForEmeraldsTrade(ImmutableList.of(Items.GOLD_INGOT, Items.DIAMOND, Items.IRON_INGOT, Items.NETHERITE_SCRAP, CrystalScarabGemItem.crystal_scarab_abdomen, CrystalScarabGemItem.crystal_scarab_bottom_left_leg, CrystalScarabGemItem.crystal_scarab_bottom_right_leg, CrystalScarabGemItem.crystal_scarab_thorax, CrystalScarabGemItem.crystal_scarab_top_left_leg, CrystalScarabGemItem.crystal_scarab_top_right_leg), ImmutableList.of(5, 1, 3, 1, 1), ImmutableList.of(10, 30, 20, 50, 64), 1, 100)
 			};
 			VillagerTrades.TRADES.put(VillagerProfessionInit.ARCHAEOLOGIST, toIntMap(ImmutableMap.of(1, archaeology1, 2, archaeology2, 3, archaeology3, 4, archaeology4, 5, archaeology5)));
-		}
+
+			ModUtils.LOGGER.debug("Finished: Villager Trades");
+}
 		
 		private static Int2ObjectMap<VillagerTrades.ITrade[]> toIntMap(ImmutableMap<Integer, VillagerTrades.ITrade[]> tradeMap) 
 		{
@@ -119,10 +133,40 @@ public class ServerSetup
 		@SubscribeEvent
 		public void onEntityJoin(EntityJoinWorldEvent event) 
 		{
+			ModUtils.LOGGER.debug("Loading: Adding Goals");
+
 			if(event.getEntity() instanceof VillagerEntity) 
 			{
 				VillagerEntity villager = (VillagerEntity) event.getEntity(); 
 				villager.goalSelector.addGoal(1, new AvoidEntityGoal(villager, FossilPoacherEntity.class, 16.0F, 0.7D, 0.7D));
+			}
+			ModUtils.LOGGER.debug("Finished: Adding Goals");
+		}
+	}
+	
+	@EventBusSubscriber(modid = ModUtils.ID, bus = Bus.FORGE)
+	static class NautilusShell
+	{
+		@SubscribeEvent
+		public static void addNautilusShell(final RightClickBlock event)
+		{
+			PlayerEntity entity = event.getPlayer();
+			Hand hand = event.getHand();
+			ItemStack stack = entity.getItemInHand(hand);
+			Item item = stack.getItem();
+			
+			if(item == Items.NAUTILUS_SHELL)
+			{
+				World world = event.getWorld();
+				BlockPos pos = event.getPos().above();
+				Direction direction = entity.getDirection().getOpposite();
+				
+				if(!entity.isCreative())
+				{
+					stack.shrink(1);
+				}
+				world.setBlockAndUpdate(pos, BlockInit.NAUTILUS_SHELL.defaultBlockState().setValue(NautilusShellBlock.HORIZONTAL_FACING, direction));
+				world.playSound(entity, pos, BlockInit.NAUTILUS_SHELL.getSoundType(BlockInit.NAUTILUS_SHELL.defaultBlockState()).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
 			}
 		}
 	}

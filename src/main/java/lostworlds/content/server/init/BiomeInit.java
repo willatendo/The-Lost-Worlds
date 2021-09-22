@@ -1,5 +1,7 @@
 package lostworlds.content.server.init;
 
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import lostworlds.library.biome.biomes.overworld.forest.ConiferForest;
 import lostworlds.library.biome.biomes.overworld.forest.GinkgoForest;
 import lostworlds.library.biome.biomes.permian.desert.PermianDesert;
@@ -18,8 +20,6 @@ import lostworlds.library.biome.biomes.permian.river.PermianRiver;
 import lostworlds.library.biome.biomes.permian.shore.PermianShore;
 import lostworlds.library.biome.biomes.permian.shore.PermianStoneShore;
 import lostworlds.library.biome.biomes.permian.swamp.PermianMarsh;
-import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.world.biome.Biome;
 
 public class BiomeInit 

@@ -1,5 +1,7 @@
 package lostworlds.content.server.init;
 
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import lostworlds.library.block.ISign;
 import lostworlds.library.tileentity.AnalyserTileEntity;
 import lostworlds.library.tileentity.CultivatorTileEntity;
@@ -8,8 +10,6 @@ import lostworlds.library.tileentity.DNAInjectorTileEntity;
 import lostworlds.library.tileentity.FossilCleanerTileEntity;
 import lostworlds.library.tileentity.FossilGrinderTileEntity;
 import lostworlds.library.tileentity.ModSignTileEntity;
-import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.registries.ForgeRegistries;

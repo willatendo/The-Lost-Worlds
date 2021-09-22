@@ -1,17 +1,15 @@
-package lostworlds.library.item.builder;
+package lostworlds.library.item;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import lostworlds.library.tab.ModItemGroup;
-import lostworlds.library.util.ModRegistry;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.nbt.CompoundNBT;
@@ -21,21 +19,21 @@ import net.minecraftforge.common.util.NonNullSupplier;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
-public class SpawnEggItemBuilder extends SpawnEggItem
+public class ModSpawnEggItem extends SpawnEggItem
 {
-	protected static final List<SpawnEggItemBuilder> UNADDED_EGGS = new ArrayList<SpawnEggItemBuilder>();
+	protected static final List<ModSpawnEggItem> UNADDED_EGGS = new ArrayList<ModSpawnEggItem>();
 	private final Lazy<? extends EntityType<?>> entityTypeSupplier;
 
-	public SpawnEggItemBuilder(final NonNullSupplier<? extends EntityType<?>> entityTypeSupplier, final int primaryColour, final int secondaryColour) 
+	public ModSpawnEggItem(NonNullSupplier<? extends EntityType<?>> entityTypeSupplier, int primaryColour, int secondaryColour, ItemGroup group) 
 	{
-		super(null, primaryColour, secondaryColour, new Properties().tab(ModItemGroup.ITEMS));
+		super(null, primaryColour, secondaryColour, new Properties().tab(group));
 		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
 		UNADDED_EGGS.add(this);
 	}
 
-	public SpawnEggItemBuilder(final RegistryObject<? extends EntityType<?>> entityTypeSupplier, final int primaryColour, final int secondaryColour) 
+	public ModSpawnEggItem(RegistryObject<? extends EntityType<?>> entityTypeSupplier, int primaryColour, int secondaryColour, ItemGroup group) 
 	{
-		super(null, primaryColour, secondaryColour, new Properties().tab(ModItemGroup.ITEMS));
+		super(null, primaryColour, secondaryColour, new Properties().tab(group));
 		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
 		UNADDED_EGGS.add(this);
 	}
@@ -69,12 +67,5 @@ public class SpawnEggItemBuilder extends SpawnEggItem
 	public EntityType<?> getType(CompoundNBT nbt) 
 	{
 		return this.entityTypeSupplier.get();
-	}
-
-	public static Item create(String id, final NonNullSupplier<? extends EntityType<?>> entityTypeSupplier, final int primaryColour, final int secondaryColour)
-	{
-		Item item = new SpawnEggItemBuilder(entityTypeSupplier, primaryColour, secondaryColour);
-		ModRegistry.register(id, item);
-		return item;
 	}
 }

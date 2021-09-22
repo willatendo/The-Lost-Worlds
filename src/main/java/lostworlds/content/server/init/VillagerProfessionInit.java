@@ -2,8 +2,8 @@ package lostworlds.content.server.init;
 
 import com.google.common.collect.ImmutableSet;
 
-import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtils;
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.util.SoundEvents;
 

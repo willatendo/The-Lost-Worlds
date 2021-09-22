@@ -1,4 +1,4 @@
-package lostworlds.library.util;
+package lostworlds.content;
 
 import java.util.HashSet;
 import java.util.stream.Collectors;
@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import com.google.common.collect.ImmutableSet;
 
 import lostworlds.content.server.init.BlockInit;
+import lostworlds.library.tab.ModTab;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.ResourceLocation;
@@ -24,6 +25,8 @@ public class ModUtils
 	public static final Logger LOGGER = LogManager.getLogger(ModUtils.ID);
 		
 	public static final String ID = "lostworlds";
+
+	public static final ModTab LOST_WORLDS = new ModTab();
 	
 	public static ImmutableSet<Block> permianCarverBlocks()
 	{

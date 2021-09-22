@@ -2,6 +2,8 @@ package lostworlds.content.server.init;
 
 import java.lang.reflect.Field;
 
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import lostworlds.library.container.AnalyserContainer;
 import lostworlds.library.container.ArchaeologyTableContianer;
 import lostworlds.library.container.CultivatorContainer;
@@ -10,8 +12,6 @@ import lostworlds.library.container.DNAInjectorContainer;
 import lostworlds.library.container.FossilCleanerContainer;
 import lostworlds.library.container.FossilGrinderContainer;
 import lostworlds.library.container.TimeMachineContainer;
-import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent;

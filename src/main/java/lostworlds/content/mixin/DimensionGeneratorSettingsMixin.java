@@ -1,4 +1,4 @@
-package lostworlds.mixin;
+package lostworlds.content.mixin;
 
 import java.util.Optional;
 

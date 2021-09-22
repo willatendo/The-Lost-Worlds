@@ -1,8 +1,9 @@
-package lostworlds.library.item;
+package lostworlds.library.item.block;
 
-import lostworlds.library.item.builder.BlockItemBuilder;
+import lostworlds.content.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResult;
@@ -12,11 +13,11 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.world.World;
 
-public class AshLayerItem extends BlockItemBuilder
+public class AshLayerItem extends BlockItem
 {
 	public AshLayerItem(Block block) 
 	{
-		super(block);
+		super(block, new Properties().tab(ModUtils.LOST_WORLDS));
 	}
 	
 	@Override

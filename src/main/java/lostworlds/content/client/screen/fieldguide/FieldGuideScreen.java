@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
-import lostworlds.library.util.ModUtils;
+import lostworlds.content.ModUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.resources.IResource;

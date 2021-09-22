@@ -1,6 +1,6 @@
 package lostworlds.library.slot;
 
-import lostworlds.library.item.DiscItem;
+import lostworlds.library.item.PlantDiscItem;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
@@ -15,6 +15,6 @@ public class DNADiscSlot extends Slot
 	@Override
 	public boolean mayPlace(ItemStack stack) 
 	{
-		return stack.getItem() instanceof DiscItem;
+		return stack.getItem() instanceof PlantDiscItem;
 	}
 }

@@ -3,8 +3,8 @@ package lostworlds.content.client.screen;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
+import lostworlds.content.ModUtils;
 import lostworlds.library.container.DNAExtractorContainer;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;

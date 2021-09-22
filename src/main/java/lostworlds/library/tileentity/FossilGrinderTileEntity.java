@@ -3,12 +3,12 @@ package lostworlds.library.tileentity;
 import javax.annotation.Nullable;
 
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.RecipeInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.FossilGrinderBlock;
 import lostworlds.library.container.FossilGrinderContainer;
 import lostworlds.library.recipe.FossilGrinderRecipe;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

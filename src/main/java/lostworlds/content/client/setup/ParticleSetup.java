@@ -1,8 +1,8 @@
 package lostworlds.content.client.setup;
 
+import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.ParticleInit;
 import lostworlds.library.particle.ModParticle;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;

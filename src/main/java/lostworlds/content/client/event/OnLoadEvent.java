@@ -1,6 +1,6 @@
 package lostworlds.content.client.event;
 
-import lostworlds.library.util.ModUtils;
+import lostworlds.content.ModUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.api.distmarker.Dist;

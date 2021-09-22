@@ -1,6 +1,6 @@
 package lostworlds.content.client.screen.fieldguide;
 
-import lostworlds.library.util.ModUtils;
+import lostworlds.content.ModUtils;
 import net.minecraft.util.text.ITextComponent;
 
 public class FieldGuideLang 

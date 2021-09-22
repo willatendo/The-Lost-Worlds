@@ -4,6 +4,7 @@ import java.util.OptionalInt;
 
 import com.google.common.collect.ImmutableList;
 
+import lostworlds.content.ModUtils;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.FeatureInit;
@@ -12,7 +13,6 @@ import lostworlds.library.block.PlantFossilBlock;
 import lostworlds.library.block.Plants;
 import lostworlds.library.entity.TimeEras;
 import lostworlds.library.foliageplacer.ConiferFoliagePlacer;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;

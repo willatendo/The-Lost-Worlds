@@ -3,7 +3,7 @@ package lostworlds.library.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import lostworlds.library.util.ModUtils;
+import lostworlds.content.ModUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;

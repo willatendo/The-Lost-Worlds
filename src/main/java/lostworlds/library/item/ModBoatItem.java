@@ -3,10 +3,9 @@ package lostworlds.library.item;
 import java.util.List;
 import java.util.function.Predicate;
 
+import lostworlds.content.ModUtils;
 import lostworlds.library.entity.ModBoatEntity;
 import lostworlds.library.entity.ModBoatType;
-import lostworlds.library.item.builder.ItemBuilder;
-import lostworlds.library.tab.ModItemGroup;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -26,10 +25,10 @@ public class ModBoatItem extends Item
 	private static final Predicate<Entity> RIDERS = EntityPredicates.NO_SPECTATORS.and(Entity::isPickable);
 	private final ModBoatType type;
 
-	public ModBoatItem(ModBoatType typeIn) 
+	public ModBoatItem(ModBoatType type) 
 	{
-		super(new Properties().stacksTo(1).tab(ModItemGroup.BLOCKS));
-		this.type = typeIn;
+		super(new Properties().stacksTo(1).tab(ModUtils.LOST_WORLDS));
+		this.type = type;
 	}
 
 	@Override
@@ -88,10 +87,5 @@ public class ModBoatItem extends Item
 				return ActionResult.pass(itemstack);
 			}
 		}
-	}
-	
-	public static Item create(ModBoatType type)
-	{
-		return ItemBuilder.create(type.toString().toLowerCase() + "_boat", new ModBoatItem(type));
 	}
 }

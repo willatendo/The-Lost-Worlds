@@ -1,7 +1,7 @@
 package lostworlds.content.server.init;
 
-import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtils;
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import net.minecraft.util.SoundEvent;
 
 public class SoundInit 

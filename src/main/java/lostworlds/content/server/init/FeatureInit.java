@@ -1,5 +1,7 @@
 package lostworlds.content.server.init;
 
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import lostworlds.library.feature.AshFeature;
 import lostworlds.library.feature.CalamitesSuckowiiFeature;
 import lostworlds.library.feature.GeyserBlockFeature;
@@ -7,8 +9,6 @@ import lostworlds.library.feature.ModBlockBlobFeature;
 import lostworlds.library.feature.PermianLakesFeature;
 import lostworlds.library.feature.ScorchedTreeFeature;
 import lostworlds.library.feature.SpongeColoneyFeature;
-import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;

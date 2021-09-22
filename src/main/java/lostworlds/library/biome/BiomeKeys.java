@@ -1,6 +1,6 @@
 package lostworlds.library.biome;
 
-import lostworlds.library.util.ModUtils;
+import lostworlds.content.ModUtils;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;

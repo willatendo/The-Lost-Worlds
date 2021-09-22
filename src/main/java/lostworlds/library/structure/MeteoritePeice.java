@@ -3,8 +3,8 @@ package lostworlds.library.structure;
 import java.util.List;
 import java.util.Random;
 
+import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.StructurePieceInit;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;

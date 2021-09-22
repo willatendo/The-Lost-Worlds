@@ -1,6 +1,6 @@
-package lostworlds.jei;
+package lostworlds.content.jei;
 
-import lostworlds.library.util.ModUtils;
+import lostworlds.content.ModUtils;
 import net.minecraft.util.ResourceLocation;
 
 public class LostWorldsConstants

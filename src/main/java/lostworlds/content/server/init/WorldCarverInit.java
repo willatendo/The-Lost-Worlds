@@ -1,11 +1,11 @@
 package lostworlds.content.server.init;
 
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import lostworlds.library.dimension.permian.carver.PermianCaveCarver;
 import lostworlds.library.dimension.permian.carver.PermianCayonCarver;
 import lostworlds.library.dimension.permian.carver.PermianUnderwaterCaveCarver;
 import lostworlds.library.dimension.permian.carver.PermianUnderwaterCayonCarver;
-import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
 

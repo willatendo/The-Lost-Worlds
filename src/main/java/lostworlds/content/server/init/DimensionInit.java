@@ -1,8 +1,8 @@
 package lostworlds.content.server.init;
 
+import lostworlds.content.ModUtils;
 import lostworlds.library.dimension.permian.PermianBiomeProvider;
 import lostworlds.library.dimension.permian.PermianChunkGenerator;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;

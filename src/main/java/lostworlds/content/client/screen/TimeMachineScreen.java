@@ -5,9 +5,9 @@ import java.util.List;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
+import lostworlds.content.ModUtils;
 import lostworlds.library.container.TimeMachineContainer;
 import lostworlds.library.recipe.TimeMachineRecipe;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SimpleSound;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;

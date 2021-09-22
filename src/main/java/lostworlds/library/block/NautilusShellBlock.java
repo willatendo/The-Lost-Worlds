@@ -6,9 +6,12 @@ import java.util.Map;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer.Builder;
@@ -17,6 +20,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -27,7 +31,7 @@ import net.minecraft.world.IWorld;
 public class NautilusShellBlock extends Block implements IWaterLoggable
 {
 	protected static final Map<Block, Map<Direction, VoxelShape>> SHAPES = new HashMap<Block, Map<Direction, VoxelShape>>();
-	private static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
+	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 	private static final VoxelShape SHAPE = VoxelShapes.join(Block.box(4.5, 1, 4, 11.5, 9, 13), Block.box(5.5, 0, 3, 10.5, 10, 14), IBooleanFunction.OR);
 	private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	
@@ -87,6 +91,12 @@ public class NautilusShellBlock extends Block implements IWaterLoggable
 	public FluidState getFluidState(BlockState state) 
 	{
 		return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+	}
+	
+	@Override
+	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player) 
+	{
+		return Items.NAUTILUS_SHELL.getDefaultInstance();
 	}
 	
 	protected static VoxelShape calculateShapes(Direction to, VoxelShape shape) 

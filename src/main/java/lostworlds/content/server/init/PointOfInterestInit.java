@@ -4,8 +4,8 @@ import java.util.Set;
 
 import com.google.common.collect.ImmutableSet;
 
-import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtils;
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.village.PointOfInterestType;

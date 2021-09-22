@@ -3,10 +3,10 @@ package lostworlds.library.structure;
 import java.util.List;
 import java.util.Random;
 
+import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.StructurePieceInit;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.SpawnReason;

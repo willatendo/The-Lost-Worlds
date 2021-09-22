@@ -5,8 +5,8 @@ import java.util.Random;
 
 import com.google.common.collect.ImmutableList;
 
+import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.ItemInit;
-import lostworlds.library.tab.ModItemGroup;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -22,7 +22,7 @@ public class OxygenTankItem extends ArmorItem
 
 	public OxygenTankItem() 
 	{
-		super(ModArmourMaterial.OXYGEN_MASK, EquipmentSlotType.CHEST, new Properties().stacksTo(1).tab(ModItemGroup.ITEMS));
+		super(ModArmourMaterial.OXYGEN_MASK, EquipmentSlotType.CHEST, new Properties().stacksTo(1).tab(ModUtils.LOST_WORLDS));
 	}
 	
 	@Override

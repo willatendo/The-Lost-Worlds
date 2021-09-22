@@ -2,16 +2,13 @@ package lostworlds.library.item;
 
 import java.util.function.Predicate;
 
+import lostworlds.content.ModUtils;
 import lostworlds.content.server.ModTags;
 import lostworlds.content.server.init.DimensionInit;
 import lostworlds.library.entity.TimeEras;
-import lostworlds.library.tab.ModItemGroup;
-import lostworlds.library.util.ModRegistry;
 import lostworlds.library.util.ModTeleporter;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.Rarity;
@@ -36,9 +33,9 @@ public class TimeBookItem extends ShootableItem
 	private final TimeEras era;
 	private final RegistryKey<World> worldToTransportTo;
 	
-	protected TimeBookItem(TimeEras eras, RegistryKey<World> world)
+	public TimeBookItem(TimeEras eras, RegistryKey<World> world)
 	{
-		super(new Properties().tab(ModItemGroup.ITEMS).stacksTo(1).rarity(Rarity.RARE).fireResistant());
+		super(new Properties().tab(ModUtils.LOST_WORLDS).stacksTo(1).rarity(Rarity.RARE).fireResistant());
 		this.era = eras;
 		this.worldToTransportTo = world;
 	}
@@ -156,13 +153,6 @@ public class TimeBookItem extends ShootableItem
 	public boolean isFoil(ItemStack stack) 
 	{
 		return true;
-	}
-	
-	public static Item create(TimeEras era, RegistryKey<World> world)
-	{
-		Item item = new TimeBookItem(era, world);
-		ModRegistry.register(era.toString().toLowerCase() + "_time_book", item);
-		return item;
 	}
 
 	@Override

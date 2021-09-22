@@ -1,6 +1,6 @@
 package lostworlds.library.block.builder;
 
-import lostworlds.library.util.ModRegistry;
+import lostworlds.content.ModRegistry;
 import net.minecraft.block.Block;
 
 public class BlockBuilder

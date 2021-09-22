@@ -1,8 +1,8 @@
 package lostworlds.library.block;
 
+import lostworlds.content.ModUtils;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.container.ArchaeologyTableContianer;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

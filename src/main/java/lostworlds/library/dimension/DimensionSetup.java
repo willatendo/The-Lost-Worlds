@@ -1,7 +1,7 @@
 package lostworlds.library.dimension;
 
+import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.DimensionInit;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.DerivedWorldInfo;

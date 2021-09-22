@@ -1,10 +1,10 @@
 package lostworlds.content.server.init;
 
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.library.structure.BlackMarketPeice;
 import lostworlds.library.structure.MeteoritePeice;
-import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.gen.feature.structure.IStructurePieceType;
 import net.minecraft.world.gen.feature.structure.Structure;

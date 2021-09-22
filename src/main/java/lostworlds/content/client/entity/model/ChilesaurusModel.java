@@ -1,7 +1,7 @@
 package lostworlds.content.client.entity.model;
 
+import lostworlds.content.ModUtils;
 import lostworlds.library.entity.terrestrial.jurassic.ChilesaurusEntity;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;

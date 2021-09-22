@@ -5,9 +5,9 @@ import java.text.NumberFormat;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
+import lostworlds.content.ModUtils;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.library.entity.terrestrial.HerbivoreEntity;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.util.ResourceLocation;
@@ -55,12 +55,12 @@ public class HerbivoreTabletScreen extends Screen
 		{
 			this.font.draw(stack, TabletLang.TAGGED_TO, 18.0F, 160.0F, FONT_COLOUR);
 		}
-		this.font.draw(stack, contraceptives(), 88.0F, 110.0F, FONT_COLOUR);
-		this.font.draw(stack, age(), 88.0F, 120.0F, FONT_COLOUR);
-		this.font.draw(stack, heath(), 88.0F, 130.0F, FONT_COLOUR);
-		this.font.draw(stack, hunger(), 88.0F, 140.0F, FONT_COLOUR);
-		this.font.draw(stack, sex(), 88.0F, 150.0F, FONT_COLOUR);
-		this.font.draw(stack, owner(), 88.0F, 160.0F, FONT_COLOUR);
+		this.font.draw(stack, contraceptives(), 98.0F, 110.0F, FONT_COLOUR);
+		this.font.draw(stack, age(), 98.0F, 120.0F, FONT_COLOUR);
+		this.font.draw(stack, heath(), 98.0F, 130.0F, FONT_COLOUR);
+		this.font.draw(stack, hunger(), 98.0F, 140.0F, FONT_COLOUR);
+		this.font.draw(stack, sex(), 98.0F, 150.0F, FONT_COLOUR);
+		this.font.draw(stack, owner(), 98.0F, 160.0F, FONT_COLOUR);
 		super.render(stack, mouseX, mouseY, partialTicks);
 		this.renderComponentHoverEffect(stack, Style.EMPTY, mouseX, mouseY);
 	}

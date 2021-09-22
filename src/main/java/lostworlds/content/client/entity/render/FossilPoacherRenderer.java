@@ -1,7 +1,7 @@
 package lostworlds.content.client.entity.render;
 
+import lostworlds.content.ModUtils;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.IllagerRenderer;
 import net.minecraft.client.renderer.entity.layers.HeldItemLayer;

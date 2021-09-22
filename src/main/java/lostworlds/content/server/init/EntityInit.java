@@ -1,5 +1,7 @@
 package lostworlds.content.server.init;
 
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.ModBoatEntity;
 import lostworlds.library.entity.fossil.FossilEntity;
@@ -7,9 +9,7 @@ import lostworlds.library.entity.illager.FossilPoacherEntity;
 import lostworlds.library.entity.terrestrial.PrehistoricEntity;
 import lostworlds.library.entity.terrestrial.jurassic.ChilesaurusEntity;
 import lostworlds.library.entity.terrestrial.jurassic.KentrosaurusEntity;
-import lostworlds.library.item.builder.SpawnEggItemBuilder;
-import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtils;
+import lostworlds.library.item.ModSpawnEggItem;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
@@ -41,7 +41,7 @@ public class EntityInit
 		event.getRegistry().register(FOSSIL_POACHER.setRegistryName(ModUtils.rL("fossil_poacher")));
 		event.getRegistry().register(MOD_BOAT.setRegistryName(ModUtils.rL("mod_boat")));
 		
-		SpawnEggItemBuilder.initSpawnEggs();
+		ModSpawnEggItem.initSpawnEggs();
 	}
 	
 	static

@@ -1,4 +1,4 @@
-package lostworlds.jei;
+package lostworlds.content.jei;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -7,13 +7,13 @@ import lostworlds.content.client.screen.AnalyserScreen;
 import lostworlds.content.client.screen.CultivatorScreen;
 import lostworlds.content.client.screen.DNAExtractorScreen;
 import lostworlds.content.client.screen.FossilGrinderScreen;
+import lostworlds.content.jei.categories.AnalyserCategory;
+import lostworlds.content.jei.categories.CultivatorCategory;
+import lostworlds.content.jei.categories.DNAExtractorCategory;
+import lostworlds.content.jei.categories.FossilGrinderCategory;
+import lostworlds.content.jei.categories.TimeMachineCategory;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.RecipeInit;
-import lostworlds.jei.categories.AnalyserCategory;
-import lostworlds.jei.categories.CultivatorCategory;
-import lostworlds.jei.categories.DNAExtractorCategory;
-import lostworlds.jei.categories.FossilGrinderCategory;
-import lostworlds.jei.categories.TimeMachineCategory;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;

@@ -1,8 +1,8 @@
 package lostworlds.library.item;
 
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.FoodInit;
-import lostworlds.library.tab.ModItemGroup;
-import lostworlds.library.util.ModRegistry;
 import net.minecraft.item.Item;
 
 public class FoodSeedsItem extends Item
@@ -14,7 +14,7 @@ public class FoodSeedsItem extends Item
 	
 	private static Properties properties()
 	{
-		return new Properties().tab(ModItemGroup.ITEMS);
+		return new Properties().tab(ModUtils.LOST_WORLDS);
 	}
 	
 	public static Item create(String plant)

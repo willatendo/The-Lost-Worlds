@@ -3,9 +3,9 @@ package lostworlds.library.texture;
 import java.util.HashMap;
 import java.util.Map;
 
+import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.block.ConnectedTextureBlock;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.client.renderer.model.ModelResourceLocation;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraftforge.api.distmarker.Dist;

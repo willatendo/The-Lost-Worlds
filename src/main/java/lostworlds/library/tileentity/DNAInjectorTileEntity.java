@@ -5,12 +5,12 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.RecipeInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.DNAInjectorBlock;
 import lostworlds.library.container.DNAInjectorContainer;
 import lostworlds.library.recipe.DNAInjectorRecipe;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

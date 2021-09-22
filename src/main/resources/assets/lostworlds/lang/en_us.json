@@ -1,16 +1,93 @@
 {
+	//Tools
+	"item.lostworlds.crystal_scarab_sword": "Crystal Scarab Sword",
+	"item.lostworlds.crystal_scarab_shovel": "Crystal Scarab Shovel",
+	"item.lostworlds.crystal_scarab_pickaxe": "Crystal Scarab Pickaxe",
+	"item.lostworlds.crystal_scarab_axe": "Crystal Scarab Axe",
+	"item.lostworlds.crystal_scarab_hoe": "Crystal Scarab Hoe",
+	"item.lostworlds.crystal_scarab_brush": "Crystal Scarab Brush",
+	"item.lostworlds.leather_brush": "Leather Brush",
+	"item.lostworlds.iron_brush": "Iron Brush",
+	"item.lostworlds.gold_brush": "Gold Brush",
+	"item.lostworlds.diamond_brush": "Diamond Brush",
+	"item.lostworlds.netherite_brush": "Netherite Brush",
+	"item.lostworlds.hammer": "Hammer",
+	
+	//Armour
+	"item.lostworlds.cloth_mask": "Cloth Mask",
+	"item.lostworlds.oxygen_mask": "Oxygen Mask",
+	"item.lostworlds.oxygen_tank": "Oxygen Tank",
+	
+	//Utilities
+	"item.lostworlds.wet_paper": "Wet Paper",
+	"item.lostworlds.field_guide": "Feild Guide",
+	"item.lostworlds.tablet": "Tablet",
 	"tablet.lostworlds.title": "Tablet",
-	"tablet.lostworlds.heath": "Heath:",
 	"tablet.lostworlds.contraceptives": "Contraceptives:",
+	"tablet.lostworlds.age": "Age:",
+	"tablet.lostworlds.heath": "Heath:",
 	"tablet.lostworlds.hunger": "Hunger:",
 	"tablet.lostworlds.sex": "Sex:",
-	"tablet.lostworlds.tagged_to": "Tagged To:",
 	"tablet.lostworlds.owner": "Owner:",
-	"tablet.lostworlds.age": "Age:",
+	"tablet.lostworlds.tagged_to": "Tagged To:",
 	"tablet.lostworlds.on_contraceptives": "Yes",
 	"tablet.lostworlds.off_contraceptives": "No",
 	"tablet.lostworlds.adult": "Adult",
 	"tablet.lostworlds.baby": "Baby",
 	"tablet.lostworlds.male": "Male",
-	"tablet.lostworlds.female": "Female"
+	"tablet.lostworlds.female": "Female",
+	"item.lostworlds.contraceptives": "Contraceptives",
+	"item.lostworlds.permian_period_time_book": "Permian Period Time Book",
+	"item.lostworlds.mud_ball": "Mud Ball",
+	
+	//Electronics
+	"item.lostworlds.copper_ingot": "Copper Ingot",
+	"item.lostworlds.copper_nugget": "Copper Nugget",
+	"item.lostworlds.copper_wire": "Copper Wire",
+	"item.lostworlds.computer_fan": "Computer Fan",
+	"item.lostworlds.computer_screen": "Computer Screen",
+	"item.lostworlds.computer_frame": "Computer Frame",
+	"item.lostworlds.computer_storage_port": "Computer Storage Port",
+	"item.lostworlds.motherboard": "Motherboard",
+	"item.lostworlds.cpu": "CPU",
+	"item.lostworlds.ram": "RAM",
+	"item.lostworlds.computer_core": "Computer Core",
+	"item.lostworlds.storage_disc": "Storage Disc",
+	"item.lostworlds.tag": "Tag",
+	
+	//Fossils
+	"item.lostworlds.amber": "Amber",
+	"item.lostworlds.ground_fossil": "Ground Fossil",
+	"item.lostworlds.plant_waste": "Plant Waste",
+	"item.lostworlds.araucaria_bark_sample": "Araucaria Bark Sample",
+	"item.lostworlds.calamites_bark_sample": "Calamites Bark Sample",
+	"item.lostworlds.conifer_bark_sample": "Conifer Bark Sample",
+	"item.lostworlds.ginkgo_bark_sample": "Ginkgo Bark Sample",
+	"item.lostworlds.empty_vile": "Empty Vile",
+	
+	//Decoration
+	"item.lostworlds.amber_keychain": "Amber Keychain",
+	"item.lostworlds.dino_button": "Dino Button",
+	"item.lostworlds.dino_snowglobe": "Dino Snowglobe",
+	"item.lostworlds.balloon": "Balloon",
+	"item.lostworlds.fun_bag": "Fun Bag",
+	"item.lostworlds.tyrannosaurus_plush": "Tyrannosaurus Plush",
+	
+	//Miscellaneous
+	"item.lostworlds.fern_leaves": "Fern Leaves",
+	"item.lostworlds.cooked_fern_leaves": "Cooked Fern Leaves",
+	"item.lostworlds.paleo_salad": "Paleo Salad",
+	"item.lostworlds.scarab_banner_pattern": "Banner Pattern",
+	"item.lostworlds.scarab_banner_pattern.desc": "Scarab",
+	"item.lostworlds.charged_crystal_scarab_gem": "Charged Crystal Scarab Gem",
+	"item.lostworlds.crystal_scarab_gem": "Crystal Scarab Gem",
+	"item.lostworlds.crystal_scarab_abdomen": "Crystal Scarab Abdomen",
+	"item.lostworlds.crystal_scarab_bottom_left_leg": "Crystal Scarab Bottom Left Leg",
+	"item.lostworlds.crystal_scarab_bottom_right_leg": "Crystal Scarab Bottom Right Leg",
+	"item.lostworlds.crystal_scarab_thorax": "Crystal Scarab Thorax",
+	"item.lostworlds.crystal_scarab_top_left_leg": "Crystal Scarab Top Left Leg",
+	"item.lostworlds.crystal_scarab_top_right_leg": "Crystal Scarab Top Right Leg",
+	
+	//Spawn Egg
+	"item.lostworlds.fossil_poacher_spawn_egg": "Fossil Poacher Spawn Egg"
 }

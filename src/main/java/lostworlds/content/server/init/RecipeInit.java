@@ -1,5 +1,7 @@
 package lostworlds.content.server.init;
 
+import lostworlds.content.ModRegistry;
+import lostworlds.content.ModUtils;
 import lostworlds.library.recipe.AnalyserRecipe;
 import lostworlds.library.recipe.AnalyserRecipeSerialiser;
 import lostworlds.library.recipe.ArchaeologyTableRecipe;
@@ -13,8 +15,6 @@ import lostworlds.library.recipe.FossilGrinderRecipe;
 import lostworlds.library.recipe.FossilGrinderRecipeSerialiser;
 import lostworlds.library.recipe.TimeMachineRecipe;
 import lostworlds.library.recipe.TimeMachineRecipeSerialiser;
-import lostworlds.library.util.ModRegistry;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;

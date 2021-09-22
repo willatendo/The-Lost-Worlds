@@ -327,7 +327,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 				return ActionResultType.CONSUME;
 			}
 		}
-		if(this.isContraceptives(itemstack)) 
+		if(this.isContraceptives(itemstack) && !this.isOnContraceptives()) 
 		{
 			if(!this.level.isClientSide && !this.isBaby()) 
 			{

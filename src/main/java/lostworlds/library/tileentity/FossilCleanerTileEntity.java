@@ -7,12 +7,12 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Maps;
 
+import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.FossilCleanerBlock;
 import lostworlds.library.container.FossilCleanerContainer;
 import lostworlds.library.recipe.RecipeManager;
-import lostworlds.library.util.ModUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

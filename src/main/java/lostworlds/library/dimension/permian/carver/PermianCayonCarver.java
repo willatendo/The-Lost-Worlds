@@ -2,7 +2,7 @@ package lostworlds.library.dimension.permian.carver;
 
 import com.mojang.serialization.Codec;
 
-import lostworlds.library.util.ModUtils;
+import lostworlds.content.ModUtils;
 import net.minecraft.world.gen.carver.CanyonWorldCarver;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
 
