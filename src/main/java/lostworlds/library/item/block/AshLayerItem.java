@@ -17,7 +17,7 @@ public class AshLayerItem extends BlockItem
 {
 	public AshLayerItem(Block block) 
 	{
-		super(block, new Properties().tab(ModUtils.LOST_WORLDS));
+		super(block, new Properties().tab(ModUtils.BLOCKS));
 	}
 	
 	@Override

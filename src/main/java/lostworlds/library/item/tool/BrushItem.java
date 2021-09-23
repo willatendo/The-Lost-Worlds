@@ -18,12 +18,12 @@ public class BrushItem extends ToolItem
 
 	public BrushItem(ModItemTier modteir) 
 	{
-		super(1.0F, -2.4F, modteir, EFFECTIVE_ON_BLOCKS, new Properties().addToolType(ModToolTypes.BRUSH, modteir.getLevel()).tab(ModUtils.LOST_WORLDS));
+		super(1.0F, -2.4F, modteir, EFFECTIVE_ON_BLOCKS, new Properties().addToolType(ModToolTypes.BRUSH, modteir.getLevel()).tab(ModUtils.ITEMS));
 	}
 
 	public BrushItem(ModItemTier modteir, Properties properties) 
 	{
-		super(1.0F, -2.4F, modteir, EFFECTIVE_ON_BLOCKS, properties.addToolType(ModToolTypes.BRUSH, modteir.getLevel()).tab(ModUtils.LOST_WORLDS));
+		super(1.0F, -2.4F, modteir, EFFECTIVE_ON_BLOCKS, properties.addToolType(ModToolTypes.BRUSH, modteir.getLevel()).tab(ModUtils.ITEMS));
 	}
 
 	@Override

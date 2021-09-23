@@ -7,6 +7,6 @@ public class PlantSoftTissueItem extends Item
 {
 	public PlantSoftTissueItem() 
 	{
-		super(new Properties().tab(ModUtils.LOST_WORLDS));
+		super(new Properties().tab(ModUtils.ITEMS));
 	}
 }

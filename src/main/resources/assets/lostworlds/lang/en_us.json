@@ -1,4 +1,11 @@
 {
+	// ITEM GROUPS
+	
+	"itemGroup.lostworlds.items": "Lost Worlds Items",
+	"itemGroup.lostworlds.block": "Lost Worlds Blocks",
+
+	// ITEMS
+
 	//Tools
 	"item.lostworlds.crystal_scarab_sword": "Crystal Scarab Sword",
 	"item.lostworlds.crystal_scarab_shovel": "Crystal Scarab Shovel",
@@ -20,7 +27,8 @@
 	
 	//Utilities
 	"item.lostworlds.wet_paper": "Wet Paper",
-	"item.lostworlds.field_guide": "Feild Guide",
+	"item.lostworlds.field_guide": "Field Guide",
+	"item.lostworlds.field_guide.desc": "Willatendo - Volume 3",
 	"item.lostworlds.tablet": "Tablet",
 	"tablet.lostworlds.title": "Tablet",
 	"tablet.lostworlds.contraceptives": "Contraceptives:",

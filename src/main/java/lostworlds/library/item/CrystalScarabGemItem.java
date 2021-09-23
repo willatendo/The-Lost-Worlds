@@ -8,15 +8,15 @@ import net.minecraft.item.Rarity;
 
 public class CrystalScarabGemItem extends Item
 {
-	public static Item charged_crystal_scarab_gem = new CrystalScarabGemItem(new Properties().tab(ModUtils.LOST_WORLDS).rarity(Rarity.RARE), Variant.CHARGED);
-	public static Item crystal_scarab_gem = new CrystalScarabGemItem(new Properties().tab(ModUtils.LOST_WORLDS).rarity(Rarity.RARE), Variant.UNCHARGED);
+	public static Item charged_crystal_scarab_gem = new CrystalScarabGemItem(new Properties().tab(ModUtils.ITEMS).rarity(Rarity.RARE), Variant.CHARGED);
+	public static Item crystal_scarab_gem = new CrystalScarabGemItem(new Properties().tab(ModUtils.ITEMS).rarity(Rarity.RARE), Variant.UNCHARGED);
 	
-	public static Item crystal_scarab_abdomen = new CrystalScarabGemItem(new Properties().tab(ModUtils.LOST_WORLDS).rarity(Rarity.RARE), Variant.BROKEN);
-	public static Item crystal_scarab_bottom_left_leg = new CrystalScarabGemItem(new Properties().tab(ModUtils.LOST_WORLDS).rarity(Rarity.RARE), Variant.BROKEN);
-	public static Item crystal_scarab_bottom_right_leg = new CrystalScarabGemItem(new Properties().tab(ModUtils.LOST_WORLDS).rarity(Rarity.RARE), Variant.BROKEN);
-	public static Item crystal_scarab_thorax = new CrystalScarabGemItem(new Properties().tab(ModUtils.LOST_WORLDS).rarity(Rarity.RARE), Variant.BROKEN);
-	public static Item crystal_scarab_top_left_leg = new CrystalScarabGemItem(new Properties().tab(ModUtils.LOST_WORLDS).rarity(Rarity.RARE), Variant.BROKEN);
-	public static Item crystal_scarab_top_right_leg = new CrystalScarabGemItem(new Properties().tab(ModUtils.LOST_WORLDS).rarity(Rarity.RARE), Variant.BROKEN);
+	public static Item crystal_scarab_abdomen = new CrystalScarabGemItem(new Properties().tab(ModUtils.ITEMS).rarity(Rarity.RARE), Variant.BROKEN);
+	public static Item crystal_scarab_bottom_left_leg = new CrystalScarabGemItem(new Properties().tab(ModUtils.ITEMS).rarity(Rarity.RARE), Variant.BROKEN);
+	public static Item crystal_scarab_bottom_right_leg = new CrystalScarabGemItem(new Properties().tab(ModUtils.ITEMS).rarity(Rarity.RARE), Variant.BROKEN);
+	public static Item crystal_scarab_thorax = new CrystalScarabGemItem(new Properties().tab(ModUtils.ITEMS).rarity(Rarity.RARE), Variant.BROKEN);
+	public static Item crystal_scarab_top_left_leg = new CrystalScarabGemItem(new Properties().tab(ModUtils.ITEMS).rarity(Rarity.RARE), Variant.BROKEN);
+	public static Item crystal_scarab_top_right_leg = new CrystalScarabGemItem(new Properties().tab(ModUtils.ITEMS).rarity(Rarity.RARE), Variant.BROKEN);
 	
 	private Variant variant;
 	

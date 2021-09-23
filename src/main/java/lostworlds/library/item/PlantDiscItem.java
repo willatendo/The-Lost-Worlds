@@ -7,6 +7,6 @@ public class PlantDiscItem extends Item
 {
 	public PlantDiscItem() 
 	{
-		super(new Properties().tab(ModUtils.LOST_WORLDS));
+		super(new Properties().tab(ModUtils.ITEMS));
 	}
 }

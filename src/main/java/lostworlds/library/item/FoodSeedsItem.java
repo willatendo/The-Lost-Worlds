@@ -14,7 +14,7 @@ public class FoodSeedsItem extends Item
 	
 	private static Properties properties()
 	{
-		return new Properties().tab(ModUtils.LOST_WORLDS);
+		return new Properties().tab(ModUtils.ITEMS);
 	}
 	
 	public static Item create(String plant)

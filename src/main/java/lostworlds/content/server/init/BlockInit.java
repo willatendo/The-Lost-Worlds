@@ -8,6 +8,8 @@ import lostworlds.library.block.BrazileaBlock;
 import lostworlds.library.block.CalamtiesSuckowiiBlock;
 import lostworlds.library.block.CalamtiesSuckowiiSaplingBlock;
 import lostworlds.library.block.ColouredDecorationBlock;
+import lostworlds.library.block.ColouredGlassBlock;
+import lostworlds.library.block.ColouredGlassPaneBlock;
 import lostworlds.library.block.ConnectedTextureBlock;
 import lostworlds.library.block.CultivatorBlock;
 import lostworlds.library.block.DNAExtractorBlock;
@@ -52,10 +54,8 @@ import net.minecraft.block.FenceBlock;
 import net.minecraft.block.FenceGateBlock;
 import net.minecraft.block.FlowerBlock;
 import net.minecraft.block.FlowerPotBlock;
-import net.minecraft.block.GlassBlock;
 import net.minecraft.block.HayBlock;
 import net.minecraft.block.LeavesBlock;
-import net.minecraft.block.PaneBlock;
 import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.block.RedstoneOreBlock;
@@ -63,8 +63,6 @@ import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.SandBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.StainedGlassBlock;
-import net.minecraft.block.StainedGlassPaneBlock;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.block.StoneButtonBlock;
 import net.minecraft.block.TrapDoorBlock;
@@ -72,7 +70,6 @@ import net.minecraft.block.WallBlock;
 import net.minecraft.block.WoodButtonBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.Properties;
 import net.minecraft.item.SignItem;
@@ -175,7 +172,7 @@ public class BlockInit
 	public static final Block ARAUCARIA_DOOR = BlockAndItemBuilder.create("araucaria_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block ARAUCARIA_SIGN = BlockBuilder.create("araucaria_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.ARAUCARIA));
 	public static final Block ARAUCARIA_WALL_SIGN = BlockBuilder.create("araucaria_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.ARAUCARIA_SIGN), ModWoodType.ARAUCARIA));
-	public static final Item ARAUCARIA_SIGN_ITEM = ModRegistry.register("araucaria_sign", new SignItem(new Properties().tab(ModUtils.LOST_WORLDS).stacksTo(16), ARAUCARIA_SIGN, ARAUCARIA_WALL_SIGN));
+	public static final Item ARAUCARIA_SIGN_ITEM = ModRegistry.register("araucaria_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), ARAUCARIA_SIGN, ARAUCARIA_WALL_SIGN));
 	public static final Item ARAUCARIA_BOAT = new ModBoatItem(ModBoatType.ARAUCARIA);
 	
 	public static final Block ARAUCARIA_STICKS = BlockAndItemBuilder.create("araucaria_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
@@ -200,7 +197,7 @@ public class BlockInit
 	public static final Block CALAMITES_DOOR = BlockAndItemBuilder.create("calamites_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block CALAMITES_SIGN = BlockBuilder.create("calamites_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CALAMITES));
 	public static final Block CALAMITES_WALL_SIGN = BlockBuilder.create("calamites_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.CALAMITES_SIGN), ModWoodType.CALAMITES));
-	public static final Item CALAMITES_SIGN_ITEM = ModRegistry.register("calamites_sign", new SignItem(new Properties().tab(ModUtils.LOST_WORLDS).stacksTo(16), CALAMITES_SIGN, CALAMITES_WALL_SIGN));
+	public static final Item CALAMITES_SIGN_ITEM = ModRegistry.register("calamites_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), CALAMITES_SIGN, CALAMITES_WALL_SIGN));
 	public static final Item CALAMITES_BOAT = new ModBoatItem(ModBoatType.CALAMITES);
 	
 	public static final Block CALAMITES_STICKS = BlockAndItemBuilder.create("calamites_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
@@ -225,7 +222,7 @@ public class BlockInit
 	public static final Block CONIFER_DOOR = BlockAndItemBuilder.create("conifer_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block CONIFER_SIGN = BlockBuilder.create("conifer_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CONIFER));
 	public static final Block CONIFER_WALL_SIGN = BlockBuilder.create("conifer_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.CONIFER_SIGN), ModWoodType.CONIFER));
-	public static final Item CONIFER_SIGN_ITEM = ModRegistry.register("conifer_sign", new SignItem(new Properties().tab(ModUtils.LOST_WORLDS).stacksTo(16), CONIFER_SIGN, CONIFER_WALL_SIGN));
+	public static final Item CONIFER_SIGN_ITEM = ModRegistry.register("conifer_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), CONIFER_SIGN, CONIFER_WALL_SIGN));
 	public static final Item CONIFER_BOAT = new ModBoatItem(ModBoatType.CONIFER);
 	
 	public static final Block CONIFER_STICKS = BlockAndItemBuilder.create("conifer_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
@@ -254,7 +251,7 @@ public class BlockInit
 	public static final Block GINKGO_DOOR = BlockAndItemBuilder.create("ginkgo_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block GINKGO_SIGN = BlockBuilder.create("ginkgo_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.GINKGO));
 	public static final Block GINKGO_WALL_SIGN = BlockBuilder.create("ginkgo_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.GINKGO_SIGN), ModWoodType.GINKGO));
-	public static final Item GINKGO_SIGN_ITEM = ModRegistry.register("ginkgo_sign", new SignItem(new Properties().tab(ModUtils.LOST_WORLDS).stacksTo(16), GINKGO_SIGN, GINKGO_WALL_SIGN));
+	public static final Item GINKGO_SIGN_ITEM = ModRegistry.register("ginkgo_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), GINKGO_SIGN, GINKGO_WALL_SIGN));
 	public static final Item GINKGO_BOAT = new ModBoatItem(ModBoatType.GINKGO);
 	
 	public static final Block GINKGO_STICKS = BlockAndItemBuilder.create("ginkgo_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
@@ -277,7 +274,7 @@ public class BlockInit
 	public static final Block SCORCHED_DOOR = BlockAndItemBuilder.create("scorched_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block SCORCHED_SIGN = BlockBuilder.create("scorched_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.SCORCHED));
 	public static final Block SCORCHED_WALL_SIGN = BlockBuilder.create("scorched_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.SCORCHED_SIGN), ModWoodType.SCORCHED));
-	public static final Item SCORCHED_SIGN_ITEM = ModRegistry.register("scorched_sign", new SignItem(new Properties().tab(ModUtils.LOST_WORLDS).stacksTo(16), SCORCHED_SIGN, SCORCHED_WALL_SIGN));
+	public static final Item SCORCHED_SIGN_ITEM = ModRegistry.register("scorched_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), SCORCHED_SIGN, SCORCHED_WALL_SIGN));
 	public static final Item SCORCHED_BOAT = new ModBoatItem(ModBoatType.SCORCHED);
 
 	public static final Block SCORCHED_STICKS = BlockAndItemBuilder.create("scorched_sticks", new SticksBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).instabreak().noCollission().noOcclusion().sound(SoundType.WOOD)));
@@ -356,10 +353,6 @@ public class BlockInit
 	public static final Block JURASSIC_REDSTONE_ORE = BlockAndItemBuilder.create("jurassic_redstone_ore", new RedstoneOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));	
 	public static final Block JURASSIC_EMERALD_ORE = BlockAndItemBuilder.create("jurassic_emerald_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));	
 	
-	//Building Blocks
-	public static final Block SHADED_GLASS = BlockAndItemBuilder.create("shaded_glass", new StainedGlassBlock(DyeColor.BLACK, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block SHADED_GLASS_PANE = BlockAndItemBuilder.create("shaded_glass_pane", new StainedGlassPaneBlock(DyeColor.BLACK, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	
 	//Jurassic Park Building Blocks
 	public static final Block LIGHT_CONCRETE = BlockAndItemBuilder.create("light_concrete", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.0F, 8.0F).sound(SoundType.STONE)));
 	public static final Block LIGHT_CONCRETE_STAIRS = BlockAndItemBuilder.create("light_concrete_stairs", new StairsBlock(() -> BlockInit.LIGHT_CONCRETE.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.0F, 8.0F).sound(SoundType.STONE)));
@@ -384,9 +377,6 @@ public class BlockInit
 
 	public static final Block METAL_FENCE = BlockAndItemBuilder.create("metal_fence", new FenceBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_RED).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(4.5F, 6.0F).sound(SoundType.METAL)));
 
-	public static final Block TINTED_GLASS = BlockAndItemBuilder.create("tinted_glass", new StainedGlassBlock(DyeColor.BROWN, AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_BROWN).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block TINTED_GLASS_PANE = BlockAndItemBuilder.create("tinted_glass_pane", new StainedGlassPaneBlock(DyeColor.BROWN, AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_BROWN).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	
 	public static final Block THATCH_BUNDLE = BlockAndItemBuilder.create("thatch_bundle", new HayBlock(AbstractBlock.Properties.copy(Blocks.HAY_BLOCK)));
 
 	public static final Block OUTDOOR_TOILET_DOOR = BlockAndItemBuilder.create("outdoor_toilet_door", new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));
@@ -419,77 +409,9 @@ public class BlockInit
 	public static final Block TILE_STAIRS = BlockAndItemBuilder.create("tile_stairs", new StairsBlock(() -> BlockInit.TILE.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).harvestTool(ToolType.AXE).harvestLevel(0).strength(2.7F, 1.9F).sound(SoundType.WOOD)));
 	public static final Block TILE_SLAB = BlockAndItemBuilder.create("tile_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).harvestTool(ToolType.AXE).harvestLevel(0).strength(2.7F, 1.9F).sound(SoundType.WOOD)));
 	
-	public static final Block CLEAR_GLASS = BlockAndItemBuilder.create("clear_glass", new GlassBlock(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.TERRACOTTA_WHITE).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block CLEAR_GLASS_PANE = BlockAndItemBuilder.create("clear_glass_pane", new PaneBlock(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.TERRACOTTA_WHITE).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-
-	public static final Block WHITE_GLASS = BlockAndItemBuilder.create("white_glass", new StainedGlassBlock(DyeColor.WHITE, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block WHITE_GLASS_PANE = BlockAndItemBuilder.create("white_glass_pane", new StainedGlassPaneBlock(DyeColor.WHITE, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block LIGHT_GREY_GLASS = BlockAndItemBuilder.create("light_grey_glass", new StainedGlassBlock(DyeColor.LIGHT_GRAY, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block LIGHT_GREY_GLASS_PANE = BlockAndItemBuilder.create("light_grey_glass_pane", new StainedGlassPaneBlock(DyeColor.LIGHT_GRAY, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block GREY_GLASS = BlockAndItemBuilder.create("grey_glass", new StainedGlassBlock(DyeColor.GRAY, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block GREY_GLASS_PANE = BlockAndItemBuilder.create("grey_glass_pane", new StainedGlassPaneBlock(DyeColor.GRAY, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block BLACK_GLASS = BlockAndItemBuilder.create("black_glass", new StainedGlassBlock(DyeColor.BLACK, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block BLACK_GLASS_PANE = BlockAndItemBuilder.create("black_glass_pane", new StainedGlassPaneBlock(DyeColor.BLACK, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block RED_GLASS = BlockAndItemBuilder.create("red_glass", new StainedGlassBlock(DyeColor.RED, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block RED_GLASS_PANE = BlockAndItemBuilder.create("red_glass_pane", new StainedGlassPaneBlock(DyeColor.RED, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block ORANGE_GLASS = BlockAndItemBuilder.create("orange_glass", new StainedGlassBlock(DyeColor.ORANGE, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block ORANGE_GLASS_PANE = BlockAndItemBuilder.create("orange_glass_pane", new StainedGlassPaneBlock(DyeColor.ORANGE, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block YELLOW_GLASS = BlockAndItemBuilder.create("yellow_glass", new StainedGlassBlock(DyeColor.YELLOW, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block YELLOW_GLASS_PANE = BlockAndItemBuilder.create("yellow_glass_pane", new StainedGlassPaneBlock(DyeColor.YELLOW, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block LIME_GLASS = BlockAndItemBuilder.create("lime_glass", new StainedGlassBlock(DyeColor.LIME, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block LIME_GLASS_PANE = BlockAndItemBuilder.create("lime_glass_pane", new StainedGlassPaneBlock(DyeColor.LIME, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block GREEN_GLASS = BlockAndItemBuilder.create("green_glass", new StainedGlassBlock(DyeColor.GREEN, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block GREEN_GLASS_PANE = BlockAndItemBuilder.create("green_glass_pane", new StainedGlassPaneBlock(DyeColor.GREEN, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block CYAN_GLASS = BlockAndItemBuilder.create("cyan_glass", new StainedGlassBlock(DyeColor.CYAN, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block CYAN_GLASS_PANE = BlockAndItemBuilder.create("cyan_glass_pane", new StainedGlassPaneBlock(DyeColor.CYAN, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block LIGHT_BLUE_GLASS = BlockAndItemBuilder.create("light_blue_glass", new StainedGlassBlock(DyeColor.LIGHT_BLUE, AbstractBlock.Properties.of(Material.GLASS).strength(3.0F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block LIGHT_BLUE_GLASS_PANE = BlockAndItemBuilder.create("light_blue_glass_pane", new StainedGlassPaneBlock(DyeColor.LIGHT_BLUE, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block BLUE_GLASS = BlockAndItemBuilder.create("blue_glass", new StainedGlassBlock(DyeColor.BLUE, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block BLUE_GLASS_PANE = BlockAndItemBuilder.create("blue_glass_pane", new StainedGlassPaneBlock(DyeColor.BLUE, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block PURPLE_GLASS = BlockAndItemBuilder.create("purple_glass", new StainedGlassBlock(DyeColor.PURPLE, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block PURPLE_GLASS_PANE = BlockAndItemBuilder.create("purple_glass_pane", new StainedGlassPaneBlock(DyeColor.PURPLE, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block MAGENTA_GLASS = BlockAndItemBuilder.create("magenta_glass", new StainedGlassBlock(DyeColor.MAGENTA, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block MAGENTA_GLASS_PANE = BlockAndItemBuilder.create("magenta_glass_pane", new StainedGlassPaneBlock(DyeColor.MAGENTA, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block PINK_GLASS = BlockAndItemBuilder.create("pink_glass", new StainedGlassBlock(DyeColor.PINK, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block PINK_GLASS_PANE = BlockAndItemBuilder.create("pink_glass_pane", new StainedGlassPaneBlock(DyeColor.PINK, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block BROWN_GLASS = BlockAndItemBuilder.create("brown_glass", new StainedGlassBlock(DyeColor.BROWN, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));
-	public static final Block BROWN_GLASS_PANE = BlockAndItemBuilder.create("brown_glass_pane", new StainedGlassPaneBlock(DyeColor.BROWN, AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS)));	
-	
-	public static final Block RED_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.RED);
-	public static final Block ORANGE_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.ORANGE);
-	public static final Block YELLOW_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.YELLOW);
-	public static final Block LIME_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.LIME);
-	public static final Block GREEN_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.GREEN);
-	public static final Block CYAN_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.CYAN);
-	public static final Block BLUE_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.BLUE);
-	public static final Block LIGHT_BLUE_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.LIGHT_BLUE);
-	public static final Block PURPLE_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.PURPLE);
-	public static final Block MAGENTA_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.MAGENTA);
-	public static final Block PINK_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.PINK);
-	public static final Block BROWN_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.BROWN);
-	public static final Block GREY_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.GRAY);
-	public static final Block LIGHT_GREY_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.LIGHT_GRAY);
-	public static final Block WHITE_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.WHITE);
-	public static final Block BLACK_DECORATION_BLOCK = ColouredDecorationBlock.create(DyeColor.BLACK);
-
 	public static final Block GLASS_SIGN = BlockBuilder.create("glass_sign", new ModStandingSignBlock(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS), ModWoodType.GLASS));
 	public static final Block GLASS_WALL_SIGN = BlockBuilder.create("glass_wall_sign", new ModWallSignBlock(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS).dropsLike(BlockInit.GLASS_SIGN), ModWoodType.GLASS));
-	public static final Item GLASS_SIGN_ITEM = ModRegistry.register("glass_sign", new SignItem(new Properties().tab(ModUtils.LOST_WORLDS).stacksTo(16), GLASS_SIGN, GLASS_WALL_SIGN));
+	public static final Item GLASS_SIGN_ITEM = ModRegistry.register("glass_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), GLASS_SIGN, GLASS_WALL_SIGN));
 
 	public static final Block GLASS_SHOP_DOOR = BlockAndItemBuilder.create("glass_shop_door", new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));	
 	public static final Block INNOVATION_CENTRE_DOOR = BlockAndItemBuilder.create("innovation_centre_door", new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));
@@ -509,5 +431,12 @@ public class BlockInit
 	public static final Block PAVED_ROAD = BlockAndItemBuilder.create("paved_road", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.STONE)));
 	public static final Block RAISED_PAVED_ROAD = BlockAndItemBuilder.create("raised_paved_road", new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.STONE)));
 	
-	public static void init() { ModUtils.LOGGER.debug("Registering Mod Blocks"); }
+	public static void init() 
+	{
+		ModUtils.LOGGER.debug("Registering Mod Blocks"); 
+		
+		ColouredGlassBlock.create();
+		ColouredGlassPaneBlock.create();
+		ColouredDecorationBlock.create();
+	}
 }

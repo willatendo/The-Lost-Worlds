@@ -22,7 +22,7 @@ public class OxygenTankItem extends ArmorItem
 
 	public OxygenTankItem() 
 	{
-		super(ModArmourMaterial.OXYGEN_MASK, EquipmentSlotType.CHEST, new Properties().stacksTo(1).tab(ModUtils.LOST_WORLDS));
+		super(ModArmourMaterial.OXYGEN_MASK, EquipmentSlotType.CHEST, new Properties().stacksTo(1).tab(ModUtils.ITEMS));
 	}
 	
 	@Override

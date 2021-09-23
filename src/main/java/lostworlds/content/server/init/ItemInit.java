@@ -4,11 +4,12 @@ import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
 import lostworlds.library.block.Plants;
 import lostworlds.library.block.Trees;
+import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.TimeEras;
 import lostworlds.library.item.CrystalScarabGemItem;
 import lostworlds.library.item.FieldGuideItem;
-import lostworlds.library.item.ModBoneMealItem;
 import lostworlds.library.item.HammerItem;
+import lostworlds.library.item.ModBoneMealItem;
 import lostworlds.library.item.ModItem;
 import lostworlds.library.item.ModSpawnEggItem;
 import lostworlds.library.item.PlantDNAItem;
@@ -25,6 +26,7 @@ import lostworlds.library.item.tool.CrystalScarabGemBrushItem;
 import lostworlds.library.item.tool.ModItemTier;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.BannerPatternItem;
+import net.minecraft.item.Food;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.Properties;
@@ -37,7 +39,7 @@ import net.minecraft.item.SwordItem;
 
 public class ItemInit
 {	
-	public static final Item CRYSTAL_SCARAB_SWORD = ModRegistry.register("crystal_scarab_sword", new SwordItem(ModItemTier.CRYSTAL_SCARAB, 3, -2.4F, new Properties().tab(ModUtils.LOST_WORLDS).setNoRepair())
+	public static final Item CRYSTAL_SCARAB_SWORD = ModRegistry.register("crystal_scarab_sword", new SwordItem(ModItemTier.CRYSTAL_SCARAB, 3, -2.4F, new Properties().tab(ModUtils.ITEMS).setNoRepair())
 	{
 		@Override
 		public boolean isEnchantable(ItemStack stack) 
@@ -58,7 +60,7 @@ public class ItemInit
 		};
 	});
 	
-	public static final Item CRYSTAL_SCARAB_SHOVEL = ModRegistry.register("crystal_scarab_shovel", new ShovelItem(ModItemTier.CRYSTAL_SCARAB, 1.5F, -3.0F, new Properties().tab(ModUtils.LOST_WORLDS).setNoRepair())
+	public static final Item CRYSTAL_SCARAB_SHOVEL = ModRegistry.register("crystal_scarab_shovel", new ShovelItem(ModItemTier.CRYSTAL_SCARAB, 1.5F, -3.0F, new Properties().tab(ModUtils.ITEMS).setNoRepair())
 	{
 		@Override
 		public boolean isEnchantable(ItemStack stack) 
@@ -79,7 +81,7 @@ public class ItemInit
 		};
 	});
 	
-	public static final Item CRYSTAL_SCARAB_PICKAXE = ModRegistry.register("crystal_scarab_pickaxe", new PickaxeItem(ModItemTier.CRYSTAL_SCARAB, 1, -2.8F, new Properties().tab(ModUtils.LOST_WORLDS).setNoRepair())
+	public static final Item CRYSTAL_SCARAB_PICKAXE = ModRegistry.register("crystal_scarab_pickaxe", new PickaxeItem(ModItemTier.CRYSTAL_SCARAB, 1, -2.8F, new Properties().tab(ModUtils.ITEMS).setNoRepair())
 	{
 		@Override
 		public boolean isEnchantable(ItemStack stack) 
@@ -100,7 +102,7 @@ public class ItemInit
 		};
 	});
 	
-	public static final Item CRYSTAL_SCARAB_AXE = ModRegistry.register("crystal_scarab_axe", new AxeItem(ModItemTier.CRYSTAL_SCARAB, 6.0F, -3.2F, new Properties().tab(ModUtils.LOST_WORLDS).setNoRepair())
+	public static final Item CRYSTAL_SCARAB_AXE = ModRegistry.register("crystal_scarab_axe", new AxeItem(ModItemTier.CRYSTAL_SCARAB, 6.0F, -3.2F, new Properties().tab(ModUtils.ITEMS).setNoRepair())
 	{
 		@Override
 		public boolean isEnchantable(ItemStack stack) 
@@ -121,7 +123,7 @@ public class ItemInit
 		};
 	});
 	
-	public static final Item CRYSTAL_SCARAB_HOE = ModRegistry.register("crystal_scarab_hoe", new HoeItem(ModItemTier.CRYSTAL_SCARAB, 0, -3.0F, new Properties().tab(ModUtils.LOST_WORLDS).setNoRepair())
+	public static final Item CRYSTAL_SCARAB_HOE = ModRegistry.register("crystal_scarab_hoe", new HoeItem(ModItemTier.CRYSTAL_SCARAB, 0, -3.0F, new Properties().tab(ModUtils.ITEMS).setNoRepair())
 	{
 		@Override
 		public boolean isEnchantable(ItemStack stack) 
@@ -149,7 +151,7 @@ public class ItemInit
 	public static final Item NETHERITE_BRUSH = ModRegistry.register("netherite_brush", new BrushItem(ModItemTier.NETHERITE));
 	public static final Item CRYSTAL_SCARAB_BRUSH = ModRegistry.register("crystal_scarab_brush", new CrystalScarabGemBrushItem());
 	
-	public static final Item HAMMER = ModRegistry.register("hammer", new HammerItem(ItemTier.IRON, 6.0F, -3.1F, (new Item.Properties()).tab(ModUtils.LOST_WORLDS)));
+	public static final Item HAMMER = ModRegistry.register("hammer", new HammerItem(ItemTier.IRON, 6.0F, -3.1F, (new Item.Properties()).tab(ModUtils.ITEMS)));
 	
 	public static final Item CLOTH_MASK = ModRegistry.register("cloth_mask", new MaskItem(ModArmourMaterial.CLOTH_MASK));
 	
@@ -219,7 +221,7 @@ public class ItemInit
 	
 	public static final Item SCARAB_BANNER_PATTERN = ModRegistry.register("scarab_banner_pattern", new BannerPatternItem(BannerInit.SCARAB, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1)));
 	
-	public static final Item FOSSIL_POACHER_SPAWN_EGG = ModRegistry.register("fossil_poacher_spawn_egg", new ModSpawnEggItem(() -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031, ModUtils.LOST_WORLDS));
+	public static final Item FOSSIL_POACHER_SPAWN_EGG = ModRegistry.register("fossil_poacher_spawn_egg", new ModSpawnEggItem(() -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031, ModUtils.ITEMS));
 	
 	public static void init() 
 	{
@@ -227,8 +229,22 @@ public class ItemInit
 		
 		CrystalScarabGemItem.createAll();
 		
-		for(Plants plants : Plants.values())
+		for(DinoTypes dinos : DinoTypes.values())
 		{
+			ModRegistry.register(dinos.name().toLowerCase() + "_rib_cage", new ModItem());
+			ModRegistry.register(dinos.name().toLowerCase() + "_leg_bones", new ModItem());
+			ModRegistry.register(dinos.name().toLowerCase() + "_arm_bones", new ModItem());
+			ModRegistry.register(dinos.name().toLowerCase() + "_foot_bone", new ModItem());
+			ModRegistry.register(dinos.name().toLowerCase() + "_skull", new ModItem());
+			ModRegistry.register(dinos.name().toLowerCase() + "_special", new ModItem());
+			ModRegistry.register(dinos.name().toLowerCase() + "_spawn_egg", new ModSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), ModUtils.ITEMS));
+			ModRegistry.register(dinos.name().toLowerCase() + "_egg", new ModItem());
+			ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_meat", new Item(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())));
+			ModRegistry.register("cooked_" + dinos.name().toLowerCase() + "_meat", new Item(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build())));
+		}
+		
+		for(Plants plants : Plants.values())
+		{	
 			Item fossil = ModRegistry.register(plants.toString().toLowerCase() + "_fossil", new ModItem());
 			ModRegistry.register(plants.toString().toLowerCase() + "_soft_tissue", new PlantSoftTissueItem());
 			ModRegistry.register(plants.toString().toLowerCase() + "_dna", new PlantDNAItem());		

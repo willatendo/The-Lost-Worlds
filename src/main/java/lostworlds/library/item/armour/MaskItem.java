@@ -9,6 +9,6 @@ public class MaskItem extends ArmorItem
 {	
 	public MaskItem(IArmorMaterial material) 
 	{
-		super(material, EquipmentSlotType.HEAD, new Properties().tab(ModUtils.LOST_WORLDS));
+		super(material, EquipmentSlotType.HEAD, new Properties().tab(ModUtils.ITEMS));
 	}
 }

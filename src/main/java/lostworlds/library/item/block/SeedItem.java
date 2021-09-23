@@ -35,7 +35,7 @@ public class SeedItem extends Item
 
 	public SeedItem(Block block) 
 	{
-		super(new Properties().tab(ModUtils.LOST_WORLDS));
+		super(new Properties().tab(ModUtils.BLOCKS));
 		this.block = block;
 	}
 

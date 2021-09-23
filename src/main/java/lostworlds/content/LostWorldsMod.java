@@ -39,7 +39,7 @@ import software.bernie.geckolib3.GeckoLib;
 
 @Mod(ModUtils.ID)
 public class LostWorldsMod 
-{			
+{
 	public LostWorldsMod() 
 	{		
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -64,9 +64,10 @@ public class LostWorldsMod
 	private void commonSetup(FMLCommonSetupEvent event)
 	{		
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(BlockInit.VOLCANIC_ASH.asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), PotionInit.ASHY_LUNG_POTION));
-				
-		ModUtils.LOST_WORLDS.setIcon(ItemInit.ALETHOPTERIS_FOSSIL.getDefaultInstance());
 		
+		ModUtils.ITEMS.setIcon(ItemInit.AMBER.getDefaultInstance());
+		ModUtils.BLOCKS.setIcon(BlockInit.DARK_CONCRETE.asItem().getDefaultInstance());
+				
 		event.enqueueWork(() -> 
 		{
 			StructurePieceInit.registerBiomeGeneration();

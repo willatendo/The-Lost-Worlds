@@ -7,6 +7,6 @@ public class PlantDNAItem extends Item
 {
 	public PlantDNAItem() 
 	{
-		super(new Properties().tab(ModUtils.LOST_WORLDS));
+		super(new Properties().tab(ModUtils.ITEMS));
 	}
 }

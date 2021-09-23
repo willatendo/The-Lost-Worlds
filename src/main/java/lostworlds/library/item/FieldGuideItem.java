@@ -16,13 +16,13 @@ public class FieldGuideItem extends ModItem
 {
 	public FieldGuideItem() 
 	{
-		super(new Properties().tab(ModUtils.LOST_WORLDS).stacksTo(1));
+		super(new Properties().tab(ModUtils.ITEMS).stacksTo(1));
 	}
-
+	
 	@Override
 	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> toolTip, ITooltipFlag flag) 
 	{
-		toolTip.add(ModUtils.gTC("toolTip", "field_guide"));
+		toolTip.add(ModUtils.gTC("item", "field_guide.desc"));
 	}
 	
 	@Override

@@ -17,6 +17,9 @@ import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.TileEntityInit;
+import lostworlds.library.block.ColouredGlassBlock;
+import lostworlds.library.block.ColouredGlassPaneBlock;
+import net.minecraft.block.Block;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -75,45 +78,16 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_SAPLING, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.SCORCHED_DOOR, RenderType.translucent());	
 		RenderTypeLookup.setRenderLayer(BlockInit.SCORCHED_TRAPDOOR, RenderType.translucent());
-
-		RenderTypeLookup.setRenderLayer(BlockInit.TINTED_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.TINTED_GLASS_PANE, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.CLEAR_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.CLEAR_GLASS_PANE, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.WHITE_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.WHITE_GLASS_PANE, RenderType.translucent());		
-		RenderTypeLookup.setRenderLayer(BlockInit.LIGHT_GREY_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.LIGHT_GREY_GLASS_PANE, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.GREY_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.GREY_GLASS_PANE, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.BLACK_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.BLACK_GLASS_PANE, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.RED_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.RED_GLASS_PANE, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.ORANGE_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.ORANGE_GLASS_PANE, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.YELLOW_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.YELLOW_GLASS_PANE, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.LIME_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.LIME_GLASS_PANE, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.GREEN_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.GREEN_GLASS_PANE, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.CYAN_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.CYAN_GLASS_PANE, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.LIGHT_BLUE_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.LIGHT_BLUE_GLASS_PANE, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.BLUE_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.BLUE_GLASS_PANE, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.PURPLE_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.PURPLE_GLASS_PANE, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.MAGENTA_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.MAGENTA_GLASS_PANE, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.PINK_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.PINK_GLASS_PANE, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.BROWN_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.BROWN_GLASS_PANE, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.SHADED_GLASS, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.SHADED_GLASS_PANE, RenderType.translucent());
+		
+		for(Block block : ColouredGlassPaneBlock.entries)
+		{
+			RenderTypeLookup.setRenderLayer(block, RenderType.translucent());
+		}
+		
+		for(Block block : ColouredGlassBlock.entries)
+		{
+			RenderTypeLookup.setRenderLayer(block, RenderType.translucent());
+		}	
 		
 		RenderTypeLookup.setRenderLayer(BlockInit.OUTDOOR_TOILET_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.GLASS_SHOP_DOOR, RenderType.translucent());
@@ -139,5 +113,5 @@ public class ClientSetup
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS, manager -> new ChilesaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS, manager -> new KentrosaurusRenderer(manager));
-}
+	}
 }

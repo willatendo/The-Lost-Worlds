@@ -14,6 +14,6 @@ public class DebugBlockItemBuilder extends BlockItem
 	
 	private static Properties determineProperties()
 	{
-		return FMLEnvironment.production ? new Properties() : new Properties().tab(ModUtils.LOST_WORLDS);
+		return FMLEnvironment.production ? new Properties() : new Properties().tab(ModUtils.BLOCKS);
 	}
 }

@@ -7,10 +7,9 @@ import net.minecraft.item.ItemGroup;
 
 public class ModItem extends Item
 {
-	
 	public ModItem() 
 	{
-		this(ModUtils.LOST_WORLDS);
+		this(ModUtils.ITEMS);
 	}
 	
 	public ModItem(ItemGroup group) 
@@ -20,7 +19,7 @@ public class ModItem extends Item
 	
 	public ModItem(Food food) 
 	{
-		this(new Properties().tab(ModUtils.LOST_WORLDS).food(food));
+		this(new Properties().tab(ModUtils.ITEMS).food(food));
 	}
 	
 	public ModItem(Properties properties) 

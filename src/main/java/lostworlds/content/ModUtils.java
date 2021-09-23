@@ -26,7 +26,8 @@ public class ModUtils
 		
 	public static final String ID = "lostworlds";
 
-	public static final ModTab LOST_WORLDS = new ModTab();
+	public static final ModTab ITEMS = new ModTab("items");
+	public static final ModTab BLOCKS = new ModTab("block");
 	
 	public static ImmutableSet<Block> permianCarverBlocks()
 	{

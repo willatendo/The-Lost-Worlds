@@ -15,8 +15,11 @@ public class ColouredDecorationBlock extends Block
 		super(AbstractBlock.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL));
 	}
 
-	public static Block create(DyeColor colour)
+	public static void create()
 	{
-		return BlockAndItemBuilder.create(colour == DyeColor.GRAY ? "grey_decoration_block" : colour == DyeColor.LIGHT_GRAY ? "light_grey_decoration_block" : colour.getName().toLowerCase() + "_decoration_block", new ColouredDecorationBlock());
+		for(DyeColor colour : DyeColor.values())
+		{
+			BlockAndItemBuilder.create(colour.getName().toLowerCase() + "_decoration_block", new ColouredDecorationBlock());
+		}
 	}
 }

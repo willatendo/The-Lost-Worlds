@@ -35,7 +35,7 @@ public class TimeBookItem extends ShootableItem
 	
 	public TimeBookItem(TimeEras eras, RegistryKey<World> world)
 	{
-		super(new Properties().tab(ModUtils.LOST_WORLDS).stacksTo(1).rarity(Rarity.RARE).fireResistant());
+		super(new Properties().tab(ModUtils.ITEMS).stacksTo(1).rarity(Rarity.RARE).fireResistant());
 		this.era = eras;
 		this.worldToTransportTo = world;
 	}

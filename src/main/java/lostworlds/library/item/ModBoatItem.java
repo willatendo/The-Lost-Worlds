@@ -27,7 +27,7 @@ public class ModBoatItem extends Item
 
 	public ModBoatItem(ModBoatType type) 
 	{
-		super(new Properties().stacksTo(1).tab(ModUtils.LOST_WORLDS));
+		super(new Properties().stacksTo(1).tab(ModUtils.ITEMS));
 		this.type = type;
 	}
 

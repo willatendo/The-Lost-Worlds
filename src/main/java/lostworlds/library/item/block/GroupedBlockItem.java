@@ -8,6 +8,6 @@ public class GroupedBlockItem extends BlockItem
 {
 	public GroupedBlockItem(Block block) 
 	{
-		super(block, new Properties().tab(ModUtils.LOST_WORLDS));
+		super(block, new Properties().tab(ModUtils.BLOCKS));
 	}
 }

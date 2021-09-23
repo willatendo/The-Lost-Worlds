@@ -14,7 +14,7 @@ public class TabletItem extends ModItem
 {
 	public TabletItem() 
 	{
-		super(new Properties().tab(ModUtils.LOST_WORLDS).stacksTo(1));
+		super(new Properties().tab(ModUtils.ITEMS).stacksTo(1));
 	}
 	
 	@Override

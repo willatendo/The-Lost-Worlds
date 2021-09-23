@@ -8,9 +8,9 @@ public class ModTab extends ItemGroup
 {
 	private ItemStack icon;
 
-	public ModTab() 
+	public ModTab(String id) 
 	{
-		super(getGroupCountSafe(), ModUtils.ID + ".lost_worlds");
+		super(getGroupCountSafe(), ModUtils.ID + "." + id);
 	}
 
 	@Override

@@ -7,6 +7,6 @@ public class ModBoneMealItem extends BoneMealItem
 {	
 	public ModBoneMealItem() 
 	{
-		super(new Properties().tab(ModUtils.LOST_WORLDS));
+		super(new Properties().tab(ModUtils.ITEMS));
 	}
 }
