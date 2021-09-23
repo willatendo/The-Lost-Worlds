@@ -14,6 +14,7 @@ import lostworlds.library.item.ModItem;
 import lostworlds.library.item.ModSpawnEggItem;
 import lostworlds.library.item.PlantDNAItem;
 import lostworlds.library.item.PlantDiscItem;
+import lostworlds.library.item.PlantFossilItem;
 import lostworlds.library.item.PlantSoftTissueItem;
 import lostworlds.library.item.TabletItem;
 import lostworlds.library.item.TimeBookItem;
@@ -245,10 +246,10 @@ public class ItemInit
 		
 		for(Plants plants : Plants.values())
 		{	
-			Item fossil = ModRegistry.register(plants.toString().toLowerCase() + "_fossil", new ModItem());
-			ModRegistry.register(plants.toString().toLowerCase() + "_soft_tissue", new PlantSoftTissueItem());
-			ModRegistry.register(plants.toString().toLowerCase() + "_dna", new PlantDNAItem());		
-			ModRegistry.register(plants.toString().toLowerCase() + "_dna_disc", new PlantDiscItem());
+			Item fossil = ModRegistry.register(plants.toString().toLowerCase() + "_fossil", new PlantFossilItem(plants.toString().toLowerCase()));
+			ModRegistry.register(plants.toString().toLowerCase() + "_soft_tissue", new PlantSoftTissueItem(plants.toString().toLowerCase()));
+			ModRegistry.register(plants.toString().toLowerCase() + "_dna", new PlantDNAItem(plants.toString().toLowerCase()));		
+			ModRegistry.register(plants.toString().toLowerCase() + "_dna_disc", new PlantDiscItem(plants.toString().toLowerCase()));
 			if(plants == Plants.ALETHOPTERIS)
 			{
 				ALETHOPTERIS_FOSSIL = fossil;
@@ -298,9 +299,9 @@ public class ItemInit
 		
 		for(Trees trees : Trees.values())
 		{
-			ModRegistry.register(trees.toString().toLowerCase() + "_soft_tissue", new PlantSoftTissueItem());
-			ModRegistry.register(trees.toString().toLowerCase() + "_dna", new PlantDNAItem());		
-			ModRegistry.register(trees.toString().toLowerCase() + "_dna_disc", new PlantDiscItem());
+			ModRegistry.register(trees.toString().toLowerCase() + "_soft_tissue", new PlantSoftTissueItem(trees.toString().toLowerCase()));
+			ModRegistry.register(trees.toString().toLowerCase() + "_dna", new PlantDNAItem(trees.toString().toLowerCase()));		
+			ModRegistry.register(trees.toString().toLowerCase() + "_dna_disc", new PlantDiscItem(trees.toString().toLowerCase()));
 		}
 	}
 }

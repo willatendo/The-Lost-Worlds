@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/cube_all",
 	"textures": {
-		"all": "lostworlds:blocks/paved_road"
+		"all": "lostworlds:block/paved_road"
 	}
 }

@@ -1,8 +1,8 @@
 {
 	"parent": "minecraft:block/stairs",
 	"textures": {
-		"bottom": "lostworlds:blocks/tile",
-		"top": "lostworlds:blocks/tile",
-		"side": "lostworlds:blocks/tile"
+		"bottom": "lostworlds:block/tile",
+		"top": "lostworlds:block/tile",
+		"side": "lostworlds:block/tile"
 	}
 }

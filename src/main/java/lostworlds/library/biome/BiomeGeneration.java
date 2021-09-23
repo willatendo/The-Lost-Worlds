@@ -70,7 +70,6 @@ public class BiomeGeneration
 		if(LostWorldsConfig.COMMON_CONFIG.petrifiedConiferTreeShouldSpawn.get())
 		{
 			generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.PETRIFIED_CONIFER);
-			
 		}
 		
 		if(LostWorldsConfig.COMMON_CONFIG.petrifiedGinkgoTreeShouldSpawn.get())

@@ -1,12 +1,25 @@
 package lostworlds.library.item;
 
-import lostworlds.content.ModUtils;
-import net.minecraft.item.Item;
+import java.util.List;
 
-public class PlantDiscItem extends Item
+import lostworlds.content.ModUtils;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.World;
+
+public class PlantDiscItem extends ModItem
 {
-	public PlantDiscItem() 
+	private final String name;
+	
+	public PlantDiscItem(String name) 
 	{
-		super(new Properties().tab(ModUtils.ITEMS));
+		this.name = name;
+	}
+	
+	@Override
+	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> toolTip, ITooltipFlag flag)
+	{
+		toolTip.add(ModUtils.gTC("item", this.name + "_dna_disc.desc"));
 	}
 }

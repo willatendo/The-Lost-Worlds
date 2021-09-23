@@ -82,6 +82,7 @@ public class ModConfiguredFeatures
 
 	//Ores
 	public static final ConfiguredFeature<?, ?> COPPER_ORE = register("copper_ore", Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockInit.COPPER_ORE.defaultBlockState(), LostWorldsConfig.COMMON_CONFIG.copperVeinSize.get())).range(LostWorldsConfig.COMMON_CONFIG.copperRange.get()).squared().count(LostWorldsConfig.COMMON_CONFIG.copperCountPerChunk.get()));
+	public static final ConfiguredFeature<?, ?> SILT_PATCH = register("silt_patch", Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockInit.SILT.defaultBlockState(), LostWorldsConfig.COMMON_CONFIG.siltVeinSize.get())).range(LostWorldsConfig.COMMON_CONFIG.siltRange.get()).squared().count(LostWorldsConfig.COMMON_CONFIG.siltCountPerChunk.get()));
 
 	public static final ConfiguredFeature<?, ?> PETRIFIED_ARAUCARIA = register("petrified_araucaria", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.STONE.defaultBlockState(), BlockInit.PETRIFIED_ARAUCARIA_LOG.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE)));
 	public static final ConfiguredFeature<?, ?> PETRIFIED_CALAMITES = register("petrified_calamties", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.STONE.defaultBlockState(), BlockInit.PETRIFIED_CALAMITES_LOG.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE)));

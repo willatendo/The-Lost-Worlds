@@ -1,7 +1,7 @@
 {
 	"parent": "minecraft:block/cube_column",
 	"textures": {
-		"end": "lostworlds:blocks/diictodon_burrow_top",
-		"side": "lostworlds:blocks/permian_sand"
+		"end": "lostworlds:block/diictodon_burrow",
+		"side": "lostworlds:block/permian_sand"
 	}
 }

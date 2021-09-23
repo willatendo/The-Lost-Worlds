@@ -1,10 +1,10 @@
 {
 	"textures": {
-		"0": "lostworlds:blocks/mud",
+		"0": "lostworlds:block/mud",
 		"1": "block/dark_oak_log",
 		"2": "block/dirt",
 		"3": "block/spruce_log",
-		"particle": "lostworlds:blocks/mud"
+		"particle": "lostworlds:block/mud"
 	},
 	"elements": [
 		{

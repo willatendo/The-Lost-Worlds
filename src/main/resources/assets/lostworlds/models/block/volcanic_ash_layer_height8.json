@@ -1,8 +1,8 @@
 {
 	"parent": "block/thin_block",
 	"textures": {
-		"particle": "lostworlds:blocks/volcanic_ash",
-		"texture": "lostworlds:blocks/volcanic_ash"
+		"particle": "lostworlds:block/volcanic_ash",
+		"texture": "lostworlds:block/volcanic_ash"
 	},
 	"elements": [
 		{

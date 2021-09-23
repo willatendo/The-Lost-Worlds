@@ -35,7 +35,7 @@ public class SeedItem extends Item
 
 	public SeedItem(Block block) 
 	{
-		super(new Properties().tab(ModUtils.BLOCKS));
+		super(new Properties().tab(ModUtils.ITEMS));
 		this.block = block;
 	}
 

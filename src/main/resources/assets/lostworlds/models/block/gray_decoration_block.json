@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/cube_all",
 	"textures": {
-		"all": "lostworlds:blocks/gray_decoration_block"
+		"all": "lostworlds:block/gray_decoration_block"
 	}
 }

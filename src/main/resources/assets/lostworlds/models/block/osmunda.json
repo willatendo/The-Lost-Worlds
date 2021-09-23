@@ -1,9 +1,8 @@
 {
-	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "lostworlds:blocks/osmunda_large_leaves",
-		"1": "lostworlds:blocks/osmunda_small_leaves",
-		"particle": "lostworlds:blocks/osmunda_large_leaves"
+		"0": "lostworlds:block/osmunda_large_leaves",
+		"1": "lostworlds:block/osmunda_small_leaves",
+		"particle": "lostworlds:block/osmunda_small_leaves"
 	},
 	"elements": [
 		{

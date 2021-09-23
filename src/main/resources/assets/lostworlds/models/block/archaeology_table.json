@@ -1,11 +1,11 @@
 {
 	"textures": {
-		"0": "lostworlds:blocks/archaeology_table_bottom",
-		"1": "lostworlds:blocks/archaeology_table_side",
-		"2": "lostworlds:blocks/archaeology_table_top",
-		"3": "lostworlds:blocks/archaeology_table_side_north",
+		"0": "lostworlds:block/archaeology_table_bottom",
+		"1": "lostworlds:block/archaeology_table_side",
+		"2": "lostworlds:block/archaeology_table_top",
+		"3": "lostworlds:block/archaeology_table_side_north",
 		"4": "block/bookshelf",
-		"particle": "lostworlds:blocks/archaeology_table_bottom"
+		"particle": "lostworlds:block/archaeology_table_bottom"
 	},
 	"elements": [
 		{
