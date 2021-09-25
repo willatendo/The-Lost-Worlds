@@ -4,11 +4,11 @@ import javax.annotation.Nullable;
 
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lostworlds.content.ModUtils;
-import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.RecipeInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.FossilGrinderBlock;
 import lostworlds.library.container.FossilGrinderContainer;
+import lostworlds.library.item.ModBoneMealItem;
 import lostworlds.library.recipe.FossilGrinderRecipe;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -219,9 +219,9 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 			{
 				ItemStack slot1 = this.items.get(1);
 				ItemStack slot2 = this.items.get(2);
-				if(result == ItemInit.PLANT_WASTE.getDefaultInstance() || result == ItemInit.GROUND_FOSSIL.getDefaultInstance())
+				if(result.getItem() instanceof ModBoneMealItem)
 				{
-					if(slot1.isEmpty() || slot2.isEmpty()) 
+					if(slot2.isEmpty()) 
 					{
 						return true;
 					}
@@ -240,7 +240,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 				}
 				else
 				{
-					if(slot1.isEmpty() || slot2.isEmpty()) 
+					if(slot1.isEmpty()) 
 					{
 						return true;
 					}
@@ -273,7 +273,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 			ItemStack result = recipe.getResultItem();
 			ItemStack slot1 = this.items.get(1);
 			ItemStack slot2 = this.items.get(2);
-			if(result == ItemInit.PLANT_WASTE.getDefaultInstance() || result == ItemInit.GROUND_FOSSIL.getDefaultInstance())
+			if(result.getItem() instanceof ModBoneMealItem)
 			{
 				if(slot2.isEmpty()) 
 				{

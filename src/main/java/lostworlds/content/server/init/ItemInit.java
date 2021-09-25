@@ -196,16 +196,6 @@ public class ItemInit
 	public static final Item CONIFER_BARK_SAMPLE = ModRegistry.register("conifer_bark_sample", new ModItem());
 	public static final Item GINKGO_BARK_SAMPLE = ModRegistry.register("ginkgo_bark_sample", new ModItem());
 	
-	public static Item ALETHOPTERIS_FOSSIL;
-	public static Item BRAZILEA_FOSSIL;
-	public static Item CALAMITES_SUCKOWII_FOSSIL;
-	public static Item CEPHALOTAXUS_FOSSIL;
-	public static Item DILLHOFFIA_FOSSIL;
-	public static Item DUISBERGIA_FOSSIL;
-	public static Item OSMUNDA_FOSSIL;
-	public static Item WILLIAMSONIA_FOSSIL;
-	public static Item ZAMITES_FOSSIL;
-	
 	public static final Item EMPTY_VILE = ModRegistry.register("empty_vile", new ModItem());
 	
 	public static final Item AMBER_KEYCHAIN = ModRegistry.register("amber_keychain", new ModItem());
@@ -246,55 +236,12 @@ public class ItemInit
 		
 		for(Plants plants : Plants.values())
 		{	
-			Item fossil = ModRegistry.register(plants.toString().toLowerCase() + "_fossil", new PlantFossilItem(plants.toString().toLowerCase()));
+			Item item = ModRegistry.register(plants.toString().toLowerCase() + "_fossil", new PlantFossilItem(plants.toString().toLowerCase()));
+			plants.setDrop(item);
 			ModRegistry.register(plants.toString().toLowerCase() + "_soft_tissue", new PlantSoftTissueItem(plants.toString().toLowerCase()));
 			ModRegistry.register(plants.toString().toLowerCase() + "_dna", new PlantDNAItem(plants.toString().toLowerCase()));		
 			ModRegistry.register(plants.toString().toLowerCase() + "_dna_disc", new PlantDiscItem(plants.toString().toLowerCase()));
-			if(plants == Plants.ALETHOPTERIS)
-			{
-				ALETHOPTERIS_FOSSIL = fossil;
-				SeedItem.create(plants.toString().toLowerCase(), BlockInit.ALETHOPTERIS);
-			}
-			if(plants == Plants.BRAZILEA)
-			{
-				BRAZILEA_FOSSIL = fossil;
-				SeedItem.create(plants.toString().toLowerCase(), BlockInit.BRAZILEA);
-			}
-			if(plants == Plants.CALAMITES_SUCKOWII)
-			{
-				CALAMITES_SUCKOWII_FOSSIL = fossil;
-				SeedItem.create(plants.toString().toLowerCase(), BlockInit.CALAMITES_SUCKOWII);
-			}
-			if(plants == Plants.CEPHALOTAXUS)
-			{
-				CEPHALOTAXUS_FOSSIL = fossil;
-				SeedItem.create(plants.toString().toLowerCase(), BlockInit.CEPHALOTAXUS);
-			}
-			if(plants == Plants.DILLHOFFIA)
-			{
-				DILLHOFFIA_FOSSIL = fossil;
-				SeedItem.create(plants.toString().toLowerCase(), BlockInit.DILLHOFFIA);
-			}
-			if(plants == Plants.DUISBERGIA)
-			{
-				DUISBERGIA_FOSSIL = fossil;
-				SeedItem.create(plants.toString().toLowerCase(), BlockInit.DUISBERGIA);
-			}
-			if(plants == Plants.OSMUNDA)
-			{
-				OSMUNDA_FOSSIL = fossil;
-				SeedItem.create(plants.toString().toLowerCase(), BlockInit.OSMUNDA);
-			}
-			if(plants == Plants.WILLIAMSONIA)
-			{
-				WILLIAMSONIA_FOSSIL = fossil;
-				SeedItem.create(plants.toString().toLowerCase(), BlockInit.WILLIAMSONIA);
-			}
-			if(plants == Plants.ZAMITES)
-			{
-				ZAMITES_FOSSIL = fossil;
-				SeedItem.create(plants.toString().toLowerCase(), BlockInit.ZAMITES);
-			}
+			SeedItem.create(plants.toString().toLowerCase(), plants.getPlant());
 		}
 		
 		for(Trees trees : Trees.values())
