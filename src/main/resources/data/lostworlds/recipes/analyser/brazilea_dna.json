@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:analyser",
-	"output": {
-		"item": "lostworlds:brazilea_dna_disc"
-	},
-	"dna": {
-		"item": "lostworlds:brazilea_dna"
-	}
-}

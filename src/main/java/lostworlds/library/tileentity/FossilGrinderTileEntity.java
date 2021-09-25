@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lostworlds.content.ModUtils;
+import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.RecipeInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.FossilGrinderBlock;
@@ -207,35 +208,58 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 	
 	protected boolean canGrindWith(@Nullable IRecipe<?> recipe) 
 	{
-		if(!this.items.get(0).isEmpty() && recipe != null) 
+		if(!this.items.get(0).isEmpty() && recipe != null)
 		{
-			ItemStack itemstack = recipe.getResultItem();
-			if(itemstack.isEmpty()) 
+			ItemStack result = recipe.getResultItem();
+			if(result.isEmpty())
 			{
 				return false;
-			} 
-			else 
+			}
+			else
 			{
-				ItemStack itemstack1 = this.items.get(1);
-				if(itemstack1.isEmpty()) 
+				ItemStack slot1 = this.items.get(1);
+				ItemStack slot2 = this.items.get(2);
+				if(result == ItemInit.PLANT_WASTE.getDefaultInstance() || result == ItemInit.GROUND_FOSSIL.getDefaultInstance())
 				{
-					return true;
+					if(slot1.isEmpty() || slot2.isEmpty()) 
+					{
+						return true;
+					}
+					else if(!slot2.sameItem(result)) 
+					{
+						return false;
+					} 
+					else if(slot2.getCount() + result.getCount() <= this.getMaxStackSize() && slot2.getCount() + result.getCount() <= slot2.getMaxStackSize()) 
+					{
+						return true;
+					}
+					else 
+					{
+						return slot2.getCount() + result.getCount() <= result.getMaxStackSize(); 
+					}
 				}
-				else if(!itemstack1.sameItem(itemstack)) 
+				else
 				{
-					return false;
-				} 
-				else if(itemstack1.getCount() + itemstack.getCount() <= this.getMaxStackSize() && itemstack1.getCount() + itemstack.getCount() <= itemstack1.getMaxStackSize()) 
-				{
-					return true;
-				} 
-				else 
-				{
-					return itemstack1.getCount() + itemstack.getCount() <= itemstack.getMaxStackSize(); 
+					if(slot1.isEmpty() || slot2.isEmpty()) 
+					{
+						return true;
+					}
+					else if(!slot1.sameItem(result)) 
+					{
+						return false;
+					}
+					else if(slot1.getCount() + result.getCount() <= this.getMaxStackSize() && slot1.getCount() + result.getCount() <= slot1.getMaxStackSize()) 
+					{
+						return true;
+					} 
+					else 
+					{
+						return slot1.getCount() + result.getCount() <= result.getMaxStackSize(); 
+					}
 				}
 			}
-		} 
-		else 
+		}
+		else
 		{
 			return false;
 		}
@@ -246,15 +270,30 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 		if(recipe != null && this.canGrindWith(recipe)) 
 		{
 			ItemStack fossil = this.items.get(0);
-			ItemStack itemstack1 = recipe.getResultItem();
-			ItemStack itemstack2 = this.items.get(1);
-			if(itemstack2.isEmpty()) 
+			ItemStack result = recipe.getResultItem();
+			ItemStack slot1 = this.items.get(1);
+			ItemStack slot2 = this.items.get(2);
+			if(result == ItemInit.PLANT_WASTE.getDefaultInstance() || result == ItemInit.GROUND_FOSSIL.getDefaultInstance())
 			{
-				this.items.set(1, itemstack1.copy());
-			} 
-			else if(itemstack2.getItem() == itemstack1.getItem()) 
+				if(slot2.isEmpty()) 
+				{
+					this.items.set(2, result.copy());
+				}
+				else if(slot2.getItem() == result.getItem()) 
+				{
+					slot2.grow(result.getCount());
+				}
+			}
+			else
 			{
-				itemstack2.grow(itemstack1.getCount());
+				if(slot1.isEmpty()) 
+				{
+					this.items.set(1, result.copy());
+				}
+				else if(slot1.getItem() == result.getItem()) 
+				{
+					slot1.grow(result.getCount());
+				}
 			}
 			
 			if(!this.level.isClientSide) 
@@ -296,35 +335,35 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 	}
 	
 	@Override
-	public ItemStack getItem(int i) 
+	public ItemStack getItem(int slot) 
 	{
-		return this.items.get(i);
+		return this.items.get(slot);
 	}
 	
 	@Override
-	public ItemStack removeItem(int i1, int i2) 
+	public ItemStack removeItem(int slot1, int slot2) 
 	{
-		return ItemStackHelper.removeItem(this.items, i1, i2);
+		return ItemStackHelper.removeItem(this.items, slot1, slot2);
 	}
 	
 	@Override
-	public ItemStack removeItemNoUpdate(int i) 
+	public ItemStack removeItemNoUpdate(int slot) 
 	{
-		return ItemStackHelper.takeItem(this.items, i);
+		return ItemStackHelper.takeItem(this.items, slot);
 	}
 	
 	@Override
-	public void setItem(int i, ItemStack stack) 
+	public void setItem(int slot, ItemStack stack) 
 	{
-		ItemStack itemstack = this.items.get(i);
+		ItemStack itemstack = this.items.get(slot);
 		boolean flag = !stack.isEmpty() && stack.sameItem(itemstack) && ItemStack.tagMatches(stack, itemstack);
-		this.items.set(i, stack);
+		this.items.set(slot, stack);
 		if(stack.getCount() > this.getMaxStackSize()) 
 		{
 			stack.setCount(this.getMaxStackSize());
 		}
 		
-		if (i == 0 && !flag) 
+		if (slot == 0 && !flag) 
 		{
 			this.grindingTotalTime = this.getTotalGrindTime();
 			this.grindingProgress = 0;
@@ -346,9 +385,9 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 	}
 	
 	@Override
-	public boolean canPlaceItem(int i, ItemStack stack) 
+	public boolean canPlaceItem(int slot, ItemStack stack) 
 	{
-		if(i == 1) 
+		if(slot == 1 || slot == 2) 
 		{
 			return false;
 		} 

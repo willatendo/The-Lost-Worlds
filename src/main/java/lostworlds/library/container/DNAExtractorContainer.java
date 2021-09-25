@@ -7,13 +7,13 @@ import lostworlds.content.server.init.RecipeInit;
 import lostworlds.library.block.DNAExtractorBlock;
 import lostworlds.library.recipe.DNAExtractorRecipe;
 import lostworlds.library.slot.DNAExtractorInputSlot;
+import lostworlds.library.slot.ResultSlot;
 import lostworlds.library.slot.VileSlot;
 import lostworlds.library.tileentity.DNAExtractorTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.FurnaceResultSlot;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;
@@ -43,7 +43,7 @@ public class DNAExtractorContainer extends Container
 		
 		this.addSlot(new DNAExtractorInputSlot(tile, 0, 56, 25));
 		this.addSlot(new VileSlot(tile, 1, 56, 45));
-		this.addSlot(new FurnaceResultSlot(playerInv.player, tile, 2, 116, 35));
+		this.addSlot(new ResultSlot(playerInv.player, tile, 2, 116, 35));
 		
 		for(int i = 0; i < 3; ++i) 
 		{

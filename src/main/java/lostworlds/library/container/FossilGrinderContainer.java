@@ -6,13 +6,13 @@ import lostworlds.content.server.init.ContainerInit;
 import lostworlds.content.server.init.RecipeInit;
 import lostworlds.library.block.FossilGrinderBlock;
 import lostworlds.library.recipe.FossilGrinderRecipe;
+import lostworlds.library.slot.ResultSlot;
 import lostworlds.library.tileentity.FossilGrinderTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.FurnaceResultSlot;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;
@@ -41,7 +41,8 @@ public class FossilGrinderContainer extends Container
 		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 		
 		this.addSlot(new Slot(tile, 0, 53, 35));
-		this.addSlot(new FurnaceResultSlot(playerInv.player, tile, 1, 116, 35));
+		this.addSlot(new ResultSlot(playerInv.player, tile, 1, 116, 35));
+		this.addSlot(new ResultSlot(playerInv.player, tile, 2, 139, 35));
 		
 		for(int i = 0; i < 3; ++i) 
 		{
@@ -81,70 +82,6 @@ public class FossilGrinderContainer extends Container
 	{
 		return this.canInteractWithCallable.evaluate((world, blockPos) -> world.getBlockState(blockPos).getBlock() instanceof FossilGrinderBlock && playerIn.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
     }
-	
-	@Override
-	public ItemStack quickMoveStack(PlayerEntity player, int i) 
-	{
-		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = this.slots.get(i);
-		if(slot != null && slot.hasItem()) 
-		{
-			ItemStack itemstack1 = slot.getItem();
-			itemstack = itemstack1.copy();
-			if(i == 1) 
-			{
-				if(!this.moveItemStackTo(itemstack1, 2, 38, true)) 
-				{
-					return ItemStack.EMPTY;
-				}
-				
-				slot.onQuickCraft(itemstack1, itemstack);
-			}
-			else if(i != 0) 
-			{
-				if(canGrind(itemstack1)) 
-				{
-					if(!this.moveItemStackTo(itemstack1, 0, 1, false)) 
-					{
-						return ItemStack.EMPTY;
-					}
-				}
-				else if(i >= 2 && i < 29) 
-				{
-					if(!this.moveItemStackTo(itemstack1, 29, 38, false)) 
-					{
-						return ItemStack.EMPTY;
-					}
-				} 
-				else if(i >= 29 && i < 38 && !this.moveItemStackTo(itemstack1, 2, 29, false)) 
-				{
-					return ItemStack.EMPTY;
-				}
-			}
-			else if(!this.moveItemStackTo(itemstack1, 2, 38, false)) 
-			{
-				return ItemStack.EMPTY;
-			}
-			
-			if(itemstack1.isEmpty()) 
-			{
-				slot.set(ItemStack.EMPTY);
-			}
-			else 
-			{
-				slot.setChanged();
-			}
-			
-			if (itemstack1.getCount() == itemstack.getCount()) 
-			{
-				return ItemStack.EMPTY;
-			}
-			
-			slot.onTake(player, itemstack1);
-		}
-		
-		return itemstack;
-	}
 	
 	protected boolean canGrind(ItemStack stack) 
 	{

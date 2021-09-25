@@ -2,8 +2,11 @@
 	"replace": false,
 	"values": [
 		"lostworlds:araucaria_pressure_plate",
+		"lostworlds:calamites_pressure_plate",
 		"lostworlds:conifer_pressure_plate",
 		"lostworlds:ginkgo_pressure_plate",
-		"lostworlds:scorched_pressure_plate"
+		"lostworlds:scorched_pressure_plate",
+		"lostworlds:wooden_planks_pressure_plate",
+		"lostworlds:refined_wooden_planks_pressure_plate"
 	]
 }

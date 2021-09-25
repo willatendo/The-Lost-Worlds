@@ -6,13 +6,13 @@ import lostworlds.content.server.init.ContainerInit;
 import lostworlds.content.server.init.RecipeInit;
 import lostworlds.library.block.CultivatorBlock;
 import lostworlds.library.recipe.CultivatorRecipe;
+import lostworlds.library.slot.ResultSlot;
 import lostworlds.library.tileentity.CultivatorTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.FurnaceResultSlot;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;
@@ -41,7 +41,7 @@ public class CultivatorContainer extends Container
 		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 		
 		this.addSlot(new Slot(tile, 0, 53, 35));
-		this.addSlot(new FurnaceResultSlot(playerInv.player, tile, 1, 116, 35));
+		this.addSlot(new ResultSlot(playerInv.player, tile, 1, 116, 35));
 		
 		for(int i = 0; i < 3; ++i) 
 		{

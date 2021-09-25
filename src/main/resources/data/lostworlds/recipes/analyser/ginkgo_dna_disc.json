@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:analyser",
-	"output": {
-		"item": "lostworlds:ginkgo_dna_disc"
-	},
-	"dna": {
-		"item": "lostworlds:ginkgo_dna"
-	}
-}

@@ -2,8 +2,11 @@
 	"replace": false,
 	"values": [
 		"lostworlds:araucaria_button",
+		"lostworlds:calamites_button",
 		"lostworlds:conifer_button",
 		"lostworlds:ginkgo_button",
-		"lostworlds:scorched_button"
+		"lostworlds:scorched_button",
+		"lostworlds:wooden_planks_button",
+		"lostworlds:refined_wooden_planks_button"
 	]
 }

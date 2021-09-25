@@ -28,8 +28,8 @@ public class EntityInit
 	
 	public static final EntityType<ModBoatEntity> MOD_BOAT = EntityType.Builder.<ModBoatEntity>of(ModBoatEntity::new, EntityClassification.MISC).sized(1.375F, 0.5625F).build("mod_boat");
 	
-	public static final EntityType<ChilesaurusEntity> CHILESAURUS = ModRegistry.register("chilesaurs", ChilesaurusEntity::new, EntityClassification.CREATURE, 1.0F, 1.0F);
-	public static final EntityType<KentrosaurusEntity> KENTROSAURUS = ModRegistry.register("kentrosaurs", KentrosaurusEntity::new, EntityClassification.CREATURE, 2.0F, 1.5F);
+	public static final EntityType<ChilesaurusEntity> CHILESAURUS = ModRegistry.register("chilesaurus", ChilesaurusEntity::new, EntityClassification.CREATURE, 1.0F, 1.0F);
+	public static final EntityType<KentrosaurusEntity> KENTROSAURUS = ModRegistry.register("kentrosaurus", KentrosaurusEntity::new, EntityClassification.CREATURE, 2.0F, 1.5F);
 	
 	@SubscribeEvent
 	public static void registerEntities(RegistryEvent.Register<EntityType<?>> event) 

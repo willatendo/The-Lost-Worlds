@@ -2,8 +2,11 @@
 	"replace": false,
 	"values": [
 		"lostworlds:araucaria_slab",
+		"lostworlds:calamites_slab",
 		"lostworlds:conifer_slab",
 		"lostworlds:ginkgo_slab",
-		"lostworlds:scorched_slab"
+		"lostworlds:scorched_slab",
+		"lostworlds:wooden_planks_slab",
+		"lostworlds:refined_wooden_planks_slab"
 	]
 }

@@ -121,7 +121,6 @@ public class FossilGrinderCategory implements IRecipeCategory<FossilGrinderRecip
 		TranslationTextComponent name = ModUtils.tTC("jei", "fossil_grinder.chance");
 		Minecraft minecraft = Minecraft.getInstance();
 		FontRenderer fontRenderer = minecraft.font;
-		int stringWidth = fontRenderer.width(name);
-		fontRenderer.draw(stack, name, background.getWidth() - stringWidth, y, 0xFF808080);
+		fontRenderer.draw(stack, name, 4, y, 0xFF808080);
 	}	
 }

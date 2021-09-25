@@ -2,7 +2,9 @@
 	"replace": false,
 	"values": [
 		"lostworlds:araucaria_door",
+		"lostworlds:calamites_door",
 		"lostworlds:conifer_door",
-		"lostworlds:ginkgo_door"
+		"lostworlds:ginkgo_door",
+		"lostworlds:scorched_door"
 	]
 }

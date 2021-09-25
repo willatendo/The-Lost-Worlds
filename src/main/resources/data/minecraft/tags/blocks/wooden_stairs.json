@@ -2,8 +2,11 @@
 	"replace": false,
 	"values": [
 		"lostworlds:araucaria_stairs",
+		"lostworlds:calamites_stairs",
 		"lostworlds:conifer_stairs",
 		"lostworlds:ginkgo_stairs",
-		"lostworlds:scorched_stairs"
+		"lostworlds:scorched_stairs",
+		"lostworlds:wooden_planks_stairs",
+		"lostworlds:refined_wooden_planks_stairs"
 	]
 }

@@ -6,9 +6,10 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.SoundInit;
 import lostworlds.library.block.properties.ModBlockStateProperties;
-import lostworlds.library.tileentity.AnalyserTileEntity;
+import lostworlds.library.tileentity.AnalyzerTileEntity;
 import lostworlds.library.tileentity.CultivatorTileEntity;
 import lostworlds.library.tileentity.DNAExtractorTileEntity;
 import lostworlds.library.tileentity.DNAInjectorTileEntity;
@@ -137,7 +138,7 @@ public abstract class MachineBlockBuilder extends Block implements ITileEntityPr
 				NetworkHooks.openGui((ServerPlayerEntity)player, (INamedContainerProvider)tile, pos);
 				return ActionResultType.SUCCESS;
 			}
-			else if(tile instanceof AnalyserTileEntity) 
+			else if(tile instanceof AnalyzerTileEntity) 
 			{
 				NetworkHooks.openGui((ServerPlayerEntity)player, (INamedContainerProvider)tile, pos);
 				return ActionResultType.SUCCESS;
@@ -174,9 +175,9 @@ public abstract class MachineBlockBuilder extends Block implements ITileEntityPr
 			{
 				((DNAExtractorTileEntity)tileentity).setCustomName(stack.getHoverName());
 			}
-			else if(tileentity instanceof AnalyserTileEntity) 
+			else if(tileentity instanceof AnalyzerTileEntity) 
 			{
-				((AnalyserTileEntity)tileentity).setCustomName(stack.getHoverName());
+				((AnalyzerTileEntity)tileentity).setCustomName(stack.getHoverName());
 			}
 			else if(tileentity instanceof DNAInjectorTileEntity) 
 			{
@@ -210,9 +211,9 @@ public abstract class MachineBlockBuilder extends Block implements ITileEntityPr
 				InventoryHelper.dropContents(world, pos, (DNAExtractorTileEntity)tileentity);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
-			else if(tileentity instanceof AnalyserTileEntity) 
+			else if(tileentity instanceof AnalyzerTileEntity) 
 			{
-				InventoryHelper.dropContents(world, pos, (AnalyserTileEntity)tileentity);
+				InventoryHelper.dropContents(world, pos, (AnalyzerTileEntity)tileentity);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
 			else if(tileentity instanceof DNAInjectorTileEntity) 
@@ -233,15 +234,18 @@ public abstract class MachineBlockBuilder extends Block implements ITileEntityPr
 	@Override
 	public void animateTick(BlockState state, World world, BlockPos pos, Random rand) 
 	{
-		if(state.getValue(ON)) 
+		if(LostWorldsConfig.CLIENT_CONFIG.machineSounds.get())
 		{
-			double d0 = (double)pos.getX() + 0.5D;
-			double d1 = (double)pos.getY();
-			double d2 = (double)pos.getZ() + 0.5D;
-			if(rand.nextDouble() < 0.1D) 
+			if(state.getValue(ON)) 
 			{
-				world.playLocalSound(d0, d1, d2, SoundInit.MACHINE_WHIRLING, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
-        	}
+				double d0 = (double)pos.getX() + 0.5D;
+				double d1 = (double)pos.getY();
+				double d2 = (double)pos.getZ() + 0.5D;
+				if(rand.nextDouble() < 0.1D) 
+				{
+					world.playLocalSound(d0, d1, d2, SoundInit.MACHINE_WHIRLING, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+	        	}
+			}
 		}
 	}
 	

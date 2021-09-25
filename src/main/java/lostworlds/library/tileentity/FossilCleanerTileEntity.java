@@ -36,7 +36,7 @@ import net.minecraft.util.text.ITextComponent;
 
 public class FossilCleanerTileEntity extends TileEntity implements IInventory, INamedContainerProvider, INameable, ITickableTileEntity	
 {
-    protected NonNullList<ItemStack> items = NonNullList.withSize(3, ItemStack.EMPTY);
+    protected NonNullList<ItemStack> items = NonNullList.withSize(6, ItemStack.EMPTY);
 	
 	private int onTime;
 	private int onDuration;

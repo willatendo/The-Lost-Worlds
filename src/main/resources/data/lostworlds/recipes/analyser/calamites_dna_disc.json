@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:analyser",
-	"output": {
-		"item": "lostworlds:calamites_dna_disc"
-	},
-	"dna": {
-		"item": "lostworlds:calamites_dna"
-	}
-}

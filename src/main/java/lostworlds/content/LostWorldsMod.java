@@ -46,7 +46,7 @@ public class LostWorldsMod
 		final IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 				
 		ModRegistry.register();
-			
+		
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
 				
@@ -56,6 +56,7 @@ public class LostWorldsMod
 		forgeBus.addListener(EventPriority.HIGH, BiomeGeneration::addFeaturesToOverworld);
 		forgeBus.addListener(EventPriority.HIGH, DinosaurSpawn::addDinosaursToOverworld);
 		
+		ModLoadingContext.get().registerConfig(Type.CLIENT, LostWorldsConfig.clientSpec);
 		ModLoadingContext.get().registerConfig(Type.COMMON, LostWorldsConfig.commonSpec);
 		
 		GeckoLib.initialize();

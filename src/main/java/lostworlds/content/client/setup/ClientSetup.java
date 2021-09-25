@@ -5,7 +5,7 @@ import lostworlds.content.client.entity.render.ChilesaurusRenderer;
 import lostworlds.content.client.entity.render.FossilPoacherRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusRenderer;
 import lostworlds.content.client.entity.render.ModBoatRenderer;
-import lostworlds.content.client.screen.AnalyserScreen;
+import lostworlds.content.client.screen.AnalyzerScreen;
 import lostworlds.content.client.screen.ArchaeologyTableScreen;
 import lostworlds.content.client.screen.CultivatorScreen;
 import lostworlds.content.client.screen.DNAExtractorScreen;
@@ -56,7 +56,7 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_CLEANER, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_GRINDER, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.DNA_EXTRACTOR, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.ANALYSER, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.ANALYZER, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.DNA_INJECTOR, RenderType.translucent());		
 		RenderTypeLookup.setRenderLayer(BlockInit.CULTIVATOR, RenderType.translucent());		
 		
@@ -91,8 +91,8 @@ public class ClientSetup
 		
 		RenderTypeLookup.setRenderLayer(BlockInit.OUTDOOR_TOILET_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.GLASS_SHOP_DOOR, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.VISITOR_CENTRE_DOOR, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.INNOVATION_CENTRE_DOOR, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.VISITOR_CENTER_DOOR, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.INNOVATION_CENTER_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.SECURITY_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.BACK_DOOR, RenderType.translucent());		
 		
@@ -101,7 +101,7 @@ public class ClientSetup
 		ScreenManager.register(ContainerInit.FOSSIL_CLEANER_CONTAINER, FossilCleanerScreen::new);
 		ScreenManager.register(ContainerInit.FOSSIL_GRINDER_CONTAINER, FossilGrinderScreen::new);
 		ScreenManager.register(ContainerInit.DNA_EXTRACTOR_CONTAINER, DNAExtractorScreen::new);
-		ScreenManager.register(ContainerInit.ANALYSER_CONTAINER, AnalyserScreen::new);
+		ScreenManager.register(ContainerInit.ANALYZER_CONTAINER, AnalyzerScreen::new);
 		ScreenManager.register(ContainerInit.DNA_INJECTOR_CONTAINER, DNAInjectorScreen::new);
 		ScreenManager.register(ContainerInit.CULTIVATOR_CONTAINER, CultivatorScreen::new);
 

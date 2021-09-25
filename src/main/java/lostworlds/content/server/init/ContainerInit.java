@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
-import lostworlds.library.container.AnalyserContainer;
+import lostworlds.library.container.AnalyzerContainer;
 import lostworlds.library.container.ArchaeologyTableContianer;
 import lostworlds.library.container.CultivatorContainer;
 import lostworlds.library.container.DNAExtractorContainer;
@@ -24,7 +24,7 @@ public class ContainerInit
 	public static final ContainerType<FossilCleanerContainer> FOSSIL_CLEANER_CONTAINER = ModRegistry.register("fossil_cleaner_container", IForgeContainerType.create(FossilCleanerContainer::new));
 	public static final ContainerType<FossilGrinderContainer> FOSSIL_GRINDER_CONTAINER = ModRegistry.register("fossil_grinder_container", IForgeContainerType.create(FossilGrinderContainer::new));
 	public static final ContainerType<DNAExtractorContainer> DNA_EXTRACTOR_CONTAINER = ModRegistry.register("dna_extractor_container", IForgeContainerType.create(DNAExtractorContainer::new));
-	public static final ContainerType<AnalyserContainer> ANALYSER_CONTAINER = ModRegistry.register("analyser_container", IForgeContainerType.create(AnalyserContainer::new));
+	public static final ContainerType<AnalyzerContainer> ANALYZER_CONTAINER = ModRegistry.register("analyzer_container", IForgeContainerType.create(AnalyzerContainer::new));
 	public static final ContainerType<DNAInjectorContainer> DNA_INJECTOR_CONTAINER = ModRegistry.register("dna_injector_container", IForgeContainerType.create(DNAInjectorContainer::new));
 	public static final ContainerType<CultivatorContainer> CULTIVATOR_CONTAINER = ModRegistry.register("cultivator_container", IForgeContainerType.create(CultivatorContainer::new));
 
