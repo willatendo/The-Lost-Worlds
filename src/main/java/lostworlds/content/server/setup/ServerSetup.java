@@ -17,6 +17,7 @@ import lostworlds.library.trades.MultiItemForEmeraldsTrade;
 import lostworlds.library.util.JigsawUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.FireBlock;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
@@ -208,6 +209,64 @@ public class ServerSetup
 			addToFlatteningMap(BlockInit.MOSSY_SOIL);
 			
 			ModUtils.LOGGER.debug("Finished Adding to Flattening Map");
+			
+			ModUtils.LOGGER.debug("Adding Flammables");
+
+			addToFlammables(BlockInit.ARAUCARIA_FENCE, 5, 20);
+			addToFlammables(BlockInit.ARAUCARIA_FENCE_GATE, 5, 20);
+			addToFlammables(BlockInit.ARAUCARIA_LEAVES, 30, 60);
+			addToFlammables(BlockInit.ARAUCARIA_LOG, 5, 5);
+			addToFlammables(BlockInit.ARAUCARIA_PLANKS, 5, 20);
+			addToFlammables(BlockInit.ARAUCARIA_SLAB, 5, 20);
+			addToFlammables(BlockInit.ARAUCARIA_STAIRS, 5, 20);
+			addToFlammables(BlockInit.ARAUCARIA_WOOD, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_ARAUCARIA_LOG, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_ARAUCARIA_WOOD, 5, 5);
+
+			addToFlammables(BlockInit.CALAMITES_FENCE, 5, 20);
+			addToFlammables(BlockInit.CALAMITES_FENCE_GATE, 5, 20);
+			addToFlammables(BlockInit.CALAMITES_LEAVES, 30, 60);
+			addToFlammables(BlockInit.CALAMITES_LOG, 5, 5);
+			addToFlammables(BlockInit.CALAMITES_PLANKS, 5, 20);
+			addToFlammables(BlockInit.CALAMITES_SLAB, 5, 20);
+			addToFlammables(BlockInit.CALAMITES_STAIRS, 5, 20);
+			addToFlammables(BlockInit.CALAMITES_WOOD, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_CALAMITES_LOG, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_CALAMITES_WOOD, 5, 5);
+
+			addToFlammables(BlockInit.CONIFER_FENCE, 5, 20);
+			addToFlammables(BlockInit.CONIFER_FENCE_GATE, 5, 20);
+			addToFlammables(BlockInit.CONIFER_LEAVES, 30, 60);
+			addToFlammables(BlockInit.CONIFER_LOG, 5, 5);
+			addToFlammables(BlockInit.CONIFER_PLANKS, 5, 20);
+			addToFlammables(BlockInit.CONIFER_SLAB, 5, 20);
+			addToFlammables(BlockInit.CONIFER_STAIRS, 5, 20);
+			addToFlammables(BlockInit.CONIFER_WOOD, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_CONIFER_LOG, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_CONIFER_WOOD, 5, 5);
+
+			addToFlammables(BlockInit.GINKGO_FENCE, 5, 20);
+			addToFlammables(BlockInit.GINKGO_FENCE_GATE, 5, 20);
+			addToFlammables(BlockInit.GINKGO_LEAVES, 30, 60);
+			addToFlammables(BlockInit.GINKGO_LOG, 5, 5);
+			addToFlammables(BlockInit.GINKGO_PLANKS, 5, 20);
+			addToFlammables(BlockInit.GINKGO_SLAB, 5, 20);
+			addToFlammables(BlockInit.GINKGO_STAIRS, 5, 20);
+			addToFlammables(BlockInit.GINKGO_WOOD, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_GINKGO_LOG, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_GINKGO_WOOD, 5, 5);
+
+			addToFlammables(BlockInit.SCORCHED_FENCE, 5, 20);
+			addToFlammables(BlockInit.SCORCHED_FENCE_GATE, 5, 20);
+			addToFlammables(BlockInit.SCORCHED_LOG, 5, 5);
+			addToFlammables(BlockInit.SCORCHED_PLANKS, 5, 20);
+			addToFlammables(BlockInit.SCORCHED_SLAB, 5, 20);
+			addToFlammables(BlockInit.SCORCHED_STAIRS, 5, 20);
+			addToFlammables(BlockInit.SCORCHED_WOOD, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_SCORCHED_LOG, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_SCORCHED_WOOD, 5, 5);
+			
+			ModUtils.LOGGER.debug("Finished Adding Flammables");
 		}
 		
 		private static void addToStrippingMap(Block logBlock, Block strippedLogBlock)
@@ -226,6 +285,12 @@ public class ServerSetup
 		{
 			ShovelItem.FLATTENABLES = Maps.newHashMap(ShovelItem.FLATTENABLES);
 			ShovelItem.FLATTENABLES.put(dirt, Blocks.GRASS_PATH.defaultBlockState());
+		}
+		
+		private static void addToFlammables(Block burnable, int catchFlame, int burn)
+		{
+			FireBlock fireblock = (FireBlock)Blocks.FIRE;
+			fireblock.setFlammable(burnable, catchFlame, burn);
 		}
 	}
 }

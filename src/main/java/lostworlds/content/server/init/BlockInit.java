@@ -15,6 +15,7 @@ import lostworlds.library.block.CultivatorBlock;
 import lostworlds.library.block.DNAExtractorBlock;
 import lostworlds.library.block.DNAInjectorBlock;
 import lostworlds.library.block.DeadSpongeColonyBlock;
+import lostworlds.library.block.DisplayCaseBlock;
 import lostworlds.library.block.DriedSoilBlock;
 import lostworlds.library.block.FossilCleanerBlock;
 import lostworlds.library.block.FossilGrinderBlock;
@@ -151,6 +152,9 @@ public class BlockInit
 		
 	public static final Block TIME_MACHINE = TimeMachineBlock.create();
 			
+	//Museum Blocks
+	public static final Block DISPLAY_CASE_SMALL = BlockAndItemBuilder.create("display_case_small", new DisplayCaseBlock(AbstractBlock.Properties.of(Material.STONE).harvestLevel(1).requiresCorrectToolForDrops().strength(4.0F, 5.0F).sound(SoundType.GLASS)));
+	
 	//Wood
 	
 	//Araucaria

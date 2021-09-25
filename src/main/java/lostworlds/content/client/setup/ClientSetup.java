@@ -53,6 +53,8 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.WILLIAMSONIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.ZAMITES, RenderType.cutout());
 		
+		RenderTypeLookup.setRenderLayer(BlockInit.DISPLAY_CASE_SMALL, RenderType.translucent());
+		
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_CLEANER, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_GRINDER, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.DNA_EXTRACTOR, RenderType.translucent());

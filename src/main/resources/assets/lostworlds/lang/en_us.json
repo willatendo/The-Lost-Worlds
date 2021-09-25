@@ -288,6 +288,9 @@
 	"block.lostworlds.copper_ore": "Copper Ore",
 	"block.lostworlds.basalt_diamond_ore": "Basalt Diamond Ore",
 	
+	//Museum Blocks
+	"block.lostworlds.display_case_small": "Display Case (Small)",
+	
 	//Machines
 	"block.lostworlds.fossil_cleaner": "Fossil Cleaner",
 	"container.lostworlds.fossil_cleaner": "Fossil Cleaner",
