@@ -23,6 +23,7 @@ import lostworlds.content.server.init.VillagerProfessionInit;
 import lostworlds.content.server.init.WorldCarverInit;
 import lostworlds.content.server.init.WorldTypeInit;
 import lostworlds.library.biome.ModConfiguredCarvers;
+import lostworlds.library.marker.MarkerType;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
@@ -238,6 +239,7 @@ public class ModRegistry
 		BlockInit.init();
 		PointOfInterestInit.init();
 		EntityInit.init();
+		MarkerType.init();
 		VillagerProfessionInit.init();
 		BiomeInit.init();
 		StructurePieceInit.init();

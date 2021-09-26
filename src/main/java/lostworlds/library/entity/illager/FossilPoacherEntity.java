@@ -2,17 +2,21 @@ package lostworlds.library.entity.illager;
 
 import java.util.EnumSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.function.Predicate;
 
 import javax.annotation.Nullable;
 
 import com.google.common.collect.Maps;
 
+import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ItemInit;
+import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.CreatureAttribute;
+import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
@@ -26,6 +30,7 @@ import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.HurtByTargetGoal;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RandomWalkingGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
@@ -38,17 +43,28 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.particles.ItemParticleData;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.pathfinding.GroundPathNavigator;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.GroundPathHelper;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IServerWorld;
+import net.minecraft.world.IWorld;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.ChunkStatus;
+import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.raid.Raid;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.ForgeHooks;
 
 public class FossilPoacherEntity extends AbstractIllagerEntity
 {
@@ -70,6 +86,7 @@ public class FossilPoacherEntity extends AbstractIllagerEntity
 		this.goalSelector.addGoal(2, new AbstractIllagerEntity.RaidOpenDoorGoal(this));
 		this.goalSelector.addGoal(2, new AbstractRaiderEntity.FindTargetGoal(this, 10.0F));
 		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, false));
+		this.goalSelector.addGoal(4, new SmashPlantFossilGoal(this, 1.0D, 3));
 		this.goalSelector.addGoal(8, new RandomWalkingGoal(this, 0.6D));
 		this.goalSelector.addGoal(9, new LookAtGoal(this, PlayerEntity.class, 15.0F, 1.0F));
 		this.goalSelector.addGoal(10, new LookAtGoal(this, MobEntity.class, 15.0F));
@@ -209,6 +226,184 @@ public class FossilPoacherEntity extends AbstractIllagerEntity
 		{
 			super.start();
 			this.mob.setNoActionTime(0);
+		}
+	}
+	
+	static class SmashPlantFossilGoal extends BreakBlockGoal 
+	{
+		private final FossilPoacherEntity entity;
+		
+		SmashPlantFossilGoal(FossilPoacherEntity entity, double searchRange, int verticalSearchRange) 
+		{
+			super(BlockInit.PLANT_FOSSIL, entity, searchRange, verticalSearchRange);
+			this.entity = entity;
+		}
+
+		@Override
+		public void playDestroyProgressSound(IWorld world, BlockPos pos) 
+		{
+			world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.HOSTILE, 0.5F, 0.9F + entity.random.nextFloat() * 0.2F);
+		}
+
+		@Override
+		public void playBreakSound(World world, BlockPos pos) 
+		{
+			world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
+		}
+
+		@Override
+		public double acceptedDistance() 
+		{
+			return 1.14D;
+		}
+	}
+	
+	static class BreakBlockGoal extends MoveToBlockGoal 
+	{
+		private final Block blockToRemove;
+		private final MobEntity removerMob;
+		private int ticksSinceReachedGoal;
+		
+		public BreakBlockGoal(Block block, CreatureEntity entity, double searchRange, int verticalSearchRange) 
+		{
+			super(entity, searchRange, 24, verticalSearchRange);
+			this.blockToRemove = block;
+			this.removerMob = entity;
+		}
+		
+		@Override
+		public boolean canUse() 
+		{
+			if(!ForgeHooks.canEntityDestroy(this.removerMob.level, this.blockPos, this.removerMob)) 
+			{
+				return false;
+			} 
+			else if(this.nextStartTick > 0) 
+			{
+				--this.nextStartTick;
+				return false;
+			} 
+			else if(this.tryFindBlock()) 
+			{
+				this.nextStartTick = 20;
+				return true;
+			} 
+			else 
+			{
+				this.nextStartTick = this.nextStartTick(this.mob);
+				return false;
+			}
+		}
+		
+		private boolean tryFindBlock() 
+		{
+			return this.blockPos != null && this.isValidTarget(this.mob.level, this.blockPos) ? true : this.findNearestBlock();
+		}
+		
+		@Override
+		public void stop() 
+		{
+			super.stop();
+			this.removerMob.fallDistance = 1.0F;
+		}
+		
+		@Override
+		public void start() 
+		{
+			super.start();
+			this.ticksSinceReachedGoal = 0;
+		}
+		
+		public void playDestroyProgressSound(IWorld world, BlockPos pos) { }
+		
+		public void playBreakSound(World world, BlockPos pos) { }
+		
+		@Override
+		public void tick() 
+		{
+			super.tick();
+			World world = this.removerMob.level;
+			BlockPos blockpos = this.removerMob.blockPosition();
+			BlockPos blockpos1 = this.getPosWithBlock(blockpos, world);
+			Random random = this.removerMob.getRandom();
+			if(this.isReachedTarget() && blockpos1 != null) 
+			{
+				if(this.ticksSinceReachedGoal > 0) 
+				{
+					Vector3d vector3d = this.removerMob.getDeltaMovement();
+					this.removerMob.setDeltaMovement(vector3d.x, 0.3D, vector3d.z);
+					if(!world.isClientSide) 
+					{
+						((ServerWorld)world).sendParticles(new ItemParticleData(ParticleTypes.ITEM, new ItemStack(BlockInit.PLANT_FOSSIL)), (double)blockpos1.getX() + 0.5D, (double)blockpos1.getY() + 0.7D, (double)blockpos1.getZ() + 0.5D, 3, ((double)random.nextFloat() - 0.5D) * 0.08D, ((double)random.nextFloat() - 0.5D) * 0.08D, ((double)random.nextFloat() - 0.5D) * 0.08D, (double)0.15F);
+		            }
+				}
+				
+				if(this.ticksSinceReachedGoal % 2 == 0) 
+				{
+					Vector3d vector3d1 = this.removerMob.getDeltaMovement();
+					this.removerMob.setDeltaMovement(vector3d1.x, -0.3D, vector3d1.z);
+					if(this.ticksSinceReachedGoal % 6 == 0) 
+					{
+						this.playDestroyProgressSound(world, this.blockPos);
+					}
+				}
+				
+				if(this.ticksSinceReachedGoal > 60) 
+				{	
+					world.removeBlock(blockpos1, false);
+					if(!world.isClientSide) 
+					{
+						for(int i = 0; i < 20; ++i) 
+						{
+							double d3 = random.nextGaussian() * 0.02D;
+							double d1 = random.nextGaussian() * 0.02D;
+							double d2 = random.nextGaussian() * 0.02D;
+							((ServerWorld)world).sendParticles(ParticleTypes.POOF, (double)blockpos1.getX() + 0.5D, (double)blockpos1.getY(), (double)blockpos1.getZ() + 0.5D, 1, d3, d1, d2, (double)0.15F);
+						}
+						
+						this.playBreakSound(world, blockpos1);
+					}
+				}
+				
+				++this.ticksSinceReachedGoal;
+			}
+		}
+		
+		@Nullable
+		private BlockPos getPosWithBlock(BlockPos pos, IBlockReader reader) 
+		{
+			if(reader.getBlockState(pos).is(this.blockToRemove)) 
+			{
+				return pos;
+			} 
+			else 
+			{
+				BlockPos[] ablockpos = new BlockPos[]{pos.below(), pos.west(), pos.east(), pos.north(), pos.south(), pos.below(2)};
+				
+				for(BlockPos blockpos : ablockpos) 
+				{
+					if(reader.getBlockState(blockpos).is(this.blockToRemove)) 
+					{
+						return blockpos;
+					}
+				}
+				
+				return null;
+			}
+		}
+		
+		@Override
+		protected boolean isValidTarget(IWorldReader reader, BlockPos pos) 
+		{
+			IChunk ichunk = reader.getChunk(pos.getX() >> 4, pos.getZ() >> 4, ChunkStatus.FULL, false);
+			if(ichunk == null) 
+			{
+				return false;
+			} 
+			else 
+			{
+				return ichunk.getBlockState(pos).is(this.blockToRemove) && ichunk.getBlockState(pos.above()).isAir() && ichunk.getBlockState(pos.above(2)).isAir();
+			}
 		}
 	}
 }

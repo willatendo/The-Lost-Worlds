@@ -2,13 +2,16 @@ package lostworlds.library.item;
 
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
+import lostworlds.library.entity.item.ChargedCrystalScarabGemItemEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
+import net.minecraft.world.World;
 
 public class CrystalScarabGemItem extends Item
 {
-	public static Item charged_crystal_scarab_gem = new CrystalScarabGemItem(new Properties().tab(ModUtils.ITEMS).rarity(Rarity.RARE), Variant.CHARGED);
+	public static Item charged_crystal_scarab_gem = new CEChargedCrystalScarabGemItem(new Properties().tab(ModUtils.ITEMS).fireResistant().rarity(Rarity.RARE), Variant.CHARGED);
 	public static Item crystal_scarab_gem = new CrystalScarabGemItem(new Properties().tab(ModUtils.ITEMS).rarity(Rarity.RARE), Variant.UNCHARGED);
 	
 	public static Item crystal_scarab_abdomen = new CrystalScarabGemItem(new Properties().tab(ModUtils.ITEMS).rarity(Rarity.RARE), Variant.BROKEN);
@@ -59,5 +62,35 @@ public class CrystalScarabGemItem extends Item
 		BROKEN,
 		UNCHARGED,
 		CHARGED;
+	}
+	
+	static class CEChargedCrystalScarabGemItem extends CrystalScarabGemItem
+	{
+		protected CEChargedCrystalScarabGemItem(Properties properties, Variant variant) 
+		{
+			super(properties, variant);
+		}
+		
+		@Override
+		public int getEntityLifespan(ItemStack itemStack, World world) 
+		{
+			return Integer.MAX_VALUE;
+		}
+		
+		@Override
+		public boolean hasCustomEntity(ItemStack stack) 
+		{
+			return true;
+		}
+		
+		@Override
+		public Entity createEntity(World world, Entity entity, ItemStack stack) 
+		{
+			final ChargedCrystalScarabGemItemEntity customentity = new ChargedCrystalScarabGemItemEntity(world, entity.getX(), entity.getY(), entity.getZ(), stack);
+			customentity.setDeltaMovement(entity.getDeltaMovement());
+			customentity.setPickUpDelay(40);
+			
+			return customentity;
+		}
 	}
 }

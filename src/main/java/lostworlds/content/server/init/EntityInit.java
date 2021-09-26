@@ -6,6 +6,7 @@ import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.ModBoatEntity;
 import lostworlds.library.entity.fossil.FossilEntity;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
+import lostworlds.library.entity.item.ChargedCrystalScarabGemItemEntity;
 import lostworlds.library.entity.terrestrial.PrehistoricEntity;
 import lostworlds.library.entity.terrestrial.jurassic.ChilesaurusEntity;
 import lostworlds.library.entity.terrestrial.jurassic.KentrosaurusEntity;
@@ -27,6 +28,7 @@ public class EntityInit
 	public static final EntityType<FossilPoacherEntity> FOSSIL_POACHER = EntityType.Builder.of(FossilPoacherEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).build("fossil_poacher");
 	
 	public static final EntityType<ModBoatEntity> MOD_BOAT = EntityType.Builder.<ModBoatEntity>of(ModBoatEntity::new, EntityClassification.MISC).sized(1.375F, 0.5625F).build("mod_boat");
+	public static final EntityType<ChargedCrystalScarabGemItemEntity> CHARGED_CRYSTAL_SCARAB_GEM_ITEM = ModRegistry.register("charged_crystal_scarab_gem_item", ChargedCrystalScarabGemItemEntity::new, EntityClassification.MISC, 0.5F, 0.5F);
 	
 	public static final EntityType<ChilesaurusEntity> CHILESAURUS = ModRegistry.register("chilesaurus", ChilesaurusEntity::new, EntityClassification.CREATURE, 1.0F, 1.0F);
 	public static final EntityType<KentrosaurusEntity> KENTROSAURUS = ModRegistry.register("kentrosaurus", KentrosaurusEntity::new, EntityClassification.CREATURE, 2.0F, 1.5F);

@@ -1,31 +1,31 @@
 package lostworlds.library.marker;
 
+import lostworlds.content.ModUtils;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class MarkerType extends ForgeRegistryEntry<MarkerType>
 {
-//	public static final MarkerType ANKYLOSAURID_MARKER = register("ankylosaurid_marker", MarkerTypes.ANKYLOSAURID);
-//	public static final MarkerType CERATOPSID_MARKER = register("ceratopsid_marker", MarkerTypes.CERATOPSID);
-//	public static final MarkerType HADROSAURID_MARKER = register("hadrosaurid_marker", MarkerTypes.HADROSAURID);
-//	public static final MarkerType IGUANODONTID_MARKER = register("iguanodontid_marker", MarkerTypes.IGUANODONTID);
-//	public static final MarkerType ORNITHOMIMID_MARKER = register("ornithomimid_marker", MarkerTypes.ORNITHOMIMID);
-//	public static final MarkerType SAUROPODA_MARKER = register("sauropoda_marker", MarkerTypes.SAUROPODA);
-//	public static final MarkerType THEROPODA_MARKER = register("theropoda_marker", MarkerTypes.THEROPODA);
+	public static final MarkerType ANKYLOSAURID_MARKER = register("ankylosaurid_marker", MarkerGroups.ANKYLOSAURID);
+	public static final MarkerType CERATOPSID_MARKER = register("ceratopsid_marker", MarkerGroups.CERATOPSID);
+	public static final MarkerType HADROSAURID_MARKER = register("hadrosaurid_marker", MarkerGroups.HADROSAURID);
+	public static final MarkerType IGUANODONTID_MARKER = register("iguanodontid_marker", MarkerGroups.IGUANODONTID);
+	public static final MarkerType ORNITHOMIMID_MARKER = register("ornithomimid_marker", MarkerGroups.ORNITHOMIMID);
+	public static final MarkerType SAUROPODA_MARKER = register("sauropoda_marker", MarkerGroups.SAUROPODA);
+	public static final MarkerType THEROPODA_MARKER = register("theropoda_marker", MarkerGroups.THEROPODA);
 	
-//	private static MarkerType register(String id, MarkerTypes type)
-//	{
-//		MarkerType marker = new MarkerType(type);
-//		marker.setRegistryName(ModUtils.rL(id));
-//		ModForgeRegistries.MARKER_TYPE.register(marker);
-//		return marker;
-//	}
+	private static MarkerType register(String id, MarkerGroups type)
+	{
+		MarkerType marker = new MarkerType(type);
+		marker.setRegistryName(ModUtils.rL(id));
+		return marker;
+	}
 	
 	private final MarkerDiet diet;
-	private final MarkerTypes type;
+	private final MarkerGroups type;
 	
-	public MarkerType(MarkerTypes type)
+	public MarkerType(MarkerGroups type)
 	{
-		this.diet = type == MarkerTypes.THEROPODA ? MarkerDiet.CARNIVORE : MarkerDiet.HERBIVORE;
+		this.diet = type == MarkerGroups.THEROPODA ? MarkerDiet.CARNIVORE : MarkerDiet.HERBIVORE;
 		this.type = type;
 	}
 	
@@ -34,8 +34,10 @@ public class MarkerType extends ForgeRegistryEntry<MarkerType>
 		return this.diet;
 	}
 	
-	public MarkerTypes getType() 
+	public MarkerGroups getType() 
 	{
 		return this.type;
 	}
+	
+	public static void init() { }
 }
