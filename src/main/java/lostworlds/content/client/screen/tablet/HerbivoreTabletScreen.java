@@ -65,12 +65,6 @@ public class HerbivoreTabletScreen extends Screen
 		this.renderComponentHoverEffect(stack, Style.EMPTY, mouseX, mouseY);
 	}
 	
-	@Override
-	public boolean isPauseScreen() 
-	{
-		return false;
-	}
-	
 	private void renderBackgroundElements(MatrixStack stack)
 	{
 		this.renderBackground(stack, 0);

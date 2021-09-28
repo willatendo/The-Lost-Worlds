@@ -16,7 +16,7 @@ public class KentrosaurusRenderer extends GeoEntityRenderer<KentrosaurusEntity>
 	public KentrosaurusRenderer(EntityRendererManager renderManager) 
 	{
 		super(renderManager, new KentrosaurusModel());
-		this.shadowRadius = 1.0F;
+		this.shadowRadius = 0.75F;
 	}
 	@Override
 	public RenderType getRenderType(KentrosaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 

@@ -4,6 +4,7 @@ import lostworlds.content.ModUtils;
 import lostworlds.content.client.entity.render.ChilesaurusRenderer;
 import lostworlds.content.client.entity.render.FossilPoacherRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusRenderer;
+import lostworlds.content.client.entity.render.KentrosaurusSkeletonRenderer;
 import lostworlds.content.client.entity.render.ModBoatRenderer;
 import lostworlds.content.client.screen.AnalyzerScreen;
 import lostworlds.content.client.screen.ArchaeologyTableScreen;
@@ -118,5 +119,6 @@ public class ClientSetup
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS, manager -> new ChilesaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS, manager -> new KentrosaurusRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS_SKELETON, manager -> new KentrosaurusSkeletonRenderer(manager));
 	}
 }

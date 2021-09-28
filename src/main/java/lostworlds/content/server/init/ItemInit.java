@@ -6,6 +6,7 @@ import lostworlds.library.block.Plants;
 import lostworlds.library.block.Trees;
 import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.TimeEras;
+import lostworlds.library.item.ChiselItem;
 import lostworlds.library.item.CrystalScarabGemItem;
 import lostworlds.library.item.FieldGuideItem;
 import lostworlds.library.item.HammerItem;
@@ -154,7 +155,10 @@ public class ItemInit
 	
 	public static final Item HAMMER = ModRegistry.register("hammer", new HammerItem(ItemTier.IRON, 6.0F, -3.1F, (new Item.Properties()).tab(ModUtils.ITEMS)));
 	
+	public static final Item CHISEL = ModRegistry.register("chisel", new ChiselItem());
+	
 	public static final Item CLOTH_MASK = ModRegistry.register("cloth_mask", new MaskItem(ModArmourMaterial.CLOTH_MASK));
+	
 	
 	public static final Item OXYGEN_MASK = ModRegistry.register("oxygen_mask", new MaskItem(ModArmourMaterial.OXYGEN_MASK));
 	public static final Item OXYGEN_TANK = ModRegistry.register("oxygen_tank", new OxygenTankItem());

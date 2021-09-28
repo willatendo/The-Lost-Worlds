@@ -12,7 +12,7 @@ public class KentrosaurusModel extends AnimatedGeoModel<KentrosaurusEntity>
 {
 	private static final ResourceLocation MALE_TEXTURE = ModUtils.rL("textures/model/entity/kentrosaurus/male.png");
 	private static final ResourceLocation FEMALE_TEXTURE = ModUtils.rL("textures/model/entity/kentrosaurus/female.png");
-	private ResourceLocation texture;
+	public ResourceLocation texture;
 
 	@Override
 	public ResourceLocation getAnimationFileLocation(KentrosaurusEntity entity) 

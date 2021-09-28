@@ -1,9 +1,9 @@
 package lostworlds.library.entity;
 
 import lostworlds.content.server.init.EntityInit;
+import lostworlds.library.entity.fossil.FossilEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.common.IExtensibleEnum;
@@ -15,14 +15,14 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	;
 	
 	private final String id;
-	private EntityType<? extends Entity> entitytype;
-	private EntityType<? extends Entity> skull;
-	private EntityType<? extends Entity> leftArm;
-	private EntityType<? extends Entity> rightArm;
-	private EntityType<? extends Entity> leftLeg;
-	private EntityType<? extends Entity> rightLeg;
-	private EntityType<? extends Entity> ribCage;
-	private EntityType<? extends Entity> tail;
+	private EntityType<FossilEntity> entitytype;
+	private EntityType<FossilEntity> skull;
+	private EntityType<FossilEntity> leftArm;
+	private EntityType<FossilEntity> rightArm;
+	private EntityType<FossilEntity> leftLeg;
+	private EntityType<FossilEntity> rightLeg;
+	private EntityType<FossilEntity> ribCage;
+	private EntityType<FossilEntity> tail;
 	private final Block egg;
 	private final int primaryColour;
 	private final int secondaryColour;
@@ -44,77 +44,77 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 		this.cookedSaturation = cookedSaturation;
 	}
 	
-	public EntityType<? extends Entity> setSkull(EntityType<? extends Entity> entity)
+	public EntityType<FossilEntity> setSkull(EntityType<FossilEntity> entity)
 	{
 		return this.skull = entity;
 	}
 
-	public EntityType<? extends Entity> setLeftArm(EntityType<? extends Entity> entity)
+	public EntityType<FossilEntity> setLeftArm(EntityType<FossilEntity> entity)
 	{
 		return this.leftArm = entity;
 	}
 	
-	public EntityType<? extends Entity> setRightArm(EntityType<? extends Entity> entity)
+	public EntityType<FossilEntity> setRightArm(EntityType<FossilEntity> entity)
 	{
 		return this.rightArm = entity;
 	}
 	
-	public EntityType<? extends Entity> setLeftLeg(EntityType<? extends Entity> entity)
+	public EntityType<FossilEntity> setLeftLeg(EntityType<FossilEntity> entity)
 	{
 		return this.leftLeg = entity;
 	}
 	
-	public EntityType<? extends Entity> setRightLeg(EntityType<? extends Entity> entity)
+	public EntityType<FossilEntity> setRightLeg(EntityType<FossilEntity> entity)
 	{
 		return this.rightLeg = entity;
 	}
 	
-	public EntityType<? extends Entity> setRibCage(EntityType<? extends Entity> entity)
+	public EntityType<FossilEntity> setRibCage(EntityType<FossilEntity> entity)
 	{
 		return this.ribCage = entity;
 	}
 	
-	public EntityType<? extends Entity> setTail(EntityType<? extends Entity> entity)
+	public EntityType<FossilEntity> setTail(EntityType<FossilEntity> entity)
 	{
 		return this.tail = entity;
 	}
 	
-	public EntityType<? extends Entity> getEntityType()
+	public EntityType<FossilEntity> getEntityType()
 	{
 		return this.entitytype;
 	}
 	
-	public EntityType<? extends Entity> getSkull()
+	public EntityType<FossilEntity> getSkull()
 	{
 		return this.skull;
 	}
 
-	public EntityType<? extends Entity> getLeftArm()
+	public EntityType<FossilEntity> getLeftArm()
 	{
 		return this.leftArm;
 	}
 	
-	public EntityType<? extends Entity> getRightArm()
+	public EntityType<FossilEntity> getRightArm()
 	{
 		return this.rightArm;
 	}
 	
-	public EntityType<? extends Entity> getLeftLeg()
+	public EntityType<FossilEntity> getLeftLeg()
 	{
 		return this.leftLeg;
 	}
 	
-	public EntityType<? extends Entity> getRightLeg()
+	public EntityType<FossilEntity> getRightLeg()
 	{
 		return this.rightLeg;
 	}
 	
-	public EntityType<? extends Entity> getRibCage()
+	public EntityType<FossilEntity> getRibCage()
 	{
 		return this.ribCage;
 	}
 	
-	public EntityType<? extends Entity> getTail()
+	public EntityType<FossilEntity> getTail()
 	{
 		return this.tail;
 	}
