@@ -7,9 +7,9 @@ import lostworlds.content.ModUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.button.Button;
 
-public class TurnButton extends Button
+public class ChiselButton extends Button
 {	
-	public TurnButton(int x, int y, IPressable pressable) 
+	public ChiselButton(int x, int y, IPressable pressable) 
 	{
 		super(x, y, 19, 81, ModUtils.gTC("chisel", "chisel.title"), pressable);
 	}

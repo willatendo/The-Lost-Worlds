@@ -1,10 +1,9 @@
-package lostworlds.content.client.screen;
+package lostworlds.content.client.screen.chisel;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import lostworlds.content.ModUtils;
-import lostworlds.content.client.screen.chisel.TurnButton;
 import lostworlds.library.entity.fossil.FossilEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
@@ -23,10 +22,10 @@ public class ChiselScreen extends Screen
 	int left;
 	int right;
 	
-	public TurnButton button;
+	public ChiselButton button;
 	
 	private final FossilEntity entity;
-	private final ItemStack stack;
+	//private final ItemStack stack;
 	private final PlayerEntity player;
 	
 	public ChiselScreen(FossilEntity entity, ItemStack stack, PlayerEntity player) 
@@ -34,11 +33,13 @@ public class ChiselScreen extends Screen
 		super(ModUtils.gTC("chisel", "chisel.title"));
 		
 		this.entity = entity;
-		this.stack = stack;
+		//this.stack = stack;
 		this.player = player;
 		
 		this.texWidth = 248;
 		this.texHeight = 166;
+		this.left = 0;
+		this.right = 0;
 	}
 	
 	@Override
@@ -51,7 +52,7 @@ public class ChiselScreen extends Screen
 	protected void init() 
 	{
 		this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
-		this.button = this.addButton(new TurnButton(this.left + 5, 140, (Button) -> 
+		this.button = this.addButton(new ChiselButton(this.left + 10, this.right + 140, (Button) -> 
 		{
 			this.turnButton();
 		}));
@@ -59,11 +60,6 @@ public class ChiselScreen extends Screen
 	
 	private void turnButton()
 	{
-		this.stack.hurtAndBreak(1, this.player, (playerentity) -> 
-		{
-			playerentity.broadcastBreakEvent(this.player.getUsedItemHand());
-		});
-		
 		if(this.entity.isLooking())
 		{
 			this.entity.setLooking(false);
