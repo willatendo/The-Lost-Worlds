@@ -5,11 +5,11 @@ import java.util.Objects;
 import lostworlds.content.server.init.ContainerInit;
 import lostworlds.content.server.init.RecipeInit;
 import lostworlds.library.block.AnalyzerBlock;
-import lostworlds.library.recipe.AnalyzerRecipe;
-import lostworlds.library.slot.DNASlot;
-import lostworlds.library.slot.DiscSlot;
-import lostworlds.library.slot.ResultSlot;
-import lostworlds.library.tileentity.AnalyzerTileEntity;
+import lostworlds.library.block.entity.AnalyzerTileEntity;
+import lostworlds.library.container.recipes.AnalyzerRecipe;
+import lostworlds.library.container.slot.DNASlot;
+import lostworlds.library.container.slot.DiscSlot;
+import lostworlds.library.container.slot.ResultSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -80,9 +80,9 @@ public class AnalyzerContainer extends Container
 	}
 	
 	@Override
-	public boolean stillValid(PlayerEntity playerIn)
+	public boolean stillValid(PlayerEntity entity)
 	{
-		return this.canInteractWithCallable.evaluate((world, blockPos) -> world.getBlockState(blockPos).getBlock() instanceof AnalyzerBlock && playerIn.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
+		return this.canInteractWithCallable.evaluate((world, blockPos) -> world.getBlockState(blockPos).getBlock() instanceof AnalyzerBlock && entity.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
     }
 	
 	@Override

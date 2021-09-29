@@ -11,6 +11,7 @@ import lostworlds.content.client.screen.ArchaeologyTableScreen;
 import lostworlds.content.client.screen.CultivatorScreen;
 import lostworlds.content.client.screen.DNAExtractorScreen;
 import lostworlds.content.client.screen.DNAInjectorScreen;
+import lostworlds.content.client.screen.DisplayCaseScreen;
 import lostworlds.content.client.screen.FossilCleanerScreen;
 import lostworlds.content.client.screen.FossilGrinderScreen;
 import lostworlds.content.client.screen.TimeMachineScreen;
@@ -111,6 +112,7 @@ public class ClientSetup
 		ScreenManager.register(ContainerInit.CULTIVATOR_CONTAINER, CultivatorScreen::new);
 
 		ScreenManager.register(ContainerInit.TIME_MACHINE_CONTAINER, TimeMachineScreen::new);
+		ScreenManager.register(ContainerInit.DISPLAY_CASE_CONTAINER, DisplayCaseScreen::new);
 		ScreenManager.register(ContainerInit.ARCHAEOLOGY_CONTAINER, ArchaeologyTableScreen::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.FOSSIL_POACHER, manager -> new FossilPoacherRenderer(manager));

@@ -7,7 +7,7 @@ import com.google.common.collect.Lists;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
 import lostworlds.content.server.init.RecipeInit;
-import lostworlds.library.recipe.TimeMachineRecipe;
+import lostworlds.library.container.recipes.TimeMachineRecipe;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftResultInventory;

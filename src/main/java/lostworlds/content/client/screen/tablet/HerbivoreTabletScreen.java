@@ -23,7 +23,7 @@ public class HerbivoreTabletScreen extends Screen
 	private final int texWidth;
 	private final int texHeight;
 	int left;
-	int right;
+	int top;
 	
 	private final HerbivoreEntity entity;
 	
@@ -35,6 +35,12 @@ public class HerbivoreTabletScreen extends Screen
 		
 		this.texWidth = 255;
 		this.texHeight = 192;
+	}
+	
+	@Override
+	public boolean isPauseScreen() 
+	{
+		return true;
 	}
 	
 	@Override

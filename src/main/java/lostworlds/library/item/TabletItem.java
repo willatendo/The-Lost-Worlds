@@ -22,9 +22,9 @@ public class TabletItem extends ModItem
 	{
 		Minecraft instance = Minecraft.getInstance();
 		
-		HerbivoreEntity herbivore = (HerbivoreEntity) entity;
 		if(entity instanceof HerbivoreEntity)
 		{	
+			HerbivoreEntity herbivore = (HerbivoreEntity) entity;
 			if(herbivore.isTagged())
 			{
 				instance.setScreen(new HerbivoreTabletScreen(herbivore));

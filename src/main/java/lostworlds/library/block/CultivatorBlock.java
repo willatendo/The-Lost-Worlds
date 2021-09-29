@@ -5,7 +5,7 @@ import java.util.Random;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.block.builder.MachineBlockBuilder;
-import lostworlds.library.tileentity.CultivatorTileEntity;
+import lostworlds.library.block.entity.CultivatorTileEntity;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

@@ -1,13 +1,17 @@
 package lostworlds.library.entity.fossil;
 
+import java.util.EnumSet;
+
 import lostworlds.library.item.ChiselItem;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.LookAtGoal;
+import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,6 +23,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.particles.BlockParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntityPredicates;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
@@ -36,11 +41,13 @@ public class FossilEntity extends AnimalEntity implements IAnimatable
 	private static final DataParameter<Boolean> PUSHING = EntityDataManager.defineId(FossilEntity.class, DataSerializers.BOOLEAN);
 	private static final DataParameter<Boolean> LOOKING = EntityDataManager.defineId(FossilEntity.class, DataSerializers.BOOLEAN);
 	
+	public static final String animation = "animation.skeleton.living";
+	
 	private AnimationFactory factory = new AnimationFactory(this);
 	
 	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) 
 	{
-		event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.skeleton.living", true));
+		event.getController().setAnimation(new AnimationBuilder().addAnimation(this.animation, true));
 		return PlayState.CONTINUE;
 	}
 	
@@ -70,7 +77,7 @@ public class FossilEntity extends AnimalEntity implements IAnimatable
 	protected void registerGoals() 
 	{
 		super.registerGoals();
-		this.goalSelector.addGoal(0, new LookAtPlayerGoal(this, PlayerEntity.class, 8.0F));
+		this.goalSelector.addGoal(0, new LookAtPlayerGoal(this));
 	}
 	
 	@Override
@@ -96,26 +103,15 @@ public class FossilEntity extends AnimalEntity implements IAnimatable
 		this.setPushable(nbt.getBoolean("IsPushable"));
 		this.setLooking(nbt.getBoolean("IsLooking"));
 	}
-	
+
 	@Override
 	public boolean isPushable() 
 	{
-		return false;
+		return this.canBePushed();
 	}
 	
-//	@Override
-//	public ActionResultType mobInteract(PlayerEntity entity, Hand hand) 
-//	{
-//		if(this.isLooking())
-//		{
-//			this.setLooking(false);
-//		}
-//		if(!this.isLooking())
-//		{
-//			this.setLooking(true);
-//		}
-//		return ActionResultType.SUCCESS;
-//	}
+	@Override
+	protected void doPush(Entity entity) { }
 	
 	public boolean canBePushed() 
 	{
@@ -191,6 +187,12 @@ public class FossilEntity extends AnimalEntity implements IAnimatable
 		return false;
 	}
 
+	@Override
+	public boolean isPushedByFluid() 
+	{
+		return false;	
+	}
+	
 	public void onKillCommand() 
 	{
 		this.remove();
@@ -202,33 +204,103 @@ public class FossilEntity extends AnimalEntity implements IAnimatable
 		return null;
 	}
 	
-	static class LookAtPlayerGoal extends LookAtGoal 
+	static class LookAtPlayerGoal extends Goal 
 	{
-		FossilEntity entity;
-		
-		public LookAtPlayerGoal(FossilEntity entity, Class<? extends LivingEntity> watchTargetClass, float maxDistance) 
+		protected final FossilEntity entity;
+		protected Entity lookAt;
+		protected final float range;
+		private int lookTime;
+		protected final float probability;
+		protected final Class<? extends LivingEntity> lookAtType;
+		protected final EntityPredicate lookAtContext;
+
+		public LookAtPlayerGoal(FossilEntity entity) 
 		{
-			super(entity, watchTargetClass, maxDistance);
-			this.entity = entity;
+			this(entity, PlayerEntity.class, 32.0F, 0.02F);
 		}
-		
+
+		public LookAtPlayerGoal(FossilEntity entity, Class<? extends LivingEntity> lookAtEntity, float range, float probability) 
+		{
+			this.entity = entity;
+			this.lookAtType = lookAtEntity;
+			this.range = range;
+			this.probability = probability;
+			this.setFlags(EnumSet.of(Goal.Flag.LOOK));
+			if(lookAtEntity == PlayerEntity.class) 
+			{
+				this.lookAtContext = (new EntityPredicate()).range((double) range).allowSameTeam().allowInvulnerable().allowNonAttackable().selector((livingentity) -> 
+				{
+					return EntityPredicates.notRiding(entity).test(livingentity);
+				});
+			} 
+			else 
+			{
+				this.lookAtContext = (new EntityPredicate()).range((double) range).allowSameTeam().allowInvulnerable().allowNonAttackable();
+			}
+
+		}
+
 		@Override
 		public boolean canUse() 
 		{
-			if(entity.isLooking()) 
+			if(entity.isLooking())
 			{
-				return super.canUse();
-			} 
-			else 
+				if(this.entity.getTarget() != null) 
+				{
+					this.lookAt = this.entity.getTarget();
+				}
+
+				if(this.lookAtType == PlayerEntity.class) 
+				{
+					this.lookAt = this.entity.level.getNearestPlayer(this.lookAtContext, this.entity, this.entity.getX(), this.entity.getEyeY(), this.entity.getZ());
+				} 
+				else 
+				{
+					this.lookAt = this.entity.level.getNearestLoadedEntity(this.lookAtType, this.lookAtContext, this.entity, this.entity.getX(), this.entity.getEyeY(), this.entity.getZ(), this.entity.getBoundingBox().inflate((double) this.range, 3.0D, (double) this.range));
+				}
+
+				return this.lookAt != null;
+			}
+			else
 			{
 				return false;
 			}
 		}
-		
+
 		@Override
 		public boolean canContinueToUse() 
 		{
-			return super.canContinueToUse() && entity.isLooking();
+			if(!this.lookAt.isAlive()) 
+			{
+				return false;
+			} 
+			else if(this.entity.distanceToSqr(this.lookAt) > (double) (this.range * this.range)) 
+			{
+				return false;
+			} 
+			else 
+			{
+				return this.lookTime > 0 && entity.isLooking();
+			}
+		}
+
+		@Override
+		public void start() 
+		{
+			this.lookTime = 40 + this.entity.getRandom().nextInt(40);
+		}
+
+		@Override
+		public void stop() 
+		{
+			this.lookAt = null;
+		}
+
+		@Override
+		public void tick() 
+		{
+			this.entity.getLookControl().setLookAt(this.lookAt.getX(), this.lookAt.getEyeY(), this.lookAt.getZ());
+			--this.lookTime;
 		}
 	}
 }

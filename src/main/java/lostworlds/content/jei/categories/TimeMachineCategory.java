@@ -3,7 +3,7 @@ package lostworlds.content.jei.categories;
 import lostworlds.content.ModUtils;
 import lostworlds.content.jei.LostWorldsConstants;
 import lostworlds.content.server.init.BlockInit;
-import lostworlds.library.recipe.TimeMachineRecipe;
+import lostworlds.library.container.recipes.TimeMachineRecipe;
 import mezz.jei.api.constants.ModIds;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;

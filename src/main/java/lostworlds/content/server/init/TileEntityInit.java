@@ -3,13 +3,14 @@ package lostworlds.content.server.init;
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
 import lostworlds.library.block.ISign;
-import lostworlds.library.tileentity.AnalyzerTileEntity;
-import lostworlds.library.tileentity.CultivatorTileEntity;
-import lostworlds.library.tileentity.DNAExtractorTileEntity;
-import lostworlds.library.tileentity.DNAInjectorTileEntity;
-import lostworlds.library.tileentity.FossilCleanerTileEntity;
-import lostworlds.library.tileentity.FossilGrinderTileEntity;
-import lostworlds.library.tileentity.ModSignTileEntity;
+import lostworlds.library.block.entity.AnalyzerTileEntity;
+import lostworlds.library.block.entity.CultivatorTileEntity;
+import lostworlds.library.block.entity.DNAExtractorTileEntity;
+import lostworlds.library.block.entity.DNAInjectorTileEntity;
+import lostworlds.library.block.entity.DisplayCaseTileEntity;
+import lostworlds.library.block.entity.FossilCleanerTileEntity;
+import lostworlds.library.block.entity.FossilGrinderTileEntity;
+import lostworlds.library.block.entity.ModSignTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -23,6 +24,8 @@ public class TileEntityInit
 	public static final TileEntityType<DNAInjectorTileEntity> DNA_INJECTOR_TILE_ENTITY = ModRegistry.register("dna_injector_tile_entity", TileEntityType.Builder.of(DNAInjectorTileEntity::new, BlockInit.DNA_INJECTOR).build(null));
 	public static final TileEntityType<CultivatorTileEntity> CULTIVATOR_TILE_ENTITY = ModRegistry.register("cultivator_tile_entity", TileEntityType.Builder.of(CultivatorTileEntity::new, BlockInit.CULTIVATOR).build(null));
 
+	public static final TileEntityType<DisplayCaseTileEntity> DISPLAY_CASE_TILE_ENTITY = ModRegistry.register("display_case_tile_entity", TileEntityType.Builder.of(DisplayCaseTileEntity::new, BlockInit.DISPLAY_CASE_SMALL).build(null));
+	
 	public static final TileEntityType<ModSignTileEntity> SIGN_TILE_ENTITY = ModRegistry.register("sign_tile_entity", TileEntityType.Builder.of(ModSignTileEntity::new, collectBlocks(ISign.class)).build(null));
 	
 	//Registry

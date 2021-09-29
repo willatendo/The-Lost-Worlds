@@ -1,7 +1,7 @@
 package lostworlds.library.block;
 
 import lostworlds.content.server.init.TileEntityInit;
-import lostworlds.library.tileentity.ModSignTileEntity;
+import lostworlds.library.block.entity.ModSignTileEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.WallSignBlock;
 import net.minecraft.block.WoodType;

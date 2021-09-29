@@ -8,7 +8,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import lostworlds.content.ModUtils;
 import lostworlds.content.jei.LostWorldsConstants;
 import lostworlds.content.server.init.BlockInit;
-import lostworlds.library.recipe.AnalyzerRecipe;
+import lostworlds.library.container.recipes.AnalyzerRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
