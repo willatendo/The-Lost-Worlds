@@ -24,7 +24,7 @@ public class TileEntityInit
 	public static final TileEntityType<DNAInjectorTileEntity> DNA_INJECTOR_TILE_ENTITY = ModRegistry.register("dna_injector_tile_entity", TileEntityType.Builder.of(DNAInjectorTileEntity::new, BlockInit.DNA_INJECTOR).build(null));
 	public static final TileEntityType<CultivatorTileEntity> CULTIVATOR_TILE_ENTITY = ModRegistry.register("cultivator_tile_entity", TileEntityType.Builder.of(CultivatorTileEntity::new, BlockInit.CULTIVATOR).build(null));
 
-	public static final TileEntityType<DisplayCaseTileEntity> DISPLAY_CASE_TILE_ENTITY = ModRegistry.register("display_case_tile_entity", TileEntityType.Builder.of(DisplayCaseTileEntity::new, BlockInit.DISPLAY_CASE_SMALL).build(null));
+	public static final TileEntityType<DisplayCaseTileEntity> DISPLAY_CASE_TILE_ENTITY = ModRegistry.register("display_case_tile_entity", TileEntityType.Builder.of(DisplayCaseTileEntity::new, BlockInit.DISPLAY_CASE).build(null));
 	
 	public static final TileEntityType<ModSignTileEntity> SIGN_TILE_ENTITY = ModRegistry.register("sign_tile_entity", TileEntityType.Builder.of(ModSignTileEntity::new, collectBlocks(ISign.class)).build(null));
 	

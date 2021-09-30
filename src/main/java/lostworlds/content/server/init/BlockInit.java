@@ -153,7 +153,7 @@ public class BlockInit
 	public static final Block TIME_MACHINE = TimeMachineBlock.create();
 			
 	//Museum Blocks
-	public static final Block DISPLAY_CASE_SMALL = BlockAndItemBuilder.create("display_case_small", new DisplayCaseBlock(AbstractBlock.Properties.of(Material.STONE).harvestLevel(1).requiresCorrectToolForDrops().noOcclusion().strength(4.0F, 5.0F).sound(SoundType.GLASS)));
+	public static final Block DISPLAY_CASE = BlockAndItemBuilder.create("display_case", new DisplayCaseBlock(AbstractBlock.Properties.of(Material.STONE).harvestLevel(1).requiresCorrectToolForDrops().noOcclusion().strength(4.0F, 5.0F).sound(SoundType.GLASS)));
 	
 	//Wood
 	

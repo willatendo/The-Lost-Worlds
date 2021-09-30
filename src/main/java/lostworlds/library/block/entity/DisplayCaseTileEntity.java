@@ -72,6 +72,6 @@ public class DisplayCaseTileEntity extends LockableLootTileEntity implements ICl
 	
 	public ItemStack getDisplayedItem()
 	{
-		return this.items.get(0);
+		return this.getItem(0);
 	}
 }

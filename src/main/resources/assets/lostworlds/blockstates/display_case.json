@@ -1,0 +1,64 @@
+{
+	"variants": {
+		"size=single,facing=north": {
+			"model": "lostworlds:block/display_case_single"
+		},
+		"size=single,facing=south": {
+			"model": "lostworlds:block/display_case_single",
+			"y": 180
+		},
+		"size=single,facing=west": {
+			"model": "lostworlds:block/display_case_single",
+			"y": 270
+		},
+		"size=single,facing=east": {
+			"model": "lostworlds:block/display_case_single",
+			"y": 90
+		},
+		"size=left,facing=north": {
+			"model": "lostworlds:block/display_case_left"
+		},
+		"size=left,facing=south": {
+			"model": "lostworlds:block/display_case_left",
+			"y": 180
+		},
+		"size=left,facing=west": {
+			"model": "lostworlds:block/display_case_left",
+			"y": 270
+		},
+		"size=left,facing=east": {
+			"model": "lostworlds:block/display_case_left",
+			"y": 90
+		},
+		"size=right,facing=north": {
+			"model": "lostworlds:block/display_case_right"
+		},
+		"size=right,facing=south": {
+			"model": "lostworlds:block/display_case_right",
+			"y": 180
+		},
+		"size=right,facing=west": {
+			"model": "lostworlds:block/display_case_right",
+			"y": 270
+		},
+		"size=right,facing=east": {
+			"model": "lostworlds:block/display_case_right",
+			"y": 90
+		},
+		"size=both,facing=north": {
+			"model": "lostworlds:block/display_case_both"
+		},
+		"size=both,facing=south": {
+			"model": "lostworlds:block/display_case_both",
+			"y": 180
+		},
+		"size=both,facing=west": {
+			"model": "lostworlds:block/display_case_both",
+			"y": 270
+		},
+		"size=both,facing=east": {
+			"model": "lostworlds:block/display_case_both",
+			"y": 90
+		}
+	}
+}

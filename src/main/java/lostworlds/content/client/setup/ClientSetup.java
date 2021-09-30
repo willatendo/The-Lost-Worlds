@@ -6,6 +6,7 @@ import lostworlds.content.client.entity.render.FossilPoacherRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusSkeletonRenderer;
 import lostworlds.content.client.entity.render.ModBoatRenderer;
+import lostworlds.content.client.entity.render.block.DisplayCaseRenderer;
 import lostworlds.content.client.screen.AnalyzerScreen;
 import lostworlds.content.client.screen.ArchaeologyTableScreen;
 import lostworlds.content.client.screen.CultivatorScreen;
@@ -57,7 +58,7 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.WILLIAMSONIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.ZAMITES, RenderType.cutout());
 		
-		RenderTypeLookup.setRenderLayer(BlockInit.DISPLAY_CASE_SMALL, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.DISPLAY_CASE, RenderType.cutout());
 		
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_CLEANER, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_GRINDER, RenderType.translucent());
@@ -122,5 +123,10 @@ public class ClientSetup
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS, manager -> new ChilesaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS, manager -> new KentrosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS_SKELETON, manager -> new KentrosaurusSkeletonRenderer(manager));
+	}
+	
+	public static void registerRenderers(final FMLClientSetupEvent event)
+	{
+		ClientRegistry.bindTileEntityRenderer(TileEntityInit.DISPLAY_CASE_TILE_ENTITY, DisplayCaseRenderer::new);
 	}
 }
