@@ -9,9 +9,6 @@ import lostworlds.library.dimension.permian.layer.PermianAddSubBiomeLayer;
 import lostworlds.library.dimension.permian.layer.PermianAddWeightedSubBiomeLayer;
 import lostworlds.library.dimension.permian.layer.PermianIslandLayer;
 import lostworlds.library.dimension.permian.layer.PermianLookupLayer;
-import lostworlds.library.dimension.permian.layer.PermianRiverInitLayer;
-import lostworlds.library.dimension.permian.layer.PermianRiverLayer;
-import lostworlds.library.dimension.permian.layer.PermianRiverMixLayer;
 import lostworlds.library.dimension.permian.layer.PermianShoreLayer;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.registry.Registry;
@@ -74,17 +71,13 @@ public class PermianLayerUtil
 		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2002), plains);
 
 		IAreaFactory<T> riverLayer = zoomLayer;
-		riverLayer = new PermianRiverInitLayer().run(context.apply(12), riverLayer);
 		riverLayer = magnify(2007, ZoomLayer.NORMAL, riverLayer, 5, context);
-		riverLayer = new PermianRiverLayer().run(context.apply(13), riverLayer);
 		riverLayer = SmoothLayer.INSTANCE.run(context.apply(2008L), riverLayer);
 
 		IAreaFactory<T> magnifyLayer = magnify(2007L, ZoomLayer.NORMAL, zoomLayer, 3, context);
 		IAreaFactory<T> biomeLayer = new PermianShoreLayer().run(context.apply(20), magnifyLayer);
-		biomeLayer = magnify(20, ZoomLayer.NORMAL, biomeLayer, 2, context);
-
+		
 		biomeLayer = SmoothLayer.INSTANCE.run(context.apply(17L), biomeLayer);
-		biomeLayer = new PermianRiverMixLayer().run(context.apply(17), biomeLayer, riverLayer);
 
 		return biomeLayer;
 	}

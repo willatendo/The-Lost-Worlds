@@ -1,29 +1,30 @@
 package lostworlds.library.dimension.permian.layer;
 
+import lostworlds.library.biome.BiomeKeys;
 import lostworlds.library.dimension.permian.PermianLayerUtil;
 import net.minecraft.world.gen.INoiseRandom;
 import net.minecraft.world.gen.area.IArea;
 import net.minecraft.world.gen.layer.traits.IAreaTransformer2;
 import net.minecraft.world.gen.layer.traits.IDimOffset0Transformer;
 
-public class PermianRiverMixLayer implements IAreaTransformer2, IDimOffset0Transformer 
+public enum PermianRiverMixLayer implements IAreaTransformer2, IDimOffset0Transformer
 {
-	public PermianRiverMixLayer() { }
+	INSTANCE;
+
+	PermianRiverMixLayer() { }
 
 	@Override
-	public int applyPixel(INoiseRandom random, IArea parent1, IArea parent2, int x, int y) 
+	public int applyPixel(INoiseRandom random, IArea area1, IArea area2, int val1, int val2) 
 	{
-		final int biome = parent1.get(getParentX(x), getParentY(y));
-		final int river = parent2.get(getParentX(x), getParentY(y));
-
-		if(!PermianLayerUtil.isOcean(biome)) 
+		int i = area1.get(this.getParentX(val1), this.getParentY(val2));
+		int j = area2.get(this.getParentX(val1), this.getParentY(val2));
+		if(j == PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_RIVER)) 
 		{
-			if(PermianLayerUtil.isRiver(river)) 
-			{
-				return river;
-			}
+			return j;
+		} 
+		else 
+		{
+			return i;
 		}
-
-		return biome;
 	}
 }

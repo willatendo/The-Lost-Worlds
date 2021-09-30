@@ -37,7 +37,7 @@ public class PermianAddWeightedSubBiomeLayer implements IC0Transformer
 
 	public static PermianAddWeightedSubBiomeLayer ocean() 
 	{
-		return new PermianAddWeightedSubBiomeLayer(PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_OCEAN), new int[] { PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_OCEAN), PermianLayerUtil.getBiomeId(BiomeKeys.DEEP_PERMIAN_OCEAN), PermianLayerUtil.getBiomeId(BiomeKeys.WARM_PERMIAN_OCEAN), PermianLayerUtil.getBiomeId(BiomeKeys.WARM_DEEP_PERMIAN_OCEAN) }, new WeightedRandom.Item(20), new WeightedRandom.Item(4));
+		return new PermianAddWeightedSubBiomeLayer(PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_OCEAN), new int[] { PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_OCEAN), PermianLayerUtil.getBiomeId(BiomeKeys.DEEP_PERMIAN_OCEAN), PermianLayerUtil.getBiomeId(BiomeKeys.WARM_PERMIAN_OCEAN), PermianLayerUtil.getBiomeId(BiomeKeys.WARM_DEEP_PERMIAN_OCEAN) }, new WeightedRandom.Item(20), new WeightedRandom.Item(4), new WeightedRandom.Item(20), new WeightedRandom.Item(4));
 	}
 
 	@Override

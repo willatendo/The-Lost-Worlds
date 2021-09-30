@@ -11,6 +11,8 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
@@ -23,12 +25,15 @@ public class DisplayCaseTileEntity extends LockableLootTileEntity implements ICl
 	{
 		super(TileEntityInit.DISPLAY_CASE_TILE_ENTITY);
 	}
-
+	
 	@Override
 	public void load(BlockState state, CompoundNBT nbt) 
 	{
 		super.load(state, nbt);
-		this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
+		if(!this.tryLoadLootTable(nbt)) 
+		{
+			this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
+		}
 		ItemStackHelper.loadAllItems(nbt, this.items);
 	}
 	
@@ -36,10 +41,25 @@ public class DisplayCaseTileEntity extends LockableLootTileEntity implements ICl
 	public CompoundNBT save(CompoundNBT nbt) 
 	{
 		super.save(nbt);
-		ItemStackHelper.saveAllItems(nbt, this.items);
+		if(!this.trySaveLootTable(nbt)) 
+		{
+			ItemStackHelper.saveAllItems(nbt, this.items);
+        }
 		return nbt;
 	}
 
+	@Override
+	public SUpdateTileEntityPacket getUpdatePacket() 
+	{
+		return new SUpdateTileEntityPacket(this.worldPosition, 0, this.getUpdateTag());
+	}
+	
+	@Override
+	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) 
+	{
+		this.load(this.getBlockState(), pkt.getTag());
+	}
+	
 	@Override
 	public NonNullList<ItemStack> getItems() 
 	{

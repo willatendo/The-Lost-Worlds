@@ -29,7 +29,7 @@ public class ChiselScreen extends Screen
 	
 	public ChiselScreen(FossilEntity entity, ItemStack stack, PlayerEntity player) 
 	{
-		super(ModUtils.gTC("chisel", "chisel.title"));
+		super(ModUtils.gTC("item", "chisel"));
 		
 		this.entity = entity;
 		this.player = player;
