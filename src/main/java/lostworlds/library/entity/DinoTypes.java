@@ -1,10 +1,15 @@
 package lostworlds.library.entity;
 
+import java.util.concurrent.Callable;
+
+import lostworlds.content.client.entity.render.bone.SkeletonRenderer;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.library.entity.fossil.FossilEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.Item;
 import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.common.IExtensibleEnum;
 
@@ -17,12 +22,12 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	private final String id;
 	private EntityType<FossilEntity> entitytype;
 	private EntityType<FossilEntity> skull;
-	private EntityType<FossilEntity> leftArm;
-	private EntityType<FossilEntity> rightArm;
-	private EntityType<FossilEntity> leftLeg;
-	private EntityType<FossilEntity> rightLeg;
+	private EntityType<FossilEntity> armBones;
+	private EntityType<FossilEntity> legBones;
 	private EntityType<FossilEntity> ribCage;
 	private EntityType<FossilEntity> tail;
+	private EntityType<FossilEntity> skeleton;
+	private Item skeletonPick;
 	private final Block egg;
 	private final int primaryColour;
 	private final int secondaryColour;
@@ -49,24 +54,14 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 		return this.skull = entity;
 	}
 
-	public EntityType<FossilEntity> setLeftArm(EntityType<FossilEntity> entity)
+	public EntityType<FossilEntity> setArmBones(EntityType<FossilEntity> entity)
 	{
-		return this.leftArm = entity;
+		return this.armBones = entity;
 	}
 	
-	public EntityType<FossilEntity> setRightArm(EntityType<FossilEntity> entity)
+	public EntityType<FossilEntity> setLegBones(EntityType<FossilEntity> entity)
 	{
-		return this.rightArm = entity;
-	}
-	
-	public EntityType<FossilEntity> setLeftLeg(EntityType<FossilEntity> entity)
-	{
-		return this.leftLeg = entity;
-	}
-	
-	public EntityType<FossilEntity> setRightLeg(EntityType<FossilEntity> entity)
-	{
-		return this.rightLeg = entity;
+		return this.legBones = entity;
 	}
 	
 	public EntityType<FossilEntity> setRibCage(EntityType<FossilEntity> entity)
@@ -79,6 +74,16 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 		return this.tail = entity;
 	}
 	
+	public EntityType<FossilEntity> setSkeleton(EntityType<FossilEntity> entity)
+	{
+		return this.skeleton = entity;
+	}
+	
+	public Item setSkeletonPick(Item item)
+	{
+		return this.skeletonPick = item;
+	}
+	
 	public EntityType<FossilEntity> getEntityType()
 	{
 		return this.entitytype;
@@ -89,24 +94,14 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 		return this.skull;
 	}
 
-	public EntityType<FossilEntity> getLeftArm()
+	public EntityType<FossilEntity> getArmBones()
 	{
-		return this.leftArm;
+		return this.armBones;
 	}
 	
-	public EntityType<FossilEntity> getRightArm()
+	public EntityType<FossilEntity> getLegBones()
 	{
-		return this.rightArm;
-	}
-	
-	public EntityType<FossilEntity> getLeftLeg()
-	{
-		return this.leftLeg;
-	}
-	
-	public EntityType<FossilEntity> getRightLeg()
-	{
-		return this.rightLeg;
+		return this.legBones;
 	}
 	
 	public EntityType<FossilEntity> getRibCage()
@@ -117,6 +112,26 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	public EntityType<FossilEntity> getTail()
 	{
 		return this.tail;
+	}
+	
+	public EntityType<FossilEntity> getSkeleton()
+	{
+		return this.skeleton;
+	}
+	
+	public Item getSkeletonPick()
+	{
+		return this.skeletonPick;
+	}
+	
+	public Callable<ItemStackTileEntityRenderer> getISTER()
+	{
+		return new SkeletonRenderer(this.id);
+	}
+	
+	public Callable<ItemStackTileEntityRenderer> getISTER(String part)
+	{
+		return new SkeletonRenderer(this.id + "_" + part, this.id);
 	}
 	
 	public Block getEgg()

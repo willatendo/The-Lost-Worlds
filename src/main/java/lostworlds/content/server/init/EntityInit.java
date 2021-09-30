@@ -42,7 +42,6 @@ public class EntityInit
 		GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) EntityInit.KENTROSAURUS, KentrosaurusEntity.createAttributes());
 		GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) EntityInit.KENTROSAURUS_SKELETON, FossilEntity.createAttributes());
 		
-		
 		event.getRegistry().register(FOSSIL_POACHER.setRegistryName(ModUtils.rL("fossil_poacher")));
 		event.getRegistry().register(MOD_BOAT.setRegistryName(ModUtils.rL("mod_boat")));
 		
@@ -63,18 +62,22 @@ public class EntityInit
 		{
 			EntityType<FossilEntity> skull = ModRegistry.register(dinoType.toString().toLowerCase() + "_skull", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
 			dinoType.setSkull(skull);
-			EntityType<FossilEntity> left_arm = ModRegistry.register(dinoType.toString().toLowerCase() + "_left_arm", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setLeftArm(left_arm);
-			EntityType<FossilEntity> right_arm = ModRegistry.register(dinoType.toString().toLowerCase() + "_right_arm", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setRightArm(right_arm);
-			EntityType<FossilEntity> left_leg = ModRegistry.register(dinoType.toString().toLowerCase() + "_left_leg", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setLeftLeg(left_leg);
-			EntityType<FossilEntity> right_leg = ModRegistry.register(dinoType.toString().toLowerCase() + "_right_leg", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setRightLeg(right_leg);
+			EntityType<FossilEntity> arm_bones = ModRegistry.register(dinoType.toString().toLowerCase() + "_arm_bones", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+			dinoType.setArmBones(arm_bones);
+			EntityType<FossilEntity> leg_bones = ModRegistry.register(dinoType.toString().toLowerCase() + "_leg_bones", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+			dinoType.setLegBones(leg_bones);
 			EntityType<FossilEntity> rib_cage = ModRegistry.register(dinoType.toString().toLowerCase() + "_rib_cage", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
 			dinoType.setRibCage(rib_cage);
 			EntityType<FossilEntity> tail = ModRegistry.register(dinoType.toString().toLowerCase() + "_tail", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
 			dinoType.setTail(tail);
+			if(dinoType == DinoTypes.KENTROSAURUS)
+			{
+				dinoType.setSkeleton(KENTROSAURUS_SKELETON);
+			}
+			else
+			{
+				dinoType.setSkeleton(KENTROSAURUS_SKELETON);
+			}
 		}
 	}
 }

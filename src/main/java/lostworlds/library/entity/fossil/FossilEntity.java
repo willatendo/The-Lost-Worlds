@@ -40,7 +40,7 @@ public class FossilEntity extends AnimalEntity implements IAnimatable
 {
 	private static final DataParameter<Boolean> PUSHING = EntityDataManager.defineId(FossilEntity.class, DataSerializers.BOOLEAN);
 	private static final DataParameter<Boolean> LOOKING = EntityDataManager.defineId(FossilEntity.class, DataSerializers.BOOLEAN);
-	
+		
 	public static final String animation = "animation.skeleton.living";
 	
 	private AnimationFactory factory = new AnimationFactory(this);

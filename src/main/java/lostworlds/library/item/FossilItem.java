@@ -1,11 +1,163 @@
 package lostworlds.library.item;
 
-import net.minecraft.item.Item;
+import java.util.Objects;
 
-public class FossilItem extends Item
+import javax.annotation.Nullable;
+
+import lostworlds.library.entity.fossil.FossilEntity;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.FlowingFluidBlock;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUseContext;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.RayTraceContext;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.util.Lazy;
+import net.minecraftforge.common.util.NonNullSupplier;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
+
+public class FossilItem extends Item implements IAnimatable
 {
-	public FossilItem(Properties properties) 
+public static final String animation = "animation.skeleton.living";
+	
+	private AnimationFactory factory = new AnimationFactory(this);
+	
+	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) 
+	{
+		event.getController().setAnimation(new AnimationBuilder().addAnimation(this.animation, true));
+		return PlayState.CONTINUE;
+	}
+	
+	private final Lazy<? extends EntityType<?>> entityTypeSupplier;
+	
+	public FossilItem(Properties properties, NonNullSupplier<? extends EntityType<FossilEntity>> entityTypeSupplier) 
 	{
 		super(properties);
+		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
+	}
+
+	@Override
+	public void registerControllers(AnimationData data) 
+	{
+		data.addAnimationController(new AnimationController<IAnimatable>(this, "controller", 0, this::predicate));
+	}
+
+	@Override
+	public AnimationFactory getFactory() 
+	{
+		return this.factory;
+	}
+	
+	@Override
+	public ActionResultType useOn(ItemUseContext cpmtext) 
+	{
+		World world = cpmtext.getLevel();
+		if(!(world instanceof ServerWorld)) 
+		{
+			return ActionResultType.SUCCESS;
+		} 
+		else 
+		{
+			ItemStack itemstack = cpmtext.getItemInHand();
+			BlockPos blockpos = cpmtext.getClickedPos();
+			Direction direction = cpmtext.getClickedFace();
+			BlockState blockstate = world.getBlockState(blockpos);
+			BlockPos blockpos1;
+			if(blockstate.getCollisionShape(world, blockpos).isEmpty()) 
+			{
+				blockpos1 = blockpos;
+			} 
+			else 
+			{
+				blockpos1 = blockpos.relative(direction);
+			}
+			
+			EntityType<?> entitytype = this.getType(itemstack.getTag());
+			if(entitytype.spawn((ServerWorld)world, itemstack, cpmtext.getPlayer(), blockpos1, SpawnReason.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) 
+			{
+				itemstack.shrink(1);
+			}
+			
+			return ActionResultType.CONSUME;
+		}
+	}
+	
+	@Override
+	public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) 
+	{
+		ItemStack itemstack = player.getItemInHand(hand);
+		RayTraceResult raytraceresult = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
+		if(raytraceresult.getType() != RayTraceResult.Type.BLOCK) 
+		{
+			return ActionResult.pass(itemstack);
+		} 
+		else if(!(world instanceof ServerWorld)) 
+		{
+			return ActionResult.success(itemstack);
+		} 
+		else 
+		{
+			BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult) raytraceresult;
+			BlockPos blockpos = blockraytraceresult.getBlockPos();
+			if(!(world.getBlockState(blockpos).getBlock() instanceof FlowingFluidBlock)) 
+			{
+				return ActionResult.pass(itemstack);
+			} 
+			else if(world.mayInteract(player, blockpos) && player.mayUseItemAt(blockpos, blockraytraceresult.getDirection(), itemstack)) 
+			{
+				EntityType<?> entitytype = this.getType(itemstack.getTag());
+				if(entitytype.spawn((ServerWorld) world, itemstack, player, blockpos, SpawnReason.SPAWN_EGG, false, false) == null) 
+				{
+					return ActionResult.pass(itemstack);
+				} 
+				else 
+				{
+					if(!player.abilities.instabuild) 
+					{
+						itemstack.shrink(1);
+					}
+
+					player.awardStat(Stats.ITEM_USED.get(this));
+					return ActionResult.consume(itemstack);
+				}
+			} 
+			else 
+			{
+				return ActionResult.fail(itemstack);
+			}
+		}
+	}
+	
+	public EntityType<?> getType(@Nullable CompoundNBT nbt) 
+	{
+		if(nbt != null && nbt.contains("EntityTag", 10)) 
+		{
+			CompoundNBT compoundnbt = nbt.getCompound("EntityTag");
+			if(compoundnbt.contains("id", 8)) 
+			{
+				return EntityType.byString(compoundnbt.getString("id")).orElse(this.entityTypeSupplier.get());
+			}
+		}
+		
+		return this.entityTypeSupplier.get();
 	}
 }

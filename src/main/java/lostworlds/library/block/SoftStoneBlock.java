@@ -1,11 +1,8 @@
 package lostworlds.library.block;
 
-import java.util.Random;
-
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.TimeEras;
-import lostworlds.library.entity.fossil.FossilEntity;
 import lostworlds.library.item.HammerItem;
 import lostworlds.library.item.tool.ModMaterials;
 import lostworlds.library.item.tool.ModToolTypes;
@@ -22,7 +19,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 
 public class SoftStoneBlock extends Block
 {
@@ -77,56 +73,6 @@ public class SoftStoneBlock extends Block
 			if(west.is(BlockInit.SOFT_STONE))
 			{
 				world.setBlockAndUpdate(pos.west(), Blocks.AIR.defaultBlockState());
-			}
-		}
-	}
-	
-	@Override
-	public void spawnAfterBreak(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) 
-	{
-		PotentialPart part = state.getValue(POTENTIAL_PART);
-		DinoTypes dino = state.getValue(POTENTIAL_CREATURE);
-		Damage damage = state.getValue(DAMAGE);
-		Random rand = new Random();
-	
-		if(part == PotentialPart.LEFT_ARM)
-		{
-			FossilEntity leftArm = (FossilEntity) dino.getLeftArm().create(world);
-			if(damage == Damage.NONE)
-			{
-				world.addFreshEntity(leftArm);
-			}
-			else if(damage == Damage.CHIPPED)
-			{
-				int chance = rand.nextInt(10);
-				if(chance < 9)
-				{
-					world.addFreshEntity(leftArm);
-				}
-			}
-			else if(damage == Damage.SLIGHTLY)
-			{
-				int chance = rand.nextInt(7);
-				if(chance < 4)
-				{
-					world.addFreshEntity(leftArm);
-				}
-			}
-			else if(damage == Damage.CRACKED)
-			{
-				int chance = rand.nextInt(2);
-				if(chance == 1)
-				{
-					world.addFreshEntity(leftArm);
-				}
-			}
-			else if(damage == Damage.DAMAGED)
-			{
-				int chance = rand.nextInt(7);
-				if(chance > 4)
-				{
-					world.addFreshEntity(leftArm);
-				}
 			}
 		}
 	}

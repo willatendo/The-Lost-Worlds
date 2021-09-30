@@ -9,6 +9,7 @@ import lostworlds.library.entity.TimeEras;
 import lostworlds.library.item.ChiselItem;
 import lostworlds.library.item.CrystalScarabGemItem;
 import lostworlds.library.item.FieldGuideItem;
+import lostworlds.library.item.FossilItem;
 import lostworlds.library.item.HammerItem;
 import lostworlds.library.item.ModBoneMealItem;
 import lostworlds.library.item.ModItem;
@@ -226,12 +227,13 @@ public class ItemInit
 		
 		for(DinoTypes dinos : DinoTypes.values())
 		{
-			ModRegistry.register(dinos.name().toLowerCase() + "_rib_cage", new ModItem());
-			ModRegistry.register(dinos.name().toLowerCase() + "_leg_bones", new ModItem());
-			ModRegistry.register(dinos.name().toLowerCase() + "_arm_bones", new ModItem());
-			ModRegistry.register(dinos.name().toLowerCase() + "_foot_bone", new ModItem());
-			ModRegistry.register(dinos.name().toLowerCase() + "_skull", new ModItem());
-			ModRegistry.register(dinos.name().toLowerCase() + "_special", new ModItem());
+			ModRegistry.register(dinos.name().toLowerCase() + "_rib_cage", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("rib_cage")), () -> dinos.getRibCage()));
+			ModRegistry.register(dinos.name().toLowerCase() + "_leg_bones", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("leg_bones")), () -> dinos.getLegBones()));
+			ModRegistry.register(dinos.name().toLowerCase() + "_arm_bones", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("arm_bones")), () -> dinos.getArmBones()));
+			ModRegistry.register(dinos.name().toLowerCase() + "_tail", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("tail")), () -> dinos.getTail()));
+			ModRegistry.register(dinos.name().toLowerCase() + "_skull", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("skull")), () -> dinos.getSkull()));
+			Item skeleton = ModRegistry.register(dinos.name().toLowerCase() + "_skeleton", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton()));
+			dinos.setSkeletonPick(skeleton);
 			ModRegistry.register(dinos.name().toLowerCase() + "_spawn_egg", new ModSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), ModUtils.ITEMS));
 			ModRegistry.register(dinos.name().toLowerCase() + "_egg", new ModItem());
 			ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_meat", new Item(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())));
