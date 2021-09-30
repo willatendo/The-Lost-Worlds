@@ -5,11 +5,11 @@
 	],
 	"key": {
 		"#": {
-			"item": "lostworlds:accent_light_concrete"
+			"item": "lostworlds:accent_dark_concrete"
 		}
 	},
 	"result": {
-		"item": "lostworlds:accent_light_concrete_slab",
+		"item": "lostworlds:accent_dark_concrete_slab",
 		"count": 6
 	}
 }

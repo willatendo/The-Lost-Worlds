@@ -1,14 +1,16 @@
 {
 	"type": "minecraft:crafting_shaped",
 	"pattern": [
+		"##",
 		"##"
 	],
 	"key": {
 		"#": {
-			"item": "lostworlds:permian_stone"
+			"item": "minecraft:wheat"
 		}
 	},
 	"result": {
-		"item": "lostworlds:permian_stone_pressure_plate"
+		"item": "lostworlds:thatch_bundle",
+		"count": 8
 	}
 }

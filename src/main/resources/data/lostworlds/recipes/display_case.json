@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"@",
+		"#",
+		"%"
+	],
+	"key": {
+		"#": {
+			"item": "minecraft:white_wool"
+		},
+		"@": {
+			"item": "minecraft:glass"
+		},
+		"%": {
+			"item": "minecraft:smooth_stone_slab"
+		}
+	},
+	"result": {
+		"item": "lostworlds:display_case"
+	}
+}

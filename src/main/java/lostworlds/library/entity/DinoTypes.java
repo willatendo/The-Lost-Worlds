@@ -49,6 +49,11 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 		this.cookedSaturation = cookedSaturation;
 	}
 	
+	public String getId()
+	{
+		return this.id;
+	}
+	
 	public EntityType<FossilEntity> setSkull(EntityType<FossilEntity> entity)
 	{
 		return this.skull = entity;

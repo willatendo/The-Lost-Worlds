@@ -1,7 +1,7 @@
 {
 	"type": "minecraft:blasting",
 	"ingredient": {
-		"tag": "forge:ore/diamond"
+		"tag": "forge:ores/diamond"
 	},
 	"result": "minecraft:diamond",
 	"experience": 0.7,

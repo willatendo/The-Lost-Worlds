@@ -42,6 +42,15 @@ public class EntityInit
 		GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) EntityInit.KENTROSAURUS, KentrosaurusEntity.createAttributes());
 		GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) EntityInit.KENTROSAURUS_SKELETON, FossilEntity.createAttributes());
 		
+		for(DinoTypes dinos : DinoTypes.values())
+		{
+			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getArmBones(), FossilEntity.createAttributes());
+			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getLegBones(), FossilEntity.createAttributes());
+			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getRibCage(), FossilEntity.createAttributes());
+			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getSkull(),FossilEntity.createAttributes());
+			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getTail(), FossilEntity.createAttributes());
+		}
+		
 		event.getRegistry().register(FOSSIL_POACHER.setRegistryName(ModUtils.rL("fossil_poacher")));
 		event.getRegistry().register(MOD_BOAT.setRegistryName(ModUtils.rL("mod_boat")));
 		

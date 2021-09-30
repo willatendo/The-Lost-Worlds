@@ -3,6 +3,6 @@
 	"ingredient": {
 		"item": "lostworlds:accent_dark_concrete"
 	},
-	"result": "lostworlds:polished_dark_concrete",
+	"result": "lostworlds:accent_dark_concrete_slab",
 	"count": 1
 }

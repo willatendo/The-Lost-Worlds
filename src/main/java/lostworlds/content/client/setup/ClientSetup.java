@@ -7,6 +7,7 @@ import lostworlds.content.client.entity.render.KentrosaurusRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusSkeletonRenderer;
 import lostworlds.content.client.entity.render.ModBoatRenderer;
 import lostworlds.content.client.entity.render.block.DisplayCaseRenderer;
+import lostworlds.content.client.entity.render.bone.CustomisableRenderer;
 import lostworlds.content.client.screen.AnalyzerScreen;
 import lostworlds.content.client.screen.ArchaeologyTableScreen;
 import lostworlds.content.client.screen.CultivatorScreen;
@@ -22,6 +23,7 @@ import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.ColouredGlassBlock;
 import lostworlds.library.block.ColouredGlassPaneBlock;
+import lostworlds.library.entity.DinoTypes;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
@@ -123,6 +125,15 @@ public class ClientSetup
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS, manager -> new ChilesaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS, manager -> new KentrosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS_SKELETON, manager -> new KentrosaurusSkeletonRenderer(manager));
+		
+		for(DinoTypes dinos : DinoTypes.values())
+		{
+			RenderingRegistry.registerEntityRenderingHandler(dinos.getArmBones(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_arm_bones", dinos.getId(), 0.25F));
+			RenderingRegistry.registerEntityRenderingHandler(dinos.getLegBones(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_leg_bones", dinos.getId(), 0.25F));
+			RenderingRegistry.registerEntityRenderingHandler(dinos.getRibCage(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_rib_cage", dinos.getId(), 0.25F));
+			RenderingRegistry.registerEntityRenderingHandler(dinos.getSkull(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_skull", dinos.getId(), 0.25F));
+			RenderingRegistry.registerEntityRenderingHandler(dinos.getTail(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_tail", dinos.getId(), 0.25F));
+		}
 	}
 	
 	public static void registerRenderers(final FMLClientSetupEvent event)

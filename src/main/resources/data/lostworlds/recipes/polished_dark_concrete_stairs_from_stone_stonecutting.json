@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "lostworlds:dark_concrete"
-  },
-  "result": "lostworlds:polished_dark_concrete_stairs",
-  "count": 1
-}

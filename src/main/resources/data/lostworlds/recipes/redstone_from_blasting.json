@@ -1,7 +1,7 @@
 {
 	"type": "minecraft:blasting",
 	"ingredient": {
-		"tag": "forge:ore/redstone"
+		"tag": "forge:ores/redstone"
 	},
 	"result": "minecraft:redstone",
 	"experience": 0.7,
