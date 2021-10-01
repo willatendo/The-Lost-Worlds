@@ -174,6 +174,8 @@ public class FossilEntity extends AnimalEntity implements IAnimatable
 					playerentity.broadcastBreakEvent(player.getUsedItemHand());
 				});
 				this.remove();
+				if(!this.level.isClientSide)
+					this.dropAllDeathLoot(source);
 				this.playBrokenSound();
 				this.playParticles();
 			}

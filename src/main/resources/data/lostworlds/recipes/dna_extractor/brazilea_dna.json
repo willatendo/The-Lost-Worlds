@@ -3,7 +3,7 @@
 	"output": {
 		"item": "lostworlds:brazilea_dna"
 	},
-	"fossil": {
+	"softTissue": {
 		"item": "lostworlds:brazilea_soft_tissue"
 	}
 }

@@ -6,11 +6,11 @@
   ],
   "key": {
     "#": {
-      "item": "lostworlds:light_grey_glass"
+      "item": "lostworlds:light_gray_glass"
     }
   },
   "result": {
-    "item": "lostworlds:light_grey_glass_pane",
+    "item": "lostworlds:light_gray_glass_pane",
     "count": 16
   }
 }

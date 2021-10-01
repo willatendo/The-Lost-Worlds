@@ -12,11 +12,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class PalaeontologyTableScreen extends ContainerScreen<PaleontologyTableContainer>
+public class PaleontologyTableScreen extends ContainerScreen<PaleontologyTableContainer>
 {
 	private static final ResourceLocation TEXTURE = new ResourceLocation("textures/gui/container/crafting_table.png");
 	
-	public PalaeontologyTableScreen(PaleontologyTableContainer container, PlayerInventory playerInv, ITextComponent text) 
+	public PaleontologyTableScreen(PaleontologyTableContainer container, PlayerInventory playerInv, ITextComponent text) 
 	{
 		super(container, playerInv, text);
 	}

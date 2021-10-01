@@ -1,9 +1,9 @@
 {
 	"type": "minecraft:smelting",
 	"ingredient": {
-		"item": "lostworlds:permian_sand"
+		"item": "lostworlds:raw_kentrosaurus_meat"
 	},
-	"result": "minecraft:orange_stained_glass",
+	"result": "lostworlds:cooked_kentrosaurus_meat",
 	"experience": 0.7,
 	"cookingtime": 200
 }

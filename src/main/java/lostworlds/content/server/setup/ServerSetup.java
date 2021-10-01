@@ -88,7 +88,7 @@ public class ServerSetup
 			
 			VillagerTrades.ITrade[] archaeology2 = new VillagerTrades.ITrade[] 
 			{
-				//new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.FEILD_GUIDE, 25, 1, 20),
+				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.FIELD_GUIDE, 25, 1, 20),
 				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.WET_PAPER, 3, 5, 12)
 			};
 			

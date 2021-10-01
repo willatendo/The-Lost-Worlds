@@ -16,7 +16,7 @@ import lostworlds.content.client.screen.DNAInjectorScreen;
 import lostworlds.content.client.screen.DisplayCaseScreen;
 import lostworlds.content.client.screen.FossilCleanerScreen;
 import lostworlds.content.client.screen.FossilGrinderScreen;
-import lostworlds.content.client.screen.PalaeontologyTableScreen;
+import lostworlds.content.client.screen.PaleontologyTableScreen;
 import lostworlds.content.client.screen.TimeMachineScreen;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
@@ -118,7 +118,7 @@ public class ClientSetup
 		ScreenManager.register(ContainerInit.TIME_MACHINE_CONTAINER, TimeMachineScreen::new);
 		ScreenManager.register(ContainerInit.DISPLAY_CASE_CONTAINER, DisplayCaseScreen::new);
 		ScreenManager.register(ContainerInit.ARCHAEOLOGY_CONTAINER, ArchaeologyTableScreen::new);
-		ScreenManager.register(ContainerInit.PALEONTOLOGY_CONTAINER, PalaeontologyTableScreen::new);
+		ScreenManager.register(ContainerInit.PALEONTOLOGY_CONTAINER, PaleontologyTableScreen::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.FOSSIL_POACHER, manager -> new FossilPoacherRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.MOD_BOAT, manager -> new ModBoatRenderer(manager));

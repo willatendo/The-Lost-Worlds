@@ -89,6 +89,13 @@ public class PaleontologyTableRecipe implements IRecipe<PaleontologyTableInvento
 	{
 		return width >= this.width && height >= this.height;
 	}
+	
+	public NonNullList<ItemStack> getOutput()
+	{
+		NonNullList<ItemStack> output = NonNullList.create();
+		output.add(this.result);
+		return output;
+	}
 
 	@Override
 	public boolean matches(PaleontologyTableInventory inv, World world) 

@@ -248,7 +248,8 @@
 	"item.lostworlds.kentrosaurus_arm_bones": "Kentrosaurus Arm Bones",
 	"item.lostworlds.kentrosaurus_foot_bone": "Kentrosaurus Foot Bone",
 	"item.lostworlds.kentrosaurus_skull": "Kentrosaurus Skull",
-	"item.lostworlds.kentrosaurus_special": "Kentrosaurus Thagomizer",
+	"item.lostworlds.kentrosaurus_tail": "Kentrosaurus Tail",
+	"item.lostworlds.kentrosaurus_skeleton": "Kentrosaurus Skeleton",
 	"item.lostworlds.kentrosaurus_egg": "Kentrosaurus Egg",
 	"item.lostworlds.raw_kentrosaurus_meat": "Raw Kentrosaurus Meat",
 	"item.lostworlds.cooked_kentrosaurus_meat": "Cooked Kentrosaurus Meat",
@@ -312,7 +313,8 @@
 	"block.lostworlds.basalt_diamond_ore": "Basalt Diamond Ore",
 	
 	//Museum Blocks
-	"block.lostworlds.display_case_small": "Display Case (Small)",
+	"block.lostworlds.display_case": "Display Case",
+	"container.lostworlds.display_case": "Display Case",
 	
 	//Machines
 	"block.lostworlds.fossil_cleaner": "Fossil Cleaner",
@@ -335,7 +337,25 @@
 	"container.lostworlds.cultivator": "Cultivator",
 	"jei.lostworlds.cultivator.title": "Cultivating",
 	"block.lostworlds.archaeology_table": "Archaeology Table",
+	"container.lostworlds.archaeology_table": "Archaeology Table",
+	"block.lostworlds.oak_paleontology_table": "Oak Paleontology Table",
+	"block.lostworlds.spruce_paleontology_table": "Spruce Paleontology Table",
+	"block.lostworlds.birch_paleontology_table": "Birch Paleontology Table",
+	"block.lostworlds.jungle_paleontology_table": "Jungle Paleontology Table",
+	"block.lostworlds.acacia_paleontology_table": "Acacia Paleontology Table",
+	"block.lostworlds.dark_oak_paleontology_table": "Dark Oak Paleontology Table",
+	"block.lostworlds.crimson_paleontology_table": "Crimson Paleontology Table",
+	"block.lostworlds.warped_paleontology_table": "Warped Paleontology Table",
+	"block.lostworlds.araucaria_paleontology_table": "Araucaria Paleontology Table",
+	"block.lostworlds.calamites_paleontology_table": "Calamites Paleontology Table",
+	"block.lostworlds.conifer_paleontology_table": "Conifer Paleontology Table",
+	"block.lostworlds.ginkgo_paleontology_table": "Ginkgo Paleontology Table",
+	"block.lostworlds.scorched_paleontology_table": "Scorched Paleontology Table",
+	"container.lostworlds.paleontology_table": "Paleontology Table",
+	"jei.lostworlds.paleontology_table.title": "Paleontology",
 	"block.lostworlds.time_machine": "Time Machine",
+	"container.lostworlds.time_machine": "Time Machine",
+	"jei.lostworlds.time_machine.title": "Time Enchanting",
 	
 	//Tree
 	"block.lostworlds.araucaria_log": "Araucaria Log",
