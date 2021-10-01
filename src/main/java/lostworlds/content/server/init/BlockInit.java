@@ -3,7 +3,7 @@ package lostworlds.content.server.init;
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
 import lostworlds.library.block.AnalyzerBlock;
-import lostworlds.library.block.ArchaeologyTable;
+import lostworlds.library.block.ArchaeologyTableBlock;
 import lostworlds.library.block.BrazileaBlock;
 import lostworlds.library.block.CalamtiesSuckowiiBlock;
 import lostworlds.library.block.CalamtiesSuckowiiSaplingBlock;
@@ -31,6 +31,7 @@ import lostworlds.library.block.ModWallSignBlock;
 import lostworlds.library.block.ModWoodType;
 import lostworlds.library.block.MossySoilBlock;
 import lostworlds.library.block.NautilusShellBlock;
+import lostworlds.library.block.PaleontologyTableBlock;
 import lostworlds.library.block.PetrifiedWoodBlock;
 import lostworlds.library.block.PlantFossilBlock;
 import lostworlds.library.block.SoftStoneBlock;
@@ -148,7 +149,21 @@ public class BlockInit
 	public static final Block DNA_INJECTOR = DNAInjectorBlock.create();
 	public static final Block CULTIVATOR = CultivatorBlock.create();
 		
-	public static final Block ARCHAEOLOGY_TABLE = ArchaeologyTable.create();
+	public static final Block ARCHAEOLOGY_TABLE = ArchaeologyTableBlock.create();
+	
+	public static final Block OAK_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("oak");
+	public static final Block SPRUCE_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("spruce");
+	public static final Block BIRCH_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("birch");
+	public static final Block JUNGLE_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("jungle");
+	public static final Block ACACIA_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("acacia");
+	public static final Block DARK_OAK_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("dark_oak");
+	public static final Block CRIMSON_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("crimson");
+	public static final Block WARPED_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("warped");
+	public static final Block ARAUCARIA_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("araucaria");
+	public static final Block CALAMITES_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("calamites");
+	public static final Block CONIFER_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("conifer");
+	public static final Block GINKGO_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("ginkgo");
+	public static final Block SCORCHED_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("scorched");
 		
 	public static final Block TIME_MACHINE = TimeMachineBlock.create();
 			

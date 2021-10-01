@@ -3,7 +3,7 @@ package lostworlds.content.client.screen;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
-import lostworlds.library.container.ArchaeologyTableContainer;
+import lostworlds.library.container.PaleontologyTableContainer;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -11,17 +11,12 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-/*
- * Author: Willatendo
- * Date: July 15, 2021
- */
-
 @OnlyIn(Dist.CLIENT)
-public class ArchaeologyTableScreen extends ContainerScreen<ArchaeologyTableContainer>
+public class PalaeontologyTableScreen extends ContainerScreen<PaleontologyTableContainer>
 {
 	private static final ResourceLocation TEXTURE = new ResourceLocation("textures/gui/container/crafting_table.png");
 	
-	public ArchaeologyTableScreen(ArchaeologyTableContainer container, PlayerInventory playerInv, ITextComponent text) 
+	public PalaeontologyTableScreen(PaleontologyTableContainer container, PlayerInventory playerInv, ITextComponent text) 
 	{
 		super(container, playerInv, text);
 	}

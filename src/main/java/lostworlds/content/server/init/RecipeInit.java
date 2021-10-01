@@ -13,6 +13,7 @@ import lostworlds.library.container.recipes.DNAInjectorRecipe;
 import lostworlds.library.container.recipes.DNAInjectorRecipeSerialiser;
 import lostworlds.library.container.recipes.FossilGrinderRecipe;
 import lostworlds.library.container.recipes.FossilGrinderRecipeSerialiser;
+import lostworlds.library.container.recipes.PaleontologyTableRecipe;
 import lostworlds.library.container.recipes.TimeMachineRecipe;
 import lostworlds.library.container.recipes.TimeMachineRecipeSerialiser;
 import net.minecraft.item.crafting.IRecipe;
@@ -29,6 +30,7 @@ public class RecipeInit
 	public static final IRecipeSerializer<DNAInjectorRecipe> DNA_INJECTOR_RECIPE_SERIALIZER = new DNAInjectorRecipeSerialiser();
 	public static final IRecipeSerializer<CultivatorRecipe> CULTIVATOR_RECIPE_SERIALIZER = new CultivatorRecipeSerialiser();
 	public static final IRecipeSerializer<ArchaeologyTableRecipe> ARCHAEOLOGY_TABLE_RECIPE_SERIALIZER = new ArchaeologyTableRecipe.Serializer();
+	public static final IRecipeSerializer<PaleontologyTableRecipe> PALEONTOLOGY_TABLE_RECIPE_SERIALIZER = new PaleontologyTableRecipe.Serializer();
 	public static final IRecipeSerializer<TimeMachineRecipe> TIME_MACHINE_RECIPE_SERIALIZER = new TimeMachineRecipeSerialiser();
 
 	public static final IRecipeType<FossilGrinderRecipe> FOSSIL_GRINDER_RECIPE = registerType(ModUtils.rL("fossil_grinder"));
@@ -37,6 +39,7 @@ public class RecipeInit
 	public static final IRecipeType<DNAInjectorRecipe> DNA_INJECTOR_RECIPE = registerType(ModUtils.rL("dna_injector"));
 	public static final IRecipeType<CultivatorRecipe> CULTIVATOR_RECIPE = registerType(ModUtils.rL("cultivator"));
 	public static final IRecipeType<ArchaeologyTableRecipe> ARCHAEOLOGY_TABLE_RECIPE = registerType(ModUtils.rL("archaeology_table"));
+	public static final IRecipeType<PaleontologyTableRecipe> PALEONTOLOGY_TABLE_RECIPE = registerType(ModUtils.rL("paleontology_table"));
 	public static final IRecipeType<TimeMachineRecipe> TIME_MACHINE_RECIPE = registerType(ModUtils.rL("time_machine"));
 
 	public static final IRecipeSerializer<?> FOSSIL_GRINDER_SERIALIZER = ModRegistry.register("fossil_grinder", FOSSIL_GRINDER_RECIPE_SERIALIZER);
@@ -45,6 +48,7 @@ public class RecipeInit
 	public static final IRecipeSerializer<?> DNA_INJECTOR_SERIALIZER = ModRegistry.register("dna_injector", DNA_INJECTOR_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> CULTIVATOR_SERIALIZER = ModRegistry.register("cultivator", CULTIVATOR_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> ARCHAEOLOGY_TABLE_SERIALIZER = ModRegistry.register("archaeology_table", ARCHAEOLOGY_TABLE_RECIPE_SERIALIZER);
+	public static final IRecipeSerializer<?> PALEONTOLOGY_TABLE_SERIALIZER = ModRegistry.register("paleontology_table", PALEONTOLOGY_TABLE_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> TIME_MACHINE_SERIALIZER = ModRegistry.register("time_machine", TIME_MACHINE_RECIPE_SERIALIZER);
 	
 	private static class RecipeType<T extends IRecipe<?>> implements IRecipeType<T> 

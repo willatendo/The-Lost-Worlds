@@ -2,7 +2,7 @@ package lostworlds.library.block;
 
 import lostworlds.content.ModUtils;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
-import lostworlds.library.container.ArchaeologyTableContianer;
+import lostworlds.library.container.ArchaeologyTableContainer;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -30,14 +30,14 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
-public class ArchaeologyTable extends Block implements IWaterLoggable
+public class ArchaeologyTableBlock extends Block implements IWaterLoggable
 {
 	private static final ITextComponent NAME = ModUtils.tTC("container", "archaeology_table");
 	private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;	
 
-	protected ArchaeologyTable() 
+	protected ArchaeologyTableBlock() 
 	{
-		super(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).harvestTool(ToolType.PICKAXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.STONE));
+		super(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).harvestTool(ToolType.PICKAXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD));
 		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
@@ -90,12 +90,12 @@ public class ArchaeologyTable extends Block implements IWaterLoggable
 	{
 		return new SimpleNamedContainerProvider((windowId, playerInv, p_220270_4_) -> 
 		{
-			return new ArchaeologyTableContianer(windowId, playerInv, IWorldPosCallable.create(world, pos));
+			return new ArchaeologyTableContainer(windowId, playerInv, IWorldPosCallable.create(world, pos));
 		}, NAME);
 	}
 	
 	public static Block create()
 	{
-		return BlockAndItemBuilder.create("archaeology_table", new ArchaeologyTable());
+		return BlockAndItemBuilder.create("archaeology_table", new ArchaeologyTableBlock());
 	}
 }

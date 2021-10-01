@@ -5,13 +5,14 @@ import java.lang.reflect.Field;
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
 import lostworlds.library.container.AnalyzerContainer;
-import lostworlds.library.container.ArchaeologyTableContianer;
+import lostworlds.library.container.ArchaeologyTableContainer;
 import lostworlds.library.container.CultivatorContainer;
 import lostworlds.library.container.DNAExtractorContainer;
 import lostworlds.library.container.DNAInjectorContainer;
 import lostworlds.library.container.DisplayCaseContainer;
 import lostworlds.library.container.FossilCleanerContainer;
 import lostworlds.library.container.FossilGrinderContainer;
+import lostworlds.library.container.PaleontologyTableContainer;
 import lostworlds.library.container.TimeMachineContainer;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
@@ -33,7 +34,8 @@ public class ContainerInit
 
 	public static final ContainerType<DisplayCaseContainer> DISPLAY_CASE_CONTAINER = ModRegistry.register("display_case_container", IForgeContainerType.create(DisplayCaseContainer::new));
 	
-	public static final ContainerType<ArchaeologyTableContianer> ARCHAEOLOGY_CONTAINER = ModRegistry.register("archaeology_table_container", IForgeContainerType.create(ArchaeologyTableContianer::new));
+	public static final ContainerType<ArchaeologyTableContainer> ARCHAEOLOGY_CONTAINER = ModRegistry.register("archaeology_table_container", IForgeContainerType.create(ArchaeologyTableContainer::new));
+	public static final ContainerType<PaleontologyTableContainer> PALEONTOLOGY_CONTAINER = ModRegistry.register("paleontology_table_container", IForgeContainerType.create(PaleontologyTableContainer::new));
 	
 	//Registry
 	@SubscribeEvent

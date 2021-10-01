@@ -5,10 +5,10 @@ import java.util.Optional;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
 import lostworlds.content.server.init.RecipeInit;
-import lostworlds.library.container.recipes.ArchaeologyTableRecipe;
-import lostworlds.library.container.slot.ArchaeologyTableResultSlot;
-import lostworlds.library.inventory.ArchaeologyTableInventory;
-import lostworlds.library.inventory.ArchaeologyTableResultInventory;
+import lostworlds.library.container.recipes.PaleontologyTableRecipe;
+import lostworlds.library.container.slot.PaleontologyTableResultSlot;
+import lostworlds.library.inventory.PaleontologyTableInventory;
+import lostworlds.library.inventory.PaleontologyTableResultInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -23,24 +23,24 @@ import net.minecraft.network.play.server.SSetSlotPacket;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.world.World;
 
-public class ArchaeologyTableContianer extends Container 
+public class PaleontologyTableContainer extends Container 
 {
-	private final ArchaeologyTableInventory craftSlots = new ArchaeologyTableInventory(this, 5, 5);
-	private final ArchaeologyTableResultInventory resultSlots = new ArchaeologyTableResultInventory();
+	private final PaleontologyTableInventory craftSlots = new PaleontologyTableInventory(this, 3, 3);
+	private final PaleontologyTableResultInventory resultSlots = new PaleontologyTableResultInventory();
 	private final IWorldPosCallable access;
 	private final PlayerEntity player;
 
-	public ArchaeologyTableContianer(int windowId, PlayerInventory playerInv, PacketBuffer buffer) 
+	public PaleontologyTableContainer(int windowId, PlayerInventory playerInv, PacketBuffer buffer) 
 	{
 		this(windowId, playerInv, IWorldPosCallable.NULL);
 	}
 
-	public ArchaeologyTableContianer(int windowId, PlayerInventory playerInv, IWorldPosCallable callable) 
+	public PaleontologyTableContainer(int windowId, PlayerInventory playerInv, IWorldPosCallable callable) 
 	{
-		super(ContainerInit.ARCHAEOLOGY_CONTAINER, windowId);
+		super(ContainerInit.PALEONTOLOGY_CONTAINER, windowId);
 		this.access = callable;
 		this.player = playerInv.player;
-		this.addSlot(new ArchaeologyTableResultSlot(playerInv.player, this.craftSlots, this.resultSlots, 0, 124, 35));
+		this.addSlot(new PaleontologyTableResultSlot(playerInv.player, this.craftSlots, this.resultSlots, 0, 124, 35));
 
 		for(int i = 0; i < 3; ++i) 
 		{
@@ -64,15 +64,15 @@ public class ArchaeologyTableContianer extends Container
 		}
 	}
 
-	protected static void slotChangedCraftingGrid(int slot, World world, PlayerEntity player, ArchaeologyTableInventory inv, ArchaeologyTableResultInventory result) 
+	protected static void slotChangedCraftingGrid(int slot, World world, PlayerEntity player, PaleontologyTableInventory inv, PaleontologyTableResultInventory result) 
 	{
 		if (!world.isClientSide) {
 			ServerPlayerEntity serverplayerentity = (ServerPlayerEntity) player;
 			ItemStack itemstack = ItemStack.EMPTY;
-			Optional<ArchaeologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(RecipeInit.ARCHAEOLOGY_TABLE_RECIPE, inv, world);
+			Optional<PaleontologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(RecipeInit.PALEONTOLOGY_TABLE_RECIPE, inv, world);
 			if(optional.isPresent()) 
 			{
-				ArchaeologyTableRecipe recipe = optional.get();
+				PaleontologyTableRecipe recipe = optional.get();
 				if(result.setRecipeUsed(world, serverplayerentity, recipe)) 
 				{
 					itemstack = recipe.assemble(inv);
@@ -104,7 +104,7 @@ public class ArchaeologyTableContianer extends Container
 		this.resultSlots.clearContent();
 	}
 
-	public boolean recipeMatches(IRecipe<? super ArchaeologyTableInventory> iRecipe) 
+	public boolean recipeMatches(IRecipe<? super PaleontologyTableInventory> iRecipe) 
 	{
 		return iRecipe.matches(this.craftSlots, this.player.level);
 	}
@@ -113,7 +113,7 @@ public class ArchaeologyTableContianer extends Container
 	public void removed(PlayerEntity player) 
 	{
 		super.removed(player);
-		this.access.execute((world, p_217068_3_) -> 
+		this.access.execute((world, pos) -> 
 		{
 			this.clearContainer(player, world, this.craftSlots);
 		});
@@ -122,7 +122,7 @@ public class ArchaeologyTableContianer extends Container
 	@Override
 	public boolean stillValid(PlayerEntity player) 
 	{
-		return stillValid(this.access, player, BlockInit.ARCHAEOLOGY_TABLE);
+		return stillValid(this.access, player, BlockInit.ACACIA_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.ARAUCARIA_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.BIRCH_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.CALAMITES_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.CONIFER_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.CRIMSON_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.DARK_OAK_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.GINKGO_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.JUNGLE_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.OAK_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.SCORCHED_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.SPRUCE_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.WARPED_PALEONTOLOGY_TABLE);
 	}
 
 	@Override
@@ -136,7 +136,7 @@ public class ArchaeologyTableContianer extends Container
 			itemstack = itemstack1.copy();
 			if(containerSlot == 0) 
 			{
-				this.access.execute((world, p_217067_3_) -> 
+				this.access.execute((world, pos) -> 
 				{
 					itemstack1.getItem().onCraftedBy(itemstack1, world, player);
 				});

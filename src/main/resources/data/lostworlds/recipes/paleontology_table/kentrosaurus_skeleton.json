@@ -1,0 +1,28 @@
+{
+	"type": "lostworlds:paleontology_table",
+	"pattern": [
+		" ^ ",
+		"#$#",
+		"&@&"
+	],
+	"key": {
+		"^": {
+			"item": "lostworlds:kentrosaurus_tail"
+		},
+		"#": {
+			"item": "lostworlds:kentrosaurus_leg_bones"
+		},
+		"$": {
+			"item": "lostworlds:kentrosaurus_rib_cage"
+		},
+		"&": {
+			"item": "lostworlds:kentrosaurus_arm_bones"
+		},
+		"@": {
+			"item": "lostworlds:kentrosaurus_skull"
+		}
+	},
+	"result": {
+		"item": "lostworlds:kentrosaurus_skeleton"
+	}
+}
