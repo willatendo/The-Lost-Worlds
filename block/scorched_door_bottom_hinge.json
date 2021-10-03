@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/door_bottom_rh",
+	"textures": {
+		"top": "lostworlds:block/scorched_door_top",
+		"bottom": "lostworlds:block/scorched_door_bottom"
+	}
+}

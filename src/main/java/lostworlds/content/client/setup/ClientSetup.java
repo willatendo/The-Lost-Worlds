@@ -26,12 +26,21 @@ import lostworlds.library.block.ColouredGlassBlock;
 import lostworlds.library.block.ColouredGlassPaneBlock;
 import lostworlds.library.entity.DinoTypes;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
+import net.minecraft.item.BlockItem;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.FoliageColors;
+import net.minecraft.world.GrassColors;
+import net.minecraft.world.IBlockDisplayReader;
+import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -46,6 +55,23 @@ public class ClientSetup
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event)
 	{
+		BlockColors blockcolors = Minecraft.getInstance().getBlockColors();
+		ItemColors itemcolors = Minecraft.getInstance().getItemColors();
+		
+		blockcolors.register((state, reader, pos, intager) -> 
+		{
+			return reader != null && pos != null ? BiomeColors.getAverageGrassColor(reader, pos) : GrassColors.get(0.5D, 1.0D);
+		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES);
+		blockcolors.register((state, reader, pos, color) -> 
+		{
+			return reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : FoliageColors.getDefaultColor();
+		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES);
+		itemcolors.register((stack, intager) -> 
+		{
+			BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
+			return blockcolors.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, intager);
+		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES);
+		
 		RenderTypeLookup.setRenderLayer(BlockInit.ALETHOPTERIS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_SUCKOWII, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_SUCKOWII_SAPLING, RenderType.cutout());

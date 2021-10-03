@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "lostworlds:block/scorched_log",
+		"side": "lostworlds:block/scorched_log"
+	}
+}

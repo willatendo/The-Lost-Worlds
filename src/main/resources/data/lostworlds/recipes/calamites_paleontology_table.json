@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"$@$",
+		"$#$",
+		"% %"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:stripped_calamites_log"
+		},
+		"$": {
+			"item": "lostworlds:calamites_planks"
+		},
+		"@": {
+			"item": "minecraft:crafting_table"
+		},
+		"%": {
+			"item": "lostworlds:calamites_log"
+		}
+	},
+	"result": {
+		"item": "lostworlds:calamites_paleontology_table"
+	}
+}

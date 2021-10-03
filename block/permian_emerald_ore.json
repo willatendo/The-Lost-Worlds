@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"all": "lostworlds:block/permian_emerald_ore"
+	}
+}

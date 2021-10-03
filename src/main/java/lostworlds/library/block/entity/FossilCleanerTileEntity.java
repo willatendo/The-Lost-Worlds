@@ -1,7 +1,6 @@
 package lostworlds.library.block.entity;
 
 import java.util.Map;
-import java.util.Random;
 
 import javax.annotation.Nullable;
 
@@ -12,7 +11,6 @@ import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.FossilCleanerBlock;
 import lostworlds.library.container.FossilCleanerContainer;
-import lostworlds.library.container.recipes.RecipeManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -226,8 +224,9 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 		if(!this.items.get(0).isEmpty()) 
 		{
 			ItemStack output = ItemStack.EMPTY;
+			@SuppressWarnings("unused")
 			ItemStack input = BlockInit.ACCENT_DARK_CONCRETE.asItem().getDefaultInstance();
-			output = RecipeManager.getAnalyzerRecipeForItem(input).generateOutput(new Random());
+			output = BlockInit.ACCENT_DARK_CONCRETE.asItem().getDefaultInstance();//RecipeManager.getAnalyzerRecipeForItem(input).generateOutput(new Random());
 			if(output.isEmpty()) 
 			{
 				return false;
@@ -264,8 +263,9 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 		if(this.canCleanWith()) 
 		{
 			ItemStack inputSlot = this.items.get(0);
+			@SuppressWarnings("unused")
 			ItemStack input = BlockInit.ACCENT_DARK_CONCRETE.asItem().getDefaultInstance();
-			ItemStack output = RecipeManager.getAnalyzerRecipeForItem(input).generateOutput(new Random());
+			ItemStack output = BlockInit.ACCENT_DARK_CONCRETE.asItem().getDefaultInstance();
 			ItemStack outputSlot = this.items.get(2);
 			if(outputSlot.isEmpty()) 
 			{

@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"$@$",
+		"$#$",
+		"% %"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:stripped_ginkgo_log"
+		},
+		"$": {
+			"item": "lostworlds:ginkgo_planks"
+		},
+		"@": {
+			"item": "minecraft:crafting_table"
+		},
+		"%": {
+			"item": "lostworlds:ginkgo_log"
+		}
+	},
+	"result": {
+		"item": "lostworlds:ginkgo_paleontology_table"
+	}
+}

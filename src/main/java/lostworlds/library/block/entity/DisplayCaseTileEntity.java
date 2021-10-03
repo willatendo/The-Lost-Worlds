@@ -16,6 +16,7 @@ import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.common.util.Constants;
 
 public class DisplayCaseTileEntity extends LockableLootTileEntity implements IClearable, INamedContainerProvider
 {
@@ -27,6 +28,36 @@ public class DisplayCaseTileEntity extends LockableLootTileEntity implements ICl
 	}
 	
 	@Override
+	public void setChanged() 
+	{
+		if(this.level == null) 
+		{
+			return; 
+		}
+		this.updateTileOnInventoryChanged();
+		if(this.needsToUpdateClientWhenChanged()) 
+		{
+			this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), Constants.BlockFlags.BLOCK_UPDATE);
+		}
+		super.setChanged();
+	}
+	
+	@Deprecated
+	public void updateOnChangedBeforePacket() { }
+	
+	public void updateTileOnInventoryChanged() 
+	{
+		this.updateOnChangedBeforePacket();
+	}
+	
+	public boolean needsToUpdateClientWhenChanged() 
+	{
+		return true;
+	}
+	
+	public void updateClientVisualsOnLoad() { }
+	
+	@Override
 	public void load(BlockState state, CompoundNBT nbt) 
 	{
 		super.load(state, nbt);
@@ -35,6 +66,17 @@ public class DisplayCaseTileEntity extends LockableLootTileEntity implements ICl
 			this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
 		}
 		ItemStackHelper.loadAllItems(nbt, this.items);
+		if(this.level != null)
+		{
+			if(this.level.isClientSide) 
+			{
+				this.updateClientVisualsOnLoad();
+			}
+			else
+			{
+				this.updateTileOnInventoryChanged();
+			}
+		}
 	}
 	
 	@Override

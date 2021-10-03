@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/door_top",
+	"textures": {
+		"top": "lostworlds:blocks/toilet_door_top",
+		"bottom": "lostworlds:blocks/toilet_door_bottom"
+	}
+}

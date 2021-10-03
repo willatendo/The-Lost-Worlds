@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"$@$",
+		"$#$",
+		"% %"
+	],
+	"key": {
+		"#": {
+			"item": "minecraft:stripped_oak_log"
+		},
+		"$": {
+			"item": "minecraft:oak_planks"
+		},
+		"@": {
+			"item": "minecraft:crafting_table"
+		},
+		"%": {
+			"item": "minecraft:oak_log"
+		}
+	},
+	"result": {
+		"item": "lostworlds:oak_paleontology_table"
+	}
+}

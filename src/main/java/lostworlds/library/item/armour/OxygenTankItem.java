@@ -7,6 +7,8 @@ import com.google.common.collect.ImmutableList;
 
 import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.ItemInit;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.enchantment.IArmorVanishable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -16,13 +18,14 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class OxygenTankItem extends ArmorItem
+public class OxygenTankItem extends Item implements IArmorVanishable
 {
 	private static final List<Item> MASK_GEAR = ImmutableList.of(ItemInit.OXYGEN_MASK);
 
 	public OxygenTankItem() 
 	{
-		super(ModArmourMaterial.OXYGEN_MASK, EquipmentSlotType.CHEST, new Properties().stacksTo(1).tab(ModUtils.ITEMS));
+		super(new Properties().stacksTo(1).tab(ModUtils.ITEMS));
+		DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
 	}
 	
 	@Override

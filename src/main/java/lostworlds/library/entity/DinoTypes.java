@@ -1,6 +1,13 @@
 package lostworlds.library.entity;
 
+import java.util.Arrays;
+import java.util.Map;
 import java.util.concurrent.Callable;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nullable;
+
+import com.mojang.serialization.Codec;
 
 import lostworlds.content.client.entity.render.bone.SkeletonRenderer;
 import lostworlds.content.server.init.EntityInit;
@@ -17,7 +24,14 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 {
 	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, Blocks.TURTLE_EGG, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
 	KENTROSAURUS("kentrosaurus", EntityInit.KENTROSAURUS, Blocks.TURTLE_EGG, 0xd99760, 0x612c00, 3, 6, 0.4F, 0.66F),
+	DILOPHOSAURUS("dilophosaurus", EntityInit.CHILESAURUS, Blocks.TUBE_CORAL, 0xb37a29, 0x191918, 3, 6, 0.4F, 0.66F)
 	;
+	
+	public static final Codec<DinoTypes> CODEC = IStringSerializable.fromEnum(DinoTypes::values, DinoTypes::byName);
+	private static final Map<String, DinoTypes> BY_NAME = Arrays.stream(values()).collect(Collectors.toMap(DinoTypes::getId, (types) -> 
+	{
+		return types;
+	}));
 	
 	private final String id;
 	private EntityType<FossilEntity> entitytype;
@@ -28,6 +42,7 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	private EntityType<FossilEntity> tail;
 	private EntityType<FossilEntity> skeleton;
 	private Item skeletonPick;
+	private Item dna;
 	private final Block egg;
 	private final int primaryColour;
 	private final int secondaryColour;
@@ -129,6 +144,16 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 		return this.skeletonPick;
 	}
 	
+	public Item getDNA()
+	{
+		return this.dna;
+	}
+	
+	public Item setDNA(Item item)
+	{
+		return this.dna = item;
+	}
+	
 	public Callable<ItemStackTileEntityRenderer> getISTER()
 	{
 		return new SkeletonRenderer(this.id);
@@ -172,6 +197,12 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	public float getCookedSaturation()
 	{
 		return this.cookedSaturation;
+	}
+	
+	@Nullable
+	public static DinoTypes byName(String id) 
+	{
+		return BY_NAME.get(id);
 	}
 	
 	//Used for addon creation. Use second one, first one is just because IExtensibleEnum is dumb.

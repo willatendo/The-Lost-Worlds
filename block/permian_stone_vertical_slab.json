@@ -1,0 +1,8 @@
+{
+	"parent": "lostworlds:block/vertical_slab",
+	"textures": {
+		"bottom": "lostworlds:block/permian_stone",
+		"top": "lostworlds:block/permian_stone",
+		"side": "lostworlds:block/permian_stone"
+	}
+}

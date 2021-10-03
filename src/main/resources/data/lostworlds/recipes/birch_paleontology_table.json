@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"$@$",
+		"$#$",
+		"% %"
+	],
+	"key": {
+		"#": {
+			"item": "minecraft:stripped_birch_log"
+		},
+		"$": {
+			"item": "minecraft:birch_planks"
+		},
+		"@": {
+			"item": "minecraft:crafting_table"
+		},
+		"%": {
+			"item": "minecraft:birch_log"
+		}
+	},
+	"result": {
+		"item": "lostworlds:birch_paleontology_table"
+	}
+}

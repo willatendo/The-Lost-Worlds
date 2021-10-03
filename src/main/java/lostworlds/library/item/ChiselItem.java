@@ -1,7 +1,7 @@
 package lostworlds.library.item;
 
 import lostworlds.content.ModUtils;
-import lostworlds.content.client.screen.chisel.ChiselScreen;
+import lostworlds.content.client.screen.ChiselScreen;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.library.entity.fossil.FossilEntity;
 import net.minecraft.block.BlockState;

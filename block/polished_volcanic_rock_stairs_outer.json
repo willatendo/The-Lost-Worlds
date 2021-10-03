@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/outer_stairs",
+	"textures": {
+		"bottom": "lostworlds:block/polished_volcanic_rock",
+		"top": "lostworlds:block/polished_volcanic_rock",
+		"side": "lostworlds:block/polished_volcanic_rock"
+	}
+}

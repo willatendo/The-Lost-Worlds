@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/door_bottom_rh",
+	"textures": {
+		"top": "lostworlds:block/visitor_center_door_top",
+		"bottom": "lostworlds:block/visitor_center_door_bottom"
+	}
+}

@@ -4,10 +4,13 @@ import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
 import lostworlds.library.block.Plants;
 import lostworlds.library.block.Trees;
+import lostworlds.library.container.recipes.RecipeManager;
 import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.TimeEras;
+import lostworlds.library.item.AmberItem;
 import lostworlds.library.item.ChiselItem;
 import lostworlds.library.item.CrystalScarabGemItem;
+import lostworlds.library.item.DNAItem;
 import lostworlds.library.item.FieldGuideItem;
 import lostworlds.library.item.FossilItem;
 import lostworlds.library.item.HammerItem;
@@ -160,7 +163,6 @@ public class ItemInit
 	
 	public static final Item CLOTH_MASK = ModRegistry.register("cloth_mask", new MaskItem(ModArmourMaterial.CLOTH_MASK));
 	
-	
 	public static final Item OXYGEN_MASK = ModRegistry.register("oxygen_mask", new MaskItem(ModArmourMaterial.OXYGEN_MASK));
 	public static final Item OXYGEN_TANK = ModRegistry.register("oxygen_tank", new OxygenTankItem());
 	
@@ -192,7 +194,7 @@ public class ItemInit
 
 	public static final Item TAG = ModRegistry.register("tag", new ModItem());	
 
-	public static final Item AMBER = ModRegistry.register("amber", new ModItem());
+	public static final Item AMBER = ModRegistry.register("amber", new AmberItem());
 	public static final Item GROUND_FOSSIL = ModRegistry.register("ground_fossil", new ModBoneMealItem());
 	public static final Item PLANT_WASTE = ModRegistry.register("plant_waste", new ModBoneMealItem());
 
@@ -236,6 +238,8 @@ public class ItemInit
 			dinos.setSkeletonPick(skeleton);
 			ModRegistry.register(dinos.name().toLowerCase() + "_spawn_egg", new ModSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), ModUtils.ITEMS));
 			ModRegistry.register(dinos.name().toLowerCase() + "_egg", new ModItem());
+			Item dna = ModRegistry.register(dinos.name().toLowerCase() + "_dna", new DNAItem(dinos.name().toLowerCase()));
+			dinos.setDNA(dna);
 			ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_meat", new Item(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())));
 			ModRegistry.register("cooked_" + dinos.name().toLowerCase() + "_meat", new Item(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build())));
 		}
@@ -256,5 +260,7 @@ public class ItemInit
 			ModRegistry.register(trees.toString().toLowerCase() + "_dna", new PlantDNAItem(trees.toString().toLowerCase()));		
 			ModRegistry.register(trees.toString().toLowerCase() + "_dna_disc", new PlantDiscItem(trees.toString().toLowerCase()));
 		}
+		
+		RecipeManager.initAlternateRecipes();
 	}
 }

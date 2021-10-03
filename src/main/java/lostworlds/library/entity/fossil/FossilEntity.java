@@ -148,7 +148,6 @@ public class FossilEntity extends AnimalEntity implements IAnimatable
 	private void playBrokenSound() 
 	{
 		this.level.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.SKELETON_DEATH, SoundCategory.BLOCKS, 1.0F, 1.0F);
-
 	}
 
 	private void playParticles() 

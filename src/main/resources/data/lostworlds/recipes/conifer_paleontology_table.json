@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"$@$",
+		"$#$",
+		"% %"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:stripped_conifer_log"
+		},
+		"$": {
+			"item": "lostworlds:conifer_planks"
+		},
+		"@": {
+			"item": "minecraft:crafting_table"
+		},
+		"%": {
+			"item": "lostworlds:conifer_log"
+		}
+	},
+	"result": {
+		"item": "lostworlds:conifer_paleontology_table"
+	}
+}

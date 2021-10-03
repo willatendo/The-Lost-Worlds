@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"$@$",
+		"$#$",
+		"% %"
+	],
+	"key": {
+		"#": {
+			"item": "minecraft:stripped_jungle_log"
+		},
+		"$": {
+			"item": "minecraft:jungle_planks"
+		},
+		"@": {
+			"item": "minecraft:crafting_table"
+		},
+		"%": {
+			"item": "minecraft:jungle_log"
+		}
+	},
+	"result": {
+		"item": "lostworlds:jungle_paleontology_table"
+	}
+}

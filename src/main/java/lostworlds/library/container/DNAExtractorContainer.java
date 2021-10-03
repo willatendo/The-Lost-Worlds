@@ -6,6 +6,7 @@ import lostworlds.content.server.init.ContainerInit;
 import lostworlds.content.server.init.RecipeInit;
 import lostworlds.library.block.DNAExtractorBlock;
 import lostworlds.library.block.entity.DNAExtractorTileEntity;
+import lostworlds.library.container.recipes.AmberDNAExtractorRecipe;
 import lostworlds.library.container.recipes.DNAExtractorRecipe;
 import lostworlds.library.container.slot.DNAExtractorInputSlot;
 import lostworlds.library.container.slot.ResultSlot;
@@ -31,6 +32,7 @@ public class DNAExtractorContainer extends Container
 	private final IIntArray data;
 	private final World level;
 	private final IRecipeType<DNAExtractorRecipe> recipeType = RecipeInit.DNA_EXTRACTOR_RECIPE;
+	private final IRecipeType<AmberDNAExtractorRecipe> secondaryRecipeType = RecipeInit.AMBER_DNA_EXTRACTOR_RECIPE;
 	public final DNAExtractorTileEntity tile;
 	
 	public DNAExtractorContainer(final int windowID, final PlayerInventory playerInv, final DNAExtractorTileEntity tileEntity) 
@@ -150,7 +152,7 @@ public class DNAExtractorContainer extends Container
 	
 	protected boolean canClean(ItemStack stack) 
 	{
-		return this.level.getRecipeManager().getRecipeFor((IRecipeType)this.recipeType, new Inventory(stack), this.level).isPresent();
+		return this.level.getRecipeManager().getRecipeFor((IRecipeType)this.recipeType, new Inventory(stack), this.level).isPresent() || this.level.getRecipeManager().getRecipeFor((IRecipeType)this.secondaryRecipeType, new Inventory(stack), this.level).isPresent();
 	}
 	
 	@OnlyIn(Dist.CLIENT)
