@@ -1,8 +1,0 @@
-{
-	"parent": "minecraft:block/inner_stairs",
-	"textures": {
-		"bottom": "lostworlds:block/pavement",
-		"top": "lostworlds:block/pavement",
-		"side": "lostworlds:block/pavement"
-	}
-}

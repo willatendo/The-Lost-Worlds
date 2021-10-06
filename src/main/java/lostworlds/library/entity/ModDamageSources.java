@@ -10,4 +10,5 @@ public class ModDamageSources
 	
 	//Dinos
 	public static final DamageSource HUNGER = (new DamageSource("hunger")).bypassArmor().bypassInvul().bypassMagic();
+	public static final DamageSource NULL = (new DamageSource("null_source")).bypassArmor().bypassInvul().bypassMagic();
 }

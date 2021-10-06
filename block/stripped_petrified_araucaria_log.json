@@ -1,7 +1,0 @@
-{
-	"parent": "minecraft:block/cube_column_horizontal",
-	"textures": {
-		"end": "lostworlds:block/stripped_petrified_araucaria_log_top",
-		"side": "lostworlds:block/stripped_petrified_araucaria_log"
-	}
-}

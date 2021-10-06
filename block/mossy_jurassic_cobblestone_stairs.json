@@ -1,8 +1,0 @@
-{
-	"parent": "minecraft:block/stairs",
-	"textures": {
-		"bottom": "lostworlds:blocks/mossy_jurassic_cobblestone",
-		"top": "lostworlds:blocks/mossy_jurassic_cobblestone",
-		"side": "lostworlds:blocks/mossy_jurassic_cobblestone"
-	}
-}

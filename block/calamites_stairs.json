@@ -1,8 +1,0 @@
-{
-	"parent": "minecraft:block/stairs",
-	"textures": {
-		"bottom": "lostworlds:block/calamites_planks",
-		"top": "lostworlds:block/calamites_planks",
-		"side": "lostworlds:block/calamites_planks"
-	}
-}S

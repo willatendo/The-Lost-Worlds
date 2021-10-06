@@ -1,8 +1,0 @@
-{
-	"parent": "minecraft:block/slab_top",
-	"textures": {
-		"bottom": "lostworlds:block/wooden_planks",
-		"top": "lostworlds:block/wooden_planks",
-		"side": "lostworlds:block/wooden_planks"
-	}
-}

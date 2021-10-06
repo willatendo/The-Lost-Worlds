@@ -145,12 +145,12 @@ public class FossilEntity extends AnimalEntity implements IAnimatable
 		return true;
 	}
 	
-	private void playBrokenSound() 
+	public void playBrokenSound() 
 	{
 		this.level.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.SKELETON_DEATH, SoundCategory.BLOCKS, 1.0F, 1.0F);
 	}
 
-	private void playParticles() 
+	public void playParticles() 
 	{
 		if(this.level instanceof ServerWorld) 
 		{
@@ -161,22 +161,29 @@ public class FossilEntity extends AnimalEntity implements IAnimatable
 	@Override
 	public boolean hurt(DamageSource source, float amount) 
 	{
-		if(source.getDirectEntity() instanceof PlayerEntity) 
+		if(source == DamageSource.OUT_OF_WORLD)
 		{
-			PlayerEntity player = (PlayerEntity) source.getDirectEntity();
-			if(player.getMainHandItem().getItem() instanceof ChiselItem)
+			return super.hurt(source, amount);
+		}
+		else if(!(this instanceof DirtyFossilEntity))
+		{
+			if(source.getDirectEntity() instanceof PlayerEntity) 
 			{
-				ItemStack stack = player.getMainHandItem();
-				
-				stack.hurtAndBreak(1, player, (playerentity) -> 
+				PlayerEntity player = (PlayerEntity) source.getDirectEntity();
+				if(player.getMainHandItem().getItem() instanceof ChiselItem)
 				{
-					playerentity.broadcastBreakEvent(player.getUsedItemHand());
-				});
-				this.remove();
-				if(!this.level.isClientSide)
-					this.dropAllDeathLoot(source);
-				this.playBrokenSound();
-				this.playParticles();
+					ItemStack stack = player.getMainHandItem();
+					
+					stack.hurtAndBreak(1, player, (playerentity) -> 
+					{
+						playerentity.broadcastBreakEvent(player.getUsedItemHand());
+					});
+					this.remove();
+					if(!this.level.isClientSide)
+						this.dropAllDeathLoot(source);
+					this.playBrokenSound();
+					this.playParticles();
+				}
 			}
 		}
 		return false;
@@ -192,11 +199,6 @@ public class FossilEntity extends AnimalEntity implements IAnimatable
 	public boolean isPushedByFluid() 
 	{
 		return false;	
-	}
-	
-	public void onKillCommand() 
-	{
-		this.remove();
 	}
 
 	@Override

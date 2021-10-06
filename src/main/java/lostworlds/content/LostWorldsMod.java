@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import lostworlds.content.client.dimension.PermianDimensionRenderInfo;
-import lostworlds.content.client.setup.ClientSetup;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.DimensionInit;
@@ -25,13 +24,11 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.potion.Potions;
 import net.minecraft.world.raid.Raid;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig.Type;
@@ -61,9 +58,7 @@ public class LostWorldsMod
 		
 		ModLoadingContext.get().registerConfig(Type.CLIENT, LostWorldsConfig.clientSpec);
 		ModLoadingContext.get().registerConfig(Type.COMMON, LostWorldsConfig.commonSpec);
-		
-		DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> bus.addListener(ClientSetup::registerRenderers));
-		
+				
 		GeckoLib.initialize();
 	}
 	
@@ -74,7 +69,7 @@ public class LostWorldsMod
 		
 		ModUtils.ITEMS.setIcon(ItemInit.AMBER.getDefaultInstance());
 		ModUtils.BLOCKS.setIcon(BlockInit.DARK_CONCRETE.asItem().getDefaultInstance());
-				
+						
 		event.enqueueWork(() -> 
 		{
 			StructurePieceInit.registerBiomeGeneration();

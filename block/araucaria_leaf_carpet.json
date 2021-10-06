@@ -1,6 +1,0 @@
-{
-	"parent": "lostworlds:block/leaf_carpet",
-	"textures": {
-		"texture": "lostworlds:blocks/araucaria_leaves"
-	}
-}

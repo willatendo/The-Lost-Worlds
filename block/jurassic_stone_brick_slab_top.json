@@ -1,8 +1,0 @@
-{
-	"parent": "minecraft:block/slab_top",
-	"textures": {
-		"bottom": "lostworlds:blocks/jurassic_stone_bricks",
-		"top": "lostworlds:blocks/jurassic_stone_bricks",
-		"side": "lostworlds:blocks/jurassic_stone_bricks"
-	}
-}

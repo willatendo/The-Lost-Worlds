@@ -13,6 +13,8 @@ import lostworlds.library.container.recipes.DNAExtractorRecipe;
 import lostworlds.library.container.recipes.DNAExtractorRecipeSerialiser;
 import lostworlds.library.container.recipes.DNAInjectorRecipe;
 import lostworlds.library.container.recipes.DNAInjectorRecipeSerialiser;
+import lostworlds.library.container.recipes.FossilCleanerRecipe;
+import lostworlds.library.container.recipes.FossilCleanerRecipeSerialiser;
 import lostworlds.library.container.recipes.FossilGrinderRecipe;
 import lostworlds.library.container.recipes.FossilGrinderRecipeSerialiser;
 import lostworlds.library.container.recipes.PaleontologyTableRecipe;
@@ -26,6 +28,7 @@ import net.minecraft.util.registry.Registry;
 
 public class RecipeInit 
 {
+	public static final IRecipeSerializer<FossilCleanerRecipe> FOSSIL_CLEANER_RECIPE_SERIALIZER = new FossilCleanerRecipeSerialiser();
 	public static final IRecipeSerializer<FossilGrinderRecipe> FOSSIL_GRINDER_RECIPE_SERIALIZER = new FossilGrinderRecipeSerialiser();
 	public static final IRecipeSerializer<DNAExtractorRecipe> DNA_EXTRACTOR_RECIPE_SERIALIZER = new DNAExtractorRecipeSerialiser();
 	public static final IRecipeSerializer<AmberDNAExtractorRecipe> AMBER_DNA_EXTRACTOR_RECIPE_SERIALIZER = new AmberDNAExtractorRecipeSerialiser();
@@ -36,6 +39,7 @@ public class RecipeInit
 	public static final IRecipeSerializer<PaleontologyTableRecipe> PALEONTOLOGY_TABLE_RECIPE_SERIALIZER = new PaleontologyTableRecipe.Serializer();
 	public static final IRecipeSerializer<TimeMachineRecipe> TIME_MACHINE_RECIPE_SERIALIZER = new TimeMachineRecipeSerialiser();
 
+	public static final IRecipeType<FossilCleanerRecipe> FOSSIL_CLEANER_RECIPE = registerType(ModUtils.rL("fossil_cleaner"));
 	public static final IRecipeType<FossilGrinderRecipe> FOSSIL_GRINDER_RECIPE = registerType(ModUtils.rL("fossil_grinder"));
 	public static final IRecipeType<DNAExtractorRecipe> DNA_EXTRACTOR_RECIPE = registerType(ModUtils.rL("dna_extractor"));
 	public static final IRecipeType<AmberDNAExtractorRecipe> AMBER_DNA_EXTRACTOR_RECIPE = registerType(ModUtils.rL("amber_dna_extractor"));
@@ -46,6 +50,7 @@ public class RecipeInit
 	public static final IRecipeType<PaleontologyTableRecipe> PALEONTOLOGY_TABLE_RECIPE = registerType(ModUtils.rL("paleontology_table"));
 	public static final IRecipeType<TimeMachineRecipe> TIME_MACHINE_RECIPE = registerType(ModUtils.rL("time_machine"));
 
+	public static final IRecipeSerializer<?> FOSSIL_CLEANER_SERIALIZER = ModRegistry.register("fossil_cleaner", FOSSIL_CLEANER_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> FOSSIL_GRINDER_SERIALIZER = ModRegistry.register("fossil_grinder", FOSSIL_GRINDER_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> AMBER_DNA_EXTRACTOR_SERIALIZER = ModRegistry.register("amber_dna_extractor", AMBER_DNA_EXTRACTOR_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> DNA_EXTRACTOR_SERIALIZER = ModRegistry.register("dna_extractor", DNA_EXTRACTOR_RECIPE_SERIALIZER);

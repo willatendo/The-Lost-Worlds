@@ -6,6 +6,7 @@ import lostworlds.content.server.init.BannerInit;
 import lostworlds.content.server.init.BiomeInit;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
+import lostworlds.content.server.init.EnchantmentInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.FeatureInit;
 import lostworlds.content.server.init.FoliagePlacerInit;
@@ -25,6 +26,7 @@ import lostworlds.content.server.init.WorldTypeInit;
 import lostworlds.library.biome.ModConfiguredCarvers;
 import lostworlds.library.marker.MarkerType;
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -97,6 +99,13 @@ public class ModRegistry
 		potion.setRegistryName(ModUtils.rL(id));
 		ForgeRegistries.POTION_TYPES.register(potion);
 		return potion;
+	}
+	
+	public static Enchantment register(String id, Enchantment enchantment)
+	{
+		enchantment.setRegistryName(ModUtils.rL(id));
+		ForgeRegistries.ENCHANTMENTS.register(enchantment);
+		return enchantment;
 	}
 	
 	public static Item register(String id, Item item)
@@ -232,6 +241,7 @@ public class ModRegistry
 		RecipeInit.init();
 		PotionInit.init();
 		SoundInit.init();
+		EnchantmentInit.init();
 		ItemInit.init();
 		BannerInit.init();
 		TileEntityInit.init();

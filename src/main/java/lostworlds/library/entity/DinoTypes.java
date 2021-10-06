@@ -35,6 +35,11 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	
 	private final String id;
 	private EntityType<FossilEntity> entitytype;
+	private EntityType<FossilEntity> dirtySkull;
+	private EntityType<FossilEntity> dirtyArmBones;
+	private EntityType<FossilEntity> dirtyLegBones;
+	private EntityType<FossilEntity> dirtyRibCage;
+	private EntityType<FossilEntity> dirtyTail;
 	private EntityType<FossilEntity> skull;
 	private EntityType<FossilEntity> armBones;
 	private EntityType<FossilEntity> legBones;
@@ -67,6 +72,31 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	public String getId()
 	{
 		return this.id;
+	}
+	
+	public EntityType<FossilEntity> setDirtySkull(EntityType<FossilEntity> entity)
+	{
+		return this.dirtySkull = entity;
+	}
+
+	public EntityType<FossilEntity> setDirtyArmBones(EntityType<FossilEntity> entity)
+	{
+		return this.dirtyArmBones = entity;
+	}
+	
+	public EntityType<FossilEntity> setDirtyLegBones(EntityType<FossilEntity> entity)
+	{
+		return this.dirtyLegBones = entity;
+	}
+	
+	public EntityType<FossilEntity> setDirtyRibCage(EntityType<FossilEntity> entity)
+	{
+		return this.dirtyRibCage = entity;
+	}
+	
+	public EntityType<FossilEntity> setDirtyTail(EntityType<FossilEntity> entity)
+	{
+		return this.dirtyTail = entity;
 	}
 	
 	public EntityType<FossilEntity> setSkull(EntityType<FossilEntity> entity)
@@ -107,6 +137,31 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	public EntityType<FossilEntity> getEntityType()
 	{
 		return this.entitytype;
+	}
+	
+	public EntityType<FossilEntity> getDirtySkull()
+	{
+		return this.dirtySkull;
+	}
+
+	public EntityType<FossilEntity> getDirtyArmBones()
+	{
+		return this.dirtyArmBones;
+	}
+	
+	public EntityType<FossilEntity> getDirtyLegBones()
+	{
+		return this.dirtyLegBones;
+	}
+	
+	public EntityType<FossilEntity> getDirtyRibCage()
+	{
+		return this.dirtyRibCage;
+	}
+	
+	public EntityType<FossilEntity> getDirtyTail()
+	{
+		return this.dirtyTail;
 	}
 	
 	public EntityType<FossilEntity> getSkull()

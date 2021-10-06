@@ -1,6 +1,6 @@
 package lostworlds.library.container.slot;
 
-import lostworlds.content.server.init.BlockInit;
+import lostworlds.library.item.FossilItem;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
@@ -15,6 +15,6 @@ public class PlasteredFossilSlot extends Slot
 	@Override
 	public boolean mayPlace(ItemStack stack) 
 	{
-		return stack.getItem() == BlockInit.ACCENT_DARK_CONCRETE.asItem();
+		return stack.getItem() instanceof FossilItem;
 	}
 }

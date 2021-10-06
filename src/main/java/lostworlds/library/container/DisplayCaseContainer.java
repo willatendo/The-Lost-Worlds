@@ -5,12 +5,14 @@ import java.util.Objects;
 import lostworlds.content.server.init.ContainerInit;
 import lostworlds.library.block.DisplayCaseBlock;
 import lostworlds.library.block.entity.DisplayCaseTileEntity;
+import lostworlds.library.item.FossilItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
@@ -25,7 +27,14 @@ public class DisplayCaseContainer extends Container
 		super(ContainerInit.DISPLAY_CASE_CONTAINER, windowId);
 		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 		
-		this.addSlot(new Slot(tileEntity, 0, 80, 20));
+		this.addSlot(new Slot(tileEntity, 0, 80, 20)
+		{
+			@Override
+			public boolean mayPlace(ItemStack stack) 
+			{
+				return stack.getItem() instanceof BlockItem ? false : stack.getItem() instanceof FossilItem ? false : true;
+			}
+		});
 		
 		for(int l = 0; l < 3; ++l) 
 		{

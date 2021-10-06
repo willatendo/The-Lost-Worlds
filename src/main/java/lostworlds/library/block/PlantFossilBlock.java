@@ -3,6 +3,7 @@ package lostworlds.library.block;
 import java.util.Random;
 
 import lostworlds.content.server.init.BlockInit;
+import lostworlds.content.server.init.EnchantmentInit;
 import lostworlds.library.entity.TimeEras;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
 import lostworlds.library.item.tool.ModMaterials;
@@ -11,6 +12,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -109,43 +111,68 @@ public class PlantFossilBlock extends Block
 		Plants plant = state.getValue(POTENTIAL_PLANT);
 		Damage damage = state.getValue(DAMAGE);
 		Random rand = new Random();
+		int highbreakchance = rand.nextInt(2);
+		int breakchance = rand.nextInt(8);
+		int midbreakchance = rand.nextInt(16);
+		int lowbreakchance = rand.nextInt(32);
+
+		if(highbreakchance == 1 && EnchantmentHelper.getItemEnchantmentLevel(EnchantmentInit.CURSE_OF_BREAKING, stack) == 1)
+		{
+			world.destroyBlock(pos, false);
+		}
+			
+		if(breakchance == 7 && EnchantmentHelper.getItemEnchantmentLevel(EnchantmentInit.PRECISION, stack) == 0)
+		{
+			world.destroyBlock(pos, false);
+		}
+		else if(midbreakchance == 15 && EnchantmentHelper.getItemEnchantmentLevel(EnchantmentInit.PRECISION, stack) == 1)
+		{
+			world.destroyBlock(pos, false);
+		}
+		else if(lowbreakchance == 31 && EnchantmentHelper.getItemEnchantmentLevel(EnchantmentInit.PRECISION, stack) == 2)
+		{
+			world.destroyBlock(pos, false);
+		}
+		else
+		{
+			if(damage == Damage.NONE)
+			{
+				this.popResource(world, pos, plant.getDrop().getDefaultInstance());
+			}
+			if(damage == Damage.CHIPPED)
+			{
+				int chance = rand.nextInt(5);
+				if(chance < 4)
+				{
+					this.popResource(world, pos, plant.getDrop().getDefaultInstance());
+				}
+			}
+			if(damage == Damage.SLIGHTLY)
+			{
+				int chance = rand.nextInt(5);
+				if(chance < 3)
+				{
+					this.popResource(world, pos, plant.getDrop().getDefaultInstance());
+				}
+			}
+			if(damage == Damage.CRACKED)
+			{
+				int chance = rand.nextInt(5);
+				if(chance < 2)
+				{
+					this.popResource(world, pos, plant.getDrop().getDefaultInstance());
+				}
+			}
+			if(damage == Damage.DAMAGED)
+			{
+				int chance = rand.nextInt(5);
+				if(chance < 1)	
+				{
+					this.popResource(world, pos, plant.getDrop().getDefaultInstance());
+				}
+			}
+		}
 		
-		if(damage == Damage.NONE)
-		{
-			popResource(world, pos, plant.getDrop().getDefaultInstance());
-		}
-		if(damage == Damage.CHIPPED)
-		{
-			int chance = rand.nextInt(5);
-			if(chance < 5)
-			{
-				popResource(world, pos, plant.getDrop().getDefaultInstance());
-			}
-		}
-		if(damage == Damage.SLIGHTLY)
-		{
-			int chance = rand.nextInt(5);
-			if(chance < 4)
-			{
-				popResource(world, pos, plant.getDrop().getDefaultInstance());
-			}
-		}
-		if(damage == Damage.CRACKED)
-		{
-			int chance = rand.nextInt(5);
-			if(chance < 3)
-			{
-				popResource(world, pos, plant.getDrop().getDefaultInstance());
-			}
-		}
-		if(damage == Damage.DAMAGED)
-		{
-			int chance = rand.nextInt(5);
-			if(chance < 2)
-			{
-				popResource(world, pos, plant.getDrop().getDefaultInstance());
-			}
-		}
 	}
 	
 	@Override

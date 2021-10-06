@@ -1,7 +1,0 @@
-{
-	"parent": "minecraft:block/cube_column",
-	"textures": {
-		"end": "lostworlds:blocks/araucaria_planks",
-		"side": "lostworlds:block/araucaria_bookshelf"
-	}
-}

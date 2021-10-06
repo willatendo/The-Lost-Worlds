@@ -6,11 +6,13 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Maps;
 
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lostworlds.content.ModUtils;
-import lostworlds.content.server.init.BlockInit;
+import lostworlds.content.server.init.RecipeInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.FossilCleanerBlock;
 import lostworlds.library.container.FossilCleanerContainer;
+import lostworlds.library.container.recipes.FossilCleanerRecipe;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -21,6 +23,8 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.RecipeItemHelper;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -29,6 +33,7 @@ import net.minecraft.util.IIntArray;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.INameable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 
@@ -87,6 +92,9 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 			return 4;
 		}
 	};
+	
+	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
+	protected final IRecipeType<FossilCleanerRecipe> recipeType = RecipeInit.FOSSIL_CLEANER_RECIPE;
 	
 	public static Map<Item, Integer> getFuel() 
 	{
@@ -163,7 +171,8 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 				ItemStack fuel = this.items.get(1);
 				if(this.isOn() || !fuel.isEmpty() && !this.items.get(0).isEmpty()) 
 				{
-					if(!this.isOn() && this.canCleanWith()) 
+					IRecipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((IRecipeType<FossilCleanerRecipe>)this.recipeType, this, this.level).orElse(null);
+					if(!this.isOn() && this.canClean(irecipe)) 
 					{
 						this.onTime = this.getCleanDuration(fuel);
 						this.onDuration = this.onTime;
@@ -184,14 +193,14 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 						}
 					}
 						
-					if(this.isOn() && this.canCleanWith()) 
+					if(this.isOn() && this.canClean(irecipe)) 
 					{
 						++this.cleaningProgress;
 						if(this.cleaningProgress == this.cleaningTotalTime) 
 						{
 							this.cleaningProgress = 0;
 							this.cleaningTotalTime = 1000;
-							this.clean();
+							this.clean(irecipe);
 							flag1 = true;
 						}
 					} 
@@ -219,37 +228,34 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 		}		
 	}
 	
-	protected boolean canCleanWith() 
+	protected boolean canClean(@Nullable IRecipe<?> recipe) 
 	{
-		if(!this.items.get(0).isEmpty()) 
+		if(!this.items.get(0).isEmpty() && recipe != null) 
 		{
-			ItemStack output = ItemStack.EMPTY;
-			@SuppressWarnings("unused")
-			ItemStack input = BlockInit.ACCENT_DARK_CONCRETE.asItem().getDefaultInstance();
-			output = BlockInit.ACCENT_DARK_CONCRETE.asItem().getDefaultInstance();//RecipeManager.getAnalyzerRecipeForItem(input).generateOutput(new Random());
-			if(output.isEmpty()) 
+			ItemStack itemstack = recipe.getResultItem();
+			if(itemstack.isEmpty()) 
 			{
 				return false;
 			} 
 			else 
 			{
-				ItemStack itemstack1 = this.items.get(2);
+				ItemStack itemstack1 = this.items.get(1);
 				if(itemstack1.isEmpty()) 
 				{
 					return true;
 				}
-				else if(!itemstack1.sameItem(output)) 
+				else if(!itemstack1.sameItem(itemstack)) 
 				{
 					return false;
 				} 
-				else if(itemstack1.getCount() + output.getCount() <= this.getMaxStackSize() && itemstack1.getCount() + output.getCount() <= itemstack1.getMaxStackSize()) 
+				else if(itemstack1.getCount() + itemstack.getCount() <= this.getMaxStackSize() && itemstack1.getCount() + itemstack.getCount() <= itemstack1.getMaxStackSize()) 
 				{
 					return true;
 				} 
 				else 
 				{
-					return itemstack1.getCount() + output.getCount() <= output.getMaxStackSize();
-	            }
+					return itemstack1.getCount() + itemstack.getCount() <= itemstack.getMaxStackSize(); 
+				}
 			}
 		} 
 		else 
@@ -258,25 +264,28 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 		}
 	}
 	
-	private void clean() 
+	private void clean(@Nullable IRecipe<?> recipe) 
 	{
-		if(this.canCleanWith()) 
+		if(recipe != null && this.canClean(recipe)) 
 		{
-			ItemStack inputSlot = this.items.get(0);
-			@SuppressWarnings("unused")
-			ItemStack input = BlockInit.ACCENT_DARK_CONCRETE.asItem().getDefaultInstance();
-			ItemStack output = BlockInit.ACCENT_DARK_CONCRETE.asItem().getDefaultInstance();
-			ItemStack outputSlot = this.items.get(2);
-			if(outputSlot.isEmpty()) 
+			ItemStack fossil = this.items.get(0);
+			ItemStack result = recipe.getResultItem();
+			ItemStack output = this.items.get(1);
+			if(output.isEmpty()) 
 			{
-				this.items.set(2, output.copy());
-			} 
-			else if(outputSlot.getItem() == output.getItem()) 
+				this.items.set(1, result.copy());
+			}
+			else if(output.getItem() == result.getItem()) 
 			{
-				outputSlot.grow(output.getCount());
+				output.grow(result.getCount());
 			}
 			
-			inputSlot.shrink(1);
+			if(!this.level.isClientSide) 
+			{
+				this.setRecipeUsed(recipe);
+			}
+			
+			fossil.shrink(1);
 		}
 	}
 	
@@ -366,6 +375,15 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 	public void clearContent() 
 	{
 		this.items.clear();
+	}
+	
+	public void setRecipeUsed(@Nullable IRecipe<?> recipe) 
+	{
+		if(recipe != null) 
+		{
+			ResourceLocation resourcelocation = recipe.getId();
+			this.recipesUsed.addTo(resourcelocation, 1);
+		}
 	}
 	
 	public static boolean isFuel(ItemStack stack) 

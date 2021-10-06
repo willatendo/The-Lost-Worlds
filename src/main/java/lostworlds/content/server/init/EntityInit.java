@@ -4,6 +4,7 @@ import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
 import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.ModBoatEntity;
+import lostworlds.library.entity.fossil.DirtyFossilEntity;
 import lostworlds.library.entity.fossil.FossilEntity;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
 import lostworlds.library.entity.item.ChargedCrystalScarabGemItemEntity;
@@ -44,6 +45,11 @@ public class EntityInit
 		
 		for(DinoTypes dinos : DinoTypes.values())
 		{
+			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getDirtyArmBones(), FossilEntity.createAttributes());
+			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getDirtyLegBones(), FossilEntity.createAttributes());
+			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getDirtyRibCage(), FossilEntity.createAttributes());
+			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getDirtySkull(),FossilEntity.createAttributes());
+			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getDirtyTail(), FossilEntity.createAttributes());
 			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getArmBones(), FossilEntity.createAttributes());
 			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getLegBones(), FossilEntity.createAttributes());
 			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getRibCage(), FossilEntity.createAttributes());
@@ -69,6 +75,16 @@ public class EntityInit
 		
 		for(DinoTypes dinoType : DinoTypes.values())
 		{
+			EntityType<FossilEntity> dirtyskull = ModRegistry.register("dirty_" + dinoType.toString().toLowerCase() + "_skull", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+			dinoType.setDirtySkull(dirtyskull);
+			EntityType<FossilEntity> dirtyarmbones = ModRegistry.register("dirty_" + dinoType.toString().toLowerCase() + "_arm_bones", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+			dinoType.setDirtyArmBones(dirtyarmbones);
+			EntityType<FossilEntity> dirtylegbones = ModRegistry.register("dirty_" + dinoType.toString().toLowerCase() + "_leg_bones", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+			dinoType.setDirtyLegBones(dirtylegbones);
+			EntityType<FossilEntity> dirtyribcage = ModRegistry.register("dirty_" + dinoType.toString().toLowerCase() + "_rib_cage", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+			dinoType.setDirtyRibCage(dirtyribcage);
+			EntityType<FossilEntity> dirtytail = ModRegistry.register("dirty_" + dinoType.toString().toLowerCase() + "_tail", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+			dinoType.setDirtyTail(dirtytail);
 			EntityType<FossilEntity> skull = ModRegistry.register(dinoType.toString().toLowerCase() + "_skull", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
 			dinoType.setSkull(skull);
 			EntityType<FossilEntity> arm_bones = ModRegistry.register(dinoType.toString().toLowerCase() + "_arm_bones", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);

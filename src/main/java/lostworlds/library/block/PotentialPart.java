@@ -6,10 +6,8 @@ import net.minecraftforge.common.IExtensibleEnum;
 public enum PotentialPart implements IStringSerializable, IExtensibleEnum
 {
 	SKULL("skull"),
-	RIGHT_ARM("right_arm"),
-	LEFT_ARM("left_arm"),
-	RIGHT_LEG("right_leg"),
-	LEFT_LEG("left_leg"),
+	ARM("arm"),
+	LEG("leg"),
 	RIB_CAGE("rib_cage"),
 	TAIL("tail"),
 	NONE("none");

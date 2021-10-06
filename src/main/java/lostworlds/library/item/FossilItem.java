@@ -48,11 +48,13 @@ public static final String animation = "animation.skeleton.living";
 	}
 	
 	private final Lazy<? extends EntityType<?>> entityTypeSupplier;
+	private final boolean isPlastered;
 	
-	public FossilItem(Properties properties, NonNullSupplier<? extends EntityType<FossilEntity>> entityTypeSupplier) 
+	public FossilItem(Properties properties, NonNullSupplier<? extends EntityType<FossilEntity>> entityTypeSupplier, boolean isPlastered) 
 	{
 		super(properties);
 		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
+		this.isPlastered = isPlastered;
 	}
 
 	@Override
@@ -71,7 +73,11 @@ public static final String animation = "animation.skeleton.living";
 	public ActionResultType useOn(ItemUseContext cpmtext) 
 	{
 		World world = cpmtext.getLevel();
-		if(!(world instanceof ServerWorld)) 
+		if(this.isPlastered)
+		{
+			return ActionResultType.FAIL;
+		}
+		else if(!(world instanceof ServerWorld)) 
 		{
 			return ActionResultType.SUCCESS;
 		} 
@@ -106,7 +112,11 @@ public static final String animation = "animation.skeleton.living";
 	{
 		ItemStack itemstack = player.getItemInHand(hand);
 		RayTraceResult raytraceresult = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
-		if(raytraceresult.getType() != RayTraceResult.Type.BLOCK) 
+		if(!this.isPlastered)
+		{
+			return ActionResult.fail(itemstack);
+		}
+		else if(raytraceresult.getType() != RayTraceResult.Type.BLOCK) 
 		{
 			return ActionResult.pass(itemstack);
 		} 

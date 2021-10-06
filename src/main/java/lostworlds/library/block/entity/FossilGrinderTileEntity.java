@@ -217,44 +217,44 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 			}
 			else
 			{
-				ItemStack slot1 = this.items.get(1);
-				ItemStack slot2 = this.items.get(2);
+				ItemStack softtissueoutput = this.items.get(1);
+				ItemStack bonemealoutput = this.items.get(2);
 				if(result.getItem() instanceof ModBoneMealItem)
 				{
-					if(slot2.isEmpty()) 
+					if(bonemealoutput.isEmpty()) 
 					{
 						return true;
 					}
-					else if(!slot2.sameItem(result)) 
+					else if(!bonemealoutput.sameItem(result)) 
 					{
 						return false;
 					} 
-					else if(slot2.getCount() + result.getCount() <= this.getMaxStackSize() && slot2.getCount() + result.getCount() <= slot2.getMaxStackSize()) 
+					else if(bonemealoutput.getCount() + result.getCount() <= this.getMaxStackSize() && bonemealoutput.getCount() + result.getCount() <= bonemealoutput.getMaxStackSize()) 
 					{
 						return true;
 					}
 					else 
 					{
-						return slot2.getCount() + result.getCount() <= result.getMaxStackSize(); 
+						return bonemealoutput.getCount() + result.getCount() <= result.getMaxStackSize(); 
 					}
 				}
 				else
 				{
-					if(slot1.isEmpty()) 
+					if(softtissueoutput.isEmpty()) 
 					{
 						return true;
 					}
-					else if(!slot1.sameItem(result)) 
+					else if(!softtissueoutput.sameItem(result)) 
 					{
 						return false;
 					}
-					else if(slot1.getCount() + result.getCount() <= this.getMaxStackSize() && slot1.getCount() + result.getCount() <= slot1.getMaxStackSize()) 
+					else if(softtissueoutput.getCount() + result.getCount() <= this.getMaxStackSize() && softtissueoutput.getCount() + result.getCount() <= softtissueoutput.getMaxStackSize()) 
 					{
 						return true;
 					} 
 					else 
 					{
-						return slot1.getCount() + result.getCount() <= result.getMaxStackSize(); 
+						return softtissueoutput.getCount() + result.getCount() <= result.getMaxStackSize(); 
 					}
 				}
 			}

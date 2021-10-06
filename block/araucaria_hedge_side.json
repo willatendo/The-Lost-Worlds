@@ -1,6 +1,0 @@
-{
-	"parent": "lostworlds:block/hedge_side",
-	"textures": {
-		"leaf": "lostworlds:blocks/araucaria_leaves"
-	}
-}

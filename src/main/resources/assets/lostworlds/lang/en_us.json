@@ -4,7 +4,7 @@
 	"itemGroup.lostworlds.items": "Lost Worlds Items",
 	"itemGroup.lostworlds.block": "Lost Worlds Blocks",
 
-	// ITEMS & EFFECTS
+	// ITEMS & EFFECTS & ENCHANTMENTS
 
 	//Tools
 	"item.lostworlds.crystal_scarab_sword": "Crystal Scarab Sword",
@@ -123,6 +123,14 @@
 	"item.minecraft.lingering_potion.effect.ashy_lung_potion": "Lingering Potion of Ashy Lung",
 	"item.minecraft.tipped_arrow.effect.ashy_lung_potion": "Arrow of Ashy Lung",
 	"effect.lostworlds.ashy_lung_effect": "Ashy Lung",
+	"enchantment.lostworlds.geology": "Geology",
+	"enchantment.lostworlds.precision": "Precision",
+	"enchantment.lostworlds.curse_of_breaking": "Curse of Breaking",
+	
+	//Only for Enchantment Descriptions mod.
+	"enchantment.lostworlds.geology.desc": "Gives a chance of an extra fossil.",
+	"enchantment.lostworlds.precision.desc": "Reduces the chance of breaking a fossil.",	
+	"enchantment.lostworlds.curse_of_breaking.desc": "Increases the chance of breaking a fossil.",	
 	
 	//Plants
 	"item.lostworlds.alethopteris_fossil": "Plant Fossil",

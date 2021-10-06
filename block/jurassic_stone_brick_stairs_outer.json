@@ -1,8 +1,0 @@
-{
-	"parent": "minecraft:block/outer_stairs",
-	"textures": {
-		"bottom": "lostworlds:blocks/jurassic_stone_bricks",
-		"top": "lostworlds:blocks/jurassic_stone_bricks",
-		"side": "lostworlds:blocks/jurassic_stone_bricks"
-	}
-}

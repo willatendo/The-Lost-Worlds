@@ -39,9 +39,6 @@ public class FossilCleanerContainer extends Container
 		this.addSlot(new PlasteredFossilSlot(tile, 0, 56, 17));
 		this.addSlot(new FossilCleanerFuelSlot(tile, 1, 56, 53));
 		this.addSlot(new ResultSlot(playerInv.player, tile, 2, 116, 35));
-		this.addSlot(new ResultSlot(playerInv.player, tile, 3, 139, 16));
-		this.addSlot(new ResultSlot(playerInv.player, tile, 4, 139, 35));
-		this.addSlot(new ResultSlot(playerInv.player, tile, 5, 139, 54));
 		
 		for(int i = 0; i < 3; ++i) 
 		{
