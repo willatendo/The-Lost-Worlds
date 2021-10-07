@@ -19,6 +19,7 @@ import lostworlds.library.block.DisplayCaseBlock;
 import lostworlds.library.block.DriedSoilBlock;
 import lostworlds.library.block.FossilCleanerBlock;
 import lostworlds.library.block.FossilGrinderBlock;
+import lostworlds.library.block.FossilisedTrackBlock;
 import lostworlds.library.block.GeyserBlock;
 import lostworlds.library.block.GroundFernsBlock;
 import lostworlds.library.block.ModBushBlock;
@@ -34,6 +35,7 @@ import lostworlds.library.block.NautilusShellBlock;
 import lostworlds.library.block.PaleontologyTableBlock;
 import lostworlds.library.block.PetrifiedWoodBlock;
 import lostworlds.library.block.PlantFossilBlock;
+import lostworlds.library.block.PlasteredBlock;
 import lostworlds.library.block.SoftStoneBlock;
 import lostworlds.library.block.SpongeColonyBlock;
 import lostworlds.library.block.SticksBlock;
@@ -42,6 +44,7 @@ import lostworlds.library.block.VolcanicAshBlock;
 import lostworlds.library.block.VolcanicAshLayerBlock;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.block.builder.BlockBuilder;
+import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.ModBoatType;
 import lostworlds.library.item.ModBoatItem;
 import lostworlds.library.item.tool.ModMaterials;
@@ -136,6 +139,9 @@ public class BlockInit
 	public static final Block SOFT_STONE = BlockAndItemBuilder.create("soft_stone", new SoftStoneBlock());
 	public static final Block PLANT_FOSSIL = BlockAndItemBuilder.create("plant_fossil", new PlantFossilBlock());
 		
+	public static final Block FOSSILIZED_TRACK = BlockAndItemBuilder.create("fossilized_track", new FossilisedTrackBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F), Blocks.STONE));
+	public static final Block PLASTERED_FOSSILISED_TRACK = BlockAndItemBuilder.create("plastered_fossilised_track", new PlasteredBlock(AbstractBlock.Properties.of(Material.STONE).instabreak().sound(SoundType.WOOL), FOSSILIZED_TRACK));
+	
 	//Overworld Ores
 	public static final Block COPPER_ORE = BlockAndItemBuilder.create("copper_ore", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.0F).sound(SoundType.STONE)));
 
@@ -454,5 +460,11 @@ public class BlockInit
 		ColouredGlassBlock.create();
 		ColouredGlassPaneBlock.create();
 		ColouredDecorationBlock.create();
+		
+		for(DinoTypes types : DinoTypes.eggLaying())
+		{
+			Block egg = BlockAndItemBuilder.create(types.getId() + "_egg", types.getEgg(types.getEntityType()));
+			types.setEgg(egg);
+		}
 	}
 }

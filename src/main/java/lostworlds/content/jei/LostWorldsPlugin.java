@@ -16,6 +16,11 @@ import lostworlds.content.jei.categories.PaleontologyTableCategory;
 import lostworlds.content.jei.categories.TimeMachineCategory;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.RecipeInit;
+import lostworlds.library.container.AnalyzerContainer;
+import lostworlds.library.container.CultivatorContainer;
+import lostworlds.library.container.DNAExtractorContainer;
+import lostworlds.library.container.FossilGrinderContainer;
+import lostworlds.library.container.PaleontologyTableContainer;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -23,6 +28,7 @@ import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;
@@ -42,6 +48,7 @@ public class LostWorldsPlugin implements IModPlugin
 	public void registerRecipes(IRecipeRegistration registration) 
 	{
 		RecipeManager manager = Minecraft.getInstance().level.getRecipeManager();
+		
 		registration.addRecipes(getRecipes(manager, RecipeInit.FOSSIL_GRINDER_RECIPE), LostWorldsConstants.FOSSIL_GRINDER_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.DNA_EXTRACTOR_RECIPE), LostWorldsConstants.DNA_EXTRACTOR_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.ANALYZER_RECIPE), LostWorldsConstants.ANALYZER_CATEGORY);
@@ -71,6 +78,16 @@ public class LostWorldsPlugin implements IModPlugin
 		registration.addRecipeClickArea(AnalyzerScreen.class, 75, 38, 34, 12, LostWorldsConstants.ANALYZER_CATEGORY);
 		registration.addRecipeClickArea(CultivatorScreen.class, 76, 34, 33, 17, LostWorldsConstants.CULTIVATOR_CATEGORY);
 		registration.addRecipeClickArea(PaleontologyTableScreen.class, 88, 32, 28, 23, LostWorldsConstants.PALEONTOLOGY_TABLE_CATEGORY);
+	}
+	
+	@Override
+	public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) 
+	{
+		registration.addRecipeTransferHandler(FossilGrinderContainer.class, LostWorldsConstants.FOSSIL_GRINDER_CATEGORY, 0, 1, 3, 36);
+		registration.addRecipeTransferHandler(DNAExtractorContainer.class, LostWorldsConstants.DNA_EXTRACTOR_CATEGORY, 0, 2, 3, 36);
+		registration.addRecipeTransferHandler(AnalyzerContainer.class, LostWorldsConstants.ANALYZER_CATEGORY, 0, 2, 3, 36);
+		registration.addRecipeTransferHandler(CultivatorContainer.class, LostWorldsConstants.CULTIVATOR_CATEGORY, 0, 1, 3, 18);
+		registration.addRecipeTransferHandler(PaleontologyTableContainer.class, LostWorldsConstants.PALEONTOLOGY_TABLE_CATEGORY, 1, 9, 10, 36);
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package lostworlds.library.entity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -11,9 +12,16 @@ import com.mojang.serialization.Codec;
 
 import lostworlds.content.client.entity.render.bone.SkeletonRenderer;
 import lostworlds.content.server.init.EntityInit;
+import lostworlds.library.block.LargeEggBlock;
+import lostworlds.library.block.MediumEggBlock;
+import lostworlds.library.block.SmallEggBlock;
+import lostworlds.library.block.TinyEggBlock;
 import lostworlds.library.entity.fossil.FossilEntity;
+import lostworlds.library.entity.terrestrial.PrehistoricEntity;
+import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
@@ -22,9 +30,9 @@ import net.minecraftforge.common.IExtensibleEnum;
 
 public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 {
-	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, Blocks.TURTLE_EGG, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
-	KENTROSAURUS("kentrosaurus", EntityInit.KENTROSAURUS, Blocks.TURTLE_EGG, 0xd99760, 0x612c00, 3, 6, 0.4F, 0.66F),
-	DILOPHOSAURUS("dilophosaurus", EntityInit.CHILESAURUS, Blocks.TUBE_CORAL, 0xb37a29, 0x191918, 3, 6, 0.4F, 0.66F)
+	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, true, Size.SMALL, 0xb08533, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
+	KENTROSAURUS("kentrosaurus", EntityInit.KENTROSAURUS, true, Size.MEDIUM, 0xd99760, 0xd99760, 0x612c00, 3, 6, 0.4F, 0.66F),
+	DILOPHOSAURUS("dilophosaurus", EntityInit.CHILESAURUS, true, Size.MEDIUM, 0xb37a29, 0xb37a29, 0x191918, 3, 6, 0.4F, 0.66F)
 	;
 	
 	public static final Codec<DinoTypes> CODEC = IStringSerializable.fromEnum(DinoTypes::values, DinoTypes::byName);
@@ -34,7 +42,7 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	}));
 	
 	private final String id;
-	private EntityType<FossilEntity> entitytype;
+	private EntityType<? extends PrehistoricEntity> entitytype;
 	private EntityType<FossilEntity> dirtySkull;
 	private EntityType<FossilEntity> dirtyArmBones;
 	private EntityType<FossilEntity> dirtyLegBones;
@@ -46,21 +54,26 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	private EntityType<FossilEntity> ribCage;
 	private EntityType<FossilEntity> tail;
 	private EntityType<FossilEntity> skeleton;
+	private Block egg;
 	private Item skeletonPick;
 	private Item dna;
-	private final Block egg;
+	private final boolean eggLaying;
+	private final Size eggSize;
 	private final int primaryColour;
+	private final int eggSetColour;
 	private final int secondaryColour;
 	private final int rawNutrition;
 	private final int cookedNutrition;
 	private final float rawSaturation;
 	private final float cookedSaturation;
 	
-	private DinoTypes(String id, EntityType entity, Block egg, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
+	private DinoTypes(String id, EntityType entity, boolean eggLaying, Size eggSize, int eggSetColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
 	{
 		this.id = id;
 		this.entitytype = entity;
-		this.egg = egg;
+		this.eggLaying = eggLaying;
+		this.eggSize = eggSize;
+		this.eggSetColour = eggSetColour;
 		this.primaryColour = primaryColour;
 		this.secondaryColour = secondaryColour;
 		this.rawNutrition = rawNutrition;
@@ -134,7 +147,7 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 		return this.skeletonPick = item;
 	}
 	
-	public EntityType<FossilEntity> getEntityType()
+	public EntityType<? extends PrehistoricEntity> getEntityType()
 	{
 		return this.entitytype;
 	}
@@ -194,6 +207,36 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 		return this.skeleton;
 	}
 	
+	public Block setEgg(Block egg)
+	{
+		return this.egg = egg;
+	}
+	
+	public Block getEgg()
+	{
+		return this.egg;
+	}
+	
+	public Block getEgg(EntityType<? extends PrehistoricEntity> entity)
+	{
+		Properties abstractProperties = Properties.of(Material.EGG).strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion();
+		
+		switch(this.eggSize)
+		{
+			case TINY:
+				return new TinyEggBlock(abstractProperties, () -> entity);
+			case SMALL:
+				return new SmallEggBlock(abstractProperties, () -> entity);
+			case MEDIUM:
+				return new MediumEggBlock(abstractProperties, () -> entity);
+			case LARGE:
+				return new LargeEggBlock(abstractProperties, () -> entity);
+			case NONE:
+			default:
+				return null;
+		}
+	}
+	
 	public Item getSkeletonPick()
 	{
 		return this.skeletonPick;
@@ -219,9 +262,9 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 		return new SkeletonRenderer(this.id + "_" + part, this.id);
 	}
 	
-	public Block getEgg()
+	public int getSetEggColour()
 	{
-		return this.egg;
+		return this.eggSetColour;
 	}
 	
 	public int getPrimaryColour()
@@ -254,6 +297,32 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 		return this.cookedSaturation;
 	}
 	
+	public static ArrayList<DinoTypes> liveBirth()
+	{
+		ArrayList<DinoTypes> list = new ArrayList<>();
+		for(DinoTypes type : DinoTypes.values())
+		{
+			if(!type.eggLaying)
+			{
+				list.add(type);
+			}
+		}
+		return list;
+	}
+	
+	public static ArrayList<DinoTypes> eggLaying()
+	{
+		ArrayList<DinoTypes> list = new ArrayList<>();
+		for(DinoTypes type : DinoTypes.values())
+		{
+			if(type.eggLaying)
+			{
+				list.add(type);
+			}
+		}
+		return list;
+	}
+	
 	@Nullable
 	public static DinoTypes byName(String id) 
 	{
@@ -261,14 +330,14 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	}
 	
 	//Used for addon creation. Use second one, first one is just because IExtensibleEnum is dumb.
-	public static DinoTypes create(String name, String id, EntityType entity, Block egg, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
+	public static DinoTypes create(String name, String id, EntityType entity, boolean eggLaying, Size eggSize, int setEggColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
 	{
 		throw new IllegalStateException("Enum not extended");
 	}
 	
-	public static DinoTypes register(String id, EntityType entity, Block egg, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
+	public static DinoTypes register(String id, EntityType entity, boolean eggLaying, Size eggSize, int setEggColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
 	{
-		return create(id, id, entity, egg, primaryColour, secondaryColour, rawNutrition, cookedNutrition, rawSaturation, cookedSaturation);
+		return create(id, id, entity, eggLaying, eggSize, setEggColour, primaryColour, secondaryColour, rawNutrition, cookedNutrition, rawSaturation, cookedSaturation);
 	}
 
 	@Override

@@ -243,7 +243,6 @@ public class ItemInit
 			Item skeleton = ModRegistry.register(dinos.name().toLowerCase() + "_skeleton", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton(), false));
 			dinos.setSkeletonPick(skeleton);
 			ModRegistry.register(dinos.name().toLowerCase() + "_spawn_egg", new ModSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), ModUtils.ITEMS));
-			ModRegistry.register(dinos.name().toLowerCase() + "_egg", new ModItem());
 			Item dna = ModRegistry.register(dinos.name().toLowerCase() + "_dna", new DNAItem(dinos.name().toLowerCase()));
 			dinos.setDNA(dna);
 			ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_meat", new Item(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())));

@@ -18,6 +18,7 @@ import lostworlds.content.client.screen.FossilCleanerScreen;
 import lostworlds.content.client.screen.FossilGrinderScreen;
 import lostworlds.content.client.screen.PaleontologyTableScreen;
 import lostworlds.content.client.screen.TimeMachineScreen;
+import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
 import lostworlds.content.server.init.EntityInit;
@@ -38,7 +39,6 @@ import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.FoliageColors;
-import net.minecraft.world.GrassColors;
 import net.minecraft.world.IBlockDisplayReader;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
@@ -55,22 +55,53 @@ public class ClientSetup
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event)
 	{
-		BlockColors blockcolors = Minecraft.getInstance().getBlockColors();
-		ItemColors itemcolors = Minecraft.getInstance().getItemColors();
+		BlockColors blockcolours = Minecraft.getInstance().getBlockColors();
+		ItemColors itemcolours = Minecraft.getInstance().getItemColors();
 		
-		blockcolors.register((state, reader, pos, intager) -> 
-		{
-			return reader != null && pos != null ? BiomeColors.getAverageGrassColor(reader, pos) : GrassColors.get(0.5D, 1.0D);
-		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES);
-		blockcolors.register((state, reader, pos, color) -> 
+//		blockcolours.register((state, reader, pos, intager) -> 
+//		{
+//			return reader != null && pos != null ? BiomeColors.getAverageGrassColor(reader, pos) : GrassColors.get(0.5D, 1.0D);
+//		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES);
+		blockcolours.register((state, reader, pos, color) -> 
 		{
 			return reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : FoliageColors.getDefaultColor();
 		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES);
-		itemcolors.register((stack, intager) -> 
+		itemcolours.register((stack, intager) -> 
 		{
 			BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
-			return blockcolors.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, intager);
+			return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, intager);
 		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES);
+		
+		if(LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get())
+		{
+			for(DinoTypes types : DinoTypes.eggLaying())
+			{
+				blockcolours.register((state, reader, pos, intager) -> 
+				{
+					return types.getSetEggColour();
+				}, types.getEgg());
+				itemcolours.register((stack, intager) -> 
+				{
+					BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
+					return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, intager);
+				}, types.getEgg());
+			}
+		}
+		else
+		{
+			for(DinoTypes types : DinoTypes.eggLaying())
+			{
+				blockcolours.register((state, reader, pos, color) -> 
+				{
+					return reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : FoliageColors.getDefaultColor();
+				}, types.getEgg());
+				itemcolours.register((stack, intager) -> 
+				{
+					BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
+					return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, intager);
+				}, types.getEgg());
+			}
+		}
 		
 		RenderTypeLookup.setRenderLayer(BlockInit.ALETHOPTERIS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_SUCKOWII, RenderType.cutout());
