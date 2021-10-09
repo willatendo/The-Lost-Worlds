@@ -13,9 +13,9 @@ import net.minecraft.item.ToolItem;
 
 public class BrushItem extends ToolItem
 {
-	private static final Set<Material> EFFECTIVE_ON_MATERIALS = Sets.newHashSet(ModMaterials.MADE_FOR_BRUSH);
-	private static final Set<Block> EFFECTIVE_ON_BLOCKS = Sets.newHashSet(/*BlockInit.STONE_FOSSIL.get(), BlockInit.TERRACOTTA_FOSSIL.get(), BlockInit.RED_TERRACOTTA_FOSSIL.get(), BlockInit.ORANGE_TERRACOTTA_FOSSIL.get(), BlockInit.YELLOW_TERRACOTTA_FOSSIL.get(), BlockInit.LIME_TERRACOTTA_FOSSIL.get(), BlockInit.GREEN_TERRACOTTA_FOSSIL.get(), BlockInit.CYAN_TERRACOTTA_FOSSIL.get(), BlockInit.LIGHT_BLUE_TERRACOTTA_FOSSIL.get(), BlockInit.BLUE_TERRACOTTA_FOSSIL.get(), BlockInit.MAGENTA_TERRACOTTA_FOSSIL.get(), BlockInit.PURPLE_TERRACOTTA_FOSSIL.get(), BlockInit.PINK_TERRACOTTA_FOSSIL.get(), BlockInit.BROWN_TERRACOTTA_FOSSIL.get(), BlockInit.BLACK_TERRACOTTA_FOSSIL.get(), BlockInit.GREY_TERRACOTTA_FOSSIL.get(), BlockInit.LIGHT_GREY_TERRACOTTA_FOSSIL.get(), BlockInit.WHITE_TERRACOTTA_FOSSIL.get()*/);	
-
+	private static final Set<Material> EFFECTIVE_ON_MATERIALS = Sets.newHashSet(ModMaterials.SOFT);
+	private static final Set<Block> EFFECTIVE_ON_BLOCKS = Sets.newHashSet();
+	
 	public BrushItem(ModItemTier modteir) 
 	{
 		super(1.0F, -2.4F, modteir, EFFECTIVE_ON_BLOCKS, new Properties().addToolType(ModToolTypes.BRUSH, modteir.getLevel()).tab(ModUtils.ITEMS));

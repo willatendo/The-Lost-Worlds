@@ -13,6 +13,10 @@ public class ServerConfig
 	public final IntValue blackMarketGenerationId;
 	public final BooleanValue blackMarketShouldSpawn;
 
+	public final IntValue fossilGenerationId;
+
+	public final IntValue traceFossilGenerationId;
+
 	public final IntValue meteoriteGenerationId;
 	public final BooleanValue meteoriteShouldSpawn;
 
@@ -78,7 +82,10 @@ public class ServerConfig
 		this.blackMarketGenerationId = builder.comment("Sets the Black Market's structure Id. Minecraft requires a number id, so this may conflict with another mod. If so, change it.").translation(TRANSLATION_TEXT + "blackMarketGenerationId").defineInRange("blackMarketGenerationId", 930134351, 111111111, 999999999);
 		this.blackMarketShouldSpawn = builder.comment("Sets if the Black Market should spawn in the overworld.").translation(TRANSLATION_TEXT + "blackMarketShouldSpawn").define("blackMarketShouldSpawn", true);
 
-		this.meteoriteGenerationId = builder.comment("Sets the Meteorite's structure Id. Minecraft requires a number id, so this may conflict with another mod. If so, change it.").translation(TRANSLATION_TEXT + "meteoriteGenerationId").defineInRange("meteoriteGenerationId", 930134352, 111111111, 999999999);
+		this.fossilGenerationId = builder.comment("Sets the Fossil's structure Id. Minecraft requires a number id, so this may conflict with another mod. If so, change it.").translation(TRANSLATION_TEXT + "fossilGenerationId").defineInRange("fossilGenerationId", 930134352, 111111111, 999999999);
+		this.traceFossilGenerationId = builder.comment("Sets the Trace Fossil's structure Id. Minecraft requires a number id, so this may conflict with another mod. If so, change it.").translation(TRANSLATION_TEXT + "traceFossilGenerationId").defineInRange("traceFossilGenerationId", 930134353, 111111111, 999999999);
+		
+		this.meteoriteGenerationId = builder.comment("Sets the Meteorite's structure Id. Minecraft requires a number id, so this may conflict with another mod. If so, change it.").translation(TRANSLATION_TEXT + "meteoriteGenerationId").defineInRange("meteoriteGenerationId", 930134354, 111111111, 999999999);
 		this.meteoriteShouldSpawn = builder.comment("Sets if meteorite structures should spawn in the overworld.").translation(TRANSLATION_TEXT + "meteoritesShouldSpawn").define("meteoritesShouldSpawn", true);
 
 		//Features

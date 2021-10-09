@@ -68,7 +68,7 @@ public class LostWorldsMod
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), ItemInit.CONTRACEPTIVES.getDefaultInstance());
 		
 		ModUtils.ITEMS.setIcon(ItemInit.AMBER.getDefaultInstance());
-		ModUtils.BLOCKS.setIcon(BlockInit.DARK_CONCRETE.asItem().getDefaultInstance());
+		ModUtils.BLOCKS.setIcon(BlockInit.PLASTERED_FOSSILIZED_TRACK.asItem().getDefaultInstance());
 						
 		event.enqueueWork(() -> 
 		{
@@ -103,6 +103,18 @@ public class LostWorldsMod
 			if(ModUtils.SIMPLE_SPAWNABLE_BIOME_CATEGORIES.contains(event.getCategory()))
 			{
 				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_METEORITE);
+			}
+		}
+	
+		if(LostWorldsConfig.COMMON_CONFIG.fossilsInOverworld.get())
+		{
+			if(ModUtils.SIMPLE_SPAWNABLE_BIOME_CATEGORIES.contains(event.getCategory()))
+			{
+				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_FOSSIL);
+			}
+			if(ModUtils.SIMPLE_SPAWNABLE_BIOME_CATEGORIES.contains(event.getCategory()))
+			{
+				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_TRACE_FOSSIL);
 			}
 		}
     }

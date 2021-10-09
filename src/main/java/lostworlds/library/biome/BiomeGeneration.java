@@ -59,32 +59,30 @@ public class BiomeGeneration
 		
 		if(LostWorldsConfig.COMMON_CONFIG.petrifiedAraucariaTreeShouldSpawn.get())
 		{
-			generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.PETRIFIED_ARAUCARIA);
+			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_ARAUCARIA);
 		}
 		
 		if(LostWorldsConfig.COMMON_CONFIG.petrifiedCalamitesTreeShouldSpawn.get())
 		{
-			generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.PETRIFIED_CALAMITES);
+			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_CALAMITES);
 		}
 		
 		if(LostWorldsConfig.COMMON_CONFIG.petrifiedConiferTreeShouldSpawn.get())
 		{
-			generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.PETRIFIED_CONIFER);
+			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_CONIFER);
 		}
 		
 		if(LostWorldsConfig.COMMON_CONFIG.petrifiedGinkgoTreeShouldSpawn.get())
 		{
-			generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.PETRIFIED_GINKGO);
+			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_GINKGO);
 		}
 		
 		if(LostWorldsConfig.COMMON_CONFIG.fossilsInOverworld.get())
-		{
-			//Fossil Structure
-			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_STRUCTURES, ModConfiguredFeatures.OVERWORLD_FOSSIL);
-			
-			//Track
-			
-			//Nests
+		{				
+			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_TINY_NEST);
+			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_SMALL_NEST);
+			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_MEDIUM_NEST);
+			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_LARGE_NEST);
 		}
 	}
 }

@@ -9,11 +9,13 @@ import lostworlds.content.ModUtils;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.FeatureInit;
+import lostworlds.content.server.init.PlacementInit;
 import lostworlds.library.block.Damage;
+import lostworlds.library.block.Egg;
 import lostworlds.library.block.PlantFossilBlock;
 import lostworlds.library.block.Plants;
+import lostworlds.library.block.SoftDirtBlock;
 import lostworlds.library.entity.TimeEras;
-import lostworlds.library.feature.config.FossilFeatureConfig;
 import lostworlds.library.foliageplacer.ConiferFoliagePlacer;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
@@ -126,8 +128,11 @@ public class ModConfiguredFeatures
 	public static final ConfiguredFeature<?, ?> OVERWORLD_PLANT_FOSSIL_OSMUNDA = register("overworld_plant_fossil_osmunda", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.STONE.defaultBlockState(), BlockInit.PLANT_FOSSIL.defaultBlockState().setValue(PlantFossilBlock.ERA, TimeEras.MODERN_MINECRAFT).setValue(PlantFossilBlock.POTENTIAL_PLANT, Plants.OSMUNDA).setValue(PlantFossilBlock.DAMAGE, Damage.NONE))).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE).chance(LostWorldsConfig.COMMON_CONFIG.plantFossilChance.get())));
 	public static final ConfiguredFeature<?, ?> OVERWORLD_PLANT_FOSSIL_WILLIAMSONIA = register("overworld_plant_fossil_williamsonia", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.STONE.defaultBlockState(), BlockInit.PLANT_FOSSIL.defaultBlockState().setValue(PlantFossilBlock.ERA, TimeEras.MODERN_MINECRAFT).setValue(PlantFossilBlock.POTENTIAL_PLANT, Plants.WILLIAMSONIA).setValue(PlantFossilBlock.DAMAGE, Damage.NONE))).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE).chance(LostWorldsConfig.COMMON_CONFIG.plantFossilChance.get())));
 	public static final ConfiguredFeature<?, ?> OVERWORLD_PLANT_FOSSIL_ZAMITES = register("overworld_plant_fossil_zamites", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.STONE.defaultBlockState(), BlockInit.PLANT_FOSSIL.defaultBlockState().setValue(PlantFossilBlock.ERA, TimeEras.MODERN_MINECRAFT).setValue(PlantFossilBlock.POTENTIAL_PLANT, Plants.ZAMITES).setValue(PlantFossilBlock.DAMAGE, Damage.NONE))).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE).chance(LostWorldsConfig.COMMON_CONFIG.plantFossilChance.get())));
-	
-	public static final ConfiguredFeature<?, ?> OVERWORLD_FOSSIL = register("overworld_fossil", FeatureInit.FOSSIL.configured(new FossilFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, Blocks.ANCIENT_DEBRIS.defaultBlockState(), LostWorldsConfig.COMMON_CONFIG.fossilSize.get())).range(LostWorldsConfig.COMMON_CONFIG.fossilRange.get()).squared().count(LostWorldsConfig.COMMON_CONFIG.fossilCountPerChunk.get()).chance(LostWorldsConfig.COMMON_CONFIG.fossilChance.get()));
+		
+	public static final ConfiguredFeature<?, ?> OVERWORLD_TINY_NEST = register("overworld_tiny_nest", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.DIRT.defaultBlockState(), BlockInit.SOFT_DIRT.defaultBlockState().setValue(SoftDirtBlock.EGG, Egg.TINY))).decorated(PlacementInit.NEST.configured(IPlacementConfig.NONE)).chance(LostWorldsConfig.COMMON_CONFIG.fossilChance.get()));
+	public static final ConfiguredFeature<?, ?> OVERWORLD_SMALL_NEST = register("overworld_small_nest", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.DIRT.defaultBlockState(), BlockInit.SOFT_DIRT.defaultBlockState().setValue(SoftDirtBlock.EGG, Egg.SMALL))).decorated(PlacementInit.NEST.configured(IPlacementConfig.NONE)).chance(LostWorldsConfig.COMMON_CONFIG.fossilChance.get()));
+	public static final ConfiguredFeature<?, ?> OVERWORLD_MEDIUM_NEST = register("overworld_medium_nest", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.DIRT.defaultBlockState(), BlockInit.SOFT_DIRT.defaultBlockState().setValue(SoftDirtBlock.EGG, Egg.MEDIUM))).decorated(PlacementInit.NEST.configured(IPlacementConfig.NONE)).chance(LostWorldsConfig.COMMON_CONFIG.fossilChance.get()));
+	public static final ConfiguredFeature<?, ?> OVERWORLD_LARGE_NEST = register("overworld_large_nest", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.DIRT.defaultBlockState(), BlockInit.SOFT_DIRT.defaultBlockState().setValue(SoftDirtBlock.EGG, Egg.LARGE))).decorated(PlacementInit.NEST.configured(IPlacementConfig.NONE)).chance(LostWorldsConfig.COMMON_CONFIG.fossilChance.get()));
 	
 	//Misc Decoration
 	public static final ConfiguredFeature<?, ?> ASH_LAYER = FeatureInit.ASH_LAYER_PLACEMENT.configured(IFeatureConfig.NONE);

@@ -39,6 +39,7 @@ import lostworlds.library.block.PetrifiedWoodBlock;
 import lostworlds.library.block.PlantFossilBlock;
 import lostworlds.library.block.PlasteredBlock;
 import lostworlds.library.block.SmallFossilisedEggBlock;
+import lostworlds.library.block.SoftDirtBlock;
 import lostworlds.library.block.SoftStoneBlock;
 import lostworlds.library.block.SpongeColonyBlock;
 import lostworlds.library.block.SticksBlock;
@@ -141,6 +142,7 @@ public class BlockInit
 	public static final Block POLISHED_VOLCANIC_ROCK_SLAB = BlockAndItemBuilder.create("polished_volcanic_rock_slab", new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.GILDED_BLACKSTONE)));
 	
 	public static final Block SOFT_STONE = BlockAndItemBuilder.create("soft_stone", new SoftStoneBlock());
+	public static final Block SOFT_DIRT = BlockAndItemBuilder.create("soft_dirt", new SoftDirtBlock());
 	public static final Block PLANT_FOSSIL = BlockAndItemBuilder.create("plant_fossil", new PlantFossilBlock());
 		
 	public static final Block FOSSILIZED_TRACK = BlockAndItemBuilder.create("fossilized_track", new FossilisedTrackBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F), Blocks.STONE));

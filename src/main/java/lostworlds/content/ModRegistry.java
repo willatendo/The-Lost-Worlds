@@ -12,6 +12,7 @@ import lostworlds.content.server.init.FeatureInit;
 import lostworlds.content.server.init.FoliagePlacerInit;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.ParticleInit;
+import lostworlds.content.server.init.PlacementInit;
 import lostworlds.content.server.init.PointOfInterestInit;
 import lostworlds.content.server.init.PotionInit;
 import lostworlds.content.server.init.RecipeInit;
@@ -59,6 +60,8 @@ import net.minecraft.world.gen.feature.StructureFeature;
 import net.minecraft.world.gen.feature.structure.IStructurePieceType;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
+import net.minecraft.world.gen.placement.IPlacementConfig;
+import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.common.world.ForgeWorldType;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -208,6 +211,13 @@ public class ModRegistry
 		return surfaceBuilder;
 	}
 	
+	public static <T extends IPlacementConfig> Placement<T> register(String id, Placement<T> placement)
+	{
+		placement.setRegistryName(ModUtils.rL(id));
+		ForgeRegistries.DECORATORS.register(placement);
+		return placement;
+	}
+	
 	public static Feature<?> register(String id, Feature<?> feature)
 	{
 		feature.setRegistryName(ModUtils.rL(id));
@@ -256,6 +266,7 @@ public class ModRegistry
 		StructureInit.init();
 		SurfaceBuilderInit.init();
 		FoliagePlacerInit.init();
+		PlacementInit.init();
 		FeatureInit.init();
 		WorldCarverInit.init();
 		ModConfiguredCarvers.init();
