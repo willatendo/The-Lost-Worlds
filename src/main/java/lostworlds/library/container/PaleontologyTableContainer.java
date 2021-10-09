@@ -66,7 +66,8 @@ public class PaleontologyTableContainer extends Container
 
 	protected static void slotChangedCraftingGrid(int slot, World world, PlayerEntity player, PaleontologyTableInventory inv, PaleontologyTableResultInventory result) 
 	{
-		if (!world.isClientSide) {
+		if(!world.isClientSide) 
+		{
 			ServerPlayerEntity serverplayerentity = (ServerPlayerEntity) player;
 			ItemStack itemstack = ItemStack.EMPTY;
 			Optional<PaleontologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(RecipeInit.PALEONTOLOGY_TABLE_RECIPE, inv, world);
@@ -87,7 +88,7 @@ public class PaleontologyTableContainer extends Container
 	@Override
 	public void slotsChanged(IInventory iinv) 
 	{
-		this.access.execute((world, p_217069_2_) -> 
+		this.access.execute((world, pos) -> 
 		{
 			slotChangedCraftingGrid(this.containerId, world, this.player, this.craftSlots, this.resultSlots);
 		});

@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 
 public class ArchaeologyTableContainer extends Container 
 {
-	private final ArchaeologyTableInventory craftSlots = new ArchaeologyTableInventory(this, 5, 5);
+	private final ArchaeologyTableInventory craftSlots = new ArchaeologyTableInventory(this, 3, 3);
 	private final ArchaeologyTableResultInventory resultSlots = new ArchaeologyTableResultInventory();
 	private final IWorldPosCallable access;
 	private final PlayerEntity player;
@@ -66,7 +66,8 @@ public class ArchaeologyTableContainer extends Container
 
 	protected static void slotChangedCraftingGrid(int slot, World world, PlayerEntity player, ArchaeologyTableInventory inv, ArchaeologyTableResultInventory result) 
 	{
-		if (!world.isClientSide) {
+		if(!world.isClientSide) 
+		{
 			ServerPlayerEntity serverplayerentity = (ServerPlayerEntity) player;
 			ItemStack itemstack = ItemStack.EMPTY;
 			Optional<ArchaeologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(RecipeInit.ARCHAEOLOGY_TABLE_RECIPE, inv, world);
@@ -87,7 +88,7 @@ public class ArchaeologyTableContainer extends Container
 	@Override
 	public void slotsChanged(IInventory iinv) 
 	{
-		this.access.execute((world, p_217069_2_) -> 
+		this.access.execute((world, pos) -> 
 		{
 			slotChangedCraftingGrid(this.containerId, world, this.player, this.craftSlots, this.resultSlots);
 		});
@@ -113,7 +114,7 @@ public class ArchaeologyTableContainer extends Container
 	public void removed(PlayerEntity player) 
 	{
 		super.removed(player);
-		this.access.execute((world, p_217068_3_) -> 
+		this.access.execute((world, pos) -> 
 		{
 			this.clearContainer(player, world, this.craftSlots);
 		});
@@ -136,7 +137,7 @@ public class ArchaeologyTableContainer extends Container
 			itemstack = itemstack1.copy();
 			if(containerSlot == 0) 
 			{
-				this.access.execute((world, p_217067_3_) -> 
+				this.access.execute((world, pos) -> 
 				{
 					itemstack1.getItem().onCraftedBy(itemstack1, world, player);
 				});

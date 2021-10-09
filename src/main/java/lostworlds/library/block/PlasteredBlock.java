@@ -56,13 +56,12 @@ public class PlasteredBlock extends Block
 		{
 			world.setBlockAndUpdate(pos, turnToBlock.defaultBlockState().setValue(HORIZONTAL_FACING, state.getValue(HORIZONTAL_FACING)));
 			world.playSound(entity, pos, SoundEvents.WOOL_BREAK, SoundCategory.BLOCKS, 0.7F, 1.0F);
+			return ActionResultType.SUCCESS;
 		}
 		else
 		{
 			return ActionResultType.FAIL;
 		}
-		
-		return super.use(state, world, pos, entity, hand, result);
 	}
 	
 	@Override

@@ -35,9 +35,9 @@ public class ArchaeologyTableBlock extends Block implements IWaterLoggable
 	private static final ITextComponent NAME = ModUtils.tTC("container", "archaeology_table");
 	private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;	
 
-	protected ArchaeologyTableBlock() 
+	public ArchaeologyTableBlock() 
 	{
-		super(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).harvestTool(ToolType.PICKAXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD));
+		super(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).harvestTool(ToolType.PICKAXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD));
 		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 

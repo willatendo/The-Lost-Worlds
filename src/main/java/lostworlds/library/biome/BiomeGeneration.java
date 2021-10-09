@@ -76,5 +76,15 @@ public class BiomeGeneration
 		{
 			generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.PETRIFIED_GINKGO);
 		}
+		
+		if(LostWorldsConfig.COMMON_CONFIG.fossilsInOverworld.get())
+		{
+			//Fossil Structure
+			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_STRUCTURES, ModConfiguredFeatures.OVERWORLD_FOSSIL);
+			
+			//Track
+			
+			//Nests
+		}
 	}
 }

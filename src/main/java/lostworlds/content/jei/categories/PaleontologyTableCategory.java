@@ -14,13 +14,14 @@ import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import mezz.jei.config.Constants;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.Size2i;
 
 public class PaleontologyTableCategory implements IRecipeCategory<PaleontologyTableRecipe>
 {
+	public static final ResourceLocation TEXTURE_LOCATION = ModUtils.rL("textures/gui/lost_worlds_backgrounds.png");
+	
 	private static final int craftOutputSlot = 0;
 	private static final int craftInputSlot1 = 1;
 	
@@ -34,8 +35,8 @@ public class PaleontologyTableCategory implements IRecipeCategory<PaleontologyTa
 	
 	public PaleontologyTableCategory(IGuiHelper helper) 
 	{
-		ResourceLocation location = Constants.RECIPE_GUI_VANILLA;
-		this.background = helper.createDrawable(location, 0, 60, width, height);
+		ResourceLocation location = TEXTURE_LOCATION;
+		this.background = helper.createDrawable(location, 124, 0, width, height);
 		this.icon = helper.createDrawableIngredient(new ItemStack(BlockInit.OAK_PALEONTOLOGY_TABLE));
 		craftingGridHelper = helper.createCraftingGridHelper(craftInputSlot1);
 	}

@@ -4,11 +4,13 @@ import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
 import lostworlds.library.feature.AshFeature;
 import lostworlds.library.feature.CalamitesSuckowiiFeature;
+import lostworlds.library.feature.FossilFeature;
 import lostworlds.library.feature.GeyserBlockFeature;
 import lostworlds.library.feature.ModBlockBlobFeature;
 import lostworlds.library.feature.PermianLakesFeature;
 import lostworlds.library.feature.ScorchedTreeFeature;
 import lostworlds.library.feature.SpongeColoneyFeature;
+import lostworlds.library.feature.config.FossilFeatureConfig;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
@@ -31,6 +33,8 @@ public class FeatureInit
 	
 	public static final Feature<BlockStateFeatureConfig> PERMIAN_LAKE = new PermianLakesFeature(BlockStateFeatureConfig.CODEC);
 
+	public static final Feature<FossilFeatureConfig> FOSSIL = new FossilFeature(FossilFeatureConfig.CODEC);
+	
 	public static void init() 
 	{ 	
 		ModUtils.LOGGER.debug("Registering Mod Features");
@@ -42,5 +46,6 @@ public class FeatureInit
 		ModRegistry.register("scorched_tree", SCORCHED_TREE);
 		ModRegistry.register("permian_rock", PERMIAN_ROCK);
 		ModRegistry.register("permian_lake", PERMIAN_LAKE);
+		ModRegistry.register("fossil", FOSSIL);
 	}
 }

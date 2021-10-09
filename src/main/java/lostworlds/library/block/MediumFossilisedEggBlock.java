@@ -20,17 +20,27 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 
 public class MediumFossilisedEggBlock extends Block 
 {
+	private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 6, 16);
 	public static final IntegerProperty EGGS = ModBlockStateProperties.MEDIUM_EGGS;
 	
 	public MediumFossilisedEggBlock(AbstractBlock.Properties properties) 
 	{
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(EGGS, Integer.valueOf(1)));
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) 
+	{
+		return SHAPE;
 	}
 
 	@Override
@@ -68,7 +78,7 @@ public class MediumFossilisedEggBlock extends Block
 
 	private void decreaseEggs(World world, BlockPos pos, BlockState state) 
 	{
-		world.playSound((PlayerEntity) null, pos, SoundEvents.TURTLE_EGG_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
+		world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
 		int i = state.getValue(EGGS);
 		if(i <= 1) 
 		{
@@ -91,7 +101,7 @@ public class MediumFossilisedEggBlock extends Block
 	@Override
 	public boolean canBeReplaced(BlockState state, BlockItemUseContext context) 
 	{
-		return context.getItemInHand().getItem() == this.asItem() && state.getValue(EGGS) < 5 ? true : super.canBeReplaced(state, context);
+		return context.getItemInHand().getItem() == this.asItem() && state.getValue(EGGS) < 6 ? true : super.canBeReplaced(state, context);
 	}
 
 	@Override
@@ -99,7 +109,7 @@ public class MediumFossilisedEggBlock extends Block
 	public BlockState getStateForPlacement(BlockItemUseContext context) 
 	{
 		BlockState blockstate = context.getLevel().getBlockState(context.getClickedPos());
-		return blockstate.is(this) ? blockstate.setValue(EGGS, Integer.valueOf(Math.min(5, blockstate.getValue(EGGS) + 1))) : super.getStateForPlacement(context);
+		return blockstate.is(this) ? blockstate.setValue(EGGS, Integer.valueOf(Math.min(6, blockstate.getValue(EGGS) + 1))) : super.getStateForPlacement(context);
 	}
 
 	@Override

@@ -25,6 +25,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -34,6 +36,7 @@ import net.minecraftforge.event.ForgeEventFactory;
 
 public class MediumEggBlock extends Block 
 {
+	private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 6, 16);
 	public static final IntegerProperty HATCH = BlockStateProperties.HATCH;
 	public static final IntegerProperty EGGS = ModBlockStateProperties.MEDIUM_EGGS;
 
@@ -44,6 +47,12 @@ public class MediumEggBlock extends Block
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(HATCH, Integer.valueOf(0)).setValue(EGGS, Integer.valueOf(1)));
 		this.entityTypeSupplier = Lazy.of(entity::get);
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) 
+	{
+		return SHAPE;
 	}
 
 	@Override
@@ -164,7 +173,7 @@ public class MediumEggBlock extends Block
 	@Override
 	public boolean canBeReplaced(BlockState state, BlockItemUseContext context) 
 	{
-		return context.getItemInHand().getItem() == this.asItem() && state.getValue(EGGS) < 5 ? true : super.canBeReplaced(state, context);
+		return context.getItemInHand().getItem() == this.asItem() && state.getValue(EGGS) < 6 ? true : super.canBeReplaced(state, context);
 	}
 
 	@Override
@@ -172,7 +181,7 @@ public class MediumEggBlock extends Block
 	public BlockState getStateForPlacement(BlockItemUseContext context) 
 	{
 		BlockState blockstate = context.getLevel().getBlockState(context.getClickedPos());
-		return blockstate.is(this) ? blockstate.setValue(EGGS, Integer.valueOf(Math.min(5, blockstate.getValue(EGGS) + 1))) : super.getStateForPlacement(context);
+		return blockstate.is(this) ? blockstate.setValue(EGGS, Integer.valueOf(Math.min(6, blockstate.getValue(EGGS) + 1))) : super.getStateForPlacement(context);
 	}
 
 	@Override

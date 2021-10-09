@@ -4,11 +4,13 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 import lostworlds.content.client.screen.AnalyzerScreen;
+import lostworlds.content.client.screen.ArchaeologyTableScreen;
 import lostworlds.content.client.screen.CultivatorScreen;
 import lostworlds.content.client.screen.DNAExtractorScreen;
 import lostworlds.content.client.screen.FossilGrinderScreen;
 import lostworlds.content.client.screen.PaleontologyTableScreen;
 import lostworlds.content.jei.categories.AnalyzerCategory;
+import lostworlds.content.jei.categories.ArchaeologyTableCategory;
 import lostworlds.content.jei.categories.CultivatorCategory;
 import lostworlds.content.jei.categories.DNAExtractorCategory;
 import lostworlds.content.jei.categories.FossilGrinderCategory;
@@ -17,6 +19,7 @@ import lostworlds.content.jei.categories.TimeMachineCategory;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.RecipeInit;
 import lostworlds.library.container.AnalyzerContainer;
+import lostworlds.library.container.ArchaeologyTableContainer;
 import lostworlds.library.container.CultivatorContainer;
 import lostworlds.library.container.DNAExtractorContainer;
 import lostworlds.library.container.FossilGrinderContainer;
@@ -54,6 +57,7 @@ public class LostWorldsPlugin implements IModPlugin
 		registration.addRecipes(getRecipes(manager, RecipeInit.ANALYZER_RECIPE), LostWorldsConstants.ANALYZER_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.CULTIVATOR_RECIPE), LostWorldsConstants.CULTIVATOR_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.TIME_MACHINE_RECIPE), LostWorldsConstants.TIME_MACHINE_CATEGORY);
+		registration.addRecipes(getRecipes(manager, RecipeInit.ARCHAEOLOGY_TABLE_RECIPE), LostWorldsConstants.ARCHAEOLOGY_TABLE_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.PALEONTOLOGY_TABLE_RECIPE), LostWorldsConstants.PALEONTOLOGY_TABLE_CATEGORY);
 	}
 	
@@ -67,6 +71,7 @@ public class LostWorldsPlugin implements IModPlugin
 		registration.addRecipeCategories(new AnalyzerCategory(helper));
 		registration.addRecipeCategories(new CultivatorCategory(helper));
 		registration.addRecipeCategories(new TimeMachineCategory(helper));
+		registration.addRecipeCategories(new ArchaeologyTableCategory(helper));
 		registration.addRecipeCategories(new PaleontologyTableCategory(helper));
 	}
 	
@@ -77,6 +82,7 @@ public class LostWorldsPlugin implements IModPlugin
 		registration.addRecipeClickArea(DNAExtractorScreen.class, 75, 38, 34, 10, LostWorldsConstants.DNA_EXTRACTOR_CATEGORY);
 		registration.addRecipeClickArea(AnalyzerScreen.class, 75, 38, 34, 12, LostWorldsConstants.ANALYZER_CATEGORY);
 		registration.addRecipeClickArea(CultivatorScreen.class, 76, 34, 33, 17, LostWorldsConstants.CULTIVATOR_CATEGORY);
+		registration.addRecipeClickArea(ArchaeologyTableScreen.class, 88, 32, 28, 23, LostWorldsConstants.ARCHAEOLOGY_TABLE_CATEGORY);
 		registration.addRecipeClickArea(PaleontologyTableScreen.class, 88, 32, 28, 23, LostWorldsConstants.PALEONTOLOGY_TABLE_CATEGORY);
 	}
 	
@@ -87,6 +93,7 @@ public class LostWorldsPlugin implements IModPlugin
 		registration.addRecipeTransferHandler(DNAExtractorContainer.class, LostWorldsConstants.DNA_EXTRACTOR_CATEGORY, 0, 2, 3, 36);
 		registration.addRecipeTransferHandler(AnalyzerContainer.class, LostWorldsConstants.ANALYZER_CATEGORY, 0, 2, 3, 36);
 		registration.addRecipeTransferHandler(CultivatorContainer.class, LostWorldsConstants.CULTIVATOR_CATEGORY, 0, 1, 3, 18);
+		registration.addRecipeTransferHandler(ArchaeologyTableContainer.class, LostWorldsConstants.ARCHAEOLOGY_TABLE_CATEGORY, 1, 9, 10, 36);
 		registration.addRecipeTransferHandler(PaleontologyTableContainer.class, LostWorldsConstants.PALEONTOLOGY_TABLE_CATEGORY, 1, 9, 10, 36);
 	}
 	
@@ -98,6 +105,7 @@ public class LostWorldsPlugin implements IModPlugin
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.ANALYZER), LostWorldsConstants.ANALYZER_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.CULTIVATOR), LostWorldsConstants.CULTIVATOR_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.TIME_MACHINE), LostWorldsConstants.TIME_MACHINE_CATEGORY);
+		registration.addRecipeCatalyst(new ItemStack(BlockInit.ARCHAEOLOGY_TABLE), LostWorldsConstants.ARCHAEOLOGY_TABLE_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.ACACIA_PALEONTOLOGY_TABLE), LostWorldsConstants.PALEONTOLOGY_TABLE_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.ARAUCARIA_PALEONTOLOGY_TABLE), LostWorldsConstants.PALEONTOLOGY_TABLE_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.BIRCH_PALEONTOLOGY_TABLE), LostWorldsConstants.PALEONTOLOGY_TABLE_CATEGORY);

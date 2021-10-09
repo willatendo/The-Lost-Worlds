@@ -22,6 +22,8 @@ import lostworlds.library.block.FossilGrinderBlock;
 import lostworlds.library.block.FossilisedTrackBlock;
 import lostworlds.library.block.GeyserBlock;
 import lostworlds.library.block.GroundFernsBlock;
+import lostworlds.library.block.LargeFossilisedEggBlock;
+import lostworlds.library.block.MediumFossilisedEggBlock;
 import lostworlds.library.block.ModBushBlock;
 import lostworlds.library.block.ModDoublePlantBlock;
 import lostworlds.library.block.ModOreBlock;
@@ -36,10 +38,12 @@ import lostworlds.library.block.PaleontologyTableBlock;
 import lostworlds.library.block.PetrifiedWoodBlock;
 import lostworlds.library.block.PlantFossilBlock;
 import lostworlds.library.block.PlasteredBlock;
+import lostworlds.library.block.SmallFossilisedEggBlock;
 import lostworlds.library.block.SoftStoneBlock;
 import lostworlds.library.block.SpongeColonyBlock;
 import lostworlds.library.block.SticksBlock;
 import lostworlds.library.block.TimeMachineBlock;
+import lostworlds.library.block.TinyFossilisedEggBlock;
 import lostworlds.library.block.VolcanicAshBlock;
 import lostworlds.library.block.VolcanicAshLayerBlock;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
@@ -140,7 +144,12 @@ public class BlockInit
 	public static final Block PLANT_FOSSIL = BlockAndItemBuilder.create("plant_fossil", new PlantFossilBlock());
 		
 	public static final Block FOSSILIZED_TRACK = BlockAndItemBuilder.create("fossilized_track", new FossilisedTrackBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F), Blocks.STONE));
-	public static final Block PLASTERED_FOSSILISED_TRACK = BlockAndItemBuilder.create("plastered_fossilised_track", new PlasteredBlock(AbstractBlock.Properties.of(Material.STONE).instabreak().sound(SoundType.WOOL), FOSSILIZED_TRACK));
+	public static final Block PLASTERED_FOSSILIZED_TRACK = BlockAndItemBuilder.create("plastered_fossilized_track", new PlasteredBlock(AbstractBlock.Properties.of(Material.STONE).instabreak().sound(SoundType.WOOL), FOSSILIZED_TRACK));
+	
+	public static final Block TINY_FOSSILISED_EGG = BlockAndItemBuilder.create("tiny_fossilized_egg", new TinyFossilisedEggBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()));
+	public static final Block SMALL_FOSSILISED_EGG = BlockAndItemBuilder.create("small_fossilized_egg", new SmallFossilisedEggBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()));
+	public static final Block MEDIUM_FOSSILISED_EGG = BlockAndItemBuilder.create("medium_fossilized_egg", new MediumFossilisedEggBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()));
+	public static final Block LARGE_FOSSILISED_EGG = BlockAndItemBuilder.create("large_fossilized_egg", new LargeFossilisedEggBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()));
 	
 	//Overworld Ores
 	public static final Block COPPER_ORE = BlockAndItemBuilder.create("copper_ore", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.0F).sound(SoundType.STONE)));

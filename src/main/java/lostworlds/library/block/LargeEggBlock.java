@@ -25,6 +25,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -34,6 +36,7 @@ import net.minecraftforge.event.ForgeEventFactory;
 
 public class LargeEggBlock extends Block 
 {
+	private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 8, 16);
 	public static final IntegerProperty HATCH = BlockStateProperties.HATCH;
 	public static final IntegerProperty EGGS = ModBlockStateProperties.LARGE_EGGS;
 
@@ -46,6 +49,12 @@ public class LargeEggBlock extends Block
 		this.entityTypeSupplier = Lazy.of(entity::get);
 	}
 
+	@Override
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) 
+	{
+		return SHAPE;
+	}
+	
 	@Override
 	public void stepOn(World world, BlockPos pos, Entity entity) 
 	{

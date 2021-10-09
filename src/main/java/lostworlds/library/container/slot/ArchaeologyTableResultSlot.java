@@ -9,6 +9,7 @@ import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.fml.hooks.BasicEventHooks;
 
 public class ArchaeologyTableResultSlot extends Slot 
 {
@@ -59,7 +60,7 @@ public class ArchaeologyTableResultSlot extends Slot
 		if(this.removeCount > 0) 
 		{
 			stack.onCraftedBy(this.player.level, this.player, this.removeCount);
-			net.minecraftforge.fml.hooks.BasicEventHooks.firePlayerCraftingEvent(this.player, stack, this.craftSlots);
+			BasicEventHooks.firePlayerCraftingEvent(this.player, stack, this.craftSlots);
 		}
 
 		if(this.container instanceof IRecipeHolder) 

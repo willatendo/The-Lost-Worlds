@@ -15,5 +15,6 @@ public class LostWorldsConstants
 	public static final ResourceLocation CULTIVATOR_CATEGORY = ModUtils.rL("cultivator_category");
 	public static final ResourceLocation KILN_CATEGORY = ModUtils.rL("kiln_category");
 	public static final ResourceLocation TIME_MACHINE_CATEGORY = ModUtils.rL("time_machine_category");
+	public static final ResourceLocation ARCHAEOLOGY_TABLE_CATEGORY = ModUtils.rL("archaeology_table_category");
 	public static final ResourceLocation PALEONTOLOGY_TABLE_CATEGORY = ModUtils.rL("paleontology_table_category");
 }

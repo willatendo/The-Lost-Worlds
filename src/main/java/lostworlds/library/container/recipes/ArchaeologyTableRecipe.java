@@ -12,6 +12,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 
+import lostworlds.content.server.init.RecipeInit;
 import lostworlds.library.inventory.ArchaeologyTableInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -68,7 +69,7 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 	@Override
 	public IRecipeSerializer<?> getSerializer() 
 	{
-		return IRecipeSerializer.SHAPED_RECIPE;
+		return RecipeInit.AMBER_DNA_EXTRACTOR_SERIALIZER;
 	}
 
 	@Override
@@ -87,6 +88,13 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 	public boolean canCraftInDimensions(int width, int height) 
 	{
 		return width >= this.width && height >= this.height;
+	}
+	
+	public NonNullList<ItemStack> getOutput()
+	{
+		NonNullList<ItemStack> output = NonNullList.create();
+		output.add(this.result);
+		return output;
 	}
 
 	@Override
@@ -334,7 +342,7 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 	@Override
 	public IRecipeType<?> getType() 
 	{
-		return null;
+		return RecipeInit.ARCHAEOLOGY_TABLE_RECIPE;
 	}
 
 	public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<ArchaeologyTableRecipe> 
@@ -356,7 +364,7 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 			int j = p_199426_2_.readVarInt();
 			NonNullList<Ingredient> nonnulllist = NonNullList.withSize(i * j, Ingredient.EMPTY);
 
-			for (int k = 0; k < nonnulllist.size(); ++k) 
+			for(int k = 0; k < nonnulllist.size(); ++k) 
 			{
 				nonnulllist.set(k, Ingredient.fromNetwork(p_199426_2_));
 			}

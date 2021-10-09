@@ -108,7 +108,7 @@ public class FossilisedTrackBlock extends Block
 			Item item = entity.getItemInHand(hand).getItem();
 			if(item instanceof WetPaperItem)
 			{
-				world.setBlockAndUpdate(pos, BlockInit.PLASTERED_FOSSILISED_TRACK.defaultBlockState().setValue(HORIZONTAL_FACING, state.getValue(HORIZONTAL_FACING)));
+				world.setBlockAndUpdate(pos, BlockInit.PLASTERED_FOSSILIZED_TRACK.defaultBlockState().setValue(HORIZONTAL_FACING, state.getValue(HORIZONTAL_FACING)));
 				world.playSound(entity, pos, SoundEvents.WOOL_PLACE, SoundCategory.BLOCKS, 0.7F, 1.0F);
 				
 				if(!entity.abilities.instabuild)
@@ -116,13 +116,9 @@ public class FossilisedTrackBlock extends Block
 					ItemStack stack = entity.getItemInHand(hand);
 					stack.shrink(1);
 				}
+				return ActionResultType.SUCCESS;
 			}
 		}
-		else
-		{
-			return ActionResultType.FAIL;
-		}
-		
 		return super.use(state, world, pos, entity, hand, result);
 	}
 	
