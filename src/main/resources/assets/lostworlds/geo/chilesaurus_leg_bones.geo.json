@@ -3,10 +3,10 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.kentrosaurus",
-				"texture_width": 128,
-				"texture_height": 128,
-				"visible_bounds_width": 7,
+				"identifier": "geometry.chilesaurus",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 5,
 				"visible_bounds_height": 2.5,
 				"visible_bounds_offset": [
 					0,
@@ -16,19 +16,19 @@
 			},
 			"bones": [
 				{
-					"name": "Kentrosaurus",
+					"name": "Chilesaurus",
 					"pivot": [
 						0,
-						12,
+						8,
 						0
 					]
 				},
 				{
 					"name": "body",
-					"parent": "Kentrosaurus",
+					"parent": "Chilesaurus",
 					"pivot": [
 						0,
-						12,
+						8,
 						0
 					]
 				},
@@ -37,8 +37,8 @@
 					"parent": "body",
 					"pivot": [
 						0,
-						13,
-						-10
+						8,
+						-5
 					]
 				},
 				{
@@ -46,8 +46,26 @@
 					"parent": "neck",
 					"pivot": [
 						0,
-						13.55,
-						-18.5
+						14,
+						-6
+					]
+				},
+				{
+					"name": "arm1",
+					"parent": "body",
+					"pivot": [
+						2,
+						6,
+						-4
+					]
+				},
+				{
+					"name": "arm2",
+					"parent": "body",
+					"pivot": [
+						0,
+						5,
+						0
 					]
 				},
 				{
@@ -55,8 +73,8 @@
 					"parent": "body",
 					"pivot": [
 						0,
-						13,
-						10
+						9,
+						6
 					]
 				},
 				{
@@ -64,63 +82,28 @@
 					"parent": "tail",
 					"pivot": [
 						0,
-						14,
-						24
+						9,
+						14
 					]
 				},
 				{
-					"name": "backleg2",
-					"parent": "Kentrosaurus",
+					"name": "leg1",
+					"parent": "Chilesaurus",
 					"pivot": [
-						-4,
-						12,
-						6
-					]
-				},
-				{
-					"name": "backleg1",
-					"parent": "Kentrosaurus",
-					"pivot": [
-						4,
-						12,
-						6
+						2,
+						8,
+						4
 					],
 					"cubes": [
 						{
 							"origin": [
 								0,
-								0,
-								-3
-							],
-							"size": [
-								5,
-								7,
-								6
-							],
-							"pivot": [
-								0,
-								0,
-								0
-							],
-							"rotation": [
-								0,
-								0,
-								-90
-							],
-							"uv": [
-								58,
-								55
-							]
-						},
-						{
-							"origin": [
-								0,
-								-7,
-								0
+								-0.1,
+								-2
 							],
 							"size": [
 								3,
-								7,
+								5,
 								3
 							],
 							"pivot": [
@@ -134,28 +117,45 @@
 								-90
 							],
 							"uv": [
-								61,
-								19
+								25,
+								28
+							]
+						},
+						{
+							"origin": [
+								0,
+								-4.1,
+								-1
+							],
+							"size": [
+								2,
+								4,
+								2
+							],
+							"pivot": [
+								0,
+								0,
+								0
+							],
+							"rotation": [
+								0,
+								0,
+								-90
+							],
+							"uv": [
+								30,
+								17
 							]
 						}
 					]
 				},
 				{
-					"name": "frontleg2",
-					"parent": "Kentrosaurus",
+					"name": "leg2",
+					"parent": "Chilesaurus",
 					"pivot": [
-						-4,
-						10,
-						-8
-					]
-				},
-				{
-					"name": "frontleg1",
-					"parent": "Kentrosaurus",
-					"pivot": [
-						4,
-						10,
-						-8
+						-2,
+						8,
+						4
 					]
 				}
 			]

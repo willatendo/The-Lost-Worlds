@@ -2,6 +2,7 @@ package lostworlds.content.client.setup;
 
 import lostworlds.content.ModUtils;
 import lostworlds.content.client.entity.render.ChilesaurusRenderer;
+import lostworlds.content.client.entity.render.ChilesaurusSkeletonRenderer;
 import lostworlds.content.client.entity.render.FossilPoacherRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusSkeletonRenderer;
@@ -58,10 +59,6 @@ public class ClientSetup
 		BlockColors blockcolours = Minecraft.getInstance().getBlockColors();
 		ItemColors itemcolours = Minecraft.getInstance().getItemColors();
 		
-//		blockcolours.register((state, reader, pos, intager) -> 
-//		{
-//			return reader != null && pos != null ? BiomeColors.getAverageGrassColor(reader, pos) : GrassColors.get(0.5D, 1.0D);
-//		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES);
 		blockcolours.register((state, reader, pos, color) -> 
 		{
 			return reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : FoliageColors.getDefaultColor();
@@ -183,6 +180,7 @@ public class ClientSetup
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHARGED_CRYSTAL_SCARAB_GEM_ITEM, manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer()));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS, manager -> new ChilesaurusRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS_SKELETON, manager -> new ChilesaurusSkeletonRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS, manager -> new KentrosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS_SKELETON, manager -> new KentrosaurusSkeletonRenderer(manager));
 		

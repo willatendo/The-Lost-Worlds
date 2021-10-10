@@ -8,59 +8,128 @@
 				"texture_height": 128,
 				"visible_bounds_width": 7,
 				"visible_bounds_height": 2.5,
-				"visible_bounds_offset": [0, 0.75, 0]
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
 			},
 			"bones": [
 				{
 					"name": "Kentrosaurus",
-					"pivot": [0, 12, 0]
+					"pivot": [
+						0,
+						12,
+						0
+					]
 				},
 				{
 					"name": "body",
 					"parent": "Kentrosaurus",
-					"pivot": [0, 12, 0]
+					"pivot": [
+						0,
+						12,
+						0
+					]
 				},
 				{
 					"name": "neck",
 					"parent": "body",
-					"pivot": [0, 13, -10]
+					"pivot": [
+						0,
+						13,
+						-10
+					]
 				},
 				{
 					"name": "head",
 					"parent": "neck",
-					"pivot": [0, 13.55, -18.5]
+					"pivot": [
+						0,
+						13.55,
+						-18.5
+					]
 				},
 				{
 					"name": "tail",
 					"parent": "body",
-					"pivot": [0, 13, 10]
+					"pivot": [
+						0,
+						13,
+						10
+					]
 				},
 				{
 					"name": "tailpart1",
 					"parent": "tail",
-					"pivot": [0, 14, 24]
+					"pivot": [
+						0,
+						14,
+						24
+					]
 				},
 				{
 					"name": "backleg2",
 					"parent": "Kentrosaurus",
-					"pivot": [-4, 12, 6]
+					"pivot": [
+						-4,
+						12,
+						6
+					]
 				},
 				{
 					"name": "backleg1",
 					"parent": "Kentrosaurus",
-					"pivot": [4, 12, 6]
+					"pivot": [
+						4,
+						12,
+						6
+					]
 				},
 				{
 					"name": "frontleg2",
 					"parent": "Kentrosaurus",
-					"pivot": [-4, 10, -8]
+					"pivot": [
+						-4,
+						10,
+						-8
+					]
 				},
 				{
 					"name": "frontleg1",
 					"parent": "Kentrosaurus",
-					"pivot": [4, 10, -8],
+					"pivot": [
+						4,
+						10,
+						-8
+					],
 					"cubes": [
-						{"origin": [0, -6, -1.5], "size": [4, 12, 3], "pivot": [0, 0, 0], "rotation": [0, 0, -90], "uv": [0, 28]}
+						{
+							"origin": [
+								0,
+								-6,
+								-1.5
+							],
+							"size": [
+								4,
+								12,
+								3
+							],
+							"pivot": [
+								0,
+								0,
+								0
+							],
+							"rotation": [
+								0,
+								0,
+								-90
+							],
+							"uv": [
+								0,
+								28
+							]
+						}
 					]
 				}
 			]

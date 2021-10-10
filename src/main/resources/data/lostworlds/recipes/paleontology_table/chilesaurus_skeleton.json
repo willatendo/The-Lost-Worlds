@@ -1,0 +1,28 @@
+{
+	"type": "lostworlds:paleontology_table",
+	"pattern": [
+		" ^ ",
+		"#$#",
+		"&@&"
+	],
+	"key": {
+		"^": {
+			"item": "lostworlds:chilesaurus_tail"
+		},
+		"#": {
+			"item": "lostworlds:chilesaurus_leg_bones"
+		},
+		"$": {
+			"item": "lostworlds:chilesaurus_rib_cage"
+		},
+		"&": {
+			"item": "lostworlds:chilesaurus_arm_bones"
+		},
+		"@": {
+			"item": "lostworlds:chilesaurus_skull"
+		}
+	},
+	"result": {
+		"item": "lostworlds:chilesaurus_skeleton"
+	}
+}

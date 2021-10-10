@@ -8,69 +8,253 @@
 				"texture_height": 128,
 				"visible_bounds_width": 7,
 				"visible_bounds_height": 2.5,
-				"visible_bounds_offset": [0, 0.75, 0]
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
 			},
 			"bones": [
 				{
 					"name": "Kentrosaurus",
-					"pivot": [0, 4, 4]
+					"pivot": [
+						0,
+						4,
+						4
+					]
 				},
 				{
 					"name": "body",
 					"parent": "Kentrosaurus",
-					"pivot": [0, 4, 4],
+					"pivot": [
+						0,
+						4,
+						4
+					],
 					"cubes": [
-						{"origin": [-5, 0, -6], "size": [10, 8, 20], "uv": [0, 0]},
-						{"origin": [6.37816, 4, -3.28803], "size": [0, 1, 8], "pivot": [0.87816, -14, 1.71197], "rotation": [0, 15, 0], "uv": [0, 8]},
-						{"origin": [-2, 8, -6], "size": [0, 5, 18], "uv": [25, 10]},
-						{"origin": [2, 8, -6], "size": [0, 5, 18], "uv": [0, 36]},
-						{"origin": [-6.37816, 4, -3.28803], "size": [0, 1, 8], "pivot": [-0.87816, -14, 1.71197], "rotation": [0, -15, 0], "uv": [0, 7]}
+						{
+							"origin": [
+								-5,
+								0,
+								-6
+							],
+							"size": [
+								10,
+								8,
+								20
+							],
+							"uv": [
+								0,
+								0
+							]
+						},
+						{
+							"origin": [
+								6.37816,
+								4,
+								-3.28803
+							],
+							"size": [
+								0,
+								1,
+								8
+							],
+							"pivot": [
+								0.87816,
+								-14,
+								1.71197
+							],
+							"rotation": [
+								0,
+								15,
+								0
+							],
+							"uv": [
+								0,
+								8
+							]
+						},
+						{
+							"origin": [
+								-2,
+								8,
+								-6
+							],
+							"size": [
+								0,
+								5,
+								18
+							],
+							"uv": [
+								25,
+								10
+							]
+						},
+						{
+							"origin": [
+								2,
+								8,
+								-6
+							],
+							"size": [
+								0,
+								5,
+								18
+							],
+							"uv": [
+								0,
+								36
+							]
+						},
+						{
+							"origin": [
+								-6.37816,
+								4,
+								-3.28803
+							],
+							"size": [
+								0,
+								1,
+								8
+							],
+							"pivot": [
+								-0.87816,
+								-14,
+								1.71197
+							],
+							"rotation": [
+								0,
+								-15,
+								0
+							],
+							"uv": [
+								0,
+								7
+							]
+						}
 					]
 				},
 				{
 					"name": "neck",
 					"parent": "body",
-					"pivot": [0, 5, -6],
+					"pivot": [
+						0,
+						5,
+						-6
+					],
 					"cubes": [
-						{"origin": [-2, 3, -16], "size": [4, 4, 10], "uv": [40, 0]},
-						{"origin": [-1, 7, -14], "size": [0, 2, 6], "uv": [34, 27]},
-						{"origin": [1, 7, -14], "size": [0, 2, 6], "uv": [0, 11]}
+						{
+							"origin": [
+								-2,
+								3,
+								-16
+							],
+							"size": [
+								4,
+								4,
+								10
+							],
+							"uv": [
+								40,
+								0
+							]
+						},
+						{
+							"origin": [
+								-1,
+								7,
+								-14
+							],
+							"size": [
+								0,
+								2,
+								6
+							],
+							"uv": [
+								34,
+								27
+							]
+						},
+						{
+							"origin": [
+								1,
+								7,
+								-14
+							],
+							"size": [
+								0,
+								2,
+								6
+							],
+							"uv": [
+								0,
+								11
+							]
+						}
 					]
 				},
 				{
 					"name": "head",
 					"parent": "neck",
-					"pivot": [0, 5.55, -14.5]
+					"pivot": [
+						0,
+						5.55,
+						-14.5
+					]
 				},
 				{
 					"name": "tail",
 					"parent": "body",
-					"pivot": [0, 5, 14]
+					"pivot": [
+						0,
+						5,
+						14
+					]
 				},
 				{
 					"name": "tailpart1",
 					"parent": "tail",
-					"pivot": [0, 6, 28]
+					"pivot": [
+						0,
+						6,
+						28
+					]
 				},
 				{
 					"name": "backleg2",
 					"parent": "Kentrosaurus",
-					"pivot": [-4, 4, 10]
+					"pivot": [
+						-4,
+						4,
+						10
+					]
 				},
 				{
 					"name": "backleg1",
 					"parent": "Kentrosaurus",
-					"pivot": [4, 4, 10]
+					"pivot": [
+						4,
+						4,
+						10
+					]
 				},
 				{
 					"name": "frontleg2",
 					"parent": "Kentrosaurus",
-					"pivot": [-4, 2, -4]
+					"pivot": [
+						-4,
+						2,
+						-4
+					]
 				},
 				{
 					"name": "frontleg1",
 					"parent": "Kentrosaurus",
-					"pivot": [4, 2, -4]
+					"pivot": [
+						4,
+						2,
+						-4
+					]
 				}
 			]
 		}

@@ -5,9 +5,9 @@ import lostworlds.library.entity.fossil.FossilEntity;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
-public class KentrosaurusSkeletonModel extends AnimatedGeoModel<FossilEntity>
+public class ChilesaurusSkeletonModel extends AnimatedGeoModel<FossilEntity>
 {
-	private static final ResourceLocation TEXTURE = ModUtils.rL("textures/model/entity/fossil/kentrosaurus/skeleton.png");
+	private static final ResourceLocation TEXTURE = ModUtils.rL("textures/model/entity/fossil/chilesaurus/skeleton.png");
 
 	@Override
 	public ResourceLocation getAnimationFileLocation(FossilEntity entity) 
@@ -18,7 +18,7 @@ public class KentrosaurusSkeletonModel extends AnimatedGeoModel<FossilEntity>
 	@Override
 	public ResourceLocation getModelLocation(FossilEntity entity) 
 	{
-		return ModUtils.rL("geo/kentrosaurus.geo.json");
+		return ModUtils.rL("geo/chilesaurus.geo.json");
 	}
 
 	@Override

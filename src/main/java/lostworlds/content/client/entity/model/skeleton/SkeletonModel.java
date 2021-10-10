@@ -40,6 +40,6 @@ public class SkeletonModel extends AnimatedGeoModel<FossilItem>
 	@Override
 	public ResourceLocation getTextureLocation(FossilItem item) 
 	{
-		return ModUtils.rL("textures/model/entity/" + texture + "/skeleton.png");
+		return ModUtils.rL("textures/model/entity/fossil/" + texture + "/skeleton.png");
 	}
 }

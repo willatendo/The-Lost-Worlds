@@ -1,0 +1,108 @@
+{
+	"type": "minecraft:entity",
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "lostworlds:chilesaurus_rib_cage"
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "lostworlds:chilesaurus_leg_bones"
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "lostworlds:chilesaurus_leg_bones"
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "lostworlds:chilesaurus_arm_bones"
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "lostworlds:chilesaurus_arm_bones"
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "lostworlds:chilesaurus_tail"
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "lostworlds:chilesaurus_skull"
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"min": 1.0,
+								"max": 3.0,
+								"type": "minecraft:uniform"
+							}
+						},
+						{
+							"function": "minecraft:furnace_smelt",
+							"conditions": [
+								{
+									"condition": "minecraft:entity_properties",
+									"predicate": {
+										"flags": {
+											"is_on_fire": true
+										}
+									},
+									"entity": "this"
+								}
+							]
+						},
+						{
+							"function": "minecraft:looting_enchant",
+							"count": {
+								"min": 0.0,
+								"max": 1.0
+							}
+						}
+					],
+					"name": "lostworlds:raw_chilesaurus_meat"
+				}
+			]
+		}
+	]
+}

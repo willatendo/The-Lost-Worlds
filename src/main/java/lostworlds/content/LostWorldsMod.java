@@ -108,11 +108,11 @@ public class LostWorldsMod
 	
 		if(LostWorldsConfig.COMMON_CONFIG.fossilsInOverworld.get())
 		{
-			if(ModUtils.SIMPLE_SPAWNABLE_BIOME_CATEGORIES.contains(event.getCategory()))
+			if(ModUtils.FOSSIL_BIOMES.contains(event.getCategory()))
 			{
 				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_FOSSIL);
 			}
-			if(ModUtils.SIMPLE_SPAWNABLE_BIOME_CATEGORIES.contains(event.getCategory()))
+			if(ModUtils.FOSSIL_BIOMES.contains(event.getCategory()))
 			{
 				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_TRACE_FOSSIL);
 			}
