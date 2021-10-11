@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/slab",
+	"textures": {
+		"bottom": "lostworlds:block/raw_marble",
+		"top": "lostworlds:block/raw_marble",
+		"side": "lostworlds:block/raw_marble"
+	}
+}

@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/wall_inventory",
 	"textures": {
-		"wall": "lostworlds:blocks/jurassic_stone_bricks"
+		"wall": "lostworlds:block/jurassic_stone_bricks"
 	}
 }

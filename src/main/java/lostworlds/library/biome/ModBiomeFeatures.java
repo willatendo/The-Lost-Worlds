@@ -15,7 +15,7 @@ public class ModBiomeFeatures
 		addAshLayer(builder);
 		addPermianRock(builder);
 		addPermianOres(builder);
-		addPermianCarvers(builder);
+		addModCarvers(builder);
 		addPermianLakes(builder);
 		addPermianUndergroundVariety(builder);
 	}
@@ -25,7 +25,7 @@ public class ModBiomeFeatures
 		addPermianGroundClutter(builder);
 		addPermianRock(builder);
 		addPermianOres(builder);
-		addPermianCarvers(builder);
+		addModCarvers(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
 		addPermianLakes(builder);
@@ -42,7 +42,7 @@ public class ModBiomeFeatures
 		addPermianGroundClutter(builder);
 		addPermianRock(builder);
 		addPermianOres(builder);
-		addPermianCarvers(builder);
+		addModCarvers(builder);
 		addPermianLakes(builder);
 		addPermianUndergroundVariety(builder);
 	}
@@ -52,7 +52,7 @@ public class ModBiomeFeatures
 		addPermianGroundClutter(builder);
 		addPermianRock(builder);
 		addPermianOres(builder);
-		addPermianCarvers(builder);
+		addModCarvers(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
 		addPermianLakes(builder);
@@ -69,7 +69,7 @@ public class ModBiomeFeatures
 		addPermianRock(builder);
 		addPermianOres(builder);
 		addGinkgoTrees(builder);
-		addPermianCarvers(builder);
+		addModCarvers(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
 		addPermianLakes(builder);
@@ -84,7 +84,7 @@ public class ModBiomeFeatures
 		addBasaltDiamondOre(builder);
 		addGeyser(builder);
 		addPermianOres(builder);
-		addPermianCarvers(builder);
+		addModCarvers(builder);
 		addPermianLakes(builder);
 		addPermianUndergroundVariety(builder);
 		
@@ -103,7 +103,7 @@ public class ModBiomeFeatures
 		addPermianRock(builder);
 		addPermianOres(builder);
 		addPermianEmerald(builder);
-		addPermianCarvers(builder);
+		addModCarvers(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
 		addPermianLakes(builder);
@@ -116,7 +116,7 @@ public class ModBiomeFeatures
 	{
 		addPermianRock(builder);
 		addPermianOres(builder);
-		addPermianUnderwaterCarvers(builder);
+		addModUnderwaterCarvers(builder);
 		addPermianLakes(builder);
 		addPermianUndergroundVariety(builder);
 
@@ -128,7 +128,7 @@ public class ModBiomeFeatures
 	{
 		addPermianRock(builder);
 		addPermianOres(builder);
-		addPermianCarvers(builder);
+		addModCarvers(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
 		addPermianLakes(builder);
@@ -144,7 +144,7 @@ public class ModBiomeFeatures
 	public static void permianRiver(BiomeGenerationSettings.Builder builder)
 	{
 		addPermianOres(builder);
-		addPermianCarvers(builder);
+		addModCarvers(builder);
 		addPermianLakes(builder);
 		addPermianUndergroundVariety(builder);
 
@@ -156,7 +156,7 @@ public class ModBiomeFeatures
 	{
 		addPermianRock(builder);
 		addPermianOres(builder);
-		addPermianUnderwaterCarvers(builder);
+		addModUnderwaterCarvers(builder);
 		addPermianLakes(builder);
 		addPermianUndergroundVariety(builder);
 
@@ -170,7 +170,7 @@ public class ModBiomeFeatures
 		addPermianGroundClutter(builder);
 		addPermianRock(builder);
 		addPermianOres(builder);
-		addPermianCarvers(builder);
+		addModCarvers(builder);
 		addPermianLakes(builder);
 		addPermianUndergroundVariety(builder);
 		
@@ -202,16 +202,25 @@ public class ModBiomeFeatures
 		DefaultBiomeFeatures.addSurfaceFreezing(builder);
 	}
 	
+	//Jurassic
+	public static void jurassicConiferForest(BiomeGenerationSettings.Builder builder)
+	{
+		addConiferTrees(builder);
+		addJurassicRock(builder);
+		addJurassicOres(builder);
+		addSpring(builder);
+		addJurassicUndergroundVariety(builder);
+	}
+	
 	//Permian Features
 	private static void addPermianUndergroundVariety(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_DIRT_ORE);
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_GRAVEL_ORE);
-	}
-	
-	private static void addSpring(BiomeGenerationSettings.Builder builder)
-	{
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.ANCIENT_SPRING);
+		
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_LATERLITE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_RAW_MARBLE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_LIMESTONE_ORE);
 	}
 	
 	private static void addPermianDesertPlants(BiomeGenerationSettings.Builder builder) 
@@ -247,25 +256,57 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_EMERALD_ORE);
 	}
 	
-	private static void addPermianCarvers(BiomeGenerationSettings.Builder builder)
-	{
-		builder.addCarver(GenerationStage.Carving.AIR, ModConfiguredCarvers.PERMIAN_CAVE_CARVER);
-		builder.addCarver(GenerationStage.Carving.AIR, ModConfiguredCarvers.PERMIAN_CANYON_CARVER);
-	}
-	
-	private static void addPermianUnderwaterCarvers(BiomeGenerationSettings.Builder builder)
-	{
-		builder.addCarver(GenerationStage.Carving.LIQUID, ModConfiguredCarvers.PERMIAN_UNDERWATER_CAVE_CARVER);
-		builder.addCarver(GenerationStage.Carving.LIQUID, ModConfiguredCarvers.PERMIAN_UNDERWATER_CANYON_CARVER);
-	}
-	
 	private static void addPermianLakes(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.LAKES, ModConfiguredFeatures.PERMIAN_WATER_LAKE);
 		builder.addFeature(GenerationStage.Decoration.LAKES, ModConfiguredFeatures.PERMIAN_LAVA_LAKE);
 	}
+	
+	//Jurassic Features
+	private static void addJurassicUndergroundVariety(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_DIRT_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_GRAVEL_ORE);
+		
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_LATERLITE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_RAW_MARBLE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_LIMESTONE_ORE);
+	}
+	
+	private static void addJurassicRock(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ModConfiguredFeatures.JURASSIC_ROCK);
+	}
+	
+	private static void addJurassicOres(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_COAL_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_DIAMOND_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_GOLD_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_IRON_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_LAPIS_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_REDSTONE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_COPPER_ORE);
+	}
 
 	//General Features
+	private static void addModCarvers(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addCarver(GenerationStage.Carving.AIR, ModConfiguredCarvers.CAVE_CARVER);
+		builder.addCarver(GenerationStage.Carving.AIR, ModConfiguredCarvers.CANYON_CARVER);
+	}
+	
+	private static void addModUnderwaterCarvers(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addCarver(GenerationStage.Carving.LIQUID, ModConfiguredCarvers.UNDERWATER_CAVE_CARVER);
+		builder.addCarver(GenerationStage.Carving.LIQUID, ModConfiguredCarvers.UNDERWATER_CANYON_CARVER);
+	}
+	
+	private static void addSpring(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.ANCIENT_SPRING);
+	}
+	
 	public static void addConiferTrees(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_TREES);

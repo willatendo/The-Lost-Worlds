@@ -32,7 +32,6 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 {
 	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, true, Size.SMALL, 0xb08533, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
 	KENTROSAURUS("kentrosaurus", EntityInit.KENTROSAURUS, true, Size.MEDIUM, 0xd99760, 0xd99760, 0x612c00, 3, 6, 0.4F, 0.66F),
-	DILOPHOSAURUS("dilophosaurus", EntityInit.CHILESAURUS, true, Size.MEDIUM, 0xb37a29, 0xb37a29, 0x191918, 3, 6, 0.4F, 0.66F)
 	;
 	
 	public static final Codec<DinoTypes> CODEC = IStringSerializable.fromEnum(DinoTypes::values, DinoTypes::byName);

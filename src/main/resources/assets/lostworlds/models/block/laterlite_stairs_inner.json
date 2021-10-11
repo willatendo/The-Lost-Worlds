@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/inner_stairs",
+	"textures": {
+		"bottom": "lostworlds:block/laterlite",
+		"top": "lostworlds:block/laterlite",
+		"side": "lostworlds:block/laterlite"
+	}
+}

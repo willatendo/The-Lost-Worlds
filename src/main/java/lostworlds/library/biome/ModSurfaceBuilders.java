@@ -16,6 +16,7 @@ public class ModSurfaceBuilders
 	public static final SurfaceBuilderConfig CRACKED_SOIL_CONFIG = new SurfaceBuilderConfig(BlockInit.CRACKED_SOIL.defaultBlockState(), BlockInit.CRACKED_SOIL.defaultBlockState(), BlockInit.CRACKED_SOIL.defaultBlockState());
 	public static final SurfaceBuilderConfig DIRT_CONFIG = new SurfaceBuilderConfig(Blocks.DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState());
 	public static final SurfaceBuilderConfig MOSSY_SOIL_CONFIG = new SurfaceBuilderConfig(BlockInit.MOSSY_SOIL.defaultBlockState(), Blocks.DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState());
+	public static final SurfaceBuilderConfig PODZOL_CONFIG = new SurfaceBuilderConfig(Blocks.PODZOL.defaultBlockState(), Blocks.DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState());
 	public static final SurfaceBuilderConfig VOLCANIC_ASH_CONFIG = new SurfaceBuilderConfig(BlockInit.VOLCANIC_ASH.defaultBlockState(), BlockInit.VOLCANIC_ASH.defaultBlockState(), BlockInit.VOLCANIC_ASH.defaultBlockState());
 	public static final SurfaceBuilderConfig MUD_CONFIG = new SurfaceBuilderConfig(BlockInit.MUD.defaultBlockState(), BlockInit.MUD.defaultBlockState(), BlockInit.MUD.defaultBlockState());
 	public static final SurfaceBuilderConfig MOSSY_SOIL_SILT_CONFIG = new SurfaceBuilderConfig(BlockInit.MOSSY_SOIL.defaultBlockState(), Blocks.DIRT.defaultBlockState(), BlockInit.SILT.defaultBlockState());

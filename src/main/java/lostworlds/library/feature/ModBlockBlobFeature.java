@@ -20,7 +20,7 @@ public class ModBlockBlobFeature extends Feature<BlockStateFeatureConfig>
 
 	public boolean place(ISeedReader reader, ChunkGenerator chunckGenerator, Random rand, BlockPos pos, BlockStateFeatureConfig config) 
 	{
-		while (true) 
+		while(true) 
 		{
 			place: 
 			{

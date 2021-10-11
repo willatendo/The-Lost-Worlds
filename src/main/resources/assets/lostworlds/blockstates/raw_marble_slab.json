@@ -1,0 +1,13 @@
+{
+	"variants": {
+		"type=bottom": {
+			"model": "lostworlds:block/raw_marble_slab"
+		},
+		"type=double": {
+			"model": "lostworlds:block/raw_marble"
+		},
+		"type=top": {
+			"model": "lostworlds:block/raw_marble_slab_top"
+		}
+	}
+}
