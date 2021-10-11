@@ -2,6 +2,13 @@ package lostworlds.content.server.init;
 
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
+import lostworlds.library.biome.biomes.jurassic.desert.JurassicDesert;
+import lostworlds.library.biome.biomes.jurassic.forest.JurassicAraucariaForest;
+import lostworlds.library.biome.biomes.jurassic.forest.JurassicConiferForest;
+import lostworlds.library.biome.biomes.jurassic.forest.JurassicGinkgoForest;
+import lostworlds.library.biome.biomes.jurassic.mountains.JurassicErrodedMountains;
+import lostworlds.library.biome.biomes.jurassic.mountains.JurassicMountains;
+import lostworlds.library.biome.biomes.jurassic.plains.JurassicPlains;
 import lostworlds.library.biome.biomes.overworld.forest.ConiferForest;
 import lostworlds.library.biome.biomes.overworld.forest.GinkgoForest;
 import lostworlds.library.biome.biomes.permian.desert.PermianDesert;
@@ -59,6 +66,20 @@ public class BiomeInit
 	public static final Biome PERMIAN_SHORE = ModRegistry.register("permian_shore", PermianShore.create());
 	public static final Biome PERMIAN_STONE_SHORE = ModRegistry.register("permian_stone_shore", PermianStoneShore.create());
 	
+	//Jurassic
+	public static final Biome JURASSIC_CONIFER_FOREST = ModRegistry.register("jurassic_conifer_forest", JurassicConiferForest.create());
+	
+	public static final Biome JURASSIC_GINKGO_FOREST = ModRegistry.register("jurassic_ginkgo_forest", JurassicGinkgoForest.create());
+
+	public static final Biome JURASSIC_ARAUCARIA_FOREST = ModRegistry.register("jurassic_araucaria_forest", JurassicAraucariaForest.create());
+
+	public static final Biome JURASSIC_PLAINS = ModRegistry.register("jurassic_plains", JurassicPlains.create());
+
+	public static final Biome JURASSIC_MOUNTAINS = ModRegistry.register("jurassic_mountains", JurassicMountains.create());
+	public static final Biome JURASSIC_ERRODED_MOUNTAINS = ModRegistry.register("jurassic_erroded_mountains", JurassicErrodedMountains.create());
+
+	public static final Biome JURASSIC_DESERT = ModRegistry.register("jurassic_desert", JurassicDesert.create());
+
 	//Overworld
 	public static final Biome CONIFER_FOREST = ModRegistry.register("conifer_forest", ConiferForest.create());
 	public static final Biome CONIFER_FOREST_HILLS = ModRegistry.register("conifer_forest_hills", ConiferForest.create(0.45F, 0.3F));

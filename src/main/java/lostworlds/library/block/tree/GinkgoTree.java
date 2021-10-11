@@ -1,4 +1,4 @@
-package lostworlds.library.tree;
+package lostworlds.library.block.tree;
 
 import java.util.Random;
 

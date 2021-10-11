@@ -9,8 +9,13 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 public class ModSurfaceBuilders 
 {
 	public static final SurfaceBuilderConfig PERMIAN_SAND_CONFIG = new SurfaceBuilderConfig(BlockInit.PERMIAN_SAND.defaultBlockState(), BlockInit.PERMIAN_SAND.defaultBlockState(), BlockInit.PERMIAN_SAND.defaultBlockState());
+	public static final SurfaceBuilderConfig SAND_CONFIG = new SurfaceBuilderConfig(Blocks.SAND.defaultBlockState(), Blocks.SAND.defaultBlockState(), Blocks.SAND.defaultBlockState());
+	public static final SurfaceBuilderConfig ROCKY_SOIL_CONFIG = new SurfaceBuilderConfig(BlockInit.ROCKY_SOIL.defaultBlockState(), BlockInit.ROCKY_SOIL.defaultBlockState(), BlockInit.ROCKY_SOIL.defaultBlockState());
+	public static final SurfaceBuilderConfig RED_SAND_CONFIG = new SurfaceBuilderConfig(Blocks.RED_SAND.defaultBlockState(), Blocks.RED_SAND.defaultBlockState(), Blocks.RED_SAND.defaultBlockState());
 	public static final SurfaceBuilderConfig SILT_CONFIG = new SurfaceBuilderConfig(BlockInit.SILT.defaultBlockState(), BlockInit.SILT.defaultBlockState(), BlockInit.SILT.defaultBlockState());
 	public static final SurfaceBuilderConfig PERMIAN_STONE_CONFIG = new SurfaceBuilderConfig(BlockInit.PERMIAN_STONE.defaultBlockState(), BlockInit.PERMIAN_STONE.defaultBlockState(), BlockInit.PERMIAN_STONE.defaultBlockState());
+	public static final SurfaceBuilderConfig JURASSIC_STONE_CONFIG = new SurfaceBuilderConfig(BlockInit.JURASSIC_STONE.defaultBlockState(), BlockInit.JURASSIC_STONE.defaultBlockState(), BlockInit.JURASSIC_STONE.defaultBlockState());
+	public static final SurfaceBuilderConfig JURASSIC_COBBLESTONE_CONFIG = new SurfaceBuilderConfig(BlockInit.JURASSIC_COBBLESTONE.defaultBlockState(), BlockInit.JURASSIC_COBBLESTONE.defaultBlockState(), BlockInit.JURASSIC_COBBLESTONE.defaultBlockState());
 	public static final SurfaceBuilderConfig DRIED_SOIL_CONFIG = new SurfaceBuilderConfig(BlockInit.DRIED_SOIL.defaultBlockState(), BlockInit.DRIED_SOIL.defaultBlockState(), BlockInit.DRIED_SOIL.defaultBlockState());
 	public static final SurfaceBuilderConfig DRIED_SOIL_MUD_CONFIG = new SurfaceBuilderConfig(BlockInit.DRIED_SOIL.defaultBlockState(), BlockInit.DRIED_SOIL.defaultBlockState(), BlockInit.MUD.defaultBlockState());
 	public static final SurfaceBuilderConfig CRACKED_SOIL_CONFIG = new SurfaceBuilderConfig(BlockInit.CRACKED_SOIL.defaultBlockState(), BlockInit.CRACKED_SOIL.defaultBlockState(), BlockInit.CRACKED_SOIL.defaultBlockState());

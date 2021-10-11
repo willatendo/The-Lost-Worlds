@@ -49,13 +49,14 @@ import lostworlds.library.block.VolcanicAshBlock;
 import lostworlds.library.block.VolcanicAshLayerBlock;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.block.builder.BlockBuilder;
+import lostworlds.library.block.tree.AraucariaTree;
+import lostworlds.library.block.tree.CalamitesTree;
+import lostworlds.library.block.tree.ConiferTree;
+import lostworlds.library.block.tree.GinkgoTree;
 import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.ModBoatType;
 import lostworlds.library.item.ModBoatItem;
 import lostworlds.library.item.tool.ModMaterials;
-import lostworlds.library.tree.CalamitesTree;
-import lostworlds.library.tree.ConiferTree;
-import lostworlds.library.tree.GinkgoTree;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -100,7 +101,9 @@ public class BlockInit
 	public static final Block VOLCANIC_ASH_LAYER = BlockAndItemBuilder.create("volcanic_ash_layer", new VolcanicAshLayerBlock());
 
 	public static final Block PERMIAN_SAND = BlockAndItemBuilder.create("permian_sand", new SandBlock(0xaa915c, AbstractBlock.Properties.of(Material.SAND, MaterialColor.SAND).harvestTool(ToolType.SHOVEL).strength(1.5F).sound(SoundType.SAND)));
-	
+
+	public static final Block ROCKY_SOIL = BlockAndItemBuilder.create("rocky_soil", new SandBlock(0x8a8a8e, AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).requiresCorrectToolForDrops().strength(1.5F)));
+
 	//Stones
 	public static final Block PERMIAN_STONE = BlockAndItemBuilder.create("permian_stone", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)));
 	public static final Block PERMIAN_STONE_STAIRS = BlockAndItemBuilder.create("permian_stone_stairs", new StairsBlock(() -> BlockInit.PERMIAN_STONE.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)));
@@ -247,7 +250,7 @@ public class BlockInit
 	public static final Block ARAUCARIA_WOOD = BlockAndItemBuilder.create("araucaria_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_ARAUCARIA_WOOD = BlockAndItemBuilder.create("stripped_araucaria_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block ARAUCARIA_LEAVES = BlockAndItemBuilder.create("araucaria_leaves", new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES, MaterialColor.COLOR_GREEN).strength(0.3F).noOcclusion().sound(SoundType.GRASS)));
-	public static final Block ARAUCARIA_SAPLING = BlockAndItemBuilder.create("araucaria_sapling", new ModSaplingBlock(null, AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final Block ARAUCARIA_SAPLING = BlockAndItemBuilder.create("araucaria_sapling", new ModSaplingBlock(new AraucariaTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block ARAUCARIA_PLANKS = BlockAndItemBuilder.create("araucaria_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block ARAUCARIA_STAIRS = BlockAndItemBuilder.create("araucaria_stairs", new StairsBlock(() -> BlockInit.ARAUCARIA_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block ARAUCARIA_SLAB = BlockAndItemBuilder.create("araucaria_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));

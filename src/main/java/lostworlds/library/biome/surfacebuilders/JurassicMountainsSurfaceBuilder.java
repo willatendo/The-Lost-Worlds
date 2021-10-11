@@ -11,9 +11,9 @@ import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
-public class PermianDriedPlainsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> 
+public class JurassicMountainsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> 
 {
-	public PermianDriedPlainsSurfaceBuilder(Codec<SurfaceBuilderConfig> codec) 
+	public JurassicMountainsSurfaceBuilder(Codec<SurfaceBuilderConfig> codec) 
 	{
 		super(codec);
 	}
@@ -23,7 +23,7 @@ public class PermianDriedPlainsSurfaceBuilder extends SurfaceBuilder<SurfaceBuil
 	{
 		if(noise > 1.0D) 
 		{
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.MOSSY_SOIL_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.JURASSIC_STONE_CONFIG);
 		}
 		else
 		{

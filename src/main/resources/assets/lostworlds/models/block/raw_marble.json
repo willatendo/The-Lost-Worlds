@@ -1,6 +1,7 @@
 {
-	"parent": "minecraft:block/cube_all",
+	"parent": "minecraft:block/cube_column",
 	"textures": {
-		"all": "lostworlds:block/raw_marble"
+		"end": "lostworlds:block/raw_marble_top",
+		"side": "lostworlds:block/raw_marble"
 	}
 }

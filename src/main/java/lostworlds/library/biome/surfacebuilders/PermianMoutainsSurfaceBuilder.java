@@ -19,15 +19,15 @@ public class PermianMoutainsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilder
 	}
 	
 	@Override
-	public void apply(Random rand, IChunk iChunk, Biome biome, int i1, int i2, int i3, double d, BlockState state1, BlockState state2, int i4, long l, SurfaceBuilderConfig config) 
+	public void apply(Random rand, IChunk iChunk, Biome biome, int x, int z, int startHeight, double noise, BlockState block, BlockState fluid, int seaLevel, long seed, SurfaceBuilderConfig config) 
 	{
-		if(d > 1.0D) 
+		if(noise > 1.0D) 
 		{
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, i1, i2, i3, d, state1, state2, i4, l, ModSurfaceBuilders.DRIED_SOIL_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.DRIED_SOIL_CONFIG);
 		}
 		else
 		{
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, i1, i2, i3, d, state1, state2, i4, l, ModSurfaceBuilders.PERMIAN_STONE_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.PERMIAN_STONE_CONFIG);
 		}
 	}
 }

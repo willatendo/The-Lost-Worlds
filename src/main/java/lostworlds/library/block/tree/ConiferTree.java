@@ -1,4 +1,4 @@
-package lostworlds.library.tree;
+package lostworlds.library.block.tree;
 
 import java.util.Random;
 
@@ -9,12 +9,12 @@ import net.minecraft.block.trees.Tree;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 
-public class CalamitesTree extends Tree
+public class ConiferTree extends Tree
 {
 	@Nullable
 	@Override
 	public ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean big) 
 	{
-		return ModConfiguredFeatures.CALAMITIES_TREE;
+		return ModConfiguredFeatures.CONIFER_TREE;
 	}
 }

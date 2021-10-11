@@ -11,7 +11,7 @@ import net.minecraft.world.biome.Biome.RainType;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 
-public class JurassicConiferForest extends SimpleBiome
+public class JurassicGinkgoForest extends SimpleBiome
 {
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = defaultOverworldSpawns();
 	public static final BiomeGenerationSettings.Builder GENERATION = genSettings(SurfaceBuilderInit.NAKED_JURASSIC_CONIFER_FOREST, ModSurfaceBuilders.MOSSY_SOIL_CONFIG);
@@ -26,7 +26,7 @@ public class JurassicConiferForest extends SimpleBiome
 	
 	static void addGeneration() 
 	{	
-		ModBiomeFeatures.jurassicConiferForest(GENERATION);
+		ModBiomeFeatures.jurassicGinkgoForest(GENERATION);
 	}
 	
 	public static Biome create()

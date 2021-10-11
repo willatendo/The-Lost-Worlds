@@ -20,36 +20,36 @@ public class PermianMarshSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
 	}
 	
 	@Override
-	public void apply(Random rand, IChunk iChunk, Biome biome, int i1, int i2, int i3, double d, BlockState state1, BlockState state2, int i4, long l, SurfaceBuilderConfig config) 
+	public void apply(Random rand, IChunk iChunk, Biome biome, int x, int z, int startHeight, double noise, BlockState block, BlockState fluid, int seaLevel, long seed, SurfaceBuilderConfig config) 
 	{
-		double d0 = Biome.BIOME_INFO_NOISE.getValue((double)i1 * 0.25D, (double)i2 * 0.25D, false);
+		double d0 = Biome.BIOME_INFO_NOISE.getValue((double)x * 0.25D, (double)z * 0.25D, false);
 		if(d0 > 0.0D) 
 		{
-			int i = i1 & 15;
-			int j = i2 & 15;
+			int i = x & 15;
+			int j = z & 15;
 			BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 			
-			for(int k = i3; k >= 0; --k) 
+			for(int k = seaLevel; k >= 0; --k) 
 			{
 				blockpos$mutable.set(i, k, j);
 				if(!iChunk.getBlockState(blockpos$mutable).isAir()) 
 				{
-					if(k == 62 && !iChunk.getBlockState(blockpos$mutable).is(state2.getBlock())) 
+					if(k == 62 && !iChunk.getBlockState(blockpos$mutable).is(fluid.getBlock())) 
 					{
-						iChunk.setBlockState(blockpos$mutable, state2, false);
+						iChunk.setBlockState(blockpos$mutable, fluid, false);
 					}
 					break;
 				}
 			}
 		}
 		
-		if(d > 1.0D) 
+		if(noise > 1.0D) 
 		{
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, i1, i2, i3, d, state1, state2, i4, l, ModSurfaceBuilders.MUD_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.MUD_CONFIG);
 		}
 		else
 		{
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, i1, i2, i3, d, state1, state2, i4, l, ModSurfaceBuilders.MOSSY_SOIL_SILT_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.MOSSY_SOIL_SILT_CONFIG);
 		}
 	}
 }

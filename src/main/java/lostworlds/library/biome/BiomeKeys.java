@@ -42,6 +42,13 @@ public class BiomeKeys
 	public static final RegistryKey<Biome> PERMIAN_SHORE = register("permian_shore");
 	public static final RegistryKey<Biome> PERMIAN_STONE_SHORE = register("permian_stone_shore");
 	
+	//Jurassic
+	public static final RegistryKey<Biome> JURASSIC_CONIFER_FOREST = register("jurassic_conifer_forest");
+	
+	public static final RegistryKey<Biome> JURASSIC_GINKGO_FOREST = register("jurassic_ginkgo_forest");
+
+	public static final RegistryKey<Biome> JURASSIC_ARAUCARIA_FOREST = register("jurassic_araucaria_forest");
+
 	//Overworld
 	public static final RegistryKey<Biome> CONIFER_FOREST = register("conifer_forest");
 	public static final RegistryKey<Biome> CONIFER_FOREST_HILLS = register("conifer_forest_hills");
