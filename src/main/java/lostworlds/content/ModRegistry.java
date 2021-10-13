@@ -25,6 +25,7 @@ import lostworlds.content.server.init.VillagerProfessionInit;
 import lostworlds.content.server.init.WorldCarverInit;
 import lostworlds.content.server.init.WorldTypeInit;
 import lostworlds.library.biome.ModConfiguredCarvers;
+import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.marker.MarkerType;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -244,9 +245,13 @@ public class ModRegistry
 		return worldType;
 	}
 	
-	//Registers Deferred Registers
 	public static void register()
 	{
+		for(DinoTypes types : DinoTypes.values())
+		{
+			MarkerType.create(types.getId(), types.getDiet());
+		}
+		
 		ParticleInit.init();
 		RecipeInit.init();
 		PotionInit.init();
@@ -259,7 +264,6 @@ public class ModRegistry
 		BlockInit.init();
 		PointOfInterestInit.init();
 		EntityInit.init();
-		MarkerType.init();
 		VillagerProfessionInit.init();
 		BiomeInit.init();
 		StructurePieceInit.init();

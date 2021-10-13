@@ -257,7 +257,6 @@ public class ModBiomeFeatures
 		addJurassicRock(builder);
 		addJurassicOres(builder);
 		addJurassicEmerald(builder);
-		addSpring(builder);
 		addJurassicUndergroundVariety(builder);
 		addFernGroundClutter(builder);
 		addDuisbergia(builder);
@@ -266,6 +265,18 @@ public class ModBiomeFeatures
 		DefaultBiomeFeatures.addSurfaceFreezing(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
+	}
+	
+	public static void jurassicVolcanicRange(BiomeGenerationSettings.Builder builder)
+	{
+		addJurassicOres(builder);
+		addJurassicEmerald(builder);
+		addExtraJurassicDiamonds(builder);
+		addJurassicUndergroundVariety(builder);
+		addDuisbergia(builder);
+		addWilliamsonia(builder);
+		
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_MAGMA);
 	}
 	
 	public static void jurassicDesert(BiomeGenerationSettings.Builder builder)
@@ -357,6 +368,11 @@ public class ModBiomeFeatures
 	private static void addJurassicEmerald(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_EMERALD_ORE);
+	}
+	
+	private static void addExtraJurassicDiamonds(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_DIAMOND_ORE);
 	}
 
 	//General Features

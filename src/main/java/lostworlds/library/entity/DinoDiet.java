@@ -1,6 +1,6 @@
-package lostworlds.library.marker;
+package lostworlds.library.entity;
 
-public enum MarkerDiet 
+public enum DinoDiet 
 {
 	CARNIVORE,
 	HERBIVORE,

@@ -30,8 +30,8 @@ import net.minecraftforge.common.IExtensibleEnum;
 
 public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 {
-	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, true, Size.SMALL, 0xb08533, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
-	KENTROSAURUS("kentrosaurus", EntityInit.KENTROSAURUS, true, Size.MEDIUM, 0xd99760, 0xd99760, 0x612c00, 3, 6, 0.4F, 0.66F),
+	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, true, Size.SMALL, DinoDiet.HERBIVORE, 0xb08533, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
+	KENTROSAURUS("kentrosaurus", EntityInit.KENTROSAURUS, true, Size.MEDIUM, DinoDiet.HERBIVORE, 0xd99760, 0xd99760, 0x612c00, 3, 6, 0.4F, 0.66F),
 	;
 	
 	public static final Codec<DinoTypes> CODEC = IStringSerializable.fromEnum(DinoTypes::values, DinoTypes::byName);
@@ -58,6 +58,7 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	private Item dna;
 	private final boolean eggLaying;
 	private final Size eggSize;
+	private final DinoDiet diet;
 	private final int primaryColour;
 	private final int eggSetColour;
 	private final int secondaryColour;
@@ -66,12 +67,13 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	private final float rawSaturation;
 	private final float cookedSaturation;
 	
-	private DinoTypes(String id, EntityType entity, boolean eggLaying, Size eggSize, int eggSetColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
+	private DinoTypes(String id, EntityType entity, boolean eggLaying, Size eggSize, DinoDiet diet, int eggSetColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
 	{
 		this.id = id;
 		this.entitytype = entity;
 		this.eggLaying = eggLaying;
 		this.eggSize = eggSize;
+		this.diet = diet;
 		this.eggSetColour = eggSetColour;
 		this.primaryColour = primaryColour;
 		this.secondaryColour = secondaryColour;
@@ -236,6 +238,11 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 		}
 	}
 	
+	public DinoDiet getDiet()
+	{
+		return this.diet;
+	}
+	
 	public Item getSkeletonPick()
 	{
 		return this.skeletonPick;
@@ -329,14 +336,14 @@ public enum DinoTypes implements IStringSerializable, IExtensibleEnum
 	}
 	
 	//Used for addon creation. Use second one, first one is just because IExtensibleEnum is dumb.
-	public static DinoTypes create(String name, String id, EntityType entity, boolean eggLaying, Size eggSize, int setEggColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
+	public static DinoTypes create(String name, String id, EntityType entity, boolean eggLaying, Size eggSize, DinoDiet diet, int setEggColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
 	{
 		throw new IllegalStateException("Enum not extended");
 	}
 	
-	public static DinoTypes register(String id, EntityType entity, boolean eggLaying, Size eggSize, int setEggColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
+	public static DinoTypes register(String id, EntityType entity, boolean eggLaying, Size eggSize, DinoDiet diet, int setEggColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
 	{
-		return create(id, id, entity, eggLaying, eggSize, setEggColour, primaryColour, secondaryColour, rawNutrition, cookedNutrition, rawSaturation, cookedSaturation);
+		return create(id, id, entity, eggLaying, eggSize, diet, setEggColour, primaryColour, secondaryColour, rawNutrition, cookedNutrition, rawSaturation, cookedSaturation);
 	}
 
 	@Override

@@ -1,43 +1,36 @@
 package lostworlds.library.marker;
 
-import lostworlds.content.ModUtils;
-import net.minecraftforge.registries.ForgeRegistryEntry;
+import lostworlds.library.entity.DinoDiet;
+import net.minecraftforge.common.IExtensibleEnum;
 
-public class MarkerType extends ForgeRegistryEntry<MarkerType>
+public enum MarkerType implements IExtensibleEnum
 {
-	public static final MarkerType ANKYLOSAURID_MARKER = register("ankylosaurid_marker", MarkerGroups.ANKYLOSAURID);
-	public static final MarkerType CERATOPSID_MARKER = register("ceratopsid_marker", MarkerGroups.CERATOPSID);
-	public static final MarkerType HADROSAURID_MARKER = register("hadrosaurid_marker", MarkerGroups.HADROSAURID);
-	public static final MarkerType IGUANODONTID_MARKER = register("iguanodontid_marker", MarkerGroups.IGUANODONTID);
-	public static final MarkerType ORNITHOMIMID_MARKER = register("ornithomimid_marker", MarkerGroups.ORNITHOMIMID);
-	public static final MarkerType SAUROPODA_MARKER = register("sauropoda_marker", MarkerGroups.SAUROPODA);
-	public static final MarkerType THEROPODA_MARKER = register("theropoda_marker", MarkerGroups.THEROPODA);
+	;
 	
-	private static MarkerType register(String id, MarkerGroups type)
+	private DinoDiet diet;
+	
+	private MarkerType(DinoDiet diet) 
 	{
-		MarkerType marker = new MarkerType(type);
-		marker.setRegistryName(ModUtils.rL(id));
-		return marker;
+		this.diet = diet;
 	}
 	
-	private final MarkerDiet diet;
-	private final MarkerGroups type;
-	
-	public MarkerType(MarkerGroups type)
-	{
-		this.diet = type == MarkerGroups.THEROPODA ? MarkerDiet.CARNIVORE : MarkerDiet.HERBIVORE;
-		this.type = type;
-	}
-	
-	public MarkerDiet getDiet() 
+	public DinoDiet getDiet()
 	{
 		return this.diet;
 	}
 	
-	public MarkerGroups getType() 
+	public int getWidth()
 	{
-		return this.type;
+		return 32;
 	}
 	
-	public static void init() { }
+	public int getHeight()
+	{
+		return 32;
+	}
+	
+	public static MarkerType create(String name, DinoDiet diet)
+	{
+		throw new IllegalStateException("Enum not extended");
+	}
 }
