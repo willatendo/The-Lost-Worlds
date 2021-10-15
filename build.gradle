@@ -51,8 +51,6 @@ repositories {
 	maven { url 'https://dvs1.progwml6.com/files/maven' }
 	//GeckoLib
 	maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
-	//Obfuscate
-	maven { url "https://cursemaven.com" }
 }
 
 dependencies {

@@ -147,6 +147,7 @@ public class ServerSetup
 			addToStrippingMap(BlockInit.PETRIFIED_CALAMITES_LOG, BlockInit.STRIPPED_PETRIFIED_CALAMITES_LOG);
 			addToStrippingMap(BlockInit.PETRIFIED_CONIFER_LOG, BlockInit.STRIPPED_PETRIFIED_CONIFER_LOG);
 			addToStrippingMap(BlockInit.PETRIFIED_GINKGO_LOG, BlockInit.STRIPPED_PETRIFIED_GINKGO_LOG);
+			addToStrippingMap(BlockInit.PETRIFIED_SEQUOIA_LOG, BlockInit.STRIPPED_PETRIFIED_SEQUOIA_LOG);
 			
 			addToStrippingMap(BlockInit.ARAUCARIA_LOG, BlockInit.STRIPPED_ARAUCARIA_LOG);
 			addToStrippingMap(BlockInit.ARAUCARIA_WOOD, BlockInit.STRIPPED_ARAUCARIA_WOOD);
@@ -158,6 +159,8 @@ public class ServerSetup
 			addToStrippingMap(BlockInit.GINKGO_WOOD, BlockInit.STRIPPED_GINKGO_WOOD);
 			addToStrippingMap(BlockInit.SCORCHED_LOG, BlockInit.STRIPPED_SCORCHED_LOG);
 			addToStrippingMap(BlockInit.SCORCHED_WOOD, BlockInit.STRIPPED_SCORCHED_WOOD);
+			addToStrippingMap(BlockInit.SEQUOIA_LOG, BlockInit.STRIPPED_SEQUOIA_LOG);
+			addToStrippingMap(BlockInit.SEQUOIA_WOOD, BlockInit.STRIPPED_SEQUOIA_WOOD);
 			
 			ModUtils.LOGGER.debug("Finished Adding to Stripping Map");
 			

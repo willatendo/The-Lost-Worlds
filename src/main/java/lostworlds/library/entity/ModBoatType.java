@@ -8,7 +8,8 @@ public enum ModBoatType implements IExtensibleEnum
 	CALAMITES("calamites"),
 	CONIFER("conifer"),
 	GINKGO("ginkgo"),
-	SCORCHED("scorched");
+	SCORCHED("scorched"),
+	SEQUOIA("seqouia");
 
 	private final String name;
 

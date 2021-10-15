@@ -62,12 +62,12 @@ public class ClientSetup
 		blockcolours.register((state, reader, pos, color) -> 
 		{
 			return reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : FoliageColors.getDefaultColor();
-		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES);
+		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES);
 		itemcolours.register((stack, intager) -> 
 		{
 			BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
 			return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, intager);
-		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES);
+		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES);
 		
 		if(LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get())
 		{
@@ -114,7 +114,9 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.BRAZILEA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.WILLIAMSONIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.ZAMITES, RenderType.cutout());
-		
+
+		RenderTypeLookup.setRenderLayer(BlockInit.FOG, RenderType.translucent());
+
 		RenderTypeLookup.setRenderLayer(BlockInit.DISPLAY_CASE, RenderType.cutout());
 		
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_CLEANER, RenderType.translucent());
@@ -142,6 +144,10 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_SAPLING, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.SCORCHED_DOOR, RenderType.translucent());	
 		RenderTypeLookup.setRenderLayer(BlockInit.SCORCHED_TRAPDOOR, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.SEQUOIA_LEAVES, RenderType.translucent());	
+		RenderTypeLookup.setRenderLayer(BlockInit.SEQUOIA_DOOR, RenderType.translucent());	
+		RenderTypeLookup.setRenderLayer(BlockInit.SEQUOIA_TRAPDOOR, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.SEQUOIA_SAPLING, RenderType.cutout());
 		
 		for(Block block : ColouredGlassPaneBlock.entries)
 		{

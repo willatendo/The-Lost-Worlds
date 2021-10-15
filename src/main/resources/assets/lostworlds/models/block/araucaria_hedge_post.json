@@ -1,7 +1,0 @@
-{
-	"parent": "lostworlds:block/hedge_post",
-	"textures": {
-		"log": "lostworlds:blocks/araucaria_log",
-		"leaf": "lostworlds:blocks/araucaria_leaves"
-	}
-}

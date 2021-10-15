@@ -104,14 +104,7 @@ public class VolcanicAshLayerBlock extends Block
 		BlockState blockstate = reader.getBlockState(pos.below());
 		if(!blockstate.is(Blocks.HONEY_BLOCK) && !blockstate.is(Blocks.SOUL_SAND))
 		{
-			if(blockstate.getBlock() instanceof SticksBlock)
-			{
-				return false;
-			}
-			else
-			{
-				return Block.isFaceFull(blockstate.getCollisionShape(reader, pos.below()), Direction.UP) || blockstate.getBlock() == this && blockstate.getValue(LAYERS) == 8;
-			}
+			return Block.isFaceFull(blockstate.getCollisionShape(reader, pos.below()), Direction.UP) || blockstate.getBlock() == this && blockstate.getValue(LAYERS) == 8;
 		}
 		else 
 		{

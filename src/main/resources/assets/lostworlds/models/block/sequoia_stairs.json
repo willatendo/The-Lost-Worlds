@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/stairs",
+	"textures": {
+		"bottom": "lostworlds:block/sequoia_planks",
+		"top": "lostworlds:block/sequoia_planks",
+		"side": "lostworlds:block/sequoia_planks"
+	}
+}S

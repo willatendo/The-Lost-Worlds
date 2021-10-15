@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column_horizontal",
+	"textures": {
+		"end": "lostworlds:block/sequoia_log",
+		"side": "lostworlds:block/sequoia_log"
+	}
+}

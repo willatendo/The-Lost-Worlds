@@ -15,4 +15,5 @@ public class ModWoodType extends WoodType
 	public static final WoodType GINKGO = register(new ModWoodType("ginkgo"));
 	public static final WoodType GLASS = register(new ModWoodType("glass"));
 	public static final WoodType SCORCHED = register(new ModWoodType("scorched"));
+	public static final WoodType SEQUOIA = register(new ModWoodType("sequoia"));
 }

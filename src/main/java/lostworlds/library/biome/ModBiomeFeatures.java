@@ -32,7 +32,6 @@ public class ModBiomeFeatures
 		addAlethopteris(builder);
 	
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
 	}
 	
 	public static void permianDesert(BiomeGenerationSettings.Builder builder)
@@ -58,7 +57,6 @@ public class ModBiomeFeatures
 		addAlethopteris(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
 	}
 	
 	public static void permianGinkgoForest(BiomeGenerationSettings.Builder builder)
@@ -169,7 +167,6 @@ public class ModBiomeFeatures
 		addAlethopteris(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
 	}
 	
 	public static void ginkgoForest(BiomeGenerationSettings.Builder builder)
@@ -401,7 +398,6 @@ public class ModBiomeFeatures
 	public static void addConiferTrees(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_TREES);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CONIFER_STICKS);
 	}
 	
 	private static void addGinkgoTrees(BiomeGenerationSettings.Builder builder)
@@ -412,7 +408,6 @@ public class ModBiomeFeatures
 	private static void addScorchedTrees(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SINGLE_SCORCHED_TREE);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCORCHED_STICKS);
 	}
 	
 	private static void addAshLayer(BiomeGenerationSettings.Builder builder)

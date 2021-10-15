@@ -8,7 +8,8 @@ public enum Trees implements IStringSerializable, IExtensibleEnum
 	ARAUCARIA("araucaria"),
 	CALAMITES("calamites"),
 	CONIFER("conifer"),
-	GINKGO("ginkgo");
+	GINKGO("ginkgo"),
+	SEQUOIA("sequoia");
 	
 	private final String id;
 	
