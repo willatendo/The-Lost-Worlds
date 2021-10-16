@@ -202,6 +202,7 @@ public class ItemInit
 	public static final Item ARAUCARIA_BARK_SAMPLE = ModRegistry.register("araucaria_bark_sample", new ModItem());
 	public static final Item CALAMITES_BARK_SAMPLE = ModRegistry.register("calamites_bark_sample", new ModItem());
 	public static final Item CONIFER_BARK_SAMPLE = ModRegistry.register("conifer_bark_sample", new ModItem());
+	public static final Item CYPRESS_BARK_SAMPLE = ModRegistry.register("cypress_bark_sample", new ModItem());
 	public static final Item GINKGO_BARK_SAMPLE = ModRegistry.register("ginkgo_bark_sample", new ModItem());
 	public static final Item SEQUOIA_BARK_SAMPLE = ModRegistry.register("sequoia_bark_sample", new ModItem());
 	

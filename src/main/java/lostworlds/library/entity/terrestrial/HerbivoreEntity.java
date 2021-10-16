@@ -100,7 +100,7 @@ public abstract class HerbivoreEntity extends TaggedEntity
 	public void aiStep() 
 	{
 		super.aiStep();
-		if(this.isAlive())
+		if(this.isAlive() && !this.isSleeping())
 		{
 			int i = this.getHunger();
 			--i;

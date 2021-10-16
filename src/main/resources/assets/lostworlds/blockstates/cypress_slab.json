@@ -1,0 +1,13 @@
+{
+	"variants": {
+		"type=bottom": {
+			"model": "lostworlds:block/cypress_slab"
+		},
+		"type=double": {
+			"model": "lostworlds:block/cypress_planks"
+		},
+		"type=top": {
+			"model": "lostworlds:block/cypress_slab_top"
+		}
+	}
+}

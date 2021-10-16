@@ -7,6 +7,7 @@ public enum ModBoatType implements IExtensibleEnum
 	ARAUCARIA("araucaria"),
 	CALAMITES("calamites"),
 	CONIFER("conifer"),
+	CYPRESS("cypress"),
 	GINKGO("ginkgo"),
 	SCORCHED("scorched"),
 	SEQUOIA("seqouia");

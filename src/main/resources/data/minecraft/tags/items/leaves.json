@@ -2,7 +2,9 @@
 	"replace": false,
 	"values": [
 		"lostworlds:araucaria_leaves",
+		"lostworlds:calamites_leaves",
 		"lostworlds:conifer_leaves",
-		"lostworlds:ginkgo_leaves"
+		"lostworlds:ginkgo_leaves",
+		"lostworlds:sequoia_leaves"
 	]
 }

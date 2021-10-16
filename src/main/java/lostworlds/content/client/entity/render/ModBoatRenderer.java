@@ -26,6 +26,7 @@ public class ModBoatRenderer extends EntityRenderer<ModBoatEntity>
 		ModUtils.rL("textures/entity/boat/araucaria_boat.png"), 
 		ModUtils.rL("textures/entity/boat/calamites_boat.png"),
 		ModUtils.rL("textures/entity/boat/conifer_boat.png"), 
+		ModUtils.rL("textures/entity/boat/cypress_boat.png"), 
 		ModUtils.rL("textures/entity/boat/ginkgo_boat.png"),
 		ModUtils.rL("textures/entity/boat/scorched_boat.png") ,
 		ModUtils.rL("textures/entity/boat/sequoia_boat.png")

@@ -2,7 +2,7 @@ package lostworlds.content.server.init;
 
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
-import lostworlds.library.foliageplacer.ConiferFoliagePlacer;
+import lostworlds.library.tree.ConiferFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
 
 public class FoliagePlacerInit 

@@ -285,6 +285,17 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_DEAD_BUSH_BADLANDS);
 	}
 	
+	public static void jurassicRedwoods(BiomeGenerationSettings.Builder builder)
+	{
+		addJurassicRock(builder);
+		addJurassicOres(builder);
+		addSpring(builder);
+		addJurassicUndergroundVariety(builder);
+		
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_SEQUOIA_TREES);
+	}
+	
 	//Permian Features
 	private static void addPermianUndergroundVariety(BiomeGenerationSettings.Builder builder)
 	{

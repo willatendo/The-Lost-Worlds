@@ -62,12 +62,12 @@ public class ClientSetup
 		blockcolours.register((state, reader, pos, color) -> 
 		{
 			return reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : FoliageColors.getDefaultColor();
-		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES);
+		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.CYPRESS_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES);
 		itemcolours.register((stack, intager) -> 
 		{
 			BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
 			return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, intager);
-		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES);
+		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.CYPRESS_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES);
 		
 		if(LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get())
 		{
@@ -138,6 +138,10 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.CONIFER_DOOR, RenderType.translucent());	
 		RenderTypeLookup.setRenderLayer(BlockInit.CONIFER_TRAPDOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.CONIFER_SAPLING, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.CYPRESS_LEAVES, RenderType.translucent());	
+		RenderTypeLookup.setRenderLayer(BlockInit.CYPRESS_DOOR, RenderType.translucent());	
+		RenderTypeLookup.setRenderLayer(BlockInit.CYPRESS_TRAPDOOR, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.CYPRESS_SAPLING, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_LEAVES, RenderType.translucent());	
 		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_DOOR, RenderType.translucent());	
 		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_TRAPDOOR, RenderType.translucent());

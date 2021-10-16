@@ -155,6 +155,8 @@ public class ServerSetup
 			addToStrippingMap(BlockInit.CALAMITES_WOOD, BlockInit.STRIPPED_CALAMITES_WOOD);
 			addToStrippingMap(BlockInit.CONIFER_LOG, BlockInit.STRIPPED_CONIFER_LOG);
 			addToStrippingMap(BlockInit.CONIFER_WOOD, BlockInit.STRIPPED_CONIFER_WOOD);
+			addToStrippingMap(BlockInit.CYPRESS_LOG, BlockInit.STRIPPED_CYPRESS_LOG);
+			addToStrippingMap(BlockInit.CYPRESS_WOOD, BlockInit.STRIPPED_CYPRESS_WOOD);
 			addToStrippingMap(BlockInit.GINKGO_LOG, BlockInit.STRIPPED_GINKGO_LOG);
 			addToStrippingMap(BlockInit.GINKGO_WOOD, BlockInit.STRIPPED_GINKGO_WOOD);
 			addToStrippingMap(BlockInit.SCORCHED_LOG, BlockInit.STRIPPED_SCORCHED_LOG);
