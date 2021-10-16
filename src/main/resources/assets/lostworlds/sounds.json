@@ -4,5 +4,23 @@
 		"sounds": [
 			"lostworlds:block/machine_whirling"
 		]
+	},
+	"entity.sound.big_walk": {
+		"subtitle": "subtitle.lostworlds.big_walk",
+		"sounds": [
+			"lostworlds:entity/big_walk"
+		]
+	},
+	"entity.sound.medium_walk": {
+		"subtitle": "subtitle.lostworlds.medium_walk",
+		"sounds": [
+			"lostworlds:entity/medium_walk"
+		]
+	},
+	"entity.sound.small_walk": {
+		"subtitle": "subtitle.lostworlds.small_walk",
+		"sounds": [
+			"lostworlds:entity/small_walk"
+		]
 	}
 }

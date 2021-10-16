@@ -41,7 +41,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 	private static final EntityPredicate PARTNER_TARGETING = (new EntityPredicate()).range(8.0D).allowInvulnerable().allowSameTeam().allowUnseeable();
 	
 	protected static final DataParameter<Byte> SEX = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BYTE);
-	protected static final DataParameter<Boolean> ATTACKING = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BOOLEAN);	
+	protected static final DataParameter<Boolean> ATTACKING = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BOOLEAN);		
 	protected static final DataParameter<Boolean> SLEEPING = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BOOLEAN);
 	protected static final DataParameter<Boolean> CONTRACEPTIVES = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BOOLEAN);
 	
