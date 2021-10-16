@@ -57,6 +57,14 @@ public class BiomeGeneration
 			}
 		}
 		
+		if(LostWorldsConfig.COMMON_CONFIG.cypressTreesInSwamps.get())
+		{
+			if(event.getCategory() == Category.SWAMP)
+			{
+				generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.SCANT_CYPRESS_TREES);
+			}
+		}
+		
 		if(LostWorldsConfig.COMMON_CONFIG.petrifiedAraucariaTreeShouldSpawn.get())
 		{
 			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_ARAUCARIA);

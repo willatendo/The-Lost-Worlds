@@ -60,7 +60,6 @@
 	"item.lostworlds.copper_nugget": "Copper Nugget",
 	"item.lostworlds.copper_wire": "Copper Wire",
 	"item.lostworlds.computer_fan": "Computer Fan",
-	"item.lostworlds.computer_screen": "Computer Screen",
 	"item.lostworlds.computer_frame": "Computer Frame",
 	"item.lostworlds.computer_storage_port": "Computer Storage Port",
 	"item.lostworlds.motherboard": "Motherboard",
@@ -77,7 +76,9 @@
 	"item.lostworlds.araucaria_bark_sample": "Araucaria Bark Sample",
 	"item.lostworlds.calamites_bark_sample": "Calamites Bark Sample",
 	"item.lostworlds.conifer_bark_sample": "Conifer Bark Sample",
+	"item.lostworlds.cypress_bark_sample": "Cypress Bark Sample",
 	"item.lostworlds.ginkgo_bark_sample": "Ginkgo Bark Sample",
+	"item.lostworlds.sequoia_bark_sample": "Sequoia Bark Sample",
 	"item.lostworlds.empty_vile": "Empty Vile",
 	
 	//Decoration

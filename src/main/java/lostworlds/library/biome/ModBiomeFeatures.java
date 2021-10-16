@@ -296,6 +296,20 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_SEQUOIA_TREES);
 	}
 	
+	public static void jurassicSwamp(BiomeGenerationSettings.Builder builder)
+	{
+		addJurassicRock(builder);
+		addJurassicOres(builder);
+		addModCarvers(builder);
+		addJurassicUndergroundVariety(builder);
+
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CALAMITES_SUCKOWII);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CALAMITIES_TREES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CYPRESS_TREE);
+	}
+	
 	//Permian Features
 	private static void addPermianUndergroundVariety(BiomeGenerationSettings.Builder builder)
 	{

@@ -23,6 +23,8 @@ public class ServerConfig
 	//Features
 	public final BooleanValue mudDisksInSwamps;
 
+	public final BooleanValue cypressTreesInSwamps;
+
 	public final BooleanValue copperOreGeneration;
 	public final IntValue copperVeinSize;
 	public final IntValue copperRange;
@@ -90,6 +92,8 @@ public class ServerConfig
 
 		//Features
 		this.mudDisksInSwamps = builder.comment("Sets if mud disks should spawn in swamp biomes.").translation(TRANSLATION_TEXT + "mudDisksInSwamps").define("mudDisksInSwamps", true);
+
+		this.cypressTreesInSwamps = builder.comment("Sets if cypress trees should spawn in swamp biomes.").translation(TRANSLATION_TEXT + "cypressTreesInSwamps").define("cypressTreesInSwamps", true);
 
 		this.copperOreGeneration = builder.comment("Sets if copper ore should spawn.").translation(TRANSLATION_TEXT + "copperOreGeneration").define("copperOreGeneration", true);
 		this.copperVeinSize = builder.comment("Sets the size a copper vein can spawn.").translation(TRANSLATION_TEXT + "copperVeinSize").defineInRange("copperVeinSize", 9, 1, 100);

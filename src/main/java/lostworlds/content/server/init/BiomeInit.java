@@ -11,6 +11,7 @@ import lostworlds.library.biome.biomes.jurassic.mountains.JurassicErrodedMountai
 import lostworlds.library.biome.biomes.jurassic.mountains.JurassicMountains;
 import lostworlds.library.biome.biomes.jurassic.mountains.JurassicVolcanicRange;
 import lostworlds.library.biome.biomes.jurassic.plains.JurassicPlains;
+import lostworlds.library.biome.biomes.jurassic.swamp.JurassicSwamp;
 import lostworlds.library.biome.biomes.overworld.forest.ConiferForest;
 import lostworlds.library.biome.biomes.overworld.forest.GinkgoForest;
 import lostworlds.library.biome.biomes.permian.desert.PermianDesert;
@@ -84,6 +85,8 @@ public class BiomeInit
 	public static final Biome JURASSIC_VOLCANIC_RANGE = ModRegistry.register("jurassic_volcanic_range", JurassicVolcanicRange.create());
 
 	public static final Biome JURASSIC_DESERT = ModRegistry.register("jurassic_desert", JurassicDesert.create());
+
+	public static final Biome JURASSIC_SWAMP = ModRegistry.register("jurassic_swamp", JurassicSwamp.create());
 
 	//Overworld
 	public static final Biome CONIFER_FOREST = ModRegistry.register("conifer_forest", ConiferForest.create());

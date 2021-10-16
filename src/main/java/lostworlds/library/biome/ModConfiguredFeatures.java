@@ -42,7 +42,9 @@ import net.minecraft.world.gen.feature.ProbabilityConfig;
 import net.minecraft.world.gen.feature.ReplaceBlockConfig;
 import net.minecraft.world.gen.feature.SingleRandomFeature;
 import net.minecraft.world.gen.feature.SphereReplaceConfig;
+import net.minecraft.world.gen.feature.ThreeLayerFeature;
 import net.minecraft.world.gen.feature.TwoLayerFeature;
+import net.minecraft.world.gen.foliageplacer.DarkOakFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.FancyFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.JungleFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.MegaPineFoliagePlacer;
@@ -53,7 +55,10 @@ import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 import net.minecraft.world.gen.placement.TopSolidWithNoiseConfig;
+import net.minecraft.world.gen.treedecorator.LeaveVineTreeDecorator;
+import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.trunkplacer.FancyTrunkPlacer;
+import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.GiantTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 
@@ -80,6 +85,9 @@ public class ModConfiguredFeatures
 	public static final ConfiguredFeature<?, ?> SCANT_CONIFER_TREES = register("scant_conifer_trees", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(CONIFER_TREE.weighted(0.33333334F)), CONIFER_TREE)).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(5, 0.1F, 1))));
 	public static final ConfiguredFeature<?, ?> SPARSE_CONIFER_TREES = register("sparse_conifer_trees", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(CONIFER_TREE.weighted(0.33333334F)), CONIFER_TREE)).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(0, 0.1F, 1))));
 
+	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CYPRESS_TREE = register("cypress_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.CYPRESS_LOG.defaultBlockState()), new SimpleBlockStateProvider(BlockInit.CYPRESS_LEAVES.defaultBlockState()), new DarkOakFoliagePlacer(FeatureSpread.fixed(1), FeatureSpread.fixed(0)), new ForkyTrunkPlacer(6, 2, 1), new ThreeLayerFeature(1, 1, 0, 1, 2, OptionalInt.empty()))).maxWaterDepth(3).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE, LeaveVineTreeDecorator.INSTANCE)).maxWaterDepth(Integer.MAX_VALUE).heightmap(Heightmap.Type.MOTION_BLOCKING).ignoreVines().build()));
+	public static final ConfiguredFeature<?, ?> SCANT_CYPRESS_TREES = register("scant_cypress_trees", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(CYPRESS_TREE.weighted(0.33333334F)), CYPRESS_TREE)).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(5, 0.1F, 1))));
+ 
 	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> GINKGO_TREE = register("ginkgo_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.GINKGO_LOG.defaultBlockState()), new SimpleBlockStateProvider(BlockInit.GINKGO_LEAVES.defaultBlockState()), new FancyFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(4), 4), new FancyTrunkPlacer(3, 11, 0), new TwoLayerFeature(0, 0, 0, OptionalInt.of(4)))).ignoreVines().heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
 	public static final ConfiguredFeature<?, ?> GINKGO_TREES = register("ginkgo_trees", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(GINKGO_TREE.weighted(0.33333334F)), GINKGO_TREE)).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(3, 0.1F, 1))));
 	

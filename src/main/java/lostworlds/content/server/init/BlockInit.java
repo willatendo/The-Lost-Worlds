@@ -52,6 +52,7 @@ import lostworlds.library.block.builder.BlockBuilder;
 import lostworlds.library.block.tree.AraucariaTree;
 import lostworlds.library.block.tree.CalamitesTree;
 import lostworlds.library.block.tree.ConiferTree;
+import lostworlds.library.block.tree.CypressTree;
 import lostworlds.library.block.tree.GinkgoTree;
 import lostworlds.library.block.tree.SequoiaTree;
 import lostworlds.library.entity.DinoTypes;
@@ -321,12 +322,13 @@ public class BlockInit
 	public static final Block PETRIFIED_CONIFER_LOG = BlockAndItemBuilder.create("petrified_conifer_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND), ItemInit.CONIFER_BARK_SAMPLE));
 	public static final Block STRIPPED_PETRIFIED_CONIFER_LOG = BlockAndItemBuilder.create("stripped_petrified_conifer_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND)));
 
+	//Cypress
 	public static final Block CYPRESS_LOG = BlockAndItemBuilder.create("cypress_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_CYPRESS_LOG = BlockAndItemBuilder.create("stripped_cypress_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F).sound(SoundType.WOOD)));
 	public static final Block CYPRESS_WOOD = BlockAndItemBuilder.create("cypress_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_CYPRESS_WOOD = BlockAndItemBuilder.create("stripped_cypress_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F).sound(SoundType.WOOD)));
 	public static final Block CYPRESS_LEAVES = BlockAndItemBuilder.create("cypress_leaves", new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES, MaterialColor.COLOR_GREEN).strength(0.3F).noOcclusion().sound(SoundType.GRASS)));
-	public static final Block CYPRESS_SAPLING = BlockAndItemBuilder.create("cypress_sapling", new ModSaplingBlock(new ConiferTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final Block CYPRESS_SAPLING = BlockAndItemBuilder.create("cypress_sapling", new ModSaplingBlock(new CypressTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block CYPRESS_PLANKS = BlockAndItemBuilder.create("cypress_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block CYPRESS_STAIRS = BlockAndItemBuilder.create("cypress_stairs", new StairsBlock(() -> BlockInit.CYPRESS_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block CYPRESS_SLAB = BlockAndItemBuilder.create("cypress_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));

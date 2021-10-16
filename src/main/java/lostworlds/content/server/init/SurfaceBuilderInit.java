@@ -7,6 +7,7 @@ import lostworlds.library.biome.surfacebuilders.JurassicDesertSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicErrodedMountainsSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicMountainsSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicPlainsSurfaceBuilder;
+import lostworlds.library.biome.surfacebuilders.JurassicSwampSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicVolcanoSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.PermianDriedPlainsSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.PermianMarshSurfaceBuilder;
@@ -30,6 +31,7 @@ public class SurfaceBuilderInit
 	public static final SurfaceBuilder NAKED_JURASSIC_MOUNTAINS = new JurassicMountainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_JURASSIC_ERRODED_MOUNTAINS = new JurassicErrodedMountainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_JURASSIC_VOLCANO = new JurassicVolcanoSurfaceBuilder(SurfaceBuilderConfig.CODEC);
+	public static final SurfaceBuilder NAKED_JURASSIC_SWAMP = new JurassicSwampSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	
 	public static final SurfaceBuilder<?> PERMIAN_DRIED_PLAINS = ModRegistry.register("permian_dried_plains", NAKED_PERMIAN_DRIED_PLAINS);
 	public static final SurfaceBuilder<?> PERMIAN_MOUNTAINS = ModRegistry.register("permian_mountains", NAKED_PERMIAN_MOUNTAINS);
