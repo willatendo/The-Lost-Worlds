@@ -51,6 +51,10 @@
 	"tablet.lostworlds.baby": "Baby",
 	"tablet.lostworlds.male": "Male",
 	"tablet.lostworlds.female": "Female",
+	"tablet.lostworlds.full": "Full",
+	"tablet.lostworlds.satiated": "Satiated",
+	"tablet.lostworlds.hungry": "Hungry",	
+	"tablet.lostworlds.starving": "Starving",
 	"item.lostworlds.contraceptives": "Contraceptives",
 	"item.lostworlds.permian_period_time_book": "Permian Period Time Book",
 	"item.lostworlds.mud_ball": "Mud Ball",
@@ -727,6 +731,11 @@
 	"biome.lostworlds.ginkgo_forest_hills": "Ginkgo Forest Hills",
 	
 	// EVENTS & MISC
+	
+	//Keys
+	"keybinding.lostworlds.follow_me": "Follow Me",
+	"keybinding.lostworlds.stay": "Stay",
+	"keybinding.lostworlds.wander": "Wander",
 	
 	//Load
 	"event.lostworlds.dev_load": "You are running Alpha 11: Dev Edition. Do not redistribute.",

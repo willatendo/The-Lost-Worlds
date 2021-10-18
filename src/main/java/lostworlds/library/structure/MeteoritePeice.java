@@ -1,5 +1,6 @@
 package lostworlds.library.structure;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -14,6 +15,7 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.ISeedReader;
 import net.minecraft.world.IServerWorld;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.structure.StructureManager;
@@ -26,19 +28,19 @@ import net.minecraft.world.gen.feature.template.TemplateManager;
 
 public class MeteoritePeice 
 {
+	public static final ArrayList<ResourceLocation> locations = new ArrayList<>();
 	public static final ResourceLocation METEORITE_LOCATION_ONE = ModUtils.rL("meteorite_one"), METEORITE_LOCATION_TWO = ModUtils.rL("meteorite_two"), METEORITE_LOCATION_THREE = ModUtils.rL("meteorite_three"), METEORITE_LOCATION_FOUR = ModUtils.rL("meteorite_four"), METEORITE_LOCATION_FIVE = ModUtils.rL("meteorite_five"), METEORITE_LOCATION_SIX = ModUtils.rL("meteorite_six");
 	
-	public static void addPieces(TemplateManager manager, List<StructurePiece> piece, Random rand, BlockPos pos) 
+	public static void addStructure(TemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> piece, Random rand, Biome biome) 
 	{
-		Rotation rotation = Rotation.getRandom(rand);
-		piece.add(new MeteoritePeice.Piece(manager, chooseRandom(), pos, rotation));
-	}
-	
-	private static ResourceLocation chooseRandom()
-	{
-		Random rand = new Random();
-		int location = rand.nextInt(6);
-		return location == 1 ? METEORITE_LOCATION_ONE : location == 2 ? METEORITE_LOCATION_TWO : location == 3 ? METEORITE_LOCATION_THREE : location == 4 ? METEORITE_LOCATION_FOUR : location == 5 ? METEORITE_LOCATION_FIVE : METEORITE_LOCATION_SIX;
+		locations.add(METEORITE_LOCATION_ONE);
+		locations.add(METEORITE_LOCATION_TWO);
+		locations.add(METEORITE_LOCATION_THREE);
+		locations.add(METEORITE_LOCATION_FOUR);
+		locations.add(METEORITE_LOCATION_FIVE);
+		
+		int meteor = rand.nextInt(locations.size());
+		piece.add(new MeteoritePeice.Piece(manager, locations.get(meteor), pos, rotation));
 	}
 	
 	public static class Piece extends TemplateStructurePiece 
@@ -48,7 +50,7 @@ public class MeteoritePeice
 
 		public Piece(TemplateManager manager, ResourceLocation location, BlockPos pos, Rotation rotation) 
 		{
-			super(StructurePieceInit.BLACK_MARKET_PIECE, 0);
+			super(StructurePieceInit.FOSSIL_PIECE, 0);
 			this.templateLocation = location;
 			this.templatePosition = pos;
 			this.rotation = rotation;
@@ -57,7 +59,7 @@ public class MeteoritePeice
 
 		public Piece(TemplateManager manager, CompoundNBT nbt) 
 		{
-			super(StructurePieceInit.BLACK_MARKET_PIECE, nbt);
+			super(StructurePieceInit.FOSSIL_PIECE, nbt);
 			this.templateLocation = new ResourceLocation(nbt.getString("Template"));
 			this.rotation = Rotation.valueOf(nbt.getString("Rot"));
 			this.loadTemplate(manager);

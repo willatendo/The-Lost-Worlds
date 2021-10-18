@@ -28,7 +28,7 @@ import net.minecraft.world.gen.feature.template.TemplateManager;
 
 public class FossilPeice 
 {
-public static final ArrayList<ResourceLocation> locations = new ArrayList<>();
+	public static final ArrayList<ResourceLocation> locations = new ArrayList<>();
 	
 	public static void addStructure(TemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> piece, Random rand, Biome biome) 
 	{

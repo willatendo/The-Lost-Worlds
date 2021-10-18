@@ -2,13 +2,10 @@ package lostworlds.library.structure;
 
 import com.mojang.serialization.Codec;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.util.Direction;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.util.registry.DynamicRegistries;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationStage.Decoration;
@@ -46,28 +43,10 @@ public class MeteoriteStructure extends Structure<NoFeatureConfig>
 		@Override
 		public void generatePieces(DynamicRegistries registries, ChunkGenerator generator, TemplateManager manager, int chunkX, int chunkY, Biome biome, NoFeatureConfig config) 
 		{
-			ChunkPos chunkpos = new ChunkPos(chunkX, chunkY);
-			int i = chunkpos.getMinBlockX() + this.random.nextInt(16);
-			int j = chunkpos.getMinBlockZ() + this.random.nextInt(16);
-			int k = generator.getSeaLevel();
-			int l = k + this.random.nextInt(generator.getGenDepth() - 2 - k);
-			IBlockReader iblockreader = generator.getBaseColumn(i, j);
-			
-			for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(i, l, j); l > k; --l) 
-			{
-				blockpos$mutable.move(Direction.DOWN);
-				BlockState blockstate1 = iblockreader.getBlockState(blockpos$mutable);
-				if(blockstate1.isFaceSturdy(iblockreader, blockpos$mutable, Direction.UP))
-				{
-					break;
-				}
-			}
-			
-			if(l > k) 
-			{
-				MeteoritePeice.addPieces(manager, this.pieces, this.random, new BlockPos(i, l, j));
-				this.calculateBoundingBox();
-			}
+			BlockPos blockpos = new BlockPos(chunkX * 16, 90, chunkY * 16);
+			Rotation rotation = Rotation.values()[this.random.nextInt((Rotation.values()).length)];
+			MeteoritePeice.addStructure(manager, blockpos, rotation, pieces, random, biome);
+			this.calculateBoundingBox();
 		}
 	}
 }

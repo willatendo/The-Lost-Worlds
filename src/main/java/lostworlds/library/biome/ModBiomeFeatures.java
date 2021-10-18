@@ -282,6 +282,7 @@ public class ModBiomeFeatures
 		addJurassicOres(builder);
 		addSpring(builder);
 		addJurassicUndergroundVariety(builder);
+
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_DEAD_BUSH_BADLANDS);
 	}
 	
@@ -291,9 +292,26 @@ public class ModBiomeFeatures
 		addJurassicOres(builder);
 		addSpring(builder);
 		addJurassicUndergroundVariety(builder);
+		addAlethopteris(builder);
+		addFernGroundClutter(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_SEQUOIA_TREES);
+	}
+	
+	public static void jurassicMarsh(BiomeGenerationSettings.Builder builder)
+	{
+		addJurassicRock(builder);
+		addJurassicOres(builder);
+		addModCarvers(builder);
+		addJurassicUndergroundVariety(builder);
+		addAlethopteris(builder);
+		addFernGroundClutter(builder);
+		addZamites(builder);
+
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CYPRESS_TREES);
 	}
 	
 	public static void jurassicSwamp(BiomeGenerationSettings.Builder builder)
@@ -302,12 +320,41 @@ public class ModBiomeFeatures
 		addJurassicOres(builder);
 		addModCarvers(builder);
 		addJurassicUndergroundVariety(builder);
+		addAlethopteris(builder);
+		addFernGroundClutter(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CALAMITES_SUCKOWII);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CALAMITIES_TREES);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CYPRESS_TREE);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CYPRESS_TREES);
+	}
+	
+	public static void jurassicBog(BiomeGenerationSettings.Builder builder)
+	{
+		addJurassicRock(builder);
+		addJurassicOres(builder);
+		addModCarvers(builder);
+		addJurassicUndergroundVariety(builder);
+		addAlethopteris(builder);
+		addFernGroundClutter(builder);
+
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
+	}
+	
+	public static void jurassicFen(BiomeGenerationSettings.Builder builder)
+	{
+		addJurassicRock(builder);
+		addJurassicOres(builder);
+		addModCarvers(builder);
+		addJurassicUndergroundVariety(builder);
+		addAlethopteris(builder);
+		addFernGroundClutter(builder);
+
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_SUGAR_CANE);
+
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
 	}
 	
 	//Permian Features

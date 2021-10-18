@@ -45,6 +45,7 @@ public class SurfaceBuilderInit
 	public static final SurfaceBuilder<?> JURASSIC_MOUNTIANS = ModRegistry.register("jurassic_mountains", NAKED_JURASSIC_MOUNTAINS);
 	public static final SurfaceBuilder<?> JURASSIC_ERRODED_MOUNTIANS = ModRegistry.register("jurassic_erroded_mountains", NAKED_JURASSIC_ERRODED_MOUNTAINS);
 	public static final SurfaceBuilder<?> JURASSIC_VOLCANO = ModRegistry.register("jurassic_volcano", NAKED_JURASSIC_VOLCANO);
+	public static final SurfaceBuilder<?> JURASSIC_SWAMP = ModRegistry.register("jurassic_swamp", NAKED_JURASSIC_SWAMP);
 
 	//Registry
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Surface Builders"); }

@@ -101,10 +101,8 @@ public class HerbivoreTabletScreen extends Screen
 	
 	private ITextComponent hunger()
 	{
-		NumberFormat numberInstance = NumberFormat.getNumberInstance();
 		int hunger = this.entity.getHunger();
-		String numberHunger = numberInstance.format(hunger);
-		return new StringTextComponent(numberHunger);
+		return hunger >= 13000 ? ModUtils.tTC("tablet", "full") : hunger >= 1 && hunger < 1 ? ModUtils.tTC("tablet", "satiated") : hunger >= -4999 && hunger <= 0 ?ModUtils.tTC("tablet", "hungry") : ModUtils.tTC("tablet", "starving");
 	}
 	
 	private ITextComponent sex()

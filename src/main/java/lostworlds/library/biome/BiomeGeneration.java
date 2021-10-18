@@ -1,5 +1,9 @@
 package lostworlds.library.biome;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BiomeInit;
 import net.minecraft.world.biome.Biome.Category;
@@ -59,7 +63,9 @@ public class BiomeGeneration
 		
 		if(LostWorldsConfig.COMMON_CONFIG.cypressTreesInSwamps.get())
 		{
-			if(event.getCategory() == Category.SWAMP)
+			List<? extends String> biomes = Lists.newArrayList("minecraft:swamp", "minecraft:swamp_hills");
+			
+			if(biomes.contains(event.getName().toString()))
 			{
 				generation.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.SCANT_CYPRESS_TREES);
 			}

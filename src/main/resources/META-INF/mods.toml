@@ -1,11 +1,11 @@
 modLoader="javafml"
 loaderVersion="[36,)"
-license="Creative Commons"
+license="Custom"
 issueTrackerURL="https://github.com/willatendo/Lost-Worlds/issues"
 
 [[mods]]
 modId="lostworlds"
-version="v11-alpha"
+version="11-alpha"
 displayName="Lost Worlds"
 updateJSONURL="https://github.com/willatendo/Lost-Worlds/raw/Forge-1.16.5/updates.json"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/the-lost-worlds-forge"

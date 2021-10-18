@@ -13,7 +13,6 @@ import lostworlds.library.entity.goal.herbivore.SleepySwimGoal;
 import lostworlds.library.entity.goal.herbivore.SleepyTemptGoal;
 import lostworlds.library.entity.goal.herbivore.SleepyWaterAvoidingRandomWalkingGoal;
 import lostworlds.library.entity.terrestrial.HerbivoreEntity;
-import lostworlds.library.entity.terrestrial.MediumStepSoundHerbivoreEntity;
 import lostworlds.library.item.block.SeedItem;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
@@ -33,7 +32,7 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class KentrosaurusEntity extends MediumStepSoundHerbivoreEntity
+public class KentrosaurusEntity extends HerbivoreEntity
 {
 	private static final Ingredient FOOD_ITEMS = Ingredient.of(BlockInit.ALETHOPTERIS, BlockInit.BRAZILEA, BlockInit.CEPHALOTAXUS, BlockInit.CALAMITES_SUCKOWII, BlockInit.DILLHOFFIA, BlockInit.DUISBERGIA, BlockInit.GROUND_FERNS, BlockInit.OSMUNDA, BlockInit.PERMIAN_DESERT_FERNS, BlockInit.PERMIAN_DESERT_SHRUB, BlockInit.WILLIAMSONIA, BlockInit.ZAMITES);
 	private AnimationFactory factory = new AnimationFactory(this);
