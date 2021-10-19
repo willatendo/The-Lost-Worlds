@@ -23,11 +23,22 @@ public enum Plants implements IStringSerializable, IExtensibleEnum
 	private final String id;
 	private final Lazy<? extends Block> block;
 	private Item item;
+	private Item dna;
 	
 	private Plants(String id, NonNullSupplier<? extends Block> block) 
 	{
 		this.id = id;
 		this.block = Lazy.of(block::get);
+	}
+
+	public Item setDNA(Item item)
+	{
+		return this.dna = item;
+	}
+	
+	public Item getDNA()
+	{
+		return this.dna;
 	}
 	
 	public Block getPlant()

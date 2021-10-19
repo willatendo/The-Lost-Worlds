@@ -1,7 +1,12 @@
 package lostworlds.content.server.setup;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -10,7 +15,11 @@ import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.VillagerProfessionInit;
+import lostworlds.library.block.Plants;
+import lostworlds.library.block.Trees;
+import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
+import lostworlds.library.entity.spawner.FossilPoachingGroupSpawner;
 import lostworlds.library.item.CrystalScarabGemItem;
 import lostworlds.library.trades.MultiItemForEmeraldsTrade;
 import lostworlds.library.util.JigsawUtils;
@@ -22,15 +31,22 @@ import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.HoeItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.DimensionType;
+import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.server.FMLServerAboutToStartEvent;
+import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
+import net.minecraftforge.fml.event.server.FMLServerStoppedEvent;
 
 public class ServerSetup 
 {
@@ -73,35 +89,80 @@ public class ServerSetup
 				new VillagerTrades.ItemsForEmeraldsTrade(Items.CLAY_BALL, 2, 20, 12),
 				new VillagerTrades.ItemsForEmeraldsTrade(Items.CLAY, 16, 10, 12),
 				new VillagerTrades.ItemsForEmeraldsTrade(BlockInit.ARCHAEOLOGY_TABLE.asItem(), 15, 1, 20),
-				//new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.KYLIX, 5, 1, 20)
 			};
 			
 			VillagerTrades.ITrade[] archaeology2 = new VillagerTrades.ITrade[] 
 			{
-				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.FIELD_GUIDE, 25, 1, 20),
+				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.BOOK_OF_ARCHAEOLOGY, 5, 1, 12),
 				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.WET_PAPER, 3, 5, 12)
 			};
 			
 			VillagerTrades.ITrade[] archaeology3 = new VillagerTrades.ITrade[] 
 			{
-				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.LEATHER_BRUSH, 16, 1, 20)
+				new MultiItemForEmeraldsTrade(ImmutableList.of(ItemInit.DIAMOND_BRUSH, ItemInit.GOLD_BRUSH, ItemInit.IRON_BRUSH, ItemInit.LEATHER_BRUSH), ImmutableList.of(1, 1, 1, 1), ImmutableList.of(64, 32, 16, 4), 1, 100)
 			};
 			
 			VillagerTrades.ITrade[] archaeology4 = new VillagerTrades.ITrade[] 
 			{
-				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.PERMIAN_PERIOD_TIME_BOOK, 64, 1, 100),
+				new VillagerTrades.EmeraldForItemsTrade(ItemInit.PERMIAN_PERIOD_TIME_BOOK, 1, 1, 100),
 				//new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.JURASSIC_ERA_TIME_BOOK, 64, 1, 100)
 			};
 			
 			VillagerTrades.ITrade[] archaeology5 = new VillagerTrades.ITrade[] 
 			{
 				new VillagerTrades.ItemsForEmeraldsTrade(Items.LODESTONE, 64, 1, 100),
-				new MultiItemForEmeraldsTrade(ImmutableList.of(Items.GOLD_INGOT, Items.DIAMOND, Items.IRON_INGOT, Items.NETHERITE_SCRAP, CrystalScarabGemItem.crystal_scarab_abdomen, CrystalScarabGemItem.crystal_scarab_bottom_left_leg, CrystalScarabGemItem.crystal_scarab_bottom_right_leg, CrystalScarabGemItem.crystal_scarab_thorax, CrystalScarabGemItem.crystal_scarab_top_left_leg, CrystalScarabGemItem.crystal_scarab_top_right_leg), ImmutableList.of(5, 1, 3, 1, 1), ImmutableList.of(10, 30, 20, 50, 64), 1, 100)
+				new MultiItemForEmeraldsTrade(ImmutableList.of(Items.GOLD_INGOT, Items.DIAMOND, Items.IRON_INGOT, Items.NETHERITE_SCRAP, CrystalScarabGemItem.Gems.CHARGED_CRYSTAL_SCARAB_GEM.getItem(), CrystalScarabGemItem.Gems.CRYSTAL_SCARAB_BOTTOM_LEFT_LEG.getItem(), CrystalScarabGemItem.Gems.CRYSTAL_SCARAB_BOTTOM_RIGHT_LEG.getItem(), CrystalScarabGemItem.Gems.CRYSTAL_SCARAB_THORAX.getItem(), CrystalScarabGemItem.Gems.CRYSTAL_SCARAB_TOP_LEFT_LEG.getItem(), CrystalScarabGemItem.Gems.CRYSTAL_SCARAB_TOP_RIGHT_LEG.getItem()), ImmutableList.of(5, 1, 3, 1, 1), ImmutableList.of(10, 30, 20, 50, 64), 1, 100)
+			};
+			
+			VillagerTrades.ITrade[] paleontology1 = new VillagerTrades.ITrade[] 
+			{
+				new VillagerTrades.EmeraldForItemsTrade(BlockInit.TINY_FOSSILISED_EGG.asItem(), 4, 4, 10),
+				new VillagerTrades.EmeraldForItemsTrade(BlockInit.SMALL_FOSSILISED_EGG.asItem(), 5, 4, 10),
+				new MultiItemForEmeraldsTrade(ImmutableList.of(BlockInit.ACACIA_PALEONTOLOGY_TABLE.asItem(), BlockInit.ARAUCARIA_PALEONTOLOGY_TABLE.asItem(), BlockInit.BIRCH_PALEONTOLOGY_TABLE.asItem(), BlockInit.CALAMITES_PALEONTOLOGY_TABLE.asItem(), BlockInit.CONIFER_PALEONTOLOGY_TABLE.asItem(), BlockInit.CRIMSON_PALEONTOLOGY_TABLE.asItem(), BlockInit.CYPRESS_PALEONTOLOGY_TABLE.asItem(), BlockInit.DARK_OAK_PALEONTOLOGY_TABLE.asItem(), BlockInit.GINKGO_PALEONTOLOGY_TABLE.asItem(), BlockInit.JUNGLE_PALEONTOLOGY_TABLE.asItem(), BlockInit.OAK_PALEONTOLOGY_TABLE.asItem(), BlockInit.SCORCHED_PALEONTOLOGY_TABLE.asItem(), BlockInit.SEQUOIA_PALEONTOLOGY_TABLE.asItem(), BlockInit.SPRUCE_PALEONTOLOGY_TABLE.asItem(), BlockInit.WARPED_PALEONTOLOGY_TABLE.asItem()), ImmutableList.of(1, 1, 1, 1, 1, 1, 1, 1, 1, 1), ImmutableList.of(10, 10, 10, 10, 10, 10, 10, 10, 10, 10), 5, 20)
+			};
+			
+			VillagerTrades.ITrade[] paleontology2 = new VillagerTrades.ITrade[] 
+			{
+				new VillagerTrades.EmeraldForItemsTrade(BlockInit.MEDIUM_FOSSILISED_EGG.asItem(), 6, 4, 10),
+				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.FIELD_GUIDE, 25, 1, 20),
+				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.WET_PAPER, 3, 5, 12)
+			};
+			
+			VillagerTrades.ITrade[] paleontology3 = new VillagerTrades.ITrade[] 
+			{
+				new VillagerTrades.EmeraldForItemsTrade(BlockInit.LARGE_FOSSILISED_EGG.asItem(), 7, 2, 15),
+				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.HAMMER, 16, 1, 20)
+			};
+			
+			VillagerTrades.ITrade[] paleontology4 = new VillagerTrades.ITrade[] 
+			{
+				new MultiItemForEmeraldsTrade(ImmutableList.of(ItemInit.DIAMOND_BRUSH, ItemInit.GOLD_BRUSH, ItemInit.IRON_BRUSH, ItemInit.LEATHER_BRUSH), ImmutableList.of(1, 1, 1, 1), ImmutableList.of(64, 32, 16, 4), 1, 100)
+			};
+			
+			ArrayList<Item> dnaForSale = Lists.newArrayList();
+			for(Trees trees : Trees.values())
+			{
+				dnaForSale.add(trees.getDNA());
+			}
+			for(Plants plants : Plants.values())
+			{
+				dnaForSale.add(plants.getDNA());
+			}
+			for(DinoTypes dinos : DinoTypes.values())
+			{
+				dnaForSale.add(dinos.getDNA());
+			}
+			VillagerTrades.ITrade[] paleontology5 = new VillagerTrades.ITrade[] 
+			{
+				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.CONTRACEPTIVES, 12, 5, 20),
+				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.CONTRACEPTIVES, 12, 5, 20),
+				new MultiItemForEmeraldsTrade(dnaForSale, ImmutableList.of(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), ImmutableList.of(64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64), 1, 200)
 			};
 			VillagerTrades.TRADES.put(VillagerProfessionInit.ARCHAEOLOGIST, toIntMap(ImmutableMap.of(1, archaeology1, 2, archaeology2, 3, archaeology3, 4, archaeology4, 5, archaeology5)));
+			VillagerTrades.TRADES.put(VillagerProfessionInit.PALEONTOLOGIST, toIntMap(ImmutableMap.of(1, paleontology1, 2, paleontology2, 3, paleontology3, 4, paleontology4, 5, paleontology5)));
 
 			ModUtils.LOGGER.debug("Finished: Villager Trades");
-}
+		}
 		
 		private static Int2ObjectMap<VillagerTrades.ITrade[]> toIntMap(ImmutableMap<Integer, VillagerTrades.ITrade[]> tradeMap) 
 		{
@@ -133,6 +194,40 @@ public class ServerSetup
 			}
 			ModUtils.LOGGER.debug("Finished: Adding Goals");
 		}
+	}
+	
+	@EventBusSubscriber(modid = ModUtils.ID)
+	static class SpawnerHandler
+	{
+		private static Map<ResourceLocation, FossilPoachingGroupSpawner> spawners = new HashMap<>();
+
+	    @SubscribeEvent
+	    public static void onServerStart(FMLServerStartedEvent event)
+	    {
+	        spawners.put(DimensionType.OVERWORLD_EFFECTS, new FossilPoachingGroupSpawner());
+	    }
+
+	    @SubscribeEvent
+	    public static void onServerStart(FMLServerStoppedEvent event)
+	    {
+	        spawners.clear();
+	    }
+
+	    @SubscribeEvent
+	    public static void onWorldTick(TickEvent.WorldTickEvent event)
+	    {
+	        if(event.phase != TickEvent.Phase.START)
+	            return;
+
+	        if(event.side != LogicalSide.SERVER)
+	            return;
+
+	        FossilPoachingGroupSpawner spawner = spawners.get(event.world.dimension().location());
+	        if(spawner != null)
+	        {
+	            spawner.tick((ServerWorld) event.world);
+	        }
+	    }
 	}
 
 	@EventBusSubscriber(modid = ModUtils.ID, bus = Bus.MOD)

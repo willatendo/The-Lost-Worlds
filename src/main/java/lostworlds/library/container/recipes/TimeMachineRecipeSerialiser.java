@@ -20,7 +20,7 @@ public class TimeMachineRecipeSerialiser extends ForgeRegistryEntry<IRecipeSeria
 		String s1 = JSONUtils.getAsString(json, "result");
 		int i = JSONUtils.getAsInt(json, "count");
 		ItemStack itemstack = new ItemStack(Registry.ITEM.get(new ResourceLocation(s1)), i);
-		return new TimeMachineRecipe(recipeId, itemstack, Ingredient.of(Items.BOOK), Ingredient.of(CrystalScarabGemItem.charged_crystal_scarab_gem));
+		return new TimeMachineRecipe(recipeId, itemstack, Ingredient.of(Items.BOOK), Ingredient.of(CrystalScarabGemItem.Gems.CHARGED_CRYSTAL_SCARAB_GEM.getItem()));
 	}
 
 	public TimeMachineRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) 
