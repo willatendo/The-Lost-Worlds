@@ -87,6 +87,8 @@ public class FossilPoacherEntity extends AbstractIllagerEntity
 		this.goalSelector.addGoal(2, new AbstractRaiderEntity.FindTargetGoal(this, 10.0F));
 		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, false));
 		this.goalSelector.addGoal(4, new SmashPlantFossilGoal(this, 1.0D, 3));
+		this.goalSelector.addGoal(4, new SmashSoftStoneGoal(this, 1.0D, 3));
+		this.goalSelector.addGoal(4, new SmashSoftDirtGoal(this, 1.0D, 3));
 		this.goalSelector.addGoal(8, new RandomWalkingGoal(this, 0.6D));
 		this.goalSelector.addGoal(9, new LookAtGoal(this, PlayerEntity.class, 15.0F, 1.0F));
 		this.goalSelector.addGoal(10, new LookAtGoal(this, MobEntity.class, 15.0F));
@@ -249,6 +251,64 @@ public class FossilPoacherEntity extends AbstractIllagerEntity
 		public void playBreakSound(World world, BlockPos pos) 
 		{
 			world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
+		}
+
+		@Override
+		public double acceptedDistance() 
+		{
+			return 1.14D;
+		}
+	}
+	
+	static class SmashSoftStoneGoal extends BreakBlockGoal 
+	{
+		private final FossilPoacherEntity entity;
+		
+		SmashSoftStoneGoal(FossilPoacherEntity entity, double searchRange, int verticalSearchRange) 
+		{
+			super(BlockInit.SOFT_STONE, entity, searchRange, verticalSearchRange);
+			this.entity = entity;
+		}
+
+		@Override
+		public void playDestroyProgressSound(IWorld world, BlockPos pos) 
+		{
+			world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.HOSTILE, 0.5F, 0.9F + entity.random.nextFloat() * 0.2F);
+		}
+
+		@Override
+		public void playBreakSound(World world, BlockPos pos) 
+		{
+			world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
+		}
+
+		@Override
+		public double acceptedDistance() 
+		{
+			return 1.14D;
+		}
+	}
+	
+	static class SmashSoftDirtGoal extends BreakBlockGoal 
+	{
+		private final FossilPoacherEntity entity;
+		
+		SmashSoftDirtGoal(FossilPoacherEntity entity, double searchRange, int verticalSearchRange) 
+		{
+			super(BlockInit.SOFT_DIRT, entity, searchRange, verticalSearchRange);
+			this.entity = entity;
+		}
+
+		@Override
+		public void playDestroyProgressSound(IWorld world, BlockPos pos) 
+		{
+			world.playSound((PlayerEntity) null, pos, SoundEvents.GRAVEL_BREAK, SoundCategory.HOSTILE, 0.5F, 0.9F + entity.random.nextFloat() * 0.2F);
+		}
+
+		@Override
+		public void playBreakSound(World world, BlockPos pos) 
+		{
+			world.playSound((PlayerEntity) null, pos, SoundEvents.GRAVEL_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
 		}
 
 		@Override

@@ -29,7 +29,7 @@ import net.minecraft.world.gen.feature.template.TemplateManager;
 public class MeteoritePeice 
 {
 	public static final ArrayList<ResourceLocation> locations = new ArrayList<>();
-	public static final ResourceLocation METEORITE_LOCATION_ONE = ModUtils.rL("meteorite_one"), METEORITE_LOCATION_TWO = ModUtils.rL("meteorite_two"), METEORITE_LOCATION_THREE = ModUtils.rL("meteorite_three"), METEORITE_LOCATION_FOUR = ModUtils.rL("meteorite_four"), METEORITE_LOCATION_FIVE = ModUtils.rL("meteorite_five"), METEORITE_LOCATION_SIX = ModUtils.rL("meteorite_six");
+	public static final ResourceLocation METEORITE_LOCATION_ONE = ModUtils.rL("meteorite_1"), METEORITE_LOCATION_TWO = ModUtils.rL("meteorite_2"), METEORITE_LOCATION_THREE = ModUtils.rL("meteorite_3"), METEORITE_LOCATION_FOUR = ModUtils.rL("meteorite_4"), METEORITE_LOCATION_FIVE = ModUtils.rL("meteorite_5"), METEORITE_LOCATION_SIX = ModUtils.rL("meteorite_6");
 	
 	public static void addStructure(TemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> piece, Random rand, Biome biome) 
 	{

@@ -403,6 +403,7 @@
 	"block.lostworlds.araucaria_paleontology_table": "Araucaria Paleontology Table",
 	"block.lostworlds.calamites_paleontology_table": "Calamites Paleontology Table",
 	"block.lostworlds.conifer_paleontology_table": "Conifer Paleontology Table",
+	"block.lostworlds.cypress_paleontology_table": "Cypress Paleontology Table",
 	"block.lostworlds.ginkgo_paleontology_table": "Ginkgo Paleontology Table",
 	"block.lostworlds.scorched_paleontology_table": "Scorched Paleontology Table",
 	"block.lostworlds.sequoia_paleontology_table": "Sequoia Paleontology Table",
@@ -699,6 +700,10 @@
 	//Jurassic
 	"entity.lostworlds.chilesaurus": "Chilesaurus",
 	"entity.lostworlds.kentrosaurus": "Kentrosaurus",
+	
+	//Villagers
+	"entity.minecraft.villager.lostworlds.archaeologist": "Archaeologist",
+	"entity.minecraft.villager.lostworlds.paleontologist": "Paleontologist",
 	
 	// BIOMES
 	
