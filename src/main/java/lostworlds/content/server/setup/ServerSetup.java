@@ -15,6 +15,7 @@ import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.VillagerProfessionInit;
+import lostworlds.library.block.NautilusShellBlock;
 import lostworlds.library.block.Plants;
 import lostworlds.library.block.Trees;
 import lostworlds.library.entity.DinoTypes;
@@ -29,16 +30,24 @@ import net.minecraft.block.FireBlock;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.ShovelItem;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
+import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -176,6 +185,33 @@ public class ServerSetup
 			{
 				ModVillagerTrades.fillTradeData();
 			});
+		}
+	}
+	
+	@EventBusSubscriber(modid = ModUtils.ID, bus = Bus.FORGE)
+	static class AddBlockItem
+	{
+		@SubscribeEvent
+		public static void addNautilusShell(RightClickBlock event)
+		{
+			PlayerEntity entity = event.getPlayer();
+			Hand hand = event.getHand();
+			ItemStack stack = entity.getItemInHand(hand);
+			Item item = stack.getItem();
+			World world = event.getWorld();
+			BlockPos pos = event.getPos().above();
+			Direction direction = entity.getDirection().getOpposite();
+			
+			if(item == Items.NAUTILUS_SHELL)
+			{	
+				entity.swing(hand);
+				if(!entity.isCreative())
+				{
+					stack.shrink(1);
+				}
+				world.setBlockAndUpdate(pos, BlockInit.NAUTILUS_SHELL.defaultBlockState().setValue(NautilusShellBlock.HORIZONTAL_FACING, direction));
+				world.playSound(entity, pos, BlockInit.NAUTILUS_SHELL.getSoundType(BlockInit.NAUTILUS_SHELL.defaultBlockState()).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+			}
 		}
 	}
 	
