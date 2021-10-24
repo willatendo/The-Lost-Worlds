@@ -36,7 +36,7 @@ import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import software.bernie.geckolib3.GeckoLib;
+import tyrannotitanlib.library.TyrannotitanMod;
 
 @Mod(ModUtils.ID)
 public class LostWorldsMod 
@@ -46,6 +46,7 @@ public class LostWorldsMod
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		final IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 				
+		TyrannotitanMod.init(ModUtils.ID);
 		ModRegistry.register();
 		
 		bus.addListener(this::commonSetup);
@@ -59,8 +60,6 @@ public class LostWorldsMod
 		
 		ModLoadingContext.get().registerConfig(Type.CLIENT, LostWorldsConfig.clientSpec);
 		ModLoadingContext.get().registerConfig(Type.COMMON, LostWorldsConfig.commonSpec);
-				
-		GeckoLib.initialize();
 	}
 	
 	private void commonSetup(FMLCommonSetupEvent event)
@@ -87,6 +86,7 @@ public class LostWorldsMod
 		DimensionRenderInfo baseRenderer = new PermianDimensionRenderInfo();
 		
 		DimensionRenderInfo.EFFECTS.put(ModUtils.rL("permian_render"), baseRenderer);
+		DimensionRenderInfo.EFFECTS.put(ModUtils.rL("jurassic_render"), baseRenderer);
 		
 		if(LostWorldsConfig.COMMON_CONFIG.tameableDinos.get())
 		{

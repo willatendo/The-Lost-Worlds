@@ -23,5 +23,4 @@ public class BlockAndItemBuilder
 		ModRegistry.register(id, item);
 		return block;
 	}
-	
 }

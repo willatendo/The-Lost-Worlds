@@ -174,7 +174,7 @@ public class ItemInit
 	public static final Item CONTRACEPTIVES = ModRegistry.register("contraceptives", new ModItem());
 	
 	public static final Item PERMIAN_PERIOD_TIME_BOOK = ModRegistry.register("permian_period_time_book", new TimeBookItem(TimeEras.PERMIAN_PERIOD, DimensionInit.PERMIAN_WORLD));
-	//public static final Item JURASSIC_ERA_TIME_BOOK = ModRegistry.register("leather_brush", TimeBookItem.create(TimeEras.JURASSIC_PERIOD));
+	public static final Item JURASSIC_ERA_TIME_BOOK = ModRegistry.register("jurassic_period_time_book", new TimeBookItem(TimeEras.JURASSIC_PERIOD, DimensionInit.JURASSIC_WORLD));
 	
 	public static final Item MUD_BALL = ModRegistry.register("mud_ball", new ModItem());
 

@@ -7,10 +7,10 @@ import lostworlds.library.item.FossilItem;
 import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
+import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationItemRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class SkeletonRenderer extends GeoItemRenderer<FossilItem> implements Callable<ItemStackTileEntityRenderer>
+public class SkeletonRenderer extends TyrannomationItemRenderer<FossilItem> implements Callable<ItemStackTileEntityRenderer>
 {
 	public SkeletonRenderer(String modelAndTexture) 
 	{

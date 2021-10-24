@@ -45,6 +45,7 @@ import lostworlds.library.block.SoftStoneBlock;
 import lostworlds.library.block.SpongeColonyBlock;
 import lostworlds.library.block.TimeMachineBlock;
 import lostworlds.library.block.TinyFossilisedEggBlock;
+import lostworlds.library.block.VaseBlock;
 import lostworlds.library.block.VolcanicAshBlock;
 import lostworlds.library.block.VolcanicAshLayerBlock;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
@@ -540,5 +541,7 @@ public class BlockInit
 			Block egg = BlockAndItemBuilder.create(types.getId() + "_egg", types.getEgg(types.getEntityType()));
 			types.setEgg(egg);
 		}
+		
+		VaseBlock.makeAll();
 	}
 }

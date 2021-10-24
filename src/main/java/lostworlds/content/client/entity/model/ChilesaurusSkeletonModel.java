@@ -3,9 +3,9 @@ package lostworlds.content.client.entity.model;
 import lostworlds.content.ModUtils;
 import lostworlds.library.entity.fossil.FossilEntity;
 import net.minecraft.util.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
 
-public class ChilesaurusSkeletonModel extends AnimatedGeoModel<FossilEntity>
+public class ChilesaurusSkeletonModel extends TyrannomatedTyrannomationModel<FossilEntity>
 {
 	private static final ResourceLocation TEXTURE = ModUtils.rL("textures/model/entity/fossil/chilesaurus/skeleton.png");
 

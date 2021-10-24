@@ -11,10 +11,10 @@ import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class CustomisableRenderer extends GeoEntityRenderer<FossilEntity>
+public class CustomisableRenderer extends TyrannomationEntityRenderer<FossilEntity>
 {
 	public CustomisableRenderer(EntityRendererManager renderManager, String model, String texture, float shadow) 
 	{

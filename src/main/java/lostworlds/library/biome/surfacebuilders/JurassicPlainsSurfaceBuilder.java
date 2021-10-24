@@ -23,15 +23,15 @@ public class JurassicPlainsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderC
 	{
 		if(noise > 1.75D) 
 		{
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.SAND_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.ROCKY_SOIL_CONFIG);
 		}
 		else if(noise > -0.95D) 
 		{
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.RED_SAND_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.MOSSY_SOIL_CONFIG);
 		}
 		else
 		{
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.ROCKY_SOIL_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.PODZOL_CONFIG);
 		}
 	}
 }

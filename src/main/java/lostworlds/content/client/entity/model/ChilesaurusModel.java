@@ -3,12 +3,12 @@ package lostworlds.content.client.entity.model;
 import lostworlds.content.ModUtils;
 import lostworlds.library.entity.terrestrial.jurassic.ChilesaurusEntity;
 import net.minecraft.util.ResourceLocation;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
-import software.bernie.geckolib3.model.provider.data.EntityModelData;
+import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
+import tyrannotitanlib.library.tyrannomation.core.processor.IBone;
+import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
+import tyrannotitanlib.library.tyrannomation.model.provider.data.EntityModelData;
 
-public class ChilesaurusModel extends AnimatedGeoModel<ChilesaurusEntity>
+public class ChilesaurusModel extends TyrannomatedTyrannomationModel<ChilesaurusEntity>
 {
 	private static final ResourceLocation MALE_TEXTURE = ModUtils.rL("textures/model/entity/chilesaurus/male.png");
 	private static final ResourceLocation FEMALE_TEXTURE = ModUtils.rL("textures/model/entity/chilesaurus/female.png");
@@ -33,7 +33,7 @@ public class ChilesaurusModel extends AnimatedGeoModel<ChilesaurusEntity>
 	}
 
 	@Override
-	public void setLivingAnimations(ChilesaurusEntity entity, Integer uniqueID, AnimationEvent customPredicate) 
+	public void setLivingAnimations(ChilesaurusEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) 
 	{
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");

@@ -30,7 +30,6 @@ import lostworlds.library.biome.biomes.permian.plains.PermianFloodBasalts;
 import lostworlds.library.biome.biomes.permian.plains.PermianPlains;
 import lostworlds.library.biome.biomes.permian.river.PermianRiver;
 import lostworlds.library.biome.biomes.permian.shore.PermianShore;
-import lostworlds.library.biome.biomes.permian.shore.PermianStoneShore;
 import lostworlds.library.biome.biomes.permian.swamp.PermianMarsh;
 import net.minecraft.world.biome.Biome;
 
@@ -69,7 +68,6 @@ public class BiomeInit
 	public static final Biome PERMIAN_PLAINS_HILLS = ModRegistry.register("permian_plains_hills", PermianPlains.create(0.45F, 0.3F));
 
 	public static final Biome PERMIAN_SHORE = ModRegistry.register("permian_shore", PermianShore.create());
-	public static final Biome PERMIAN_STONE_SHORE = ModRegistry.register("permian_stone_shore", PermianStoneShore.create());
 	
 	//Jurassic
 	public static final Biome JURASSIC_CONIFER_FOREST = ModRegistry.register("jurassic_conifer_forest", JurassicConiferForest.create());

@@ -42,7 +42,6 @@ public class PermianBiomeProvider extends BiomeProvider
 		BiomeKeys.PERMIAN_PLAINS_HILLS,
 		BiomeKeys.PERMIAN_RIVER,
 		BiomeKeys.PERMIAN_SHORE,
-		BiomeKeys.PERMIAN_STONE_SHORE,
 		BiomeKeys.WARM_DEEP_PERMIAN_OCEAN,
 		BiomeKeys.WARM_PERMIAN_OCEAN
 	);

@@ -49,8 +49,13 @@ minecraft {
 repositories {
 	//JEI
 	maven { url 'https://dvs1.progwml6.com/files/maven' }
-	//GeckoLib
-	maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+	//Tyrannotitan Lib
+	maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 dependencies {
@@ -59,7 +64,7 @@ dependencies {
 	compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.6.1.75:api")
 	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.6.1.75")
 	
-	implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.16.5:3.0.45')
+	implementation fg.deobf("curse.maven:tyrannotitan-library-forge-425570:3497727")
 	
 	compileOnly 'org.spongepowered:mixin:0.8'
 }

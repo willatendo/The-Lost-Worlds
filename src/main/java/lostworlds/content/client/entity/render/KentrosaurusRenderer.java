@@ -11,10 +11,10 @@ import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class KentrosaurusRenderer extends GeoEntityRenderer<KentrosaurusEntity>
+public class KentrosaurusRenderer extends TyrannomationEntityRenderer<KentrosaurusEntity>
 {
 	public KentrosaurusRenderer(EntityRendererManager renderManager) 
 	{

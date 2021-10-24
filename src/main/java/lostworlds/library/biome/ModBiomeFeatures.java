@@ -272,6 +272,7 @@ public class ModBiomeFeatures
 		addJurassicUndergroundVariety(builder);
 		addDuisbergia(builder);
 		addWilliamsonia(builder);
+		addGeyser(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_MAGMA);
 	}

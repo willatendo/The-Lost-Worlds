@@ -24,39 +24,39 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import tyrannotitanlib.library.tyrannomation.core.ITyrannomatable;
+import tyrannotitanlib.library.tyrannomation.core.PlayState;
+import tyrannotitanlib.library.tyrannomation.core.builder.TyrannomationBuilder;
+import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationController;
+import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
+import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
+import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
 public class KentrosaurusEntity extends HerbivoreEntity
 {
 	private static final Ingredient FOOD_ITEMS = Ingredient.of(BlockInit.ALETHOPTERIS, BlockInit.BRAZILEA, BlockInit.CEPHALOTAXUS, BlockInit.CALAMITES_SUCKOWII, BlockInit.DILLHOFFIA, BlockInit.DUISBERGIA, BlockInit.GROUND_FERNS, BlockInit.OSMUNDA, BlockInit.PERMIAN_DESERT_FERNS, BlockInit.PERMIAN_DESERT_SHRUB, BlockInit.WILLIAMSONIA, BlockInit.ZAMITES);
-	private AnimationFactory factory = new AnimationFactory(this);
+	private TyrannomationFactory factory = new TyrannomationFactory(this);
 	
-	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) 
+	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) 
 	{
 		if(event.isMoving())
 		{
-			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.kentrosaurus.walk", true));
+			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.kentrosaurus.walk", true));
 			return PlayState.CONTINUE;
 		}
 		else if(this.entityData.get(this.EATING))
 		{
-			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.kentrosaurus.eat", false));
+			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.kentrosaurus.eat", false));
 			return PlayState.CONTINUE;
 		}
 		else if(this.entityData.get(this.SLEEPING))
 		{
-			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.kentrosaurus.into_sleep", false).addAnimation("animation.kentrosaurus.sleep", false).addAnimation("animation.kentrosaurus.out_of_sleep", false));
+			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.kentrosaurus.into_sleep", false).addAnimation("animation.kentrosaurus.sleep", false).addAnimation("animation.kentrosaurus.out_of_sleep", false));
 			return PlayState.CONTINUE;
 		}
 		else
 		{
-			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.kentrosaurus.idle", true));
+			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.kentrosaurus.idle", true));
 			return PlayState.CONTINUE;
 		}
 	}
@@ -87,13 +87,13 @@ public class KentrosaurusEntity extends HerbivoreEntity
 	}
 
 	@Override
-	public void registerControllers(AnimationData data) 
+	public void registerControllers(TyrannomationData data) 
 	{
-		data.addAnimationController(new AnimationController<IAnimatable>(this, "controller", 0, this::predicate));
+		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public AnimationFactory getFactory() 
+	public TyrannomationFactory getFactory() 
 	{
 		return this.factory;
 	}

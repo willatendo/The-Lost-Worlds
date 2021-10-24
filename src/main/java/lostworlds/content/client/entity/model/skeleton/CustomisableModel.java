@@ -5,10 +5,10 @@ import lostworlds.library.entity.fossil.FossilEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
 
 @OnlyIn(Dist.CLIENT)
-public class CustomisableModel extends AnimatedGeoModel<FossilEntity>
+public class CustomisableModel extends TyrannomatedTyrannomationModel<FossilEntity>
 {
 	private final String model;
 	private final String texture;

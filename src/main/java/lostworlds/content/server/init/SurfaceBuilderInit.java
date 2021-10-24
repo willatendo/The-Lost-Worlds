@@ -8,7 +8,6 @@ import lostworlds.library.biome.surfacebuilders.JurassicErrodedMountainsSurfaceB
 import lostworlds.library.biome.surfacebuilders.JurassicMountainsSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicPlainsSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicSwampSurfaceBuilder;
-import lostworlds.library.biome.surfacebuilders.JurassicVolcanoSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.PermianDriedPlainsSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.PermianMarshSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.PermianMoutainsSurfaceBuilder;
@@ -30,7 +29,6 @@ public class SurfaceBuilderInit
 	public static final SurfaceBuilder NAKED_JURASSIC_DESERT = new JurassicDesertSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_JURASSIC_MOUNTAINS = new JurassicMountainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_JURASSIC_ERRODED_MOUNTAINS = new JurassicErrodedMountainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_JURASSIC_VOLCANO = new JurassicVolcanoSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_JURASSIC_SWAMP = new JurassicSwampSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	
 	public static final SurfaceBuilder<?> PERMIAN_DRIED_PLAINS = ModRegistry.register("permian_dried_plains", NAKED_PERMIAN_DRIED_PLAINS);
@@ -44,7 +42,6 @@ public class SurfaceBuilderInit
 	public static final SurfaceBuilder<?> JURASSIC_DESERT = ModRegistry.register("jurassic_desert", NAKED_JURASSIC_DESERT);
 	public static final SurfaceBuilder<?> JURASSIC_MOUNTIANS = ModRegistry.register("jurassic_mountains", NAKED_JURASSIC_MOUNTAINS);
 	public static final SurfaceBuilder<?> JURASSIC_ERRODED_MOUNTIANS = ModRegistry.register("jurassic_erroded_mountains", NAKED_JURASSIC_ERRODED_MOUNTAINS);
-	public static final SurfaceBuilder<?> JURASSIC_VOLCANO = ModRegistry.register("jurassic_volcano", NAKED_JURASSIC_VOLCANO);
 	public static final SurfaceBuilder<?> JURASSIC_SWAMP = ModRegistry.register("jurassic_swamp", NAKED_JURASSIC_SWAMP);
 
 	//Registry

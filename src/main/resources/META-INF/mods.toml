@@ -44,8 +44,8 @@ Animator:
     side="BOTH"
     
 [[dependencies.lostworlds]]
-    modId="geckolib3"
+    modId="tyrannotitanlib"
     mandatory=true
-    versionRange="[3.0.30,)"
+    versionRange="[1.2.4,)"
     ordering="NONE"
     side="BOTH"

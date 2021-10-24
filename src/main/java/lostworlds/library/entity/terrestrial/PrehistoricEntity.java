@@ -34,9 +34,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
-import software.bernie.geckolib3.core.IAnimatable;
+import tyrannotitanlib.library.tyrannomation.core.ITyrannomatable;
 
-public abstract class PrehistoricEntity extends AgeableEntity implements IAnimatable
+public abstract class PrehistoricEntity extends AgeableEntity implements ITyrannomatable
 {
 	private static final EntityPredicate PARTNER_TARGETING = (new EntityPredicate()).range(8.0D).allowInvulnerable().allowSameTeam().allowUnseeable();
 	

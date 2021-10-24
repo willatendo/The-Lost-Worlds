@@ -5,6 +5,12 @@
 			"lostworlds:block/machine_whirling"
 		]
 	},
+	"block.sound.pot_smash": {
+		"subtitle": "subtitle.lostworlds.pot_smash",
+		"sounds": [
+			"lostworlds:block/pot_smash"
+		]
+	},
 	"entity.sound.big_walk": {
 		"subtitle": "subtitle.lostworlds.big_walk",
 		"sounds": [

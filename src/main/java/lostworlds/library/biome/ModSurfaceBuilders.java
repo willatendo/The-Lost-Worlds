@@ -37,4 +37,5 @@ public class ModSurfaceBuilders
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_WARM_OCEAN_BUILDER = SurfaceBuilder.DEFAULT.configured(SILT_CONFIG);
 
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> JURASSIC_PODZOL_BUILDER = SurfaceBuilder.DEFAULT.configured(PODZOL_CONFIG);
+	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> JURASSIC_STONE_BUILDER = SurfaceBuilder.DEFAULT.configured(JURASSIC_STONE_CONFIG);
 }
