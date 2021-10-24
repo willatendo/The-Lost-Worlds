@@ -1,0 +1,7 @@
+[
+	{
+		"name": "world",
+		"type": "text",
+		"data": "world/world.json"
+	}
+]

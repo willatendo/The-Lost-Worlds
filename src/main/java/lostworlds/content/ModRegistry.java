@@ -66,56 +66,50 @@ import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.common.world.ForgeWorldType;
 import net.minecraftforge.registries.ForgeRegistries;
+import tyrannotitanlib.library.tyrannoregister.TyrannoRegister;
 
 public class ModRegistry 
 {
 	//Registers
 	public static ParticleType<BasicParticleType> register(String id, ParticleType<BasicParticleType> particle)
 	{
-		particle.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.PARTICLE_TYPES.register(particle);
+		TyrannoRegister.registerParticle(id, particle);
 		return particle;
 	}
 	
 	public static IRecipeSerializer<?> register(String id, IRecipeSerializer<?> recipe)
 	{
-		recipe.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.RECIPE_SERIALIZERS.register(recipe);
+		TyrannoRegister.register(recipe, id);
 		return recipe;
 	}
 	
 	public static SoundEvent register(String id, SoundEvent sound)
 	{
-		sound.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.SOUND_EVENTS.register(sound);
+		TyrannoRegister.registerSound(id, sound);
 		return sound;
 	}
 	
 	public static Effect register(String id, Effect effect)
 	{
-		effect.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.POTIONS.register(effect);
+		TyrannoRegister.registerEffect(id, effect);
 		return effect;
 	}
 	
 	public static Potion register(String id, Potion potion)
 	{
-		potion.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.POTION_TYPES.register(potion);
+		TyrannoRegister.registerPotion(id, potion);
 		return potion;
 	}
 	
 	public static Enchantment register(String id, Enchantment enchantment)
 	{
-		enchantment.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.ENCHANTMENTS.register(enchantment);
+		TyrannoRegister.registerEnchantment(id, enchantment);
 		return enchantment;
 	}
 	
 	public static Item register(String id, Item item)
 	{
-		item.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.ITEMS.register(item);
+		TyrannoRegister.registerItem(id, item);
 		return item;
 	}
 	
@@ -126,43 +120,37 @@ public class ModRegistry
 	
 	public static <T extends TileEntity> TileEntityType<T> register(String id, TileEntityType<T> tileEntity)
 	{
-		tileEntity.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.TILE_ENTITIES.register(tileEntity);
+		TyrannoRegister.registerBlockEntity(id, tileEntity);
 		return tileEntity;
 	}
 	
 	public static <T extends Container> ContainerType<T> register(String id, ContainerType<T> container)
 	{
-		container.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.CONTAINERS.register(container);
+		TyrannoRegister.registerContainer(id, container);
 		return container;
 	}
 	
 	public static Block register(String id, Block block)
 	{
-		block.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.BLOCKS.register(block);
+		TyrannoRegister.registerBlock(id, block);
 		return block;
 	}
 	
 	public static BlockPlacerType<?> register(String id, BlockPlacerType<?> type)
 	{
-		type.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.BLOCK_PLACER_TYPES.register(type);
+		TyrannoRegister.registerBlockPlacer(id, type);
 		return type;
 	}
 	
 	public static PointOfInterestType register(String id, PointOfInterestType type)
 	{
-		type.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.POI_TYPES.register(type);
+		TyrannoRegister.registerPointOfInterest(id, type);
 		return type;
 	}
 	
 	public static VillagerProfession register(String id, VillagerProfession profession)
 	{
-		profession.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.PROFESSIONS.register(profession);
+		TyrannoRegister.registerVillagerProfession(id, profession);
 		return profession;
 	}
 	
@@ -174,17 +162,15 @@ public class ModRegistry
 		return entityType;
 	}
 	
-	public static FoliagePlacerType<?> register(String id, FoliagePlacerType<?> foliagePlacer)
+	public static FoliagePlacerType<?> register(String id, FoliagePlacerType<?> type)
 	{
-		foliagePlacer.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.FOLIAGE_PLACER_TYPES.register(foliagePlacer);
-		return foliagePlacer;
+		TyrannoRegister.registerFoliagePlacer(id, type);
+		return type;
 	}
 	
 	public static Biome register(String id, Biome biome) 
 	{
-		biome.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.BIOMES.register(biome);
+		TyrannoRegister.registerBiome(id, biome);
 		return biome;
 	}
 	
@@ -195,8 +181,7 @@ public class ModRegistry
 	
 	public static Structure<NoFeatureConfig> register(String id, Structure<NoFeatureConfig> structure)
 	{
-		structure.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.STRUCTURE_FEATURES.register(structure);
+		TyrannoRegister.registerStructure(id, structure);
 		return structure;
 	}
 	
@@ -207,8 +192,7 @@ public class ModRegistry
 	
 	public static SurfaceBuilder<?> register(String id, SurfaceBuilder<?> surfaceBuilder)
 	{
-		surfaceBuilder.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.SURFACE_BUILDERS.register(surfaceBuilder);
+		TyrannoRegister.registerSurfaceBuilder(id, surfaceBuilder);
 		return surfaceBuilder;
 	}
 	
@@ -221,15 +205,13 @@ public class ModRegistry
 	
 	public static Feature<?> register(String id, Feature<?> feature)
 	{
-		feature.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.FEATURES.register(feature);
+		TyrannoRegister.registerFeature(id, feature);
 		return feature;
 	}
 	
 	public static WorldCarver<ProbabilityConfig> register(String id, WorldCarver<ProbabilityConfig> worldCarver)
 	{
-		worldCarver.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.WORLD_CARVERS.register(worldCarver);
+		TyrannoRegister.registerWorldCarver(id, worldCarver);
 		return worldCarver;
 	}	
 	
@@ -240,8 +222,7 @@ public class ModRegistry
 	
 	public static ForgeWorldType register(String id, ForgeWorldType worldType)
 	{
-		worldType.setRegistryName(ModUtils.rL(id));
-		ForgeRegistries.WORLD_TYPES.register(worldType);
+		TyrannoRegister.registerWorldType(id, worldType);
 		return worldType;
 	}
 	

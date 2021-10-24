@@ -1,0 +1,42 @@
+[
+	{
+		"name": "introduction",
+		"type": "text",
+		"data": "intro/introduction.json"
+	},
+	{
+		"name": "getting_started",
+		"type": "text",
+		"data": "intro/getting_started.json"
+	},
+	{
+		"name": "getting_started_2",
+		"type": "text",
+		"data": "intro/getting_started_2.json"
+	},
+	{
+		"name": "getting_started_3",
+		"type": "text",
+		"data": "intro/getting_started_3.json"
+	},
+	{
+		"name": "getting_started_wet_paper_craft",
+		"type": "crafting",
+		"data": "intro/getting_started_wet_paper_craft.json"
+	},
+	{
+		"name": "getting_started_4",
+		"type": "text",
+		"data": "intro/getting_started_4.json"
+	},
+	{
+		"name": "getting_started_5",
+		"type": "text",
+		"data": "intro/getting_started_5.json"
+	},
+	{
+		"name": "getting_started_crystal_scarab_gem_craft",
+		"type": "archaeology",
+		"data": "intro/getting_started_crystal_scarab_gem_craft.json"
+	}
+]

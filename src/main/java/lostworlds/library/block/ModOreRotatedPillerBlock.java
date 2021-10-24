@@ -9,11 +9,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorldReader;
 
-/*
- * Author: Willatendo
- * Date: July 8, 2021
- */
-
 public class ModOreRotatedPillerBlock extends RotatedPillarBlock
 {
 	public ModOreRotatedPillerBlock(Properties properties) 

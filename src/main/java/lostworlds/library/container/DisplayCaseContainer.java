@@ -1,38 +1,59 @@
 package lostworlds.library.container;
 
-import java.util.Objects;
-
 import lostworlds.content.server.init.ContainerInit;
-import lostworlds.library.block.DisplayCaseBlock;
 import lostworlds.library.block.entity.DisplayCaseTileEntity;
 import lostworlds.library.item.FossilItem;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IWorldPosCallable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.items.SlotItemHandler;
 
 public class DisplayCaseContainer extends Container
 {
-	private final IWorldPosCallable canInteractWithCallable;
+	private ItemStackHandler handler;
 	
-	public DisplayCaseContainer(int windowId, PlayerInventory inv, DisplayCaseTileEntity tileEntity, IInventory inventory) 
+	public DisplayCaseContainer(ContainerType<?> container, int windowId) 
+	{
+		super(container, windowId);
+	}
+	
+	public DisplayCaseContainer(int windowId, PlayerInventory inv, IInventory inventory, ItemStackHandler handler) 
 	{
 		super(ContainerInit.DISPLAY_CASE_CONTAINER, windowId);
-		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());
+		this.handler = handler;
 		
-		this.addSlot(new Slot(tileEntity, 0, 80, 20)
+		this.addSlot(new SlotItemHandler(handler, 0, 80, 20)
 		{
 			@Override
 			public boolean mayPlace(ItemStack stack) 
 			{
-				return stack.getItem() instanceof BlockItem ? false : stack.getItem() instanceof FossilItem ? false : true;
+				return correctTypeOfItem(stack);
+			}
+			
+			public boolean correctTypeOfItem(ItemStack stack)
+			{
+				if(stack.getItem() instanceof BlockItem)
+				{
+					return false;
+				}
+				else if(stack.getItem() instanceof FossilItem)
+				{
+					return false;
+				}
+				else
+				{
+					return true;
+				}
 			}
 		});
 		
@@ -50,60 +71,59 @@ public class DisplayCaseContainer extends Container
 		}
 	}
 
-	public DisplayCaseContainer(int windowId, PlayerInventory inv, PacketBuffer buffer)
+	public static DisplayCaseContainer create(int windowId, PlayerInventory inv, PacketBuffer buffer)
 	{
-		this(windowId, inv, getTileEntity(inv, buffer), new Inventory(1));
-	}
-	
-	private static DisplayCaseTileEntity getTileEntity(final PlayerInventory playerInventory, final PacketBuffer data)
-	{
-		Objects.requireNonNull(playerInventory, "Error: " + DisplayCaseContainer.class.getSimpleName() + " - Player Inventory cannot be null!");
-		Objects.requireNonNull(data, "Error: " + DisplayCaseContainer.class.getSimpleName() + " - Packer Buffer Data cannot be null!");
-		
-		final TileEntity tileEntityAtPos = playerInventory.player.level.getBlockEntity(data.readBlockPos());
-		if(tileEntityAtPos instanceof DisplayCaseTileEntity)
-			return (DisplayCaseTileEntity) tileEntityAtPos;
-		
-		throw new IllegalStateException("Error: " + DisplayCaseContainer.class.getSimpleName() + " - TileEntity is not corrent! " + tileEntityAtPos);
+		BlockPos pos = buffer.readBlockPos();
+		return new DisplayCaseContainer(windowId, inv, new Inventory(1), ((DisplayCaseTileEntity) Minecraft.getInstance().level.getBlockEntity(pos)).handler);
 	}
 
 	@Override
 	public boolean stillValid(PlayerEntity entity) 
 	{
-		return this.canInteractWithCallable.evaluate((world, blockPos) -> world.getBlockState(blockPos).getBlock() instanceof DisplayCaseBlock && entity.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
+		return !entity.isSpectator();
 	}
 	
 	@Override
-	public ItemStack quickMoveStack(PlayerEntity player, int getslot) 
+	public ItemStack quickMoveStack(PlayerEntity player, int fromSlot) 
 	{
-		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = this.slots.get(getslot);
+		ItemStack previous = ItemStack.EMPTY;
+		Slot slot = (Slot) this.slots.get(fromSlot);
+
 		if(slot != null && slot.hasItem()) 
 		{
-			ItemStack itemstack1 = slot.getItem();
-			itemstack = itemstack1.copy();
-			if(getslot < 1) 
+			ItemStack current = slot.getItem();
+			previous = current.copy();
+
+			if(fromSlot < this.handler.getSlots()) 
 			{
-				if(!this.moveItemStackTo(itemstack1, 1, this.slots.size(), true)) 
+				if(!this.moveItemStackTo(current, this.handler.getSlots(), this.handler.getSlots() + 36, true))
 				{
 					return ItemStack.EMPTY;
 				}
 			} 
-			else if(!this.moveItemStackTo(itemstack1, 0, 1, false)) 
+			else 
 			{
-				return ItemStack.EMPTY;
+				if(!this.moveItemStackTo(current, 0, 6, false))
+				{
+					return ItemStack.EMPTY;
+				}
 			}
-			
-			if(itemstack1.isEmpty()) 
+
+			if(current.getCount() == 0)
 			{
 				slot.set(ItemStack.EMPTY);
-			} 
-			else 
+			}
+			else
 			{
 				slot.setChanged();
 			}
+
+			if(current.getCount() == previous.getCount())
+			{
+				return ItemStack.EMPTY;
+			}
+			slot.onTake(player, current);
 		}
-		
-		return itemstack;
+		return previous;
 	}
 }

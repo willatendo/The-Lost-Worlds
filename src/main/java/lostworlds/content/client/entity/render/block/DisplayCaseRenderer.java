@@ -4,6 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 
 import lostworlds.library.block.DisplayCaseBlock;
 import lostworlds.library.block.entity.DisplayCaseTileEntity;
+import lostworlds.library.container.inventory.DisplayCaseInventory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
@@ -25,29 +26,32 @@ public class DisplayCaseRenderer extends TileEntityRenderer<DisplayCaseTileEntit
 	@Override
 	public void render(DisplayCaseTileEntity tile, float partialTicks, MatrixStack matrix, IRenderTypeBuffer buffer, int combinedLight, int combinedOverlay) 
 	{
-		if(!tile.isEmpty())
+		Direction direction = tile.getBlockState().getValue(DisplayCaseBlock.HORIZONTAL_FACING);
+		DisplayCaseInventory inventory = tile.handler;
+		ItemStack stack = inventory.getStackInSlot(0);
+		
+		if(stack != ItemStack.EMPTY)
 		{
-			ItemStack stack = tile.getDisplayedItem();
 			matrix.pushPose();
-			if(tile.getBlockState().getValue(DisplayCaseBlock.HORIZONTAL_FACING) == Direction.NORTH)
+			if(direction == Direction.NORTH)
 			{
 				matrix.mulPose(RenderUtils.Y0);
 				matrix.translate(0.5, 0.6, 0.3);
 				matrix.mulPose(RenderUtils.X65);
 			}
-			else if(tile.getBlockState().getValue(DisplayCaseBlock.HORIZONTAL_FACING) == Direction.EAST)
+			else if(direction == Direction.EAST)
 			{
 				matrix.mulPose(RenderUtils.Y90);
 				matrix.translate(-0.5, 0.6, 0.7);
 				matrix.mulPose(RenderUtils.NX65);
 			}
-			else if(tile.getBlockState().getValue(DisplayCaseBlock.HORIZONTAL_FACING) == Direction.SOUTH)
+			else if(direction == Direction.SOUTH)
 			{
 				matrix.mulPose(RenderUtils.Y180);
 				matrix.translate(-0.5, 0.6, -0.7);
 				matrix.mulPose(RenderUtils.X65);
 			}
-			else if(tile.getBlockState().getValue(DisplayCaseBlock.HORIZONTAL_FACING) == Direction.WEST)
+			else if(direction == Direction.WEST)
 			{
 				matrix.mulPose(RenderUtils.Y270);
 				matrix.translate(0.5, 0.6, -0.3);

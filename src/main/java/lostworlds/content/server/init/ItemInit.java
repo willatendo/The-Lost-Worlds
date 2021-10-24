@@ -14,6 +14,7 @@ import lostworlds.library.item.DNAItem;
 import lostworlds.library.item.FieldGuideItem;
 import lostworlds.library.item.FossilItem;
 import lostworlds.library.item.HammerItem;
+import lostworlds.library.item.LostWorldsLexicon;
 import lostworlds.library.item.ModBoneMealItem;
 import lostworlds.library.item.ModItem;
 import lostworlds.library.item.ModSpawnEggItem;
@@ -41,6 +42,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTier;
 import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 
@@ -168,6 +170,7 @@ public class ItemInit
 	public static final Item OXYGEN_TANK = ModRegistry.register("oxygen_tank", new OxygenTankItem());
 	
 	public static final Item WET_PAPER = ModRegistry.register("wet_paper", new WetPaperItem());
+	public static final Item LOST_WORLDS_LEXICON = ModRegistry.register("lost_worlds_lexicon", new LostWorldsLexicon(new Properties().tab(ModUtils.ITEMS).stacksTo(1).rarity(Rarity.RARE).fireResistant()));
 	public static final Item FIELD_GUIDE = ModRegistry.register("field_guide", new FieldGuideItem());
 	public static final Item BOOK_OF_ARCHAEOLOGY = ModRegistry.register("book_of_archaeology", new FieldGuideItem());
 	public static final Item TABLET = ModRegistry.register("tablet", new TabletItem());

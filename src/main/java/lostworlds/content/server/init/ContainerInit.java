@@ -32,7 +32,7 @@ public class ContainerInit
 
 	public static final ContainerType<TimeMachineContainer> TIME_MACHINE_CONTAINER = ModRegistry.register("time_machine_container", IForgeContainerType.create(TimeMachineContainer::new));
 
-	public static final ContainerType<DisplayCaseContainer> DISPLAY_CASE_CONTAINER = ModRegistry.register("display_case_container", IForgeContainerType.create(DisplayCaseContainer::new));
+	public static final ContainerType<DisplayCaseContainer> DISPLAY_CASE_CONTAINER = ModRegistry.register("display_case_container", IForgeContainerType.create(DisplayCaseContainer::create));
 	
 	public static final ContainerType<ArchaeologyTableContainer> ARCHAEOLOGY_CONTAINER = ModRegistry.register("archaeology_table_container", IForgeContainerType.create(ArchaeologyTableContainer::new));
 	public static final ContainerType<PaleontologyTableContainer> PALEONTOLOGY_CONTAINER = ModRegistry.register("paleontology_table_container", IForgeContainerType.create(PaleontologyTableContainer::new));

@@ -1,0 +1,74 @@
+[
+	{
+		"name": "introduction",
+		"data": "sections/intro.json",
+		"icon": {
+			"item": {
+				"id": "lostworlds:leather_brush"
+			}
+		}
+	},
+	{
+		"name": "world",
+		"data": "sections/world.json",
+		"icon": {
+			"item": {
+				"id": "lostworlds:jurassic_cobblestone"
+			}
+		}
+	},
+	{
+		"name": "archaeology",
+		"data": "sections/archaeology.json",
+		"icon": {
+			"item": {
+				"id": "lostworlds:diamond_brush"
+			}
+		}
+	},
+	{
+		"name": "paleontology",
+		"data": "sections/paleontology.json",
+		"icon": {
+			"item": {
+				"id": "lostworlds:hammer"
+			}
+		}
+	},
+	{
+		"name": "creature_creation",
+		"data": "sections/creature_creation.json",
+		"icon": {
+			"item": {
+				"id": "lostworlds:culture_vat"
+			}
+		}
+	},
+	{
+		"name": "creature_care",
+		"data": "sections/creature_care.json",
+		"icon": {
+			"item": {
+				"id": "minecraft:wheat"
+			}
+		}
+	},
+	{
+		"name": "time_traveling",
+		"data": "sections/time_traveling.json",
+		"icon": {
+			"item": {
+				"id": "lostworlds:jurassic_period_time_book"
+			}
+		}
+	},
+	{
+		"name": "further_reading",
+		"data": "sections/further_reading.json",
+		"icon": {
+			"item": {
+				"id": "lostworlds:field_guide"
+			}
+		}
+	}
+]

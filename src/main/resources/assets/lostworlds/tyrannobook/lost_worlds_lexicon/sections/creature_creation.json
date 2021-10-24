@@ -1,0 +1,7 @@
+[
+	{
+		"name": "creature_creation",
+		"type": "text",
+		"data": "creature_creation/creature_creation.json"
+	}
+]

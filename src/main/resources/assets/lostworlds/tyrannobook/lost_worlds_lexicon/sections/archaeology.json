@@ -1,0 +1,7 @@
+[
+	{
+		"name": "archaeology",
+		"type": "text",
+		"data": "archaeology/archaeology.json"
+	}
+]

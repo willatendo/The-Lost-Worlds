@@ -6,9 +6,11 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 import lostworlds.content.server.init.SoundInit;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FallingBlock;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.FallingBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -192,5 +194,10 @@ public class AbstractBakedVaseBlock extends FallingBlock
 		{
 			facingMap.put(direction, calculateShapes(direction, shape));
 		}
-	}	
+	}		
+	
+	public static Block kylix()
+	{
+		return new AbstractVaseBlock(AbstractBlock.Properties.of(Material.CLAY).instabreak().noOcclusion(), Block.box(0.0D, 0.0, 0.0D, 16.0D, 16.0D, 16.0D));
+	}
 }

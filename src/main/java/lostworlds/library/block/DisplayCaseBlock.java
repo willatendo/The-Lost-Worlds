@@ -6,7 +6,6 @@ import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.entity.DisplayCaseTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -31,7 +30,7 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class DisplayCaseBlock extends Block implements ITileEntityProvider
+public class DisplayCaseBlock extends Block
 {
 	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 	
@@ -118,15 +117,21 @@ public class DisplayCaseBlock extends Block implements ITileEntityProvider
 	}
 	
 	@Override
+	public float getShadeBrightness(BlockState state, IBlockReader reader, BlockPos pos) 
+	{
+		return 1.0F;
+	}
+	
+	@Override
 	public int getAnalogOutputSignal(BlockState state, World world, BlockPos pos) 
 	{
 		return Container.getRedstoneSignalFromBlockEntity(world.getBlockEntity(pos));
 	}
 
 	@Override
-	public TileEntity newBlockEntity(IBlockReader reader) 
+	public boolean hasTileEntity(BlockState state) 
 	{
-		return new DisplayCaseTileEntity();
+		return true;
 	}
 
 	@Override

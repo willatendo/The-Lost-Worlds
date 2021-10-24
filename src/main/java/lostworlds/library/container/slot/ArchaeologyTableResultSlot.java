@@ -1,7 +1,7 @@
 package lostworlds.library.container.slot;
 
 import lostworlds.content.server.init.RecipeInit;
-import lostworlds.library.inventory.ArchaeologyTableInventory;
+import lostworlds.library.container.inventory.ArchaeologyTableInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.IRecipeHolder;

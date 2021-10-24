@@ -13,7 +13,7 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 
 import lostworlds.content.server.init.RecipeInit;
-import lostworlds.library.inventory.ArchaeologyTableInventory;
+import lostworlds.library.container.inventory.ArchaeologyTableInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
