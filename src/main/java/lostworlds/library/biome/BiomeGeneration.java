@@ -18,6 +18,21 @@ public class BiomeGeneration
 {	
 	public static void addBiomesToOverworld(BiomeLoadingEvent event) 
 	{
+		if(LostWorldsConfig.COMMON_CONFIG.araucariaForestShouldSpawn.get())
+		{
+			if(event.getName().equals(BiomeInit.ARAUCARIA_FOREST.getRegistryName())) 
+			{
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.ARAUCARIA_FOREST, LostWorldsConfig.COMMON_CONFIG.araucariaForestWeight.get()));
+				BiomeDictionary.addTypes(BiomeKeys.ARAUCARIA_FOREST, Type.FOREST, Type.CONIFEROUS);
+			}
+			
+			if(event.getName().equals(BiomeInit.ARAUCARIA_FOREST_HILLS.getRegistryName())) 
+			{
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.ARAUCARIA_FOREST_HILLS, LostWorldsConfig.COMMON_CONFIG.araucariaForestWeight.get()));
+				BiomeDictionary.addTypes(BiomeKeys.ARAUCARIA_FOREST_HILLS, Type.FOREST, Type.CONIFEROUS, Type.HILLS);
+			}
+		}
+		
 		if(LostWorldsConfig.COMMON_CONFIG.coniferForestShouldSpawn.get())
 		{
 			if(event.getName().equals(BiomeInit.CONIFER_FOREST.getRegistryName())) 
@@ -45,6 +60,21 @@ public class BiomeGeneration
 			{
 				BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(BiomeKeys.GINKGO_FOREST_HILLS, LostWorldsConfig.COMMON_CONFIG.ginkgoForestWeight.get()));
 				BiomeDictionary.addTypes(BiomeKeys.GINKGO_FOREST_HILLS, Type.FOREST, Type.DENSE, Type.HILLS);
+			}
+		}
+		
+		if(LostWorldsConfig.COMMON_CONFIG.sequoiaForestShouldSpawn.get())
+		{
+			if(event.getName().equals(BiomeInit.SEQUOIA_FOREST.getRegistryName())) 
+			{
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.SEQUOIA_FOREST, LostWorldsConfig.COMMON_CONFIG.ginkgoForestWeight.get()));
+				BiomeDictionary.addTypes(BiomeKeys.SEQUOIA_FOREST, Type.FOREST, Type.COLD, Type.CONIFEROUS);
+			}
+			
+			if(event.getName().equals(BiomeInit.SEQUOIA_FOREST_HILLS.getRegistryName())) 
+			{
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.SEQUOIA_FOREST_HILLS, LostWorldsConfig.COMMON_CONFIG.ginkgoForestWeight.get()));
+				BiomeDictionary.addTypes(BiomeKeys.SEQUOIA_FOREST_HILLS, Type.FOREST, Type.COLD, Type.CONIFEROUS);
 			}
 		}
 	}

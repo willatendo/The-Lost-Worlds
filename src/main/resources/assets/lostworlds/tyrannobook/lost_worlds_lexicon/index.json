@@ -40,7 +40,7 @@
 		"data": "sections/creature_creation.json",
 		"icon": {
 			"item": {
-				"id": "lostworlds:culture_vat"
+				"id": "lostworlds:cultivator"
 			}
 		}
 	},

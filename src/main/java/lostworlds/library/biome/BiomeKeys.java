@@ -64,11 +64,17 @@ public class BiomeKeys
 	public static final RegistryKey<Biome> JURASSIC_BOG = register("jurassic_bog");
 
 	//Overworld
+	public static final RegistryKey<Biome> ARAUCARIA_FOREST = register("araucaria_forest");
+	public static final RegistryKey<Biome> ARAUCARIA_FOREST_HILLS = register("araucaria_forest_hills");
+	
 	public static final RegistryKey<Biome> CONIFER_FOREST = register("conifer_forest");
 	public static final RegistryKey<Biome> CONIFER_FOREST_HILLS = register("conifer_forest_hills");
 	
 	public static final RegistryKey<Biome> GINKGO_FOREST = register("ginkgo_forest");
 	public static final RegistryKey<Biome> GINKGO_FOREST_HILLS = register("ginkgo_forest_hills");
+	
+	public static final RegistryKey<Biome> SEQUOIA_FOREST = register("sequoia_forest");
+	public static final RegistryKey<Biome> SEQUOIA_FOREST_HILLS = register("sequoia_forest_hills");
 	
 	private static RegistryKey<Biome> register(String id)
 	{

@@ -14,8 +14,10 @@ import lostworlds.library.biome.biomes.jurassic.plains.JurassicPlains;
 import lostworlds.library.biome.biomes.jurassic.swamp.JurassicBog;
 import lostworlds.library.biome.biomes.jurassic.swamp.JurassicMarsh;
 import lostworlds.library.biome.biomes.jurassic.swamp.JurassicSwamp;
+import lostworlds.library.biome.biomes.overworld.forest.AraucariaForest;
 import lostworlds.library.biome.biomes.overworld.forest.ConiferForest;
 import lostworlds.library.biome.biomes.overworld.forest.GinkgoForest;
+import lostworlds.library.biome.biomes.overworld.forest.SequoiaForest;
 import lostworlds.library.biome.biomes.permian.desert.PermianDesert;
 import lostworlds.library.biome.biomes.permian.forest.PermianConiferForest;
 import lostworlds.library.biome.biomes.permian.forest.PermianGinkgoForest;
@@ -92,11 +94,17 @@ public class BiomeInit
 	public static final Biome JURASSIC_BOG = ModRegistry.register("jurassic_bog", JurassicBog.create());
 
 	//Overworld
+	public static final Biome ARAUCARIA_FOREST = ModRegistry.register("araucaria_forest", AraucariaForest.create());
+	public static final Biome ARAUCARIA_FOREST_HILLS = ModRegistry.register("araucaria_forest_hills", AraucariaForest.create(0.45F, 0.3F));
+	
 	public static final Biome CONIFER_FOREST = ModRegistry.register("conifer_forest", ConiferForest.create());
 	public static final Biome CONIFER_FOREST_HILLS = ModRegistry.register("conifer_forest_hills", ConiferForest.create(0.45F, 0.3F));
 	
 	public static final Biome GINKGO_FOREST = ModRegistry.register("ginkgo_forest", GinkgoForest.create());
 	public static final Biome GINKGO_FOREST_HILLS = ModRegistry.register("ginkgo_forest_hills", GinkgoForest.create(0.45F, 0.3F));
+	
+	public static final Biome SEQUOIA_FOREST = ModRegistry.register("sequoia_forest", SequoiaForest.create());
+	public static final Biome SEQUOIA_FOREST_HILLS = ModRegistry.register("sequoia_forest_hills", SequoiaForest.create(0.45F, 0.3F));
 	
 	//Registry
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Biomes"); }

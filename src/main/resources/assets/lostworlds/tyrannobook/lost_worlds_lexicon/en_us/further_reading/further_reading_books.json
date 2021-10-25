@@ -1,0 +1,15 @@
+{
+	"text": [
+		{
+			"text": "Field Guide: The prefect guide to each creature! It provides some basic information on each discovery. With each new creature you research, a new page is added!"
+		},
+		{
+			"text": "Book of Archaeology: The prefect guide to exploring ancient civilizations! With each structural discovery, a new page is added!",
+			"paragraph": true
+		},
+		{
+			"text": "Ancient Herbs: The prefect guide to ancient plants! With each new plant you find, a new page is added!",
+			"paragraph": true
+		}
+	]
+}

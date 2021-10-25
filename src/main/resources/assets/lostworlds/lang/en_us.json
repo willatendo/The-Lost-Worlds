@@ -34,6 +34,8 @@
 	
 	//Utilities
 	"item.lostworlds.wet_paper": "Wet Paper",
+	"item.lostworlds.lost_worlds_lexicon": "Lost Worlds Lexicon",
+	"lexicon.lostworlds.desc": "An Everything-You-Need-to-Know Book!",
 	"item.lostworlds.field_guide": "Field Guide",
 	"item.lostworlds.field_guide.desc": "Willatendo - Volume 3",
 	"item.lostworlds.tablet": "Tablet",

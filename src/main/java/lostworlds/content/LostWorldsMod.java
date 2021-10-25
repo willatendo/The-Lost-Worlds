@@ -71,7 +71,7 @@ public class LostWorldsMod
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(BlockInit.VOLCANIC_ASH.asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), PotionInit.ASHY_LUNG_POTION));
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), ItemInit.CONTRACEPTIVES.getDefaultInstance());
 		
-		ModUtils.ITEMS.setIcon(ItemInit.AMBER.getDefaultInstance());
+		ModUtils.ITEMS.setIcon(ItemInit.LOST_WORLDS_LEXICON.getDefaultInstance());
 		ModUtils.BLOCKS.setIcon(BlockInit.PLASTERED_FOSSILIZED_TRACK.asItem().getDefaultInstance());
 						
 		event.enqueueWork(() -> 
