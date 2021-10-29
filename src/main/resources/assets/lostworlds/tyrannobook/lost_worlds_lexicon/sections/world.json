@@ -3,5 +3,65 @@
 		"name": "world",
 		"type": "text",
 		"data": "world/world.json"
+	},
+	{
+		"name": "biomes",
+		"type": "text",
+		"data": "world/biomes.json"
+	},
+	{
+		"name": "araucaria",
+		"type": "text",
+		"data": "world/biome_araucaria.json"
+	},
+	{
+		"name": "araucaria_picture",
+		"type": "imageText2",
+		"data": "world/biome_araucaria_picture.json"
+	},
+	{
+		"name": "conifer",
+		"type": "text",
+		"data": "world/biome_conifer.json"
+	},
+	{
+		"name": "conifer_picture",
+		"type": "imageText2",
+		"data": "world/biome_conifer_picture.json"
+	},
+	{
+		"name": "ginkgo",
+		"type": "text",
+		"data": "world/biome_ginkgo.json"
+	},
+	{
+		"name": "ginkgo_picture",
+		"type": "imageText2",
+		"data": "world/biome_ginkgo_picture.json"
+	},
+	{
+		"name": "redwoods",
+		"type": "text",
+		"data": "world/biome_redwoods.json"
+	},
+	{
+		"name": "redwoods_picture",
+		"type": "imageText2",
+		"data": "world/biome_redwoods_picture.json"
+	},
+	{
+		"name": "updated_biomes",
+		"type": "text",
+		"data": "world/updated_biomes.json"
+	},
+	{
+		"name": "swamp",
+		"type": "text",
+		"data": "world/biome_swamp.json"
+	},
+	{
+		"name": "swamp_picture",
+		"type": "imageText2",
+		"data": "world/biome_swamp_picture.json"
 	}
 ]

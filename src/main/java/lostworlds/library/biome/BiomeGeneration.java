@@ -65,16 +65,16 @@ public class BiomeGeneration
 		
 		if(LostWorldsConfig.COMMON_CONFIG.sequoiaForestShouldSpawn.get())
 		{
-			if(event.getName().equals(BiomeInit.SEQUOIA_FOREST.getRegistryName())) 
+			if(event.getName().equals(BiomeInit.REDWOODS_FOREST.getRegistryName())) 
 			{
-				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.SEQUOIA_FOREST, LostWorldsConfig.COMMON_CONFIG.ginkgoForestWeight.get()));
-				BiomeDictionary.addTypes(BiomeKeys.SEQUOIA_FOREST, Type.FOREST, Type.COLD, Type.CONIFEROUS);
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.REDWOODS_FOREST, LostWorldsConfig.COMMON_CONFIG.ginkgoForestWeight.get()));
+				BiomeDictionary.addTypes(BiomeKeys.REDWOODS_FOREST, Type.FOREST, Type.COLD, Type.CONIFEROUS);
 			}
 			
-			if(event.getName().equals(BiomeInit.SEQUOIA_FOREST_HILLS.getRegistryName())) 
+			if(event.getName().equals(BiomeInit.REDWOODS_FOREST_HILLS.getRegistryName())) 
 			{
-				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.SEQUOIA_FOREST_HILLS, LostWorldsConfig.COMMON_CONFIG.ginkgoForestWeight.get()));
-				BiomeDictionary.addTypes(BiomeKeys.SEQUOIA_FOREST_HILLS, Type.FOREST, Type.COLD, Type.CONIFEROUS);
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.REDWOODS_FOREST_HILLS, LostWorldsConfig.COMMON_CONFIG.ginkgoForestWeight.get()));
+				BiomeDictionary.addTypes(BiomeKeys.REDWOODS_FOREST_HILLS, Type.FOREST, Type.COLD, Type.CONIFEROUS);
 			}
 		}
 	}

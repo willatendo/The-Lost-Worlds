@@ -25,6 +25,7 @@ import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
@@ -90,6 +91,12 @@ public class PaleontologyTableBlock extends Block implements IWaterLoggable
 		{
 			return new PaleontologyTableContainer(windowId, playerInv, IWorldPosCallable.create(world, pos));
 		}, NAME);
+	}
+	
+	@Override
+	public float getShadeBrightness(BlockState state, IBlockReader reader, BlockPos pos) 
+	{
+		return 1.0F;
 	}
 	
 	public static Block create(String wood)

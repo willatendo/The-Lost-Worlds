@@ -124,7 +124,9 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.ANALYZER, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.DNA_INJECTOR, RenderType.translucent());		
 		RenderTypeLookup.setRenderLayer(BlockInit.CULTIVATOR, RenderType.translucent());		
-		
+
+		RenderTypeLookup.setRenderLayer(BlockInit.PALEOBOTANY_TABLE, RenderType.cutout());		
+
 		RenderTypeLookup.setRenderLayer(BlockInit.ARAUCARIA_LEAVES, RenderType.translucent());	
 		RenderTypeLookup.setRenderLayer(BlockInit.ARAUCARIA_DOOR, RenderType.translucent());	
 		RenderTypeLookup.setRenderLayer(BlockInit.ARAUCARIA_TRAPDOOR, RenderType.translucent());
@@ -151,7 +153,7 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.SEQUOIA_DOOR, RenderType.translucent());	
 		RenderTypeLookup.setRenderLayer(BlockInit.SEQUOIA_TRAPDOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.SEQUOIA_SAPLING, RenderType.cutout());
-		
+
 		for(Block block : ColouredGlassPaneBlock.entries)
 		{
 			RenderTypeLookup.setRenderLayer(block, RenderType.translucent());

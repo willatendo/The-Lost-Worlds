@@ -480,6 +480,7 @@ public class ModBiomeFeatures
 	
 	public static void addSequoiaTrees(BiomeGenerationSettings.Builder builder)
 	{
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_BABY_SEQUOIA_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_SEQUOIA_TREES);
 	}
 	

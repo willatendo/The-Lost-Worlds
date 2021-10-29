@@ -1,0 +1,13 @@
+{
+	"title": "Ginkgo Forest",
+	"image": {
+		"file": "lostworlds:tyrannobook/pictures/ginkgo_example.png",
+		"width": 170,
+		"height": 100
+	},
+	"text": [
+		{
+			"text": "Example of a ginkgo forest."
+		}
+	]
+}

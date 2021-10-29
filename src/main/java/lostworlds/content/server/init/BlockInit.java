@@ -31,6 +31,7 @@ import lostworlds.library.block.ModOreRotatedPillerBlock;
 import lostworlds.library.block.ModWoodType;
 import lostworlds.library.block.MossySoilBlock;
 import lostworlds.library.block.NautilusShellBlock;
+import lostworlds.library.block.PaleobotanyTableBlock;
 import lostworlds.library.block.PaleontologyTableBlock;
 import lostworlds.library.block.PetrifiedWoodBlock;
 import lostworlds.library.block.PlantFossilBlock;
@@ -225,7 +226,7 @@ public class BlockInit
 	public static final Block DNA_INJECTOR = DNAInjectorBlock.create();
 	public static final Block CULTIVATOR = CultivatorBlock.create();
 		
-	public static final Block ARCHAEOLOGY_TABLE = ArchaeologyTableBlock.create();
+	public static final Block ARCHAEOLOGY_TABLE = ArchaeologyTableBlock.create("oak");
 	
 	public static final Block OAK_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("oak");
 	public static final Block SPRUCE_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("spruce");
@@ -242,7 +243,9 @@ public class BlockInit
 	public static final Block GINKGO_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("ginkgo");
 	public static final Block SCORCHED_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("scorched");
 	public static final Block SEQUOIA_PALEONTOLOGY_TABLE = PaleontologyTableBlock.create("sequoia");
-		
+
+	public static final Block PALEOBOTANY_TABLE = PaleobotanyTableBlock.create();
+
 	public static final Block TIME_MACHINE = TimeMachineBlock.create();
 			
 	//Museum Blocks

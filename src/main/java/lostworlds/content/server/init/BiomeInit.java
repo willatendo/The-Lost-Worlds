@@ -103,8 +103,8 @@ public class BiomeInit
 	public static final Biome GINKGO_FOREST = ModRegistry.register("ginkgo_forest", GinkgoForest.create());
 	public static final Biome GINKGO_FOREST_HILLS = ModRegistry.register("ginkgo_forest_hills", GinkgoForest.create(0.45F, 0.3F));
 	
-	public static final Biome SEQUOIA_FOREST = ModRegistry.register("sequoia_forest", SequoiaForest.create());
-	public static final Biome SEQUOIA_FOREST_HILLS = ModRegistry.register("sequoia_forest_hills", SequoiaForest.create(0.45F, 0.3F));
+	public static final Biome REDWOODS_FOREST = ModRegistry.register("redwoods_forest", SequoiaForest.create());
+	public static final Biome REDWOODS_FOREST_HILLS = ModRegistry.register("redwoods_forest_hills", SequoiaForest.create(0.45F, 0.3F));
 	
 	//Registry
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Biomes"); }

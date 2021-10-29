@@ -13,6 +13,7 @@ import lostworlds.library.item.CrystalScarabGemItem;
 import lostworlds.library.item.DNAItem;
 import lostworlds.library.item.FieldGuideItem;
 import lostworlds.library.item.FossilItem;
+import lostworlds.library.item.FunBagItem;
 import lostworlds.library.item.HammerItem;
 import lostworlds.library.item.LostWorldsLexicon;
 import lostworlds.library.item.ModBoneMealItem;
@@ -214,9 +215,8 @@ public class ItemInit
 	
 	public static final Item AMBER_KEYCHAIN = ModRegistry.register("amber_keychain", new ModItem());
 	public static final Item DINO_BUTTON = ModRegistry.register("dino_button", new ModItem());
-	public static final Item DINO_SNOWGLOBE = ModRegistry.register("dino_snowglobe", new ModItem());
 	public static final Item BALLOON = ModRegistry.register("balloon", new ModItem());
-	public static final Item FUN_BAG = ModRegistry.register("fun_bag", new ModItem());
+	public static final Item FUN_BAG = ModRegistry.register("fun_bag", new FunBagItem());
 	public static final Item TYRANNOSAURUS_PLUSH = ModRegistry.register("tyrannosaurus_plush", new ModItem());	
 	
 	public static final Item FERN_LEAVES = ModRegistry.register("fern_leaves", new ModItem(FoodInit.FERN_LEAVES));

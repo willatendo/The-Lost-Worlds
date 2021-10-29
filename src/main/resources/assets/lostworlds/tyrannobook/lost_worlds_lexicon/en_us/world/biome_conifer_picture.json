@@ -1,0 +1,13 @@
+{
+	"title": "Conifer Forest",
+	"image": {
+		"file": "lostworlds:tyrannobook/pictures/conifer_example.png",
+		"width": 170,
+		"height": 100
+	},
+	"text": [
+		{
+			"text": "Example of a conifer forest."
+		}
+	]
+}

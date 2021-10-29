@@ -2,6 +2,7 @@ package lostworlds.content.client.book;
 
 import lostworlds.content.ModUtils;
 import lostworlds.content.client.book.content.ContentArchaeology;
+import lostworlds.content.client.book.content.ContentImageText2;
 import net.minecraft.util.ResourceLocation;
 import tyrannotitanlib.library.tyrannobook.client.FileRepository;
 import tyrannotitanlib.library.tyrannobook.client.PaddingBookTransformer;
@@ -17,6 +18,7 @@ public class LostWorldsBooks extends TyrannobookData
 	public static void initBooks() 
 	{
 		TyrannobookLoader.registerPageType("archaeology", ContentArchaeology.class);
+		TyrannobookLoader.registerPageType(ContentImageText2.ID, ContentImageText2.class);
 		
 		addStandardData(LOST_WORLDS_LEXICON, LOST_WORLDS_LEXICON_ID);
 	}

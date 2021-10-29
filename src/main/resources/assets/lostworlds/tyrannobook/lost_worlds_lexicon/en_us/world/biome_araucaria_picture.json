@@ -1,0 +1,13 @@
+{
+	"title": "Araucaria Forest",
+	"image": {
+		"file": "lostworlds:tyrannobook/pictures/araucaria_example.png",
+		"width": 170,
+		"height": 100
+	},
+	"text": [
+		{
+			"text": "Example of a araucaria forest."
+		}
+	]
+}
