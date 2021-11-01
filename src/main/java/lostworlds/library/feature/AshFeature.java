@@ -39,7 +39,10 @@ public class AshFeature extends Feature<NoFeatureConfig>
 				Biome biome = reader.getBiome(blockpos$mutable);
 				if(!biome.shouldFreeze(reader, blockpos$mutable1, false) && !biome.shouldSnow(reader, blockpos$mutable1))
 				{
-					reader.setBlock(blockpos$mutable, BlockInit.VOLCANIC_ASH_LAYER.defaultBlockState(), 2);				
+					if(biome.getTemperature(pos) <= 5.0F)
+					{
+						reader.setBlock(blockpos$mutable, BlockInit.VOLCANIC_ASH_LAYER.defaultBlockState(), 2);				
+					}
 				}
 			}
 		}

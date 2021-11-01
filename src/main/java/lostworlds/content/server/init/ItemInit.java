@@ -28,11 +28,13 @@ import lostworlds.library.item.TimeBookItem;
 import lostworlds.library.item.WetPaperItem;
 import lostworlds.library.item.armour.MaskItem;
 import lostworlds.library.item.armour.ModArmourMaterial;
+import lostworlds.library.item.armour.OxygenArmorItem;
 import lostworlds.library.item.armour.OxygenTankItem;
 import lostworlds.library.item.block.SeedItem;
 import lostworlds.library.item.tool.BrushItem;
 import lostworlds.library.item.tool.CrystalScarabGemBrushItem;
 import lostworlds.library.item.tool.ModItemTier;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.BannerPatternItem;
 import net.minecraft.item.Food;
@@ -167,7 +169,7 @@ public class ItemInit
 	
 	public static final Item CLOTH_MASK = ModRegistry.register("cloth_mask", new MaskItem(ModArmourMaterial.CLOTH_MASK));
 	
-	public static final Item OXYGEN_MASK = ModRegistry.register("oxygen_mask", new MaskItem(ModArmourMaterial.OXYGEN_MASK));
+	public static final Item OXYGEN_MASK = ModRegistry.register("oxygen_mask", new OxygenArmorItem(EquipmentSlotType.HEAD));
 	public static final Item OXYGEN_TANK = ModRegistry.register("oxygen_tank", new OxygenTankItem());
 	
 	public static final Item WET_PAPER = ModRegistry.register("wet_paper", new WetPaperItem());

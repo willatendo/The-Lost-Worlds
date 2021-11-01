@@ -4,53 +4,23 @@ import lostworlds.library.biome.BiomeKeys;
 import net.minecraft.world.gen.INoiseRandom;
 import net.minecraft.world.gen.layer.traits.IC0Transformer;
 
-public class PermianBiomeLayer implements IC0Transformer  
+public final class PermianBiomeLayer implements IC0Transformer 
 {
-    private static final int UNCOMMON_BIOME_CHANCE = 8;
-    private static final int RARE_BIOME_CHANCE = 16;
-    protected int[] commonBiomes = new int[]
-    {
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_DESERT),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_DESERT_HILLS),
-    };
-    protected int[] uncommonBiomes = (new int[]
-    {
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_DRIED_PLAINS),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_DRIED_PLAINS_HILLS),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_FLOOD_BASALTS),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_ASHY_MEDOWS),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_MOUNTAINS),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_RIVER),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_CONIFER_FOREST),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_CONIFER_FOREST_HILLS),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_GINKGO_FOREST),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_GINKGO_FOREST_HILLS),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_PLAINS),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_PLAINS_HILLS),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_MARSH),
-    });
-    protected int[] rareBiomes = (new int[]
-    {
-    	PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_OCEAN),
-    	PermianLayerUtil.getBiomeId(BiomeKeys.DEEP_PERMIAN_OCEAN),
-    });
+	private final int[] landIds;
 
-    public PermianBiomeLayer() { }
-
-    @Override
-    public int apply(INoiseRandom iNoiseRandom, int rand)  
-    {
-        if(iNoiseRandom.nextRandom(RARE_BIOME_CHANCE) == 0) 
-        {
-            return rareBiomes[iNoiseRandom.nextRandom(rareBiomes.length)];
-        } 
-        else if(iNoiseRandom.nextRandom(UNCOMMON_BIOME_CHANCE) == 0) 
-        {
-            return uncommonBiomes[iNoiseRandom.nextRandom(uncommonBiomes.length)];
-        } 
-        else 
-        {
-            return commonBiomes[iNoiseRandom.nextRandom(commonBiomes.length)];
-        }
+	public PermianBiomeLayer() 
+	{
+        this.landIds = new int[] { PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_DRIED_PLAINS), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_DRIED_PLAINS_HILLS), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_FLOOD_BASALTS), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_ASHY_MEDOWS), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_MOUNTAINS), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_RIVER), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_CONIFER_FOREST), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_CONIFER_FOREST_HILLS), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_GINKGO_FOREST), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_GINKGO_FOREST_HILLS), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_PLAINS), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_PLAINS_HILLS), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_MARSH), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_DESERT), PermianLayerUtil.getBiomeId(BiomeKeys.PERMIAN_DESERT_HILLS) };
     }
+
+	@Override
+	public int apply(INoiseRandom iNoiseRandom, int center) 
+	{
+		if(PermianLayerUtil.isLand(center)) 
+		{
+			return landIds[iNoiseRandom.nextRandom(landIds.length)];
+		}
+
+		return center;
+	}
 }

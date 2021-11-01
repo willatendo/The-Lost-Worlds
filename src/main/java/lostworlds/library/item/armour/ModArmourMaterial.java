@@ -18,7 +18,7 @@ public enum ModArmourMaterial implements IArmorMaterial
 	{
 		return Ingredient.of(ItemTags.WOOL);
 	}),
-	OXYGEN_MASK("oxygen_mask", 0, new int[] { 2, 4, 7, 3 }, 0, SoundEvents.IRON_DOOR_OPEN, 0.0F, 0.0F, () -> 
+	OXYGEN_GEAR("oxygen_gear", 0, new int[] { 2, 4, 7, 3 }, 0, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> 
 	{
 		return Ingredient.of(ItemTags.WOOL);
 	});

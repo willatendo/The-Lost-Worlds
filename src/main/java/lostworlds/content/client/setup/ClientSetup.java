@@ -7,6 +7,7 @@ import lostworlds.content.client.entity.render.FossilPoacherRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusSkeletonRenderer;
 import lostworlds.content.client.entity.render.ModBoatRenderer;
+import lostworlds.content.client.entity.render.OxygenGearRenderer;
 import lostworlds.content.client.entity.render.block.DisplayCaseRenderer;
 import lostworlds.content.client.entity.render.bone.CustomisableRenderer;
 import lostworlds.content.client.screen.AnalyzerScreen;
@@ -27,6 +28,8 @@ import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.ColouredGlassBlock;
 import lostworlds.library.block.ColouredGlassPaneBlock;
 import lostworlds.library.entity.DinoTypes;
+import lostworlds.library.item.armour.OxygenArmorItem;
+import lostworlds.library.item.armour.OxygenTankItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
@@ -48,6 +51,7 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationArmorRenderer;
 
 @EventBusSubscriber(modid = ModUtils.ID, bus = Bus.MOD, value = Dist.CLIENT)
 public class ClientSetup 
@@ -206,6 +210,9 @@ public class ClientSetup
 			RenderingRegistry.registerEntityRenderingHandler(dinos.getSkull(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_skull", dinos.getId(), 0.25F));
 			RenderingRegistry.registerEntityRenderingHandler(dinos.getTail(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_tail", dinos.getId(), 0.25F));
 		}
+		
+		TyrannomationArmorRenderer.registerArmorRenderer(OxygenArmorItem.class, new OxygenGearRenderer());
+		TyrannomationArmorRenderer.registerArmorRenderer(OxygenTankItem.class, new OxygenGearRenderer());
 	}
 	
 	public static void setupOther()

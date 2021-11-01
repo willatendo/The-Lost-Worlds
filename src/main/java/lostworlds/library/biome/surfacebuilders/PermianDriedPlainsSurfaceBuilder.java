@@ -23,11 +23,11 @@ public class PermianDriedPlainsSurfaceBuilder extends SurfaceBuilder<SurfaceBuil
 	{
 		if(noise > 1.0D) 
 		{
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.MOSSY_SOIL_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.CRACKED_SOIL_CONFIG);
 		}
 		else
 		{
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.PODZOL_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.DRIED_SOIL_CONFIG);
 		}
 	}
 }

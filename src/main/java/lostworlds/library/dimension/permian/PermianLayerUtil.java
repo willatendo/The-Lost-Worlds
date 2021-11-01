@@ -76,6 +76,7 @@ public class PermianLayerUtil
 
 		IAreaFactory<T> magnifyLayer = magnify(2007L, ZoomLayer.NORMAL, zoomLayer, 3, context);
 		IAreaFactory<T> biomeLayer = new PermianShoreLayer().run(context.apply(20), magnifyLayer);
+		biomeLayer = magnify(20, ZoomLayer.NORMAL, biomeLayer, 2, context);
 		
 		biomeLayer = SmoothLayer.INSTANCE.run(context.apply(17L), biomeLayer);
 
@@ -107,7 +108,7 @@ public class PermianLayerUtil
 		return biomeSeed == getBiomeId(BiomeKeys.PERMIAN_ASHY_MEDOWS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_CONIFER_FOREST) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_CONIFER_FOREST_HILLS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_DESERT) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_DESERT_HILLS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_DRIED_PLAINS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_DRIED_PLAINS_HILLS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_FLOOD_BASALTS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_GINKGO_FOREST) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_GINKGO_FOREST_HILLS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_MARSH) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_MOUNTAINS) || biomeSeed == getBiomeId(BiomeKeys.PERMIAN_SHORE);
 	}
 	
-	private static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> magnify(final long seed, final IAreaTransformer1 zoomLayer, final IAreaFactory<T> layer, final int count, final LongFunction<C> context) 
+	private static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> magnify(long seed, IAreaTransformer1 zoomLayer, IAreaFactory<T> layer, int count, LongFunction<C> context) 
 	{
 		IAreaFactory<T> result = layer;
 		for(int i = 0; i < count; i++) 
