@@ -10,6 +10,10 @@ import lostworlds.library.biome.biomes.jurassic.forest.JurassicRedwoodsForest;
 import lostworlds.library.biome.biomes.jurassic.mountains.JurassicErrodedMountains;
 import lostworlds.library.biome.biomes.jurassic.mountains.JurassicMountains;
 import lostworlds.library.biome.biomes.jurassic.mountains.JurassicVolcanicRange;
+import lostworlds.library.biome.biomes.jurassic.ocean.DeepJurassicOcean;
+import lostworlds.library.biome.biomes.jurassic.ocean.DeepWarmJurassicOcean;
+import lostworlds.library.biome.biomes.jurassic.ocean.JurassicOcean;
+import lostworlds.library.biome.biomes.jurassic.ocean.WarmJurassicOcean;
 import lostworlds.library.biome.biomes.jurassic.plains.JurassicPlains;
 import lostworlds.library.biome.biomes.jurassic.river.JurassicRiver;
 import lostworlds.library.biome.biomes.jurassic.shore.JurassicShore;
@@ -102,6 +106,12 @@ public class BiomeInit
 	public static final Biome JURASSIC_BOG = ModRegistry.register("jurassic_bog", JurassicBog.create());
 
 	public static final Biome JURASSIC_RIVER = ModRegistry.register("jurassic_river", JurassicRiver.create());
+
+	public static final Biome JURASSIC_OCEAN = ModRegistry.register("jurassic_ocean", JurassicOcean.create());
+	public static final Biome DEEP_JURASSIC_OCEAN = ModRegistry.register("deep_jurassic_ocean", DeepJurassicOcean.create());
+
+	public static final Biome WARM_JURASSIC_OCEAN = ModRegistry.register("warm_jurassic_ocean", WarmJurassicOcean.create());
+	public static final Biome WARM_DEEP_JURASSIC_OCEAN = ModRegistry.register("warm_deep_jurassic_ocean", DeepWarmJurassicOcean.create());
 
 	public static final Biome JURASSIC_SHORE = ModRegistry.register("jurassic_shore", JurassicShore.create());
 

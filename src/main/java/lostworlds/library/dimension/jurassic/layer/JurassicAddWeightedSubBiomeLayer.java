@@ -37,7 +37,7 @@ public class JurassicAddWeightedSubBiomeLayer implements IC0Transformer
 
 	public static JurassicAddWeightedSubBiomeLayer ocean() 
 	{
-		return new JurassicAddWeightedSubBiomeLayer(JurassicLayerUtil.getBiomeId(BiomeKeys.PERMIAN_OCEAN), new int[] { JurassicLayerUtil.getBiomeId(BiomeKeys.PERMIAN_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.DEEP_PERMIAN_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.WARM_PERMIAN_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.WARM_DEEP_PERMIAN_OCEAN) }, new WeightedRandom.Item(20), new WeightedRandom.Item(4), new WeightedRandom.Item(20), new WeightedRandom.Item(4));
+		return new JurassicAddWeightedSubBiomeLayer(JurassicLayerUtil.getBiomeId(BiomeKeys.JURASSIC_OCEAN), new int[] { JurassicLayerUtil.getBiomeId(BiomeKeys.JURASSIC_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.DEEP_JURASSIC_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.WARM_JURASSIC_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.WARM_DEEP_JURASSIC_OCEAN) }, new WeightedRandom.Item(20), new WeightedRandom.Item(4), new WeightedRandom.Item(20), new WeightedRandom.Item(4));
 	}
 
 	@Override

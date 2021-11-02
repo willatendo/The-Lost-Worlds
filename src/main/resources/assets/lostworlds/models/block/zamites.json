@@ -1,6 +1,7 @@
 {
-	"parent": "minecraft:block/tinted_cross",
+	"parent": "lostworlds:block/template_two_part_cross",
 	"textures": {
-		"cross": "lostworlds:block/zamites"
+		"stem": "lostworlds:block/zamites_stem",
+		"leaves": "lostworlds:block/zamites_leaves"
 	}
 }

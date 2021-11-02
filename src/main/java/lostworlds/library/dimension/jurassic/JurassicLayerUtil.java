@@ -103,7 +103,7 @@ public class JurassicLayerUtil
 
 	public static boolean isOcean(int biomeSeed) 
 	{
-		return biomeSeed == getBiomeId(BiomeKeys.PERMIAN_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.WARM_PERMIAN_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.DEEP_PERMIAN_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.WARM_DEEP_PERMIAN_OCEAN);
+		return biomeSeed == getBiomeId(BiomeKeys.JURASSIC_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.WARM_JURASSIC_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.DEEP_JURASSIC_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.WARM_DEEP_JURASSIC_OCEAN);
 	}
 	
 	public static boolean isRiver(int biomeSeed) 

@@ -32,6 +32,6 @@ public class JurassicShore extends SimpleBiome
 	
 	public static Biome create()
 	{
-		return ModBiomeMaker.create(RainType.RAIN, Category.BEACH, 0.0F, 0.025F, 0.2F, 0.4F, 0x3181c6, 0x1c65a5, 0x77d3ea, 0x39aac6, 0x2b9b33, calculateSkyColor(0.2F), MOB_SPAWNS.build(), GENERATION.build());
+		return ModBiomeMaker.create(RainType.RAIN, Category.BEACH, 0.0F, 0.025F, 0.2F, 0.4F, 0x3181c6, 0x1c65a5, 0x77d3ea, 0x39aac6, 0x2b9b33, 0x2b9b33, MOB_SPAWNS.build(), GENERATION.build());
 	}
 }

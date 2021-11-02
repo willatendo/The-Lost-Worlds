@@ -69,6 +69,11 @@ public class BiomeKeys
 	public static final RegistryKey<Biome> JURASSIC_FEN = register("jurassic_fen");
 	public static final RegistryKey<Biome> JURASSIC_BOG = register("jurassic_bog");
 
+	public static final RegistryKey<Biome> JURASSIC_OCEAN = register("jurassic_ocean");
+	public static final RegistryKey<Biome> WARM_JURASSIC_OCEAN = register("warm_jurassic_ocean");
+	public static final RegistryKey<Biome> DEEP_JURASSIC_OCEAN = register("deep_jurassic_ocean");
+	public static final RegistryKey<Biome> WARM_DEEP_JURASSIC_OCEAN = register("warm_deep_jurassic_ocean");
+
 	public static final RegistryKey<Biome> JURASSIC_RIVER = register("jurassic_river");
 
 	public static final RegistryKey<Biome> JURASSIC_SHORE = register("jurassic_shore");

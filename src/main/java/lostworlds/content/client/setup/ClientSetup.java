@@ -65,12 +65,12 @@ public class ClientSetup
 		blockcolours.register((state, reader, pos, color) -> 
 		{
 			return reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : FoliageColors.getDefaultColor();
-		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.CYPRESS_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES);
+		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.CYPRESS_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES, BlockInit.ALETHOPTERIS, BlockInit.BRAZILEA, BlockInit.CEPHALOTAXUS, BlockInit.OSMUNDA, BlockInit.WILLIAMSONIA, BlockInit.ZAMITES);
 		itemcolours.register((stack, intager) -> 
 		{
 			BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
 			return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, intager);
-		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.CYPRESS_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES);
+		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.CYPRESS_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES, BlockInit.ALETHOPTERIS, BlockInit.BRAZILEA, BlockInit.CEPHALOTAXUS, BlockInit.OSMUNDA);
 		
 		if(LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get())
 		{

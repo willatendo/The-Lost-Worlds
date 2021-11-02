@@ -1,6 +1,7 @@
 {
-	"parent": "minecraft:block/tinted_cross",
+	"parent": "lostworlds:block/template_two_part_cross",
 	"textures": {
-		"cross": "lostworlds:block/williamsonia_stem"
+		"stem": "lostworlds:block/williamsonia_stem_bottom",
+		"leaves": "lostworlds:block/williamsonia_leaves_bottom"
 	}
 }

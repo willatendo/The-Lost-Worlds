@@ -32,6 +32,6 @@ public class DeepWarmPermianOcean extends SimpleBiome
 	
 	public static Biome create()
 	{
-		return ModBiomeMaker.create(RainType.RAIN, Category.OCEAN, -1.8F, 0.1F, 0.2F, 0.0F, 4566514, 267827, 0x77d3ea, 0x39aac6, 0x2b9b33, 0x2b9b33, MOB_SPAWNS.build(), GENERATION.build());
+		return ModBiomeMaker.create(RainType.RAIN, Category.OCEAN, -1.8F, 0.1F, 0.2F, 0.0F, 4566514, 267827, 0x77d3ea, calculateSkyColor(0.4F), 0x2b9b33, 0x2b9b33, MOB_SPAWNS.build(), GENERATION.build());
 	}
 }

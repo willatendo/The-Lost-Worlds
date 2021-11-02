@@ -107,10 +107,8 @@ public class ModBiomeFeatures
 	
 	public static void permianOcean(BiomeGenerationSettings.Builder builder)
 	{
-		addPermianRock(builder);
 		addPermianOres(builder);
 		addModUnderwaterCarvers(builder);
-		addPermianLakes(builder);
 		addPermianUndergroundVariety(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
@@ -155,10 +153,8 @@ public class ModBiomeFeatures
 	
 	public static void permianCoralReef(BiomeGenerationSettings.Builder builder)
 	{
-		addPermianRock(builder);
 		addPermianOres(builder);
 		addModUnderwaterCarvers(builder);
-		addPermianLakes(builder);
 		addPermianUndergroundVariety(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
@@ -368,6 +364,25 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
 	}
 	
+	public static void jurassicOcean(BiomeGenerationSettings.Builder builder)
+	{
+		addJurassicOres(builder);
+		addModUnderwaterCarvers(builder);
+		addPermianUndergroundVariety(builder);
+
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
+	}
+	
+	public static void jurassicCoralReef(BiomeGenerationSettings.Builder builder)
+	{
+		addJurassicOres(builder);
+		addModUnderwaterCarvers(builder);
+		addJurassicUndergroundVariety(builder);
+
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.PERMIAN_CORAL_REEF);
+	}
 	
 	public static void jurassicRiver(BiomeGenerationSettings.Builder builder)
 	{

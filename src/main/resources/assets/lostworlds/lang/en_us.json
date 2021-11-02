@@ -59,6 +59,7 @@
 	"tablet.lostworlds.starving": "Starving",
 	"item.lostworlds.contraceptives": "Contraceptives",
 	"item.lostworlds.permian_period_time_book": "Permian Period Time Book",
+	"item.lostworlds.jurassic_period_time_book": "Jurassic Period Time Book",
 	"item.lostworlds.mud_ball": "Mud Ball",
 	
 	//Electronics
@@ -66,6 +67,7 @@
 	"item.lostworlds.copper_nugget": "Copper Nugget",
 	"item.lostworlds.copper_wire": "Copper Wire",
 	"item.lostworlds.computer_fan": "Computer Fan",
+	"item.lostworlds.computer_screen": "Computer Screen",
 	"item.lostworlds.computer_frame": "Computer Frame",
 	"item.lostworlds.computer_storage_port": "Computer Storage Port",
 	"item.lostworlds.motherboard": "Motherboard",
