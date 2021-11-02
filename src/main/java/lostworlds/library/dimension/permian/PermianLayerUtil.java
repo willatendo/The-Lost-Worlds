@@ -94,7 +94,9 @@ public class PermianLayerUtil
 		if(biomeSeed1 == biomeSeed2) 
 		{
 			return true;
-		} else {
+		} 
+		else 
+		{
 			return false;
 		}
 	}

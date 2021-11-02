@@ -11,6 +11,8 @@ import lostworlds.library.biome.biomes.jurassic.mountains.JurassicErrodedMountai
 import lostworlds.library.biome.biomes.jurassic.mountains.JurassicMountains;
 import lostworlds.library.biome.biomes.jurassic.mountains.JurassicVolcanicRange;
 import lostworlds.library.biome.biomes.jurassic.plains.JurassicPlains;
+import lostworlds.library.biome.biomes.jurassic.river.JurassicRiver;
+import lostworlds.library.biome.biomes.jurassic.shore.JurassicShore;
 import lostworlds.library.biome.biomes.jurassic.swamp.JurassicBog;
 import lostworlds.library.biome.biomes.jurassic.swamp.JurassicMarsh;
 import lostworlds.library.biome.biomes.jurassic.swamp.JurassicSwamp;
@@ -72,26 +74,36 @@ public class BiomeInit
 	public static final Biome PERMIAN_SHORE = ModRegistry.register("permian_shore", PermianShore.create());
 	
 	//Jurassic
+	public static final Biome JURASSIC_ARAUCARIA_FOREST = ModRegistry.register("jurassic_araucaria_forest", JurassicAraucariaForest.create());
+	public static final Biome JURASSIC_ARAUCARIA_FOREST_HILLS = ModRegistry.register("jurassic_araucaria_forest_hills", JurassicAraucariaForest.create(0.45F, 0.3F));
+
 	public static final Biome JURASSIC_CONIFER_FOREST = ModRegistry.register("jurassic_conifer_forest", JurassicConiferForest.create());
+	public static final Biome JURASSIC_CONIFER_FOREST_HILLS = ModRegistry.register("jurassic_conifer_forest_hills", JurassicConiferForest.create(0.45F, 0.3F));
 	
 	public static final Biome JURASSIC_GINKGO_FOREST = ModRegistry.register("jurassic_ginkgo_forest", JurassicGinkgoForest.create());
-
-	public static final Biome JURASSIC_ARAUCARIA_FOREST = ModRegistry.register("jurassic_araucaria_forest", JurassicAraucariaForest.create());
+	public static final Biome JURASSIC_GINKGO_FOREST_HILLS = ModRegistry.register("jurassic_ginkgo_forest_hills", JurassicGinkgoForest.create(0.45F, 0.3F));
 
 	public static final Biome JURASSIC_REDWOODS_FOREST = ModRegistry.register("jurassic_redwoods_forest", JurassicRedwoodsForest.create());
+	public static final Biome JURASSIC_REDWOODS_FOREST_HILLS = ModRegistry.register("jurassic_redwoods_forest_hills", JurassicRedwoodsForest.create(0.45F, 0.3F));
 
 	public static final Biome JURASSIC_PLAINS = ModRegistry.register("jurassic_plains", JurassicPlains.create());
+	public static final Biome JURASSIC_PLAINS_HILLS = ModRegistry.register("jurassic_plains_hills", JurassicPlains.create(0.45F, 0.3F));
 
 	public static final Biome JURASSIC_MOUNTAINS = ModRegistry.register("jurassic_mountains", JurassicMountains.create());
 	public static final Biome JURASSIC_ERRODED_MOUNTAINS = ModRegistry.register("jurassic_erroded_mountains", JurassicErrodedMountains.create());
 	public static final Biome JURASSIC_VOLCANIC_RANGE = ModRegistry.register("jurassic_volcanic_range", JurassicVolcanicRange.create());
 
 	public static final Biome JURASSIC_DESERT = ModRegistry.register("jurassic_desert", JurassicDesert.create());
+	public static final Biome JURASSIC_DESERT_HILLS = ModRegistry.register("jurassic_desert_hills", JurassicDesert.create(0.45F, 0.3F));
 
 	public static final Biome JURASSIC_MARSH = ModRegistry.register("jurassic_marsh", JurassicMarsh.create());
 	public static final Biome JURASSIC_SWAMP = ModRegistry.register("jurassic_swamp", JurassicSwamp.create());
 	public static final Biome JURASSIC_FEN = ModRegistry.register("jurassic_fen", JurassicSwamp.create());
 	public static final Biome JURASSIC_BOG = ModRegistry.register("jurassic_bog", JurassicBog.create());
+
+	public static final Biome JURASSIC_RIVER = ModRegistry.register("jurassic_river", JurassicRiver.create());
+
+	public static final Biome JURASSIC_SHORE = ModRegistry.register("jurassic_shore", JurassicShore.create());
 
 	//Overworld
 	public static final Biome ARAUCARIA_FOREST = ModRegistry.register("araucaria_forest", AraucariaForest.create());

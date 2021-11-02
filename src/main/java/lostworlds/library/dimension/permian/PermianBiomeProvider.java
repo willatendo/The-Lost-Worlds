@@ -7,13 +7,13 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import lostworlds.library.biome.BiomeKeys;
-import lostworlds.library.dimension.WorldSeedHolder;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryLookupCodec;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.layer.Layer;
+import tyrannotitanlib.library.base.dimension.WorldSeedHolder;
 
 public class PermianBiomeProvider extends BiomeProvider
 {

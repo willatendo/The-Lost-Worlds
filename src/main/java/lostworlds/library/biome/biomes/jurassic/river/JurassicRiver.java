@@ -1,16 +1,16 @@
-package lostworlds.library.biome.biomes.permian.shore;
+package lostworlds.library.biome.biomes.jurassic.river;
 
 import lostworlds.library.biome.ModBiomeFeatures;
 import lostworlds.library.biome.ModBiomeMaker;
 import lostworlds.library.biome.ModSurfaceBuilders;
 import lostworlds.library.biome.biomes.SimpleBiome;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeGenerationSettings;
-import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.biome.Biome.RainType;
+import net.minecraft.world.biome.BiomeGenerationSettings;
+import net.minecraft.world.biome.MobSpawnInfo;
 
-public class PermianShore extends SimpleBiome
+public class JurassicRiver extends SimpleBiome
 {
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
 	public static final BiomeGenerationSettings.Builder GENERATION = new BiomeGenerationSettings.Builder();
@@ -25,13 +25,13 @@ public class PermianShore extends SimpleBiome
 	
 	static void addGeneration() 
 	{			
-		GENERATION.surfaceBuilder(ModSurfaceBuilders.PERMIAN_DESERT_BUILDER);
+		GENERATION.surfaceBuilder(ModSurfaceBuilders.JURASSIC_ROCKY_SOIL_BUILDER);
 		
-		ModBiomeFeatures.permianShore(GENERATION);
+		ModBiomeFeatures.jurassicRiver(GENERATION);
 	}
 	
 	public static Biome create()
 	{
-		return ModBiomeMaker.create(RainType.RAIN, Category.BEACH, 0.0F, 0.025F, 0.8F, 0.4F, 0x3181c6, 0x1c65a5, 0x77d3ea, 0x39aac6, 0x2b9b33, 0x2b9b33, MOB_SPAWNS.build(), GENERATION.build());
+		return ModBiomeMaker.create(RainType.RAIN, Category.RIVER, -0.5F, 0.0F, 0.2F, 0.0F, 0x3181c6, 0x1c65a5, 0x77d3ea, calculateSkyColor(0.2F), 0x2b9b33, 0x2b9b33, MOB_SPAWNS.build(), GENERATION.build());
 	}
 }

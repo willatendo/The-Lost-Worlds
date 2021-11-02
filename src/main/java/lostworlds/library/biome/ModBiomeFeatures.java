@@ -131,7 +131,6 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CALAMITIES_TREES);
 	}
 	
-	
 	public static void permianRiver(BiomeGenerationSettings.Builder builder)
 	{
 		addPermianOres(builder);
@@ -140,6 +139,17 @@ public class ModBiomeFeatures
 		addPermianUndergroundVariety(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
+	}
+	
+	
+	public static void permianShore(BiomeGenerationSettings.Builder builder)
+	{
+		addPermianOres(builder);
+		addModCarvers(builder);
+		addPermianLakes(builder);
+		addPermianUndergroundVariety(builder);
+
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
 	}
 	
@@ -356,6 +366,22 @@ public class ModBiomeFeatures
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
+	}
+	
+	
+	public static void jurassicRiver(BiomeGenerationSettings.Builder builder)
+	{
+		addJurassicOres(builder);
+		addModCarvers(builder);
+		addJurassicUndergroundVariety(builder);
+	}
+	
+	
+	public static void jurassicShore(BiomeGenerationSettings.Builder builder)
+	{
+		addJurassicOres(builder);
+		addModCarvers(builder);
+		addJurassicUndergroundVariety(builder);
 	}
 	
 	//Permian Features

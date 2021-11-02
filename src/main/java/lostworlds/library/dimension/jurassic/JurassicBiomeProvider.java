@@ -7,13 +7,13 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import lostworlds.library.biome.BiomeKeys;
-import lostworlds.library.dimension.WorldSeedHolder;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryLookupCodec;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.layer.Layer;
+import tyrannotitanlib.library.base.dimension.WorldSeedHolder;
 
 public class JurassicBiomeProvider extends BiomeProvider
 {
@@ -22,20 +22,32 @@ public class JurassicBiomeProvider extends BiomeProvider
 	private final long seed;
 	private final Registry<Biome> registry;
 	private final Layer genBiomes;
-	private static final List<RegistryKey<Biome>> POSSIBLE_BIOMES = ImmutableList.of(
+	private static final List<RegistryKey<Biome>> POSSIBLE_BIOMES = ImmutableList.of
+	(
 		BiomeKeys.JURASSIC_DESERT,
+		BiomeKeys.JURASSIC_DESERT_HILLS,
 		BiomeKeys.JURASSIC_ARAUCARIA_FOREST, 
+		BiomeKeys.JURASSIC_ARAUCARIA_FOREST_HILLS, 
 		BiomeKeys.JURASSIC_CONIFER_FOREST, 
+		BiomeKeys.JURASSIC_CONIFER_FOREST_HILLS, 
 		BiomeKeys.JURASSIC_GINKGO_FOREST,
+		BiomeKeys.JURASSIC_GINKGO_FOREST_HILLS,
 		BiomeKeys.JURASSIC_PLAINS, 
+		BiomeKeys.JURASSIC_PLAINS_HILLS, 
 		BiomeKeys.JURASSIC_MARSH, 
 		BiomeKeys.JURASSIC_SWAMP, 
 		BiomeKeys.JURASSIC_FEN,
 		BiomeKeys.JURASSIC_BOG, 
 		BiomeKeys.JURASSIC_MOUNTAINS, 
 		BiomeKeys.JURASSIC_REDWOODS_FOREST,
+		BiomeKeys.JURASSIC_REDWOODS_FOREST_HILLS,
 		BiomeKeys.JURASSIC_ERRODED_MOUNTAINS, 
-		BiomeKeys.JURASSIC_VOLCANIC_RANGE
+		BiomeKeys.JURASSIC_VOLCANIC_RANGE,
+		BiomeKeys.PERMIAN_OCEAN,
+		BiomeKeys.DEEP_PERMIAN_OCEAN,
+		BiomeKeys.WARM_PERMIAN_OCEAN,
+		BiomeKeys.WARM_DEEP_PERMIAN_OCEAN,
+		BiomeKeys.JURASSIC_RIVER
 	);
 	
 	public JurassicBiomeProvider(long seed, Registry<Biome> registry) 

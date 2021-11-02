@@ -5,11 +5,11 @@ import java.util.function.Supplier;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import lostworlds.library.dimension.SeedNoiseChunkGenerator;
-import lostworlds.library.dimension.WorldSeedHolder;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.DimensionSettings;
+import tyrannotitanlib.library.base.dimension.WorldSeedHolder;
+import tyrannotitanlib.library.base.dimension.generators.SeedNoiseChunkGenerator;
 
 public class PermianChunkGenerator extends SeedNoiseChunkGenerator
 {

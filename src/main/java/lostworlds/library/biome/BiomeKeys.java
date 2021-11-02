@@ -42,26 +42,36 @@ public class BiomeKeys
 	public static final RegistryKey<Biome> PERMIAN_SHORE = register("permian_shore");
 	
 	//Jurassic
+	public static final RegistryKey<Biome> JURASSIC_ARAUCARIA_FOREST = register("jurassic_araucaria_forest");
+	public static final RegistryKey<Biome> JURASSIC_ARAUCARIA_FOREST_HILLS = register("jurassic_araucaria_forest_hills");
+	
 	public static final RegistryKey<Biome> JURASSIC_CONIFER_FOREST = register("jurassic_conifer_forest");
+	public static final RegistryKey<Biome> JURASSIC_CONIFER_FOREST_HILLS = register("jurassic_conifer_forest_hills");
 	
 	public static final RegistryKey<Biome> JURASSIC_GINKGO_FOREST = register("jurassic_ginkgo_forest");
-
-	public static final RegistryKey<Biome> JURASSIC_ARAUCARIA_FOREST = register("jurassic_araucaria_forest");
+	public static final RegistryKey<Biome> JURASSIC_GINKGO_FOREST_HILLS = register("jurassic_ginkgo_forest_hills");
 
 	public static final RegistryKey<Biome> JURASSIC_REDWOODS_FOREST = register("jurassic_redwoods_forest");
+	public static final RegistryKey<Biome> JURASSIC_REDWOODS_FOREST_HILLS = register("jurassic_redwoods_forest_hills");
 
 	public static final RegistryKey<Biome> JURASSIC_PLAINS = register("jurassic_plains");
+	public static final RegistryKey<Biome> JURASSIC_PLAINS_HILLS = register("jurassic_plains_hills");
 
 	public static final RegistryKey<Biome> JURASSIC_MOUNTAINS = register("jurassic_mountains");
 	public static final RegistryKey<Biome> JURASSIC_ERRODED_MOUNTAINS = register("jurassic_erroded_mountains");
 	public static final RegistryKey<Biome> JURASSIC_VOLCANIC_RANGE = register("jurassic_volcanic_range");
 
 	public static final RegistryKey<Biome> JURASSIC_DESERT = register("jurassic_desert");
+	public static final RegistryKey<Biome> JURASSIC_DESERT_HILLS = register("jurassic_desert_hills");
 
 	public static final RegistryKey<Biome> JURASSIC_MARSH = register("jurassic_marsh");
 	public static final RegistryKey<Biome> JURASSIC_SWAMP = register("jurassic_swamp");
 	public static final RegistryKey<Biome> JURASSIC_FEN = register("jurassic_fen");
 	public static final RegistryKey<Biome> JURASSIC_BOG = register("jurassic_bog");
+
+	public static final RegistryKey<Biome> JURASSIC_RIVER = register("jurassic_river");
+
+	public static final RegistryKey<Biome> JURASSIC_SHORE = register("jurassic_shore");
 
 	//Overworld
 	public static final RegistryKey<Biome> ARAUCARIA_FOREST = register("araucaria_forest");
