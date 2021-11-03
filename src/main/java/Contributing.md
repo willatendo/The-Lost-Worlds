@@ -1,0 +1,2 @@
+# Contributing to the Mod!
+If you want to contribute to the mod, start by talking to Willatendo either on CurseForge, Planet Minecraft, or Discord. Once a task has been assinged, fork the project, work, then commit. Once done, I'll review it and add it to the main repository.
