@@ -52,6 +52,7 @@ public class LostWorldsPlugin implements IModPlugin
 	{
 		RecipeManager manager = Minecraft.getInstance().level.getRecipeManager();
 		
+		//registration.addRecipes(getRecipes(manager, RecipeInit.FOSSIL_CLEANER_RECIPE), LostWorldsConstants.FOSSIL_CLEANER_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.FOSSIL_GRINDER_RECIPE), LostWorldsConstants.FOSSIL_GRINDER_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.DNA_EXTRACTOR_RECIPE), LostWorldsConstants.DNA_EXTRACTOR_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.ANALYZER_RECIPE), LostWorldsConstants.ANALYZER_CATEGORY);
@@ -66,6 +67,7 @@ public class LostWorldsPlugin implements IModPlugin
 	{
 		IGuiHelper helper = registration.getJeiHelpers().getGuiHelper();
 		
+		//registration.addRecipeCategories(new FossilCleanerCategory(helper));
 		registration.addRecipeCategories(new FossilGrinderCategory(helper));
 		registration.addRecipeCategories(new DNAExtractorCategory(helper));
 		registration.addRecipeCategories(new AnalyzerCategory(helper));
@@ -78,6 +80,7 @@ public class LostWorldsPlugin implements IModPlugin
 	@Override
 	public void registerGuiHandlers(IGuiHandlerRegistration registration) 
 	{
+		//registration.addRecipeClickArea(FossilCleanerScreen.class, 75, 37, 35, 15, LostWorldsConstants.FOSSIL_CLEANER_CATEGORY);
 		registration.addRecipeClickArea(FossilGrinderScreen.class, 75, 37, 35, 15, LostWorldsConstants.FOSSIL_GRINDER_CATEGORY);
 		registration.addRecipeClickArea(DNAExtractorScreen.class, 75, 38, 34, 10, LostWorldsConstants.DNA_EXTRACTOR_CATEGORY);
 		registration.addRecipeClickArea(AnalyzerScreen.class, 75, 38, 34, 12, LostWorldsConstants.ANALYZER_CATEGORY);
@@ -89,6 +92,7 @@ public class LostWorldsPlugin implements IModPlugin
 	@Override
 	public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) 
 	{
+		//registration.addRecipeTransferHandler(FossilCleanerContainer.class, LostWorldsConstants.FOSSIL_CLEANER_CATEGORY, 0, 1, 3, 36);
 		registration.addRecipeTransferHandler(FossilGrinderContainer.class, LostWorldsConstants.FOSSIL_GRINDER_CATEGORY, 0, 1, 3, 36);
 		registration.addRecipeTransferHandler(DNAExtractorContainer.class, LostWorldsConstants.DNA_EXTRACTOR_CATEGORY, 0, 2, 3, 36);
 		registration.addRecipeTransferHandler(AnalyzerContainer.class, LostWorldsConstants.ANALYZER_CATEGORY, 0, 2, 3, 36);
@@ -100,6 +104,7 @@ public class LostWorldsPlugin implements IModPlugin
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) 	
 	{
+		//registration.addRecipeCatalyst(new ItemStack(BlockInit.FOSSIL_CLEANER), LostWorldsConstants.FOSSIL_CLEANER_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.FOSSIL_GRINDER), LostWorldsConstants.FOSSIL_GRINDER_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.DNA_EXTRACTOR), LostWorldsConstants.DNA_EXTRACTOR_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.ANALYZER), LostWorldsConstants.ANALYZER_CATEGORY);

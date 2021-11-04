@@ -224,6 +224,8 @@ public class ModBiomeFeatures
 		addZamites(builder);
 		addDuisbergia(builder);
 		addAlethopteris(builder);
+		
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
 	}
 	
 	public static void jurassicAraucariaForest(BiomeGenerationSettings.Builder builder)
@@ -303,6 +305,7 @@ public class ModBiomeFeatures
 		addFernGroundClutter(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_BABY_SEQUOIA_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_SEQUOIA_TREES);
 	}
 	

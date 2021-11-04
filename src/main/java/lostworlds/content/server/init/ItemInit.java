@@ -9,11 +9,11 @@ import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.TimeEras;
 import lostworlds.library.item.AmberItem;
 import lostworlds.library.item.ChiselItem;
+import lostworlds.library.item.CollectibleItem;
 import lostworlds.library.item.CrystalScarabGemItem;
 import lostworlds.library.item.DNAItem;
 import lostworlds.library.item.FieldGuideItem;
 import lostworlds.library.item.FossilItem;
-import lostworlds.library.item.FunBagItem;
 import lostworlds.library.item.HammerItem;
 import lostworlds.library.item.LostWorldsLexicon;
 import lostworlds.library.item.ModBoneMealItem;
@@ -28,13 +28,11 @@ import lostworlds.library.item.TimeBookItem;
 import lostworlds.library.item.WetPaperItem;
 import lostworlds.library.item.armour.MaskItem;
 import lostworlds.library.item.armour.ModArmourMaterial;
-import lostworlds.library.item.armour.OxygenArmorItem;
-import lostworlds.library.item.armour.OxygenTankItem;
+import lostworlds.library.item.armour.PinItem;
 import lostworlds.library.item.block.SeedItem;
 import lostworlds.library.item.tool.BrushItem;
 import lostworlds.library.item.tool.CrystalScarabGemBrushItem;
 import lostworlds.library.item.tool.ModItemTier;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.BannerPatternItem;
 import net.minecraft.item.Food;
@@ -169,9 +167,6 @@ public class ItemInit
 	
 	public static final Item CLOTH_MASK = ModRegistry.register("cloth_mask", new MaskItem(ModArmourMaterial.CLOTH_MASK));
 	
-	public static final Item OXYGEN_MASK = ModRegistry.register("oxygen_mask", new OxygenArmorItem(EquipmentSlotType.HEAD));
-	public static final Item OXYGEN_TANK = ModRegistry.register("oxygen_tank", new OxygenTankItem());
-	
 	public static final Item WET_PAPER = ModRegistry.register("wet_paper", new WetPaperItem());
 	public static final Item LOST_WORLDS_LEXICON = ModRegistry.register("lost_worlds_lexicon", new LostWorldsLexicon(new Properties().tab(ModUtils.ITEMS).stacksTo(1).rarity(Rarity.RARE).fireResistant()));
 	public static final Item FIELD_GUIDE = ModRegistry.register("field_guide", new FieldGuideItem());
@@ -215,11 +210,10 @@ public class ItemInit
 	
 	public static final Item EMPTY_VILE = ModRegistry.register("empty_vile", new ModItem());
 	
-	public static final Item AMBER_KEYCHAIN = ModRegistry.register("amber_keychain", new ModItem());
-	public static final Item DINO_BUTTON = ModRegistry.register("dino_button", new ModItem());
-	public static final Item BALLOON = ModRegistry.register("balloon", new ModItem());
-	public static final Item FUN_BAG = ModRegistry.register("fun_bag", new FunBagItem());
-	public static final Item TYRANNOSAURUS_PLUSH = ModRegistry.register("tyrannosaurus_plush", new ModItem());	
+	public static final Item AMBER_KEYCHAIN = ModRegistry.register("amber_keychain", new CollectibleItem());
+	public static final Item DINO_BUTTON = ModRegistry.register("dino_button", new PinItem());
+	public static final Item BALLOON = ModRegistry.register("balloon", new CollectibleItem());
+	public static final Item TYRANNOSAURUS_PLUSH = ModRegistry.register("tyrannosaurus_plush", new CollectibleItem());	
 	
 	public static final Item FERN_LEAVES = ModRegistry.register("fern_leaves", new ModItem(FoodInit.FERN_LEAVES));
 	public static final Item COOKED_FERN_LEAVES = ModRegistry.register("cooked_fern_leaves", new ModItem(FoodInit.COOKED_LEAVES));

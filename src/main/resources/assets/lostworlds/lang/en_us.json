@@ -29,8 +29,6 @@
 	
 	//Armour
 	"item.lostworlds.cloth_mask": "Cloth Mask",
-	"item.lostworlds.oxygen_mask": "Oxygen Mask",
-	"item.lostworlds.oxygen_tank": "Oxygen Tank",
 	
 	//Utilities
 	"item.lostworlds.wet_paper": "Wet Paper",
@@ -96,6 +94,7 @@
 	"item.lostworlds.balloon": "Balloon",
 	"item.lostworlds.fun_bag": "Fun Bag",
 	"item.lostworlds.tyrannosaurus_plush": "Tyrannosaurus Plush",
+	"toolTip.lostworlds.item.collectible": "It's a collectible!",
 	
 	//Miscellaneous
 	"item.lostworlds.fern_leaves": "Fern Leaves",

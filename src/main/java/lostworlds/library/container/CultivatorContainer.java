@@ -36,7 +36,7 @@ public class CultivatorContainer extends Container
 	{
 		super(ContainerInit.CULTIVATOR_CONTAINER, windowID);
 		this.level = playerInv.player.level;
-		this.data = tileEntity.getGrinderData();
+		this.data = tileEntity.getCultivatorData();
 		this.tile = tileEntity;
 		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 		

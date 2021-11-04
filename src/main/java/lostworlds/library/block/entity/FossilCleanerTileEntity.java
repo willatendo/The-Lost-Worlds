@@ -39,7 +39,7 @@ import net.minecraft.util.text.ITextComponent;
 
 public class FossilCleanerTileEntity extends TileEntity implements IInventory, INamedContainerProvider, INameable, ITickableTileEntity	
 {
-    protected NonNullList<ItemStack> items = NonNullList.withSize(6, ItemStack.EMPTY);
+    protected NonNullList<ItemStack> items = NonNullList.withSize(3, ItemStack.EMPTY);
 	
 	private int onTime;
 	private int onDuration;
@@ -106,7 +106,6 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 	private static void add(Map<Item, Integer> map, IItemProvider itemProvider, int length) 
 	{
 		Item item = itemProvider.asItem();
-		
 		map.put(item, length);
 	}
 

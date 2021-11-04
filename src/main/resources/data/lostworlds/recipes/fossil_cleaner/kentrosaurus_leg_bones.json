@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:kentrosaurus_leg_bones"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_kentrosaurus_leg_bones"
+	}
+}

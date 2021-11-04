@@ -17,7 +17,7 @@ public class FossilCleanerRecipeSerialiser extends ForgeRegistryEntry<IRecipeSer
 	public FossilCleanerRecipe fromJson(ResourceLocation recipeId, JsonObject json) 
 	{
 		ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
-		Ingredient fossil = Ingredient.fromJson((JSONUtils.isArrayNode(json, "fossil") ? JSONUtils.getAsJsonArray(json, "fossil") : JSONUtils.getAsJsonObject(json, "fossil")));
+		Ingredient fossil = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "fossil"));
 		
 		return new FossilCleanerRecipe(recipeId, fossil, output);
 	}

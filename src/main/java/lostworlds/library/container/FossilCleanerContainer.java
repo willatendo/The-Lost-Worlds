@@ -2,7 +2,6 @@ package lostworlds.library.container;
 
 import java.util.Objects;
 
-import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
 import lostworlds.library.block.FossilCleanerBlock;
 import lostworlds.library.block.entity.FossilCleanerTileEntity;
@@ -14,8 +13,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIntArray;
@@ -78,21 +75,6 @@ public class FossilCleanerContainer extends Container
 	{
 		return this.canInteractWithCallable.evaluate((world, blockPos) -> world.getBlockState(blockPos).getBlock() instanceof FossilCleanerBlock && playerIn.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
     }
-	
-	protected boolean canClean(ItemStack stack) 
-	{
-		return stack.getItem() == BlockInit.ACCENT_DARK_CONCRETE.asItem();
-	}
-	
-	protected boolean isWaterBucket(ItemStack stack) 
-	{
-		return stack.getItem() == Items.WATER_BUCKET;
-	}
-	
-	protected boolean isBucket(ItemStack stack) 
-	{
-		return stack.getItem() == Items.BUCKET;
-	}
 	
 	@OnlyIn(Dist.CLIENT)
 	public boolean isOn() 

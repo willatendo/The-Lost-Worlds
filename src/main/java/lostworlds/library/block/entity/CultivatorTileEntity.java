@@ -39,7 +39,7 @@ public class CultivatorTileEntity extends TileEntity implements IInventory, INam
 	private int cultivatingProgess;
 	private int cultivatingTotalTime;
 	
-	protected final IIntArray grinderData = new IIntArray()
+	protected final IIntArray cultivatorData = new IIntArray()
 	{
 		@Override
 		public int get(int index)
@@ -133,9 +133,9 @@ public class CultivatorTileEntity extends TileEntity implements IInventory, INam
 		return nbt;
 	}
 	
-	public IIntArray getGrinderData()
+	public IIntArray getCultivatorData()
 	{
-		return this.grinderData;
+		return this.cultivatorData;
 	}
 	
 	public boolean isOn() 

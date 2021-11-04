@@ -59,7 +59,7 @@ dependencies {
 	compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.6.1.75:api")
 	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.6.1.75")
 	
-	implementation fg.deobf("curse.maven:tyrannotitan-library-forge-425570:3510123")
+	implementation fg.deobf("curse.maven:tyrannotitan-library-forge-425570:3514850")
 	
 	compileOnly 'org.spongepowered:mixin:0.8'
 }

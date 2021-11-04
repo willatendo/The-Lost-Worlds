@@ -2,6 +2,7 @@ package lostworlds.library.container.recipes;
 
 import java.util.Random;
 
+import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.RecipeInit;
 import net.minecraft.inventory.IInventory;
@@ -131,5 +132,11 @@ public class FossilGrinderRecipe implements IRecipe<IInventory>
 	public IRecipeType<?> getType() 
 	{
 		return RecipeInit.FOSSIL_GRINDER_RECIPE;
+	}
+	
+	@Override
+	public ItemStack getToastSymbol() 
+	{
+		return new ItemStack(BlockInit.FOSSIL_GRINDER.asItem());
 	}
 }

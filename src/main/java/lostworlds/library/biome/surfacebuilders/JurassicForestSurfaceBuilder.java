@@ -11,9 +11,9 @@ import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
-public class JurassicConiferForestSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> 
+public class JurassicForestSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> 
 {
-	public JurassicConiferForestSurfaceBuilder(Codec<SurfaceBuilderConfig> codec) 
+	public JurassicForestSurfaceBuilder(Codec<SurfaceBuilderConfig> codec) 
 	{
 		super(codec);
 	}

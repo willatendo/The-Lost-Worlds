@@ -68,7 +68,7 @@ public class FossilCleanerRecipe implements IRecipe<IInventory>
 	@Override
 	public IRecipeSerializer<?> getSerializer() 
 	{
-		return RecipeInit.FOSSIL_CLEANER_RECIPE_SERIALIZER;
+		return RecipeInit.FOSSIL_CLEANER_SERIALIZER;
 	}
 
 	@Override

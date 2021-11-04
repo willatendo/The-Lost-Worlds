@@ -2,9 +2,9 @@ package lostworlds.content.server.init;
 
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
-import lostworlds.library.biome.surfacebuilders.JurassicConiferForestSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicDesertSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicErrodedMountainsSurfaceBuilder;
+import lostworlds.library.biome.surfacebuilders.JurassicForestSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicMountainsSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicPlainsSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicSwampSurfaceBuilder;
@@ -24,7 +24,7 @@ public class SurfaceBuilderInit
 	public static final SurfaceBuilder NAKED_PERMIAN_OCEAN = new PermianOceanSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_PERMIAN_MARSH = new PermianMarshSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	
-	public static final SurfaceBuilder NAKED_JURASSIC_CONIFER_FOREST = new JurassicConiferForestSurfaceBuilder(SurfaceBuilderConfig.CODEC);
+	public static final SurfaceBuilder NAKED_JURASSIC_FOREST = new JurassicForestSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_JURASSIC_PLAINS = new JurassicPlainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_JURASSIC_DESERT = new JurassicDesertSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_JURASSIC_MOUNTAINS = new JurassicMountainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
@@ -37,7 +37,7 @@ public class SurfaceBuilderInit
 	public static final SurfaceBuilder<?> PERMIAN_OCEAN = ModRegistry.register("permian_ocean", NAKED_PERMIAN_OCEAN);
 	public static final SurfaceBuilder<?> PERMIAN_MARSH = ModRegistry.register("permian_marsh", NAKED_PERMIAN_MARSH);
 
-	public static final SurfaceBuilder<?> JURASSIC_CONIFER_FOREST = ModRegistry.register("jurassic_conifer_forest", NAKED_JURASSIC_CONIFER_FOREST);
+	public static final SurfaceBuilder<?> JURASSIC_FOREST = ModRegistry.register("jurassic_forest", NAKED_JURASSIC_FOREST);
 	public static final SurfaceBuilder<?> JURASSIC_PLAINS = ModRegistry.register("jurassic_plains", NAKED_JURASSIC_PLAINS);
 	public static final SurfaceBuilder<?> JURASSIC_DESERT = ModRegistry.register("jurassic_desert", NAKED_JURASSIC_DESERT);
 	public static final SurfaceBuilder<?> JURASSIC_MOUNTIANS = ModRegistry.register("jurassic_mountains", NAKED_JURASSIC_MOUNTAINS);

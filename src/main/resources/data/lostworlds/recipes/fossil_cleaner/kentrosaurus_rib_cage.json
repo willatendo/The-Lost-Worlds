@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:kentrosaurus_rib_cage"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_kentrosaurus_rib_cage"
+	}
+}
