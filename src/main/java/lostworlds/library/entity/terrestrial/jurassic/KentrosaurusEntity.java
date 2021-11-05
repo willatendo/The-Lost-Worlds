@@ -42,23 +42,20 @@ public class KentrosaurusEntity extends HerbivoreEntity
 		if(event.isMoving())
 		{
 			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.kentrosaurus.walk", true));
-			return PlayState.CONTINUE;
 		}
 		else if(this.entityData.get(this.EATING))
 		{
 			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.kentrosaurus.eat", false));
-			return PlayState.CONTINUE;
 		}
 		else if(this.entityData.get(this.SLEEPING))
 		{
 			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.kentrosaurus.into_sleep", false).addAnimation("animation.kentrosaurus.sleep", false).addAnimation("animation.kentrosaurus.out_of_sleep", false));
-			return PlayState.CONTINUE;
 		}
 		else
 		{
 			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.kentrosaurus.idle", true));
-			return PlayState.CONTINUE;
 		}
+		return PlayState.CONTINUE;
 	}
 	
 	public KentrosaurusEntity(EntityType<? extends HerbivoreEntity> entity, World world) 

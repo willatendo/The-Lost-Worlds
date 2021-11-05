@@ -25,6 +25,6 @@ public class JurassicShore extends TyrannoBiome
 	
 	public JurassicShore() 
 	{
-		super(BaseBiomes.biome(RainType.RAIN, Category.FOREST, 0.0F, 0.025F, 0.8F, 0.7F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+		super(BaseBiomes.biome(RainType.RAIN, Category.BEACH, 0.0F, 0.025F, 0.8F, 0.7F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
 	}
 }

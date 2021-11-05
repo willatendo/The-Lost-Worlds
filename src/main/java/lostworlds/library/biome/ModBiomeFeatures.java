@@ -5,6 +5,7 @@ import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.structure.StructureFeatures;
+import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilders;
 
 public class ModBiomeFeatures 
 {	
@@ -173,30 +174,6 @@ public class ModBiomeFeatures
 		addAlethopteris(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
-	}
-	
-	public static void ginkgoForest(BiomeGenerationSettings.Builder builder)
-	{
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.GINKGO_TREES);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.GINKGO_FOREST_TREES);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.BIRCH_OTHER);
-
-		builder.addStructureStart(StructureFeatures.RUINED_PORTAL_STANDARD);
-		
-		DefaultBiomeFeatures.addDefaultOverworldLandStructures(builder);
-		DefaultBiomeFeatures.addDefaultCarvers(builder);
-		DefaultBiomeFeatures.addDefaultLakes(builder);
-		DefaultBiomeFeatures.addDefaultMonsterRoom(builder);
-		DefaultBiomeFeatures.addForestFlowers(builder);
-		DefaultBiomeFeatures.addDefaultUndergroundVariety(builder);
-		DefaultBiomeFeatures.addDefaultOres(builder);
-		DefaultBiomeFeatures.addDefaultSoftDisks(builder);
-		DefaultBiomeFeatures.addDefaultFlowers(builder);
-		DefaultBiomeFeatures.addForestGrass(builder);
-		DefaultBiomeFeatures.addDefaultMushrooms(builder);
-		DefaultBiomeFeatures.addDefaultExtraVegetation(builder);
-		DefaultBiomeFeatures.addDefaultSprings(builder);
-		DefaultBiomeFeatures.addSurfaceFreezing(builder);
 	}
 	
 	//Jurassic
@@ -400,6 +377,93 @@ public class ModBiomeFeatures
 		addJurassicOres(builder);
 		addModCarvers(builder);
 		addJurassicUndergroundVariety(builder);
+	}
+	
+	//Overworld
+	public static void araucariaForest(BiomeGenerationSettings.Builder builder)
+	{		
+		DefaultBiomeFeatures.addDefaultOverworldLandStructures(builder);
+		builder.addStructureStart(StructureFeatures.RUINED_PORTAL_STANDARD);
+		DefaultBiomeFeatures.addDefaultCarvers(builder);
+		DefaultBiomeFeatures.addDefaultLakes(builder);
+		DefaultBiomeFeatures.addDefaultMonsterRoom(builder);
+		DefaultBiomeFeatures.addForestFlowers(builder);
+		DefaultBiomeFeatures.addDefaultUndergroundVariety(builder);
+		DefaultBiomeFeatures.addDefaultOres(builder);
+		DefaultBiomeFeatures.addDefaultSoftDisks(builder);
+		DefaultBiomeFeatures.addDefaultFlowers(builder);
+		DefaultBiomeFeatures.addForestGrass(builder);
+		DefaultBiomeFeatures.addDefaultMushrooms(builder);
+		DefaultBiomeFeatures.addDefaultExtraVegetation(builder);
+		DefaultBiomeFeatures.addDefaultSprings(builder);
+		DefaultBiomeFeatures.addSurfaceFreezing(builder);
+		addAraucariaTrees(builder);
+	}
+	
+	public static void coniferForest(BiomeGenerationSettings.Builder builder)
+	{		
+		DefaultBiomeFeatures.addDefaultOverworldLandStructures(builder);
+		builder.addStructureStart(StructureFeatures.RUINED_PORTAL_STANDARD);
+		DefaultBiomeFeatures.addDefaultCarvers(builder);
+		DefaultBiomeFeatures.addDefaultLakes(builder);
+		DefaultBiomeFeatures.addDefaultMonsterRoom(builder);
+		DefaultBiomeFeatures.addForestFlowers(builder);
+		DefaultBiomeFeatures.addDefaultUndergroundVariety(builder);
+		DefaultBiomeFeatures.addDefaultOres(builder);
+		DefaultBiomeFeatures.addDefaultSoftDisks(builder);
+		DefaultBiomeFeatures.addDefaultFlowers(builder);
+		DefaultBiomeFeatures.addForestGrass(builder);
+		DefaultBiomeFeatures.addDefaultMushrooms(builder);
+		DefaultBiomeFeatures.addDefaultExtraVegetation(builder);
+		DefaultBiomeFeatures.addDefaultSprings(builder);
+		DefaultBiomeFeatures.addSurfaceFreezing(builder);
+		addConiferTrees(builder);
+	}
+	
+	public static void ginkgoForest(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.GINKGO_TREES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.GINKGO_FOREST_TREES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.BIRCH_OTHER);
+		builder.addStructureStart(StructureFeatures.RUINED_PORTAL_STANDARD);
+		DefaultBiomeFeatures.addDefaultOverworldLandStructures(builder);
+		DefaultBiomeFeatures.addDefaultCarvers(builder);
+		DefaultBiomeFeatures.addDefaultLakes(builder);
+		DefaultBiomeFeatures.addDefaultMonsterRoom(builder);
+		DefaultBiomeFeatures.addForestFlowers(builder);
+		DefaultBiomeFeatures.addDefaultUndergroundVariety(builder);
+		DefaultBiomeFeatures.addDefaultOres(builder);
+		DefaultBiomeFeatures.addDefaultSoftDisks(builder);
+		DefaultBiomeFeatures.addDefaultFlowers(builder);
+		DefaultBiomeFeatures.addForestGrass(builder);
+		DefaultBiomeFeatures.addDefaultMushrooms(builder);
+		DefaultBiomeFeatures.addDefaultExtraVegetation(builder);
+		DefaultBiomeFeatures.addDefaultSprings(builder);
+		DefaultBiomeFeatures.addSurfaceFreezing(builder);
+	}
+	
+	public static void redwoodsForest(BiomeGenerationSettings.Builder builder)
+	{
+		builder.surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
+		
+		DefaultBiomeFeatures.addDefaultOverworldLandStructures(builder);
+		builder.addStructureStart(StructureFeatures.RUINED_PORTAL_STANDARD);
+		DefaultBiomeFeatures.addDefaultCarvers(builder);
+		DefaultBiomeFeatures.addDefaultLakes(builder);
+		DefaultBiomeFeatures.addDefaultMonsterRoom(builder);
+		DefaultBiomeFeatures.addForestFlowers(builder);
+		DefaultBiomeFeatures.addDefaultUndergroundVariety(builder);
+		DefaultBiomeFeatures.addDefaultOres(builder);
+		DefaultBiomeFeatures.addDefaultSoftDisks(builder);
+		DefaultBiomeFeatures.addDefaultFlowers(builder);
+		DefaultBiomeFeatures.addForestGrass(builder);
+		DefaultBiomeFeatures.addDefaultMushrooms(builder);
+		DefaultBiomeFeatures.addDefaultExtraVegetation(builder);
+		DefaultBiomeFeatures.addDefaultSprings(builder);
+		DefaultBiomeFeatures.addSurfaceFreezing(builder);
+		
+		addConiferTrees(builder);
+		addSequoiaTrees(builder);
 	}
 	
 	//Permian Features

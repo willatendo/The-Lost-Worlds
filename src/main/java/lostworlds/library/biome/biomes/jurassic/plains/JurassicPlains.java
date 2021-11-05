@@ -31,6 +31,6 @@ public class JurassicPlains extends TyrannoBiome
 	
 	public JurassicPlains() 
 	{
-		this(0.1F, 0.2F);
+		this(0.125F, 0.05F);
 	}
 }

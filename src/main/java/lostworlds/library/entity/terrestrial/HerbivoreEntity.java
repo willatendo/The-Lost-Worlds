@@ -16,6 +16,7 @@ public abstract class HerbivoreEntity extends TaggedEntity
 {
 	protected static final DataParameter<Boolean> EATING = EntityDataManager.defineId(HerbivoreEntity.class, DataSerializers.BOOLEAN);
 	protected static final DataParameter<Boolean> PANICKING = EntityDataManager.defineId(HerbivoreEntity.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> SCRATCHING = EntityDataManager.defineId(HerbivoreEntity.class, DataSerializers.BOOLEAN);
 	private int hunger;
 	
 	public HerbivoreEntity(EntityType<? extends HerbivoreEntity> entity, World world) 
@@ -29,6 +30,7 @@ public abstract class HerbivoreEntity extends TaggedEntity
 		super.defineSynchedData();
 		this.getEntityData().define(EATING, false);	
 		this.getEntityData().define(PANICKING, false);	
+		this.getEntityData().define(SCRATCHING, false);	
 	}
 	
 	@Override
@@ -38,6 +40,7 @@ public abstract class HerbivoreEntity extends TaggedEntity
 		nbt.putInt("Hunger", this.getHunger());
 		nbt.putBoolean("Eating", this.isEating());
 		nbt.putBoolean("Panicked", this.isPanicked());
+		nbt.putBoolean("Scratching", this.isScratching());
 	}
 	
 	@Override
@@ -47,6 +50,7 @@ public abstract class HerbivoreEntity extends TaggedEntity
 		this.setHunger(nbt.getInt("Hunger"));
 		this.setEating(nbt.getBoolean("Eating"));
 		this.setPanicked(nbt.getBoolean("Panicked"));
+		this.setScratching(nbt.getBoolean("Scratching"));
 	}
 	
 	public boolean isEating()
@@ -82,6 +86,16 @@ public abstract class HerbivoreEntity extends TaggedEntity
 	public void setPanicked(boolean panicked)
 	{
 		entityData.set(PANICKING, panicked);
+	}
+	
+	public boolean isScratching()
+	{
+		return entityData.get(SCRATCHING);
+	}
+	
+	public void setScratching(boolean scratching)
+	{
+		entityData.set(SCRATCHING, scratching);
 	}
 	
 	public boolean canSleep()

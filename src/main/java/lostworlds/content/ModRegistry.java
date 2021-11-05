@@ -66,6 +66,7 @@ import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.common.world.ForgeWorldType;
 import net.minecraftforge.registries.ForgeRegistries;
+import tyrannotitanlib.library.base.biome.TyrannoBiome;
 import tyrannotitanlib.library.tyrannoregister.TyrannoRegister;
 
 public class ModRegistry 
@@ -168,10 +169,11 @@ public class ModRegistry
 		return type;
 	}
 	
-	public static Biome register(String id, Biome biome) 
+	public static Biome register(String id, TyrannoBiome biome) 
 	{
-		TyrannoRegister.registerBiome(id, biome);
-		return biome;
+		Biome realBiome = biome.getBiome();
+		TyrannoRegister.registerBiome(id, realBiome);
+		return realBiome;
 	}
 	
 	public static IStructurePieceType register(String id, IStructurePieceType type) 

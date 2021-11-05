@@ -1,36 +1,34 @@
 package lostworlds.library.biome.biomes.permian.ocean;
 
-import lostworlds.library.biome.ModBiomeMaker;
 import lostworlds.content.server.init.SurfaceBuilderInit;
 import lostworlds.library.biome.ModBiomeFeatures;
 import lostworlds.library.biome.ModSurfaceBuilders;
-import lostworlds.library.biome.biomes.SimpleBiome;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.biome.Biome.RainType;
+import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
+import tyrannotitanlib.library.base.biome.BaseBiomes;
+import tyrannotitanlib.library.base.biome.TyrannoBiome;
 
-public class PermianOcean extends SimpleBiome
+public class PermianOcean extends TyrannoBiome
 {
-	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
 	public static final BiomeGenerationSettings.Builder GENERATION = genSettings(SurfaceBuilderInit.NAKED_PERMIAN_OCEAN, ModSurfaceBuilders.SILT_CONFIG);
+	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
+	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomes.OCEAN_WATER_COLOUR).waterFogColor(BaseBiomes.OCEAN_WATER_FOG_COLOUR).fogColor(BaseBiomes.BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.5F));
 	
 	static
 	{
-		addSpawns();
-		addGeneration();
-	}
-	
-	static void addSpawns() { }
-	
-	static void addGeneration() 
-	{			
 		ModBiomeFeatures.permianOcean(GENERATION);
 	}
 	
-	public static Biome create()
+	public PermianOcean(float depth, float scale) 
 	{
-		return ModBiomeMaker.create(RainType.RAIN, Category.OCEAN, -1.0F, 0.1F, 0.2F, 0.0F, 0x3181c6, 0x1c65a5, 0x77d3ea, 0x39aac6, 0x2b9b33, 0x2b9b33, MOB_SPAWNS.build(), GENERATION.build());
+		super(BaseBiomes.biome(RainType.RAIN, Category.FOREST, depth, scale, 0.0F, 0.2F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+	}
+	
+	public PermianOcean() 
+	{
+		this(-1.0F, 0.1F);
 	}
 }
