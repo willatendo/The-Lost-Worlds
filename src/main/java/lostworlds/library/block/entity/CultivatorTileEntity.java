@@ -13,6 +13,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
@@ -23,15 +24,25 @@ import net.minecraft.item.crafting.RecipeItemHelper;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Direction;
 import net.minecraft.util.IIntArray;
 import net.minecraft.util.INameable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-public class CultivatorTileEntity extends TileEntity implements IInventory, INamedContainerProvider, INameable, ITickableTileEntity	
+public class CultivatorTileEntity extends TileEntity implements IInventory, INamedContainerProvider, INameable, ITickableTileEntity, ISidedInventory
 {
+	private static final int[] SLOTS_FOR_UP = new int[] { 0 };
+	private static final int[] SLOTS_FOR_DOWN = new int[]{ 1 };
+	private static final int[] SLOTS_FOR_SIDES = new int[]{ 0 };
+	
 	protected NonNullList<ItemStack> items = NonNullList.withSize(3, ItemStack.EMPTY);
 	
 	private int onTime;
@@ -415,5 +426,53 @@ public class CultivatorTileEntity extends TileEntity implements IInventory, INam
 	public void setCustomName(ITextComponent text) 
 	{
 		this.name = text;
+	}
+
+	@Override
+	public int[] getSlotsForFace(Direction direction) 
+	{
+		if(direction == Direction.DOWN) 
+		{
+			return SLOTS_FOR_DOWN;
+		} 
+		else 
+		{
+			return direction == Direction.UP ? SLOTS_FOR_UP : SLOTS_FOR_SIDES;
+		}
+	}
+
+	@Override
+	public boolean canPlaceItemThroughFace(int slot, ItemStack stack, Direction direction) 
+	{
+		return this.canPlaceItem(slot, stack);
+	}
+
+	@Override
+	public boolean canTakeItemThroughFace(int slot, ItemStack stack, Direction direction) 
+	{	
+		return true;
+	}
+	
+	LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
+	
+	@Override
+	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) 
+	{
+		if(!this.remove && facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) 
+		{
+			if(facing == Direction.UP)
+			{
+				return handlers[0].cast();
+			}
+			else if(facing == Direction.DOWN)
+			{
+				return handlers[1].cast();
+			}
+			else
+			{
+				return handlers[2].cast();
+			}
+		}
+		return super.getCapability(capability, facing);
 	}
 }
