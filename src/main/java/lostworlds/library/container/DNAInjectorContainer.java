@@ -85,6 +85,14 @@ public class DNAInjectorContainer extends Container
 		return this.canInteractWithCallable.evaluate((world, blockPos) -> world.getBlockState(blockPos).getBlock() instanceof DNAInjectorBlock && playerIn.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
     }
 	
+	@OnlyIn(Dist.CLIENT)
+	public int getProgress()
+	{
+		int injectingProgress = this.data.get(2);
+        int injectingTotalTime = this.data.get(3);
+        return injectingTotalTime != 0 && injectingProgress != 0 ? injectingProgress * 16 / injectingTotalTime : 0;
+    }
+	
 	@Override
 	public ItemStack quickMoveStack(PlayerEntity player, int i) 
 	{
@@ -105,7 +113,7 @@ public class DNAInjectorContainer extends Container
 			}
 			else if(i != 1 && i != 0) 
 			{
-				if(canClean(itemstack1)) 
+				if(canInject(itemstack1)) 
 				{
 					if(!this.moveItemStackTo(itemstack1, 0, 2, true)) 
 					{
@@ -149,16 +157,8 @@ public class DNAInjectorContainer extends Container
 		return itemstack;
 	}
 	
-	protected boolean canClean(ItemStack stack) 
+	protected boolean canInject(ItemStack stack) 
 	{
 		return this.level.getRecipeManager().getRecipeFor((IRecipeType)this.recipeType, new Inventory(stack), this.level).isPresent();
 	}
-	
-	@OnlyIn(Dist.CLIENT)
-	public int getProgress()
-	{
-		int injectingProgress = this.data.get(2);
-        int injectingTotalTime = this.data.get(3);
-        return injectingTotalTime != 0 && injectingProgress != 0 ? injectingProgress * 16 / injectingTotalTime : 0;
-    }
 }

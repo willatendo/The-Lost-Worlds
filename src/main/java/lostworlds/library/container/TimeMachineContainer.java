@@ -8,6 +8,7 @@ import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ContainerInit;
 import lostworlds.content.server.init.RecipeInit;
 import lostworlds.library.container.recipes.TimeMachineRecipe;
+import lostworlds.library.item.CrystalScarabGemItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftResultInventory;
@@ -222,66 +223,77 @@ public class TimeMachineContainer extends Container
 	}
 	
 	@Override
-	public ItemStack quickMoveStack(PlayerEntity player, int i) 
+	public ItemStack quickMoveStack(PlayerEntity entity, int slotNum) 
 	{
 		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = this.slots.get(i);
+		Slot slot = this.slots.get(slotNum);
 		if(slot != null && slot.hasItem()) 
 		{
 			ItemStack itemstack1 = slot.getItem();
-			Item item = itemstack1.getItem();
 			itemstack = itemstack1.copy();
-			if(i == 2) 
+			Item item = itemstack1.getItem();
+			if(slotNum == 2) 
 			{
-				item.onCraftedBy(itemstack1, player.level, player);
+				item.onCraftedBy(itemstack1, entity.level, entity);
 				if(!this.moveItemStackTo(itemstack1, 3, 39, true)) 
 				{
 					return ItemStack.EMPTY;
 				}
 				
 				slot.onQuickCraft(itemstack1, itemstack);
-			} 
-			else if(i == 0 || i == 1) 
-			{
-				if(!this.moveItemStackTo(itemstack1, 3, 39, false)) 
-				{
-					return ItemStack.EMPTY;
-				}
-			} 
-			else if(this.level.getRecipeManager().getRecipeFor(RecipeInit.TIME_MACHINE_RECIPE, new Inventory(itemstack1), this.level).isPresent()) 
-			{
-				if(!this.moveItemStackTo(itemstack1, 0, 2, false)) 
-				{
-					return ItemStack.EMPTY;
-				}
-			} 
-			else if(i >= 2 && i < 29) 
-			{
-				if(!this.moveItemStackTo(itemstack1, 29, 38, false)) 
-				{
-					return ItemStack.EMPTY;
-				}
-			} 
-			else if(i >= 29 && i < 38 && !this.moveItemStackTo(itemstack1, 2, 29, false)) 
-			{
-				return ItemStack.EMPTY;
 			}
+			else if(slotNum == 0) 
+			{
+				if(!this.moveItemStackTo(itemstack1, 3, 39, true)) 
+				{
+					return ItemStack.EMPTY;
+				}
+			} 
+			else if(slotNum == 1)
+			{
+				if(!this.moveItemStackTo(itemstack1, 3, 39, true)) 
+				{
+					return ItemStack.EMPTY;
+				}
+			} 
 			
+			else if(itemstack1.getItem() == CrystalScarabGemItem.Gems.CHARGED_CRYSTAL_SCARAB_GEM.getItem()) 
+			{
+				if(!this.moveItemStackTo(itemstack1, 1, 2, true)) 
+				{
+					return ItemStack.EMPTY;
+				}
+			} 
+			else 
+			{
+				if(this.slots.get(0).hasItem() || !this.slots.get(0).mayPlace(itemstack1)) 
+				{
+					return ItemStack.EMPTY;
+				}
+
+				ItemStack itemstack2 = itemstack1.copy();
+				itemstack2.setCount(1);
+				itemstack1.shrink(1);
+				this.slots.get(0).set(itemstack2);
+			}
+
 			if(itemstack1.isEmpty()) 
 			{
 				slot.set(ItemStack.EMPTY);
+			} 
+			else 
+			{
+				slot.setChanged();
 			}
-			
-			slot.setChanged();
+
 			if(itemstack1.getCount() == itemstack.getCount()) 
 			{
 				return ItemStack.EMPTY;
 			}
-			
-			slot.onTake(player, itemstack1);
-			this.broadcastChanges();
+
+			slot.onTake(entity, itemstack1);
 		}
-		
+
 		return itemstack;
 	}
 	

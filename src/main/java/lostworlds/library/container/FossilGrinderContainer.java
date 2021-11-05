@@ -83,11 +83,6 @@ public class FossilGrinderContainer extends Container
 		return this.canInteractWithCallable.evaluate((world, blockPos) -> world.getBlockState(blockPos).getBlock() instanceof FossilGrinderBlock && playerIn.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
     }
 	
-	protected boolean canGrind(ItemStack stack) 
-	{
-		return this.level.getRecipeManager().getRecipeFor((IRecipeType)this.recipeType, new Inventory(stack), this.level).isPresent();
-	}
-	
 	@OnlyIn(Dist.CLIENT)
 	public int getProgress()
 	{
@@ -95,4 +90,73 @@ public class FossilGrinderContainer extends Container
         int grindingTotalTime = this.data.get(3);
         return grindingTotalTime != 0 && grindingProgress != 0 ? grindingProgress * 35 / grindingTotalTime : 0;
     }
+	
+	@Override
+	public ItemStack quickMoveStack(PlayerEntity player, int slotNum) 
+	{
+		ItemStack itemstack = ItemStack.EMPTY;
+		Slot slot = this.slots.get(slotNum);
+		if(slot != null && slot.hasItem()) 
+		{
+			ItemStack itemstack1 = slot.getItem();
+			itemstack = itemstack1.copy();
+			if(slotNum == 1 || slotNum == 2) 
+			{
+				if(!this.moveItemStackTo(itemstack1, 3, 39, true)) 
+				{
+					return ItemStack.EMPTY;
+				}
+
+				slot.onQuickCraft(itemstack1, itemstack);
+			} 
+			else if(slotNum != 1 && slotNum != 0) 
+			{
+				if(this.canGrind(itemstack1)) 
+				{
+					if(!this.moveItemStackTo(itemstack1, 0, 1, false)) 
+					{
+						return ItemStack.EMPTY;
+					}
+				}
+				else if(slotNum >= 3 && slotNum < 30) 
+				{
+					if(!this.moveItemStackTo(itemstack1, 30, 39, false)) 
+					{
+						return ItemStack.EMPTY;
+					}
+				} 
+				else if(slotNum >= 30 && slotNum < 39 && !this.moveItemStackTo(itemstack1, 3, 30, false)) 
+				{
+					return ItemStack.EMPTY;
+				}
+			} 
+			else if(!this.moveItemStackTo(itemstack1, 3, 39, false)) 
+			{
+				return ItemStack.EMPTY;
+			}
+
+			if(itemstack1.isEmpty()) 
+			{
+				slot.set(ItemStack.EMPTY);
+			} 
+			else 
+			{
+				slot.setChanged();
+			}
+
+			if(itemstack1.getCount() == itemstack.getCount()) 
+			{
+				return ItemStack.EMPTY;
+			}
+
+			slot.onTake(player, itemstack1);
+		}
+
+		return itemstack;
+	}
+	
+	protected boolean canGrind(ItemStack stack) 
+	{
+		return this.level.getRecipeManager().getRecipeFor((IRecipeType)this.recipeType, new Inventory(stack), this.level).isPresent();
+	}
 }

@@ -85,6 +85,14 @@ public class AnalyzerContainer extends Container
 		return this.canInteractWithCallable.evaluate((world, blockPos) -> world.getBlockState(blockPos).getBlock() instanceof AnalyzerBlock && entity.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
     }
 	
+	@OnlyIn(Dist.CLIENT)
+	public int getProgress()
+	{
+		int analysingProgress = this.data.get(2);
+        int analysingTotalTime = this.data.get(3);
+        return analysingTotalTime != 0 && analysingProgress != 0 ? analysingProgress * 32 / analysingTotalTime : 0;
+    }
+	
 	@Override
 	public ItemStack quickMoveStack(PlayerEntity player, int i) 
 	{
@@ -105,7 +113,7 @@ public class AnalyzerContainer extends Container
 			}
 			else if(i != 1 && i != 0) 
 			{
-				if(canClean(itemstack1)) 
+				if(canAnalyze(itemstack1)) 
 				{
 					if(!this.moveItemStackTo(itemstack1, 0, 2, true)) 
 					{
@@ -149,16 +157,8 @@ public class AnalyzerContainer extends Container
 		return itemstack;
 	}
 	
-	protected boolean canClean(ItemStack stack) 
+	protected boolean canAnalyze(ItemStack stack) 
 	{
 		return this.level.getRecipeManager().getRecipeFor((IRecipeType)this.recipeType, new Inventory(stack), this.level).isPresent();
 	}
-	
-	@OnlyIn(Dist.CLIENT)
-	public int getProgress()
-	{
-		int analysingProgress = this.data.get(2);
-        int analysingTotalTime = this.data.get(3);
-        return analysingTotalTime != 0 && analysingProgress != 0 ? analysingProgress * 32 / analysingTotalTime : 0;
-    }
 }

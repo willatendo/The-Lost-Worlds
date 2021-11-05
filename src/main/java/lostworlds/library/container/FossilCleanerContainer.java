@@ -3,20 +3,29 @@ package lostworlds.library.container;
 import java.util.Objects;
 
 import lostworlds.content.server.init.ContainerInit;
+import lostworlds.content.server.init.RecipeInit;
 import lostworlds.library.block.FossilCleanerBlock;
 import lostworlds.library.block.entity.FossilCleanerTileEntity;
+import lostworlds.library.container.recipes.FossilCleanerRecipe;
 import lostworlds.library.container.slot.FossilCleanerFuelSlot;
 import lostworlds.library.container.slot.PlasteredFossilSlot;
 import lostworlds.library.container.slot.ResultSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.potion.PotionUtils;
+import net.minecraft.potion.Potions;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIntArray;
 import net.minecraft.util.IWorldPosCallable;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -24,13 +33,16 @@ public class FossilCleanerContainer extends Container
 {
 	private final IWorldPosCallable canInteractWithCallable;
 	private final IIntArray data;
+	protected final World level;
 	public final FossilCleanerTileEntity tile;
+	private final IRecipeType<? extends FossilCleanerRecipe> recipeType = RecipeInit.FOSSIL_CLEANER_RECIPE;
 	
 	public FossilCleanerContainer(int windowID, PlayerInventory playerInv, FossilCleanerTileEntity tileEntity, IInventory tile) 
 	{
 		super(ContainerInit.FOSSIL_CLEANER_CONTAINER, windowID);
 		this.data = tileEntity.getCleanerData();
 		this.tile = tileEntity;
+		this.level = playerInv.player.level;
 		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 		
 		this.addSlot(new PlasteredFossilSlot(tile, 0, 56, 17));
@@ -100,5 +112,86 @@ public class FossilCleanerContainer extends Container
 		}
 		
 		return this.data.get(0) * 16 / i;
+	}
+	
+	@Override
+	public ItemStack quickMoveStack(PlayerEntity player, int slotNum) 
+	{
+		ItemStack itemstack = ItemStack.EMPTY;
+		Slot slot = this.slots.get(slotNum);
+		if(slot != null && slot.hasItem()) 
+		{
+			ItemStack itemstack1 = slot.getItem();
+			itemstack = itemstack1.copy();
+			if(slotNum == 2) 
+			{
+				if(!this.moveItemStackTo(itemstack1, 3, 39, true)) 
+				{
+					return ItemStack.EMPTY;
+				}
+
+				slot.onQuickCraft(itemstack1, itemstack);
+			} 
+			else if(slotNum != 1 && slotNum != 0) 
+			{
+				if(this.canClean(itemstack1)) 
+				{
+					if(!this.moveItemStackTo(itemstack1, 0, 1, false)) 
+					{
+						return ItemStack.EMPTY;
+					}
+				} 
+				else if(this.isFuel(itemstack1)) 
+				{
+					if(!this.moveItemStackTo(itemstack1, 1, 2, false)) 
+					{
+						return ItemStack.EMPTY;
+					}
+				} 
+				else if(slotNum >= 3 && slotNum < 30) 
+				{
+					if(!this.moveItemStackTo(itemstack1, 30, 39, false)) 
+					{
+						return ItemStack.EMPTY;
+					}
+				} 
+				else if(slotNum >= 30 && slotNum < 39 && !this.moveItemStackTo(itemstack1, 3, 30, false)) 
+				{
+					return ItemStack.EMPTY;
+				}
+			} 
+			else if(!this.moveItemStackTo(itemstack1, 3, 39, false)) 
+			{
+				return ItemStack.EMPTY;
+			}
+
+			if(itemstack1.isEmpty()) 
+			{
+				slot.set(ItemStack.EMPTY);
+			} 
+			else 
+			{
+				slot.setChanged();
+			}
+
+			if(itemstack1.getCount() == itemstack.getCount()) 
+			{
+				return ItemStack.EMPTY;
+			}
+
+			slot.onTake(player, itemstack1);
+		}
+
+		return itemstack;
+	}
+
+	protected boolean canClean(ItemStack stack) 
+	{
+		return this.level.getRecipeManager().getRecipeFor((IRecipeType) this.recipeType, new Inventory(stack), this.level).isPresent();
+	}
+
+	protected boolean isFuel(ItemStack stack) 
+	{
+		return stack.getItem() == Items.WATER_BUCKET || stack.getItem() == PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER).getItem();
 	}
 }

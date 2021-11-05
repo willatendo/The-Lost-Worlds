@@ -32,14 +32,14 @@ public class FossilCleanerCategory implements IRecipeCategory<FossilCleanerRecip
 	public FossilCleanerCategory(IGuiHelper helper) 
 	{
 		ResourceLocation location = TEXTURE_LOCATION;
-		this.background = helper.createDrawable(location, 0, 54, 89, 46);
+		this.background = helper.createDrawable(location, 0, 0, 82, 54);
 		this.icon = helper.createDrawableIngredient(new ItemStack(BlockInit.FOSSIL_CLEANER));
 		this.cleanerProgessBar = CacheBuilder.newBuilder().maximumSize(25).build(new CacheLoader<Integer, IDrawableAnimated>() 
 		{
 			@Override
 			public IDrawableAnimated load(Integer cookTime) 
 			{
-				return helper.drawableBuilder(TEXTURE_LOCATION, 0, 0, 35, 15).buildAnimated(cookTime, IDrawableAnimated.StartDirection.LEFT, false);
+				return helper.drawableBuilder(TEXTURE_LOCATION, 82, 18, 33, 16).buildAnimated(cookTime, IDrawableAnimated.StartDirection.LEFT, false);
 			}
 		});
 	}
@@ -57,7 +57,7 @@ public class FossilCleanerCategory implements IRecipeCategory<FossilCleanerRecip
 	@Override
 	public ResourceLocation getUid() 
 	{
-		return LostWorldsConstants.FOSSIL_GRINDER_CATEGORY;
+		return LostWorldsConstants.FOSSIL_CLEANER_CATEGORY;
 	}
 
 	@Override
@@ -96,8 +96,8 @@ public class FossilCleanerCategory implements IRecipeCategory<FossilCleanerRecip
 	{
 		IGuiItemStackGroup itemStackGroup = recipeLayout.getItemStacks();
 		
-		itemStackGroup.init(0, true, 4, 4);
-		itemStackGroup.init(1, false, 67, 4);
+		itemStackGroup.init(0, true, 0, 0);
+		itemStackGroup.init(1, false, 60, 18);
 		
 		itemStackGroup.set(ingredients);
 	}
@@ -106,6 +106,6 @@ public class FossilCleanerCategory implements IRecipeCategory<FossilCleanerRecip
 	public void draw(FossilCleanerRecipe recipe, MatrixStack stack, double mouseX, double mouseY) 
 	{
 		IDrawableAnimated arrow = getCleaningProgessBar(recipe);
-		arrow.draw(stack, 27, 7);
+		arrow.draw(stack, 21, 18);
 	}
 }

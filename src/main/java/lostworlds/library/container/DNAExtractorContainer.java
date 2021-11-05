@@ -86,6 +86,14 @@ public class DNAExtractorContainer extends Container
 		return this.canInteractWithCallable.evaluate((world, blockPos) -> world.getBlockState(blockPos).getBlock() instanceof DNAExtractorBlock && playerIn.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
     }
 	
+	@OnlyIn(Dist.CLIENT)
+	public int getProgress()
+	{
+		int extractingProgress = this.data.get(2);
+        int extractingTotalTime = this.data.get(3);
+        return extractingTotalTime != 0 && extractingProgress != 0 ? extractingProgress * 35 / extractingTotalTime : 0;
+    }
+	
 	@Override
 	public ItemStack quickMoveStack(PlayerEntity player, int i) 
 	{
@@ -106,7 +114,7 @@ public class DNAExtractorContainer extends Container
 			}
 			else if(i != 1 && i != 0) 
 			{
-				if(canClean(itemstack1)) 
+				if(canExtract(itemstack1)) 
 				{
 					if(!this.moveItemStackTo(itemstack1, 0, 2, true)) 
 					{
@@ -150,16 +158,8 @@ public class DNAExtractorContainer extends Container
 		return itemstack;
 	}
 	
-	protected boolean canClean(ItemStack stack) 
+	protected boolean canExtract(ItemStack stack) 
 	{
 		return this.level.getRecipeManager().getRecipeFor((IRecipeType)this.recipeType, new Inventory(stack), this.level).isPresent() || this.level.getRecipeManager().getRecipeFor((IRecipeType)this.secondaryRecipeType, new Inventory(stack), this.level).isPresent();
 	}
-	
-	@OnlyIn(Dist.CLIENT)
-	public int getProgress()
-	{
-		int extractingProgress = this.data.get(2);
-        int extractingTotalTime = this.data.get(3);
-        return extractingTotalTime != 0 && extractingProgress != 0 ? extractingProgress * 35 / extractingTotalTime : 0;
-    }
 }

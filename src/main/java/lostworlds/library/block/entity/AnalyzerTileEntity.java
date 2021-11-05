@@ -199,29 +199,29 @@ public class AnalyzerTileEntity extends TileEntity implements IInventory, INamed
 	{
 		if(!this.items.get(0).isEmpty() && !this.items.get(1).isEmpty() && recipe != null) 
 		{
-			ItemStack itemstack = recipe.getResultItem();
-			if(itemstack.isEmpty()) 
+			ItemStack result = recipe.getResultItem();
+			if(result.isEmpty()) 
 			{
 				return false;
 			} 
 			else 
 			{
-				ItemStack itemstack1 = this.items.get(2);
-				if(itemstack1.isEmpty()) 
+				ItemStack output = this.items.get(2);
+				if(output.isEmpty()) 
 				{
 					return true;
 				}
-				else if(!itemstack1.sameItem(itemstack)) 
+				else if(!output.sameItem(result)) 
 				{
 					return false;
 				} 
-				else if(itemstack1.getCount() + itemstack.getCount() <= this.getMaxStackSize() && itemstack1.getCount() + itemstack.getCount() <= itemstack1.getMaxStackSize()) 
+				else if(output.getCount() + result.getCount() <= this.getMaxStackSize() && output.getCount() + result.getCount() <= output.getMaxStackSize()) 
 				{
 					return true;
 				} 
 				else 
 				{
-					return itemstack1.getCount() + itemstack.getCount() <= itemstack.getMaxStackSize(); 
+					return output.getCount() + result.getCount() <= result.getMaxStackSize(); 
 				}
 			}
 		} 
@@ -237,15 +237,15 @@ public class AnalyzerTileEntity extends TileEntity implements IInventory, INamed
 		{
 			ItemStack dna = this.items.get(0);
 			ItemStack vile = this.items.get(1);
-			ItemStack itemstack1 = recipe.getResultItem();
-			ItemStack itemstack2 = this.items.get(2);
-			if(itemstack2.isEmpty()) 
+			ItemStack result = recipe.getResultItem();
+			ItemStack output = this.items.get(2);
+			if(output.isEmpty()) 
 			{
-				this.items.set(2, itemstack1.copy());
+				this.items.set(2, result.copy());
 			} 
-			else if(itemstack2.getItem() == itemstack1.getItem()) 
+			else if(output.getItem() == result.getItem()) 
 			{
-				itemstack2.grow(itemstack1.getCount());
+				output.grow(result.getCount());
 			}
 			
 			if(!this.level.isClientSide) 
