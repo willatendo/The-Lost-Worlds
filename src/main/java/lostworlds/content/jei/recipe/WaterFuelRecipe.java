@@ -27,11 +27,11 @@ public class WaterFuelRecipe
 
 	public List<ItemStack> getInputs() 
 	{
-		return inputs;
+		return this.inputs;
 	}
 
 	public IDrawableAnimated getBucket() 
 	{
-		return bucket;
+		return this.bucket;
 	}
 }

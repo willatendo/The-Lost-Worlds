@@ -3,6 +3,7 @@ package lostworlds.content.jei;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import lostworlds.content.ModUtils;
 import lostworlds.content.client.screen.AnalyzerScreen;
 import lostworlds.content.client.screen.ArchaeologyTableScreen;
 import lostworlds.content.client.screen.CultivatorScreen;
@@ -28,8 +29,10 @@ import lostworlds.library.container.DNAExtractorContainer;
 import lostworlds.library.container.FossilCleanerContainer;
 import lostworlds.library.container.FossilGrinderContainer;
 import lostworlds.library.container.PaleontologyTableContainer;
+import lostworlds.library.item.CrystalScarabGemItem;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
@@ -69,6 +72,8 @@ public class LostWorldsPlugin implements IModPlugin
 		registration.addRecipes(getRecipes(manager, RecipeInit.TIME_MACHINE_RECIPE), LostWorldsConstants.TIME_MACHINE_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.ARCHAEOLOGY_TABLE_RECIPE), LostWorldsConstants.ARCHAEOLOGY_TABLE_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.PALEONTOLOGY_TABLE_RECIPE), LostWorldsConstants.PALEONTOLOGY_TABLE_CATEGORY);
+		
+		registration.addIngredientInfo(CrystalScarabGemItem.Gems.CHARGED_CRYSTAL_SCARAB_GEM.getItem().getDefaultInstance(), VanillaTypes.ITEM, ModUtils.tTC("jeiInfo", "charged_crystal_scarab_gem").getString());
 	}
 	
 	@Override
