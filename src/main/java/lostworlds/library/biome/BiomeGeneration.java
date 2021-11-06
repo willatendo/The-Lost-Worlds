@@ -67,14 +67,23 @@ public class BiomeGeneration
 		{
 			if(event.getName().equals(BiomeInit.REDWOODS_FOREST.getRegistryName())) 
 			{
-				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.REDWOODS_FOREST, LostWorldsConfig.COMMON_CONFIG.ginkgoForestWeight.get()));
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.REDWOODS_FOREST, LostWorldsConfig.COMMON_CONFIG.sequoiaForestWeight.get()));
 				BiomeDictionary.addTypes(BiomeKeys.REDWOODS_FOREST, Type.FOREST, Type.COLD, Type.CONIFEROUS);
 			}
 			
 			if(event.getName().equals(BiomeInit.REDWOODS_FOREST_HILLS.getRegistryName())) 
 			{
-				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.REDWOODS_FOREST_HILLS, LostWorldsConfig.COMMON_CONFIG.ginkgoForestWeight.get()));
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.REDWOODS_FOREST_HILLS, LostWorldsConfig.COMMON_CONFIG.sequoiaForestWeight.get()));
 				BiomeDictionary.addTypes(BiomeKeys.REDWOODS_FOREST_HILLS, Type.FOREST, Type.COLD, Type.CONIFEROUS);
+			}
+		}
+		
+		if(LostWorldsConfig.COMMON_CONFIG.volcanoShouldSpawn.get())
+		{
+			if(event.getName().equals(BiomeInit.VOLCANO.getRegistryName())) 
+			{
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.VOLCANO, LostWorldsConfig.COMMON_CONFIG.volcanoWeight.get()));
+				BiomeDictionary.addTypes(BiomeKeys.VOLCANO, Type.MOUNTAIN, Type.HOT);
 			}
 		}
 	}

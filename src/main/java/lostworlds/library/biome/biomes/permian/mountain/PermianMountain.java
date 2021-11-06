@@ -24,6 +24,6 @@ public class PermianMountain extends TyrannoBiome
 	
 	public PermianMountain() 
 	{
-		super(BaseBiomes.biome(RainType.RAIN, Category.EXTREME_HILLS,  1.0F, 0.5F, 0.0F, 0.2F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+		super(BaseBiomes.biome(RainType.RAIN, Category.EXTREME_HILLS, 1.0F, 0.5F, 0.0F, 0.2F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
 	}
 }

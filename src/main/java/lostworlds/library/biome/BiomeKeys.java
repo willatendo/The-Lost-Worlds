@@ -90,6 +90,8 @@ public class BiomeKeys
 	
 	public static final RegistryKey<Biome> REDWOODS_FOREST = register("redwoods_forest");
 	public static final RegistryKey<Biome> REDWOODS_FOREST_HILLS = register("redwoods_forest_hills");
+
+	public static final RegistryKey<Biome> VOLCANO = register("volcano");
 	
 	private static RegistryKey<Biome> register(String id)
 	{

@@ -52,6 +52,7 @@ import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.DepthAverageConfig;
 import net.minecraft.world.gen.placement.IPlacementConfig;
+import net.minecraft.world.gen.placement.NoPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 import net.minecraft.world.gen.placement.TopSolidWithNoiseConfig;
@@ -109,6 +110,8 @@ public class ModConfiguredFeatures
 	//Ores
 	public static final ConfiguredFeature<?, ?> COPPER_ORE = register("copper_ore", Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockInit.COPPER_ORE.defaultBlockState(), LostWorldsConfig.COMMON_CONFIG.copperVeinSize.get())).range(LostWorldsConfig.COMMON_CONFIG.copperRange.get()).squared().count(LostWorldsConfig.COMMON_CONFIG.copperCountPerChunk.get()));
 	public static final ConfiguredFeature<?, ?> SILT_PATCH = register("silt_patch", Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockInit.SILT.defaultBlockState(), LostWorldsConfig.COMMON_CONFIG.siltVeinSize.get())).range(LostWorldsConfig.COMMON_CONFIG.siltRange.get()).squared().count(LostWorldsConfig.COMMON_CONFIG.siltCountPerChunk.get()));
+	
+	public static final ConfiguredFeature<?, ?> PERMIAN_MAGMA_ORE = register("permian_magma_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, Blocks.MAGMA_BLOCK.defaultBlockState(), 33)).decorated(Placement.MAGMA.configured(NoPlacementConfig.INSTANCE)).squared().count(4));
 
 	public static final ConfiguredFeature<?, ?> PETRIFIED_ARAUCARIA = register("petrified_araucaria", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.STONE.defaultBlockState(), BlockInit.PETRIFIED_ARAUCARIA_LOG.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE).chance(LostWorldsConfig.COMMON_CONFIG.petrifiedAraucariaChance.get())));
 	public static final ConfiguredFeature<?, ?> PETRIFIED_CALAMITES = register("petrified_calamties", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.STONE.defaultBlockState(), BlockInit.PETRIFIED_CALAMITES_LOG.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE).chance(LostWorldsConfig.COMMON_CONFIG.petrifiedCalamitesChance.get())));

@@ -86,7 +86,7 @@ public class ModBiomeFeatures
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA);
 		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Features.BASALT_PILLAR);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, Features.ORE_MAGMA);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, ModConfiguredFeatures.PERMIAN_MAGMA_ORE);
 		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.DELTA);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA_DOUBLE);
 		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.SMALL_BASALT_COLUMNS);
@@ -464,6 +464,18 @@ public class ModBiomeFeatures
 		
 		addConiferTrees(builder);
 		addSequoiaTrees(builder);
+	}
+	
+	public static void volcano(BiomeGenerationSettings.Builder builder)
+	{		
+		DefaultBiomeFeatures.addDefaultCarvers(builder);
+		DefaultBiomeFeatures.addDefaultLakes(builder);
+		DefaultBiomeFeatures.addDefaultMonsterRoom(builder);
+		DefaultBiomeFeatures.addDefaultUndergroundVariety(builder);
+		DefaultBiomeFeatures.addDefaultOres(builder);
+		DefaultBiomeFeatures.addDefaultMushrooms(builder);
+		addAshLayer(builder);
+		addScorchedTrees(builder);
 	}
 	
 	//Permian Features

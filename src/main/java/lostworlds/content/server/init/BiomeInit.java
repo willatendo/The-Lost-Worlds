@@ -23,6 +23,7 @@ import lostworlds.library.biome.biomes.overworld.forest.AraucariaForest;
 import lostworlds.library.biome.biomes.overworld.forest.ConiferForest;
 import lostworlds.library.biome.biomes.overworld.forest.GinkgoForest;
 import lostworlds.library.biome.biomes.overworld.forest.SequoiaForest;
+import lostworlds.library.biome.biomes.overworld.mountain.Volcano;
 import lostworlds.library.biome.biomes.permian.desert.PermianDesert;
 import lostworlds.library.biome.biomes.permian.forest.PermianConiferForest;
 import lostworlds.library.biome.biomes.permian.forest.PermianGinkgoForest;
@@ -123,7 +124,9 @@ public class BiomeInit
 	
 	public static final Biome REDWOODS_FOREST = ModRegistry.register("redwoods_forest", new SequoiaForest());
 	public static final Biome REDWOODS_FOREST_HILLS = ModRegistry.register("redwoods_forest_hills", new SequoiaForest(0.45F, 0.3F));
-	
+
+	public static final Biome VOLCANO = ModRegistry.register("volcano", new Volcano());
+
 	//Registry
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Biomes"); }
 }

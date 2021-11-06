@@ -4,6 +4,8 @@ import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.library.entity.goal.herbivore.HerbivoreEatGrassGoal;
+import lostworlds.library.entity.goal.herbivore.HerbivoreEatMossySoilGoal;
+import lostworlds.library.entity.goal.herbivore.HerbivoreEatPodzolGoal;
 import lostworlds.library.entity.goal.herbivore.NaturalBreedingGoal;
 import lostworlds.library.entity.goal.herbivore.SleepGoal;
 import lostworlds.library.entity.goal.herbivore.SleepyAvoidEntityGoal;
@@ -82,6 +84,8 @@ public class ChilesaurusEntity extends HerbivoreEntity
 		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
 		this.goalSelector.addGoal(4, new HerbivoreEatGrassGoal(this));
+		this.goalSelector.addGoal(4, new HerbivoreEatPodzolGoal(this));
+		this.goalSelector.addGoal(4, new HerbivoreEatMossySoilGoal(this));
 		this.goalSelector.addGoal(5, new SleepGoal(this));
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(6, new NaturalBreedingGoal(this, 1.0D));

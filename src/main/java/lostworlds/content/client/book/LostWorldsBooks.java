@@ -14,6 +14,8 @@ public class LostWorldsBooks extends TyrannobookData
 {
 	private static final ResourceLocation LOST_WORLDS_LEXICON_ID = ModUtils.rL("lost_worlds_lexicon");
 	public static final TyrannobookData LOST_WORLDS_LEXICON = TyrannobookLoader.registerBook(LOST_WORLDS_LEXICON_ID.toString(), false, false);
+	private static final ResourceLocation FEILD_GUIDE_ID = ModUtils.rL("feild_guide");
+	public static final TyrannobookData FEILD_GUIDE = TyrannobookLoader.registerBook(FEILD_GUIDE_ID.toString(), false, false);
 	
 	public static void initBooks() 
 	{
