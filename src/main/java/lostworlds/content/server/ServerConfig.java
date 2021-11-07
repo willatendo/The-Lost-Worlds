@@ -112,7 +112,7 @@ public class ServerConfig
 		this.siltCountPerChunk = builder.comment("Sets the ammount of silt patches veins per chunk.").translation(TRANSLATION_TEXT + "siltCountPerChunk").defineInRange("siltCountPerChunk", 3, 1, 100);
 
 		this.plantFossilsInOverworld = builder.comment("Sets if plant fossils should spawn in the overworld.").translation(TRANSLATION_TEXT + "plantFossilsInOverworld").define("plantFossilsInOverworld", true);
-		this.plantFossilChance = builder.comment("Sets the chance of plant fossils spawning.").translation(TRANSLATION_TEXT + "plantFossilChance").defineInRange("plantFossilChance", 64, 0, 999);
+		this.plantFossilChance = builder.comment("Sets the chance of plant fossils spawning.").translation(TRANSLATION_TEXT + "plantFossilChance").defineInRange("plantFossilChance", 128, 0, 999);
 		
 		this.fossilsInOverworld = builder.comment("Sets if fossils should spawn in the overworld.").translation(TRANSLATION_TEXT + "fossilsInOverworld").define("fossilsInOverworld", true);
 		

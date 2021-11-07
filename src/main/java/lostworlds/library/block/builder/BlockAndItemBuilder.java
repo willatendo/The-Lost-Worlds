@@ -8,12 +8,17 @@ import net.minecraft.item.Item;
 
 public class BlockAndItemBuilder
 {
-	public static Block create(String id, Block block)
+	public static Block create(String id, Block block, Item item)
 	{
-		Item item = new GroupedBlockItem(block);
 		ModRegistry.register(id, block);
 		ModRegistry.register(id, item);
 		return block;
+	}
+	
+	public static Block create(String id, Block block)
+	{
+		Item item = new GroupedBlockItem(block);
+		return create(id, block, item);
 	}
 	
 	public static ConnectedTextureBlock create(String id, ConnectedTextureBlock block)

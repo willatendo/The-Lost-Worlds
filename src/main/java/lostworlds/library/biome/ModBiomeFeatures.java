@@ -179,6 +179,7 @@ public class ModBiomeFeatures
 	//Jurassic
 	public static void jurassicConiferForest(BiomeGenerationSettings.Builder builder)
 	{
+		addModCarvers(builder);
 		addConiferTrees(builder);
 		addJurassicRock(builder);
 		addJurassicOres(builder);
@@ -192,6 +193,7 @@ public class ModBiomeFeatures
 	
 	public static void jurassicGinkgoForest(BiomeGenerationSettings.Builder builder)
 	{
+		addModCarvers(builder);
 		addGinkgoTrees(builder);
 		addJurassicRock(builder);
 		addJurassicOres(builder);
@@ -207,6 +209,7 @@ public class ModBiomeFeatures
 	
 	public static void jurassicAraucariaForest(BiomeGenerationSettings.Builder builder)
 	{
+		addModCarvers(builder);
 		addAraucariaTrees(builder);
 		addJurassicRock(builder);
 		addJurassicOres(builder);
@@ -220,6 +223,7 @@ public class ModBiomeFeatures
 	
 	public static void jurassicPlains(BiomeGenerationSettings.Builder builder)
 	{
+		addModCarvers(builder);
 		addJurassicRock(builder);
 		addJurassicOres(builder);
 		addSpring(builder);
@@ -236,6 +240,7 @@ public class ModBiomeFeatures
 	
 	public static void jurassicMountains(BiomeGenerationSettings.Builder builder)
 	{
+		addModCarvers(builder);
 		addJurassicRock(builder);
 		addJurassicOres(builder);
 		addJurassicEmerald(builder);
@@ -251,6 +256,7 @@ public class ModBiomeFeatures
 	
 	public static void jurassicVolcanicRange(BiomeGenerationSettings.Builder builder)
 	{
+		addModCarvers(builder);
 		addJurassicOres(builder);
 		addJurassicEmerald(builder);
 		addExtraJurassicDiamonds(builder);
@@ -266,6 +272,7 @@ public class ModBiomeFeatures
 	{
 		addJurassicRock(builder);
 		addJurassicOres(builder);
+		addModCarvers(builder);
 		addSpring(builder);
 		addJurassicUndergroundVariety(builder);
 
@@ -276,6 +283,7 @@ public class ModBiomeFeatures
 	{
 		addJurassicRock(builder);
 		addJurassicOres(builder);
+		addModCarvers(builder);
 		addSpring(builder);
 		addJurassicUndergroundVariety(builder);
 		addAlethopteris(builder);
@@ -377,6 +385,21 @@ public class ModBiomeFeatures
 		addJurassicOres(builder);
 		addModCarvers(builder);
 		addJurassicUndergroundVariety(builder);
+	}
+	
+	//Cretaceous
+	public static void cretaceousGameTrail(BiomeGenerationSettings.Builder builder)
+	{
+		addCretaceousRock(builder);
+		addCretaceousOres(builder);
+		addSpring(builder);
+		addCretaceousUndergroundVariety(builder);
+		addFernGroundClutter(builder);
+		addModCarvers(builder);
+	
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_DEAD_BUSH_BADLANDS);
+		
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_BROKEN_TREES);
 	}
 	
 	//Overworld
@@ -563,6 +586,39 @@ public class ModBiomeFeatures
 	private static void addExtraJurassicDiamonds(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_DIAMOND_ORE);
+	}
+	
+	//Cretaceous Features
+	private static void addCretaceousUndergroundVariety(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_DIRT);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_GRAVEL);
+		
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_LATERLITE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_RAW_MARBLE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_LIMESTONE_ORE);
+	}
+	
+	private static void addCretaceousRock(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ModConfiguredFeatures.CRETACEOUS_ROCK);
+	}
+	
+	private static void addCretaceousOres(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_COAL);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_DIAMOND);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_GOLD);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_IRON);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_LAPIS);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_REDSTONE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.COPPER_ORE);
+	}
+	
+	@SuppressWarnings("unused")
+	private static void addCretaceousEmerald(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_EMERALD);
 	}
 
 	//General Features

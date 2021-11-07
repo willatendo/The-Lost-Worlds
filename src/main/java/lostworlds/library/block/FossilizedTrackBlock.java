@@ -29,12 +29,12 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-public class FossilisedTrackBlock extends Block
+public class FossilizedTrackBlock extends Block
 {
 	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 	private static Block turnTo;
 	
-	public FossilisedTrackBlock(Properties properties, Block turnTo) 
+	public FossilizedTrackBlock(Properties properties, Block turnTo) 
 	{
 		super(properties);
 		this.turnTo = turnTo;

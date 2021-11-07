@@ -20,11 +20,13 @@ import lostworlds.library.block.DriedSoilBlock;
 import lostworlds.library.block.FogBlock;
 import lostworlds.library.block.FossilCleanerBlock;
 import lostworlds.library.block.FossilGrinderBlock;
-import lostworlds.library.block.FossilisedTrackBlock;
+import lostworlds.library.block.FossilizedTrackBlock;
 import lostworlds.library.block.GeyserBlock;
 import lostworlds.library.block.GroundFernsBlock;
 import lostworlds.library.block.LargeFossilisedEggBlock;
+import lostworlds.library.block.LargePlasteredFossilizedEggBlock;
 import lostworlds.library.block.MediumFossilisedEggBlock;
+import lostworlds.library.block.MediumPlasteredFossilizedEggBlock;
 import lostworlds.library.block.ModBushBlock;
 import lostworlds.library.block.ModDoublePlantBlock;
 import lostworlds.library.block.ModOreRotatedPillerBlock;
@@ -36,14 +38,17 @@ import lostworlds.library.block.PaleontologyTableBlock;
 import lostworlds.library.block.PetrifiedWoodBlock;
 import lostworlds.library.block.PlantFossilBlock;
 import lostworlds.library.block.PlasteredBlock;
-import lostworlds.library.block.SmallFossilisedEggBlock;
+import lostworlds.library.block.SmallFossilizedEggBlock;
+import lostworlds.library.block.SmallPlasteredFossilizedEggBlock;
 import lostworlds.library.block.SoftDirtBlock;
 import lostworlds.library.block.SoftStoneBlock;
 import lostworlds.library.block.SpongeColonyBlock;
 import lostworlds.library.block.TimeMachineBlock;
-import lostworlds.library.block.TinyFossilisedEggBlock;
+import lostworlds.library.block.TinyFossilizedEggBlock;
+import lostworlds.library.block.TinyPlasteredFossilizedEggBlock;
 import lostworlds.library.block.VolcanicAshBlock;
 import lostworlds.library.block.VolcanicAshLayerBlock;
+import lostworlds.library.block.WaterPlantBlock;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.block.builder.BlockBuilder;
 import lostworlds.library.block.tree.AraucariaTree;
@@ -205,13 +210,17 @@ public class BlockInit
 	public static final Block SOFT_DIRT = BlockAndItemBuilder.create("soft_dirt", new SoftDirtBlock());
 	public static final Block PLANT_FOSSIL = BlockAndItemBuilder.create("plant_fossil", new PlantFossilBlock());
 		
-	public static final Block FOSSILIZED_TRACK = BlockAndItemBuilder.create("fossilized_track", new FossilisedTrackBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F), Blocks.STONE));
+	public static final Block FOSSILIZED_TRACK = BlockAndItemBuilder.create("fossilized_track", new FossilizedTrackBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F), Blocks.STONE));
 	public static final Block PLASTERED_FOSSILIZED_TRACK = BlockAndItemBuilder.create("plastered_fossilized_track", new PlasteredBlock(AbstractBlock.Properties.of(Material.STONE).instabreak().sound(SoundType.WOOL), FOSSILIZED_TRACK));
 	
-	public static final Block TINY_FOSSILISED_EGG = BlockAndItemBuilder.create("tiny_fossilized_egg", new TinyFossilisedEggBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()));
-	public static final Block SMALL_FOSSILISED_EGG = BlockAndItemBuilder.create("small_fossilized_egg", new SmallFossilisedEggBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()));
+	public static final Block TINY_FOSSILISED_EGG = BlockAndItemBuilder.create("tiny_fossilized_egg", new TinyFossilizedEggBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()));
+	public static final Block TINY_PLASTERED_FOSSILISED_EGG = BlockAndItemBuilder.create("tiny_plastered_fossilized_egg", new TinyPlasteredFossilizedEggBlock(AbstractBlock.Properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()));
+	public static final Block SMALL_FOSSILISED_EGG = BlockAndItemBuilder.create("small_fossilized_egg", new SmallFossilizedEggBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()));
+	public static final Block SMALL_PLASTERED_FOSSILISED_EGG = BlockAndItemBuilder.create("small_plastered_fossilized_egg", new SmallPlasteredFossilizedEggBlock(AbstractBlock.Properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()));
 	public static final Block MEDIUM_FOSSILISED_EGG = BlockAndItemBuilder.create("medium_fossilized_egg", new MediumFossilisedEggBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()));
+	public static final Block MEDIUM_PLASTERED_FOSSILISED_EGG = BlockAndItemBuilder.create("medium_plastered_fossilized_egg", new MediumPlasteredFossilizedEggBlock(AbstractBlock.Properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()));
 	public static final Block LARGE_FOSSILISED_EGG = BlockAndItemBuilder.create("large_fossilized_egg", new LargeFossilisedEggBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()));
+	public static final Block LARGE_PLASTERED_FOSSILISED_EGG = BlockAndItemBuilder.create("large_plastered_fossilized_egg", new LargePlasteredFossilizedEggBlock(AbstractBlock.Properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()));
 	
 	//Overworld Ores
 	public static final Block COPPER_ORE = BlockAndItemBuilder.create("copper_ore", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.0F).sound(SoundType.STONE)));
@@ -423,6 +432,8 @@ public class BlockInit
 	//Sigillaria
 	
 	//Plants
+	public static final Block ARCHAEFRUTUS = WaterPlantBlock.create("archaefrutus", new WaterPlantBlock(Effects.DAMAGE_BOOST, 3, AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block POTTED_ARCHAEFRUTUS = BlockBuilder.create("potted_archaefrutus", new FlowerPotBlock(ARCHAEFRUTUS, AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
 	public static final Block ALETHOPTERIS = BlockAndItemBuilder.create("alethopteris", new ModDoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block BRAZILEA = BrazileaBlock.create("brazilea");
 	public static final Block CEPHALOTAXUS = BlockAndItemBuilder.create("cephalotaxus", new ModDoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
@@ -431,7 +442,11 @@ public class BlockInit
 	public static final Block DILLHOFFIA = BlockAndItemBuilder.create("dillhoffia", new FlowerBlock(Effects.BLINDNESS, 7, AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block POTTED_DILLHOFFIA = BlockBuilder.create("potted_dillhoffia", new FlowerPotBlock(DILLHOFFIA, AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
 	public static final Block DUISBERGIA = BlockAndItemBuilder.create("duisbergia", new ModDoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block EUDICOTS = BlockAndItemBuilder.create("eudicots", new FlowerBlock(Effects.HUNGER, 10, AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block POTTED_EUDICOTS = BlockBuilder.create("potted_eudicots", new FlowerPotBlock(EUDICOTS, AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
 	public static final Block GROUND_FERNS = BlockAndItemBuilder.create("ground_ferns", new GroundFernsBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block MAGNOLIA = BlockAndItemBuilder.create("magnolia", new FlowerBlock(Effects.MOVEMENT_SLOWDOWN, 8, AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block POTTED_MAGNOLIA = BlockBuilder.create("potted_magnolia", new FlowerPotBlock(MAGNOLIA, AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
 	public static final Block OSMUNDA = BlockAndItemBuilder.create("osmunda", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block PERMIAN_DESERT_FERNS = BlockAndItemBuilder.create("permian_desert_ferns", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block PERMIAN_DESERT_SHRUB = BlockAndItemBuilder.create("permian_desert_shrub", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_BROWN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));

@@ -402,6 +402,13 @@ public class SoftStoneBlock extends Block
 	
 	private boolean canDestroy(World world, Entity entity) 
 	{
-		return entity instanceof PlayerEntity || ForgeEventFactory.getMobGriefingEvent(world, entity);
+		if(entity instanceof FossilEntity)
+		{
+			return false;
+		}
+		else
+		{
+			return entity instanceof PlayerEntity || ForgeEventFactory.getMobGriefingEvent(world, entity);
+		}
 	}
 }

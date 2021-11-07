@@ -173,7 +173,7 @@ public class SmallEggBlock extends Block
 	@Override
 	public boolean canBeReplaced(BlockState state, BlockItemUseContext context) 
 	{
-		return context.getItemInHand().getItem() == this.asItem() && state.getValue(EGGS) < 5 ? true : super.canBeReplaced(state, context);
+		return context.getItemInHand().getItem() == this.asItem() && state.getValue(EGGS) < 10 ? true : super.canBeReplaced(state, context);
 	}
 
 	@Override
@@ -181,7 +181,7 @@ public class SmallEggBlock extends Block
 	public BlockState getStateForPlacement(BlockItemUseContext context) 
 	{
 		BlockState blockstate = context.getLevel().getBlockState(context.getClickedPos());
-		return blockstate.is(this) ? blockstate.setValue(EGGS, Integer.valueOf(Math.min(5, blockstate.getValue(EGGS) + 1))) : super.getStateForPlacement(context);
+		return blockstate.is(this) ? blockstate.setValue(EGGS, Integer.valueOf(Math.min(10, blockstate.getValue(EGGS) + 1))) : super.getStateForPlacement(context);
 	}
 
 	@Override

@@ -1,0 +1,22 @@
+{
+	"variants": {
+		"medium_eggs=1": {
+			"model": "lostworlds:block/plastered_fossilized_medium_eggs_1"
+		},
+		"medium_eggs=2": {
+			"model": "lostworlds:block/plastered_fossilized_medium_eggs_2"
+		},
+		"medium_eggs=3": {
+			"model": "lostworlds:block/plastered_fossilized_medium_eggs_3"
+		},
+		"medium_eggs=4": {
+			"model": "lostworlds:block/plastered_fossilized_medium_eggs_4"
+		},
+		"medium_eggs=5": {
+			"model": "lostworlds:block/plastered_fossilized_medium_eggs_5"
+		},
+		"medium_eggs=6": {
+			"model": "lostworlds:block/plastered_fossilized_medium_eggs_6"
+		}
+	}
+}

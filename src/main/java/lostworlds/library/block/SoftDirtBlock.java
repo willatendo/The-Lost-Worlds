@@ -32,11 +32,11 @@ public class SoftDirtBlock extends Block
 		Egg egg = state.getValue(EGG);
 		if(egg == Egg.TINY)
 		{
-			world.setBlockAndUpdate(pos, BlockInit.TINY_FOSSILISED_EGG.defaultBlockState().setValue(TinyFossilisedEggBlock.EGGS, Integer.valueOf(rand.nextInt(19) + 1)));
+			world.setBlockAndUpdate(pos, BlockInit.TINY_FOSSILISED_EGG.defaultBlockState().setValue(TinyFossilizedEggBlock.EGGS, Integer.valueOf(rand.nextInt(19) + 1)));
 		}
 		else if(egg == Egg.SMALL)
 		{
-			world.setBlockAndUpdate(pos, BlockInit.SMALL_FOSSILISED_EGG.defaultBlockState().setValue(SmallFossilisedEggBlock.EGGS, Integer.valueOf(rand.nextInt(10) + 1)));
+			world.setBlockAndUpdate(pos, BlockInit.SMALL_FOSSILISED_EGG.defaultBlockState().setValue(SmallFossilizedEggBlock.EGGS, Integer.valueOf(rand.nextInt(10) + 1)));
 		}
 		else if(egg == Egg.MEDIUM)
 		{

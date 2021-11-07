@@ -2,8 +2,10 @@ package lostworlds.library.block;
 
 import javax.annotation.Nullable;
 
+import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.block.properties.ModBlockStateProperties;
 import lostworlds.library.entity.terrestrial.PrehistoricEntity;
+import lostworlds.library.item.WetPaperItem;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,13 +15,17 @@ import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
@@ -135,5 +141,27 @@ public class LargeFossilisedEggBlock extends Block
 		{
 			return false;
 		}
+	}
+	
+	@Override
+	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) 
+	{
+		if(entity.getItemInHand(hand) != null)
+		{
+			Item item = entity.getItemInHand(hand).getItem();
+			if(item instanceof WetPaperItem)
+			{
+				world.setBlockAndUpdate(pos, BlockInit.LARGE_FOSSILISED_EGG.defaultBlockState().setValue(EGGS, state.getValue(EGGS)));
+				world.playSound(entity, pos, SoundEvents.WOOL_PLACE, SoundCategory.BLOCKS, 0.7F, 1.0F);
+				
+				if(!entity.abilities.instabuild)
+				{
+					ItemStack stack = entity.getItemInHand(hand);
+					stack.shrink(1);
+				}
+				return ActionResultType.SUCCESS;
+			}
+		}
+		return super.use(state, world, pos, entity, hand, result);
 	}
 }

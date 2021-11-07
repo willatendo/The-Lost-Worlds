@@ -78,6 +78,9 @@ public class ModConfiguredFeatures
 	public static final ConfiguredFeature<?, ?> PERMIAN_DESERT_FERNS_PATCH = register("permian_desert_ferns_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.PERMIAN_DESERT_FERNS_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
 
 	//Trees
+	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> BROKEN_TREE = register("broken_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.defaultBlockState()), new SimpleBlockStateProvider(Blocks.AIR.defaultBlockState()), new JungleFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0), 2), new FancyTrunkPlacer(3, 11, 0), new TwoLayerFeature(0, 0, 0, OptionalInt.of(4)))).ignoreVines().heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
+	public static final ConfiguredFeature<?, ?> SPARSE_BROKEN_TREES = register("sparse_broken_trees", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(BROKEN_TREE.weighted(0.33333334F)), BROKEN_TREE)).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(0, 0.1F, 1))));
+
 	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CALAMITIES_TREE = register("calamties_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.CALAMITES_LOG.defaultBlockState()), new SimpleBlockStateProvider(BlockInit.CALAMITES_LEAVES.defaultBlockState()), new ConiferFoliagePlacer(FeatureSpread.of(2, 1), FeatureSpread.of(0, 2), FeatureSpread.of(1, 1)), new StraightTrunkPlacer(15, 2, 1), new TwoLayerFeature(2, 0, 2))).ignoreVines().build()));
 	public static final ConfiguredFeature<?, ?> CALAMITIES_TREES = register("calamties_trees", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(CALAMITIES_TREE.weighted(0.33333334F)), CALAMITIES_TREE)).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(10, 0.1F, 1))));
 
@@ -155,6 +158,7 @@ public class ModConfiguredFeatures
 	//Rocks
 	public static final ConfiguredFeature<?, ?> PERMIAN_ROCK = register("permian_rock", FeatureInit.PERMIAN_ROCK.configured(new BlockStateFeatureConfig(BlockInit.PERMIAN_COBBLESTONE.defaultBlockState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));		
 	public static final ConfiguredFeature<?, ?> JURASSIC_ROCK = register("jurassic_rock", FeatureInit.PERMIAN_ROCK.configured(new BlockStateFeatureConfig(BlockInit.JURASSIC_COBBLESTONE.defaultBlockState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));		
+	public static final ConfiguredFeature<?, ?> CRETACEOUS_ROCK = register("cretaceous_rock", FeatureInit.PERMIAN_ROCK.configured(new BlockStateFeatureConfig(Blocks.COBBLESTONE.defaultBlockState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));		
 	
 	//Lakes
 	public static final ConfiguredFeature<?, ?> PERMIAN_WATER_LAKE = register("permian_water_lake", FeatureInit.PERMIAN_LAKE.configured(new BlockStateFeatureConfig(Blocks.WATER.defaultBlockState())).decorated(Placement.WATER_LAKE.configured(new ChanceConfig(4))));

@@ -13,24 +13,17 @@ import tyrannotitanlib.library.base.biome.TyrannoBiome;
 
 public class CreataceousGameTrail extends TyrannoBiome
 {
-	public static final BiomeGenerationSettings.Builder GENERATION = genSettings(SurfaceBuilderInit.NAKED_JURASSIC_PLAINS, ModSurfaceBuilders.MOSSY_SOIL_CONFIG);
+	public static final BiomeGenerationSettings.Builder GENERATION = genSettings(SurfaceBuilderInit.NAKED_CRETACEOUS_GAME_TRAIL, ModSurfaceBuilders.COARSE_DIRT);
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
-	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomes.BASE_WATER_COLOUR).waterFogColor(BaseBiomes.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomes.BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
+	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomes.BASE_WATER_COLOUR).waterFogColor(BaseBiomes.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomes.BASE_FOG_COLOUR).skyColor(calculateSkyColor(2.0F));
 	
 	static
-	{
-		GENERATION.surfaceBuilder(ModSurfaceBuilders.JURASSIC_PODZOL_BUILDER);
-		
-		ModBiomeFeatures.jurassicPlains(GENERATION);
-	}
-	
-	public CreataceousGameTrail(float depth, float scale) 
-	{
-		super(BaseBiomes.biome(RainType.RAIN, Category.FOREST, depth, scale, 0.8F, 0.7F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+	{		
+		ModBiomeFeatures.cretaceousGameTrail(GENERATION);
 	}
 	
 	public CreataceousGameTrail() 
 	{
-		this(0.125F, 0.05F);
+		super(BaseBiomes.biome(RainType.RAIN, Category.PLAINS, 0.125F, 0.05F, 0.0F, 2.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
 	}
 }

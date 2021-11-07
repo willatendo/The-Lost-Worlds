@@ -2,8 +2,10 @@ package lostworlds.library.block;
 
 import javax.annotation.Nullable;
 
+import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.block.properties.ModBlockStateProperties;
 import lostworlds.library.entity.terrestrial.PrehistoricEntity;
+import lostworlds.library.item.WetPaperItem;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,25 +15,29 @@ import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 
-public class TinyFossilisedEggBlock extends Block 
+public class SmallFossilizedEggBlock extends Block 
 {
-	private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 3, 16);
-	public static final IntegerProperty EGGS = ModBlockStateProperties.TINY_EGGS;
+	private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 4, 16);
+	public static final IntegerProperty EGGS = ModBlockStateProperties.SMALL_EGGS;
 	
-	public TinyFossilisedEggBlock(AbstractBlock.Properties properties) 
+	public SmallFossilizedEggBlock(AbstractBlock.Properties properties) 
 	{
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(EGGS, Integer.valueOf(1)));
@@ -42,7 +48,7 @@ public class TinyFossilisedEggBlock extends Block
 	{
 		return SHAPE;
 	}
-	
+
 	@Override
 	public void stepOn(World world, BlockPos pos, Entity entity) 
 	{
@@ -101,7 +107,7 @@ public class TinyFossilisedEggBlock extends Block
 	@Override
 	public boolean canBeReplaced(BlockState state, BlockItemUseContext context) 
 	{
-		return context.getItemInHand().getItem() == this.asItem() && state.getValue(EGGS) < 19 ? true : super.canBeReplaced(state, context);
+		return context.getItemInHand().getItem() == this.asItem() && state.getValue(EGGS) < 10 ? true : super.canBeReplaced(state, context);
 	}
 
 	@Override
@@ -109,7 +115,7 @@ public class TinyFossilisedEggBlock extends Block
 	public BlockState getStateForPlacement(BlockItemUseContext context) 
 	{
 		BlockState blockstate = context.getLevel().getBlockState(context.getClickedPos());
-		return blockstate.is(this) ? blockstate.setValue(EGGS, Integer.valueOf(Math.min(19, blockstate.getValue(EGGS) + 1))) : super.getStateForPlacement(context);
+		return blockstate.is(this) ? blockstate.setValue(EGGS, Integer.valueOf(Math.min(10, blockstate.getValue(EGGS) + 1))) : super.getStateForPlacement(context);
 	}
 
 	@Override
@@ -135,5 +141,27 @@ public class TinyFossilisedEggBlock extends Block
 		{
 			return false;
 		}
+	}
+	
+	@Override
+	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) 
+	{
+		if(entity.getItemInHand(hand) != null)
+		{
+			Item item = entity.getItemInHand(hand).getItem();
+			if(item instanceof WetPaperItem)
+			{
+				world.setBlockAndUpdate(pos, BlockInit.SMALL_PLASTERED_FOSSILISED_EGG.defaultBlockState().setValue(EGGS, state.getValue(EGGS)));
+				world.playSound(entity, pos, SoundEvents.WOOL_PLACE, SoundCategory.BLOCKS, 0.7F, 1.0F);
+				
+				if(!entity.abilities.instabuild)
+				{
+					ItemStack stack = entity.getItemInHand(hand);
+					stack.shrink(1);
+				}
+				return ActionResultType.SUCCESS;
+			}
+		}
+		return super.use(state, world, pos, entity, hand, result);
 	}
 }

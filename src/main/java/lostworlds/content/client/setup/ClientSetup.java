@@ -98,7 +98,9 @@ public class ClientSetup
 				}, types.getEgg());
 			}
 		}
-		
+
+		RenderTypeLookup.setRenderLayer(BlockInit.ARCHAEFRUTUS, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.POTTED_ARCHAEFRUTUS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.ALETHOPTERIS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_SUCKOWII, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_SUCKOWII_SAPLING, RenderType.cutout());
@@ -106,7 +108,11 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.DILLHOFFIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.POTTED_DILLHOFFIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.DUISBERGIA, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.EUDICOTS, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.POTTED_EUDICOTS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.GROUND_FERNS, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.MAGNOLIA, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.POTTED_MAGNOLIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.OSMUNDA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.PERMIAN_DESERT_FERNS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.PERMIAN_DESERT_SHRUB, RenderType.cutout());
