@@ -3,6 +3,7 @@ package lostworlds.content.server.init;
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
 import lostworlds.library.biome.biomes.cretaceous.plains.CreataceousGameTrail;
+import lostworlds.library.biome.biomes.cretaceous.plains.CreataceousMedow;
 import lostworlds.library.biome.biomes.jurassic.desert.JurassicDesert;
 import lostworlds.library.biome.biomes.jurassic.forest.JurassicAraucariaForest;
 import lostworlds.library.biome.biomes.jurassic.forest.JurassicConiferForest;
@@ -115,6 +116,7 @@ public class BiomeInit
 
 	//Creataceous
 	public static final Biome CREATACEOUS_GAME_TRAIL = ModRegistry.register("creataceous_game_trail", new CreataceousGameTrail());
+	public static final Biome CREATACEOUS_MEDOW = ModRegistry.register("creataceous_medow", new CreataceousMedow());
 	
 	//Overworld
 	public static final Biome ARAUCARIA_FOREST = ModRegistry.register("araucaria_forest", new AraucariaForest());

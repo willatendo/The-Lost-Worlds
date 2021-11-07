@@ -1,15 +1,11 @@
 {
-	"title": "Introduction",
+	"title": "Welcome to The Lost Worlds!",
 	"text": [
 		{
-			"text": "Welcome to the Lost Worlds!"
+			"text": "The Lost Worlds is a dinosaur passion project made by Willatendo, and made possible my all the amazing modelers and of course the fans."
 		},
 		{
-			"text": "This is an in-depth look at everything to do with the lost worlds mod! This book is the perfect place to start if you have absolutly no idea where to begin. The first few chapters will be a broader overview of features in the mod with the rest of the book being a look into everything you really will ever need to know.",
-			"paragraph": true
-		},
-		{
-			"text": "This book will be your absolute guide.",
+			"text": "This book is an in-depth look at everything to do with the Lost Worlds mod! From the world changes to creating your first creature, this book is the perfect place to start if you have absolutly no idea where to begin. The first few pages of each chapter will be a broader overview of features in the section, with the ensuing pages being in depth and filled with details.",
 			"paragraph": true
 		}
 	]

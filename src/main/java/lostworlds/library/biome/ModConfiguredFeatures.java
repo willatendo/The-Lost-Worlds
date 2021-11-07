@@ -70,9 +70,11 @@ public class ModConfiguredFeatures
 	public static final ConfiguredFeature<?, ?> BRAZILEA_PATCH = register("brazilea_patch", Feature.RANDOM_PATCH.configured((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.BRAZILEA.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(10).build()).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE).count(4));
 	public static final ConfiguredFeature<?, ?> CALAMITES_SUCKOWII = register("calamites_suckwii", FeatureInit.CALAMITES_SUCKOWII.configured(new ProbabilityConfig(0.2F)).decorated(Features.Placements.HEIGHTMAP_WORLD_SURFACE).squared().decorated(Placement.COUNT_NOISE_BIASED.configured(new TopSolidWithNoiseConfig(160, 80.0D, 0.3D))));
 	public static final ConfiguredFeature<?, ?> DUISBERGIA_PATCH = register("duisbergia_patch", Feature.RANDOM_PATCH.configured((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.DUISBERGIA.defaultBlockState()), new DoublePlantBlockPlacer())).tries(64).noProjection().build()).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(7));
+	public static final ConfiguredFeature<?, ?> EUDICOTS_PATCH = register("eudicots_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.EUDICOTS_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
 	public static final ConfiguredFeature<?, ?> FERN_PATCH = register("fern_patch", Feature.RANDOM_PATCH.configured(ModConfiguredFeatures.ModBlockClusterFeatureConfig.FERN_CONFIG));	
+	public static final ConfiguredFeature<?, ?> MAGNOLIA_PATCH = register("magnolia_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.MAGNOLIA_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
 	public static final ConfiguredFeature<?, ?> WILLIAMSONIA_PATCH = register("williamsonia_patch", Feature.RANDOM_PATCH.configured((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.WILLIAMSONIA.defaultBlockState()), new DoublePlantBlockPlacer())).tries(64).noProjection().build()).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(7));
-	public static final ConfiguredFeature<?, ?> ZAMITES = register("zamites", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.ZAMITES_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
+	public static final ConfiguredFeature<?, ?> ZAMITES = register("zamites_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.ZAMITES_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
 
 	public static final ConfiguredFeature<?, ?> PERMIAN_DESERT_SHRUB_PATCH = register("permian_desert_shrub_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.PERMIAN_DESERT_SHRUB_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
 	public static final ConfiguredFeature<?, ?> PERMIAN_DESERT_FERNS_PATCH = register("permian_desert_ferns_patch", Feature.RANDOM_PATCH.configured(ModBlockClusterFeatureConfig.PERMIAN_DESERT_FERNS_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE));
@@ -212,6 +214,8 @@ public class ModConfiguredFeatures
 		
 		public static final BlockClusterFeatureConfig FERN_CONFIG = (new BlockClusterFeatureConfig.Builder((new WeightedBlockStateProvider()).add(Blocks.FERN.defaultBlockState(), 4), SimpleBlockPlacer.INSTANCE)).tries(32).build();
 
+		public static final BlockClusterFeatureConfig EUDICOTS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.EUDICOTS.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(16).build();
+		public static final BlockClusterFeatureConfig MAGNOLIA_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.MAGNOLIA.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(16).build();
 		public static final BlockClusterFeatureConfig ZAMITES_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.ZAMITES.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(16).build();
 	}
 	

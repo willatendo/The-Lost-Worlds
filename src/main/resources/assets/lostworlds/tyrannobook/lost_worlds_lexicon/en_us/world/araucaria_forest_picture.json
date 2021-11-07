@@ -1,5 +1,5 @@
 {
-	"title": "Araucaria Forest",
+	"title": "Araucaria Forest:",
 	"image": {
 		"file": "lostworlds:tyrannobook/pictures/araucaria_example.png",
 		"width": 170,
@@ -7,7 +7,7 @@
 	},
 	"text": [
 		{
-			"text": "Example of a araucaria forest."
+			"text": "While no longer housing prehistoric creatures, the araucaria forest is first in the new biomes."
 		}
 	]
 }

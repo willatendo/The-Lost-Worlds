@@ -37,9 +37,9 @@ public class AnalyzerRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializ
 	@Override
 	public void toNetwork(PacketBuffer buffer, AnalyzerRecipe recipe) 
 	{
+		buffer.writeItemStack(recipe.getResultItem(), false);
+
 		Ingredient input = recipe.getIngredients().get(0);
 		input.toNetwork(buffer);
-
-		buffer.writeItemStack(recipe.getResultItem(), false);
 	}
 }

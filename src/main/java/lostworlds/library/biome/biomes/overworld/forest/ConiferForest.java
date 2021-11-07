@@ -6,6 +6,8 @@ import lostworlds.library.biome.ModSurfaceBuilders;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.biome.Biome.RainType;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilders;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
@@ -20,6 +22,8 @@ public class ConiferForest extends TyrannoBiome
 	
 	static
 	{
+		MOB_SPAWNS.addSpawn(EntityClassification.CREATURE, new MobSpawnInfo.Spawners(EntityType.WOLF, 5, 4, 4)).setPlayerCanSpawn();
+		
 		GENERATION.surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
 
 		ModBiomeFeatures.coniferForest(GENERATION);

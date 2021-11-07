@@ -36,9 +36,9 @@ public class FossilGrinderRecipeSerialiser extends ForgeRegistryEntry<IRecipeSer
 	@Override
 	public void toNetwork(PacketBuffer buffer, FossilGrinderRecipe recipe) 
 	{
+		buffer.writeItemStack(recipe.getResultItem(), false);
+
 		Ingredient input = recipe.getIngredients().get(0);
 		input.toNetwork(buffer);
-
-		buffer.writeItemStack(recipe.getResultItem(), false);
 	}
 }

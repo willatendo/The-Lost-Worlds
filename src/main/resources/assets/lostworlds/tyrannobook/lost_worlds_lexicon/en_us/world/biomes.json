@@ -1,8 +1,8 @@
 {
-	"title": "New Biomes",
+	"title": "Biomes:",
 	"text": [
 		{
-			"text": "There are currently 5 new biomes you can find in the overworld. One forest for each of the new woods that have survived since the Time Eras and a volcanic one. Each is fairly unique and may be a spawning point for the Player."
+			"text": "There are currently 5 new biomes you can find in the overworld. One forest for each of the new woods that have survived since their debut Time Eras, aswell as a volcano. Each is fairly unique and may be a spawning point for the Player, with the exception of the volcano."
 		}
 	]
 }

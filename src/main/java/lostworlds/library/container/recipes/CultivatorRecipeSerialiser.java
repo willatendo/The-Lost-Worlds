@@ -34,9 +34,9 @@ public class CultivatorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerial
 	@Override
 	public void toNetwork(PacketBuffer buffer, CultivatorRecipe recipe) 
 	{
+		buffer.writeItemStack(recipe.getResultItem(), false);
+
 		Ingredient input = recipe.getIngredients().get(0);
 		input.toNetwork(buffer);
-
-		buffer.writeItemStack(recipe.getResultItem(), false);
 	}
 }

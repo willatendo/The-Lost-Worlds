@@ -18,6 +18,8 @@ public class AraucariaForest extends TyrannoBiome
 	
 	static
 	{
+		MOB_SPAWNS.setPlayerCanSpawn();
+		
 		GENERATION.surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
 
 		ModBiomeFeatures.araucariaForest(GENERATION);

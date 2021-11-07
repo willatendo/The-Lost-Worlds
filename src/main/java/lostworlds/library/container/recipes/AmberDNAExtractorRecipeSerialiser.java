@@ -32,9 +32,9 @@ public class AmberDNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecip
 	@Override
 	public void toNetwork(PacketBuffer buffer, AmberDNAExtractorRecipe recipe) 
 	{
+		buffer.writeItemStack(recipe.getResultItem(), false);
+
 		Ingredient input = recipe.getIngredients().get(0);
 		input.toNetwork(buffer);
-
-		buffer.writeItemStack(recipe.getResultItem(), false);
 	}
 }

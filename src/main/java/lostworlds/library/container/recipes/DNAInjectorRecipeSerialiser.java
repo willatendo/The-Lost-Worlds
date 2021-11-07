@@ -37,9 +37,9 @@ public class DNAInjectorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSeria
 	@Override
 	public void toNetwork(PacketBuffer buffer, DNAInjectorRecipe recipe) 
 	{
+		buffer.writeItemStack(recipe.getResultItem(), false);
+
 		Ingredient input = recipe.getIngredients().get(0);
 		input.toNetwork(buffer);
-
-		buffer.writeItemStack(recipe.getResultItem(), false);
 	}
 }

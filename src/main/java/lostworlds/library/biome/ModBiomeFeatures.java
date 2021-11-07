@@ -401,6 +401,19 @@ public class ModBiomeFeatures
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_BROKEN_TREES);
 	}
+	public static void cretaceousMedow(BiomeGenerationSettings.Builder builder)
+	{
+		addCretaceousRock(builder);
+		addCretaceousOres(builder);
+		addSpring(builder);
+		addCretaceousUndergroundVariety(builder);
+		addFernGroundClutter(builder);
+		addModCarvers(builder);
+		
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.EUDICOTS_PATCH);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.MAGNOLIA_PATCH);	
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
+	}
 	
 	//Overworld
 	public static void araucariaForest(BiomeGenerationSettings.Builder builder)

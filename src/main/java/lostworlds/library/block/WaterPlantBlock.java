@@ -54,18 +54,13 @@ public class WaterPlantBlock extends FlowerBlock implements IWaterLoggable
 			world.getLiquidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
 		}
 		
-		if(!this.canSurvive(newstate, world, newPos))
-		{
-			return Blocks.AIR.defaultBlockState();
-		}
-		
 		return super.updateShape(state, facing, newstate, world, pos, newPos);
 	}
 	
 	@Override
 	public boolean canSurvive(BlockState state, IWorldReader reader, BlockPos pos) 
 	{
-		return reader.getBlockState(pos).getFluidState().getType() == Fluids.WATER && !(reader.getBlockState(pos).getFluidState().getType() == Fluids.WATER);
+		return reader.getBlockState(pos).getFluidState().getType() == Fluids.WATER && reader.getBlockState(pos.above()).is(Blocks.AIR);
 	}
 	
 	@Override

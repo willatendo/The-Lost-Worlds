@@ -1,8 +1,12 @@
 {
-	"title": "World",
+	"title": "The World:",
 	"text": [
 		{
-			"text": "With the Lost Worlds, the world has massively changed. From new biomes to new features, there's lots to find in your world. One of the first things you'll most likely find are the new biomes in the world."
+			"text": "The world looks different with the Lost Worlds mod. From new Features and structures to biomes, there's a plethora to explore! World ties in with may other branches, so it's very important to get a basic idea of what's new in the world."
+		},
+		{
+			"text": "Starting with each biome, this chapter will explain everything new.",
+			"paragraph": true
 		}
 	]
 }

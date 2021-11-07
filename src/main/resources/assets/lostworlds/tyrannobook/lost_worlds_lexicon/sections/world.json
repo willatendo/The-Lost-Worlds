@@ -10,44 +10,44 @@
 		"data": "world/biomes.json"
 	},
 	{
-		"name": "araucaria",
-		"type": "text",
-		"data": "world/biome_araucaria.json"
-	},
-	{
-		"name": "araucaria_picture",
+		"name": "araucaria_forest_picture",
 		"type": "imageText2",
-		"data": "world/biome_araucaria_picture.json"
+		"data": "world/araucaria_forest_picture.json"
 	},
 	{
-		"name": "conifer",
+		"name": "araucaria_forest_description",
 		"type": "text",
-		"data": "world/biome_conifer.json"
+		"data": "world/araucaria_forest_description.json"
 	},
 	{
-		"name": "conifer_picture",
+		"name": "conifer_forest_picture",
 		"type": "imageText2",
-		"data": "world/biome_conifer_picture.json"
+		"data": "world/conifer_forest_picture.json"
 	},
 	{
-		"name": "ginkgo",
+		"name": "conifer_forest_description",
 		"type": "text",
-		"data": "world/biome_ginkgo.json"
+		"data": "world/conifer_forest_description.json"
 	},
 	{
-		"name": "ginkgo_picture",
+		"name": "ginkgo_forest_picture",
 		"type": "imageText2",
-		"data": "world/biome_ginkgo_picture.json"
+		"data": "world/ginkgo_forest_picture.json"
 	},
 	{
-		"name": "redwoods",
+		"name": "ginkgo_forest_description",
 		"type": "text",
-		"data": "world/biome_redwoods.json"
+		"data": "world/ginkgo_forest_description.json"
 	},
 	{
-		"name": "redwoods_picture",
+		"name": "redwoods_forest_picture",
 		"type": "imageText2",
-		"data": "world/biome_redwoods_picture.json"
+		"data": "world/redwoods_forest_picture.json"
+	},
+	{
+		"name": "redwoods_forest_description",
+		"type": "text",
+		"data": "world/redwoods_forest_description.json"
 	},
 	{
 		"name": "updated_biomes",
@@ -55,13 +55,13 @@
 		"data": "world/updated_biomes.json"
 	},
 	{
-		"name": "swamp",
-		"type": "text",
-		"data": "world/biome_swamp.json"
-	},
-	{
 		"name": "swamp_picture",
 		"type": "imageText2",
-		"data": "world/biome_swamp_picture.json"
+		"data": "world/swamp_picture.json"
+	},
+	{
+		"name": "features",
+		"type": "text",
+		"data": "world/features.json"
 	}
 ]

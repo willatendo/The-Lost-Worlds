@@ -3,6 +3,7 @@ package lostworlds.library.item;
 import lostworlds.library.item.block.GroupedBlockItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.util.math.BlockPos;
@@ -20,6 +21,6 @@ public class WaterPlantItem extends GroupedBlockItem
 	{
 		BlockPos pos = context.getClickedPos();
 		World world = context.getLevel();
-		return world.getBlockState(pos).getFluidState().getType() == Fluids.WATER && !(world.getBlockState(pos).getFluidState().getType() == Fluids.WATER);
+		return world.getBlockState(pos).getFluidState().getType() == Fluids.WATER && world.getBlockState(pos.above()).is(Blocks.AIR);
 	}
 }
