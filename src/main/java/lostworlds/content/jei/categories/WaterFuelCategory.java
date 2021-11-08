@@ -14,9 +14,13 @@ import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import mezz.jei.plugins.vanilla.cooking.fuel.FuelRecipe;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
 public class WaterFuelCategory implements IRecipeCategory<WaterFuelRecipe>
 {
@@ -30,7 +34,11 @@ public class WaterFuelCategory implements IRecipeCategory<WaterFuelRecipe>
 	
 	public WaterFuelCategory(IGuiHelper helper) 
 	{
-		this.background = helper.drawableBuilder(TEXTURE_LOCATION, 0, 18, 18, 35).build();
+		Minecraft minecraft = Minecraft.getInstance();
+		FontRenderer fontRenderer = minecraft.font;
+		ITextComponent smeltCountText = FuelRecipe.createSmeltCountText(100000);
+		int stringWidth = fontRenderer.width(smeltCountText.getString());
+		this.background = helper.drawableBuilder(TEXTURE_LOCATION, 0, 18, 18, 35).addPadding(0, 0, 0, stringWidth + 20).build();
 		this.icon = helper.createDrawableIngredient(new ItemStack(Items.WATER_BUCKET));
 		this.bucket = helper.createDrawable(TEXTURE_LOCATION, 82, 0, 22, 22);
 		this.animatedBucket = helper.createAnimatedDrawable(this.bucket, 300, IDrawableAnimated.StartDirection.TOP, true);
@@ -86,5 +94,8 @@ public class WaterFuelCategory implements IRecipeCategory<WaterFuelRecipe>
 	{
 		IDrawableAnimated flame = recipe.getBucket();
 		flame.draw(matrixStack, 0, 0);
+		Minecraft minecraft = Minecraft.getInstance();
+		ITextComponent smeltCountText = recipe.getExtractCountText();
+		minecraft.font.draw(matrixStack, smeltCountText, 24, 13, 0xFF808080);
 	}
 }

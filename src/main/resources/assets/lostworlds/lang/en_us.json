@@ -379,6 +379,8 @@
 	"container.lostworlds.fossil_cleaner": "Fossil Cleaner",
 	"jei.lostworlds.fossil_cleaner.title": "Fossil Cleaning",
 	"jei.lostworlds.fossil_cleaner_fuel.title": "Fossil Cleaner Fuel",
+	"jei.lostworlds.cleanCount.single": "Cleans 1 item",
+	"jei.lostworlds.cleanCount.multi": "Cleans %s items",
 	"block.lostworlds.fossil_grinder": "Fossil Grinder",
 	"container.lostworlds.fossil_grinder": "Fossil Grinder",
 	"jei.lostworlds.fossil_grinder.title": "Fossil Grinding",

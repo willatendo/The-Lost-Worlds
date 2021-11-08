@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lostworlds.content.jei.recipe.AmberDNAExtractorRecipe;
 import lostworlds.content.jei.recipe.WaterFuelRecipe;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.library.entity.DinoTypes;
@@ -25,6 +26,7 @@ public class RecipeManager
 		for(DinoTypes types : DinoTypes.values()) 
 		{
 			amber.addOutput(() -> types.getDNA());
+			new AmberDNAExtractorRecipe(types.getDNA().getDefaultInstance());
 		}
 		registerAmber(amber);
 	}
@@ -45,6 +47,16 @@ public class RecipeManager
 		}
 		
 		return null;
+	}
+	
+	public static List<AmberDNAExtractorRecipe> getAmberRecipes() 
+	{
+		List<AmberDNAExtractorRecipe> recipes = new ArrayList<>();
+		for(DinoTypes types : DinoTypes.values()) 
+		{
+			recipes.add(new AmberDNAExtractorRecipe(types.getDNA().getDefaultInstance()));
+		}
+		return recipes;
 	}
 	
 	public static List<WaterFuelRecipe> getWaterFuelRecipes(IIngredientManager ingredientManager, IJeiHelpers helpers) 

@@ -11,6 +11,7 @@ import lostworlds.content.client.screen.DNAExtractorScreen;
 import lostworlds.content.client.screen.FossilCleanerScreen;
 import lostworlds.content.client.screen.FossilGrinderScreen;
 import lostworlds.content.client.screen.PaleontologyTableScreen;
+import lostworlds.content.jei.categories.AmberDNAExtractorCategory;
 import lostworlds.content.jei.categories.AnalyzerCategory;
 import lostworlds.content.jei.categories.ArchaeologyTableCategory;
 import lostworlds.content.jei.categories.CultivatorCategory;
@@ -67,6 +68,7 @@ public class LostWorldsPlugin implements IModPlugin
 		registration.addRecipes(getRecipes(manager, RecipeInit.FOSSIL_CLEANER_RECIPE), LostWorldsConstants.FOSSIL_CLEANER_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.FOSSIL_GRINDER_RECIPE), LostWorldsConstants.FOSSIL_GRINDER_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.DNA_EXTRACTOR_RECIPE), LostWorldsConstants.DNA_EXTRACTOR_CATEGORY);
+		registration.addRecipes(lostworlds.library.container.recipes.RecipeManager.getAmberRecipes(), LostWorldsConstants.AMBER_DNA_EXTRACTOR_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.ANALYZER_RECIPE), LostWorldsConstants.ANALYZER_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.CULTIVATOR_RECIPE), LostWorldsConstants.CULTIVATOR_CATEGORY);
 		registration.addRecipes(getRecipes(manager, RecipeInit.TIME_MACHINE_RECIPE), LostWorldsConstants.TIME_MACHINE_CATEGORY);
@@ -85,6 +87,7 @@ public class LostWorldsPlugin implements IModPlugin
 		registration.addRecipeCategories(new FossilCleanerCategory(helper));
 		registration.addRecipeCategories(new FossilGrinderCategory(helper));
 		registration.addRecipeCategories(new DNAExtractorCategory(helper));
+		registration.addRecipeCategories(new AmberDNAExtractorCategory(helper));
 		registration.addRecipeCategories(new AnalyzerCategory(helper));
 		registration.addRecipeCategories(new CultivatorCategory(helper));
 		registration.addRecipeCategories(new TimeMachineCategory(helper));
@@ -97,7 +100,7 @@ public class LostWorldsPlugin implements IModPlugin
 	{
 		registration.addRecipeClickArea(FossilCleanerScreen.class, 75, 37, 35, 15, LostWorldsConstants.FOSSIL_CLEANER_CATEGORY, LostWorldsConstants.WATER_FUEL_CATEGORY);
 		registration.addRecipeClickArea(FossilGrinderScreen.class, 75, 37, 35, 15, LostWorldsConstants.FOSSIL_GRINDER_CATEGORY);
-		registration.addRecipeClickArea(DNAExtractorScreen.class, 75, 38, 34, 10, LostWorldsConstants.DNA_EXTRACTOR_CATEGORY);
+		registration.addRecipeClickArea(DNAExtractorScreen.class, 75, 38, 34, 10, LostWorldsConstants.DNA_EXTRACTOR_CATEGORY, LostWorldsConstants.AMBER_DNA_EXTRACTOR_CATEGORY);
 		registration.addRecipeClickArea(AnalyzerScreen.class, 75, 38, 34, 12, LostWorldsConstants.ANALYZER_CATEGORY);
 		registration.addRecipeClickArea(CultivatorScreen.class, 76, 34, 33, 17, LostWorldsConstants.CULTIVATOR_CATEGORY);
 		registration.addRecipeClickArea(ArchaeologyTableScreen.class, 88, 32, 28, 23, LostWorldsConstants.ARCHAEOLOGY_TABLE_CATEGORY);
@@ -111,6 +114,7 @@ public class LostWorldsPlugin implements IModPlugin
 		registration.addRecipeTransferHandler(FossilCleanerContainer.class, LostWorldsConstants.WATER_FUEL_CATEGORY, 1, 1, 3, 36);
 		registration.addRecipeTransferHandler(FossilGrinderContainer.class, LostWorldsConstants.FOSSIL_GRINDER_CATEGORY, 0, 1, 3, 36);
 		registration.addRecipeTransferHandler(DNAExtractorContainer.class, LostWorldsConstants.DNA_EXTRACTOR_CATEGORY, 0, 2, 3, 36);
+		registration.addRecipeTransferHandler(DNAExtractorContainer.class, LostWorldsConstants.AMBER_DNA_EXTRACTOR_CATEGORY, 0, 2, 3, 36);
 		registration.addRecipeTransferHandler(AnalyzerContainer.class, LostWorldsConstants.ANALYZER_CATEGORY, 0, 2, 3, 36);
 		registration.addRecipeTransferHandler(CultivatorContainer.class, LostWorldsConstants.CULTIVATOR_CATEGORY, 0, 1, 3, 18);
 		registration.addRecipeTransferHandler(ArchaeologyTableContainer.class, LostWorldsConstants.ARCHAEOLOGY_TABLE_CATEGORY, 1, 9, 10, 36);
@@ -122,7 +126,7 @@ public class LostWorldsPlugin implements IModPlugin
 	{
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.FOSSIL_CLEANER), LostWorldsConstants.FOSSIL_CLEANER_CATEGORY, LostWorldsConstants.WATER_FUEL_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.FOSSIL_GRINDER), LostWorldsConstants.FOSSIL_GRINDER_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.DNA_EXTRACTOR), LostWorldsConstants.DNA_EXTRACTOR_CATEGORY);
+		registration.addRecipeCatalyst(new ItemStack(BlockInit.DNA_EXTRACTOR), LostWorldsConstants.DNA_EXTRACTOR_CATEGORY, LostWorldsConstants.AMBER_DNA_EXTRACTOR_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.ANALYZER), LostWorldsConstants.ANALYZER_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.CULTIVATOR), LostWorldsConstants.CULTIVATOR_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.TIME_MACHINE), LostWorldsConstants.TIME_MACHINE_CATEGORY);

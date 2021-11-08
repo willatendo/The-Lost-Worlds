@@ -230,23 +230,27 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 		}
 	}
 	
-	private ItemStack output;
+	private ItemStack output = ItemStack.EMPTY;
+	private boolean hasOutput = false;
 	
 	protected boolean canExtractWith(@Nullable IRecipe<?> recipe) 
 	{
 		if(!this.items.get(0).isEmpty() && !this.items.get(1).isEmpty() && recipe != null) 
 		{
-			if(recipe instanceof AmberDNAExtractorRecipe)
+			if(recipe instanceof AmberDNAExtractorRecipe && !hasOutput)
 			{
 				AmberDNAExtractorRecipe amber = (AmberDNAExtractorRecipe) recipe;
 				output = amber.generateRandom();
+				hasOutput = true;
 			}
-			else
+			else if(!(recipe instanceof AmberDNAExtractorRecipe))
 			{
 				output = recipe.getResultItem();
 			}
+			
 			if(output.isEmpty()) 
 			{
+				hasOutput = false;
 				return false;
 			} 
 			else 
@@ -262,7 +266,7 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 				} 
 				else if(itemstack1.getCount() + output.getCount() <= this.getMaxStackSize() && itemstack1.getCount() + output.getCount() <= itemstack1.getMaxStackSize()) 
 				{
-					return true;
+					return true; 
 				} 
 				else 
 				{
@@ -300,6 +304,7 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 			
 			input.shrink(1);
 			vile.shrink(1);
+			hasOutput = false;
 		}
 	}
 	
@@ -403,7 +408,7 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 	}
 	
 	public void setRecipeUsed(@Nullable IRecipe<?> recipe) 
-	{
+	{	
 		if(recipe != null) 
 		{
 			ResourceLocation resourcelocation = recipe.getId();
