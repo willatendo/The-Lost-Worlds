@@ -11,7 +11,6 @@ import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.FeatureInit;
 import lostworlds.content.server.init.FoliagePlacerInit;
 import lostworlds.content.server.init.ItemInit;
-import lostworlds.content.server.init.ParticleInit;
 import lostworlds.content.server.init.PlacementInit;
 import lostworlds.content.server.init.PointOfInterestInit;
 import lostworlds.content.server.init.PotionInit;
@@ -25,8 +24,6 @@ import lostworlds.content.server.init.VillagerProfessionInit;
 import lostworlds.content.server.init.WorldCarverInit;
 import lostworlds.content.server.init.WorldTypeInit;
 import lostworlds.library.biome.ModConfiguredCarvers;
-import lostworlds.library.entity.DinoTypes;
-import lostworlds.library.marker.MarkerType;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
@@ -38,8 +35,6 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.particles.BasicParticleType;
-import net.minecraft.particles.ParticleType;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.BannerPattern;
@@ -72,12 +67,6 @@ import tyrannotitanlib.library.tyrannoregister.TyrannoRegister;
 public class ModRegistry 
 {
 	//Registers
-	public static ParticleType<BasicParticleType> register(String id, ParticleType<BasicParticleType> particle)
-	{
-		TyrannoRegister.registerParticle(id, particle);
-		return particle;
-	}
-	
 	public static IRecipeSerializer<?> register(String id, IRecipeSerializer<?> recipe)
 	{
 		TyrannoRegister.register(recipe, id);
@@ -229,34 +218,37 @@ public class ModRegistry
 	}
 	
 	public static void register()
-	{
-		for(DinoTypes types : DinoTypes.values())
-		{
-			MarkerType.create(types.getId(), types.getDiet());
-		}
-		
-		ParticleInit.init();
-		RecipeInit.init();
+	{	
+		//Game Objects
+		BlockInit.init();
+		ItemInit.init();
 		PotionInit.init();
 		SoundInit.init();
 		EnchantmentInit.init();
-		ItemInit.init();
+		EntityInit.init();
 		BannerInit.init();
 		TileEntityInit.init();
 		ContainerInit.init();
-		BlockInit.init();
-		PointOfInterestInit.init();
-		EntityInit.init();
+		RecipeInit.init();
+		
+		//Villages
 		VillagerProfessionInit.init();
-		BiomeInit.init();
-		StructurePieceInit.init();
-		StructureInit.init();
-		SurfaceBuilderInit.init();
-		FoliagePlacerInit.init();
-		PlacementInit.init();
-		FeatureInit.init();
+		PointOfInterestInit.init();
+
+		//World Generation
 		WorldCarverInit.init();
 		ModConfiguredCarvers.init();
+		SurfaceBuilderInit.init();
+		FeatureInit.init();
+		PlacementInit.init();
+		StructureInit.init();
+		StructurePieceInit.init();
+		FoliagePlacerInit.init();
+
+		//Data Driven
+		BiomeInit.init();
+	
+		//Forge
 		WorldTypeInit.init();
 	}
 }

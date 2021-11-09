@@ -4,6 +4,7 @@ import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
 import lostworlds.library.feature.AshFeature;
 import lostworlds.library.feature.CalamitesSuckowiiFeature;
+import lostworlds.library.feature.FrozenTreeFeature;
 import lostworlds.library.feature.GeyserBlockFeature;
 import lostworlds.library.feature.ModBlockBlobFeature;
 import lostworlds.library.feature.PermianLakesFeature;
@@ -26,6 +27,7 @@ public class FeatureInit
 	public static final Feature<FeatureSpreadConfig> SPONGE_COLONEY_PLACEMENT = new SpongeColoneyFeature(FeatureSpreadConfig.CODEC);
 
 	public static final Feature<BaseTreeFeatureConfig> SCORCHED_TREE = new ScorchedTreeFeature(BaseTreeFeatureConfig.CODEC);
+	public static final Feature<BaseTreeFeatureConfig> FROZEN_TREE = new FrozenTreeFeature(BaseTreeFeatureConfig.CODEC);
 
 	public static final Feature<BlockStateFeatureConfig> PERMIAN_ROCK = new ModBlockBlobFeature(BlockStateFeatureConfig.CODEC);
 	

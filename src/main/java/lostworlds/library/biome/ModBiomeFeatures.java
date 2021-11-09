@@ -401,6 +401,7 @@ public class ModBiomeFeatures
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_BROKEN_TREES);
 	}
+	
 	public static void cretaceousMedow(BiomeGenerationSettings.Builder builder)
 	{
 		addCretaceousRock(builder);
@@ -413,6 +414,31 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.EUDICOTS_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.MAGNOLIA_PATCH);	
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
+	}
+	
+	public static void cretaceousPlains(BiomeGenerationSettings.Builder builder)
+	{
+		addCretaceousRock(builder);
+		addCretaceousOres(builder);
+		addSpring(builder);
+		addCretaceousUndergroundVariety(builder);
+		addFernGroundClutter(builder);
+		
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
+	}
+	
+	public static void cretaceousArctic(BiomeGenerationSettings.Builder builder)
+	{
+		addCretaceousRock(builder);
+		addCretaceousOres(builder);
+		addSpring(builder);
+		addCretaceousUndergroundVariety(builder);
+		addFernGroundClutter(builder);
+		addModCarvers(builder);
+
+		DefaultBiomeFeatures.addSurfaceFreezing(builder);
+		
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_FROZEN_TREES);
 	}
 	
 	//Overworld

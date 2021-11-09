@@ -3,8 +3,11 @@ package lostworlds.content.client.entity.model;
 import lostworlds.content.ModUtils;
 import lostworlds.library.entity.fossil.FossilEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
 
+@OnlyIn(Dist.CLIENT)
 public class ChilesaurusSkeletonModel extends TyrannomatedTyrannomationModel<FossilEntity>
 {
 	private static final ResourceLocation TEXTURE = ModUtils.rL("textures/model/entity/fossil/chilesaurus/skeleton.png");

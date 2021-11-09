@@ -27,6 +27,7 @@ public class ModSurfaceBuilders
 	public static final SurfaceBuilderConfig MUD_CONFIG = new SurfaceBuilderConfig(BlockInit.MUD.defaultBlockState(), BlockInit.MUD.defaultBlockState(), BlockInit.MUD.defaultBlockState());
 	public static final SurfaceBuilderConfig MOSSY_SOIL_SILT_CONFIG = new SurfaceBuilderConfig(BlockInit.MOSSY_SOIL.defaultBlockState(), Blocks.DIRT.defaultBlockState(), BlockInit.SILT.defaultBlockState());
 	public static final SurfaceBuilderConfig MAGMA_CONFIG = new SurfaceBuilderConfig(Blocks.MAGMA_BLOCK.defaultBlockState(), Blocks.MAGMA_BLOCK.defaultBlockState(), Blocks.MAGMA_BLOCK.defaultBlockState());
+	public static final SurfaceBuilderConfig SNOW_CONFIG = new SurfaceBuilderConfig(Blocks.SNOW_BLOCK.defaultBlockState(), Blocks.SNOW_BLOCK.defaultBlockState(), Blocks.SNOW_BLOCK.defaultBlockState());
 	
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_ASHY_MEDOWS_BUILDER = SurfaceBuilder.DEFAULT.configured(VOLCANIC_ASH_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_DESERT_BUILDER = SurfaceBuilder.DEFAULT.configured(PERMIAN_SAND_CONFIG);
@@ -42,4 +43,5 @@ public class ModSurfaceBuilders
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> JURASSIC_STONE_BUILDER = SurfaceBuilder.DEFAULT.configured(JURASSIC_STONE_CONFIG);
 
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> CRETACEOUS_PODZOL_BUILDER = SurfaceBuilder.DEFAULT.configured(PODZOL_CONFIG);
+	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> CRETACEOUS_SNOW_BUILDER = SurfaceBuilder.DEFAULT.configured(SNOW_CONFIG);
 }

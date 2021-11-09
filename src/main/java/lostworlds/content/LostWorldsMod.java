@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import lostworlds.content.client.book.LostWorldsBooks;
-import lostworlds.content.client.dimension.PermianDimensionRenderInfo;
+import lostworlds.content.client.dimension.StandardDimensionRenderInfo;
 import lostworlds.content.client.setup.ClientSetup;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
@@ -89,7 +89,7 @@ public class LostWorldsMod
 	@OnlyIn(Dist.CLIENT)
 	private void clientSetup(FMLClientSetupEvent event) 
 	{		
-		DimensionRenderInfo baseRenderer = new PermianDimensionRenderInfo();
+		DimensionRenderInfo baseRenderer = new StandardDimensionRenderInfo();
 		
 		DimensionRenderInfo.EFFECTS.put(ModUtils.rL("permian_render"), baseRenderer);
 		DimensionRenderInfo.EFFECTS.put(ModUtils.rL("jurassic_render"), baseRenderer);

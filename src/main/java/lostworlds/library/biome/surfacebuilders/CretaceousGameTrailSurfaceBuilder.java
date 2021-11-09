@@ -11,9 +11,9 @@ import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
-public class CretaceousGameTrail extends SurfaceBuilder<SurfaceBuilderConfig> 
+public class CretaceousGameTrailSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> 
 {
-	public CretaceousGameTrail(Codec<SurfaceBuilderConfig> codec) 
+	public CretaceousGameTrailSurfaceBuilder(Codec<SurfaceBuilderConfig> codec) 
 	{
 		super(codec);
 	}

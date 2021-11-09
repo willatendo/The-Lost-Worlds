@@ -1,9 +1,8 @@
 package lostworlds.library.entity;
 
 import net.minecraft.util.IStringSerializable;
-import net.minecraftforge.common.IExtensibleEnum;
 
-public enum TimeEras implements IStringSerializable, IExtensibleEnum
+public enum TimeEras implements IStringSerializable
 {
 	PRECAMBRIAN_EON("precambrian_eon"), 
 	CAMBRIAN_PERIOD("cambrian_period"), 
@@ -29,17 +28,6 @@ public enum TimeEras implements IStringSerializable, IExtensibleEnum
 	private TimeEras(String id) 
 	{
 		this.id = id;
-	}
-	
-	//Used for addon creation. Use second one, first one is just because IExtensibleEnum is dumb.
-	public static TimeEras create(String name, String id)
-	{
-		throw new IllegalStateException("Enum not extended");
-	}
-	
-	public static TimeEras register(String id)
-	{
-		return create(id, id);
 	}
 	
 	@Override

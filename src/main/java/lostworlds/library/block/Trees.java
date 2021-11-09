@@ -2,9 +2,8 @@ package lostworlds.library.block;
 
 import net.minecraft.item.Item;
 import net.minecraft.util.IStringSerializable;
-import net.minecraftforge.common.IExtensibleEnum;
 
-public enum Trees implements IStringSerializable, IExtensibleEnum
+public enum Trees implements IStringSerializable
 {
 	ARAUCARIA("araucaria"),
 	CALAMITES("calamites"),
@@ -28,17 +27,6 @@ public enum Trees implements IStringSerializable, IExtensibleEnum
 	public Item getDNA()
 	{
 		return this.dna;
-	}
-
-	//Used for addon creation. Use second one, first one is just because IExtensibleEnum is dumb.
-	public static Trees create(String name, String id)
-	{
-		throw new IllegalStateException("Enum not extended");
-	}
-	
-	public static Trees register(String id)
-	{
-		return create(id, id);
 	}
 	
 	@Override

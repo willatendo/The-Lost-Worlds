@@ -22,10 +22,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
-@EventBusSubscriber(bus = Bus.MOD, modid = ModUtils.ID)
 public class ModUtils 
 {
 	private static final long MINECRAFT_WINDOW = Minecraft.getInstance().getWindow().getWindow();
@@ -43,7 +40,7 @@ public class ModUtils
 	
 	public static ImmutableSet<Block> carverBlocks()
 	{
-		return ImmutableSet.of(BlockInit.PERMIAN_SAND, BlockInit.PERMIAN_STONE, BlockInit.PERMIAN_COBBLESTONE, BlockInit.JURASSIC_STONE, BlockInit.JURASSIC_COBBLESTONE, BlockInit.LATERLITE, BlockInit.RAW_MARBLE, BlockInit.LIMESTONE, BlockInit.MOSSY_SOIL, BlockInit.DRIED_SOIL, BlockInit.CRACKED_SOIL, BlockInit.VOLCANIC_ASH, BlockInit.VOLCANIC_ASH_LAYER, Blocks.BASALT, Blocks.BLACKSTONE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRAVEL, Blocks.MAGMA_BLOCK, Blocks.STONE);
+		return ImmutableSet.of(BlockInit.PERMIAN_SAND, BlockInit.PERMIAN_STONE, BlockInit.PERMIAN_COBBLESTONE, BlockInit.JURASSIC_STONE, BlockInit.JURASSIC_COBBLESTONE, BlockInit.LATERLITE, BlockInit.RAW_MARBLE, BlockInit.LIMESTONE, BlockInit.MOSSY_SOIL, BlockInit.DRIED_SOIL, BlockInit.CRACKED_SOIL, BlockInit.VOLCANIC_ASH, BlockInit.VOLCANIC_ASH_LAYER, Blocks.BASALT, Blocks.BLACKSTONE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRAVEL, Blocks.MAGMA_BLOCK, Blocks.STONE, Blocks.SNOW_BLOCK);
 	}
 	
 	public static ResourceLocation rL(String location)
