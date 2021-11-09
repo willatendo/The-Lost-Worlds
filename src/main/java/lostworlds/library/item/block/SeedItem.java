@@ -26,17 +26,21 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 public class SeedItem extends Item 
 {
 	@Deprecated
 	private final Block block;
-
-	public SeedItem(Block block) 
+	private final ITextComponent name;
+	
+	public SeedItem(Block block, ITextComponent name) 
 	{
 		super(new Properties().tab(ModUtils.ITEMS));
 		this.block = block;
+		this.name = name;
 	}
 
 	@Override
@@ -237,9 +241,15 @@ public class SeedItem extends Item
 		blockToItemMap.remove(this.getBlock());
 	}
 
-	public static Item create(String plant, Block block) 
+	@Override
+	public ITextComponent getName(ItemStack stack) 
 	{
-		Item item = new SeedItem(block);
+		return new TranslationTextComponent("item.lostworlds.seed", this.name);	
+	}
+	
+	public static Item create(String plant, Block block, ITextComponent name) 
+	{
+		Item item = new SeedItem(block, name);
 		ModRegistry.register(plant + "_seeds", item);
 		return item;
 	}

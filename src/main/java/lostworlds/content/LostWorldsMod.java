@@ -28,6 +28,7 @@ import net.minecraft.potion.PotionUtils;
 import net.minecraft.potion.Potions;
 import net.minecraft.world.raid.Raid;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -85,6 +86,7 @@ public class LostWorldsMod
 		translateToWaves(EntityInit.FOSSIL_POACHER, Arrays.asList(1, 0, 0, 0, 1, 2, 2, 3));
 	}
 	
+	@OnlyIn(Dist.CLIENT)
 	private void clientSetup(FMLClientSetupEvent event) 
 	{		
 		DimensionRenderInfo baseRenderer = new PermianDimensionRenderInfo();

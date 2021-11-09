@@ -14,7 +14,6 @@ import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import mezz.jei.plugins.vanilla.cooking.fuel.FuelRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.item.ItemStack;
@@ -36,7 +35,7 @@ public class WaterFuelCategory implements IRecipeCategory<WaterFuelRecipe>
 	{
 		Minecraft minecraft = Minecraft.getInstance();
 		FontRenderer fontRenderer = minecraft.font;
-		ITextComponent smeltCountText = FuelRecipe.createSmeltCountText(100000);
+		ITextComponent smeltCountText = WaterFuelRecipe.createSmeltCountText(100000);
 		int stringWidth = fontRenderer.width(smeltCountText.getString());
 		this.background = helper.drawableBuilder(TEXTURE_LOCATION, 0, 18, 18, 35).addPadding(0, 0, 0, stringWidth + 20).build();
 		this.icon = helper.createDrawableIngredient(new ItemStack(Items.WATER_BUCKET));

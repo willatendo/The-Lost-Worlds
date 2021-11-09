@@ -23,6 +23,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.Lazy;
@@ -49,12 +51,16 @@ public class FossilItem extends Item implements ITyrannomatable
 	
 	private final Lazy<? extends EntityType<?>> entityTypeSupplier;
 	private final boolean isPlastered;
+	private final ITextComponent dinoName;
+	private final ITextComponent partName;
 	
-	public FossilItem(Properties properties, NonNullSupplier<? extends EntityType<FossilEntity>> entityTypeSupplier, boolean isPlastered) 
+	public FossilItem(Properties properties, NonNullSupplier<? extends EntityType<FossilEntity>> entityTypeSupplier, boolean isPlastered, ITextComponent dinoName, ITextComponent partName) 
 	{
 		super(properties);
 		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
 		this.isPlastered = isPlastered;
+		this.dinoName = dinoName;
+		this.partName = partName;
 	}
 
 	@Override
@@ -169,5 +175,11 @@ public class FossilItem extends Item implements ITyrannomatable
 		}
 		
 		return this.entityTypeSupplier.get();
+	}
+		
+	@Override
+	public ITextComponent getName(ItemStack stack) 
+	{
+		return this.isPlastered ? new TranslationTextComponent("item.lostworlds.dirty_fossil", this.dinoName, this.partName) : new TranslationTextComponent("item.lostworlds.fossil", this.dinoName, this.partName);
 	}
 }

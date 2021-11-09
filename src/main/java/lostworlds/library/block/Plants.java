@@ -10,12 +10,15 @@ import net.minecraftforge.common.util.NonNullSupplier;
 
 public enum Plants implements IStringSerializable, IExtensibleEnum
 {
+	ARCHAEFRUTUS("archaefrutus", () -> BlockInit.ARCHAEFRUTUS),
 	ALETHOPTERIS("alethopteris", () -> BlockInit.ALETHOPTERIS),
 	BRAZILEA("brazilea", () ->  BlockInit.BRAZILEA),
 	CALAMITES_SUCKOWII("calamites_suckowii", () ->  BlockInit.CALAMITES_SUCKOWII),
 	CEPHALOTAXUS("cephalotaxus", () ->  BlockInit.CEPHALOTAXUS),
 	DILLHOFFIA("dillhoffia", () ->  BlockInit.DILLHOFFIA),
 	DUISBERGIA("duisbergia", () ->  BlockInit.DUISBERGIA),
+	EUDICOTS("eudicots", () ->  BlockInit.EUDICOTS),
+	MAGNOLIA("magnolia", () ->  BlockInit.MAGNOLIA),
 	OSMUNDA("osmunda", () ->  BlockInit.OSMUNDA),
 	WILLIAMSONIA("williamsonia", () ->  BlockInit.WILLIAMSONIA),
 	ZAMITES("zamites", () ->  BlockInit.ZAMITES);

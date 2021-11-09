@@ -41,7 +41,7 @@ public class TinyEggBlock extends Block
 	public static final IntegerProperty EGGS = ModBlockStateProperties.TINY_EGGS;
 
 	private final Lazy<? extends EntityType<? extends PrehistoricEntity>> entityTypeSupplier;
-	
+			
 	public TinyEggBlock(AbstractBlock.Properties properties, NonNullSupplier<? extends EntityType<? extends PrehistoricEntity>> entity) 
 	{
 		super(properties);
