@@ -1,5 +1,6 @@
-package lostworlds.library.biome.biomes.cretaceous.arctic;
+package lostworlds.library.biome.biomes.cretaceous.desert;
 
+import lostworlds.content.server.init.SurfaceBuilderInit;
 import lostworlds.library.biome.ModBiomeFeatures;
 import lostworlds.library.biome.ModSurfaceBuilders;
 import net.minecraft.world.biome.Biome.Category;
@@ -10,21 +11,19 @@ import net.minecraft.world.biome.MobSpawnInfo;
 import tyrannotitanlib.library.base.biome.BaseBiomes;
 import tyrannotitanlib.library.base.biome.TyrannoBiome;
 
-public class CreataceousArctic extends TyrannoBiome
+public class CretaceousDesert extends TyrannoBiome
 {
-	public static final BiomeGenerationSettings.Builder GENERATION = new BiomeGenerationSettings.Builder();
+	public static final BiomeGenerationSettings.Builder GENERATION = genSettings(SurfaceBuilderInit.NAKED_CRETACEOUS_DESERT, ModSurfaceBuilders.ROCKY_SOIL_CONFIG);
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomes.BASE_WATER_COLOUR).waterFogColor(BaseBiomes.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomes.BASE_FOG_COLOUR).skyColor(calculateSkyColor(2.0F));
 	
 	static
-	{		
-		GENERATION.surfaceBuilder(ModSurfaceBuilders.CRETACEOUS_SNOW_BUILDER);
-		
-		ModBiomeFeatures.cretaceousArctic(GENERATION);
+	{			
+		ModBiomeFeatures.cretaceousDesert(GENERATION);
 	}
 	
-	public CreataceousArctic() 
+	public CretaceousDesert() 
 	{
-		super(BaseBiomes.biome(RainType.SNOW, Category.PLAINS, 0.125F, 0.05F, 0.5F, 0.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+		super(BaseBiomes.biome(RainType.SNOW, Category.PLAINS, 0.125F, 0.05F, 0.0F, 2.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
 	}
 }

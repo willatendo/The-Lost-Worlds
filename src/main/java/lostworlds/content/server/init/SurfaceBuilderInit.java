@@ -2,8 +2,10 @@ package lostworlds.content.server.init;
 
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
+import lostworlds.library.biome.surfacebuilders.CretaceousDesertSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.CretaceousGameTrailSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.CretaceousPlainsSurfaceBuilder;
+import lostworlds.library.biome.surfacebuilders.CretaceousRedDesertSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicDesertSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicErrodedMountainsSurfaceBuilder;
 import lostworlds.library.biome.surfacebuilders.JurassicForestSurfaceBuilder;
@@ -35,6 +37,8 @@ public class SurfaceBuilderInit
 
 	public static final SurfaceBuilder NAKED_CRETACEOUS_GAME_TRAIL = new CretaceousGameTrailSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_CRETACEOUS_PLAINS = new CretaceousPlainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
+	public static final SurfaceBuilder NAKED_CRETACEOUS_DESERT = new CretaceousDesertSurfaceBuilder(SurfaceBuilderConfig.CODEC);
+	public static final SurfaceBuilder NAKED_CRETACEOUS_RED_DESERT = new CretaceousRedDesertSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	
 	public static final SurfaceBuilder<?> PERMIAN_DRIED_PLAINS = ModRegistry.register("permian_dried_plains_sb", NAKED_PERMIAN_DRIED_PLAINS);
 	public static final SurfaceBuilder<?> PERMIAN_MOUNTAINS = ModRegistry.register("permian_mountains_sb", NAKED_PERMIAN_MOUNTAINS);
@@ -51,6 +55,8 @@ public class SurfaceBuilderInit
 	
 	public static final SurfaceBuilder<?> CRETACEOUS_GAME_TRAIL = ModRegistry.register("cretaceous_game_trail_sb", NAKED_CRETACEOUS_GAME_TRAIL);
 	public static final SurfaceBuilder<?> CRETACEOUS_PLAINS = ModRegistry.register("cretaceous_plains_sb", NAKED_CRETACEOUS_PLAINS);
+	public static final SurfaceBuilder<?> CRETACEOUS_DESERT = ModRegistry.register("cretaceous_desert_sb", NAKED_CRETACEOUS_DESERT);
+	public static final SurfaceBuilder<?> CRETACEOUS_RED_DESERT = ModRegistry.register("cretaceous_red_desert_sb", NAKED_CRETACEOUS_RED_DESERT);
 
 	//Registry
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Surface Builders"); }

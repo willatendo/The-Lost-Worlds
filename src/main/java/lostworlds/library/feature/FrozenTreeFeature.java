@@ -40,10 +40,10 @@ public class FrozenTreeFeature extends Feature<BaseTreeFeatureConfig>
 	{
 		super(config);
 	}
-
-	public static boolean isFree(IWorldGenerationBaseReader reader, BlockPos pos) 
+	
+	public static boolean isFree(ISeedReader world, IWorldGenerationBaseReader reader, BlockPos pos) 
 	{
-		return validTreePos(reader, pos) || reader.isStateAtPosition(pos, (blockstate) -> 
+		return validTreePos(world, reader, pos) || reader.isStateAtPosition(pos, (blockstate) -> 
 		{
 			return blockstate.is(BlockTags.LOGS);
 		});
@@ -73,12 +73,12 @@ public class FrozenTreeFeature extends Feature<BaseTreeFeatureConfig>
 		});
 	}
 
-	private static boolean isValidPlacement(IWorldGenerationBaseReader reader, BlockPos pos) 
+	private static boolean isValidPlacement(ISeedReader world, IWorldGenerationBaseReader reader, BlockPos pos) 
 	{
 		return reader.isStateAtPosition(pos, (blockstate) -> 
 		{
 			Block block = blockstate.getBlock();
-			return block == Blocks.SNOW_BLOCK;
+			return block == Blocks.SNOW_BLOCK && world.getBlockState(pos.below()).getBlock() == Blocks.SNOW_BLOCK && world.getBlockState(pos.below()).getBlock() == Blocks.SNOW_BLOCK;
 		});
 	}
 
@@ -96,12 +96,12 @@ public class FrozenTreeFeature extends Feature<BaseTreeFeatureConfig>
 		writer.setBlock(reader, state, 19);
 	}
 
-	public static boolean validTreePos(IWorldGenerationBaseReader reader, BlockPos pos) 
+	public static boolean validTreePos(ISeedReader world, IWorldGenerationBaseReader reader, BlockPos pos) 
 	{
-		return isAirOrLeaves(reader, pos) || isReplaceablePlant(reader, pos) || isBlockWater(reader, pos) || isValidPlacement(reader, pos);
+		return isAirOrLeaves(reader, pos) || isReplaceablePlant(reader, pos) || isBlockWater(reader, pos) || isValidPlacement(world, reader, pos);
 	}
 
-	private boolean doPlace(IWorldGenerationReader reader, Random rand, BlockPos pos, Set<BlockPos> blockPos1, Set<BlockPos> blockPos2, MutableBoundingBox box, BaseTreeFeatureConfig config) 
+	private boolean doPlace(ISeedReader world, IWorldGenerationReader reader, Random rand, BlockPos pos, Set<BlockPos> blockPos1, Set<BlockPos> blockPos2, MutableBoundingBox box, BaseTreeFeatureConfig config) 
 	{
 		int i = config.trunkPlacer.getTreeHeight(rand);
 		int j = config.foliagePlacer.foliageHeight(rand, i, config);
@@ -140,14 +140,14 @@ public class FrozenTreeFeature extends Feature<BaseTreeFeatureConfig>
 
 		if(blockpos.getY() >= 1 && blockpos.getY() + i + 1 <= 256) 
 		{
-			if(!isValidPlacement(reader, blockpos.below())) 
+			if(!isValidPlacement(world, reader, blockpos.below())) 
 			{
 				return false;
 			} 
 			else 
 			{
 				OptionalInt optionalint = config.minimumSize.minClippedHeight();
-				int l1 = this.getMaxFreeTreeHeight(reader, i, blockpos, config);
+				int l1 = this.getMaxFreeTreeHeight(world, reader, i, blockpos, config);
 				if(l1 >= i || optionalint.isPresent() && l1 >= optionalint.getAsInt()) 
 				{
 					List<FoliagePlacer.Foliage> list = config.trunkPlacer.placeTrunk(reader, rand, l1, blockpos, blockPos1, box, config);
@@ -169,7 +169,7 @@ public class FrozenTreeFeature extends Feature<BaseTreeFeatureConfig>
 		}
 	}
 
-	private int getMaxFreeTreeHeight(IWorldGenerationBaseReader reader, int seed, BlockPos pos, BaseTreeFeatureConfig config) 
+	private int getMaxFreeTreeHeight(ISeedReader world, IWorldGenerationBaseReader reader, int seed, BlockPos pos, BaseTreeFeatureConfig config) 
 	{
 		BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 
@@ -182,7 +182,7 @@ public class FrozenTreeFeature extends Feature<BaseTreeFeatureConfig>
 				for(int l = -j; l <= j; ++l) 
 				{
 					blockpos$mutable.setWithOffset(pos, k, i, l);
-					if(!isFree(reader, blockpos$mutable) || !config.ignoreVines && isVine(reader, blockpos$mutable)) 
+					if(!isFree(world, reader, blockpos$mutable) || !config.ignoreVines && isVine(reader, blockpos$mutable)) 
 					{
 						return i - 2;
 					}
@@ -204,7 +204,7 @@ public class FrozenTreeFeature extends Feature<BaseTreeFeatureConfig>
 		Set<BlockPos> set1 = Sets.newHashSet();
 		Set<BlockPos> set2 = Sets.newHashSet();
 		MutableBoundingBox mutableboundingbox = MutableBoundingBox.getUnknownBox();
-		boolean flag = this.doPlace(reader, rand, pos, set, set1, mutableboundingbox, config);
+		boolean flag = this.doPlace(reader, reader, rand, pos, set, set1, mutableboundingbox, config);
 		if(mutableboundingbox.x0 <= mutableboundingbox.x1 && flag && !set.isEmpty()) 
 		{
 			if(!config.decorators.isEmpty()) 

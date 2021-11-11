@@ -2,10 +2,15 @@ package lostworlds.content.server.init;
 
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
-import lostworlds.library.biome.biomes.cretaceous.arctic.CreataceousArctic;
-import lostworlds.library.biome.biomes.cretaceous.plains.CreataceousGameTrail;
-import lostworlds.library.biome.biomes.cretaceous.plains.CreataceousMedow;
-import lostworlds.library.biome.biomes.cretaceous.plains.CreataceousPlains;
+import lostworlds.library.biome.biomes.cretaceous.arctic.CretaceousArctic;
+import lostworlds.library.biome.biomes.cretaceous.arctic.CretaceousArcticSpires;
+import lostworlds.library.biome.biomes.cretaceous.arctic.CretaceousFrozenForest;
+import lostworlds.library.biome.biomes.cretaceous.desert.CretaceousDesert;
+import lostworlds.library.biome.biomes.cretaceous.desert.CretaceousRedDesert;
+import lostworlds.library.biome.biomes.cretaceous.plains.CretaceousFloodBasalts;
+import lostworlds.library.biome.biomes.cretaceous.plains.CretaceousGameTrail;
+import lostworlds.library.biome.biomes.cretaceous.plains.CretaceousMedow;
+import lostworlds.library.biome.biomes.cretaceous.plains.CretaceousPlains;
 import lostworlds.library.biome.biomes.jurassic.desert.JurassicDesert;
 import lostworlds.library.biome.biomes.jurassic.forest.JurassicAraucariaForest;
 import lostworlds.library.biome.biomes.jurassic.forest.JurassicConiferForest;
@@ -117,13 +122,23 @@ public class BiomeInit
 	public static final Biome JURASSIC_SHORE = ModRegistry.register("jurassic_shore", new JurassicShore());
 
 	//Creataceous
-	public static final Biome CREATACEOUS_GAME_TRAIL = ModRegistry.register("creataceous_game_trail", new CreataceousGameTrail());
+	public static final Biome CRETACEOUS_GAME_TRAIL = ModRegistry.register("cretaceous_game_trail", new CretaceousGameTrail());
 	
-	public static final Biome CREATACEOUS_MEDOW = ModRegistry.register("creataceous_medow", new CreataceousMedow());
+	public static final Biome CRETACEOUS_MEDOW = ModRegistry.register("cretaceous_medow", new CretaceousMedow());
 	
-	public static final Biome CREATACEOUS_PLAINS = ModRegistry.register("creataceous_plains", new CreataceousPlains());
+	public static final Biome CRETACEOUS_PLAINS = ModRegistry.register("cretaceous_plains", new CretaceousPlains());
 
-	public static final Biome CREATACEOUS_ARCTIC = ModRegistry.register("creataceous_arctic", new CreataceousArctic());
+	public static final Biome CRETACEOUS_FLOOD_BASALTS = ModRegistry.register("cretaceous_flood_basalts", new CretaceousFloodBasalts());
+	
+	public static final Biome CRETACEOUS_ARCTIC = ModRegistry.register("cretaceous_arctic", new CretaceousArctic());
+
+	public static final Biome CRETACEOUS_ARCTIC_SPIRES = ModRegistry.register("cretaceous_arctic_spires", new CretaceousArcticSpires());
+
+	public static final Biome CRETACEOUS_FROZEN_FOREST = ModRegistry.register("cretaceous_frozen_forest", new CretaceousFrozenForest());
+
+	public static final Biome CRETACEOUS_DESERT = ModRegistry.register("cretaceous_desert", new CretaceousDesert());
+
+	public static final Biome CRETACEOUS_RED_DESERT = ModRegistry.register("cretaceous_red_desert", new CretaceousRedDesert());
 
 	//Overworld
 	public static final Biome ARAUCARIA_FOREST = ModRegistry.register("araucaria_forest", new AraucariaForest());

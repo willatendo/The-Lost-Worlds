@@ -28,6 +28,8 @@ public class ModSurfaceBuilders
 	public static final SurfaceBuilderConfig MOSSY_SOIL_SILT_CONFIG = new SurfaceBuilderConfig(BlockInit.MOSSY_SOIL.defaultBlockState(), Blocks.DIRT.defaultBlockState(), BlockInit.SILT.defaultBlockState());
 	public static final SurfaceBuilderConfig MAGMA_CONFIG = new SurfaceBuilderConfig(Blocks.MAGMA_BLOCK.defaultBlockState(), Blocks.MAGMA_BLOCK.defaultBlockState(), Blocks.MAGMA_BLOCK.defaultBlockState());
 	public static final SurfaceBuilderConfig SNOW_CONFIG = new SurfaceBuilderConfig(Blocks.SNOW_BLOCK.defaultBlockState(), Blocks.SNOW_BLOCK.defaultBlockState(), Blocks.SNOW_BLOCK.defaultBlockState());
+	public static final SurfaceBuilderConfig TERRACOTTA_CONFIG = new SurfaceBuilderConfig(Blocks.TERRACOTTA.defaultBlockState(), Blocks.TERRACOTTA.defaultBlockState(), Blocks.TERRACOTTA.defaultBlockState());
+	public static final SurfaceBuilderConfig RED_TERRACOTTA_CONFIG = new SurfaceBuilderConfig(Blocks.RED_TERRACOTTA.defaultBlockState(), Blocks.RED_TERRACOTTA.defaultBlockState(), Blocks.RED_TERRACOTTA.defaultBlockState());
 	
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_ASHY_MEDOWS_BUILDER = SurfaceBuilder.DEFAULT.configured(VOLCANIC_ASH_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_DESERT_BUILDER = SurfaceBuilder.DEFAULT.configured(PERMIAN_SAND_CONFIG);

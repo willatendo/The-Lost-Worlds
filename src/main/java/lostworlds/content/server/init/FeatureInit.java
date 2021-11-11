@@ -29,7 +29,7 @@ public class FeatureInit
 	public static final Feature<BaseTreeFeatureConfig> SCORCHED_TREE = new ScorchedTreeFeature(BaseTreeFeatureConfig.CODEC);
 	public static final Feature<BaseTreeFeatureConfig> FROZEN_TREE = new FrozenTreeFeature(BaseTreeFeatureConfig.CODEC);
 
-	public static final Feature<BlockStateFeatureConfig> PERMIAN_ROCK = new ModBlockBlobFeature(BlockStateFeatureConfig.CODEC);
+	public static final Feature<BlockStateFeatureConfig> ROCK = new ModBlockBlobFeature(BlockStateFeatureConfig.CODEC);
 	
 	public static final Feature<BlockStateFeatureConfig> PERMIAN_LAKE = new PermianLakesFeature(BlockStateFeatureConfig.CODEC);
 	
@@ -42,7 +42,8 @@ public class FeatureInit
 		ModRegistry.register("geyser_block_placement", GEYSER_BLOCK_PLACEMENT);
 		ModRegistry.register("sponge_coloney_placement", SPONGE_COLONEY_PLACEMENT);
 		ModRegistry.register("scorched_tree", SCORCHED_TREE);
-		ModRegistry.register("permian_rock", PERMIAN_ROCK);
+		ModRegistry.register("frozen_tree", FROZEN_TREE);
+		ModRegistry.register("rock", ROCK);
 		ModRegistry.register("permian_lake", PERMIAN_LAKE);
 	}
 }

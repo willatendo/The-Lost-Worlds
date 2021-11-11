@@ -14,24 +14,35 @@ import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.util.NonNullSupplier;
 
-public class ExtendableFlowerBlock extends Block 
+public abstract class ExtendableFlowerBlock extends Block 
 {
-	public static final IntegerProperty AGE = BlockStateProperties.AGE_5;
-	private static ExtendableStemBlock plant;
-
-	public ExtendableFlowerBlock(Properties properties, NonNullSupplier<ExtendableStemBlock> block) 
+	private static final VoxelShape SHAPE = Block.box(6, 0, 6, 10, 8, 10);
+	public static final IntegerProperty AGE = BlockStateProperties.AGE_2;
+	private static ExtendableStemBlock stem;
+	
+	public ExtendableFlowerBlock(Properties properties) 
 	{
 		super(properties);
-		plant = block.get();
+		this.stem = stem();
 		this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
+	}
+	
+	public abstract ExtendableStemBlock stem();
+	
+	@Override
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context)
+	{
+		return SHAPE;
 	}
 
 	@Override
@@ -46,7 +57,7 @@ public class ExtendableFlowerBlock extends Block
 	@Override
 	public boolean isRandomlyTicking(BlockState state) 
 	{
-		return state.getValue(AGE) < 5;
+		return state.getValue(AGE) < 2;
 	}
 
 	@Override
@@ -56,7 +67,7 @@ public class ExtendableFlowerBlock extends Block
 		if(world.isEmptyBlock(blockpos) && blockpos.getY() < 256) 
 		{
 			int i = state.getValue(AGE);
-			if (i < 5 && ForgeHooks.onCropsGrowPre(world, blockpos, state, true)) 
+			if (i < 2 && ForgeHooks.onCropsGrowPre(world, blockpos, state, true)) 
 			{
 				boolean flag = false;
 				boolean flag1 = false;
@@ -66,14 +77,14 @@ public class ExtendableFlowerBlock extends Block
 				{
 					flag = true;
 				} 
-				else if(block == this.plant) 
+				else if(block == this.stem()) 
 				{
 					int j = 1;
 
 					for(int k = 0; k < 4; ++k) 
 					{
 						Block block1 = world.getBlockState(pos.below(j + 1)).getBlock();
-						if(block1 != this.plant) 
+						if(block1 != this.stem()) 
 						{
 							if(block1.is(Tags.Blocks.DIRT)) 
 							{
@@ -97,7 +108,7 @@ public class ExtendableFlowerBlock extends Block
 
 				if(flag && allNeighborsEmpty(world, blockpos, (Direction) null) && world.isEmptyBlock(pos.above(2)))
 				{
-					world.setBlock(pos, this.plant.getStateForPlacement(world, pos), 2);
+					world.setBlock(pos, this.stem().getStateForPlacement(world, pos), 2);
 					this.placeGrownFlower(world, blockpos, i);
 				} 
 				else if(i < 4) 
@@ -123,7 +134,7 @@ public class ExtendableFlowerBlock extends Block
 
 					if(flag2) 
 					{
-						world.setBlock(pos, this.plant.getStateForPlacement(world, pos), 2);
+						world.setBlock(pos, this.stem().getStateForPlacement(world, pos), 2);
 					} 
 					else 
 					{
@@ -147,7 +158,7 @@ public class ExtendableFlowerBlock extends Block
 
 	private void placeDeadFlower(World world, BlockPos pos) 
 	{
-		world.setBlock(pos, this.defaultBlockState().setValue(AGE, Integer.valueOf(5)), 2);
+		world.setBlock(pos, this.defaultBlockState().setValue(AGE, Integer.valueOf(2)), 2);
 		world.levelEvent(1034, pos, 0);
 	}
 
@@ -155,7 +166,7 @@ public class ExtendableFlowerBlock extends Block
 	{
 		for(Direction directions : Direction.Plane.HORIZONTAL) 
 		{
-			if(directions != direction && !reader.isEmptyBlock(pos.relative(direction))) 
+			if(directions != direction && !reader.isEmptyBlock(pos.relative(directions))) 
 			{
 				return false;
 			}
@@ -179,7 +190,7 @@ public class ExtendableFlowerBlock extends Block
 	public boolean canSurvive(BlockState sate, IWorldReader reader, BlockPos pos) 
 	{
 		BlockState blockstate = reader.getBlockState(pos.below());
-		if(blockstate.getBlock() != this.plant && !blockstate.is(Tags.Blocks.DIRT)) 
+		if(blockstate.getBlock() != this.stem() && !blockstate.is(Tags.Blocks.DIRT)) 
 		{
 			if(!blockstate.isAir(reader, pos.below())) 
 			{
@@ -192,7 +203,7 @@ public class ExtendableFlowerBlock extends Block
 				for(Direction direction : Direction.Plane.HORIZONTAL) 
 				{
 					BlockState blockstate1 = reader.getBlockState(pos.relative(direction));
-					if(blockstate1.is(this.plant)) 
+					if(blockstate1.is(this.stem())) 
 					{
 						if(flag) 
 						{
@@ -224,13 +235,13 @@ public class ExtendableFlowerBlock extends Block
 
 	public static void generatePlant(IWorld world, BlockPos pos, Random rand, int maxHeight) 
 	{
-		world.setBlock(pos, ((ExtendableStemBlock) plant).getStateForPlacement(world, pos), 2);
+		world.setBlock(pos, ((ExtendableStemBlock) stem).getStateForPlacement(world, pos), 2);
 		growTreeRecursive(world, pos, rand, pos, maxHeight, 0);
 	}
 
 	private static void growTreeRecursive(IWorld world, BlockPos pos, Random rand, BlockPos newpos, int maxHeight, int greater) 
 	{
-		ExtendableStemBlock block = (ExtendableStemBlock) plant;
+		ExtendableStemBlock block = (ExtendableStemBlock) stem;
 		int i = rand.nextInt(4) + 1;
 		if(greater == 0) 
 		{
@@ -274,7 +285,7 @@ public class ExtendableFlowerBlock extends Block
 
 		if(!flag) 
 		{
-			world.setBlock(pos.above(i), plant.flower.defaultBlockState().setValue(AGE, Integer.valueOf(5)), 2);
+			world.setBlock(pos.above(i), stem.flower().defaultBlockState().setValue(AGE, Integer.valueOf(2)), 2);
 		}
 
 	}

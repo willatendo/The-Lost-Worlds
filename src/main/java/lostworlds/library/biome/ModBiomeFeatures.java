@@ -441,6 +441,67 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_FROZEN_TREES);
 	}
 	
+	public static void cretaceousArcticSpires(BiomeGenerationSettings.Builder builder)
+	{
+		addCretaceousRock(builder);
+		addCretaceousOres(builder);
+		addSpring(builder);
+		addCretaceousUndergroundVariety(builder);
+		addFernGroundClutter(builder);
+		addModCarvers(builder);
+
+		DefaultBiomeFeatures.addSurfaceFreezing(builder);
+		
+		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Features.ICE_SPIKE);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_FROZEN_TREES);
+	}
+	
+	public static void cretaceousFrozenForest(BiomeGenerationSettings.Builder builder)
+	{
+		addCretaceousRock(builder);
+		addCretaceousOres(builder);
+		addSpring(builder);
+		addCretaceousUndergroundVariety(builder);
+		addFernGroundClutter(builder);
+		addModCarvers(builder);
+
+		DefaultBiomeFeatures.addSurfaceFreezing(builder);
+		
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_ARCTIC_CONIFER_TREES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_FROZEN_TREES);
+	}
+	
+	public static void cretaceousDesert(BiomeGenerationSettings.Builder builder)
+	{
+		addCretaceousRock(builder);
+		addCretaceousOres(builder);
+		addSpring(builder);
+		addCretaceousUndergroundVariety(builder);
+		addFernGroundClutter(builder);
+		addModCarvers(builder);
+	
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_DEAD_BUSH_BADLANDS);
+		
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_BROKEN_TREES);
+	}
+	
+	public static void cretaceousFloodBasalts(BiomeGenerationSettings.Builder builder)
+	{
+		addBasaltDiamondOre(builder);
+		addGeyser(builder);
+		addCretaceousOres(builder);
+		addModCarvers(builder);
+		addCretaceousUndergroundVariety(builder);
+		
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA);
+		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Features.BASALT_PILLAR);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, ModConfiguredFeatures.CRETACEOUS_MAGMA_ORE);
+		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.DELTA);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA_DOUBLE);
+		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.SMALL_BASALT_COLUMNS);
+		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.LARGE_BASALT_COLUMNS);
+	}
+	
 	//Overworld
 	public static void araucariaForest(BiomeGenerationSettings.Builder builder)
 	{		

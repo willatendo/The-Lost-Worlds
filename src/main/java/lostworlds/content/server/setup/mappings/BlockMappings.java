@@ -27,6 +27,7 @@ public class BlockMappings
 			put(ModUtils.rL("medium_permian_desert_plant"), BlockInit.PERMIAN_DESERT_SHRUB);
 			put(ModUtils.rL("large_permian_desert_plant"), BlockInit.PERMIAN_DESERT_SHRUB);
 			put(ModUtils.rL("lycophyta"), BlockInit.OSMUNDA);
+			put(ModUtils.rL("tall_dicksonia"), BlockInit.DICKSONIA);
 			put(ModUtils.rL("power_supply_block"), Blocks.REDSTONE_BLOCK);			
 			put(ModUtils.rL("mossy_dirt"), BlockInit.MOSSY_SOIL);			
 			put(ModUtils.rL("mossy_jurassic_stone"), BlockInit.JURASSIC_STONE);			

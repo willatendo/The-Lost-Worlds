@@ -15,18 +15,16 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.util.NonNullSupplier;
 
-public class ExtendableStemBlock extends SixWayBlock 
-{
-	public final Block flower;
-	
-	public ExtendableStemBlock(Properties properties, NonNullSupplier<Block> flower) 
+public abstract class ExtendableStemBlock extends SixWayBlock 
+{	
+	public ExtendableStemBlock(Properties properties) 
 	{
 		super(0.3125F, properties);
-		this.flower = flower.get();
 		this.registerDefaultState(this.stateDefinition.any().setValue(NORTH, Boolean.valueOf(false)).setValue(EAST, Boolean.valueOf(false)).setValue(SOUTH, Boolean.valueOf(false)).setValue(WEST, Boolean.valueOf(false)).setValue(UP, Boolean.valueOf(false)).setValue(DOWN, Boolean.valueOf(false)));
 	}
+	
+	public abstract Block flower();
 
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context) 
@@ -42,7 +40,7 @@ public class ExtendableStemBlock extends SixWayBlock
 		Block block3 = reader.getBlockState(pos.east()).getBlock();
 		Block block4 = reader.getBlockState(pos.south()).getBlock();
 		Block block5 = reader.getBlockState(pos.west()).getBlock();
-		return this.defaultBlockState().setValue(DOWN, Boolean.valueOf(block == this || block == this.flower || block.is(Tags.Blocks.DIRT))).setValue(UP, Boolean.valueOf(block1 == this || block1 == this.flower)).setValue(NORTH, Boolean.valueOf(block2 == this || block2 == this.flower)).setValue(EAST, Boolean.valueOf(block3 == this || block3 == this.flower)).setValue(SOUTH, Boolean.valueOf(block4 == this || block4 == this.flower)).setValue(WEST, Boolean.valueOf(block5 == this || block5 == this.flower));
+		return this.defaultBlockState().setValue(DOWN, Boolean.valueOf(block == this || block == this.flower() || block.is(Tags.Blocks.DIRT))).setValue(UP, Boolean.valueOf(block1 == this || block1 == this.flower())).setValue(NORTH, Boolean.valueOf(block2 == this || block2 == this.flower())).setValue(EAST, Boolean.valueOf(block3 == this || block3 == this.flower())).setValue(SOUTH, Boolean.valueOf(block4 == this || block4 == this.flower())).setValue(WEST, Boolean.valueOf(block5 == this || block5 == this.flower()));
 	}
 
 	@Override
@@ -55,7 +53,7 @@ public class ExtendableStemBlock extends SixWayBlock
 		} 
 		else 
 		{
-			boolean flag = newstate.getBlock() == this || newstate.is(this.flower) || direction == Direction.DOWN && newstate.is(Tags.Blocks.DIRT);
+			boolean flag = newstate.getBlock() == this || newstate.is(this.flower()) || direction == Direction.DOWN && newstate.is(Tags.Blocks.DIRT);
 			return state.setValue(PROPERTY_BY_DIRECTION.get(direction), Boolean.valueOf(flag));
 		}
 	}

@@ -105,8 +105,10 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_SUCKOWII, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_SUCKOWII_SAPLING, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.CEPHALOTAXUS, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.CYCAD, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.DILLHOFFIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.POTTED_DILLHOFFIA, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.DICKSONIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.DUISBERGIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.EUDICOTS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.POTTED_EUDICOTS, RenderType.cutout());

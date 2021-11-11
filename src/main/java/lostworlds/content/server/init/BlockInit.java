@@ -12,6 +12,7 @@ import lostworlds.library.block.ColouredGlassBlock;
 import lostworlds.library.block.ColouredGlassPaneBlock;
 import lostworlds.library.block.ConnectedTextureBlock;
 import lostworlds.library.block.CultivatorBlock;
+import lostworlds.library.block.CycadBlock;
 import lostworlds.library.block.DNAExtractorBlock;
 import lostworlds.library.block.DNAInjectorBlock;
 import lostworlds.library.block.DeadSpongeColonyBlock;
@@ -113,7 +114,9 @@ public class BlockInit
 	public static final Block ROCKY_SOIL = BlockAndItemBuilder.create("rocky_soil", new SandBlock(0x8a8a8e, AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).requiresCorrectToolForDrops().strength(1.5F)));
 
 	public static final Block FOG = BlockAndItemBuilder.create("fog", new FogBlock(AbstractBlock.Properties.of(Material.STONE).instabreak().noOcclusion().noCollission().sound(SoundType.WOOL)));
-	
+
+	public static final Block PERMAFROST = BlockAndItemBuilder.create("permafrost", new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.ICE).strength(0.5F).sound(SoundType.GRAVEL)));
+
 	//Stones
 	public static final Block PERMIAN_STONE = BlockAndItemBuilder.create("permian_stone", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)));
 	public static final Block PERMIAN_STONE_STAIRS = BlockAndItemBuilder.create("permian_stone_stairs", new StairsBlock(() -> BlockInit.PERMIAN_STONE.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)));
@@ -358,10 +361,6 @@ public class BlockInit
 	public static final Block PETRIFIED_CYPRESS_LOG = BlockAndItemBuilder.create("petrified_cypress_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND), ItemInit.CYPRESS_BARK_SAMPLE));
 	public static final Block STRIPPED_PETRIFIED_CYPRESS_LOG = BlockAndItemBuilder.create("stripped_petrified_cypress_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND)));
 	
-	//Cycad
-	
-	//Dicksonia
-	
 	//Ginkgo
 	public static final Block GINKGO_LOG = BlockAndItemBuilder.create("ginkgo_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_GINKGO_LOG = BlockAndItemBuilder.create("stripped_ginkgo_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -439,6 +438,8 @@ public class BlockInit
 	public static final Block CALAMITES_SUCKOWII_SAPLING = BlockBuilder.create("calamites_suckowii_sapling", new CalamtiesSuckowiiSaplingBlock(AbstractBlock.Properties.of(Material.BAMBOO_SAPLING).randomTicks().instabreak().noCollission().strength(1.0F).sound(SoundType.BAMBOO_SAPLING)));
 	public static final Block CALAMITES_SUCKOWII = BlockAndItemBuilder.create("calamites_suckowii", new CalamtiesSuckowiiBlock(AbstractBlock.Properties.of(Material.BAMBOO, MaterialColor.PLANT).randomTicks().instabreak().strength(1.0F).sound(SoundType.BAMBOO).noOcclusion()));
 	public static final Block CEPHALOTAXUS = BlockAndItemBuilder.create("cephalotaxus", new ModDoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final Block CYCAD = BlockAndItemBuilder.create("cycad", new CycadBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).harvestTool(ToolType.AXE).strength(1.0F, 1.5F).randomTicks().noOcclusion().sound(SoundType.WOOD)));
+	public static final Block DICKSONIA = BlockAndItemBuilder.create("dicksonia", new CycadBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).harvestTool(ToolType.AXE).strength(1.0F, 1.5F).randomTicks().noOcclusion().sound(SoundType.WOOD)));
 	public static final Block DILLHOFFIA = BlockAndItemBuilder.create("dillhoffia", new FlowerBlock(Effects.BLINDNESS, 7, AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	public static final Block POTTED_DILLHOFFIA = BlockBuilder.create("potted_dillhoffia", new FlowerPotBlock(DILLHOFFIA, AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
 	public static final Block DUISBERGIA = BlockAndItemBuilder.create("duisbergia", new ModDoublePlantBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
