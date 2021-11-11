@@ -18,10 +18,8 @@ public class PermianPlains extends TyrannoBiome
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomes.BASE_WATER_COLOUR).waterFogColor(BaseBiomes.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomes.BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 	
 	static
-	{
-		GENERATION.surfaceBuilder(ModSurfaceBuilders.JURASSIC_PODZOL_BUILDER);
-		
-		ModBiomeFeatures.jurassicPlains(GENERATION);
+	{		
+		ModBiomeFeatures.permianPlains(GENERATION);
 	}
 	
 	public PermianPlains(float depth, float scale) 

@@ -31,6 +31,7 @@ public class ModBiomeFeatures
 		addPermianUndergroundVariety(builder);
 		addSpring(builder);
 		addAlethopteris(builder);
+		addCycad(builder);
 	
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
 	}
@@ -56,6 +57,7 @@ public class ModBiomeFeatures
 		addPermianUndergroundVariety(builder);
 		addSpring(builder);
 		addAlethopteris(builder);
+		addCycad(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
 	}
@@ -71,6 +73,7 @@ public class ModBiomeFeatures
 		addPermianUndergroundVariety(builder);
 		addSpring(builder);
 		addAlethopteris(builder);
+		addCycad(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
 	}
@@ -190,6 +193,8 @@ public class ModBiomeFeatures
 		addZamites(builder);
 		addWilliamsonia(builder);
 		addAlethopteris(builder);
+		addCycad(builder);
+		addDicksonia(builder);
 	}
 	
 	public static void jurassicGinkgoForest(BiomeGenerationSettings.Builder builder)
@@ -204,6 +209,8 @@ public class ModBiomeFeatures
 		addZamites(builder);
 		addDuisbergia(builder);
 		addAlethopteris(builder);
+		addCycad(builder);
+		addDicksonia(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
 	}
@@ -220,6 +227,8 @@ public class ModBiomeFeatures
 		addZamites(builder);
 		addWilliamsonia(builder);
 		addAlethopteris(builder);
+		addCycad(builder);
+		addDicksonia(builder);
 	}
 	
 	public static void jurassicPlains(BiomeGenerationSettings.Builder builder)
@@ -230,9 +239,9 @@ public class ModBiomeFeatures
 		addSpring(builder);
 		addJurassicUndergroundVariety(builder);
 		addFernGroundClutter(builder);
-		addZamites(builder);
-		addWilliamsonia(builder);
 		addAlethopteris(builder);
+		addOsmunda(builder);
+		addCycad(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_DEAD_BUSH_BADLANDS);
 		
@@ -249,6 +258,8 @@ public class ModBiomeFeatures
 		addFernGroundClutter(builder);
 		addDuisbergia(builder);
 		addAlethopteris(builder);
+		addDicksonia(builder);
+		addOsmunda(builder);
 
 		DefaultBiomeFeatures.addSurfaceFreezing(builder);
 
@@ -262,11 +273,9 @@ public class ModBiomeFeatures
 		addJurassicEmerald(builder);
 		addExtraJurassicDiamonds(builder);
 		addJurassicUndergroundVariety(builder);
-		addDuisbergia(builder);
-		addWilliamsonia(builder);
 		addGeyser(builder);
 		
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_MAGMA);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_MAGMA_ORE);
 	}
 	
 	public static void jurassicDesert(BiomeGenerationSettings.Builder builder)
@@ -401,6 +410,8 @@ public class ModBiomeFeatures
 		addZamites(builder);
 		addWilliamsonia(builder);
 		addAlethopteris(builder);
+		addCycad(builder);
+		addDicksonia(builder);
 	}
 	
 	public static void cretaceousGinkgoForest(BiomeGenerationSettings.Builder builder)
@@ -415,6 +426,8 @@ public class ModBiomeFeatures
 		addZamites(builder);
 		addDuisbergia(builder);
 		addAlethopteris(builder);
+		addCycad(builder);
+		addDicksonia(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
 	}
@@ -431,6 +444,7 @@ public class ModBiomeFeatures
 		addZamites(builder);
 		addWilliamsonia(builder);
 		addAlethopteris(builder);
+		addDicksonia(builder);
 	}
 	
 	public static void cretaceousGameTrail(BiomeGenerationSettings.Builder builder)
@@ -468,6 +482,8 @@ public class ModBiomeFeatures
 		addSpring(builder);
 		addCretaceousUndergroundVariety(builder);
 		addFernGroundClutter(builder);
+		addDicksonia(builder);
+		addOsmunda(builder);
 		
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);
 	}
@@ -481,6 +497,7 @@ public class ModBiomeFeatures
 		addCretaceousUndergroundVariety(builder);
 		addFernGroundClutter(builder);
 		addAlethopteris(builder);
+		addOsmunda(builder);
 
 		DefaultBiomeFeatures.addSurfaceFreezing(builder);
 
@@ -936,10 +953,25 @@ public class ModBiomeFeatures
 	{
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.ALETHOPTERIS_PATCH);
 	}
+	
+	private static void addCycad(BiomeGenerationSettings.Builder builder) 
+	{
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.CYCAD_PATCH);
+	}
 
 	private static void addDuisbergia(BiomeGenerationSettings.Builder builder)
 	{
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.DUISBERGIA_PATCH);
+	}
+	
+	private static void addDicksonia(BiomeGenerationSettings.Builder builder) 
+	{
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.DICKSONIA_PATCH);
+	}
+
+	private static void addOsmunda(BiomeGenerationSettings.Builder builder)
+	{
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.OSMUNDA_PATCH);
 	}
 
 	private static void addWilliamsonia(BiomeGenerationSettings.Builder builder)
@@ -949,7 +981,7 @@ public class ModBiomeFeatures
 
 	private static void addZamites(BiomeGenerationSettings.Builder builder)
 	{
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.ZAMITES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.ZAMITES_PATCH);
 	}
 	
 	private static void addBasaltDiamondOre(BiomeGenerationSettings.Builder builder)

@@ -13,20 +13,18 @@ import tyrannotitanlib.library.base.biome.TyrannoBiome;
 
 public class PermianDriedPlains extends TyrannoBiome
 {
-	public static final BiomeGenerationSettings.Builder GENERATION = genSettings(SurfaceBuilderInit.NAKED_PERMIAN_PLAINS, ModSurfaceBuilders.DIRT_CONFIG);
+	public static final BiomeGenerationSettings.Builder GENERATION = genSettings(SurfaceBuilderInit.NAKED_PERMIAN_DRIED_PLAINS, ModSurfaceBuilders.DRIED_SOIL_CONFIG);
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomes.BASE_WATER_COLOUR).waterFogColor(BaseBiomes.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomes.BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 	
 	static
-	{
-		GENERATION.surfaceBuilder(ModSurfaceBuilders.JURASSIC_PODZOL_BUILDER);
-		
+	{		
 		ModBiomeFeatures.permianDriedPlains(GENERATION);
 	}
 	
 	public PermianDriedPlains(float depth, float scale) 
 	{
-		super(BaseBiomes.biome(RainType.NONE, Category.PLAINS, depth, scale, 0.0F, 0.2F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+		super(BaseBiomes.biome(RainType.NONE, Category.PLAINS, depth, scale, 0.0F, 2.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
 	}
 	
 	public PermianDriedPlains() 
