@@ -23,8 +23,13 @@ public class CretaceousFrozenForest extends TyrannoBiome
 		ModBiomeFeatures.cretaceousFrozenForest(GENERATION);
 	}
 	
-	public CretaceousFrozenForest() 
+	public CretaceousFrozenForest(float depth, float scale) 
 	{
-		super(BaseBiomes.biome(RainType.SNOW, Category.FOREST, 0.125F, 0.05F, 0.5F, 0.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+		super(BaseBiomes.biome(RainType.SNOW, Category.FOREST, depth, scale, 0.5F, 0.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+	}
+	
+	public CretaceousFrozenForest()
+	{
+		this(0.125F, 0.05F);
 	}
 }

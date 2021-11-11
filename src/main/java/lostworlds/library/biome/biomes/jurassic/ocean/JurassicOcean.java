@@ -25,7 +25,7 @@ public class JurassicOcean extends TyrannoBiome
 	
 	public JurassicOcean(float depth, float scale) 
 	{
-		super(BaseBiomes.biome(RainType.RAIN, Category.FOREST, depth, scale, 0.8F, 0.5F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+		super(BaseBiomes.biome(RainType.RAIN, Category.OCEAN, depth, scale, 0.8F, 0.5F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
 	}
 	
 	public JurassicOcean() 

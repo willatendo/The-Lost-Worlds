@@ -22,8 +22,13 @@ public class CretaceousRedDesert extends TyrannoBiome
 		ModBiomeFeatures.cretaceousDesert(GENERATION);
 	}
 	
+	public CretaceousRedDesert(float depth, float scale) 
+	{
+		super(BaseBiomes.biome(RainType.NONE, Category.DESERT, depth, scale, 0.0F, 3.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+	}
+	
 	public CretaceousRedDesert() 
 	{
-		super(BaseBiomes.biome(RainType.SNOW, Category.PLAINS, 0.125F, 0.05F, 0.0F, 3.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+		this(0.125F, 0.05F);
 	}
 }

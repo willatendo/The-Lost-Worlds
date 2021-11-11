@@ -22,8 +22,13 @@ public class CretaceousPlains extends TyrannoBiome
 		ModBiomeFeatures.cretaceousPlains(GENERATION);
 	}
 	
+	public CretaceousPlains(float depth, float scale) 
+	{
+		super(BaseBiomes.biome(RainType.RAIN, Category.PLAINS, depth, scale, 0.8F, 0.7F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+	}
+	
 	public CretaceousPlains() 
 	{
-		super(BaseBiomes.biome(RainType.RAIN, Category.PLAINS, 0.125F, 0.05F, 0.8F, 0.7F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+		this(0.125F, 0.05F);
 	}
 }

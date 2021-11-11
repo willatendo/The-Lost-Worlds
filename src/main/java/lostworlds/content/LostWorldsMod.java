@@ -93,6 +93,7 @@ public class LostWorldsMod
 		
 		DimensionRenderInfo.EFFECTS.put(ModUtils.rL("permian_render"), baseRenderer);
 		DimensionRenderInfo.EFFECTS.put(ModUtils.rL("jurassic_render"), baseRenderer);
+		DimensionRenderInfo.EFFECTS.put(ModUtils.rL("cretaceous_render"), baseRenderer);
 		
 		DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientSetup::setupOther);
 		

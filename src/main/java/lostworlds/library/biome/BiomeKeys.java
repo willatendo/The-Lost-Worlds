@@ -77,6 +77,60 @@ public class BiomeKeys
 	public static final RegistryKey<Biome> JURASSIC_RIVER = register("jurassic_river");
 
 	public static final RegistryKey<Biome> JURASSIC_SHORE = register("jurassic_shore");
+	
+	//Creataceous
+	public static final RegistryKey<Biome> CRETACEOUS_ARAUCARIA_FOREST = register("cretaceous_araucaria_forest");
+	public static final RegistryKey<Biome> CRETACEOUS_ARAUCARIA_FOREST_HILLS = register("cretaceous_araucaria_forest_hills");
+
+	public static final RegistryKey<Biome> CRETACEOUS_CONIFER_FOREST = register("cretaceous_conifer_forest");
+	public static final RegistryKey<Biome> CRETACEOUS_CONIFER_FOREST_HILLS = register("cretaceous_conifer_forest_hills");
+	
+	public static final RegistryKey<Biome> CRETACEOUS_GINKGO_FOREST = register("cretaceous_ginkgo_forest");
+	public static final RegistryKey<Biome> CRETACEOUS_GINKGO_FOREST_HILLS = register("cretaceous_ginkgo_forest_hills");
+	
+	public static final RegistryKey<Biome> CRETACEOUS_GAME_TRAIL = register("cretaceous_game_trail");
+	
+	public static final RegistryKey<Biome> CRETACEOUS_MEDOW = register("cretaceous_medow");
+	
+	public static final RegistryKey<Biome> CRETACEOUS_PLAINS = register("cretaceous_plains");
+	public static final RegistryKey<Biome> CRETACEOUS_PLAINS_HILLS = register("cretaceous_plains_hills");
+
+	public static final RegistryKey<Biome> CRETACEOUS_FLOOD_BASALTS = register("cretaceous_flood_basalts");
+	
+	public static final RegistryKey<Biome> CRETACEOUS_ARCTIC = register("cretaceous_arctic");
+	public static final RegistryKey<Biome> CRETACEOUS_ARCTIC_HILLS = register("cretaceous_arctic_hills");
+
+	public static final RegistryKey<Biome> CRETACEOUS_ARCTIC_SPIRES = register("cretaceous_arctic_spires");
+
+	public static final RegistryKey<Biome> CRETACEOUS_FROZEN_FOREST = register("cretaceous_frozen_forest");
+	public static final RegistryKey<Biome> CRETACEOUS_FROZEN_FOREST_HILLS = register("cretaceous_frozen_forest_hills");
+
+	public static final RegistryKey<Biome> CRETACEOUS_MOUNTAINS = register("cretaceous_mountains");
+	public static final RegistryKey<Biome> CRETACEOUS_ERRODED_MOUNTAINS = register("cretaceous_erroded_mountains");
+
+	public static final RegistryKey<Biome> CRETACEOUS_DESERT = register("cretaceous_desert");
+	public static final RegistryKey<Biome> CRETACEOUS_DESERT_HILLS = register("cretaceous_desert_hills");
+
+	public static final RegistryKey<Biome> CRETACEOUS_RED_DESERT = register("cretaceous_red_desert");
+	public static final RegistryKey<Biome> CRETACEOUS_RED_DESERT_HILLS = register("cretaceous_red_desert_hills");
+
+	public static final RegistryKey<Biome> CRETACEOUS_MARSH = register("cretaceous_marsh");
+	public static final RegistryKey<Biome> CRETACEOUS_SWAMP = register("cretaceous_swamp");
+	public static final RegistryKey<Biome> CRETACEOUS_FEN = register("cretaceous_fen");
+	public static final RegistryKey<Biome> CRETACEOUS_BOG = register("cretaceous_bog");
+
+	public static final RegistryKey<Biome> CRETACEOUS_RIVER = register("cretaceous_river");
+
+	public static final RegistryKey<Biome> COLD_CRETACEOUS_OCEAN = register("cold_cretaceous_ocean");
+	public static final RegistryKey<Biome> COLD_DEEP_CRETACEOUS_OCEAN = register("cold_deep_cretaceous_ocean");
+
+	public static final RegistryKey<Biome> CRETACEOUS_OCEAN = register("cretaceous_ocean");
+	public static final RegistryKey<Biome> DEEP_CRETACEOUS_OCEAN = register("deep_cretaceous_ocean");
+
+	public static final RegistryKey<Biome> WARM_CRETACEOUS_OCEAN = register("warm_cretaceous_ocean");
+	public static final RegistryKey<Biome> WARM_DEEP_CRETACEOUS_OCEAN = register("warm_deep_cretaceous_ocean");
+
+	public static final RegistryKey<Biome> CRETACEOUS_SHORE = register("cretaceous_shore");
 
 	//Overworld
 	public static final RegistryKey<Biome> ARAUCARIA_FOREST = register("araucaria_forest");

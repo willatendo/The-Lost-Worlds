@@ -22,7 +22,7 @@ public class ItemMappings
 		private static final long serialVersionUID = 2729763913422843325L;
 		{
 			put(ModUtils.rL("permian_time_book"), ItemInit.PERMIAN_PERIOD_TIME_BOOK);
-			put(ModUtils.rL("jurassic_time_book"), ItemInit.JURASSIC_ERA_TIME_BOOK);
+			put(ModUtils.rL("jurassic_time_book"), ItemInit.JURASSIC_PERIOD_TIME_BOOK);
 			put(ModUtils.rL("broken_crystal_scarab_gem"), CrystalScarabGemItem.Gems.CRYSTAL_SCARAB_ABDOMEN.getItem());
 		}
 	};

@@ -1,6 +1,8 @@
 package lostworlds.content.server.init;
 
 import lostworlds.content.ModUtils;
+import lostworlds.library.dimension.cretaceous.CretaceousBiomeProvider;
+import lostworlds.library.dimension.cretaceous.CretaceousChunkGenerator;
 import lostworlds.library.dimension.jurassic.JurassicBiomeProvider;
 import lostworlds.library.dimension.jurassic.JurassicChunkGenerator;
 import lostworlds.library.dimension.permian.PermianBiomeProvider;
@@ -25,6 +27,9 @@ public class DimensionInit
 	public static final RegistryKey<World> JURASSIC_WORLD = RegistryKey.create(Registry.DIMENSION_REGISTRY, ModUtils.rL("jurassic"));
 	public static final RegistryKey<DimensionType> JURASSIC_DIMENSION = RegistryKey.create(Registry.DIMENSION_TYPE_REGISTRY, ModUtils.rL("jurassic"));
 	
+	public static final RegistryKey<World> CRETACEOUS_WORLD = RegistryKey.create(Registry.DIMENSION_REGISTRY, ModUtils.rL("cretaceous"));
+	public static final RegistryKey<DimensionType> CRETACEOUS_DIMENSION = RegistryKey.create(Registry.DIMENSION_TYPE_REGISTRY, ModUtils.rL("cretaceous"));
+	
 	public static void initBiomeSourcesAndChunkGenerator()
 	{
 		ModUtils.LOGGER.debug("Registering Mod Biome Sources and Chunk Generators");
@@ -34,6 +39,9 @@ public class DimensionInit
 		
 		Registry.register(Registry.BIOME_SOURCE, ModUtils.rL("jurassic_biome_source"), JurassicBiomeProvider.CODEC);
 		Registry.register(Registry.CHUNK_GENERATOR, ModUtils.rL("jurassic_chunk_generator"), JurassicChunkGenerator.CODEC);
+		
+		Registry.register(Registry.BIOME_SOURCE, ModUtils.rL("cretaceous_biome_source"), CretaceousBiomeProvider.CODEC);
+		Registry.register(Registry.CHUNK_GENERATOR, ModUtils.rL("cretaceous_chunk_generator"), CretaceousChunkGenerator.CODEC);
 	}
 	
 	@SubscribeEvent
@@ -52,6 +60,14 @@ public class DimensionInit
 			}
 			
 			if(serverWorld.dimension() == JURASSIC_WORLD) 
+			{
+				if(world.getLevelData() instanceof DerivedWorldInfo) 
+				{
+					((DerivedWorldInfo) world.getLevelData()).wrapped.setDayTime(event.getNewTime());
+				}
+			}
+			
+			if(serverWorld.dimension() == CRETACEOUS_WORLD) 
 			{
 				if(world.getLevelData() instanceof DerivedWorldInfo) 
 				{

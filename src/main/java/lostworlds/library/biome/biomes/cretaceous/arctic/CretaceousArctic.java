@@ -23,8 +23,13 @@ public class CretaceousArctic extends TyrannoBiome
 		ModBiomeFeatures.cretaceousArctic(GENERATION);
 	}
 	
-	public CretaceousArctic() 
+	public CretaceousArctic(float depth, float scale) 
 	{
-		super(BaseBiomes.biome(RainType.SNOW, Category.PLAINS, 0.125F, 0.05F, 0.5F, 0.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+		super(BaseBiomes.biome(RainType.SNOW, Category.PLAINS, depth, scale, 0.5F, 0.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+	}
+	
+	public CretaceousArctic()
+	{
+		this(0.125F, 0.05F);
 	}
 }

@@ -21,7 +21,7 @@ public class JurassicFen extends TyrannoBiome
 	{			
 		GENERATION.surfaceBuilder(ModSurfaceBuilders.JURASSIC_PODZOL_BUILDER);
 		
-		ModBiomeFeatures.jurassicBog(GENERATION);
+		ModBiomeFeatures.jurassicFen(GENERATION);
 	}
 	
 	public JurassicFen() 

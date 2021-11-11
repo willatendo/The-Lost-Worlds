@@ -7,10 +7,24 @@ import lostworlds.library.biome.biomes.cretaceous.arctic.CretaceousArcticSpires;
 import lostworlds.library.biome.biomes.cretaceous.arctic.CretaceousFrozenForest;
 import lostworlds.library.biome.biomes.cretaceous.desert.CretaceousDesert;
 import lostworlds.library.biome.biomes.cretaceous.desert.CretaceousRedDesert;
+import lostworlds.library.biome.biomes.cretaceous.forest.CretaceousAraucariaForest;
+import lostworlds.library.biome.biomes.cretaceous.forest.CretaceousConiferForest;
+import lostworlds.library.biome.biomes.cretaceous.forest.CretaceousGinkgoForest;
+import lostworlds.library.biome.biomes.cretaceous.mountains.CretaceousErrodedMountains;
+import lostworlds.library.biome.biomes.cretaceous.mountains.CretaceousMountains;
+import lostworlds.library.biome.biomes.cretaceous.ocean.ColdCretaceousOcean;
+import lostworlds.library.biome.biomes.cretaceous.ocean.CretaceousOcean;
+import lostworlds.library.biome.biomes.cretaceous.ocean.WarmCretaceousOcean;
 import lostworlds.library.biome.biomes.cretaceous.plains.CretaceousFloodBasalts;
 import lostworlds.library.biome.biomes.cretaceous.plains.CretaceousGameTrail;
 import lostworlds.library.biome.biomes.cretaceous.plains.CretaceousMedow;
 import lostworlds.library.biome.biomes.cretaceous.plains.CretaceousPlains;
+import lostworlds.library.biome.biomes.cretaceous.river.CretaceousRiver;
+import lostworlds.library.biome.biomes.cretaceous.shore.CretaceousShore;
+import lostworlds.library.biome.biomes.cretaceous.swamp.CretaceousBog;
+import lostworlds.library.biome.biomes.cretaceous.swamp.CretaceousFen;
+import lostworlds.library.biome.biomes.cretaceous.swamp.CretaceousMarsh;
+import lostworlds.library.biome.biomes.cretaceous.swamp.CretaceousSwamp;
 import lostworlds.library.biome.biomes.jurassic.desert.JurassicDesert;
 import lostworlds.library.biome.biomes.jurassic.forest.JurassicAraucariaForest;
 import lostworlds.library.biome.biomes.jurassic.forest.JurassicConiferForest;
@@ -122,23 +136,58 @@ public class BiomeInit
 	public static final Biome JURASSIC_SHORE = ModRegistry.register("jurassic_shore", new JurassicShore());
 
 	//Creataceous
+	public static final Biome CRETACEOUS_ARAUCARIA_FOREST = ModRegistry.register("cretaceous_araucaria_forest", new CretaceousAraucariaForest());
+	public static final Biome CRETACEOUS_ARAUCARIA_FOREST_HILLS = ModRegistry.register("cretaceous_araucaria_forest_hills", new CretaceousAraucariaForest(0.45F, 0.3F));
+
+	public static final Biome CRETACEOUS_CONIFER_FOREST = ModRegistry.register("cretaceous_conifer_forest", new CretaceousConiferForest());
+	public static final Biome CRETACEOUS_CONIFER_FOREST_HILLS = ModRegistry.register("cretaceous_conifer_forest_hills", new CretaceousConiferForest(0.45F, 0.3F));
+	
+	public static final Biome CRETACEOUS_GINKGO_FOREST = ModRegistry.register("cretaceous_ginkgo_forest", new CretaceousGinkgoForest());
+	public static final Biome CRETACEOUS_GINKGO_FOREST_HILLS = ModRegistry.register("cretaceous_ginkgo_forest_hills", new CretaceousGinkgoForest(0.45F, 0.3F));
+	
 	public static final Biome CRETACEOUS_GAME_TRAIL = ModRegistry.register("cretaceous_game_trail", new CretaceousGameTrail());
 	
 	public static final Biome CRETACEOUS_MEDOW = ModRegistry.register("cretaceous_medow", new CretaceousMedow());
 	
 	public static final Biome CRETACEOUS_PLAINS = ModRegistry.register("cretaceous_plains", new CretaceousPlains());
+	public static final Biome CRETACEOUS_PLAINS_HILLS = ModRegistry.register("cretaceous_plains_hills", new CretaceousPlains(0.45F, 0.3F));
 
 	public static final Biome CRETACEOUS_FLOOD_BASALTS = ModRegistry.register("cretaceous_flood_basalts", new CretaceousFloodBasalts());
 	
 	public static final Biome CRETACEOUS_ARCTIC = ModRegistry.register("cretaceous_arctic", new CretaceousArctic());
+	public static final Biome CRETACEOUS_ARCTIC_HILLS = ModRegistry.register("cretaceous_arctic_hills", new CretaceousArctic(0.45F, 0.3F));
 
 	public static final Biome CRETACEOUS_ARCTIC_SPIRES = ModRegistry.register("cretaceous_arctic_spires", new CretaceousArcticSpires());
 
 	public static final Biome CRETACEOUS_FROZEN_FOREST = ModRegistry.register("cretaceous_frozen_forest", new CretaceousFrozenForest());
+	public static final Biome CRETACEOUS_FROZEN_FOREST_HILLS = ModRegistry.register("cretaceous_frozen_forest_hills", new CretaceousFrozenForest(0.45F, 0.3F));
+
+	public static final Biome CRETACEOUS_MOUNTAINS = ModRegistry.register("cretaceous_mountains", new CretaceousMountains());
+	public static final Biome CRETACEOUS_ERRODED_MOUNTAINS = ModRegistry.register("cretaceous_erroded_mountains", new CretaceousErrodedMountains());
 
 	public static final Biome CRETACEOUS_DESERT = ModRegistry.register("cretaceous_desert", new CretaceousDesert());
+	public static final Biome CRETACEOUS_DESERT_HILLS = ModRegistry.register("cretaceous_desert_hills", new CretaceousDesert(0.45F, 0.3F));
 
 	public static final Biome CRETACEOUS_RED_DESERT = ModRegistry.register("cretaceous_red_desert", new CretaceousRedDesert());
+	public static final Biome CRETACEOUS_RED_DESERT_HILLS = ModRegistry.register("cretaceous_red_desert_hills", new CretaceousRedDesert(0.45F, 0.3F));
+
+	public static final Biome CRETACEOUS_MARSH = ModRegistry.register("cretaceous_marsh", new CretaceousMarsh());
+	public static final Biome CRETACEOUS_SWAMP = ModRegistry.register("cretaceous_swamp", new CretaceousSwamp());
+	public static final Biome CRETACEOUS_FEN = ModRegistry.register("cretaceous_fen", new CretaceousFen());
+	public static final Biome CRETACEOUS_BOG = ModRegistry.register("cretaceous_bog", new CretaceousBog());
+
+	public static final Biome CRETACEOUS_RIVER = ModRegistry.register("cretaceous_river", new CretaceousRiver());
+
+	public static final Biome COLD_CRETACEOUS_OCEAN = ModRegistry.register("cold_cretaceous_ocean", new ColdCretaceousOcean());
+	public static final Biome COLD_DEEP_CRETACEOUS_OCEAN = ModRegistry.register("cold_deep_cretaceous_ocean", new ColdCretaceousOcean(-1.8F, 0.1F));
+
+	public static final Biome CRETACEOUS_OCEAN = ModRegistry.register("cretaceous_ocean", new CretaceousOcean());
+	public static final Biome DEEP_CRETACEOUS_OCEAN = ModRegistry.register("deep_cretaceous_ocean", new CretaceousOcean(-1.8F, 0.1F));
+
+	public static final Biome WARM_CRETACEOUS_OCEAN = ModRegistry.register("warm_cretaceous_ocean", new WarmCretaceousOcean());
+	public static final Biome WARM_DEEP_CRETACEOUS_OCEAN = ModRegistry.register("warm_deep_cretaceous_ocean", new WarmCretaceousOcean(-1.8F, 0.1F));
+
+	public static final Biome CRETACEOUS_SHORE = ModRegistry.register("cretaceous_shore", new CretaceousShore());
 
 	//Overworld
 	public static final Biome ARAUCARIA_FOREST = ModRegistry.register("araucaria_forest", new AraucariaForest());

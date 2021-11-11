@@ -10,6 +10,8 @@ public class ModSurfaceBuilders
 {
 	public static final SurfaceBuilderConfig PERMIAN_SAND_CONFIG = new SurfaceBuilderConfig(BlockInit.PERMIAN_SAND.defaultBlockState(), BlockInit.PERMIAN_SAND.defaultBlockState(), BlockInit.PERMIAN_SAND.defaultBlockState());
 	public static final SurfaceBuilderConfig SAND_CONFIG = new SurfaceBuilderConfig(Blocks.SAND.defaultBlockState(), Blocks.SAND.defaultBlockState(), Blocks.SAND.defaultBlockState());
+	public static final SurfaceBuilderConfig STONE_CONFIG = new SurfaceBuilderConfig(Blocks.STONE.defaultBlockState(), Blocks.STONE.defaultBlockState(), Blocks.STONE.defaultBlockState());
+	public static final SurfaceBuilderConfig COBBLESTONE_CONFIG = new SurfaceBuilderConfig(Blocks.COBBLESTONE.defaultBlockState(), Blocks.COBBLESTONE.defaultBlockState(), Blocks.COBBLESTONE.defaultBlockState());
 	public static final SurfaceBuilderConfig ROCKY_SOIL_CONFIG = new SurfaceBuilderConfig(BlockInit.ROCKY_SOIL.defaultBlockState(), BlockInit.ROCKY_SOIL.defaultBlockState(), BlockInit.ROCKY_SOIL.defaultBlockState());
 	public static final SurfaceBuilderConfig RED_SAND_CONFIG = new SurfaceBuilderConfig(Blocks.RED_SAND.defaultBlockState(), Blocks.RED_SAND.defaultBlockState(), Blocks.RED_SAND.defaultBlockState());
 	public static final SurfaceBuilderConfig SILT_CONFIG = new SurfaceBuilderConfig(BlockInit.SILT.defaultBlockState(), BlockInit.SILT.defaultBlockState(), BlockInit.SILT.defaultBlockState());
@@ -21,6 +23,7 @@ public class ModSurfaceBuilders
 	public static final SurfaceBuilderConfig CRACKED_SOIL_CONFIG = new SurfaceBuilderConfig(BlockInit.CRACKED_SOIL.defaultBlockState(), BlockInit.CRACKED_SOIL.defaultBlockState(), BlockInit.CRACKED_SOIL.defaultBlockState());
 	public static final SurfaceBuilderConfig DIRT_CONFIG = new SurfaceBuilderConfig(Blocks.DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState());
 	public static final SurfaceBuilderConfig MOSSY_SOIL_CONFIG = new SurfaceBuilderConfig(BlockInit.MOSSY_SOIL.defaultBlockState(), Blocks.DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState());
+	public static final SurfaceBuilderConfig MOSSY_SOIL_MUD_CONFIG = new SurfaceBuilderConfig(BlockInit.MOSSY_SOIL.defaultBlockState(), Blocks.DIRT.defaultBlockState(), BlockInit.MUD.defaultBlockState());
 	public static final SurfaceBuilderConfig COARSE_DIRT = new SurfaceBuilderConfig(Blocks.COARSE_DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState());
 	public static final SurfaceBuilderConfig PODZOL_CONFIG = new SurfaceBuilderConfig(Blocks.PODZOL.defaultBlockState(), Blocks.DIRT.defaultBlockState(), Blocks.DIRT.defaultBlockState());
 	public static final SurfaceBuilderConfig VOLCANIC_ASH_CONFIG = new SurfaceBuilderConfig(BlockInit.VOLCANIC_ASH.defaultBlockState(), BlockInit.VOLCANIC_ASH.defaultBlockState(), BlockInit.VOLCANIC_ASH.defaultBlockState());
@@ -44,6 +47,10 @@ public class ModSurfaceBuilders
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> JURASSIC_PODZOL_BUILDER = SurfaceBuilder.DEFAULT.configured(PODZOL_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> JURASSIC_STONE_BUILDER = SurfaceBuilder.DEFAULT.configured(JURASSIC_STONE_CONFIG);
 
+	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> CRETACEOUS_ROCKY_SOIL_BUILDER = SurfaceBuilder.DEFAULT.configured(ROCKY_SOIL_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> CRETACEOUS_PODZOL_BUILDER = SurfaceBuilder.DEFAULT.configured(PODZOL_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> CRETACEOUS_SNOW_BUILDER = SurfaceBuilder.DEFAULT.configured(SNOW_CONFIG);
+	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> CRETACEOUS_MOSSY_SOIL_BUILDER = SurfaceBuilder.DEFAULT.configured(MOSSY_SOIL_CONFIG);
+	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> CRETACEOUS_FEN_BUILDER = SurfaceBuilder.DEFAULT.configured(MOSSY_SOIL_MUD_CONFIG);
+	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> CRETACEOUS_SHORE_BUILDER = SurfaceBuilder.DEFAULT.configured(SAND_CONFIG);
 }

@@ -14,7 +14,7 @@ public class WarmJurassicOcean extends TyrannoBiome
 {
 	public static final BiomeGenerationSettings.Builder GENERATION = new BiomeGenerationSettings.Builder();
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
-	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomes.WARM_OCEAN_WATER_COLOUR).waterFogColor(BaseBiomes.LUKE_WARM_OCEAN_WATER_FOG_COLOUR).fogColor(BaseBiomes.BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
+	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomes.WARM_OCEAN_WATER_COLOUR).waterFogColor(BaseBiomes.WARM_OCEAN_WATER_FOG_COLOUR).fogColor(BaseBiomes.BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 	
 	static
 	{
@@ -25,7 +25,7 @@ public class WarmJurassicOcean extends TyrannoBiome
 	
 	public WarmJurassicOcean(float depth, float scale) 
 	{
-		super(BaseBiomes.biome(RainType.RAIN, Category.FOREST, depth, scale, 0.8F, 0.7F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+		super(BaseBiomes.biome(RainType.RAIN, Category.OCEAN, depth, scale, 0.8F, 0.7F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
 	}
 	
 	public WarmJurassicOcean() 
