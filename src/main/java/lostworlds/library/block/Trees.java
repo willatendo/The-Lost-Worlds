@@ -8,6 +8,7 @@ public enum Trees implements IStringSerializable
 	ARAUCARIA("araucaria"),
 	CALAMITES("calamites"),
 	CONIFER("conifer"),
+	CYPRESS("cypress"),
 	GINKGO("ginkgo"),
 	SEQUOIA("sequoia");
 	

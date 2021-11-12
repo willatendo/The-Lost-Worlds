@@ -200,6 +200,8 @@ public class ItemInit
 	public static final Item TAG = ModRegistry.register("tag", new ModItem());	
 
 	public static final Item AMBER = ModRegistry.register("amber", new AmberItem());
+	public static final Item FOSSILIZED_FEATHER = ModRegistry.register("fossilized_feather", new ModItem());
+	public static final Item FOSSILIZED_SKIN_IMPRESSION = ModRegistry.register("fossilized_skin_impression", new ModItem());
 	public static final Item GROUND_FOSSIL = ModRegistry.register("ground_fossil", new ModBoneMealItem());
 	public static final Item PLANT_WASTE = ModRegistry.register("plant_waste", new ModBoneMealItem());
 

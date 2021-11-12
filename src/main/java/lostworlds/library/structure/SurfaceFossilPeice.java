@@ -26,7 +26,7 @@ import net.minecraft.world.gen.feature.template.PlacementSettings;
 import net.minecraft.world.gen.feature.template.Template;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
-public class FossilPeice 
+public class SurfaceFossilPeice 
 {
 	public static final ArrayList<ResourceLocation> locations = new ArrayList<>();
 	
@@ -40,7 +40,7 @@ public class FossilPeice
 		locations.add(ModUtils.rL("fossil/chilesaurus_fossil_6"));
 
 		int fossil = rand.nextInt(locations.size());
-		piece.add(new FossilPeice.Piece(manager, locations.get(fossil), pos, rotation));
+		piece.add(new SurfaceFossilPeice.Piece(manager, locations.get(fossil), pos, rotation));
 	}
 
 	public static class Piece extends TemplateStructurePiece 
@@ -50,7 +50,7 @@ public class FossilPeice
 
 		public Piece(TemplateManager manager, ResourceLocation location, BlockPos pos, Rotation rotation) 
 		{
-			super(StructurePieceInit.FOSSIL_PIECE, 0);
+			super(StructurePieceInit.SURFACE_FOSSIL_PIECE, 0);
 			this.templateLocation = location;
 			this.templatePosition = pos;
 			this.rotation = rotation;
@@ -59,7 +59,7 @@ public class FossilPeice
 
 		public Piece(TemplateManager manager, CompoundNBT nbt) 
 		{
-			super(StructurePieceInit.FOSSIL_PIECE, nbt);
+			super(StructurePieceInit.SURFACE_FOSSIL_PIECE, nbt);
 			this.templateLocation = new ResourceLocation(nbt.getString("Template"));
 			this.rotation = Rotation.valueOf(nbt.getString("Rot"));
 			this.loadTemplate(manager);

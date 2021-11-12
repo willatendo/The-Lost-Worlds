@@ -1,0 +1,35 @@
+{
+	"parent": "lostworlds:lostworlds/time_travelling",
+	"display": {
+		"icon": {
+			"item": "lostworlds:jurassic_period_time_book"
+		},
+		"title": {
+			"translate": "advancement.lostworlds.the_jurassic"
+		},
+		"description": {
+			"translate": "advancement.lostworlds.the_jurassic.desc"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"inv": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "lostworlds:jurassic_period_time_book"
+					}
+				]
+			}
+		}
+	},
+	"requirements": [
+		[
+			"inv"
+		]
+	]
+}

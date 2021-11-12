@@ -1,14 +1,25 @@
 {
 	"replace": false,
 	"values": [
+		"lostworlds:archaefrutus_seeds",
 		"lostworlds:alethopteris_seeds",
 		"lostworlds:brazilea_seeds",
 		"lostworlds:calamites_suckowii_seeds",
 		"lostworlds:cephalotaxus_seeds",
+		"lostworlds:cycad_seeds",
 		"lostworlds:dillhoffia_seeds",
+		"lostworlds:dicksonia_seeds",
 		"lostworlds:duisbergia_seeds",
+		"lostworlds:eudicots_seeds",
+		"lostworlds:magnolia_seeds",
 		"lostworlds:osmunda_seeds",
 		"lostworlds:williamsonia_seeds",
-		"lostworlds:zamites_seeds"
+		"lostworlds:zamites_seeds",
+		"lostworlds:araucaria_sapling",
+		"lostworlds:calamites_sapling",
+		"lostworlds:conifer_sapling",
+		"lostworlds:cypress_sapling",
+		"lostworlds:ginkgo_sapling",
+		"lostworlds:sequoia_sapling"
 	]
 }

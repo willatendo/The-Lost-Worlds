@@ -79,6 +79,8 @@
 	//Fossils
 	"item.lostworlds.amber": "Amber",
 	"item.lostworlds.ground_fossil": "Ground Fossil",
+	"item.lostworlds.fossilized_feather": "Fossilized Feather",
+	"item.lostworlds.fossilized_skin_impression": "Fossilized Skin Impression",
 	"item.lostworlds.plant_waste": "Plant Waste",
 	"item.lostworlds.araucaria_bark_sample": "Araucaria Bark Sample",
 	"item.lostworlds.calamites_bark_sample": "Calamites Bark Sample",
@@ -164,6 +166,7 @@
 	"tree.lostworlds.araucaria": "Araucaria",
 	"tree.lostworlds.calamites": "Calamites",
 	"tree.lostworlds.conifer": "Conifer",
+	"tree.lostworlds.cypress": "Cypress",
 	"tree.lostworlds.ginkgo": "Ginkgo",
 	"tree.lostworlds.sequoia": "Sequoia",
 	
@@ -632,6 +635,80 @@
 	"block.lostworlds.green_decoration_block": "Green Decoration Block",
 	"block.lostworlds.red_decoration_block": "Red Decoration Block",
 	"block.lostworlds.black_decoration_block": "Black Decoration Block",
+	
+	// ADVANCEMENTS
+	
+	//Root
+	"advancement.lostworlds.root": "Lost Worlds",
+	"advancement.lostworlds.root.desc": "Welcome to the Lost Worlds!",
+	
+	//First
+	"advancement.lostworlds.a_terrible_market": "A Terrible Market",
+	"advancement.lostworlds.a_terrible_market.desc": "Find a Black Market. A place full of greedy pillagers, but more importantly, a hammer.",
+	
+	"advancement.lostworlds.just_a_remnant": "Just a Remnant",
+	"advancement.lostworlds.just_a_remnant.desc": "Find a fossil. The last signs of species long lost.",
+	
+	"advancement.lostworlds.basic_explorer": "Basic Explorer",
+	"advancement.lostworlds.basic_explorer.desc": "Just the start of your exploring journey.",
+	
+	"advancement.lostworlds.like_indiana_jones": "Like Indiana Jones",
+	"advancement.lostworlds.like_indiana_jones.desc": "Just the start of archaeology. Soon, you'll be like the famous Indiana Jones!",
+	
+	"advancement.lostworlds.time_travelling": "Time Travelling",
+	"advancement.lostworlds.time_travelling.desc": "Just like Doc, you'll find yourself lost in time! Or, maybe, you'll be a lord of it!",
+	
+	//Second
+	"advancement.lostworlds.fossils": "Fossils",
+	"advancement.lostworlds.fossils.desc": "Break your first fossil! Soon, you'll have a museum or a park or a battle arena!",
+	
+	"advancement.lostworlds.dangerous_relic": "Dangerous Relic",
+	"advancement.lostworlds.dangerous_relic.desc": "The broken heart of ancient civilizations! When brought together, it has the power of 8 kilatons of tnt.",
+	
+	"advancement.lostworlds.the_permian": "The Permian",
+	"advancement.lostworlds.the_permian.desc": "Acquire volume 1 of the Time Lord's work!",
+	
+	"advancement.lostworlds.the_jurassic": "The Jurassic",
+	"advancement.lostworlds.the_jurassic.desc": "Acquire volume 2 of the Time Lord's work!",
+	
+	"advancement.lostworlds.the_cretaceous": "The Cretaceous",
+	"advancement.lostworlds.the_cretaceous.desc": "Acquire volume 3 of the Time Lord's work!",
+	
+	//Third
+	"advancement.lostworlds.lost_heart": "Lost Heart",
+	"advancement.lostworlds.lost_heart.desc": "The heart of ancient civilizations. One of the most powerful and dangerous items of the world!",
+	
+	"advancement.lostworlds.decoration": "Decoration",
+	"advancement.lostworlds.decoration.desc": "May not bring back creatures, but still cool!",
+	
+	"advancement.lostworlds.paleobotany": "Paleobotany",
+	"advancement.lostworlds.paleobotany.desc": "Plants are cool! Ancient plants are cooler!",
+	
+	//Fourth
+	"advancement.lostworlds.charged": "Charged",
+	"advancement.lostworlds.charged.desc": "You've done it! It's more powerful then ever! If only it could come into contact with netherite.",
+	
+	"advancement.lostworlds.plants_at_least_they_dont_kill": "Plants! At Least They Don't Kill!",
+	"advancement.lostworlds.plants_at_least_they_dont_kill.desc": "Plants may be an odd choise to bring back, but they don't kill people!",
+	
+	//Fifth
+	"advancement.lostworlds.executioner_style": "Executioner-Style",
+	"advancement.lostworlds.executioner_style.desc": "The strongest axe on the planet, perfect for anything. After a lot of work!",
+	
+	"advancement.lostworlds.the_strongest_pick": "The Strongest Pick",
+	"advancement.lostworlds.the_strongest_pick.desc": "The strongest pickaxe on the planet, who could possibly break it!",
+	
+	"advancement.lostworlds.ungodly_dedication": "Ungodly Dedication",
+	"advancement.lostworlds.ungodly_dedication.desc": "To whomever completed this in survival, how?",
+	
+	"advancement.lostworlds.shovel_thats_all": "Shovel...That's All",
+	"advancement.lostworlds.shovel_thats_all.desc": "No puns or cleverness.",
+	
+	"advancement.lostworlds.sharpest_sword": "Sharpest Sword",
+	"advancement.lostworlds.sharpest_sword.desc": "Kills a wither in a few swings!",
+	
+	"advancement.lostworlds.ancient_seeds": "Ancient Seeds",
+	"advancement.lostworlds.ancient_seeds.desc": "After lots of work, you got some seeds!",
 	
 	// ENTITIES
 	

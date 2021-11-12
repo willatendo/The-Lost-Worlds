@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_extractor",
+	"output": {
+		"item": "lostworlds:dicksonia_dna"
+	},
+	"softTissue": {
+		"item": "lostworlds:dicksonia_soft_tissue"
+	}
+}

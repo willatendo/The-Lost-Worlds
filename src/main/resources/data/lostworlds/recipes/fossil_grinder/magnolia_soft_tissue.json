@@ -1,0 +1,10 @@
+{
+	"type": "lostworlds:fossil_grinder",
+	"output": {
+		"item": "lostworlds:magnolia_soft_tissue"
+	},
+	"fossil": {
+		"item": "lostworlds:magnolia_fossil"
+	},
+	"plant": true
+}

@@ -1,0 +1,35 @@
+{
+	"parent": "lostworlds:lostworlds/fossils",
+	"display": {
+		"icon": {
+			"item": "lostworlds:fossilized_feather"
+		},
+		"title": {
+			"translate": "advancement.lostworlds.decoration"
+		},
+		"description": {
+			"translate": "advancement.lostworlds.decoration.desc"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"inv": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"tag": "lostworlds:trace_fossils"
+					}
+				]
+			}
+		}
+	},
+	"requirements": [
+		[
+			"inv"
+		]
+	]
+}

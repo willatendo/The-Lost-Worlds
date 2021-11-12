@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"group": "result",
+	"ingredients": [
+		{
+			"tag": "lostworlds:cypress_logs"
+		}
+	],
+	"result": {
+		"item": "lostworlds:cypress_planks",
+		"count": 4
+	}
+}

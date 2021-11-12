@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"###"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:raw_marble"
+		}
+	},
+	"result": {
+		"item": "lostworlds:raw_marble_slab",
+		"count": 6
+	}
+}

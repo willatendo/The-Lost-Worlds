@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:cultivator",
+	"output": {
+		"item": "lostworlds:magnolia_seeds"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:magnolia_dna_disc"
+	}
+}

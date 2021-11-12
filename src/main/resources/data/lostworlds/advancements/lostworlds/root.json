@@ -1,0 +1,28 @@
+{
+	"display": {
+		"icon": {
+			"item": "lostworlds:lost_worlds_lexicon"
+		},
+		"title": {
+			"translate": "advancement.lostworlds.root"
+		},
+		"description": {
+			"translate": "advancement.lostworlds.root.desc"
+		},
+		"frame": "task",
+		"show_toast": false,
+		"announce_to_chat": false,
+		"hidden": false,
+		"background": "lostworlds:textures/block/dried_soil.png"
+	},
+	"criteria": {
+		"tick": {
+			"trigger": "minecraft:tick"
+		}
+	},
+	"requirements": [
+		[
+			"tick"
+		]
+	]
+}

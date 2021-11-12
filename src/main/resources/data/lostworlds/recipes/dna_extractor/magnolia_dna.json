@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_extractor",
+	"output": {
+		"item": "lostworlds:magnolia_dna"
+	},
+	"softTissue": {
+		"item": "lostworlds:magnolia_soft_tissue"
+	}
+}

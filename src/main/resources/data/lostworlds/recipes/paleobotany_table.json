@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"#$#",
+		"#@#"
+	],
+	"key": {
+		"@": {
+			"item": "minecraft:crafting_table"
+		},
+		"#": {
+			"tag": "minecraft:planks"
+		},
+		"$": {
+			"item": "minecraft:stone"
+		}
+	},
+	"result": {
+		"item": "lostworlds:paleobotany_table"
+	}
+}

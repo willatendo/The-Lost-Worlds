@@ -1,0 +1,8 @@
+{
+	"type": "minecraft:stonecutting",
+	"ingredient": {
+		"item": "lostworlds:limestone"
+	},
+	"result": "lostworlds:limestone_stairs",
+	"count": 1
+}

@@ -1,0 +1,121 @@
+{
+	"parent": "lostworlds:lostworlds/root",
+	"display": {
+		"icon": {
+			"item": "lostworlds:conifer_log"
+		},
+		"title": {
+			"translate": "advancement.lostworlds.basic_explorer"
+		},
+		"description": {
+			"translate": "advancement.lostworlds.basic_explorer.desc"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"lostworlds:araucaria_forest": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:araucaria_forest"
+				}
+			}
+		},
+		"lostworlds:araucaria_forest_hills": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:araucaria_forest_hills"
+				}
+			}
+		},
+		"lostworlds:conifer_forest": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:conifer_forest"
+				}
+			}
+		},
+		"lostworlds:conifer_forest_hills": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:conifer_forest_hills"
+				}
+			}
+		},
+		"lostworlds:ginkgo_forest": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:ginkgo_forest"
+				}
+			}
+		},
+		"lostworlds:ginkgo_forest_hills": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:ginkgo_forest_hills"
+				}
+			}
+		},
+		"lostworlds:redwoods_forest": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:redwoods_forest"
+				}
+			}
+		},
+		"lostworlds:redwoods_forest_hills": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:redwoods_forest_hills"
+				}
+			}
+		},
+		"lostworlds:volcano": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:volcano"
+				}
+			}
+		}
+	},
+	"requirements": [
+		[
+			"lostworlds:araucaria_forest"
+		],
+		[
+			"lostworlds:araucaria_forest_hills"
+		],	
+		[
+			"lostworlds:conifer_forest"
+		],
+		[	
+			"lostworlds:conifer_forest_hills"
+		],
+		[	
+			"lostworlds:ginkgo_forest"
+		],
+		[
+			"lostworlds:ginkgo_forest_hills"
+		],
+		[	
+			"lostworlds:redwoods_forest"
+		],
+		[	
+			"lostworlds:redwoods_forest_hills"
+		],
+		[
+			"lostworlds:volcano"
+		]
+	]
+}

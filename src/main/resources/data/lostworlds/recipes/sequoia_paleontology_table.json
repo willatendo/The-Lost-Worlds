@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"$@$",
+		"$#$",
+		"% %"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:stripped_sequoia_log"
+		},
+		"$": {
+			"item": "lostworlds:sequoia_planks"
+		},
+		"@": {
+			"item": "minecraft:crafting_table"
+		},
+		"%": {
+			"item": "lostworlds:sequoia_log"
+		}
+	},
+	"result": {
+		"item": "lostworlds:sequoia_paleontology_table"
+	}
+}

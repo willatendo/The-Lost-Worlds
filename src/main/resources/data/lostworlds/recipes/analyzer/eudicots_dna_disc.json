@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:analyzer",
+	"output": {
+		"item": "lostworlds:eudicots_dna_disc"
+	},
+	"dna": {
+		"item": "lostworlds:eudicots_dna"
+	}
+}

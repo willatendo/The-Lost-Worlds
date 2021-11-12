@@ -50,7 +50,7 @@ public class MeteoritePeice
 
 		public Piece(TemplateManager manager, ResourceLocation location, BlockPos pos, Rotation rotation) 
 		{
-			super(StructurePieceInit.FOSSIL_PIECE, 0);
+			super(StructurePieceInit.METEORITE_PIECE, 0);
 			this.templateLocation = location;
 			this.templatePosition = pos;
 			this.rotation = rotation;
@@ -59,7 +59,7 @@ public class MeteoritePeice
 
 		public Piece(TemplateManager manager, CompoundNBT nbt) 
 		{
-			super(StructurePieceInit.FOSSIL_PIECE, nbt);
+			super(StructurePieceInit.METEORITE_PIECE, nbt);
 			this.templateLocation = new ResourceLocation(nbt.getString("Template"));
 			this.rotation = Rotation.valueOf(nbt.getString("Rot"));
 			this.loadTemplate(manager);

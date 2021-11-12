@@ -14,9 +14,9 @@ import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.StructureStart;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
-public class FossilStructure extends Structure<NoFeatureConfig>
+public class SubterraneanFossilStructure extends Structure<NoFeatureConfig>
 {	
-	public FossilStructure(Codec<NoFeatureConfig> codec) 
+	public SubterraneanFossilStructure(Codec<NoFeatureConfig> codec) 
 	{
 		super(codec);
 	}
@@ -24,13 +24,13 @@ public class FossilStructure extends Structure<NoFeatureConfig>
 	@Override
 	public IStartFactory<NoFeatureConfig> getStartFactory() 
 	{
-		return FossilStructure.Start::new;
+		return SubterraneanFossilStructure.Start::new;
 	}
 	
 	@Override
 	public Decoration step() 
 	{
-		return Decoration.SURFACE_STRUCTURES;
+		return Decoration.UNDERGROUND_STRUCTURES;
 	}
 	
 	public static class Start extends StructureStart<NoFeatureConfig>
@@ -45,7 +45,7 @@ public class FossilStructure extends Structure<NoFeatureConfig>
 		{
 			BlockPos blockpos = new BlockPos(chunkX * 16, 90, chunkY * 16);
 			Rotation rotation = Rotation.values()[this.random.nextInt((Rotation.values()).length)];
-			FossilPeice.addStructure(manager, blockpos, rotation, pieces, random, biome);
+			SubterraneanFossilPeice.addStructure(manager, blockpos, rotation, pieces, random, biome);
 			this.calculateBoundingBox();
 		}
 	}

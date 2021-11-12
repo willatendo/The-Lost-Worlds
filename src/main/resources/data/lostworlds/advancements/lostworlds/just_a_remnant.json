@@ -1,0 +1,42 @@
+{
+	"parent": "lostworlds:lostworlds/root",
+	"display": {
+		"icon": {
+			"item": "lostworlds:soft_stone"
+		},
+		"title": {
+			"translate": "advancement.lostworlds.just_a_remnant"
+		},
+		"description": {
+			"translate": "advancement.lostworlds.just_a_remnant.desc"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"fossil": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"feature": "surface_fossil"
+				}
+			}
+		},
+		"subterranean_fossil": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"feature": "subterranean_fossil"
+				}
+			}
+		}
+	},
+	"requirements": [
+		[
+			"fossil",
+			"subterranean_fossil"
+		]
+	]
+}

@@ -1,0 +1,15 @@
+{
+	"replace": false,
+	"values": [
+		"lostworlds:plastered_kentrosaurus_rib_cage",
+		"lostworlds:plastered_kentrosaurus_leg_bones",
+		"lostworlds:plastered_kentrosaurus_arm_bones",
+		"lostworlds:plastered_kentrosaurus_tail",
+		"lostworlds:plastered_kentrosaurus_skull",
+		"lostworlds:plastered_chilesaurus_rib_cage",
+		"lostworlds:plastered_chilesaurus_leg_bones",
+		"lostworlds:plastered_chilesaurus_arm_bones",
+		"lostworlds:plastered_chilesaurus_tail",
+		"lostworlds:plastered_chilesaurus_skull"
+	]
+}

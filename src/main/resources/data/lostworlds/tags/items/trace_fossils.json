@@ -1,0 +1,12 @@
+{
+	"replace": false,
+	"values": [
+		"lostworlds:plastered_fossilized_track",
+		"lostworlds:tiny_plastered_fossilized_egg",
+		"lostworlds:small_plastered_fossilized_egg",
+		"lostworlds:medium_plastered_fossilized_egg",
+		"lostworlds:large_plastered_fossilized_egg",
+		"lostworlds:fossilized_feather",
+		"lostworlds:fossilized_skin_impression"
+	]
+}

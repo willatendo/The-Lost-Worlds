@@ -1,0 +1,10 @@
+{
+	"type": "lostworlds:fossil_grinder",
+	"output": {
+		"item": "lostworlds:archaefrutus_soft_tissue"
+	},
+	"fossil": {
+		"item": "lostworlds:archaefrutus_fossil"
+	},
+	"plant": true
+}

@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_extractor",
+	"output": {
+		"item": "lostworlds:cycad_dna"
+	},
+	"softTissue": {
+		"item": "lostworlds:cycad_soft_tissue"
+	}
+}

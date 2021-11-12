@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"###",
+		"###"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:limestone"
+		}
+	},
+	"result": {
+		"item": "lostworlds:limestone_wall",
+		"count": 6
+	}
+}

@@ -1,0 +1,38 @@
+{
+	"parent": "lostworlds:lostworlds/lost_heart",
+	"display": {
+		"icon": {
+			"item": "lostworlds:charged_crystal_scarab_gem"
+		},
+		"title": {
+			"translate": "advancement.lostworlds.charged"
+		},
+		"description": {
+			"translate": "advancement.lostworlds.charged.desc"
+		},
+		"frame": "challenge",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": true
+	},
+	"rewards": {
+		"experience": 500
+	},
+	"criteria": {
+		"inv": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "lostworlds:charged_crystal_scarab_gem"
+					}
+				]
+			}
+		}
+	},
+	"requirements": [
+		[
+			"inv"
+		]
+	]
+}

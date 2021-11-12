@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"#",
+		"$"
+	],
+	"key": {
+		"#": {
+			"item": "minecraft:iron_nugget"
+		},
+		"$": {
+			"item": "lostworlds:amber"
+		}
+	},
+	"result": {
+		"item": "lostworlds:amber_keychain"
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"parent": "lostworlds:lostworlds/root",
+	"display": {
+		"icon": {
+			"item": "lostworlds:hammer"
+		},
+		"title": {
+			"translate": "advancement.lostworlds.a_terrible_market"
+		},
+		"description": {
+			"translate": "advancement.lostworlds.a_terrible_market.desc"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"black_market": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"feature": "black_market"
+				}
+			}
+		}
+	},
+	"requirements": [
+		[
+			"black_market"
+		]
+	]
+}

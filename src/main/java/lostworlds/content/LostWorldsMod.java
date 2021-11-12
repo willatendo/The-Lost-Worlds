@@ -127,7 +127,11 @@ public class LostWorldsMod
 		{
 			if(ModUtils.FOSSIL_BIOMES.contains(event.getCategory()))
 			{
-				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_FOSSIL);
+				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_SURFACE_FOSSIL);
+			}
+			if(ModUtils.FOSSIL_BIOMES.contains(event.getCategory()))
+			{
+				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_SUBTERRANEAN_FOSSIL);
 			}
 			if(ModUtils.FOSSIL_BIOMES.contains(event.getCategory()))
 			{

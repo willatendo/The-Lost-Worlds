@@ -9,14 +9,14 @@ import net.minecraftforge.common.util.NonNullSupplier;
 
 public enum Plants implements IStringSerializable
 {
-	ARCHAEFRUTUS("archaefrutus", () -> BlockInit.ARCHAEFRUTUS),
 	ALETHOPTERIS("alethopteris", () -> BlockInit.ALETHOPTERIS),
+	ARCHAEFRUTUS("archaefrutus", () -> BlockInit.ARCHAEFRUTUS),
 	BRAZILEA("brazilea", () ->  BlockInit.BRAZILEA),
 	CALAMITES_SUCKOWII("calamites_suckowii", () ->  BlockInit.CALAMITES_SUCKOWII),
 	CEPHALOTAXUS("cephalotaxus", () ->  BlockInit.CEPHALOTAXUS),
 	CYCAD("cycad", () ->  BlockInit.CYCAD),
-	DILLHOFFIA("dillhoffia", () ->  BlockInit.DILLHOFFIA),
 	DICKSONIA("dicksonia", () ->  BlockInit.DICKSONIA),
+	DILLHOFFIA("dillhoffia", () ->  BlockInit.DILLHOFFIA),
 	DUISBERGIA("duisbergia", () ->  BlockInit.DUISBERGIA),
 	EUDICOTS("eudicots", () ->  BlockInit.EUDICOTS),
 	MAGNOLIA("magnolia", () ->  BlockInit.MAGNOLIA),
