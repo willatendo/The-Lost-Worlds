@@ -662,6 +662,9 @@
 	"advancement.lostworlds.fossils": "Fossils",
 	"advancement.lostworlds.fossils.desc": "Break your first fossil! Soon, you'll have a museum or a park or a battle arena!",
 	
+	"advancement.lostworlds.the_time_traveller": "The Time Traveller",
+	"advancement.lostworlds.the_time_traveller.desc": "Travelled to every time era in the mod.",
+	
 	"advancement.lostworlds.dangerous_relic": "Dangerous Relic",
 	"advancement.lostworlds.dangerous_relic.desc": "The broken heart of ancient civilizations! When brought together, it has the power of 8 kilatons of tnt.",
 	
@@ -674,24 +677,57 @@
 	"advancement.lostworlds.the_cretaceous": "The Cretaceous",
 	"advancement.lostworlds.the_cretaceous.desc": "Acquire volume 3 of the Time Lord's work!",
 	
+	"advancement.lostworlds.the_museum": "The Museum",
+	"advancement.lostworlds.the_museum.desc": "You aquired all you need to make a museum, a paleontology table!",
+	
+	"advancement.lostworlds.building_jurassic_park": "Building Jurassic Park",
+	"advancement.lostworlds.building_jurassic_park.desc": "You started building Jurassic Park!",
+	
+	"advancement.lostworlds.building_jurassic_world": "Building Jurassic World",
+	"advancement.lostworlds.building_jurassic_world.desc": "You started building Jurassic World!",
+	
 	//Third
-	"advancement.lostworlds.lost_heart": "Lost Heart",
-	"advancement.lostworlds.lost_heart.desc": "The heart of ancient civilizations. One of the most powerful and dangerous items of the world!",
+	"advancement.lostworlds.paleobotany": "Paleobotany",
+	"advancement.lostworlds.paleobotany.desc": "Plants are cool! Ancient plants are cooler!",
+	
+	"advancement.lostworlds.just_a_trace": "Just a Trace",
+	"advancement.lostworlds.just_a_trace.desc": "Aquire the soft tissue of an extinct creature.",
 	
 	"advancement.lostworlds.decoration": "Decoration",
 	"advancement.lostworlds.decoration.desc": "May not bring back creatures, but still cool!",
 	
-	"advancement.lostworlds.paleobotany": "Paleobotany",
-	"advancement.lostworlds.paleobotany.desc": "Plants are cool! Ancient plants are cooler!",
+	"advancement.lostworlds.petrified_trees": "Petrified Trees",
+	"advancement.lostworlds.petrified_trees.desc": "You found the remains of an ancient tree!",
+	
+	"advancement.lostworlds.lost_heart": "Lost Heart",
+	"advancement.lostworlds.lost_heart.desc": "The heart of ancient civilizations. One of the most powerful and dangerous items of the world!",
+	
+	"advancement.lostworlds.for_the_masses": "For The Masses",
+	"advancement.lostworlds.for_the_masses.desc": "You started articulated a skeleton!",
 	
 	//Fourth
-	"advancement.lostworlds.charged": "Charged",
-	"advancement.lostworlds.charged.desc": "You've done it! It's more powerful then ever! If only it could come into contact with netherite.",
-	
 	"advancement.lostworlds.plants_at_least_they_dont_kill": "Plants! At Least They Don't Kill!",
 	"advancement.lostworlds.plants_at_least_they_dont_kill.desc": "Plants may be an odd choise to bring back, but they don't kill people!",
 	
+	"advancement.lostworlds.the_broken_k_t_boundry": "The Broken K-T Boundry",
+	"advancement.lostworlds.the_broken_k_t_boundry.desc": "Aquire the dna of a creature!",
+	
+	"advancement.lostworlds.scratching_trees": "Scratching Trees",
+	"advancement.lostworlds.scratching_trees.desc": "You stripped a petrified tree! Soon, they'll be extant again!",
+	
+	"advancement.lostworlds.charged": "Charged",
+	"advancement.lostworlds.charged.desc": "You've done it! It's more powerful then ever! If only it could come into contact with netherite.",
+	
 	//Fifth
+	"advancement.lostworlds.ancient_seeds": "Ancient Seeds",
+	"advancement.lostworlds.ancient_seeds.desc": "After lots of work, you got some seeds!",
+	
+	"advancement.lostworlds.digitalization": "Digitalization",
+	"advancement.lostworlds.digitalization.desc": "Write dna to a disc!",
+	
+	"advancement.lostworlds.long_lost_trees": "Long Lost Trees",
+	"advancement.lostworlds.long_lost_trees.desc": "Bring back a dead treet!",
+	
 	"advancement.lostworlds.executioner_style": "Executioner-Style",
 	"advancement.lostworlds.executioner_style.desc": "The strongest axe on the planet, perfect for anything. After a lot of work!",
 	
@@ -707,9 +743,10 @@
 	"advancement.lostworlds.sharpest_sword": "Sharpest Sword",
 	"advancement.lostworlds.sharpest_sword.desc": "Kills a wither in a few swings!",
 	
-	"advancement.lostworlds.ancient_seeds": "Ancient Seeds",
-	"advancement.lostworlds.ancient_seeds.desc": "After lots of work, you got some seeds!",
-	
+	//Sixth
+	"advancement.lostworlds.dr_frankenstein": "Dr Frankenstein",
+	"advancement.lostworlds.dr_frankenstein.desc": "Aquire an egg, spawn, or a syringe!",
+		
 	// ENTITIES
 	
 	//Damage

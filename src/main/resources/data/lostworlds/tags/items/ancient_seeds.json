@@ -14,12 +14,6 @@
 		"lostworlds:magnolia_seeds",
 		"lostworlds:osmunda_seeds",
 		"lostworlds:williamsonia_seeds",
-		"lostworlds:zamites_seeds",
-		"lostworlds:araucaria_sapling",
-		"lostworlds:calamites_sapling",
-		"lostworlds:conifer_sapling",
-		"lostworlds:cypress_sapling",
-		"lostworlds:ginkgo_sapling",
-		"lostworlds:sequoia_sapling"
+		"lostworlds:zamites_seeds"
 	]
 }

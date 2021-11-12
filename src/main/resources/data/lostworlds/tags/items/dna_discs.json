@@ -1,4 +1,7 @@
 {
-  "replace": false,
-  "values": []
+	"replace": false,
+	"values": [
+		"lostworlds:chilesaurus_dna_disc",
+		"lostworlds:kentrosaurus_dna_disc"
+	]
 }

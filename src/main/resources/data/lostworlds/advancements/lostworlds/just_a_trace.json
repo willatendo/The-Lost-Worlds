@@ -1,22 +1,19 @@
 {
-	"parent": "lostworlds:lostworlds/plants_at_least_they_dont_kill",
+	"parent": "lostworlds:lostworlds/fossils",
 	"display": {
 		"icon": {
-			"item": "lostworlds:cycad_seeds"
+			"item": "lostworlds:kentrosaurus_soft_tissue"
 		},
 		"title": {
-			"translate": "advancement.lostworlds.ancient_seeds"
+			"translate": "advancement.lostworlds.just_a_trace"
 		},
 		"description": {
-			"translate": "advancement.lostworlds.ancient_seeds.desc"
+			"translate": "advancement.lostworlds.just_a_trace.desc"
 		},
-		"frame": "challenge",
+		"frame": "task",
 		"show_toast": true,
 		"announce_to_chat": true,
 		"hidden": false
-	},
-	"rewards": {
-		"experience": 500
 	},
 	"criteria": {
 		"inv": {
@@ -24,7 +21,7 @@
 			"conditions": {
 				"items": [
 					{
-						"tag": "lostworlds:ancient_seeds"
+						"tag": "lostworlds:soft_tissues"
 					}
 				]
 			}

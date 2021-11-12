@@ -1,14 +1,14 @@
 {
-	"parent": "lostworlds:lostworlds/plants_at_least_they_dont_kill",
+	"parent": "lostworlds:lostworlds/digitalization",
 	"display": {
 		"icon": {
-			"item": "lostworlds:cycad_seeds"
+			"item": "lostworlds:kentrosaurus_egg"
 		},
 		"title": {
-			"translate": "advancement.lostworlds.ancient_seeds"
+			"translate": "advancement.lostworlds.dr_frankenstein"
 		},
 		"description": {
-			"translate": "advancement.lostworlds.ancient_seeds.desc"
+			"translate": "advancement.lostworlds.dr_frankenstein.desc"
 		},
 		"frame": "challenge",
 		"show_toast": true,
@@ -24,7 +24,7 @@
 			"conditions": {
 				"items": [
 					{
-						"tag": "lostworlds:ancient_seeds"
+						"tag": "lostworlds:eggs"
 					}
 				]
 			}

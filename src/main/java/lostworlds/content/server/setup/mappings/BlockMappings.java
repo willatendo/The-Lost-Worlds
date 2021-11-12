@@ -41,7 +41,12 @@ public class BlockMappings
 			put(ModUtils.rL("mossy_jurassic_stone_brick_stairs"), BlockInit.JURASSIC_STONE_BRICK_STAIRS);			
 			put(ModUtils.rL("mossy_jurassic_stone_brick_slab"), BlockInit.JURASSIC_STONE_BRICK_SLAB);			
 			put(ModUtils.rL("mossy_jurassic_stone_brick_wall"), BlockInit.JURASSIC_STONE_BRICK_WALL);	
-			put(ModUtils.rL("mossy_jurassic_stone_brick_wall"), BlockInit.JURASSIC_STONE_BRICK_WALL);	
+			put(ModUtils.rL("polished_light_concrete"), BlockInit.ACCENT_LIGHT_CONCRETE);			
+			put(ModUtils.rL("polished_light_concrete_stairs"), BlockInit.ACCENT_LIGHT_CONCRETE_STAIRS);	
+			put(ModUtils.rL("polished_light_concrete_slab"), BlockInit.ACCENT_LIGHT_CONCRETE_SLAB);	
+			put(ModUtils.rL("polished_dark_concrete"), BlockInit.ACCENT_DARK_CONCRETE);			
+			put(ModUtils.rL("polished_dark_concrete_stairs"), BlockInit.ACCENT_DARK_CONCRETE_STAIRS);	
+			put(ModUtils.rL("polished_dark_concrete_slab"), BlockInit.ACCENT_DARK_CONCRETE_SLAB);	
 			put(ModUtils.rL("thatch_block"), BlockInit.THATCH_BUNDLE);	
 		}
 	};

@@ -1,0 +1,11 @@
+{
+	"replace": false,
+	"values": [
+		"lostworlds:petrified_araucaria_log",
+		"lostworlds:petrified_calamites_log",
+		"lostworlds:petrified_conifer_log",
+		"lostworlds:petrified_cypress_log",
+		"lostworlds:petrified_ginkgo_log",
+		"lostworlds:petrified_sequoia_log"
+	]
+}

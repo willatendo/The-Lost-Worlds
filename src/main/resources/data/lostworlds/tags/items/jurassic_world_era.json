@@ -1,0 +1,28 @@
+{
+	"replace": false,
+	"values": [
+		"lostworlds:dark_concrete",
+		"lostworlds:dark_concrete_stairs",
+		"lostworlds:dark_concrete_slab",
+		"lostworlds:dark_concrete_wall",
+		"lostworlds:dark_concrete_pressure_plate",
+		"lostworlds:dark_concrete_button",
+		"lostworlds:polished_dark_concrete",
+		"lostworlds:accent_dark_concrete",
+		"lostworlds:accent_dark_concrete_stairs",
+		"lostworlds:accent_dark_concrete_slab",
+		"lostworlds:refined_wooden_planks",
+		"lostworlds:refined_wooden_planks_stairs",
+		"lostworlds:refined_wooden_planks_slab",
+		"lostworlds:refined_wooden_planks_fence",
+		"lostworlds:refined_wooden_planks_fence_gate",
+		"lostworlds:refined_wooden_planks_pressure_plate",
+		"lostworlds:refined_wooden_planks_button",
+		"lostworlds:tile",
+		"lostworlds:tile_stairs",
+		"lostworlds:tile_slab",
+		"lostworlds:glass_shop_door",
+		"lostworlds:innovation_center_door",
+		"lostworlds:back_door"
+	]
+}
