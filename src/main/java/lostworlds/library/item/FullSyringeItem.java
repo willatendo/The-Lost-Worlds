@@ -17,6 +17,6 @@ public class FullSyringeItem extends ModItem
 	@Override
 	public ITextComponent getName(ItemStack stack) 
 	{
-		return new TranslationTextComponent("item.lostworlds.syringe", this.name);	
+		return new TranslationTextComponent("item.lostworlds.sample_syringe", this.name);	
 	}
 }

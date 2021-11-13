@@ -14,8 +14,8 @@ public class LostWorldsBooks extends TyrannobookData
 {
 	private static final ResourceLocation LOST_WORLDS_LEXICON_ID = ModUtils.rL("lost_worlds_lexicon");
 	public static final TyrannobookData LOST_WORLDS_LEXICON = TyrannobookLoader.registerBook(LOST_WORLDS_LEXICON_ID.toString(), false, false);
-	private static final ResourceLocation FEILD_GUIDE_ID = ModUtils.rL("feild_guide");
-	public static final TyrannobookData FEILD_GUIDE = TyrannobookLoader.registerBook(FEILD_GUIDE_ID.toString(), false, false);
+	private static final ResourceLocation FIELD_GUIDE_ID = ModUtils.rL("field_guide");
+	public static final TyrannobookData FIELD_GUIDE = TyrannobookLoader.registerBook(FIELD_GUIDE_ID.toString(), false, false);
 	
 	public static void initBooks() 
 	{
@@ -23,6 +23,7 @@ public class LostWorldsBooks extends TyrannobookData
 		TyrannobookLoader.registerPageType(ContentImageText2.ID, ContentImageText2.class);
 		
 		addStandardData(LOST_WORLDS_LEXICON, LOST_WORLDS_LEXICON_ID);
+		addStandardData(FIELD_GUIDE, FIELD_GUIDE_ID);
 	}
 	
 	private static void addStandardData(TyrannobookData book, ResourceLocation id) 

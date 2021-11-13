@@ -32,6 +32,8 @@
 	
 	//Utilities
 	"item.lostworlds.wet_paper": "Wet Paper",
+	"item.lostworlds.syringe": "Syringe",
+	"item.lostworlds.sample_syringe": "Syringe of %s Blood",
 	"item.lostworlds.lost_worlds_lexicon": "Lost Worlds Lexicon",
 	"lexicon.lostworlds.desc": "An Everything-You-Need-to-Know Book!",
 	"item.lostworlds.field_guide": "Field Guide",

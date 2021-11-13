@@ -1,0 +1,22 @@
+[
+	{
+		"name": "chilesaurus",
+		"type": "text",
+		"data": "creatures/chilesaurus.json"
+	},
+	{
+		"name": "chilesaurus_info",
+		"type": "text",
+		"data": "creatures/chilesaurus_info.json"
+	},
+	{
+		"name": "kentrosaurus",
+		"type": "text",
+		"data": "creatures/kentrosaurus.json"
+	},
+	{
+		"name": "kentrosaurus_info",
+		"type": "text",
+		"data": "creatures/kentrosaurus_info.json"
+	}
+]
