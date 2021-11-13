@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:chilesaurus_tail"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_chilesaurus_tail"
+	}
+}

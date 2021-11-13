@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "boat",
+	"pattern": [
+		"# #",
+		"###"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:cypress_planks"
+		}
+	},
+	"result": {
+		"item": "lostworlds:cypress_boat"
+	}
+}

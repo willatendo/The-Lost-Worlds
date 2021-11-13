@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:chilesaurus_rib_cage"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_chilesaurus_rib_cage"
+	}
+}

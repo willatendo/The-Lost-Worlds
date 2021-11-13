@@ -122,7 +122,7 @@
 	"block.minecraft.banner.scarab.red": "Red Scarab",
 	"block.minecraft.banner.scarab.black": "Black Scarab",
 	"item.lostworlds.charged_crystal_scarab_gem": "Charged Crystal Scarab Gem",
-	"jeiInfo.lostworlds.charged_crystal_scarab_gem": "Created in a lightning strike, there are one of the rarest and most valuable items in the game. They are require for a lot of things, including time travel. Made with a Crystal Scarab Gem.",
+	"jeiInfo.lostworlds.charged_crystal_scarab_gem": "Created in a lightning strike, they are one of the rarest and most valuable items in the game. They are require for a lot of things, including time travel. Made with a Crystal Scarab Gem.",
 	"item.lostworlds.crystal_scarab_gem": "Crystal Scarab Gem",
 	"item.lostworlds.crystal_scarab_abdomen": "Crystal Scarab Abdomen",
 	"item.lostworlds.crystal_scarab_bottom_left_leg": "Crystal Scarab Bottom Left Leg",
@@ -753,6 +753,7 @@
 	"death.attack.ashyLung": "%1$s's lungs filled up with ash",
 	"death.attack.suffication": "%1$s sufficated",
 	"death.attack.hunger": "%1$s died of Hunger",
+	"death.attack.prick": "%1$s was pricked to death with a needle",
 	
 	//Jurassic
 	"entity.lostworlds.chilesaurus": "Chilesaurus",

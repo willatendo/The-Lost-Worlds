@@ -29,9 +29,9 @@ public enum ModItemTier implements IItemTier
 	{
 		return Ingredient.of(Items.STRING);
 	}),	
-	CRYSTAL_SCARAB(0, 13616, 2.0F, 80.0F, 40, () -> 
+	CRYSTAL_SCARAB(0, 13616, 50.0F, 80.0F, 0, () -> 
 	{
-		return Ingredient.of(Items.STRING); 
+		return null; 
 	}); 
 	
 	private final int level;

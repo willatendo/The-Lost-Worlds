@@ -1,20 +1,20 @@
 package lostworlds.library.marker;
 
-import lostworlds.library.entity.DinoDiet;
+import lostworlds.library.entity.CreatureDiet;
 import net.minecraftforge.common.IExtensibleEnum;
 
 public enum MarkerType implements IExtensibleEnum
 {
 	;
 	
-	private DinoDiet diet;
+	private CreatureDiet diet;
 	
-	private MarkerType(DinoDiet diet) 
+	private MarkerType(CreatureDiet diet) 
 	{
 		this.diet = diet;
 	}
 	
-	public DinoDiet getDiet()
+	public CreatureDiet getDiet()
 	{
 		return this.diet;
 	}
@@ -29,7 +29,7 @@ public enum MarkerType implements IExtensibleEnum
 		return 32;
 	}
 	
-	public static MarkerType create(String name, DinoDiet diet)
+	public static MarkerType create(String name, CreatureDiet diet)
 	{
 		throw new IllegalStateException("Enum not extended");
 	}

@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"$@$",
+		"$#$",
+		"% %"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:stripped_cypress_log"
+		},
+		"$": {
+			"item": "lostworlds:cypress_planks"
+		},
+		"@": {
+			"item": "minecraft:crafting_table"
+		},
+		"%": {
+			"item": "lostworlds:cypress_log"
+		}
+	},
+	"result": {
+		"item": "lostworlds:cypress_paleontology_table"
+	}
+}

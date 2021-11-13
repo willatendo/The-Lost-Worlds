@@ -29,8 +29,8 @@ import net.minecraft.util.IStringSerializable;
 
 public enum DinoTypes implements IStringSerializable
 {
-	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, true, Size.SMALL, DinoDiet.HERBIVORE, 0xb08533, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
-	KENTROSAURUS("kentrosaurus", EntityInit.KENTROSAURUS, true, Size.MEDIUM, DinoDiet.HERBIVORE, 0xd99760, 0xd99760, 0x612c00, 3, 6, 0.4F, 0.66F),
+	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, true, Size.SMALL, CreatureDiet.HERBIVORE, 0xb08533, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
+	KENTROSAURUS("kentrosaurus", EntityInit.KENTROSAURUS, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0xd99760, 0xd99760, 0x612c00, 3, 6, 0.4F, 0.66F),
 	;
 	
 	public static final Codec<DinoTypes> CODEC = IStringSerializable.fromEnum(DinoTypes::values, DinoTypes::byName);
@@ -55,9 +55,10 @@ public enum DinoTypes implements IStringSerializable
 	private Block egg;
 	private Item skeletonPick;
 	private Item dna;
+	private Item bloodSample;
 	private final boolean eggLaying;
 	private final Size eggSize;
-	private final DinoDiet diet;
+	private final CreatureDiet diet;
 	private final int primaryColour;
 	private final int eggSetColour;
 	private final int secondaryColour;
@@ -66,7 +67,7 @@ public enum DinoTypes implements IStringSerializable
 	private final float rawSaturation;
 	private final float cookedSaturation;
 	
-	private DinoTypes(String id, EntityType entity, boolean eggLaying, Size eggSize, DinoDiet diet, int eggSetColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
+	private DinoTypes(String id, EntityType entity, boolean eggLaying, Size eggSize, CreatureDiet diet, int eggSetColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
 	{
 		this.id = id;
 		this.entitytype = entity;
@@ -237,7 +238,7 @@ public enum DinoTypes implements IStringSerializable
 		}
 	}
 	
-	public DinoDiet getDiet()
+	public CreatureDiet getDiet()
 	{
 		return this.diet;
 	}
@@ -255,6 +256,16 @@ public enum DinoTypes implements IStringSerializable
 	public Item setDNA(Item item)
 	{
 		return this.dna = item;
+	}
+	
+	public Item getBloodSample()
+	{
+		return this.bloodSample;
+	}
+	
+	public Item setBloodSample(Item item)
+	{
+		return this.bloodSample = item;
 	}
 	
 	public Callable<ItemStackTileEntityRenderer> getISTER()

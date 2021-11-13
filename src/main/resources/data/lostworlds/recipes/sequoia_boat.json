@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "boat",
+	"pattern": [
+		"# #",
+		"###"
+	],
+	"key": {
+		"#": {
+			"item": "lostworlds:sequoia_planks"
+		}
+	},
+	"result": {
+		"item": "lostworlds:sequoia_boat"
+	}
+}

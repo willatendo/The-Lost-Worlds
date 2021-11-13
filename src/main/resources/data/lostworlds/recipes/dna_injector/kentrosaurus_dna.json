@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_injector",
+	"output": {
+		"item": "lostworlds:kentrosaurus_egg"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:kentrosaurus_dna_disc"
+	}
+}

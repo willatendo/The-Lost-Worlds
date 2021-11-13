@@ -22,6 +22,11 @@ public class ModItem extends Item
 		this(new Properties().tab(ModUtils.ITEMS).food(food));
 	}
 	
+	public ModItem(int stacksize) 
+	{
+		super(new Properties().tab(ModUtils.ITEMS).stacksTo(stacksize));
+	}
+	
 	public ModItem(Properties properties) 
 	{
 		super(properties);

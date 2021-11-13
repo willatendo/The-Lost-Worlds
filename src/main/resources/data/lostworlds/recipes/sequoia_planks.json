@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"group": "result",
+	"ingredients": [
+		{
+			"tag": "lostworlds:sequoia_logs"
+		}
+	],
+	"result": {
+		"item": "lostworlds:sequoia_planks",
+		"count": 4
+	}
+}

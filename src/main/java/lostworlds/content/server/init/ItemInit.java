@@ -17,6 +17,7 @@ import lostworlds.library.item.DinoFoodItem;
 import lostworlds.library.item.DinoSpawnEggItem;
 import lostworlds.library.item.FieldGuideItem;
 import lostworlds.library.item.FossilItem;
+import lostworlds.library.item.FullSyringeItem;
 import lostworlds.library.item.HammerItem;
 import lostworlds.library.item.LostWorldsLexicon;
 import lostworlds.library.item.ModBoneMealItem;
@@ -24,6 +25,7 @@ import lostworlds.library.item.ModItem;
 import lostworlds.library.item.ModSpawnEggItem;
 import lostworlds.library.item.PlantFossilItem;
 import lostworlds.library.item.SoftTissueItem;
+import lostworlds.library.item.SyringeItem;
 import lostworlds.library.item.TabletItem;
 import lostworlds.library.item.TimeBookItem;
 import lostworlds.library.item.WetPaperItem;
@@ -169,6 +171,7 @@ public class ItemInit
 	public static final Item CLOTH_MASK = ModRegistry.register("cloth_mask", new MaskItem(ModArmourMaterial.CLOTH_MASK));
 	
 	public static final Item WET_PAPER = ModRegistry.register("wet_paper", new WetPaperItem());
+	public static final Item SYRINGE = ModRegistry.register("syringe", new SyringeItem());
 	public static final Item LOST_WORLDS_LEXICON = ModRegistry.register("lost_worlds_lexicon", new LostWorldsLexicon(new Properties().tab(ModUtils.ITEMS).stacksTo(1).rarity(Rarity.RARE).fireResistant()));
 	public static final Item FIELD_GUIDE = ModRegistry.register("field_guide", new FieldGuideItem());
 	public static final Item BOOK_OF_ARCHAEOLOGY = ModRegistry.register("book_of_archaeology", new FieldGuideItem());
@@ -250,6 +253,8 @@ public class ItemInit
 			dinos.setSkeletonPick(skeleton);
 			ModRegistry.register(dinos.name().toLowerCase() + "_spawn_egg", new DinoSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), ModUtils.ITEMS, ModUtils.tTC("dino", dinos.name().toLowerCase())));
 			ModRegistry.register(dinos.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(ModUtils.tTC("dino", dinos.toString().toLowerCase())));
+			Item bloodSample = ModRegistry.register(dinos.name().toLowerCase() + "_blood_sample", new FullSyringeItem(ModUtils.tTC("dino", dinos.name().toLowerCase())));
+			dinos.setBloodSample(bloodSample);
 			Item dna = ModRegistry.register(dinos.name().toLowerCase() + "_dna", new DNAItem(ModUtils.tTC("dino", dinos.name().toLowerCase())));
 			dinos.setDNA(dna);
 			ModRegistry.register(dinos.name().toLowerCase() + "_dna_disc", new DNADiscItem(ModUtils.tTC("dino", dinos.name().toLowerCase())));

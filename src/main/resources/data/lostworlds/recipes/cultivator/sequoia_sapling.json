@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:cultivator",
+	"output": {
+		"item": "lostworlds:sequoia_sapling"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:sequoia_dna_disc"
+	}
+}
