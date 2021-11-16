@@ -174,7 +174,6 @@ public class ItemInit
 	public static final Item SYRINGE = ModRegistry.register("syringe", new SyringeItem());
 	public static final Item LOST_WORLDS_LEXICON = ModRegistry.register("lost_worlds_lexicon", new LostWorldsLexicon(new Properties().tab(ModUtils.ITEMS).stacksTo(1).rarity(Rarity.RARE).fireResistant()));
 	public static final Item FIELD_GUIDE = ModRegistry.register("field_guide", new FieldGuideItem());
-	public static final Item BOOK_OF_ARCHAEOLOGY = ModRegistry.register("book_of_archaeology", new FieldGuideItem());
 	public static final Item TABLET = ModRegistry.register("tablet", new TabletItem());
 	public static final Item CONTRACEPTIVES = ModRegistry.register("contraceptives", new ModItem());
 	

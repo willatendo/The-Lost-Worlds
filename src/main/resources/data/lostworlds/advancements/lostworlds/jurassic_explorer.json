@@ -1,0 +1,300 @@
+{
+	"parent": "lostworlds:lostworlds/the_jurassic",
+	"display": {
+		"icon": {
+			"item": "lostworlds:jurassic_period_time_book"
+		},
+		"title": {
+			"translate": "advancement.lostworlds.jurassic_explorer"
+		},
+		"description": {
+			"translate": "advancement.lostworlds.jurassic_explorer.desc"
+		},
+		"frame": "challenge",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": true
+	},
+	"rewards": {
+		"experience": 500
+	},
+	"criteria": {
+		"araucaria_forest": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_araucaria_forest"
+				}
+			}
+		},
+		"araucaria_forest_hills": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_araucaria_forest_hills"
+				}
+			}
+		},
+		"conifer_forest": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_conifer_forest"
+				}
+			}
+		},
+		"conifer_forest_hills": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_conifer_forest_hills"
+				}
+			}
+		},
+		"ginkgo_forest": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_ginkgo_forest"
+				}
+			}
+		},
+		"ginkgo_forest_hills": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_ginkgo_forest_hills"
+				}
+			}
+		},
+		"redwoods_forest": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_redwoods_forest"
+				}
+			}
+		},
+		"redwoods_forest_hills": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_redwoods_forest_hills"
+				}
+			}
+		},
+		"plains": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_plains"
+				}
+			}
+		},
+		"plains_hills": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_plains_hills"
+				}
+			}
+		},
+		"mountains": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_mountains"
+				}
+			}
+		},
+		"erroded_mountains": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_erroded_mountains"
+				}
+			}
+		},
+		"volcanic_range": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_volcanic_range"
+				}
+			}
+		},
+		"desert": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_desert"
+				}
+			}
+		},
+		"desert_hills": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_desert_hills"
+				}
+			}
+		},
+		"marsh": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_marsh"
+				}
+			}
+		},
+		"swamp": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_swamp"
+				}
+			}
+		},
+		"fen": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_fen"
+				}
+			}
+		},
+		"bog": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_bog"
+				}
+			}
+		},
+		"river": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_river"
+				}
+			}
+		},
+		"ocean": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_ocean"
+				}
+			}
+		},
+		"deep_ocean": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:deep_jurassic_ocean"
+				}
+			}
+		},
+		"warm_ocean": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:warm_jurassic_ocean"
+				}
+			}
+		},
+		"warm_deep_ocean": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:warm_deep_jurassic_ocean"
+				}
+			}
+		},
+		"shore": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"location": {
+					"biome": "lostworlds:jurassic_shore"
+				}
+			}
+		}
+	},
+	"requirements": [
+		[
+			"araucaria_forest"
+		],
+		[
+			"araucaria_forest_hills"
+		],
+		[
+			"conifer_forest"
+		],
+		[
+			"conifer_forest_hills"
+		],
+		[
+			"ginkgo_forest"
+		],
+		[
+			"ginkgo_forest_hills"
+		],
+		[
+			"redwoods_forest"
+		],
+		[
+			"redwoods_forest_hills"
+		],
+		[
+			"plains"
+		],
+		[
+			"plains_hills"
+		],
+		[
+			"mountains"
+		],
+		[
+			"erroded_mountains"
+		],
+		[
+			"volcanic_range"
+		],
+		[
+			"desert"
+		],
+		[
+			"desert_hills"
+		],
+		[
+			"marsh"
+		],
+		[
+			"swamp"
+		],
+		[
+			"fen"
+		],
+		[
+			"bog"
+		],
+		[
+			"river"
+		],
+		[
+			"ocean"
+		],
+		[
+			"deep_ocean"
+		],
+		[
+			"warm_ocean"
+		],
+		[
+			"warm_deep_ocean"
+		],
+		[
+			"shore"
+		]
+	]
+}

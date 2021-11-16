@@ -447,9 +447,9 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 		}
 	}
 	
-	public void spawnChildFromBreeding(ServerWorld p_234177_1_, HerbivoreEntity partner) 
+	public void spawnChildFromBreeding(ServerWorld world, PrehistoricEntity partner) 
 	{
-		AgeableEntity ageableentity = this.getBreedOffspring(p_234177_1_, partner);
+		AgeableEntity ageableentity = this.getBreedOffspring(world, partner);
 		final BabyEntitySpawnEvent event = new BabyEntitySpawnEvent(this, partner, ageableentity);
 		final boolean cancelled = MinecraftForge.EVENT_BUS.post(event);
 		ageableentity = event.getChild();
@@ -480,11 +480,11 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 			partner.resetLove();
 			ageableentity.setBaby(true);
 			ageableentity.moveTo(this.getX(), this.getY(), this.getZ(), 0.0F, 0.0F);
-			p_234177_1_.addFreshEntityWithPassengers(ageableentity);
-			p_234177_1_.broadcastEntityEvent(this, (byte)18);
-			if(p_234177_1_.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) 
+			world.addFreshEntityWithPassengers(ageableentity);
+			world.broadcastEntityEvent(this, (byte)18);
+			if(world.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) 
 			{
-				p_234177_1_.addFreshEntity(new ExperienceOrbEntity(p_234177_1_, this.getX(), this.getY(), this.getZ(), this.getRandom().nextInt(7) + 1));
+				world.addFreshEntity(new ExperienceOrbEntity(world, this.getX(), this.getY(), this.getZ(), this.getRandom().nextInt(7) + 1));
 			}
 		}
 	}

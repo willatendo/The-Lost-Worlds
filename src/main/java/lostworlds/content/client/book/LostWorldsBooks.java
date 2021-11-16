@@ -4,12 +4,15 @@ import lostworlds.content.ModUtils;
 import lostworlds.content.client.book.content.ContentArchaeology;
 import lostworlds.content.client.book.content.ContentImageText2;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import tyrannotitanlib.library.tyrannobook.client.FileRepository;
 import tyrannotitanlib.library.tyrannobook.client.PaddingBookTransformer;
 import tyrannotitanlib.library.tyrannobook.client.TyrannobookLoader;
 import tyrannotitanlib.library.tyrannobook.client.TyrannobookTransformer;
 import tyrannotitanlib.library.tyrannobook.client.data.TyrannobookData;
 
+@OnlyIn(Dist.CLIENT)
 public class LostWorldsBooks extends TyrannobookData
 {
 	private static final ResourceLocation LOST_WORLDS_LEXICON_ID = ModUtils.rL("lost_worlds_lexicon");

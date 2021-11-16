@@ -1,6 +1,7 @@
 package lostworlds.content;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -16,12 +17,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.InputMappings;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.monster.AbstractRaiderEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.world.raid.Raid;
 
 public class ModUtils 
 {
@@ -67,9 +69,13 @@ public class ModUtils
 		return text;
 	}
 	
-	@OnlyIn(Dist.CLIENT)
 	public static boolean isHoldingLeftShift()
 	{
 		return InputMappings.isKeyDown(MINECRAFT_WINDOW, GLFW.GLFW_KEY_LEFT_SHIFT);
+	}
+	
+	public static void translateToWaves(EntityType<? extends AbstractRaiderEntity> type, List<? extends Integer> list) 
+	{
+		Raid.WaveMember.create(type.getRegistryName().toString(), type, new int[]{list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7)});
 	}
 }

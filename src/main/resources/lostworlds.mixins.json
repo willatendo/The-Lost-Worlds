@@ -1,7 +1,7 @@
 {
-	"minVersion": "0.8",
 	"required": true,
 	"package": "lostworlds.mixin",
+	"minVersion": "0.8",
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [
 		"DimensionGeneratorSettingsMixin"
@@ -9,5 +9,5 @@
 	"injectors": {
 		"defaultRequire": 1
 	},
-	"refmap": "mixins.lostworlds.refmap.json"
+	"refmap": "lostworlds.mixins.refmap.json"
 }

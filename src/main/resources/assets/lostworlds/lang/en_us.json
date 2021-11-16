@@ -145,8 +145,9 @@
 	"enchantment.lostworlds.curse_of_breaking.desc": "Increases the chance of breaking a fossil.",	
 	
 	//Dinosaurs
-	"dino.lostworlds.kentrosaurus": "Kentrosaurus",
 	"dino.lostworlds.chilesaurus": "Chilesaurus",
+	"dino.lostworlds.dilophosaurus": "Dilophosaurus",
+	"dino.lostworlds.kentrosaurus": "Kentrosaurus",
 	
 	//Plants
 	"plant.lostworlds.archaefrutus": "Archaefrutus",
@@ -704,6 +705,15 @@
 	"advancement.lostworlds.lost_heart": "Lost Heart",
 	"advancement.lostworlds.lost_heart.desc": "The heart of ancient civilizations. One of the most powerful and dangerous items of the world!",
 	
+	"advancement.lostworlds.jurassic_explorer": "Jurassic Explorer",
+	"advancement.lostworlds.jurassic_explorer.desc": "Explore every biome in the Jurassic!",
+	
+	"advancement.lostworlds.permian_explorer": "Permian Explorer",
+	"advancement.lostworlds.permian_explorer.desc": "Explore every biome in the Permian!",
+	
+	"advancement.lostworlds.cretaceous_explorer": "Cretaceous Explorer",
+	"advancement.lostworlds.cretaceous_explorer.desc": "Explore every biome in the Cretaceous!",
+	
 	"advancement.lostworlds.for_the_masses": "For The Masses",
 	"advancement.lostworlds.for_the_masses.desc": "You started articulated a skeleton!",
 	
@@ -759,6 +769,7 @@
 	
 	//Jurassic
 	"entity.lostworlds.chilesaurus": "Chilesaurus",
+	"entity.lostworlds.dilophosaurus": "Dilophosaurus",
 	"entity.lostworlds.kentrosaurus": "Kentrosaurus",
 	
 	//Villagers

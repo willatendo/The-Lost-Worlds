@@ -60,6 +60,7 @@ import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.common.world.ForgeWorldType;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
 import tyrannotitanlib.library.base.biome.TyrannoBiome;
 import tyrannotitanlib.library.tyrannoregister.TyrannoRegister;
@@ -249,6 +250,9 @@ public class ModRegistry
 		BiomeInit.init();
 	
 		//Forge
-		WorldTypeInit.init();
+		if(!FMLEnvironment.production)
+		{
+			WorldTypeInit.init();
+		}
 	}
 }

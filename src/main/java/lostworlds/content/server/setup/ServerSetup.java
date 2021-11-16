@@ -22,6 +22,7 @@ import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
 import lostworlds.library.entity.spawner.FossilPoachingGroupSpawner;
 import lostworlds.library.item.CrystalScarabGemItem;
+import lostworlds.library.trades.EmeraldsForMultiItemTrade;
 import lostworlds.library.trades.MultiItemForEmeraldsTrade;
 import lostworlds.library.util.JigsawUtils;
 import net.minecraft.block.Block;
@@ -93,46 +94,45 @@ public class ServerSetup
 		{
 			ModUtils.LOGGER.debug("Loading: Villager Trades");
 			
+			//Archaeologist
 			VillagerTrades.ITrade[] archaeology1 = new VillagerTrades.ITrade[] 
 			{
 				new VillagerTrades.ItemsForEmeraldsTrade(Items.CLAY_BALL, 2, 20, 12),
 				new VillagerTrades.ItemsForEmeraldsTrade(Items.CLAY, 16, 10, 12),
 				new VillagerTrades.ItemsForEmeraldsTrade(BlockInit.ARCHAEOLOGY_TABLE.asItem(), 15, 1, 20),
 			};
-			
 			VillagerTrades.ITrade[] archaeology2 = new VillagerTrades.ITrade[] 
 			{
-				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.BOOK_OF_ARCHAEOLOGY, 5, 1, 12),
 				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.WET_PAPER, 3, 5, 12)
 			};
-			
 			VillagerTrades.ITrade[] archaeology3 = new VillagerTrades.ITrade[] 
 			{
-				new MultiItemForEmeraldsTrade(ImmutableList.of(ItemInit.DIAMOND_BRUSH, ItemInit.GOLD_BRUSH, ItemInit.IRON_BRUSH, ItemInit.LEATHER_BRUSH), ImmutableList.of(1, 1, 1, 1), ImmutableList.of(64, 32, 16, 4), 1, 100)
+				new MultiItemForEmeraldsTrade(ImmutableList.of(ItemInit.GOLD_BRUSH, ItemInit.IRON_BRUSH, ItemInit.LEATHER_BRUSH), ImmutableList.of(1, 1, 1), ImmutableList.of(32, 16, 4), 1, 100)
 			};
-			
 			VillagerTrades.ITrade[] archaeology4 = new VillagerTrades.ITrade[] 
 			{
-				new VillagerTrades.EmeraldForItemsTrade(ItemInit.PERMIAN_PERIOD_TIME_BOOK, 1, 1, 100),
-				//new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.JURASSIC_ERA_TIME_BOOK, 64, 1, 100)
+				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.PERMIAN_PERIOD_TIME_BOOK, 1, 1, 100),
+				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.JURASSIC_PERIOD_TIME_BOOK, 64, 1, 100),
+				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.CRETACEOUS_PERIOD_TIME_BOOK, 64, 1, 100)
 			};
-			
 			VillagerTrades.ITrade[] archaeology5 = new VillagerTrades.ITrade[] 
 			{
 				new VillagerTrades.ItemsForEmeraldsTrade(Items.LODESTONE, 64, 1, 100),
+				new EmeraldsForMultiItemTrade(ImmutableList.of(ItemInit.DIAMOND_BRUSH, ItemInit.CLOTH_MASK, ItemInit.CRYSTAL_SCARAB_BRUSH, ItemInit.NETHERITE_BRUSH), ImmutableList.of(1, 1, 1, 1), ImmutableList.of(32, 5, 64, 48), 1, 100),
 				new MultiItemForEmeraldsTrade(ImmutableList.of(Items.GOLD_INGOT, Items.DIAMOND, Items.IRON_INGOT, Items.NETHERITE_SCRAP, CrystalScarabGemItem.Gems.CHARGED_CRYSTAL_SCARAB_GEM.getItem(), CrystalScarabGemItem.Gems.CRYSTAL_SCARAB_BOTTOM_LEFT_LEG.getItem(), CrystalScarabGemItem.Gems.CRYSTAL_SCARAB_BOTTOM_RIGHT_LEG.getItem(), CrystalScarabGemItem.Gems.CRYSTAL_SCARAB_THORAX.getItem(), CrystalScarabGemItem.Gems.CRYSTAL_SCARAB_TOP_LEFT_LEG.getItem(), CrystalScarabGemItem.Gems.CRYSTAL_SCARAB_TOP_RIGHT_LEG.getItem()), ImmutableList.of(5, 1, 3, 1, 1), ImmutableList.of(10, 30, 20, 50, 64), 1, 100)
 			};
 			
+			//Paleontologist
 			VillagerTrades.ITrade[] paleontology1 = new VillagerTrades.ITrade[] 
 			{
 				new VillagerTrades.EmeraldForItemsTrade(BlockInit.TINY_FOSSILISED_EGG.asItem(), 4, 4, 10),
-				new VillagerTrades.EmeraldForItemsTrade(BlockInit.SMALL_FOSSILISED_EGG.asItem(), 5, 4, 10),
+				new VillagerTrades.EmeraldForItemsTrade(BlockInit.SMALL_PLASTERED_FOSSILISED_EGG.asItem(), 5, 4, 10),
 				new MultiItemForEmeraldsTrade(ImmutableList.of(BlockInit.ACACIA_PALEONTOLOGY_TABLE.asItem(), BlockInit.ARAUCARIA_PALEONTOLOGY_TABLE.asItem(), BlockInit.BIRCH_PALEONTOLOGY_TABLE.asItem(), BlockInit.CALAMITES_PALEONTOLOGY_TABLE.asItem(), BlockInit.CONIFER_PALEONTOLOGY_TABLE.asItem(), BlockInit.CRIMSON_PALEONTOLOGY_TABLE.asItem(), BlockInit.CYPRESS_PALEONTOLOGY_TABLE.asItem(), BlockInit.DARK_OAK_PALEONTOLOGY_TABLE.asItem(), BlockInit.GINKGO_PALEONTOLOGY_TABLE.asItem(), BlockInit.JUNGLE_PALEONTOLOGY_TABLE.asItem(), BlockInit.OAK_PALEONTOLOGY_TABLE.asItem(), BlockInit.SCORCHED_PALEONTOLOGY_TABLE.asItem(), BlockInit.SEQUOIA_PALEONTOLOGY_TABLE.asItem(), BlockInit.SPRUCE_PALEONTOLOGY_TABLE.asItem(), BlockInit.WARPED_PALEONTOLOGY_TABLE.asItem()), ImmutableList.of(1, 1, 1, 1, 1, 1, 1, 1, 1), ImmutableList.of(10, 10, 10, 10, 10, 10, 10, 10, 10), 5, 20)
 			};
 			
 			VillagerTrades.ITrade[] paleontology2 = new VillagerTrades.ITrade[] 
 			{
-				new VillagerTrades.EmeraldForItemsTrade(BlockInit.MEDIUM_FOSSILISED_EGG.asItem(), 6, 4, 10),
+				new VillagerTrades.EmeraldForItemsTrade(BlockInit.MEDIUM_PLASTERED_FOSSILISED_EGG.asItem(), 6, 4, 10),
 				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.FIELD_GUIDE, 25, 1, 20),
 				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.WET_PAPER, 3, 5, 12)
 			};
@@ -164,8 +164,7 @@ public class ServerSetup
 			VillagerTrades.ITrade[] paleontology5 = new VillagerTrades.ITrade[] 
 			{
 				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.CONTRACEPTIVES, 12, 5, 20),
-				new VillagerTrades.ItemsForEmeraldsTrade(ItemInit.CONTRACEPTIVES, 12, 5, 20),
-				new MultiItemForEmeraldsTrade(dnaForSale, ImmutableList.of(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), ImmutableList.of(64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64), 1, 200)
+				new MultiItemForEmeraldsTrade(dnaForSale, ImmutableList.of(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), ImmutableList.of(64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64), 1, 200)
 			};
 			VillagerTrades.TRADES.put(VillagerProfessionInit.ARCHAEOLOGIST, toIntMap(ImmutableMap.of(1, archaeology1, 2, archaeology2, 3, archaeology3, 4, archaeology4, 5, archaeology5)));
 			VillagerTrades.TRADES.put(VillagerProfessionInit.PALEONTOLOGIST, toIntMap(ImmutableMap.of(1, paleontology1, 2, paleontology2, 3, paleontology3, 4, paleontology4, 5, paleontology5)));
@@ -277,6 +276,7 @@ public class ServerSetup
 			addToStrippingMap(BlockInit.PETRIFIED_ARAUCARIA_LOG, BlockInit.STRIPPED_PETRIFIED_ARAUCARIA_LOG);
 			addToStrippingMap(BlockInit.PETRIFIED_CALAMITES_LOG, BlockInit.STRIPPED_PETRIFIED_CALAMITES_LOG);
 			addToStrippingMap(BlockInit.PETRIFIED_CONIFER_LOG, BlockInit.STRIPPED_PETRIFIED_CONIFER_LOG);
+			addToStrippingMap(BlockInit.PETRIFIED_CYPRESS_LOG, BlockInit.STRIPPED_PETRIFIED_CYPRESS_LOG);
 			addToStrippingMap(BlockInit.PETRIFIED_GINKGO_LOG, BlockInit.STRIPPED_PETRIFIED_GINKGO_LOG);
 			addToStrippingMap(BlockInit.PETRIFIED_SEQUOIA_LOG, BlockInit.STRIPPED_PETRIFIED_SEQUOIA_LOG);
 			
@@ -344,6 +344,17 @@ public class ServerSetup
 			addToFlammables(BlockInit.STRIPPED_CONIFER_LOG, 5, 5);
 			addToFlammables(BlockInit.STRIPPED_CONIFER_WOOD, 5, 5);
 
+			addToFlammables(BlockInit.CYPRESS_FENCE, 5, 20);
+			addToFlammables(BlockInit.CYPRESS_FENCE_GATE, 5, 20);
+			addToFlammables(BlockInit.CYPRESS_LEAVES, 30, 60);
+			addToFlammables(BlockInit.CYPRESS_LOG, 5, 5);
+			addToFlammables(BlockInit.CYPRESS_PLANKS, 5, 20);
+			addToFlammables(BlockInit.CYPRESS_SLAB, 5, 20);
+			addToFlammables(BlockInit.CYPRESS_STAIRS, 5, 20);
+			addToFlammables(BlockInit.CYPRESS_WOOD, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_CYPRESS_LOG, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_CYPRESS_WOOD, 5, 5);
+
 			addToFlammables(BlockInit.GINKGO_FENCE, 5, 20);
 			addToFlammables(BlockInit.GINKGO_FENCE_GATE, 5, 20);
 			addToFlammables(BlockInit.GINKGO_LEAVES, 30, 60);
@@ -364,6 +375,16 @@ public class ServerSetup
 			addToFlammables(BlockInit.SCORCHED_WOOD, 5, 5);
 			addToFlammables(BlockInit.STRIPPED_SCORCHED_LOG, 5, 5);
 			addToFlammables(BlockInit.STRIPPED_SCORCHED_WOOD, 5, 5);
+
+			addToFlammables(BlockInit.SEQUOIA_FENCE, 5, 20);
+			addToFlammables(BlockInit.SEQUOIA_FENCE_GATE, 5, 20);
+			addToFlammables(BlockInit.SEQUOIA_LOG, 5, 5);
+			addToFlammables(BlockInit.SEQUOIA_PLANKS, 5, 20);
+			addToFlammables(BlockInit.SEQUOIA_SLAB, 5, 20);
+			addToFlammables(BlockInit.SEQUOIA_STAIRS, 5, 20);
+			addToFlammables(BlockInit.SEQUOIA_WOOD, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_SEQUOIA_LOG, 5, 5);
+			addToFlammables(BlockInit.STRIPPED_SEQUOIA_WOOD, 5, 5);
 			
 			ModUtils.LOGGER.debug("Finished Adding Flammables");
 		}

@@ -80,9 +80,11 @@ import net.minecraft.block.SandBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.StairsBlock;
+import net.minecraft.block.StandingSignBlock;
 import net.minecraft.block.StoneButtonBlock;
 import net.minecraft.block.TrapDoorBlock;
 import net.minecraft.block.WallBlock;
+import net.minecraft.block.WallSignBlock;
 import net.minecraft.block.WoodButtonBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -93,14 +95,13 @@ import net.minecraft.potion.Effects;
 import net.minecraftforge.common.ToolType;
 import tyrannotitanlib.library.base.block.TyrannoOreBlock;
 import tyrannotitanlib.library.base.block.TyrannoSaplingBlock;
-import tyrannotitanlib.library.base.block.TyrannoStandingSignBlock;
-import tyrannotitanlib.library.base.block.TyrannoWallSignBlock;
+import tyrannotitanlib.library.base.block.TyrannoSignManager;
 
 public class BlockInit 
 {		
 	//Soils
-	public static final Block DRIED_SOIL = BlockAndItemBuilder.create("dried_soil", new DriedSoilBlock(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).sound(SoundType.GRAVEL).randomTicks()));
-	public static final Block CRACKED_SOIL = BlockAndItemBuilder.create("cracked_soil", new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).sound(SoundType.GRAVEL)));
+	public static final Block DRIED_SOIL = BlockAndItemBuilder.create("dried_soil", new DriedSoilBlock(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).harvestTool(ToolType.SHOVEL).sound(SoundType.GRAVEL).randomTicks()));
+	public static final Block CRACKED_SOIL = BlockAndItemBuilder.create("cracked_soil", new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).harvestTool(ToolType.SHOVEL).sound(SoundType.GRAVEL)));
 
 	public static final Block MOSSY_SOIL = MossySoilBlock.create();
 	public static final Block MUD = BlockAndItemBuilder.create("mud", new Block(AbstractBlock.Properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)));
@@ -281,8 +282,8 @@ public class BlockInit
 	public static final Block ARAUCARIA_BUTTON = BlockAndItemBuilder.create("araucaria_button", new WoodButtonBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
 	public static final Block ARAUCARIA_TRAPDOOR = BlockAndItemBuilder.create("araucaria_trapdoor", new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block ARAUCARIA_DOOR = BlockAndItemBuilder.create("araucaria_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
-	public static final Block ARAUCARIA_SIGN = BlockBuilder.create("araucaria_sign", new TyrannoStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.ARAUCARIA));
-	public static final Block ARAUCARIA_WALL_SIGN = BlockBuilder.create("araucaria_wall_sign", new TyrannoWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.ARAUCARIA_SIGN), ModWoodType.ARAUCARIA));
+	public static final Block ARAUCARIA_SIGN = BlockBuilder.create("araucaria_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.ARAUCARIA));
+	public static final Block ARAUCARIA_WALL_SIGN = BlockBuilder.create("araucaria_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.ARAUCARIA_SIGN), ModWoodType.ARAUCARIA));
 	public static final Item ARAUCARIA_SIGN_ITEM = ModRegistry.register("araucaria_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), ARAUCARIA_SIGN, ARAUCARIA_WALL_SIGN));
 	public static final Item ARAUCARIA_BOAT = ModRegistry.register("araucaria_boat", new ModBoatItem(ModBoatType.ARAUCARIA));
 	
@@ -305,8 +306,8 @@ public class BlockInit
 	public static final Block CALAMITES_BUTTON = BlockAndItemBuilder.create("calamites_button", new WoodButtonBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
 	public static final Block CALAMITES_TRAPDOOR = BlockAndItemBuilder.create("calamites_trapdoor", new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block CALAMITES_DOOR = BlockAndItemBuilder.create("calamites_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
-	public static final Block CALAMITES_SIGN = BlockBuilder.create("calamites_sign", new TyrannoStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CALAMITES));
-	public static final Block CALAMITES_WALL_SIGN = BlockBuilder.create("calamites_wall_sign", new TyrannoWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.CALAMITES_SIGN), ModWoodType.CALAMITES));
+	public static final Block CALAMITES_SIGN = BlockBuilder.create("calamites_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CALAMITES));
+	public static final Block CALAMITES_WALL_SIGN = BlockBuilder.create("calamites_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.CALAMITES_SIGN), ModWoodType.CALAMITES));
 	public static final Item CALAMITES_SIGN_ITEM = ModRegistry.register("calamites_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), CALAMITES_SIGN, CALAMITES_WALL_SIGN));
 	public static final Item CALAMITES_BOAT = ModRegistry.register("calamites_boat", new ModBoatItem(ModBoatType.CALAMITES));
 	
@@ -329,8 +330,8 @@ public class BlockInit
 	public static final Block CONIFER_BUTTON = BlockAndItemBuilder.create("conifer_button", new WoodButtonBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
 	public static final Block CONIFER_TRAPDOOR = BlockAndItemBuilder.create("conifer_trapdoor", new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block CONIFER_DOOR = BlockAndItemBuilder.create("conifer_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
-	public static final Block CONIFER_SIGN = BlockBuilder.create("conifer_sign", new TyrannoStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CONIFER));
-	public static final Block CONIFER_WALL_SIGN = BlockBuilder.create("conifer_wall_sign", new TyrannoWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.CONIFER_SIGN), ModWoodType.CONIFER));
+	public static final Block CONIFER_SIGN = BlockBuilder.create("conifer_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CONIFER));
+	public static final Block CONIFER_WALL_SIGN = BlockBuilder.create("conifer_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.CONIFER_SIGN), ModWoodType.CONIFER));
 	public static final Item CONIFER_SIGN_ITEM = ModRegistry.register("conifer_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), CONIFER_SIGN, CONIFER_WALL_SIGN));
 	public static final Item CONIFER_BOAT = ModRegistry.register("conifer_boat", new ModBoatItem(ModBoatType.CONIFER));
 	
@@ -353,8 +354,8 @@ public class BlockInit
 	public static final Block CYPRESS_BUTTON = BlockAndItemBuilder.create("cypress_button", new WoodButtonBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
 	public static final Block CYPRESS_TRAPDOOR = BlockAndItemBuilder.create("cypress_trapdoor", new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block CYPRESS_DOOR = BlockAndItemBuilder.create("cypress_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
-	public static final Block CYPRESS_SIGN = BlockBuilder.create("cypress_sign", new TyrannoStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CYPRESS));
-	public static final Block CYPRESS_WALL_SIGN = BlockBuilder.create("cypress_wall_sign", new TyrannoWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.CYPRESS_SIGN), ModWoodType.CYPRESS));
+	public static final Block CYPRESS_SIGN = BlockBuilder.create("cypress_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CYPRESS));
+	public static final Block CYPRESS_WALL_SIGN = BlockBuilder.create("cypress_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.CYPRESS_SIGN), ModWoodType.CYPRESS));
 	public static final Item CYPRESS_SIGN_ITEM = ModRegistry.register("cypress_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), CYPRESS_SIGN, CYPRESS_WALL_SIGN));
 	public static final Item CYPRESS_BOAT = ModRegistry.register("cypress_boat", new ModBoatItem(ModBoatType.CYPRESS));
 	
@@ -377,8 +378,8 @@ public class BlockInit
 	public static final Block GINKGO_BUTTON = BlockAndItemBuilder.create("ginkgo_button", new WoodButtonBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
 	public static final Block GINKGO_TRAPDOOR = BlockAndItemBuilder.create("ginkgo_trapdoor", new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block GINKGO_DOOR = BlockAndItemBuilder.create("ginkgo_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
-	public static final Block GINKGO_SIGN = BlockBuilder.create("ginkgo_sign", new TyrannoStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.GINKGO));
-	public static final Block GINKGO_WALL_SIGN = BlockBuilder.create("ginkgo_wall_sign", new TyrannoWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.GINKGO_SIGN), ModWoodType.GINKGO));
+	public static final Block GINKGO_SIGN = BlockBuilder.create("ginkgo_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.GINKGO));
+	public static final Block GINKGO_WALL_SIGN = BlockBuilder.create("ginkgo_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.GINKGO_SIGN), ModWoodType.GINKGO));
 	public static final Item GINKGO_SIGN_ITEM = ModRegistry.register("ginkgo_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), GINKGO_SIGN, GINKGO_WALL_SIGN));
 	public static final Item GINKGO_BOAT = ModRegistry.register("ginkgo_boat", new ModBoatItem(ModBoatType.GINKGO));
 	
@@ -397,10 +398,10 @@ public class BlockInit
 	public static final Block SCORCHED_FENCE_GATE = BlockAndItemBuilder.create("scorched_fence_gate", new FenceGateBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block SCORCHED_PRESSURE_PLATE = BlockAndItemBuilder.create("scorched_pressure_plate", new PressurePlateBlock(Sensitivity.EVERYTHING, AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
 	public static final Block SCORCHED_BUTTON = BlockAndItemBuilder.create("scorched_button", new WoodButtonBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
-	public static final Block SCORCHED_TRAPDOOR = BlockAndItemBuilder.create("scorched_trapdoor", new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block SCORCHED_DOOR = BlockAndItemBuilder.create("scorched_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block SCORCHED_SIGN = BlockBuilder.create("scorched_sign", new TyrannoStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.SCORCHED));
-	public static final Block SCORCHED_WALL_SIGN = BlockBuilder.create("scorched_wall_sign", new TyrannoWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.SCORCHED_SIGN), ModWoodType.SCORCHED));
+	public static final Block SCORCHED_TRAPDOOR = BlockAndItemBuilder.create("scorched_trapdoor", new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
+	public static final Block SCORCHED_DOOR = BlockAndItemBuilder.create("scorched_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
+	public static final Block SCORCHED_SIGN = BlockBuilder.create("scorched_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.SCORCHED));
+	public static final Block SCORCHED_WALL_SIGN = BlockBuilder.create("scorched_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.SCORCHED_SIGN), ModWoodType.SCORCHED));
 	public static final Item SCORCHED_SIGN_ITEM = ModRegistry.register("scorched_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), SCORCHED_SIGN, SCORCHED_WALL_SIGN));
 	public static final Item SCORCHED_BOAT = ModRegistry.register("scorched_boat", new ModBoatItem(ModBoatType.SCORCHED));
 	
@@ -420,8 +421,8 @@ public class BlockInit
 	public static final Block SEQUOIA_BUTTON = BlockAndItemBuilder.create("sequoia_button", new WoodButtonBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
 	public static final Block SEQUOIA_TRAPDOOR = BlockAndItemBuilder.create("sequoia_trapdoor", new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block SEQUOIA_DOOR = BlockAndItemBuilder.create("sequoia_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
-	public static final Block SEQUOIA_SIGN = BlockBuilder.create("sequoia_sign", new TyrannoStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.SEQUOIA));
-	public static final Block SEQUOIA_WALL_SIGN = BlockBuilder.create("sequoia_wall_sign", new TyrannoWallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.SEQUOIA_SIGN), ModWoodType.SEQUOIA));
+	public static final Block SEQUOIA_SIGN = BlockBuilder.create("sequoia_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.SEQUOIA));
+	public static final Block SEQUOIA_WALL_SIGN = BlockBuilder.create("sequoia_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.SEQUOIA_SIGN), ModWoodType.SEQUOIA));
 	public static final Item SEQUOIA_SIGN_ITEM = ModRegistry.register("sequoia_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), SEQUOIA_SIGN, SEQUOIA_WALL_SIGN));
 	public static final Item SEQUOIA_BOAT = ModRegistry.register("sequoia_boat", new ModBoatItem(ModBoatType.SEQUOIA));
 	
@@ -524,8 +525,8 @@ public class BlockInit
 	public static final Block TILE_STAIRS = BlockAndItemBuilder.create("tile_stairs", new StairsBlock(() -> BlockInit.TILE.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).harvestTool(ToolType.AXE).harvestLevel(0).strength(2.7F, 1.9F).sound(SoundType.WOOD)));
 	public static final Block TILE_SLAB = BlockAndItemBuilder.create("tile_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).harvestTool(ToolType.AXE).harvestLevel(0).strength(2.7F, 1.9F).sound(SoundType.WOOD)));
 	
-	public static final Block GLASS_SIGN = BlockBuilder.create("glass_sign", new TyrannoStandingSignBlock(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS), ModWoodType.GLASS));
-	public static final Block GLASS_WALL_SIGN = BlockBuilder.create("glass_wall_sign", new TyrannoWallSignBlock(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS).dropsLike(BlockInit.GLASS_SIGN), ModWoodType.GLASS));
+	public static final Block GLASS_SIGN = BlockBuilder.create("glass_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS), ModWoodType.GLASS));
+	public static final Block GLASS_WALL_SIGN = BlockBuilder.create("glass_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS).dropsLike(BlockInit.GLASS_SIGN), ModWoodType.GLASS));
 	public static final Item GLASS_SIGN_ITEM = ModRegistry.register("glass_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), GLASS_SIGN, GLASS_WALL_SIGN));
 
 	public static final Block GLASS_SHOP_DOOR = BlockAndItemBuilder.create("glass_shop_door", new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));	
@@ -549,6 +550,23 @@ public class BlockInit
 	public static void init() 
 	{
 		ModUtils.LOGGER.debug("Registering Mod Blocks"); 
+		
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.ARAUCARIA_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.ARAUCARIA_WALL_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.CALAMITES_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.CALAMITES_WALL_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.CONIFER_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.CONIFER_WALL_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.CYPRESS_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.CYPRESS_WALL_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.GINKGO_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.GINKGO_WALL_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.GLASS_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.GLASS_WALL_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.SCORCHED_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.SCORCHED_WALL_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.SEQUOIA_SIGN);
+		TyrannoSignManager.registerSignBlock(() -> BlockInit.SEQUOIA_WALL_SIGN);
 		
 		ColouredGlassBlock.create();
 		ColouredGlassPaneBlock.create();

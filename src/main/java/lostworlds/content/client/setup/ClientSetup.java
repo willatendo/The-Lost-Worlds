@@ -1,8 +1,8 @@
 package lostworlds.content.client.setup;
 
-import lostworlds.content.ModUtils;
 import lostworlds.content.client.entity.render.ChilesaurusRenderer;
 import lostworlds.content.client.entity.render.ChilesaurusSkeletonRenderer;
+import lostworlds.content.client.entity.render.DilophosaurusRenderer;
 import lostworlds.content.client.entity.render.FossilPoacherRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusSkeletonRenderer;
@@ -41,19 +41,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.FoliageColors;
 import net.minecraft.world.IBlockDisplayReader;
 import net.minecraft.world.biome.BiomeColors;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-@EventBusSubscriber(modid = ModUtils.ID, bus = Bus.MOD, value = Dist.CLIENT)
 public class ClientSetup 
 {
-	@SubscribeEvent
-	public static void clientSetup(FMLClientSetupEvent event)
+	public static void blockColourSetup()
 	{
 		BlockColors blockcolours = Minecraft.getInstance().getBlockColors();
 		ItemColors itemcolours = Minecraft.getInstance().getItemColors();
@@ -98,7 +91,10 @@ public class ClientSetup
 				}, types.getEgg());
 			}
 		}
-
+	}
+	
+	public static void renderSetup()
+	{
 		RenderTypeLookup.setRenderLayer(BlockInit.ARCHAEFRUTUS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.POTTED_ARCHAEFRUTUS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.ALETHOPTERIS, RenderType.cutout());
@@ -179,6 +175,10 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.SECURITY_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.BACK_DOOR, RenderType.translucent());		
 		
+	}
+	
+	public static void screenSetup()
+	{
 		ScreenManager.register(ContainerInit.FOSSIL_CLEANER_CONTAINER, FossilCleanerScreen::new);
 		ScreenManager.register(ContainerInit.FOSSIL_GRINDER_CONTAINER, FossilGrinderScreen::new);
 		ScreenManager.register(ContainerInit.DNA_EXTRACTOR_CONTAINER, DNAExtractorScreen::new);
@@ -190,7 +190,10 @@ public class ClientSetup
 		ScreenManager.register(ContainerInit.DISPLAY_CASE_CONTAINER, DisplayCaseScreen::new);
 		ScreenManager.register(ContainerInit.ARCHAEOLOGY_CONTAINER, ArchaeologyTableScreen::new);
 		ScreenManager.register(ContainerInit.PALEONTOLOGY_CONTAINER, PaleontologyTableScreen::new);
-		
+	}
+	
+	public static void entityRenderSetup()
+	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.FOSSIL_POACHER, manager -> new FossilPoacherRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.MOD_BOAT, manager -> new ModBoatRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHARGED_CRYSTAL_SCARAB_GEM_ITEM, manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer()));
@@ -198,6 +201,7 @@ public class ClientSetup
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS, manager -> new ChilesaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS_SKELETON, manager -> new ChilesaurusSkeletonRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.DILOPHOSAURUS, manager -> new DilophosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS, manager -> new KentrosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS_SKELETON, manager -> new KentrosaurusSkeletonRenderer(manager));
 		

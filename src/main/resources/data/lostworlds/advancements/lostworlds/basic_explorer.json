@@ -16,7 +16,7 @@
 		"hidden": false
 	},
 	"criteria": {
-		"lostworlds:araucaria_forest": {
+		"araucaria_forest": {
 			"trigger": "minecraft:location",
 			"conditions": {
 				"location": {
@@ -24,7 +24,7 @@
 				}
 			}
 		},
-		"lostworlds:araucaria_forest_hills": {
+		"araucaria_forest_hills": {
 			"trigger": "minecraft:location",
 			"conditions": {
 				"location": {
@@ -32,7 +32,7 @@
 				}
 			}
 		},
-		"lostworlds:conifer_forest": {
+		"conifer_forest": {
 			"trigger": "minecraft:location",
 			"conditions": {
 				"location": {
@@ -40,7 +40,7 @@
 				}
 			}
 		},
-		"lostworlds:conifer_forest_hills": {
+		"conifer_forest_hills": {
 			"trigger": "minecraft:location",
 			"conditions": {
 				"location": {
@@ -48,7 +48,7 @@
 				}
 			}
 		},
-		"lostworlds:ginkgo_forest": {
+		"ginkgo_forest": {
 			"trigger": "minecraft:location",
 			"conditions": {
 				"location": {
@@ -56,7 +56,7 @@
 				}
 			}
 		},
-		"lostworlds:ginkgo_forest_hills": {
+		"ginkgo_forest_hills": {
 			"trigger": "minecraft:location",
 			"conditions": {
 				"location": {
@@ -64,7 +64,7 @@
 				}
 			}
 		},
-		"lostworlds:redwoods_forest": {
+		"redwoods_forest": {
 			"trigger": "minecraft:location",
 			"conditions": {
 				"location": {
@@ -72,7 +72,7 @@
 				}
 			}
 		},
-		"lostworlds:redwoods_forest_hills": {
+		"redwoods_forest_hills": {
 			"trigger": "minecraft:location",
 			"conditions": {
 				"location": {
@@ -80,7 +80,7 @@
 				}
 			}
 		},
-		"lostworlds:volcano": {
+		"volcano": {
 			"trigger": "minecraft:location",
 			"conditions": {
 				"location": {
@@ -91,31 +91,31 @@
 	},
 	"requirements": [
 		[
-			"lostworlds:araucaria_forest"
+			"araucaria_forest"
 		],
 		[
-			"lostworlds:araucaria_forest_hills"
+			"araucaria_forest_hills"
 		],	
 		[
-			"lostworlds:conifer_forest"
+			"conifer_forest"
 		],
 		[	
-			"lostworlds:conifer_forest_hills"
+			"conifer_forest_hills"
 		],
 		[	
-			"lostworlds:ginkgo_forest"
+			"ginkgo_forest"
 		],
 		[
-			"lostworlds:ginkgo_forest_hills"
+			"ginkgo_forest_hills"
 		],
 		[	
-			"lostworlds:redwoods_forest"
+			"redwoods_forest"
 		],
 		[	
-			"lostworlds:redwoods_forest_hills"
+			"redwoods_forest_hills"
 		],
 		[
-			"lostworlds:volcano"
+			"volcano"
 		]
 	]
 }

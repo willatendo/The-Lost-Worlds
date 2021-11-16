@@ -10,6 +10,16 @@
 		"data": "creatures/chilesaurus_info.json"
 	},
 	{
+		"name": "dilophosaurus",
+		"type": "text",
+		"data": "creatures/dilophosaurus.json"
+	},
+	{
+		"name": "dilophosaurus_info",
+		"type": "text",
+		"data": "creatures/dilophosaurus_info.json"
+	},
+	{
 		"name": "kentrosaurus",
 		"type": "text",
 		"data": "creatures/kentrosaurus.json"

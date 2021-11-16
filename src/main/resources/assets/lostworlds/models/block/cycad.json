@@ -1,8 +1,8 @@
 {
 	"textures": {
-		"1": "lostworlds:block/cycad_log",
-		"2": "lostworlds:block/cycad_head",
-		"3": "lostworlds:block/cycad_leaves",
+		"log": "lostworlds:block/cycad_log",
+		"head": "lostworlds:block/cycad_head",
+		"leaves": "lostworlds:block/cycad_leaves",
 		"particle": "lostworlds:block/cycad_head"
 	},
 	"elements": [
@@ -26,7 +26,7 @@
 						4
 					],
 					"rotation": 90,
-					"texture": "#1"
+					"texture": "log"
 				},
 				"east": {
 					"uv": [
@@ -36,7 +36,7 @@
 						4
 					],
 					"rotation": 90,
-					"texture": "#1"
+					"texture": "log"
 				},
 				"south": {
 					"uv": [
@@ -46,7 +46,7 @@
 						4
 					],
 					"rotation": 90,
-					"texture": "#1"
+					"texture": "log"
 				},
 				"west": {
 					"uv": [
@@ -56,7 +56,7 @@
 						4
 					],
 					"rotation": 90,
-					"texture": "#1"
+					"texture": "log"
 				},
 				"up": {
 					"uv": [
@@ -65,7 +65,7 @@
 						4,
 						4
 					],
-					"texture": "#1"
+					"texture": "log"
 				},
 				"down": {
 					"uv": [
@@ -74,7 +74,7 @@
 						4,
 						4
 					],
-					"texture": "#1"
+					"texture": "log"
 				}
 			}
 		},
@@ -98,7 +98,7 @@
 						4
 					],
 					"rotation": 90,
-					"texture": "#1"
+					"texture": "log"
 				},
 				"east": {
 					"uv": [
@@ -108,7 +108,7 @@
 						4
 					],
 					"rotation": 90,
-					"texture": "#1"
+					"texture": "log"
 				},
 				"south": {
 					"uv": [
@@ -118,7 +118,7 @@
 						4
 					],
 					"rotation": 90,
-					"texture": "#1"
+					"texture": "log"
 				},
 				"west": {
 					"uv": [
@@ -128,7 +128,7 @@
 						4
 					],
 					"rotation": 90,
-					"texture": "#1"
+					"texture": "log"
 				},
 				"up": {
 					"uv": [
@@ -137,7 +137,7 @@
 						4,
 						4
 					],
-					"texture": "#1"
+					"texture": "log"
 				},
 				"down": {
 					"uv": [
@@ -146,7 +146,7 @@
 						4,
 						4
 					],
-					"texture": "#1"
+					"texture": "log"
 				}
 			}
 		},
@@ -178,7 +178,7 @@
 						0,
 						16
 					],
-					"texture": "#2"
+					"texture": "head"
 				},
 				"east": {
 					"uv": [
@@ -187,7 +187,7 @@
 						16,
 						16
 					],
-					"texture": "#2"
+					"texture": "head"
 				},
 				"south": {
 					"uv": [
@@ -196,7 +196,7 @@
 						0,
 						16
 					],
-					"texture": "#2"
+					"texture": "head"
 				},
 				"west": {
 					"uv": [
@@ -205,7 +205,7 @@
 						16,
 						16
 					],
-					"texture": "#2"
+					"texture": "head"
 				},
 				"up": {
 					"uv": [
@@ -214,7 +214,7 @@
 						0,
 						16
 					],
-					"texture": "#2"
+					"texture": "head"
 				},
 				"down": {
 					"uv": [
@@ -223,7 +223,7 @@
 						0,
 						16
 					],
-					"texture": "#2"
+					"texture": "head"
 				}
 			}
 		},
@@ -255,7 +255,7 @@
 						0,
 						16
 					],
-					"texture": "#2"
+					"texture": "head"
 				},
 				"east": {
 					"uv": [
@@ -264,7 +264,7 @@
 						16,
 						16
 					],
-					"texture": "#2"
+					"texture": "head"
 				},
 				"south": {
 					"uv": [
@@ -273,7 +273,7 @@
 						0,
 						16
 					],
-					"texture": "#2"
+					"texture": "head"
 				},
 				"west": {
 					"uv": [
@@ -282,7 +282,7 @@
 						16,
 						16
 					],
-					"texture": "#2"
+					"texture": "head"
 				},
 				"up": {
 					"uv": [
@@ -291,7 +291,7 @@
 						0,
 						16
 					],
-					"texture": "#2"
+					"texture": "head"
 				},
 				"down": {
 					"uv": [
@@ -300,7 +300,7 @@
 						0,
 						16
 					],
-					"texture": "#2"
+					"texture": "head"
 				}
 			}
 		},
@@ -332,7 +332,7 @@
 						0,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"east": {
@@ -342,7 +342,7 @@
 						16,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"south": {
@@ -352,7 +352,7 @@
 						0,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"west": {
@@ -362,7 +362,7 @@
 						16,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"up": {
@@ -372,7 +372,7 @@
 						0,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"down": {
@@ -382,7 +382,7 @@
 						0,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				}
 			}
@@ -415,7 +415,7 @@
 						16,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"east": {
@@ -425,7 +425,7 @@
 						0,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"south": {
@@ -435,7 +435,7 @@
 						16,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"west": {
@@ -445,7 +445,7 @@
 						0,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"up": {
@@ -456,7 +456,7 @@
 						16
 					],
 					"rotation": 90,
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"down": {
@@ -467,7 +467,7 @@
 						16
 					],
 					"rotation": 270,
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				}
 			}
@@ -500,7 +500,7 @@
 						0,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"east": {
@@ -510,7 +510,7 @@
 						16,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"south": {
@@ -520,7 +520,7 @@
 						0,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"west": {
@@ -530,7 +530,7 @@
 						16,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"up": {
@@ -540,7 +540,7 @@
 						0,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"down": {
@@ -550,7 +550,7 @@
 						0,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				}
 			}
@@ -583,7 +583,7 @@
 						16,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"east": {
@@ -593,7 +593,7 @@
 						0,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"south": {
@@ -603,7 +603,7 @@
 						16,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"west": {
@@ -613,7 +613,7 @@
 						0,
 						16
 					],
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"up": {
@@ -624,7 +624,7 @@
 						16
 					],
 					"rotation": 90,
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				},
 				"down": {
@@ -635,7 +635,7 @@
 						16
 					],
 					"rotation": 270,
-					"texture": "#3",
+					"texture": "leaves",
 					"tintindex": 0
 				}
 			}

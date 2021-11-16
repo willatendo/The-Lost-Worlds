@@ -24,12 +24,13 @@ import net.minecraft.world.gen.feature.FlowersFeature;
 import net.minecraft.world.lighting.LightEngine;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.ToolType;
 
 public class MossySoilBlock extends Block implements IGrowable
 {
-	protected MossySoilBlock() 
+	public MossySoilBlock() 
 	{
-		super(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).randomTicks().sound(SoundType.GRAVEL));
+		super(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).harvestTool(ToolType.SHOVEL).randomTicks().sound(SoundType.GRAVEL));
 	}
 	
 	@Override
