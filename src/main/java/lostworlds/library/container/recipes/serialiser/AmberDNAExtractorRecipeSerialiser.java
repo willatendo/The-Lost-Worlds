@@ -1,8 +1,9 @@
-package lostworlds.library.container.recipes;
+package lostworlds.library.container.recipes.serialiser;
 
 import com.google.gson.JsonObject;
 
 import lostworlds.content.server.init.ItemInit;
+import lostworlds.library.container.recipes.AmberDNAExtractorRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.network.PacketBuffer;

@@ -1,14 +1,7 @@
 package lostworlds.library.block;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
-import com.google.common.collect.ImmutableList;
-
-import lostworlds.content.server.init.ItemInit;
-import lostworlds.content.server.init.PotionInit;
-import lostworlds.library.entity.ModDamageSources;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -17,14 +10,9 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.BoatEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.Item;
 import net.minecraft.pathfinding.PathType;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -44,7 +32,6 @@ public class VolcanicAshLayerBlock extends Block
 {
 	public static final IntegerProperty LAYERS = BlockStateProperties.LAYERS;
 	protected static final VoxelShape[] SHAPE_BY_LAYER = new VoxelShape[]{VoxelShapes.empty(), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
-	private static final List<Item> MASK_GEAR = ImmutableList.of(ItemInit.CLOTH_MASK);
 	
 	public VolcanicAshLayerBlock() 
 	{
@@ -108,7 +95,7 @@ public class VolcanicAshLayerBlock extends Block
 		}
 		else 
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -169,34 +156,5 @@ public class VolcanicAshLayerBlock extends Block
 		{
 			world.destroyBlock(new BlockPos(pos), true, entity);
 		}
-		
-		if(!world.isClientSide) 
-		{
-			if(entity instanceof LivingEntity) 
-			{
-				LivingEntity livingentity = (LivingEntity)entity;
-				if(!livingentity.isInvulnerableTo(ModDamageSources.ASHY_LUNG)) 
-				{
-					if(!isWearingMask(livingentity, EquipmentSlotType.HEAD))
-					{
-						livingentity.addEffect(new EffectInstance(PotionInit.ASHY_LUNG_EFFECT, 200));
-					}
-				}
-			}
-		}
-	}
-	
-	@Override
-	public void attack(BlockState state, World world, BlockPos pos, PlayerEntity player) 
-	{
-		if(!isWearingMask(player, EquipmentSlotType.HEAD))
-		{
-			player.addEffect(new EffectInstance(PotionInit.ASHY_LUNG_EFFECT, 200));
-		}
-	}
-	
-	public static boolean isWearingMask(LivingEntity living, EquipmentSlotType pieceValue)
-	{
-		return MASK_GEAR.contains(living.getItemBySlot(pieceValue).getItem());
 	}
 }

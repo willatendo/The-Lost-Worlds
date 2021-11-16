@@ -1,11 +1,13 @@
 package lostworlds.library.biome.biomes.permian.plains;
 
 import lostworlds.library.biome.ModBiomeFeatures;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.biome.Biome.RainType;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
+import net.minecraft.world.biome.ParticleEffectAmbience;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilders;
 import tyrannotitanlib.library.base.biome.BaseBiomes;
 import tyrannotitanlib.library.base.biome.TyrannoBiome;
@@ -14,7 +16,7 @@ public class PermianFloodBasalts extends TyrannoBiome
 {
 	public static final BiomeGenerationSettings.Builder GENERATION = new BiomeGenerationSettings.Builder();
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
-	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomes.BASE_WATER_COLOUR).waterFogColor(BaseBiomes.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomes.BASE_FOG_COLOUR).skyColor(calculateSkyColor(5.0F));
+	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomes.BASE_WATER_COLOUR).waterFogColor(BaseBiomes.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomes.BASE_FOG_COLOUR).skyColor(calculateSkyColor(5.0F)).ambientParticle(new ParticleEffectAmbience(ParticleTypes.ASH, 0.0625F));
 	
 	static
 	{

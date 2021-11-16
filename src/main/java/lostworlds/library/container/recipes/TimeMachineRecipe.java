@@ -16,7 +16,7 @@ public class TimeMachineRecipe implements IRecipe<IInventory>
 {
 	protected final Ingredient book;
 	protected final Ingredient power;
-	protected final ItemStack result;
+	public final ItemStack result;
 	protected final ResourceLocation id;
 
 	public TimeMachineRecipe(ResourceLocation recipeId, ItemStack result, Ingredient book, Ingredient power) 

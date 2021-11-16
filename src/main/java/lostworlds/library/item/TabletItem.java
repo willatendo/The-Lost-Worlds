@@ -9,6 +9,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class TabletItem extends ModItem
 {
@@ -17,6 +19,7 @@ public class TabletItem extends ModItem
 		super(new Properties().tab(ModUtils.ITEMS).stacksTo(1));
 	}
 	
+	@OnlyIn(Dist.CLIENT)
 	@Override
 	public ActionResultType interactLivingEntity(ItemStack stack, PlayerEntity playerEntity, LivingEntity entity, Hand hand) 
 	{

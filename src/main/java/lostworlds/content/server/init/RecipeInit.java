@@ -3,31 +3,30 @@ package lostworlds.content.server.init;
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
 import lostworlds.library.container.recipes.AmberDNAExtractorRecipe;
-import lostworlds.library.container.recipes.AmberDNAExtractorRecipeSerialiser;
 import lostworlds.library.container.recipes.AnalyzerRecipe;
-import lostworlds.library.container.recipes.AnalyzerRecipeSerialiser;
 import lostworlds.library.container.recipes.ArchaeologyTableRecipe;
 import lostworlds.library.container.recipes.CultivatorRecipe;
-import lostworlds.library.container.recipes.CultivatorRecipeSerialiser;
 import lostworlds.library.container.recipes.DNAExtractorRecipe;
-import lostworlds.library.container.recipes.DNAExtractorRecipeSerialiser;
 import lostworlds.library.container.recipes.DNAInjectorRecipe;
-import lostworlds.library.container.recipes.DNAInjectorRecipeSerialiser;
 import lostworlds.library.container.recipes.FossilCleanerRecipe;
-import lostworlds.library.container.recipes.FossilCleanerRecipeSerialiser;
 import lostworlds.library.container.recipes.FossilGrinderRecipe;
-import lostworlds.library.container.recipes.FossilGrinderRecipeSerialiser;
 import lostworlds.library.container.recipes.PaleontologyTableRecipe;
 import lostworlds.library.container.recipes.TimeMachineRecipe;
-import lostworlds.library.container.recipes.TimeMachineRecipeSerialiser;
+import lostworlds.library.container.recipes.serialiser.AmberDNAExtractorRecipeSerialiser;
+import lostworlds.library.container.recipes.serialiser.AnalyzerRecipeSerialiser;
+import lostworlds.library.container.recipes.serialiser.ArchaeologyTableRecipeSerialiser;
+import lostworlds.library.container.recipes.serialiser.CultivatorRecipeSerialiser;
+import lostworlds.library.container.recipes.serialiser.DNAExtractorRecipeSerialiser;
+import lostworlds.library.container.recipes.serialiser.DNAInjectorRecipeSerialiser;
+import lostworlds.library.container.recipes.serialiser.FossilCleanerRecipeSerialiser;
+import lostworlds.library.container.recipes.serialiser.FossilGrinderRecipeSerialiser;
+import lostworlds.library.container.recipes.serialiser.PaleontologyTableRecipeSerialiser;
+import lostworlds.library.container.recipes.serialiser.TimeMachineRecipeSerialiser;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.registry.Registry;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class RecipeInit 
 {
 	public static final IRecipeSerializer<FossilCleanerRecipe> FOSSIL_CLEANER_RECIPE_SERIALIZER = new FossilCleanerRecipeSerialiser();
@@ -37,8 +36,8 @@ public class RecipeInit
 	public static final IRecipeSerializer<AnalyzerRecipe> ANALYZER_RECIPE_SERIALIZER = new AnalyzerRecipeSerialiser();
 	public static final IRecipeSerializer<DNAInjectorRecipe> DNA_INJECTOR_RECIPE_SERIALIZER = new DNAInjectorRecipeSerialiser();
 	public static final IRecipeSerializer<CultivatorRecipe> CULTIVATOR_RECIPE_SERIALIZER = new CultivatorRecipeSerialiser();
-	public static final IRecipeSerializer<ArchaeologyTableRecipe> ARCHAEOLOGY_TABLE_RECIPE_SERIALIZER = new ArchaeologyTableRecipe.Serializer();
-	public static final IRecipeSerializer<PaleontologyTableRecipe> PALEONTOLOGY_TABLE_RECIPE_SERIALIZER = new PaleontologyTableRecipe.Serializer();
+	public static final IRecipeSerializer<ArchaeologyTableRecipe> ARCHAEOLOGY_TABLE_RECIPE_SERIALIZER = new ArchaeologyTableRecipeSerialiser();
+	public static final IRecipeSerializer<PaleontologyTableRecipe> PALEONTOLOGY_TABLE_RECIPE_SERIALIZER = new PaleontologyTableRecipeSerialiser();
 	public static final IRecipeSerializer<TimeMachineRecipe> TIME_MACHINE_RECIPE_SERIALIZER = new TimeMachineRecipeSerialiser();
 
 	public static final IRecipeType<FossilCleanerRecipe> FOSSIL_CLEANER_RECIPE = registerType("fossil_cleaner");

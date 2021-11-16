@@ -19,14 +19,12 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.IShapedRecipe;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory>, IShapedRecipe<ArchaeologyTableInventory> 
 {
@@ -45,11 +43,11 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 		}
 	}
 
-	private final int width;
-	private final int height;
-	private final NonNullList<Ingredient> recipeItems;
-	private final ItemStack result;
-	private final ResourceLocation id;
+	public final int width;
+	public final int height;
+	public final NonNullList<Ingredient> recipeItems;
+	public final ItemStack result;
+	public final ResourceLocation id;
 
 	public ArchaeologyTableRecipe(ResourceLocation id, int width, int height, NonNullList<Ingredient> recipeItems, ItemStack result) 
 	{
@@ -119,7 +117,7 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 		return false;
 	}
 
-	private boolean matches(ArchaeologyTableInventory inv, int width, int height, boolean b) 
+	public boolean matches(ArchaeologyTableInventory inv, int width, int height, boolean b) 
 	{
 		for(int i = 0; i < inv.getWidth(); ++i) 
 		{
@@ -178,7 +176,7 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 		return getHeight();
 	}
 
-	private static NonNullList<Ingredient> dissolvePattern(String[] stacks, Map<String, Ingredient> map, int width, int height) 
+	public static NonNullList<Ingredient> dissolvePattern(String[] stacks, Map<String, Ingredient> map, int width, int height) 
 	{
 		NonNullList<Ingredient> nonnulllist = NonNullList.withSize(width * height, Ingredient.EMPTY);
 		Set<String> set = Sets.newHashSet(map.keySet());
@@ -210,7 +208,7 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 		}
 	}
 	
-	static String[] shrink(String... stacks) 
+	public static String[] shrink(String... stacks) 
 	{
 		int i = Integer.MAX_VALUE;
 		int j = 0;
@@ -255,7 +253,7 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 		}
 	}
 
-	private static int firstNonSpace(String stacks) 
+	public static int firstNonSpace(String stacks) 
 	{
 		int i;
 		for(i = 0; i < stacks.length() && stacks.charAt(i) == ' '; ++i) { }
@@ -263,7 +261,7 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 		return i;
 	}
 
-	private static int lastNonSpace(String stacks) 
+	public static int lastNonSpace(String stacks) 
 	{
 		int i;
 		for(i = stacks.length() - 1; i >= 0 && stacks.charAt(i) == ' '; --i) { }
@@ -271,7 +269,7 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 		return i;
 	}
 
-	private static String[] patternFromJson(JsonArray array) 
+	public static String[] patternFromJson(JsonArray array) 
 	{
 		String[] astring = new String[array.size()];
 		if(astring.length > MAX_HEIGHT) 
@@ -304,7 +302,7 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 		}
 	}
 
-	private static Map<String, Ingredient> keyFromJson(JsonObject json) 
+	public static Map<String, Ingredient> keyFromJson(JsonObject json) 
 	{
 		Map<String, Ingredient> map = Maps.newHashMap();
 
@@ -343,47 +341,5 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 	public IRecipeType<?> getType() 
 	{
 		return RecipeInit.ARCHAEOLOGY_TABLE_RECIPE;
-	}
-
-	public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<ArchaeologyTableRecipe> 
-	{
-		public ArchaeologyTableRecipe fromJson(ResourceLocation id, JsonObject json) 
-		{
-			Map<String, Ingredient> map = ArchaeologyTableRecipe.keyFromJson(JSONUtils.getAsJsonObject(json, "key"));
-			String[] astring = ArchaeologyTableRecipe.shrink(ArchaeologyTableRecipe.patternFromJson(JSONUtils.getAsJsonArray(json, "pattern")));
-			int i = astring[0].length();
-			int j = astring.length;
-			NonNullList<Ingredient> nonnulllist = ArchaeologyTableRecipe.dissolvePattern(astring, map, i, j);
-			ItemStack itemstack = ArchaeologyTableRecipe.itemFromJson(JSONUtils.getAsJsonObject(json, "result"));
-			return new ArchaeologyTableRecipe(id, i, j, nonnulllist, itemstack);
-		}
-
-		public ArchaeologyTableRecipe fromNetwork(ResourceLocation id, PacketBuffer p_199426_2_) 
-		{
-			int i = p_199426_2_.readVarInt();
-			int j = p_199426_2_.readVarInt();
-			NonNullList<Ingredient> nonnulllist = NonNullList.withSize(i * j, Ingredient.EMPTY);
-
-			for(int k = 0; k < nonnulllist.size(); ++k) 
-			{
-				nonnulllist.set(k, Ingredient.fromNetwork(p_199426_2_));
-			}
-
-			ItemStack itemstack = p_199426_2_.readItem();
-			return new ArchaeologyTableRecipe(id, i, j, nonnulllist, itemstack);
-		}
-
-		public void toNetwork(PacketBuffer buffer, ArchaeologyTableRecipe recipe) 
-		{
-			buffer.writeVarInt(recipe.width);
-			buffer.writeVarInt(recipe.height);
-
-			for(Ingredient ingredient : recipe.recipeItems) 
-			{
-				ingredient.toNetwork(buffer);
-			}
-
-			buffer.writeItem(recipe.result);
-		}
 	}
 }

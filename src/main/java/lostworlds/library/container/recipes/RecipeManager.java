@@ -15,14 +15,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.potion.Potions;
+import tyrannotitanlib.library.base.recipe.TyrannoRandomOutputGenerator;
 
 public class RecipeManager 
 {
-	public static List<RandomRecipe> amberRecipes = new ArrayList<>();
+	public static List<TyrannoRandomOutputGenerator> amberRecipes = new ArrayList<>();
 	
 	public static void initAlternateRecipes()
 	{
-		RandomRecipe amber = new RandomRecipe(ItemInit.AMBER.getDefaultInstance());
+		TyrannoRandomOutputGenerator amber = new TyrannoRandomOutputGenerator(ItemInit.AMBER.getDefaultInstance());
 		for(DinoTypes types : DinoTypes.values()) 
 		{
 			amber.addOutput(() -> types.getDNA());
@@ -31,14 +32,14 @@ public class RecipeManager
 		registerAmber(amber);
 	}
 	
-	public static void registerAmber(RandomRecipe recipe) 
+	public static void registerAmber(TyrannoRandomOutputGenerator recipe) 
 	{
 		amberRecipes.add(recipe);
 	}
 	
-	public static RandomRecipe getItemForRecipe(ItemStack stack) 
+	public static TyrannoRandomOutputGenerator getItemForRecipe(ItemStack stack) 
 	{
-		for(RandomRecipe recipe : amberRecipes) 
+		for(TyrannoRandomOutputGenerator recipe : amberRecipes) 
 		{
 			if(ItemStack.matches(recipe.getInput(), stack))
 			{

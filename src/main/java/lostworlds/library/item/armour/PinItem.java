@@ -2,6 +2,7 @@ package lostworlds.library.item.armour;
 
 import java.util.List;
 
+import lostworlds.content.ClientUtils;
 import lostworlds.content.ModUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -20,7 +21,7 @@ public class PinItem extends ArmorItem
 	@Override
 	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> text, ITooltipFlag flag) 
 	{
-		if(ModUtils.isHoldingLeftShift()) 
+		if(ClientUtils.isHoldingLeftShift()) 
 		{
 			text.add(ModUtils.gTC("toolTip", "item.collectible"));
 		}

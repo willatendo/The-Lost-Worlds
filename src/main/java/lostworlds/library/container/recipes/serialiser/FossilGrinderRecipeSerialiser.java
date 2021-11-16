@@ -1,7 +1,8 @@
-package lostworlds.library.container.recipes;
+package lostworlds.library.container.recipes.serialiser;
 
 import com.google.gson.JsonObject;
 
+import lostworlds.library.container.recipes.FossilGrinderRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
