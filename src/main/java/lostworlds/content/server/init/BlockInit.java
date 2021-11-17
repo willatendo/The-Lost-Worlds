@@ -169,10 +169,10 @@ public class BlockInit
 	public static final Block JURASSIC_STONE_BRICK_SLAB = BlockAndItemBuilder.create("jurassic_stone_brick_slab", new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)));
 	public static final Block JURASSIC_STONE_BRICK_WALL = BlockAndItemBuilder.create("jurassic_stone_brick_wall", new WallBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)));
 	
-	public static final Block METEORIC_STONE = BlockAndItemBuilder.create("meteoric_stone", new Block(AbstractBlock.Properties.of(ModMaterials.OUT_OF_THIS_WORLD, MaterialColor.TERRACOTTA_BROWN).harvestLevel(3).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
-	public static final Block METEORIC_STONE_STAIRS = BlockAndItemBuilder.create("meteoric_stone_stairs", new StairsBlock(() -> BlockInit.METEORIC_STONE.defaultBlockState(), AbstractBlock.Properties.of(ModMaterials.OUT_OF_THIS_WORLD, MaterialColor.TERRACOTTA_BROWN).harvestLevel(3).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
-	public static final Block METEORIC_STONE_SLAB = BlockAndItemBuilder.create("meteoric_stone_slab", new SlabBlock(AbstractBlock.Properties.of(ModMaterials.OUT_OF_THIS_WORLD, MaterialColor.TERRACOTTA_BROWN).harvestLevel(3).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
-	public static final Block METEORIC_STONE_WALL = BlockAndItemBuilder.create("meteoric_stone_wall", new WallBlock(AbstractBlock.Properties.of(ModMaterials.OUT_OF_THIS_WORLD, MaterialColor.TERRACOTTA_BROWN).harvestLevel(3).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
+	public static final Block METEORIC_STONE = BlockAndItemBuilder.create("meteoric_stone", new Block(AbstractBlock.Properties.of(ModMaterials.OUT_OF_THIS_WORLD, MaterialColor.TERRACOTTA_BROWN).harvestLevel(3).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
+	public static final Block METEORIC_STONE_STAIRS = BlockAndItemBuilder.create("meteoric_stone_stairs", new StairsBlock(() -> BlockInit.METEORIC_STONE.defaultBlockState(), AbstractBlock.Properties.of(ModMaterials.OUT_OF_THIS_WORLD, MaterialColor.TERRACOTTA_BROWN).harvestLevel(3).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
+	public static final Block METEORIC_STONE_SLAB = BlockAndItemBuilder.create("meteoric_stone_slab", new SlabBlock(AbstractBlock.Properties.of(ModMaterials.OUT_OF_THIS_WORLD, MaterialColor.TERRACOTTA_BROWN).harvestLevel(3).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
+	public static final Block METEORIC_STONE_WALL = BlockAndItemBuilder.create("meteoric_stone_wall", new WallBlock(AbstractBlock.Properties.of(ModMaterials.OUT_OF_THIS_WORLD, MaterialColor.TERRACOTTA_BROWN).harvestLevel(3).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
 	
 	public static final Block LATERLITE = BlockAndItemBuilder.create("laterlite", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.DIRT).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
 	public static final Block LATERLITE_STAIRS = BlockAndItemBuilder.create("laterlite_stairs", new StairsBlock(() -> BlockInit.LATERLITE.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.DIRT).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
@@ -227,8 +227,6 @@ public class BlockInit
 	public static final Block LARGE_PLASTERED_FOSSILISED_EGG = BlockAndItemBuilder.create("large_plastered_fossilized_egg", new LargePlasteredFossilizedEggBlock(AbstractBlock.Properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()));
 	
 	//Overworld Ores
-	public static final Block COPPER_ORE = BlockAndItemBuilder.create("copper_ore", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.0F).sound(SoundType.STONE)));
-
 	public static final Block BASALT_DIAMOND_ORE = BlockAndItemBuilder.create("basalt_diamond_ore", new ModOreRotatedPillerBlock(AbstractBlock.Properties.copy(Blocks.BASALT)));
 
 	//Machines
@@ -287,8 +285,8 @@ public class BlockInit
 	public static final Item ARAUCARIA_SIGN_ITEM = ModRegistry.register("araucaria_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), ARAUCARIA_SIGN, ARAUCARIA_WALL_SIGN));
 	public static final Item ARAUCARIA_BOAT = ModRegistry.register("araucaria_boat", new ModBoatItem(ModBoatType.ARAUCARIA));
 	
-	public static final Block PETRIFIED_ARAUCARIA_LOG = BlockAndItemBuilder.create("petrified_araucaria_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND), ItemInit.ARAUCARIA_BARK_SAMPLE));
-	public static final Block STRIPPED_PETRIFIED_ARAUCARIA_LOG = BlockAndItemBuilder.create("stripped_petrified_araucaria_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND)));
+	public static final Block PETRIFIED_ARAUCARIA_LOG = BlockAndItemBuilder.create("petrified_araucaria_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), ItemInit.ARAUCARIA_BARK_SAMPLE));
+	public static final Block STRIPPED_PETRIFIED_ARAUCARIA_LOG = BlockAndItemBuilder.create("stripped_petrified_araucaria_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 	
 	//Calamite
 	public static final Block CALAMITES_LOG = BlockAndItemBuilder.create("calamites_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -311,8 +309,8 @@ public class BlockInit
 	public static final Item CALAMITES_SIGN_ITEM = ModRegistry.register("calamites_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), CALAMITES_SIGN, CALAMITES_WALL_SIGN));
 	public static final Item CALAMITES_BOAT = ModRegistry.register("calamites_boat", new ModBoatItem(ModBoatType.CALAMITES));
 	
-	public static final Block PETRIFIED_CALAMITES_LOG = BlockAndItemBuilder.create("petrified_calamites_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND), ItemInit.CALAMITES_BARK_SAMPLE));
-	public static final Block STRIPPED_PETRIFIED_CALAMITES_LOG = BlockAndItemBuilder.create("stripped_petrified_calamites_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND)));
+	public static final Block PETRIFIED_CALAMITES_LOG = BlockAndItemBuilder.create("petrified_calamites_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), ItemInit.CALAMITES_BARK_SAMPLE));
+	public static final Block STRIPPED_PETRIFIED_CALAMITES_LOG = BlockAndItemBuilder.create("stripped_petrified_calamites_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 	
 	//Conifer
 	public static final Block CONIFER_LOG = BlockAndItemBuilder.create("conifer_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -335,8 +333,8 @@ public class BlockInit
 	public static final Item CONIFER_SIGN_ITEM = ModRegistry.register("conifer_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), CONIFER_SIGN, CONIFER_WALL_SIGN));
 	public static final Item CONIFER_BOAT = ModRegistry.register("conifer_boat", new ModBoatItem(ModBoatType.CONIFER));
 	
-	public static final Block PETRIFIED_CONIFER_LOG = BlockAndItemBuilder.create("petrified_conifer_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND), ItemInit.CONIFER_BARK_SAMPLE));
-	public static final Block STRIPPED_PETRIFIED_CONIFER_LOG = BlockAndItemBuilder.create("stripped_petrified_conifer_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND)));
+	public static final Block PETRIFIED_CONIFER_LOG = BlockAndItemBuilder.create("petrified_conifer_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), ItemInit.CONIFER_BARK_SAMPLE));
+	public static final Block STRIPPED_PETRIFIED_CONIFER_LOG = BlockAndItemBuilder.create("stripped_petrified_conifer_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
 	//Cypress
 	public static final Block CYPRESS_LOG = BlockAndItemBuilder.create("cypress_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -359,8 +357,8 @@ public class BlockInit
 	public static final Item CYPRESS_SIGN_ITEM = ModRegistry.register("cypress_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), CYPRESS_SIGN, CYPRESS_WALL_SIGN));
 	public static final Item CYPRESS_BOAT = ModRegistry.register("cypress_boat", new ModBoatItem(ModBoatType.CYPRESS));
 	
-	public static final Block PETRIFIED_CYPRESS_LOG = BlockAndItemBuilder.create("petrified_cypress_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND), ItemInit.CYPRESS_BARK_SAMPLE));
-	public static final Block STRIPPED_PETRIFIED_CYPRESS_LOG = BlockAndItemBuilder.create("stripped_petrified_cypress_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND)));
+	public static final Block PETRIFIED_CYPRESS_LOG = BlockAndItemBuilder.create("petrified_cypress_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), ItemInit.CYPRESS_BARK_SAMPLE));
+	public static final Block STRIPPED_PETRIFIED_CYPRESS_LOG = BlockAndItemBuilder.create("stripped_petrified_cypress_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 	
 	//Ginkgo
 	public static final Block GINKGO_LOG = BlockAndItemBuilder.create("ginkgo_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -383,8 +381,8 @@ public class BlockInit
 	public static final Item GINKGO_SIGN_ITEM = ModRegistry.register("ginkgo_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), GINKGO_SIGN, GINKGO_WALL_SIGN));
 	public static final Item GINKGO_BOAT = ModRegistry.register("ginkgo_boat", new ModBoatItem(ModBoatType.GINKGO));
 	
-	public static final Block PETRIFIED_GINKGO_LOG = BlockAndItemBuilder.create("petrified_ginkgo_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND), ItemInit.GINKGO_BARK_SAMPLE));
-	public static final Block STRIPPED_PETRIFIED_GINKGO_LOG = BlockAndItemBuilder.create("stripped_petrified_ginkgo_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND)));
+	public static final Block PETRIFIED_GINKGO_LOG = BlockAndItemBuilder.create("petrified_ginkgo_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), ItemInit.GINKGO_BARK_SAMPLE));
+	public static final Block STRIPPED_PETRIFIED_GINKGO_LOG = BlockAndItemBuilder.create("stripped_petrified_ginkgo_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 	
 	//Scorched
 	public static final Block SCORCHED_LOG = BlockAndItemBuilder.create("scorched_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_BLACK).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -406,28 +404,28 @@ public class BlockInit
 	public static final Item SCORCHED_BOAT = ModRegistry.register("scorched_boat", new ModBoatItem(ModBoatType.SCORCHED));
 	
 	//Sequoia
-	public static final Block SEQUOIA_LOG = BlockAndItemBuilder.create("sequoia_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block STRIPPED_SEQUOIA_LOG = BlockAndItemBuilder.create("stripped_sequoia_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block SEQUOIA_WOOD = BlockAndItemBuilder.create("sequoia_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block STRIPPED_SEQUOIA_WOOD = BlockAndItemBuilder.create("stripped_sequoia_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block SEQUOIA_LOG = BlockAndItemBuilder.create("sequoia_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block STRIPPED_SEQUOIA_LOG = BlockAndItemBuilder.create("stripped_sequoia_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block SEQUOIA_WOOD = BlockAndItemBuilder.create("sequoia_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block STRIPPED_SEQUOIA_WOOD = BlockAndItemBuilder.create("stripped_sequoia_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block SEQUOIA_LEAVES = BlockAndItemBuilder.create("sequoia_leaves", new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES, MaterialColor.COLOR_GREEN).strength(0.3F).noOcclusion().sound(SoundType.GRASS)));
 	public static final Block SEQUOIA_SAPLING = BlockAndItemBuilder.create("sequoia_sapling", new TyrannoSaplingBlock(new SequoiaTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final Block SEQUOIA_PLANKS = BlockAndItemBuilder.create("sequoia_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block SEQUOIA_STAIRS = BlockAndItemBuilder.create("sequoia_stairs", new StairsBlock(() -> BlockInit.CONIFER_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block SEQUOIA_SLAB = BlockAndItemBuilder.create("sequoia_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block SEQUOIA_FENCE = BlockAndItemBuilder.create("sequoia_fence", new FenceBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block SEQUOIA_FENCE_GATE = BlockAndItemBuilder.create("sequoia_fence_gate", new FenceGateBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block SEQUOIA_PRESSURE_PLATE = BlockAndItemBuilder.create("sequoia_pressure_plate", new PressurePlateBlock(Sensitivity.EVERYTHING, AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
-	public static final Block SEQUOIA_BUTTON = BlockAndItemBuilder.create("sequoia_button", new WoodButtonBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
-	public static final Block SEQUOIA_TRAPDOOR = BlockAndItemBuilder.create("sequoia_trapdoor", new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
-	public static final Block SEQUOIA_DOOR = BlockAndItemBuilder.create("sequoia_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
-	public static final Block SEQUOIA_SIGN = BlockBuilder.create("sequoia_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.SEQUOIA));
-	public static final Block SEQUOIA_WALL_SIGN = BlockBuilder.create("sequoia_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.SEQUOIA_SIGN), ModWoodType.SEQUOIA));
+	public static final Block SEQUOIA_PLANKS = BlockAndItemBuilder.create("sequoia_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block SEQUOIA_STAIRS = BlockAndItemBuilder.create("sequoia_stairs", new StairsBlock(() -> BlockInit.CONIFER_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block SEQUOIA_SLAB = BlockAndItemBuilder.create("sequoia_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block SEQUOIA_FENCE = BlockAndItemBuilder.create("sequoia_fence", new FenceBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block SEQUOIA_FENCE_GATE = BlockAndItemBuilder.create("sequoia_fence_gate", new FenceGateBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+	public static final Block SEQUOIA_PRESSURE_PLATE = BlockAndItemBuilder.create("sequoia_pressure_plate", new PressurePlateBlock(Sensitivity.EVERYTHING, AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
+	public static final Block SEQUOIA_BUTTON = BlockAndItemBuilder.create("sequoia_button", new WoodButtonBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noCollission().sound(SoundType.WOOD)));
+	public static final Block SEQUOIA_TRAPDOOR = BlockAndItemBuilder.create("sequoia_trapdoor", new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
+	public static final Block SEQUOIA_DOOR = BlockAndItemBuilder.create("sequoia_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
+	public static final Block SEQUOIA_SIGN = BlockBuilder.create("sequoia_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.SEQUOIA));
+	public static final Block SEQUOIA_WALL_SIGN = BlockBuilder.create("sequoia_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(BlockInit.SEQUOIA_SIGN), ModWoodType.SEQUOIA));
 	public static final Item SEQUOIA_SIGN_ITEM = ModRegistry.register("sequoia_sign", new SignItem(new Properties().tab(ModUtils.BLOCKS).stacksTo(16), SEQUOIA_SIGN, SEQUOIA_WALL_SIGN));
 	public static final Item SEQUOIA_BOAT = ModRegistry.register("sequoia_boat", new ModBoatItem(ModBoatType.SEQUOIA));
 	
-	public static final Block PETRIFIED_SEQUOIA_LOG = BlockAndItemBuilder.create("petrified_sequoia_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND), ItemInit.SEQUOIA_BARK_SAMPLE));
-	public static final Block STRIPPED_PETRIFIED_SEQUOIA_LOG = BlockAndItemBuilder.create("stripped_petrified_sequoia_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND)));
+	public static final Block PETRIFIED_SEQUOIA_LOG = BlockAndItemBuilder.create("petrified_sequoia_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_RED).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), ItemInit.SEQUOIA_BARK_SAMPLE));
+	public static final Block STRIPPED_PETRIFIED_SEQUOIA_LOG = BlockAndItemBuilder.create("stripped_petrified_sequoia_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_RED).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 	
 	//Sigillaria
 	

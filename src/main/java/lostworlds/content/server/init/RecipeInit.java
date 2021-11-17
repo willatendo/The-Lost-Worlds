@@ -22,10 +22,8 @@ import lostworlds.library.container.recipes.serialiser.FossilCleanerRecipeSerial
 import lostworlds.library.container.recipes.serialiser.FossilGrinderRecipeSerialiser;
 import lostworlds.library.container.recipes.serialiser.PaleontologyTableRecipeSerialiser;
 import lostworlds.library.container.recipes.serialiser.TimeMachineRecipeSerialiser;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.util.registry.Registry;
 
 public class RecipeInit 
 {
@@ -40,16 +38,16 @@ public class RecipeInit
 	public static final IRecipeSerializer<PaleontologyTableRecipe> PALEONTOLOGY_TABLE_RECIPE_SERIALIZER = new PaleontologyTableRecipeSerialiser();
 	public static final IRecipeSerializer<TimeMachineRecipe> TIME_MACHINE_RECIPE_SERIALIZER = new TimeMachineRecipeSerialiser();
 
-	public static final IRecipeType<FossilCleanerRecipe> FOSSIL_CLEANER_RECIPE = registerType("fossil_cleaner");
-	public static final IRecipeType<FossilGrinderRecipe> FOSSIL_GRINDER_RECIPE = registerType("fossil_grinder");
-	public static final IRecipeType<DNAExtractorRecipe> DNA_EXTRACTOR_RECIPE = registerType("dna_extractor");
-	public static final IRecipeType<AmberDNAExtractorRecipe> AMBER_DNA_EXTRACTOR_RECIPE = registerType("amber_dna_extractor");
-	public static final IRecipeType<AnalyzerRecipe> ANALYZER_RECIPE = registerType("analyzer");
-	public static final IRecipeType<DNAInjectorRecipe> DNA_INJECTOR_RECIPE = registerType("dna_injector");
-	public static final IRecipeType<CultivatorRecipe> CULTIVATOR_RECIPE = registerType("cultivator");
-	public static final IRecipeType<ArchaeologyTableRecipe> ARCHAEOLOGY_TABLE_RECIPE = registerType("archaeology_table");
-	public static final IRecipeType<PaleontologyTableRecipe> PALEONTOLOGY_TABLE_RECIPE = registerType("paleontology_table");
-	public static final IRecipeType<TimeMachineRecipe> TIME_MACHINE_RECIPE = registerType("time_machine");
+	public static final IRecipeType<FossilCleanerRecipe> FOSSIL_CLEANER_RECIPE = ModRegistry.register("fossil_cleaner");
+	public static final IRecipeType<FossilGrinderRecipe> FOSSIL_GRINDER_RECIPE = ModRegistry.register("fossil_grinder");
+	public static final IRecipeType<DNAExtractorRecipe> DNA_EXTRACTOR_RECIPE = ModRegistry.register("dna_extractor");
+	public static final IRecipeType<AmberDNAExtractorRecipe> AMBER_DNA_EXTRACTOR_RECIPE = ModRegistry.register("amber_dna_extractor");
+	public static final IRecipeType<AnalyzerRecipe> ANALYZER_RECIPE = ModRegistry.register("analyzer");
+	public static final IRecipeType<DNAInjectorRecipe> DNA_INJECTOR_RECIPE = ModRegistry.register("dna_injector");
+	public static final IRecipeType<CultivatorRecipe> CULTIVATOR_RECIPE = ModRegistry.register("cultivator");
+	public static final IRecipeType<ArchaeologyTableRecipe> ARCHAEOLOGY_TABLE_RECIPE = ModRegistry.register("archaeology_table");
+	public static final IRecipeType<PaleontologyTableRecipe> PALEONTOLOGY_TABLE_RECIPE = ModRegistry.register("paleontology_table");
+	public static final IRecipeType<TimeMachineRecipe> TIME_MACHINE_RECIPE = ModRegistry.register("time_machine");
 
 	public static final IRecipeSerializer<?> FOSSIL_CLEANER_SERIALIZER = ModRegistry.register("fossil_cleaner", FOSSIL_CLEANER_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> FOSSIL_GRINDER_SERIALIZER = ModRegistry.register("fossil_grinder", FOSSIL_GRINDER_RECIPE_SERIALIZER);
@@ -62,20 +60,5 @@ public class RecipeInit
 	public static final IRecipeSerializer<?> PALEONTOLOGY_TABLE_SERIALIZER = ModRegistry.register("paleontology_table", PALEONTOLOGY_TABLE_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> TIME_MACHINE_SERIALIZER = ModRegistry.register("time_machine", TIME_MACHINE_RECIPE_SERIALIZER);
 	
-	private static class RecipeType<T extends IRecipe<?>> implements IRecipeType<T> 
-	{
-		@Override
-		public String toString() 
-		{
-			return Registry.RECIPE_TYPE.getKey(this).toString();
-		}
-	}
-	
-	private static <T extends IRecipeType> T registerType(String recipeTypeId) 
-	{
-		return (T) Registry.register(Registry.RECIPE_TYPE, ModUtils.rL(recipeTypeId), new RecipeType<>());
-	}
-	
-	//Registry
 	public static void init() { ModUtils.LOGGER.debug("Registering Mod Recipes"); }
 }

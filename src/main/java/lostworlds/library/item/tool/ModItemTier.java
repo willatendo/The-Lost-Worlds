@@ -1,89 +1,33 @@
 package lostworlds.library.item.tool;
 
-import java.util.function.Supplier;
-
-import net.minecraft.item.IItemTier;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.LazyValue;
+import tyrannotitanlib.library.base.item.TyrannoItemTeir;
 
-public enum ModItemTier implements IItemTier
+public class ModItemTier
 {
-	LEATHER(0, 59, 2.0F, 0.0F, 15, () -> 
+	public static final TyrannoItemTeir LEATHER = new TyrannoItemTeir(0, 59, 2.0F, 0.0F, 15, () -> 
 	{
 		return Ingredient.of(Items.STRING);
-	}),
-	GOLD(0, 32, 2.0F, 0.0F, 22, () -> 
+	});
+	public static final TyrannoItemTeir GOLD = new TyrannoItemTeir(0, 32, 2.0F, 0.0F, 22, () -> 
 	{
 		return Ingredient.of(Items.STRING);
-	}),
-	IRON(0, 250, 2.0F, 2.0F, 14, () -> 
+	});
+	public static final TyrannoItemTeir IRON = new TyrannoItemTeir(2, 250, 2.0F, 2.0F, 14, () -> 
 	{
 		return Ingredient.of(Items.STRING);
-	}),
-	DIAMOND(0, 1561, 2.0F, 3.0F, 10, () -> 
+	});
+	public static final TyrannoItemTeir DIAMOND = new TyrannoItemTeir(3, 1561, 2.0F, 3.0F, 10, () -> 
 	{
 		return Ingredient.of(Items.STRING);
-	}),
-	NETHERITE(0, 2031, 2.0F, 4.0F, 15, () -> 
+	});
+	public static final TyrannoItemTeir NETHERITE = new TyrannoItemTeir(4, 2031, 2.0F, 4.0F, 15, () -> 
 	{
 		return Ingredient.of(Items.STRING);
-	}),	
-	CRYSTAL_SCARAB(0, 13616, 50.0F, 80.0F, 0, () -> 
+	});	
+	public static final TyrannoItemTeir CRYSTAL_SCARAB = new TyrannoItemTeir(5, 13616, 50.0F, 80.0F, 0, () -> 
 	{
 		return null; 
-	}); 
-	
-	private final int level;
-	private final int uses;
-	private final float speed;
-	private final float damage;
-	private final int enchantmentValue;
-	private final LazyValue<Ingredient> repairIngredient;
-	
-	private ModItemTier(int level, int uses, float speed, float damage, int enchantmentValue, Supplier<Ingredient> repairIngredient) 
-	{
-		this.level = level;
-		this.uses = uses;
-		this.speed = speed;
-		this.damage = damage;
-		this.enchantmentValue = enchantmentValue;
-		this.repairIngredient = new LazyValue<>(repairIngredient);
-	}
-	
-	@Override
-	public int getUses() 
-	{
-		return this.uses;
-	}
-	
-	@Override
-	public float getSpeed() 
-	{
-		return this.speed;
-	}
-	
-	@Override
-	public float getAttackDamageBonus() 
-	{
-		return this.damage;
-	}
-	
-	@Override
-	public int getLevel() 
-	{
-		return this.level;
-	}
-	
-	@Override
-	public int getEnchantmentValue() 
-	{
-		return this.enchantmentValue;
-	}
-	
-	@Override
-	public Ingredient getRepairIngredient() 
-	{
-		return this.repairIngredient.get();
-	}
+	});
 }

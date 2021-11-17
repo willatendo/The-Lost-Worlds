@@ -35,6 +35,7 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.BannerPattern;
@@ -68,6 +69,11 @@ import tyrannotitanlib.library.tyrannoregister.TyrannoRegister;
 public class ModRegistry 
 {
 	//Registers
+	public static <T extends IRecipeType> T register(String id)
+	{
+		return TyrannoRegister.registerType(ModUtils.ID, id);
+	}
+	
 	public static IRecipeSerializer<?> register(String id, IRecipeSerializer<?> recipe)
 	{
 		TyrannoRegister.register(recipe, id);

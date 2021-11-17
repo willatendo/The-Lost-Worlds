@@ -22,6 +22,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ToolType;
 
 public class TimeMachineBlock extends Block
 {
@@ -30,7 +31,7 @@ public class TimeMachineBlock extends Block
 	
 	protected TimeMachineBlock() 
 	{
-		super(Properties.of(ModMaterials.MAGIC).harvestLevel(4).requiresCorrectToolForDrops().strength(50.0F, 1200.0F));
+		super(Properties.of(ModMaterials.MAGIC).harvestTool(ToolType.PICKAXE).harvestLevel(5).requiresCorrectToolForDrops().strength(50.0F, 1200.0F));
 	} 
 	
 	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) 

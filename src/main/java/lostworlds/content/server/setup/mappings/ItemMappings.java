@@ -13,6 +13,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import tyrannotitanlib.content.server.init.TyrannoItems;
 
 @EventBusSubscriber(modid = ModUtils.ID, bus = Bus.MOD)
 public class ItemMappings 
@@ -21,6 +22,9 @@ public class ItemMappings
 	{
 		private static final long serialVersionUID = 2729763913422843325L;
 		{
+			put(ModUtils.rL("copper_ingot"), TyrannoItems.COPPER_INGOT);
+			put(ModUtils.rL("copper_nugget"), TyrannoItems.COPPER_NUGGET);
+
 			put(ModUtils.rL("permian_time_book"), ItemInit.PERMIAN_PERIOD_TIME_BOOK);
 			put(ModUtils.rL("jurassic_time_book"), ItemInit.JURASSIC_PERIOD_TIME_BOOK);
 			put(ModUtils.rL("broken_crystal_scarab_gem"), CrystalScarabGemItem.Gems.CRYSTAL_SCARAB_ABDOMEN.getItem());

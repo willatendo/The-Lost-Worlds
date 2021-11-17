@@ -183,9 +183,6 @@ public class ItemInit
 	
 	public static final Item MUD_BALL = ModRegistry.register("mud_ball", new ModItem());
 
-	public static final Item COPPER_INGOT = ModRegistry.register("copper_ingot", new ModItem());
-	public static final Item COPPER_NUGGET = ModRegistry.register("copper_nugget", new ModItem());
-
 	public static final Item COPPER_WIRE = ModRegistry.register("copper_wire", new ModItem());
 	public static final Item COMPUTER_FAN = ModRegistry.register("computer_fan", new ModItem());
 	public static final Item COMPUTER_SCREEN = ModRegistry.register("computer_screen", new ModItem());

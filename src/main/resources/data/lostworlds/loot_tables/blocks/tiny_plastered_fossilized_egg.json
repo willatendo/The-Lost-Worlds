@@ -1,0 +1,258 @@
+{
+	"type": "minecraft:block",
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "2"
+									}
+								}
+							],
+							"count": 2
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "3"
+									}
+								}
+							],
+							"count": 3
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "4"
+									}
+								}
+							],
+							"count": 4
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "5"
+									}
+								}
+							],
+							"count": 5
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "6"
+									}
+								}
+							],
+							"count": 6
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "7"
+									}
+								}
+							],
+							"count": 7
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "8"
+									}
+								}
+							],
+							"count": 8
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "9"
+									}
+								}
+							],
+							"count": 9
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "10"
+									}
+								}
+							],
+							"count": 10
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "11"
+									}
+								}
+							],
+							"count": 11
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "12"
+									}
+								}
+							],
+							"count": 12
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "13"
+									}
+								}
+							],
+							"count": 13
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "14"
+									}
+								}
+							],
+							"count": 14
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "15"
+									}
+								}
+							],
+							"count": 15
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "16"
+									}
+								}
+							],
+							"count": 16
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "17"
+									}
+								}
+							],
+							"count": 17
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "18"
+									}
+								}
+							],
+							"count": 18
+						},
+						{
+							"function": "minecraft:set_count",
+							"conditions": [
+								{
+									"condition": "minecraft:block_state_property",
+									"block": "lostworlds:tiny_plastered_fossilized_egg",
+									"properties": {
+										"tiny_eggs": "19"
+									}
+								}
+							],
+							"count": 19
+						},
+						{
+							"function": "minecraft:explosion_decay"
+						}
+					],
+					"name": "lostworlds:tiny_plastered_fossilized_egg"
+				}
+			],
+			"conditions": [
+				{
+					"condition": "minecraft:survives_explosion"
+				}
+			]
+		}
+	]
+}

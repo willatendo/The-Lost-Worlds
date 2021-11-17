@@ -15,6 +15,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import tyrannotitanlib.content.server.init.TyrannoBlocks;
 
 @EventBusSubscriber(modid = ModUtils.ID, bus = Bus.MOD)
 public class BlockMappings 
@@ -23,6 +24,8 @@ public class BlockMappings
 	{
 		private static final long serialVersionUID = 2729764913422843323L;
 		{
+			put(ModUtils.rL("copper_ore"), TyrannoBlocks.COPPER_ORE);
+
 			put(ModUtils.rL("small_permian_desert_plant"), BlockInit.PERMIAN_DESERT_SHRUB);
 			put(ModUtils.rL("medium_permian_desert_plant"), BlockInit.PERMIAN_DESERT_SHRUB);
 			put(ModUtils.rL("large_permian_desert_plant"), BlockInit.PERMIAN_DESERT_SHRUB);

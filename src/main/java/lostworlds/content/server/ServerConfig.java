@@ -26,11 +26,6 @@ public class ServerConfig
 
 	public final BooleanValue cypressTreesInSwamps;
 
-	public final BooleanValue copperOreGeneration;
-	public final IntValue copperVeinSize;
-	public final IntValue copperRange;
-	public final IntValue copperCountPerChunk;
-
 	public final BooleanValue siltPatchGeneration;
 	public final IntValue siltVeinSize;
 	public final IntValue siltRange;
@@ -108,11 +103,6 @@ public class ServerConfig
 		this.mudDisksInSwamps = builder.comment("Sets if mud disks should spawn in swamp biomes.").translation(TRANSLATION_TEXT + "mudDisksInSwamps").define("mudDisksInSwamps", true);
 
 		this.cypressTreesInSwamps = builder.comment("Sets if cypress trees should spawn in swamp biomes.").translation(TRANSLATION_TEXT + "cypressTreesInSwamps").define("cypressTreesInSwamps", true);
-
-		this.copperOreGeneration = builder.comment("Sets if copper ore should spawn.").translation(TRANSLATION_TEXT + "copperOreGeneration").define("copperOreGeneration", true);
-		this.copperVeinSize = builder.comment("Sets the size a copper vein can spawn.").translation(TRANSLATION_TEXT + "copperVeinSize").defineInRange("copperVeinSize", 9, 1, 100);
-		this.copperRange = builder.comment("Sets the range copper can spawn in.").translation(TRANSLATION_TEXT + "copperRange").defineInRange("copperRange", 64, 1, 256);
-		this.copperCountPerChunk = builder.comment("Sets the amount of copper veins per chunk.").translation(TRANSLATION_TEXT + "copperCountPerChunk").defineInRange("copperCountPerChunk", 20, 1, 100);
 
 		this.siltPatchGeneration = builder.comment("Sets if silt patches should spawn.").translation(TRANSLATION_TEXT + "siltPatchGeneration").define("siltPatchGeneration", true);
 		this.siltVeinSize = builder.comment("Sets the size a silt patches can spawn.").translation(TRANSLATION_TEXT + "siltVeinSize").defineInRange("siltVeinSize", 29, 1, 100);

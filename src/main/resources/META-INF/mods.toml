@@ -10,7 +10,6 @@ displayName="Lost Worlds"
 updateJSONURL="https://github.com/willatendo/Lost-Worlds/raw/Forge-1.16.5/updates.json"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/the-lost-worlds-forge"
 logoFile="lostworlds.png"
-authors="All Names Credited in Description"
 description='''
 The Lost Worlds is a modern Minecraft mod that adds tonnes to explore. Hunt for fossils and save them from poachers, dive into a rich lore, explore prehistoric eras, and much more! All with a focus of natural history!
 
@@ -20,7 +19,7 @@ Lead Developer:
 
 Modlers:
 - Dapper Dino
-- Godzilla
+- JZ
 
 Animator:
 - Irishjevil
@@ -46,6 +45,6 @@ Animator:
 [[dependencies.lostworlds]]
     modId="tyrannotitanlib"
     mandatory=true
-    versionRange="[1.2.4,)"
+    versionRange="[1.4.0,)"
     ordering="NONE"
     side="BOTH"

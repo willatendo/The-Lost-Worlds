@@ -11,11 +11,6 @@ public class OreGeneration
 	{
 		BiomeGenerationSettingsBuilder generation = event.getGeneration();
 		
-		if(LostWorldsConfig.COMMON_CONFIG.copperOreGeneration.get())
-		{
-			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.COPPER_ORE);
-		}
-		
 		if(LostWorldsConfig.COMMON_CONFIG.plantFossilsInOverworld.get())
 		{
 			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_ALETHOPTERIS);

@@ -38,7 +38,7 @@ public class ArchaeologyTableBlock extends Block implements IWaterLoggable
 
 	public ArchaeologyTableBlock() 
 	{
-		super(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).harvestTool(ToolType.PICKAXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD));
+		super(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD));
 		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 

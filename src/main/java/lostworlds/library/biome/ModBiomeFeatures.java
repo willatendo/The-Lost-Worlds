@@ -6,6 +6,7 @@ import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.structure.StructureFeatures;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilders;
+import tyrannotitanlib.library.tyrannores.world.TyrannoreConfiguredFeatures;
 
 public class ModBiomeFeatures 
 {	
@@ -892,7 +893,7 @@ public class ModBiomeFeatures
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_IRON);
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_LAPIS);
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_REDSTONE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.COPPER_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, TyrannoreConfiguredFeatures.COPPER_ORE);
 	}
 	
 	private static void addCretaceousEmerald(BiomeGenerationSettings.Builder builder)
