@@ -105,6 +105,7 @@ public abstract class HerbivoreEggLayingEntity extends HerbivoreEntity
 	public void addAdditionalSaveData(CompoundNBT nbt) 
 	{
 		super.addAdditionalSaveData(nbt);
+		nbt.putBoolean("HasTerritory", this.hasTerritory());
 		nbt.putInt("HomePosX", this.getHomePos().getX());
 		nbt.putInt("HomePosY", this.getHomePos().getY());
 		nbt.putInt("HomePosZ", this.getHomePos().getZ());
@@ -126,5 +127,18 @@ public abstract class HerbivoreEggLayingEntity extends HerbivoreEntity
 		this.setHasEgg(nbt.getBoolean("HasEgg"));
 		this.setGoingHome(nbt.getBoolean("GoingHome"));
 		this.setLayingEgg(nbt.getBoolean("LayingEgg"));
+		this.setHasTerritory(nbt.getBoolean("HasTerritory"));
+	}
+	
+	@Override
+	public boolean canFallInLove() 
+	{
+		return super.canFallInLove() && !this.hasEgg();
+	}
+	
+	@Override
+	public boolean canFallInNaturalLove() 
+	{
+		return super.canFallInNaturalLove() && !this.hasEgg();
 	}
 }

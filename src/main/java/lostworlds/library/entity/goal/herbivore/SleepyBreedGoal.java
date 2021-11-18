@@ -2,12 +2,18 @@ package lostworlds.library.entity.goal.herbivore;
 
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import lostworlds.library.entity.terrestrial.HerbivoreEggLayingEntity;
 import lostworlds.library.entity.terrestrial.HerbivoreEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.item.ExperienceOrbEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
@@ -97,5 +103,46 @@ public class SleepyBreedGoal extends Goal
 	protected void breed() 
 	{
 		this.entity.spawnChildFromBreeding((ServerWorld) this.level, this.partner);
+	}
+	
+	public static class Egg extends SleepyBreedGoal
+	{
+		private final HerbivoreEggLayingEntity entity;
+
+		public Egg(HerbivoreEggLayingEntity entity, double speedModifier) 
+		{
+			super(entity, speedModifier);
+			this.entity = entity;
+		}
+
+		@Override
+		public boolean canUse() 
+		{
+			return super.canUse() && !this.entity.hasEgg();
+		}
+
+		@Override
+		protected void breed() 
+		{
+			ServerPlayerEntity serverplayerentity = this.entity.getLoveCause();
+			if(serverplayerentity == null && this.partner.getLoveCause() != null)
+			{
+				serverplayerentity = this.partner.getLoveCause();
+			}
+
+			if(serverplayerentity != null) 
+			{
+				serverplayerentity.awardStat(Stats.ANIMALS_BRED);
+			}
+
+			this.entity.setHasEgg(true);
+			this.entity.resetLove();
+			this.partner.resetLove();
+			Random random = this.entity.getRandom();
+			if(this.level.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) 
+			{
+				this.level.addFreshEntity(new ExperienceOrbEntity(this.level, this.entity.getX(), this.entity.getY(), this.entity.getZ(), random.nextInt(7) + 1));
+			}
+		}
 	}
 }

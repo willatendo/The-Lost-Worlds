@@ -4,6 +4,7 @@ import java.util.EnumSet;
 import java.util.function.Predicate;
 
 import lostworlds.content.server.init.BlockInit;
+import lostworlds.library.entity.terrestrial.HerbivoreEggLayingEntity;
 import lostworlds.library.entity.terrestrial.HerbivoreEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -97,6 +98,23 @@ public class HerbivoreEatMossySoilGoal extends Goal
 					this.entity.ate();
 				}
 			}
+		}
+	}
+
+	public static class Egg extends HerbivoreEatMossySoilGoal
+	{
+		private final HerbivoreEggLayingEntity entity;
+		
+		public Egg(HerbivoreEggLayingEntity entity) 
+		{
+			super(entity);
+			this.entity = entity;
+		}
+		
+		@Override
+		public boolean canUse() 
+		{
+			return !this.entity.isGoingHome() && !this.entity.hasEgg() ? super.canUse() : false;
 		}
 	}
 }

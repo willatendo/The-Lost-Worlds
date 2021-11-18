@@ -1,13 +1,20 @@
 package lostworlds.library.entity.terrestrial.jurassic;
 
+import java.util.Random;
+
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EntityInit;
+import lostworlds.library.block.SmallEggBlock;
+import lostworlds.library.entity.DinoTypes;
+import lostworlds.library.entity.Size;
 import lostworlds.library.entity.goal.NaturalBreedingGoal;
 import lostworlds.library.entity.goal.herbivore.HerbivoreCreateTerritoryGoal;
 import lostworlds.library.entity.goal.herbivore.HerbivoreEatGrassGoal;
 import lostworlds.library.entity.goal.herbivore.HerbivoreEatMossySoilGoal;
 import lostworlds.library.entity.goal.herbivore.HerbivoreEatPodzolGoal;
+import lostworlds.library.entity.goal.herbivore.HerbivoreGoHomeGoal;
+import lostworlds.library.entity.goal.herbivore.HerbivoreLayEggGoal;
 import lostworlds.library.entity.goal.herbivore.HerbivoreSleepGoal;
 import lostworlds.library.entity.goal.herbivore.SleepyAvoidEntityGoal;
 import lostworlds.library.entity.goal.herbivore.SleepyBreedGoal;
@@ -80,19 +87,21 @@ public class ChilesaurusEntity extends HerbivoreEggLayingEntity
 	protected void registerGoals() 
 	{
 		super.registerGoals();
-		this.goalSelector.addGoal(0, new SleepySwimGoal(this));
-		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal(this, 1.0D));
+		this.goalSelector.addGoal(0, new SleepySwimGoal.Egg(this));
+		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
-		this.goalSelector.addGoal(4, new HerbivoreEatGrassGoal(this));
-		this.goalSelector.addGoal(4, new HerbivoreEatPodzolGoal(this));
-		this.goalSelector.addGoal(4, new HerbivoreEatMossySoilGoal(this));
+		this.goalSelector.addGoal(4, new HerbivoreEatGrassGoal.Egg(this));
+		this.goalSelector.addGoal(4, new HerbivoreEatPodzolGoal.Egg(this));
+		this.goalSelector.addGoal(4, new HerbivoreEatMossySoilGoal.Egg(this));
 		this.goalSelector.addGoal(5, new HerbivoreSleepGoal(this));
-		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
-		this.goalSelector.addGoal(6, new NaturalBreedingGoal(this, 1.0D));
-		this.goalSelector.addGoal(7, new SleepyBreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(8, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
-		this.goalSelector.addGoal(9, new HerbivoreCreateTerritoryGoal(this, 1.0D));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal.Egg<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new HerbivoreCreateTerritoryGoal(this, 1.0D));
+		this.goalSelector.addGoal(6, new NaturalBreedingGoal.Egg(this, 1.0D));
+		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));
+		this.goalSelector.addGoal(6, new HerbivoreLayEggGoal(this, 1.0D, DinoTypes.CHILESAURUS.getEgg().defaultBlockState().setValue(SmallEggBlock.EGGS, Integer.valueOf(new Random().nextInt(10) + 1))));
+		this.goalSelector.addGoal(9, new HerbivoreGoHomeGoal(this, 1.0D));
+		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 	}
 
 	@Override
@@ -112,10 +121,16 @@ public class ChilesaurusEntity extends HerbivoreEggLayingEntity
 	{
 		return FOOD_ITEMS.test(stack) || stack.getItem() instanceof SeedItem;
 	}
+	
+	@Override
+	public Size entitySize() 
+	{
+		return Size.SMALL;
+	}	
 
 	@Override
 	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
 	{
 		return EntityInit.CHILESAURUS.create(world);
-	}	
+	}
 }

@@ -3,6 +3,7 @@ package lostworlds.library.entity.terrestrial.jurassic;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EntityInit;
+import lostworlds.library.entity.Size;
 import lostworlds.library.entity.goal.NaturalBreedingGoal;
 import lostworlds.library.entity.goal.herbivore.HerbivoreEatGrassGoal;
 import lostworlds.library.entity.goal.herbivore.HerbivoreEatMossySoilGoal;
@@ -104,6 +105,12 @@ public class KentrosaurusEntity extends HerbivoreEntity
 	{
 		return FOOD_ITEMS.test(stack) || stack.getItem() instanceof SeedItem;
 	}
+	
+	@Override
+	public Size entitySize() 
+	{
+		return Size.MEDIUM;
+	}	
 
 	@Override
 	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
