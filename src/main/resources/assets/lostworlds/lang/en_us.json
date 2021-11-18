@@ -698,6 +698,9 @@
 	
 	"advancement.lostworlds.decoration": "Decoration",
 	"advancement.lostworlds.decoration.desc": "May not bring back creatures, but still cool!",
+
+	"advancement.lostworlds.in_the_field": "In The Field",
+	"advancement.lostworlds.in_the_field.desc": "Aquire the field guide! A paleontologist's book!",
 	
 	"advancement.lostworlds.petrified_trees": "Petrified Trees",
 	"advancement.lostworlds.petrified_trees.desc": "You found the remains of an ancient tree!",
@@ -715,7 +718,7 @@
 	"advancement.lostworlds.cretaceous_explorer.desc": "Explore every biome in the Cretaceous!",
 	
 	"advancement.lostworlds.for_the_masses": "For The Masses",
-	"advancement.lostworlds.for_the_masses.desc": "You started articulated a skeleton!",
+	"advancement.lostworlds.for_the_masses.desc": "You started articulating a skeleton!",
 	
 	//Fourth
 	"advancement.lostworlds.plants_at_least_they_dont_kill": "Plants! At Least They Don't Kill!",

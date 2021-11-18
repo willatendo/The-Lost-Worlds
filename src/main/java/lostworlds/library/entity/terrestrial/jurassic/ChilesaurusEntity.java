@@ -4,6 +4,7 @@ import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.library.entity.goal.NaturalBreedingGoal;
+import lostworlds.library.entity.goal.herbivore.HerbivoreCreateTerritoryGoal;
 import lostworlds.library.entity.goal.herbivore.HerbivoreEatGrassGoal;
 import lostworlds.library.entity.goal.herbivore.HerbivoreEatMossySoilGoal;
 import lostworlds.library.entity.goal.herbivore.HerbivoreEatPodzolGoal;
@@ -15,7 +16,7 @@ import lostworlds.library.entity.goal.herbivore.SleepyLookRandomlyGoal;
 import lostworlds.library.entity.goal.herbivore.SleepySwimGoal;
 import lostworlds.library.entity.goal.herbivore.SleepyTemptGoal;
 import lostworlds.library.entity.goal.herbivore.SleepyWaterAvoidingRandomWalkingGoal;
-import lostworlds.library.entity.terrestrial.HerbivoreEntity;
+import lostworlds.library.entity.terrestrial.HerbivoreEggLayingEntity;
 import lostworlds.library.item.block.SeedItem;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
@@ -36,7 +37,7 @@ import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationE
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class ChilesaurusEntity extends HerbivoreEntity
+public class ChilesaurusEntity extends HerbivoreEggLayingEntity
 {
 	private static final Ingredient FOOD_ITEMS = Ingredient.of(BlockInit.ALETHOPTERIS, BlockInit.BRAZILEA, BlockInit.CEPHALOTAXUS, BlockInit.CALAMITES_SUCKOWII, BlockInit.DILLHOFFIA, BlockInit.DUISBERGIA, BlockInit.GROUND_FERNS, BlockInit.OSMUNDA, BlockInit.PERMIAN_DESERT_FERNS, BlockInit.PERMIAN_DESERT_SHRUB, BlockInit.WILLIAMSONIA, BlockInit.ZAMITES);
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
@@ -91,6 +92,7 @@ public class ChilesaurusEntity extends HerbivoreEntity
 		this.goalSelector.addGoal(6, new NaturalBreedingGoal(this, 1.0D));
 		this.goalSelector.addGoal(7, new SleepyBreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(8, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
+		this.goalSelector.addGoal(9, new HerbivoreCreateTerritoryGoal(this, 1.0D));
 	}
 
 	@Override

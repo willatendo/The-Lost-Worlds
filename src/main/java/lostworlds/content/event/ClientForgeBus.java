@@ -1,4 +1,4 @@
-package lostworlds.content.client.event;
+package lostworlds.content.event;
 
 import lostworlds.content.ModUtils;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 
 @EventBusSubscriber(modid = ModUtils.ID, bus = Bus.FORGE, value = Dist.CLIENT)
-public class OnLoadEvent 
+public class ClientForgeBus 
 {
 	@SubscribeEvent
 	public static void onLoadEvent(final PlayerEvent.PlayerLoggedInEvent event)

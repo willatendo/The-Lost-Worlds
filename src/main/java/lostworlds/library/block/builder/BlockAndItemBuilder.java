@@ -1,12 +1,12 @@
 package lostworlds.library.block.builder;
 
 import lostworlds.content.ModRegistry;
-import lostworlds.library.block.ConnectedTextureBlock;
 import lostworlds.library.item.EggBlockItem;
 import lostworlds.library.item.block.GroupedBlockItem;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.text.ITextComponent;
+import tyrannotitanlib.library.base.block.TyrannoConnectedTextureBlock;
 
 public class BlockAndItemBuilder
 {
@@ -29,7 +29,7 @@ public class BlockAndItemBuilder
 		return create(id, block, item);
 	}
 	
-	public static ConnectedTextureBlock create(String id, ConnectedTextureBlock block)
+	public static TyrannoConnectedTextureBlock create(String id, TyrannoConnectedTextureBlock block)
 	{
 		Item item = new GroupedBlockItem(block);
 		ModRegistry.register(id, block);

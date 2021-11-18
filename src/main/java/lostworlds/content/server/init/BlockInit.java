@@ -10,7 +10,6 @@ import lostworlds.library.block.CalamtiesSuckowiiSaplingBlock;
 import lostworlds.library.block.ColouredDecorationBlock;
 import lostworlds.library.block.ColouredGlassBlock;
 import lostworlds.library.block.ColouredGlassPaneBlock;
-import lostworlds.library.block.ConnectedTextureBlock;
 import lostworlds.library.block.CultivatorBlock;
 import lostworlds.library.block.CycadBlock;
 import lostworlds.library.block.DNAExtractorBlock;
@@ -93,6 +92,7 @@ import net.minecraft.item.Item.Properties;
 import net.minecraft.item.SignItem;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.common.ToolType;
+import tyrannotitanlib.library.base.block.TyrannoConnectedTextureBlock;
 import tyrannotitanlib.library.base.block.TyrannoOreBlock;
 import tyrannotitanlib.library.base.block.TyrannoSaplingBlock;
 import tyrannotitanlib.library.base.block.TyrannoSignManager;
@@ -475,7 +475,7 @@ public class BlockInit
 	public static final Block LIGHT_CONCRETE_PRESSURE_PLATE = BlockAndItemBuilder.create("light_concrete_pressure_plate", new PressurePlateBlock(Sensitivity.MOBS, AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.0F, 8.0F).noCollission().sound(SoundType.STONE)));
 	public static final Block LIGHT_CONCRETE_BUTTON = BlockAndItemBuilder.create("light_concrete_button", new StoneButtonBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.0F, 8.0F).noCollission().sound(SoundType.STONE)));
 
-	public static final ConnectedTextureBlock POLISHED_LIGHT_CONCRETE = BlockAndItemBuilder.create("polished_light_concrete", new ConnectedTextureBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE), "polished_light_concrete", true));
+	public static final TyrannoConnectedTextureBlock POLISHED_LIGHT_CONCRETE = BlockAndItemBuilder.create("polished_light_concrete", new TyrannoConnectedTextureBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE), ModUtils.ID, "polished_dark_concrete", true));
 	
 	public static final Block ACCENT_LIGHT_CONCRETE = BlockAndItemBuilder.create("accent_light_concrete", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE)));	
 	public static final Block ACCENT_LIGHT_CONCRETE_STAIRS = BlockAndItemBuilder.create("accent_light_concrete_stairs", new StairsBlock(() -> BlockInit.LIGHT_CONCRETE.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE)));
@@ -505,7 +505,7 @@ public class BlockInit
 	public static final Block DARK_CONCRETE_PRESSURE_PLATE = BlockAndItemBuilder.create("dark_concrete_pressure_plate", new PressurePlateBlock(Sensitivity.MOBS, AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(8.0F, 10.0F).noCollission().sound(SoundType.STONE)));
 	public static final Block DARK_CONCRETE_BUTTON = BlockAndItemBuilder.create("dark_concrete_button", new StoneButtonBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(8.0F, 10.0F).noCollission().sound(SoundType.STONE)));
 	
-	public static final ConnectedTextureBlock POLISHED_DARK_CONCRETE = BlockAndItemBuilder.create("polished_dark_concrete", new ConnectedTextureBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE), "polished_dark_concrete", true));
+	public static final TyrannoConnectedTextureBlock POLISHED_DARK_CONCRETE = BlockAndItemBuilder.create("polished_dark_concrete", new TyrannoConnectedTextureBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE), ModUtils.ID, "polished_dark_concrete", true));
 
 	public static final Block ACCENT_DARK_CONCRETE = BlockAndItemBuilder.create("accent_dark_concrete", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(8.5F, 10.5F).sound(SoundType.STONE)));
 	public static final Block ACCENT_DARK_CONCRETE_STAIRS = BlockAndItemBuilder.create("accent_dark_concrete_stairs", new StairsBlock(() -> BlockInit.DARK_CONCRETE.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(8.5F, 10.5F).sound(SoundType.STONE)));

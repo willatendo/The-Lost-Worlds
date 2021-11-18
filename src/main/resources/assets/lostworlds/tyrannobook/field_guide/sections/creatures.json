@@ -28,5 +28,10 @@
 		"name": "kentrosaurus_info",
 		"type": "text",
 		"data": "creatures/kentrosaurus_info.json"
+	},
+	{
+		"name": "kentrosaurus_info",
+		"type": "image",
+		"data": "creatures/kentrosaurus_diagram.json"
 	}
 ]

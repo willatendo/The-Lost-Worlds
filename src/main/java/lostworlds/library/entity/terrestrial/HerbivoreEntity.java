@@ -106,6 +106,7 @@ public abstract class HerbivoreEntity extends TaggedEntity
 			--i;
 			this.setHunger(i);
 		}
+		
 		if(this.getHunger() < -5000)
 		{
 			this.hurt(ModDamageSources.HUNGER, 3.0F);
