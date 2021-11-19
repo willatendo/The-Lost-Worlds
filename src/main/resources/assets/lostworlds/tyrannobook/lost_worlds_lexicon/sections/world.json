@@ -1,67 +1,32 @@
 [
 	{
-		"name": "world",
+		"name": "overview",
 		"type": "text",
-		"data": "world/world.json"
+		"data": "world/overview.json"
 	},
 	{
-		"name": "biomes",
+		"name": "archaeology",
 		"type": "text",
-		"data": "world/biomes.json"
+		"data": "world/archaeology.json"
 	},
 	{
-		"name": "araucaria_forest_picture",
-		"type": "imageText2",
-		"data": "world/araucaria_forest_picture.json"
-	},
-	{
-		"name": "araucaria_forest_description",
+		"name": "crystal_scarab_gems",
 		"type": "text",
-		"data": "world/araucaria_forest_description.json"
+		"data": "world/crystal_scarab_gems.json"
 	},
 	{
-		"name": "conifer_forest_picture",
-		"type": "imageText2",
-		"data": "world/conifer_forest_picture.json"
+		"name": "crystal_scarab_gem_crafting_table",
+		"type": "archaeology",
+		"data": "world/crystal_scarab_gem_crafting_table.json"
 	},
 	{
-		"name": "conifer_forest_description",
+		"name": "crystal_scarab_gem_charging",
 		"type": "text",
-		"data": "world/conifer_forest_description.json"
+		"data": "world/crystal_scarab_gem_charging.json"
 	},
 	{
-		"name": "ginkgo_forest_picture",
-		"type": "imageText2",
-		"data": "world/ginkgo_forest_picture.json"
-	},
-	{
-		"name": "ginkgo_forest_description",
-		"type": "text",
-		"data": "world/ginkgo_forest_description.json"
-	},
-	{
-		"name": "redwoods_forest_picture",
-		"type": "imageText2",
-		"data": "world/redwoods_forest_picture.json"
-	},
-	{
-		"name": "redwoods_forest_description",
-		"type": "text",
-		"data": "world/redwoods_forest_description.json"
-	},
-	{
-		"name": "updated_biomes",
-		"type": "text",
-		"data": "world/updated_biomes.json"
-	},
-	{
-		"name": "swamp_picture",
-		"type": "imageText2",
-		"data": "world/swamp_picture.json"
-	},
-	{
-		"name": "features",
-		"type": "text",
-		"data": "world/features.json"
+		"name": "crystal_scarab_axe_smithing",
+		"type": "smithing",
+		"data": "world/crystal_scarab_axe_smithing.json"
 	}
 ]

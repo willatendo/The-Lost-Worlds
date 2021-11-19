@@ -1,7 +1,7 @@
 [
 	{
 		"name": "introduction",
-		"data": "sections/intro.json",
+		"data": "sections/introduction.json",
 		"icon": {
 			"item": {
 				"id": "lostworlds:leather_brush"
@@ -14,24 +14,6 @@
 		"icon": {
 			"item": {
 				"id": "lostworlds:jurassic_cobblestone"
-			}
-		}
-	},
-	{
-		"name": "archaeology",
-		"data": "sections/archaeology.json",
-		"icon": {
-			"item": {
-				"id": "lostworlds:diamond_brush"
-			}
-		}
-	},
-	{
-		"name": "paleontology",
-		"data": "sections/paleontology.json",
-		"icon": {
-			"item": {
-				"id": "lostworlds:hammer"
 			}
 		}
 	},
@@ -59,15 +41,6 @@
 		"icon": {
 			"item": {
 				"id": "lostworlds:jurassic_period_time_book"
-			}
-		}
-	},
-	{
-		"name": "further_reading",
-		"data": "sections/further_reading.json",
-		"icon": {
-			"item": {
-				"id": "lostworlds:field_guide"
 			}
 		}
 	}

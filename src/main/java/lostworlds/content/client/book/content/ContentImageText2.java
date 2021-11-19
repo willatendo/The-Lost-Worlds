@@ -2,6 +2,8 @@ package lostworlds.content.client.book.content;
 
 import java.util.ArrayList;
 
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import tyrannotitanlib.library.tyrannobook.client.data.TyrannobookData;
 import tyrannotitanlib.library.tyrannobook.client.data.content.ContentImageText;
 import tyrannotitanlib.library.tyrannobook.client.data.element.ImageData;
@@ -10,6 +12,7 @@ import tyrannotitanlib.library.tyrannobook.client.data.element.TextElement;
 import tyrannotitanlib.library.tyrannobook.client.data.element.TyrannobookElement;
 import tyrannotitanlib.library.tyrannobook.client.screen.TyrannobookScreen;
 
+@OnlyIn(Dist.CLIENT)
 public class ContentImageText2 extends ContentImageText 
 {
 	public static final transient String ID = "imageText2";

@@ -22,9 +22,9 @@ public class LostWorldsBooks extends TyrannobookData
 	
 	public static void initBooks() 
 	{
-		TyrannobookLoader.registerPageType("archaeology", ContentArchaeology.class);
+		TyrannobookLoader.registerPageType(ContentArchaeology.ID, ContentArchaeology.class);
 		TyrannobookLoader.registerPageType(ContentImageText2.ID, ContentImageText2.class);
-		
+				
 		addStandardData(LOST_WORLDS_LEXICON, LOST_WORLDS_LEXICON_ID);
 		addStandardData(FIELD_GUIDE, FIELD_GUIDE_ID);
 	}

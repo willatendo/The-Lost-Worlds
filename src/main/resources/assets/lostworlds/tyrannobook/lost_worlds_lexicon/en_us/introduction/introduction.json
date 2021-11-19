@@ -2,7 +2,15 @@
 	"title": "Welcome to The Lost Worlds!",
 	"text": [
 		{
-			"text": "The Lost Worlds is a dinosaur passion project made by Willatendo. and made possible my all the amazing modelers and of course the fans."
+			"text": "The Lost Worlds is a dinosaurs mod built for the latest verions of Minecraft. It adds dinosaurs to bring back to life, eras to explore, and archaeology."
+		},
+		{
+			"text": "The Lexicon will tell you everything you need to know about the mod, from creating creatures to exploring ancient time eras.",
+			"paragraph": true
+		},
+		{
+			"text": "The Lexicon is split into 4 parts, with each provides information on a particular branch of the mod. They are organised in order of importance of information.",
+			"paragraph": true
 		}
 	]
 }

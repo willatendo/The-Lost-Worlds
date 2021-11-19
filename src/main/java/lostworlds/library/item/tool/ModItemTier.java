@@ -26,7 +26,7 @@ public class ModItemTier
 	{
 		return Ingredient.of(Items.STRING);
 	});	
-	public static final TyrannoItemTeir CRYSTAL_SCARAB = new TyrannoItemTeir(5, 13616, 50.0F, 80.0F, 0, () -> 
+	public static final TyrannoItemTeir CRYSTAL_SCARAB = new TyrannoItemTeir(5, 13616, 50.0F, 100.0F, 0, () -> 
 	{
 		return null; 
 	});

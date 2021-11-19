@@ -1,0 +1,12 @@
+[
+	{
+		"name": "introduction",
+		"type": "text",
+		"data": "introduction/introduction.json"
+	},
+	{
+		"name": "note",
+		"type": "text",
+		"data": "introduction/note.json"
+	}
+]

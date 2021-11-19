@@ -11,6 +11,8 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.crafting.IShapedRecipe;
 import tyrannotitanlib.library.tyrannobook.client.Textures;
 import tyrannotitanlib.library.tyrannobook.client.data.TyrannobookData;
@@ -25,8 +27,11 @@ import tyrannotitanlib.library.tyrannobook.client.data.element.TextElement;
 import tyrannotitanlib.library.tyrannobook.client.data.element.TyrannobookElement;
 import tyrannotitanlib.library.tyrannobook.client.screen.TyrannobookScreen;
 
+@OnlyIn(Dist.CLIENT)
 public class ContentArchaeology extends PageContent 
 {
+	public static final transient String ID = "archaeology";
+
 	public static final transient int TEX_SIZE = 256;
 	public static final transient ImageData IMG_CRAFTING_LARGE = new ImageData(Textures.TEX_CRAFTING, 0, 0, 183, 114, TEX_SIZE, TEX_SIZE);
 	public static final transient ImageData IMG_CRAFTING_SMALL = new ImageData(Textures.TEX_CRAFTING, 0, 114, 155, 78, TEX_SIZE, TEX_SIZE);
