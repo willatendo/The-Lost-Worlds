@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import lostworlds.content.client.book.LostWorldsBooks;
 import lostworlds.content.client.setup.ClientSetup;
+import lostworlds.content.client.tab.TabSetup;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.DimensionInit;
@@ -61,7 +62,7 @@ public class LostWorldsMod
 	private void commonSetup(FMLCommonSetupEvent event)
 	{		
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(BlockInit.VOLCANIC_ASH.asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), PotionInit.ASHY_LUNG_POTION));
-		BrewingRecipeRegistry.addRecipe(Ingredient	.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), ItemInit.CONTRACEPTIVES.getDefaultInstance());
+		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), ItemInit.CONTRACEPTIVES.getDefaultInstance());
 		
 		ModUtils.ITEMS.setIcon(ItemInit.LOST_WORLDS_LEXICON.getDefaultInstance());
 		ModUtils.BLOCKS.setIcon(BlockInit.PLASTERED_FOSSILIZED_TRACK.asItem().getDefaultInstance());
@@ -79,6 +80,10 @@ public class LostWorldsMod
 	
 	private void clientSetup(FMLClientSetupEvent event) 
 	{	
+		final IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+		
+		forgeBus.register(new TabSetup());
+		
 		LostWorldsBooks.initBooks();
 		
 		DimensionInit.initClient();

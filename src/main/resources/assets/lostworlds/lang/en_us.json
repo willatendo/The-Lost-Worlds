@@ -3,6 +3,17 @@
 	
 	"itemGroup.lostworlds.items": "Lost Worlds Items",
 	"itemGroup.lostworlds.block": "Lost Worlds Blocks",
+	
+	"gui.lostworlds.enable_filters": "Enable Filters",
+	"gui.lostworlds.disable_filters": "Disable Filters",
+	
+	"gui.lostworlds.tools": "Tools",
+	"gui.lostworlds.armour": "Armor",
+	"gui.lostworlds.utilities": "Utilities",
+	"gui.lostworlds.electronics": "Electronics",
+	"gui.lostworlds.decoration": "Decoration",
+	"gui.lostworlds.miscellaneous": "Miscellaneous",
+	"gui.lostworlds.fossils": "Fossils",
 
 	// ITEMS & EFFECTS & ENCHANTMENTS
 
@@ -78,20 +89,6 @@
 	"item.lostworlds.storage_disc": "Storage Disc",
 	"item.lostworlds.tag": "Tag",
 	
-	//Fossils
-	"item.lostworlds.amber": "Amber",
-	"item.lostworlds.ground_fossil": "Ground Fossil",
-	"item.lostworlds.fossilized_feather": "Fossilized Feather",
-	"item.lostworlds.fossilized_skin_impression": "Fossilized Skin Impression",
-	"item.lostworlds.plant_waste": "Plant Waste",
-	"item.lostworlds.araucaria_bark_sample": "Araucaria Bark Sample",
-	"item.lostworlds.calamites_bark_sample": "Calamites Bark Sample",
-	"item.lostworlds.conifer_bark_sample": "Conifer Bark Sample",
-	"item.lostworlds.cypress_bark_sample": "Cypress Bark Sample",
-	"item.lostworlds.ginkgo_bark_sample": "Ginkgo Bark Sample",
-	"item.lostworlds.sequoia_bark_sample": "Sequoia Bark Sample",
-	"item.lostworlds.empty_vile": "Empty Vile",
-	
 	//Decoration
 	"item.lostworlds.amber_keychain": "Amber Keychain",
 	"item.lostworlds.dino_button": "Dino Button",
@@ -143,6 +140,20 @@
 	//Only for Enchantment Descriptions mod.
 	"enchantment.lostworlds.precision.desc": "Reduces the chance of breaking a fossil.",	
 	"enchantment.lostworlds.curse_of_breaking.desc": "Increases the chance of breaking a fossil.",	
+	
+	//Fossils
+	"item.lostworlds.amber": "Amber",
+	"item.lostworlds.ground_fossil": "Ground Fossil",
+	"item.lostworlds.fossilized_feather": "Fossilized Feather",
+	"item.lostworlds.fossilized_skin_impression": "Fossilized Skin Impression",
+	"item.lostworlds.plant_waste": "Plant Waste",
+	"item.lostworlds.araucaria_bark_sample": "Araucaria Bark Sample",
+	"item.lostworlds.calamites_bark_sample": "Calamites Bark Sample",
+	"item.lostworlds.conifer_bark_sample": "Conifer Bark Sample",
+	"item.lostworlds.cypress_bark_sample": "Cypress Bark Sample",
+	"item.lostworlds.ginkgo_bark_sample": "Ginkgo Bark Sample",
+	"item.lostworlds.sequoia_bark_sample": "Sequoia Bark Sample",
+	"item.lostworlds.empty_vile": "Empty Vile",
 	
 	//Dinosaurs
 	"dino.lostworlds.chilesaurus": "Chilesaurus",

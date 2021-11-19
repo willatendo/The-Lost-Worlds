@@ -52,6 +52,7 @@ import net.minecraft.item.SwordItem;
 
 public class ItemInit
 {	
+	//Tools
 	public static final Item CRYSTAL_SCARAB_SWORD = ModRegistry.register("crystal_scarab_sword", new SwordItem(ModItemTier.CRYSTAL_SCARAB, 3, -2.4F, new Properties().tab(ModUtils.ITEMS).setNoRepair())
 	{
 		@Override
@@ -168,8 +169,10 @@ public class ItemInit
 	
 	public static final Item CHISEL = ModRegistry.register("chisel", new ChiselItem());
 	
+	//Armour
 	public static final Item CLOTH_MASK = ModRegistry.register("cloth_mask", new MaskItem(ModArmourMaterial.CLOTH_MASK));
 	
+	//Utilities
 	public static final Item WET_PAPER = ModRegistry.register("wet_paper", new WetPaperItem());
 	public static final Item SYRINGE = ModRegistry.register("syringe", new SyringeItem());
 	public static final Item LOST_WORLDS_LEXICON = ModRegistry.register("lost_worlds_lexicon", new LostWorldsLexicon(new Properties().tab(ModUtils.ITEMS).stacksTo(1).rarity(Rarity.RARE).fireResistant()));
@@ -183,6 +186,7 @@ public class ItemInit
 	
 	public static final Item MUD_BALL = ModRegistry.register("mud_ball", new ModItem());
 
+	//Electronics
 	public static final Item COPPER_WIRE = ModRegistry.register("copper_wire", new ModItem());
 	public static final Item COMPUTER_FAN = ModRegistry.register("computer_fan", new ModItem());
 	public static final Item COMPUTER_SCREEN = ModRegistry.register("computer_screen", new ModItem());
@@ -197,7 +201,26 @@ public class ItemInit
 	public static final Item STORAGE_DISC = ModRegistry.register("storage_disc", new ModItem());
 
 	public static final Item TAG = ModRegistry.register("tag", new ModItem());	
+	
+	//Decoration
+	public static final Item AMBER_KEYCHAIN = ModRegistry.register("amber_keychain", new CollectibleItem());
+	public static final Item DINO_BUTTON = ModRegistry.register("dino_button", new PinItem());
+	public static final Item BALLOON = ModRegistry.register("balloon", new CollectibleItem());
+	public static final Item TYRANNOSAURUS_PLUSH = ModRegistry.register("tyrannosaurus_plush", new CollectibleItem());	
 
+	//Miscellaneous
+	public static final Item EMPTY_VILE = ModRegistry.register("empty_vile", new ModItem());
+	
+	public static final Item FERN_LEAVES = ModRegistry.register("fern_leaves", new ModItem(FoodInit.FERN_LEAVES));
+	public static final Item COOKED_FERN_LEAVES = ModRegistry.register("cooked_fern_leaves", new ModItem(FoodInit.COOKED_LEAVES));
+
+	public static final Item PALEO_SALAD = ModRegistry.register("paleo_salad", new ModItem(FoodInit.PALEO_SALAD));
+	
+	public static final Item SCARAB_BANNER_PATTERN = ModRegistry.register("scarab_banner_pattern", new BannerPatternItem(BannerInit.SCARAB, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1)));
+	
+	public static final Item FOSSIL_POACHER_SPAWN_EGG = ModRegistry.register("fossil_poacher_spawn_egg", new ModSpawnEggItem(() -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031, ModUtils.ITEMS));
+	
+	//Fossils
 	public static final Item AMBER = ModRegistry.register("amber", new AmberItem());
 	public static final Item FOSSILIZED_FEATHER = ModRegistry.register("fossilized_feather", new ModItem());
 	public static final Item FOSSILIZED_SKIN_IMPRESSION = ModRegistry.register("fossilized_skin_impression", new ModItem());
@@ -210,22 +233,6 @@ public class ItemInit
 	public static final Item CYPRESS_BARK_SAMPLE = ModRegistry.register("cypress_bark_sample", new ModItem());
 	public static final Item GINKGO_BARK_SAMPLE = ModRegistry.register("ginkgo_bark_sample", new ModItem());
 	public static final Item SEQUOIA_BARK_SAMPLE = ModRegistry.register("sequoia_bark_sample", new ModItem());
-	
-	public static final Item EMPTY_VILE = ModRegistry.register("empty_vile", new ModItem());
-	
-	public static final Item AMBER_KEYCHAIN = ModRegistry.register("amber_keychain", new CollectibleItem());
-	public static final Item DINO_BUTTON = ModRegistry.register("dino_button", new PinItem());
-	public static final Item BALLOON = ModRegistry.register("balloon", new CollectibleItem());
-	public static final Item TYRANNOSAURUS_PLUSH = ModRegistry.register("tyrannosaurus_plush", new CollectibleItem());	
-	
-	public static final Item FERN_LEAVES = ModRegistry.register("fern_leaves", new ModItem(FoodInit.FERN_LEAVES));
-	public static final Item COOKED_FERN_LEAVES = ModRegistry.register("cooked_fern_leaves", new ModItem(FoodInit.COOKED_LEAVES));
-
-	public static final Item PALEO_SALAD = ModRegistry.register("paleo_salad", new ModItem(FoodInit.PALEO_SALAD));
-	
-	public static final Item SCARAB_BANNER_PATTERN = ModRegistry.register("scarab_banner_pattern", new BannerPatternItem(BannerInit.SCARAB, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1)));
-	
-	public static final Item FOSSIL_POACHER_SPAWN_EGG = ModRegistry.register("fossil_poacher_spawn_egg", new ModSpawnEggItem(() -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031, ModUtils.ITEMS));
 	
 	public static void init() 
 	{

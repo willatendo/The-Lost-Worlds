@@ -1,0 +1,10 @@
+{
+	"replace": false,
+	"values": [
+		"lostworlds:empty_vile",
+		"lostworlds:fern_leaves",
+		"lostworlds:paleo_salad",
+		"lostworlds:scarab_banner_pattern",
+		"lostworlds:fossil_poacher_spawn_egg"
+	]
+}
