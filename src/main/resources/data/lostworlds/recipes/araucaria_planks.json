@@ -1,6 +1,6 @@
 {
 	"type": "minecraft:crafting_shapeless",
-	"group": "result",
+	"group": "planks",
 	"ingredients": [
 		{
 			"tag": "lostworlds:araucaria_logs"

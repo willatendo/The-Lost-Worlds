@@ -13,7 +13,8 @@
 	"gui.lostworlds.electronics": "Electronics",
 	"gui.lostworlds.decoration": "Decoration",
 	"gui.lostworlds.miscellaneous": "Miscellaneous",
-	"gui.lostworlds.fossils": "Fossils",
+	"gui.lostworlds.creature_items": "Creature Items",
+	"gui.lostworlds.plant_items": "Plant Items",
 
 	// ITEMS & EFFECTS & ENCHANTMENTS
 

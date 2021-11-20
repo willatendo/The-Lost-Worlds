@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import lostworlds.content.client.book.LostWorldsBooks;
 import lostworlds.content.client.setup.ClientSetup;
-import lostworlds.content.client.tab.TabSetup;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.DimensionInit;
@@ -80,9 +79,9 @@ public class LostWorldsMod
 	
 	private void clientSetup(FMLClientSetupEvent event) 
 	{	
-		final IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+		//final IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 		
-		forgeBus.register(new TabSetup());
+		//forgeBus.register(new TabSetup());
 		
 		LostWorldsBooks.initBooks();
 		

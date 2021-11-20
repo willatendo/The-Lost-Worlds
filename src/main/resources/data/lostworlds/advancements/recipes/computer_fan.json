@@ -1,0 +1,40 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"lostworlds:computer_fan", 
+			"lostworlds:computer_fan_alternative"
+		]
+	},
+	"criteria": {
+		"has_iron": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "minecraft:iron_ingot"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "lostworlds:computer_fan"
+			}
+		},
+		"has_the_aternate_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "lostworlds:computer_fan_alternative"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_iron",
+			"has_the_recipe",
+			"has_the_aternate_recipe"
+		]
+	]
+}

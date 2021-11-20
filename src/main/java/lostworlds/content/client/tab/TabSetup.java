@@ -14,6 +14,7 @@ import lostworlds.content.ModUtils;
 import lostworlds.content.client.tab.widgets.IconButton;
 import lostworlds.content.client.tab.widgets.TagButton;
 import lostworlds.content.server.init.ItemInit;
+import lostworlds.library.block.Plants;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
@@ -34,20 +35,20 @@ public class TabSetup
 	private static final ResourceLocation ICONS = ModUtils.rL("textures/gui/icons.png");
 	private static int startIndex;
 
-	private List<TagFilter> filters;
+	private List<TagFilter> itemfilters;
 	private List<TagButton> buttons;
 	private Button btnScrollUp;
 	private Button btnScrollDown;
 	private Button btnEnableAll;
 	private Button btnDisableAll;
-	private boolean viewingFurnitureTab;
+	private boolean viewingLWTab;
 	private int guiCenterX = 0;
 	private int guiCenterY = 0;
 
 	@SubscribeEvent
 	public void onPlayerLogout(ClientPlayerNetworkEvent.LoggedOutEvent event) 
 	{
-		this.filters = null;
+		this.itemfilters = null;
 	}
 
 	@SubscribeEvent
@@ -55,12 +56,12 @@ public class TabSetup
 	{
 		if(event.getGui() instanceof CreativeScreen) 
 		{
-			if(this.filters == null) 
+			if(this.itemfilters == null) 
 			{
 				this.compileItems();
 			}
 
-			this.viewingFurnitureTab = false;
+			this.viewingLWTab = false;
 			this.guiCenterX = ((CreativeScreen) event.getGui()).getGuiLeft();
 			this.guiCenterY = ((CreativeScreen) event.getGui()).getGuiTop();
 			this.buttons = new ArrayList<>();
@@ -76,7 +77,7 @@ public class TabSetup
 
 			event.addWidget(this.btnScrollDown = new IconButton(this.guiCenterX - 22, this.guiCenterY + 127, ModUtils.tTC("gui", "scroll_filters_down"), button -> 
 			{
-				if(startIndex <= filters.size() - 4 - 1)
+				if(startIndex <= this.itemfilters.size() - 4 - 1)
 				{
 					startIndex++;
 				}
@@ -85,7 +86,7 @@ public class TabSetup
 
 			event.addWidget(this.btnEnableAll = new IconButton(this.guiCenterX - 50, this.guiCenterY + 10, ModUtils.tTC("gui", "enable_filters"), button -> 
 			{
-				this.filters.forEach(filters -> filters.setEnabled(true));
+				this.itemfilters.forEach(filters -> filters.setEnabled(true));
 				this.buttons.forEach(TagButton::updateState);
 				Screen screen = Minecraft.getInstance().screen;
 				if(screen instanceof CreativeScreen) 
@@ -96,7 +97,7 @@ public class TabSetup
 
 			event.addWidget(this.btnDisableAll = new IconButton(this.guiCenterX - 50, this.guiCenterY + 32, ModUtils.tTC("gui", "disable_filters"), button -> 
 			{
-				this.filters.forEach(filters -> filters.setEnabled(false));
+				this.itemfilters.forEach(filters -> filters.setEnabled(false));
 				this.buttons.forEach(TagButton::updateState);
 				Screen screen = Minecraft.getInstance().screen;
 				if(screen instanceof CreativeScreen) 
@@ -119,7 +120,17 @@ public class TabSetup
 				this.btnScrollDown.visible = true;
 				this.btnEnableAll.visible = true;
 				this.btnDisableAll.visible = true;
-				this.viewingFurnitureTab = true;
+				this.viewingLWTab = true;
+				this.buttons.forEach(button -> button.visible = true);
+				this.updateItems(screen);
+			}
+			else if(screen.getSelectedTab() == ModUtils.BLOCKS.getId()) 
+			{
+				this.btnScrollUp.visible = true;
+				this.btnScrollDown.visible = true;
+				this.btnEnableAll.visible = true;
+				this.btnDisableAll.visible = true;
+				this.viewingLWTab = true;
 				this.buttons.forEach(button -> button.visible = true);
 				this.updateItems(screen);
 			}
@@ -157,15 +168,23 @@ public class TabSetup
 			CreativeScreen screen = (CreativeScreen) event.getGui();
 			if(screen.getSelectedTab() == ModUtils.ITEMS.getId()) 
 			{
-				if(!this.viewingFurnitureTab) 
+				if(!this.viewingLWTab) 
 				{
 					this.updateItems(screen);
-					this.viewingFurnitureTab = true;
+					this.viewingLWTab = true;
+				}
+			} 
+			else if(screen.getSelectedTab() == ModUtils.BLOCKS.getId()) 
+			{
+				if(!this.viewingLWTab) 
+				{
+					this.updateItems(screen);
+					this.viewingLWTab = true;
 				}
 			} 
 			else 
 			{
-				this.viewingFurnitureTab = false;
+				this.viewingLWTab = false;
 			}
 		}
 	}
@@ -180,6 +199,37 @@ public class TabSetup
 			this.guiCenterY = screen.getGuiTop();
 
 			if(screen.getSelectedTab() == ModUtils.ITEMS.getId())  
+			{
+				this.btnScrollUp.visible = true;
+				this.btnScrollDown.visible = true;
+				this.btnEnableAll.visible = true;
+				this.btnDisableAll.visible = true;
+				this.buttons.forEach(button -> button.visible = true);
+
+				this.buttons.forEach(button -> 
+				{
+					button.render(event.getMatrixStack(), event.getMouseX(), event.getMouseY(), event.getRenderPartialTicks());
+				});
+
+				this.buttons.forEach(button -> 
+				{
+					if(button.isMouseOver(event.getMouseX(), event.getMouseY())) 
+					{
+						screen.renderTooltip(event.getMatrixStack(), button.getCategory().getName(), event.getMouseX(), event.getMouseY());
+					}
+				});
+
+				if(this.btnEnableAll.isMouseOver(event.getMouseX(), event.getMouseY())) 
+				{
+					screen.renderTooltip(event.getMatrixStack(), this.btnEnableAll.getMessage(), event.getMouseX(), event.getMouseY());
+				}
+
+				if(this.btnDisableAll.isMouseOver(event.getMouseX(), event.getMouseY())) 
+				{
+					screen.renderTooltip(event.getMatrixStack(), this.btnDisableAll.getMessage(), event.getMouseX(), event.getMouseY());
+				}
+			} 
+			else if(screen.getSelectedTab() == ModUtils.ITEMS.getId())  
 			{
 				this.btnScrollUp.visible = true;
 				this.btnScrollDown.visible = true;
@@ -232,20 +282,20 @@ public class TabSetup
 			}
 		};
 		this.buttons.clear();
-		for(int i = startIndex; i < startIndex + 4 && i < this.filters.size(); i++) 
+		for(int i = startIndex; i < startIndex + 4 && i < this.itemfilters.size(); i++) 
 		{
-			TagButton button = new TagButton(this.guiCenterX - 28, this.guiCenterY + 29 * (i - startIndex) + 10, this.filters.get(i), pressable);
+			TagButton button = new TagButton(this.guiCenterX - 28, this.guiCenterY + 29 * (i - startIndex) + 10, this.itemfilters.get(i), pressable);
 			this.buttons.add(button);
 		}
 		this.btnScrollUp.active = startIndex > 0;
-		this.btnScrollDown.active = startIndex <= this.filters.size() - 4 - 1;
+		this.btnScrollDown.active = startIndex <= this.itemfilters.size() - 4 - 1;
 	}
 
 	private void updateItems(CreativeScreen screen) 
 	{
 		CreativeScreen.CreativeContainer container = screen.getMenu();
 		LinkedHashSet<Item> categorisedItems = new LinkedHashSet<>();
-		for(TagFilter filter : this.filters) 
+		for(TagFilter filter : this.itemfilters) 
 		{
 			if(filter.isEnabled()) 
 			{
@@ -258,6 +308,11 @@ public class TabSetup
 		{
 			item.fillItemCategory(ModUtils.ITEMS, newItems);
 		}
+		
+		for(Item item : categorisedItems) 
+		{
+			item.fillItemCategory(ModUtils.BLOCKS, newItems);
+		}
 
 		container.items.clear();
 		container.items.addAll(newItems);
@@ -267,14 +322,16 @@ public class TabSetup
 
 	private void compileItems() 
 	{
-		final TagFilter TOOL = new TagFilter(ModUtils.rL("tool"), ItemInit.CRYSTAL_SCARAB_SWORD.getDefaultInstance());
+		//Items
+		final TagFilter TOOL = new TagFilter(ModUtils.rL("tools"), ItemInit.CRYSTAL_SCARAB_SWORD.getDefaultInstance());
 		final TagFilter ARMOUR = new TagFilter(ModUtils.rL("armour"), ItemInit.CLOTH_MASK.getDefaultInstance());
 		final TagFilter UTILITIES = new TagFilter(ModUtils.rL("utilities"), ItemInit.WET_PAPER.getDefaultInstance());
 		final TagFilter ELECTRONICS = new TagFilter(ModUtils.rL("electronics"), ItemInit.COPPER_WIRE.getDefaultInstance());
 		final TagFilter DECORATION = new TagFilter(ModUtils.rL("decoration"), ItemInit.AMBER_KEYCHAIN.getDefaultInstance());
 		final TagFilter MISCELLANEOUS = new TagFilter(ModUtils.rL("miscellaneous"), ItemInit.EMPTY_VILE.getDefaultInstance());
-		final TagFilter FOSSILS = new TagFilter(ModUtils.rL("fossils"), ItemInit.AMBER.getDefaultInstance());
-		TagFilter[] itemFilters = new TagFilter[] { TOOL, ARMOUR, UTILITIES, ELECTRONICS, DECORATION, MISCELLANEOUS, FOSSILS };
+		final TagFilter CREATURE_ITEMS = new TagFilter(ModUtils.rL("creature_items"), ItemInit.AMBER.getDefaultInstance());
+		final TagFilter PLANT_ITEMS = new TagFilter(ModUtils.rL("plant_items"), Plants.ALETHOPTERIS.getDrop().getDefaultInstance());
+		TagFilter[] itemFilters = new TagFilter[] { TOOL, ARMOUR, UTILITIES, ELECTRONICS, DECORATION, MISCELLANEOUS, CREATURE_ITEMS, PLANT_ITEMS };
 
 		ForgeRegistries.ITEMS.getValues().stream().filter(item -> item.getItemCategory() == ModUtils.ITEMS).filter(item -> item.getRegistryName().getNamespace().equals(ModUtils.ID)).forEach(item -> 
 		{
@@ -289,9 +346,27 @@ public class TabSetup
 				}
 			});
 		});
+		
+		//Blocks
+		final TagFilter SOILS = new TagFilter(ModUtils.rL("soils"), ItemInit.CRYSTAL_SCARAB_SWORD.getDefaultInstance());
+		TagFilter[] blockFilters = new TagFilter[] { SOILS };
 
-		this.filters = new ArrayList<>();
-		this.filters.addAll(Arrays.asList(itemFilters));
+		ForgeRegistries.ITEMS.getValues().stream().filter(item -> item.getItemCategory() == ModUtils.BLOCKS).filter(item -> item.getRegistryName().getNamespace().equals(ModUtils.ID)).forEach(item -> 
+		{
+			item.getTags().forEach(location -> 
+			{
+				for(TagFilter filter : blockFilters) 
+				{
+					if(location.equals(filter.getTag())) 
+					{
+						filter.add(item);
+					}
+				}
+			});
+		});
+
+		this.itemfilters = new ArrayList<>();
+		this.itemfilters.addAll(Arrays.asList(itemFilters));
 	}
 	
 	public static class TagFilter 
