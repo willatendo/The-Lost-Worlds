@@ -5,6 +5,7 @@ import java.util.Arrays;
 import lostworlds.content.client.book.LostWorldsBooks;
 import lostworlds.content.client.setup.ClientSetup;
 import lostworlds.content.config.LostWorldsConfig;
+import lostworlds.content.event.VolcanicAshHandler;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.DimensionInit;
 import lostworlds.content.server.init.EntityInit;
@@ -54,6 +55,8 @@ public class LostWorldsMod
 		forgeBus.addListener(EventPriority.HIGH, BiomeGeneration::addFeaturesToOverworld);
 		forgeBus.addListener(EventPriority.HIGH, BiomeGeneration::addCreaturesToOverworld);
 		forgeBus.addListener(EventPriority.HIGH, DinosaurSpawn::addDinosaursToOverworld);
+		
+		forgeBus.register(new VolcanicAshHandler());
 		
 		ModLoadingContext.get().registerConfig(Type.CLIENT, LostWorldsConfig.clientSpec);
 		ModLoadingContext.get().registerConfig(Type.COMMON, LostWorldsConfig.commonSpec);

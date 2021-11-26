@@ -3,7 +3,6 @@ package lostworlds.library.block;
 import java.util.Random;
 
 import lostworlds.library.block.properties.ModBlockStateProperties;
-import lostworlds.library.interfaces.ILavaLoggable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -26,6 +25,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import tyrannotitanlib.library.base.block.ILavaLoggable;
 
 public class GeyserBlock extends Block implements ILavaLoggable
 {

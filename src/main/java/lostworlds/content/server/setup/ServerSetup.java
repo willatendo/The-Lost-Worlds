@@ -28,6 +28,7 @@ import lostworlds.library.util.JigsawUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FireBlock;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
@@ -198,19 +199,43 @@ public class ServerSetup
 			Hand hand = event.getHand();
 			ItemStack stack = entity.getItemInHand(hand);
 			Item item = stack.getItem();
-			World world = event.getWorld();
-			BlockPos pos = event.getPos().above();
-			Direction direction = entity.getDirection().getOpposite();
 			
 			if(item == Items.NAUTILUS_SHELL)
 			{	
-				entity.swing(hand);
-				if(!entity.isCreative())
+				World world = event.getWorld();
+				BlockPos pos = event.getPos().relative(event.getFace());
+				BlockPos clickedPos = event.getPos();
+				Direction direction = entity.getDirection().getOpposite();
+
+				if(!(world.getBlockState(clickedPos).getBlock() instanceof ITileEntityProvider) || !(world.getBlockState(clickedPos).hasTileEntity()))
 				{
-					stack.shrink(1);
+					if(world.getBlockState(pos.below()).isFaceSturdy(world, pos, direction))
+					{
+						entity.swing(hand);
+						if(!entity.isCreative())
+						{
+							stack.shrink(1);
+						}
+						world.setBlockAndUpdate(pos, BlockInit.NAUTILUS_SHELL.defaultBlockState().setValue(NautilusShellBlock.HORIZONTAL_FACING, direction));
+						world.playSound(entity, pos, BlockInit.NAUTILUS_SHELL.getSoundType(BlockInit.NAUTILUS_SHELL.defaultBlockState()).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+					}
 				}
-				world.setBlockAndUpdate(pos, BlockInit.NAUTILUS_SHELL.defaultBlockState().setValue(NautilusShellBlock.HORIZONTAL_FACING, direction));
-				world.playSound(entity, pos, BlockInit.NAUTILUS_SHELL.getSoundType(BlockInit.NAUTILUS_SHELL.defaultBlockState()).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+				
+				if(entity.isCrouching())
+				{
+					event.setCanceled(true);
+					if(world.getBlockState(pos.below()).isFaceSturdy(world, pos, direction))
+					{
+						entity.swing(hand);
+						if(!entity.isCreative())
+						{
+							stack.shrink(1);
+						}
+						world.setBlockAndUpdate(pos, BlockInit.NAUTILUS_SHELL.defaultBlockState().setValue(NautilusShellBlock.HORIZONTAL_FACING, direction));
+						world.playSound(entity, pos, BlockInit.NAUTILUS_SHELL.getSoundType(BlockInit.NAUTILUS_SHELL.defaultBlockState()).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+					}
+					
+				}
 			}
 		}
 	}

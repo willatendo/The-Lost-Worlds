@@ -21,18 +21,18 @@ import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
+import tyrannotitanlib.library.base.block.TyrannoRequiresGroundBlock;
 
-public class NautilusShellBlock extends Block implements IWaterLoggable
+public class NautilusShellBlock extends TyrannoRequiresGroundBlock implements IWaterLoggable
 {
 	protected static final Map<Block, Map<Direction, VoxelShape>> SHAPES = new HashMap<Block, Map<Direction, VoxelShape>>();
 	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
-	private static final VoxelShape SHAPE = VoxelShapes.join(Block.box(4.5, 1, 4, 11.5, 9, 13), Block.box(5.5, 0, 3, 10.5, 10, 14), IBooleanFunction.OR);
+	private static final VoxelShape SHAPE = Block.box(6, 0, 5.5, 10, 5, 10.5);
 	private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	
 	public NautilusShellBlock(Properties properties) 

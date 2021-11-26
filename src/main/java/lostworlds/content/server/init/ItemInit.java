@@ -262,7 +262,7 @@ public class ItemInit
 			ModRegistry.register(dinos.name().toLowerCase() + "_skull", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("skull")), () -> dinos.getSkull(), false, ModUtils.tTC("dino", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "skull")));
 			Item skeleton = ModRegistry.register(dinos.name().toLowerCase() + "_skeleton", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton(), false, ModUtils.tTC("dino", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "skeleton")));
 			dinos.setSkeletonPick(skeleton);
-			ModRegistry.register(dinos.name().toLowerCase() + "_spawn_egg", new DinoSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), ModUtils.ITEMS, ModUtils.tTC("dino", dinos.name().toLowerCase())));
+			ModRegistry.register(dinos.name().toLowerCase() + "_spawn_egg", new DinoSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), ItemGroup.TAB_MISC, ModUtils.tTC("dino", dinos.name().toLowerCase())));
 			ModRegistry.register(dinos.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(ModUtils.tTC("dino", dinos.toString().toLowerCase())));
 			Item bloodSample = ModRegistry.register(dinos.name().toLowerCase() + "_blood_sample", new FullSyringeItem(ModUtils.tTC("dino", dinos.name().toLowerCase())));
 			dinos.setBloodSample(bloodSample);
