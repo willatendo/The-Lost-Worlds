@@ -52,6 +52,7 @@ public class LostWorldsMod
 		forgeBus.addListener(EventPriority.HIGH, OreGeneration::addOresToOverworld);
 		forgeBus.addListener(EventPriority.HIGH, BiomeGeneration::addBiomesToOverworld);
 		forgeBus.addListener(EventPriority.HIGH, BiomeGeneration::addFeaturesToOverworld);
+		forgeBus.addListener(EventPriority.HIGH, BiomeGeneration::addCreaturesToOverworld);
 		forgeBus.addListener(EventPriority.HIGH, DinosaurSpawn::addDinosaursToOverworld);
 		
 		ModLoadingContext.get().registerConfig(Type.CLIENT, LostWorldsConfig.clientSpec);

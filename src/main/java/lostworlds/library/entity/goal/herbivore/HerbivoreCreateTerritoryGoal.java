@@ -1,6 +1,5 @@
 package lostworlds.library.entity.goal.herbivore;
 
-import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.entity.terrestrial.HerbivoreEggLayingEntity;
 import net.minecraft.entity.ai.goal.MoveToBlockGoal;
@@ -35,7 +34,6 @@ public class HerbivoreCreateTerritoryGoal extends MoveToBlockGoal
 	@Override
 	public void start() 
 	{
-		ModUtils.LOGGER.debug("Attempting Territory");
 		this.entity.setMakingTerritory(true);
 	}
 

@@ -2,36 +2,36 @@ package lostworlds.library.entity;
 
 public enum LivingCreatures 
 {
-	BAT(CreatureSize.TINY, BirthType.GESTATION),
-	CAT(CreatureSize.SMALL, BirthType.GESTATION),
-	CHICKEN(CreatureSize.SMALL, BirthType.EGG),
-	COW(CreatureSize.MEDIUM, BirthType.GESTATION),
-	DOLPHIN(CreatureSize.MEDIUM, BirthType.GESTATION),
-	DONKEY(CreatureSize.MEDIUM, BirthType.GESTATION),
-	FOX(CreatureSize.SMALL, BirthType.GESTATION),
-	HORSE(CreatureSize.MEDIUM, BirthType.GESTATION),
-	LLAMA(CreatureSize.MEDIUM, BirthType.GESTATION),
-	MULE(CreatureSize.MEDIUM, BirthType.GESTATION),
-	OCELOT(CreatureSize.SMALL, BirthType.GESTATION),
-	PANDA(CreatureSize.MEDIUM, BirthType.GESTATION),
-	PARROT(CreatureSize.TINY, BirthType.EGG),
-	PIG(CreatureSize.SMALL, BirthType.GESTATION),
-	POLAR_BEAR(CreatureSize.MEDIUM, BirthType.GESTATION),
-	RABBIT(CreatureSize.SMALL, BirthType.GESTATION),
-	SHEEP(CreatureSize.MEDIUM, BirthType.GESTATION),
-	TURTLE(CreatureSize.MEDIUM, BirthType.EGG),
-	WOLF(CreatureSize.SMALL, BirthType.GESTATION);
+	BAT(Size.TINY, BirthType.GESTATION),
+	CAT(Size.SMALL, BirthType.GESTATION),
+	CHICKEN(Size.SMALL, BirthType.EGG),
+	COW(Size.MEDIUM, BirthType.GESTATION),
+	DOLPHIN(Size.MEDIUM, BirthType.GESTATION),
+	DONKEY(Size.MEDIUM, BirthType.GESTATION),
+	FOX(Size.SMALL, BirthType.GESTATION),
+	HORSE(Size.MEDIUM, BirthType.GESTATION),
+	LLAMA(Size.MEDIUM, BirthType.GESTATION),
+	MULE(Size.MEDIUM, BirthType.GESTATION),
+	OCELOT(Size.SMALL, BirthType.GESTATION),
+	PANDA(Size.MEDIUM, BirthType.GESTATION),
+	PARROT(Size.TINY, BirthType.EGG),
+	PIG(Size.SMALL, BirthType.GESTATION),
+	POLAR_BEAR(Size.MEDIUM, BirthType.GESTATION),
+	RABBIT(Size.SMALL, BirthType.GESTATION),
+	SHEEP(Size.MEDIUM, BirthType.GESTATION),
+	TURTLE(Size.MEDIUM, BirthType.EGG),
+	WOLF(Size.SMALL, BirthType.GESTATION);
 	
-	private final CreatureSize size;
+	private final Size size;
 	private final BirthType type;
 	
-	private LivingCreatures(CreatureSize size, BirthType type) 
+	private LivingCreatures(Size size, BirthType type) 
 	{
 		this.size = size;
 		this.type = type;
 	}
 	
-	public CreatureSize size()
+	public Size size()
 	{
 		return this.size;
 	}
@@ -41,17 +41,17 @@ public enum LivingCreatures
 		return this.type;
 	}
 	
-	public int getGestationPeriod()
+	public int getGestationPeriod(LivingCreatures creature)
 	{
-		if(this.size == CreatureSize.TINY)
+		if(creature.size() == Size.TINY)
 		{
 			return 10000;
 		}
-		else if(this.size == CreatureSize.SMALL)
+		else if(creature.size() == Size.SMALL)
 		{
 			return 20000;
 		}
-		else if(this.size == CreatureSize.MEDIUM)
+		else if(creature.size() == Size.MEDIUM)
 		{
 			return 30000;
 		}

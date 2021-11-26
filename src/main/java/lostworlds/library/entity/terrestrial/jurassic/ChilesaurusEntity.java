@@ -1,11 +1,8 @@
 package lostworlds.library.entity.terrestrial.jurassic;
 
-import java.util.Random;
-
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EntityInit;
-import lostworlds.library.block.SmallEggBlock;
 import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.Size;
 import lostworlds.library.entity.goal.NaturalBreedingGoal;
@@ -91,15 +88,15 @@ public class ChilesaurusEntity extends HerbivoreEggLayingEntity
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
-		this.goalSelector.addGoal(4, new HerbivoreEatGrassGoal.Egg(this));
-		this.goalSelector.addGoal(4, new HerbivoreEatPodzolGoal.Egg(this));
-		this.goalSelector.addGoal(4, new HerbivoreEatMossySoilGoal.Egg(this));
+		this.goalSelector.addGoal(4, new HerbivoreEatGrassGoal(this));
+		this.goalSelector.addGoal(4, new HerbivoreEatPodzolGoal(this));
+		this.goalSelector.addGoal(4, new HerbivoreEatMossySoilGoal(this));
 		this.goalSelector.addGoal(5, new HerbivoreSleepGoal(this));
-		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal.Egg<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new HerbivoreCreateTerritoryGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new NaturalBreedingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));
-		this.goalSelector.addGoal(6, new HerbivoreLayEggGoal(this, 1.0D, DinoTypes.CHILESAURUS.getEgg().defaultBlockState().setValue(SmallEggBlock.EGGS, Integer.valueOf(new Random().nextInt(10) + 1))));
+		this.goalSelector.addGoal(6, new HerbivoreLayEggGoal(this, 1.0D, DinoTypes.CHILESAURUS));
 		this.goalSelector.addGoal(9, new HerbivoreGoHomeGoal(this, 1.0D));
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 	}

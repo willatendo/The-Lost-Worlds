@@ -3,7 +3,6 @@ package lostworlds.library.entity.goal.herbivore;
 import java.util.EnumSet;
 import java.util.function.Predicate;
 
-import lostworlds.library.entity.terrestrial.HerbivoreEggLayingEntity;
 import lostworlds.library.entity.terrestrial.HerbivoreEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.LivingEntity;
@@ -119,23 +118,6 @@ public class SleepyAvoidEntityGoal<T extends LivingEntity> extends Goal
 		else 
 		{
 			this.entity.getNavigation().setSpeedModifier(this.walkSpeedModifier);
-		}
-	}
-	
-	public static class Egg<T extends LivingEntity> extends SleepyAvoidEntityGoal<T>
-	{
-		private final HerbivoreEggLayingEntity egg;
-		
-		public Egg(HerbivoreEggLayingEntity entity, Class<T> avoidEntity, float maxDist, double walkSpeedModifier, double sprintSpeedModifier, Predicate<LivingEntity> predicateOnAvoidEntity) 
-		{
-			super(entity, avoidEntity, maxDist, walkSpeedModifier, sprintSpeedModifier, predicateOnAvoidEntity);
-			egg = entity;
-		}
-
-		@Override
-		public boolean canUse() 
-		{
-			return !this.egg.isGoingHome() && !this.egg.hasEgg() ? super.canUse() : false;
 		}
 	}
 }

@@ -6,12 +6,16 @@ import com.google.common.collect.Lists;
 
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BiomeInit;
+import lostworlds.content.server.init.EntityInit;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.world.biome.Biome.Category;
+import net.minecraft.world.biome.MobSpawnInfo.Spawners;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
+import net.minecraftforge.common.world.MobSpawnInfoBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class BiomeGeneration 
@@ -136,6 +140,20 @@ public class BiomeGeneration
 			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_SMALL_NEST);
 			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_MEDIUM_NEST);
 			generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_LARGE_NEST);
+		}
+	}
+	
+	public static void addCreaturesToOverworld(BiomeLoadingEvent event)
+	{
+		MobSpawnInfoBuilder spawnInfo = event.getSpawns();
+		
+		if(LostWorldsConfig.COMMON_CONFIG.livingFossils.get())
+		{
+			List<? extends String> nautilusBiomes = Lists.newArrayList("minecraft:warm_ocean");
+			if(nautilusBiomes.contains(event.getName().toString()))
+			{
+				spawnInfo.addSpawn(EntityClassification.WATER_CREATURE, new Spawners(EntityInit.NAUTILUS, LostWorldsConfig.COMMON_CONFIG.nautilusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.nautilusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.nautilusSpawnGroupMaximum.get()));
+			}
 		}
 	}
 }

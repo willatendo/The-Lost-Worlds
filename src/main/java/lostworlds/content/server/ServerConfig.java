@@ -63,7 +63,8 @@ public class ServerConfig
 	public final IntValue sequoiaForestWeight;
 	public final IntValue volcanoWeight;
 
-	//Dinosaurs
+	//Dinosaurs	
+	public final BooleanValue livingFossils;
 	public final BooleanValue dinosaursSpawnInOverworld;
 
 	public final BooleanValue tameableDinos;
@@ -85,6 +86,19 @@ public class ServerConfig
 	public final IntValue kentrosaurusSpawnWeight;
 	public final IntValue kentrosaurusSpawnGroupMinimum;
 	public final IntValue kentrosaurusSpawnGroupMaximum;
+	
+	public final DoubleValue nautilusHeath;
+	public final DoubleValue nautilusArmour;
+	public final IntValue nautilusSpawnWeight;
+	public final IntValue nautilusSpawnGroupMinimum;
+	public final IntValue nautilusSpawnGroupMaximum;
+	
+	public final DoubleValue ophthalmosaurusHeath;
+	public final DoubleValue ophthalmosaurusSpeed;
+	public final DoubleValue ophthalmosaurusAttackDamage;
+	public final IntValue ophthalmosaurusSpawnWeight;
+	public final IntValue ophthalmosaurusSpawnGroupMinimum;
+	public final IntValue ophthalmosaurusSpawnGroupMaximum;
 
 	public ServerConfig(ForgeConfigSpec.Builder builder) 
 	{
@@ -142,7 +156,8 @@ public class ServerConfig
 		this.sequoiaForestWeight = builder.comment("Sets the weight of the Sequoia Forest spawning in the overworld. To disable this, got to sequoiaForestShouldSpawn").translation(TRANSLATION_TEXT + "sequoiaForestWeight").defineInRange("sequoiaForestWeight", 2, 1, 999);
 		this.volcanoWeight = builder.comment("Sets the weight of the Volcano spawning in the overworld. To disable this, got to volcanoShouldSpawn").translation(TRANSLATION_TEXT + "volcanoWeight").defineInRange("volcanoWeight", 1, 1, 999);
 
-		//Dinosaurs
+		//Dinosaurs		
+		this.livingFossils = builder.comment("If false, living fossils like the nautilus will not spawn in the overworld.").translation(TRANSLATION_TEXT + "livingFossils").define("livingFossils", true);
 		this.dinosaursSpawnInOverworld = builder.comment("If true, dinosaurs will spawn naturally in the overworld. They will spawn on any block listed in the dino_spawnables tag.").translation(TRANSLATION_TEXT + "dinosaursSpawnInOverworld").define("dinosaursSpawnInOverworld", false);
 
 		this.tameableDinos = builder.comment("If true, dinos will be able to be tamed.").translation(TRANSLATION_TEXT + "tameableDinos").define("tameableDinos", false);
@@ -164,5 +179,18 @@ public class ServerConfig
 		this.kentrosaurusSpawnWeight = builder.comment("Sets the weight of Kentrosaurus in spawning").translation(TRANSLATION_TEXT + "kentrosaurusSpawnWeight").defineInRange("kentrosaurusSpawnWeight", 3, 1, 100);
 		this.kentrosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Kentrosaurus in a spawn group").translation(TRANSLATION_TEXT + "kentrosaurusSpawnGroupMinimum").defineInRange("kentrosaurusSpawnGroupMinimum", 2, 1, 100);
 		this.kentrosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Kentrosaurus in a spawn group").translation(TRANSLATION_TEXT + "kentrosaurusSpawnGroupMaximum").defineInRange("kentrosaurusSpawnGroupMaximum", 8, 1, 100);
+
+		this.nautilusHeath = builder.comment("Sets the heath of the Nautilus").translation(TRANSLATION_TEXT + "nautilusHeath").defineInRange("nautilusHeath", 20.0D, 1.0D, 999.0D);
+		this.nautilusArmour = builder.comment("Sets the armour of the Nautilus").translation(TRANSLATION_TEXT + "nautilusArmour").defineInRange("nautilusArmour", 30.0D, 1.0D, 999.0D);
+		this.nautilusSpawnWeight = builder.comment("Sets the weight of Nautilus in spawning").translation(TRANSLATION_TEXT + "kentrosaurusSpawnWeight").defineInRange("kentrosaurusSpawnWeight", 1, 1, 100);
+		this.nautilusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Nautilus in a spawn group").translation(TRANSLATION_TEXT + "kentrosaurusSpawnGroupMinimum").defineInRange("kentrosaurusSpawnGroupMinimum", 1, 1, 100);
+		this.nautilusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Nautilus in a spawn group").translation(TRANSLATION_TEXT + "kentrosaurusSpawnGroupMaximum").defineInRange("kentrosaurusSpawnGroupMaximum", 1, 1, 100);
+
+		this.ophthalmosaurusHeath = builder.comment("Sets the heath of the Ophthalmosaurus").translation(TRANSLATION_TEXT + "ophthalmosaurusHeath").defineInRange("ophthalmosaurusHeath", 25.0D, 1.0D, 999.0D);
+		this.ophthalmosaurusSpeed = builder.comment("Sets the speed of the Ophthalmosaurus").translation(TRANSLATION_TEXT + "ophthalmosaurusSpeed").defineInRange("ophthalmosaurusSpeed", 1.6D, 1.0D, 999.0D);
+		this.ophthalmosaurusAttackDamage = builder.comment("Sets the attack damage of the Ophthalmosaurus").translation(TRANSLATION_TEXT + "ophthalmosaurusAttackDamage").defineInRange("ophthalmosaurusAttackDamage", 5.0D, 1.0D, 999.0D);
+		this.ophthalmosaurusSpawnWeight = builder.comment("Sets the weight of Ophthalmosaurus in spawning").translation(TRANSLATION_TEXT + "ophthalmosaurusSpawnWeight").defineInRange("ophthalmosaurusSpawnWeight", 1, 1, 100);
+		this.ophthalmosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Ophthalmosaurus in a spawn group").translation(TRANSLATION_TEXT + "ophthalmosaurusSpawnGroupMinimum").defineInRange("ophthalmosaurusSpawnGroupMinimum", 2, 1, 100);
+		this.ophthalmosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Ophthalmosaurus in a spawn group").translation(TRANSLATION_TEXT + "ophthalmosaurusSpawnGroupMaximum").defineInRange("ophthalmosaurusSpawnGroupMaximum", 8, 1, 100);
 	}
 }

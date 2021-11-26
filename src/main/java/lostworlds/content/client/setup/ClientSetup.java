@@ -7,6 +7,9 @@ import lostworlds.content.client.entity.render.FossilPoacherRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusSkeletonRenderer;
 import lostworlds.content.client.entity.render.ModBoatRenderer;
+import lostworlds.content.client.entity.render.NautilusRenderer;
+import lostworlds.content.client.entity.render.OphthalmosaurusRenderer;
+import lostworlds.content.client.entity.render.PalaeoniscumRenderer;
 import lostworlds.content.client.entity.render.block.DisplayCaseRenderer;
 import lostworlds.content.client.entity.render.bone.CustomisableRenderer;
 import lostworlds.content.client.screen.AnalyzerScreen;
@@ -204,6 +207,9 @@ public class ClientSetup
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.DILOPHOSAURUS, manager -> new DilophosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS, manager -> new KentrosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS_SKELETON, manager -> new KentrosaurusSkeletonRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.NAUTILUS, manager -> new NautilusRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.OPHTHALMOSAURUS, manager -> new OphthalmosaurusRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.PALAEONISCUM, manager -> new PalaeoniscumRenderer(manager));
 		
 		for(DinoTypes dinos : DinoTypes.values())
 		{

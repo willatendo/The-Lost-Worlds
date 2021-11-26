@@ -81,13 +81,13 @@ public abstract class CarnivoreEntity extends TaggedEntity
 	public void aiStep() 
 	{
 		super.aiStep();
-		if(this.isAlive() && !this.isSleeping())
+		if(this.isAlive() && !this.isSleeping()) 
 		{
 			int i = this.getHunger();
 			--i;
 			this.setHunger(i);
 		}
-		if(this.getHunger() < -5000)
+		if(this.getHunger() < -5000) 
 		{
 			this.hurt(ModDamageSources.HUNGER, 3.0F);
 		}

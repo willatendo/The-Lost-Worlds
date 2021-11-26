@@ -12,7 +12,6 @@ import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.stats.Stats;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -43,7 +42,7 @@ public class NaturalBreedingGoal extends Goal
 
 	public boolean canUse() 
 	{
-		if(!this.entity.isInNaturalLove() || this.entity.isSleeping()) 
+		if(!this.entity.isInNaturalLove() && this.entity.timeEquilsZero() && !this.entity.isSleeping()) 
 		{
 			return false;
 		} 
@@ -123,11 +122,6 @@ public class NaturalBreedingGoal extends Goal
 			if(serverplayerentity == null && this.partner.getLoveCause() != null)
 			{
 				serverplayerentity = this.partner.getLoveCause();
-			}
-
-			if(serverplayerentity != null) 
-			{
-				serverplayerentity.awardStat(Stats.ANIMALS_BRED);
 			}
 
 			this.entity.setHasEgg(true);

@@ -781,11 +781,19 @@
 	"death.attack.suffication": "%1$s sufficated",
 	"death.attack.hunger": "%1$s died of Hunger",
 	"death.attack.prick": "%1$s was pricked to death with a needle",
+
+	//Permian
+	"entity.lostworlds.palaeoniscum": "Palaeoniscum",
+	
+	//Triassic
 	
 	//Jurassic
 	"entity.lostworlds.chilesaurus": "Chilesaurus",
 	"entity.lostworlds.dilophosaurus": "Dilophosaurus",
 	"entity.lostworlds.kentrosaurus": "Kentrosaurus",
+	
+	//Modern
+	"entity.lostworlds.nautilus": "Nautilus",
 	
 	//Villagers
 	"entity.minecraft.villager.lostworlds.archaeologist": "Archaeologist",

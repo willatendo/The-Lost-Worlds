@@ -36,6 +36,7 @@ import lostworlds.library.item.block.SeedItem;
 import lostworlds.library.item.tool.BrushItem;
 import lostworlds.library.item.tool.CrystalScarabGemBrushItem;
 import lostworlds.library.item.tool.ModItemTier;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.BannerPatternItem;
 import net.minecraft.item.Food;
@@ -49,6 +50,7 @@ import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
+import tyrannotitanlib.library.base.item.TyrannoFishBucketItem;
 
 public class ItemInit
 {	
@@ -234,6 +236,12 @@ public class ItemInit
 	public static final Item GINKGO_BARK_SAMPLE = ModRegistry.register("ginkgo_bark_sample", new ModItem());
 	public static final Item SEQUOIA_BARK_SAMPLE = ModRegistry.register("sequoia_bark_sample", new ModItem());
 	
+	public static final Item NAUTILUS_BUCKET = ModRegistry.register("nautilus_bucket", new TyrannoFishBucketItem(() -> EntityInit.NAUTILUS, Fluids.WATER, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1)));
+	public static final Item NAUTILUS_SPAWN_EGG = ModRegistry.register("nautilus_spawn_egg", new ModSpawnEggItem(() -> EntityInit.NAUTILUS, 0xd4ccc3, 0xca7548, ItemGroup.TAB_MISC));
+	
+	public static final Item PALAEONISCUM_BUCKET = ModRegistry.register("palaeoniscum_bucket", new TyrannoFishBucketItem(() -> EntityInit.PALAEONISCUM, Fluids.WATER, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1)));
+	public static final Item PALAEONISCUM_SPAWN_EGG = ModRegistry.register("palaeoniscum_spawn_egg", new ModSpawnEggItem(() -> EntityInit.PALAEONISCUM, 0x72797a, 0x2f3a3d, ItemGroup.TAB_MISC));
+
 	public static void init() 
 	{
 		ModUtils.LOGGER.debug("Registering Mod Items"); 

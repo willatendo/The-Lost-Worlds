@@ -4,6 +4,9 @@ import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
 import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.ModBoatEntity;
+import lostworlds.library.entity.aquatic.jurassic.OphthalmosaurusEntity;
+import lostworlds.library.entity.aquatic.modern.NautilusEntity;
+import lostworlds.library.entity.aquatic.permian.PalaeoniscumEntity;
 import lostworlds.library.entity.fossil.DirtyFossilEntity;
 import lostworlds.library.entity.fossil.FossilEntity;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
@@ -39,6 +42,9 @@ public class EntityInit
 	public static final EntityType<DilophosaurusEntity> DILOPHOSAURUS = ModRegistry.register("dilophosaurus", DilophosaurusEntity::new, EntityClassification.CREATURE, 1.5F, 1.5F);
 	public static final EntityType<KentrosaurusEntity> KENTROSAURUS = ModRegistry.register("kentrosaurus", KentrosaurusEntity::new, EntityClassification.CREATURE, 1.0F, 0.75F);
 	public static final EntityType<FossilEntity> KENTROSAURUS_SKELETON = ModRegistry.register("kentrosaurus_skeleton", FossilEntity::new, EntityClassification.MISC, 1.0F, 0.75F);
+	public static final EntityType<NautilusEntity> NAUTILUS = ModRegistry.register("nautilus", NautilusEntity::new, EntityClassification.WATER_CREATURE, 0.5F, 0.5F);
+	public static final EntityType<OphthalmosaurusEntity> OPHTHALMOSAURUS = ModRegistry.register("ophthalmosaurus", OphthalmosaurusEntity::new, EntityClassification.WATER_CREATURE, 2.0F, 2.0F);
+	public static final EntityType<PalaeoniscumEntity> PALAEONISCUM = ModRegistry.register("palaeoniscum", PalaeoniscumEntity::new, EntityClassification.WATER_CREATURE, 0.5F, 0.5F);
 	
 	@SubscribeEvent
 	public static void registerEntities(RegistryEvent.Register<EntityType<?>> event) 
@@ -49,7 +55,10 @@ public class EntityInit
 		GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) EntityInit.CHILESAURUS_SKELETON, FossilEntity.createAttributes());
 		GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) EntityInit.KENTROSAURUS, KentrosaurusEntity.createAttributes());
 		GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) EntityInit.KENTROSAURUS_SKELETON, FossilEntity.createAttributes());
-		
+		GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) EntityInit.NAUTILUS, NautilusEntity.createAttributes());
+		GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) EntityInit.OPHTHALMOSAURUS, OphthalmosaurusEntity.createAttributes());
+		GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) EntityInit.PALAEONISCUM, PalaeoniscumEntity.createBasicAttributes());
+	
 		for(DinoTypes dinos : DinoTypes.values())
 		{
 			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getDirtyArmBones(), FossilEntity.createAttributes());
@@ -75,6 +84,9 @@ public class EntityInit
 		EntitySpawnPlacementRegistry.register(EntityInit.CHILESAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
 		EntitySpawnPlacementRegistry.register(EntityInit.DILOPHOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
 		EntitySpawnPlacementRegistry.register(EntityInit.KENTROSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
+		EntitySpawnPlacementRegistry.register(EntityInit.NAUTILUS, EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.OCEAN_FLOOR, NautilusEntity::spawnRules);
+		EntitySpawnPlacementRegistry.register(EntityInit.OPHTHALMOSAURUS, EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.OCEAN_FLOOR, OphthalmosaurusEntity::checkBasicSpawnRules);
+		EntitySpawnPlacementRegistry.register(EntityInit.PALAEONISCUM, EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.OCEAN_FLOOR, PalaeoniscumEntity::spawnRules);
 	}
 	
 	public static void init() 
