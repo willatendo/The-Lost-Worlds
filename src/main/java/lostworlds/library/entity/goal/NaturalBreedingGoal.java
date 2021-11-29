@@ -42,7 +42,7 @@ public class NaturalBreedingGoal extends Goal
 
 	public boolean canUse() 
 	{
-		if(!this.entity.isInNaturalLove() && this.entity.timeEquilsZero() && !this.entity.isSleeping()) 
+		if(!this.entity.isInNaturalLove() && !this.entity.isSleeping()) 
 		{
 			return false;
 		} 

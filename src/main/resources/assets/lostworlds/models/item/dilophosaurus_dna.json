@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "lostworlds:item/kentrosaurus_dna"
+		"layer0": "lostworlds:item/dilophosaurus_dna"
 	}
 }

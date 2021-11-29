@@ -12,7 +12,6 @@ import lostworlds.library.entity.Size;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,9 +29,7 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.GameRules;
-import net.minecraft.world.IServerWorld;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -44,7 +41,6 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 {
 	private static final EntityPredicate PARTNER_TARGETING = (new EntityPredicate()).range(8.0D).allowInvulnerable().allowSameTeam().allowUnseeable();
 	
-	protected static final DataParameter<Integer> LENGTH_BEFORE_NEXT_BREEDING = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.INT);
 	protected static final DataParameter<Byte> SEX = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BYTE);
 	protected static final DataParameter<Boolean> ATTACKING = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BOOLEAN);		
 	protected static final DataParameter<Boolean> SLEEPING = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BOOLEAN);
@@ -105,14 +101,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 		{
 			--this.inNaturalLove;
 		}
-
-		int length = this.getLengthBeforeNextBreeding();
-		if(this.isAlive() && length != 0) 
-		{
-			length--;
-			this.setLengthBeforeNextBreeding(length);
-		}
-
+		
 		int i = this.getAge();
 		if(i == 0 && this.canFallInNaturalLove()) 
 		{
@@ -149,7 +138,6 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	protected void defineSynchedData() 
 	{
 		super.defineSynchedData();
-		this.entityData.define(LENGTH_BEFORE_NEXT_BREEDING, 0);
 		this.getEntityData().define(ATTACKING, false);
 		this.entityData.define(SLEEPING, false);
 		this.entityData.define(CONTRACEPTIVES, false);
@@ -161,7 +149,6 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	public void addAdditionalSaveData(CompoundNBT nbt) 
 	{
 		super.addAdditionalSaveData(nbt);
-		nbt.putInt("LengthBeforeNextBreeding", getLengthBeforeNextBreeding());
 		nbt.putBoolean("Sleeping", isSleeping());
 		nbt.putBoolean("Contraceptives", isOnContraceptives());
 		nbt.putInt("InNaturalLove", this.inNaturalLove);
@@ -182,7 +169,6 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	public void readAdditionalSaveData(CompoundNBT nbt) 
 	{
 		super.readAdditionalSaveData(nbt);
-		setLengthBeforeNextBreeding(nbt.getInt("LengthBeforeNextBreeding"));
 		setSleeping(nbt.getBoolean("Sleeping"));
 		setOnContraceptives(nbt.getBoolean("Contraceptives"));
 		this.inNaturalLove = nbt.getInt("InNaturalLove");
@@ -276,16 +262,6 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	public void setSleeping(boolean sleeping)
 	{
 		entityData.set(SLEEPING, sleeping);
-	}
-	
-	public int getLengthBeforeNextBreeding()
-	{
-		return entityData.get(LENGTH_BEFORE_NEXT_BREEDING);
-	}
-	
-	public void setLengthBeforeNextBreeding(int lengthBeforeNextBreeding)
-	{
-		entityData.set(LENGTH_BEFORE_NEXT_BREEDING, lengthBeforeNextBreeding);
 	}
 	
 	public boolean canFallInLove() 
@@ -455,18 +431,6 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 		{
 			return this.isInLove() && prehistoric.isInLove() || this.isInNaturalLove() && prehistoric.isInNaturalLove();
 		}
-	}
-	
-	public boolean timeEquilsZero()
-	{
-		return this.getLengthBeforeNextBreeding() == 0;
-	}
-	
-	@Override
-	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficulty, SpawnReason reason, ILivingEntityData data, CompoundNBT nbt) 
-	{
-		this.setLengthBeforeNextBreeding(100000);
-		return super.finalizeSpawn(world, difficulty, reason, data, nbt);
 	}
 	
 	public void spawnChildFromNaturalBreeding(ServerWorld world, PrehistoricEntity entity) 

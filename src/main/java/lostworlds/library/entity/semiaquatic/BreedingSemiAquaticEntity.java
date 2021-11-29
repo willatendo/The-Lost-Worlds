@@ -1,78 +1,43 @@
 package lostworlds.library.entity.semiaquatic;
 
+import lostworlds.library.entity.controller.SemiAquaticSwimSinkMoveController;
 import lostworlds.library.entity.navigators.SemiAquaticPathNavigator;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.MoverType;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.ai.controller.MovementController;
 import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.pathfinding.PathNavigator;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.pathfinding.GroundPathNavigator;
 import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 
 public abstract class BreedingSemiAquaticEntity extends AnimalEntity implements ISemiAquatic
-{
-    public static final DataParameter<Byte> CLIMBING = EntityDataManager.defineId(BreedingSemiAquaticEntity.class, DataSerializers.BYTE);
-    
+{    
+	private boolean isLandNavigator;
+	
     public BreedingSemiAquaticEntity(EntityType<? extends BreedingSemiAquaticEntity> entity, World world) 
 	{
 		super(entity, world);
 		this.setPathfindingMalus(PathNodeType.WATER, 0.0F);
 		this.setPathfindingMalus(PathNodeType.WATER_BORDER, 0.0F);
+		switchNavigator(false);
 	}
 	
-	@Override
-	protected PathNavigator createNavigation(World world) 
-	{
-		SemiAquaticPathNavigator flyingpathnavigator = new SemiAquaticPathNavigator(this, world) 
-		{
-			@Override
-			public boolean isStableDestination(BlockPos pos) 
-			{
-				return this.level.getBlockState(pos).getFluidState().isEmpty();
-			}
-		};
-		return flyingpathnavigator;
-	}
-	
-	@Override
-	public void tick() 
-	{
-		super.tick();
-		if (!this.level.isClientSide) 
-		{
-			this.setBesideClimbableBlock(this.horizontalCollision && this.isInWater());
+	private void switchNavigator(boolean onLand) {
+		if (onLand) {
+			this.moveControl = new MovementController(this);
+			this.navigation = new GroundPathNavigator(this, this.level);
+			this.isLandNavigator = true;
+		} else {
+			this.moveControl = new SemiAquaticSwimSinkMoveController(this, 1.2F, 1.6F);
+			this.navigation = new SemiAquaticPathNavigator(this, this.level);
+			this.isLandNavigator = false;
 		}
-	}
-	
-	@Override
-	protected void defineSynchedData() 
-	{
-		super.defineSynchedData();
-		this.entityData.set(CLIMBING, (byte) 0);
-	}
-	
-	public boolean isBesideClimbableBlock() 
-	{
-		return (this.entityData.get(CLIMBING) & 1) != 0;
-	}
-
-	public void setBesideClimbableBlock(boolean climbing) 
-	{
-		byte b0 = this.entityData.get(CLIMBING);
-		if(climbing) 
-		{
-			b0 = (byte) (b0 | 1);
-		} 
-		else 
-		{
-			b0 = (byte) (b0 & -2);
-		}
-
-		this.entityData.set(CLIMBING, b0);
 	}
 	
 	@Override
@@ -106,6 +71,44 @@ public abstract class BreedingSemiAquaticEntity extends AnimalEntity implements 
 	}
 	
 	@Override
+	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficuilty, SpawnReason reason, ILivingEntityData data, CompoundNBT nbt) 
+	{
+		this.setAirSupply(this.getMaxAirSupply());
+		return super.finalizeSpawn(world, difficuilty, reason, data, nbt);
+	}
+	
+	@Override
+	public int getMaxAirSupply() 
+	{
+		return 4800;
+	}
+	
+	@Override
+	protected int increaseAirSupply(int air) 
+	{
+		return this.getMaxAirSupply();
+	}
+	
+	@Override
+	public void tick() 
+	{
+		if(this.isNoAi()) 
+		{
+			this.setAirSupply(this.getMaxAirSupply());
+		}
+		if(this.isInWaterOrBubble() && this.isLandNavigator) 
+		{
+			switchNavigator(false);
+		}
+		if(!this.isInWaterOrBubble() && !this.isLandNavigator) 
+		{
+			switchNavigator(true);
+		}
+		
+		super.tick();
+	}
+	
+	@Override
 	public void travel(Vector3d vec3d) 
 	{
 		if(this.isEffectiveAi() && this.isInWater()) 
@@ -130,6 +133,4 @@ public abstract class BreedingSemiAquaticEntity extends AnimalEntity implements 
 
 		}
 	}
-	
-	
 }

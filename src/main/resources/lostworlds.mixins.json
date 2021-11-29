@@ -4,7 +4,9 @@
 	"minVersion": "0.8",
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [
-		"DimensionGeneratorSettingsMixin"
+		"DimensionGeneratorSettingsMixin",
+		"ItemMixin",
+		"SpawnEggItemMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

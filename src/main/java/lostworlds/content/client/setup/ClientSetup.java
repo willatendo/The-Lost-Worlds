@@ -4,6 +4,7 @@ import lostworlds.content.client.entity.render.ChilesaurusRenderer;
 import lostworlds.content.client.entity.render.ChilesaurusSkeletonRenderer;
 import lostworlds.content.client.entity.render.DilophosaurusRenderer;
 import lostworlds.content.client.entity.render.FossilPoacherRenderer;
+import lostworlds.content.client.entity.render.GreatAukRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusSkeletonRenderer;
 import lostworlds.content.client.entity.render.ModBoatRenderer;
@@ -205,6 +206,7 @@ public class ClientSetup
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS, manager -> new ChilesaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS_SKELETON, manager -> new ChilesaurusSkeletonRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.DILOPHOSAURUS, manager -> new DilophosaurusRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.GREAT_AUK, manager -> new GreatAukRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS, manager -> new KentrosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS_SKELETON, manager -> new KentrosaurusSkeletonRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.NAUTILUS, manager -> new NautilusRenderer(manager));

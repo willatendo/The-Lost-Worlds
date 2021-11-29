@@ -31,6 +31,11 @@ public class ServerConfig
 	public final IntValue siltRange;
 	public final IntValue siltCountPerChunk;
 
+	public final BooleanValue amberOre;
+	public final IntValue amberVeinSize;
+	public final IntValue amberRange;
+	public final IntValue amberCountPerChunk;
+	
 	public final BooleanValue plantFossilsInOverworld;
 	public final IntValue plantFossilChance;
 	public final BooleanValue fossilsInOverworld;
@@ -82,6 +87,12 @@ public class ServerConfig
 	public final IntValue dilophosaurusSpawnGroupMinimum;
 	public final IntValue dilophosaurusSpawnGroupMaximum;
 
+	public final DoubleValue greatAukHeath;
+	public final DoubleValue greatAukAttackDamage;
+	public final IntValue greatAukSpawnWeight;
+	public final IntValue greatAukSpawnGroupMinimum;
+	public final IntValue greatAukSpawnGroupMaximum;
+
 	public final DoubleValue kentrosaurusHeath;
 	public final IntValue kentrosaurusSpawnWeight;
 	public final IntValue kentrosaurusSpawnGroupMinimum;
@@ -119,10 +130,15 @@ public class ServerConfig
 		this.cypressTreesInSwamps = builder.comment("Sets if cypress trees should spawn in swamp biomes.").translation(TRANSLATION_TEXT + "cypressTreesInSwamps").define("cypressTreesInSwamps", true);
 
 		this.siltPatchGeneration = builder.comment("Sets if silt patches should spawn.").translation(TRANSLATION_TEXT + "siltPatchGeneration").define("siltPatchGeneration", true);
-		this.siltVeinSize = builder.comment("Sets the size a silt patches can spawn.").translation(TRANSLATION_TEXT + "siltVeinSize").defineInRange("siltVeinSize", 29, 1, 100);
+		this.siltVeinSize = builder.comment("Sets the size a silt patch can spawn.").translation(TRANSLATION_TEXT + "siltVeinSize").defineInRange("siltVeinSize", 29, 1, 100);
 		this.siltRange = builder.comment("Sets the range silt patches can spawn in.").translation(TRANSLATION_TEXT + "siltRange").defineInRange("siltRange", 64, 1, 256);
-		this.siltCountPerChunk = builder.comment("Sets the ammount of silt patches veins per chunk.").translation(TRANSLATION_TEXT + "siltCountPerChunk").defineInRange("siltCountPerChunk", 3, 1, 100);
+		this.siltCountPerChunk = builder.comment("Sets the amount of silt patches per chunk.").translation(TRANSLATION_TEXT + "siltCountPerChunk").defineInRange("siltCountPerChunk", 3, 1, 100);
 
+		this.amberOre = builder.comment("Sets if amber ore should spawn in the overworld.").translation(TRANSLATION_TEXT + "amberOre").define("amberOre", true);
+		this.amberVeinSize = builder.comment("Sets the size of an amber ore vein can spawn.").translation(TRANSLATION_TEXT + "amberVeinSize").defineInRange("amberVeinSize", 1, 1, 100);
+		this.amberRange = builder.comment("Sets the range amber ore can spawn in.").translation(TRANSLATION_TEXT + "amberRange").defineInRange("amberRange", 16, 1, 256);
+		this.amberCountPerChunk = builder.comment("Sets the amount of amber ore patches per chunk.").translation(TRANSLATION_TEXT + "amberCountPerChunk").defineInRange("amberCountPerChunk", 4, 1, 100);
+		
 		this.plantFossilsInOverworld = builder.comment("Sets if plant fossils should spawn in the overworld.").translation(TRANSLATION_TEXT + "plantFossilsInOverworld").define("plantFossilsInOverworld", true);
 		this.plantFossilChance = builder.comment("Sets the chance of plant fossils spawning.").translation(TRANSLATION_TEXT + "plantFossilChance").defineInRange("plantFossilChance", 128, 0, 999);
 		
@@ -174,6 +190,12 @@ public class ServerConfig
 		this.dilophosaurusSpawnWeight = builder.comment("Sets the weight of Dilophosaurus in spawning").translation(TRANSLATION_TEXT + "dilophosaurusSpawnWeight").defineInRange("dilophosaurusSpawnWeight", 4, 1, 100);
 		this.dilophosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Dilophosaurus in a spawn group").translation(TRANSLATION_TEXT + "dilophosaurusSpawnGroupMinimum").defineInRange("dilophosaurusSpawnGroupMinimum", 3, 1, 100);
 		this.dilophosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Dilophosaurus in a spawn group").translation(TRANSLATION_TEXT + "dilophosaurusSpawnGroupMaximum").defineInRange("dilophosaurusSpawnGroupMaximum", 10, 1, 100);
+
+		this.greatAukHeath = builder.comment("Sets the heath of the Great Auk").translation(TRANSLATION_TEXT + "greatAukHeath").defineInRange("greatAukHeath", 15.0D, 1.0D, 999.0D);
+		this.greatAukAttackDamage = builder.comment("Sets the attack damage of the Great Auk").translation(TRANSLATION_TEXT + "greatAukAttackDamage").defineInRange("greatAukAttackDamage", 2.0D, 1.0D, 999.0D);
+		this.greatAukSpawnWeight = builder.comment("Sets the weight of Great Auk in spawning").translation(TRANSLATION_TEXT + "greatAukSpawnWeight").defineInRange("greatAukSpawnWeight", 4, 1, 100);
+		this.greatAukSpawnGroupMinimum = builder.comment("Sets the minimum amount of Great Auk in a spawn group").translation(TRANSLATION_TEXT + "greatAukSpawnGroupMinimum").defineInRange("greatAukSpawnGroupMinimum", 7, 1, 100);
+		this.greatAukSpawnGroupMaximum = builder.comment("Sets the maximum amount of Great Auk in a spawn group").translation(TRANSLATION_TEXT + "greatAukSpawnGroupMaximum").defineInRange("greatAukSpawnGroupMaximum", 20, 1, 100);
 
 		this.kentrosaurusHeath = builder.comment("Sets the heath of the Kentrosaurus").translation(TRANSLATION_TEXT + "kentrosaurusHeath").defineInRange("kentrosaurusHeath", 30.0D, 1.0D, 999.0D);
 		this.kentrosaurusSpawnWeight = builder.comment("Sets the weight of Kentrosaurus in spawning").translation(TRANSLATION_TEXT + "kentrosaurusSpawnWeight").defineInRange("kentrosaurusSpawnWeight", 3, 1, 100);

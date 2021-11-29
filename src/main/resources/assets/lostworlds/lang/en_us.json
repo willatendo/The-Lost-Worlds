@@ -32,12 +32,6 @@
 	"item.lostworlds.netherite_brush": "Netherite Brush",
 	"item.lostworlds.hammer": "Hammer",
 	"item.lostworlds.chisel": "Chisel",
-	"chisel.lostworlds.look": "Look at Me",
-	"chisel.lostworlds.looking": "Skeleton is Looking at The Player",
-	"chisel.lostworlds.not_looking": "Fossil is no Longer Looking at The Player",
-	"chisel.lostworlds.push": "Push",
-	"chisel.lostworlds.pushable": "Skeleton is Pushable by The Player",
-	"chisel.lostworlds.not_pushable": "Skeleton is no Longer Pushable by The Player",
 	
 	//Armour
 	"item.lostworlds.cloth_mask": "Cloth Mask",
@@ -121,6 +115,8 @@
 	"block.minecraft.banner.scarab.green": "Green Scarab",
 	"block.minecraft.banner.scarab.red": "Red Scarab",
 	"block.minecraft.banner.scarab.black": "Black Scarab",
+	"item.lostworlds.palaeoniscum_bucket": "Palaeoniscum Bucket",
+	"item.lostworlds.nautilus_bucket": "Nautilus Bucket",
 	"item.lostworlds.charged_crystal_scarab_gem": "Charged Crystal Scarab Gem",
 	"jeiInfo.lostworlds.charged_crystal_scarab_gem": "Created in a lightning strike, they are one of the rarest and most valuable items in the game. They are require for a lot of things, including time travel. Made with a Crystal Scarab Gem.",
 	"item.lostworlds.crystal_scarab_gem": "Crystal Scarab Gem",
@@ -159,8 +155,11 @@
 	//Dinosaurs
 	"dino.lostworlds.chilesaurus": "Chilesaurus",
 	"dino.lostworlds.dilophosaurus": "Dilophosaurus",
+	"dino.lostworlds.great_auk": "Great Auk",
 	"dino.lostworlds.kentrosaurus": "Kentrosaurus",
+	"dino.lostworlds.nautilus": "Nautilus",
 	"dino.lostworlds.ophthalmosaurus": "Ophthalmosaurus",
+	"dino.lostworlds.palaeoniscum": "Palaeoniscum",
 	
 	//Plants
 	"plant.lostworlds.archaefrutus": "Archaefrutus",
@@ -315,7 +314,7 @@
 	"block.lostworlds.large_plastered_fossilized_egg": "Large Plastered Fossilized Egg",
 	
 	//Overworld Ores
-	"block.lostworlds.copper_ore": "Copper Ore",
+	"block.lostworlds.amber_ore": "Amber Ore",
 	"block.lostworlds.basalt_diamond_ore": "Basalt Diamond Ore",
 	
 	//Museum Blocks
@@ -792,8 +791,10 @@
 	"entity.lostworlds.chilesaurus": "Chilesaurus",
 	"entity.lostworlds.dilophosaurus": "Dilophosaurus",
 	"entity.lostworlds.kentrosaurus": "Kentrosaurus",
+	"entity.lostworlds.ophthalmosaurus": "Ophthalmosaurus",
 	
 	//Modern
+	"entity.lostworlds.great_auk": "Great Auk",
 	"entity.lostworlds.nautilus": "Nautilus",
 	
 	//Villagers
@@ -823,6 +824,10 @@
 	"biome.lostworlds.permian_plains": "Permian Plains",
 	"biome.lostworlds.permian_plains_hills": "Permian Plains Hills",
 	"biome.lostworlds.permian_shore": "Permian Shore",
+	
+	//Jurassic
+	
+	//Cretaceous
 	
 	//Overworld
 	"biome.lostworlds.conifer_forest": "Conifer Forest",

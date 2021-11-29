@@ -44,7 +44,7 @@ public class SleepyBreedGoal extends Goal
 	@Override
 	public boolean canUse() 
 	{
-		if(!this.entity.isInLove() && this.entity.timeEquilsZero() && !this.entity.isSleeping()) 
+		if(!this.entity.isInLove() && !this.entity.isSleeping()) 
 		{
 			return false;
 		} 

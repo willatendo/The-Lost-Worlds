@@ -21,6 +21,7 @@ import lostworlds.library.item.FullSyringeItem;
 import lostworlds.library.item.HammerItem;
 import lostworlds.library.item.LostWorldsLexicon;
 import lostworlds.library.item.ModBoneMealItem;
+import lostworlds.library.item.ModFishBucketItem;
 import lostworlds.library.item.ModItem;
 import lostworlds.library.item.ModSpawnEggItem;
 import lostworlds.library.item.PlantFossilItem;
@@ -50,7 +51,6 @@ import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
-import tyrannotitanlib.library.base.item.TyrannoFishBucketItem;
 
 public class ItemInit
 {	
@@ -220,8 +220,16 @@ public class ItemInit
 	
 	public static final Item SCARAB_BANNER_PATTERN = ModRegistry.register("scarab_banner_pattern", new BannerPatternItem(BannerInit.SCARAB, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1)));
 	
-	public static final Item FOSSIL_POACHER_SPAWN_EGG = ModRegistry.register("fossil_poacher_spawn_egg", new ModSpawnEggItem(() -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031, ModUtils.ITEMS));
+	public static final Item FOSSIL_POACHER_SPAWN_EGG = ModRegistry.register("fossil_poacher_spawn_egg", new ModSpawnEggItem(() -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031, ItemGroup.TAB_MISC));
 	
+	public static final Item NAUTILUS_BUCKET = ModRegistry.register("nautilus_bucket", new ModFishBucketItem(() -> EntityInit.NAUTILUS, Fluids.WATER, new Properties().tab(ModUtils.ITEMS).stacksTo(1)));
+	public static final Item NAUTILUS_SPAWN_EGG = ModRegistry.register("nautilus_spawn_egg", new DinoSpawnEggItem(() -> EntityInit.NAUTILUS, 0xd4ccc3, 0xca7548, ItemGroup.TAB_MISC, ModUtils.tTC("dino", "nautilus")));
+	
+	public static final Item PALAEONISCUM_BUCKET = ModRegistry.register("palaeoniscum_bucket", new ModFishBucketItem(() -> EntityInit.PALAEONISCUM, Fluids.WATER, new Properties().tab(ModUtils.ITEMS).stacksTo(1)));
+	public static final Item PALAEONISCUM_SPAWN_EGG = ModRegistry.register("palaeoniscum_spawn_egg", new DinoSpawnEggItem(() -> EntityInit.PALAEONISCUM, 0x72797a, 0x2f3a3d, ItemGroup.TAB_MISC, ModUtils.tTC("dino", "palaeoniscum")));
+
+	public static final Item GREAT_AUK_SPAWN_EGG = ModRegistry.register("great_auk_spawn_egg", new DinoSpawnEggItem(() -> EntityInit.GREAT_AUK, 0xFFFFFF, 0x000000, ItemGroup.TAB_MISC, ModUtils.tTC("dino", "great_auk")));
+
 	//Fossils
 	public static final Item AMBER = ModRegistry.register("amber", new AmberItem());
 	public static final Item FOSSILIZED_FEATHER = ModRegistry.register("fossilized_feather", new ModItem());
@@ -235,12 +243,6 @@ public class ItemInit
 	public static final Item CYPRESS_BARK_SAMPLE = ModRegistry.register("cypress_bark_sample", new ModItem());
 	public static final Item GINKGO_BARK_SAMPLE = ModRegistry.register("ginkgo_bark_sample", new ModItem());
 	public static final Item SEQUOIA_BARK_SAMPLE = ModRegistry.register("sequoia_bark_sample", new ModItem());
-	
-	public static final Item NAUTILUS_BUCKET = ModRegistry.register("nautilus_bucket", new TyrannoFishBucketItem(() -> EntityInit.NAUTILUS, Fluids.WATER, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1)));
-	public static final Item NAUTILUS_SPAWN_EGG = ModRegistry.register("nautilus_spawn_egg", new ModSpawnEggItem(() -> EntityInit.NAUTILUS, 0xd4ccc3, 0xca7548, ItemGroup.TAB_MISC));
-	
-	public static final Item PALAEONISCUM_BUCKET = ModRegistry.register("palaeoniscum_bucket", new TyrannoFishBucketItem(() -> EntityInit.PALAEONISCUM, Fluids.WATER, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1)));
-	public static final Item PALAEONISCUM_SPAWN_EGG = ModRegistry.register("palaeoniscum_spawn_egg", new ModSpawnEggItem(() -> EntityInit.PALAEONISCUM, 0x72797a, 0x2f3a3d, ItemGroup.TAB_MISC));
 
 	public static void init() 
 	{

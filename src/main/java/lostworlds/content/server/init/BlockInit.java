@@ -63,6 +63,7 @@ import lostworlds.library.item.ModBoatItem;
 import lostworlds.library.item.tool.ModMaterials;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.DoorBlock;
 import net.minecraft.block.FenceBlock;
@@ -87,10 +88,13 @@ import net.minecraft.block.WallSignBlock;
 import net.minecraft.block.WoodButtonBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.Properties;
 import net.minecraft.item.SignItem;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
 import tyrannotitanlib.library.base.block.TyrannoConnectedTextureBlock;
 import tyrannotitanlib.library.base.block.TyrannoOreBlock;
@@ -227,6 +231,7 @@ public class BlockInit
 	public static final Block LARGE_PLASTERED_FOSSILISED_EGG = BlockAndItemBuilder.create("large_plastered_fossilized_egg", new LargePlasteredFossilizedEggBlock(AbstractBlock.Properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()));
 	
 	//Overworld Ores
+	public static final Block AMBER_ORE = BlockAndItemBuilder.create("amber_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.DIRT).requiresCorrectToolForDrops().strength(1.5F, 6.0F), 0, 0));
 	public static final Block BASALT_DIAMOND_ORE = BlockAndItemBuilder.create("basalt_diamond_ore", new ModOreRotatedPillerBlock(AbstractBlock.Properties.copy(Blocks.BASALT)));
 
 	//Machines
@@ -269,7 +274,7 @@ public class BlockInit
 	public static final Block STRIPPED_ARAUCARIA_LOG = BlockAndItemBuilder.create("stripped_araucaria_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block ARAUCARIA_WOOD = BlockAndItemBuilder.create("araucaria_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_ARAUCARIA_WOOD = BlockAndItemBuilder.create("stripped_araucaria_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block ARAUCARIA_LEAVES = BlockAndItemBuilder.create("araucaria_leaves", new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES, MaterialColor.COLOR_GREEN).strength(0.3F).noOcclusion().sound(SoundType.GRASS)));
+	public static final Block ARAUCARIA_LEAVES = BlockAndItemBuilder.create("araucaria_leaves", leaves());
 	public static final Block ARAUCARIA_SAPLING = BlockAndItemBuilder.create("araucaria_sapling", new TyrannoSaplingBlock(new AraucariaTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block ARAUCARIA_PLANKS = BlockAndItemBuilder.create("araucaria_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block ARAUCARIA_STAIRS = BlockAndItemBuilder.create("araucaria_stairs", new StairsBlock(() -> BlockInit.ARAUCARIA_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -293,7 +298,7 @@ public class BlockInit
 	public static final Block STRIPPED_CALAMITES_LOG = BlockAndItemBuilder.create("stripped_calamites_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block CALAMITES_WOOD = BlockAndItemBuilder.create("calamites_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_CALAMITES_WOOD = BlockAndItemBuilder.create("stripped_calamites_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block CALAMITES_LEAVES = BlockAndItemBuilder.create("calamites_leaves", new LeavesBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_GREEN).strength(0.3F).noOcclusion().sound(SoundType.GRASS)));
+	public static final Block CALAMITES_LEAVES = BlockAndItemBuilder.create("calamites_leaves", leaves());
 	public static final Block CALAMITES_SAPLING = BlockAndItemBuilder.create("calamites_sapling", new TyrannoSaplingBlock(new CalamitesTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block CALAMITES_PLANKS = BlockAndItemBuilder.create("calamites_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block CALAMITES_STAIRS = BlockAndItemBuilder.create("calamites_stairs", new StairsBlock(() -> BlockInit.CONIFER_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -317,7 +322,7 @@ public class BlockInit
 	public static final Block STRIPPED_CONIFER_LOG = BlockAndItemBuilder.create("stripped_conifer_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F).sound(SoundType.WOOD)));
 	public static final Block CONIFER_WOOD = BlockAndItemBuilder.create("conifer_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_CONIFER_WOOD = BlockAndItemBuilder.create("stripped_conifer_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F).sound(SoundType.WOOD)));
-	public static final Block CONIFER_LEAVES = BlockAndItemBuilder.create("conifer_leaves", new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES, MaterialColor.COLOR_GREEN).strength(0.3F).noOcclusion().sound(SoundType.GRASS)));
+	public static final Block CONIFER_LEAVES = BlockAndItemBuilder.create("conifer_leaves", leaves());
 	public static final Block CONIFER_SAPLING = BlockAndItemBuilder.create("conifer_sapling", new TyrannoSaplingBlock(new ConiferTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block CONIFER_PLANKS = BlockAndItemBuilder.create("conifer_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block CONIFER_STAIRS = BlockAndItemBuilder.create("conifer_stairs", new StairsBlock(() -> BlockInit.CONIFER_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -341,7 +346,7 @@ public class BlockInit
 	public static final Block STRIPPED_CYPRESS_LOG = BlockAndItemBuilder.create("stripped_cypress_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F).sound(SoundType.WOOD)));
 	public static final Block CYPRESS_WOOD = BlockAndItemBuilder.create("cypress_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_CYPRESS_WOOD = BlockAndItemBuilder.create("stripped_cypress_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F).sound(SoundType.WOOD)));
-	public static final Block CYPRESS_LEAVES = BlockAndItemBuilder.create("cypress_leaves", new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES, MaterialColor.COLOR_GREEN).strength(0.3F).noOcclusion().sound(SoundType.GRASS)));
+	public static final Block CYPRESS_LEAVES = BlockAndItemBuilder.create("cypress_leaves", leaves());
 	public static final Block CYPRESS_SAPLING = BlockAndItemBuilder.create("cypress_sapling", new TyrannoSaplingBlock(new CypressTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block CYPRESS_PLANKS = BlockAndItemBuilder.create("cypress_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block CYPRESS_STAIRS = BlockAndItemBuilder.create("cypress_stairs", new StairsBlock(() -> BlockInit.CYPRESS_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -365,7 +370,7 @@ public class BlockInit
 	public static final Block STRIPPED_GINKGO_LOG = BlockAndItemBuilder.create("stripped_ginkgo_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block GINKGO_WOOD = BlockAndItemBuilder.create("ginkgo_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_GINKGO_WOOD = BlockAndItemBuilder.create("stripped_ginkgo_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block GINKGO_LEAVES = BlockAndItemBuilder.create("ginkgo_leaves", new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES, MaterialColor.COLOR_GREEN).strength(0.3F).noOcclusion().sound(SoundType.GRASS)));
+	public static final Block GINKGO_LEAVES = BlockAndItemBuilder.create("ginkgo_leaves", leaves());
 	public static final Block GINKGO_SAPLING = BlockAndItemBuilder.create("ginkgo_sapling", new TyrannoSaplingBlock(new GinkgoTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block GINKGO_PLANKS = BlockAndItemBuilder.create("ginkgo_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block GINKGO_STAIRS = BlockAndItemBuilder.create("ginkgo_stairs", new StairsBlock(() -> BlockInit.CONIFER_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -408,7 +413,7 @@ public class BlockInit
 	public static final Block STRIPPED_SEQUOIA_LOG = BlockAndItemBuilder.create("stripped_sequoia_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block SEQUOIA_WOOD = BlockAndItemBuilder.create("sequoia_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_SEQUOIA_WOOD = BlockAndItemBuilder.create("stripped_sequoia_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-	public static final Block SEQUOIA_LEAVES = BlockAndItemBuilder.create("sequoia_leaves", new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES, MaterialColor.COLOR_GREEN).strength(0.3F).noOcclusion().sound(SoundType.GRASS)));
+	public static final Block SEQUOIA_LEAVES = BlockAndItemBuilder.create("sequoia_leaves", leaves());
 	public static final Block SEQUOIA_SAPLING = BlockAndItemBuilder.create("sequoia_sapling", new TyrannoSaplingBlock(new SequoiaTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block SEQUOIA_PLANKS = BlockAndItemBuilder.create("sequoia_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block SEQUOIA_STAIRS = BlockAndItemBuilder.create("sequoia_stairs", new StairsBlock(() -> BlockInit.CONIFER_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -544,6 +549,21 @@ public class BlockInit
 	
 	public static final Block PAVED_ROAD = BlockAndItemBuilder.create("paved_road", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.STONE)));
 	public static final Block RAISED_PAVED_ROAD = BlockAndItemBuilder.create("raised_paved_road", new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.STONE)));
+	
+	private static Boolean ocelotOrParrot(BlockState state, IBlockReader reader, BlockPos pos, EntityType<?> entity) 
+	{
+		return entity == EntityType.OCELOT || entity == EntityType.PARROT;
+	}
+	
+	private static boolean never(BlockState state, IBlockReader reader, BlockPos pos) 
+	{
+		return false;
+	}
+	
+	private static LeavesBlock leaves() 
+	{
+		return new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES).strength(0.2F).harvestTool(ToolType.HOE).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(BlockInit::ocelotOrParrot).isSuffocating(BlockInit::never) .isViewBlocking(BlockInit::never));
+	}
 	
 	public static void init() 
 	{
