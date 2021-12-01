@@ -78,7 +78,6 @@ public class SleepyBreedGoal extends Goal
 		{
 			this.breed();
 		}
-
 	}
 
 	@Nullable

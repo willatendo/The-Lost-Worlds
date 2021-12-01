@@ -4,7 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import lostworlds.content.ModUtils;
-import lostworlds.library.container.DisplayCaseContainer;
+import lostworlds.library.container.FeedingTroughContainer;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -13,11 +13,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class DisplayCaseScreen extends ContainerScreen<DisplayCaseContainer> 
+public class FeedingTroughScreen extends ContainerScreen<FeedingTroughContainer> 
 {
 	private static final ResourceLocation TEXTURE = ModUtils.rL("textures/gui/single_item_inventory.png");
 	
-	public DisplayCaseScreen(DisplayCaseContainer container, PlayerInventory playerInv, ITextComponent text) 
+	public FeedingTroughScreen(FeedingTroughContainer container, PlayerInventory playerInv, ITextComponent text) 
 	{
 		super(container, playerInv, text);
 		this.imageHeight = 133;

@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 
 public abstract class CarnivoreEntity extends TaggedEntity
 {
-	protected static final DataParameter<Boolean> EATING = EntityDataManager.defineId(HerbivoreEntity.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> EATING = EntityDataManager.defineId(CarnivoreEntity.class, DataSerializers.BOOLEAN);
 	private int hunger;
 	
 	public CarnivoreEntity(EntityType<? extends CarnivoreEntity> entity, World world) 

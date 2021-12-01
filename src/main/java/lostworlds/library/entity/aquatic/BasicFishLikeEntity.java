@@ -19,7 +19,6 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.entity.ai.goal.PanicGoal;
 import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -44,7 +43,7 @@ import net.minecraft.world.World;
 
 public abstract class BasicFishLikeEntity extends CreatureEntity
 {
-	private static final DataParameter<Boolean> FROM_BUCKET = EntityDataManager.defineId(AbstractFishEntity.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> FROM_BUCKET = EntityDataManager.defineId(BasicFishLikeEntity.class, DataSerializers.BOOLEAN);
 	
 	public BasicFishLikeEntity(EntityType<? extends CreatureEntity> entity, World world) 
 	{

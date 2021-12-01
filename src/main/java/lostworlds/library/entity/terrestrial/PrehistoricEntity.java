@@ -8,7 +8,6 @@ import javax.annotation.Nullable;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.ModTags;
 import lostworlds.content.server.init.ItemInit;
-import lostworlds.library.entity.Size;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.EntityType;
@@ -54,22 +53,12 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	
 	public int inLove;
 	public UUID loveCause;
-		
-	public final Size entitySize;
-		
+				
 	public PrehistoricEntity(EntityType<? extends PrehistoricEntity> entity, World world) 
 	{
 		super(entity, world);
 		this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 16.0F);
 		this.setPathfindingMalus(PathNodeType.DAMAGE_FIRE, -1.0F);
-		this.entitySize = entitySize();
-	}
-	
-	public abstract Size entitySize();
-	
-	public Size getSize()
-	{
-		return this.entitySize;
 	}
 	
 	@Override

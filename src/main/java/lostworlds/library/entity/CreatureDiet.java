@@ -1,10 +1,26 @@
 package lostworlds.library.entity;
 
-public enum CreatureDiet 
+import net.minecraft.util.IStringSerializable;
+
+public enum CreatureDiet implements IStringSerializable
 {
-	CARNIVORE,
-	HERBIVORE,
-	INSECTIVORE,
-	OMNIVORE,
-	PISCIVORE;
+	NONE("none"),
+	CARNIVORE("carnivore"),
+	HERBIVORE("herbivore"),
+	INSECTIVORE("insectivore"),
+	OMNIVORE("omnivore"),
+	PISCIVORE("piscivore");
+
+	private final String name;
+	
+	private CreatureDiet(String name) 
+	{
+		this.name = name;
+	}
+	
+	@Override
+	public String getSerializedName() 
+	{
+		return this.name;
+	}
 }

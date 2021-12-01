@@ -368,6 +368,9 @@
 	"block.lostworlds.time_machine": "Time Machine",
 	"container.lostworlds.time_machine": "Time Machine",
 	"jei.lostworlds.time_machine.title": "Time Enchanting",
+
+	"block.lostworlds.feeding_trough": "Feeding Trough",
+	"container.lostworlds.feeding_trough": "Feeding Trough",
 	
 	//Tree
 	"block.lostworlds.araucaria_log": "Araucaria Log",

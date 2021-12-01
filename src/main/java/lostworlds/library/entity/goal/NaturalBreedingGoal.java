@@ -40,6 +40,7 @@ public class NaturalBreedingGoal extends Goal
 		this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
 	}
 
+	@Override
 	public boolean canUse() 
 	{
 		if(!this.entity.isInNaturalLove() && !this.entity.isSleeping()) 
@@ -53,17 +54,20 @@ public class NaturalBreedingGoal extends Goal
 		}
 	}
 
+	@Override
 	public boolean canContinueToUse() 
 	{
 		return this.partner.isAlive() && this.partner.isInNaturalLove() && !this.partner.isBaby() && !this.entity.isBaby() && this.naturalLoveTime < 60;
 	}
 
+	@Override
 	public void stop() 
 	{
 		this.partner = null;
 		this.naturalLoveTime = 0;
 	}
 
+	@Override
 	public void tick() 
 	{
 		this.entity.getLookControl().setLookAt(this.partner, 10.0F, (float) this.entity.getMaxHeadXRot());

@@ -2,6 +2,7 @@ package lostworlds.library.entity.goal.terrestrial.herbivore;
 
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.entity.terrestrial.HerbivoreEggLayingEntity;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tags.BlockTags;
@@ -28,7 +29,7 @@ public class HerbivoreCreateTerritoryGoal extends MoveToBlockGoal
 	@Override
 	public boolean canUse() 
 	{
-		return !this.entity.isInWaterOrBubble() && entity.canMakeTerritory();
+		return !this.entity.isInWaterOrBubble() && entity.canMakeTerritory() && this.level.getBlockState(this.entity.blockPosition().below()) != Blocks.AIR.defaultBlockState();
 	}
 
 	@Override

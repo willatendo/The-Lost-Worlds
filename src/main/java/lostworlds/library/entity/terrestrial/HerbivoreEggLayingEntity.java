@@ -1,7 +1,13 @@
 package lostworlds.library.entity.terrestrial;
 
+import java.util.ArrayList;
 import java.util.Random;
 
+import com.google.common.collect.Lists;
+
+import lostworlds.content.server.init.BlockInit;
+import lostworlds.library.entity.goal.terrestrial.herbivore.HerbivoreLayEggGoal;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
@@ -9,6 +15,8 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public abstract class HerbivoreEggLayingEntity extends HerbivoreEntity 
 {
@@ -88,7 +96,40 @@ public abstract class HerbivoreEggLayingEntity extends HerbivoreEntity
 	
 	public void setLayingEgg(boolean layingEgg) 
 	{
+		this.layEggCounter = layingEgg ? 1 : 0;
 		this.entityData.set(LAYING_EGG, layingEgg);
+	}
+	
+	@Override
+	public void aiStep() 
+	{
+		super.aiStep();
+		if(this.isAlive() && this.isLayingEgg() && this.layEggCounter >= 1 && this.layEggCounter % 5 == 0) 
+		{
+			BlockPos blockpos = this.blockPosition();
+			if(HerbivoreLayEggGoal.isNatural(this.level, blockpos)) 
+			{
+				ArrayList<Block> validblocks = Lists.newArrayList();
+				for(Block blocks : ForgeRegistries.BLOCKS)
+				{
+					if(blocks.is(Tags.Blocks.SAND))
+					{
+						validblocks.add(blocks);
+					}
+					if(blocks.is(Tags.Blocks.DIRT))
+					{
+						validblocks.add(blocks);
+					}
+					validblocks.add(BlockInit.NESTING_BLOCK);
+				}
+				
+				for(int i = 0; i < validblocks.size(); i++)
+				{
+					this.level.levelEvent(2001, blockpos, Block.getId(validblocks.get(i).defaultBlockState()));
+				}
+			}
+		}
+
 	}
 
 	@Override

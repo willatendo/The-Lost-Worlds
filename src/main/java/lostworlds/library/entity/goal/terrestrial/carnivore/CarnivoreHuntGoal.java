@@ -1,6 +1,5 @@
 package lostworlds.library.entity.goal.terrestrial.carnivore;
 
-import lostworlds.library.entity.Size;
 import lostworlds.library.entity.terrestrial.CarnivoreEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
@@ -23,12 +22,10 @@ public class CarnivoreHuntGoal extends Goal
 	private int failedPathFindingPenalty = 0;
 	private boolean canPenalize = false;
 	private final CarnivoreEntity entity;
-	private final Size entitySize;
 	
-	public CarnivoreHuntGoal(CarnivoreEntity entity, Size entitySize) 
+	public CarnivoreHuntGoal(CarnivoreEntity entity) 
 	{
 		this.entity = entity;
-		this.entitySize = entitySize;
 		this.speedModifier = 1.0D;
 	}
 
@@ -36,7 +33,7 @@ public class CarnivoreHuntGoal extends Goal
 	public boolean canUse() 
 	{
 		long i = this.entity.level.getGameTime();
-		if(!(i - this.lastCanUseCheck < 20L) && this.entity.isHungry() && entity.getSize().equalToSmallerThan(entitySize))
+		if(!(i - this.lastCanUseCheck < 20L) && this.entity.isHungry())
 		{
 			return true;
 		}

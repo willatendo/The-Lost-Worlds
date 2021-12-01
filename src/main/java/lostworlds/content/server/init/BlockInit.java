@@ -17,6 +17,7 @@ import lostworlds.library.block.DNAInjectorBlock;
 import lostworlds.library.block.DeadSpongeColonyBlock;
 import lostworlds.library.block.DisplayCaseBlock;
 import lostworlds.library.block.DriedSoilBlock;
+import lostworlds.library.block.FeedingTroughBlock;
 import lostworlds.library.block.FogBlock;
 import lostworlds.library.block.FossilCleanerBlock;
 import lostworlds.library.block.FossilGrinderBlock;
@@ -264,6 +265,8 @@ public class BlockInit
 
 	public static final Block TIME_MACHINE = TimeMachineBlock.create();
 			
+	public static final Block FEEDING_TROUGH = BlockAndItemBuilder.create("feeding_trough", new FeedingTroughBlock(AbstractBlock.Properties.of(Material.WOOD).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)));
+	
 	//Museum Blocks
 	public static final Block DISPLAY_CASE = BlockAndItemBuilder.create("display_case", new DisplayCaseBlock(AbstractBlock.Properties.of(Material.STONE).harvestLevel(1).requiresCorrectToolForDrops().noOcclusion().strength(4.0F, 5.0F).sound(SoundType.GLASS)));
 	

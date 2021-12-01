@@ -2,7 +2,6 @@ package lostworlds.library.entity.goal.terrestrial.herbivore;
 
 import java.util.EnumSet;
 
-import lostworlds.library.entity.terrestrial.HerbivoreEggLayingEntity;
 import lostworlds.library.entity.terrestrial.HerbivoreEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.tags.FluidTags;
@@ -30,23 +29,6 @@ public class SleepySwimGoal extends Goal
 		if(this.entity.getRandom().nextFloat() < 0.8F) 
 		{
 			this.entity.getJumpControl().jump();
-		}
-	}
-	
-	public static class Egg extends SleepySwimGoal
-	{
-		private final HerbivoreEggLayingEntity entity;
-		
-		public Egg(HerbivoreEggLayingEntity entity) 
-		{
-			super(entity);
-			this.entity = entity;
-		}
-		
-		@Override
-		public boolean canUse() 
-		{
-			return !this.entity.isGoingHome() && !this.entity.hasEgg() ? super.canUse() : false;
 		}
 	}
 }

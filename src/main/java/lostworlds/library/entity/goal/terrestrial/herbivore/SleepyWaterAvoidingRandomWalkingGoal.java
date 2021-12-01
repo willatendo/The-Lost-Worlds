@@ -50,7 +50,7 @@ public class SleepyWaterAvoidingRandomWalkingGoal extends SleepyRandomWalkingGoa
 		@Override
 		public boolean canUse() 
 		{
-			return !this.entity.isGoingHome() && !this.entity.hasEgg() ? super.canUse() : false;
+			return !this.entity.isGoingHome() && !this.entity.hasEgg() && !this.entity.isLayingEgg() ? super.canUse() : false;
 		}
 	}
 }

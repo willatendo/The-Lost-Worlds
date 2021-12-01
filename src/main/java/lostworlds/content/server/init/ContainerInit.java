@@ -10,6 +10,7 @@ import lostworlds.library.container.CultivatorContainer;
 import lostworlds.library.container.DNAExtractorContainer;
 import lostworlds.library.container.DNAInjectorContainer;
 import lostworlds.library.container.DisplayCaseContainer;
+import lostworlds.library.container.FeedingTroughContainer;
 import lostworlds.library.container.FossilCleanerContainer;
 import lostworlds.library.container.FossilGrinderContainer;
 import lostworlds.library.container.PaleontologyTableContainer;
@@ -31,6 +32,8 @@ public class ContainerInit
 	public static final ContainerType<CultivatorContainer> CULTIVATOR_CONTAINER = ModRegistry.register("cultivator_container", IForgeContainerType.create(CultivatorContainer::new));
 
 	public static final ContainerType<TimeMachineContainer> TIME_MACHINE_CONTAINER = ModRegistry.register("time_machine_container", IForgeContainerType.create(TimeMachineContainer::new));
+
+	public static final ContainerType<FeedingTroughContainer> FEEDING_TROUGH_CONTAINER = ModRegistry.register("feeding_trough_container", IForgeContainerType.create(FeedingTroughContainer::create));
 
 	public static final ContainerType<DisplayCaseContainer> DISPLAY_CASE_CONTAINER = ModRegistry.register("display_case_container", IForgeContainerType.create(DisplayCaseContainer::create));
 	

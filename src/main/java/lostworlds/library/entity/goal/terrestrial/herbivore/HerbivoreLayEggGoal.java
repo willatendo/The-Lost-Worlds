@@ -2,7 +2,6 @@ package lostworlds.library.entity.goal.terrestrial.herbivore;
 
 import java.util.Random;
 
-import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.block.LargeEggBlock;
 import lostworlds.library.block.MediumEggBlock;
@@ -13,12 +12,14 @@ import lostworlds.library.entity.terrestrial.HerbivoreEggLayingEntity;
 import net.minecraft.block.Block;
 import net.minecraft.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraftforge.common.Tags;
 
 public class HerbivoreLayEggGoal extends MoveToBlockGoal 
 {
@@ -31,18 +32,18 @@ public class HerbivoreLayEggGoal extends MoveToBlockGoal
 		this.entity = entity;
 		this.dino = dino;
 	}
-	
-	@Override
-	public void start() 
-	{
-		super.start();
-		ModUtils.LOGGER.debug("Attemping to lay egg");
-	}
 
 	@Override
 	public boolean canUse() 
 	{
 		return this.entity.hasEgg() && this.entity.getHomePos().closerThan(this.entity.position(), 9.0D) && !this.entity.isPanicked() ? super.canUse() : false;
+	}
+	
+	@Override
+	public void stop() 
+	{
+		super.stop();
+		this.entity.setGoingHome(false);
 	}
 
 	@Override
@@ -72,21 +73,22 @@ public class HerbivoreLayEggGoal extends MoveToBlockGoal
 					LargeEggBlock block = (LargeEggBlock) egg.defaultBlockState().setValue(LargeEggBlock.EGGS, Integer.valueOf(new Random().nextInt(3) + 1)).getBlock();
 					world.setBlock(this.blockPos.above(), block.defaultBlockState(), 3);
 				}
-				else if(egg.getBlock() instanceof MediumEggBlock)
+				else if(egg instanceof MediumEggBlock)
 				{
 					MediumEggBlock block = (MediumEggBlock) egg.defaultBlockState().setValue(MediumEggBlock.EGGS, Integer.valueOf(new Random().nextInt(6) + 1)).getBlock();
 					world.setBlock(this.blockPos.above(), block.defaultBlockState(), 3);
 				}
-				else if(egg.getBlock() instanceof SmallEggBlock)
+				else if(egg instanceof SmallEggBlock)
 				{
 					SmallEggBlock block = (SmallEggBlock) egg.defaultBlockState().setValue(SmallEggBlock.EGGS, Integer.valueOf(new Random().nextInt(10) + 1)).getBlock();
 					world.setBlock(this.blockPos.above(), block.defaultBlockState(), 3);
 				}
-				else if(egg.getBlock() instanceof TinyEggBlock)
+				else if(egg instanceof TinyEggBlock)
 				{
 					TinyEggBlock block = (TinyEggBlock) egg.defaultBlockState().setValue(TinyEggBlock.EGGS, Integer.valueOf(new Random().nextInt(19) + 1)).getBlock();
 					world.setBlock(this.blockPos.above(), block.defaultBlockState(), 3);
 				}
+				world.setBlock(this.blockPos, BlockInit.NESTING_BLOCK.defaultBlockState(), 3);
 				this.entity.setHasEgg(false);
 				this.entity.setLayingEgg(false);
 				this.entity.setInLoveTime(600);
@@ -98,17 +100,16 @@ public class HerbivoreLayEggGoal extends MoveToBlockGoal
 				this.entity.layEggCounter++;
 			}
 		}
-
 	}
 
 	@Override
 	protected boolean isValidTarget(IWorldReader reader, BlockPos pos) 
 	{
-		return !reader.isEmptyBlock(pos.above()) ? false : isNest(reader, pos);
+		return isNatural(reader, pos);
 	}
-	
-	public static boolean isNest(IBlockReader blockReader, BlockPos pos) 
+
+	public static boolean isNatural(IBlockReader reader, BlockPos pos) 
 	{
-		return blockReader.getBlockState(pos).is(BlockInit.NESTING_BLOCK);
+		return reader.getBlockState(pos).is(BlockTags.SAND) || reader.getBlockState(pos).is(Tags.Blocks.DIRT) || reader.getBlockState(pos).is(BlockInit.NESTING_BLOCK);
 	}
 }

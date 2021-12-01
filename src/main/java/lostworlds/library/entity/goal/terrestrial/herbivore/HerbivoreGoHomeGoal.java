@@ -23,21 +23,13 @@ public class HerbivoreGoHomeGoal extends Goal
 	@Override
 	public boolean canUse() 
 	{
-		if(this.entity.isBaby()) 
-		{
-			return false;
-		} 
-		else if(this.entity.hasEgg()) 
+		if(this.entity.hasEgg() && !this.entity.isLayingEgg()) 
 		{
 			return true;
 		}
-		else if(this.entity.getRandom().nextInt(700) != 0) 
-		{
-			return false;
-		} 
 		else 
 		{
-			return !this.entity.getHomePos().closerThan(this.entity.position(), 64.0D);
+			return false;
 		}
 	}
 
@@ -58,7 +50,7 @@ public class HerbivoreGoHomeGoal extends Goal
 	@Override
 	public boolean canContinueToUse() 
 	{
-		return !this.entity.getHomePos().closerThan(this.entity.position(), 7.0D) && !this.stuck && this.closeToHomeTryTicks <= 600;
+		return !this.entity.getHomePos().closerThan(this.entity.position(), 9.0D) && !this.stuck && this.closeToHomeTryTicks <= 600 && !this.entity.isLayingEgg();
 	}
 
 	@Override

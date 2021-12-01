@@ -21,8 +21,6 @@ import lostworlds.library.item.ModSpawnEggItem;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -35,9 +33,9 @@ public class EntityInit
 {	
 	public static final EntityClassification SEMI_AQUATIC_CREATURE = EntityClassification.create("semi_aquatic_creature", "semi_aquatic_creature", 10, true, true, 128);
 	
-	public static final EntityType<FossilPoacherEntity> FOSSIL_POACHER = EntityType.Builder.of(FossilPoacherEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).build("fossil_poacher");
+	public static final EntityType<FossilPoacherEntity> FOSSIL_POACHER = ModRegistry.register("fossil_poacher", FossilPoacherEntity::new, EntityClassification.MONSTER, 0.6F, 1.95F);
 	
-	public static final EntityType<ModBoatEntity> MOD_BOAT = EntityType.Builder.<ModBoatEntity>of(ModBoatEntity::new, EntityClassification.MISC).sized(1.375F, 0.5625F).build("mod_boat");
+	public static final EntityType<ModBoatEntity> MOD_BOAT = ModRegistry.register("mod_boat", ModBoatEntity::new, EntityClassification.MISC, 1.375F, 0.5625F);
 	public static final EntityType<ChargedCrystalScarabGemItemEntity> CHARGED_CRYSTAL_SCARAB_GEM_ITEM = ModRegistry.register("charged_crystal_scarab_gem_item", ChargedCrystalScarabGemItemEntity::new, EntityClassification.MISC, 0.5F, 0.5F);
 	public static final EntityType<CrystalScarabGemItemEntity> CRYSTAL_SCARAB_GEM_ITEM = ModRegistry.register("crystal_scarab_gem_item", CrystalScarabGemItemEntity::new, EntityClassification.MISC, 0.5F, 0.5F);
 	
@@ -53,30 +51,29 @@ public class EntityInit
 	
 	@SubscribeEvent
 	public static void registerEntities(RegistryEvent.Register<EntityType<?>> event) 
-	{
-		for(DinoTypes dinos : DinoTypes.values())
-		{
-			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getDirtyArmBones(), FossilEntity.createAttributes());
-			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getDirtyLegBones(), FossilEntity.createAttributes());
-			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getDirtyRibCage(), FossilEntity.createAttributes());
-			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getDirtySkull(),FossilEntity.createAttributes());
-			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getDirtyTail(), FossilEntity.createAttributes());
-			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getArmBones(), FossilEntity.createAttributes());
-			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getLegBones(), FossilEntity.createAttributes());
-			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getRibCage(), FossilEntity.createAttributes());
-			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getSkull(),FossilEntity.createAttributes());
-			GlobalEntityTypeAttributes.put((EntityType<? extends LivingEntity>) dinos.getTail(), FossilEntity.createAttributes());
-		}
-		
-		event.getRegistry().register(FOSSIL_POACHER.setRegistryName(ModUtils.rL("fossil_poacher")));
-		event.getRegistry().register(MOD_BOAT.setRegistryName(ModUtils.rL("mod_boat")));
-		
+	{	
 		ModSpawnEggItem.initSpawnEggs();
 	}
 	
 	@SubscribeEvent
 	public static void giveAttributes(EntityAttributeCreationEvent event)
 	{
+
+		for(DinoTypes dinos : DinoTypes.values())
+		{
+			event.put(dinos.getDirtyArmBones(), FossilEntity.createAttributes());
+			event.put(dinos.getDirtyLegBones(), FossilEntity.createAttributes());
+			event.put(dinos.getDirtyRibCage(), FossilEntity.createAttributes());
+			event.put(dinos.getDirtySkull(),FossilEntity.createAttributes());
+			event.put(dinos.getDirtyTail(), FossilEntity.createAttributes());
+			event.put(dinos.getArmBones(), FossilEntity.createAttributes());
+			event.put(dinos.getLegBones(), FossilEntity.createAttributes());
+			event.put(dinos.getRibCage(), FossilEntity.createAttributes());
+			event.put(dinos.getSkull(),FossilEntity.createAttributes());
+			event.put(dinos.getTail(), FossilEntity.createAttributes());
+		}
+		
+		
 		event.put(FOSSIL_POACHER, FossilPoacherEntity.createAttributes());
 		event.put(CHILESAURUS, ChilesaurusEntity.createAttributes());
 		event.put(CHILESAURUS_SKELETON, FossilEntity.createAttributes());

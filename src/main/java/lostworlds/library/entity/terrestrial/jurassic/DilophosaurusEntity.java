@@ -2,7 +2,6 @@ package lostworlds.library.entity.terrestrial.jurassic;
 
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.EntityInit;
-import lostworlds.library.entity.Size;
 import lostworlds.library.entity.goal.NaturalBreedingGoal;
 import lostworlds.library.entity.goal.terrestrial.carnivore.CarnivoreSleepGoal;
 import lostworlds.library.entity.goal.terrestrial.carnivore.SleepyBreedGoal;
@@ -102,12 +101,6 @@ public class DilophosaurusEntity extends CarnivoreEntity
 	{
 		return FOOD_ITEMS.test(stack) || stack.getItem() instanceof SeedItem;
 	}
-
-	@Override
-	public Size entitySize() 
-	{
-		return Size.MEDIUM;
-	}	
 
 	@Override
 	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 

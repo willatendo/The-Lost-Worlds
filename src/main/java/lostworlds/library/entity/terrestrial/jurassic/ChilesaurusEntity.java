@@ -4,7 +4,6 @@ import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.library.entity.DinoTypes;
-import lostworlds.library.entity.Size;
 import lostworlds.library.entity.goal.NaturalBreedingGoal;
 import lostworlds.library.entity.goal.terrestrial.herbivore.HerbivoreCreateTerritoryGoal;
 import lostworlds.library.entity.goal.terrestrial.herbivore.HerbivoreEatGrassGoal;
@@ -84,7 +83,7 @@ public class ChilesaurusEntity extends HerbivoreEggLayingEntity
 	protected void registerGoals() 
 	{
 		super.registerGoals();
-		this.goalSelector.addGoal(0, new SleepySwimGoal.Egg(this));
+		this.goalSelector.addGoal(0, new SleepySwimGoal(this));
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
@@ -118,12 +117,6 @@ public class ChilesaurusEntity extends HerbivoreEggLayingEntity
 	{
 		return FOOD_ITEMS.test(stack) || stack.getItem() instanceof SeedItem;
 	}
-	
-	@Override
-	public Size entitySize() 
-	{
-		return Size.SMALL;
-	}	
 
 	@Override
 	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 

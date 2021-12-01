@@ -227,13 +227,21 @@ public enum DinoTypes implements IStringSerializable
 		switch(this.eggSize)
 		{
 			case TINY:
-				return new TinyEggBlock(abstractProperties, () -> entity);
+				Block tinyegg = new TinyEggBlock(abstractProperties, () -> entity);
+				this.egg = tinyegg;
+				return tinyegg;
 			case SMALL:
-				return new SmallEggBlock(abstractProperties, () -> entity);
+				Block smallegg = new SmallEggBlock(abstractProperties, () -> entity);
+				this.egg = smallegg;
+				return smallegg;
 			case MEDIUM:
-				return new MediumEggBlock(abstractProperties, () -> entity);
+				Block mediumegg = new MediumEggBlock(abstractProperties, () -> entity);
+				this.egg = mediumegg;
+				return mediumegg;
 			case LARGE:
-				return new LargeEggBlock(abstractProperties, () -> entity);
+				Block largeegg = new LargeEggBlock(abstractProperties, () -> entity);
+				this.egg = largeegg;
+				return largeegg;
 			case NONE:
 			default:
 				return null;
