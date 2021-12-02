@@ -1,0 +1,218 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.diictodon",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [
+					0,
+					0.25,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Diictodon",
+					"pivot": [
+						0,
+						2,
+						0
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Diictodon",
+					"pivot": [
+						0,
+						2,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.5,
+								1,
+								-3
+							],
+							"size": [
+								3,
+								2,
+								6
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [
+						0,
+						2,
+						-3
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1,
+								1,
+								-6
+							],
+							"size": [
+								2,
+								2,
+								3
+							],
+							"uv": [
+								0,
+								8
+							]
+						}
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "body",
+					"pivot": [
+						0,
+						2.5,
+						3
+					],
+					"cubes": [
+						{
+							"origin": [
+								-0.5,
+								2,
+								3
+							],
+							"size": [
+								1,
+								1,
+								2
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "frontleg1",
+					"parent": "Diictodon",
+					"pivot": [
+						1,
+						2,
+						-2.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								0.75,
+								0,
+								-2.75
+							],
+							"size": [
+								1,
+								2,
+								1
+							],
+							"uv": [
+								12,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "frontleg2",
+					"parent": "Diictodon",
+					"pivot": [
+						-1,
+						2,
+						-2.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.75,
+								0,
+								-2.75
+							],
+							"size": [
+								1,
+								2,
+								1
+							],
+							"uv": [
+								10,
+								10
+							]
+						}
+					]
+				},
+				{
+					"name": "backleg1",
+					"parent": "Diictodon",
+					"pivot": [
+						1,
+						2,
+						1.75
+					],
+					"cubes": [
+						{
+							"origin": [
+								0.75,
+								0,
+								1.25
+							],
+							"size": [
+								1,
+								2,
+								1
+							],
+							"uv": [
+								7,
+								8
+							]
+						}
+					]
+				},
+				{
+					"name": "backleg2",
+					"parent": "Diictodon",
+					"pivot": [
+						-1,
+						2,
+						1.75
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.75,
+								0,
+								1.25
+							],
+							"size": [
+								1,
+								2,
+								1
+							],
+							"uv": [
+								0,
+								3
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

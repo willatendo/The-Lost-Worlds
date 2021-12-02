@@ -10,7 +10,6 @@ import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.DimensionInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.ItemInit;
-import lostworlds.content.server.init.KeyInit;
 import lostworlds.content.server.init.PotionInit;
 import lostworlds.content.server.init.StructurePieceInit;
 import lostworlds.library.biome.BiomeGeneration;
@@ -98,10 +97,10 @@ public class LostWorldsMod
 		
 		DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientSetup::setupOther);		
 		
-		if(LostWorldsConfig.COMMON_CONFIG.tameableDinos.get())
-		{
-			KeyInit.init();
-		}
+//		if(LostWorldsConfig.COMMON_CONFIG.tameableDinos.get())
+//		{
+//			KeyInit.init();
+//		}
 	}
 	
 	private void biomeModification(BiomeLoadingEvent event) 

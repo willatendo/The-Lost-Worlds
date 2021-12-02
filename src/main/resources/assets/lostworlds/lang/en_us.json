@@ -152,15 +152,6 @@
 	"item.lostworlds.sequoia_bark_sample": "Sequoia Bark Sample",
 	"item.lostworlds.empty_vile": "Empty Vile",
 	
-	//Dinosaurs
-	"dino.lostworlds.chilesaurus": "Chilesaurus",
-	"dino.lostworlds.dilophosaurus": "Dilophosaurus",
-	"dino.lostworlds.great_auk": "Great Auk",
-	"dino.lostworlds.kentrosaurus": "Kentrosaurus",
-	"dino.lostworlds.nautilus": "Nautilus",
-	"dino.lostworlds.ophthalmosaurus": "Ophthalmosaurus",
-	"dino.lostworlds.palaeoniscum": "Palaeoniscum",
-	
 	//Plants
 	"plant.lostworlds.archaefrutus": "Archaefrutus",
 	"plant.lostworlds.alethopteris": "Alepthopteris",
@@ -786,6 +777,7 @@
 	"death.attack.prick": "%1$s was pricked to death with a needle",
 
 	//Permian
+	"entity.lostworlds.diictodon": "Diictodon",
 	"entity.lostworlds.palaeoniscum": "Palaeoniscum",
 	
 	//Triassic
@@ -794,7 +786,11 @@
 	"entity.lostworlds.chilesaurus": "Chilesaurus",
 	"entity.lostworlds.dilophosaurus": "Dilophosaurus",
 	"entity.lostworlds.kentrosaurus": "Kentrosaurus",
+	"entity.lostworlds.liaoningosaurus": "Liaoningosaurus",
 	"entity.lostworlds.ophthalmosaurus": "Ophthalmosaurus",
+	
+	//Cretaceous
+	"entity.lostworlds.psittacosaurus": "Psittacosaurus",
 	
 	//Modern
 	"entity.lostworlds.great_auk": "Great Auk",

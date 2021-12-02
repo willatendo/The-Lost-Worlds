@@ -1,0 +1,342 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.zephyrosaurus",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Zephyrosaurus",
+					"pivot": [
+						0,
+						8,
+						0
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Zephyrosaurus",
+					"pivot": [
+						0,
+						8,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2,
+								5,
+								-4
+							],
+							"size": [
+								4,
+								4,
+								10
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "neck",
+					"parent": "body",
+					"pivot": [
+						0,
+						8,
+						-4
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1,
+								7,
+								-5
+							],
+							"size": [
+								2,
+								5,
+								2
+							],
+							"uv": [
+								0,
+								14
+							]
+						},
+						{
+							"origin": [
+								0,
+								12,
+								-5
+							],
+							"size": [
+								0,
+								2,
+								3
+							],
+							"uv": [
+								0,
+								4
+							]
+						}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "neck",
+					"pivot": [
+						0,
+						11,
+						-5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1,
+								10,
+								-9
+							],
+							"size": [
+								2,
+								2,
+								4
+							],
+							"uv": [
+								18,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "rightarm",
+					"parent": "body",
+					"pivot": [
+						2,
+						6,
+						-2
+					],
+					"cubes": [
+						{
+							"origin": [
+								1.5,
+								3,
+								-3
+							],
+							"size": [
+								1,
+								4,
+								2
+							],
+							"uv": [
+								0,
+								23
+							]
+						}
+					]
+				},
+				{
+					"name": "leftarm",
+					"parent": "body",
+					"pivot": [
+						-2,
+						6,
+						-2
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2.5,
+								3,
+								-3
+							],
+							"size": [
+								1,
+								4,
+								2
+							],
+							"uv": [
+								10,
+								14
+							]
+						}
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "body",
+					"pivot": [
+						0,
+						8,
+						6
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1,
+								7,
+								6
+							],
+							"size": [
+								2,
+								2,
+								7
+							],
+							"uv": [
+								11,
+								16
+							]
+						}
+					]
+				},
+				{
+					"name": "tail2",
+					"parent": "tail",
+					"pivot": [
+						0,
+						8.5,
+						13
+					],
+					"cubes": [
+						{
+							"origin": [
+								-0.5,
+								8,
+								13
+							],
+							"size": [
+								1,
+								1,
+								8
+							],
+							"uv": [
+								0,
+								14
+							]
+						}
+					]
+				},
+				{
+					"name": "leftleg",
+					"parent": "Zephyrosaurus",
+					"pivot": [
+						-1.5,
+						7,
+						4
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2.5,
+								4,
+								2
+							],
+							"size": [
+								2,
+								4,
+								3
+							],
+							"uv": [
+								22,
+								14
+							]
+						}
+					]
+				},
+				{
+					"name": "knee",
+					"parent": "leftleg",
+					"pivot": [
+						-1.5,
+						4,
+						4
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2,
+								0,
+								4
+							],
+							"size": [
+								1,
+								4,
+								0
+							],
+							"uv": [
+								18,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "rightleg",
+					"parent": "Zephyrosaurus",
+					"pivot": [
+						1.5,
+						7,
+						4
+					],
+					"cubes": [
+						{
+							"origin": [
+								0.5,
+								4,
+								2
+							],
+							"size": [
+								2,
+								4,
+								3
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "knee2",
+					"parent": "rightleg",
+					"pivot": [
+						1.5,
+						4,
+						4
+					],
+					"cubes": [
+						{
+							"origin": [
+								1,
+								0,
+								4
+							],
+							"size": [
+								1,
+								4,
+								0
+							],
+							"uv": [
+								16,
+								14
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

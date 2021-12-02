@@ -5,7 +5,6 @@ import java.text.NumberFormat;
 import com.mojang.blaze3d.matrix.MatrixStack;
 
 import lostworlds.content.ModUtils;
-import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.library.entity.terrestrial.HerbivoreEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
@@ -36,14 +35,14 @@ public class HerbivoreTabletScreen extends AbstractTableScreen
 		this.font.draw(stack, TabletLang.HEATH, 18.0F, 130.0F, FONT_COLOUR);
 		this.font.draw(stack, TabletLang.HUNGER, 18.0F, 140.0F, FONT_COLOUR);
 		this.font.draw(stack, TabletLang.SEX, 18.0F, 150.0F, FONT_COLOUR);
-		if(LostWorldsConfig.COMMON_CONFIG.tameableDinos.get())
-		{
-			this.font.draw(stack, TabletLang.OWNER, 18.0F, 160.0F, FONT_COLOUR);
-		}
-		else
-		{
+//		if(LostWorldsConfig.COMMON_CONFIG.tameableDinos.get())
+//		{
+//			this.font.draw(stack, TabletLang.OWNER, 18.0F, 160.0F, FONT_COLOUR);
+//		}
+//		else
+//		{
 			this.font.draw(stack, TabletLang.TAGGED_TO, 18.0F, 160.0F, FONT_COLOUR);
-		}
+//		}
 		this.font.draw(stack, contraceptives(), 108.0F, 110.0F, FONT_COLOUR);
 		this.font.draw(stack, age(), 108.0F, 120.0F, FONT_COLOUR);
 		this.font.draw(stack, heath(), 108.0F, 130.0F, FONT_COLOUR);

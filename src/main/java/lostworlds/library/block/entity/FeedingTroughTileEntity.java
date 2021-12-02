@@ -4,12 +4,12 @@ import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.FeedingTroughBlock;
 import lostworlds.library.container.FeedingTroughContainer;
-import lostworlds.library.container.inventory.FeedingTroughInventory;
 import lostworlds.library.container.slot.FeedingTroughSlot;
 import lostworlds.library.entity.CreatureDiet;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
@@ -21,102 +21,93 @@ import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 
-public class FeedingTroughTileEntity extends LockableLootTileEntity implements INamedContainerProvider, ITickableTileEntity
+public class FeedingTroughTileEntity extends LockableLootTileEntity implements INamedContainerProvider, ITickableTileEntity 
 {
-	public FeedingTroughInventory handler;
-	
+	protected NonNullList<ItemStack> items = NonNullList.withSize(1, ItemStack.EMPTY);
+
 	public FeedingTroughTileEntity() 
 	{
 		super(TileEntityInit.FEEDING_TROUGH_TILE_ENTITY);
-		handler = new FeedingTroughInventory(1, this::changed);
 	}
-	
+
 	@Override
 	public void load(BlockState state, CompoundNBT nbt) 
 	{
-		this.handler.deserializeNBT(nbt.getCompound("ItemStackHandler"));
 		super.load(state, nbt);
+		this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
+		ItemStackHelper.loadAllItems(nbt, this.items);
 	}
-	
+
 	@Override
 	public CompoundNBT save(CompoundNBT nbt) 
 	{
-		nbt.put("ItemStackHandler", this.handler.serializeNBT());
+		ItemStackHelper.saveAllItems(nbt, this.items);
 		return super.save(nbt);
 	}
-	
+
 	public void changed(int slot) 
 	{
 		this.setChanged();
 	}
-	
+
 	@Override
 	public ItemStack removeItem(int index, int count) 
 	{
-		return handler.extractItem(index, count, false);
+		return ItemStackHelper.removeItem(this.items, index, count);
 	}
-	
+
 	@Override
 	public void setItem(int index, ItemStack stack) 
 	{
-		handler.setStackInSlot(index, stack);
-		this.setChanged();
+		this.items.set(index, stack);
+		if(stack.getCount() > this.getMaxStackSize()) 
+		{
+			stack.setCount(this.getMaxStackSize());
+		}
 	}
-	
+
 	@Override
 	public boolean stillValid(PlayerEntity entity) 
 	{
 		return !entity.isSpectator();
 	}
-	
+
 	@Override
 	public void clearContent() 
 	{
-		for(int i = 0; i < handler.getSlots(); i++) 
-		{
-			handler.setStackInSlot(i, ItemStack.EMPTY);
-		}
-		this.setChanged();
+		this.items.clear();
 	}
-	
+
+	@Override
+	protected NonNullList<ItemStack> getItems() 
+	{
+		return this.items;
+	}
+
+	@Override
+	protected void setItems(NonNullList<ItemStack> items) 
+	{
+		this.items = items;
+	}
+
 	@Override
 	public int getContainerSize() 
 	{
-		return 1;
+		return this.items.size();
 	}
-	
+
 	@Override
 	public boolean isEmpty() 
 	{
-		for(int i = 0; i < handler.getSlots(); i++) 
+		for(ItemStack itemstack : this.items) 
 		{
-			if(handler.getStackInSlot(i).getCount() > 0)
+			if(!itemstack.isEmpty()) 
 			{
 				return false;
 			}
 		}
+
 		return true;
-	}
-	
-	@Override
-	public NonNullList<ItemStack> getItems() 
-	{
-		NonNullList<ItemStack> list = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
-		for(int i = 0; i < getContainerSize(); i++) 
-		{
-			list.set(i, handler.getStackInSlot(i));
-		}
-		return list;
-	}
-	
-	@Override
-	protected void setItems(NonNullList<ItemStack> items) 
-	{
-		for(int i = 0; i < getContainerSize(); i++) 
-		{
-			handler.setStackInSlot(i, items.get(i));
-		}
-		this.setChanged();
 	}
 
 	@Override
@@ -126,7 +117,7 @@ public class FeedingTroughTileEntity extends LockableLootTileEntity implements I
 		int data = 0;
 		return new SUpdateTileEntityPacket(this.worldPosition, data, update);
 	}
-	
+
 	@Override
 	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) 
 	{
@@ -147,7 +138,7 @@ public class FeedingTroughTileEntity extends LockableLootTileEntity implements I
 	{
 		load(state, nbt);
 	}
-	
+
 	@Override
 	protected ITextComponent getDefaultName() 
 	{
@@ -155,35 +146,54 @@ public class FeedingTroughTileEntity extends LockableLootTileEntity implements I
 	}
 
 	@Override
-	protected Container createMenu(int windowID, PlayerInventory inv)
+	protected Container createMenu(int windowID, PlayerInventory inv) 
 	{
-		return new FeedingTroughContainer(windowID, inv, this, this.handler);
+		return new FeedingTroughContainer(windowID, inv, this);
+	}
+
+	public boolean hasItems() 
+	{
+		ItemStack itemstack = this.items.get(0);
+		return !itemstack.isEmpty();
 	}
 
 	@Override
 	public void tick() 
 	{
+		boolean flag = this.hasItems();
+		boolean flag1 = false;
+
 		if(!this.level.isClientSide) 
 		{
-			if(this.getItem(1) != null)
+			ItemStack itemstack = this.items.get(0);
+			if(flag) 
 			{
-				if(FeedingTroughSlot.HERBIVORE_FOODS.contains(this.getItem(1).getItem()))
+				if(flag != this.hasItems()) 
 				{
-					this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(FeedingTroughBlock.DIET, CreatureDiet.HERBIVORE), 3);
-				}
-				else if(FeedingTroughSlot.CARNIVORE_FOODS.contains(this.getItem(1).getItem()))
-				{
-					this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(FeedingTroughBlock.DIET, CreatureDiet.CARNIVORE), 3);
-				}
-				else if(FeedingTroughSlot.INSECTIVORE_FOODS.contains(this.getItem(1).getItem()))
-				{
-					this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(FeedingTroughBlock.DIET, CreatureDiet.INSECTIVORE), 3);
-				}
-				else if(FeedingTroughSlot.PISCAVORE_FOODS.contains(this.getItem(1).getItem()))
-				{
-					this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(FeedingTroughBlock.DIET, CreatureDiet.PISCIVORE), 3);
+					flag1 = true;
+					if(FeedingTroughSlot.HERBIVORE_FOODS.contains(itemstack.getItem())) 
+					{
+						this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(FeedingTroughBlock.DIET, CreatureDiet.HERBIVORE), 3);
+					} 
+					else if(FeedingTroughSlot.CARNIVORE_FOODS.contains(itemstack.getItem())) 
+					{
+						this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(FeedingTroughBlock.DIET, CreatureDiet.CARNIVORE), 3);
+					} 
+					else if(FeedingTroughSlot.INSECTIVORE_FOODS.contains(itemstack.getItem())) 
+					{
+						this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(FeedingTroughBlock.DIET, CreatureDiet.INSECTIVORE), 3);
+					} 
+					else if(FeedingTroughSlot.PISCAVORE_FOODS.contains(itemstack.getItem())) 
+					{
+						this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(FeedingTroughBlock.DIET, CreatureDiet.PISCIVORE), 3);
+					}
 				}
 			}
+		}
+
+		if(flag1) 
+		{
+			this.setChanged();
 		}
 	}
 }

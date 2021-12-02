@@ -15,6 +15,7 @@ import lostworlds.library.block.CycadBlock;
 import lostworlds.library.block.DNAExtractorBlock;
 import lostworlds.library.block.DNAInjectorBlock;
 import lostworlds.library.block.DeadSpongeColonyBlock;
+import lostworlds.library.block.DiictodonBurrowBlock;
 import lostworlds.library.block.DisplayCaseBlock;
 import lostworlds.library.block.DriedSoilBlock;
 import lostworlds.library.block.FeedingTroughBlock;
@@ -463,7 +464,7 @@ public class BlockInit
 	public static final Block ZAMITES = BlockAndItemBuilder.create("zamites", new ModBushBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)));
 	
 	//Natural Blocks
-	public static final Block DIICTODON_BURROW = BlockAndItemBuilder.create("diictodon_burrow", new Block(AbstractBlock.Properties.of(Material.SAND, MaterialColor.SAND).harvestTool(ToolType.SHOVEL).strength(1.5F).sound(SoundType.SAND)));
+	public static final Block DIICTODON_BURROW = BlockAndItemBuilder.create("diictodon_burrow", new DiictodonBurrowBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.SAND).harvestTool(ToolType.SHOVEL).strength(1.5F).sound(SoundType.SAND).randomTicks()));
 	public static final Block TUNNELED_SOIL = BlockAndItemBuilder.create("tunneled_soil", new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).harvestTool(ToolType.SHOVEL).sound(SoundType.GRAVEL)));
 
 	public static final Block NAUTILUS_SHELL = BlockBuilder.create("nautilus_shell", new NautilusShellBlock(AbstractBlock.Properties.of(Material.SHULKER_SHELL).instabreak().noOcclusion().sound(SoundType.ANVIL)));

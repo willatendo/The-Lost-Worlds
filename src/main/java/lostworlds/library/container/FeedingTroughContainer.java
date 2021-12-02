@@ -1,9 +1,7 @@
 package lostworlds.library.container;
 
 import lostworlds.content.server.init.ContainerInit;
-import lostworlds.library.block.entity.FeedingTroughTileEntity;
 import lostworlds.library.container.slot.FeedingTroughSlot;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -13,24 +11,19 @@ import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.items.ItemStackHandler;
 
 public class FeedingTroughContainer extends Container
-{
-	private ItemStackHandler handler;
-	
+{	
 	public FeedingTroughContainer(ContainerType<?> container, int windowId) 
 	{
 		super(container, windowId);
 	}
 	
-	public FeedingTroughContainer(int windowId, PlayerInventory inv, IInventory inventory, ItemStackHandler handler) 
+	public FeedingTroughContainer(int windowId, PlayerInventory inv, IInventory inventory) 
 	{
 		super(ContainerInit.FEEDING_TROUGH_CONTAINER, windowId);
-		this.handler = handler;
 		
-		this.addSlot(new FeedingTroughSlot(handler, 0, 80, 20));
+		this.addSlot(new FeedingTroughSlot(inventory, 0, 80, 20));
 		
 		for(int l = 0; l < 3; ++l) 
 		{
@@ -48,8 +41,7 @@ public class FeedingTroughContainer extends Container
 
 	public static FeedingTroughContainer create(int windowId, PlayerInventory inv, PacketBuffer buffer)
 	{
-		BlockPos pos = buffer.readBlockPos();
-		return new FeedingTroughContainer(windowId, inv, new Inventory(1), ((FeedingTroughTileEntity) Minecraft.getInstance().level.getBlockEntity(pos)).handler);
+		return new FeedingTroughContainer(windowId, inv, new Inventory(1));
 	}
 
 	@Override
@@ -69,9 +61,9 @@ public class FeedingTroughContainer extends Container
 			ItemStack current = slot.getItem();
 			previous = current.copy();
 
-			if(fromSlot < this.handler.getSlots()) 
+			if(fromSlot < 1) 
 			{
-				if(!this.moveItemStackTo(current, this.handler.getSlots(), this.handler.getSlots() + 36, true))
+				if(!this.moveItemStackTo(current, 1, 1 + 36, true))
 				{
 					return ItemStack.EMPTY;
 				}

@@ -2,15 +2,20 @@ package lostworlds.content.client.setup;
 
 import lostworlds.content.client.entity.render.ChilesaurusRenderer;
 import lostworlds.content.client.entity.render.ChilesaurusSkeletonRenderer;
+import lostworlds.content.client.entity.render.DiictodonRenderer;
 import lostworlds.content.client.entity.render.DilophosaurusRenderer;
 import lostworlds.content.client.entity.render.FossilPoacherRenderer;
 import lostworlds.content.client.entity.render.GreatAukRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusSkeletonRenderer;
+import lostworlds.content.client.entity.render.LiaoningosaurusRenderer;
 import lostworlds.content.client.entity.render.ModBoatRenderer;
 import lostworlds.content.client.entity.render.NautilusRenderer;
 import lostworlds.content.client.entity.render.OphthalmosaurusRenderer;
 import lostworlds.content.client.entity.render.PalaeoniscumRenderer;
+import lostworlds.content.client.entity.render.PsittacosaurusRenderer;
+import lostworlds.content.client.entity.render.TetraceratopsRenderer;
+import lostworlds.content.client.entity.render.ZephyrosaurusRenderer;
 import lostworlds.content.client.entity.render.block.DisplayCaseRenderer;
 import lostworlds.content.client.entity.render.bone.CustomisableRenderer;
 import lostworlds.content.client.screen.AnalyzerScreen;
@@ -207,14 +212,19 @@ public class ClientSetup
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS, manager -> new ChilesaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS_SKELETON, manager -> new ChilesaurusSkeletonRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.DIICTODON, manager -> new DiictodonRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.DILOPHOSAURUS, manager -> new DilophosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.GREAT_AUK, manager -> new GreatAukRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS, manager -> new KentrosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS_SKELETON, manager -> new KentrosaurusSkeletonRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.LIAONINGOSAURUS, manager -> new LiaoningosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.NAUTILUS, manager -> new NautilusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.OPHTHALMOSAURUS, manager -> new OphthalmosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.PALAEONISCUM, manager -> new PalaeoniscumRenderer(manager));
-		
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.PSITTACOSAURUS, manager -> new PsittacosaurusRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.TETRACERATOPS, manager -> new TetraceratopsRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.ZEPHYROSAURUS, manager -> new ZephyrosaurusRenderer(manager));
+
 		for(DinoTypes dinos : DinoTypes.values())
 		{
 			RenderingRegistry.registerEntityRenderingHandler(dinos.getDirtyArmBones(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_arm_bones", dinos.getId(), 0.25F));

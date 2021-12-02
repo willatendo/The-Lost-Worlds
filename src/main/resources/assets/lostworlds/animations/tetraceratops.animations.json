@@ -1,0 +1,225 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.tetraceratops.walk": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"tail": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [-7.5, -12.5, 0],
+						"1.0": [0, 0, 0],
+						"1.5": [-7.5, 12.5, 0],
+						"2.0": [0, 0, 0]
+					}
+				},
+				"backleg2": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [-27.5, 0, 0],
+						"1.5": [27.5, 0, 0],
+						"2.0": [0, 0, 0]
+					}
+				},
+				"backleg1": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [27.5, 0, 0],
+						"1.5": [-27.5, 0, 0],
+						"2.0": [0, 0, 0]
+					}
+				},
+				"frontleg2": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [27.5, 0, 0],
+						"1.5": [-27.5, 0, 0],
+						"2.0": [0, 0, 0]
+					}
+				},
+				"frontleg1": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [-27.5, 0, 0],
+						"1.5": [27.5, 0, 0],
+						"2.0": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.tetraceratops.idle": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"tail": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, 7.5, 0],
+						"1.5": [0, -7.5, 0],
+						"2.0": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.tetraceratops.eat": {
+			"animation_length": 1.5,
+			"bones": {
+				"head": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [55, 0, 0],
+						"0.75": [55, -12.5, 0],
+						"1.0": [55, 12.5, 0],
+						"1.25": [55, 0, 0],
+						"1.5": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.tetraceratops.sleep": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"position": [0, -2, 0]
+				},
+				"head": {
+					"rotation": [7.5, 0, 0]
+				},
+				"backleg2": {
+					"rotation": [-90, -225, 0],
+					"position": [0, -2, 0]
+				},
+				"backleg1": {
+					"rotation": [-90, 225, 0],
+					"position": [0, -2, 0]
+				},
+				"frontleg2": {
+					"rotation": [-90, 32.5, 0],
+					"position": [0, -2, 0]
+				},
+				"frontleg1": {
+					"rotation": [-90, -32.5, 0],
+					"position": [0, -2, 0]
+				}
+			}
+		},
+		"animation.tetraceratops.into_sleep": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.5,
+			"bones": {
+				"body": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -2, 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [7.5, 0, 0]
+					}
+				},
+				"backleg2": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [-90, 135, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -2, 0]
+					}
+				},
+				"backleg1": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [-90, -135, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -2, 0]
+					}
+				},
+				"frontleg2": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [-90, 32.5, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -2, 0]
+					}
+				},
+				"frontleg1": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [-90, -32.5, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -2, 0]
+					}
+				}
+			}
+		},
+		"animation.tetraceratops.out_of_sleep": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.5,
+			"bones": {
+				"body": {
+					"position": {
+						"0.0": [0, -2, 0],
+						"0.5": [0, 0, 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": [7.5, 0, 0],
+						"0.5": [0, 0, 0]
+					}
+				},
+				"backleg2": {
+					"rotation": {
+						"0.0": [-90, 135, 0],
+						"0.5": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, -2, 0],
+						"0.5": [0, 0, 0]
+					}
+				},
+				"backleg1": {
+					"rotation": {
+						"0.0": [-90, -135, 0],
+						"0.5": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, -2, 0],
+						"0.5": [0, 0, 0]
+					}
+				},
+				"frontleg2": {
+					"rotation": {
+						"0.0": [-90, 32.5, 0],
+						"0.5": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, -2, 0],
+						"0.5": [0, 0, 0]
+					}
+				},
+				"frontleg1": {
+					"rotation": {
+						"0.0": [-90, -32.5, 0],
+						"0.5": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, -2, 0],
+						"0.5": [0, 0, 0]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

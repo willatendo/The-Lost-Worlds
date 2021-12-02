@@ -4,22 +4,22 @@ import java.util.ArrayList;
 
 import com.google.common.collect.Lists;
 
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
 
-public class FeedingTroughSlot extends SlotItemHandler
+public class FeedingTroughSlot extends Slot
 {
 	public static final ArrayList<Item> HERBIVORE_FOODS = Lists.newArrayList(Items.WHEAT, Items.WHEAT_SEEDS, Items.MELON, Items.MELON_SEEDS, Items.PUMPKIN, Items.PUMPKIN_SEEDS, Items.CARROT, Items.POTATO, Items.BEETROOT, Items.BEETROOT_SEEDS);
 	public static final ArrayList<Item> CARNIVORE_FOODS = Lists.newArrayList(Items.BEEF, Items.PORKCHOP, Items.CHICKEN, Items.RABBIT, Items.RABBIT_FOOT, Items.PUMPKIN_SEEDS, Items.MUTTON);
 	public static final ArrayList<Item> PISCAVORE_FOODS = Lists.newArrayList(Items.COD, Items.SALMON, Items.TROPICAL_FISH);
 	public static final ArrayList<Item> INSECTIVORE_FOODS = Lists.newArrayList();
 	
-	public FeedingTroughSlot(IItemHandler itemHandler, int index, int xPosition, int yPosition) 
+	public FeedingTroughSlot(IInventory inventory, int index, int xPosition, int yPosition) 
 	{
-		super(itemHandler, index, xPosition, yPosition);
+		super(inventory, index, xPosition, yPosition);
 	}
 	
 	@Override
