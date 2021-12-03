@@ -1,8 +1,8 @@
-package lostworlds.library.entity.goal.terrestrial.herbivore;
+package lostworlds.library.entity.goal.terrestrial;
 
 import java.util.EnumSet;
 
-import lostworlds.library.entity.terrestrial.HerbivoreEntity;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,7 +14,7 @@ import net.minecraft.pathfinding.GroundPathNavigator;
 public class SleepyTemptGoal extends Goal 
 {
 	private static final EntityPredicate TEMP_TARGETING = (new EntityPredicate()).range(10.0D).allowInvulnerable().allowSameTeam().allowNonAttackable().allowUnseeable();
-	protected final HerbivoreEntity entity;
+	protected final EggLayingEntity entity;
 	private final double speedModifier;
 	private double px;
 	private double py;
@@ -27,12 +27,12 @@ public class SleepyTemptGoal extends Goal
 	private final Ingredient items;
 	private final boolean canScare;
 
-	public SleepyTemptGoal(HerbivoreEntity entity, double speedModifier, Ingredient followIngredient, boolean canScare) 
+	public SleepyTemptGoal(EggLayingEntity entity, double speedModifier, Ingredient followIngredient, boolean canScare) 
 	{
 		this(entity, speedModifier, canScare, followIngredient);
 	}
 
-	public SleepyTemptGoal(HerbivoreEntity entity, double speedModifier, boolean canScare, Ingredient followIngredient) 
+	public SleepyTemptGoal(EggLayingEntity entity, double speedModifier, boolean canScare, Ingredient followIngredient) 
 	{
 		this.entity = entity;
 		this.speedModifier = speedModifier;

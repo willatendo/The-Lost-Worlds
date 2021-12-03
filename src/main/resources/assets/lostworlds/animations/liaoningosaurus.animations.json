@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.liaoningosaurus.walk": {
+		"walk": {
 			"loop": true,
 			"animation_length": 2,
 			"bones": {
@@ -161,7 +161,7 @@
 				}
 			}
 		},
-		"animation.liaoningosaurus.idle": {
+		"idle": {
 			"loop": true,
 			"animation_length": 2,
 			"bones": {
@@ -229,7 +229,7 @@
 				}
 			}
 		},
-		"animation.liaoningosaurus.eat": {
+		"eat": {
 			"animation_length": 1.25,
 			"bones": {
 				"body": {
@@ -359,7 +359,7 @@
 				}
 			}
 		},
-		"animation.liaoningosaurus.sleep": {
+		"sleep": {
 			"loop": true,
 			"bones": {
 				"body": {
@@ -440,7 +440,7 @@
 				}
 			}
 		},
-		"animation.liaoningosaurus.into_sleep": {
+		"into_sleep": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.5,
 			"bones": {
@@ -606,7 +606,7 @@
 				}
 			}
 		},
-		"animation.liaoningosaurus.out_of_sleep": {
+		"out_of_sleep": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.5,
 			"bones": {

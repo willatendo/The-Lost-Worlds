@@ -1,9 +1,9 @@
-package lostworlds.library.entity.goal.terrestrial.herbivore;
+package lostworlds.library.entity.goal.terrestrial;
 
 import java.util.EnumSet;
 import java.util.function.Predicate;
 
-import lostworlds.library.entity.terrestrial.HerbivoreEntity;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.RandomPositionGenerator;
@@ -15,7 +15,7 @@ import net.minecraft.util.math.vector.Vector3d;
 
 public class SleepyAvoidEntityGoal<T extends LivingEntity> extends Goal 
 {
-	protected final HerbivoreEntity entity;
+	protected final EggLayingEntity entity;
 	private final double walkSpeedModifier;
 	private final double sprintSpeedModifier;
 	protected T toAvoid;
@@ -27,7 +27,7 @@ public class SleepyAvoidEntityGoal<T extends LivingEntity> extends Goal
 	protected final Predicate<LivingEntity> predicateOnAvoidEntity;
 	private final EntityPredicate avoidEntityTargeting;
 
-	public SleepyAvoidEntityGoal(HerbivoreEntity entity, Class<T> avoidEntity, float maxDist, double walkSpeedModifier, double sprintSpeedModifier) 
+	public SleepyAvoidEntityGoal(EggLayingEntity entity, Class<T> avoidEntity, float maxDist, double walkSpeedModifier, double sprintSpeedModifier) 
 	{
 		this(entity, avoidEntity, (p_200828_0_) -> 
 		{
@@ -35,7 +35,7 @@ public class SleepyAvoidEntityGoal<T extends LivingEntity> extends Goal
 		}, maxDist, walkSpeedModifier, sprintSpeedModifier, EntityPredicates.NO_CREATIVE_OR_SPECTATOR::test);
 	}
 
-	public SleepyAvoidEntityGoal(HerbivoreEntity entity, Class<T> avoidEntity, Predicate<LivingEntity> avoidPredicate, float maxDist, double walkSpeedModifier, double sprintSpeedModifier, Predicate<LivingEntity> predicateOnAvoidEntity) 
+	public SleepyAvoidEntityGoal(EggLayingEntity entity, Class<T> avoidEntity, Predicate<LivingEntity> avoidPredicate, float maxDist, double walkSpeedModifier, double sprintSpeedModifier, Predicate<LivingEntity> predicateOnAvoidEntity) 
 	{
 		this.entity = entity;
 		this.avoidClass = avoidEntity;
@@ -49,7 +49,7 @@ public class SleepyAvoidEntityGoal<T extends LivingEntity> extends Goal
 		this.avoidEntityTargeting = (new EntityPredicate()).range((double) maxDist).selector(predicateOnAvoidEntity.and(avoidPredicate));
 	}
 
-	public SleepyAvoidEntityGoal(HerbivoreEntity entity, Class<T> avoidEntity, float maxDist, double walkSpeedModifier, double sprintSpeedModifier, Predicate<LivingEntity> predicateOnAvoidEntity) 
+	public SleepyAvoidEntityGoal(EggLayingEntity entity, Class<T> avoidEntity, float maxDist, double walkSpeedModifier, double sprintSpeedModifier, Predicate<LivingEntity> predicateOnAvoidEntity) 
 	{
 		this(entity, avoidEntity, (p_203782_0_) -> 
 		{
@@ -98,14 +98,12 @@ public class SleepyAvoidEntityGoal<T extends LivingEntity> extends Goal
 	public void start() 
 	{
 		this.pathNav.moveTo(this.path, this.walkSpeedModifier);
-		this.entity.setPanicked(true);
 	}
 
 	@Override
 	public void stop() 
 	{
 		this.toAvoid = null;
-		this.entity.setPanicked(false);
 	}
 
 	@Override

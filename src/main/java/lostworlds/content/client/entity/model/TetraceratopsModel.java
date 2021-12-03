@@ -35,7 +35,7 @@ public class TetraceratopsModel extends TyrannomatedTyrannomationModel<Tetracera
 	public void setLivingAnimations(TetraceratopsEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) 
 	{
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
-		IBone head = this.getAnimationProcessor().getBone("neck");
+		IBone head = this.getAnimationProcessor().getBone("head");
 		
 		EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
 		if(!(entity.isEating() || entity.isSleeping()))

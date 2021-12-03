@@ -1,8 +1,8 @@
 package lostworlds.library.item;
 
 import lostworlds.content.ModUtils;
-import lostworlds.content.client.screen.tablet.HerbivoreTabletScreen;
-import lostworlds.library.entity.terrestrial.HerbivoreEntity;
+import lostworlds.content.client.screen.tablet.TabletScreen;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,13 +25,10 @@ public class TabletItem extends ModItem
 	{
 		Minecraft instance = Minecraft.getInstance();
 		
-		if(entity instanceof HerbivoreEntity)
+		if(entity instanceof EggLayingEntity)
 		{	
-			HerbivoreEntity herbivore = (HerbivoreEntity) entity;
-			if(herbivore.isTagged())
-			{
-				instance.setScreen(new HerbivoreTabletScreen(herbivore));
-			}
+			EggLayingEntity herbivore = (EggLayingEntity) entity;
+			instance.setScreen(new TabletScreen(herbivore));
 			
 			return ActionResultType.SUCCESS;
 		}

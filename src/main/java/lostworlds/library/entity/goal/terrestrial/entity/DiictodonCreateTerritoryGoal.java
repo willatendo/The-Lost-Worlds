@@ -1,25 +1,23 @@
-package lostworlds.library.entity.goal.terrestrial.herbivore;
+package lostworlds.library.entity.goal.terrestrial.entity;
 
 import lostworlds.content.server.init.BlockInit;
-import lostworlds.library.entity.terrestrial.HerbivoreEggLayingEntity;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
-import net.minecraftforge.common.Tags;
 
-public class HerbivoreCreateTerritoryGoal extends MoveToBlockGoal 
+public class DiictodonCreateTerritoryGoal extends MoveToBlockGoal 
 {
-	private final HerbivoreEggLayingEntity entity;
+	private final EggLayingEntity entity;
 	private final World level;
 
-	public HerbivoreCreateTerritoryGoal(HerbivoreEggLayingEntity entity, double speedModifier) 
+	public DiictodonCreateTerritoryGoal(EggLayingEntity entity, double speedModifier) 
 	{
 		super(entity, speedModifier, 16);
 		this.entity = entity;
@@ -33,20 +31,14 @@ public class HerbivoreCreateTerritoryGoal extends MoveToBlockGoal
 	}
 
 	@Override
-	public void start() 
-	{
-		this.entity.setMakingTerritory(true);
-	}
-
-	@Override
 	public boolean canContinueToUse() 
 	{
-		return !this.entity.hasTerritory() && !this.entity.isMakingTerritory();
+		return !this.entity.hasTerritory();
 	}
 
 	public static boolean isNatural(IBlockReader reader, BlockPos pos) 
 	{
-		return reader.getBlockState(pos).is(BlockTags.SAND) || reader.getBlockState(pos).is(Tags.Blocks.DIRT);
+		return reader.getBlockState(pos).is(BlockInit.PERMIAN_SAND);
 	}
 
 	@Override
@@ -57,7 +49,7 @@ public class HerbivoreCreateTerritoryGoal extends MoveToBlockGoal
 		if(!this.entity.isInWater()) 
 		{
 			this.level.playSound((PlayerEntity) null, blockpos, SoundEvents.TURTLE_LAY_EGG, SoundCategory.BLOCKS, 0.3F, 0.9F + this.level.random.nextFloat() * 0.2F);
-			this.level.setBlock(blockpos.below(), BlockInit.NESTING_BLOCK.defaultBlockState(), 3);
+			this.level.setBlock(blockpos.below(), BlockInit.DIICTODON_BURROW.defaultBlockState(), 3);
 		}
 	}
 	
@@ -67,7 +59,6 @@ public class HerbivoreCreateTerritoryGoal extends MoveToBlockGoal
 		BlockPos blockpos = this.entity.blockPosition();
 		this.entity.setHomePos(blockpos);
 		this.entity.setHasTerritory(true);
-		this.entity.setMakingTerritory(false);
 	}
 
 	@Override

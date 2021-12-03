@@ -13,10 +13,6 @@ import tyrannotitanlib.library.tyrannomation.model.provider.data.EntityModelData
 @OnlyIn(Dist.CLIENT)
 public class DilophosaurusModel extends TyrannomatedTyrannomationModel<DilophosaurusEntity>
 {
-	private static final ResourceLocation MALE_TEXTURE = ModUtils.rL("textures/model/entity/dilophosaurus/male.png");
-	private static final ResourceLocation FEMALE_TEXTURE = ModUtils.rL("textures/model/entity/dilophosaurus/female.png");
-	private ResourceLocation texture;
-
 	@Override
 	public ResourceLocation getAnimationFileLocation(DilophosaurusEntity entity) 
 	{
@@ -32,7 +28,7 @@ public class DilophosaurusModel extends TyrannomatedTyrannomationModel<Dilophosa
 	@Override
 	public ResourceLocation getTextureLocation(DilophosaurusEntity entity) 
 	{
-		return this.texture;
+		return ModUtils.rL("textures/model/entity/dilophosaurus/texture.png");
 	}
 
 	@Override
@@ -46,15 +42,6 @@ public class DilophosaurusModel extends TyrannomatedTyrannomationModel<Dilophosa
 		{
 			head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
 			head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
-		}
-		
-		if(entity.getSex() == 0)
-		{
-			this.texture = this.MALE_TEXTURE;
-		}
-		if(entity.getSex() == 1)
-		{
-			this.texture = this.FEMALE_TEXTURE;
 		}
 	}
 }

@@ -13,8 +13,8 @@ import tyrannotitanlib.library.tyrannomation.model.provider.data.EntityModelData
 @OnlyIn(Dist.CLIENT)
 public class ChilesaurusModel extends TyrannomatedTyrannomationModel<ChilesaurusEntity>
 {
-	private static final ResourceLocation MALE_TEXTURE = ModUtils.rL("textures/model/entity/chilesaurus/male.png");
-	private static final ResourceLocation FEMALE_TEXTURE = ModUtils.rL("textures/model/entity/chilesaurus/female.png");
+	private static final ResourceLocation TEXTURE_1 = ModUtils.rL("textures/model/entity/chilesaurus/texture_1.png");
+	private static final ResourceLocation TEXTURE_2 = ModUtils.rL("textures/model/entity/chilesaurus/texture_2.png");
 	private ResourceLocation texture;
 
 	@Override
@@ -48,13 +48,13 @@ public class ChilesaurusModel extends TyrannomatedTyrannomationModel<Chilesaurus
 			head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
 		}
 		
-		if(entity.getSex() == 0)
+		if(entity.getVarient() == 0)
 		{
-			this.texture = this.MALE_TEXTURE;
+			this.texture = this.TEXTURE_1;
 		}
-		if(entity.getSex() == 1)
+		if(entity.getVarient() == 1)
 		{
-			this.texture = this.FEMALE_TEXTURE;
+			this.texture = this.TEXTURE_2;
 		}
 	}
 }

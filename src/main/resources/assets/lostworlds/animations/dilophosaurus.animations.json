@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.dilophosaurus.idle": {
+		"idle": {
 			"loop": true,
 			"animation_length": 3,
 			"bones": {
@@ -128,7 +128,7 @@
 				}
 			}
 		},
-		"animation.dilophosaurus.walk": {
+		"walk": {
 			"loop": true,
 			"animation_length": 4,
 			"bones": {
@@ -432,7 +432,7 @@
 				}
 			}
 		},
-		"animation.dilophosaurus.sleeping": {
+		"sleep": {
 			"loop": true,
 			"bones": {
 				"Dilophosaurus": {
@@ -550,7 +550,7 @@
 				}
 			}
 		},
-		"animation.dilophosaurus.into_sleep": {
+		"into_sleep": {
 			"animation_length": 1,
 			"bones": {
 				"Dilophosaurus": {
@@ -785,7 +785,7 @@
 				}
 			}
 		},
-		"animation.dilophosaurus.out_of_sleep": {
+		"out_of_sleep": {
 			"animation_length": 1,
 			"bones": {
 				"Dilophosaurus": {
@@ -1020,7 +1020,7 @@
 				}
 			}
 		},
-		"animation.dilophosaurus.eat": {
+		"eat": {
 			"animation_length": 4.5,
 			"bones": {
 				"body": {
@@ -1337,7 +1337,7 @@
 				}
 			}
 		},
-		"animation.dilophosaurus.attack": {
+		"attack": {
 			"animation_length": 1,
 			"bones": {
 				"body": {
@@ -1492,7 +1492,7 @@
 				}
 			}
 		},
-		"animation.dilophosaurus.kill": {
+		"kill": {
 			"animation_length": 1.75,
 			"bones": {
 				"body": {

@@ -8,9 +8,11 @@ import javax.annotation.Nullable;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.ModTags;
 import lostworlds.content.server.init.ItemInit;
+import lostworlds.library.entity.ModDamageSources;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,37 +30,105 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.GameRules;
+import net.minecraft.world.IServerWorld;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import tyrannotitanlib.library.tyrannomation.core.ITyrannomatable;
+import tyrannotitanlib.library.tyrannomation.core.PlayState;
+import tyrannotitanlib.library.tyrannomation.core.builder.TyrannomationBuilder;
+import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationController;
+import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
 
 public abstract class PrehistoricEntity extends AgeableEntity implements ITyrannomatable
 {
 	private static final EntityPredicate PARTNER_TARGETING = (new EntityPredicate()).range(8.0D).allowInvulnerable().allowSameTeam().allowUnseeable();
 	
-	protected static final DataParameter<Byte> SEX = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BYTE);
-	protected static final DataParameter<Boolean> ATTACKING = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BOOLEAN);		
-	protected static final DataParameter<Boolean> SLEEPING = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> CONTRACEPTIVES = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Byte> VARIENT = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BYTE);
+	protected static final DataParameter<Byte> ANIMATION = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BYTE);
+
+	public static final byte ANIMATION_IDLE = 0;
+	public static final byte ANIMATION_SLEEP = 1;
+	public static final byte ANIMATION_EAT = 1;
 	
-	public static final String SEX_TAG = "Sex";
-	public static final String PATTERN_TAG = "Pattern";
-	
+	public static final TyrannomationBuilder WALK_ANIMATION = new TyrannomationBuilder().addAnimation("walk", true);
+	public static final TyrannomationBuilder IDLE_ANIMATION = new TyrannomationBuilder().addAnimation("idle", true);
+	public static final TyrannomationBuilder SLEEP_ANIMATION = new TyrannomationBuilder().addAnimation("into_sleep").addAnimation("sleep").addAnimation("out_of_sleep");
+	public static final TyrannomationBuilder EAT_ANIMATION = new TyrannomationBuilder().addAnimation("eat");
+		
 	public int inNaturalLove;
 	public UUID cause;
 	
 	public int inLove;
 	public UUID loveCause;
+
+	private int hunger;
+	
+	private boolean contraceptives;
 				
+	public <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) 
+	{
+		float limbSwingAmount = event.getLimbSwingAmount();
+        boolean isMoving = !(limbSwingAmount > -0.05F && limbSwingAmount < 0.05F);
+		TyrannomationController controller = event.getController();
+		
+		byte currentAnimation = this.getAnimation();
+		switch(currentAnimation) 
+		{
+			case ANIMATION_SLEEP:
+				controller.setAnimation(SLEEP_ANIMATION);
+				break;
+			default:
+				controller.setAnimation(isMoving ? WALK_ANIMATION : IDLE_ANIMATION);
+				break;
+		}
+		
+		return PlayState.CONTINUE;
+	}
+	
 	public PrehistoricEntity(EntityType<? extends PrehistoricEntity> entity, World world) 
 	{
 		super(entity, world);
 		this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 16.0F);
 		this.setPathfindingMalus(PathNodeType.DAMAGE_FIRE, -1.0F);
+	}
+	
+	public boolean isSleeping()
+	{
+		byte currentAnimation = this.getAnimation();
+		return currentAnimation == ANIMATION_SLEEP;
+	}
+	
+	public boolean isEating()
+	{
+		byte currentAnimation = this.getAnimation();
+		return currentAnimation == ANIMATION_EAT;
+	}
+	
+	public int getHunger()
+	{
+		return this.hunger;
+	}
+	
+	public void setHunger(int hunger) 
+	{
+		this.hunger = hunger;
+	}
+	
+	public boolean isHungry()
+	{
+		return this.hunger < 0 ? true : false;
+	}
+	
+	@Override
+	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficulty, SpawnReason reason, ILivingEntityData data, CompoundNBT nbt) 
+	{
+		this.hunger = 21000;
+		return super.finalizeSpawn(world, difficulty, reason, data, nbt);
 	}
 	
 	@Override
@@ -100,6 +170,17 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 			}
 		}
 		
+		if(this.isAlive() && !this.isSleeping())
+		{
+			int hunger = this.getHunger();
+			--hunger;
+			this.setHunger(hunger);
+		}
+		
+		if(this.getHunger() < -5000)
+		{
+			this.hurt(ModDamageSources.HUNGER, 3.0F);
+		}
 	}
 	
 	@Override
@@ -127,22 +208,20 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	protected void defineSynchedData() 
 	{
 		super.defineSynchedData();
-		this.getEntityData().define(ATTACKING, false);
-		this.entityData.define(SLEEPING, false);
-		this.entityData.define(CONTRACEPTIVES, false);
-		byte sex = (byte) random.nextInt(2);
-		this.entityData.define(SEX, sex);
+		this.entityData.define(ANIMATION, ANIMATION_IDLE);
+		byte varient = (byte) random.nextInt(2);
+		this.entityData.define(VARIENT, varient);
 	}
 	
 	@Override
 	public void addAdditionalSaveData(CompoundNBT nbt) 
 	{
 		super.addAdditionalSaveData(nbt);
-		nbt.putBoolean("Sleeping", isSleeping());
 		nbt.putBoolean("Contraceptives", isOnContraceptives());
 		nbt.putInt("InNaturalLove", this.inNaturalLove);
-
-		nbt.putByte(SEX_TAG, getSex());
+		nbt.putInt("Hunger", this.getHunger());
+		nbt.putByte("Varient", getVarient());
+		
 		if(this.cause != null) 
 		{
 			nbt.putUUID("Cause", this.cause);
@@ -158,10 +237,10 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	public void readAdditionalSaveData(CompoundNBT nbt) 
 	{
 		super.readAdditionalSaveData(nbt);
-		setSleeping(nbt.getBoolean("Sleeping"));
-		setOnContraceptives(nbt.getBoolean("Contraceptives"));
+		this.setOnContraceptives(nbt.getBoolean("Contraceptives"));
 		this.inNaturalLove = nbt.getInt("InNaturalLove");
-		setSex(nbt.getByte(SEX_TAG));
+		this.setVarient(nbt.getByte("Varient"));
+		this.setHunger(nbt.getInt("Hunger"));
 		this.cause = nbt.hasUUID("Cause") ? nbt.getUUID("Cause") : null;
 		this.inLove = nbt.getInt("InLove");
 		this.loveCause = nbt.hasUUID("LoveCause") ? nbt.getUUID("LoveCause") : null;
@@ -213,44 +292,34 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 		return stack.getItem() == ItemInit.CONTRACEPTIVES;
 	}
 	
-	public byte getSex() 
+	public byte getVarient() 
 	{
-		return entityData.get(SEX);
+		return entityData.get(VARIENT);
 	}
 	
-	public void setSex(byte sex) 
+	public void setVarient(byte varient) 
 	{
-		entityData.set(SEX, sex);
+		entityData.set(VARIENT, varient);
 	}
 	
 	public boolean isOnContraceptives() 
 	{
-		return entityData.get(CONTRACEPTIVES);
+		return contraceptives;
 	}
 	
 	public void setOnContraceptives(boolean contraceptives) 
 	{
-		entityData.set(CONTRACEPTIVES, contraceptives);
+		this.contraceptives = contraceptives;
 	}
 	
-	public void setAttacking(boolean attacking) 
+	public void setAnimation(byte animation) 
 	{
-		this.entityData.set(ATTACKING, attacking);
+		this.entityData.set(ANIMATION, animation);
 	}
 	
-	public boolean isAttacking() 
+	public byte getAnimation() 
 	{
-		return this.entityData.get(ATTACKING);
-	}
-	
-	public boolean isSleeping()
-	{
-		return entityData.get(SLEEPING);
-	}
-	
-	public void setSleeping(boolean sleeping)
-	{
-		entityData.set(SLEEPING, sleeping);
+		return this.entityData.get(ANIMATION);
 	}
 	
 	public boolean canFallInLove() 
@@ -405,10 +474,6 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 			return false;
 		}
 		else if(this.isOnContraceptives())
-		{
-			return false;
-		}
-		else if(this.getSex() == prehistoric.getSex())
 		{
 			return false;
 		}

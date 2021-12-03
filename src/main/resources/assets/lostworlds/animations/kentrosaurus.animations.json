@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.kentrosaurus.walk": {
+		"walk": {
 			"loop": true,
 			"animation_length": 2,
 			"bones": {
@@ -284,7 +284,7 @@
 				}
 			}
 		},
-		"animation.kentrosaurus.eat": {
+		"eat": {
 			"loop": true,
 			"animation_length": 2,
 			"bones": {
@@ -537,7 +537,7 @@
 				}
 			}
 		},
-		"animation.kentrosaurus.into_sleep": {
+		"into_sleep": {
 			"animation_length": 1,
 			"bones": {
 				"Kentrosaurus": {
@@ -720,7 +720,7 @@
 				}
 			}
 		},
-		"animation.kentrosaurus.sleep": {
+		"sleep": {
 			"loop": true,
 			"bones": {
 				"Kentrosaurus": {
@@ -813,7 +813,7 @@
 				}
 			}
 		},
-		"animation.kentrosaurus.breathing": {
+		"breathing": {
 			"loop": true,
 			"animation_length": 1,
 			"bones": {
@@ -844,7 +844,7 @@
 				}
 			}
 		},
-		"animation.kentrosaurus.out_of_sleep": {
+		"out_of_sleep": {
 			"loop": true,
 			"animation_length": 1,
 			"bones": {
@@ -1028,7 +1028,7 @@
 				}
 			}
 		},
-		"animation.kentrosaurus.idle": {
+		"idle": {
 			"loop": true
 		}
 	},

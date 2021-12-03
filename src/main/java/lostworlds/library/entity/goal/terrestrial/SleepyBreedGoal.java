@@ -1,4 +1,4 @@
-package lostworlds.library.entity.goal.terrestrial.herbivore;
+package lostworlds.library.entity.goal.terrestrial;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -6,8 +6,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import lostworlds.library.entity.terrestrial.HerbivoreEggLayingEntity;
-import lostworlds.library.entity.terrestrial.HerbivoreEntity;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.item.ExperienceOrbEntity;
@@ -20,19 +19,19 @@ import net.minecraft.world.server.ServerWorld;
 public class SleepyBreedGoal extends Goal 
 {
 	private static final EntityPredicate PARTNER_TARGETING = (new EntityPredicate()).range(8.0D).allowInvulnerable().allowSameTeam().allowUnseeable();
-	protected final HerbivoreEntity entity;
-	private final Class<? extends HerbivoreEntity> partnerClass;
+	protected final EggLayingEntity entity;
+	private final Class<? extends EggLayingEntity> partnerClass;
 	protected final World level;
-	protected HerbivoreEntity partner;
+	protected EggLayingEntity partner;
 	private int loveTime;
 	private final double speedModifier;
 
-	public SleepyBreedGoal(HerbivoreEntity entity, double speedModifier) 
+	public SleepyBreedGoal(EggLayingEntity entity, double speedModifier) 
 	{
 		this(entity, speedModifier, entity.getClass());
 	}
 
-	public SleepyBreedGoal(HerbivoreEntity entity, double speedModifier, Class<? extends HerbivoreEntity> partnerClass) 
+	public SleepyBreedGoal(EggLayingEntity entity, double speedModifier, Class<? extends EggLayingEntity> partnerClass) 
 	{
 		this.entity = entity;
 		this.level = entity.level;
@@ -81,13 +80,13 @@ public class SleepyBreedGoal extends Goal
 	}
 
 	@Nullable
-	private HerbivoreEntity getFreePartner() 
+	private EggLayingEntity getFreePartner() 
 	{
-		List<HerbivoreEntity> list = this.level.getNearbyEntities(this.partnerClass, PARTNER_TARGETING, this.entity, this.entity.getBoundingBox().inflate(8.0D));
+		List<EggLayingEntity> list = this.level.getNearbyEntities(this.partnerClass, PARTNER_TARGETING, this.entity, this.entity.getBoundingBox().inflate(8.0D));
 		double d0 = Double.MAX_VALUE;
-		HerbivoreEntity entityentity = null;
+		EggLayingEntity entityentity = null;
 
-		for(HerbivoreEntity entityentity1 : list) 
+		for(EggLayingEntity entityentity1 : list) 
 		{
 			if(this.entity.canMate(entityentity1) && this.entity.distanceToSqr(entityentity1) < d0) 
 			{
@@ -106,9 +105,9 @@ public class SleepyBreedGoal extends Goal
 	
 	public static class Egg extends SleepyBreedGoal
 	{
-		private final HerbivoreEggLayingEntity entity;
+		private final EggLayingEntity entity;
 
-		public Egg(HerbivoreEggLayingEntity entity, double speedModifier) 
+		public Egg(EggLayingEntity entity, double speedModifier) 
 		{
 			super(entity, speedModifier);
 			this.entity = entity;

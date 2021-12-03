@@ -4,23 +4,25 @@ import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.library.entity.goal.NaturalBreedingGoal;
-import lostworlds.library.entity.goal.terrestrial.herbivore.HerbivoreEatGrassGoal;
-import lostworlds.library.entity.goal.terrestrial.herbivore.HerbivoreEatMossySoilGoal;
-import lostworlds.library.entity.goal.terrestrial.herbivore.HerbivoreEatPodzolGoal;
-import lostworlds.library.entity.goal.terrestrial.herbivore.HerbivoreSleepGoal;
-import lostworlds.library.entity.goal.terrestrial.herbivore.SleepyBreedGoal;
-import lostworlds.library.entity.goal.terrestrial.herbivore.SleepyLookAtGoal;
-import lostworlds.library.entity.goal.terrestrial.herbivore.SleepyLookRandomlyGoal;
-import lostworlds.library.entity.goal.terrestrial.herbivore.SleepySwimGoal;
-import lostworlds.library.entity.goal.terrestrial.herbivore.SleepyTemptGoal;
-import lostworlds.library.entity.goal.terrestrial.herbivore.SleepyWaterAvoidingRandomWalkingGoal;
-import lostworlds.library.entity.terrestrial.HerbivoreEggLayingEntity;
-import lostworlds.library.entity.terrestrial.HerbivoreEntity;
+import lostworlds.library.entity.goal.terrestrial.SleepGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyBreedGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyLookAtGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyLookRandomlyGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepySwimGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyTemptGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyWaterAvoidingRandomWalkingGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialEatGrassGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialEatMossySoilGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialEatPodzolGoal;
+import lostworlds.library.entity.terrestrial.CarnivoreEntity;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import lostworlds.library.item.block.SeedItem;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.goal.HurtByTargetGoal;
+import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -28,43 +30,16 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import tyrannotitanlib.library.tyrannomation.core.ITyrannomatable;
-import tyrannotitanlib.library.tyrannomation.core.PlayState;
-import tyrannotitanlib.library.tyrannomation.core.builder.TyrannomationBuilder;
 import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationController;
-import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class KentrosaurusEntity extends HerbivoreEggLayingEntity
+public class KentrosaurusEntity extends EggLayingEntity
 {
 	private static final Ingredient FOOD_ITEMS = Ingredient.of(BlockInit.ALETHOPTERIS, BlockInit.BRAZILEA, BlockInit.CEPHALOTAXUS, BlockInit.CALAMITES_SUCKOWII, BlockInit.DILLHOFFIA, BlockInit.DUISBERGIA, BlockInit.GROUND_FERNS, BlockInit.OSMUNDA, BlockInit.PERMIAN_DESERT_FERNS, BlockInit.PERMIAN_DESERT_SHRUB, BlockInit.WILLIAMSONIA, BlockInit.ZAMITES);
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
 	
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) 
-	{
-		if(event.isMoving())
-		{
-			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.kentrosaurus.walk", true));
-			return PlayState.CONTINUE;
-		}
-		else if(this.entityData.get(this.EATING))
-		{
-			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.kentrosaurus.eat", false));
-			return PlayState.CONTINUE;
-		}
-		else if(this.entityData.get(this.SLEEPING))
-		{
-			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.kentrosaurus.into_sleep", false).addAnimation("animation.kentrosaurus.sleep", false).addAnimation("animation.kentrosaurus.out_of_sleep", false));
-			return PlayState.CONTINUE;
-		}
-		else
-		{
-			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.kentrosaurus.idle", true));
-			return PlayState.CONTINUE;
-		}
-	}
-	
-	public KentrosaurusEntity(EntityType<? extends HerbivoreEntity> entity, World world) 
+	public KentrosaurusEntity(EntityType<? extends KentrosaurusEntity> entity, World world) 
 	{
 		super(entity, world);
 	}
@@ -82,13 +57,15 @@ public class KentrosaurusEntity extends HerbivoreEggLayingEntity
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
-		this.goalSelector.addGoal(4, new HerbivoreEatGrassGoal(this));
-		this.goalSelector.addGoal(4, new HerbivoreEatPodzolGoal(this));
-		this.goalSelector.addGoal(4, new HerbivoreEatMossySoilGoal(this));
-		this.goalSelector.addGoal(5, new HerbivoreSleepGoal(this));
+		this.goalSelector.addGoal(4, new TerrestrialEatGrassGoal(this));
+		this.goalSelector.addGoal(4, new TerrestrialEatPodzolGoal(this));
+		this.goalSelector.addGoal(4, new TerrestrialEatMossySoilGoal(this));
+		this.goalSelector.addGoal(5, new SleepGoal(this));
 		this.goalSelector.addGoal(6, new NaturalBreedingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(7, new SleepyBreedGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(8, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
+		this.goalSelector.addGoal(9, new MeleeAttackGoal(this, (double)1.2F, true));
+		this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, PlayerEntity.class, CarnivoreEntity.class)).setAlertOthers());
 	}
 
 	@Override

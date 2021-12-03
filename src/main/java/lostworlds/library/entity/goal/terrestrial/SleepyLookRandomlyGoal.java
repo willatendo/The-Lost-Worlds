@@ -1,18 +1,18 @@
-package lostworlds.library.entity.goal.terrestrial.carnivore;
+package lostworlds.library.entity.goal.terrestrial;
 
 import java.util.EnumSet;
 
-import lostworlds.library.entity.terrestrial.CarnivoreEntity;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 
 public class SleepyLookRandomlyGoal extends Goal 
 {
-	private final CarnivoreEntity entity;
+	private final EggLayingEntity entity;
 	private double relX;
 	private double relZ;
 	private int lookTime;
 
-	public SleepyLookRandomlyGoal(CarnivoreEntity entity) 
+	public SleepyLookRandomlyGoal(EggLayingEntity entity) 
 	{
 		this.entity = entity;
 		this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));

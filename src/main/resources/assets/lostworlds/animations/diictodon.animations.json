@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.diictodon.walk": {
+		"walk": {
 			"loop": true,
 			"animation_length": 1,
 			"bones": {
@@ -90,7 +90,7 @@
 				}
 			}
 		},
-		"animation.diictodon.idle": {
+		"idle": {
 			"loop": true,
 			"animation_length": 1,
 			"bones": {
@@ -109,7 +109,7 @@
 				}
 			}
 		},
-		"animation.diictodon.sleeping": {
+		"sleeping": {
 			"loop": true,
 			"bones": {
 				"body": {
@@ -156,7 +156,7 @@
 				}
 			}
 		},
-		"animation.diictodon.into_sleep": {
+		"into_sleep": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.75,
 			"bones": {
@@ -254,7 +254,7 @@
 				}
 			}
 		},
-		"animation.diictodon.out_of_sleep": {
+		"out_of_sleep": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.75,
 			"bones": {

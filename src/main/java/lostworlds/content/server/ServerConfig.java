@@ -125,6 +125,10 @@ public class ServerConfig
 	public final IntValue psittacosaurusSpawnWeight;
 	public final IntValue psittacosaurusSpawnGroupMinimum;
 	public final IntValue psittacosaurusSpawnGroupMaximum;
+	
+	public final IntValue palaeoniscumSpawnWeight;
+	public final IntValue palaeoniscumSpawnGroupMinimum;
+	public final IntValue palaeoniscumSpawnGroupMaximum;
 
 	public final DoubleValue tetraceratopsHeath;
 	public final IntValue tetraceratopsSpawnWeight;
@@ -218,8 +222,8 @@ public class ServerConfig
 		this.dilophosaurusHeath = builder.comment("Sets the heath of the Dilophosaurus").translation(TRANSLATION_TEXT + "dilophosaurusHeath").defineInRange("dilophosaurusHeath", 35.0D, 1.0D, 999.0D);
 		this.dilophosaurusAttackDamage = builder.comment("Sets the attack damage of the Dilophosaurus").translation(TRANSLATION_TEXT + "dilophosaurusAttackDamage").defineInRange("dilophosaurusAttackDamage", 10.0D, 1.0D, 999.0D);
 		this.dilophosaurusSpawnWeight = builder.comment("Sets the weight of Dilophosaurus in spawning").translation(TRANSLATION_TEXT + "dilophosaurusSpawnWeight").defineInRange("dilophosaurusSpawnWeight", 4, 1, 100);
-		this.dilophosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Dilophosaurus in a spawn group").translation(TRANSLATION_TEXT + "dilophosaurusSpawnGroupMinimum").defineInRange("dilophosaurusSpawnGroupMinimum", 3, 1, 100);
-		this.dilophosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Dilophosaurus in a spawn group").translation(TRANSLATION_TEXT + "dilophosaurusSpawnGroupMaximum").defineInRange("dilophosaurusSpawnGroupMaximum", 10, 1, 100);
+		this.dilophosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Dilophosaurus in a spawn group").translation(TRANSLATION_TEXT + "dilophosaurusSpawnGroupMinimum").defineInRange("dilophosaurusSpawnGroupMinimum", 1, 1, 100);
+		this.dilophosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Dilophosaurus in a spawn group").translation(TRANSLATION_TEXT + "dilophosaurusSpawnGroupMaximum").defineInRange("dilophosaurusSpawnGroupMaximum", 3, 1, 100);
 
 		this.greatAukHeath = builder.comment("Sets the heath of the Great Auk").translation(TRANSLATION_TEXT + "greatAukHeath").defineInRange("greatAukHeath", 15.0D, 1.0D, 999.0D);
 		this.greatAukAttackDamage = builder.comment("Sets the attack damage of the Great Auk").translation(TRANSLATION_TEXT + "greatAukAttackDamage").defineInRange("greatAukAttackDamage", 2.0D, 1.0D, 999.0D);
@@ -259,6 +263,10 @@ public class ServerConfig
 		this.psittacosaurusSpawnWeight = builder.comment("Sets the weight of Psittacosaurus in spawning").translation(TRANSLATION_TEXT + "psittacosaurusSpawnWeight").defineInRange("psittacosaurusSpawnWeight", 3, 1, 100);
 		this.psittacosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Psittacosaurus in a spawn group").translation(TRANSLATION_TEXT + "psittacosaurusSpawnGroupMinimum").defineInRange("psittacosaurusSpawnGroupMinimum", 5, 1, 100);
 		this.psittacosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Psittacosaurus in a spawn group").translation(TRANSLATION_TEXT + "psittacosaurusSpawnGroupMaximum").defineInRange("psittacosaurusSpawnGroupMaximum", 11, 1, 100);
+
+		this.palaeoniscumSpawnWeight = builder.comment("Sets the weight of Palaeoniscum in spawning").translation(TRANSLATION_TEXT + "palaeoniscumSpawnWeight").defineInRange("palaeoniscumSpawnWeight", 3, 1, 100);
+		this.palaeoniscumSpawnGroupMinimum = builder.comment("Sets the minimum amount of Palaeoniscum in a spawn group").translation(TRANSLATION_TEXT + "palaeoniscumSpawnGroupMinimum").defineInRange("palaeoniscumSpawnGroupMinimum", 5, 1, 100);
+		this.palaeoniscumSpawnGroupMaximum = builder.comment("Sets the maximum amount of Palaeoniscum in a spawn group").translation(TRANSLATION_TEXT + "palaeoniscumSpawnGroupMaximum").defineInRange("palaeoniscumSpawnGroupMaximum", 11, 1, 100);
 
 		this.zephyrosaurusHeath = builder.comment("Sets the heath of the Zephyrosaurus").translation(TRANSLATION_TEXT + "zephyrosaurusHeath").defineInRange("zephyrosaurusHeath", 6.0D, 1.0D, 999.0D);
 		this.zephyrosaurusSpawnWeight = builder.comment("Sets the weight of Zephyrosaurus in spawning").translation(TRANSLATION_TEXT + "zephyrosaurusSpawnWeight").defineInRange("zephyrosaurusSpawnWeight", 3, 1, 100);

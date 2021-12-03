@@ -1,20 +1,20 @@
-package lostworlds.library.entity.goal.terrestrial.herbivore;
+package lostworlds.library.entity.goal.terrestrial;
 
-import lostworlds.library.entity.terrestrial.HerbivoreEggLayingEntity;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 
-public class HerbivoreGoHomeGoal extends Goal 
+public class TerrestrialGoHomeGoal extends Goal 
 {
-	private final HerbivoreEggLayingEntity entity;
+	private final EggLayingEntity entity;
 	private final double speedModifier;
 	private boolean stuck;
 	private int closeToHomeTryTicks;
 
-	public HerbivoreGoHomeGoal(HerbivoreEggLayingEntity entity, double speedModifier) 
+	public TerrestrialGoHomeGoal(EggLayingEntity entity, double speedModifier) 
 	{
        this.entity = entity;
        this.speedModifier = speedModifier;
@@ -23,7 +23,7 @@ public class HerbivoreGoHomeGoal extends Goal
 	@Override
 	public boolean canUse() 
 	{
-		if(this.entity.hasEgg() && !this.entity.isLayingEgg()) 
+		if(this.entity.hasEgg()) 
 		{
 			return true;
 		}
@@ -50,7 +50,7 @@ public class HerbivoreGoHomeGoal extends Goal
 	@Override
 	public boolean canContinueToUse() 
 	{
-		return !this.entity.getHomePos().closerThan(this.entity.position(), 9.0D) && !this.stuck && this.closeToHomeTryTicks <= 600 && !this.entity.isLayingEgg();
+		return !this.entity.getHomePos().closerThan(this.entity.position(), 9.0D) && !this.stuck && this.closeToHomeTryTicks <= 600;
 	}
 
 	@Override

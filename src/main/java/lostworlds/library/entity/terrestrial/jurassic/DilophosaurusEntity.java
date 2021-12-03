@@ -3,13 +3,13 @@ package lostworlds.library.entity.terrestrial.jurassic;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.library.entity.goal.NaturalBreedingGoal;
-import lostworlds.library.entity.goal.terrestrial.carnivore.CarnivoreSleepGoal;
-import lostworlds.library.entity.goal.terrestrial.carnivore.SleepyBreedGoal;
-import lostworlds.library.entity.goal.terrestrial.carnivore.SleepyLookAtGoal;
-import lostworlds.library.entity.goal.terrestrial.carnivore.SleepyLookRandomlyGoal;
-import lostworlds.library.entity.goal.terrestrial.carnivore.SleepySwimGoal;
-import lostworlds.library.entity.goal.terrestrial.carnivore.SleepyTemptGoal;
-import lostworlds.library.entity.goal.terrestrial.carnivore.SleepyWaterAvoidingRandomWalkingGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyBreedGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyLookAtGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyLookRandomlyGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepySwimGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyTemptGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyWaterAvoidingRandomWalkingGoal;
 import lostworlds.library.entity.terrestrial.CarnivoreEntity;
 import lostworlds.library.item.block.SeedItem;
 import net.minecraft.entity.AgeableEntity;
@@ -24,10 +24,7 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import tyrannotitanlib.library.tyrannomation.core.ITyrannomatable;
-import tyrannotitanlib.library.tyrannomation.core.PlayState;
-import tyrannotitanlib.library.tyrannomation.core.builder.TyrannomationBuilder;
 import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationController;
-import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
@@ -36,31 +33,7 @@ public class DilophosaurusEntity extends CarnivoreEntity
 	private static final Ingredient FOOD_ITEMS = Ingredient.of(Items.BEEF);
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
 	
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) 
-	{
-		if(event.isMoving())
-		{
-			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.dilophosaurus.walk", true));
-			return PlayState.CONTINUE;
-		}
-		else if(this.entityData.get(this.EATING))
-		{
-			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.dilophosaurus.eat", false));
-			return PlayState.CONTINUE;
-		}
-		else if(this.entityData.get(this.SLEEPING))
-		{
-			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.dilophosaurus.into_sleep", false).addAnimation("animation.dilophosaurus.sleeping", false).addAnimation("animation.dilophosaurus.out_of_sleep", false));
-			return PlayState.CONTINUE;
-		}
-		else
-		{
-			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.dilophosaurus.idle", true));
-			return PlayState.CONTINUE;
-		}
-	}
-	
-	public DilophosaurusEntity(EntityType<? extends CarnivoreEntity> entity, World world) 
+	public DilophosaurusEntity(EntityType<? extends DilophosaurusEntity> entity, World world) 
 	{
 		super(entity, world);
 	}
@@ -78,7 +51,7 @@ public class DilophosaurusEntity extends CarnivoreEntity
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal(this, 1.0D));
 		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
-		this.goalSelector.addGoal(5, new CarnivoreSleepGoal(this));
+		this.goalSelector.addGoal(5, new SleepGoal(this));
 		this.goalSelector.addGoal(6, new NaturalBreedingGoal(this, 1.0D));
 		this.goalSelector.addGoal(7, new SleepyBreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(8, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));

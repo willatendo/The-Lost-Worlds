@@ -1,9 +1,9 @@
-package lostworlds.library.entity.goal.terrestrial.herbivore;
+package lostworlds.library.entity.goal.terrestrial;
 
 import java.util.EnumSet;
 import java.util.function.Predicate;
 
-import lostworlds.library.entity.terrestrial.HerbivoreEntity;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -13,13 +13,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 
-public class HerbivoreEatPodzolGoal extends Goal 
+public class TerrestrialEatPodzolGoal extends Goal 
 {
 	private static final Predicate<BlockState> IS_TALL_GRASS = BlockStateMatcher.forBlock(Blocks.PODZOL);
-	private final HerbivoreEntity entity;
+	private final EggLayingEntity entity;
 	private final World level;
 
-	public HerbivoreEatPodzolGoal(HerbivoreEntity entity) 
+	public TerrestrialEatPodzolGoal(EggLayingEntity entity) 
 	{
 		this.entity = entity;
 		this.level = entity.level;
@@ -52,13 +52,14 @@ public class HerbivoreEatPodzolGoal extends Goal
 	{
 		this.level.broadcastEntityEvent(this.entity, (byte) 10);
 		this.entity.getNavigation().stop();
+		this.entity.setAnimation(this.entity.ANIMATION_EAT);
 	}
 
 	@Override
 	public void stop() 
 	{
 		this.entity.setHunger(21000);
-		this.entity.setEating(false);
+		this.entity.setAnimation(this.entity.ANIMATION_IDLE);
 	}
 
 	@Override
@@ -72,7 +73,6 @@ public class HerbivoreEatPodzolGoal extends Goal
 	{
 		if(this.entity.isHungry()) 
 		{
-			this.entity.setEating(true);
 			BlockPos blockpos = this.entity.blockPosition();
 			if(IS_TALL_GRASS.test(this.level.getBlockState(blockpos))) 
 			{

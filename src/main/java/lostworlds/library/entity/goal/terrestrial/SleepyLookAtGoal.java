@@ -1,8 +1,8 @@
-package lostworlds.library.entity.goal.terrestrial.carnivore;
+package lostworlds.library.entity.goal.terrestrial;
 
 import java.util.EnumSet;
 
-import lostworlds.library.entity.terrestrial.CarnivoreEntity;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.LivingEntity;
@@ -12,7 +12,7 @@ import net.minecraft.util.EntityPredicates;
 
 public class SleepyLookAtGoal extends Goal 
 {
-	protected final CarnivoreEntity entity;
+	protected final EggLayingEntity entity;
 	protected Entity lookAt;
 	protected final float lookDistance;
 	private int lookTime;
@@ -20,12 +20,12 @@ public class SleepyLookAtGoal extends Goal
 	protected final Class<? extends LivingEntity> lookAtType;
 	protected final EntityPredicate lookAtContext;
 
-	public SleepyLookAtGoal(CarnivoreEntity entity, Class<? extends LivingEntity> lookAtEntity, float lookDistance) 
+	public SleepyLookAtGoal(EggLayingEntity entity, Class<? extends LivingEntity> lookAtEntity, float lookDistance) 
 	{
 		this(entity, lookAtEntity, lookDistance, 0.02F);
 	}
 
-	public SleepyLookAtGoal(CarnivoreEntity entity, Class<? extends LivingEntity> lookAtEntity, float lookDistance, float probability) 
+	public SleepyLookAtGoal(EggLayingEntity entity, Class<? extends LivingEntity> lookAtEntity, float lookDistance, float probability) 
 	{
 		this.entity = entity;
 		this.lookAtType = lookAtEntity;

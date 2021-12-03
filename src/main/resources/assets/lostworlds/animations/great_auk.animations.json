@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.great_auk.walk": {
+		"walk": {
 			"loop": true,
 			"animation_length": 1,
 			"bones": {
@@ -146,7 +146,7 @@
 				}
 			}
 		},
-		"animation.great_auk.idle": {
+		"idle": {
 			"loop": true,
 			"animation_length": 1,
 			"bones": {
@@ -177,7 +177,7 @@
 				}
 			}
 		},
-		"animation.great_auk.swim": {
+		"swim": {
 			"loop": true,
 			"animation_length": 1,
 			"bones": {
@@ -347,7 +347,7 @@
 				}
 			}
 		},
-		"animation.great_auk.idle_water": {
+		"idle_water": {
 			"loop": true,
 			"animation_length": 2,
 			"bones": {

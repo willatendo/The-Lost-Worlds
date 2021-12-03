@@ -6,7 +6,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import lostworlds.library.entity.terrestrial.HerbivoreEggLayingEntity;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import lostworlds.library.entity.terrestrial.PrehistoricEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.ai.goal.Goal;
@@ -105,9 +105,9 @@ public class NaturalBreedingGoal extends Goal
 	
 	public static class Egg extends NaturalBreedingGoal
 	{
-		private final HerbivoreEggLayingEntity entity;
+		private final EggLayingEntity entity;
 
-		public Egg(HerbivoreEggLayingEntity entity, double speedModifier) 
+		public Egg(EggLayingEntity entity, double speedModifier) 
 		{
 			super(entity, speedModifier);
 			this.entity = entity;

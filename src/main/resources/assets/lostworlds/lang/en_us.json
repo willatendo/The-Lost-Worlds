@@ -779,6 +779,7 @@
 	//Permian
 	"entity.lostworlds.diictodon": "Diictodon",
 	"entity.lostworlds.palaeoniscum": "Palaeoniscum",
+	"entity.lostworlds.tetraceratops": "Tetraceratops",
 	
 	//Triassic
 	
@@ -791,6 +792,7 @@
 	
 	//Cretaceous
 	"entity.lostworlds.psittacosaurus": "Psittacosaurus",
+	"entity.lostworlds.zephyrosaurus": "Zephyrosaurus",
 	
 	//Modern
 	"entity.lostworlds.great_auk": "Great Auk",

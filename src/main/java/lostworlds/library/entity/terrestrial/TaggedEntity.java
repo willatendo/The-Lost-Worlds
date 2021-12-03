@@ -17,8 +17,6 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.scoreboard.Team;
 import net.minecraft.server.management.PreYggdrasilConverter;
 import net.minecraft.util.ActionResultType;
@@ -27,8 +25,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Util;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 public abstract class TaggedEntity extends PrehistoricEntity
 {
@@ -86,33 +82,6 @@ public abstract class TaggedEntity extends PrehistoricEntity
 			{
 				this.setTagged(false);
 			}
-		}
-	}
-	
-	@OnlyIn(Dist.CLIENT)
-	protected void spawnTamingParticles() 
-	{
-		IParticleData iparticledata = ParticleTypes.SMOKE;
-		
-		for(int i = 0; i < 7; ++i) 
-		{
-			double d0 = this.random.nextGaussian() * 0.02D;
-			double d1 = this.random.nextGaussian() * 0.02D;
-			double d2 = this.random.nextGaussian() * 0.02D;
-			this.level.addParticle(iparticledata, this.getRandomX(1.0D), this.getRandomY() + 0.5D, this.getRandomZ(1.0D), d0, d1, d2);
-		}
-	}
-	
-	@OnlyIn(Dist.CLIENT)
-	public void handleEntityEvent(byte b) 
-	{
-		if(b == 7) 
-		{
-			this.spawnTamingParticles();
-		}
-		else 
-		{
-			super.handleEntityEvent(b);
 		}
 	}
 	

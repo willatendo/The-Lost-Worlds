@@ -1,17 +1,17 @@
-package lostworlds.library.entity.goal.terrestrial.carnivore;
+package lostworlds.library.entity.goal.terrestrial;
 
 import java.util.EnumSet;
 
 import javax.annotation.Nullable;
 
-import lostworlds.library.entity.terrestrial.CarnivoreEntity;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.util.math.vector.Vector3d;
 
 public class SleepyRandomWalkingGoal extends Goal 
 {
-	protected final CarnivoreEntity entity;
+	protected final EggLayingEntity entity;
 	protected double wantedX;
 	protected double wantedY;
 	protected double wantedZ;
@@ -20,16 +20,16 @@ public class SleepyRandomWalkingGoal extends Goal
 	protected boolean forceTrigger;
 	private boolean checkNoActionTime;
 
-	public SleepyRandomWalkingGoal(CarnivoreEntity entity, double speedModifier) 
+	public SleepyRandomWalkingGoal(EggLayingEntity entity, double speedModifier) 
 	{
 		this(entity, speedModifier, 120);
 	}
 
-	public SleepyRandomWalkingGoal(CarnivoreEntity entity, double speedModifier, int interval) {
+	public SleepyRandomWalkingGoal(EggLayingEntity entity, double speedModifier, int interval) {
 		this(entity, speedModifier, interval, true);
 	}
 
-	public SleepyRandomWalkingGoal(CarnivoreEntity entity, double speedModifier, int interval, boolean checkNoActionTime) 
+	public SleepyRandomWalkingGoal(EggLayingEntity entity, double speedModifier, int interval, boolean checkNoActionTime) 
 	{
 		this.entity = entity;
 		this.speedModifier = speedModifier;

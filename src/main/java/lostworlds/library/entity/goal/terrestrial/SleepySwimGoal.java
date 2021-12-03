@@ -1,16 +1,16 @@
-package lostworlds.library.entity.goal.terrestrial.carnivore;
+package lostworlds.library.entity.goal.terrestrial;
 
 import java.util.EnumSet;
 
-import lostworlds.library.entity.terrestrial.CarnivoreEntity;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.tags.FluidTags;
 
 public class SleepySwimGoal extends Goal 
 {
-	private final CarnivoreEntity entity;
+	private final EggLayingEntity entity;
 
-	public SleepySwimGoal(CarnivoreEntity entity) 
+	public SleepySwimGoal(EggLayingEntity entity) 
 	{
 		this.entity = entity;
 		this.setFlags(EnumSet.of(Goal.Flag.JUMP));
