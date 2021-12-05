@@ -6,31 +6,39 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import lostworlds.content.ModUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 
 public abstract class AbstractTableScreen extends Screen
 {
 	public static final ResourceLocation TEXTURE = ModUtils.rL("textures/gui/tablet.png");
-	public static final int FONT_COLOUR = 0x404040;
-		
-	public final Entity entity;
-	
+	public static final int FONT_COLOUR = 0x000000;
+			
 	public final int texWidth;
 	public final int texHeight;
+	protected int titleLabelX;
+	protected int titleLabelY;
 	int left;
 	int top;
 	public float xMouse;
 	public float yMouse;
 	
-	protected AbstractTableScreen(Entity entity) 
+	protected AbstractTableScreen(ITextComponent component) 
 	{
-		super(TabletLang.TITLE);
-		this.entity = entity;
+		super(component);
+		
+		this.titleLabelX = 22;
+		this.titleLabelY = 20;
 		
 		this.texWidth = 255;
 		this.texHeight = 192;
+	}
+	
+	@Override
+	public boolean isPauseScreen() 
+	{
+		return true;
 	}
 	
 	@Override
@@ -39,7 +47,7 @@ public abstract class AbstractTableScreen extends Screen
 		this.xMouse = (float) mouseX;
 		this.yMouse = (float) mouseY;
 		renderBackgroundElements(stack);
-		this.font.draw(stack, this.title, 20.0F, 20.0F, FONT_COLOUR);
+		this.font.draw(stack, this.title, (float) this.titleLabelX, (float) this.titleLabelY, FONT_COLOUR);		
 		super.render(stack, mouseX, mouseY, partialTicks);
 		this.renderComponentHoverEffect(stack, Style.EMPTY, mouseX, mouseY);
 	}

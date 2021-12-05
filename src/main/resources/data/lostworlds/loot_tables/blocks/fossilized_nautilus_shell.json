@@ -6,7 +6,7 @@
 			"entries": [
 				{
 					"type": "minecraft:item",
-					"name": "minecraft:fossilized_nautilus_shell"
+					"name": "lostworlds:fossilized_nautilus_shell"
 				}
 			],
 			"conditions": [

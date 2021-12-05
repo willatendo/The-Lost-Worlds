@@ -19,6 +19,8 @@ import lostworlds.library.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import lostworlds.library.entity.utils.FoodLists;
+import lostworlds.library.entity.utils.enums.ActivityType;
+import lostworlds.library.entity.utils.enums.CreatureDiet;
 import lostworlds.library.entity.utils.enums.DinoTypes;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
@@ -44,6 +46,18 @@ public class LiaoningosaurusEntity extends EggLayingEntity
 	public LiaoningosaurusEntity(EntityType<? extends LiaoningosaurusEntity> entity, World world) 
 	{
 		super(entity, world);
+	}
+	
+	@Override
+	public CreatureDiet diet() 
+	{
+		return CreatureDiet.HERBIVORE;
+	}
+	
+	@Override
+	public ActivityType activity() 
+	{
+		return ActivityType.DIURNAL;
 	}
 
 	@Override

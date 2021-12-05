@@ -1,6 +1,7 @@
 package lostworlds.library.entity.goal.terrestrial;
 
 import lostworlds.library.entity.terrestrial.PrehistoricEntity;
+import lostworlds.library.entity.utils.enums.ActivityType;
 import net.minecraft.entity.ai.goal.Goal;
 
 public class SleepGoal extends Goal
@@ -30,12 +31,17 @@ public class SleepGoal extends Goal
 	@Override
 	public boolean canUse() 
 	{
-		return this.entity.level.isNight() && !this.entity.isOnFire() && this.entity.isOnGround();
+		return getTime() && !this.entity.isOnFire() && this.entity.isOnGround();
 	}
 	
 	@Override
 	public boolean canContinueToUse() 
 	{
-		return this.entity.level.isNight() && !this.entity.isOnFire() && this.entity.isOnGround();
+		return getTime() && !this.entity.isOnFire() && this.entity.isOnGround();
+	}
+	
+	private boolean getTime()
+	{
+		return this.entity.activity() == ActivityType.DIURNAL ? this.entity.level.isNight() : this.entity.activity() == ActivityType.NOCTURNAL ? this.entity.level.isDay() : false;
 	}
 }

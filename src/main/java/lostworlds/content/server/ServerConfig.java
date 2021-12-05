@@ -21,6 +21,9 @@ public class ServerConfig
 	public final IntValue meteoriteGenerationId;
 	public final BooleanValue meteoriteShouldSpawn;
 
+	public final BooleanValue villageStructures;
+	public final IntValue villageStructureWeights;
+
 	//Features
 	public final BooleanValue mudDisksInSwamps;
 
@@ -152,6 +155,9 @@ public class ServerConfig
 		
 		this.meteoriteGenerationId = builder.comment("Sets the Meteorite's structure Id. Minecraft requires a number id, so this may conflict with another mod. If so, change it.").translation(TRANSLATION_TEXT + "meteoriteGenerationId").defineInRange("meteoriteGenerationId", 930134354, 111111111, 999999999);
 		this.meteoriteShouldSpawn = builder.comment("Sets if meteorite structures should spawn in the overworld.").translation(TRANSLATION_TEXT + "meteoritesShouldSpawn").define("meteoritesShouldSpawn", true);
+
+		this.villageStructures = builder.comment("Sets if new village houses should spawn.").translation(TRANSLATION_TEXT + "villageStructures").define("villageStructures", true);
+		this.villageStructureWeights = builder.comment("Sets if weight of new village houses spawning.").translation(TRANSLATION_TEXT + "villageStructureWeights").defineInRange("villageStructureWeights", 4, 1, 999);
 
 		//Features
 		this.mudDisksInSwamps = builder.comment("Sets if mud disks should spawn in swamp biomes.").translation(TRANSLATION_TEXT + "mudDisksInSwamps").define("mudDisksInSwamps", true);

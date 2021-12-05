@@ -58,7 +58,7 @@ public class TerrestrialEatPodzolGoal extends Goal
 	@Override
 	public void stop() 
 	{
-		this.entity.setHunger(21000);
+		this.entity.increaseHunger(this.entity.maxHunger());
 		this.entity.setAnimation(this.entity.ANIMATION_IDLE);
 	}
 

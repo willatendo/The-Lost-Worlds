@@ -1,13 +1,9 @@
 package lostworlds.library.entity.goal.terrestrial;
 
-import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.goal.MoveToBlockGoal;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
@@ -29,7 +25,7 @@ public class TerrestrialCreateTerritoryGoal extends MoveToBlockGoal
 	@Override
 	public boolean canUse() 
 	{
-		return !this.entity.isInWaterOrBubble() && entity.canMakeTerritory() && this.level.getBlockState(this.entity.blockPosition().below()) != Blocks.AIR.defaultBlockState();
+		return !this.entity.isInWaterOrBubble() && entity.canMakeTerritory() && this.level.isDay() && this.level.getBlockState(this.entity.blockPosition().below()) != Blocks.AIR.defaultBlockState();
 	}
 
 	@Override
@@ -42,17 +38,12 @@ public class TerrestrialCreateTerritoryGoal extends MoveToBlockGoal
 	{
 		return reader.getBlockState(pos).is(BlockTags.SAND) || reader.getBlockState(pos).is(Tags.Blocks.DIRT);
 	}
-
+	
 	@Override
-	public void tick() 
+	public void start() 
 	{
-		super.tick();
-		BlockPos blockpos = this.entity.blockPosition();
-		if(!this.entity.isInWater()) 
-		{
-			this.level.playSound((PlayerEntity) null, blockpos, SoundEvents.TURTLE_LAY_EGG, SoundCategory.BLOCKS, 0.3F, 0.9F + this.level.random.nextFloat() * 0.2F);
-			this.level.setBlock(blockpos.below(), BlockInit.NESTING_BLOCK.defaultBlockState(), 3);
-		}
+		super.start();
+		this.entity.getNavigation().stop();
 	}
 	
 	@Override

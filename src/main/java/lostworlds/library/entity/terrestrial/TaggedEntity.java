@@ -198,6 +198,17 @@ public abstract class TaggedEntity extends PrehistoricEntity
 	public ActionResultType mobInteract(PlayerEntity entity, Hand hand) 
 	{
 		ItemStack itemstack = entity.getItemInHand(hand);
+		if(this.isTag(itemstack))
+		{
+			if(itemstack.hasCustomHoverName()) 
+			{
+				if(!this.level.isClientSide && this.isAlive()) 
+				{
+					this.setCustomName(itemstack.getHoverName());
+				}
+			}
+		}
+		
 		if(this.level.isClientSide) 
 		{
 			if(this.isTagged() && this.isTaggedBy(entity)) 

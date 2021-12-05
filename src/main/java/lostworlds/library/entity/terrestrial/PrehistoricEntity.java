@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.ModTags;
 import lostworlds.content.server.init.ItemInit;
+import lostworlds.library.entity.utils.IForTabletThings;
 import lostworlds.library.entity.utils.ModDamageSources;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityPredicate;
@@ -46,7 +47,7 @@ import tyrannotitanlib.library.tyrannomation.core.builder.TyrannomationBuilder;
 import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationController;
 import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
 
-public abstract class PrehistoricEntity extends AgeableEntity implements ITyrannomatable
+public abstract class PrehistoricEntity extends AgeableEntity implements ITyrannomatable, IForTabletThings
 {
 	private static final EntityPredicate PARTNER_TARGETING = (new EntityPredicate()).range(8.0D).allowInvulnerable().allowSameTeam().allowUnseeable();
 	
@@ -60,7 +61,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	public static final TyrannomationBuilder WALK_ANIMATION = new TyrannomationBuilder().addAnimation("walk", true);
 	public static final TyrannomationBuilder IDLE_ANIMATION = new TyrannomationBuilder().addAnimation("idle", true);
 	public static final TyrannomationBuilder SLEEP_ANIMATION = new TyrannomationBuilder().addAnimation("into_sleep").addAnimation("sleep").addAnimation("out_of_sleep");
-	public static final TyrannomationBuilder EAT_ANIMATION = new TyrannomationBuilder().addAnimation("eat");
+	public static final TyrannomationBuilder EAT_ANIMATION = new TyrannomationBuilder().addAnimation("eat", false);
 		
 	public int inNaturalLove;
 	public UUID cause;

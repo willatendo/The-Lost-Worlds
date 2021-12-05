@@ -16,6 +16,7 @@ import lostworlds.library.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialReasonableAttackGoal;
 import lostworlds.library.entity.terrestrial.CarnivoreEntity;
 import lostworlds.library.entity.utils.FoodLists;
+import lostworlds.library.entity.utils.enums.ActivityType;
 import lostworlds.library.entity.utils.enums.DinoTypes;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
@@ -47,6 +48,12 @@ public class DilophosaurusEntity extends CarnivoreEntity
 	public int maxHunger() 
 	{
 		return 60000;
+	}
+	
+	@Override
+	public ActivityType activity() 
+	{
+		return ActivityType.DIURNAL;
 	}
 	
 	public static AttributeModifierMap createAttributes() 

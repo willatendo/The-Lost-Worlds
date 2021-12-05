@@ -19,6 +19,8 @@ import lostworlds.library.entity.goal.terrestrial.entity.DiictodonCreateTerritor
 import lostworlds.library.entity.goal.terrestrial.entity.DiictodonLayEggGoal;
 import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import lostworlds.library.entity.utils.FoodLists;
+import lostworlds.library.entity.utils.enums.ActivityType;
+import lostworlds.library.entity.utils.enums.CreatureDiet;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -43,6 +45,18 @@ public class DiictodonEntity extends EggLayingEntity
 	public DiictodonEntity(EntityType<? extends DiictodonEntity> entity, World world) 
 	{
 		super(entity, world);
+	}
+	
+	@Override
+	public CreatureDiet diet() 
+	{
+		return CreatureDiet.HERBIVORE;
+	}
+	
+	@Override
+	public ActivityType activity() 
+	{
+		return ActivityType.DIURNAL;
 	}
 
 	@Override

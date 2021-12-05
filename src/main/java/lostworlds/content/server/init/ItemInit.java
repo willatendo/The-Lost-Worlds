@@ -15,7 +15,9 @@ import lostworlds.library.item.DNADiscItem;
 import lostworlds.library.item.DNAItem;
 import lostworlds.library.item.DinoFoodItem;
 import lostworlds.library.item.DinoSpawnEggItem;
+import lostworlds.library.item.EntityFoodItem;
 import lostworlds.library.item.FieldGuideItem;
+import lostworlds.library.item.FishFoodItem;
 import lostworlds.library.item.FossilItem;
 import lostworlds.library.item.FullSyringeItem;
 import lostworlds.library.item.HammerItem;
@@ -202,7 +204,7 @@ public class ItemInit
 	
 	public static final Item STORAGE_DISC = ModRegistry.register("storage_disc", new ModItem());
 
-	public static final Item TAG = ModRegistry.register("tag", new ModItem());	
+	public static final Item TAG = ModRegistry.register("tag", new ModItem(16));	
 	
 	//Decoration
 	public static final Item AMBER_KEYCHAIN = ModRegistry.register("amber_keychain", new CollectibleItem());
@@ -269,7 +271,7 @@ public class ItemInit
 			Item dna = ModRegistry.register(dinos.name().toLowerCase() + "_dna", new DNAItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));
 			dinos.setDNA(dna);
 			ModRegistry.register(dinos.name().toLowerCase() + "_dna_disc", new DNADiscItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));
-			if(!dinos.fish().contains(dinos))
+			if(!dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS)
 			{
 				Item meat = ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_meat", new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), true));
 				ModRegistry.register("cooked_" + dinos.name().toLowerCase() + "_meat", new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), false));
@@ -277,16 +279,16 @@ public class ItemInit
 			}
 			else if(dinos == DinoTypes.NAUTILUS)
 			{
-				Item meat = ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_tentacles", new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), true));
-				ModRegistry.register("cooked_" + dinos.name().toLowerCase() + "_tentacles", new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), false));
+				Item meat = ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_tentacle", new EntityFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).fast().build())));
+				ModRegistry.register("cooked_" + dinos.name().toLowerCase() + "_tentacle", new EntityFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).fast().build())));
 				dinos.setMeat(meat);
 			}
-			else if(dinos != DinoTypes.NAUTILUS)
+			else if(dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS)
 			{
 				Item bucket = ModRegistry.register(dinos.name().toLowerCase() + "_bucket", new ModFishBucketItem(() -> dinos.getEntityType(), Fluids.WATER, new Properties().tab(ModUtils.ITEMS).stacksTo(1)));
 				dinos.setFishBucket(bucket);
-				Item meat = ModRegistry.register(dinos.name().toLowerCase(), new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), true));
-				ModRegistry.register("cooked_" + dinos.name().toLowerCase(), new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), false));
+				Item meat = ModRegistry.register(dinos.name().toLowerCase(), new FishFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), true));
+				ModRegistry.register("cooked_" + dinos.name().toLowerCase(), new FishFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), false));
 				dinos.setMeat(meat);
 			}
 		}

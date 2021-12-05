@@ -12,6 +12,7 @@ import com.google.common.collect.Maps;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import lostworlds.content.ModUtils;
+import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.content.server.init.VillagerProfessionInit;
@@ -67,24 +68,32 @@ public class ServerSetup
 		@SubscribeEvent
 		public static void onServerAboutToStartEvent(FMLServerAboutToStartEvent event)
 		{
-			ModUtils.LOGGER.debug("Loading: Village Structures");
+			if(LostWorldsConfig.COMMON_CONFIG.villageStructures.get())
+			{
+				ModUtils.LOGGER.debug("Loading: Village Structures");
 
-			//Plains Village Structures
-			JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/plains/houses"), ModUtils.rL("village/plains/plains_archaeologist_hut"), 25);
-			
-			//Taiga Village Structures
-			JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/taiga/houses"), ModUtils.rL("village/taiga/taiga_archaeologist_hut"), 25);
+				//Plains Village Structures
+				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/plains/houses"), ModUtils.rL("village/plains/plains_archaeologist_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
+				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/plains/houses"), ModUtils.rL("village/plains/plains_paleontology_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
+				
+				//Taiga Village Structures
+				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/taiga/houses"), ModUtils.rL("village/taiga/taiga_archaeologist_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
+				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/taiga/houses"), ModUtils.rL("village/taiga/taiga_paleontology_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
 
-			//Savanna Village Structures
-			JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/savanna/houses"), ModUtils.rL("village/savanna/savanna_archaeologist_hut"), 25);
+				//Savanna Village Structures
+				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/savanna/houses"), ModUtils.rL("village/savanna/savanna_archaeologist_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
+				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/savanna/houses"), ModUtils.rL("village/savanna/savanna_paleontology_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
+				
+				//Snowy Village Structures
+				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/snowy/houses"), ModUtils.rL("village/snowy/snowy_archaeologist_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
+				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/snowy/houses"), ModUtils.rL("village/snowy/snowy_paleontology_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
+				
+				//Desert Village Structures
+				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/desert/houses"), ModUtils.rL("village/desert/desert_archaeologist_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
+				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/desert/houses"), ModUtils.rL("village/desert/desert_paleontology_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
 			
-			//Snowy Village Structures
-			JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/snowy/houses"), ModUtils.rL("village/snowy/snowy_archaeologist_hut"), 25);
-			
-			//Desert Village Structures
-			JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/desert/houses"), ModUtils.rL("village/desert/desert_archaeologist_hut"), 25);
-		
-			ModUtils.LOGGER.debug("Finished: Village Structures");
+				ModUtils.LOGGER.debug("Finished: Village Structures");
+			}
 		}
 	}
 	
