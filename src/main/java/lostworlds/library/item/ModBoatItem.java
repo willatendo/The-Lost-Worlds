@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 
 import lostworlds.content.ModUtils;
 import lostworlds.library.entity.ModBoatEntity;
-import lostworlds.library.entity.ModBoatType;
+import lostworlds.library.entity.utils.enums.ModBoatType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;

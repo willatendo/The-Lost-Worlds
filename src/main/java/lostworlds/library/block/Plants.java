@@ -27,6 +27,7 @@ public enum Plants implements IStringSerializable
 	private final String id;
 	private final Lazy<? extends Block> block;
 	private Item item;
+	private Item seed;
 	private Item dna;
 	
 	private Plants(String id, NonNullSupplier<? extends Block> block) 
@@ -58,6 +59,16 @@ public enum Plants implements IStringSerializable
 	public Item getDrop()
 	{
 		return this.item;
+	}
+	
+	public Item setSeed(Item seed)
+	{
+		return this.seed = seed;
+	}
+	
+	public Item getSeed()
+	{
+		return this.seed;
 	}
 	
 	@Override

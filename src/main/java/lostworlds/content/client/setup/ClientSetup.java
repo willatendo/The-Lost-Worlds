@@ -36,7 +36,7 @@ import lostworlds.content.server.init.EntityInit;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.ColouredGlassBlock;
 import lostworlds.library.block.ColouredGlassPaneBlock;
-import lostworlds.library.entity.DinoTypes;
+import lostworlds.library.entity.utils.enums.DinoTypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;

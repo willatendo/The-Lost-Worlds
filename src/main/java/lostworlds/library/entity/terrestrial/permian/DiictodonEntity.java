@@ -1,13 +1,8 @@
 package lostworlds.library.entity.terrestrial.permian;
 
 import lostworlds.content.config.LostWorldsConfig;
-import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.library.entity.goal.NaturalBreedingGoal;
-import lostworlds.library.entity.goal.terrestrial.TerrestrialEatGrassGoal;
-import lostworlds.library.entity.goal.terrestrial.TerrestrialEatMossySoilGoal;
-import lostworlds.library.entity.goal.terrestrial.TerrestrialEatPodzolGoal;
-import lostworlds.library.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepyAvoidEntityGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepyBreedGoal;
@@ -16,10 +11,14 @@ import lostworlds.library.entity.goal.terrestrial.SleepyLookRandomlyGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepySwimGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepyTemptGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepyWaterAvoidingRandomWalkingGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialEatGrassGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialEatMossySoilGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialEatPodzolGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.library.entity.goal.terrestrial.entity.DiictodonCreateTerritoryGoal;
 import lostworlds.library.entity.goal.terrestrial.entity.DiictodonLayEggGoal;
 import lostworlds.library.entity.terrestrial.EggLayingEntity;
-import lostworlds.library.item.block.SeedItem;
+import lostworlds.library.entity.utils.FoodLists;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -38,12 +37,18 @@ import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
 public class DiictodonEntity extends EggLayingEntity
 {
-	private static final Ingredient FOOD_ITEMS = Ingredient.of(BlockInit.ALETHOPTERIS, BlockInit.BRAZILEA, BlockInit.CEPHALOTAXUS, BlockInit.CALAMITES_SUCKOWII, BlockInit.DILLHOFFIA, BlockInit.DUISBERGIA, BlockInit.GROUND_FERNS, BlockInit.OSMUNDA, BlockInit.PERMIAN_DESERT_FERNS, BlockInit.PERMIAN_DESERT_SHRUB, BlockInit.WILLIAMSONIA, BlockInit.ZAMITES);
+	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
 	
 	public DiictodonEntity(EntityType<? extends DiictodonEntity> entity, World world) 
 	{
 		super(entity, world);
+	}
+
+	@Override
+	public int maxHunger() 
+	{
+		return 9000;
 	}
 	
 	public static AttributeModifierMap createAttributes() 
@@ -87,7 +92,7 @@ public class DiictodonEntity extends EggLayingEntity
 	@Override
 	public boolean isFood(ItemStack stack) 
 	{
-		return FOOD_ITEMS.test(stack) || stack.getItem() instanceof SeedItem;
+		return FOOD_ITEMS.test(stack);
 	}
 
 	@Override

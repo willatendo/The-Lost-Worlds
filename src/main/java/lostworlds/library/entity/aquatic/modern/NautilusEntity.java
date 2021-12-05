@@ -1,8 +1,8 @@
 package lostworlds.library.entity.aquatic.modern;
 
 import lostworlds.content.config.LostWorldsConfig;
-import lostworlds.content.server.init.ItemInit;
 import lostworlds.library.entity.aquatic.BasicFishLikeEntity;
+import lostworlds.library.entity.utils.enums.DinoTypes;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -44,7 +44,7 @@ public class NautilusEntity extends BasicFishLikeEntity implements ITyrannomatab
 	@Override
 	protected ItemStack getBucketItemStack() 
 	{
-		return ItemInit.NAUTILUS_BUCKET.getDefaultInstance();
+		return DinoTypes.NAUTILUS.getFishBucket().getDefaultInstance();
 	}
 
 	@Override

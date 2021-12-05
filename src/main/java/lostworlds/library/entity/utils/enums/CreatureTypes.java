@@ -1,6 +1,6 @@
-package lostworlds.library.entity;
+package lostworlds.library.entity.utils.enums;
 
-public enum LivingCreatures 
+public enum CreatureTypes 
 {
 	BAT(Size.TINY, BirthType.GESTATION),
 	CAT(Size.SMALL, BirthType.GESTATION),
@@ -25,7 +25,7 @@ public enum LivingCreatures
 	private final Size size;
 	private final BirthType type;
 	
-	private LivingCreatures(Size size, BirthType type) 
+	private CreatureTypes(Size size, BirthType type) 
 	{
 		this.size = size;
 		this.type = type;
@@ -41,7 +41,7 @@ public enum LivingCreatures
 		return this.type;
 	}
 	
-	public int getGestationPeriod(LivingCreatures creature)
+	public int getGestationPeriod(CreatureTypes creature)
 	{
 		if(creature.size() == Size.TINY)
 		{

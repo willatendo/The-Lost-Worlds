@@ -1,9 +1,9 @@
 package lostworlds.library.item;
 
-import lostworlds.library.entity.DinoTypes;
-import lostworlds.library.entity.ModDamageSources;
 import lostworlds.library.entity.terrestrial.jurassic.ChilesaurusEntity;
 import lostworlds.library.entity.terrestrial.jurassic.KentrosaurusEntity;
+import lostworlds.library.entity.utils.ModDamageSources;
+import lostworlds.library.entity.utils.enums.DinoTypes;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;

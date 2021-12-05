@@ -1,4 +1,4 @@
-package lostworlds.library.entity;
+package lostworlds.library.entity.utils;
 
 import net.minecraft.util.DamageSource;
 

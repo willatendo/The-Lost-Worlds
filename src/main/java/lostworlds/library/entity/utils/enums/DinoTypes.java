@@ -1,4 +1,4 @@
-package lostworlds.library.entity;
+package lostworlds.library.entity.utils.enums;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +34,9 @@ public enum DinoTypes implements IStringSerializable
 	DILOPHOSAURUS("dilophosaurus", EntityInit.DILOPHOSAURUS, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xc49838, 0xc49838, 0xc75539, 5, 7, 0.5F, 0.76F),
 	KENTROSAURUS("kentrosaurus", EntityInit.KENTROSAURUS, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0xd99760, 0xd99760, 0x612c00, 3, 6, 0.4F, 0.66F),
 	LIAONINGOSAURUS("liaoningosaurus", EntityInit.LIAONINGOSAURUS, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x712d0d, 0x712d0d, 0x7c8237, 4, 7, 0.45F, 0.68F),
+	NAUTILUS("nautilus", EntityInit.NAUTILUS, false, Size.SMALL, CreatureDiet.NONE, 0xd4ccc3, 0xd4ccc3, 0xca7548, 2, 5, 0.3F, 0.5F),
 	OPHTHALMOSAURUS("ophthalmosaurus", EntityInit.OPHTHALMOSAURUS, false, Size.MEDIUM, CreatureDiet.PISCIVORE, 0x858794, 0x858794, 0x0e131b, 4, 7, 0.4F, 0.6F),
+	PALAEONISCUM("palaeoniscum", EntityInit.PALAEONISCUM, false, Size.TINY, CreatureDiet.NONE, 0x72797a, 0x72797a, 0x2f3a3d, 2, 5, 0.3F, 0.5F),
 	PSITTACOSAURUS("psittacosaurus", EntityInit.PSITTACOSAURUS, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x4c2c21, 0x4c2c21, 0x938639, 3, 5, 0.3F, 0.54F),
 	TETRACERATOPS("tetraceratops", EntityInit.TETRACERATOPS, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x623015, 0x623015, 0x21369b, 3, 5, 0.3F, 0.54F),
 	ZEPHYROSAURUS("zephyrosaurus", EntityInit.ZEPHYROSAURUS, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x577476, 0x577476, 0x9ba3a3, 3, 5, 0.3F, 0.54F),
@@ -63,6 +65,8 @@ public enum DinoTypes implements IStringSerializable
 	private Item skeletonPick;
 	private Item dna;
 	private Item bloodSample;
+	private Item meat;
+	private Item fishBucket;
 	private final boolean eggLaying;
 	private final Size eggSize;
 	private final CreatureDiet diet;
@@ -75,7 +79,7 @@ public enum DinoTypes implements IStringSerializable
 	private final float cookedSaturation;
 	
 	private DinoTypes(String id, EntityType entity, boolean eggLaying, Size eggSize, CreatureDiet diet, int eggSetColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
-	{
+	{		
 		this.id = id;
 		this.entitytype = entity;
 		this.eggLaying = eggLaying;
@@ -215,6 +219,26 @@ public enum DinoTypes implements IStringSerializable
 		return this.skeleton;
 	}
 	
+	public Item setMeat(Item meat)
+	{
+		return this.meat = meat;
+	}
+	
+	public Item getMeat()
+	{
+		return this.meat;
+	}
+	
+	public Item setFishBucket(Item fishBucket)
+	{
+		return this.fishBucket = fishBucket;
+	}
+	
+	public Item getFishBucket()
+	{
+		return this.fishBucket;
+	}
+	
 	public Block setEgg(Block egg)
 	{
 		return this.egg = egg;
@@ -351,6 +375,13 @@ public enum DinoTypes implements IStringSerializable
 				list.add(type);
 			}
 		}
+		return list;
+	}
+	
+	public static ArrayList<DinoTypes> fish()
+	{
+		ArrayList<DinoTypes> list = new ArrayList<>();
+		list.add(PALAEONISCUM);
 		return list;
 	}
 	

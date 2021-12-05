@@ -1,7 +1,6 @@
 package lostworlds.library.entity.terrestrial.jurassic;
 
 import lostworlds.content.config.LostWorldsConfig;
-import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.library.entity.goal.NaturalBreedingGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepGoal;
@@ -11,18 +10,19 @@ import lostworlds.library.entity.goal.terrestrial.SleepyLookRandomlyGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepySwimGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepyTemptGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepyWaterAvoidingRandomWalkingGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialCreateTerritoryGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialEatGrassGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialEatMossySoilGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialEatPodzolGoal;
-import lostworlds.library.entity.terrestrial.CarnivoreEntity;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialGoHomeGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.library.entity.terrestrial.EggLayingEntity;
-import lostworlds.library.item.block.SeedItem;
+import lostworlds.library.entity.utils.FoodLists;
+import lostworlds.library.entity.utils.enums.DinoTypes;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -36,12 +36,18 @@ import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
 public class KentrosaurusEntity extends EggLayingEntity
 {
-	private static final Ingredient FOOD_ITEMS = Ingredient.of(BlockInit.ALETHOPTERIS, BlockInit.BRAZILEA, BlockInit.CEPHALOTAXUS, BlockInit.CALAMITES_SUCKOWII, BlockInit.DILLHOFFIA, BlockInit.DUISBERGIA, BlockInit.GROUND_FERNS, BlockInit.OSMUNDA, BlockInit.PERMIAN_DESERT_FERNS, BlockInit.PERMIAN_DESERT_SHRUB, BlockInit.WILLIAMSONIA, BlockInit.ZAMITES);
+	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
 	
 	public KentrosaurusEntity(EntityType<? extends KentrosaurusEntity> entity, World world) 
 	{
 		super(entity, world);
+	}
+
+	@Override
+	public int maxHunger() 
+	{
+		return 30000;
 	}
 	
 	public static AttributeModifierMap createAttributes() 
@@ -61,11 +67,12 @@ public class KentrosaurusEntity extends EggLayingEntity
 		this.goalSelector.addGoal(4, new TerrestrialEatPodzolGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialEatMossySoilGoal(this));
 		this.goalSelector.addGoal(5, new SleepGoal(this));
+		this.goalSelector.addGoal(5, new TerrestrialCreateTerritoryGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new NaturalBreedingGoal.Egg(this, 1.0D));
-		this.goalSelector.addGoal(7, new SleepyBreedGoal.Egg(this, 1.0D));
-		this.goalSelector.addGoal(8, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
-		this.goalSelector.addGoal(9, new MeleeAttackGoal(this, (double)1.2F, true));
-		this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, PlayerEntity.class, CarnivoreEntity.class)).setAlertOthers());
+		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));
+		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.KENTROSAURUS));
+		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
+		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 	}
 
 	@Override
@@ -83,7 +90,7 @@ public class KentrosaurusEntity extends EggLayingEntity
 	@Override
 	public boolean isFood(ItemStack stack) 
 	{
-		return FOOD_ITEMS.test(stack) || stack.getItem() instanceof SeedItem;
+		return FOOD_ITEMS.test(stack);
 	}
 	
 	@Override

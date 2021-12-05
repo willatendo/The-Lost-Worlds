@@ -2,6 +2,7 @@ package lostworlds.library.entity;
 
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EntityInit;
+import lostworlds.library.entity.utils.enums.ModBoatType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.ModTags;
 import lostworlds.content.server.init.ItemInit;
-import lostworlds.library.entity.ModDamageSources;
+import lostworlds.library.entity.utils.ModDamageSources;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.EntityType;
@@ -29,6 +29,8 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.GameRules;
@@ -97,6 +99,8 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 		this.setPathfindingMalus(PathNodeType.DAMAGE_FIRE, -1.0F);
 	}
 	
+	public abstract int maxHunger();
+	
 	public boolean isSleeping()
 	{
 		byte currentAnimation = this.getAnimation();
@@ -119,6 +123,29 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 		this.hunger = hunger;
 	}
 	
+	public void addHunger(int hunger) 
+	{
+		this.hunger = this.getHunger() + hunger;
+	}
+	
+	public boolean increaseHunger(int hunger) 
+	{
+		if(this.getHunger() >= this.maxHunger()) 
+		{
+			return false;
+		}
+		
+		this.setHunger(this.getHunger() + hunger);
+		
+		if(this.getHunger() > this.maxHunger()) 
+		{
+			this.setHunger(this.maxHunger());
+		}
+		
+		this.level.playSound(null, this.blockPosition(), SoundEvents.GENERIC_EAT, SoundCategory.NEUTRAL, this.getSoundVolume(), this.getVoicePitch());
+		return true;
+	}
+	
 	public boolean isHungry()
 	{
 		return this.hunger < 0 ? true : false;
@@ -127,7 +154,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	@Override
 	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficulty, SpawnReason reason, ILivingEntityData data, CompoundNBT nbt) 
 	{
-		this.hunger = 21000;
+		this.hunger = this.maxHunger();
 		return super.finalizeSpawn(world, difficulty, reason, data, nbt);
 	}
 	

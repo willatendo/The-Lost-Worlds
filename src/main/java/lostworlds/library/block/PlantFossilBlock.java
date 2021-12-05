@@ -4,8 +4,8 @@ import java.util.Random;
 
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EnchantmentInit;
-import lostworlds.library.entity.TimeEras;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
+import lostworlds.library.entity.utils.enums.TimeEras;
 import lostworlds.library.item.tool.ModMaterials;
 import lostworlds.library.item.tool.ModToolTypes;
 import net.minecraft.block.AbstractBlock;

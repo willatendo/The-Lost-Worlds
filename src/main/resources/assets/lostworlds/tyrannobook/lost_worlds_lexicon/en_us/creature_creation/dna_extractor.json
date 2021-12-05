@@ -1,0 +1,16 @@
+{
+	"title": "Creature Creation: DNA Extractor",
+	"text": [
+		{
+			"text": "Half-way though, we find the DNA Extractor. In the input slots, place a vile and the previously acquired soft tissue. Then, you'll get DNA."
+		},
+		{
+			"text": "The dna extractor requires a redstone input and a vile. Once you have dna, it's onto the fourth step.",
+			"paragraph": true
+		},
+		{
+			"text": "The DNA Extractor is the cheapest of the machines and should be easily aquired.",
+			"paragraph": true
+		}
+	]
+}

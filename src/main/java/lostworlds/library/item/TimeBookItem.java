@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 import lostworlds.content.ModUtils;
 import lostworlds.content.server.ModTags;
 import lostworlds.content.server.init.DimensionInit;
-import lostworlds.library.entity.TimeEras;
+import lostworlds.library.entity.utils.enums.TimeEras;
 import lostworlds.library.util.ModTeleporter;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;

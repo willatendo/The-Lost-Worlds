@@ -1,7 +1,7 @@
 package lostworlds.library.entity.aquatic.permian;
 
-import lostworlds.content.server.init.ItemInit;
 import lostworlds.library.entity.aquatic.BasicFishLikeEntity;
+import lostworlds.library.entity.utils.enums.DinoTypes;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.ItemStack;
@@ -34,7 +34,7 @@ public class PalaeoniscumEntity extends BasicFishLikeEntity implements ITyrannom
 	@Override
 	protected ItemStack getBucketItemStack() 
 	{
-		return ItemInit.PALAEONISCUM_BUCKET.getDefaultInstance();
+		return DinoTypes.PALAEONISCUM.getFishBucket().getDefaultInstance();
 	}
 
 	@Override

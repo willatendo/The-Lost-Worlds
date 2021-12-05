@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.entity.FeedingTroughTileEntity;
-import lostworlds.library.entity.CreatureDiet;
+import lostworlds.library.entity.utils.enums.CreatureDiet;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;

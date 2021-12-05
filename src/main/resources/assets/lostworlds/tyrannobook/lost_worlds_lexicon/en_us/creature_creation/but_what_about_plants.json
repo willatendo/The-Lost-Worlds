@@ -1,0 +1,12 @@
+{
+	"title": "But What About Plants?",
+	"text": [
+		{
+			"text": "Don't worry, they're almost exactly the same! Of course, instead of dinosaur fossils, you use bark (can be collected from petrified wood via stripping it) and plant fossils. However, you'll skip the fossil cleaner stage and the dna injector one."
+		},
+		{
+			"text": "Instead, you'll place it in the last machine, the cultivator. It will grow the DNA into either a sapling or seed! Of course, it just need a redstone signal.",
+			"paragraph": true
+		}
+	]
+}

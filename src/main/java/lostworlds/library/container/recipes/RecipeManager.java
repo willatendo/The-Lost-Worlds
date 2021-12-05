@@ -7,7 +7,7 @@ import java.util.List;
 import lostworlds.content.jei.recipe.AmberDNAExtractorRecipe;
 import lostworlds.content.jei.recipe.WaterFuelRecipe;
 import lostworlds.content.server.init.ItemInit;
-import lostworlds.library.entity.DinoTypes;
+import lostworlds.library.entity.utils.enums.DinoTypes;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.runtime.IIngredientManager;

@@ -4,10 +4,10 @@ import java.util.Random;
 
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.content.server.init.EnchantmentInit;
-import lostworlds.library.entity.DinoTypes;
-import lostworlds.library.entity.TimeEras;
 import lostworlds.library.entity.fossil.FossilEntity;
 import lostworlds.library.entity.illager.FossilPoacherEntity;
+import lostworlds.library.entity.utils.enums.DinoTypes;
+import lostworlds.library.entity.utils.enums.TimeEras;
 import lostworlds.library.item.HammerItem;
 import lostworlds.library.item.tool.ModMaterials;
 import lostworlds.library.item.tool.ModToolTypes;

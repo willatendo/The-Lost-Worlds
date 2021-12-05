@@ -59,8 +59,8 @@ import lostworlds.library.block.tree.ConiferTree;
 import lostworlds.library.block.tree.CypressTree;
 import lostworlds.library.block.tree.GinkgoTree;
 import lostworlds.library.block.tree.SequoiaTree;
-import lostworlds.library.entity.DinoTypes;
-import lostworlds.library.entity.ModBoatType;
+import lostworlds.library.entity.utils.enums.DinoTypes;
+import lostworlds.library.entity.utils.enums.ModBoatType;
 import lostworlds.library.item.ModBoatItem;
 import lostworlds.library.item.tool.ModMaterials;
 import net.minecraft.block.AbstractBlock;
@@ -596,8 +596,16 @@ public class BlockInit
 		
 		for(DinoTypes types : DinoTypes.eggLaying())
 		{
-			Block egg = BlockAndItemBuilder.createEgg(types.getId() + "_egg", types.getEgg(types.getEntityType()), ModUtils.tTC("dino", types.name().toLowerCase()));
+			Block egg = BlockAndItemBuilder.createEgg(types.getId() + "_egg", types.getEgg(types.getEntityType()), ModUtils.tTC("entity", types.name().toLowerCase()));
 			types.setEgg(egg);
+		}
+		
+		for(DinoTypes types : DinoTypes.values())
+		{
+			if(types == DinoTypes.NAUTILUS)
+			{
+				BlockAndItemBuilder.create("fossilized_nautilus_shell", new NautilusShellBlock(AbstractBlock.Properties.of(Material.SHULKER_SHELL).instabreak().noOcclusion().sound(SoundType.ANVIL)));
+			}
 		}
 	}
 }

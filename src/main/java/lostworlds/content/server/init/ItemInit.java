@@ -5,8 +5,8 @@ import lostworlds.content.ModUtils;
 import lostworlds.library.block.Plants;
 import lostworlds.library.block.Trees;
 import lostworlds.library.container.recipes.RecipeManager;
-import lostworlds.library.entity.DinoTypes;
-import lostworlds.library.entity.TimeEras;
+import lostworlds.library.entity.utils.enums.DinoTypes;
+import lostworlds.library.entity.utils.enums.TimeEras;
 import lostworlds.library.item.AmberItem;
 import lostworlds.library.item.ChiselItem;
 import lostworlds.library.item.CollectibleItem;
@@ -222,12 +222,6 @@ public class ItemInit
 	
 	public static final Item FOSSIL_POACHER_SPAWN_EGG = ModRegistry.register("fossil_poacher_spawn_egg", new ModSpawnEggItem(() -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031, ItemGroup.TAB_MISC));
 	
-	public static final Item NAUTILUS_BUCKET = ModRegistry.register("nautilus_bucket", new ModFishBucketItem(() -> EntityInit.NAUTILUS, Fluids.WATER, new Properties().tab(ModUtils.ITEMS).stacksTo(1)));
-	public static final Item NAUTILUS_SPAWN_EGG = ModRegistry.register("nautilus_spawn_egg", new DinoSpawnEggItem(() -> EntityInit.NAUTILUS, 0xd4ccc3, 0xca7548, ItemGroup.TAB_MISC, ModUtils.tTC("entity", "nautilus")));
-	
-	public static final Item PALAEONISCUM_BUCKET = ModRegistry.register("palaeoniscum_bucket", new ModFishBucketItem(() -> EntityInit.PALAEONISCUM, Fluids.WATER, new Properties().tab(ModUtils.ITEMS).stacksTo(1)));
-	public static final Item PALAEONISCUM_SPAWN_EGG = ModRegistry.register("palaeoniscum_spawn_egg", new DinoSpawnEggItem(() -> EntityInit.PALAEONISCUM, 0x72797a, 0x2f3a3d, ItemGroup.TAB_MISC, ModUtils.tTC("entity", "palaeoniscum")));
-
 	public static final Item GREAT_AUK_SPAWN_EGG = ModRegistry.register("great_auk_spawn_egg", new DinoSpawnEggItem(() -> EntityInit.GREAT_AUK, 0xFFFFFF, 0x000000, ItemGroup.TAB_MISC, ModUtils.tTC("entity", "great_auk")));
 
 	//Fossils
@@ -252,18 +246,22 @@ public class ItemInit
 		
 		for(DinoTypes dinos : DinoTypes.values())
 		{
-			ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_rib_cage", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getRibCage(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "rib_cage")));
-			ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_leg_bones", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getLegBones(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "leg_bones")));
-			ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_arm_bones", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getArmBones(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "arm_bones")));
-			ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_tail", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getTail(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "tail")));
-			ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_skull", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getSkull(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "skull")));
-			ModRegistry.register(dinos.name().toLowerCase() + "_rib_cage", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("rib_cage")), () -> dinos.getRibCage(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "rib_cage")));
-			ModRegistry.register(dinos.name().toLowerCase() + "_leg_bones", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("leg_bones")), () -> dinos.getLegBones(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "leg_bones")));
-			ModRegistry.register(dinos.name().toLowerCase() + "_arm_bones", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("arm_bones")), () -> dinos.getArmBones(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "arm_bones")));
-			ModRegistry.register(dinos.name().toLowerCase() + "_tail", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("tail")), () -> dinos.getTail(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "tail")));
-			ModRegistry.register(dinos.name().toLowerCase() + "_skull", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("skull")), () -> dinos.getSkull(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "skull")));
-			Item skeleton = ModRegistry.register(dinos.name().toLowerCase() + "_skeleton", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "skeleton")));
-			dinos.setSkeletonPick(skeleton);
+			if(dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM)
+			{
+				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_rib_cage", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getRibCage(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "rib_cage")));
+				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_leg_bones", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getLegBones(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "leg_bones")));
+				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_arm_bones", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getArmBones(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "arm_bones")));
+				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_tail", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getTail(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "tail")));
+				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_skull", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getSkull(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "skull")));
+				ModRegistry.register(dinos.name().toLowerCase() + "_rib_cage", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("rib_cage")), () -> dinos.getRibCage(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "rib_cage")));
+				ModRegistry.register(dinos.name().toLowerCase() + "_leg_bones", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("leg_bones")), () -> dinos.getLegBones(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "leg_bones")));
+				ModRegistry.register(dinos.name().toLowerCase() + "_arm_bones", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("arm_bones")), () -> dinos.getArmBones(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "arm_bones")));
+				ModRegistry.register(dinos.name().toLowerCase() + "_tail", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("tail")), () -> dinos.getTail(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "tail")));
+				ModRegistry.register(dinos.name().toLowerCase() + "_skull", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER("skull")), () -> dinos.getSkull(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "skull")));
+				Item skeleton = ModRegistry.register(dinos.name().toLowerCase() + "_skeleton", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "skeleton")));
+				dinos.setSkeletonPick(skeleton);
+			}
+			
 			ModRegistry.register(dinos.name().toLowerCase() + "_spawn_egg", new DinoSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), ItemGroup.TAB_MISC, ModUtils.tTC("entity", dinos.name().toLowerCase())));
 			ModRegistry.register(dinos.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(ModUtils.tTC("entity", dinos.toString().toLowerCase())));
 			Item bloodSample = ModRegistry.register(dinos.name().toLowerCase() + "_blood_sample", new FullSyringeItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));
@@ -271,8 +269,26 @@ public class ItemInit
 			Item dna = ModRegistry.register(dinos.name().toLowerCase() + "_dna", new DNAItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));
 			dinos.setDNA(dna);
 			ModRegistry.register(dinos.name().toLowerCase() + "_dna_disc", new DNADiscItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));
-			ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_meat", new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), true));
-			ModRegistry.register("cooked_" + dinos.name().toLowerCase() + "_meat", new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), false));
+			if(!dinos.fish().contains(dinos))
+			{
+				Item meat = ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_meat", new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), true));
+				ModRegistry.register("cooked_" + dinos.name().toLowerCase() + "_meat", new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), false));
+				dinos.setMeat(meat);
+			}
+			else if(dinos == DinoTypes.NAUTILUS)
+			{
+				Item meat = ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_tentacles", new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), true));
+				ModRegistry.register("cooked_" + dinos.name().toLowerCase() + "_tentacles", new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), false));
+				dinos.setMeat(meat);
+			}
+			else if(dinos != DinoTypes.NAUTILUS)
+			{
+				Item bucket = ModRegistry.register(dinos.name().toLowerCase() + "_bucket", new ModFishBucketItem(() -> dinos.getEntityType(), Fluids.WATER, new Properties().tab(ModUtils.ITEMS).stacksTo(1)));
+				dinos.setFishBucket(bucket);
+				Item meat = ModRegistry.register(dinos.name().toLowerCase(), new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), true));
+				ModRegistry.register("cooked_" + dinos.name().toLowerCase(), new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), false));
+				dinos.setMeat(meat);
+			}
 		}
 		
 		for(Plants plants : Plants.values())
@@ -282,7 +298,8 @@ public class ItemInit
 			ModRegistry.register(plants.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(ModUtils.tTC("block", plants.toString().toLowerCase())));
 			ModRegistry.register(plants.toString().toLowerCase() + "_dna", new DNAItem(ModUtils.tTC("block", plants.toString().toLowerCase())));
 			ModRegistry.register(plants.toString().toLowerCase() + "_dna_disc", new DNADiscItem(ModUtils.tTC("block", plants.toString().toLowerCase())));
-			SeedItem.create(plants.toString().toLowerCase(), plants.getPlant(), ModUtils.tTC("block", plants.toString().toLowerCase()));
+			Item seed = SeedItem.create(plants.toString().toLowerCase(), plants.getPlant(), ModUtils.tTC("block", plants.toString().toLowerCase()));
+			plants.setSeed(seed);
 		}
 		
 		for(Trees trees : Trees.values())

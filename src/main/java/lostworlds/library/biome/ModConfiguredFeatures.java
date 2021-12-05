@@ -15,7 +15,7 @@ import lostworlds.library.block.Egg;
 import lostworlds.library.block.PlantFossilBlock;
 import lostworlds.library.block.Plants;
 import lostworlds.library.block.SoftDirtBlock;
-import lostworlds.library.entity.TimeEras;
+import lostworlds.library.entity.utils.enums.TimeEras;
 import lostworlds.library.tree.ConiferFoliagePlacer;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;

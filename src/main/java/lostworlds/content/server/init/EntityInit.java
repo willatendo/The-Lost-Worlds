@@ -2,7 +2,6 @@ package lostworlds.content.server.init;
 
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
-import lostworlds.library.entity.DinoTypes;
 import lostworlds.library.entity.ModBoatEntity;
 import lostworlds.library.entity.aquatic.jurassic.OphthalmosaurusEntity;
 import lostworlds.library.entity.aquatic.modern.NautilusEntity;
@@ -22,6 +21,7 @@ import lostworlds.library.entity.terrestrial.jurassic.KentrosaurusEntity;
 import lostworlds.library.entity.terrestrial.jurassic.LiaoningosaurusEntity;
 import lostworlds.library.entity.terrestrial.permian.DiictodonEntity;
 import lostworlds.library.entity.terrestrial.permian.TetraceratopsEntity;
+import lostworlds.library.entity.utils.enums.DinoTypes;
 import lostworlds.library.item.ModSpawnEggItem;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;

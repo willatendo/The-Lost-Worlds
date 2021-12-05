@@ -1,7 +1,5 @@
 package lostworlds.library.block;
 
-import java.util.Random;
-
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.item.WetPaperItem;
 import net.minecraft.block.Block;
@@ -10,7 +8,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -23,11 +20,8 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 
 public class FossilizedTrackBlock extends Block
 {
@@ -63,41 +57,6 @@ public class FossilizedTrackBlock extends Block
 	public BlockState getStateForPlacement(BlockItemUseContext context) 
 	{
 		return !this.defaultBlockState().canSurvive(context.getLevel(), context.getClickedPos()) ? turnTo.defaultBlockState() : this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite());
-	}
-	
-	@Override
-	public BlockState updateShape(BlockState state, Direction direction, BlockState newState, IWorld world, BlockPos pos, BlockPos newPos) 
-	{
-		if(direction == Direction.UP && !state.canSurvive(world, pos)) 
-		{
-			world.getBlockTicks().scheduleTick(pos, this, 1);
-		}
-
-		return super.updateShape(state, direction, newState, world, pos, newPos);
-	}
-	
-	@Override
-	public void tick(BlockState state, ServerWorld world, BlockPos pos, Random rand) 
-	{
-		turnToBlock(state, world, pos);
-	}
-	
-	@Override
-	public boolean canSurvive(BlockState state, IWorldReader reader, BlockPos pos) 
-	{
-		BlockState blockstate = reader.getBlockState(pos.above());
-		return !blockstate.getMaterial().isSolid();
-	}
-	
-	@Override
-	public boolean isPathfindable(BlockState state, IBlockReader reader, BlockPos pso, PathType type) 
-	{
-		return false;
-	}
-	
-	public static void turnToBlock(BlockState state, World world, BlockPos pos) 
-	{
-		world.setBlockAndUpdate(pos, turnTo.defaultBlockState());
 	}
 	
 	@Override

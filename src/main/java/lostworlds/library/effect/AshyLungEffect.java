@@ -1,6 +1,6 @@
 package lostworlds.library.effect;
 
-import lostworlds.library.entity.ModDamageSources;
+import lostworlds.library.entity.utils.ModDamageSources;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.Effect;

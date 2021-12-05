@@ -5,7 +5,7 @@ import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.FeedingTroughBlock;
 import lostworlds.library.container.FeedingTroughContainer;
 import lostworlds.library.container.slot.FeedingTroughSlot;
-import lostworlds.library.entity.CreatureDiet;
+import lostworlds.library.entity.utils.enums.CreatureDiet;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

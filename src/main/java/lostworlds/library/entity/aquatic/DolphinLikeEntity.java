@@ -13,6 +13,7 @@ import lostworlds.library.entity.goal.aquatic.AquaticTemptGoal;
 import lostworlds.library.entity.goal.aquatic.dolphin.DolphinLikeJumpGoal;
 import lostworlds.library.entity.goal.aquatic.dolphin.DolphinLikePlayWithItemsGoal;
 import lostworlds.library.entity.goal.aquatic.dolphin.SwimWithPlayerGoal;
+import lostworlds.library.entity.utils.FoodLists;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.EntitySize;
@@ -39,7 +40,6 @@ import net.minecraft.entity.monster.GuardianEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
@@ -74,7 +74,7 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity
 	{
 		return !itementity.hasPickUpDelay() && itementity.isAlive() && itementity.isInWater();
 	};
-	private static final Ingredient FOOD_ITEMS = Ingredient.of(Items.COD, Items.SALMON, Items.TROPICAL_FISH);
+	private static final Ingredient FOOD_ITEMS = FoodLists.PISCIVORE;
 
 	public DolphinLikeEntity(EntityType<? extends DolphinLikeEntity> entity, World world) 
 	{
