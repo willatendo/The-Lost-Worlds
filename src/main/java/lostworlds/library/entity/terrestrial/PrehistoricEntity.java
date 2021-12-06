@@ -60,7 +60,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	
 	public static final TyrannomationBuilder WALK_ANIMATION = new TyrannomationBuilder().addAnimation("walk", true);
 	public static final TyrannomationBuilder IDLE_ANIMATION = new TyrannomationBuilder().addAnimation("idle", true);
-	public static final TyrannomationBuilder SLEEP_ANIMATION = new TyrannomationBuilder().addAnimation("into_sleep").addAnimation("sleep").addAnimation("out_of_sleep");
+	public static final TyrannomationBuilder SLEEP_ANIMATION = new TyrannomationBuilder().addAnimation("into_sleep").addAnimation("sleep", true).addAnimation("out_of_sleep");
 	public static final TyrannomationBuilder EAT_ANIMATION = new TyrannomationBuilder().addAnimation("eat", false);
 		
 	public int inNaturalLove;
@@ -425,6 +425,8 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 			{
 				return ActionResultType.CONSUME;
 			}
+			
+			this.increaseHunger(this.maxHunger());
 		}
 		if(this.isContraceptives(itemstack) && !this.isOnContraceptives()) 
 		{

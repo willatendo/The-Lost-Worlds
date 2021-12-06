@@ -1,4 +1,4 @@
-package lostworlds.library.entity.terrestrial.triassic;
+package lostworlds.library.entity.terrestrial.cretaceous;
 
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.EntityInit;
@@ -15,8 +15,6 @@ import lostworlds.library.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialReasonableAttackGoal;
 import lostworlds.library.entity.terrestrial.CarnivoreEntity;
-import lostworlds.library.entity.terrestrial.jurassic.ChilesaurusEntity;
-import lostworlds.library.entity.terrestrial.jurassic.LiaoningosaurusEntity;
 import lostworlds.library.entity.utils.FoodLists;
 import lostworlds.library.entity.utils.enums.ActivityType;
 import lostworlds.library.entity.utils.enums.DinoTypes;
@@ -27,6 +25,7 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -35,19 +34,31 @@ import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationContro
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class ProcompsognathusEntity extends CarnivoreEntity
+public class CarnotaurusEntity extends CarnivoreEntity
 {
 	private static final Ingredient FOOD_ITEMS = FoodLists.CARNIVORE;
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
 	
-	public ProcompsognathusEntity(EntityType<? extends ProcompsognathusEntity> entity, World world) 
+	public CarnotaurusEntity(EntityType<? extends CarnotaurusEntity> entity, World world) 
 	{
 		super(entity, world);
+	}
+
+	@Override
+	public int maxHunger() 
+	{
+		return 70000;
+	}
+	
+	@Override
+	public ActivityType activity() 
+	{
+		return ActivityType.DIURNAL;
 	}
 	
 	public static AttributeModifierMap createAttributes() 
 	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.procompsognathusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.procompsognathusAttackDamage.get()).build();
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.carnotaurusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.carnotaurusAttackDamage.get()).build();
 	}
 	
 	@Override
@@ -55,7 +66,7 @@ public class ProcompsognathusEntity extends CarnivoreEntity
 	{
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new SleepySwimGoal(this));
-		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
+		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));	
 		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialReasonableAttackGoal(this, 1.2F));
@@ -63,12 +74,13 @@ public class ProcompsognathusEntity extends CarnivoreEntity
 		this.goalSelector.addGoal(5, new TerrestrialCreateTerritoryGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new NaturalBreedingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));
-		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.PROCOMPSOGNATHUS));
+		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.CARNOTAURUS));
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, false));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, ChilesaurusEntity.class, false));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, LiaoningosaurusEntity.class, false));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, FukuivenatorEntity.class, false));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PsittacosaurusEntity.class, false));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, ZephyrosaurusEntity.class, false));
 	}
 
 	@Override
@@ -82,22 +94,17 @@ public class ProcompsognathusEntity extends CarnivoreEntity
 	{
 		return this.factory;
 	}
-
+	
 	@Override
-	public ActivityType activity() 
+	public boolean isFood(ItemStack stack) 
 	{
-		return ActivityType.DIURNAL;
-	}
-
-	@Override
-	public int maxHunger() 
-	{
-		return 9000;
+		return FOOD_ITEMS.test(stack);
 	}
 
 	@Override
 	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
 	{
-		return EntityInit.PROCOMPSOGNATHUS.create(world);
+		return EntityInit.CARNOTAURUS.create(world);
 	}
 }
+

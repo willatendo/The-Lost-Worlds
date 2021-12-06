@@ -1,10 +1,14 @@
 package lostworlds.content.client.setup;
 
+import lostworlds.content.client.entity.render.AllosaurusRenderer;
+import lostworlds.content.client.entity.render.CarnotaurusRenderer;
 import lostworlds.content.client.entity.render.ChilesaurusRenderer;
 import lostworlds.content.client.entity.render.ChilesaurusSkeletonRenderer;
+import lostworlds.content.client.entity.render.CryolophosaurusRenderer;
 import lostworlds.content.client.entity.render.DiictodonRenderer;
 import lostworlds.content.client.entity.render.DilophosaurusRenderer;
 import lostworlds.content.client.entity.render.FossilPoacherRenderer;
+import lostworlds.content.client.entity.render.FukuivenatorRenderer;
 import lostworlds.content.client.entity.render.GreatAukRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusRenderer;
 import lostworlds.content.client.entity.render.KentrosaurusSkeletonRenderer;
@@ -13,6 +17,7 @@ import lostworlds.content.client.entity.render.ModBoatRenderer;
 import lostworlds.content.client.entity.render.NautilusRenderer;
 import lostworlds.content.client.entity.render.OphthalmosaurusRenderer;
 import lostworlds.content.client.entity.render.PalaeoniscumRenderer;
+import lostworlds.content.client.entity.render.ProcompsognathusRenderer;
 import lostworlds.content.client.entity.render.PsittacosaurusRenderer;
 import lostworlds.content.client.entity.render.TetraceratopsRenderer;
 import lostworlds.content.client.entity.render.ZephyrosaurusRenderer;
@@ -210,10 +215,14 @@ public class ClientSetup
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHARGED_CRYSTAL_SCARAB_GEM_ITEM, manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CRYSTAL_SCARAB_GEM_ITEM, manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer()));
 
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.ALLOSAURUS, manager -> new AllosaurusRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CARNOTAURUS, manager -> new CarnotaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS, manager -> new ChilesaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS_SKELETON, manager -> new ChilesaurusSkeletonRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CRYOLOPHOSAURUS, manager -> new CryolophosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.DIICTODON, manager -> new DiictodonRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.DILOPHOSAURUS, manager -> new DilophosaurusRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.FUKUIVENATOR, manager -> new FukuivenatorRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.GREAT_AUK, manager -> new GreatAukRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS, manager -> new KentrosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.KENTROSAURUS_SKELETON, manager -> new KentrosaurusSkeletonRenderer(manager));
@@ -221,6 +230,7 @@ public class ClientSetup
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.NAUTILUS, manager -> new NautilusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.OPHTHALMOSAURUS, manager -> new OphthalmosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.PALAEONISCUM, manager -> new PalaeoniscumRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.PROCOMPSOGNATHUS, manager -> new ProcompsognathusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.PSITTACOSAURUS, manager -> new PsittacosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.TETRACERATOPS, manager -> new TetraceratopsRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.ZEPHYROSAURUS, manager -> new ZephyrosaurusRenderer(manager));

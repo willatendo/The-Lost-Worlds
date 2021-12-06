@@ -78,6 +78,8 @@ public class DilophosaurusEntity extends CarnivoreEntity
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, false));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, AllosaurusEntity.class, false));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, CryolophosaurusEntity.class, false));
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, ChilesaurusEntity.class, false));
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, LiaoningosaurusEntity.class, false));
 	}

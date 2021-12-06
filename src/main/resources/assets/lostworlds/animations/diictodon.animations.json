@@ -109,7 +109,7 @@
 				}
 			}
 		},
-		"sleeping": {
+		"sleep": {
 			"loop": true,
 			"bones": {
 				"body": {

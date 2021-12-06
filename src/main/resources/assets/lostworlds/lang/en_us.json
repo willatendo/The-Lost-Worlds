@@ -791,15 +791,20 @@
 	"entity.lostworlds.tetraceratops": "Tetraceratops",
 	
 	//Triassic
+	"entity.lostworlds.procompsognathus": "Procompsognathus",
 	
 	//Jurassic
+	"entity.lostworlds.allosaurus": "Allosaurus",
 	"entity.lostworlds.chilesaurus": "Chilesaurus",
+	"entity.lostworlds.cryolophosaurus": "Cryolophosaurus",
 	"entity.lostworlds.dilophosaurus": "Dilophosaurus",
 	"entity.lostworlds.kentrosaurus": "Kentrosaurus",
 	"entity.lostworlds.liaoningosaurus": "Liaoningosaurus",
 	"entity.lostworlds.ophthalmosaurus": "Ophthalmosaurus",
 	
 	//Cretaceous
+	"entity.lostworlds.carnotaurus": "Carnotaurus",
+	"entity.lostworlds.fukuivenator": "Fukuivenator",
 	"entity.lostworlds.psittacosaurus": "Psittacosaurus",
 	"entity.lostworlds.zephyrosaurus": "Zephyrosaurus",
 	

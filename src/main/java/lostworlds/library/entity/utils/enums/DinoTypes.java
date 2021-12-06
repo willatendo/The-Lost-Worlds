@@ -29,14 +29,19 @@ import net.minecraft.util.IStringSerializable;
 
 public enum DinoTypes implements IStringSerializable
 {
+	ALLOSAURUS("allosaurus", EntityInit.ALLOSAURUS, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x9f9f5a, 0x9f9f5a, 0xd68812, 5, 8, 0.4F, 0.8F),
+	CARNOTAURUS("carnotaurus", EntityInit.CARNOTAURUS, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xbd7868, 0xbd7868, 0xe6d3bc, 6, 9, 0.4F, 0.8F),
 	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, true, Size.SMALL, CreatureDiet.HERBIVORE, 0xb08533, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
+	CRYOLOPHOSAURUS("cryolophosaurus", EntityInit.CRYOLOPHOSAURUS, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0xab5a14, 0xab5a14, 0x1a2c5f, 5, 7, 0.5F, 0.6F),
 	DIICTODON("diictodon", EntityInit.DIICTODON, false, Size.TINY, CreatureDiet.HERBIVORE, 0xdc8a54, 0xdc8a54, 0x8b462e, 1, 2, 0.1F, 0.2F),
 	DILOPHOSAURUS("dilophosaurus", EntityInit.DILOPHOSAURUS, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xc49838, 0xc49838, 0xc75539, 5, 7, 0.5F, 0.76F),
+	FUKUIVENATOR("fukuivenator", EntityInit.FUKUIVENATOR, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x52526f, 0x52526f, 0x5757959, 4, 5, 0.3F, 0.35F),
 	KENTROSAURUS("kentrosaurus", EntityInit.KENTROSAURUS, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0xd99760, 0xd99760, 0x612c00, 3, 6, 0.4F, 0.66F),
 	LIAONINGOSAURUS("liaoningosaurus", EntityInit.LIAONINGOSAURUS, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x712d0d, 0x712d0d, 0x7c8237, 4, 7, 0.45F, 0.68F),
 	NAUTILUS("nautilus", EntityInit.NAUTILUS, false, Size.SMALL, CreatureDiet.NONE, 0xd4ccc3, 0xd4ccc3, 0xca7548, 2, 5, 0.3F, 0.5F),
 	OPHTHALMOSAURUS("ophthalmosaurus", EntityInit.OPHTHALMOSAURUS, false, Size.MEDIUM, CreatureDiet.PISCIVORE, 0x858794, 0x858794, 0x0e131b, 4, 7, 0.4F, 0.6F),
 	PALAEONISCUM("palaeoniscum", EntityInit.PALAEONISCUM, false, Size.TINY, CreatureDiet.NONE, 0x72797a, 0x72797a, 0x2f3a3d, 2, 5, 0.3F, 0.5F),
+	PROCOMPSOGNATHUS("procompsognathus", EntityInit.PROCOMPSOGNATHUS, false, Size.TINY, CreatureDiet.CARNIVORE, 0x445a2f, 0x445a2f, 0x404727, 1, 2, 0.1F, 0.2F),
 	PSITTACOSAURUS("psittacosaurus", EntityInit.PSITTACOSAURUS, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x4c2c21, 0x4c2c21, 0x938639, 3, 5, 0.3F, 0.54F),
 	TETRACERATOPS("tetraceratops", EntityInit.TETRACERATOPS, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x623015, 0x623015, 0x21369b, 3, 5, 0.3F, 0.54F),
 	ZEPHYROSAURUS("zephyrosaurus", EntityInit.ZEPHYROSAURUS, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x577476, 0x577476, 0x9ba3a3, 3, 5, 0.3F, 0.54F),
