@@ -21,6 +21,7 @@ public class FukuivenatorRenderer extends TyrannomationEntityRenderer<Fukuivenat
 		super(renderManager, new FukuivenatorModel());
 		this.shadowRadius = 0.5F;
 	}
+	
 	@Override
 	public RenderType getRenderType(FukuivenatorEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

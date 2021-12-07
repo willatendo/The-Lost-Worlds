@@ -193,6 +193,8 @@
 	"fossilPart.lostworlds.skeleton": "Skeleton",
 	"item.lostworlds.dirty_fossil": "Plastered %s %s",
 	"item.lostworlds.fossil": "%s %s",
+	"item.lostworlds.feather": "%s Feather",
+	"item.lostworlds.hide": "%s Hide",
 	"item.lostworlds.spawn_egg": "%s Spawn Egg",
 	"item.lostworlds.soft_tissue": "%s Soft Tissue",
 	"item.lostworlds.dna": "DNA",
@@ -787,6 +789,7 @@
 
 	//Permian
 	"entity.lostworlds.diictodon": "Diictodon",
+	"entity.lostworlds.gorgonops": "Gorgonops",
 	"entity.lostworlds.palaeoniscum": "Palaeoniscum",
 	"entity.lostworlds.tetraceratops": "Tetraceratops",
 	
@@ -801,11 +804,15 @@
 	"entity.lostworlds.kentrosaurus": "Kentrosaurus",
 	"entity.lostworlds.liaoningosaurus": "Liaoningosaurus",
 	"entity.lostworlds.ophthalmosaurus": "Ophthalmosaurus",
+	"entity.lostworlds.ostromia": "Ostromia",
 	
 	//Cretaceous
 	"entity.lostworlds.carnotaurus": "Carnotaurus",
 	"entity.lostworlds.fukuivenator": "Fukuivenator",
+	"entity.lostworlds.giganotosaurus": "Giganotosaurus",
 	"entity.lostworlds.psittacosaurus": "Psittacosaurus",
+	"entity.lostworlds.tyrannosaurus": "Tyrannosaurus",
+	"entity.lostworlds.utahraptor": "Utahraptor",
 	"entity.lostworlds.zephyrosaurus": "Zephyrosaurus",
 	
 	//Modern

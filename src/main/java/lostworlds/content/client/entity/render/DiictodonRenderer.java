@@ -21,6 +21,7 @@ public class DiictodonRenderer extends TyrannomationEntityRenderer<DiictodonEnti
 		super(renderManager, new DiictodonModel());
 		this.shadowRadius = 0.25F;
 	}
+	
 	@Override
 	public RenderType getRenderType(DiictodonEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

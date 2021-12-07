@@ -40,6 +40,13 @@ public class DiictodonCreateTerritoryGoal extends MoveToBlockGoal
 	{
 		return reader.getBlockState(pos).is(BlockInit.PERMIAN_SAND);
 	}
+	
+	@Override
+	public void start() 
+	{
+		super.start();
+		this.entity.getNavigation().stop();
+	}
 
 	@Override
 	public void tick() 
@@ -49,7 +56,6 @@ public class DiictodonCreateTerritoryGoal extends MoveToBlockGoal
 		if(!this.entity.isInWater()) 
 		{
 			this.level.playSound((PlayerEntity) null, blockpos, SoundEvents.TURTLE_LAY_EGG, SoundCategory.BLOCKS, 0.3F, 0.9F + this.level.random.nextFloat() * 0.2F);
-			this.level.setBlock(blockpos.below(), BlockInit.DIICTODON_BURROW.defaultBlockState(), 3);
 		}
 	}
 	

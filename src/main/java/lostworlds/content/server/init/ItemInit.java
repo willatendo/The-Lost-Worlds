@@ -16,11 +16,13 @@ import lostworlds.library.item.DNAItem;
 import lostworlds.library.item.DinoFoodItem;
 import lostworlds.library.item.DinoSpawnEggItem;
 import lostworlds.library.item.EntityFoodItem;
+import lostworlds.library.item.FeatherItem;
 import lostworlds.library.item.FieldGuideItem;
 import lostworlds.library.item.FishFoodItem;
 import lostworlds.library.item.FossilItem;
 import lostworlds.library.item.FullSyringeItem;
 import lostworlds.library.item.HammerItem;
+import lostworlds.library.item.HideItem;
 import lostworlds.library.item.LostWorldsLexicon;
 import lostworlds.library.item.ModBoneMealItem;
 import lostworlds.library.item.ModFishBucketItem;
@@ -224,8 +226,6 @@ public class ItemInit
 	
 	public static final Item FOSSIL_POACHER_SPAWN_EGG = ModRegistry.register("fossil_poacher_spawn_egg", new ModSpawnEggItem(() -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031, ItemGroup.TAB_MISC));
 	
-	public static final Item GREAT_AUK_SPAWN_EGG = ModRegistry.register("great_auk_spawn_egg", new DinoSpawnEggItem(() -> EntityInit.GREAT_AUK, 0xFFFFFF, 0x000000, ItemGroup.TAB_MISC, ModUtils.tTC("entity", "great_auk")));
-
 	//Fossils
 	public static final Item AMBER = ModRegistry.register("amber", new AmberItem());
 	public static final Item FOSSILIZED_FEATHER = ModRegistry.register("fossilized_feather", new ModItem());
@@ -263,6 +263,16 @@ public class ItemInit
 				Item skeleton = ModRegistry.register(dinos.name().toLowerCase() + "_skeleton", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "skeleton")));
 				dinos.setSkeletonPick(skeleton);
 			}
+			if(dinos.feathered().contains(dinos))
+			{
+				Item feather = ModRegistry.register(dinos.name().toLowerCase() + "_feather", new FeatherItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));
+				dinos.setFeather(feather);
+			}
+			if(dinos.createHide().contains(dinos))
+			{
+				ModRegistry.register(dinos.name().toLowerCase() + "_hide", new HideItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));
+			}
+			
 			
 			ModRegistry.register(dinos.name().toLowerCase() + "_spawn_egg", new DinoSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), ItemGroup.TAB_MISC, ModUtils.tTC("entity", dinos.name().toLowerCase())));
 			ModRegistry.register(dinos.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(ModUtils.tTC("entity", dinos.toString().toLowerCase())));

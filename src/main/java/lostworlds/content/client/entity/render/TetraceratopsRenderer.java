@@ -21,6 +21,7 @@ public class TetraceratopsRenderer extends TyrannomationEntityRenderer<Tetracera
 		super(renderManager, new TetraceratopsModel());
 		this.shadowRadius = 0.25F;
 	}
+	
 	@Override
 	public RenderType getRenderType(TetraceratopsEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

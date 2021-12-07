@@ -21,6 +21,7 @@ public class ChilesaurusRenderer extends TyrannomationEntityRenderer<Chilesaurus
 		super(renderManager, new ChilesaurusModel());
 		this.shadowRadius = 0.5F;
 	}
+	
 	@Override
 	public RenderType getRenderType(ChilesaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

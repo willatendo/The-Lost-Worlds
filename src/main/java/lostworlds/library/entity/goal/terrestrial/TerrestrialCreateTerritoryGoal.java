@@ -25,7 +25,7 @@ public class TerrestrialCreateTerritoryGoal extends MoveToBlockGoal
 	@Override
 	public boolean canUse() 
 	{
-		return !this.entity.isInWaterOrBubble() && entity.canMakeTerritory() && this.level.isDay() && this.level.getBlockState(this.entity.blockPosition().below()) != Blocks.AIR.defaultBlockState();
+		return !this.entity.isInWaterOrBubble() && entity.canMakeTerritory() && !this.entity.isSleeping() && this.level.getBlockState(this.entity.blockPosition().below()) != Blocks.AIR.defaultBlockState();
 	}
 
 	@Override

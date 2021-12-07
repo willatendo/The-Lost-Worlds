@@ -21,6 +21,7 @@ public class ZephyrosaurusRenderer extends TyrannomationEntityRenderer<Zephyrosa
 		super(renderManager, new ZephyrosaurusModel());
 		this.shadowRadius = 0.25F;
 	}
+	
 	@Override
 	public RenderType getRenderType(ZephyrosaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

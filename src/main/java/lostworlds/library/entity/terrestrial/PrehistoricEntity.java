@@ -56,12 +56,16 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 
 	public static final byte ANIMATION_IDLE = 0;
 	public static final byte ANIMATION_SLEEP = 1;
-	public static final byte ANIMATION_EAT = 1;
+	public static final byte ANIMATION_EAT = 2;
+	public static final byte ANIMATION_GLIDE = 3;
+	public static final byte ANIMATION_WALL_WALK = 4;
 	
 	public static final TyrannomationBuilder WALK_ANIMATION = new TyrannomationBuilder().addAnimation("walk", true);
 	public static final TyrannomationBuilder IDLE_ANIMATION = new TyrannomationBuilder().addAnimation("idle", true);
+	public static final TyrannomationBuilder GLIDE_ANIMATION = new TyrannomationBuilder().addAnimation("into_glide").addAnimation("glide", true).addAnimation("out_of_glide");
 	public static final TyrannomationBuilder SLEEP_ANIMATION = new TyrannomationBuilder().addAnimation("into_sleep").addAnimation("sleep", true).addAnimation("out_of_sleep");
 	public static final TyrannomationBuilder EAT_ANIMATION = new TyrannomationBuilder().addAnimation("eat", false);
+	public static final TyrannomationBuilder WALL_WALK_ANIMATION = new TyrannomationBuilder().addAnimation("into_wall_walk").addAnimation("wall_walk", true).addAnimation("out_of_wall_walk");
 		
 	public int inNaturalLove;
 	public UUID cause;
@@ -84,6 +88,15 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 		{
 			case ANIMATION_SLEEP:
 				controller.setAnimation(SLEEP_ANIMATION);
+				break;
+			case ANIMATION_EAT:
+				controller.setAnimation(EAT_ANIMATION);
+				break;
+			case ANIMATION_GLIDE:
+				controller.setAnimation(GLIDE_ANIMATION);
+				break;
+			case ANIMATION_WALL_WALK:
+				controller.setAnimation(WALL_WALK_ANIMATION);
 				break;
 			default:
 				controller.setAnimation(isMoving ? WALK_ANIMATION : IDLE_ANIMATION);
@@ -112,6 +125,12 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	{
 		byte currentAnimation = this.getAnimation();
 		return currentAnimation == ANIMATION_EAT;
+	}
+	
+	public boolean isGliding()
+	{
+		byte currentAnimation = this.getAnimation();
+		return currentAnimation == ANIMATION_GLIDE;
 	}
 	
 	public int getHunger()

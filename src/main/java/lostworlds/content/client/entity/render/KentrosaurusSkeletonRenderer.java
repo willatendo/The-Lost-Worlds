@@ -21,6 +21,7 @@ public class KentrosaurusSkeletonRenderer extends TyrannomationEntityRenderer<Fo
 		super(renderManager, new KentrosaurusSkeletonModel());
 		this.shadowRadius = 0.75F;
 	}
+	
 	@Override
 	public RenderType getRenderType(FossilEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

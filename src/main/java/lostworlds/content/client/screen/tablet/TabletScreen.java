@@ -68,7 +68,8 @@ public class TabletScreen extends AbstractTableScreen
 	private ITextComponent hunger()
 	{
 		int hunger = this.entity.getHunger();
-		return hunger >= 13000 ? ModUtils.tTC("tablet", "full") : hunger >= 1 && hunger < 1 ? ModUtils.tTC("tablet", "satiated") : hunger >= -4999 && hunger <= 0 ? ModUtils.tTC("tablet", "hungry") : ModUtils.tTC("tablet", "starving");
+		int maxhunger = this.entity.maxHunger();
+		return hunger >= maxhunger / 2 ? ModUtils.tTC("tablet", "full") : hunger >= 1 && hunger < 1 ? ModUtils.tTC("tablet", "satiated") : hunger >= -3000 && hunger <= 0 ? ModUtils.tTC("tablet", "hungry") : ModUtils.tTC("tablet", "starving");
 	}
 	
 	private ITextComponent owner()

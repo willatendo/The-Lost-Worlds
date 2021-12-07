@@ -21,6 +21,7 @@ public class ProcompsognathusRenderer extends TyrannomationEntityRenderer<Procom
 		super(renderManager, new ProcompsognathusModel());
 		this.shadowRadius = 0.25F;
 	}
+	
 	@Override
 	public RenderType getRenderType(ProcompsognathusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

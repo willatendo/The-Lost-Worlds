@@ -21,6 +21,7 @@ public class PsittacosaurusRenderer extends TyrannomationEntityRenderer<Psittaco
 		super(renderManager, new PsittacosaurusModel());
 		this.shadowRadius = 0.25F;
 	}
+	
 	@Override
 	public RenderType getRenderType(PsittacosaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

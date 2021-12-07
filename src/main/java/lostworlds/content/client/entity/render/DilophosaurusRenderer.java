@@ -21,6 +21,7 @@ public class DilophosaurusRenderer extends TyrannomationEntityRenderer<Dilophosa
 		super(renderManager, new DilophosaurusModel());
 		this.shadowRadius = 0.5F;
 	}
+	
 	@Override
 	public RenderType getRenderType(DilophosaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

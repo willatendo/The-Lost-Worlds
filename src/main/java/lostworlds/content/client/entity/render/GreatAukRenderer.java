@@ -21,6 +21,7 @@ public class GreatAukRenderer extends TyrannomationEntityRenderer<GreatAukEntity
 		super(renderManager, new GreatAukModel());
 		this.shadowRadius = 0.5F;
 	}
+	
 	@Override
 	public RenderType getRenderType(GreatAukEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

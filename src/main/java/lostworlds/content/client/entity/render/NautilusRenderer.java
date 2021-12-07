@@ -21,6 +21,7 @@ public class NautilusRenderer extends TyrannomationEntityRenderer<NautilusEntity
 		super(renderManager, new NautilusModel());
 		this.shadowRadius = 0.3F;
 	}
+	
 	@Override
 	public RenderType getRenderType(NautilusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

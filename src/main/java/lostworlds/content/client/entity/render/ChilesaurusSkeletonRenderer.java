@@ -21,6 +21,7 @@ public class ChilesaurusSkeletonRenderer extends TyrannomationEntityRenderer<Fos
 		super(renderManager, new ChilesaurusSkeletonModel());
 		this.shadowRadius = 0.5F;
 	}
+	
 	@Override
 	public RenderType getRenderType(FossilEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

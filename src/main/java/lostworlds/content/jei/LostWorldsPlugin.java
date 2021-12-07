@@ -134,7 +134,7 @@ public class LostWorldsPlugin implements IModPlugin
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.FOSSIL_GRINDER), LostWorldsConstants.FOSSIL_GRINDER_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.DNA_EXTRACTOR), LostWorldsConstants.DNA_EXTRACTOR_CATEGORY, LostWorldsConstants.AMBER_DNA_EXTRACTOR_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.ANALYZER), LostWorldsConstants.ANALYZER_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.DNA_INJECTOR), LostWorldsConstants.DNA_EXTRACTOR_CATEGORY);
+		registration.addRecipeCatalyst(new ItemStack(BlockInit.DNA_INJECTOR), LostWorldsConstants.DNA_INJECTOR_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.CULTIVATOR), LostWorldsConstants.CULTIVATOR_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.TIME_MACHINE), LostWorldsConstants.TIME_MACHINE_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.ARCHAEOLOGY_TABLE), LostWorldsConstants.ARCHAEOLOGY_TABLE_CATEGORY);

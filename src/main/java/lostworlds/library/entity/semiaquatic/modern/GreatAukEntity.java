@@ -8,6 +8,7 @@ import lostworlds.library.entity.goal.semiaquatic.SemiAquaticFindWaterGoal;
 import lostworlds.library.entity.goal.semiaquatic.SemiAquaticLeaveWaterGoal;
 import lostworlds.library.entity.goal.semiaquatic.SemiAquaticTemptGoal;
 import lostworlds.library.entity.semiaquatic.BreedingSemiAquaticEntity;
+import lostworlds.library.entity.utils.FoodLists;
 import net.minecraft.block.TurtleEggBlock;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
@@ -27,7 +28,6 @@ import net.minecraft.entity.passive.fish.CodEntity;
 import net.minecraft.entity.passive.fish.SalmonEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
@@ -43,7 +43,7 @@ import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
 public class GreatAukEntity extends BreedingSemiAquaticEntity implements ITyrannomatable
 {
-	private static final Ingredient FOOD_ITEMS = Ingredient.of(Items.COD, Items.SALMON, Items.TROPICAL_FISH);
+	private static final Ingredient FOOD_ITEMS = FoodLists.PISCIVORE;
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
 	
 	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) 

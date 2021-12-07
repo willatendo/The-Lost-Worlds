@@ -21,6 +21,7 @@ public class OphthalmosaurusRenderer extends TyrannomationEntityRenderer<Ophthal
 		super(renderManager, new OphthalmosaurusModel());
 		this.shadowRadius = 0.5F;
 	}
+	
 	@Override
 	public RenderType getRenderType(OphthalmosaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

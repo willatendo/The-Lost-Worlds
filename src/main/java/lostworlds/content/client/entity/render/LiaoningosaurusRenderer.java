@@ -21,6 +21,7 @@ public class LiaoningosaurusRenderer extends TyrannomationEntityRenderer<Liaonin
 		super(renderManager, new LiaoningosaurusModel());
 		this.shadowRadius = 0.25F;
 	}
+	
 	@Override
 	public RenderType getRenderType(LiaoningosaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

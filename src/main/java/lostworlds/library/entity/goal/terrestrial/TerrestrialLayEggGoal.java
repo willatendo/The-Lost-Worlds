@@ -92,7 +92,7 @@ public class TerrestrialLayEggGoal extends MoveToBlockGoal
 	@Override
 	protected boolean isValidTarget(IWorldReader reader, BlockPos pos) 
 	{
-		return isNatural(reader, pos);
+		return isNatural(reader, pos) && reader.getBlockState(pos.above()).isAir();
 	}
 
 	public static boolean isNatural(IBlockReader reader, BlockPos pos) 

@@ -21,6 +21,7 @@ public class PalaeoniscumRenderer extends TyrannomationEntityRenderer<Palaeonisc
 		super(renderManager, new PalaeoniscumModel());
 		this.shadowRadius = 0.3F;
 	}
+	
 	@Override
 	public RenderType getRenderType(PalaeoniscumEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

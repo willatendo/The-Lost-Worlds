@@ -21,6 +21,7 @@ public class CryolophosaurusRenderer extends TyrannomationEntityRenderer<Cryolop
 		super(renderManager, new CryolophosaurusModel());
 		this.shadowRadius = 0.5F;
 	}
+	
 	@Override
 	public RenderType getRenderType(CryolophosaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

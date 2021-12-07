@@ -19,8 +19,9 @@ public class AllosaurusRenderer extends TyrannomationEntityRenderer<AllosaurusEn
 	public AllosaurusRenderer(EntityRendererManager renderManager) 
 	{
 		super(renderManager, new AllosaurusModel());
-		this.shadowRadius = 0.5F;
+		this.shadowRadius = 0.75F;
 	}
+	
 	@Override
 	public RenderType getRenderType(AllosaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{
@@ -34,7 +35,7 @@ public class AllosaurusRenderer extends TyrannomationEntityRenderer<AllosaurusEn
 		{
 			stack.scale(0.15F, 0.15F, 0.15F);
 		}
-		stack.scale(1.0F, 1.0F, 1.0F);
+		stack.scale(1.3F, 1.3F, 1.3F);
 		
 		super.render(entity, entityYaw, partialTicks, stack, bufferIn, packedLightIn);
 	}

@@ -21,6 +21,7 @@ public class CarnotaurusRenderer extends TyrannomationEntityRenderer<Carnotaurus
 		super(renderManager, new CarnotaurusModel());
 		this.shadowRadius = 0.5F;
 	}
+	
 	@Override
 	public RenderType getRenderType(CarnotaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
 	{

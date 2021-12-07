@@ -3,6 +3,8 @@ package lostworlds.library.block;
 import java.util.Random;
 
 import lostworlds.content.server.init.BlockInit;
+import lostworlds.content.server.init.ItemInit;
+import lostworlds.library.entity.utils.enums.DinoTypes;
 import lostworlds.library.item.tool.ModMaterials;
 import lostworlds.library.item.tool.ModToolTypes;
 import net.minecraft.block.AbstractBlock;
@@ -29,22 +31,39 @@ public class SoftDirtBlock extends Block
 	public void spawnAfterBreak(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) 
 	{
 		Random rand = new Random();
-		Egg egg = state.getValue(EGG);
-		if(egg == Egg.TINY)
+		int drop = rand.nextInt(4);
+		if(drop == 0)
 		{
-			world.setBlockAndUpdate(pos, BlockInit.TINY_FOSSILISED_EGG.defaultBlockState().setValue(TinyFossilizedEggBlock.EGGS, Integer.valueOf(rand.nextInt(19) + 1)));
+			Egg egg = state.getValue(EGG);
+			if(egg == Egg.TINY)
+			{
+				world.setBlockAndUpdate(pos, BlockInit.TINY_FOSSILISED_EGG.defaultBlockState().setValue(TinyFossilizedEggBlock.EGGS, Integer.valueOf(rand.nextInt(19) + 1)));
+			}
+			else if(egg == Egg.SMALL)
+			{
+				world.setBlockAndUpdate(pos, BlockInit.SMALL_FOSSILISED_EGG.defaultBlockState().setValue(SmallFossilizedEggBlock.EGGS, Integer.valueOf(rand.nextInt(10) + 1)));
+			}
+			else if(egg == Egg.MEDIUM)
+			{
+				world.setBlockAndUpdate(pos, BlockInit.MEDIUM_FOSSILISED_EGG.defaultBlockState().setValue(MediumFossilisedEggBlock.EGGS, Integer.valueOf(rand.nextInt(6) + 1)));
+			}
+			else
+			{
+				world.setBlockAndUpdate(pos, BlockInit.LARGE_FOSSILISED_EGG.defaultBlockState().setValue(LargeFossilisedEggBlock.EGGS, Integer.valueOf(rand.nextInt(3) + 1)));
+			}
 		}
-		else if(egg == Egg.SMALL)
+		else if(drop == 1)
 		{
-			world.setBlockAndUpdate(pos, BlockInit.SMALL_FOSSILISED_EGG.defaultBlockState().setValue(SmallFossilizedEggBlock.EGGS, Integer.valueOf(rand.nextInt(10) + 1)));
+			this.popResource(world, pos, ItemInit.FOSSILIZED_FEATHER.getDefaultInstance());
 		}
-		else if(egg == Egg.MEDIUM)
+		else if(drop == 2)
 		{
-			world.setBlockAndUpdate(pos, BlockInit.MEDIUM_FOSSILISED_EGG.defaultBlockState().setValue(MediumFossilisedEggBlock.EGGS, Integer.valueOf(rand.nextInt(6) + 1)));
+			this.popResource(world, pos, ItemInit.FOSSILIZED_SKIN_IMPRESSION.getDefaultInstance());
 		}
-		else
+		else if(drop == 3)
 		{
-			world.setBlockAndUpdate(pos, BlockInit.LARGE_FOSSILISED_EGG.defaultBlockState().setValue(LargeFossilisedEggBlock.EGGS, Integer.valueOf(rand.nextInt(3) + 1)));
+			int feather = rand.nextInt(DinoTypes.feathered().size());
+			this.popResource(world, pos, DinoTypes.feathered().get(feather).getFeather().getDefaultInstance());
 		}
 	}
 
