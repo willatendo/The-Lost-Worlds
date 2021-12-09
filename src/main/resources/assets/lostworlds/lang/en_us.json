@@ -791,9 +791,12 @@
 	"entity.lostworlds.diictodon": "Diictodon",
 	"entity.lostworlds.gorgonops": "Gorgonops",
 	"entity.lostworlds.palaeoniscum": "Palaeoniscum",
+	"entity.lostworlds.protosuchus": "Protosuchus",
+	"entity.lostworlds.rhinesuchus": "Rhinesuchus",
 	"entity.lostworlds.tetraceratops": "Tetraceratops",
 	
 	//Triassic
+	"entity.lostworlds.eoraptor": "Eoraptor",
 	"entity.lostworlds.procompsognathus": "Procompsognathus",
 	
 	//Jurassic
@@ -811,6 +814,8 @@
 	"entity.lostworlds.fukuivenator": "Fukuivenator",
 	"entity.lostworlds.giganotosaurus": "Giganotosaurus",
 	"entity.lostworlds.psittacosaurus": "Psittacosaurus",
+	"entity.lostworlds.ouranosaurus": "Ouranosaurus",
+	"entity.lostworlds.suchomimus": "Suchomimus",
 	"entity.lostworlds.tyrannosaurus": "Tyrannosaurus",
 	"entity.lostworlds.utahraptor": "Utahraptor",
 	"entity.lostworlds.zephyrosaurus": "Zephyrosaurus",

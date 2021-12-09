@@ -84,7 +84,7 @@ public abstract class GlidingCarnivoreEntity extends CarnivoreEntity
 	}
 
 	@Override
-	public boolean causeFallDamage(float f1, float f2) 
+	public boolean causeFallDamage(float distance, float damageMultiplier)
 	{
 		return false;
 	}

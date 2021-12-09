@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.ModTags;
 import lostworlds.content.server.init.ItemInit;
+import lostworlds.library.entity.semiaquatic.CarnivoreSemiAquaticEntity;
 import lostworlds.library.entity.utils.IForTabletThings;
 import lostworlds.library.entity.utils.ModDamageSources;
 import net.minecraft.entity.AgeableEntity;
@@ -59,13 +60,16 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	public static final byte ANIMATION_EAT = 2;
 	public static final byte ANIMATION_GLIDE = 3;
 	public static final byte ANIMATION_WALL_WALK = 4;
+	public static final byte ANIMATION_FLY = 5;
 	
 	public static final TyrannomationBuilder WALK_ANIMATION = new TyrannomationBuilder().addAnimation("walk", true);
+	public static final TyrannomationBuilder SWIM_ANIMATION = new TyrannomationBuilder().addAnimation("into_swim").addAnimation("swim", true).addAnimation("out_of_swim");
 	public static final TyrannomationBuilder IDLE_ANIMATION = new TyrannomationBuilder().addAnimation("idle", true);
 	public static final TyrannomationBuilder GLIDE_ANIMATION = new TyrannomationBuilder().addAnimation("into_glide").addAnimation("glide", true).addAnimation("out_of_glide");
 	public static final TyrannomationBuilder SLEEP_ANIMATION = new TyrannomationBuilder().addAnimation("into_sleep").addAnimation("sleep", true).addAnimation("out_of_sleep");
 	public static final TyrannomationBuilder EAT_ANIMATION = new TyrannomationBuilder().addAnimation("eat", false);
 	public static final TyrannomationBuilder WALL_WALK_ANIMATION = new TyrannomationBuilder().addAnimation("into_wall_walk").addAnimation("wall_walk", true).addAnimation("out_of_wall_walk");
+	public static final TyrannomationBuilder FLY_ANIMATION = new TyrannomationBuilder().addAnimation("fly_animation", true);
 		
 	public int inNaturalLove;
 	public UUID cause;
@@ -98,8 +102,18 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 			case ANIMATION_WALL_WALK:
 				controller.setAnimation(WALL_WALK_ANIMATION);
 				break;
+			case ANIMATION_FLY:
+				controller.setAnimation(FLY_ANIMATION);
+				break;
 			default:
-				controller.setAnimation(isMoving ? WALK_ANIMATION : IDLE_ANIMATION);
+				if(this.isInWaterOrBubble() && this instanceof CarnivoreSemiAquaticEntity)
+				{
+					controller.setAnimation(SWIM_ANIMATION);
+				}
+				else
+				{
+					controller.setAnimation(isMoving ? WALK_ANIMATION : IDLE_ANIMATION);
+				}
 				break;
 		}
 		
@@ -131,6 +145,12 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	{
 		byte currentAnimation = this.getAnimation();
 		return currentAnimation == ANIMATION_GLIDE;
+	}
+	
+	public boolean isFlying()
+	{
+		byte currentAnimation = this.getAnimation();
+		return currentAnimation == ANIMATION_FLY;
 	}
 	
 	public int getHunger()

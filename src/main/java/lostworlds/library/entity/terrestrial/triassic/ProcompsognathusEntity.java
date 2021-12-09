@@ -15,8 +15,6 @@ import lostworlds.library.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialReasonableAttackGoal;
 import lostworlds.library.entity.terrestrial.CarnivoreEntity;
-import lostworlds.library.entity.terrestrial.jurassic.ChilesaurusEntity;
-import lostworlds.library.entity.terrestrial.jurassic.LiaoningosaurusEntity;
 import lostworlds.library.entity.utils.FoodLists;
 import lostworlds.library.entity.utils.enums.ActivityType;
 import lostworlds.library.entity.utils.enums.DinoTypes;
@@ -67,8 +65,7 @@ public class ProcompsognathusEntity extends CarnivoreEntity
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, false));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, ChilesaurusEntity.class, false));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, LiaoningosaurusEntity.class, false));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, EoraptorEntity.class, false));;
 	}
 
 	@Override

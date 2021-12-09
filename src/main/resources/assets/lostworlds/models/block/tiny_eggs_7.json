@@ -1,7 +1,7 @@
 {
 	"textures": {
-		"0": "block/stone",
-		"particle": "block/stone"
+		"0": "lostworlds:block/tiny_egg",
+		"particle": "lostworlds:block/tiny_egg"
 	},
 	"elements": [
 		{

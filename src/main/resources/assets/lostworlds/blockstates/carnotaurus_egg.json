@@ -1,13 +1,13 @@
 {
 	"variants": {
-		"medium_eggs=1": {
-			"model": "lostworlds:block/medium_egg_one"
+		"large_eggs=1": {
+			"model": "lostworlds:block/large_eggs_1"
 		},
-		"medium_eggs=2": {
-			"model": "lostworlds:block/medium_egg_two"
+		"large_eggs=2": {
+			"model": "lostworlds:block/large_eggs_2"
 		},
-		"medium_eggs=3": {
-			"model": "lostworlds:block/medium_egg_three"
+		"large_eggs=3": {
+			"model": "lostworlds:block/large_eggs_3"
 		}
 	}
 }

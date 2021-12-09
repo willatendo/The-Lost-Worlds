@@ -2,7 +2,7 @@ package lostworlds.library.entity.goal.semiaquatic;
 
 import java.util.EnumSet;
 
-import lostworlds.library.entity.semiaquatic.ISemiAquatic;
+import lostworlds.library.entity.utils.ISemiAquatic;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.entity.ai.goal.Goal;

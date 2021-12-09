@@ -4,11 +4,23 @@ import java.util.Random;
 
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.EntityInit;
+import lostworlds.library.entity.goal.NaturalBreedingGoal;
 import lostworlds.library.entity.goal.semiaquatic.SemiAquaticFindWaterGoal;
 import lostworlds.library.entity.goal.semiaquatic.SemiAquaticLeaveWaterGoal;
-import lostworlds.library.entity.goal.semiaquatic.SemiAquaticTemptGoal;
-import lostworlds.library.entity.semiaquatic.BreedingSemiAquaticEntity;
+import lostworlds.library.entity.goal.terrestrial.SleepGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyBreedGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyLookAtGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyLookRandomlyGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyTemptGoal;
+import lostworlds.library.entity.goal.terrestrial.SleepyWaterAvoidingRandomWalkingGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialCreateTerritoryGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialGoHomeGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialLayEggGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialReasonableAttackGoal;
+import lostworlds.library.entity.semiaquatic.CarnivoreSemiAquaticEntity;
 import lostworlds.library.entity.utils.FoodLists;
+import lostworlds.library.entity.utils.enums.ActivityType;
+import lostworlds.library.entity.utils.enums.DinoTypes;
 import net.minecraft.block.TurtleEggBlock;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
@@ -16,13 +28,8 @@ import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.BreatheAirGoal;
-import net.minecraft.entity.ai.goal.BreedGoal;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.entity.ai.goal.RandomWalkingGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.fish.CodEntity;
 import net.minecraft.entity.passive.fish.SalmonEntity;
@@ -34,50 +41,16 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import tyrannotitanlib.library.tyrannomation.core.ITyrannomatable;
-import tyrannotitanlib.library.tyrannomation.core.PlayState;
-import tyrannotitanlib.library.tyrannomation.core.builder.TyrannomationBuilder;
 import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationController;
-import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class GreatAukEntity extends BreedingSemiAquaticEntity implements ITyrannomatable
+public class GreatAukEntity extends CarnivoreSemiAquaticEntity
 {
 	private static final Ingredient FOOD_ITEMS = FoodLists.PISCIVORE;
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
 	
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) 
-	{
-		if(event.isMoving())
-		{
-			if(this.isInWaterOrBubble())
-			{
-				event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.great_auk.swim", true));
-				return PlayState.CONTINUE;
-			}
-			else
-			{
-				event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.great_auk.walk", true));
-				return PlayState.CONTINUE;
-			}
-		}
-		else
-		{
-			if(this.isInWaterOrBubble())
-			{
-				event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.great_auk.idle_water", true));
-				return PlayState.CONTINUE;
-			}
-			else 
-			{
-				event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.great_auk.idle", true));
-				return PlayState.CONTINUE;
-				
-			}
-		}
-	}
-	
-	public GreatAukEntity(EntityType<? extends BreedingSemiAquaticEntity> entity, World world) 
+	public GreatAukEntity(EntityType<? extends CarnivoreSemiAquaticEntity> entity, World world) 
 	{
 		super(entity, world);
 	}
@@ -99,13 +72,18 @@ public class GreatAukEntity extends BreedingSemiAquaticEntity implements ITyrann
 		this.goalSelector.addGoal(1, new BreatheAirGoal(this));
 		this.goalSelector.addGoal(2, new SemiAquaticFindWaterGoal(this));
 		this.goalSelector.addGoal(2, new SemiAquaticLeaveWaterGoal(this));
-		this.goalSelector.addGoal(3, new RandomWalkingGoal(this, 1.0F));
+		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(3, new RandomSwimmingGoal(this, 1.0D, 40));
-		this.goalSelector.addGoal(4, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(5, new LookRandomlyGoal(this));
-		this.goalSelector.addGoal(5, new LookAtGoal(this, PlayerEntity.class, 6.0F));
-		this.goalSelector.addGoal(6, new SemiAquaticTemptGoal(this, 1.0F, FOOD_ITEMS));
-		this.goalSelector.addGoal(7, new MeleeAttackGoal(this, 1.2F, false));
+		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
+		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
+		this.goalSelector.addGoal(4, new TerrestrialReasonableAttackGoal(this, 1.2F));
+		this.goalSelector.addGoal(5, new SleepGoal(this));
+		this.goalSelector.addGoal(5, new TerrestrialCreateTerritoryGoal(this, 1.0D));
+		this.goalSelector.addGoal(6, new NaturalBreedingGoal.Egg(this, 1.0D));
+		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));
+		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.GREAT_AUK));
+		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
+		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, CodEntity.class, true));
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, SalmonEntity.class, true));
 	}
@@ -132,5 +110,23 @@ public class GreatAukEntity extends BreedingSemiAquaticEntity implements ITyrann
 	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
 	{
 		return EntityInit.GREAT_AUK.create(world);
+	}
+
+	@Override
+	public ActivityType activity() 
+	{
+		return ActivityType.DIURNAL;
+	}
+
+	@Override
+	public int maxHunger() 
+	{
+		return 9000;
+	}
+	
+	@Override
+	public double getInWaterSpeed() 
+	{
+		return 0.45D;
 	}
 }

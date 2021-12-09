@@ -3,12 +3,13 @@ package lostworlds.library.entity.semiaquatic;
 import java.util.Random;
 
 import lostworlds.library.entity.controller.SemiAquaticMoveController;
+import lostworlds.library.entity.terrestrial.CarnivoreEntity;
+import lostworlds.library.entity.utils.ISemiAquatic;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.controller.MovementController;
-import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -22,13 +23,13 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 
-public abstract class BreedingSemiAquaticEntity extends AnimalEntity implements ISemiAquatic
+public abstract class CarnivoreSemiAquaticEntity extends CarnivoreEntity implements ISemiAquatic
 {    
-	public static final DataParameter<BlockPos> TRAVEL_POS = EntityDataManager.defineId(BreedingSemiAquaticEntity.class, DataSerializers.BLOCK_POS);
+	public static final DataParameter<BlockPos> TRAVEL_POS = EntityDataManager.defineId(CarnivoreSemiAquaticEntity.class, DataSerializers.BLOCK_POS);
 	public final Random random = new Random();
 	private boolean isLandNavigator;
 	
-    public BreedingSemiAquaticEntity(EntityType<? extends BreedingSemiAquaticEntity> entity, World world) 
+    public CarnivoreSemiAquaticEntity(EntityType<? extends CarnivoreSemiAquaticEntity> entity, World world) 
 	{
 		super(entity, world);
 		this.setPathfindingMalus(PathNodeType.WATER, 0.0F);
@@ -46,7 +47,7 @@ public abstract class BreedingSemiAquaticEntity extends AnimalEntity implements 
 		return this.entityData.get(TRAVEL_POS);
 	}
 	
-	private void switchNavigator(boolean onLand) 
+	private void switchNavigator(boolean onLand) 	
 	{
 		if(onLand) 
 		{
@@ -61,6 +62,8 @@ public abstract class BreedingSemiAquaticEntity extends AnimalEntity implements 
 			this.isLandNavigator = false;
 		}
 	}
+	
+	public abstract double getInWaterSpeed();
 
 	@Override
 	protected void defineSynchedData() 
@@ -163,19 +166,14 @@ public abstract class BreedingSemiAquaticEntity extends AnimalEntity implements 
 	@Override
 	public void travel(Vector3d vec3d) 
 	{
-		if(this.isEffectiveAi() && this.isInWaterOrBubble()) 
+		if(!this.level.isClientSide() && this.isInWater()) 
 		{
 			this.moveRelative(this.getSpeed(), vec3d);
 			this.move(MoverType.SELF, this.getDeltaMovement());
-			if(this.jumping) 
+			this.setDeltaMovement(this.getDeltaMovement().scale(getInWaterSpeed()));
+			if(this.getTarget() == null) 
 			{
-				this.setDeltaMovement(this.getDeltaMovement().scale(1D));
-				this.setDeltaMovement(this.getDeltaMovement().add(0.0D, 0.72D, 0.0D));
-			} 
-			else 
-			{
-				this.setDeltaMovement(this.getDeltaMovement().scale(0.4D));
-				this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.08D, 0.0D));
+				this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.005D, 0.0D));
 			}
 		} 
 		else 

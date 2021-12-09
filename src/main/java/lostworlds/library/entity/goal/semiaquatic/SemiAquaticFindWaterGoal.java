@@ -3,19 +3,19 @@ package lostworlds.library.entity.goal.semiaquatic;
 import java.util.EnumSet;
 import java.util.Random;
 
-import lostworlds.library.entity.semiaquatic.ISemiAquatic;
-import net.minecraft.entity.CreatureEntity;
+import lostworlds.library.entity.terrestrial.PrehistoricEntity;
+import lostworlds.library.entity.utils.ISemiAquatic;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.math.BlockPos;
 
 public class SemiAquaticFindWaterGoal extends Goal 
 {
-	private final CreatureEntity creature;
+	private final PrehistoricEntity creature;
 	private BlockPos targetPos;
 	private int executionChance = 30;
 
-	public SemiAquaticFindWaterGoal(CreatureEntity creature) 
+	public SemiAquaticFindWaterGoal(PrehistoricEntity creature) 
 	{
         this.creature = creature;
         this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
@@ -24,7 +24,7 @@ public class SemiAquaticFindWaterGoal extends Goal
 	@Override
 	public boolean canUse() 
 	{
-		if(this.creature.isOnGround() && !this.creature.level.getFluidState(this.creature.blockPosition()).is(FluidTags.WATER)) 
+		if(this.creature.isOnGround() && !this.creature.level.getFluidState(this.creature.blockPosition()).is(FluidTags.WATER) && !this.creature.isSleeping()) 
 		{
 			if(this.creature instanceof ISemiAquatic && ((ISemiAquatic) this.creature).shouldEnterWater() && (this.creature.getTarget() != null || this.creature.getRandom().nextInt(executionChance) == 0)) 
 			{

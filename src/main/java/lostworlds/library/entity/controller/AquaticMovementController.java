@@ -1,6 +1,6 @@
 package lostworlds.library.entity.controller;
 
-import lostworlds.library.entity.semiaquatic.ISemiAquatic;
+import lostworlds.library.entity.utils.ISemiAquatic;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.controller.MovementController;

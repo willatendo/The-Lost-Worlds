@@ -1,6 +1,6 @@
 package lostworlds.library.entity.controller;
 
-import lostworlds.library.entity.semiaquatic.BreedingSemiAquaticEntity;
+import lostworlds.library.entity.semiaquatic.CarnivoreSemiAquaticEntity;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.controller.MovementController;
 import net.minecraft.tags.FluidTags;
@@ -8,9 +8,9 @@ import net.minecraft.util.math.MathHelper;
 
 public class SemiAquaticMoveController extends MovementController 
 {
-	private final BreedingSemiAquaticEntity entity;
+	private final CarnivoreSemiAquaticEntity entity;
 
-	public SemiAquaticMoveController(BreedingSemiAquaticEntity entity) 
+	public SemiAquaticMoveController(CarnivoreSemiAquaticEntity entity) 
 	{
 		super(entity);
 		this.entity = entity;

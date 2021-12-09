@@ -1,4 +1,4 @@
-package lostworlds.library.entity.semiaquatic;
+package lostworlds.library.entity.utils;
 
 public interface ISemiAquatic 
 {

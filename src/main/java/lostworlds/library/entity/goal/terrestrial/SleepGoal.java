@@ -1,5 +1,7 @@
 package lostworlds.library.entity.goal.terrestrial;
 
+import java.util.EnumSet;
+
 import lostworlds.library.entity.terrestrial.PrehistoricEntity;
 import lostworlds.library.entity.utils.enums.ActivityType;
 import net.minecraft.entity.ai.goal.Goal;
@@ -11,6 +13,7 @@ public class SleepGoal extends Goal
 	public SleepGoal(PrehistoricEntity entity) 
 	{
 		this.entity = entity;
+        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.JUMP));
 	}
 
 	@Override
@@ -18,6 +21,7 @@ public class SleepGoal extends Goal
 	{
 		super.tick();
 		this.entity.setAnimation(entity.ANIMATION_SLEEP);
+		this.entity.getMoveControl().setWantedPosition(this.entity.getX(), this.entity.getY(), this.entity.getZ(), 0.0D);
 		this.entity.getNavigation().stop();
 	}
 	

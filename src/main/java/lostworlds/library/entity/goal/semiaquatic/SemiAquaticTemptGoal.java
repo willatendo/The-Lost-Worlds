@@ -2,7 +2,7 @@ package lostworlds.library.entity.goal.semiaquatic;
 
 import java.util.EnumSet;
 
-import lostworlds.library.entity.semiaquatic.BreedingSemiAquaticEntity;
+import lostworlds.library.entity.semiaquatic.CarnivoreSemiAquaticEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,13 +12,13 @@ import net.minecraft.item.crafting.Ingredient;
 public class SemiAquaticTemptGoal extends Goal 
 {
 	private static final EntityPredicate TEMPT_TARGETING = (new EntityPredicate()).range(10.0D).allowSameTeam().allowInvulnerable();
-	private final BreedingSemiAquaticEntity entity;
+	private final CarnivoreSemiAquaticEntity entity;
 	private final double speedModifier;	
 	private PlayerEntity player;
 	private int calmDown;
 	private final Ingredient items;
 
-	public SemiAquaticTemptGoal(BreedingSemiAquaticEntity entity, double speedModifier, Ingredient items) 
+	public SemiAquaticTemptGoal(CarnivoreSemiAquaticEntity entity, double speedModifier, Ingredient items) 
 	{
 		this.entity = entity;
 		this.speedModifier = speedModifier;
