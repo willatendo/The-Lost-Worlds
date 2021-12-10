@@ -2,7 +2,6 @@ package lostworlds.library.entity.aquatic.permian;
 
 import lostworlds.library.entity.aquatic.BasicFishLikeEntity;
 import lostworlds.library.entity.utils.enums.DinoTypes;
-import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvent;
@@ -26,7 +25,7 @@ public class PalaeoniscumEntity extends BasicFishLikeEntity implements ITyrannom
 		return PlayState.CONTINUE;
 	}
 	
-	public PalaeoniscumEntity(EntityType<? extends CreatureEntity> entity, World world) 
+	public PalaeoniscumEntity(EntityType<? extends PalaeoniscumEntity> entity, World world) 
 	{
 		super(entity, world);
 	}

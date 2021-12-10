@@ -30,12 +30,15 @@ import net.minecraft.util.IStringSerializable;
 public enum DinoTypes implements IStringSerializable
 {
 	ALLOSAURUS("allosaurus", EntityInit.ALLOSAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x9f9f5a, 0x9f9f5a, 0xd68812, 5, 8, 0.4F, 0.8F),
+	ANOMALOCARIS("anomalocaris", EntityInit.ANOMALOCARIS, false, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0xb94f33, 0xb94f33, 0x631312, 2, 4, 0.2F, 0.4F),
 	CARNOTAURUS("carnotaurus", EntityInit.CARNOTAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xbd7868, 0xbd7868, 0xe6d3bc, 6, 9, 0.4F, 0.8F),
 	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0xb08533, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
 	CRYOLOPHOSAURUS("cryolophosaurus", EntityInit.CRYOLOPHOSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0xab5a14, 0xab5a14, 0x1a2c5f, 5, 7, 0.5F, 0.6F),
 	DIICTODON("diictodon", EntityInit.DIICTODON, false, false, false, Size.TINY, CreatureDiet.HERBIVORE, 0xdc8a54, 0xdc8a54, 0x8b462e, 1, 2, 0.1F, 0.2F),
 	DILOPHOSAURUS("dilophosaurus", EntityInit.DILOPHOSAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xc49838, 0xc49838, 0xc75539, 5, 7, 0.5F, 0.76F),
+	DIMETRODON("dimetrodon", EntityInit.DIMETRODON, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x81644c, 0x81644c, 0xcba755, 5, 7, 0.5F, 0.76F),
 	EORAPTOR("eoraptor", EntityInit.EORAPTOR, true, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x523c3e, 0x523c3e, 0x824b78, 1, 3, 0.1F, 0.35F),
+	EDAPHOSAURUS("edaphosaurus", EntityInit.EDAPHOSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x57614e, 0x57614e, 0xdf9046, 5, 7, 0.5F, 0.76F),
 	FUKUIVENATOR("fukuivenator", EntityInit.FUKUIVENATOR, true, true, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x52526f, 0x52526f, 0x5757959, 4, 5, 0.3F, 0.35F),
 	GIGANOTOSAURUS("giganotosaurus", EntityInit.GIGANOTOSAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x9f6b41, 0x9f6b41, 0x943c24, 9, 12, 0.5F, 0.8F),
 	GORGONOPS("gorgonops", EntityInit.GORGONOPS, true, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0x443619, 0x443619, 0x3b3e2d, 3, 5, 0.3F, 0.46F),
@@ -50,7 +53,7 @@ public enum DinoTypes implements IStringSerializable
 	PROCOMPSOGNATHUS("procompsognathus", EntityInit.PROCOMPSOGNATHUS, false, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x445a2f, 0x445a2f, 0x404727, 1, 2, 0.1F, 0.2F),
 	PROTOSUCHUS("protosuchus", EntityInit.PROTOSUCHUS, true, false, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x8e2317, 0x8e2317, 0xb0492e, 3, 5, 0.3F, 0.54F),
 	PSITTACOSAURUS("psittacosaurus", EntityInit.PSITTACOSAURUS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x4c2c21, 0x4c2c21, 0x938639, 3, 5, 0.3F, 0.54F),
-	RHINESUCHUS("rhinesuchus", EntityInit.RHINESUCHUS, true, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0x576b54, 0x576b54, 0xaf944a, 3, 5, 0.3F, 0.54F),
+	RHINESUCHUS("rhinesuchus", EntityInit.RHINESUCHUS, false, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0x576b54, 0x576b54, 0xaf944a, 3, 5, 0.3F, 0.54F),
 	SUCHOMIMUS("suchomimus", EntityInit.SUCHOMIMUS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x57737b, 0x57737b, 0xcd9528, 5, 7, 0.5F, 0.64F),
 	UTAHRAPTOR("utahraptor", EntityInit.UTAHRAPTOR, true, true, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x503524, 0x503524, 0x635f5e, 5, 7, 0.5F, 0.64F),
 	TETRACERATOPS("tetraceratops", EntityInit.TETRACERATOPS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x623015, 0x623015, 0x21369b, 3, 5, 0.3F, 0.54F),
@@ -84,6 +87,7 @@ public enum DinoTypes implements IStringSerializable
 	private Item meat;
 	private Item fishBucket;
 	private Item feather;
+	private Item spawn;
 	private final boolean eggLaying;
 	private final boolean feathered;
 	private final boolean createHide;
@@ -113,6 +117,11 @@ public enum DinoTypes implements IStringSerializable
 		this.cookedNutrition = cookedNutrition;
 		this.rawSaturation = rawSaturation;
 		this.cookedSaturation = cookedSaturation;
+	}
+	
+	public int getColour(int colour, int colour1, int colour2) 
+	{
+		return colour == 0 ? colour1 : colour2;
 	}
 	
 	public String getId()
@@ -270,6 +279,16 @@ public enum DinoTypes implements IStringSerializable
 		return this.feather;
 	}
 	
+	public Item setSpawn(Item spawn)
+	{
+		return this.spawn = spawn;
+	}
+	
+	public Item getSpawn()
+	{
+		return this.spawn;
+	}
+	
 	public Block setEgg(Block egg)
 	{
 		return this.egg = egg;
@@ -383,12 +402,22 @@ public enum DinoTypes implements IStringSerializable
 		return this.cookedSaturation;
 	}
 	
+	public static ArrayList<DinoTypes> hasSpawn()
+	{
+		ArrayList<DinoTypes> list = new ArrayList<>();
+		list.add(ANOMALOCARIS);
+		list.add(NAUTILUS);
+		list.add(PALAEONISCUM);
+		list.add(RHINESUCHUS);
+		return list;
+	}
+	
 	public static ArrayList<DinoTypes> liveBirth()
 	{
 		ArrayList<DinoTypes> list = new ArrayList<>();
 		for(DinoTypes type : DinoTypes.values())
 		{
-			if(!type.eggLaying)
+			if(!type.eggLaying && !(type.hasSpawn().contains(type)))
 			{
 				list.add(type);
 			}
@@ -439,6 +468,7 @@ public enum DinoTypes implements IStringSerializable
 	{
 		ArrayList<DinoTypes> list = new ArrayList<>();
 		list.add(PALAEONISCUM);
+		list.add(ANOMALOCARIS);
 		return list;
 	}
 	

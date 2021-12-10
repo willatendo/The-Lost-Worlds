@@ -3,6 +3,7 @@ package lostworlds.content.server.init;
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
 import lostworlds.library.entity.ModBoatEntity;
+import lostworlds.library.entity.aquatic.cambrian.AnomalocarisEntity;
 import lostworlds.library.entity.aquatic.jurassic.OphthalmosaurusEntity;
 import lostworlds.library.entity.aquatic.modern.NautilusEntity;
 import lostworlds.library.entity.aquatic.permian.PalaeoniscumEntity;
@@ -32,6 +33,8 @@ import lostworlds.library.entity.terrestrial.jurassic.KentrosaurusEntity;
 import lostworlds.library.entity.terrestrial.jurassic.LiaoningosaurusEntity;
 import lostworlds.library.entity.terrestrial.jurassic.OstromiaEntity;
 import lostworlds.library.entity.terrestrial.permian.DiictodonEntity;
+import lostworlds.library.entity.terrestrial.permian.DimetrodonEntity;
+import lostworlds.library.entity.terrestrial.permian.EdaphosaurusEntity;
 import lostworlds.library.entity.terrestrial.permian.GorgonopsEntity;
 import lostworlds.library.entity.terrestrial.permian.TetraceratopsEntity;
 import lostworlds.library.entity.terrestrial.triassic.EoraptorEntity;
@@ -60,13 +63,16 @@ public class EntityInit
 	public static final EntityType<CrystalScarabGemItemEntity> CRYSTAL_SCARAB_GEM_ITEM = ModRegistry.register("crystal_scarab_gem_item", CrystalScarabGemItemEntity::new, EntityClassification.MISC, 0.5F, 0.5F);
 	
 	public static final EntityType<AllosaurusEntity> ALLOSAURUS = ModRegistry.register("allosaurus", AllosaurusEntity::new, EntityClassification.CREATURE, 2.0F, 1.5F);
+	public static final EntityType<AnomalocarisEntity> ANOMALOCARIS = ModRegistry.register("anomalocaris", AnomalocarisEntity::new, EntityClassification.WATER_CREATURE, 1.0F, 1.0F);
 	public static final EntityType<CarnotaurusEntity> CARNOTAURUS = ModRegistry.register("carnotaurus", CarnotaurusEntity::new, EntityClassification.CREATURE, 2.0F, 1.5F);
 	public static final EntityType<ChilesaurusEntity> CHILESAURUS = ModRegistry.register("chilesaurus", ChilesaurusEntity::new, EntityClassification.CREATURE, 1.0F, 1.0F);
 	public static final EntityType<FossilEntity> CHILESAURUS_SKELETON = ModRegistry.register("chilesaurus_skeleton", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
 	public static final EntityType<CryolophosaurusEntity> CRYOLOPHOSAURUS = ModRegistry.register("cryolophosaurus", CryolophosaurusEntity::new, EntityClassification.CREATURE, 1.0F, 0.75F);
 	public static final EntityType<DiictodonEntity> DIICTODON = ModRegistry.register("diictodon", DiictodonEntity::new, EntityClassification.CREATURE, 0.25F, 0.25F);
 	public static final EntityType<DilophosaurusEntity> DILOPHOSAURUS = ModRegistry.register("dilophosaurus", DilophosaurusEntity::new, EntityClassification.CREATURE, 1.5F, 1.5F);
+	public static final EntityType<DimetrodonEntity> DIMETRODON = ModRegistry.register("dimetrodon", DimetrodonEntity::new, EntityClassification.CREATURE, 1.5F, 1.5F);
 	public static final EntityType<EoraptorEntity> EORAPTOR = ModRegistry.register("eoraptor", EoraptorEntity::new, EntityClassification.CREATURE, 0.5F, 0.5F);
+	public static final EntityType<EdaphosaurusEntity> EDAPHOSAURUS = ModRegistry.register("edaphosaurus", EdaphosaurusEntity::new, EntityClassification.CREATURE, 1.0F, 1.0F);
 	public static final EntityType<FukuivenatorEntity> FUKUIVENATOR = ModRegistry.register("fukuivenator", FukuivenatorEntity::new, EntityClassification.CREATURE, 0.5F, 0.5F);
 	public static final EntityType<GiganotosaurusEntity> GIGANOTOSAURUS = ModRegistry.register("giganotosaurus", GiganotosaurusEntity::new, EntityClassification.CREATURE, 4.0F, 2.5F);
 	public static final EntityType<GorgonopsEntity> GORGONOPS = ModRegistry.register("gorgonops", GorgonopsEntity::new, EntityClassification.CREATURE, 1.0F, 1.0F);
@@ -116,13 +122,16 @@ public class EntityInit
 		event.put(EntityInit.FOSSIL_POACHER, FossilPoacherEntity.createAttributes());
 		
 		event.put(EntityInit.ALLOSAURUS, AllosaurusEntity.createAttributes());
+		event.put(EntityInit.ANOMALOCARIS, AnomalocarisEntity.createAttributes());
 		event.put(EntityInit.CARNOTAURUS, CarnotaurusEntity.createAttributes());
 		event.put(EntityInit.CHILESAURUS, ChilesaurusEntity.createAttributes());
 		event.put(EntityInit.CHILESAURUS_SKELETON, FossilEntity.createAttributes());
 		event.put(EntityInit.CRYOLOPHOSAURUS, CryolophosaurusEntity.createAttributes());
 		event.put(EntityInit.DIICTODON, DiictodonEntity.createAttributes());
 		event.put(EntityInit.DILOPHOSAURUS, DilophosaurusEntity.createAttributes());
+		event.put(EntityInit.DIMETRODON, DimetrodonEntity.createAttributes());
 		event.put(EntityInit.EORAPTOR, EoraptorEntity.createAttributes());
+		event.put(EntityInit.EDAPHOSAURUS, EdaphosaurusEntity.createAttributes());
 		event.put(EntityInit.FUKUIVENATOR, FukuivenatorEntity.createAttributes());
 		event.put(EntityInit.GIGANOTOSAURUS, GiganotosaurusEntity.createAttributes());
 		event.put(EntityInit.GORGONOPS, GorgonopsEntity.createAttributes());
@@ -149,11 +158,14 @@ public class EntityInit
 	static
 	{
 		EntitySpawnPlacementRegistry.register(EntityInit.ALLOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
+		EntitySpawnPlacementRegistry.register(EntityInit.ANOMALOCARIS, EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.OCEAN_FLOOR, AnomalocarisEntity::spawnRules);
 		EntitySpawnPlacementRegistry.register(EntityInit.CHILESAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
 		EntitySpawnPlacementRegistry.register(EntityInit.CRYOLOPHOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
 		EntitySpawnPlacementRegistry.register(EntityInit.DIICTODON, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
 		EntitySpawnPlacementRegistry.register(EntityInit.DILOPHOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
+		EntitySpawnPlacementRegistry.register(EntityInit.DIMETRODON, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
 		EntitySpawnPlacementRegistry.register(EntityInit.EORAPTOR, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
+		EntitySpawnPlacementRegistry.register(EntityInit.EDAPHOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
 		EntitySpawnPlacementRegistry.register(EntityInit.FUKUIVENATOR, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
 		EntitySpawnPlacementRegistry.register(EntityInit.GIGANOTOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
 		EntitySpawnPlacementRegistry.register(EntityInit.GORGONOPS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);

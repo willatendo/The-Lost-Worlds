@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:allosaurus_arm_bones"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_allosaurus_arm_bones"
+	}
+}

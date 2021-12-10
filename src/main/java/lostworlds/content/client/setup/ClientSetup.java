@@ -1,12 +1,15 @@
 package lostworlds.content.client.setup;
 
 import lostworlds.content.client.entity.render.AllosaurusRenderer;
+import lostworlds.content.client.entity.render.AnomalocarisRenderer;
 import lostworlds.content.client.entity.render.CarnotaurusRenderer;
 import lostworlds.content.client.entity.render.ChilesaurusRenderer;
 import lostworlds.content.client.entity.render.ChilesaurusSkeletonRenderer;
 import lostworlds.content.client.entity.render.CryolophosaurusRenderer;
 import lostworlds.content.client.entity.render.DiictodonRenderer;
 import lostworlds.content.client.entity.render.DilophosaurusRenderer;
+import lostworlds.content.client.entity.render.DimetrodonRenderer;
+import lostworlds.content.client.entity.render.EdaphosaurusRenderer;
 import lostworlds.content.client.entity.render.EoraptorRenderer;
 import lostworlds.content.client.entity.render.FossilPoacherRenderer;
 import lostworlds.content.client.entity.render.FukuivenatorRenderer;
@@ -80,10 +83,10 @@ public class ClientSetup
 		{
 			return reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : FoliageColors.getDefaultColor();
 		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.CYPRESS_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES, BlockInit.ALETHOPTERIS, BlockInit.BRAZILEA, BlockInit.CEPHALOTAXUS, BlockInit.OSMUNDA, BlockInit.WILLIAMSONIA, BlockInit.ZAMITES, BlockInit.CYCAD, BlockInit.DICKSONIA);
-		itemcolours.register((stack, intager) -> 
+		itemcolours.register((stack, colour) -> 
 		{
 			BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
-			return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, intager);
+			return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, colour);
 		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.CYPRESS_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES, BlockInit.ALETHOPTERIS, BlockInit.BRAZILEA, BlockInit.CEPHALOTAXUS, BlockInit.OSMUNDA, BlockInit.CYCAD, BlockInit.DICKSONIA);
 		
 		if(LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get())
@@ -94,10 +97,10 @@ public class ClientSetup
 				{
 					return types.getSetEggColour();
 				}, types.getEgg());
-				itemcolours.register((stack, intager) -> 
+				itemcolours.register((stack, colour) -> 
 				{
 					BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
-					return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, intager);
+					return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, colour);
 				}, types.getEgg());
 			}
 		}
@@ -109,12 +112,20 @@ public class ClientSetup
 				{
 					return reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : FoliageColors.getDefaultColor();
 				}, types.getEgg());
-				itemcolours.register((stack, intager) -> 
+				itemcolours.register((stack, colour) -> 
 				{
 					BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
-					return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, intager);
+					return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, colour);
 				}, types.getEgg());
 			}
+		}
+		
+		for(DinoTypes types : DinoTypes.hasSpawn())
+		{
+			itemcolours.register((stack, colour) -> 
+			{
+				return types.getColour(colour, 0x000000, types.getSetEggColour());
+			}, types.getSpawn());
 		}
 	}
 	
@@ -226,13 +237,16 @@ public class ClientSetup
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CRYSTAL_SCARAB_GEM_ITEM, manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer()));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.ALLOSAURUS, manager -> new AllosaurusRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.ANOMALOCARIS, manager -> new AnomalocarisRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CARNOTAURUS, manager -> new CarnotaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS, manager -> new ChilesaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHILESAURUS_SKELETON, manager -> new ChilesaurusSkeletonRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CRYOLOPHOSAURUS, manager -> new CryolophosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.DIICTODON, manager -> new DiictodonRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.DILOPHOSAURUS, manager -> new DilophosaurusRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.DIMETRODON, manager -> new DimetrodonRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.EORAPTOR, manager -> new EoraptorRenderer(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.EDAPHOSAURUS, manager -> new EdaphosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.FUKUIVENATOR, manager -> new FukuivenatorRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.GIGANOTOSAURUS, manager -> new GiganotosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.GORGONOPS, manager -> new GorgonopsRenderer(manager));

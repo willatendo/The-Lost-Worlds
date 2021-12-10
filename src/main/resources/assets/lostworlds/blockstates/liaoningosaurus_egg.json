@@ -1,19 +1,22 @@
 {
 	"variants": {
-		"small_eggs=1": {
-			"model": "lostworlds:block/small_egg_one"
+		"medium_eggs=1": {
+			"model": "lostworlds:block/medium_eggs_1"
 		},
-		"small_eggs=2": {
-			"model": "lostworlds:block/small_egg_two"
+		"medium_eggs=2": {
+			"model": "lostworlds:block/medium_eggs_2"
 		},
-		"small_eggs=3": {
-			"model": "lostworlds:block/small_egg_three"
+		"medium_eggs=3": {
+			"model": "lostworlds:block/medium_eggs_3"
 		},
-		"small_eggs=4": {
-			"model": "lostworlds:block/small_egg_four"
+		"medium_eggs=4": {
+			"model": "lostworlds:block/medium_eggs_4"
 		},
-		"small_eggs=5": {
-			"model": "lostworlds:block/small_egg_five"
+		"medium_eggs=5": {
+			"model": "lostworlds:block/medium_eggs_5"
+		},
+		"medium_eggs=6": {
+			"model": "lostworlds:block/medium_eggs_6"
 		}
 	}
 }

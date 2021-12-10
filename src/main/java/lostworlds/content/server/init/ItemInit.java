@@ -30,6 +30,7 @@ import lostworlds.library.item.ModItem;
 import lostworlds.library.item.ModSpawnEggItem;
 import lostworlds.library.item.PlantFossilItem;
 import lostworlds.library.item.SoftTissueItem;
+import lostworlds.library.item.SpawnItem;
 import lostworlds.library.item.SyringeItem;
 import lostworlds.library.item.TabletItem;
 import lostworlds.library.item.TimeBookItem;
@@ -248,7 +249,7 @@ public class ItemInit
 		
 		for(DinoTypes dinos : DinoTypes.values())
 		{
-			if(dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM)
+			if(dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS)
 			{
 				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_rib_cage", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getRibCage(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "rib_cage")));
 				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_leg_bones", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getLegBones(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "leg_bones")));
@@ -272,7 +273,11 @@ public class ItemInit
 			{
 				ModRegistry.register(dinos.name().toLowerCase() + "_hide", new HideItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));
 			}
-			
+			if(dinos.hasSpawn().contains(dinos))
+			{
+				Item spawn = ModRegistry.register(dinos.name().toLowerCase() + "_spawn", new SpawnItem(() -> dinos.getEntityType(), ModUtils.tTC("entity", dinos.name().toLowerCase())));
+				dinos.setSpawn(spawn);
+			}
 			
 			ModRegistry.register(dinos.name().toLowerCase() + "_spawn_egg", new DinoSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), ItemGroup.TAB_MISC, ModUtils.tTC("entity", dinos.name().toLowerCase())));
 			ModRegistry.register(dinos.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(ModUtils.tTC("entity", dinos.toString().toLowerCase())));
@@ -297,9 +302,18 @@ public class ItemInit
 			{
 				Item bucket = ModRegistry.register(dinos.name().toLowerCase() + "_bucket", new ModFishBucketItem(() -> dinos.getEntityType(), Fluids.WATER, new Properties().tab(ModUtils.ITEMS).stacksTo(1)));
 				dinos.setFishBucket(bucket);
-				Item meat = ModRegistry.register(dinos.name().toLowerCase(), new FishFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), true));
-				ModRegistry.register("cooked_" + dinos.name().toLowerCase(), new FishFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), false));
-				dinos.setMeat(meat);
+				if(dinos != DinoTypes.ANOMALOCARIS)
+				{
+					Item meat = ModRegistry.register(dinos.name().toLowerCase(), new FishFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), true));
+					ModRegistry.register("cooked_" + dinos.name().toLowerCase(), new FishFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), false));
+					dinos.setMeat(meat);
+				}
+				else
+				{
+					Item meat = ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_claw", new EntityFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())));
+					ModRegistry.register("cooked_" + dinos.name().toLowerCase() + "_claw", new EntityFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build())));
+					dinos.setMeat(meat);
+				}
 			}
 		}
 		

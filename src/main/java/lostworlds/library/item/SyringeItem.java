@@ -22,9 +22,7 @@ public class SyringeItem extends ModItem
 	public ActionResultType interactLivingEntity(ItemStack stack, PlayerEntity player, LivingEntity entity, Hand hand) 
 	{
 		if(entity != null)
-		{
-			
-			
+		{	
 			//Modded
 			if(entity instanceof ChilesaurusEntity)
 			{

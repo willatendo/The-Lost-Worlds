@@ -1,0 +1,102 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.edaphosaurus",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 8,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "edphosaurus",
+					"pivot": [0, 0, -5]
+				},
+				{
+					"name": "body",
+					"parent": "edphosaurus",
+					"pivot": [0, 7, -1],
+					"cubes": [
+						{"origin": [-3, 2, -11], "size": [6, 8, 20], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "body",
+					"pivot": [0, 7, 9],
+					"cubes": [
+						{"origin": [-2, 4, 9], "size": [4, 6, 12], "uv": [32, 0]}
+					]
+				},
+				{
+					"name": "tailpart",
+					"parent": "tail",
+					"pivot": [0, 8, 21],
+					"cubes": [
+						{"origin": [-1, 6, 21], "size": [2, 4, 12], "uv": [46, 18]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [0, 7.5, -11],
+					"cubes": [
+						{"origin": [-1.5, 7, -16], "size": [3, 3, 5], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "jaw",
+					"parent": "head",
+					"pivot": [0, 7, -11],
+					"cubes": [
+						{"origin": [-1.5, 5, -16], "size": [3, 2, 5], "uv": [0, 8]}
+					]
+				},
+				{
+					"name": "sail",
+					"parent": "body",
+					"pivot": [0, 10, -0.5],
+					"cubes": [
+						{"origin": [-1, 10, -10], "size": [2, 15, 19], "uv": [23, 28]},
+						{"origin": [0, 10, -11], "size": [0, 16, 21], "uv": [0, 7]}
+					]
+				},
+				{
+					"name": "leg1",
+					"parent": "edphosaurus",
+					"pivot": [3.5, 4.5, -8.5],
+					"cubes": [
+						{"origin": [2, 0, -10], "size": [3, 5, 3], "uv": [0, 44]}
+					]
+				},
+				{
+					"name": "leg2",
+					"parent": "edphosaurus",
+					"pivot": [-3.5, 4.5, -8.5],
+					"cubes": [
+						{"origin": [-5, 0, -10], "size": [3, 5, 3], "uv": [32, 0]}
+					]
+				},
+				{
+					"name": "leg3",
+					"parent": "edphosaurus",
+					"pivot": [-3.5, 3, 6.5],
+					"cubes": [
+						{"origin": [-5, 0, 5], "size": [3, 4, 3], "uv": [9, 49]}
+					]
+				},
+				{
+					"name": "leg4",
+					"parent": "edphosaurus",
+					"pivot": [3.5, 3, 6.5],
+					"cubes": [
+						{"origin": [2, 0, 5], "size": [3, 4, 3], "uv": [46, 34]}
+					]
+				}
+			]
+		}
+	]
+}

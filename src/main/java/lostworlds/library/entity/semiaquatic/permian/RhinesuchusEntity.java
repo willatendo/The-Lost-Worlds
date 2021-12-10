@@ -4,7 +4,6 @@ import java.util.Random;
 
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.EntityInit;
-import lostworlds.library.entity.aquatic.DolphinLikeEntity;
 import lostworlds.library.entity.goal.NaturalBreedingGoal;
 import lostworlds.library.entity.goal.semiaquatic.SemiAquaticFindWaterGoal;
 import lostworlds.library.entity.goal.semiaquatic.SemiAquaticLeaveWaterGoal;
@@ -52,7 +51,7 @@ import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
 public class RhinesuchusEntity extends CarnivoreSemiAquaticEntity
 {
-	public static final DataParameter<Integer> MOISTNESS_LEVEL = EntityDataManager.defineId(DolphinLikeEntity.class, DataSerializers.INT);
+	public static final DataParameter<Integer> MOISTNESS_LEVEL = EntityDataManager.defineId(RhinesuchusEntity.class, DataSerializers.INT);
 	private static final Ingredient FOOD_ITEMS = IngredientUtil.combine(FoodLists.CARNIVORE, FoodLists.PISCIVORE);
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
 	

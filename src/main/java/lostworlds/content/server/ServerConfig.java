@@ -85,6 +85,12 @@ public class ServerConfig
 	public final IntValue allosaurusSpawnGroupMinimum;
 	public final IntValue allosaurusSpawnGroupMaximum;
 
+	public final DoubleValue anomalocarisHeath;
+	public final DoubleValue anomalocarisAttackDamage;
+	public final IntValue anomalocarisSpawnWeight;
+	public final IntValue anomalocarisSpawnGroupMinimum;
+	public final IntValue anomalocarisSpawnGroupMaximum;
+
 	public final DoubleValue carnotaurusHeath;
 	public final DoubleValue carnotaurusAttackDamage;
 	public final IntValue carnotaurusSpawnWeight;
@@ -112,6 +118,17 @@ public class ServerConfig
 	public final IntValue dilophosaurusSpawnWeight;
 	public final IntValue dilophosaurusSpawnGroupMinimum;
 	public final IntValue dilophosaurusSpawnGroupMaximum;
+
+	public final DoubleValue dimetrodonHeath;
+	public final DoubleValue dimetrodonAttackDamage;
+	public final IntValue dimetrodonSpawnWeight;
+	public final IntValue dimetrodonSpawnGroupMinimum;
+	public final IntValue dimetrodonSpawnGroupMaximum;
+
+	public final DoubleValue edaphosaurusHeath;
+	public final IntValue edaphosaurusSpawnWeight;
+	public final IntValue edaphosaurusSpawnGroupMinimum;
+	public final IntValue edaphosaurusSpawnGroupMaximum;
 
 	public final DoubleValue eoraptorHeath;
 	public final DoubleValue eoraptorAttackDamage;
@@ -306,9 +323,15 @@ public class ServerConfig
 
 		this.allosaurusHeath = builder.comment("Sets the heath of the Allosaurus").translation(TRANSLATION_TEXT + "allosaurusHeath").defineInRange("allosaurusHeath", 40.0D, 1.0D, 999.0D);
 		this.allosaurusAttackDamage = builder.comment("Sets the attack damage of the Allosaurus").translation(TRANSLATION_TEXT + "allosaurusAttackDamage").defineInRange("allosaurusAttackDamage", 12.0D, 1.0D, 999.0D);
-		this.allosaurusSpawnWeight = builder.comment("Sets the weight of Allosaurus spawning").translation(TRANSLATION_TEXT + "allosaurusSpawnWeight").defineInRange("allosaurusSpawnWeight", 3, 1, 100);
+		this.allosaurusSpawnWeight = builder.comment("Sets the weight of Allosaurus spawning").translation(TRANSLATION_TEXT + "allosaurusSpawnWeight").defineInRange("allosaurusSpawnWeight", 1, 1, 100);
 		this.allosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Allosaurus in a spawn group").translation(TRANSLATION_TEXT + "allosaurusSpawnGroupMinimum").defineInRange("allosaurusSpawnGroupMinimum", 1, 1, 100);
 		this.allosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Allosaurus in a spawn group").translation(TRANSLATION_TEXT + "allosaurusSpawnGroupMaximum").defineInRange("allosaurusSpawnGroupMaximum", 1, 1, 100);
+
+		this.anomalocarisHeath = builder.comment("Sets the heath of the Allosaurus").translation(TRANSLATION_TEXT + "anomalocarisHeath").defineInRange("anomalocarisHeath", 8.0D, 1.0D, 999.0D);
+		this.anomalocarisAttackDamage = builder.comment("Sets the attack damage of the Allosaurus").translation(TRANSLATION_TEXT + "anomalocarisAttackDamage").defineInRange("anomalocarisAttackDamage", 3.0D, 1.0D, 999.0D);
+		this.anomalocarisSpawnWeight = builder.comment("Sets the weight of Allosaurus spawning").translation(TRANSLATION_TEXT + "anomalocarisSpawnWeight").defineInRange("anomalocarisSpawnWeight", 3, 1, 100);
+		this.anomalocarisSpawnGroupMinimum = builder.comment("Sets the minimum amount of Allosaurus in a spawn group").translation(TRANSLATION_TEXT + "anomalocarisSpawnGroupMinimum").defineInRange("anomalocarisSpawnGroupMinimum", 1, 1, 100);
+		this.anomalocarisSpawnGroupMaximum = builder.comment("Sets the maximum amount of Allosaurus in a spawn group").translation(TRANSLATION_TEXT + "anomalocarisSpawnGroupMaximum").defineInRange("anomalocarisSpawnGroupMaximum", 1, 1, 100);
 
 		this.carnotaurusHeath = builder.comment("Sets the heath of the Carnotaurus").translation(TRANSLATION_TEXT + "carnotaurusHeath").defineInRange("carnotaurusHeath", 40.0D, 1.0D, 999.0D);
 		this.carnotaurusAttackDamage = builder.comment("Sets the attack damage of the Carnotaurus").translation(TRANSLATION_TEXT + "carnotaurusAttackDamage").defineInRange("carnotaurusAttackDamage", 14.0D, 1.0D, 999.0D);
@@ -338,11 +361,22 @@ public class ServerConfig
 		this.dilophosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Dilophosaurus in a spawn group").translation(TRANSLATION_TEXT + "dilophosaurusSpawnGroupMinimum").defineInRange("dilophosaurusSpawnGroupMinimum", 1, 1, 100);
 		this.dilophosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Dilophosaurus in a spawn group").translation(TRANSLATION_TEXT + "dilophosaurusSpawnGroupMaximum").defineInRange("dilophosaurusSpawnGroupMaximum", 3, 1, 100);
 
+		this.dimetrodonHeath = builder.comment("Sets the heath of the Dimetrodon").translation(TRANSLATION_TEXT + "dimetrodonHeath").defineInRange("dimetrodonHeath", 35.0D, 1.0D, 999.0D);
+		this.dimetrodonAttackDamage = builder.comment("Sets the attack damage of the Dimetrodon").translation(TRANSLATION_TEXT + "dimetrodonAttackDamage").defineInRange("dimetrodonAttackDamage", 10.0D, 1.0D, 999.0D);
+		this.dimetrodonSpawnWeight = builder.comment("Sets the weight of Dimetrodon spawning").translation(TRANSLATION_TEXT + "dimetrodonSpawnWeight").defineInRange("dimetrodonSpawnWeight", 4, 1, 100);
+		this.dimetrodonSpawnGroupMinimum = builder.comment("Sets the minimum amount of Dimetrodon in a spawn group").translation(TRANSLATION_TEXT + "dimetrodonSpawnGroupMinimum").defineInRange("dimetrodonSpawnGroupMinimum", 1, 1, 100);
+		this.dimetrodonSpawnGroupMaximum = builder.comment("Sets the maximum amount of Dimetrodon in a spawn group").translation(TRANSLATION_TEXT + "dimetrodonSpawnGroupMaximum").defineInRange("dimetrodonSpawnGroupMaximum", 3, 1, 100);
+
 		this.eoraptorHeath = builder.comment("Sets the heath of the Dilophosaurus").translation(TRANSLATION_TEXT + "eoraptorHeath").defineInRange("eoraptorHeath", 5.0D, 1.0D, 999.0D);
 		this.eoraptorAttackDamage = builder.comment("Sets the attack damage of the Dilophosaurus").translation(TRANSLATION_TEXT + "eoraptorAttackDamage").defineInRange("eoraptorAttackDamage", 3.0D, 1.0D, 999.0D);
 		this.eoraptorSpawnWeight = builder.comment("Sets the weight of Dilophosaurus spawning").translation(TRANSLATION_TEXT + "eoraptorSpawnWeight").defineInRange("eoraptorSpawnWeight", 4, 1, 100);
 		this.eoraptorSpawnGroupMinimum = builder.comment("Sets the minimum amount of Dilophosaurus in a spawn group").translation(TRANSLATION_TEXT + "eoraptorSpawnGroupMinimum").defineInRange("eoraptorSpawnGroupMinimum", 5, 1, 100);
 		this.eoraptorSpawnGroupMaximum = builder.comment("Sets the maximum amount of Dilophosaurus in a spawn group").translation(TRANSLATION_TEXT + "eoraptorSpawnGroupMaximum").defineInRange("eoraptorSpawnGroupMaximum", 7, 1, 100);
+
+		this.edaphosaurusHeath = builder.comment("Sets the heath of the Edaphosaurus").translation(TRANSLATION_TEXT + "edaphosaurusHeath").defineInRange("edaphosaurusHeath", 15.0D, 1.0D, 999.0D);
+		this.edaphosaurusSpawnWeight = builder.comment("Sets the weight of Edaphosaurus spawning").translation(TRANSLATION_TEXT + "edaphosaurusSpawnWeight").defineInRange("edaphosaurusSpawnWeight", 4, 1, 100);
+		this.edaphosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Edaphosaurus in a spawn group").translation(TRANSLATION_TEXT + "edaphosaurusSpawnGroupMinimum").defineInRange("edaphosaurusSpawnGroupMinimum", 5, 1, 100);
+		this.edaphosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Edaphosaurus in a spawn group").translation(TRANSLATION_TEXT + "edaphosaurusSpawnGroupMaximum").defineInRange("edaphosaurusSpawnGroupMaximum", 7, 1, 100);
 
 		this.fukuvenatorHeath = builder.comment("Sets the heath of the Fukuvenator").translation(TRANSLATION_TEXT + "fukuvenatorHeath").defineInRange("fukuvenatorHeath", 15.0D, 1.0D, 999.0D);
 		this.fukuvenatorAttackDamage = builder.comment("Sets the attack damage of the Fukuvenator").translation(TRANSLATION_TEXT + "fukuvenatorAttackDamage").defineInRange("fukuvenatorAttackDamage", 4.0D, 1.0D, 999.0D);

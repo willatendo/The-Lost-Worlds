@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "lostworlds:item/spawn_eggs",
+		"layer1": "lostworlds:item/spawn_casing"
+	}
+}
