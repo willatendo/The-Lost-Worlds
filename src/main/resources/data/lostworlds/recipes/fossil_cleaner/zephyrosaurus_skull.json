@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:zephyrosaurus_skull"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_zephyrosaurus_skull"
+	}
+}

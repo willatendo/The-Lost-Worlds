@@ -1,0 +1,10 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:utahraptor_arm_bones"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_utahraptor_arm_bones"
+	}
+}
+z

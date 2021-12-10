@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:palaeoniscum_body"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_palaeoniscum_body"
+	}
+}

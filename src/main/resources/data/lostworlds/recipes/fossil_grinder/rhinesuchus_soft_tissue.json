@@ -1,0 +1,10 @@
+{
+	"type": "lostworlds:fossil_grinder",
+	"output": {
+		"item": "lostworlds:rhinesuchus_soft_tissue"
+	},
+	"fossil": {
+		"tag": "lostworlds:rhinesuchus_fossils"
+	},
+	"plant": false
+}

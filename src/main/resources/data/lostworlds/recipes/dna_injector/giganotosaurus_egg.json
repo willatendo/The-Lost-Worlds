@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_injector",
+	"output": {
+		"item": "lostworlds:giganotosaurus_egg"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:giganotosaurus_dna_disc"
+	}
+}

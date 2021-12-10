@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:analyzer",
+	"output": {
+		"item": "lostworlds:dilophosaurus_dna_disc"
+	},
+	"dna": {
+		"item": "lostworlds:dilophosaurus_dna"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_injector",
+	"output": {
+		"item": "lostworlds:dimetrodon_egg"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:dimetrodon_dna_disc"
+	}
+}

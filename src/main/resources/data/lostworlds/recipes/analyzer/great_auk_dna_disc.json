@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:analyzer",
+	"output": {
+		"item": "lostworlds:great_auk_dna_disc"
+	},
+	"dna": {
+		"item": "lostworlds:great_auk_dna"
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"replace": false,
+	"values": [
+		"lostworlds:psittacosaurus_rib_cage",
+		"lostworlds:psittacosaurus_leg_bones",
+		"lostworlds:psittacosaurus_arm_bones",
+		"lostworlds:psittacosaurus_tail",
+		"lostworlds:psittacosaurus_skull"
+	]
+}

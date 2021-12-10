@@ -1,0 +1,10 @@
+{
+	"replace": false,
+	"values": [
+		"lostworlds:zephyrosaurus_rib_cage",
+		"lostworlds:zephyrosaurus_leg_bones",
+		"lostworlds:zephyrosaurus_arm_bones",
+		"lostworlds:zephyrosaurus_tail",
+		"lostworlds:zephyrosaurus_skull"
+	]
+}

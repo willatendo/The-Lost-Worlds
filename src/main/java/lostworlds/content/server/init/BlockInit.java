@@ -604,7 +604,8 @@ public class BlockInit
 		{
 			if(types == DinoTypes.NAUTILUS)
 			{
-				BlockAndItemBuilder.create("fossilized_nautilus_shell", new NautilusShellBlock(AbstractBlock.Properties.of(Material.SHULKER_SHELL).instabreak().noOcclusion().sound(SoundType.ANVIL)));
+				Block shell = BlockAndItemBuilder.create("fossilized_nautilus_shell", new NautilusShellBlock(AbstractBlock.Properties.of(Material.SHULKER_SHELL).instabreak().noOcclusion().sound(SoundType.ANVIL)));
+				types.setExtraBlock(shell);
 			}
 		}
 	}

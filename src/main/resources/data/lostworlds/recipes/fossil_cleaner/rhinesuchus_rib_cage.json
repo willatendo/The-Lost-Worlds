@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:rhinesuchus_rib_cage"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_rhinesuchus_rib_cage"
+	}
+}

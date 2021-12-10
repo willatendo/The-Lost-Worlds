@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:suchomimus_rib_cage"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_suchomimus_rib_cage"
+	}
+}

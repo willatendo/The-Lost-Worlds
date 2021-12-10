@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:eoraptor_skull"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_eoraptor_skull"
+	}
+}

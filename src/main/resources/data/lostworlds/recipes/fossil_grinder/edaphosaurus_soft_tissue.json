@@ -1,0 +1,10 @@
+{
+	"type": "lostworlds:fossil_grinder",
+	"output": {
+		"item": "lostworlds:edaphosaurus_soft_tissue"
+	},
+	"fossil": {
+		"tag": "lostworlds:edaphosaurus_fossils"
+	},
+	"plant": false
+}

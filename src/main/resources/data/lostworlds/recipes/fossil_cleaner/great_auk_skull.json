@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:great_auk_skull"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_great_auk_skull"
+	}
+}

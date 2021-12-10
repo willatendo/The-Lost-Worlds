@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:great_auk_arm_bones"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_great_auk_arm_bones"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:dimetrodon_rib_cage"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_dimetrodon_rib_cage"
+	}
+}

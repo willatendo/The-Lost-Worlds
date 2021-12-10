@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:psittacosaurus_tail"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_psittacosaurus_tail"
+	}
+}

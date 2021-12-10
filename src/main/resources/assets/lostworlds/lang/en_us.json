@@ -192,6 +192,8 @@
 	"fossilPart.lostworlds.skull": "Skull",
 	"fossilPart.lostworlds.tail": "Tail",
 	"fossilPart.lostworlds.skeleton": "Skeleton",
+	"fossilPart.lostworlds.exoskeleton": "Exoskeleton",
+	"fossilPart.lostworlds.body": "Body",
 	"item.lostworlds.dirty_fossil": "Plastered %s %s",
 	"item.lostworlds.fossil": "%s %s",
 	"item.lostworlds.feather": "%s Feather",
@@ -883,5 +885,9 @@
 	//Time Book
 	"timeBook.lostworlds.doesnt_work": "Time doesn't exist in this dimension!",
 	"timeBook.lostworlds.transport_to_overworld": "Transporting you back home!",
-	"timeBook.lostworlds.transport_to_permian_period": "Transporting you to the permian!"
+	"timeBook.lostworlds.transport_to_permian_period": "Transporting you to the permian!",
+	
+	//Map
+	"filled_map.surface_fossil": "Fossil Map",
+	"filled_map.subterranean_fossil": "Fossil Map"
 }

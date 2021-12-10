@@ -1,0 +1,10 @@
+{
+	"type": "lostworlds:fossil_grinder",
+	"output": {
+		"item": "lostworlds:palaeoniscum_soft_tissue"
+	},
+	"fossil": {
+		"item": "lostworlds:palaeoniscum_body"
+	},
+	"plant": false
+}

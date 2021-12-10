@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:analyzer",
+	"output": {
+		"item": "lostworlds:eoraptor_dna_disc"
+	},
+	"dna": {
+		"item": "lostworlds:eoraptor_dna"
+	}
+}

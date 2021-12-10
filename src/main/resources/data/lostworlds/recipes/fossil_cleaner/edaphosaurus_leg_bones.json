@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:edaphosaurus_leg_bones"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_edaphosaurus_leg_bones"
+	}
+}

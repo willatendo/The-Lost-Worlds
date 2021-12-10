@@ -50,7 +50,7 @@ public enum DinoTypes implements IStringSerializable
 	OSTROMIA("ostromia", EntityInit.OSTROMIA, false, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x47a373, 0x47a373, 0x2c4d86, 2, 4, 0.2F, 0.3F),
 	OURANOSAURUS("ouranosaurus", EntityInit.OURANOSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x999554, 0x999554, 0x90bdb4, 7, 10, 0.5F, 0.76F),
 	PALAEONISCUM("palaeoniscum", EntityInit.PALAEONISCUM, false, false, false, Size.TINY, CreatureDiet.NONE, 0x72797a, 0x72797a, 0x2f3a3d, 2, 5, 0.3F, 0.5F),
-	PROCOMPSOGNATHUS("procompsognathus", EntityInit.PROCOMPSOGNATHUS, false, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x445a2f, 0x445a2f, 0x404727, 1, 2, 0.1F, 0.2F),
+	PROCOMPSOGNATHUS("procompsognathus", EntityInit.PROCOMPSOGNATHUS, true, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x445a2f, 0x445a2f, 0x404727, 1, 2, 0.1F, 0.2F),
 	PROTOSUCHUS("protosuchus", EntityInit.PROTOSUCHUS, true, false, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x8e2317, 0x8e2317, 0xb0492e, 3, 5, 0.3F, 0.54F),
 	PSITTACOSAURUS("psittacosaurus", EntityInit.PSITTACOSAURUS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x4c2c21, 0x4c2c21, 0x938639, 3, 5, 0.3F, 0.54F),
 	RHINESUCHUS("rhinesuchus", EntityInit.RHINESUCHUS, false, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0x576b54, 0x576b54, 0xaf944a, 3, 5, 0.3F, 0.54F),
@@ -80,7 +80,12 @@ public enum DinoTypes implements IStringSerializable
 	private EntityType<FossilEntity> ribCage;
 	private EntityType<FossilEntity> tail;
 	private EntityType<FossilEntity> skeleton;
+	private EntityType<FossilEntity> dirtyExoskeleton;
+	private EntityType<FossilEntity> exoskeleton;
+	private EntityType<FossilEntity> dirtyBody;
+	private EntityType<FossilEntity> body;
 	private Block egg;
+	private Block extraBlock;
 	private Item skeletonPick;
 	private Item dna;
 	private Item bloodSample;
@@ -184,6 +189,26 @@ public enum DinoTypes implements IStringSerializable
 		return this.skeleton = entity;
 	}
 	
+	public EntityType<FossilEntity> setDirtyExoskeleton(EntityType<FossilEntity> entity)
+	{
+		return this.dirtyExoskeleton = entity;
+	}
+	
+	public EntityType<FossilEntity> setExoskeleton(EntityType<FossilEntity> entity)
+	{
+		return this.exoskeleton = entity;
+	}
+	
+	public EntityType<FossilEntity> setDirtyBody(EntityType<FossilEntity> entity)
+	{
+		return this.dirtyBody = entity;
+	}
+	
+	public EntityType<FossilEntity> setBody(EntityType<FossilEntity> entity)
+	{
+		return this.body = entity;
+	}
+	
 	public Item setSkeletonPick(Item item)
 	{
 		return this.skeletonPick = item;
@@ -249,6 +274,26 @@ public enum DinoTypes implements IStringSerializable
 		return this.skeleton;
 	}
 	
+	public EntityType<FossilEntity> getDirtyExoskeleton()
+	{
+		return this.dirtyExoskeleton;
+	}
+	
+	public EntityType<FossilEntity> getExoskeleton()
+	{
+		return this.exoskeleton;
+	}
+
+	public EntityType<FossilEntity> getDirtyBody()
+	{
+		return this.dirtyBody;
+	}
+
+	public EntityType<FossilEntity> getBody()
+	{
+		return this.body;
+	}
+	
 	public Item setMeat(Item meat)
 	{
 		return this.meat = meat;
@@ -287,6 +332,16 @@ public enum DinoTypes implements IStringSerializable
 	public Item getSpawn()
 	{
 		return this.spawn;
+	}
+	
+	public Block setExtraBlock(Block extraBlock)
+	{
+		return this.extraBlock = extraBlock;
+	}
+	
+	public Block getExtraBlock()
+	{
+		return this.extraBlock;
 	}
 	
 	public Block setEgg(Block egg)

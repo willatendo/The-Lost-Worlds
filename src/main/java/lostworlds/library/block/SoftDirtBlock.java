@@ -31,7 +31,7 @@ public class SoftDirtBlock extends Block
 	public void spawnAfterBreak(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) 
 	{
 		Random rand = new Random();
-		int drop = rand.nextInt(4);
+		int drop = rand.nextInt(5);
 		if(drop == 0)
 		{
 			Egg egg = state.getValue(EGG);
@@ -64,6 +64,10 @@ public class SoftDirtBlock extends Block
 		{
 			int feather = rand.nextInt(DinoTypes.feathered().size());
 			this.popResource(world, pos, DinoTypes.feathered().get(feather).getFeather().getDefaultInstance());
+		}
+		else if(drop == 4)
+		{
+			this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().asItem().getDefaultInstance());
 		}
 	}
 

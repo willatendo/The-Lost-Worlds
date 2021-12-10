@@ -1,0 +1,10 @@
+{
+	"replace": false,
+	"values": [
+		"lostworlds:gorgonops_rib_cage",
+		"lostworlds:gorgonops_leg_bones",
+		"lostworlds:gorgonops_arm_bones",
+		"lostworlds:gorgonops_tail",
+		"lostworlds:gorgonops_skull"
+	]
+}

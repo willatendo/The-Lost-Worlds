@@ -1,0 +1,10 @@
+{
+	"replace": false,
+	"values": [
+		"lostworlds:eoraptor_rib_cage",
+		"lostworlds:eoraptor_leg_bones",
+		"lostworlds:eoraptor_arm_bones",
+		"lostworlds:eoraptor_tail",
+		"lostworlds:eoraptor_skull"
+	]
+}

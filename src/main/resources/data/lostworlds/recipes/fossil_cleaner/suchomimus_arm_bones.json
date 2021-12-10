@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:suchomimus_arm_bones"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_suchomimus_arm_bones"
+	}
+}

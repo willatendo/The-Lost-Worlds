@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_injector",
+	"output": {
+		"item": "lostworlds:gorgonops_egg"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:gorgonops_dna_disc"
+	}
+}

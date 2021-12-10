@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_extractor",
+	"output": {
+		"item": "lostworlds:zephyrosaurus_dna"
+	},
+	"softTissue": {
+		"item": "lostworlds:zephyrosaurus_soft_tissue"
+	}
+}

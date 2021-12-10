@@ -1,0 +1,10 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:tetraceratops_arm_bones"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_tetraceratops_arm_bones"
+	}
+}
+z

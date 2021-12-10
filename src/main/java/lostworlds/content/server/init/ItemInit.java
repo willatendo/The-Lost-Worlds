@@ -264,6 +264,19 @@ public class ItemInit
 				Item skeleton = ModRegistry.register(dinos.name().toLowerCase() + "_skeleton", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "skeleton")));
 				dinos.setSkeletonPick(skeleton);
 			}
+						
+			if(dinos == DinoTypes.ANOMALOCARIS)
+			{
+				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_exoskeleton", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getExoskeleton(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "exoskeleton")));
+				ModRegistry.register(dinos.name().toLowerCase() + "_exoskeleton", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getExoskeleton(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "exoskeleton")));
+			}
+			
+			if(dinos == DinoTypes.PALAEONISCUM)
+			{
+				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_body", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getExoskeleton(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "body")));
+				ModRegistry.register(dinos.name().toLowerCase() + "_body", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getExoskeleton(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "body")));
+			}
+			
 			if(dinos.feathered().contains(dinos))
 			{
 				Item feather = ModRegistry.register(dinos.name().toLowerCase() + "_feather", new FeatherItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));

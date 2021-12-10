@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:analyzer",
+	"output": {
+		"item": "lostworlds:gorgonops_dna_disc"
+	},
+	"dna": {
+		"item": "lostworlds:gorgonops_dna"
+	}
+}

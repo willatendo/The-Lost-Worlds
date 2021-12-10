@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:utahraptor_rib_cage"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_utahraptor_rib_cage"
+	}
+}

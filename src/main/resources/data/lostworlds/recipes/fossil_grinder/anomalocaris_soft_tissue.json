@@ -1,0 +1,10 @@
+{
+	"type": "lostworlds:fossil_grinder",
+	"output": {
+		"item": "lostworlds:anomalocaris_soft_tissue"
+	},
+	"fossil": {
+		"item": "lostworlds:anomalocaris_exoskeleton"
+	},
+	"plant": false
+}

@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_injector",
+	"output": {
+		"item": "lostworlds:tetraceratops_egg"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:tetraceratops_dna_disc"
+	}
+}

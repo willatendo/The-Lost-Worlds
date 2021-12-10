@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_injector",
+	"output": {
+		"item": "lostworlds:zephyrosaurus_egg"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:zephyrosaurus_dna_disc"
+	}
+}

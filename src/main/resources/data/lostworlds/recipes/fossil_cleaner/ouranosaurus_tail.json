@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:ouranosaurus_tail"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_ouranosaurus_tail"
+	}
+}

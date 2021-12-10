@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_injector",
+	"output": {
+		"item": "lostworlds:suchomimus_egg"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:suchomimus_dna_disc"
+	}
+}

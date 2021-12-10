@@ -1,0 +1,10 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:zephyrosaurus_arm_bones"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_zephyrosaurus_arm_bones"
+	}
+}
+z

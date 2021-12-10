@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:zephyrosaurus_rib_cage"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_zephyrosaurus_rib_cage"
+	}
+}

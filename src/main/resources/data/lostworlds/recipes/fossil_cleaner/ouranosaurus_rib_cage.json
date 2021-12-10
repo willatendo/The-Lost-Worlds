@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:ouranosaurus_rib_cage"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_ouranosaurus_rib_cage"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:fossil_cleaner",
+	"output": {
+		"item": "lostworlds:psittacosaurus_rib_cage"
+	},
+	"fossil": {
+		"item": "lostworlds:plastered_psittacosaurus_rib_cage"
+	}
+}

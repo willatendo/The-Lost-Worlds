@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_injector",
+	"output": {
+		"item": "lostworlds:great_auk_egg"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:great_auk_dna_disc"
+	}
+}

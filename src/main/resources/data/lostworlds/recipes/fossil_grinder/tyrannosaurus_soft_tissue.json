@@ -1,0 +1,10 @@
+{
+	"type": "lostworlds:fossil_grinder",
+	"output": {
+		"item": "lostworlds:tyrannosaurus_soft_tissue"
+	},
+	"fossil": {
+		"tag": "lostworlds:tyrannosaurus_fossils"
+	},
+	"plant": false
+}

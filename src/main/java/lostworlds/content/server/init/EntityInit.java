@@ -106,16 +106,20 @@ public class EntityInit
 	{
 		for(DinoTypes dinos : DinoTypes.values())
 		{
-			event.put(dinos.getDirtyArmBones(), FossilEntity.createAttributes());
-			event.put(dinos.getDirtyLegBones(), FossilEntity.createAttributes());
-			event.put(dinos.getDirtyRibCage(), FossilEntity.createAttributes());
-			event.put(dinos.getDirtySkull(),FossilEntity.createAttributes());
-			event.put(dinos.getDirtyTail(), FossilEntity.createAttributes());
-			event.put(dinos.getArmBones(), FossilEntity.createAttributes());
-			event.put(dinos.getLegBones(), FossilEntity.createAttributes());
-			event.put(dinos.getRibCage(), FossilEntity.createAttributes());
-			event.put(dinos.getSkull(),FossilEntity.createAttributes());
-			event.put(dinos.getTail(), FossilEntity.createAttributes());
+			if(dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS)
+			{
+				event.put(dinos.getDirtyArmBones(), FossilEntity.createAttributes());
+				event.put(dinos.getDirtyLegBones(), FossilEntity.createAttributes());
+				event.put(dinos.getDirtyRibCage(), FossilEntity.createAttributes());
+				event.put(dinos.getDirtySkull(),FossilEntity.createAttributes());
+				event.put(dinos.getDirtyTail(), FossilEntity.createAttributes());
+				event.put(dinos.getArmBones(), FossilEntity.createAttributes());
+				event.put(dinos.getLegBones(), FossilEntity.createAttributes());
+				event.put(dinos.getRibCage(), FossilEntity.createAttributes());
+				event.put(dinos.getSkull(),FossilEntity.createAttributes());
+				event.put(dinos.getTail(), FossilEntity.createAttributes());
+			}
+			
 		}
 		
 		
@@ -192,39 +196,59 @@ public class EntityInit
 	{
 		ModUtils.LOGGER.debug("Registering Mod Enitites"); 
 		
-		for(DinoTypes dinoType : DinoTypes.values())
+		
+		for(DinoTypes dinos : DinoTypes.values())
 		{
-			EntityType<FossilEntity> dirtyskull = ModRegistry.register("dirty_" + dinoType.toString().toLowerCase() + "_skull", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setDirtySkull(dirtyskull);
-			EntityType<FossilEntity> dirtyarmbones = ModRegistry.register("dirty_" + dinoType.toString().toLowerCase() + "_arm_bones", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setDirtyArmBones(dirtyarmbones);
-			EntityType<FossilEntity> dirtylegbones = ModRegistry.register("dirty_" + dinoType.toString().toLowerCase() + "_leg_bones", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setDirtyLegBones(dirtylegbones);
-			EntityType<FossilEntity> dirtyribcage = ModRegistry.register("dirty_" + dinoType.toString().toLowerCase() + "_rib_cage", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setDirtyRibCage(dirtyribcage);
-			EntityType<FossilEntity> dirtytail = ModRegistry.register("dirty_" + dinoType.toString().toLowerCase() + "_tail", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setDirtyTail(dirtytail);
-			EntityType<FossilEntity> skull = ModRegistry.register(dinoType.toString().toLowerCase() + "_skull", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setSkull(skull);
-			EntityType<FossilEntity> arm_bones = ModRegistry.register(dinoType.toString().toLowerCase() + "_arm_bones", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setArmBones(arm_bones);
-			EntityType<FossilEntity> leg_bones = ModRegistry.register(dinoType.toString().toLowerCase() + "_leg_bones", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setLegBones(leg_bones);
-			EntityType<FossilEntity> rib_cage = ModRegistry.register(dinoType.toString().toLowerCase() + "_rib_cage", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setRibCage(rib_cage);
-			EntityType<FossilEntity> tail = ModRegistry.register(dinoType.toString().toLowerCase() + "_tail", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-			dinoType.setTail(tail);
-			if(dinoType == DinoTypes.KENTROSAURUS)
+			if(dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS)
 			{
-				dinoType.setSkeleton(KENTROSAURUS_SKELETON);
+				EntityType<FossilEntity> dirtyskull = ModRegistry.register("dirty_" + dinos.toString().toLowerCase() + "_skull", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setDirtySkull(dirtyskull);
+				EntityType<FossilEntity> dirtyarmbones = ModRegistry.register("dirty_" + dinos.toString().toLowerCase() + "_arm_bones", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setDirtyArmBones(dirtyarmbones);
+				EntityType<FossilEntity> dirtylegbones = ModRegistry.register("dirty_" + dinos.toString().toLowerCase() + "_leg_bones", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setDirtyLegBones(dirtylegbones);
+				EntityType<FossilEntity> dirtyribcage = ModRegistry.register("dirty_" + dinos.toString().toLowerCase() + "_rib_cage", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setDirtyRibCage(dirtyribcage);
+				EntityType<FossilEntity> dirtytail = ModRegistry.register("dirty_" + dinos.toString().toLowerCase() + "_tail", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setDirtyTail(dirtytail);
+				EntityType<FossilEntity> skull = ModRegistry.register(dinos.toString().toLowerCase() + "_skull", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setSkull(skull);
+				EntityType<FossilEntity> arm_bones = ModRegistry.register(dinos.toString().toLowerCase() + "_arm_bones", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setArmBones(arm_bones);
+				EntityType<FossilEntity> leg_bones = ModRegistry.register(dinos.toString().toLowerCase() + "_leg_bones", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setLegBones(leg_bones);
+				EntityType<FossilEntity> rib_cage = ModRegistry.register(dinos.toString().toLowerCase() + "_rib_cage", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setRibCage(rib_cage);
+				EntityType<FossilEntity> tail = ModRegistry.register(dinos.toString().toLowerCase() + "_tail", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setTail(tail);
+				if(dinos == DinoTypes.KENTROSAURUS)
+				{
+					dinos.setSkeleton(KENTROSAURUS_SKELETON);
+				}
+				if(dinos == DinoTypes.CHILESAURUS)
+				{
+					dinos.setSkeleton(CHILESAURUS_SKELETON);
+				}
+				else
+				{
+					dinos.setSkeleton(KENTROSAURUS_SKELETON);
+				}
 			}
-			if(dinoType == DinoTypes.CHILESAURUS)
+			
+			if(dinos == DinoTypes.ANOMALOCARIS)
 			{
-				dinoType.setSkeleton(CHILESAURUS_SKELETON);
+				EntityType<FossilEntity> dirtyExoskeleton = ModRegistry.register("dirty_" + dinos.toString().toLowerCase() + "_exoskeleton", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setDirtyExoskeleton(dirtyExoskeleton);
+				EntityType<FossilEntity> exoskeleton = ModRegistry.register(dinos.toString().toLowerCase() + "_exoskeleton", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setExoskeleton(exoskeleton);
 			}
-			else
+			
+			if(dinos == DinoTypes.PALAEONISCUM)
 			{
-				dinoType.setSkeleton(KENTROSAURUS_SKELETON);
+				EntityType<FossilEntity> dirtyBody = ModRegistry.register("dirty_" + dinos.toString().toLowerCase() + "_body", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setDirtyBody(dirtyBody);
+				EntityType<FossilEntity> body = ModRegistry.register(dinos.toString().toLowerCase() + "_body", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
+				dinos.setBody(body);
 			}
 		}
 	}

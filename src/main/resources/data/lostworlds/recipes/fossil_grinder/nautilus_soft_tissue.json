@@ -1,0 +1,10 @@
+{
+	"type": "lostworlds:fossil_grinder",
+	"output": {
+		"item": "lostworlds:nautilus_soft_tissue"
+	},
+	"fossil": {
+		"tag": "lostworlds:nautilus_fossils"
+	},
+	"plant": false
+}
