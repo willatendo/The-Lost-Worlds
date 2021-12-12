@@ -4,6 +4,7 @@ import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
 import lostworlds.library.block.Plants;
 import lostworlds.library.block.Trees;
+import lostworlds.library.block.utils.Foods;
 import lostworlds.library.container.recipes.RecipeManager;
 import lostworlds.library.entity.utils.enums.DinoTypes;
 import lostworlds.library.entity.utils.enums.TimeEras;
@@ -349,5 +350,6 @@ public class ItemInit
 		}
 		
 		RecipeManager.initAlternateRecipes();
+		Foods.init();
 	}
 }

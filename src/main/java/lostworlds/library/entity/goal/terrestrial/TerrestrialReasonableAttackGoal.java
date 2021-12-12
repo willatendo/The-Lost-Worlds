@@ -1,13 +1,14 @@
 package lostworlds.library.entity.goal.terrestrial;
 
-import lostworlds.library.entity.terrestrial.CarnivoreEntity;
+import lostworlds.library.entity.terrestrial.EggLayingEntity;
+import net.minecraft.entity.IAngerable;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 
 public class TerrestrialReasonableAttackGoal extends MeleeAttackGoal
 {
-	private final CarnivoreEntity entity;
+	private final EggLayingEntity entity;
 	
-	public TerrestrialReasonableAttackGoal(CarnivoreEntity entity, double speedModifier) 
+	public TerrestrialReasonableAttackGoal(EggLayingEntity entity, double speedModifier) 
 	{
 		super(entity, speedModifier, false);
 		this.entity = entity;
@@ -16,6 +17,21 @@ public class TerrestrialReasonableAttackGoal extends MeleeAttackGoal
 	@Override
 	public boolean canUse() 
 	{
-		return this.entity.isHungry() ? super.canUse() : false;
+		if(this.entity.isHungry())
+		{
+			return super.canUse();
+		}
+		else if(this.entity instanceof IAngerable)
+		{
+			if(((IAngerable) this.entity).isAngry())
+			{
+				return super.canUse();
+			}
+		}
+		else
+		{
+			return false;
+		}
+		return false;
 	}
 }

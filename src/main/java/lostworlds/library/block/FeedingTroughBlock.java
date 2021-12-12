@@ -29,7 +29,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 public class FeedingTroughBlock extends Block 
 {
-	private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 8, 16);
+	private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 9, 16);
 	public static final EnumProperty<CreatureDiet> DIET = EnumProperty.create("diet", CreatureDiet.class);
 		
 	public FeedingTroughBlock(Properties properties) 

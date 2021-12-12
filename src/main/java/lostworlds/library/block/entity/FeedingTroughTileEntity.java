@@ -2,10 +2,7 @@ package lostworlds.library.block.entity;
 
 import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.TileEntityInit;
-import lostworlds.library.block.FeedingTroughBlock;
 import lostworlds.library.container.FeedingTroughContainer;
-import lostworlds.library.container.slot.FeedingTroughSlot;
-import lostworlds.library.entity.utils.enums.CreatureDiet;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -21,7 +18,7 @@ import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 
-public class FeedingTroughTileEntity extends LockableLootTileEntity implements INamedContainerProvider, ITickableTileEntity 
+public class FeedingTroughTileEntity extends LockableLootTileEntity implements INamedContainerProvider, ITickableTileEntity
 {
 	protected NonNullList<ItemStack> items = NonNullList.withSize(1, ItemStack.EMPTY);
 
@@ -160,40 +157,6 @@ public class FeedingTroughTileEntity extends LockableLootTileEntity implements I
 	@Override
 	public void tick() 
 	{
-		boolean flag = this.hasItems();
-		boolean flag1 = false;
-
-		if(!this.level.isClientSide) 
-		{
-			ItemStack itemstack = this.items.get(0);
-			if(flag) 
-			{
-				if(flag != this.hasItems()) 
-				{
-					flag1 = true;
-					if(FeedingTroughSlot.HERBIVORE_FOODS.contains(itemstack.getItem())) 
-					{
-						this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(FeedingTroughBlock.DIET, CreatureDiet.HERBIVORE), 3);
-					} 
-					else if(FeedingTroughSlot.CARNIVORE_FOODS.contains(itemstack.getItem())) 
-					{
-						this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(FeedingTroughBlock.DIET, CreatureDiet.CARNIVORE), 3);
-					} 
-					else if(FeedingTroughSlot.INSECTIVORE_FOODS.contains(itemstack.getItem())) 
-					{
-						this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(FeedingTroughBlock.DIET, CreatureDiet.INSECTIVORE), 3);
-					} 
-					else if(FeedingTroughSlot.PISCAVORE_FOODS.contains(itemstack.getItem())) 
-					{
-						this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(FeedingTroughBlock.DIET, CreatureDiet.PISCIVORE), 3);
-					}
-				}
-			}
-		}
-
-		if(flag1) 
-		{
-			this.setChanged();
-		}
+		
 	}
 }

@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:analyzer",
+	"output": {
+		"item": "lostworlds:procompsognathus_dna_disc"
+	},
+	"dna": {
+		"item": "lostworlds:procompsognathus_dna"
+	}
+}

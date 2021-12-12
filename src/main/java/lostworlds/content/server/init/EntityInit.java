@@ -92,7 +92,7 @@ public class EntityInit
 	public static final EntityType<SuchomimusEntity> SUCHOMIMUS = ModRegistry.register("suchomimus", SuchomimusEntity::new, EntityClassification.CREATURE, 1.5F, 1.5F);
 	public static final EntityType<UtahraptorEntity> UTAHRAPTOR = ModRegistry.register("utahraptor", UtahraptorEntity::new, EntityClassification.CREATURE, 1.5F, 1.0F);
 	public static final EntityType<TetraceratopsEntity> TETRACERATOPS = ModRegistry.register("tetraceratops", TetraceratopsEntity::new, EntityClassification.CREATURE, 0.75F, 0.5F);
-	public static final EntityType<TyrannosaurusEntity> TYRANNOSAURUS = ModRegistry.register("tyrannosaurus", TyrannosaurusEntity::new, EntityClassification.CREATURE, 4.75F, 2.5F);
+	public static final EntityType<TyrannosaurusEntity> TYRANNOSAURUS = ModRegistry.register("tyrannosaurus", TyrannosaurusEntity::new, EntityClassification.CREATURE, 2.75F, 2.5F);
 	public static final EntityType<ZephyrosaurusEntity> ZEPHYROSAURUS = ModRegistry.register("zephyrosaurus", ZephyrosaurusEntity::new, EntityClassification.CREATURE, 0.5F, 0.5F);
 	
 	@SubscribeEvent

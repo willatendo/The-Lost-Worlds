@@ -1,0 +1,9 @@
+{
+	"type": "lostworlds:dna_injector",
+	"output": {
+		"item": "lostworlds:procompsognathus_egg"
+	},
+	"dnaDisc": {
+		"item": "lostworlds:procompsognathus_dna_disc"
+	}
+}

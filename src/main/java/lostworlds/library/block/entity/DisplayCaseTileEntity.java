@@ -139,7 +139,8 @@ public class DisplayCaseTileEntity extends LockableLootTileEntity implements INa
 	}
 
 	@Override
-	public void handleUpdateTag(BlockState state, CompoundNBT nbt) {
+	public void handleUpdateTag(BlockState state, CompoundNBT nbt) 
+	{
 		load(state, nbt);
 	}
 	

@@ -1,7 +1,34 @@
 {
 	"replace": false,
 	"values": [
+		"lostworlds:allosaurus_soft_tissue",
+		"lostworlds:anomalocaris_soft_tissue",
+		"lostworlds:carnotaurus_soft_tissue",
 		"lostworlds:chilesaurus_soft_tissue",
-		"lostworlds:kentrosaurus_soft_tissue"
+		"lostworlds:cryolophosaurus_soft_tissue",
+		"lostworlds:diictodon_soft_tissue",
+		"lostworlds:dilophosaurus_soft_tissue",
+		"lostworlds:dimetrodon_soft_tissue",
+		"lostworlds:eoraptor_soft_tissue",
+		"lostworlds:edaphosaurus_soft_tissue",
+		"lostworlds:fukuivenator_soft_tissue",
+		"lostworlds:giganotosaurus_soft_tissue",
+		"lostworlds:gorgonops_soft_tissue",
+		"lostworlds:great_auk_soft_tissue",
+		"lostworlds:kentrosaurus_soft_tissue",
+		"lostworlds:liaoningosaurus_soft_tissue",
+		"lostworlds:nautilus_soft_tissue",
+		"lostworlds:ophthalmosaurus_soft_tissue",
+		"lostworlds:ostromia_soft_tissue",
+		"lostworlds:ouranosaurus_soft_tissue",
+		"lostworlds:procompsognathus_soft_tissue",
+		"lostworlds:protosuchus_soft_tissue",
+		"lostworlds:psittacosaurus_soft_tissue",
+		"lostworlds:rhinesuchus_soft_tissue",
+		"lostworlds:suchomimus_soft_tissue",
+		"lostworlds:tetraceratops_soft_tissue",
+		"lostworlds:tyrannosaurus_soft_tissue",
+		"lostworlds:utahraptor_soft_tissue",
+		"lostworlds:zephyrosaurus_soft_tissue"
 	]
 }
