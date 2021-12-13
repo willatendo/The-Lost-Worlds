@@ -71,8 +71,8 @@ public class EntityInit
 	public static final EntityType<DiictodonEntity> DIICTODON = ModRegistry.register("diictodon", DiictodonEntity::new, EntityClassification.CREATURE, 0.25F, 0.25F);
 	public static final EntityType<DilophosaurusEntity> DILOPHOSAURUS = ModRegistry.register("dilophosaurus", DilophosaurusEntity::new, EntityClassification.CREATURE, 1.5F, 1.5F);
 	public static final EntityType<DimetrodonEntity> DIMETRODON = ModRegistry.register("dimetrodon", DimetrodonEntity::new, EntityClassification.CREATURE, 1.5F, 1.5F);
-	public static final EntityType<EoraptorEntity> EORAPTOR = ModRegistry.register("eoraptor", EoraptorEntity::new, EntityClassification.CREATURE, 0.5F, 0.5F);
 	public static final EntityType<EdaphosaurusEntity> EDAPHOSAURUS = ModRegistry.register("edaphosaurus", EdaphosaurusEntity::new, EntityClassification.CREATURE, 1.0F, 1.0F);
+	public static final EntityType<EoraptorEntity> EORAPTOR = ModRegistry.register("eoraptor", EoraptorEntity::new, EntityClassification.CREATURE, 0.5F, 0.5F);
 	public static final EntityType<FukuivenatorEntity> FUKUIVENATOR = ModRegistry.register("fukuivenator", FukuivenatorEntity::new, EntityClassification.CREATURE, 0.5F, 0.5F);
 	public static final EntityType<GiganotosaurusEntity> GIGANOTOSAURUS = ModRegistry.register("giganotosaurus", GiganotosaurusEntity::new, EntityClassification.CREATURE, 4.0F, 2.5F);
 	public static final EntityType<GorgonopsEntity> GORGONOPS = ModRegistry.register("gorgonops", GorgonopsEntity::new, EntityClassification.CREATURE, 1.0F, 1.0F);

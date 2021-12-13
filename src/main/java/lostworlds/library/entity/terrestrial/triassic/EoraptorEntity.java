@@ -11,6 +11,9 @@ import lostworlds.library.entity.goal.terrestrial.SleepySwimGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepyTemptGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepyWaterAvoidingRandomWalkingGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialCreateTerritoryGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialEatGrassGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialEatMossySoilGoal;
+import lostworlds.library.entity.goal.terrestrial.TerrestrialEatPodzolGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialReasonableAttackGoal;
@@ -18,6 +21,7 @@ import lostworlds.library.entity.terrestrial.CarnivoreEntity;
 import lostworlds.library.entity.utils.FoodLists;
 import lostworlds.library.entity.utils.enums.ActivityType;
 import lostworlds.library.entity.utils.enums.DinoTypes;
+import lostworlds.library.util.IngredientUtil;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -35,7 +39,7 @@ import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
 public class EoraptorEntity extends CarnivoreEntity
 {
-	private static final Ingredient FOOD_ITEMS = FoodLists.CARNIVORE;
+	private static final Ingredient FOOD_ITEMS = IngredientUtil.combine(FoodLists.CARNIVORE, FoodLists.HERBIVORE);
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
 	
 	public EoraptorEntity(EntityType<? extends EoraptorEntity> entity, World world) 
@@ -57,6 +61,9 @@ public class EoraptorEntity extends CarnivoreEntity
 		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialReasonableAttackGoal(this, 1.2F));
+		this.goalSelector.addGoal(4, new TerrestrialEatGrassGoal(this));
+		this.goalSelector.addGoal(4, new TerrestrialEatPodzolGoal(this));
+		this.goalSelector.addGoal(4, new TerrestrialEatMossySoilGoal(this));
 		this.goalSelector.addGoal(5, new SleepGoal(this));
 		this.goalSelector.addGoal(5, new TerrestrialCreateTerritoryGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new NaturalBreedingGoal.Egg(this, 1.0D));

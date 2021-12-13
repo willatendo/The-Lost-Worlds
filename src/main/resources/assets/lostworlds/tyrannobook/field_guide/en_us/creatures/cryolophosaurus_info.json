@@ -1,0 +1,35 @@
+{
+	"text": [
+		{
+			"text": "Danger: Timid"
+		},
+		{
+			"text": "Diet: Carnivore", 
+			"paragraph": true
+		},
+		{
+			"text": "Range: Jurassic - 190-186 mya", 
+			"paragraph": true
+		},
+		{
+			"text": "Clade: Dinosauria", 
+			"paragraph": true
+		},
+		{
+			"text": "Clade: Eusaurischia", 
+			"paragraph": true
+		},
+		{
+			"text": "Clade: Theropoda", 
+			"paragraph": true
+		},
+		{
+			"text": "Clade: Neotheropoda", 
+			"paragraph": true
+		},
+		{
+			"text": "Genus: Cryolophosaurus", 
+			"paragraph": true
+		}
+	]
+}
