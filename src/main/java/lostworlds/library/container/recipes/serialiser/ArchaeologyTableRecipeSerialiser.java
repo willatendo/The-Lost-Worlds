@@ -47,11 +47,11 @@ public class ArchaeologyTableRecipeSerialiser extends ForgeRegistryEntry<IRecipe
 		buffer.writeVarInt(recipe.width);
 		buffer.writeVarInt(recipe.height);
 
+		buffer.writeItem(recipe.result);
+
 		for(Ingredient ingredient : recipe.recipeItems) 
 		{
 			ingredient.toNetwork(buffer);
 		}
-
-		buffer.writeItem(recipe.result);
 	}
 }

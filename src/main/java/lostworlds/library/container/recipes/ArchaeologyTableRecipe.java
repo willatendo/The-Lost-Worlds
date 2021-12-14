@@ -67,7 +67,7 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 	@Override
 	public IRecipeSerializer<?> getSerializer() 
 	{
-		return RecipeInit.AMBER_DNA_EXTRACTOR_SERIALIZER;
+		return RecipeInit.ARCHAEOLOGY_TABLE_SERIALIZER;
 	}
 
 	@Override

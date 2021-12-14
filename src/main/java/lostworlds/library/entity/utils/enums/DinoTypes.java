@@ -47,7 +47,7 @@ public enum DinoTypes implements IStringSerializable
 	LIAONINGOSAURUS("liaoningosaurus", EntityInit.LIAONINGOSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x712d0d, 0x712d0d, 0x7c8237, 4, 7, 0.45F, 0.68F),
 	NAUTILUS("nautilus", EntityInit.NAUTILUS, false, false, false, Size.SMALL, CreatureDiet.NONE, 0xd4ccc3, 0xd4ccc3, 0xca7548, 2, 5, 0.3F, 0.5F),
 	OPHTHALMOSAURUS("ophthalmosaurus", EntityInit.OPHTHALMOSAURUS, false, false, false, Size.MEDIUM, CreatureDiet.PISCIVORE, 0x858794, 0x858794, 0x0e131b, 4, 7, 0.4F, 0.6F),
-	OSTROMIA("ostromia", EntityInit.OSTROMIA, false, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x47a373, 0x47a373, 0x2c4d86, 2, 4, 0.2F, 0.3F),
+	OSTROMIA("ostromia", EntityInit.OSTROMIA, true, true, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x47a373, 0x47a373, 0x2c4d86, 2, 4, 0.2F, 0.3F),
 	OURANOSAURUS("ouranosaurus", EntityInit.OURANOSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x999554, 0x999554, 0x90bdb4, 7, 10, 0.5F, 0.76F),
 	PALAEONISCUM("palaeoniscum", EntityInit.PALAEONISCUM, false, false, false, Size.TINY, CreatureDiet.NONE, 0x72797a, 0x72797a, 0x2f3a3d, 2, 5, 0.3F, 0.5F),
 	PROCOMPSOGNATHUS("procompsognathus", EntityInit.PROCOMPSOGNATHUS, true, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x445a2f, 0x445a2f, 0x404727, 1, 2, 0.1F, 0.2F),
