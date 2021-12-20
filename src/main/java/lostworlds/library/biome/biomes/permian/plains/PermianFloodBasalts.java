@@ -9,14 +9,14 @@ import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.biome.ParticleEffectAmbience;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilders;
-import tyrannotitanlib.library.base.biome.BaseBiomes;
+import tyrannotitanlib.library.base.biome.BaseBiomeInfo;
 import tyrannotitanlib.library.base.biome.TyrannoBiome;
 
 public class PermianFloodBasalts extends TyrannoBiome
 {
 	public static final BiomeGenerationSettings.Builder GENERATION = new BiomeGenerationSettings.Builder();
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
-	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomes.BASE_WATER_COLOUR).waterFogColor(BaseBiomes.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomes.BASE_FOG_COLOUR).skyColor(calculateSkyColor(5.0F)).ambientParticle(new ParticleEffectAmbience(ParticleTypes.ASH, 0.0625F));
+	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomeInfo.BASE_WATER_COLOUR).waterFogColor(BaseBiomeInfo.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomeInfo.BASE_FOG_COLOUR).skyColor(calculateSkyColor(5.0F)).ambientParticle(new ParticleEffectAmbience(ParticleTypes.ASH, 0.0625F));
 	
 	static
 	{
@@ -27,6 +27,6 @@ public class PermianFloodBasalts extends TyrannoBiome
 	
 	public PermianFloodBasalts() 
 	{
-		super(BaseBiomes.biome(RainType.NONE, Category.PLAINS, 0.125F, 0.05F, 0.0F, 5.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+		super(BaseBiomeInfo.biome(RainType.NONE, Category.PLAINS, 0.125F, 0.05F, 0.0F, 5.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
 	}
 }
