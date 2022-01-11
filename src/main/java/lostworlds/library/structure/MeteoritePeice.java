@@ -26,30 +26,26 @@ import net.minecraft.world.gen.feature.template.PlacementSettings;
 import net.minecraft.world.gen.feature.template.Template;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
-public class MeteoritePeice 
-{
+public class MeteoritePeice {
 	public static final ArrayList<ResourceLocation> locations = new ArrayList<>();
 	public static final ResourceLocation METEORITE_LOCATION_ONE = ModUtils.rL("meteorite_1"), METEORITE_LOCATION_TWO = ModUtils.rL("meteorite_2"), METEORITE_LOCATION_THREE = ModUtils.rL("meteorite_3"), METEORITE_LOCATION_FOUR = ModUtils.rL("meteorite_4"), METEORITE_LOCATION_FIVE = ModUtils.rL("meteorite_5"), METEORITE_LOCATION_SIX = ModUtils.rL("meteorite_6");
-	
-	public static void addStructure(TemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> piece, Random rand, Biome biome) 
-	{
+
+	public static void addStructure(TemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> piece, Random rand, Biome biome) {
 		locations.add(METEORITE_LOCATION_ONE);
 		locations.add(METEORITE_LOCATION_TWO);
 		locations.add(METEORITE_LOCATION_THREE);
 		locations.add(METEORITE_LOCATION_FOUR);
 		locations.add(METEORITE_LOCATION_FIVE);
-		
+
 		int meteor = rand.nextInt(locations.size());
 		piece.add(new MeteoritePeice.Piece(manager, locations.get(meteor), pos, rotation));
 	}
-	
-	public static class Piece extends TemplateStructurePiece 
-	{
+
+	public static class Piece extends TemplateStructurePiece {
 		private final ResourceLocation templateLocation;
 		private final Rotation rotation;
 
-		public Piece(TemplateManager manager, ResourceLocation location, BlockPos pos, Rotation rotation) 
-		{
+		public Piece(TemplateManager manager, ResourceLocation location, BlockPos pos, Rotation rotation) {
 			super(StructurePieceInit.METEORITE_PIECE, 0);
 			this.templateLocation = location;
 			this.templatePosition = pos;
@@ -57,35 +53,32 @@ public class MeteoritePeice
 			this.loadTemplate(manager);
 		}
 
-		public Piece(TemplateManager manager, CompoundNBT nbt) 
-		{
+		public Piece(TemplateManager manager, CompoundNBT nbt) {
 			super(StructurePieceInit.METEORITE_PIECE, nbt);
 			this.templateLocation = new ResourceLocation(nbt.getString("Template"));
 			this.rotation = Rotation.valueOf(nbt.getString("Rot"));
 			this.loadTemplate(manager);
 		}
 
-		private void loadTemplate(TemplateManager manager)
-		{
+		private void loadTemplate(TemplateManager manager) {
 			Template template = manager.getOrCreate(this.templateLocation);
 			PlacementSettings placementsettings = (new PlacementSettings()).setRotation(this.rotation).setMirror(Mirror.NONE).addProcessor(BlockIgnoreStructureProcessor.STRUCTURE_BLOCK);
 			this.setup(template, this.templatePosition, placementsettings);
 		}
 
 		@Override
-		protected void addAdditionalSaveData(CompoundNBT nbt) 
-		{
+		protected void addAdditionalSaveData(CompoundNBT nbt) {
 			super.addAdditionalSaveData(nbt);
 			nbt.putString("Template", this.templateLocation.toString());
 			nbt.putString("Rot", this.rotation.name());
 		}
 
 		@Override
-		protected void handleDataMarker(String data, BlockPos pos, IServerWorld world, Random rand, MutableBoundingBox box) { }
+		protected void handleDataMarker(String data, BlockPos pos, IServerWorld world, Random rand, MutableBoundingBox box) {
+		}
 
 		@Override
-		public boolean postProcess(ISeedReader reader, StructureManager manager, ChunkGenerator chunkGenerator, Random rand, MutableBoundingBox box, ChunkPos chunkPos, BlockPos pos) 
-		{
+		public boolean postProcess(ISeedReader reader, StructureManager manager, ChunkGenerator chunkGenerator, Random rand, MutableBoundingBox box, ChunkPos chunkPos, BlockPos pos) {
 			BlockPos blockpos1 = this.templatePosition;
 			int i = reader.getHeight(Heightmap.Type.WORLD_SURFACE_WG, blockpos1.getX(), blockpos1.getZ());
 			BlockPos blockpos2 = this.templatePosition;

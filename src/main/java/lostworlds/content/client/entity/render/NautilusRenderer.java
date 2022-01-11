@@ -14,17 +14,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class NautilusRenderer extends TyrannomationEntityRenderer<NautilusEntity>
-{
-	public NautilusRenderer(EntityRendererManager renderManager) 
-	{
+public class NautilusRenderer extends TyrannomationEntityRenderer<NautilusEntity> {
+	public NautilusRenderer(EntityRendererManager renderManager) {
 		super(renderManager, new NautilusModel());
 		this.shadowRadius = 0.3F;
 	}
-	
+
 	@Override
-	public RenderType getRenderType(NautilusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
-	{
+	public RenderType getRenderType(NautilusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
 		return RenderType.entityTranslucent(getTextureLocation(animatable));
 	}
 }

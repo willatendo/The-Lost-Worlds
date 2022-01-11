@@ -8,23 +8,19 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
 
 @OnlyIn(Dist.CLIENT)
-public class NautilusModel extends TyrannomatedTyrannomationModel<NautilusEntity>
-{
+public class NautilusModel extends TyrannomatedTyrannomationModel<NautilusEntity> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(NautilusEntity entity) 
-	{
+	public ResourceLocation getAnimationFileLocation(NautilusEntity entity) {
 		return ModUtils.rL("animations/nautilus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(NautilusEntity entity) 
-	{
+	public ResourceLocation getModelLocation(NautilusEntity entity) {
 		return ModUtils.rL("geo/nautilus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(NautilusEntity entity) 
-	{
+	public ResourceLocation getTextureLocation(NautilusEntity entity) {
 		return ModUtils.rL("textures/model/entity/nautilus/texture.png");
 	}
 }

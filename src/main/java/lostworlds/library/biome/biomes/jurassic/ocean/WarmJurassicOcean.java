@@ -10,26 +10,22 @@ import net.minecraft.world.biome.MobSpawnInfo;
 import tyrannotitanlib.library.base.biome.BaseBiomeInfo;
 import tyrannotitanlib.library.base.biome.TyrannoBiome;
 
-public class WarmJurassicOcean extends TyrannoBiome
-{
+public class WarmJurassicOcean extends TyrannoBiome {
 	public static final BiomeGenerationSettings.Builder GENERATION = new BiomeGenerationSettings.Builder();
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomeInfo.WARM_OCEAN_WATER_COLOUR).waterFogColor(BaseBiomeInfo.WARM_OCEAN_WATER_FOG_COLOUR).fogColor(BaseBiomeInfo.BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
-	
-	static
-	{
+
+	static {
 		GENERATION.surfaceBuilder(ModSurfaceBuilders.PERMIAN_WARM_OCEAN_BUILDER);
-		
+
 		ModBiomeFeatures.jurassicCoralReef(GENERATION);
 	}
-	
-	public WarmJurassicOcean(float depth, float scale) 
-	{
+
+	public WarmJurassicOcean(float depth, float scale) {
 		super(BaseBiomeInfo.biome(RainType.RAIN, Category.OCEAN, depth, scale, 0.8F, 0.7F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
 	}
-	
-	public WarmJurassicOcean() 
-	{
+
+	public WarmJurassicOcean() {
 		this(-1.0F, 0.1F);
 	}
 }

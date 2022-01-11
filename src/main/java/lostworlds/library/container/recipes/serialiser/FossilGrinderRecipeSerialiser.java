@@ -12,21 +12,18 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class FossilGrinderRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<FossilGrinderRecipe>
-{
+public class FossilGrinderRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<FossilGrinderRecipe> {
 	@Override
-	public FossilGrinderRecipe fromJson(ResourceLocation recipeId, JsonObject json) 
-	{
+	public FossilGrinderRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 		ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
 		Ingredient fossil = Ingredient.fromJson((JSONUtils.isArrayNode(json, "fossil") ? JSONUtils.getAsJsonArray(json, "fossil") : JSONUtils.getAsJsonObject(json, "fossil")));
 		boolean plant = JSONUtils.getAsBoolean(json, "plant");
-		
+
 		return new FossilGrinderRecipe(recipeId, fossil, output, plant);
 	}
 
 	@Override
-	public FossilGrinderRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) 
-	{
+	public FossilGrinderRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 		ItemStack output = buffer.readItem();
 		Ingredient fossil = Ingredient.fromNetwork(buffer);
 		boolean plant = buffer.readBoolean();
@@ -35,8 +32,7 @@ public class FossilGrinderRecipeSerialiser extends ForgeRegistryEntry<IRecipeSer
 	}
 
 	@Override
-	public void toNetwork(PacketBuffer buffer, FossilGrinderRecipe recipe) 
-	{
+	public void toNetwork(PacketBuffer buffer, FossilGrinderRecipe recipe) {
 		buffer.writeItemStack(recipe.getResultItem(), false);
 
 		Ingredient input = recipe.getIngredients().get(0);

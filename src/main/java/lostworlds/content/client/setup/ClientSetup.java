@@ -72,65 +72,49 @@ import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
-public class ClientSetup 
-{
-	public static void blockColourSetup()
-	{
+public class ClientSetup {
+	public static void blockColourSetup() {
 		BlockColors blockcolours = Minecraft.getInstance().getBlockColors();
 		ItemColors itemcolours = Minecraft.getInstance().getItemColors();
-		
-		blockcolours.register((state, reader, pos, color) -> 
-		{
+
+		blockcolours.register((state, reader, pos, color) -> {
 			return reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : FoliageColors.getDefaultColor();
 		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.CYPRESS_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES, BlockInit.ALETHOPTERIS, BlockInit.BRAZILEA, BlockInit.CEPHALOTAXUS, BlockInit.OSMUNDA, BlockInit.WILLIAMSONIA, BlockInit.ZAMITES, BlockInit.CYCAD, BlockInit.DICKSONIA);
-		itemcolours.register((stack, colour) -> 
-		{
+		itemcolours.register((stack, colour) -> {
 			BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
 			return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, colour);
 		}, BlockInit.ARAUCARIA_LEAVES, BlockInit.CALAMITES_LEAVES, BlockInit.CONIFER_LEAVES, BlockInit.CYPRESS_LEAVES, BlockInit.GINKGO_LEAVES, BlockInit.SEQUOIA_LEAVES, BlockInit.ALETHOPTERIS, BlockInit.BRAZILEA, BlockInit.CEPHALOTAXUS, BlockInit.OSMUNDA, BlockInit.CYCAD, BlockInit.DICKSONIA);
-		
-		if(LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get())
-		{
-			for(DinoTypes types : DinoTypes.eggLaying())
-			{
-				blockcolours.register((state, reader, pos, intager) -> 
-				{
+
+		if (LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get()) {
+			for (DinoTypes types : DinoTypes.eggLaying()) {
+				blockcolours.register((state, reader, pos, intager) -> {
 					return types.getSetEggColour();
 				}, types.getEgg());
-				itemcolours.register((stack, colour) -> 
-				{
+				itemcolours.register((stack, colour) -> {
 					BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
 					return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, colour);
 				}, types.getEgg());
 			}
-		}
-		else
-		{
-			for(DinoTypes types : DinoTypes.eggLaying())
-			{
-				blockcolours.register((state, reader, pos, color) -> 
-				{
+		} else {
+			for (DinoTypes types : DinoTypes.eggLaying()) {
+				blockcolours.register((state, reader, pos, color) -> {
 					return reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : FoliageColors.getDefaultColor();
 				}, types.getEgg());
-				itemcolours.register((stack, colour) -> 
-				{
+				itemcolours.register((stack, colour) -> {
 					BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
 					return blockcolours.getColor(blockstate, (IBlockDisplayReader) null, (BlockPos) null, colour);
 				}, types.getEgg());
 			}
 		}
-		
-		for(DinoTypes types : DinoTypes.hasSpawn())
-		{
-			itemcolours.register((stack, colour) -> 
-			{
+
+		for (DinoTypes types : DinoTypes.hasSpawn()) {
+			itemcolours.register((stack, colour) -> {
 				return types.getColour(colour, 0x000000, types.getSetEggColour());
 			}, types.getSpawn());
 		}
 	}
-	
-	public static void renderSetup()
-	{
+
+	public static void renderSetup() {
 		RenderTypeLookup.setRenderLayer(BlockInit.ARCHAEFRUTUS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.POTTED_ARCHAEFRUTUS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.ALETHOPTERIS, RenderType.cutout());
@@ -157,64 +141,61 @@ public class ClientSetup
 		RenderTypeLookup.setRenderLayer(BlockInit.FOG, RenderType.translucent());
 
 		RenderTypeLookup.setRenderLayer(BlockInit.DISPLAY_CASE, RenderType.cutout());
-		
+
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_CLEANER, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.FOSSIL_GRINDER, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.DNA_EXTRACTOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.ANALYZER, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.DNA_INJECTOR, RenderType.translucent());		
-		RenderTypeLookup.setRenderLayer(BlockInit.CULTIVATOR, RenderType.translucent());		
+		RenderTypeLookup.setRenderLayer(BlockInit.DNA_INJECTOR, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.CULTIVATOR, RenderType.translucent());
 
-		RenderTypeLookup.setRenderLayer(BlockInit.PALEOBOTANY_TABLE, RenderType.cutout());		
+		RenderTypeLookup.setRenderLayer(BlockInit.PALEOBOTANY_TABLE, RenderType.cutout());
 
-		RenderTypeLookup.setRenderLayer(BlockInit.ARAUCARIA_LEAVES, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.ARAUCARIA_DOOR, RenderType.translucent());	
+		RenderTypeLookup.setRenderLayer(BlockInit.ARAUCARIA_LEAVES, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.ARAUCARIA_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.ARAUCARIA_TRAPDOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.ARAUCARIA_SAPLING, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_LEAVES, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_DOOR, RenderType.translucent());	
+		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_LEAVES, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_TRAPDOOR, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_SAPLING, RenderType.cutout());	
-		RenderTypeLookup.setRenderLayer(BlockInit.CONIFER_LEAVES, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.CONIFER_DOOR, RenderType.translucent());	
+		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_SAPLING, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.CONIFER_LEAVES, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.CONIFER_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.CONIFER_TRAPDOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.CONIFER_SAPLING, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.CYPRESS_LEAVES, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.CYPRESS_DOOR, RenderType.translucent());	
+		RenderTypeLookup.setRenderLayer(BlockInit.CYPRESS_LEAVES, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.CYPRESS_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.CYPRESS_TRAPDOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.CYPRESS_SAPLING, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_LEAVES, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_DOOR, RenderType.translucent());	
+		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_LEAVES, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_TRAPDOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.GINKGO_SAPLING, RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(BlockInit.SCORCHED_DOOR, RenderType.translucent());	
+		RenderTypeLookup.setRenderLayer(BlockInit.SCORCHED_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.SCORCHED_TRAPDOOR, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.SEQUOIA_LEAVES, RenderType.translucent());	
-		RenderTypeLookup.setRenderLayer(BlockInit.SEQUOIA_DOOR, RenderType.translucent());	
+		RenderTypeLookup.setRenderLayer(BlockInit.SEQUOIA_LEAVES, RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.SEQUOIA_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.SEQUOIA_TRAPDOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.SEQUOIA_SAPLING, RenderType.cutout());
 
-		for(Block block : ColouredGlassPaneBlock.entries)
-		{
+		for (Block block : ColouredGlassPaneBlock.entries) {
 			RenderTypeLookup.setRenderLayer(block, RenderType.translucent());
 		}
-		
-		for(Block block : ColouredGlassBlock.entries)
-		{
+
+		for (Block block : ColouredGlassBlock.entries) {
 			RenderTypeLookup.setRenderLayer(block, RenderType.translucent());
-		}	
-		
+		}
+
 		RenderTypeLookup.setRenderLayer(BlockInit.OUTDOOR_TOILET_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.GLASS_SHOP_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.VISITOR_CENTER_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.INNOVATION_CENTER_DOOR, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.SECURITY_DOOR, RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.BACK_DOOR, RenderType.translucent());		
-		
+		RenderTypeLookup.setRenderLayer(BlockInit.BACK_DOOR, RenderType.translucent());
+
 	}
-	
-	public static void screenSetup()
-	{
+
+	public static void screenSetup() {
 		ScreenManager.register(ContainerInit.FOSSIL_CLEANER_CONTAINER, FossilCleanerScreen::new);
 		ScreenManager.register(ContainerInit.FOSSIL_GRINDER_CONTAINER, FossilGrinderScreen::new);
 		ScreenManager.register(ContainerInit.DNA_EXTRACTOR_CONTAINER, DNAExtractorScreen::new);
@@ -228,9 +209,8 @@ public class ClientSetup
 		ScreenManager.register(ContainerInit.ARCHAEOLOGY_CONTAINER, ArchaeologyTableScreen::new);
 		ScreenManager.register(ContainerInit.PALEONTOLOGY_CONTAINER, PaleontologyTableScreen::new);
 	}
-	
-	public static void entityRenderSetup()
-	{
+
+	public static void entityRenderSetup() {
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.FOSSIL_POACHER, manager -> new FossilPoacherRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.MOD_BOAT, manager -> new ModBoatRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.CHARGED_CRYSTAL_SCARAB_GEM_ITEM, manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer()));
@@ -269,10 +249,8 @@ public class ClientSetup
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.TYRANNOSAURUS, manager -> new TyrannosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.ZEPHYROSAURUS, manager -> new ZephyrosaurusRenderer(manager));
 
-		for(DinoTypes dinos : DinoTypes.values())
-		{
-			if(dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS)
-			{
+		for (DinoTypes dinos : DinoTypes.values()) {
+			if (dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS) {
 				RenderingRegistry.registerEntityRenderingHandler(dinos.getDirtyArmBones(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_arm_bones", dinos.getId(), 0.25F));
 				RenderingRegistry.registerEntityRenderingHandler(dinos.getDirtyLegBones(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_leg_bones", dinos.getId(), 0.25F));
 				RenderingRegistry.registerEntityRenderingHandler(dinos.getDirtyRibCage(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_rib_cage", dinos.getId(), 0.25F));
@@ -284,23 +262,20 @@ public class ClientSetup
 				RenderingRegistry.registerEntityRenderingHandler(dinos.getSkull(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_skull", dinos.getId(), 0.25F));
 				RenderingRegistry.registerEntityRenderingHandler(dinos.getTail(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_tail", dinos.getId(), 0.25F));
 			}
-			
-			if(dinos == DinoTypes.ANOMALOCARIS)
-			{
+
+			if (dinos == DinoTypes.ANOMALOCARIS) {
 				RenderingRegistry.registerEntityRenderingHandler(dinos.getDirtyExoskeleton(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_exoskeleton", dinos.getId(), 0.25F));
 				RenderingRegistry.registerEntityRenderingHandler(dinos.getExoskeleton(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_exoskeleton", dinos.getId(), 0.25F));
 			}
-			
-			if(dinos == DinoTypes.PALAEONISCUM)
-			{
+
+			if (dinos == DinoTypes.PALAEONISCUM) {
 				RenderingRegistry.registerEntityRenderingHandler(dinos.getDirtyBody(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_body", dinos.getId(), 0.25F));
 				RenderingRegistry.registerEntityRenderingHandler(dinos.getBody(), manager -> new CustomisableRenderer(manager, dinos.getId() + "_body", dinos.getId(), 0.25F));
 			}
 		}
 	}
-	
-	public static void setupOther()
-	{
+
+	public static void setupOther() {
 		ClientRegistry.bindTileEntityRenderer(TileEntityInit.DISPLAY_CASE_TILE_ENTITY, DisplayCaseRenderer::new);
 	}
 }

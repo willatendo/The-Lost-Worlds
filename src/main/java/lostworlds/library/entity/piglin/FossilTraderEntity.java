@@ -1,6 +1,6 @@
 package lostworlds.library.entity.piglin;
 
-public class FossilTraderEntity //extends AbstractPiglinEntity
+public class FossilTraderEntity // extends AbstractPiglinEntity
 {
 //	private static final DataParameter<Boolean> DATA_BABY_ID = EntityDataManager.defineId(FossilTraderEntity.class, DataSerializers.BOOLEAN);
 //	private static final DataParameter<Boolean> DATA_IS_DANCING = EntityDataManager.defineId(FossilTraderEntity.class, DataSerializers.BOOLEAN);

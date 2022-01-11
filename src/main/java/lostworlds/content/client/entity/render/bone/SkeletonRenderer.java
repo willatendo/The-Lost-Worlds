@@ -10,21 +10,17 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationItemRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class SkeletonRenderer extends TyrannomationItemRenderer<FossilItem> implements Callable<ItemStackTileEntityRenderer>
-{
-	public SkeletonRenderer(String modelAndTexture) 
-	{
+public class SkeletonRenderer extends TyrannomationItemRenderer<FossilItem> implements Callable<ItemStackTileEntityRenderer> {
+	public SkeletonRenderer(String modelAndTexture) {
 		super(new SkeletonModel(modelAndTexture));
 	}
-	
-	public SkeletonRenderer(String model, String texture) 
-	{
+
+	public SkeletonRenderer(String model, String texture) {
 		super(new SkeletonModel(model, texture));
 	}
 
 	@Override
-	public ItemStackTileEntityRenderer call() throws Exception 
-	{
+	public ItemStackTileEntityRenderer call() throws Exception {
 		return this;
 	}
 }

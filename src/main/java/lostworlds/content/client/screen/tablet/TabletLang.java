@@ -3,8 +3,7 @@ package lostworlds.content.client.screen.tablet;
 import lostworlds.content.ModUtils;
 import net.minecraft.util.text.ITextComponent;
 
-public class TabletLang 
-{
+public class TabletLang {
 	public static final ITextComponent AGE = ModUtils.tTC("tablet", "age");
 	public static final ITextComponent HEATH = ModUtils.tTC("tablet", "heath");
 	public static final ITextComponent HUNGER = ModUtils.tTC("tablet", "hunger");

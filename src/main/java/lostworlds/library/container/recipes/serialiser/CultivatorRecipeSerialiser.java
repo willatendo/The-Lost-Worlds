@@ -12,11 +12,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class CultivatorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<CultivatorRecipe> 
-{
+public class CultivatorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<CultivatorRecipe> {
 	@Override
-	public CultivatorRecipe fromJson(ResourceLocation recipeId, JsonObject json) 
-	{
+	public CultivatorRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 		ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
 		Ingredient dnaDisc = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "dnaDisc"));
 
@@ -24,8 +22,7 @@ public class CultivatorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerial
 	}
 
 	@Override
-	public CultivatorRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) 
-	{
+	public CultivatorRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 		ItemStack output = buffer.readItem();
 		Ingredient dnaDisc = Ingredient.fromNetwork(buffer);
 
@@ -33,8 +30,7 @@ public class CultivatorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerial
 	}
 
 	@Override
-	public void toNetwork(PacketBuffer buffer, CultivatorRecipe recipe) 
-	{
+	public void toNetwork(PacketBuffer buffer, CultivatorRecipe recipe) {
 		buffer.writeItemStack(recipe.getResultItem(), false);
 
 		Ingredient input = recipe.getIngredients().get(0);

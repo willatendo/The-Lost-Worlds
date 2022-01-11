@@ -22,8 +22,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = ModUtils.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ContainerInit 
-{
+public class ContainerInit {
 	public static final ContainerType<FossilCleanerContainer> FOSSIL_CLEANER_CONTAINER = ModRegistry.register("fossil_cleaner_container", IForgeContainerType.create(FossilCleanerContainer::new));
 	public static final ContainerType<FossilGrinderContainer> FOSSIL_GRINDER_CONTAINER = ModRegistry.register("fossil_grinder_container", IForgeContainerType.create(FossilGrinderContainer::new));
 	public static final ContainerType<DNAExtractorContainer> DNA_EXTRACTOR_CONTAINER = ModRegistry.register("dna_extractor_container", IForgeContainerType.create(DNAExtractorContainer::new));
@@ -36,37 +35,30 @@ public class ContainerInit
 	public static final ContainerType<FeedingTroughContainer> FEEDING_TROUGH_CONTAINER = ModRegistry.register("feeding_trough_container", IForgeContainerType.create(FeedingTroughContainer::create));
 
 	public static final ContainerType<DisplayCaseContainer> DISPLAY_CASE_CONTAINER = ModRegistry.register("display_case_container", IForgeContainerType.create(DisplayCaseContainer::create));
-	
+
 	public static final ContainerType<ArchaeologyTableContainer> ARCHAEOLOGY_CONTAINER = ModRegistry.register("archaeology_table_container", IForgeContainerType.create(ArchaeologyTableContainer::new));
 	public static final ContainerType<PaleontologyTableContainer> PALEONTOLOGY_CONTAINER = ModRegistry.register("paleontology_table_container", IForgeContainerType.create(PaleontologyTableContainer::new));
-	
-	//Registry
+
+	// Registry
 	@SubscribeEvent
-	public static void registerContainers(final RegistryEvent.Register<ContainerType<?>> event) 
-	{
-		try 
-		{
-			for(Field f : ContainerInit.class.getDeclaredFields()) 
-			{
+	public static void registerContainers(final RegistryEvent.Register<ContainerType<?>> event) {
+		try {
+			for (Field f : ContainerInit.class.getDeclaredFields()) {
 				Object obj = f.get(null);
-				if(obj instanceof ContainerType) 
-				{
+				if (obj instanceof ContainerType) {
 					event.getRegistry().register((ContainerType) obj);
-				} 
-				else if(obj instanceof ContainerType[]) 
-				{
-					for(ContainerType container : (ContainerType[]) obj) 
-					{
+				} else if (obj instanceof ContainerType[]) {
+					for (ContainerType container : (ContainerType[]) obj) {
 						event.getRegistry().register(container);
 					}
 				}
 			}
-		} 
-		catch(IllegalAccessException e) 
-		{
+		} catch (IllegalAccessException e) {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	public static void init() { ModUtils.LOGGER.debug("Registering Mod Container"); }
+
+	public static void init() {
+		ModUtils.LOGGER.debug("Registering Mod Container");
+	}
 }

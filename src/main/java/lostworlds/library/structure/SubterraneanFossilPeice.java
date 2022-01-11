@@ -26,12 +26,10 @@ import net.minecraft.world.gen.feature.template.PlacementSettings;
 import net.minecraft.world.gen.feature.template.Template;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
-public class SubterraneanFossilPeice 
-{
+public class SubterraneanFossilPeice {
 	public static final ArrayList<ResourceLocation> locations = new ArrayList<>();
-	
-	public static void addStructure(TemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> piece, Random rand, Biome biome) 
-	{
+
+	public static void addStructure(TemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> piece, Random rand, Biome biome) {
 		locations.add(ModUtils.rL("fossil/chilesaurus_fossil_1"));
 		locations.add(ModUtils.rL("fossil/chilesaurus_fossil_2"));
 		locations.add(ModUtils.rL("fossil/chilesaurus_fossil_3"));
@@ -43,13 +41,11 @@ public class SubterraneanFossilPeice
 		piece.add(new SubterraneanFossilPeice.Piece(manager, locations.get(fossil), pos, rotation));
 	}
 
-	public static class Piece extends TemplateStructurePiece 
-	{
+	public static class Piece extends TemplateStructurePiece {
 		private final ResourceLocation templateLocation;
 		private final Rotation rotation;
 
-		public Piece(TemplateManager manager, ResourceLocation location, BlockPos pos, Rotation rotation) 
-		{
+		public Piece(TemplateManager manager, ResourceLocation location, BlockPos pos, Rotation rotation) {
 			super(StructurePieceInit.SUBTERRANEAN_FOSSIL_PIECE, 0);
 			this.templateLocation = location;
 			this.templatePosition = pos;
@@ -57,35 +53,32 @@ public class SubterraneanFossilPeice
 			this.loadTemplate(manager);
 		}
 
-		public Piece(TemplateManager manager, CompoundNBT nbt) 
-		{
+		public Piece(TemplateManager manager, CompoundNBT nbt) {
 			super(StructurePieceInit.SUBTERRANEAN_FOSSIL_PIECE, nbt);
 			this.templateLocation = new ResourceLocation(nbt.getString("Template"));
 			this.rotation = Rotation.valueOf(nbt.getString("Rot"));
 			this.loadTemplate(manager);
 		}
 
-		private void loadTemplate(TemplateManager manager)
-		{
+		private void loadTemplate(TemplateManager manager) {
 			Template template = manager.getOrCreate(this.templateLocation);
 			PlacementSettings placementsettings = (new PlacementSettings()).setRotation(this.rotation).setMirror(Mirror.NONE).addProcessor(BlockIgnoreStructureProcessor.STRUCTURE_BLOCK);
 			this.setup(template, this.templatePosition, placementsettings);
 		}
 
 		@Override
-		protected void addAdditionalSaveData(CompoundNBT nbt) 
-		{
+		protected void addAdditionalSaveData(CompoundNBT nbt) {
 			super.addAdditionalSaveData(nbt);
 			nbt.putString("Template", this.templateLocation.toString());
 			nbt.putString("Rot", this.rotation.name());
 		}
 
 		@Override
-		protected void handleDataMarker(String data, BlockPos pos, IServerWorld world, Random rand, MutableBoundingBox box) { }
+		protected void handleDataMarker(String data, BlockPos pos, IServerWorld world, Random rand, MutableBoundingBox box) {
+		}
 
 		@Override
-		public boolean postProcess(ISeedReader reader, StructureManager manager, ChunkGenerator chunkGenerator, Random rand, MutableBoundingBox box, ChunkPos chunkPos, BlockPos pos) 
-		{
+		public boolean postProcess(ISeedReader reader, StructureManager manager, ChunkGenerator chunkGenerator, Random rand, MutableBoundingBox box, ChunkPos chunkPos, BlockPos pos) {
 			BlockPos blockpos1 = this.templatePosition;
 			int i = reader.getHeight(Heightmap.Type.OCEAN_FLOOR_WG, blockpos1.getX(), blockpos1.getZ());
 			BlockPos blockpos2 = this.templatePosition;

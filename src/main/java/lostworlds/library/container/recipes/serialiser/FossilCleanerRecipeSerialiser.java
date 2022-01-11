@@ -12,20 +12,17 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class FossilCleanerRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<FossilCleanerRecipe>
-{
+public class FossilCleanerRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<FossilCleanerRecipe> {
 	@Override
-	public FossilCleanerRecipe fromJson(ResourceLocation recipeId, JsonObject json) 
-	{
+	public FossilCleanerRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 		ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
 		Ingredient fossil = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "fossil"));
-		
+
 		return new FossilCleanerRecipe(recipeId, fossil, output);
 	}
 
 	@Override
-	public FossilCleanerRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) 
-	{
+	public FossilCleanerRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 		ItemStack output = buffer.readItem();
 		Ingredient fossil = Ingredient.fromNetwork(buffer);
 
@@ -33,8 +30,7 @@ public class FossilCleanerRecipeSerialiser extends ForgeRegistryEntry<IRecipeSer
 	}
 
 	@Override
-	public void toNetwork(PacketBuffer buffer, FossilCleanerRecipe recipe) 
-	{
+	public void toNetwork(PacketBuffer buffer, FossilCleanerRecipe recipe) {
 		buffer.writeItemStack(recipe.getResultItem(), false);
 
 		Ingredient input = recipe.getIngredients().get(0);

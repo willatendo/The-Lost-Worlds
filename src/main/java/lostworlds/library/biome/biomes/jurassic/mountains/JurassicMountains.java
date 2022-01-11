@@ -11,19 +11,16 @@ import net.minecraft.world.biome.MobSpawnInfo;
 import tyrannotitanlib.library.base.biome.BaseBiomeInfo;
 import tyrannotitanlib.library.base.biome.TyrannoBiome;
 
-public class JurassicMountains extends TyrannoBiome
-{
+public class JurassicMountains extends TyrannoBiome {
 	public static final BiomeGenerationSettings.Builder GENERATION = genSettings(SurfaceBuilderInit.NAKED_JURASSIC_MOUNTAINS, ModSurfaceBuilders.JURASSIC_STONE_CONFIG);
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomeInfo.BASE_WATER_COLOUR).waterFogColor(BaseBiomeInfo.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomeInfo.BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
-	
-	static
-	{
+
+	static {
 		ModBiomeFeatures.jurassicMountains(GENERATION);
 	}
-	
-	public JurassicMountains() 
-	{
+
+	public JurassicMountains() {
 		super(BaseBiomeInfo.biome(RainType.RAIN, Category.EXTREME_HILLS, 1.0F, 0.5F, 0.3F, 0.2F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
 	}
 }

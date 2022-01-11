@@ -7,7 +7,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 
-public class ModTags 
+public class LostWorldsTags 
 {
 	public static class ModItemTags
 	{

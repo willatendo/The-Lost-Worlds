@@ -16,8 +16,7 @@ import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-public class SleepyBreedGoal extends Goal 
-{
+public class SleepyBreedGoal extends Goal {
 	private static final EntityPredicate PARTNER_TARGETING = (new EntityPredicate()).range(8.0D).allowInvulnerable().allowSameTeam().allowUnseeable();
 	protected final EggLayingEntity entity;
 	private final Class<? extends EggLayingEntity> partnerClass;
@@ -26,13 +25,11 @@ public class SleepyBreedGoal extends Goal
 	private int loveTime;
 	private final double speedModifier;
 
-	public SleepyBreedGoal(EggLayingEntity entity, double speedModifier) 
-	{
+	public SleepyBreedGoal(EggLayingEntity entity, double speedModifier) {
 		this(entity, speedModifier, entity.getClass());
 	}
 
-	public SleepyBreedGoal(EggLayingEntity entity, double speedModifier, Class<? extends EggLayingEntity> partnerClass) 
-	{
+	public SleepyBreedGoal(EggLayingEntity entity, double speedModifier, Class<? extends EggLayingEntity> partnerClass) {
 		this.entity = entity;
 		this.level = entity.level;
 		this.partnerClass = partnerClass;
@@ -41,55 +38,44 @@ public class SleepyBreedGoal extends Goal
 	}
 
 	@Override
-	public boolean canUse() 
-	{
-		if(!this.entity.isInLove() || this.entity.isSleeping()) 
-		{
+	public boolean canUse() {
+		if (!this.entity.isInLove() || this.entity.isSleeping()) {
 			return false;
-		} 
-		else 
-		{
+		} else {
 			this.partner = this.getFreePartner();
 			return this.partner != null;
 		}
 	}
 
 	@Override
-	public boolean canContinueToUse() 
-	{
+	public boolean canContinueToUse() {
 		return this.partner.isAlive() && this.partner.isInLove() && this.loveTime < 60;
 	}
 
 	@Override
-	public void stop() 
-	{
+	public void stop() {
 		this.partner = null;
 		this.loveTime = 0;
 	}
 
 	@Override
-	public void tick() 
-	{
+	public void tick() {
 		this.entity.getLookControl().setLookAt(this.partner, 10.0F, (float) this.entity.getMaxHeadXRot());
 		this.entity.getNavigation().moveTo(this.partner, this.speedModifier);
 		++this.loveTime;
-		if(this.loveTime >= 60 && this.entity.distanceToSqr(this.partner) < 9.0D) 
-		{
+		if (this.loveTime >= 60 && this.entity.distanceToSqr(this.partner) < 9.0D) {
 			this.breed();
 		}
 	}
 
 	@Nullable
-	private EggLayingEntity getFreePartner() 
-	{
+	private EggLayingEntity getFreePartner() {
 		List<EggLayingEntity> list = this.level.getNearbyEntities(this.partnerClass, PARTNER_TARGETING, this.entity, this.entity.getBoundingBox().inflate(8.0D));
 		double d0 = Double.MAX_VALUE;
 		EggLayingEntity entityentity = null;
 
-		for(EggLayingEntity entityentity1 : list) 
-		{
-			if(this.entity.canMate(entityentity1) && this.entity.distanceToSqr(entityentity1) < d0) 
-			{
+		for (EggLayingEntity entityentity1 : list) {
+			if (this.entity.canMate(entityentity1) && this.entity.distanceToSqr(entityentity1) < d0) {
 				entityentity = entityentity1;
 				d0 = this.entity.distanceToSqr(entityentity1);
 			}
@@ -98,38 +84,31 @@ public class SleepyBreedGoal extends Goal
 		return entityentity;
 	}
 
-	protected void breed() 
-	{
+	protected void breed() {
 		this.entity.spawnChildFromBreeding((ServerWorld) this.level, this.partner);
 	}
-	
-	public static class Egg extends SleepyBreedGoal
-	{
+
+	public static class Egg extends SleepyBreedGoal {
 		private final EggLayingEntity entity;
 
-		public Egg(EggLayingEntity entity, double speedModifier) 
-		{
+		public Egg(EggLayingEntity entity, double speedModifier) {
 			super(entity, speedModifier);
 			this.entity = entity;
 		}
 
 		@Override
-		public boolean canUse() 
-		{
+		public boolean canUse() {
 			return super.canUse() && !this.entity.hasEgg();
 		}
 
 		@Override
-		protected void breed() 
-		{
+		protected void breed() {
 			ServerPlayerEntity serverplayerentity = this.entity.getLoveCause();
-			if(serverplayerentity == null && this.partner.getLoveCause() != null)
-			{
+			if (serverplayerentity == null && this.partner.getLoveCause() != null) {
 				serverplayerentity = this.partner.getLoveCause();
 			}
 
-			if(serverplayerentity != null) 
-			{
+			if (serverplayerentity != null) {
 				serverplayerentity.awardStat(Stats.ANIMALS_BRED);
 			}
 
@@ -137,8 +116,7 @@ public class SleepyBreedGoal extends Goal
 			this.entity.resetLove();
 			this.partner.resetLove();
 			Random random = this.entity.getRandom();
-			if(this.level.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) 
-			{
+			if (this.level.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) {
 				this.level.addFreshEntity(new ExperienceOrbEntity(this.level, this.entity.getX(), this.entity.getY(), this.entity.getZ(), random.nextInt(7) + 1));
 			}
 		}

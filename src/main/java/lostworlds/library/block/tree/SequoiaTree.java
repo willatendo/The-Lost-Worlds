@@ -9,17 +9,14 @@ import net.minecraft.block.trees.BigTree;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 
-public class SequoiaTree extends BigTree 
-{
+public class SequoiaTree extends BigTree {
 	@Nullable
-	protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean big) 
-	{
+	protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean big) {
 		return null;
 	}
 
 	@Nullable
-	protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredMegaFeature(Random rand) 
-	{
+	protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredMegaFeature(Random rand) {
 		return ModConfiguredFeatures.SEQUOIA_TREE;
 	}
 }

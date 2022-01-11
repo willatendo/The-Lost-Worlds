@@ -6,8 +6,7 @@ import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
-public class ModSurfaceBuilders 
-{
+public class ModSurfaceBuilders {
 	public static final SurfaceBuilderConfig PERMIAN_SAND_CONFIG = new SurfaceBuilderConfig(BlockInit.PERMIAN_SAND.defaultBlockState(), BlockInit.PERMIAN_SAND.defaultBlockState(), BlockInit.PERMIAN_SAND.defaultBlockState());
 	public static final SurfaceBuilderConfig SAND_CONFIG = new SurfaceBuilderConfig(Blocks.SAND.defaultBlockState(), Blocks.SAND.defaultBlockState(), Blocks.SAND.defaultBlockState());
 	public static final SurfaceBuilderConfig STONE_CONFIG = new SurfaceBuilderConfig(Blocks.STONE.defaultBlockState(), Blocks.STONE.defaultBlockState(), Blocks.STONE.defaultBlockState());
@@ -33,7 +32,7 @@ public class ModSurfaceBuilders
 	public static final SurfaceBuilderConfig SNOW_CONFIG = new SurfaceBuilderConfig(Blocks.SNOW_BLOCK.defaultBlockState(), Blocks.SNOW_BLOCK.defaultBlockState(), Blocks.SNOW_BLOCK.defaultBlockState());
 	public static final SurfaceBuilderConfig TERRACOTTA_CONFIG = new SurfaceBuilderConfig(Blocks.TERRACOTTA.defaultBlockState(), Blocks.TERRACOTTA.defaultBlockState(), Blocks.TERRACOTTA.defaultBlockState());
 	public static final SurfaceBuilderConfig RED_TERRACOTTA_CONFIG = new SurfaceBuilderConfig(Blocks.RED_TERRACOTTA.defaultBlockState(), Blocks.RED_TERRACOTTA.defaultBlockState(), Blocks.RED_TERRACOTTA.defaultBlockState());
-	
+
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_ASHY_MEDOWS_BUILDER = SurfaceBuilder.DEFAULT.configured(VOLCANIC_ASH_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_DESERT_BUILDER = SurfaceBuilder.DEFAULT.configured(PERMIAN_SAND_CONFIG);
 	public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> PERMIAN_DRIED_PLAINS_SURFACE_BUILDER = SurfaceBuilder.DEFAULT.configured(DRIED_SOIL_CONFIG);

@@ -8,18 +8,15 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
-public class DeadSpongeColonyBlock extends DeadCoralPlantBlock
-{
+public class DeadSpongeColonyBlock extends DeadCoralPlantBlock {
 	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 7, 16);
 
-	public DeadSpongeColonyBlock(Properties properties) 
-	{
+	public DeadSpongeColonyBlock(Properties properties) {
 		super(properties);
 	}
-	
+
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) 
-	{
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
 		return SHAPE;
 	}
 }

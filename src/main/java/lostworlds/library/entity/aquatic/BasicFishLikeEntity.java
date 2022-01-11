@@ -41,70 +41,58 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
-public abstract class BasicFishLikeEntity extends CreatureEntity
-{
+public abstract class BasicFishLikeEntity extends CreatureEntity {
 	private static final DataParameter<Boolean> FROM_BUCKET = EntityDataManager.defineId(BasicFishLikeEntity.class, DataSerializers.BOOLEAN);
-	
-	public BasicFishLikeEntity(EntityType<? extends CreatureEntity> entity, World world) 
-	{
+
+	public BasicFishLikeEntity(EntityType<? extends CreatureEntity> entity, World world) {
 		super(entity, world);
 		this.moveControl = new FishLikeMoveHelper(this);
 	}
-	
+
 	@Override
-	protected float getStandingEyeHeight(Pose pose, EntitySize size) 
-	{
+	protected float getStandingEyeHeight(Pose pose, EntitySize size) {
 		return size.height * 0.65F;
 	}
 
-	public static AttributeModifierMap createBasicAttributes() 
-	{
+	public static AttributeModifierMap createBasicAttributes() {
 		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, 3.0D).build();
 	}
 
 	@Override
-	public boolean requiresCustomPersistence() 
-	{
+	public boolean requiresCustomPersistence() {
 		return super.requiresCustomPersistence() || this.fromBucket();
 	}
 
-	public static boolean spawnRules(EntityType<? extends BasicFishLikeEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) 
-	{
+	public static boolean spawnRules(EntityType<? extends BasicFishLikeEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
 		return world.getBlockState(pos).is(Blocks.WATER) && world.getBlockState(pos.above()).is(Blocks.WATER);
 	}
 
 	@Override
-	public boolean removeWhenFarAway(double distance) 
-	{
+	public boolean removeWhenFarAway(double distance) {
 		return !this.fromBucket() && !this.hasCustomName();
 	}
 
 	@Override
-	public int getMaxSpawnClusterSize() 
-	{
+	public int getMaxSpawnClusterSize() {
 		return 8;
 	}
 
 	@Override
-	protected void defineSynchedData() 
-	{
+	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(FROM_BUCKET, false);
 	}
 
-	private boolean fromBucket() 
-	{
+	private boolean fromBucket() {
 		return this.entityData.get(FROM_BUCKET);
 	}
 
-	public void setFromBucket(boolean fromBucket) 
-	{
+	public void setFromBucket(boolean fromBucket) {
 		this.entityData.set(FROM_BUCKET, fromBucket);
 	}
-	
+
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) 
-	{
+	public void addAdditionalSaveData(CompoundNBT nbt) {
 		super.addAdditionalSaveData(nbt);
 		nbt.putBoolean("FromBucket", this.fromBucket());
 	}
@@ -115,8 +103,7 @@ public abstract class BasicFishLikeEntity extends CreatureEntity
 	}
 
 	@Override
-	protected void registerGoals() 
-	{
+	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new PanicGoal(this, 1.25D));
 		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
@@ -124,35 +111,27 @@ public abstract class BasicFishLikeEntity extends CreatureEntity
 	}
 
 	@Override
-	protected PathNavigator createNavigation(World world) 
-	{
+	protected PathNavigator createNavigation(World world) {
 		return new SwimmerPathNavigator(this, world);
 	}
 
 	@Override
-	public void travel(Vector3d vec3d) 
-	{
-		if(this.isEffectiveAi() && this.isInWater()) 
-		{
+	public void travel(Vector3d vec3d) {
+		if (this.isEffectiveAi() && this.isInWater()) {
 			this.moveRelative(0.01F, vec3d);
 			this.move(MoverType.SELF, this.getDeltaMovement());
 			this.setDeltaMovement(this.getDeltaMovement().scale(0.9D));
-			if(this.getTarget() == null) 
-			{
+			if (this.getTarget() == null) {
 				this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.005D, 0.0D));
 			}
-		} 
-		else 
-		{
+		} else {
 			super.travel(vec3d);
 		}
 	}
 
 	@Override
-	public void aiStep() 
-	{
-		if(!this.isInWater() && this.onGround && this.verticalCollision) 
-		{
+	public void aiStep() {
+		if (!this.isInWater() && this.onGround && this.verticalCollision) {
 			this.setDeltaMovement(this.getDeltaMovement().add((double) ((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F), (double) 0.4F, (double) ((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F)));
 			this.onGround = false;
 			this.hasImpulse = true;
@@ -163,42 +142,32 @@ public abstract class BasicFishLikeEntity extends CreatureEntity
 	}
 
 	@Override
-	protected ActionResultType mobInteract(PlayerEntity entity, Hand hand) 
-	{
+	protected ActionResultType mobInteract(PlayerEntity entity, Hand hand) {
 		ItemStack itemstack = entity.getItemInHand(hand);
-		if(itemstack.getItem() == Items.WATER_BUCKET && this.isAlive()) 
-		{
+		if (itemstack.getItem() == Items.WATER_BUCKET && this.isAlive()) {
 			this.playSound(SoundEvents.BUCKET_FILL_FISH, 1.0F, 1.0F);
 			itemstack.shrink(1);
 			ItemStack itemstack1 = this.getBucketItemStack();
 			this.saveToBucketTag(itemstack1);
-			if(!this.level.isClientSide) 
-			{
+			if (!this.level.isClientSide) {
 				CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayerEntity) entity, itemstack1);
 			}
 
-			if(itemstack.isEmpty()) 
-			{
+			if (itemstack.isEmpty()) {
 				entity.setItemInHand(hand, itemstack1);
-			} 
-			else if(!entity.inventory.add(itemstack1)) 
-			{
+			} else if (!entity.inventory.add(itemstack1)) {
 				entity.drop(itemstack1, false);
 			}
 
 			this.remove();
 			return ActionResultType.sidedSuccess(this.level.isClientSide);
-		} 
-		else 
-		{
+		} else {
 			return super.mobInteract(entity, hand);
 		}
 	}
 
-	protected void saveToBucketTag(ItemStack stack) 
-	{
-		if(this.hasCustomName()) 
-		{
+	protected void saveToBucketTag(ItemStack stack) {
+		if (this.hasCustomName()) {
 			stack.setHoverName(this.getCustomName());
 		}
 
@@ -206,85 +175,71 @@ public abstract class BasicFishLikeEntity extends CreatureEntity
 
 	protected abstract ItemStack getBucketItemStack();
 
-	public boolean canRandomSwim() 
-	{
+	public boolean canRandomSwim() {
 		return true;
 	}
 
 	protected abstract SoundEvent getFlopSound();
 
 	@Override
-	protected SoundEvent getSwimSound() 
-	{
+	protected SoundEvent getSwimSound() {
 		return SoundEvents.FISH_SWIM;
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState state) { }
-	
+	protected void playStepSound(BlockPos pos, BlockState state) {
+	}
+
 	@Override
-	public boolean canBreatheUnderwater() 
-	{
+	public boolean canBreatheUnderwater() {
 		return true;
 	}
-	
+
 	@Override
-	public CreatureAttribute getMobType() 
-	{
+	public CreatureAttribute getMobType() {
 		return CreatureAttribute.WATER;
 	}
-	
+
 	@Override
-	public boolean checkSpawnObstruction(IWorldReader reader) 
-	{
+	public boolean checkSpawnObstruction(IWorldReader reader) {
 		return reader.isUnobstructed(this);
 	}
 
 	@Override
-	public int getAmbientSoundInterval() 
-	{
+	public int getAmbientSoundInterval() {
 		return 120;
 	}
 
 	@Override
-	protected int getExperienceReward(PlayerEntity entity) 
-	{
+	protected int getExperienceReward(PlayerEntity entity) {
 		return 1 + this.level.random.nextInt(3);
 	}
 
-	protected void handleAirSupply(int air) 
-	{
-		if(this.isAlive() && !this.isInWaterOrBubble()) 
-		{
+	protected void handleAirSupply(int air) {
+		if (this.isAlive() && !this.isInWaterOrBubble()) {
 			this.setAirSupply(air - 1);
-			if(this.getAirSupply() == -20) 
-			{
+			if (this.getAirSupply() == -20) {
 				this.setAirSupply(0);
 				this.hurt(DamageSource.DROWN, 2.0F);
 			}
-		} 
-		else 
-		{
+		} else {
 			this.setAirSupply(300);
 		}
 
 	}
 
 	@Override
-	public void baseTick() 
-	{
+	public void baseTick() {
 		int i = this.getAirSupply();
 		super.baseTick();
 		this.handleAirSupply(i);
 	}
 
-	public boolean isPushedByFluid() 
-	{
+	public boolean isPushedByFluid() {
 		return false;
 	}
 
-	public boolean canBeLeashed(PlayerEntity entity) 
-	{
+	public boolean canBeLeashed(PlayerEntity entity) {
 		return false;
 	}
 }

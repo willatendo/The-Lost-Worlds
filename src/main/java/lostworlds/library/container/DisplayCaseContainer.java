@@ -18,108 +18,81 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class DisplayCaseContainer extends Container
-{
+public class DisplayCaseContainer extends Container {
 	private ItemStackHandler handler;
-	
-	public DisplayCaseContainer(ContainerType<?> container, int windowId) 
-	{
+
+	public DisplayCaseContainer(ContainerType<?> container, int windowId) {
 		super(container, windowId);
 	}
-	
-	public DisplayCaseContainer(int windowId, PlayerInventory inv, IInventory inventory, ItemStackHandler handler) 
-	{
+
+	public DisplayCaseContainer(int windowId, PlayerInventory inv, IInventory inventory, ItemStackHandler handler) {
 		super(ContainerInit.DISPLAY_CASE_CONTAINER, windowId);
 		this.handler = handler;
-		
-		this.addSlot(new SlotItemHandler(handler, 0, 80, 20)
-		{
+
+		this.addSlot(new SlotItemHandler(handler, 0, 80, 20) {
 			@Override
-			public boolean mayPlace(ItemStack stack) 
-			{
+			public boolean mayPlace(ItemStack stack) {
 				return correctTypeOfItem(stack);
 			}
-			
-			public boolean correctTypeOfItem(ItemStack stack)
-			{
-				if(stack.getItem() instanceof BlockItem)
-				{
+
+			public boolean correctTypeOfItem(ItemStack stack) {
+				if (stack.getItem() instanceof BlockItem) {
 					return false;
-				}
-				else if(stack.getItem() instanceof FossilItem)
-				{
+				} else if (stack.getItem() instanceof FossilItem) {
 					return false;
-				}
-				else
-				{
+				} else {
 					return true;
 				}
 			}
 		});
-		
-		for(int l = 0; l < 3; ++l) 
-		{
-			for(int k = 0; k < 9; ++k) 
-			{
+
+		for (int l = 0; l < 3; ++l) {
+			for (int k = 0; k < 9; ++k) {
 				this.addSlot(new Slot(inv, k + l * 9 + 9, 8 + k * 18, l * 18 + 51));
 			}
 		}
-		
-		for(int i1 = 0; i1 < 9; ++i1) 
-		{
+
+		for (int i1 = 0; i1 < 9; ++i1) {
 			this.addSlot(new Slot(inv, i1, 8 + i1 * 18, 109));
 		}
 	}
 
-	public static DisplayCaseContainer create(int windowId, PlayerInventory inv, PacketBuffer buffer)
-	{
+	public static DisplayCaseContainer create(int windowId, PlayerInventory inv, PacketBuffer buffer) {
 		BlockPos pos = buffer.readBlockPos();
 		return new DisplayCaseContainer(windowId, inv, new Inventory(1), ((DisplayCaseTileEntity) Minecraft.getInstance().level.getBlockEntity(pos)).handler);
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity entity) 
-	{
+	public boolean stillValid(PlayerEntity entity) {
 		return !entity.isSpectator();
 	}
-	
+
 	@Override
-	public ItemStack quickMoveStack(PlayerEntity player, int fromSlot) 
-	{
+	public ItemStack quickMoveStack(PlayerEntity player, int fromSlot) {
 		ItemStack previous = ItemStack.EMPTY;
 		Slot slot = (Slot) this.slots.get(fromSlot);
 
-		if(slot != null && slot.hasItem()) 
-		{
+		if (slot != null && slot.hasItem()) {
 			ItemStack current = slot.getItem();
 			previous = current.copy();
 
-			if(fromSlot < this.handler.getSlots()) 
-			{
-				if(!this.moveItemStackTo(current, this.handler.getSlots(), this.handler.getSlots() + 36, true))
-				{
+			if (fromSlot < this.handler.getSlots()) {
+				if (!this.moveItemStackTo(current, this.handler.getSlots(), this.handler.getSlots() + 36, true)) {
 					return ItemStack.EMPTY;
 				}
-			} 
-			else 
-			{
-				if(!this.moveItemStackTo(current, 0, 6, false))
-				{
+			} else {
+				if (!this.moveItemStackTo(current, 0, 6, false)) {
 					return ItemStack.EMPTY;
 				}
 			}
 
-			if(current.getCount() == 0)
-			{
+			if (current.getCount() == 0) {
 				slot.set(ItemStack.EMPTY);
-			}
-			else
-			{
+			} else {
 				slot.setChanged();
 			}
 
-			if(current.getCount() == previous.getCount())
-			{
+			if (current.getCount() == previous.getCount()) {
 				return ItemStack.EMPTY;
 			}
 			slot.onTake(player, current);

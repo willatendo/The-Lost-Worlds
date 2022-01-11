@@ -39,43 +39,37 @@ import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationContro
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class CarnotaurusEntity extends CarnivoreEntity implements IReasonableAngerable
-{
+public class CarnotaurusEntity extends CarnivoreEntity implements IReasonableAngerable {
 	private static final Ingredient FOOD_ITEMS = FoodLists.CARNIVORE;
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
-	
+
 	private static final RangedInteger PERSISTENT_ANGER_TIME = TickRangeConverter.rangeOfSeconds(20, 39);
 	private int remainingPersistentAngerTime;
 	private UUID persistentAngerTarget;
-	
-	public CarnotaurusEntity(EntityType<? extends CarnotaurusEntity> entity, World world) 
-	{
+
+	public CarnotaurusEntity(EntityType<? extends CarnotaurusEntity> entity, World world) {
 		super(entity, world);
 	}
 
 	@Override
-	public int maxHunger() 
-	{
+	public int maxHunger() {
 		return 70000;
 	}
-	
+
 	@Override
-	public ActivityType activity() 
-	{
+	public ActivityType activity() {
 		return ActivityType.DIURNAL;
 	}
-	
-	public static AttributeModifierMap createAttributes() 
-	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.carnotaurusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.carnotaurusAttackDamage.get()).build();
+
+	public static AttributeModifierMap createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.SERVER_CONFIG.carnotaurusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.SERVER_CONFIG.carnotaurusAttackDamage.get()).build();
 	}
-	
+
 	@Override
-	protected void registerGoals() 
-	{
+	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new SleepySwimGoal(this));
-		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));	
+		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialReasonableAttackGoal(this, 1.8F));
@@ -98,85 +92,70 @@ public class CarnotaurusEntity extends CarnivoreEntity implements IReasonableAng
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
+	public void registerControllers(TyrannomationData data) {
 		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
-	
+
 	@Override
-	public boolean isFood(ItemStack stack) 
-	{
+	public boolean isFood(ItemStack stack) {
 		return FOOD_ITEMS.test(stack);
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
-	{
+	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
 		return EntityInit.CARNOTAURUS.create(world);
 	}
-	
+
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) 
-	{
+	public void addAdditionalSaveData(CompoundNBT nbt) {
 		super.addAdditionalSaveData(nbt);
 		this.addPersistentAngerSaveData(nbt);
 	}
-	
+
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) 
-	{
+	public void readAdditionalSaveData(CompoundNBT nbt) {
 		super.readAdditionalSaveData(nbt);
-		if(level.isClientSide) 
-		{
-			this.readPersistentAngerSaveData((ServerWorld)this.level, nbt);
+		if (level.isClientSide) {
+			this.readPersistentAngerSaveData((ServerWorld) this.level, nbt);
 		}
 	}
-	
+
 	@Override
-	public void aiStep() 
-	{
+	public void aiStep() {
 		super.aiStep();
-		
-		if(!this.level.isClientSide) 
-		{
+
+		if (!this.level.isClientSide) {
 			this.updatePersistentAnger((ServerWorld) this.level, true);
 		}
 	}
 
 	@Override
-	public void startPersistentAngerTimer() 
-	{
+	public void startPersistentAngerTimer() {
 		this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.randomValue(this.random));
 	}
 
 	@Override
-	public void setRemainingPersistentAngerTime(int anger) 
-	{
+	public void setRemainingPersistentAngerTime(int anger) {
 		this.remainingPersistentAngerTime = anger;
 	}
 
 	@Override
-	public int getRemainingPersistentAngerTime() 
-	{
+	public int getRemainingPersistentAngerTime() {
 		return this.remainingPersistentAngerTime;
 	}
 
 	@Override
-	public void setPersistentAngerTarget(UUID target) 
-	{
+	public void setPersistentAngerTarget(UUID target) {
 		this.persistentAngerTarget = target;
 	}
 
 	@Override
-	public UUID getPersistentAngerTarget() 
-	{
+	public UUID getPersistentAngerTarget() {
 		return this.persistentAngerTarget;
 	}
 }
-

@@ -10,11 +10,9 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class AmberDNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<AmberDNAExtractorRecipe>
-{
+public class AmberDNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<AmberDNAExtractorRecipe> {
 	@Override
-	public AmberDNAExtractorRecipe fromJson(ResourceLocation recipeId, JsonObject json) 
-	{
+	public AmberDNAExtractorRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 		Ingredient softTissue = Ingredient.of(ItemInit.AMBER);
 		Ingredient vile = Ingredient.of(ItemInit.EMPTY_VILE);
 
@@ -22,8 +20,7 @@ public class AmberDNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecip
 	}
 
 	@Override
-	public AmberDNAExtractorRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) 
-	{
+	public AmberDNAExtractorRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 		Ingredient softTissue = Ingredient.fromNetwork(buffer);
 		Ingredient vile = Ingredient.fromNetwork(buffer);
 
@@ -31,8 +28,7 @@ public class AmberDNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecip
 	}
 
 	@Override
-	public void toNetwork(PacketBuffer buffer, AmberDNAExtractorRecipe recipe) 
-	{
+	public void toNetwork(PacketBuffer buffer, AmberDNAExtractorRecipe recipe) {
 		buffer.writeItemStack(recipe.getResultItem(), false);
 
 		Ingredient input = recipe.getIngredients().get(0);

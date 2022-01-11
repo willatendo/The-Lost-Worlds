@@ -8,13 +8,11 @@ import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.ITeleporter;
 
-public class ModTeleporter implements ITeleporter 
-{
+public class ModTeleporter implements ITeleporter {
 	@Override
-	public Entity placeEntity(Entity entity, ServerWorld currentWorld, ServerWorld destWorld, float yaw, Function<Boolean, Entity> repositionEntity) 
-	{
+	public Entity placeEntity(Entity entity, ServerWorld currentWorld, ServerWorld destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {
 		BlockPos pos = entity.blockPosition();
-		
+
 		Entity repositionedEntity = repositionEntity.apply(false);
 
 		repositionedEntity.setPortalCooldown();

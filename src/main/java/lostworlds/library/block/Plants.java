@@ -7,73 +7,63 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.common.util.NonNullSupplier;
 
-public enum Plants implements IStringSerializable
-{
+public enum Plants implements IStringSerializable {
 	ALETHOPTERIS("alethopteris", () -> BlockInit.ALETHOPTERIS),
 	ARCHAEFRUTUS("archaefrutus", () -> BlockInit.ARCHAEFRUTUS),
-	BRAZILEA("brazilea", () ->  BlockInit.BRAZILEA),
-	CALAMITES_SUCKOWII("calamites_suckowii", () ->  BlockInit.CALAMITES_SUCKOWII),
-	CEPHALOTAXUS("cephalotaxus", () ->  BlockInit.CEPHALOTAXUS),
-	CYCAD("cycad", () ->  BlockInit.CYCAD),
-	DICKSONIA("dicksonia", () ->  BlockInit.DICKSONIA),
-	DILLHOFFIA("dillhoffia", () ->  BlockInit.DILLHOFFIA),
-	DUISBERGIA("duisbergia", () ->  BlockInit.DUISBERGIA),
-	EUDICOTS("eudicots", () ->  BlockInit.EUDICOTS),
-	MAGNOLIA("magnolia", () ->  BlockInit.MAGNOLIA),
-	OSMUNDA("osmunda", () ->  BlockInit.OSMUNDA),
-	WILLIAMSONIA("williamsonia", () ->  BlockInit.WILLIAMSONIA),
-	ZAMITES("zamites", () ->  BlockInit.ZAMITES);
-	
+	BRAZILEA("brazilea", () -> BlockInit.BRAZILEA),
+	CALAMITES_SUCKOWII("calamites_suckowii", () -> BlockInit.CALAMITES_SUCKOWII),
+	CEPHALOTAXUS("cephalotaxus", () -> BlockInit.CEPHALOTAXUS),
+	CYCAD("cycad", () -> BlockInit.CYCAD),
+	DICKSONIA("dicksonia", () -> BlockInit.DICKSONIA),
+	DILLHOFFIA("dillhoffia", () -> BlockInit.DILLHOFFIA),
+	DUISBERGIA("duisbergia", () -> BlockInit.DUISBERGIA),
+	EUDICOTS("eudicots", () -> BlockInit.EUDICOTS),
+	MAGNOLIA("magnolia", () -> BlockInit.MAGNOLIA),
+	OSMUNDA("osmunda", () -> BlockInit.OSMUNDA),
+	WILLIAMSONIA("williamsonia", () -> BlockInit.WILLIAMSONIA),
+	ZAMITES("zamites", () -> BlockInit.ZAMITES);
+
 	private final String id;
 	private final Lazy<? extends Block> block;
 	private Item item;
 	private Item seed;
 	private Item dna;
-	
-	private Plants(String id, NonNullSupplier<? extends Block> block) 
-	{
+
+	private Plants(String id, NonNullSupplier<? extends Block> block) {
 		this.id = id;
 		this.block = Lazy.of(block::get);
 	}
 
-	public Item setDNA(Item item)
-	{
+	public Item setDNA(Item item) {
 		return this.dna = item;
 	}
-	
-	public Item getDNA()
-	{
+
+	public Item getDNA() {
 		return this.dna;
 	}
-	
-	public Block getPlant()
-	{
+
+	public Block getPlant() {
 		return this.block.get();
 	}
-	
-	public Item setDrop(Item item)
-	{
+
+	public Item setDrop(Item item) {
 		return this.item = item;
 	}
-	
-	public Item getDrop()
-	{
+
+	public Item getDrop() {
 		return this.item;
 	}
-	
-	public Item setSeed(Item seed)
-	{
+
+	public Item setSeed(Item seed) {
 		return this.seed = seed;
 	}
-	
-	public Item getSeed()
-	{
+
+	public Item getSeed() {
 		return this.seed;
 	}
-	
+
 	@Override
-	public String getSerializedName() 
-	{
+	public String getSerializedName() {
 		return this.id;
 	}
 }

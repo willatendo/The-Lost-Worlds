@@ -3,7 +3,6 @@ package lostworlds.library.block;
 import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.block.builder.MachineBlockBuilder;
-import lostworlds.library.block.entity.FossilCleanerTileEntity;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -16,50 +15,35 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
-public class FossilCleanerBlock extends MachineBlockBuilder
-{
+public class FossilCleanerBlock extends MachineBlockBuilder {
 	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 11, 15);
-	
-	protected FossilCleanerBlock() 
-	{
+
+	protected FossilCleanerBlock() {
 		super(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_GRAY).strength(3.0f, 6.0F).requiresCorrectToolForDrops().noOcclusion().sound(SoundType.METAL));
-		
+
 		runCalculation(SHAPE);
 	}
-	
+
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) 
-	{
+	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
 		return SHAPES.get(this).get(state.getValue(HORIZONTAL_FACING));
 	}
 
 	@Override
-	public TileEntity newBlockEntity(IBlockReader reader) 
-	{
-		return new FossilCleanerTileEntity();
-	}
-	
-	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) 
-	{
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		return TileEntityInit.FOSSIL_CLEANER_TILE_ENTITY.create();
 	}
-	
+
 	@Override
-	public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) 
-	{
-		if(state.getValue(ON))
-		{
+	public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
+		if (state.getValue(ON)) {
 			return 15;
-		}
-		else
-		{
+		} else {
 			return 1;
 		}
 	}
-	
-	public static Block create()
-	{
+
+	public static Block create() {
 		return BlockAndItemBuilder.create("fossil_cleaner", new FossilCleanerBlock());
 	}
 }

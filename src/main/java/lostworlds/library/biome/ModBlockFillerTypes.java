@@ -5,8 +5,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
 import net.minecraft.world.gen.feature.template.RuleTest;
 
-public class ModBlockFillerTypes
-{
+public class ModBlockFillerTypes {
 	public static final RuleTest PERMIAN_STONE = new BlockMatchRuleTest(BlockInit.PERMIAN_STONE);
 	public static final RuleTest JURASSIC_STONE = new BlockMatchRuleTest(BlockInit.JURASSIC_STONE);
 	public static final RuleTest BASALT = new BlockMatchRuleTest(Blocks.BASALT);

@@ -13,11 +13,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class DNAInjectorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<DNAInjectorRecipe>
-{
+public class DNAInjectorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<DNAInjectorRecipe> {
 	@Override
-	public DNAInjectorRecipe fromJson(ResourceLocation recipeId, JsonObject json) 
-	{
+	public DNAInjectorRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 		ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
 		Ingredient dnaDisc = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "dnaDisc"));
 		Ingredient egg = Ingredient.of(Items.EGG);
@@ -26,8 +24,7 @@ public class DNAInjectorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSeria
 	}
 
 	@Override
-	public DNAInjectorRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) 
-	{
+	public DNAInjectorRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 		ItemStack output = buffer.readItem();
 		Ingredient dnaDisc = Ingredient.fromNetwork(buffer);
 		Ingredient egg = Ingredient.fromNetwork(buffer);
@@ -36,8 +33,7 @@ public class DNAInjectorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSeria
 	}
 
 	@Override
-	public void toNetwork(PacketBuffer buffer, DNAInjectorRecipe recipe) 
-	{
+	public void toNetwork(PacketBuffer buffer, DNAInjectorRecipe recipe) {
 		buffer.writeItemStack(recipe.getResultItem(), false);
 
 		Ingredient input = recipe.getIngredients().get(0);

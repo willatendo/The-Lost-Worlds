@@ -9,29 +9,24 @@ import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationE
 import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
 
 @OnlyIn(Dist.CLIENT)
-public class PalaeoniscumModel extends TyrannomatedTyrannomationModel<PalaeoniscumEntity>
-{
+public class PalaeoniscumModel extends TyrannomatedTyrannomationModel<PalaeoniscumEntity> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(PalaeoniscumEntity entity) 
-	{
+	public ResourceLocation getAnimationFileLocation(PalaeoniscumEntity entity) {
 		return ModUtils.rL("animations/palaeoniscum.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(PalaeoniscumEntity entity) 
-	{
+	public ResourceLocation getModelLocation(PalaeoniscumEntity entity) {
 		return ModUtils.rL("geo/palaeoniscum.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(PalaeoniscumEntity entity) 
-	{
+	public ResourceLocation getTextureLocation(PalaeoniscumEntity entity) {
 		return ModUtils.rL("textures/model/entity/palaeoniscum/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(PalaeoniscumEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) 
-	{
+	public void setLivingAnimations(PalaeoniscumEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 	}
 }

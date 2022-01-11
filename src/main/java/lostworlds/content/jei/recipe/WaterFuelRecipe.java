@@ -15,44 +15,35 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public class WaterFuelRecipe 
-{
+public class WaterFuelRecipe {
 	public static final ResourceLocation TEXTURE_LOCATION = ModUtils.rL("textures/gui/lost_worlds_backgrounds.png");
 	private final List<ItemStack> inputs;
 	private final ITextComponent extractCountText;
 	private final IDrawableAnimated bucket;
 
-	public WaterFuelRecipe(IGuiHelper guiHelper, Collection<ItemStack> input, int fuelTime) 
-	{
+	public WaterFuelRecipe(IGuiHelper guiHelper, Collection<ItemStack> input, int fuelTime) {
 		Preconditions.checkArgument(fuelTime > 0, "burn time must be greater than 0");
 		this.inputs = new ArrayList<>(input);
 		this.extractCountText = createSmeltCountText(fuelTime);
 		this.bucket = guiHelper.drawableBuilder(TEXTURE_LOCATION, 82, 0, 18, 18).buildAnimated(fuelTime, IDrawableAnimated.StartDirection.TOP, true);
 	}
 
-	public List<ItemStack> getInputs() 
-	{
+	public List<ItemStack> getInputs() {
 		return this.inputs;
 	}
 
-	public ITextComponent getExtractCountText() 
-	{
+	public ITextComponent getExtractCountText() {
 		return extractCountText;
 	}
 
-	public IDrawableAnimated getBucket() 
-	{
+	public IDrawableAnimated getBucket() {
 		return this.bucket;
 	}
 
-	public static ITextComponent createSmeltCountText(int burnTime) 
-	{
-		if(burnTime == 1000) 
-		{
+	public static ITextComponent createSmeltCountText(int burnTime) {
+		if (burnTime == 1000) {
 			return ModUtils.tTC("jei", "cleanCount.single");
-		} 
-		else 
-		{
+		} else {
 			NumberFormat numberInstance = NumberFormat.getNumberInstance();
 			numberInstance.setMaximumFractionDigits(2);
 			String smeltCount = numberInstance.format(burnTime / 1000.0f);

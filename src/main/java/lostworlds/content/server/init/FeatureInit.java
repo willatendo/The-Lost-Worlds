@@ -17,12 +17,11 @@ import net.minecraft.world.gen.feature.FeatureSpreadConfig;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
 
-public class FeatureInit 
-{
+public class FeatureInit {
 	public static final Feature<NoFeatureConfig> ASH_LAYER_PLACEMENT = new AshFeature(NoFeatureConfig.CODEC);
 
 	public static final Feature<ProbabilityConfig> CALAMITES_SUCKOWII = new CalamitesSuckowiiFeature(ProbabilityConfig.CODEC);
-	
+
 	public static final Feature<FeatureSpreadConfig> GEYSER_BLOCK_PLACEMENT = new GeyserBlockFeature(FeatureSpreadConfig.CODEC);
 	public static final Feature<FeatureSpreadConfig> SPONGE_COLONEY_PLACEMENT = new SpongeColoneyFeature(FeatureSpreadConfig.CODEC);
 
@@ -30,13 +29,12 @@ public class FeatureInit
 	public static final Feature<BaseTreeFeatureConfig> FROZEN_TREE = new FrozenTreeFeature(BaseTreeFeatureConfig.CODEC);
 
 	public static final Feature<BlockStateFeatureConfig> ROCK = new ModBlockBlobFeature(BlockStateFeatureConfig.CODEC);
-	
+
 	public static final Feature<BlockStateFeatureConfig> PERMIAN_LAKE = new PermianLakesFeature(BlockStateFeatureConfig.CODEC);
-	
-	public static void init() 
-	{ 	
+
+	public static void init() {
 		ModUtils.LOGGER.debug("Registering Mod Features");
-		
+
 		ModRegistry.register("ash_layer_placement", ASH_LAYER_PLACEMENT);
 		ModRegistry.register("calamites_suckwii_placement", CALAMITES_SUCKOWII);
 		ModRegistry.register("geyser_block_placement", GEYSER_BLOCK_PLACEMENT);

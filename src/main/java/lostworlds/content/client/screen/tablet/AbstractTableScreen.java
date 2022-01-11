@@ -10,11 +10,10 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 
-public abstract class AbstractTableScreen extends Screen
-{
+public abstract class AbstractTableScreen extends Screen {
 	public static final ResourceLocation TEXTURE = ModUtils.rL("textures/gui/tablet.png");
 	public static final int FONT_COLOUR = 0x000000;
-			
+
 	public final int texWidth;
 	public final int texHeight;
 	protected int titleLabelX;
@@ -23,37 +22,33 @@ public abstract class AbstractTableScreen extends Screen
 	int top;
 	public float xMouse;
 	public float yMouse;
-	
-	protected AbstractTableScreen(ITextComponent component) 
-	{
+
+	protected AbstractTableScreen(ITextComponent component) {
 		super(component);
-		
+
 		this.titleLabelX = 22;
 		this.titleLabelY = 20;
-		
+
 		this.texWidth = 255;
 		this.texHeight = 192;
 	}
-	
+
 	@Override
-	public boolean isPauseScreen() 
-	{
+	public boolean isPauseScreen() {
 		return true;
 	}
-	
+
 	@Override
-	public void render(MatrixStack stack, int mouseX, int mouseY, float partialTicks) 
-	{
+	public void render(MatrixStack stack, int mouseX, int mouseY, float partialTicks) {
 		this.xMouse = (float) mouseX;
 		this.yMouse = (float) mouseY;
 		renderBackgroundElements(stack);
-		this.font.draw(stack, this.title, (float) this.titleLabelX, (float) this.titleLabelY, FONT_COLOUR);		
+		this.font.draw(stack, this.title, (float) this.titleLabelX, (float) this.titleLabelY, FONT_COLOUR);
 		super.render(stack, mouseX, mouseY, partialTicks);
 		this.renderComponentHoverEffect(stack, Style.EMPTY, mouseX, mouseY);
 	}
-	
-	public void renderBackgroundElements(MatrixStack stack)
-	{
+
+	public void renderBackgroundElements(MatrixStack stack) {
 		this.renderBackground(stack, 0);
 		Minecraft.getInstance().getTextureManager().bind(TEXTURE);
 		RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);

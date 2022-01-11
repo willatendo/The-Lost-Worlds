@@ -3,8 +3,7 @@ package lostworlds.library.block.properties;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.IntegerProperty;
 
-public class ModBlockStateProperties 
-{
+public class ModBlockStateProperties {
 	public static final BooleanProperty ON = BooleanProperty.create("on");
 	public static final BooleanProperty LAVALOGGED = BooleanProperty.create("lavalogged");
 

@@ -17,142 +17,118 @@ import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 
-public class DisplayCaseTileEntity extends LockableLootTileEntity implements INamedContainerProvider
-{
+public class DisplayCaseTileEntity extends LockableLootTileEntity implements INamedContainerProvider {
 	public DisplayCaseInventory handler;
-	
-	public DisplayCaseTileEntity() 
-	{
+
+	public DisplayCaseTileEntity() {
 		super(TileEntityInit.DISPLAY_CASE_TILE_ENTITY);
 		handler = new DisplayCaseInventory(1, this::changed);
 	}
-	
+
 	@Override
-	public void load(BlockState state, CompoundNBT nbt) 
-	{
+	public void load(BlockState state, CompoundNBT nbt) {
 		this.handler.deserializeNBT(nbt.getCompound("ItemStackHandler"));
 		super.load(state, nbt);
 	}
-	
+
 	@Override
-	public CompoundNBT save(CompoundNBT nbt) 
-	{
+	public CompoundNBT save(CompoundNBT nbt) {
 		nbt.put("ItemStackHandler", this.handler.serializeNBT());
 		return super.save(nbt);
 	}
-	
-	public void changed(int slot) 
-	{
+
+	public void changed(int slot) {
 		this.setChanged();
 	}
-	
+
 	@Override
-	public ItemStack removeItem(int index, int count) 
-	{
+	public ItemStack removeItem(int index, int count) {
 		return handler.extractItem(index, count, false);
 	}
-	
+
 	@Override
-	public void setItem(int index, ItemStack stack) 
-	{
+	public void setItem(int index, ItemStack stack) {
 		handler.setStackInSlot(index, stack);
 		this.setChanged();
 	}
-	
+
 	@Override
-	public boolean stillValid(PlayerEntity entity) 
-	{
+	public boolean stillValid(PlayerEntity entity) {
 		return !entity.isSpectator();
 	}
-	
+
 	@Override
-	public void clearContent() 
-	{
-		for(int i = 0; i < handler.getSlots(); i++) 
-		{
+	public void clearContent() {
+		for (int i = 0; i < handler.getSlots(); i++) {
 			handler.setStackInSlot(i, ItemStack.EMPTY);
 		}
 		this.setChanged();
 	}
-	
+
 	@Override
-	public int getContainerSize() 
-	{
+	public int getContainerSize() {
 		return 1;
 	}
-	
+
 	@Override
-	public boolean isEmpty() 
-	{
-		for(int i = 0; i < handler.getSlots(); i++) 
-		{
-			if(handler.getStackInSlot(i).getCount() > 0)
-			{
+	public boolean isEmpty() {
+		for (int i = 0; i < handler.getSlots(); i++) {
+			if (handler.getStackInSlot(i).getCount() > 0) {
 				return false;
 			}
 		}
 		return true;
 	}
-	
+
 	@Override
-	public NonNullList<ItemStack> getItems() 
-	{
+	public NonNullList<ItemStack> getItems() {
 		NonNullList<ItemStack> list = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
-		for(int i = 0; i < getContainerSize(); i++) 
-		{
+		for (int i = 0; i < getContainerSize(); i++) {
 			list.set(i, handler.getStackInSlot(i));
 		}
 		return list;
 	}
-	
+
 	@Override
-	protected void setItems(NonNullList<ItemStack> items) 
-	{
-		for(int i = 0; i < getContainerSize(); i++) 
-		{
+	protected void setItems(NonNullList<ItemStack> items) {
+		for (int i = 0; i < getContainerSize(); i++) {
 			handler.setStackInSlot(i, items.get(i));
 		}
 		this.setChanged();
 	}
 
 	@Override
-	public SUpdateTileEntityPacket getUpdatePacket() 
-	{
+	public SUpdateTileEntityPacket getUpdatePacket() {
 		CompoundNBT update = getUpdateTag();
 		int data = 0;
 		return new SUpdateTileEntityPacket(this.worldPosition, data, update);
 	}
-	
+
 	@Override
-	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) 
-	{
+	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
 		CompoundNBT update = pkt.getTag();
 		handleUpdateTag(this.getBlockState(), update);
 	}
 
 	@Override
-	public CompoundNBT getUpdateTag() 
-	{
+	public CompoundNBT getUpdateTag() {
 		CompoundNBT nbt = new CompoundNBT();
 		save(nbt);
 		return nbt;
 	}
 
 	@Override
-	public void handleUpdateTag(BlockState state, CompoundNBT nbt) 
-	{
+	public void handleUpdateTag(BlockState state, CompoundNBT nbt) {
 		load(state, nbt);
 	}
-	
+
 	@Override
-	protected ITextComponent getDefaultName() 
-	{
+	protected ITextComponent getDefaultName() {
 		return ModUtils.tTC("container", "display_case");
 	}
 
 	@Override
-	protected Container createMenu(int windowID, PlayerInventory inv)
-	{
+	protected Container createMenu(int windowID, PlayerInventory inv) {
 		return new DisplayCaseContainer(windowID, inv, this, this.handler);
 	}
 }

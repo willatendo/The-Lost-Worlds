@@ -3,10 +3,9 @@ package lostworlds.content.jei;
 import lostworlds.content.ModUtils;
 import net.minecraft.util.ResourceLocation;
 
-public class LostWorldsConstants
-{
+public class LostWorldsJeiConstants {
 	public static final ResourceLocation LOST_WORLDS_PLUGIN = ModUtils.rL("lostworlds_plugin");
-	
+
 	public static final ResourceLocation WATER_FUEL_CATEGORY = ModUtils.rL("water_fuel_category");
 	public static final ResourceLocation FOSSIL_CLEANER_CATEGORY = ModUtils.rL("fossil_cleaner_category");
 	public static final ResourceLocation FOSSIL_GRINDER_CATEGORY = ModUtils.rL("fossil_grinder_category");

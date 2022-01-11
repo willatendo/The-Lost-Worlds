@@ -14,29 +14,24 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class AllosaurusRenderer extends TyrannomationEntityRenderer<AllosaurusEntity>
-{
-	public AllosaurusRenderer(EntityRendererManager renderManager) 
-	{
+public class AllosaurusRenderer extends TyrannomationEntityRenderer<AllosaurusEntity> {
+	public AllosaurusRenderer(EntityRendererManager renderManager) {
 		super(renderManager, new AllosaurusModel());
 		this.shadowRadius = 0.75F;
 	}
-	
+
 	@Override
-	public RenderType getRenderType(AllosaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
-	{
+	public RenderType getRenderType(AllosaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
 		return RenderType.entityTranslucent(getTextureLocation(animatable));
 	}
-	
+
 	@Override
-	public void render(AllosaurusEntity entity, float entityYaw, float partialTicks, MatrixStack stack, IRenderTypeBuffer bufferIn, int packedLightIn) 
-	{
-		if(entity.isBaby())
-		{
+	public void render(AllosaurusEntity entity, float entityYaw, float partialTicks, MatrixStack stack, IRenderTypeBuffer bufferIn, int packedLightIn) {
+		if (entity.isBaby()) {
 			stack.scale(0.15F, 0.15F, 0.15F);
 		}
 		stack.scale(1.3F, 1.3F, 1.3F);
-		
+
 		super.render(entity, entityYaw, partialTicks, stack, bufferIn, packedLightIn);
 	}
 }

@@ -45,46 +45,39 @@ import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationContro
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class OuranosaurusEntity extends EggLayingEntity implements IReasonableAngerable
-{
+public class OuranosaurusEntity extends EggLayingEntity implements IReasonableAngerable {
 	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
-	
+
 	private static final RangedInteger PERSISTENT_ANGER_TIME = TickRangeConverter.rangeOfSeconds(20, 39);
 	private int remainingPersistentAngerTime;
 	private UUID persistentAngerTarget;
 
-	public OuranosaurusEntity(EntityType<? extends OuranosaurusEntity> entity, World world) 
-	{
+	public OuranosaurusEntity(EntityType<? extends OuranosaurusEntity> entity, World world) {
 		super(entity, world);
 	}
-	
+
 	@Override
-	public CreatureDiet diet() 
-	{
+	public CreatureDiet diet() {
 		return CreatureDiet.HERBIVORE;
 	}
-	
+
 	@Override
-	public ActivityType activity() 
-	{
+	public ActivityType activity() {
 		return ActivityType.DIURNAL;
 	}
 
 	@Override
-	public int maxHunger() 
-	{
+	public int maxHunger() {
 		return 10000;
 	}
-	
-	public static AttributeModifierMap createAttributes() 
-	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.ouranosaurusHeath.get()).build();
+
+	public static AttributeModifierMap createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.SERVER_CONFIG.ouranosaurusHeath.get()).build();
 	}
-	
+
 	@Override
-	protected void registerGoals() 
-	{
+	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new SleepySwimGoal(this));
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
@@ -109,84 +102,70 @@ public class OuranosaurusEntity extends EggLayingEntity implements IReasonableAn
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
+	public void registerControllers(TyrannomationData data) {
 		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
-	
+
 	@Override
-	public boolean isFood(ItemStack stack) 
-	{
+	public boolean isFood(ItemStack stack) {
 		return FOOD_ITEMS.test(stack);
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
-	{
+	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
 		return EntityInit.OURANOSAURUS.create(world);
 	}
-	
+
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) 
-	{
+	public void addAdditionalSaveData(CompoundNBT nbt) {
 		super.addAdditionalSaveData(nbt);
 		this.addPersistentAngerSaveData(nbt);
 	}
-	
+
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) 
-	{
+	public void readAdditionalSaveData(CompoundNBT nbt) {
 		super.readAdditionalSaveData(nbt);
-		if(level.isClientSide) 
-		{
-			this.readPersistentAngerSaveData((ServerWorld)this.level, nbt);
+		if (level.isClientSide) {
+			this.readPersistentAngerSaveData((ServerWorld) this.level, nbt);
 		}
 	}
-	
+
 	@Override
-	public void aiStep() 
-	{
+	public void aiStep() {
 		super.aiStep();
-		
-		if(!this.level.isClientSide) 
-		{
+
+		if (!this.level.isClientSide) {
 			this.updatePersistentAnger((ServerWorld) this.level, true);
 		}
 	}
 
 	@Override
-	public void startPersistentAngerTimer() 
-	{
+	public void startPersistentAngerTimer() {
 		this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.randomValue(this.random));
 	}
 
 	@Override
-	public void setRemainingPersistentAngerTime(int anger) 
-	{
+	public void setRemainingPersistentAngerTime(int anger) {
 		this.remainingPersistentAngerTime = anger;
 	}
 
 	@Override
-	public int getRemainingPersistentAngerTime() 
-	{
+	public int getRemainingPersistentAngerTime() {
 		return this.remainingPersistentAngerTime;
 	}
 
 	@Override
-	public void setPersistentAngerTarget(UUID target) 
-	{
+	public void setPersistentAngerTarget(UUID target) {
 		this.persistentAngerTarget = target;
 	}
 
 	@Override
-	public UUID getPersistentAngerTarget() 
-	{
+	public UUID getPersistentAngerTarget() {
 		return this.persistentAngerTarget;
 	}
 }

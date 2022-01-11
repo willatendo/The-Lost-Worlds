@@ -8,23 +8,19 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
 
 @OnlyIn(Dist.CLIENT)
-public class OphthalmosaurusModel extends TyrannomatedTyrannomationModel<OphthalmosaurusEntity>
-{
+public class OphthalmosaurusModel extends TyrannomatedTyrannomationModel<OphthalmosaurusEntity> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(OphthalmosaurusEntity entity) 
-	{
+	public ResourceLocation getAnimationFileLocation(OphthalmosaurusEntity entity) {
 		return ModUtils.rL("animations/ophthalmosaurus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(OphthalmosaurusEntity entity) 
-	{
+	public ResourceLocation getModelLocation(OphthalmosaurusEntity entity) {
 		return ModUtils.rL("geo/ophthalmosaurus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(OphthalmosaurusEntity entity) 
-	{
+	public ResourceLocation getTextureLocation(OphthalmosaurusEntity entity) {
 		return ModUtils.rL("textures/model/entity/ophthalmosaurus/texture.png");
 	}
 

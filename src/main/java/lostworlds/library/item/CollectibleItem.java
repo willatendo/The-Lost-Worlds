@@ -9,13 +9,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
-public class CollectibleItem extends ModItem
-{
+public class CollectibleItem extends ModItem {
 	@Override
-	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> text, ITooltipFlag flag) 
-	{
-		if(ClientUtils.isHoldingLeftShift()) 
-		{
+	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> text, ITooltipFlag flag) {
+		if (ClientUtils.isHoldingLeftShift()) {
 			text.add(ModUtils.gTC("toolTip", "item.collectible"));
 		}
 	}

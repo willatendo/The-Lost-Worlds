@@ -1,7 +1,6 @@
 package lostworlds.library.entity.utils.enums;
 
-public enum CreatureTypes 
-{
+public enum CreatureTypes {
 	BAT(Size.TINY, BirthType.GESTATION),
 	CAT(Size.SMALL, BirthType.GESTATION),
 	CHICKEN(Size.SMALL, BirthType.EGG),
@@ -21,42 +20,31 @@ public enum CreatureTypes
 	SHEEP(Size.MEDIUM, BirthType.GESTATION),
 	TURTLE(Size.MEDIUM, BirthType.EGG),
 	WOLF(Size.SMALL, BirthType.GESTATION);
-	
+
 	private final Size size;
 	private final BirthType type;
-	
-	private CreatureTypes(Size size, BirthType type) 
-	{
+
+	private CreatureTypes(Size size, BirthType type) {
 		this.size = size;
 		this.type = type;
 	}
-	
-	public Size size()
-	{
+
+	public Size size() {
 		return this.size;
 	}
-	
-	public BirthType type()
-	{
+
+	public BirthType type() {
 		return this.type;
 	}
-	
-	public int getGestationPeriod(CreatureTypes creature)
-	{
-		if(creature.size() == Size.TINY)
-		{
+
+	public int getGestationPeriod(CreatureTypes creature) {
+		if (creature.size() == Size.TINY) {
 			return 10000;
-		}
-		else if(creature.size() == Size.SMALL)
-		{
+		} else if (creature.size() == Size.SMALL) {
 			return 20000;
-		}
-		else if(creature.size() == Size.MEDIUM)
-		{
+		} else if (creature.size() == Size.MEDIUM) {
 			return 30000;
-		}
-		else
-		{
+		} else {
 			return 40000;
 		}
 	}

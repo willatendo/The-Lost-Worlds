@@ -19,47 +19,32 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ModBoatRenderer extends EntityRenderer<ModBoatEntity> 
-{
-	private static final ResourceLocation[] BOAT_TEXTURES = new ResourceLocation[] 
-	{
-		ModUtils.rL("textures/entity/boat/araucaria_boat.png"), 
-		ModUtils.rL("textures/entity/boat/calamites_boat.png"),
-		ModUtils.rL("textures/entity/boat/conifer_boat.png"), 
-		ModUtils.rL("textures/entity/boat/cypress_boat.png"), 
-		ModUtils.rL("textures/entity/boat/ginkgo_boat.png"),
-		ModUtils.rL("textures/entity/boat/scorched_boat.png") ,
-		ModUtils.rL("textures/entity/boat/sequoia_boat.png")
-	};
+public class ModBoatRenderer extends EntityRenderer<ModBoatEntity> {
+	private static final ResourceLocation[] BOAT_TEXTURES = new ResourceLocation[] { ModUtils.rL("textures/entity/boat/araucaria_boat.png"), ModUtils.rL("textures/entity/boat/calamites_boat.png"), ModUtils.rL("textures/entity/boat/conifer_boat.png"), ModUtils.rL("textures/entity/boat/cypress_boat.png"), ModUtils.rL("textures/entity/boat/ginkgo_boat.png"), ModUtils.rL("textures/entity/boat/scorched_boat.png"), ModUtils.rL("textures/entity/boat/sequoia_boat.png") };
 	protected final BoatModel modelBoat = new BoatModel();
-	
-	public ModBoatRenderer(EntityRendererManager render) 
-	{
+
+	public ModBoatRenderer(EntityRendererManager render) {
 		super(render);
 		this.shadowRadius = 0.8F;
 	}
 
 	@Override
-	public void render(ModBoatEntity entity, float entityYaw, float partialTicks, MatrixStack stack, IRenderTypeBuffer buffer, int packedLight) 
-	{
+	public void render(ModBoatEntity entity, float entityYaw, float partialTicks, MatrixStack stack, IRenderTypeBuffer buffer, int packedLight) {
 		stack.pushPose();
 		stack.translate(0.0D, 0.375D, 0.0D);
 		stack.mulPose(Vector3f.YP.rotationDegrees(180.0F - entityYaw));
 		float f = (float) entity.getHurtTime() - partialTicks;
 		float f1 = entity.getDamage() - partialTicks;
-		if(f1 < 0.0F) 
-		{
+		if (f1 < 0.0F) {
 			f1 = 0.0F;
 		}
 
-		if(f > 0.0F) 
-		{
+		if (f > 0.0F) {
 			stack.mulPose(Vector3f.XP.rotationDegrees(MathHelper.sin(f) * f * f1 / 10.0F * (float) entity.getHurtDir()));
 		}
 
 		float f2 = entity.getBubbleAngle(partialTicks);
-		if(!MathHelper.equal(f2, 0.0F)) 
-		{
+		if (!MathHelper.equal(f2, 0.0F)) {
 			stack.mulPose(new Quaternion(new Vector3f(1.0F, 0.0F, 1.0F), entity.getBubbleAngle(partialTicks), true));
 		}
 
@@ -73,10 +58,9 @@ public class ModBoatRenderer extends EntityRenderer<ModBoatEntity>
 		stack.popPose();
 		super.render(entity, entityYaw, partialTicks, stack, buffer, packedLight);
 	}
-	
+
 	@Override
-	public ResourceLocation getTextureLocation(ModBoatEntity entity) 
-	{
+	public ResourceLocation getTextureLocation(ModBoatEntity entity) {
 		return BOAT_TEXTURES[entity.getModBoatType().ordinal()];
 	}
 }

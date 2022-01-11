@@ -6,7 +6,7 @@ import com.google.common.cache.LoadingCache;
 import com.mojang.blaze3d.matrix.MatrixStack;
 
 import lostworlds.content.ModUtils;
-import lostworlds.content.jei.LostWorldsConstants;
+import lostworlds.content.jei.LostWorldsJeiConstants;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.container.recipes.FossilGrinderRecipe;
 import mezz.jei.api.constants.VanillaTypes;
@@ -60,7 +60,7 @@ public class FossilGrinderCategory implements IRecipeCategory<FossilGrinderRecip
 	@Override
 	public ResourceLocation getUid() 
 	{
-		return LostWorldsConstants.FOSSIL_GRINDER_CATEGORY;
+		return LostWorldsJeiConstants.FOSSIL_GRINDER_CATEGORY;
 	}
 
 	@Override

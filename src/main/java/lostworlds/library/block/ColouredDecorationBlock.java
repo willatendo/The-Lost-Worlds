@@ -8,17 +8,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.DyeColor;
 
-public class ColouredDecorationBlock extends Block
-{
-	protected ColouredDecorationBlock() 
-	{
+public class ColouredDecorationBlock extends Block {
+	protected ColouredDecorationBlock() {
 		super(AbstractBlock.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL));
 	}
 
-	public static void create()
-	{
-		for(DyeColor colour : DyeColor.values())
-		{
+	public static void create() {
+		for (DyeColor colour : DyeColor.values()) {
 			BlockAndItemBuilder.create(colour.getName().toLowerCase() + "_decoration_block", new ColouredDecorationBlock());
 		}
 	}

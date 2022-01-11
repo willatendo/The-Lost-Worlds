@@ -25,8 +25,7 @@ import lostworlds.library.container.recipes.serialiser.TimeMachineRecipeSerialis
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 
-public class RecipeInit 
-{
+public class RecipeInit {
 	public static final IRecipeSerializer<FossilCleanerRecipe> FOSSIL_CLEANER_RECIPE_SERIALIZER = new FossilCleanerRecipeSerialiser();
 	public static final IRecipeSerializer<FossilGrinderRecipe> FOSSIL_GRINDER_RECIPE_SERIALIZER = new FossilGrinderRecipeSerialiser();
 	public static final IRecipeSerializer<DNAExtractorRecipe> DNA_EXTRACTOR_RECIPE_SERIALIZER = new DNAExtractorRecipeSerialiser();
@@ -59,6 +58,8 @@ public class RecipeInit
 	public static final IRecipeSerializer<?> ARCHAEOLOGY_TABLE_SERIALIZER = ModRegistry.register("archaeology_table", ARCHAEOLOGY_TABLE_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> PALEONTOLOGY_TABLE_SERIALIZER = ModRegistry.register("paleontology_table", PALEONTOLOGY_TABLE_RECIPE_SERIALIZER);
 	public static final IRecipeSerializer<?> TIME_MACHINE_SERIALIZER = ModRegistry.register("time_machine", TIME_MACHINE_RECIPE_SERIALIZER);
-	
-	public static void init() { ModUtils.LOGGER.debug("Registering Mod Recipes"); }
+
+	public static void init() {
+		ModUtils.LOGGER.debug("Registering Mod Recipes");
+	}
 }

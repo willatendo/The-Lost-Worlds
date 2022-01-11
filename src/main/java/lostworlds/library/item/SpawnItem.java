@@ -29,114 +29,85 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.common.util.NonNullSupplier;
 
-public class SpawnItem extends ModItem
-{
+public class SpawnItem extends ModItem {
 	private final Lazy<? extends EntityType<?>> entityTypeSupplier;
 	private final ITextComponent name;
 
-	public SpawnItem(NonNullSupplier<? extends EntityType<? extends CreatureEntity>> entityTypeSupplier, ITextComponent name) 
-	{
+	public SpawnItem(NonNullSupplier<? extends EntityType<? extends CreatureEntity>> entityTypeSupplier, ITextComponent name) {
 		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
 		this.name = name;
 	}
-	
+
 	@Override
-	public ITextComponent getName(ItemStack stack) 
-	{
+	public ITextComponent getName(ItemStack stack) {
 		return new TranslationTextComponent("item.lostworlds.spawn", this.name);
 	}
-	
+
 	@Override
-	public ActionResultType useOn(ItemUseContext cpmtext) 
-	{
+	public ActionResultType useOn(ItemUseContext cpmtext) {
 		World world = cpmtext.getLevel();
-		if(!(world instanceof ServerWorld)) 
-		{
+		if (!(world instanceof ServerWorld)) {
 			return ActionResultType.SUCCESS;
-		} 
-		else 
-		{
+		} else {
 			ItemStack itemstack = cpmtext.getItemInHand();
 			BlockPos blockpos = cpmtext.getClickedPos();
 			Direction direction = cpmtext.getClickedFace();
 			BlockState blockstate = world.getBlockState(blockpos);
 			BlockPos blockpos1;
-			if(blockstate.getCollisionShape(world, blockpos).isEmpty()) 
-			{
+			if (blockstate.getCollisionShape(world, blockpos).isEmpty()) {
 				blockpos1 = blockpos;
-			} 
-			else 
-			{
+			} else {
 				blockpos1 = blockpos.relative(direction);
 			}
-			
+
 			EntityType<?> entitytype = this.getType(itemstack.getTag());
-			if(entitytype.spawn((ServerWorld)world, itemstack, cpmtext.getPlayer(), blockpos1, SpawnReason.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) 
-			{
+			if (entitytype.spawn((ServerWorld) world, itemstack, cpmtext.getPlayer(), blockpos1, SpawnReason.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) {
 				itemstack.shrink(1);
 			}
-			
+
 			return ActionResultType.CONSUME;
 		}
 	}
-	
+
 	@Override
-	public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) 
-	{
+	public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
 		ItemStack itemstack = player.getItemInHand(hand);
 		RayTraceResult raytraceresult = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
-		if(raytraceresult.getType() != RayTraceResult.Type.BLOCK) 
-		{
+		if (raytraceresult.getType() != RayTraceResult.Type.BLOCK) {
 			return ActionResult.pass(itemstack);
-		} 
-		else if(!(world instanceof ServerWorld)) 
-		{
+		} else if (!(world instanceof ServerWorld)) {
 			return ActionResult.success(itemstack);
-		} 
-		else 
-		{
+		} else {
 			BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult) raytraceresult;
 			BlockPos blockpos = blockraytraceresult.getBlockPos();
-			if(!(world.getBlockState(blockpos).getBlock() instanceof FlowingFluidBlock)) 
-			{
+			if (!(world.getBlockState(blockpos).getBlock() instanceof FlowingFluidBlock)) {
 				return ActionResult.pass(itemstack);
-			} 
-			else if(world.mayInteract(player, blockpos) && player.mayUseItemAt(blockpos, blockraytraceresult.getDirection(), itemstack)) 
-			{
+			} else if (world.mayInteract(player, blockpos) && player.mayUseItemAt(blockpos, blockraytraceresult.getDirection(), itemstack)) {
 				EntityType<?> entitytype = this.getType(itemstack.getTag());
-				if(entitytype.spawn((ServerWorld) world, itemstack, player, blockpos, SpawnReason.SPAWN_EGG, false, false) == null) 
-				{
+				if (entitytype.spawn((ServerWorld) world, itemstack, player, blockpos, SpawnReason.SPAWN_EGG, false, false) == null) {
 					return ActionResult.pass(itemstack);
-				} 
-				else 
-				{
-					if(!player.abilities.instabuild) 
-					{
+				} else {
+					if (!player.abilities.instabuild) {
 						itemstack.shrink(1);
 					}
 
 					player.awardStat(Stats.ITEM_USED.get(this));
 					return ActionResult.consume(itemstack);
 				}
-			} 
-			else 
-			{
+			} else {
 				return ActionResult.fail(itemstack);
 			}
 		}
 	}
-	
-	public EntityType<?> getType(@Nullable CompoundNBT nbt) 
-	{
-		if(nbt != null && nbt.contains("EntityTag", 10)) 
-		{
+
+	public EntityType<?> getType(@Nullable CompoundNBT nbt) {
+		if (nbt != null && nbt.contains("EntityTag", 10)) {
 			CompoundNBT compoundnbt = nbt.getCompound("EntityTag");
-			if(compoundnbt.contains("id", 8)) 
-			{
+			if (compoundnbt.contains("id", 8)) {
 				return EntityType.byString(compoundnbt.getString("id")).orElse(this.entityTypeSupplier.get());
 			}
 		}
-		
+
 		return this.entityTypeSupplier.get();
 	}
 }

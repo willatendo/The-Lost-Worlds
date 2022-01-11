@@ -10,68 +10,56 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public abstract class EggLayingEntity extends TaggedEntity 
-{
+public abstract class EggLayingEntity extends TaggedEntity {
 	public final Random random = new Random();
 	protected static final DataParameter<BlockPos> HOME_POS = EntityDataManager.defineId(EggLayingEntity.class, DataSerializers.BLOCK_POS);
 	protected static final DataParameter<Boolean> HAS_EGG = EntityDataManager.defineId(EggLayingEntity.class, DataSerializers.BOOLEAN);
 	protected static final DataParameter<Boolean> GOING_HOME = EntityDataManager.defineId(EggLayingEntity.class, DataSerializers.BOOLEAN);
 	private boolean hasTerritory;
 	public int layEggCounter;
-	
-	public EggLayingEntity(EntityType<? extends EggLayingEntity> entity, World world) 
-	{
+
+	public EggLayingEntity(EntityType<? extends EggLayingEntity> entity, World world) {
 		super(entity, world);
 	}
-	
-	public boolean hasTerritory()
-	{
+
+	public boolean hasTerritory() {
 		return this.hasTerritory;
 	}
-	
-	public boolean setHasTerritory(boolean hasTerritory)
-	{
+
+	public boolean setHasTerritory(boolean hasTerritory) {
 		return this.hasTerritory = hasTerritory;
 	}
-	
-	public boolean canMakeTerritory()
-	{
+
+	public boolean canMakeTerritory() {
 		return hasTerritory() == false;
 	}
 
-	public void setHomePos(BlockPos pos) 
-	{
+	public void setHomePos(BlockPos pos) {
 		this.entityData.set(HOME_POS, pos);
 	}
 
-	public BlockPos getHomePos() 
-	{
+	public BlockPos getHomePos() {
 		return this.entityData.get(HOME_POS);
 	}
 
-	public void setHasEgg(boolean hasEgg) 
-	{
+	public void setHasEgg(boolean hasEgg) {
 		this.entityData.set(HAS_EGG, hasEgg);
 	}
 
-	public boolean hasEgg() 
-	{
+	public boolean hasEgg() {
 		return this.entityData.get(HAS_EGG);
 	}
-	
-	public boolean isGoingHome() 
-	{
+
+	public boolean isGoingHome() {
 		return this.entityData.get(GOING_HOME);
 	}
-	
-	public void setGoingHome(boolean goingHome) 
-	{
+
+	public void setGoingHome(boolean goingHome) {
 		this.entityData.set(GOING_HOME, goingHome);
 	}
-	
+
 	@Override
-	protected void defineSynchedData() 
-	{
+	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(HOME_POS, BlockPos.ZERO);
 		this.entityData.define(HAS_EGG, false);
@@ -79,8 +67,7 @@ public abstract class EggLayingEntity extends TaggedEntity
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) 
-	{
+	public void addAdditionalSaveData(CompoundNBT nbt) {
 		super.addAdditionalSaveData(nbt);
 		nbt.putBoolean("HasTerritory", this.hasTerritory());
 		nbt.putInt("HomePosX", this.getHomePos().getX());
@@ -91,8 +78,7 @@ public abstract class EggLayingEntity extends TaggedEntity
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) 
-	{
+	public void readAdditionalSaveData(CompoundNBT nbt) {
 		int x = nbt.getInt("HomePosX");
 		int y = nbt.getInt("HomePosY");
 		int z = nbt.getInt("HomePosZ");
@@ -102,16 +88,14 @@ public abstract class EggLayingEntity extends TaggedEntity
 		this.setGoingHome(nbt.getBoolean("GoingHome"));
 		this.setHasTerritory(nbt.getBoolean("HasTerritory"));
 	}
-	
+
 	@Override
-	public boolean canFallInLove() 
-	{
+	public boolean canFallInLove() {
 		return super.canFallInLove() && !this.hasEgg();
 	}
-	
+
 	@Override
-	public boolean canFallInNaturalLove() 
-	{
+	public boolean canFallInNaturalLove() {
 		return super.canFallInNaturalLove() && !this.hasEgg();
 	}
 }

@@ -18,7 +18,6 @@ import lostworlds.library.block.properties.ModBlockStateProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -48,49 +47,41 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public abstract class MachineBlockBuilder extends Block implements ITileEntityProvider
-{
+public abstract class MachineBlockBuilder extends Block {
 	protected static final Map<Block, Map<Direction, VoxelShape>> SHAPES = new HashMap<Block, Map<Direction, VoxelShape>>();
 	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 	public static final BooleanProperty ON = ModBlockStateProperties.ON;
-	
-	public MachineBlockBuilder(Properties properties) 
-	{
+
+	public MachineBlockBuilder(Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(ON, Boolean.valueOf(false)).setValue(HORIZONTAL_FACING, Direction.NORTH));
-	}	
-	
+	}
+
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) 
-	{
+	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
 		return SHAPES.get(this).get(state.getValue(HORIZONTAL_FACING));
 	}
-	
+
 	@Override
-	public BlockState mirror(BlockState state, Mirror mirrorIn) 
-	{
+	public BlockState mirror(BlockState state, Mirror mirrorIn) {
 		return state.rotate(mirrorIn.getRotation(state.getValue(HORIZONTAL_FACING)));
 	}
 
 	@Override
-	public BlockState rotate(BlockState state, IWorld world, BlockPos pos, Rotation direction) 
-	{
+	public BlockState rotate(BlockState state, IWorld world, BlockPos pos, Rotation direction) {
 		return state.setValue(HORIZONTAL_FACING, direction.rotate(state.getValue(HORIZONTAL_FACING)));
 	}
 
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext context) 
-	{
+	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		return this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite());
 	}
-	
-	protected static VoxelShape calculateShapes(Direction to, VoxelShape shape) 
-	{
+
+	protected static VoxelShape calculateShapes(Direction to, VoxelShape shape) {
 		VoxelShape[] buffer = new VoxelShape[] { shape, VoxelShapes.empty() };
 
 		int times = (to.get2DDataValue() - Direction.NORTH.get2DDataValue() + 4) % 4;
-		for (int i = 0; i < times; i++) 
-		{
+		for (int i = 0; i < times; i++) {
 			buffer[0].forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> buffer[1] = VoxelShapes.or(buffer[1], VoxelShapes.box(1 - maxZ, minY, minX, 1 - minZ, maxY, maxX)));
 			buffer[0] = buffer[1];
 			buffer[1] = VoxelShapes.empty();
@@ -99,185 +90,139 @@ public abstract class MachineBlockBuilder extends Block implements ITileEntityPr
 		return buffer[0];
 	}
 
-	protected void runCalculation(VoxelShape shape) 
-	{
+	protected void runCalculation(VoxelShape shape) {
 		SHAPES.put(this, new HashMap<Direction, VoxelShape>());
 		Map<Direction, VoxelShape> facingMap = SHAPES.get(this);
-		for (Direction direction : Direction.values()) 
-		{
+		for (Direction direction : Direction.values()) {
 			facingMap.put(direction, calculateShapes(direction, shape));
 		}
-	}	
-	
+	}
+
 	@Override
-	public boolean triggerEvent(BlockState state, World world, BlockPos pos, int i1, int i2) 
-	{
+	public boolean triggerEvent(BlockState state, World world, BlockPos pos, int i1, int i2) {
 		super.triggerEvent(state, world, pos, i1, i2);
 		TileEntity tileentity = world.getBlockEntity(pos);
 		return tileentity == null ? false : tileentity.triggerEvent(i1, i2);
 	}
-	
+
 	@Nullable
 	@Override
-	public INamedContainerProvider getMenuProvider(BlockState state, World world, BlockPos pos) 
-	{
+	public INamedContainerProvider getMenuProvider(BlockState state, World world, BlockPos pos) {
 		TileEntity tileentity = world.getBlockEntity(pos);
-		return tileentity instanceof INamedContainerProvider ? (INamedContainerProvider)tileentity : null;
+		return tileentity instanceof INamedContainerProvider ? (INamedContainerProvider) tileentity : null;
 	}
-	
+
 	@Override
-	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) 
-	{
-		if(!world.isClientSide) 
-		{
+	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
+		if (!world.isClientSide) {
 			TileEntity tile = world.getBlockEntity(pos);
-			if(tile instanceof FossilCleanerTileEntity) 
-			{
-				NetworkHooks.openGui((ServerPlayerEntity)player, (INamedContainerProvider)tile, pos);
+			if (tile instanceof FossilCleanerTileEntity) {
+				NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) tile, pos);
 				return ActionResultType.SUCCESS;
-			}
-			else if(tile instanceof FossilGrinderTileEntity) 
-			{
-				NetworkHooks.openGui((ServerPlayerEntity)player, (INamedContainerProvider)tile, pos);
+			} else if (tile instanceof FossilGrinderTileEntity) {
+				NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) tile, pos);
 				return ActionResultType.SUCCESS;
-			}
-			else if(tile instanceof DNAExtractorTileEntity) 
-			{
-				NetworkHooks.openGui((ServerPlayerEntity)player, (INamedContainerProvider)tile, pos);
+			} else if (tile instanceof DNAExtractorTileEntity) {
+				NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) tile, pos);
 				return ActionResultType.SUCCESS;
-			}
-			else if(tile instanceof AnalyzerTileEntity) 
-			{
-				NetworkHooks.openGui((ServerPlayerEntity)player, (INamedContainerProvider)tile, pos);
+			} else if (tile instanceof AnalyzerTileEntity) {
+				NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) tile, pos);
 				return ActionResultType.SUCCESS;
-			}
-			else if(tile instanceof DNAInjectorTileEntity) 
-			{
-				NetworkHooks.openGui((ServerPlayerEntity)player, (INamedContainerProvider)tile, pos);
+			} else if (tile instanceof DNAInjectorTileEntity) {
+				NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) tile, pos);
 				return ActionResultType.SUCCESS;
-			}
-			else if(tile instanceof CultivatorTileEntity) 
-			{
-				NetworkHooks.openGui((ServerPlayerEntity)player, (INamedContainerProvider)tile, pos);
+			} else if (tile instanceof CultivatorTileEntity) {
+				NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) tile, pos);
 				return ActionResultType.SUCCESS;
 			}
 		}
 		return ActionResultType.SUCCESS;
 	}
-		
+
 	@Override
-	public void setPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) 
-	{
-		if(stack.hasCustomHoverName()) 
-		{
+	public void setPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
+		if (stack.hasCustomHoverName()) {
 			TileEntity tileentity = world.getBlockEntity(pos);
-			if(tileentity instanceof FossilCleanerTileEntity) 
-			{
-				((FossilCleanerTileEntity)tileentity).setCustomName(stack.getHoverName());
-			}
-			else if(tileentity instanceof FossilGrinderTileEntity) 
-			{
-				((FossilGrinderTileEntity)tileentity).setCustomName(stack.getHoverName());
-			}
-			else if(tileentity instanceof DNAExtractorTileEntity) 
-			{
-				((DNAExtractorTileEntity)tileentity).setCustomName(stack.getHoverName());
-			}
-			else if(tileentity instanceof AnalyzerTileEntity) 
-			{
-				((AnalyzerTileEntity)tileentity).setCustomName(stack.getHoverName());
-			}
-			else if(tileentity instanceof DNAInjectorTileEntity) 
-			{
-				((DNAInjectorTileEntity)tileentity).setCustomName(stack.getHoverName());
-			}
-			else if(tileentity instanceof CultivatorTileEntity) 
-			{
-				((CultivatorTileEntity)tileentity).setCustomName(stack.getHoverName());
+			if (tileentity instanceof FossilCleanerTileEntity) {
+				((FossilCleanerTileEntity) tileentity).setCustomName(stack.getHoverName());
+			} else if (tileentity instanceof FossilGrinderTileEntity) {
+				((FossilGrinderTileEntity) tileentity).setCustomName(stack.getHoverName());
+			} else if (tileentity instanceof DNAExtractorTileEntity) {
+				((DNAExtractorTileEntity) tileentity).setCustomName(stack.getHoverName());
+			} else if (tileentity instanceof AnalyzerTileEntity) {
+				((AnalyzerTileEntity) tileentity).setCustomName(stack.getHoverName());
+			} else if (tileentity instanceof DNAInjectorTileEntity) {
+				((DNAInjectorTileEntity) tileentity).setCustomName(stack.getHoverName());
+			} else if (tileentity instanceof CultivatorTileEntity) {
+				((CultivatorTileEntity) tileentity).setCustomName(stack.getHoverName());
 			}
 		}
 	}
-	
+
 	@Override
-	public void onRemove(BlockState state, World world, BlockPos pos, BlockState newState, boolean b) 
-	{
-		if(!state.is(newState.getBlock())) 
-		{
+	public void onRemove(BlockState state, World world, BlockPos pos, BlockState newState, boolean b) {
+		if (!state.is(newState.getBlock())) {
 			TileEntity tileentity = world.getBlockEntity(pos);
-			if(tileentity instanceof FossilCleanerTileEntity) 
-			{
-				InventoryHelper.dropContents(world, pos, (FossilCleanerTileEntity)tileentity);
+			if (tileentity instanceof FossilCleanerTileEntity) {
+				InventoryHelper.dropContents(world, pos, (FossilCleanerTileEntity) tileentity);
+				world.updateNeighbourForOutputSignal(pos, this);
+			} else if (tileentity instanceof FossilGrinderTileEntity) {
+				InventoryHelper.dropContents(world, pos, (FossilGrinderTileEntity) tileentity);
+				world.updateNeighbourForOutputSignal(pos, this);
+			} else if (tileentity instanceof DNAExtractorTileEntity) {
+				InventoryHelper.dropContents(world, pos, (DNAExtractorTileEntity) tileentity);
+				world.updateNeighbourForOutputSignal(pos, this);
+			} else if (tileentity instanceof AnalyzerTileEntity) {
+				InventoryHelper.dropContents(world, pos, (AnalyzerTileEntity) tileentity);
+				world.updateNeighbourForOutputSignal(pos, this);
+			} else if (tileentity instanceof DNAInjectorTileEntity) {
+				InventoryHelper.dropContents(world, pos, (DNAInjectorTileEntity) tileentity);
+				world.updateNeighbourForOutputSignal(pos, this);
+			} else if (tileentity instanceof CultivatorTileEntity) {
+				InventoryHelper.dropContents(world, pos, (CultivatorTileEntity) tileentity);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
-			else if(tileentity instanceof FossilGrinderTileEntity) 
-			{
-				InventoryHelper.dropContents(world, pos, (FossilGrinderTileEntity)tileentity);
-				world.updateNeighbourForOutputSignal(pos, this);
-			}
-			else if(tileentity instanceof DNAExtractorTileEntity) 
-			{
-				InventoryHelper.dropContents(world, pos, (DNAExtractorTileEntity)tileentity);
-				world.updateNeighbourForOutputSignal(pos, this);
-			}
-			else if(tileentity instanceof AnalyzerTileEntity) 
-			{
-				InventoryHelper.dropContents(world, pos, (AnalyzerTileEntity)tileentity);
-				world.updateNeighbourForOutputSignal(pos, this);
-			}
-			else if(tileentity instanceof DNAInjectorTileEntity) 
-			{
-				InventoryHelper.dropContents(world, pos, (DNAInjectorTileEntity)tileentity);
-				world.updateNeighbourForOutputSignal(pos, this);
-			}
-			else if(tileentity instanceof CultivatorTileEntity) 
-			{
-				InventoryHelper.dropContents(world, pos, (CultivatorTileEntity)tileentity);
-				world.updateNeighbourForOutputSignal(pos, this);
-			}
-			
+
 			super.onRemove(state, world, pos, newState, b);
 		}
 	}
-	
+
 	@Override
-	public void animateTick(BlockState state, World world, BlockPos pos, Random rand) 
-	{
-		if(LostWorldsConfig.CLIENT_CONFIG.machineSounds.get())
-		{
-			if(state.getValue(ON)) 
-			{
-				double d0 = (double)pos.getX() + 0.5D;
-				double d1 = (double)pos.getY();
-				double d2 = (double)pos.getZ() + 0.5D;
-				if(rand.nextDouble() < 0.1D) 
-				{
+	public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {
+		if (LostWorldsConfig.CLIENT_CONFIG.machineSounds.get()) {
+			if (state.getValue(ON)) {
+				double d0 = (double) pos.getX() + 0.5D;
+				double d1 = (double) pos.getY();
+				double d2 = (double) pos.getZ() + 0.5D;
+				if (rand.nextDouble() < 0.1D) {
 					world.playLocalSound(d0, d1, d2, SoundInit.MACHINE_WHIRLING, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
-	        	}
+				}
 			}
 		}
 	}
-	
+
 	@Override
-	public boolean hasAnalogOutputSignal(BlockState state) 
-	{
+	public boolean hasAnalogOutputSignal(BlockState state) {
 		return true;
 	}
 	
 	@Override
-	public int getAnalogOutputSignal(BlockState state, World world, BlockPos pos) 
-	{
+	public boolean hasTileEntity(BlockState state) {
+		return true;
+	}
+
+	@Override
+	public int getAnalogOutputSignal(BlockState state, World world, BlockPos pos) {
 		return Container.getRedstoneSignalFromBlockEntity(world.getBlockEntity(pos));
 	}
-	
+
 	@Override
-	public BlockRenderType getRenderShape(BlockState state) 
-	{
+	public BlockRenderType getRenderShape(BlockState state) {
 		return BlockRenderType.MODEL;
 	}
-	
+
 	@Override
-	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) 
-	{
+	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(HORIZONTAL_FACING, ON);
 	}
 }

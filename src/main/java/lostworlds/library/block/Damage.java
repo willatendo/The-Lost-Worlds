@@ -2,8 +2,7 @@ package lostworlds.library.block;
 
 import net.minecraft.util.IStringSerializable;
 
-public enum Damage implements IStringSerializable
-{
+public enum Damage implements IStringSerializable {
 	NONE,
 	CHIPPED,
 	SLIGHTLY,
@@ -12,23 +11,21 @@ public enum Damage implements IStringSerializable
 	COMPLETELY;
 
 	@Override
-	public String getSerializedName() 
-	{
-		switch (this) 
-		{
-			case CHIPPED:
-				return "chipped";
-			case SLIGHTLY:
-				return "slightly";
-			case CRACKED:
-				return "cracked";
-			case DAMAGED:
-				return "damaged";
-			case COMPLETELY:
-				return "completely";
-			case NONE:
-			default:
-				return "none";
+	public String getSerializedName() {
+		switch (this) {
+		case CHIPPED:
+			return "chipped";
+		case SLIGHTLY:
+			return "slightly";
+		case CRACKED:
+			return "cracked";
+		case DAMAGED:
+			return "damaged";
+		case COMPLETELY:
+			return "completely";
+		case NONE:
+		default:
+			return "none";
 		}
 	}
 }

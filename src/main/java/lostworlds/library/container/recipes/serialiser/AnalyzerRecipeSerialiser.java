@@ -13,11 +13,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class AnalyzerRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<AnalyzerRecipe>
-{
+public class AnalyzerRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<AnalyzerRecipe> {
 	@Override
-	public AnalyzerRecipe fromJson(ResourceLocation recipeId, JsonObject json) 
-	{
+	public AnalyzerRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 		ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
 		Ingredient dna = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "dna"));
 		Ingredient dnaDisc = Ingredient.of(ItemInit.STORAGE_DISC);
@@ -26,8 +24,7 @@ public class AnalyzerRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializ
 	}
 
 	@Override
-	public AnalyzerRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) 
-	{
+	public AnalyzerRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 		ItemStack output = buffer.readItem();
 		Ingredient dna = Ingredient.fromNetwork(buffer);
 		Ingredient dnaDisc = Ingredient.fromNetwork(buffer);
@@ -36,8 +33,7 @@ public class AnalyzerRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializ
 	}
 
 	@Override
-	public void toNetwork(PacketBuffer buffer, AnalyzerRecipe recipe) 
-	{
+	public void toNetwork(PacketBuffer buffer, AnalyzerRecipe recipe) {
 		buffer.writeItemStack(recipe.getResultItem(), false);
 
 		Ingredient input = recipe.getIngredients().get(0);

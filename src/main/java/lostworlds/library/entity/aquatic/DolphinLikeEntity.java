@@ -66,18 +66,15 @@ import net.minecraft.world.biome.Biomes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public abstract class DolphinLikeEntity extends BreedingWaterEntity
-{
+public abstract class DolphinLikeEntity extends BreedingWaterEntity {
 	public static final DataParameter<Integer> MOISTNESS_LEVEL = EntityDataManager.defineId(DolphinLikeEntity.class, DataSerializers.INT);
 	public static final EntityPredicate SWIM_WITH_PLAYER_TARGETING = (new EntityPredicate()).range(10.0D).allowSameTeam().allowInvulnerable().allowUnseeable();
-	public static final Predicate<ItemEntity> ALLOWED_ITEMS = (itementity) -> 
-	{
+	public static final Predicate<ItemEntity> ALLOWED_ITEMS = (itementity) -> {
 		return !itementity.hasPickUpDelay() && itementity.isAlive() && itementity.isInWater();
 	};
 	private static final Ingredient FOOD_ITEMS = FoodLists.PISCIVORE;
 
-	public DolphinLikeEntity(EntityType<? extends DolphinLikeEntity> entity, World world) 
-	{
+	public DolphinLikeEntity(EntityType<? extends DolphinLikeEntity> entity, World world) {
 		super(entity, world);
 		this.moveControl = new DolphinLikeMovementController(this);
 		this.lookControl = new DolphinLikeLookController(this, 10);
@@ -86,55 +83,48 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity
 
 	@Override
 	@Nullable
-	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficulty, SpawnReason reason, @Nullable ILivingEntityData data, @Nullable CompoundNBT nbt) 
-	{
+	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficulty, SpawnReason reason, @Nullable ILivingEntityData data, @Nullable CompoundNBT nbt) {
 		this.setAirSupply(this.getMaxAirSupply());
 		this.xRot = 0.0F;
 		return super.finalizeSpawn(world, difficulty, reason, data, nbt);
 	}
 
 	@Override
-	public boolean canBreatheUnderwater() 
-	{
+	public boolean canBreatheUnderwater() {
 		return false;
 	}
 
-	protected void handleAirSupply(int air) { }
-	
-	public int getMoistnessLevel() 
-	{
+	protected void handleAirSupply(int air) {
+	}
+
+	public int getMoistnessLevel() {
 		return this.entityData.get(MOISTNESS_LEVEL);
 	}
 
-	public void setMoisntessLevel(int moistness) 
-	{
+	public void setMoisntessLevel(int moistness) {
 		this.entityData.set(MOISTNESS_LEVEL, moistness);
 	}
 
 	@Override
-	protected void defineSynchedData() 
-	{
+	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(MOISTNESS_LEVEL, 2400);
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) 
-	{
+	public void addAdditionalSaveData(CompoundNBT nbt) {
 		super.addAdditionalSaveData(nbt);
 		nbt.putInt("Moistness", this.getMoistnessLevel());
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) 
-	{
+	public void readAdditionalSaveData(CompoundNBT nbt) {
 		super.readAdditionalSaveData(nbt);
 		this.setMoisntessLevel(nbt.getInt("Moistness"));
 	}
 
 	@Override
-	protected void registerGoals() 
-	{
+	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new BreatheAirGoal(this));
 		this.goalSelector.addGoal(0, new FindWaterGoal(this));
 		this.goalSelector.addGoal(2, new SwimWithPlayerGoal(this, 4.0D));
@@ -152,28 +142,23 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity
 	}
 
 	@Override
-	public boolean isFood(ItemStack stack)
-	{
+	public boolean isFood(ItemStack stack) {
 		return FOOD_ITEMS.test(stack);
 	}
-	
-	public static AttributeModifierMap.MutableAttribute createBasicAttributes() 
-	{
+
+	public static AttributeModifierMap.MutableAttribute createBasicAttributes() {
 		return MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0D).add(Attributes.MOVEMENT_SPEED, (double) 1.2F).add(Attributes.ATTACK_DAMAGE, 3.0D);
 	}
 
 	@Override
-	protected PathNavigator createNavigation(World world) 
-	{
+	protected PathNavigator createNavigation(World world) {
 		return new SwimmerPathNavigator(this, world);
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entity) 
-	{
+	public boolean doHurtTarget(Entity entity) {
 		boolean flag = entity.hurt(DamageSource.mobAttack(this), (float) ((int) this.getAttributeValue(Attributes.ATTACK_DAMAGE)));
-		if(flag) 
-		{
+		if (flag) {
 			this.doEnchantDamageEffects(this, entity);
 			this.playSound(SoundEvents.DOLPHIN_ATTACK, 1.0F, 1.0F);
 		}
@@ -182,63 +167,50 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity
 	}
 
 	@Override
-	public int getMaxAirSupply() 
-	{
+	public int getMaxAirSupply() {
 		return 4800;
 	}
 
 	@Override
-	protected int increaseAirSupply(int air) 
-	{
+	protected int increaseAirSupply(int air) {
 		return this.getMaxAirSupply();
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose pose, EntitySize size) 
-	{
+	protected float getStandingEyeHeight(Pose pose, EntitySize size) {
 		return 0.3F;
 	}
 
 	@Override
-	public int getMaxHeadXRot() 
-	{
+	public int getMaxHeadXRot() {
 		return 1;
 	}
 
 	@Override
-	public int getMaxHeadYRot() 
-	{
+	public int getMaxHeadYRot() {
 		return 1;
 	}
 
 	@Override
-	protected boolean canRide(Entity entity) 
-	{
+	protected boolean canRide(Entity entity) {
 		return true;
 	}
 
 	@Override
-	public boolean canTakeItem(ItemStack stack) 
-	{
+	public boolean canTakeItem(ItemStack stack) {
 		EquipmentSlotType equipmentslottype = MobEntity.getEquipmentSlotForItem(stack);
-		if(!this.getItemBySlot(equipmentslottype).isEmpty()) 
-		{
+		if (!this.getItemBySlot(equipmentslottype).isEmpty()) {
 			return false;
-		} 
-		else 
-		{
+		} else {
 			return equipmentslottype == EquipmentSlotType.MAINHAND && super.canTakeItem(stack);
 		}
 	}
 
 	@Override
-	protected void pickUpItem(ItemEntity itementity) 
-	{
-		if(this.getItemBySlot(EquipmentSlotType.MAINHAND).isEmpty()) 
-		{
+	protected void pickUpItem(ItemEntity itementity) {
+		if (this.getItemBySlot(EquipmentSlotType.MAINHAND).isEmpty()) {
 			ItemStack itemstack = itementity.getItem();
-			if(this.canHoldItem(itemstack)) 
-			{
+			if (this.canHoldItem(itemstack)) {
 				this.onItemPickup(itementity);
 				this.setItemSlot(EquipmentSlotType.MAINHAND, itemstack);
 				this.handDropChances[EquipmentSlotType.MAINHAND.getIndex()] = 2.0F;
@@ -249,29 +221,20 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity
 	}
 
 	@Override
-	public void tick() 
-	{
+	public void tick() {
 		super.tick();
-		if(this.isNoAi()) 
-		{
+		if (this.isNoAi()) {
 			this.setAirSupply(this.getMaxAirSupply());
-		} 
-		else 
-		{
-			if(this.isInWaterRainOrBubble()) 
-			{
+		} else {
+			if (this.isInWaterRainOrBubble()) {
 				this.setMoisntessLevel(2400);
-			} 
-			else 
-			{
+			} else {
 				this.setMoisntessLevel(this.getMoistnessLevel() - 1);
-				if(this.getMoistnessLevel() <= 0) 
-				{
+				if (this.getMoistnessLevel() <= 0) {
 					this.hurt(DamageSource.DRY_OUT, 1.0F);
 				}
 
-				if(this.onGround) 
-				{
+				if (this.onGround) {
 					this.setDeltaMovement(this.getDeltaMovement().add((double) ((this.random.nextFloat() * 2.0F - 1.0F) * 0.2F), 0.5D, (double) ((this.random.nextFloat() * 2.0F - 1.0F) * 0.2F)));
 					this.yRot = this.random.nextFloat() * 360.0F;
 					this.onGround = false;
@@ -279,15 +242,13 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity
 				}
 			}
 
-			if(this.level.isClientSide && this.isInWater() && this.getDeltaMovement().lengthSqr() > 0.03D) 
-			{
+			if (this.level.isClientSide && this.isInWater() && this.getDeltaMovement().lengthSqr() > 0.03D) {
 				Vector3d vector3d = this.getViewVector(0.0F);
 				float f = MathHelper.cos(this.yRot * ((float) Math.PI / 180F)) * 0.3F;
 				float f1 = MathHelper.sin(this.yRot * ((float) Math.PI / 180F)) * 0.3F;
 				float f2 = 1.2F - this.random.nextFloat() * 0.7F;
 
-				for(int i = 0; i < 2; ++i) 
-				{
+				for (int i = 0; i < 2; ++i) {
 					this.level.addParticle(ParticleTypes.DOLPHIN, this.getX() - vector3d.x * (double) f2 + (double) f, this.getY() - vector3d.y, this.getZ() - vector3d.z * (double) f2 + (double) f1, 0.0D, 0.0D, 0.0D);
 					this.level.addParticle(ParticleTypes.DOLPHIN, this.getX() - vector3d.x * (double) f2 - (double) f, this.getY() - vector3d.y, this.getZ() - vector3d.z * (double) f2 - (double) f1, 0.0D, 0.0D, 0.0D);
 				}
@@ -299,103 +260,82 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void handleEntityEvent(byte event) {
-		if(event == 38) 
-		{
+		if (event == 38) {
 			this.addParticlesAroundSelf(ParticleTypes.HAPPY_VILLAGER);
-		} 
-		else 
-		{
+		} else {
 			super.handleEntityEvent(event);
 		}
 
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	private void addParticlesAroundSelf(IParticleData data) 
-	{
-		for(int i = 0; i < 7; ++i) 
-		{
+	private void addParticlesAroundSelf(IParticleData data) {
+		for (int i = 0; i < 7; ++i) {
 			double d0 = this.random.nextGaussian() * 0.01D;
 			double d1 = this.random.nextGaussian() * 0.01D;
 			double d2 = this.random.nextGaussian() * 0.01D;
 			this.level.addParticle(data, this.getRandomX(1.0D), this.getRandomY() + 0.2D, this.getRandomZ(1.0D), d0, d1, d2);
 		}
 	}
-	
-	public static boolean checkBasicSpawnRules(EntityType<? extends DolphinLikeEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) 
-	{
-		if(pos.getY() > 45 && pos.getY() < world.getSeaLevel()) 
-		{
+
+	public static boolean checkBasicSpawnRules(EntityType<? extends DolphinLikeEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
+		if (pos.getY() > 45 && pos.getY() < world.getSeaLevel()) {
 			Optional<RegistryKey<Biome>> optional = world.getBiomeName(pos);
 			return (!Objects.equals(optional, Optional.of(Biomes.OCEAN)) || !Objects.equals(optional, Optional.of(Biomes.DEEP_OCEAN))) && world.getFluidState(pos).is(FluidTags.WATER);
-		} 
-		else 
-		{
+		} else {
 			return false;
 		}
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource source) 
-	{
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return SoundEvents.DOLPHIN_HURT;
 	}
 
 	@Override
 	@Nullable
-	protected SoundEvent getDeathSound() 
-	{
+	protected SoundEvent getDeathSound() {
 		return SoundEvents.DOLPHIN_DEATH;
 	}
 
 	@Override
 	@Nullable
-	protected SoundEvent getAmbientSound() 
-	{
+	protected SoundEvent getAmbientSound() {
 		return this.isInWater() ? SoundEvents.DOLPHIN_AMBIENT_WATER : SoundEvents.DOLPHIN_AMBIENT;
 	}
 
 	@Override
-	protected SoundEvent getSwimSplashSound() 
-	{
+	protected SoundEvent getSwimSplashSound() {
 		return SoundEvents.DOLPHIN_SPLASH;
 	}
 
 	@Override
-	protected SoundEvent getSwimSound()
-	{
+	protected SoundEvent getSwimSound() {
 		return SoundEvents.DOLPHIN_SWIM;
 	}
 
-	protected boolean closeToNextPos() 
-	{
+	protected boolean closeToNextPos() {
 		BlockPos blockpos = this.getNavigation().getTargetPos();
 		return blockpos != null ? blockpos.closerThan(this.position(), 12.0D) : false;
 	}
 
 	@Override
-	public void travel(Vector3d vec3d) 
-	{
-		if(this.isEffectiveAi() && this.isInWater()) 
-		{
+	public void travel(Vector3d vec3d) {
+		if (this.isEffectiveAi() && this.isInWater()) {
 			this.moveRelative(this.getSpeed(), vec3d);
 			this.move(MoverType.SELF, this.getDeltaMovement());
 			this.setDeltaMovement(this.getDeltaMovement().scale(0.9D));
-			if(this.getTarget() == null) 
-			{
+			if (this.getTarget() == null) {
 				this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.005D, 0.0D));
 			}
-		}
-		else 
-		{
+		} else {
 			super.travel(vec3d);
 		}
 
 	}
 
 	@Override
-	public boolean canBeLeashed(PlayerEntity entity) 
-	{
+	public boolean canBeLeashed(PlayerEntity entity) {
 		return true;
 	}
 }

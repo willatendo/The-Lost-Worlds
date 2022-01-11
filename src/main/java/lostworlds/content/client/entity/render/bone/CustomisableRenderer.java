@@ -14,17 +14,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class CustomisableRenderer extends TyrannomationEntityRenderer<FossilEntity>
-{
-	public CustomisableRenderer(EntityRendererManager renderManager, String model, String texture, float shadow) 
-	{
+public class CustomisableRenderer extends TyrannomationEntityRenderer<FossilEntity> {
+	public CustomisableRenderer(EntityRendererManager renderManager, String model, String texture, float shadow) {
 		super(renderManager, new CustomisableModel(model, texture));
 		this.shadowRadius = shadow;
 	}
 
 	@Override
-	public RenderType getRenderType(FossilEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
-	{
+	public RenderType getRenderType(FossilEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
 		return RenderType.entityTranslucent(getTextureLocation(animatable));
 	}
 }

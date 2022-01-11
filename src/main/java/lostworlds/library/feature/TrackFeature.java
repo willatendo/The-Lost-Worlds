@@ -1,6 +1,5 @@
 package lostworlds.library.feature;
 
-public class TrackFeature 
-{
-	
+public class TrackFeature {
+
 }

@@ -28,12 +28,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class ModBoatEntity extends BoatEntity 
-{
+public class ModBoatEntity extends BoatEntity {
 	private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.defineId(ModBoatEntity.class, DataSerializers.INT);
 
-	public ModBoatEntity(World world, double x, double y, double z) 
-	{
+	public ModBoatEntity(World world, double x, double y, double z) {
 		this(EntityInit.MOD_BOAT, world);
 		this.setPos(x, y, z);
 		this.setDeltaMovement(Vector3d.ZERO);
@@ -42,122 +40,101 @@ public class ModBoatEntity extends BoatEntity
 		this.zo = z;
 	}
 
-	public ModBoatEntity(EntityType<? extends ModBoatEntity> entity, World world) 
-	{
+	public ModBoatEntity(EntityType<? extends ModBoatEntity> entity, World world) {
 		super(entity, world);
 	}
 
-	public ModBoatEntity(FMLPlayMessages.SpawnEntity packet, World world) 
-	{
+	public ModBoatEntity(FMLPlayMessages.SpawnEntity packet, World world) {
 		super(EntityInit.MOD_BOAT, world);
 	}
 
 	@Override
-	public Item getDropItem() 
-	{
-		switch(this.getModBoatType()) 
-		{
-			case ARAUCARIA:
-				return BlockInit.ARAUCARIA_BOAT;
-			case CALAMITES:
-				return BlockInit.CALAMITES_BOAT;
-			case CONIFER:
-				return BlockInit.CONIFER_BOAT;
-			case GINKGO:
-				return BlockInit.GINKGO_BOAT;
-			default:
-			case SCORCHED:
-				return BlockInit.SCORCHED_BOAT;
+	public Item getDropItem() {
+		switch (this.getModBoatType()) {
+		case ARAUCARIA:
+			return BlockInit.ARAUCARIA_BOAT;
+		case CALAMITES:
+			return BlockInit.CALAMITES_BOAT;
+		case CONIFER:
+			return BlockInit.CONIFER_BOAT;
+		case GINKGO:
+			return BlockInit.GINKGO_BOAT;
+		default:
+		case SCORCHED:
+			return BlockInit.SCORCHED_BOAT;
 		}
 	}
 
-	public Block getPlanks() 
-	{
-		switch(this.getModBoatType()) 
-		{
-			case ARAUCARIA:
-				return BlockInit.ARAUCARIA_PLANKS;
-			case CALAMITES:
-				return BlockInit.CALAMITES_PLANKS;
-			case CONIFER:
-				return BlockInit.CONIFER_PLANKS;
-			case GINKGO:
-				return BlockInit.GINKGO_PLANKS;
-			default:
-			case SCORCHED:
-				return BlockInit.SCORCHED_PLANKS;
+	public Block getPlanks() {
+		switch (this.getModBoatType()) {
+		case ARAUCARIA:
+			return BlockInit.ARAUCARIA_PLANKS;
+		case CALAMITES:
+			return BlockInit.CALAMITES_PLANKS;
+		case CONIFER:
+			return BlockInit.CONIFER_PLANKS;
+		case GINKGO:
+			return BlockInit.GINKGO_PLANKS;
+		default:
+		case SCORCHED:
+			return BlockInit.SCORCHED_PLANKS;
 		}
 	}
 
-	public ModBoatType getModBoatType() 
-	{
+	public ModBoatType getModBoatType() {
 		return ModBoatType.byId(this.entityData.get(BOAT_TYPE));
 	}
 
-	public void setBYGBoatType(ModBoatType boatType) 
-	{
+	public void setBYGBoatType(ModBoatType boatType) {
 		this.entityData.set(BOAT_TYPE, boatType.ordinal());
 	}
 
 	@Override
-	protected void defineSynchedData() 
-	{
+	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(BOAT_TYPE, ModBoatType.ARAUCARIA.ordinal());
 	}
 
 	@Override
-	protected void addAdditionalSaveData(CompoundNBT compound) 
-	{
+	protected void addAdditionalSaveData(CompoundNBT compound) {
 		compound.putString("BoatType", this.getModBoatType().getName());
 	}
 
 	@Override
-	protected void readAdditionalSaveData(CompoundNBT compound) 
-	{
-		if(compound.contains("BoatType", 8)) 
-		{
+	protected void readAdditionalSaveData(CompoundNBT compound) {
+		if (compound.contains("BoatType", 8)) {
 			this.setBYGBoatType(ModBoatType.getTypeFromString(compound.getString("BoatType")));
 		}
 	}
 
 	@OnlyIn(Dist.CLIENT)
 	@Override
-	public void animateHurt() 
-	{
+	public void animateHurt() {
 		this.setHurtDir(-this.getHurtDir());
 		this.setHurtTime(10);
 		this.setDamage(this.getDamage() * 11.0F);
 	}
 
 	@Override
-	protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) 
-	{
+	protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) {
 		this.lastYd = this.getDeltaMovement().y;
-		if(!this.isPassenger()) 
-		{
-			if(onGroundIn) 
-			{
-				if(this.fallDistance > 3.0F) 
-				{
-					if(this.status != BoatEntity.Status.ON_LAND) 
-					{
+		if (!this.isPassenger()) {
+			if (onGroundIn) {
+				if (this.fallDistance > 3.0F) {
+					if (this.status != BoatEntity.Status.ON_LAND) {
 						this.fallDistance = 0.0F;
 						return;
 					}
 
 					this.causeFallDamage(this.fallDistance, 1.0F);
-					if(!this.level.isClientSide && !this.removed) 
-					{
+					if (!this.level.isClientSide && !this.removed) {
 						this.remove();
-						if(this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) 
-						{
-							for(int i = 0; i < 3; ++i) 
-							{
+						if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+							for (int i = 0; i < 3; ++i) {
 								this.spawnAtLocation(this.getPlanks());
 							}
 
-							for(int j = 0; j < 2; ++j) {
+							for (int j = 0; j < 2; ++j) {
 								this.spawnAtLocation(Items.STICK);
 							}
 
@@ -167,9 +144,7 @@ public class ModBoatEntity extends BoatEntity
 				}
 
 				this.fallDistance = 0.0F;
-			} 
-			else if(!this.level.getFluidState((new BlockPos(this.getX(), this.getY(), this.getZ()).below())).is(FluidTags.WATER) && y < 0.0D) 
-			{
+			} else if (!this.level.getFluidState((new BlockPos(this.getX(), this.getY(), this.getZ()).below())).is(FluidTags.WATER) && y < 0.0D) {
 				this.fallDistance = (float) ((double) this.fallDistance - y);
 			}
 
@@ -177,29 +152,20 @@ public class ModBoatEntity extends BoatEntity
 	}
 
 	@Override
-	public boolean hurt(DamageSource source, float amount) 
-	{
-		if(this.isInvulnerableTo(source)) 
-		{
+	public boolean hurt(DamageSource source, float amount) {
+		if (this.isInvulnerableTo(source)) {
 			return false;
-		} 
-		else if(!this.level.isClientSide && !this.removed) 
-		{
-			if(source instanceof IndirectEntityDamageSource && source.getEntity() != null && this.hasPassenger(source.getEntity())) 
-			{
+		} else if (!this.level.isClientSide && !this.removed) {
+			if (source instanceof IndirectEntityDamageSource && source.getEntity() != null && this.hasPassenger(source.getEntity())) {
 				return false;
-			} 
-			else 
-			{
+			} else {
 				this.setHurtDir(-this.getHurtDir());
 				this.setHurtTime(10);
 				this.setDamage(this.getDamage() + amount * 10.0F);
 				this.markHurt();
 				boolean flag = source.getEntity() instanceof PlayerEntity && ((PlayerEntity) source.getEntity()).abilities.instabuild;
-				if(flag || this.getDamage() > 40.0F) 
-				{
-					if(!flag && this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) 
-					{
+				if (flag || this.getDamage() > 40.0F) {
+					if (!flag && this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
 						this.spawnAtLocation(this.getDropItem());
 					}
 
@@ -208,16 +174,13 @@ public class ModBoatEntity extends BoatEntity
 
 				return true;
 			}
-		} 
-		else 
-		{
+		} else {
 			return true;
 		}
 	}
 
 	@Override
-	public IPacket<?> getAddEntityPacket() 
-	{
+	public IPacket<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 }

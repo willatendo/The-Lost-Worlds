@@ -49,72 +49,56 @@ import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationContro
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class RhinesuchusEntity extends CarnivoreSemiAquaticEntity
-{
+public class RhinesuchusEntity extends CarnivoreSemiAquaticEntity {
 	public static final DataParameter<Integer> MOISTNESS_LEVEL = EntityDataManager.defineId(RhinesuchusEntity.class, DataSerializers.INT);
 	private static final Ingredient FOOD_ITEMS = IngredientUtil.combine(FoodLists.CARNIVORE, FoodLists.PISCIVORE);
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
-	
-	public RhinesuchusEntity(EntityType<? extends CarnivoreSemiAquaticEntity> entity, World world) 
-	{
+
+	public RhinesuchusEntity(EntityType<? extends CarnivoreSemiAquaticEntity> entity, World world) {
 		super(entity, world);
 	}
-	
-	public int getMoistnessLevel() 
-	{
+
+	public int getMoistnessLevel() {
 		return this.entityData.get(MOISTNESS_LEVEL);
 	}
 
-	public void setMoisntessLevel(int moistness) 
-	{
+	public void setMoisntessLevel(int moistness) {
 		this.entityData.set(MOISTNESS_LEVEL, moistness);
 	}
 
 	@Override
-	protected void defineSynchedData() 
-	{
+	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(MOISTNESS_LEVEL, 2400);
 	}
-	
+
 	@Override
-	public void tick() 
-	{
+	public void tick() {
 		super.tick();
-		if(this.isNoAi()) 
-		{
+		if (this.isNoAi()) {
 			this.setAirSupply(this.getMaxAirSupply());
-		} 
-		else 
-		{
-			if(this.isInWaterRainOrBubble()) 
-			{
+		} else {
+			if (this.isInWaterRainOrBubble()) {
 				this.setMoisntessLevel(2400);
-			} 
-			else 
-			{
+			} else {
 				this.setMoisntessLevel(this.getMoistnessLevel() - 1);
-				if(this.getMoistnessLevel() <= 0) 
-				{
+				if (this.getMoistnessLevel() <= 0) {
 					this.hurt(DamageSource.DRY_OUT, 1.0F);
 				}
 			}
 		}
 	}
-	
-	public static AttributeModifierMap createAttributes() 
-	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.rhinesuchusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.rhinesuchusAttackDamage.get()).build();
+
+	public static AttributeModifierMap createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.SERVER_CONFIG.rhinesuchusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.SERVER_CONFIG.rhinesuchusAttackDamage.get()).build();
 	}
-	
-	public static boolean checkSpawnRules(EntityType<RhinesuchusEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) 
-	{
+
+	public static boolean checkSpawnRules(EntityType<RhinesuchusEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
 		return pos.getY() < world.getSeaLevel() + 4 && TurtleEggBlock.onSand(world, pos) && world.getRawBrightness(pos, 0) > 8;
 	}
-	
+
 	@Override
-	protected void registerGoals() 
-	{
+	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(1, new BreatheAirGoal(this));
 		this.goalSelector.addGoal(2, new SemiAquaticFindWaterGoal(this));
@@ -134,46 +118,39 @@ public class RhinesuchusEntity extends CarnivoreSemiAquaticEntity
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, DiictodonEntity.class, true));
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, ProtosuchusEntity.class, true));
 	}
-	
+
 	@Override
-	public boolean isFood(ItemStack stack) 
-	{
+	public boolean isFood(ItemStack stack) {
 		return FOOD_ITEMS.test(stack);
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
-		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));		
+	public void registerControllers(TyrannomationData data) {
+		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
-	{
+	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
 		return EntityInit.PROTOSUCHUS.create(world);
 	}
 
 	@Override
-	public ActivityType activity() 
-	{
+	public ActivityType activity() {
 		return ActivityType.DIURNAL;
 	}
 
 	@Override
-	public int maxHunger() 
-	{
+	public int maxHunger() {
 		return 8000;
 	}
-	
+
 	@Override
-	public double getInWaterSpeed() 
-	{
+	public double getInWaterSpeed() {
 		return 0.45D;
 	}
 }

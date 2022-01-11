@@ -33,24 +33,20 @@ import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationContro
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class ProcompsognathusEntity extends CarnivoreEntity
-{
+public class ProcompsognathusEntity extends CarnivoreEntity {
 	private static final Ingredient FOOD_ITEMS = FoodLists.CARNIVORE;
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
-	
-	public ProcompsognathusEntity(EntityType<? extends ProcompsognathusEntity> entity, World world) 
-	{
+
+	public ProcompsognathusEntity(EntityType<? extends ProcompsognathusEntity> entity, World world) {
 		super(entity, world);
 	}
-	
-	public static AttributeModifierMap createAttributes() 
-	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.procompsognathusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.procompsognathusAttackDamage.get()).build();
+
+	public static AttributeModifierMap createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.SERVER_CONFIG.procompsognathusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.SERVER_CONFIG.procompsognathusAttackDamage.get()).build();
 	}
-	
+
 	@Override
-	protected void registerGoals() 
-	{
+	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new SleepySwimGoal(this));
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
@@ -65,36 +61,32 @@ public class ProcompsognathusEntity extends CarnivoreEntity
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, false));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, EoraptorEntity.class, false));;
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, EoraptorEntity.class, false));
+		;
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
+	public void registerControllers(TyrannomationData data) {
 		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
 
 	@Override
-	public ActivityType activity() 
-	{
+	public ActivityType activity() {
 		return ActivityType.DIURNAL;
 	}
 
 	@Override
-	public int maxHunger() 
-	{
+	public int maxHunger() {
 		return 9000;
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
-	{
+	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
 		return EntityInit.PROCOMPSOGNATHUS.create(world);
 	}
 }

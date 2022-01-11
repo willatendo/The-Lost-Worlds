@@ -26,220 +26,173 @@ import net.minecraft.util.Util;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
-public abstract class TaggedEntity extends PrehistoricEntity
-{
+public abstract class TaggedEntity extends PrehistoricEntity {
 	protected static final DataParameter<Byte> DATA_FLAGS_ID = EntityDataManager.defineId(TaggedEntity.class, DataSerializers.BYTE);
 	protected static final DataParameter<Optional<UUID>> DATA_OWNERUUID_ID = EntityDataManager.defineId(TaggedEntity.class, DataSerializers.OPTIONAL_UUID);
-	
-	public TaggedEntity(EntityType<? extends TaggedEntity> entity, World world) 
-	{
+
+	public TaggedEntity(EntityType<? extends TaggedEntity> entity, World world) {
 		super(entity, world);
-		
+
 		reassessTameGoals();
 	}
-	
+
 	@Override
-	protected void defineSynchedData() 
-	{
+	protected void defineSynchedData() {
 		super.defineSynchedData();
-		this.entityData.define(DATA_FLAGS_ID, (byte)0);
+		this.entityData.define(DATA_FLAGS_ID, (byte) 0);
 		this.entityData.define(DATA_OWNERUUID_ID, Optional.empty());
 	}
-	
+
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) 
-	{
+	public void addAdditionalSaveData(CompoundNBT nbt) {
 		super.addAdditionalSaveData(nbt);
-		if(this.getTaggedToUUID() != null) 
-		{
+		if (this.getTaggedToUUID() != null) {
 			nbt.putUUID("TaggedTo", this.getTaggedToUUID());
 		}
 	}
-	
+
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) 
-	{
+	public void readAdditionalSaveData(CompoundNBT nbt) {
 		super.readAdditionalSaveData(nbt);
 		UUID uuid;
-		if(nbt.hasUUID("TaggedTo")) 
-		{
+		if (nbt.hasUUID("TaggedTo")) {
 			uuid = nbt.getUUID("TaggedTo");
-		} 
-		else 
-		{
+		} else {
 			String s = nbt.getString("TaggedTo");
 			uuid = PreYggdrasilConverter.convertMobOwnerIfNecessary(this.getServer(), s);
 		}
-		
-		if(uuid != null) 
-		{
-			try 
-			{
+
+		if (uuid != null) {
+			try {
 				this.setTaggedToUUID(uuid);
 				this.setTagged(true);
-			} 
-			catch(Throwable throwable) 
-			{
+			} catch (Throwable throwable) {
 				this.setTagged(false);
 			}
 		}
 	}
-	
-	public boolean isTagged() 
-	{
+
+	public boolean isTagged() {
 		return (this.entityData.get(DATA_FLAGS_ID) & 4) != 0;
 	}
-	
-	public void setTagged(boolean tagged) 
-	{
+
+	public void setTagged(boolean tagged) {
 		byte b0 = this.entityData.get(DATA_FLAGS_ID);
-		if(tagged) 
-		{
-			this.entityData.set(DATA_FLAGS_ID, (byte)(b0 | 4));
-		} 
-		else 
-		{
-			this.entityData.set(DATA_FLAGS_ID, (byte)(b0 & -5));
+		if (tagged) {
+			this.entityData.set(DATA_FLAGS_ID, (byte) (b0 | 4));
+		} else {
+			this.entityData.set(DATA_FLAGS_ID, (byte) (b0 & -5));
 		}
-		
+
 		this.reassessTameGoals();
 	}
-	
-	protected void reassessTameGoals() { }
-	
-	@Nullable
-	public UUID getTaggedToUUID() 
-	{
-		return this.entityData.get(DATA_OWNERUUID_ID).orElse((UUID)null);
+
+	protected void reassessTameGoals() {
 	}
-	
-	public void setTaggedToUUID(@Nullable UUID uuid) 
-	{
+
+	@Nullable
+	public UUID getTaggedToUUID() {
+		return this.entityData.get(DATA_OWNERUUID_ID).orElse((UUID) null);
+	}
+
+	public void setTaggedToUUID(@Nullable UUID uuid) {
 		this.entityData.set(DATA_OWNERUUID_ID, Optional.ofNullable(uuid));
 	}
-	
-	public void tag(PlayerEntity entity) 
-	{
+
+	public void tag(PlayerEntity entity) {
 		this.setTagged(true);
 		this.setTaggedToUUID(entity.getUUID());
 	}
-	
+
 	@Nullable
-	public LivingEntity getOwner() 
-	{
-		try 
-		{
+	public LivingEntity getOwner() {
+		try {
 			UUID uuid = this.getTaggedToUUID();
 			return uuid == null ? null : this.level.getPlayerByUUID(uuid);
-		} 
-		catch(IllegalArgumentException illegalargumentexception) 
-		{
+		} catch (IllegalArgumentException illegalargumentexception) {
 			return null;
 		}
 	}
-	
-	public boolean isTaggedBy(LivingEntity entity) 
-	{
+
+	public boolean isTaggedBy(LivingEntity entity) {
 		return entity == this.getOwner();
 	}
-	
-	public String getTaggedToName() 
-	{
+
+	public String getTaggedToName() {
 		return this.getOwner().getName().getContents();
 	}
-	
+
 	@Override
-	public Team getTeam() 
-	{
-		if(this.isTagged()) 
-		{
+	public Team getTeam() {
+		if (this.isTagged()) {
 			LivingEntity livingentity = this.getOwner();
-			if(livingentity != null) 
-			{
+			if (livingentity != null) {
 				return livingentity.getTeam();
 			}
 		}
-		
+
 		return super.getTeam();
 	}
-	
+
 	@Override
-	public boolean isAlliedTo(Entity entity) 
-	{
-		if(this.isTagged()) 
-		{
+	public boolean isAlliedTo(Entity entity) {
+		if (this.isTagged()) {
 			LivingEntity livingentity = this.getOwner();
-			if(entity == livingentity) 
-			{
+			if (entity == livingentity) {
 				return true;
 			}
-			
-			if(livingentity != null) 
-			{
+
+			if (livingentity != null) {
 				return livingentity.isAlliedTo(entity);
 			}
 		}
-		
+
 		return super.isAlliedTo(entity);
 	}
-	
+
 	@Override
-	public void die(DamageSource source) 
-	{
-		if(!this.level.isClientSide && this.level.getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayerEntity) 
-		{
+	public void die(DamageSource source) {
+		if (!this.level.isClientSide && this.level.getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayerEntity) {
 			this.getOwner().sendMessage(this.getCombatTracker().getDeathMessage(), Util.NIL_UUID);
 		}
-		
+
 		super.die(source);
 	}
-	
+
 	@Override
-	public ActionResultType mobInteract(PlayerEntity entity, Hand hand) 
-	{
+	public ActionResultType mobInteract(PlayerEntity entity, Hand hand) {
 		ItemStack itemstack = entity.getItemInHand(hand);
-		if(this.isTag(itemstack))
-		{
-			if(itemstack.hasCustomHoverName()) 
-			{
-				if(!this.level.isClientSide && this.isAlive()) 
-				{
+		if (this.isTag(itemstack)) {
+			if (itemstack.hasCustomHoverName()) {
+				if (!this.level.isClientSide && this.isAlive()) {
 					this.setCustomName(itemstack.getHoverName());
 				}
 			}
 		}
-		
-		if(this.level.isClientSide) 
-		{
-			if(this.isTagged() && this.isTaggedBy(entity)) 
-			{
+
+		if (this.level.isClientSide) {
+			if (this.isTagged() && this.isTaggedBy(entity)) {
 				return ActionResultType.SUCCESS;
-			} 
-			else 
-			{
+			} else {
 				return !this.isFood(itemstack) || !(this.getHealth() < this.getMaxHealth()) && this.isTagged() ? ActionResultType.PASS : ActionResultType.SUCCESS;
 			}
-		}
-		else if(this.isTag(itemstack)) 
-		{
+		} else if (this.isTag(itemstack)) {
 			this.usePlayerItem(entity, itemstack);
 			this.tag(entity);
-			this.level.broadcastEntityEvent(this, (byte)6);
+			this.level.broadcastEntityEvent(this, (byte) 6);
 			this.setPersistenceRequired();
 			return ActionResultType.CONSUME;
 		}
-		
+
 		ActionResultType actionresulttype1 = super.mobInteract(entity, hand);
-		if(actionresulttype1.consumesAction()) 
-		{
+		if (actionresulttype1.consumesAction()) {
 			this.setPersistenceRequired();
 		}
-		
+
 		return actionresulttype1;
 	}
-	
-	public boolean isTag(ItemStack stack) 
-	{
+
+	public boolean isTag(ItemStack stack) {
 		Ingredient tag = Ingredient.of(ItemInit.TAG);
 		return tag.test(stack);
 	}

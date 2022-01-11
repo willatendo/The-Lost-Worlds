@@ -21,46 +21,38 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.PlantType;
 
-public class BrazileaBlock extends BushBlock
-{	
+public class BrazileaBlock extends BushBlock {
 	private static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 1.5D, 15.0D);
-	
-	public BrazileaBlock(Properties properties) 
-	{
+
+	public BrazileaBlock(Properties properties) {
 		super(properties);
 	}
-	
+
 	@Override
-	public void entityInside(BlockState state, World world, BlockPos pos, Entity entity) 
-	{
+	public void entityInside(BlockState state, World world, BlockPos pos, Entity entity) {
 		super.entityInside(state, world, pos, entity);
-		if(world instanceof ServerWorld && entity instanceof BoatEntity) 
-		{
+		if (world instanceof ServerWorld && entity instanceof BoatEntity) {
 			world.destroyBlock(new BlockPos(pos), true, entity);
 		}
 	}
-	
+
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) 
-	{
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
 		return SHAPE;
 	}
 
 	@Override
-	protected boolean mayPlaceOn(BlockState state, IBlockReader reader, BlockPos pos) 
-	{
+	protected boolean mayPlaceOn(BlockState state, IBlockReader reader, BlockPos pos) {
 		FluidState fluidstate = reader.getFluidState(pos);
 		return (fluidstate.getType() == Fluids.WATER);
 	}
-	
+
 	@Override
-	public PlantType getPlantType(IBlockReader world, BlockPos pos) 
-	{
+	public PlantType getPlantType(IBlockReader world, BlockPos pos) {
 		return PlantType.WATER;
 	}
-	
-	public static Block create(String id)
-	{
+
+	public static Block create(String id) {
 		Block block = new BrazileaBlock(AbstractBlock.Properties.of(Material.PLANT).instabreak().sound(SoundType.GRASS).noOcclusion().noCollission());
 		Item item = new BrazileaItem(block);
 		ModRegistry.register(id, block);

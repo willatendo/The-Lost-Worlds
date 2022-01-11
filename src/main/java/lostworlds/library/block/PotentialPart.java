@@ -2,8 +2,7 @@ package lostworlds.library.block;
 
 import net.minecraft.util.IStringSerializable;
 
-public enum PotentialPart implements IStringSerializable
-{
+public enum PotentialPart implements IStringSerializable {
 	SKULL("skull"),
 	ARM("arm"),
 	LEG("leg"),
@@ -12,15 +11,13 @@ public enum PotentialPart implements IStringSerializable
 	NONE("none");
 
 	private final String id;
-	
-	private PotentialPart(String id) 
-	{
+
+	private PotentialPart(String id) {
 		this.id = id;
 	}
-	
+
 	@Override
-	public String getSerializedName() 
-	{
+	public String getSerializedName() {
 		return this.id;
 	}
 }

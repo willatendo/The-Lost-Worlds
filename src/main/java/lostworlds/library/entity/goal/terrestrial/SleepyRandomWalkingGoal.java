@@ -9,8 +9,7 @@ import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.util.math.vector.Vector3d;
 
-public class SleepyRandomWalkingGoal extends Goal 
-{
+public class SleepyRandomWalkingGoal extends Goal {
 	protected final EggLayingEntity entity;
 	protected double wantedX;
 	protected double wantedY;
@@ -20,8 +19,7 @@ public class SleepyRandomWalkingGoal extends Goal
 	protected boolean forceTrigger;
 	private boolean checkNoActionTime;
 
-	public SleepyRandomWalkingGoal(EggLayingEntity entity, double speedModifier) 
-	{
+	public SleepyRandomWalkingGoal(EggLayingEntity entity, double speedModifier) {
 		this(entity, speedModifier, 120);
 	}
 
@@ -29,8 +27,7 @@ public class SleepyRandomWalkingGoal extends Goal
 		this(entity, speedModifier, interval, true);
 	}
 
-	public SleepyRandomWalkingGoal(EggLayingEntity entity, double speedModifier, int interval, boolean checkNoActionTime) 
-	{
+	public SleepyRandomWalkingGoal(EggLayingEntity entity, double speedModifier, int interval, boolean checkNoActionTime) {
 		this.entity = entity;
 		this.speedModifier = speedModifier;
 		this.interval = interval;
@@ -39,34 +36,24 @@ public class SleepyRandomWalkingGoal extends Goal
 	}
 
 	@Override
-	public boolean canUse() 
-	{
-		if(this.entity.isVehicle() || this.entity.isSleeping()) 
-		{
+	public boolean canUse() {
+		if (this.entity.isVehicle() || this.entity.isSleeping()) {
 			return false;
-		} 
-		else 
-		{
-			if(!this.forceTrigger) 
-			{
-				if(this.checkNoActionTime && this.entity.getNoActionTime() >= 100) 
-				{
+		} else {
+			if (!this.forceTrigger) {
+				if (this.checkNoActionTime && this.entity.getNoActionTime() >= 100) {
 					return false;
 				}
 
-				if(this.entity.getRandom().nextInt(this.interval) != 0) 
-				{
+				if (this.entity.getRandom().nextInt(this.interval) != 0) {
 					return false;
 				}
 			}
 
 			Vector3d vector3d = this.getPosition();
-			if(vector3d == null) 
-			{
+			if (vector3d == null) {
 				return false;
-			} 
-			else 
-			{
+			} else {
 				this.wantedX = vector3d.x;
 				this.wantedY = vector3d.y;
 				this.wantedZ = vector3d.z;
@@ -77,37 +64,31 @@ public class SleepyRandomWalkingGoal extends Goal
 	}
 
 	@Nullable
-	protected Vector3d getPosition() 
-	{
+	protected Vector3d getPosition() {
 		return RandomPositionGenerator.getPos(this.entity, 10, 7);
 	}
 
 	@Override
-	public boolean canContinueToUse() 
-	{
+	public boolean canContinueToUse() {
 		return !this.entity.getNavigation().isDone() && !this.entity.isVehicle();
 	}
 
 	@Override
-	public void start() 
-	{
+	public void start() {
 		this.entity.getNavigation().moveTo(this.wantedX, this.wantedY, this.wantedZ, this.speedModifier);
 	}
 
 	@Override
-	public void stop() 
-	{
+	public void stop() {
 		this.entity.getNavigation().stop();
 		super.stop();
 	}
 
-	public void trigger() 
-	{
+	public void trigger() {
 		this.forceTrigger = true;
 	}
 
-	public void setInterval(int interval) 
-	{
+	public void setInterval(int interval) {
 		this.interval = interval;
 	}
 }

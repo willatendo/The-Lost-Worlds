@@ -1,7 +1,6 @@
 package lostworlds.library.entity.utils.enums;
 
-public enum BirthType 
-{
+public enum BirthType {
 	GESTATION,
 	EGG;
 }

@@ -12,81 +12,62 @@ import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 
-public class FeedingTroughContainer extends Container
-{	
-	public FeedingTroughContainer(ContainerType<?> container, int windowId) 
-	{
+public class FeedingTroughContainer extends Container {
+	public FeedingTroughContainer(ContainerType<?> container, int windowId) {
 		super(container, windowId);
 	}
-	
-	public FeedingTroughContainer(int windowId, PlayerInventory inv, IInventory inventory) 
-	{
+
+	public FeedingTroughContainer(int windowId, PlayerInventory inv, IInventory inventory) {
 		super(ContainerInit.FEEDING_TROUGH_CONTAINER, windowId);
-		
+
 		this.addSlot(new FeedingTroughSlot(inventory, 0, 80, 20));
-		
-		for(int l = 0; l < 3; ++l) 
-		{
-			for(int k = 0; k < 9; ++k) 
-			{
+
+		for (int l = 0; l < 3; ++l) {
+			for (int k = 0; k < 9; ++k) {
 				this.addSlot(new Slot(inv, k + l * 9 + 9, 8 + k * 18, l * 18 + 51));
 			}
 		}
-		
-		for(int i1 = 0; i1 < 9; ++i1) 
-		{
+
+		for (int i1 = 0; i1 < 9; ++i1) {
 			this.addSlot(new Slot(inv, i1, 8 + i1 * 18, 109));
 		}
 	}
 
-	public static FeedingTroughContainer create(int windowId, PlayerInventory inv, PacketBuffer buffer)
-	{
+	public static FeedingTroughContainer create(int windowId, PlayerInventory inv, PacketBuffer buffer) {
 		return new FeedingTroughContainer(windowId, inv, new Inventory(1));
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity entity) 
-	{
+	public boolean stillValid(PlayerEntity entity) {
 		return !entity.isSpectator();
 	}
-	
+
 	@Override
-	public ItemStack quickMoveStack(PlayerEntity player, int fromSlot) 
-	{
+	public ItemStack quickMoveStack(PlayerEntity player, int fromSlot) {
 		ItemStack previous = ItemStack.EMPTY;
 		Slot slot = (Slot) this.slots.get(fromSlot);
 
-		if(slot != null && slot.hasItem()) 
-		{
+		if (slot != null && slot.hasItem()) {
 			ItemStack current = slot.getItem();
 			previous = current.copy();
 
-			if(fromSlot < 1) 
-			{
-				if(!this.moveItemStackTo(current, 1, 1 + 36, true))
-				{
+			if (fromSlot < 1) {
+				if (!this.moveItemStackTo(current, 1, 1 + 36, true)) {
 					return ItemStack.EMPTY;
 				}
-			} 
-			else 
-			{
-				if(!this.moveItemStackTo(current, 0, 6, false))
-				{
+			} else {
+				if (!this.moveItemStackTo(current, 0, 6, false)) {
 					return ItemStack.EMPTY;
 				}
 			}
 
-			if(current.getCount() == 0)
-			{
+			if (current.getCount() == 0) {
 				slot.set(ItemStack.EMPTY);
-			}
-			else
-			{
+			} else {
 				slot.setChanged();
 			}
 
-			if(current.getCount() == previous.getCount())
-			{
+			if (current.getCount() == previous.getCount()) {
 				return ItemStack.EMPTY;
 			}
 			slot.onTake(player, current);

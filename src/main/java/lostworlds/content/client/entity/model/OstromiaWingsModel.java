@@ -8,23 +8,19 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
 
 @OnlyIn(Dist.CLIENT)
-public class OstromiaWingsModel extends TyrannomatedTyrannomationModel<OstromiaEntity>
-{
+public class OstromiaWingsModel extends TyrannomatedTyrannomationModel<OstromiaEntity> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(OstromiaEntity entity) 
-	{
+	public ResourceLocation getAnimationFileLocation(OstromiaEntity entity) {
 		return ModUtils.rL("animations/ostromia_wing.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(OstromiaEntity entity) 
-	{
+	public ResourceLocation getModelLocation(OstromiaEntity entity) {
 		return ModUtils.rL("geo/ostromia_wings.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(OstromiaEntity entity) 
-	{
+	public ResourceLocation getTextureLocation(OstromiaEntity entity) {
 		return ModUtils.rL("textures/model/entity/ostromia/wings_texture.png");
 	}
 }

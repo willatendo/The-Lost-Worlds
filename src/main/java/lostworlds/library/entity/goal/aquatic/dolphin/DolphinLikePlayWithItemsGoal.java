@@ -12,37 +12,29 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 
-public class DolphinLikePlayWithItemsGoal extends Goal 
-{
+public class DolphinLikePlayWithItemsGoal extends Goal {
 	private int cooldown;
 	private DolphinLikeEntity entity;
 	private Random rand = new Random();
 
-	public DolphinLikePlayWithItemsGoal(DolphinLikeEntity entity) 
-	{
+	public DolphinLikePlayWithItemsGoal(DolphinLikeEntity entity) {
 		this.entity = entity;
-    }
-	
+	}
+
 	@Override
-	public boolean canUse() 
-	{
-		if(this.cooldown > this.entity.tickCount) 
-		{
+	public boolean canUse() {
+		if (this.cooldown > this.entity.tickCount) {
 			return false;
-		} 
-		else 
-		{
+		} else {
 			List<ItemEntity> list = this.entity.level.getEntitiesOfClass(ItemEntity.class, this.entity.getBoundingBox().inflate(8.0D, 8.0D, 8.0D), DolphinEntity.ALLOWED_ITEMS);
 			return !list.isEmpty() || !this.entity.getItemBySlot(EquipmentSlotType.MAINHAND).isEmpty();
 		}
 	}
 
 	@Override
-	public void start() 
-	{
+	public void start() {
 		List<ItemEntity> list = this.entity.level.getEntitiesOfClass(ItemEntity.class, this.entity.getBoundingBox().inflate(8.0D, 8.0D, 8.0D), DolphinEntity.ALLOWED_ITEMS);
-		if(!list.isEmpty()) 
-		{
+		if (!list.isEmpty()) {
 			this.entity.getNavigation().moveTo(list.get(0), (double) 1.2F);
 			this.entity.playSound(SoundEvents.DOLPHIN_PLAY, 1.0F, 1.0F);
 		}
@@ -51,11 +43,9 @@ public class DolphinLikePlayWithItemsGoal extends Goal
 	}
 
 	@Override
-	public void stop() 
-	{
+	public void stop() {
 		ItemStack itemstack = this.entity.getItemBySlot(EquipmentSlotType.MAINHAND);
-		if(!itemstack.isEmpty()) 
-		{
+		if (!itemstack.isEmpty()) {
 			this.drop(itemstack);
 			this.entity.setItemSlot(EquipmentSlotType.MAINHAND, ItemStack.EMPTY);
 			this.cooldown = this.entity.tickCount + this.rand.nextInt(100);
@@ -64,26 +54,20 @@ public class DolphinLikePlayWithItemsGoal extends Goal
 	}
 
 	@Override
-	public void tick() 
-	{
+	public void tick() {
 		List<ItemEntity> list = this.entity.level.getEntitiesOfClass(ItemEntity.class, this.entity.getBoundingBox().inflate(8.0D, 8.0D, 8.0D), DolphinEntity.ALLOWED_ITEMS);
 		ItemStack itemstack = this.entity.getItemBySlot(EquipmentSlotType.MAINHAND);
-		if(!itemstack.isEmpty()) 
-		{
+		if (!itemstack.isEmpty()) {
 			this.drop(itemstack);
 			this.entity.setItemSlot(EquipmentSlotType.MAINHAND, ItemStack.EMPTY);
-		} 
-		else if(!list.isEmpty()) 
-		{
+		} else if (!list.isEmpty()) {
 			this.entity.getNavigation().moveTo(list.get(0), (double) 1.2F);
 		}
 
 	}
 
-	private void drop(ItemStack stack) 
-	{
-		if(!stack.isEmpty()) 
-		{
+	private void drop(ItemStack stack) {
+		if (!stack.isEmpty()) {
 			double d0 = this.entity.getEyeY() - (double) 0.3F;
 			ItemEntity itementity = new ItemEntity(this.entity.level, this.entity.getX(), d0, this.entity.getZ(), stack);
 			itementity.setPickUpDelay(40);

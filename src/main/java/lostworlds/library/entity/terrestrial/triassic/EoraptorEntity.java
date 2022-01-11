@@ -37,24 +37,20 @@ import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationContro
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class EoraptorEntity extends CarnivoreEntity
-{
+public class EoraptorEntity extends CarnivoreEntity {
 	private static final Ingredient FOOD_ITEMS = IngredientUtil.combine(FoodLists.CARNIVORE, FoodLists.HERBIVORE);
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
-	
-	public EoraptorEntity(EntityType<? extends EoraptorEntity> entity, World world) 
-	{
+
+	public EoraptorEntity(EntityType<? extends EoraptorEntity> entity, World world) {
 		super(entity, world);
 	}
-	
-	public static AttributeModifierMap createAttributes() 
-	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.eoraptorHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.eoraptorAttackDamage.get()).build();
+
+	public static AttributeModifierMap createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.SERVER_CONFIG.eoraptorHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.SERVER_CONFIG.eoraptorAttackDamage.get()).build();
 	}
-	
+
 	@Override
-	protected void registerGoals() 
-	{
+	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new SleepySwimGoal(this));
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
@@ -76,32 +72,27 @@ public class EoraptorEntity extends CarnivoreEntity
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
+	public void registerControllers(TyrannomationData data) {
 		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
 
 	@Override
-	public ActivityType activity() 
-	{
+	public ActivityType activity() {
 		return ActivityType.DIURNAL;
 	}
 
 	@Override
-	public int maxHunger() 
-	{
+	public int maxHunger() {
 		return 9000;
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
-	{
+	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
 		return EntityInit.EORAPTOR.create(world);
 	}
 }

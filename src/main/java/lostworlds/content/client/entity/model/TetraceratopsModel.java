@@ -11,35 +11,29 @@ import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationMode
 import tyrannotitanlib.library.tyrannomation.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class TetraceratopsModel extends TyrannomatedTyrannomationModel<TetraceratopsEntity>
-{
+public class TetraceratopsModel extends TyrannomatedTyrannomationModel<TetraceratopsEntity> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(TetraceratopsEntity entity) 
-	{
+	public ResourceLocation getAnimationFileLocation(TetraceratopsEntity entity) {
 		return ModUtils.rL("animations/tetraceratops.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(TetraceratopsEntity entity) 
-	{
+	public ResourceLocation getModelLocation(TetraceratopsEntity entity) {
 		return ModUtils.rL("geo/tetraceratops.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(TetraceratopsEntity entity) 
-	{
+	public ResourceLocation getTextureLocation(TetraceratopsEntity entity) {
 		return ModUtils.rL("textures/model/entity/tetraceratops/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(TetraceratopsEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) 
-	{
+	public void setLivingAnimations(TetraceratopsEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("head");
-		
+
 		EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
-		if(!(entity.isEating() || entity.isSleeping()))
-		{
+		if (!(entity.isEating() || entity.isSleeping())) {
 			head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
 			head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
 		}

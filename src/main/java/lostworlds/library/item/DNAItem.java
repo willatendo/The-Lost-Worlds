@@ -10,26 +10,22 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public class DNAItem extends ModItem
-{
+public class DNAItem extends ModItem {
 	private final ITextComponent name;
-	
-	public DNAItem(ITextComponent name) 
-	{
+
+	public DNAItem(ITextComponent name) {
 		this.name = name;
 	}
-	
+
 	@Override
-	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> toolTip, ITooltipFlag flag)
-	{
+	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> toolTip, ITooltipFlag flag) {
 		TranslationTextComponent text = new TranslationTextComponent("item.lostworlds.dna.desc", this.name);
 		text.withStyle(TextFormatting.GOLD);
 		toolTip.add(text);
 	}
-	
+
 	@Override
-	public ITextComponent getName(ItemStack stack) 
-	{
-		return ModUtils.tTC("item", "dna");	
+	public ITextComponent getName(ItemStack stack) {
+		return ModUtils.tTC("item", "dna");
 	}
 }

@@ -19,54 +19,44 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
-public class PlasteredBlock extends Block
-{
+public class PlasteredBlock extends Block {
 	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 	private final Block turnToBlock;
-	
-	public PlasteredBlock(Properties properties, Block turnToBlock) 
-	{
+
+	public PlasteredBlock(Properties properties, Block turnToBlock) {
 		super(properties);
 		this.turnToBlock = turnToBlock;
 		this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH));
 	}
 
 	@Override
-	public BlockState mirror(BlockState state, Mirror mirrorIn) 
-	{
+	public BlockState mirror(BlockState state, Mirror mirrorIn) {
 		return state.rotate(mirrorIn.getRotation(state.getValue(HORIZONTAL_FACING)));
 	}
 
 	@Override
-	public BlockState rotate(BlockState state, IWorld world, BlockPos pos, Rotation direction) 
-	{
+	public BlockState rotate(BlockState state, IWorld world, BlockPos pos, Rotation direction) {
 		return state.setValue(HORIZONTAL_FACING, direction.rotate(state.getValue(HORIZONTAL_FACING)));
 	}
-	
+
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext context) 
-	{
+	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		return this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite());
 	}
-	
+
 	@Override
-	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) 
-	{
-		if(entity.isCrouching())
-		{
+	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) {
+		if (entity.isCrouching()) {
 			world.setBlockAndUpdate(pos, turnToBlock.defaultBlockState().setValue(HORIZONTAL_FACING, state.getValue(HORIZONTAL_FACING)));
 			world.playSound(entity, pos, SoundEvents.WOOL_BREAK, SoundCategory.BLOCKS, 0.7F, 1.0F);
 			return ActionResultType.SUCCESS;
-		}
-		else
-		{
+		} else {
 			return ActionResultType.FAIL;
 		}
 	}
-	
+
 	@Override
-	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) 
-	{
+	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(HORIZONTAL_FACING);
 	}
 }

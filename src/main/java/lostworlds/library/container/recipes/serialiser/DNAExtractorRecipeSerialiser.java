@@ -13,11 +13,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class DNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<DNAExtractorRecipe>
-{
+public class DNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<DNAExtractorRecipe> {
 	@Override
-	public DNAExtractorRecipe fromJson(ResourceLocation recipeId, JsonObject json) 
-	{
+	public DNAExtractorRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 		ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
 		Ingredient softTissue = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "softTissue"));
 		Ingredient vile = Ingredient.of(ItemInit.EMPTY_VILE);
@@ -26,8 +24,7 @@ public class DNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSeri
 	}
 
 	@Override
-	public DNAExtractorRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) 
-	{
+	public DNAExtractorRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 		ItemStack output = buffer.readItem();
 		Ingredient softTissue = Ingredient.fromNetwork(buffer);
 		Ingredient vile = Ingredient.fromNetwork(buffer);
@@ -36,10 +33,9 @@ public class DNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSeri
 	}
 
 	@Override
-	public void toNetwork(PacketBuffer buffer, DNAExtractorRecipe recipe) 
-	{
+	public void toNetwork(PacketBuffer buffer, DNAExtractorRecipe recipe) {
 		buffer.writeItemStack(recipe.getResultItem(), false);
-		
+
 		Ingredient input = recipe.getIngredients().get(0);
 		input.toNetwork(buffer);
 	}

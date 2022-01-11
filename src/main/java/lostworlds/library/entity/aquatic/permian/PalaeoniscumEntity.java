@@ -15,42 +15,35 @@ import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationE
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class PalaeoniscumEntity extends BasicFishLikeEntity implements ITyrannomatable
-{
+public class PalaeoniscumEntity extends BasicFishLikeEntity implements ITyrannomatable {
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
-	
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) 
-	{
+
+	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) {
 		event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.palaeoniscum", true));
 		return PlayState.CONTINUE;
 	}
-	
-	public PalaeoniscumEntity(EntityType<? extends PalaeoniscumEntity> entity, World world) 
-	{
+
+	public PalaeoniscumEntity(EntityType<? extends PalaeoniscumEntity> entity, World world) {
 		super(entity, world);
 	}
 
 	@Override
-	protected ItemStack getBucketItemStack() 
-	{
+	protected ItemStack getBucketItemStack() {
 		return DinoTypes.PALAEONISCUM.getFishBucket().getDefaultInstance();
 	}
 
 	@Override
-	protected SoundEvent getFlopSound() 
-	{
+	protected SoundEvent getFlopSound() {
 		return SoundEvents.COD_FLOP;
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
+	public void registerControllers(TyrannomationData data) {
 		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
 }

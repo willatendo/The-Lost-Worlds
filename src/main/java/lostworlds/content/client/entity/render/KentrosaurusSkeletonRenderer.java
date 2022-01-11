@@ -14,17 +14,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class KentrosaurusSkeletonRenderer extends TyrannomationEntityRenderer<FossilEntity>
-{
-	public KentrosaurusSkeletonRenderer(EntityRendererManager renderManager) 
-	{
+public class KentrosaurusSkeletonRenderer extends TyrannomationEntityRenderer<FossilEntity> {
+	public KentrosaurusSkeletonRenderer(EntityRendererManager renderManager) {
 		super(renderManager, new KentrosaurusSkeletonModel());
 		this.shadowRadius = 0.75F;
 	}
-	
+
 	@Override
-	public RenderType getRenderType(FossilEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
-	{
+	public RenderType getRenderType(FossilEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
 		return RenderType.entityTranslucent(getTextureLocation(animatable));
 	}
 }

@@ -14,10 +14,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class PaleontologyTableRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<PaleontologyTableRecipe> 
-{
-	public PaleontologyTableRecipe fromJson(ResourceLocation id, JsonObject json) 
-	{
+public class PaleontologyTableRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<PaleontologyTableRecipe> {
+	public PaleontologyTableRecipe fromJson(ResourceLocation id, JsonObject json) {
 		Map<String, Ingredient> map = PaleontologyTableRecipe.keyFromJson(JSONUtils.getAsJsonObject(json, "key"));
 		String[] astring = PaleontologyTableRecipe.shrink(PaleontologyTableRecipe.patternFromJson(JSONUtils.getAsJsonArray(json, "pattern")));
 		int i = astring[0].length();
@@ -27,30 +25,26 @@ public class PaleontologyTableRecipeSerialiser extends ForgeRegistryEntry<IRecip
 		return new PaleontologyTableRecipe(id, i, j, nonnulllist, itemstack);
 	}
 
-	public PaleontologyTableRecipe fromNetwork(ResourceLocation id, PacketBuffer buffer) 
-	{
+	public PaleontologyTableRecipe fromNetwork(ResourceLocation id, PacketBuffer buffer) {
 		int i = buffer.readVarInt();
 		int j = buffer.readVarInt();
 		NonNullList<Ingredient> nonnulllist = NonNullList.withSize(i * j, Ingredient.EMPTY);
 
-		for(int k = 0; k < nonnulllist.size(); ++k) 
-		{
+		for (int k = 0; k < nonnulllist.size(); ++k) {
 			nonnulllist.set(k, Ingredient.fromNetwork(buffer));
 		}
 
-		ItemStack itemstack = buffer.readItem();	
+		ItemStack itemstack = buffer.readItem();
 		return new PaleontologyTableRecipe(id, i, j, nonnulllist, itemstack);
 	}
 
-	public void toNetwork(PacketBuffer buffer, PaleontologyTableRecipe recipe) 
-	{
+	public void toNetwork(PacketBuffer buffer, PaleontologyTableRecipe recipe) {
 		buffer.writeVarInt(recipe.width);
 		buffer.writeVarInt(recipe.height);
 
 		buffer.writeItem(recipe.result);
 
-		for(Ingredient ingredient : recipe.recipeItems) 
-		{
+		for (Ingredient ingredient : recipe.recipeItems) {
 			ingredient.toNetwork(buffer);
 		}
 	}

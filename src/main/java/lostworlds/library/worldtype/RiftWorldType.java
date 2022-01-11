@@ -11,26 +11,22 @@ import net.minecraft.world.gen.NoiseChunkGenerator;
 import net.minecraft.world.gen.settings.DimensionGeneratorSettings;
 import net.minecraftforge.common.world.ForgeWorldType;
 
-public class RiftWorldType extends ForgeWorldType
-{
-	public RiftWorldType() 
-	{
+public class RiftWorldType extends ForgeWorldType {
+	public RiftWorldType() {
 		super(null);
 	}
-	
+
 	@Override
-	public ChunkGenerator createChunkGenerator(Registry<Biome> biomeRegistry, Registry<DimensionSettings> dimensionSettingsRegistry, long seed, String generatorSettings) 
-	{
+	public ChunkGenerator createChunkGenerator(Registry<Biome> biomeRegistry, Registry<DimensionSettings> dimensionSettingsRegistry, long seed, String generatorSettings) {
 		return new NoiseChunkGenerator(new OverworldBiomeProvider(seed, false, false, biomeRegistry), seed, () -> dimensionSettingsRegistry.getOrThrow(DimensionSettings.OVERWORLD));
 	}
-	
+
 	@Override
-	public DimensionGeneratorSettings createSettings(DynamicRegistries dynamicRegistries, long seed, boolean generateStructures, boolean generateLoot, String generatorSettings) 
-	{
+	public DimensionGeneratorSettings createSettings(DynamicRegistries dynamicRegistries, long seed, boolean generateStructures, boolean generateLoot, String generatorSettings) {
 		Registry<Biome> biomeRegistry = dynamicRegistries.registryOrThrow(Registry.BIOME_REGISTRY);
 		Registry<DimensionSettings> dimensionSettingsRegistry = dynamicRegistries.registryOrThrow(Registry.NOISE_GENERATOR_SETTINGS_REGISTRY);
 		Registry<DimensionType> dimensionTypeRegistry = dynamicRegistries.registryOrThrow(Registry.DIMENSION_TYPE_REGISTRY);
 
-        return new DimensionGeneratorSettings(seed, generateStructures, generateLoot, DimensionGeneratorSettings.withOverworld(dimensionTypeRegistry, DimensionType.defaultDimensions(dimensionTypeRegistry, biomeRegistry, dimensionSettingsRegistry, seed), createChunkGenerator(biomeRegistry, dimensionSettingsRegistry, seed, null)));
+		return new DimensionGeneratorSettings(seed, generateStructures, generateLoot, DimensionGeneratorSettings.withOverworld(dimensionTypeRegistry, DimensionType.defaultDimensions(dimensionTypeRegistry, biomeRegistry, dimensionSettingsRegistry, seed), createChunkGenerator(biomeRegistry, dimensionSettingsRegistry, seed, null)));
 	}
 }

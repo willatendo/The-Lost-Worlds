@@ -24,54 +24,43 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
-public class TimeMachineBlock extends Block
-{
+public class TimeMachineBlock extends Block {
 	private static final ITextComponent CONTAINER_NAME = ModUtils.tTC("container", "time_machine");
 	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 12, 16);
-	
-	protected TimeMachineBlock() 
-	{
+
+	protected TimeMachineBlock() {
 		super(Properties.of(ModMaterials.MAGIC).harvestTool(ToolType.PICKAXE).harvestLevel(5).requiresCorrectToolForDrops().strength(50.0F, 1200.0F));
-	} 
-	
-	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) 
-	{
-		if(world.isClientSide) 
-		{
+	}
+
+	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) {
+		if (world.isClientSide) {
 			return ActionResultType.SUCCESS;
-		} 
-		else 
-		{
+		} else {
 			entity.openMenu(state.getMenuProvider(world, pos));
 			return ActionResultType.CONSUME;
-		}	    
+		}
 	}
-	
+
 	@Nullable
-	public INamedContainerProvider getMenuProvider(BlockState state, World world, BlockPos pos) 
-	{
-		return new SimpleNamedContainerProvider((windowId, inv, u) -> 
-		{
+	public INamedContainerProvider getMenuProvider(BlockState state, World world, BlockPos pos) {
+		return new SimpleNamedContainerProvider((windowId, inv, u) -> {
 			return new TimeMachineContainer(windowId, inv, IWorldPosCallable.create(world, pos));
 		}, CONTAINER_NAME);
 	}
-	
-	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pso, ISelectionContext context) 
-	{
+
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pso, ISelectionContext context) {
 		return SHAPE;
 	}
-	public boolean useShapeForLightOcclusion(BlockState state) 
-	{
+
+	public boolean useShapeForLightOcclusion(BlockState state) {
 		return true;
 	}
-	
-	public BlockRenderType getRenderShape(BlockState state) 
-	{
+
+	public BlockRenderType getRenderShape(BlockState state) {
 		return BlockRenderType.MODEL;
 	}
-	
-	public static Block create()
-	{
+
+	public static Block create() {
 		return BlockAndItemBuilder.create("time_machine", new TimeMachineBlock());
 	}
 }

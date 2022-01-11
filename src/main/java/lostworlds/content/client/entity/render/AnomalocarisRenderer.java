@@ -14,17 +14,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class AnomalocarisRenderer extends TyrannomationEntityRenderer<AnomalocarisEntity>
-{
-	public AnomalocarisRenderer(EntityRendererManager renderManager) 
-	{
+public class AnomalocarisRenderer extends TyrannomationEntityRenderer<AnomalocarisEntity> {
+	public AnomalocarisRenderer(EntityRendererManager renderManager) {
 		super(renderManager, new AnomalocarisModel());
 		this.shadowRadius = 0.5F;
 	}
-	
+
 	@Override
-	public RenderType getRenderType(AnomalocarisEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
-	{
+	public RenderType getRenderType(AnomalocarisEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
 		return RenderType.entityTranslucent(getTextureLocation(animatable));
 	}
 }

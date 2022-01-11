@@ -39,95 +39,85 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-public class DNAInjectorTileEntity extends TileEntity implements IInventory, INamedContainerProvider, INameable, ITickableTileEntity, ISidedInventory
-{
+public class DNAInjectorTileEntity extends TileEntity implements IInventory, INamedContainerProvider, INameable, ITickableTileEntity, ISidedInventory {
 	private static final int[] SLOTS_FOR_UP = new int[] { 0 };
-	private static final int[] SLOTS_FOR_DOWN = new int[]{ 2 };
-	private static final int[] SLOTS_FOR_SIDES = new int[]{ 1 };
-	
+	private static final int[] SLOTS_FOR_DOWN = new int[] { 2 };
+	private static final int[] SLOTS_FOR_SIDES = new int[] { 1 };
+
 	protected NonNullList<ItemStack> items = NonNullList.withSize(3, ItemStack.EMPTY);
-	
+
 	private int onTime;
 	private int onDuration;
 	private int injectingProgress;
 	private int injectingTotalTime = 60;
-	
-	protected final IIntArray injectorData = new IIntArray()
-	{
+
+	protected final IIntArray injectorData = new IIntArray() {
 		@Override
-		public int get(int index)
-		{
-			switch(index)
-			{
-				case 0:
-					return onTime;
-				case 1:
-					return onDuration;
-				case 2:
-					return injectingProgress;
-				case 3:
-					return injectingTotalTime;
-				default:
-					return 0;
+		public int get(int index) {
+			switch (index) {
+			case 0:
+				return onTime;
+			case 1:
+				return onDuration;
+			case 2:
+				return injectingProgress;
+			case 3:
+				return injectingTotalTime;
+			default:
+				return 0;
 			}
 		}
-		
+
 		@Override
-		public void set(int index, int value)
-		{
-			switch(index)
-			{
-				case 0:
-					onTime = value;
-					break;
-				case 1:
-					onDuration = value;
-					break;
-				case 2:
-					injectingProgress = value;
-					break;
-				case 3:
-					injectingTotalTime = value;
-					break;
+		public void set(int index, int value) {
+			switch (index) {
+			case 0:
+				onTime = value;
+				break;
+			case 1:
+				onDuration = value;
+				break;
+			case 2:
+				injectingProgress = value;
+				break;
+			case 3:
+				injectingTotalTime = value;
+				break;
 			}
 		}
-		
+
 		@Override
-		public int getCount()
-		{
+		public int getCount() {
 			return 4;
 		}
 	};
-	
+
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
 	protected final IRecipeType<DNAInjectorRecipe> recipeType = RecipeInit.DNA_INJECTOR_RECIPE;
-	
+
 	@SuppressWarnings("unused")
 	private ITextComponent name;
 
-	public DNAInjectorTileEntity() 
-	{
+	public DNAInjectorTileEntity() {
 		super(TileEntityInit.DNA_INJECTOR_TILE_ENTITY);
 	}
 
 	@Override
-	public void load(BlockState state, CompoundNBT nbt) 
-	{
+	public void load(BlockState state, CompoundNBT nbt) {
 		super.load(state, nbt);
 		this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
 		ItemStackHelper.loadAllItems(nbt, this.items);
 		this.onTime = nbt.getInt("OnTime");
 		this.injectingProgress = nbt.getInt("InjectTime");
 		this.injectingTotalTime = nbt.getInt("InjectTimeTotal");
-		this.onDuration = this.getInjectDuration();if(nbt.contains("CustomName", 8)) 
-		{
+		this.onDuration = this.getInjectDuration();
+		if (nbt.contains("CustomName", 8)) {
 			this.name = ITextComponent.Serializer.fromJson(nbt.getString("CustomName"));
 		}
 	}
-	
+
 	@Override
-	public CompoundNBT save(CompoundNBT nbt) 
-	{
+	public CompoundNBT save(CompoundNBT nbt) {
 		super.save(nbt);
 		nbt.putInt("OnTime", this.onTime);
 		nbt.putInt("InjectTime", this.injectingProgress);
@@ -135,339 +125,256 @@ public class DNAInjectorTileEntity extends TileEntity implements IInventory, INa
 		ItemStackHelper.saveAllItems(nbt, this.items);
 		return nbt;
 	}
-	
-	public IIntArray getInjectorData()
-	{
+
+	public IIntArray getInjectorData() {
 		return this.injectorData;
 	}
-	
-	public boolean isOn() 
-	{
+
+	public boolean isOn() {
 		return this.onTime > 0;
 	}
-	
+
 	@Override
-	public void tick() 
-	{	
+	public void tick() {
 		boolean flag = this.isOn();
 		boolean flag1 = false;
-		if(this.isOn()) 
-		{
+		if (this.isOn()) {
 			--this.onTime;
 		}
-		
-		if(!this.level.isClientSide) 
-		{
-			if(this.level.hasNeighborSignal(this.getBlockPos()))
-			{
-				if(this.isOn() || !this.items.get(0).isEmpty()) 
-				{
-					IRecipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((IRecipeType<DNAInjectorRecipe>)this.recipeType, this, this.level).orElse(null);
-					if(!this.isOn() && this.canInjectWith(irecipe)) 
-					{
+
+		if (!this.level.isClientSide) {
+			if (this.level.hasNeighborSignal(this.getBlockPos())) {
+				if (this.isOn() || !this.items.get(0).isEmpty()) {
+					IRecipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((IRecipeType<DNAInjectorRecipe>) this.recipeType, this, this.level).orElse(null);
+					if (!this.isOn() && this.canInjectWith(irecipe)) {
 						this.onTime = this.getInjectDuration();
 						this.onDuration = this.onTime;
-						if(this.isOn()) 
-						{
+						if (this.isOn()) {
 							flag1 = true;
 						}
 					}
-					
-					if(this.isOn() && this.canInjectWith(irecipe)) 
-					{
+
+					if (this.isOn() && this.canInjectWith(irecipe)) {
 						++this.injectingProgress;
-						if(this.injectingProgress == this.injectingTotalTime) 
-						{
+						if (this.injectingProgress == this.injectingTotalTime) {
 							this.injectingProgress = 0;
 							this.injectingTotalTime = this.getTotalInjectTime();
 							this.canInject(irecipe);
 							flag1 = true;
 						}
-					} 
-					else 
-					{
+					} else {
 						this.injectingProgress = 0;
 					}
-				} 
-				else if(!this.isOn() && this.injectingProgress > 0) 
-				{
+				} else if (!this.isOn() && this.injectingProgress > 0) {
 					this.injectingProgress = MathHelper.clamp(this.injectingProgress - 2, 0, this.injectingTotalTime);
 				}
-				
-				if(flag != this.isOn()) 
-				{
+
+				if (flag != this.isOn()) {
 					flag1 = true;
 					this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(DNAInjectorBlock.ON, Boolean.valueOf(this.isOn())), 3);
 				}
 			}
 		}
-		
-		if(flag1) 
-		{
+
+		if (flag1) {
 			this.setChanged();
 		}
 	}
-	
-	protected boolean canInjectWith(@Nullable IRecipe<?> recipe) 
-	{
-		if(!this.items.get(0).isEmpty() && !this.items.get(1).isEmpty() && recipe != null) 
-		{
+
+	protected boolean canInjectWith(@Nullable IRecipe<?> recipe) {
+		if (!this.items.get(0).isEmpty() && !this.items.get(1).isEmpty() && recipe != null) {
 			ItemStack itemstack = recipe.getResultItem();
-			if(itemstack.isEmpty()) 
-			{
+			if (itemstack.isEmpty()) {
 				return false;
-			} 
-			else 
-			{
+			} else {
 				ItemStack itemstack1 = this.items.get(2);
-				if(itemstack1.isEmpty()) 
-				{
+				if (itemstack1.isEmpty()) {
 					return true;
-				}
-				else if(!itemstack1.sameItem(itemstack)) 
-				{
+				} else if (!itemstack1.sameItem(itemstack)) {
 					return false;
-				} 
-				else if(itemstack1.getCount() + itemstack.getCount() <= this.getMaxStackSize() && itemstack1.getCount() + itemstack.getCount() <= itemstack1.getMaxStackSize()) 
-				{
+				} else if (itemstack1.getCount() + itemstack.getCount() <= this.getMaxStackSize() && itemstack1.getCount() + itemstack.getCount() <= itemstack1.getMaxStackSize()) {
 					return true;
-				} 
-				else 
-				{
-					return itemstack1.getCount() + itemstack.getCount() <= itemstack.getMaxStackSize(); 
+				} else {
+					return itemstack1.getCount() + itemstack.getCount() <= itemstack.getMaxStackSize();
 				}
 			}
-		} 
-		else 
-		{
+		} else {
 			return false;
 		}
 	}
-	
-	private void canInject(@Nullable IRecipe<?> recipe) 
-	{
-		if(recipe != null && this.canInjectWith(recipe)) 
-		{
+
+	private void canInject(@Nullable IRecipe<?> recipe) {
+		if (recipe != null && this.canInjectWith(recipe)) {
 			ItemStack dnaDisc = this.items.get(0);
 			ItemStack egg = this.items.get(1);
 			ItemStack itemstack1 = recipe.getResultItem();
 			ItemStack itemstack2 = this.items.get(2);
-			if(itemstack2.isEmpty()) 
-			{
+			if (itemstack2.isEmpty()) {
 				this.items.set(2, itemstack1.copy());
-			} 
-			else if(itemstack2.getItem() == itemstack1.getItem()) 
-			{
+			} else if (itemstack2.getItem() == itemstack1.getItem()) {
 				itemstack2.grow(itemstack1.getCount());
 			}
-			
-			if(!this.level.isClientSide) 
-			{
+
+			if (!this.level.isClientSide) {
 				this.setRecipeUsed(recipe);
 			}
-			
+
 			Random rand = new Random();
-			
-			if(dnaDisc.getMaxDamage() - dnaDisc.getDamageValue() <= 1)
-			{
+
+			if (dnaDisc.getMaxDamage() - dnaDisc.getDamageValue() <= 1) {
 				dnaDisc.shrink(1);
-			}
-			else
-			{
+			} else {
 				dnaDisc.hurt(1, rand, null);
 			}
-			
+
 			egg.shrink(1);
 		}
 	}
-	
-	protected int getTotalInjectTime() 
-	{
-		return this.level.getRecipeManager().getRecipeFor((IRecipeType<DNAInjectorRecipe>)this.recipeType, this, this.level).map(DNAInjectorRecipe::getInjectingTime).orElse(50);
+
+	protected int getTotalInjectTime() {
+		return this.level.getRecipeManager().getRecipeFor((IRecipeType<DNAInjectorRecipe>) this.recipeType, this, this.level).map(DNAInjectorRecipe::getInjectingTime).orElse(50);
 	}
-	
-	protected int getInjectDuration() 
-	{
+
+	protected int getInjectDuration() {
 		return 60;
 	}
-	
+
 	@Override
-	public int getContainerSize() 
-	{
+	public int getContainerSize() {
 		return this.items.size();
 	}
-	
+
 	@Override
-	public boolean isEmpty() 
-	{
-		for(ItemStack itemstack : this.items) 	
-		{
-			if(!itemstack.isEmpty()) 
-			{
+	public boolean isEmpty() {
+		for (ItemStack itemstack : this.items) {
+			if (!itemstack.isEmpty()) {
 				return false;
 			}
 		}
-		
+
 		return true;
 	}
-	
+
 	@Override
-	public ItemStack getItem(int i) 
-	{
+	public ItemStack getItem(int i) {
 		return this.items.get(i);
 	}
-	
+
 	@Override
-	public ItemStack removeItem(int i1, int i2) 
-	{
+	public ItemStack removeItem(int i1, int i2) {
 		return ItemStackHelper.removeItem(this.items, i1, i2);
 	}
-	
+
 	@Override
-	public ItemStack removeItemNoUpdate(int i) 
-	{
+	public ItemStack removeItemNoUpdate(int i) {
 		return ItemStackHelper.takeItem(this.items, i);
 	}
-	
+
 	@Override
-	public void setItem(int i, ItemStack stack) 
-	{
+	public void setItem(int i, ItemStack stack) {
 		ItemStack itemstack = this.items.get(i);
 		boolean flag = !stack.isEmpty() && stack.sameItem(itemstack) && ItemStack.tagMatches(stack, itemstack);
 		this.items.set(i, stack);
-		if(stack.getCount() > this.getMaxStackSize()) 
-		{
+		if (stack.getCount() > this.getMaxStackSize()) {
 			stack.setCount(this.getMaxStackSize());
 		}
-		
-		if (i == 0 && !flag) 
-		{
+
+		if (i == 0 && !flag) {
 			this.injectingTotalTime = this.getTotalInjectTime();
 			this.injectingProgress = 0;
 			this.setChanged();
 		}
 	}
-	
+
 	@Override
-	public boolean stillValid(PlayerEntity player) 
-	{
-		if(this.level.getBlockEntity(this.worldPosition) != this) 
-		{
+	public boolean stillValid(PlayerEntity player) {
+		if (this.level.getBlockEntity(this.worldPosition) != this) {
 			return false;
-		} 
-		else 
-		{
-			return player.distanceToSqr((double)this.worldPosition.getX() + 0.5D, (double)this.worldPosition.getY() + 0.5D, (double)this.worldPosition.getZ() + 0.5D) <= 64.0D;
+		} else {
+			return player.distanceToSqr((double) this.worldPosition.getX() + 0.5D, (double) this.worldPosition.getY() + 0.5D, (double) this.worldPosition.getZ() + 0.5D) <= 64.0D;
 		}
 	}
-	
+
 	@Override
-	public boolean canPlaceItem(int i, ItemStack stack) 
-	{
-		if(i == 2) 
-		{
+	public boolean canPlaceItem(int i, ItemStack stack) {
+		if (i == 2) {
 			return false;
-		} 
-		else
-		{
+		} else {
 			return true;
 		}
 	}
-	
+
 	@Override
-	public void clearContent() 
-	{
+	public void clearContent() {
 		this.items.clear();
 	}
-	
-	public void setRecipeUsed(@Nullable IRecipe<?> recipe) 
-	{
-		if(recipe != null) 
-		{
+
+	public void setRecipeUsed(@Nullable IRecipe<?> recipe) {
+		if (recipe != null) {
 			ResourceLocation resourcelocation = recipe.getId();
 			this.recipesUsed.addTo(resourcelocation, 1);
 		}
 	}
-	
+
 	@Nullable
-	public IRecipe<?> getRecipeUsed() 
-	{
+	public IRecipe<?> getRecipeUsed() {
 		return null;
 	}
 
-	public void fillStackedContents(RecipeItemHelper helper) 
-	{
-		for(ItemStack itemstack : this.items) 
-		{
+	public void fillStackedContents(RecipeItemHelper helper) {
+		for (ItemStack itemstack : this.items) {
 			helper.accountStack(itemstack);
 		}
 	}
 
 	@Override
-	public Container createMenu(int windowId, PlayerInventory playerInv, PlayerEntity player) 
-	{
+	public Container createMenu(int windowId, PlayerInventory playerInv, PlayerEntity player) {
 		return new DNAInjectorContainer(windowId, playerInv, this, this);
 	}
 
 	@Override
-	public ITextComponent getName() 
-	{
+	public ITextComponent getName() {
 		return ModUtils.tTC("container", "dna_injector");
 	}
 
 	@Override
-	public ITextComponent getDisplayName() 
-	{
+	public ITextComponent getDisplayName() {
 		return this.getName();
 	}
-	
-	public void setCustomName(ITextComponent text) 
-	{
+
+	public void setCustomName(ITextComponent text) {
 		this.name = text;
 	}
 
 	@Override
-	public int[] getSlotsForFace(Direction direction) 
-	{
-		if(direction == Direction.DOWN) 
-		{
+	public int[] getSlotsForFace(Direction direction) {
+		if (direction == Direction.DOWN) {
 			return SLOTS_FOR_DOWN;
-		} 
-		else 
-		{
+		} else {
 			return direction == Direction.UP ? SLOTS_FOR_UP : SLOTS_FOR_SIDES;
 		}
 	}
 
 	@Override
-	public boolean canPlaceItemThroughFace(int slot, ItemStack stack, Direction direction) 
-	{
+	public boolean canPlaceItemThroughFace(int slot, ItemStack stack, Direction direction) {
 		return this.canPlaceItem(slot, stack);
 	}
 
 	@Override
-	public boolean canTakeItemThroughFace(int slot, ItemStack stack, Direction direction) 
-	{	
+	public boolean canTakeItemThroughFace(int slot, ItemStack stack, Direction direction) {
 		return true;
 	}
-	
+
 	LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
-	
+
 	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) 
-	{
-		if(!this.remove && facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) 
-		{
-			if(facing == Direction.UP)
-			{
+	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
+		if (!this.remove && facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			if (facing == Direction.UP) {
 				return handlers[0].cast();
-			}
-			else if(facing == Direction.DOWN)
-			{
+			} else if (facing == Direction.DOWN) {
 				return handlers[1].cast();
-			}
-			else
-			{
+			} else {
 				return handlers[2].cast();
 			}
 		}

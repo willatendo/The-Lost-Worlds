@@ -9,16 +9,13 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class WaterPlantItem extends GroupedBlockItem
-{
-	public WaterPlantItem(Block block) 
-	{
+public class WaterPlantItem extends GroupedBlockItem {
+	public WaterPlantItem(Block block) {
 		super(block);
 	}
-	
+
 	@Override
-	protected boolean canPlace(BlockItemUseContext context, BlockState state) 
-	{
+	protected boolean canPlace(BlockItemUseContext context, BlockState state) {
 		BlockPos pos = context.getClickedPos();
 		World world = context.getLevel();
 		return world.getBlockState(pos).getFluidState().getType() == Fluids.WATER && world.getBlockState(pos.above()).is(Blocks.AIR);

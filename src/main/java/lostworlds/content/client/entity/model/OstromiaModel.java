@@ -11,35 +11,29 @@ import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationMode
 import tyrannotitanlib.library.tyrannomation.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class OstromiaModel extends TyrannomatedTyrannomationModel<OstromiaEntity>
-{
+public class OstromiaModel extends TyrannomatedTyrannomationModel<OstromiaEntity> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(OstromiaEntity entity) 
-	{
+	public ResourceLocation getAnimationFileLocation(OstromiaEntity entity) {
 		return ModUtils.rL("animations/ostromia.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(OstromiaEntity entity) 
-	{
+	public ResourceLocation getModelLocation(OstromiaEntity entity) {
 		return ModUtils.rL("geo/ostromia.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(OstromiaEntity entity) 
-	{
+	public ResourceLocation getTextureLocation(OstromiaEntity entity) {
 		return ModUtils.rL("textures/model/entity/ostromia/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(OstromiaEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) 
-	{
+	public void setLivingAnimations(OstromiaEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
-		
+
 		EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
-		if(!(entity.isEating() || entity.isSleeping()))
-		{
+		if (!(entity.isEating() || entity.isSleeping())) {
 			head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
 			head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
 		}

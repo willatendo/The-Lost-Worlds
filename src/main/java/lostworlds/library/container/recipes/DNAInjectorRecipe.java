@@ -12,15 +12,13 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class DNAInjectorRecipe implements IRecipe<IInventory>
-{
+public class DNAInjectorRecipe implements IRecipe<IInventory> {
 	private final ResourceLocation id;
 	private Ingredient dnaDisc;
 	private Ingredient egg;
 	private final ItemStack output;
-	
-	public DNAInjectorRecipe(ResourceLocation id, Ingredient dnaDisc, Ingredient egg, ItemStack output) 
-	{
+
+	public DNAInjectorRecipe(ResourceLocation id, Ingredient dnaDisc, Ingredient egg, ItemStack output) {
 		this.id = id;
 		this.output = output;
 		this.dnaDisc = dnaDisc;
@@ -28,58 +26,48 @@ public class DNAInjectorRecipe implements IRecipe<IInventory>
 	}
 
 	@Override
-	public boolean matches(IInventory inv, World worldIn) 
-	{
-		if(this.dnaDisc.test(inv.getItem(0))) 
-		{
+	public boolean matches(IInventory inv, World worldIn) {
+		if (this.dnaDisc.test(inv.getItem(0))) {
 			return true;
 		}
-		if(this.egg.test(inv.getItem(0))) 
-		{
+		if (this.egg.test(inv.getItem(0))) {
 			return true;
 		}
 		return false;
 	}
 
 	@Override
-	public ItemStack assemble(IInventory inv) 
-	{
+	public ItemStack assemble(IInventory inv) {
 		return this.output;
 	}
 
 	@Override
-	public ItemStack getResultItem() 
-	{
+	public ItemStack getResultItem() {
 		return this.output;
 	}
-	
-	public NonNullList<ItemStack> getOutputs()
-	{
+
+	public NonNullList<ItemStack> getOutputs() {
 		NonNullList<ItemStack> outputs = NonNullList.create();
 		outputs.add(this.output);
 		return outputs;
 	}
 
 	@Override
-	public ResourceLocation getId() 
-	{
+	public ResourceLocation getId() {
 		return this.id;
 	}
-	
-	public int getInjectingTime() 
-	{
+
+	public int getInjectingTime() {
 		return 50;
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer() 
-	{
+	public IRecipeSerializer<?> getSerializer() {
 		return RecipeInit.DNA_INJECTOR_SERIALIZER;
 	}
 
 	@Override
-	public NonNullList<Ingredient> getIngredients() 
-	{
+	public NonNullList<Ingredient> getIngredients() {
 		NonNullList<Ingredient> nonnulllist = NonNullList.create();
 		nonnulllist.add(this.dnaDisc);
 		nonnulllist.add(this.egg);
@@ -87,20 +75,17 @@ public class DNAInjectorRecipe implements IRecipe<IInventory>
 	}
 
 	@Override
-	public boolean canCraftInDimensions(int width, int height) 
-	{
+	public boolean canCraftInDimensions(int width, int height) {
 		return false;
 	}
 
 	@Override
-	public IRecipeType<?> getType() 
-	{
+	public IRecipeType<?> getType() {
 		return RecipeInit.DNA_INJECTOR_RECIPE;
 	}
-	
+
 	@Override
-	public ItemStack getToastSymbol() 
-	{
+	public ItemStack getToastSymbol() {
 		return new ItemStack(BlockInit.DNA_INJECTOR.asItem());
 	}
 }

@@ -30,72 +30,54 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public class SeedItem extends Item 
-{
+public class SeedItem extends Item {
 	@Deprecated
 	private final Block block;
 	private final ITextComponent name;
-	
-	public SeedItem(Block block, ITextComponent name) 
-	{
+
+	public SeedItem(Block block, ITextComponent name) {
 		super(new Properties().tab(ModUtils.ITEMS));
 		this.block = block;
 		this.name = name;
 	}
 
 	@Override
-	public ActionResultType useOn(ItemUseContext context) 
-	{
+	public ActionResultType useOn(ItemUseContext context) {
 		ActionResultType actionresulttype = this.place(new BlockItemUseContext(context));
 		return !actionresulttype.consumesAction() && this.isEdible() ? this.use(context.getLevel(), context.getPlayer(), context.getHand()).getResult() : actionresulttype;
 	}
 
-	public ActionResultType place(BlockItemUseContext context) 
-	{
-		if(!context.canPlace()) 
-		{
+	public ActionResultType place(BlockItemUseContext context) {
+		if (!context.canPlace()) {
 			return ActionResultType.FAIL;
-		} 
-		else 
-		{
+		} else {
 			BlockItemUseContext blockitemusecontext = this.updatePlacementContext(context);
-			if(blockitemusecontext == null) 
-			{
+			if (blockitemusecontext == null) {
 				return ActionResultType.FAIL;
-			} 
-			else 
-			{
+			} else {
 				BlockState blockstate = this.getPlacementState(blockitemusecontext);
-				if(blockstate == null) 
-				{
+				if (blockstate == null) {
 					return ActionResultType.FAIL;
-				} 
-				else if(!this.placeBlock(blockitemusecontext, blockstate)) 
-				{
+				} else if (!this.placeBlock(blockitemusecontext, blockstate)) {
 					return ActionResultType.FAIL;
-				}
-				else 
-				{
+				} else {
 					BlockPos blockpos = blockitemusecontext.getClickedPos();
 					World world = blockitemusecontext.getLevel();
 					PlayerEntity playerentity = blockitemusecontext.getPlayer();
 					ItemStack itemstack = blockitemusecontext.getItemInHand();
 					BlockState blockstate1 = world.getBlockState(blockpos);
 					Block block = blockstate1.getBlock();
-					if(block == blockstate.getBlock()) 
-					{
+					if (block == blockstate.getBlock()) {
 						blockstate1 = this.updateBlockStateFromTag(blockpos, world, itemstack, blockstate1);
 						block.setPlacedBy(world, blockpos, blockstate1, playerentity, itemstack);
-						if(playerentity instanceof ServerPlayerEntity) 
-						{
+						if (playerentity instanceof ServerPlayerEntity) {
 							CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayerEntity) playerentity, blockpos, itemstack);
 						}
 					}
 
 					SoundType soundtype = blockstate1.getSoundType(world, blockpos, context.getPlayer());
 					world.playSound(playerentity, blockpos, this.getPlaceSound(blockstate1, world, blockpos, context.getPlayer()), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-					if(playerentity == null || !playerentity.abilities.instabuild) 
-					{
+					if (playerentity == null || !playerentity.abilities.instabuild) {
 						itemstack.shrink(1);
 					}
 
@@ -106,99 +88,78 @@ public class SeedItem extends Item
 	}
 
 	@Deprecated
-	protected SoundEvent getPlaceSound(BlockState state) 
-	{
+	protected SoundEvent getPlaceSound(BlockState state) {
 		return state.getSoundType().getPlaceSound();
 	}
 
-	protected SoundEvent getPlaceSound(BlockState state, World world, BlockPos pos, PlayerEntity entity) 
-	{
+	protected SoundEvent getPlaceSound(BlockState state, World world, BlockPos pos, PlayerEntity entity) {
 		return state.getSoundType(world, pos, entity).getPlaceSound();
 	}
 
 	@Nullable
-	public BlockItemUseContext updatePlacementContext(BlockItemUseContext context) 
-	{
+	public BlockItemUseContext updatePlacementContext(BlockItemUseContext context) {
 		return context;
 	}
 
 	@Nullable
-	protected BlockState getPlacementState(BlockItemUseContext context) 
-	{
+	protected BlockState getPlacementState(BlockItemUseContext context) {
 		BlockState blockstate = this.getBlock().getStateForPlacement(context);
 		return blockstate != null && this.canPlace(context, blockstate) ? blockstate : null;
 	}
 
-	private BlockState updateBlockStateFromTag(BlockPos pos, World world, ItemStack stack, BlockState state) 
-	{
+	private BlockState updateBlockStateFromTag(BlockPos pos, World world, ItemStack stack, BlockState state) {
 		BlockState blockstate = state;
 		CompoundNBT compoundnbt = stack.getTag();
-		if(compoundnbt != null) 
-		{
+		if (compoundnbt != null) {
 			CompoundNBT compoundnbt1 = compoundnbt.getCompound("BlockStateTag");
 			StateContainer<Block, BlockState> statecontainer = state.getBlock().getStateDefinition();
 
-			for(String s : compoundnbt1.getAllKeys()) 
-			{
+			for (String s : compoundnbt1.getAllKeys()) {
 				Property<?> property = statecontainer.getProperty(s);
-				if(property != null) 
-				{
+				if (property != null) {
 					String s1 = compoundnbt1.get(s).getAsString();
 					blockstate = updateState(blockstate, property, s1);
 				}
 			}
 		}
 
-		if(blockstate != state) 
-		{
+		if (blockstate != state) {
 			world.setBlock(pos, blockstate, 2);
 		}
 
 		return blockstate;
 	}
 
-	private static <T extends Comparable<T>> BlockState updateState(BlockState state, Property<T> properties, String nbt) 
-	{
-		return properties.getValue(nbt).map((comparable) -> 
-		{
+	private static <T extends Comparable<T>> BlockState updateState(BlockState state, Property<T> properties, String nbt) {
+		return properties.getValue(nbt).map((comparable) -> {
 			return state.setValue(properties, comparable);
 		}).orElse(state);
 	}
 
-	protected boolean canPlace(BlockItemUseContext context, BlockState state) 
-	{
+	protected boolean canPlace(BlockItemUseContext context, BlockState state) {
 		PlayerEntity playerentity = context.getPlayer();
 		ISelectionContext iselectioncontext = playerentity == null ? ISelectionContext.empty() : ISelectionContext.of(playerentity);
 		return (!this.mustSurvive() || state.canSurvive(context.getLevel(), context.getClickedPos())) && context.getLevel().isUnobstructed(state, context.getClickedPos(), iselectioncontext);
 	}
 
-	protected boolean mustSurvive() 
-	{
+	protected boolean mustSurvive() {
 		return true;
 	}
 
-	protected boolean placeBlock(BlockItemUseContext context, BlockState state) 
-	{
+	protected boolean placeBlock(BlockItemUseContext context, BlockState state) {
 		return context.getLevel().setBlock(context.getClickedPos(), state, 11);
 	}
 
-	public static boolean updateCustomBlockEntityTag(World world, @Nullable PlayerEntity entity, BlockPos pos, ItemStack stack) 
-	{
+	public static boolean updateCustomBlockEntityTag(World world, @Nullable PlayerEntity entity, BlockPos pos, ItemStack stack) {
 		MinecraftServer minecraftserver = world.getServer();
-		if(minecraftserver == null) 
-		{
+		if (minecraftserver == null) {
 			return false;
-		} 
-		else 
-		{
+		} else {
 			CompoundNBT compoundnbt = stack.getTagElement("BlockEntityTag");
-			if(compoundnbt != null) 
-			{
+			if (compoundnbt != null) {
 				TileEntity tileentity = world.getBlockEntity(pos);
-				if(tileentity != null) 
-				{
-					if(!world.isClientSide && tileentity.onlyOpCanSetNbt() && (entity == null || !entity.canUseGameMasterBlocks())) 
-					{
+				if (tileentity != null) {
+					if (!world.isClientSide && tileentity.onlyOpCanSetNbt() && (entity == null || !entity.canUseGameMasterBlocks())) {
 						return false;
 					}
 
@@ -208,8 +169,7 @@ public class SeedItem extends Item
 					compoundnbt1.putInt("x", pos.getX());
 					compoundnbt1.putInt("y", pos.getY());
 					compoundnbt1.putInt("z", pos.getZ());
-					if(!compoundnbt1.equals(compoundnbt2)) 
-					{
+					if (!compoundnbt1.equals(compoundnbt2)) {
 						tileentity.load(world.getBlockState(pos), compoundnbt1);
 						tileentity.setChanged();
 						return true;
@@ -221,34 +181,28 @@ public class SeedItem extends Item
 		}
 	}
 
-	public Block getBlock() 
-	{
+	public Block getBlock() {
 		return this.getBlockRaw() == null ? null : this.getBlockRaw().delegate.get();
 	}
 
-	private Block getBlockRaw() 
-	{
+	private Block getBlockRaw() {
 		return this.block;
 	}
 
-	public void registerBlocks(Map<Block, Item> blockToItemMap, Item item) 
-	{
+	public void registerBlocks(Map<Block, Item> blockToItemMap, Item item) {
 		blockToItemMap.put(this.getBlock(), item);
 	}
 
-	public void removeFromBlockToItemMap(Map<Block, Item> blockToItemMap, Item item) 
-	{
+	public void removeFromBlockToItemMap(Map<Block, Item> blockToItemMap, Item item) {
 		blockToItemMap.remove(this.getBlock());
 	}
 
 	@Override
-	public ITextComponent getName(ItemStack stack) 
-	{
-		return new TranslationTextComponent("item.lostworlds.seed", this.name);	
+	public ITextComponent getName(ItemStack stack) {
+		return new TranslationTextComponent("item.lostworlds.seed", this.name);
 	}
-	
-	public static Item create(String plant, Block block, ITextComponent name) 
-	{
+
+	public static Item create(String plant, Block block, ITextComponent name) {
 		Item item = new SeedItem(block, name);
 		ModRegistry.register(plant + "_seeds", item);
 		return item;

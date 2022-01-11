@@ -6,7 +6,7 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 import lostworlds.content.config.LostWorldsConfig;
-import lostworlds.content.server.ModTags;
+import lostworlds.content.server.LostWorldsTags;
 import lostworlds.content.server.init.ItemInit;
 import lostworlds.library.entity.semiaquatic.CarnivoreSemiAquaticEntity;
 import lostworlds.library.entity.utils.IForTabletThings;
@@ -231,7 +231,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 		int i = this.getAge();
 		if(i == 0 && this.canFallInNaturalLove()) 
 		{
-			if(this.level.getNearbyEntities(this.getClass(), PARTNER_TARGETING, this, this.getBoundingBox().inflate(LostWorldsConfig.COMMON_CONFIG.maxSearchRange.get())).size() < LostWorldsConfig.COMMON_CONFIG.maxDinoGroup.get() && this.level.getNearbyEntities(this.getClass(), PARTNER_TARGETING, this, this.getBoundingBox().inflate(LostWorldsConfig.COMMON_CONFIG.maxSearchRange.get())).size() > 1) 
+			if(this.level.getNearbyEntities(this.getClass(), PARTNER_TARGETING, this, this.getBoundingBox().inflate(LostWorldsConfig.SERVER_CONFIG.maxSearchRange.get())).size() < LostWorldsConfig.SERVER_CONFIG.maxDinoGroup.get() && this.level.getNearbyEntities(this.getClass(), PARTNER_TARGETING, this, this.getBoundingBox().inflate(LostWorldsConfig.SERVER_CONFIG.maxSearchRange.get())).size() > 1) 
 			{
 				this.setInNaturalLove(this);
 			}
@@ -267,7 +267,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	
 	public static boolean canPrehistoricSpawn(EntityType type, IWorld world, SpawnReason reason, BlockPos pos, Random rand)
 	{
-		boolean spawnBlock = BlockTags.getAllTags().getTag(ModTags.ModBlockTags.DINO_SPAWNABLES.getName()).contains(world.getBlockState(pos.below()).getBlock());
+		boolean spawnBlock = BlockTags.getAllTags().getTag(LostWorldsTags.ModBlockTags.DINO_SPAWNABLES.getName()).contains(world.getBlockState(pos.below()).getBlock());
 		return spawnBlock;
 	}
 	   

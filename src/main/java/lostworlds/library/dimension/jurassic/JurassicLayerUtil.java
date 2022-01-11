@@ -26,26 +26,22 @@ import net.minecraft.world.gen.layer.SmoothLayer;
 import net.minecraft.world.gen.layer.ZoomLayer;
 import net.minecraft.world.gen.layer.traits.IAreaTransformer1;
 
-public class JurassicLayerUtil 
-{
+public class JurassicLayerUtil {
 	private static Registry<Biome> biomeRegistry;
 
-	public static int getBiomeId(RegistryKey<Biome> define) 
-	{
+	public static int getBiomeId(RegistryKey<Biome> define) {
 		Biome biome = biomeRegistry.get(define);
 		return biomeRegistry.getId(biome);
 	}
-	
-	public static Layer buildJurassic(long seed, Registry<Biome> registry) 
-	{
+
+	public static Layer buildJurassic(long seed, Registry<Biome> registry) {
 		biomeRegistry = registry;
-		
+
 		final IAreaFactory<LazyArea> noiseLayer = makeLayers(procedure -> new LazyAreaLayerContext(25, seed, procedure), registry);
 		return new JurassicLookupLayer(noiseLayer);
 	}
 
-	public static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> makeLayers(LongFunction<C> context, Registry<Biome> registry) 
-	{
+	public static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> makeLayers(LongFunction<C> context, Registry<Biome> registry) {
 		IAreaFactory<T> islandLayer = new JurassicIslandLayer().run(context.apply(1));
 		IAreaFactory<T> fuzzyZoomLayer = ZoomLayer.FUZZY.run(context.apply(2000), islandLayer);
 		IAreaFactory<T> addIslandLayer = JurassicAddIslandLayer.forest3().run(context.apply(3), fuzzyZoomLayer);
@@ -82,45 +78,36 @@ public class JurassicLayerUtil
 		IAreaFactory<T> magnifyLayer = magnify(2007L, ZoomLayer.NORMAL, zoomLayer, 3, context);
 		IAreaFactory<T> biomeLayer = new JurassicShoreLayer().run(context.apply(20), magnifyLayer);
 		biomeLayer = magnify(20, ZoomLayer.NORMAL, biomeLayer, 2, context);
-		
+
 		biomeLayer = SmoothLayer.INSTANCE.run(context.apply(17L), biomeLayer);
 		biomeLayer = new JurassicRiverMixLayer().run(context.apply(17), biomeLayer, riverLayer);
 
 		return biomeLayer;
 	}
 
-	public static boolean isSame(int biomeSeed1, int biomeSeed2) 
-	{
-		if(biomeSeed1 == biomeSeed2) 
-		{
+	public static boolean isSame(int biomeSeed1, int biomeSeed2) {
+		if (biomeSeed1 == biomeSeed2) {
 			return true;
-		} 
-		else 
-		{
+		} else {
 			return false;
 		}
 	}
 
-	public static boolean isOcean(int biomeSeed) 
-	{
+	public static boolean isOcean(int biomeSeed) {
 		return biomeSeed == getBiomeId(BiomeKeys.JURASSIC_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.WARM_JURASSIC_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.DEEP_JURASSIC_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.WARM_DEEP_JURASSIC_OCEAN);
 	}
-	
-	public static boolean isRiver(int biomeSeed) 
-	{
+
+	public static boolean isRiver(int biomeSeed) {
 		return biomeSeed == getBiomeId(BiomeKeys.JURASSIC_RIVER);
 	}
 
-	public static boolean isLand(int biomeSeed) 
-	{
+	public static boolean isLand(int biomeSeed) {
 		return biomeSeed == getBiomeId(BiomeKeys.JURASSIC_ARAUCARIA_FOREST) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_ARAUCARIA_FOREST_HILLS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_BOG) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_FEN) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_SWAMP) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_MARSH) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_CONIFER_FOREST) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_CONIFER_FOREST_HILLS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_DESERT) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_DESERT_HILLS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_GINKGO_FOREST) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_GINKGO_FOREST_HILLS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_REDWOODS_FOREST) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_REDWOODS_FOREST_HILLS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_PLAINS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_PLAINS_HILLS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_MOUNTAINS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_ERRODED_MOUNTAINS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_VOLCANIC_RANGE);
 	}
-	
-	private static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> magnify(long seed, IAreaTransformer1 zoomLayer, IAreaFactory<T> layer, int count, LongFunction<C> context) 
-	{
+
+	private static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> magnify(long seed, IAreaTransformer1 zoomLayer, IAreaFactory<T> layer, int count, LongFunction<C> context) {
 		IAreaFactory<T> result = layer;
-		for(int i = 0; i < count; i++) 
-		{
+		for (int i = 0; i < count; i++) {
 			result = zoomLayer.run(context.apply(seed + i), result);
 		}
 		return result;

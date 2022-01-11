@@ -23,59 +23,47 @@ import net.minecraft.network.play.server.SSetSlotPacket;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.world.World;
 
-public class ArchaeologyTableContainer extends Container 
-{
+public class ArchaeologyTableContainer extends Container {
 	private final ArchaeologyTableInventory craftSlots = new ArchaeologyTableInventory(this, 3, 3);
 	private final ArchaeologyTableResultInventory resultSlots = new ArchaeologyTableResultInventory();
 	private final IWorldPosCallable access;
 	private final PlayerEntity player;
 
-	public ArchaeologyTableContainer(int windowId, PlayerInventory playerInv, PacketBuffer buffer) 
-	{
+	public ArchaeologyTableContainer(int windowId, PlayerInventory playerInv, PacketBuffer buffer) {
 		this(windowId, playerInv, IWorldPosCallable.NULL);
 	}
 
-	public ArchaeologyTableContainer(int windowId, PlayerInventory playerInv, IWorldPosCallable callable) 
-	{
+	public ArchaeologyTableContainer(int windowId, PlayerInventory playerInv, IWorldPosCallable callable) {
 		super(ContainerInit.ARCHAEOLOGY_CONTAINER, windowId);
 		this.access = callable;
 		this.player = playerInv.player;
 		this.addSlot(new ArchaeologyTableResultSlot(playerInv.player, this.craftSlots, this.resultSlots, 0, 124, 35));
 
-		for(int i = 0; i < 3; ++i) 
-		{
-			for(int j = 0; j < 3; ++j) 
-			{
+		for (int i = 0; i < 3; ++i) {
+			for (int j = 0; j < 3; ++j) {
 				this.addSlot(new Slot(this.craftSlots, j + i * 3, 30 + j * 18, 17 + i * 18));
 			}
 		}
-		
-		for(int k = 0; k < 3; ++k) 
-		{
-			for(int i1 = 0; i1 < 9; ++i1) 
-			{
+
+		for (int k = 0; k < 3; ++k) {
+			for (int i1 = 0; i1 < 9; ++i1) {
 				this.addSlot(new Slot(playerInv, i1 + k * 9 + 9, 8 + i1 * 18, 84 + k * 18));
 			}
 		}
-		
-		for(int l = 0; l < 9; ++l) 
-		{
+
+		for (int l = 0; l < 9; ++l) {
 			this.addSlot(new Slot(playerInv, l, 8 + l * 18, 142));
 		}
 	}
 
-	protected static void slotChangedCraftingGrid(int slot, World world, PlayerEntity player, ArchaeologyTableInventory inv, ArchaeologyTableResultInventory result) 
-	{
-		if(!world.isClientSide) 
-		{
+	protected static void slotChangedCraftingGrid(int slot, World world, PlayerEntity player, ArchaeologyTableInventory inv, ArchaeologyTableResultInventory result) {
+		if (!world.isClientSide) {
 			ServerPlayerEntity serverplayerentity = (ServerPlayerEntity) player;
 			ItemStack itemstack = ItemStack.EMPTY;
 			Optional<ArchaeologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(RecipeInit.ARCHAEOLOGY_TABLE_RECIPE, inv, world);
-			if(optional.isPresent()) 
-			{
+			if (optional.isPresent()) {
 				ArchaeologyTableRecipe recipe = optional.get();
-				if(result.setRecipeUsed(world, serverplayerentity, recipe)) 
-				{
+				if (result.setRecipeUsed(world, serverplayerentity, recipe)) {
 					itemstack = recipe.assemble(inv);
 				}
 			}
@@ -86,107 +74,80 @@ public class ArchaeologyTableContainer extends Container
 	}
 
 	@Override
-	public void slotsChanged(IInventory iinv) 
-	{
-		this.access.execute((world, pos) -> 
-		{
+	public void slotsChanged(IInventory iinv) {
+		this.access.execute((world, pos) -> {
 			slotChangedCraftingGrid(this.containerId, world, this.player, this.craftSlots, this.resultSlots);
 		});
 	}
 
-	public void fillCraftSlotsStackedContents(RecipeItemHelper helper) 
-	{
+	public void fillCraftSlotsStackedContents(RecipeItemHelper helper) {
 		this.craftSlots.fillStackedContents(helper);
 	}
 
-	public void clearCraftingContent() 
-	{
+	public void clearCraftingContent() {
 		this.craftSlots.clearContent();
 		this.resultSlots.clearContent();
 	}
 
-	public boolean recipeMatches(IRecipe<? super ArchaeologyTableInventory> iRecipe) 
-	{
+	public boolean recipeMatches(IRecipe<? super ArchaeologyTableInventory> iRecipe) {
 		return iRecipe.matches(this.craftSlots, this.player.level);
 	}
 
 	@Override
-	public void removed(PlayerEntity player) 
-	{
+	public void removed(PlayerEntity player) {
 		super.removed(player);
-		this.access.execute((world, pos) -> 
-		{
+		this.access.execute((world, pos) -> {
 			this.clearContainer(player, world, this.craftSlots);
 		});
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity player) 
-	{
+	public boolean stillValid(PlayerEntity player) {
 		return stillValid(this.access, player, BlockInit.ARCHAEOLOGY_TABLE);
 	}
 
 	@Override
-	public ItemStack quickMoveStack(PlayerEntity player, int containerSlot) 
-	{
+	public ItemStack quickMoveStack(PlayerEntity player, int containerSlot) {
 		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = this.slots.get(containerSlot);
-		if(slot != null && slot.hasItem()) 
-		{
+		if (slot != null && slot.hasItem()) {
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
-			if(containerSlot == 0) 
-			{
-				this.access.execute((world, pos) -> 
-				{
+			if (containerSlot == 0) {
+				this.access.execute((world, pos) -> {
 					itemstack1.getItem().onCraftedBy(itemstack1, world, player);
 				});
-				if(!this.moveItemStackTo(itemstack1, 10, 46, true)) 
-				{
+				if (!this.moveItemStackTo(itemstack1, 10, 46, true)) {
 					return ItemStack.EMPTY;
 				}
 
 				slot.onQuickCraft(itemstack1, itemstack);
-			} 
-			else if(containerSlot >= 10 && containerSlot < 46) 
-			{
-				if(!this.moveItemStackTo(itemstack1, 1, 10, false)) 
-				{
-					if(containerSlot < 37) 
-					{
-						if(!this.moveItemStackTo(itemstack1, 37, 46, false)) 
-						{
+			} else if (containerSlot >= 10 && containerSlot < 46) {
+				if (!this.moveItemStackTo(itemstack1, 1, 10, false)) {
+					if (containerSlot < 37) {
+						if (!this.moveItemStackTo(itemstack1, 37, 46, false)) {
 							return ItemStack.EMPTY;
 						}
-					} 
-					else if(!this.moveItemStackTo(itemstack1, 10, 37, false)) 
-					{
+					} else if (!this.moveItemStackTo(itemstack1, 10, 37, false)) {
 						return ItemStack.EMPTY;
 					}
 				}
-			} 
-			else if(!this.moveItemStackTo(itemstack1, 10, 46, false)) 
-			{
+			} else if (!this.moveItemStackTo(itemstack1, 10, 46, false)) {
 				return ItemStack.EMPTY;
 			}
 
-			if(itemstack1.isEmpty()) 
-			{
+			if (itemstack1.isEmpty()) {
 				slot.set(ItemStack.EMPTY);
-			} 
-			else 
-			{
+			} else {
 				slot.setChanged();
 			}
 
-			if(itemstack1.getCount() == itemstack.getCount()) 
-			{
+			if (itemstack1.getCount() == itemstack.getCount()) {
 				return ItemStack.EMPTY;
 			}
 
 			ItemStack itemstack2 = slot.onTake(player, itemstack1);
-			if(containerSlot == 0) 
-			{
+			if (containerSlot == 0) {
 				player.drop(itemstack2, false);
 			}
 		}
@@ -195,8 +156,7 @@ public class ArchaeologyTableContainer extends Container
 	}
 
 	@Override
-	public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) 
-	{
+	public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) {
 		return slot.container != this.resultSlots && super.canTakeItemForPickAll(stack, slot);
 	}
 }

@@ -11,35 +11,29 @@ import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationMode
 import tyrannotitanlib.library.tyrannomation.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class GiganotosaurusModel extends TyrannomatedTyrannomationModel<GiganotosaurusEntity>
-{
+public class GiganotosaurusModel extends TyrannomatedTyrannomationModel<GiganotosaurusEntity> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(GiganotosaurusEntity entity) 
-	{
+	public ResourceLocation getAnimationFileLocation(GiganotosaurusEntity entity) {
 		return ModUtils.rL("animations/giganotosaurus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(GiganotosaurusEntity entity) 
-	{
+	public ResourceLocation getModelLocation(GiganotosaurusEntity entity) {
 		return ModUtils.rL("geo/giganotosaurus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(GiganotosaurusEntity entity) 
-	{
+	public ResourceLocation getTextureLocation(GiganotosaurusEntity entity) {
 		return ModUtils.rL("textures/model/entity/giganotosaurus/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(GiganotosaurusEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) 
-	{
+	public void setLivingAnimations(GiganotosaurusEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
-		
+
 		EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
-		if(!(entity.isEating() || entity.isSleeping()))
-		{
+		if (!(entity.isEating() || entity.isSleeping())) {
 			head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
 			head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
 		}

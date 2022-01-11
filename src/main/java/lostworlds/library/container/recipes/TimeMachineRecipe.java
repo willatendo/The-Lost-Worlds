@@ -12,15 +12,13 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class TimeMachineRecipe implements IRecipe<IInventory> 
-{
+public class TimeMachineRecipe implements IRecipe<IInventory> {
 	protected final Ingredient book;
 	protected final Ingredient power;
 	public final ItemStack result;
 	protected final ResourceLocation id;
 
-	public TimeMachineRecipe(ResourceLocation recipeId, ItemStack result, Ingredient book, Ingredient power) 
-	{
+	public TimeMachineRecipe(ResourceLocation recipeId, ItemStack result, Ingredient book, Ingredient power) {
 		this.id = recipeId;
 		this.result = result;
 		this.book = book;
@@ -28,39 +26,33 @@ public class TimeMachineRecipe implements IRecipe<IInventory>
 	}
 
 	@Override
-	public IRecipeType<?> getType() 
-	{
+	public IRecipeType<?> getType() {
 		return RecipeInit.TIME_MACHINE_RECIPE;
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer() 
-	{
+	public IRecipeSerializer<?> getSerializer() {
 		return RecipeInit.TIME_MACHINE_SERIALIZER;
 	}
 
 	@Override
-	public ResourceLocation getId() 
-	{
+	public ResourceLocation getId() {
 		return this.id;
 	}
 
 	@Override
-	public ItemStack getResultItem() 
-	{
+	public ItemStack getResultItem() {
 		return this.result;
 	}
-	
-	public NonNullList<ItemStack> getOutput()
-	{
+
+	public NonNullList<ItemStack> getOutput() {
 		NonNullList<ItemStack> output = NonNullList.create();
 		output.add(this.result);
 		return output;
 	}
 
 	@Override
-	public NonNullList<Ingredient> getIngredients() 
-	{
+	public NonNullList<Ingredient> getIngredients() {
 		NonNullList<Ingredient> nonnulllist = NonNullList.create();
 		nonnulllist.add(this.book);
 		nonnulllist.add(this.power);
@@ -68,34 +60,28 @@ public class TimeMachineRecipe implements IRecipe<IInventory>
 	}
 
 	@Override
-	public boolean canCraftInDimensions(int x, int y) 
-	{
+	public boolean canCraftInDimensions(int x, int y) {
 		return true;
 	}
 
 	@Override
-	public ItemStack assemble(IInventory inv) 
-	{
+	public ItemStack assemble(IInventory inv) {
 		return this.result.copy();
 	}
-	
+
 	@Override
-	public boolean matches(IInventory inv, World worldIn) 
-	{
-		if(this.book.test(inv.getItem(0)) && this.power.test(inv.getItem(1))) 
-		{
+	public boolean matches(IInventory inv, World worldIn) {
+		if (this.book.test(inv.getItem(0)) && this.power.test(inv.getItem(1))) {
 			return true;
 		}
-		if(this.power.test(inv.getItem(0)) && this.book.test(inv.getItem(1)))
-		{
+		if (this.power.test(inv.getItem(0)) && this.book.test(inv.getItem(1))) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	@Override
-	public ItemStack getToastSymbol() 
-	{
+	public ItemStack getToastSymbol() {
 		return new ItemStack(BlockInit.TIME_MACHINE);
 	}
 }

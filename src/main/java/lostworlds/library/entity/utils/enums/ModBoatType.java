@@ -1,7 +1,6 @@
 package lostworlds.library.entity.utils.enums;
 
-public enum ModBoatType
-{
+public enum ModBoatType {
 	ARAUCARIA("araucaria"),
 	CALAMITES("calamites"),
 	CONIFER("conifer"),
@@ -12,30 +11,24 @@ public enum ModBoatType
 
 	private final String name;
 
-	private ModBoatType(String string) 
-	{
+	private ModBoatType(String string) {
 		this.name = string;
 	}
-	
-	public static ModBoatType byId(int id) 
-	{
+
+	public static ModBoatType byId(int id) {
 		ModBoatType[] boatType = values();
-		if(id < 0 || id >= boatType.length) 
-		{
+		if (id < 0 || id >= boatType.length) {
 			id = 0;
 		}
 
 		return boatType[id];
 	}
 
-	public static ModBoatType getTypeFromString(String nameIn) 
-	{
+	public static ModBoatType getTypeFromString(String nameIn) {
 		ModBoatType[] boatType = values();
 
-		for(ModBoatType ModBoatType : boatType) 
-		{
-			if(ModBoatType.getName().equals(nameIn)) 
-			{
+		for (ModBoatType ModBoatType : boatType) {
+			if (ModBoatType.getName().equals(nameIn)) {
 				return ModBoatType;
 			}
 		}
@@ -43,13 +36,11 @@ public enum ModBoatType
 		return boatType[0];
 	}
 
-	public String getName() 
-	{
+	public String getName() {
 		return this.name;
 	}
 
-	public String toString() 
-	{
+	public String toString() {
 		return this.name;
 	}
 }

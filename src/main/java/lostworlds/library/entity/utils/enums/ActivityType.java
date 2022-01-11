@@ -1,7 +1,6 @@
 package lostworlds.library.entity.utils.enums;
 
-public enum ActivityType 
-{
+public enum ActivityType {
 	CATHEMERAL,
 	DIURNAL,
 	NOCTURNAL,

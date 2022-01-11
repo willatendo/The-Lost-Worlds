@@ -45,29 +45,24 @@ import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationContro
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class ProtosuchusEntity extends CarnivoreSemiAquaticEntity
-{
+public class ProtosuchusEntity extends CarnivoreSemiAquaticEntity {
 	private static final Ingredient FOOD_ITEMS = IngredientUtil.combine(FoodLists.CARNIVORE, FoodLists.PISCIVORE);
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
-	
-	public ProtosuchusEntity(EntityType<? extends CarnivoreSemiAquaticEntity> entity, World world) 
-	{
+
+	public ProtosuchusEntity(EntityType<? extends CarnivoreSemiAquaticEntity> entity, World world) {
 		super(entity, world);
 	}
-	
-	public static AttributeModifierMap createAttributes() 
-	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.protosuchusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.protosuchusAttackDamage.get()).build();
+
+	public static AttributeModifierMap createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.SERVER_CONFIG.protosuchusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.SERVER_CONFIG.protosuchusAttackDamage.get()).build();
 	}
-	
-	public static boolean checkSpawnRules(EntityType<ProtosuchusEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) 
-	{
+
+	public static boolean checkSpawnRules(EntityType<ProtosuchusEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
 		return pos.getY() < world.getSeaLevel() + 4 && TurtleEggBlock.onSand(world, pos) && world.getRawBrightness(pos, 0) > 8;
 	}
-	
+
 	@Override
-	protected void registerGoals() 
-	{
+	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(1, new BreatheAirGoal(this));
 		this.goalSelector.addGoal(2, new SemiAquaticFindWaterGoal(this));
@@ -87,46 +82,39 @@ public class ProtosuchusEntity extends CarnivoreSemiAquaticEntity
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, DiictodonEntity.class, true));
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, RhinesuchusEntity.class, true));
 	}
-	
+
 	@Override
-	public boolean isFood(ItemStack stack) 
-	{
+	public boolean isFood(ItemStack stack) {
 		return FOOD_ITEMS.test(stack);
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
-		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));		
+	public void registerControllers(TyrannomationData data) {
+		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
-	{
+	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
 		return EntityInit.PROTOSUCHUS.create(world);
 	}
 
 	@Override
-	public ActivityType activity() 
-	{
+	public ActivityType activity() {
 		return ActivityType.DIURNAL;
 	}
 
 	@Override
-	public int maxHunger() 
-	{
+	public int maxHunger() {
 		return 8000;
 	}
-	
+
 	@Override
-	public double getInWaterSpeed() 
-	{
+	public double getInWaterSpeed() {
 		return 0.45D;
 	}
 }

@@ -12,22 +12,18 @@ import net.minecraft.util.WeightedRandom;
 import net.minecraft.world.gen.INoiseRandom;
 import net.minecraft.world.gen.layer.traits.IC0Transformer;
 
-public class JurassicAddWeightedSubBiomeLayer implements IC0Transformer 
-{
+public class JurassicAddWeightedSubBiomeLayer implements IC0Transformer {
 	private List<WeightedRandom.Item> biomeWeights;
 	private int totalWeight;
 	final int baseID;
 	final int[] subBiomeIDs;
 	private final Object2IntMap<WeightedRandom.Item> biomeLookup = new Object2IntOpenHashMap<>();
 
-	public JurassicAddWeightedSubBiomeLayer(final int baseID, final int[] subBiomeIDs, WeightedRandom.Item... weights) 
-	{
-		if(weights.length > 0) 
-		{
+	public JurassicAddWeightedSubBiomeLayer(final int baseID, final int[] subBiomeIDs, WeightedRandom.Item... weights) {
+		if (weights.length > 0) {
 			biomeWeights = Lists.newArrayList(weights);
 			totalWeight = WeightedRandom.getTotalWeight(biomeWeights);
-			for(int i = 0; i < weights.length; i++) 
-			{
+			for (int i = 0; i < weights.length; i++) {
 				biomeLookup.put(weights[i], subBiomeIDs[i]);
 			}
 		}
@@ -35,24 +31,18 @@ public class JurassicAddWeightedSubBiomeLayer implements IC0Transformer
 		this.subBiomeIDs = subBiomeIDs;
 	}
 
-	public static JurassicAddWeightedSubBiomeLayer ocean() 
-	{
+	public static JurassicAddWeightedSubBiomeLayer ocean() {
 		return new JurassicAddWeightedSubBiomeLayer(JurassicLayerUtil.getBiomeId(BiomeKeys.JURASSIC_OCEAN), new int[] { JurassicLayerUtil.getBiomeId(BiomeKeys.JURASSIC_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.DEEP_JURASSIC_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.WARM_JURASSIC_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.WARM_DEEP_JURASSIC_OCEAN) }, new WeightedRandom.Item(20), new WeightedRandom.Item(4), new WeightedRandom.Item(20), new WeightedRandom.Item(4));
 	}
 
 	@Override
-	public int apply(INoiseRandom random, int center) 
-	{
-		if(center == baseID) 
-		{
-			if(biomeLookup.size() > 0) 
-			{
+	public int apply(INoiseRandom random, int center) {
+		if (center == baseID) {
+			if (biomeLookup.size() > 0) {
 				return biomeLookup.getInt(WeightedRandom.getWeightedItem(biomeWeights, random.nextRandom(totalWeight)));
 			}
 			return subBiomeIDs[random.nextRandom(subBiomeIDs.length)];
-		} 
-		else 
-		{
+		} else {
 			return center;
 		}
 	}

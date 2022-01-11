@@ -38,42 +38,35 @@ import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationContro
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class ZephyrosaurusEntity extends EggLayingEntity
-{
+public class ZephyrosaurusEntity extends EggLayingEntity {
 	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
 
-	public ZephyrosaurusEntity(EntityType<? extends ZephyrosaurusEntity> entity, World world) 
-	{
+	public ZephyrosaurusEntity(EntityType<? extends ZephyrosaurusEntity> entity, World world) {
 		super(entity, world);
 	}
-	
+
 	@Override
-	public CreatureDiet diet() 
-	{
+	public CreatureDiet diet() {
 		return CreatureDiet.HERBIVORE;
 	}
-	
+
 	@Override
-	public ActivityType activity() 
-	{
+	public ActivityType activity() {
 		return ActivityType.DIURNAL;
 	}
 
 	@Override
-	public int maxHunger() 
-	{
+	public int maxHunger() {
 		return 10000;
 	}
-	
-	public static AttributeModifierMap createAttributes() 
-	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.chilesaurusHeath.get()).build();
+
+	public static AttributeModifierMap createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.SERVER_CONFIG.chilesaurusHeath.get()).build();
 	}
-	
+
 	@Override
-	protected void registerGoals() 
-	{
+	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new SleepySwimGoal(this));
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
@@ -97,26 +90,22 @@ public class ZephyrosaurusEntity extends EggLayingEntity
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
+	public void registerControllers(TyrannomationData data) {
 		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
-	
+
 	@Override
-	public boolean isFood(ItemStack stack) 
-	{
+	public boolean isFood(ItemStack stack) {
 		return FOOD_ITEMS.test(stack);
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
-	{
+	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
 		return EntityInit.ZEPHYROSAURUS.create(world);
 	}
 }

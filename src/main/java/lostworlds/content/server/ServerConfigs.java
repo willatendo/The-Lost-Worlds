@@ -5,7 +5,7 @@ import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.DoubleValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 
-public class ServerConfig 
+public class ServerConfigs 
 {
 	protected static final String TRANSLATION_TEXT = "lostworlds.config.";
 
@@ -249,7 +249,7 @@ public class ServerConfig
 	public final IntValue zephyrosaurusSpawnGroupMinimum;
 	public final IntValue zephyrosaurusSpawnGroupMaximum;
 
-	public ServerConfig(ForgeConfigSpec.Builder builder) 
+	public ServerConfigs(ForgeConfigSpec.Builder builder) 
 	{
 		//Ids
 		this.blackMarketGenerationId = builder.comment("Sets the Black Market's structure Id. Minecraft requires a number id, so this may conflict with another mod. If so, change it.").translation(TRANSLATION_TEXT + "blackMarketGenerationId").defineInRange("blackMarketGenerationId", 930134351, 111111111, 999999999);

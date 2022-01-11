@@ -21,53 +21,44 @@ import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationE
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class NautilusEntity extends BasicFishLikeEntity implements ITyrannomatable
-{
+public class NautilusEntity extends BasicFishLikeEntity implements ITyrannomatable {
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
-	
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) 
-	{
+
+	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) {
 		event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.nautilus", true));
 		return PlayState.CONTINUE;
 	}
-	
-	public NautilusEntity(EntityType<? extends CreatureEntity> entity, World world) 
-	{
+
+	public NautilusEntity(EntityType<? extends CreatureEntity> entity, World world) {
 		super(entity, world);
 	}
-	
-	public static AttributeModifierMap createAttributes() 
-	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.nautilusHeath.get()).add(Attributes.ARMOR, LostWorldsConfig.COMMON_CONFIG.nautilusArmour.get()).build();
+
+	public static AttributeModifierMap createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, LostWorldsConfig.SERVER_CONFIG.nautilusHeath.get()).add(Attributes.ARMOR, LostWorldsConfig.SERVER_CONFIG.nautilusArmour.get()).build();
 	}
 
 	@Override
-	protected ItemStack getBucketItemStack() 
-	{
+	protected ItemStack getBucketItemStack() {
 		return DinoTypes.NAUTILUS.getFishBucket().getDefaultInstance();
 	}
 
 	@Override
-	protected SoundEvent getFlopSound() 
-	{
+	protected SoundEvent getFlopSound() {
 		return SoundEvents.BONE_BLOCK_BREAK;
 	}
-	
+
 	@Override
-	protected SoundEvent getHurtSound(DamageSource source) 
-	{
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return SoundEvents.ITEM_BREAK;
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
+	public void registerControllers(TyrannomationData data) {
 		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
 }

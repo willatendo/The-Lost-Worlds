@@ -10,19 +10,15 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.DyeColor;
 
-public class ColouredGlassPaneBlock extends PaneBlock
-{
+public class ColouredGlassPaneBlock extends PaneBlock {
 	public static final ArrayList<Block> entries = new ArrayList<>();
 
-	protected ColouredGlassPaneBlock() 
-	{
+	protected ColouredGlassPaneBlock() {
 		super(AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS));
 	}
-	
-	public static void create()
-	{
-		for(DyeColor colour : DyeColor.values())
-		{
+
+	public static void create() {
+		for (DyeColor colour : DyeColor.values()) {
 			Block block = BlockAndItemBuilder.create(colour.getName().toLowerCase() + "_glass_pane", new ColouredGlassPaneBlock());
 			entries.add(block);
 		}

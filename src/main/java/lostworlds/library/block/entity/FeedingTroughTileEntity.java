@@ -18,88 +18,72 @@ import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 
-public class FeedingTroughTileEntity extends LockableLootTileEntity implements INamedContainerProvider, ITickableTileEntity
-{
+public class FeedingTroughTileEntity extends LockableLootTileEntity implements INamedContainerProvider, ITickableTileEntity {
 	protected NonNullList<ItemStack> items = NonNullList.withSize(1, ItemStack.EMPTY);
 
-	public FeedingTroughTileEntity() 
-	{
+	public FeedingTroughTileEntity() {
 		super(TileEntityInit.FEEDING_TROUGH_TILE_ENTITY);
 	}
 
 	@Override
-	public void load(BlockState state, CompoundNBT nbt) 
-	{
+	public void load(BlockState state, CompoundNBT nbt) {
 		super.load(state, nbt);
 		this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
 		ItemStackHelper.loadAllItems(nbt, this.items);
 	}
 
 	@Override
-	public CompoundNBT save(CompoundNBT nbt) 
-	{
+	public CompoundNBT save(CompoundNBT nbt) {
 		ItemStackHelper.saveAllItems(nbt, this.items);
 		return super.save(nbt);
 	}
 
-	public void changed(int slot) 
-	{
+	public void changed(int slot) {
 		this.setChanged();
 	}
 
 	@Override
-	public ItemStack removeItem(int index, int count) 
-	{
+	public ItemStack removeItem(int index, int count) {
 		return ItemStackHelper.removeItem(this.items, index, count);
 	}
 
 	@Override
-	public void setItem(int index, ItemStack stack) 
-	{
+	public void setItem(int index, ItemStack stack) {
 		this.items.set(index, stack);
-		if(stack.getCount() > this.getMaxStackSize()) 
-		{
+		if (stack.getCount() > this.getMaxStackSize()) {
 			stack.setCount(this.getMaxStackSize());
 		}
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity entity) 
-	{
+	public boolean stillValid(PlayerEntity entity) {
 		return !entity.isSpectator();
 	}
 
 	@Override
-	public void clearContent() 
-	{
+	public void clearContent() {
 		this.items.clear();
 	}
 
 	@Override
-	protected NonNullList<ItemStack> getItems() 
-	{
+	protected NonNullList<ItemStack> getItems() {
 		return this.items;
 	}
 
 	@Override
-	protected void setItems(NonNullList<ItemStack> items) 
-	{
+	protected void setItems(NonNullList<ItemStack> items) {
 		this.items = items;
 	}
 
 	@Override
-	public int getContainerSize() 
-	{
+	public int getContainerSize() {
 		return this.items.size();
 	}
 
 	@Override
-	public boolean isEmpty() 
-	{
-		for(ItemStack itemstack : this.items) 
-		{
-			if(!itemstack.isEmpty()) 
-			{
+	public boolean isEmpty() {
+		for (ItemStack itemstack : this.items) {
+			if (!itemstack.isEmpty()) {
 				return false;
 			}
 		}
@@ -108,55 +92,47 @@ public class FeedingTroughTileEntity extends LockableLootTileEntity implements I
 	}
 
 	@Override
-	public SUpdateTileEntityPacket getUpdatePacket() 
-	{
+	public SUpdateTileEntityPacket getUpdatePacket() {
 		CompoundNBT update = getUpdateTag();
 		int data = 0;
 		return new SUpdateTileEntityPacket(this.worldPosition, data, update);
 	}
 
 	@Override
-	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) 
-	{
+	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
 		CompoundNBT update = pkt.getTag();
 		handleUpdateTag(this.getBlockState(), update);
 	}
 
 	@Override
-	public CompoundNBT getUpdateTag() 
-	{
+	public CompoundNBT getUpdateTag() {
 		CompoundNBT nbt = new CompoundNBT();
 		save(nbt);
 		return nbt;
 	}
 
 	@Override
-	public void handleUpdateTag(BlockState state, CompoundNBT nbt) 
-	{
+	public void handleUpdateTag(BlockState state, CompoundNBT nbt) {
 		load(state, nbt);
 	}
 
 	@Override
-	protected ITextComponent getDefaultName() 
-	{
+	protected ITextComponent getDefaultName() {
 		return ModUtils.tTC("container", "feeding_trough");
 	}
 
 	@Override
-	protected Container createMenu(int windowID, PlayerInventory inv) 
-	{
+	protected Container createMenu(int windowID, PlayerInventory inv) {
 		return new FeedingTroughContainer(windowID, inv, this);
 	}
 
-	public boolean hasItems() 
-	{
+	public boolean hasItems() {
 		ItemStack itemstack = this.items.get(0);
 		return !itemstack.isEmpty();
 	}
 
 	@Override
-	public void tick() 
-	{
-		
+	public void tick() {
+
 	}
 }

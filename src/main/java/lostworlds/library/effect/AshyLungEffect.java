@@ -6,44 +6,32 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectType;
 
-public class AshyLungEffect extends Effect
-{
-	public AshyLungEffect() 
-	{
+public class AshyLungEffect extends Effect {
+	public AshyLungEffect() {
 		super(EffectType.HARMFUL, 0x5b5858);
 	}
-	
+
 	@Override
-	public void applyEffectTick(LivingEntity entity, int tick) 
-	{	
-		if(entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && !((PlayerEntity) entity).isSpectator())
-		{
+	public void applyEffectTick(LivingEntity entity, int tick) {
+		if (entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && !((PlayerEntity) entity).isSpectator()) {
 			entity.hurt(ModDamageSources.ASHY_LUNG, 2);
 		}
 	}
-	
+
 	@Override
-	public boolean isDurationEffectTick(int i1, int i2) 
-	{
+	public boolean isDurationEffectTick(int i1, int i2) {
 		int i = 40 >> i2;
-		if(i > 0) 
-		{
+		if (i > 0) {
 			return i1 % i == 0;
-		} 
-		else 
-		{
+		} else {
 			return true;
 		}
 	}
-	
-	public static boolean canKill(PlayerEntity player)
-	{
-		if(player.isCreative() || player.isSpectator())
-		{
+
+	public static boolean canKill(PlayerEntity player) {
+		if (player.isCreative() || player.isSpectator()) {
 			return false;
-		}
-		else
-		{
+		} else {
 			return true;
 		}
 	}

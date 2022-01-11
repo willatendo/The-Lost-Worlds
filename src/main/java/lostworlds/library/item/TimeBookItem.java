@@ -3,7 +3,7 @@ package lostworlds.library.item;
 import java.util.function.Predicate;
 
 import lostworlds.content.ModUtils;
-import lostworlds.content.server.ModTags;
+import lostworlds.content.server.LostWorldsTags;
 import lostworlds.content.server.init.DimensionInit;
 import lostworlds.library.entity.utils.enums.TimeEras;
 import lostworlds.library.util.ModTeleporter;
@@ -24,146 +24,118 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-public class TimeBookItem extends ShootableItem
-{
-	public static final Predicate<ItemStack> FUEL = (stack) -> 
-	{
-		return stack.getItem().is(ModTags.ModItemTags.TIME_BOOK_FUEL);
+public class TimeBookItem extends ShootableItem {
+	public static final Predicate<ItemStack> FUEL = (stack) -> {
+		return stack.getItem().is(LostWorldsTags.ModItemTags.TIME_BOOK_FUEL);
 	};
 	private final TimeEras era;
 	private final RegistryKey<World> worldToTransportTo;
-	
-	public TimeBookItem(TimeEras eras, RegistryKey<World> world)
-	{
+
+	public TimeBookItem(TimeEras eras, RegistryKey<World> world) {
 		super(new Properties().tab(ModUtils.ITEMS).stacksTo(1).rarity(Rarity.RARE).fireResistant());
 		this.era = eras;
 		this.worldToTransportTo = world;
 	}
-	
-	public void releaseUsing(ItemStack stack, World world, LivingEntity entity, int time) 
-	{
-		if(entity instanceof PlayerEntity) 
-		{
-			PlayerEntity playerentity = (PlayerEntity)entity;
+
+	public void releaseUsing(ItemStack stack, World world, LivingEntity entity, int time) {
+		if (entity instanceof PlayerEntity) {
+			PlayerEntity playerentity = (PlayerEntity) entity;
 			boolean flag = playerentity.abilities.instabuild;
 			ItemStack itemstack = playerentity.getProjectile(stack);
-			
+
 			int i = this.getUseDuration(stack) - time;
-			if(i < 0) return;
-			
-			if(!itemstack.isEmpty() || flag) 
-			{
-				if(itemstack.isEmpty()) 
-				{
+			if (i < 0)
+				return;
+
+			if (!itemstack.isEmpty() || flag) {
+				if (itemstack.isEmpty()) {
 					itemstack = new ItemStack(Items.REDSTONE);
 				}
-				
+
 				float f = getPowerForTime(i);
-				if(!((double)f < 0.1D)) 
-				{
+				if (!((double) f < 0.1D)) {
 					boolean flag1 = playerentity.abilities.instabuild;
-					if(!world.isClientSide) 
-					{
-						if(!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) 
-						{
-							if(entity.level instanceof ServerWorld) 
-							{	
-								if(entity.level.dimension() == World.NETHER || entity.level.dimension() == World.END)
-								{
+					if (!world.isClientSide) {
+						if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
+							if (entity.level instanceof ServerWorld) {
+								if (entity.level.dimension() == World.NETHER || entity.level.dimension() == World.END) {
 									entity.sendMessage(ModUtils.tTC("timeBook", "doesnt_work"), entity.getUUID());
 								}
-								ServerWorld serverworld = (ServerWorld)entity.level;
+								ServerWorld serverworld = (ServerWorld) entity.level;
 								MinecraftServer minecraftserver = serverworld.getServer();
 								RegistryKey<World> registrykey = entity.level.dimension() == worldToTransportTo ? World.OVERWORLD : worldToTransportTo;
 								ServerWorld serverworld1 = minecraftserver.getLevel(registrykey);
-								if(serverworld1 != null && !entity.isPassenger()) 
-								{
+								if (serverworld1 != null && !entity.isPassenger()) {
 									playerentity.changeDimension(serverworld1, new ModTeleporter());
-									if(registrykey.equals(DimensionInit.PERMIAN_WORLD))
-									{
+									if (registrykey.equals(DimensionInit.PERMIAN_WORLD)) {
 										entity.sendMessage(ModUtils.tTC("timeBook", "transport_to_" + era.toString().toLowerCase()), entity.getUUID());
-									}
-									else
-									{
+									} else {
 										entity.sendMessage(ModUtils.tTC("timeBook", "transport_to_overworld"), entity.getUUID());
 									}
 								}
-								world.playSound((PlayerEntity)null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.PORTAL_TRAVEL, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+								world.playSound((PlayerEntity) null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.PORTAL_TRAVEL, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
 							}
 						}
 					}
-					
-					if(!flag1 && !playerentity.abilities.instabuild) 
-					{
+
+					if (!flag1 && !playerentity.abilities.instabuild) {
 						itemstack.shrink(1);
-						if(itemstack.isEmpty()) 
-						{
+						if (itemstack.isEmpty()) {
 							playerentity.inventory.removeItem(itemstack);
 						}
 					}
-					
+
 					playerentity.awardStat(Stats.ITEM_USED.get(this));
 				}
 			}
 		}
 	}
-	
+
 	@Override
-	public ActionResult<ItemStack> use(World world, PlayerEntity entity, Hand hand) 
-	{
+	public ActionResult<ItemStack> use(World world, PlayerEntity entity, Hand hand) {
 		ItemStack itemstack = entity.getItemInHand(hand);
 		boolean flag = !entity.getProjectile(itemstack).isEmpty();
-		
-		if(!entity.abilities.instabuild && !flag) 
-		{
+
+		if (!entity.abilities.instabuild && !flag) {
 			return ActionResult.fail(itemstack);
-		} 
-		else 
-		{
+		} else {
 			entity.startUsingItem(hand);
 			return ActionResult.consume(itemstack);
 		}
 	}
-	
-	public static float getPowerForTime(int time) 
-	{
-		float f = (float)time / 20.0F;
+
+	public static float getPowerForTime(int time) {
+		float f = (float) time / 20.0F;
 		f = (f * f + f * 2.0F) / 3.0F;
-		if(f > 1.0F) 
-		{
+		if (f > 1.0F) {
 			f = 1.0F;
 		}
-		
+
 		return f;
 	}
-	
+
 	@Override
-	public int getUseDuration(ItemStack stack) 
-	{
+	public int getUseDuration(ItemStack stack) {
 		return 72000;
 	}
-	
-	public UseAction getUseAnimation(ItemStack p_77661_1_) 
-	{
+
+	public UseAction getUseAnimation(ItemStack p_77661_1_) {
 		return UseAction.BOW;
 	}
-	
+
 	@Override
-	public boolean isFoil(ItemStack stack) 
-	{
+	public boolean isFoil(ItemStack stack) {
 		return true;
 	}
 
 	@Override
-	public Predicate<ItemStack> getAllSupportedProjectiles() 
-	{
+	public Predicate<ItemStack> getAllSupportedProjectiles() {
 		return FUEL;
 	}
 
 	@Override
-	public int getDefaultProjectileRange() 
-	{
+	public int getDefaultProjectileRange() {
 		return 15;
 	}
 }

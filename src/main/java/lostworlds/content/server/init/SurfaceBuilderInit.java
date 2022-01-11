@@ -24,14 +24,13 @@ import lostworlds.library.biome.surfacebuilders.PermianPlainsSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
-public class SurfaceBuilderInit 
-{
+public class SurfaceBuilderInit {
 	public static final SurfaceBuilder NAKED_PERMIAN_DRIED_PLAINS = new PermianDriedPlainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_PERMIAN_MOUNTAINS = new PermianMoutainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_PERMIAN_PLAINS = new PermianPlainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_PERMIAN_OCEAN = new PermianOceanSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_PERMIAN_MARSH = new PermianMarshSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	
+
 	public static final SurfaceBuilder NAKED_JURASSIC_FOREST = new JurassicForestSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_JURASSIC_PLAINS = new JurassicPlainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_JURASSIC_DESERT = new JurassicDesertSurfaceBuilder(SurfaceBuilderConfig.CODEC);
@@ -47,7 +46,7 @@ public class SurfaceBuilderInit
 	public static final SurfaceBuilder NAKED_CRETACEOUS_DESERT = new CretaceousDesertSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_CRETACEOUS_RED_DESERT = new CretaceousRedDesertSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_CRETACEOUS_SWAMP = new CretaceousSwampSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	
+
 	public static final SurfaceBuilder<?> PERMIAN_DRIED_PLAINS = ModRegistry.register("permian_dried_plains_sb", NAKED_PERMIAN_DRIED_PLAINS);
 	public static final SurfaceBuilder<?> PERMIAN_MOUNTAINS = ModRegistry.register("permian_mountains_sb", NAKED_PERMIAN_MOUNTAINS);
 	public static final SurfaceBuilder<?> PERMIAN_PLAINS = ModRegistry.register("permian_plains_sb", NAKED_PERMIAN_PLAINS);
@@ -60,7 +59,7 @@ public class SurfaceBuilderInit
 	public static final SurfaceBuilder<?> JURASSIC_MOUNTIANS = ModRegistry.register("jurassic_mountains_sb", NAKED_JURASSIC_MOUNTAINS);
 	public static final SurfaceBuilder<?> JURASSIC_ERRODED_MOUNTIANS = ModRegistry.register("jurassic_erroded_mountains_sb", NAKED_JURASSIC_ERRODED_MOUNTAINS);
 	public static final SurfaceBuilder<?> JURASSIC_SWAMP = ModRegistry.register("jurassic_swamp_sb", NAKED_JURASSIC_SWAMP);
-	
+
 	public static final SurfaceBuilder<?> CRETACEOUS_FOREST = ModRegistry.register("cretaceous_forest_sb", NAKED_CRETACEOUS_FOREST);
 	public static final SurfaceBuilder<?> CRETACEOUS_GAME_TRAIL = ModRegistry.register("cretaceous_game_trail_sb", NAKED_CRETACEOUS_GAME_TRAIL);
 	public static final SurfaceBuilder<?> CRETACEOUS_PLAINS = ModRegistry.register("cretaceous_plains_sb", NAKED_CRETACEOUS_PLAINS);
@@ -70,6 +69,8 @@ public class SurfaceBuilderInit
 	public static final SurfaceBuilder<?> CRETACEOUS_RED_DESERT = ModRegistry.register("cretaceous_red_desert_sb", NAKED_CRETACEOUS_RED_DESERT);
 	public static final SurfaceBuilder<?> CRETACEOUS_SWAMP = ModRegistry.register("cretaceous_swamp_sb", NAKED_CRETACEOUS_SWAMP);
 
-	//Registry
-	public static void init() { ModUtils.LOGGER.debug("Registering Mod Surface Builders"); }
+	// Registry
+	public static void init() {
+		ModUtils.LOGGER.debug("Registering Mod Surface Builders");
+	}
 }

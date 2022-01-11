@@ -22,55 +22,46 @@ import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationE
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class AnomalocarisEntity extends BasicFishLikeEntity implements ITyrannomatable
-{
+public class AnomalocarisEntity extends BasicFishLikeEntity implements ITyrannomatable {
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
-	
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) 
-	{
+
+	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) {
 		event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.anomalocaris", true));
 		return PlayState.CONTINUE;
 	}
-	
-	public AnomalocarisEntity(EntityType<? extends AnomalocarisEntity> entity, World world) 
-	{
+
+	public AnomalocarisEntity(EntityType<? extends AnomalocarisEntity> entity, World world) {
 		super(entity, world);
 	}
 
-	public static AttributeModifierMap createAttributes() 
-	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.anomalocarisHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.anomalocarisAttackDamage.get()).build();
+	public static AttributeModifierMap createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, LostWorldsConfig.SERVER_CONFIG.anomalocarisHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.SERVER_CONFIG.anomalocarisAttackDamage.get()).build();
 	}
-	
+
 	@Override
-	protected void registerGoals() 
-	{
+	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, false));
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
 	}
 
 	@Override
-	protected ItemStack getBucketItemStack() 
-	{
+	protected ItemStack getBucketItemStack() {
 		return DinoTypes.ANOMALOCARIS.getFishBucket().getDefaultInstance();
 	}
 
 	@Override
-	protected SoundEvent getFlopSound() 
-	{
+	protected SoundEvent getFlopSound() {
 		return SoundEvents.COD_FLOP;
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
+	public void registerControllers(TyrannomationData data) {
 		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
 }

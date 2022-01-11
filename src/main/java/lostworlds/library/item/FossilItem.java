@@ -37,25 +37,22 @@ import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationE
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class FossilItem extends Item implements ITyrannomatable
-{
+public class FossilItem extends Item implements ITyrannomatable {
 	public static final String animation = "animation.skeleton.living";
-	
+
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
-	
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) 
-	{
+
+	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) {
 		event.getController().setAnimation(new TyrannomationBuilder().addAnimation(this.animation, true));
 		return PlayState.CONTINUE;
 	}
-	
+
 	private final Lazy<? extends EntityType<?>> entityTypeSupplier;
 	private final boolean isPlastered;
 	private final ITextComponent dinoName;
 	private final ITextComponent partName;
-	
-	public FossilItem(Properties properties, NonNullSupplier<? extends EntityType<FossilEntity>> entityTypeSupplier, boolean isPlastered, ITextComponent dinoName, ITextComponent partName) 
-	{
+
+	public FossilItem(Properties properties, NonNullSupplier<? extends EntityType<FossilEntity>> entityTypeSupplier, boolean isPlastered, ITextComponent dinoName, ITextComponent partName) {
 		super(properties);
 		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
 		this.isPlastered = isPlastered;
@@ -64,122 +61,89 @@ public class FossilItem extends Item implements ITyrannomatable
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
+	public void registerControllers(TyrannomationData data) {
 		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
-	
+
 	@Override
-	public ActionResultType useOn(ItemUseContext cpmtext) 
-	{
+	public ActionResultType useOn(ItemUseContext cpmtext) {
 		World world = cpmtext.getLevel();
-		if(this.isPlastered)
-		{
+		if (this.isPlastered) {
 			return ActionResultType.FAIL;
-		}
-		else if(!(world instanceof ServerWorld)) 
-		{
+		} else if (!(world instanceof ServerWorld)) {
 			return ActionResultType.SUCCESS;
-		} 
-		else 
-		{
+		} else {
 			ItemStack itemstack = cpmtext.getItemInHand();
 			BlockPos blockpos = cpmtext.getClickedPos();
 			Direction direction = cpmtext.getClickedFace();
 			BlockState blockstate = world.getBlockState(blockpos);
 			BlockPos blockpos1;
-			if(blockstate.getCollisionShape(world, blockpos).isEmpty()) 
-			{
+			if (blockstate.getCollisionShape(world, blockpos).isEmpty()) {
 				blockpos1 = blockpos;
-			} 
-			else 
-			{
+			} else {
 				blockpos1 = blockpos.relative(direction);
 			}
-			
+
 			EntityType<?> entitytype = this.getType(itemstack.getTag());
-			if(entitytype.spawn((ServerWorld)world, itemstack, cpmtext.getPlayer(), blockpos1, SpawnReason.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) 
-			{
+			if (entitytype.spawn((ServerWorld) world, itemstack, cpmtext.getPlayer(), blockpos1, SpawnReason.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) {
 				itemstack.shrink(1);
 			}
-			
+
 			return ActionResultType.CONSUME;
 		}
 	}
-	
+
 	@Override
-	public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) 
-	{
+	public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
 		ItemStack itemstack = player.getItemInHand(hand);
 		RayTraceResult raytraceresult = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
-		if(!this.isPlastered)
-		{
+		if (!this.isPlastered) {
 			return ActionResult.fail(itemstack);
-		}
-		else if(raytraceresult.getType() != RayTraceResult.Type.BLOCK) 
-		{
+		} else if (raytraceresult.getType() != RayTraceResult.Type.BLOCK) {
 			return ActionResult.pass(itemstack);
-		} 
-		else if(!(world instanceof ServerWorld)) 
-		{
+		} else if (!(world instanceof ServerWorld)) {
 			return ActionResult.success(itemstack);
-		} 
-		else 
-		{
+		} else {
 			BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult) raytraceresult;
 			BlockPos blockpos = blockraytraceresult.getBlockPos();
-			if(!(world.getBlockState(blockpos).getBlock() instanceof FlowingFluidBlock)) 
-			{
+			if (!(world.getBlockState(blockpos).getBlock() instanceof FlowingFluidBlock)) {
 				return ActionResult.pass(itemstack);
-			} 
-			else if(world.mayInteract(player, blockpos) && player.mayUseItemAt(blockpos, blockraytraceresult.getDirection(), itemstack)) 
-			{
+			} else if (world.mayInteract(player, blockpos) && player.mayUseItemAt(blockpos, blockraytraceresult.getDirection(), itemstack)) {
 				EntityType<?> entitytype = this.getType(itemstack.getTag());
-				if(entitytype.spawn((ServerWorld) world, itemstack, player, blockpos, SpawnReason.SPAWN_EGG, false, false) == null) 
-				{
+				if (entitytype.spawn((ServerWorld) world, itemstack, player, blockpos, SpawnReason.SPAWN_EGG, false, false) == null) {
 					return ActionResult.pass(itemstack);
-				} 
-				else 
-				{
-					if(!player.abilities.instabuild) 
-					{
+				} else {
+					if (!player.abilities.instabuild) {
 						itemstack.shrink(1);
 					}
 
 					player.awardStat(Stats.ITEM_USED.get(this));
 					return ActionResult.consume(itemstack);
 				}
-			} 
-			else 
-			{
+			} else {
 				return ActionResult.fail(itemstack);
 			}
 		}
 	}
-	
-	public EntityType<?> getType(@Nullable CompoundNBT nbt) 
-	{
-		if(nbt != null && nbt.contains("EntityTag", 10)) 
-		{
+
+	public EntityType<?> getType(@Nullable CompoundNBT nbt) {
+		if (nbt != null && nbt.contains("EntityTag", 10)) {
 			CompoundNBT compoundnbt = nbt.getCompound("EntityTag");
-			if(compoundnbt.contains("id", 8)) 
-			{
+			if (compoundnbt.contains("id", 8)) {
 				return EntityType.byString(compoundnbt.getString("id")).orElse(this.entityTypeSupplier.get());
 			}
 		}
-		
+
 		return this.entityTypeSupplier.get();
 	}
-		
+
 	@Override
-	public ITextComponent getName(ItemStack stack) 
-	{
+	public ITextComponent getName(ItemStack stack) {
 		return this.isPlastered ? new TranslationTextComponent("item.lostworlds.dirty_fossil", this.dinoName, this.partName) : new TranslationTextComponent("item.lostworlds.fossil", this.dinoName, this.partName);
 	}
 }

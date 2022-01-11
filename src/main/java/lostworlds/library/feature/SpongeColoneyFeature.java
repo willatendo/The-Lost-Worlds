@@ -15,27 +15,22 @@ import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureSpreadConfig;
 
-public class SpongeColoneyFeature extends Feature<FeatureSpreadConfig> 
-{
-	public SpongeColoneyFeature(Codec<FeatureSpreadConfig> codec) 
-	{
+public class SpongeColoneyFeature extends Feature<FeatureSpreadConfig> {
+	public SpongeColoneyFeature(Codec<FeatureSpreadConfig> codec) {
 		super(codec);
 	}
 
-	public boolean place(ISeedReader seedReader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, FeatureSpreadConfig config) 
-	{
+	public boolean place(ISeedReader seedReader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, FeatureSpreadConfig config) {
 		int i = 0;
 		int j = config.count().sample(rand);
 
-		for(int k = 0; k < j; ++k) 
-		{
+		for (int k = 0; k < j; ++k) {
 			int l = rand.nextInt(8) - rand.nextInt(8);
 			int i1 = rand.nextInt(8) - rand.nextInt(8);
 			int j1 = seedReader.getHeight(Heightmap.Type.OCEAN_FLOOR, pos.getX() + l, pos.getZ() + i1);
 			BlockPos blockpos = new BlockPos(pos.getX() + l, j1, pos.getZ() + i1);
 			BlockState blockstate = BlockInit.SPONGE_COLONY.defaultBlockState().setValue(SpongeColonyBlock.WATERLOGGED, Boolean.valueOf(true));
-			if(seedReader.getBlockState(blockpos).is(Blocks.WATER) && blockstate.canSurvive(seedReader, blockpos)) 
-			{
+			if (seedReader.getBlockState(blockpos).is(Blocks.WATER) && blockstate.canSurvive(seedReader, blockpos)) {
 				seedReader.setBlock(blockpos, blockstate, 2);
 				++i;
 			}

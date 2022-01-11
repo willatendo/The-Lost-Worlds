@@ -9,19 +9,15 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.DyeColor;
 
-public class ColouredGlassBlock extends Block
-{	
+public class ColouredGlassBlock extends Block {
 	public static final ArrayList<Block> entries = new ArrayList<>();
 
-	protected ColouredGlassBlock() 
-	{
+	protected ColouredGlassBlock() {
 		super(AbstractBlock.Properties.of(Material.GLASS).strength(0.3F).noOcclusion().sound(SoundType.GLASS));
 	}
 
-	public static void create()
-	{
-		for(DyeColor colour : DyeColor.values())
-		{
+	public static void create() {
+		for (DyeColor colour : DyeColor.values()) {
 			Block block = BlockAndItemBuilder.create(colour.getName().toLowerCase() + "_glass", new ColouredGlassBlock());
 			entries.add(block);
 		}

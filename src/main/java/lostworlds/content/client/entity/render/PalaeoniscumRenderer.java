@@ -14,17 +14,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class PalaeoniscumRenderer extends TyrannomationEntityRenderer<PalaeoniscumEntity>
-{
-	public PalaeoniscumRenderer(EntityRendererManager renderManager) 
-	{
+public class PalaeoniscumRenderer extends TyrannomationEntityRenderer<PalaeoniscumEntity> {
+	public PalaeoniscumRenderer(EntityRendererManager renderManager) {
 		super(renderManager, new PalaeoniscumModel());
 		this.shadowRadius = 0.3F;
 	}
-	
+
 	@Override
-	public RenderType getRenderType(PalaeoniscumEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) 
-	{
+	public RenderType getRenderType(PalaeoniscumEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
 		return RenderType.entityTranslucent(getTextureLocation(animatable));
 	}
 }

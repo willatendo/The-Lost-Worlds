@@ -10,23 +10,18 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
-public class DirtyFossilEntity extends FossilEntity
-{
-	public DirtyFossilEntity(EntityType<? extends FossilEntity> entity, World world) 
-	{
+public class DirtyFossilEntity extends FossilEntity {
+	public DirtyFossilEntity(EntityType<? extends FossilEntity> entity, World world) {
 		super(entity, world);
 	}
-	
+
 	@Override
-	public ActionResultType mobInteract(PlayerEntity entity, Hand hand) 
-	{
+	public ActionResultType mobInteract(PlayerEntity entity, Hand hand) {
 		ItemStack stack = entity.getItemInHand(hand);
-		if(stack.getItem() instanceof WetPaperItem)
-		{
+		if (stack.getItem() instanceof WetPaperItem) {
 			DirtyFossilEntity fossil = this;
 			entity.playSound(SoundEvents.WOOL_BREAK, 1.0F, 1.0F);
-			if(!fossil.level.isClientSide) 
-			{
+			if (!fossil.level.isClientSide) {
 				fossil.dropAllDeathLoot(DamageSource.GENERIC);
 			}
 			fossil.remove();

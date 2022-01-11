@@ -14,35 +14,28 @@ import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.StructureStart;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
-public class TraceFossilStructure extends Structure<NoFeatureConfig>
-{	
-	public TraceFossilStructure(Codec<NoFeatureConfig> codec) 
-	{
+public class TraceFossilStructure extends Structure<NoFeatureConfig> {
+	public TraceFossilStructure(Codec<NoFeatureConfig> codec) {
 		super(codec);
 	}
-	
+
 	@Override
-	public IStartFactory<NoFeatureConfig> getStartFactory() 
-	{
+	public IStartFactory<NoFeatureConfig> getStartFactory() {
 		return TraceFossilStructure.Start::new;
 	}
-	
+
 	@Override
-	public Decoration step() 
-	{
+	public Decoration step() {
 		return Decoration.SURFACE_STRUCTURES;
 	}
-	
-	public static class Start extends StructureStart<NoFeatureConfig>
-	{
-		public Start(Structure<NoFeatureConfig> structure, int x, int z, MutableBoundingBox box, int i3, long seed) 
-		{
+
+	public static class Start extends StructureStart<NoFeatureConfig> {
+		public Start(Structure<NoFeatureConfig> structure, int x, int z, MutableBoundingBox box, int i3, long seed) {
 			super(structure, x, z, box, i3, seed);
 		}
-		
+
 		@Override
-		public void generatePieces(DynamicRegistries registries, ChunkGenerator generator, TemplateManager manager, int chunkX, int chunkY, Biome biome, NoFeatureConfig config) 
-		{
+		public void generatePieces(DynamicRegistries registries, ChunkGenerator generator, TemplateManager manager, int chunkX, int chunkY, Biome biome, NoFeatureConfig config) {
 			BlockPos blockpos = new BlockPos(chunkX * 16, 90, chunkY * 16);
 			Rotation rotation = Rotation.values()[this.random.nextInt((Rotation.values()).length)];
 			TraceFossilPeice.addStructure(manager, blockpos, rotation, pieces, random, biome);

@@ -9,21 +9,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorldReader;
 
-public class ModOreRotatedPillerBlock extends RotatedPillarBlock
-{
-	public ModOreRotatedPillerBlock(Properties properties) 
-	{
+public class ModOreRotatedPillerBlock extends RotatedPillarBlock {
+	public ModOreRotatedPillerBlock(Properties properties) {
 		super(properties);
 	}
-	
-	protected int xpOnDrop(Random rand) 
-	{
+
+	protected int xpOnDrop(Random rand) {
 		return this == BlockInit.BASALT_DIAMOND_ORE ? MathHelper.nextInt(rand, 0, 1) : 0;
 	}
-	
+
 	@Override
-	public int getExpDrop(BlockState state, IWorldReader reader, BlockPos pos, int fortune, int silktouch) 
-	{
+	public int getExpDrop(BlockState state, IWorldReader reader, BlockPos pos, int fortune, int silktouch) {
 		return silktouch == 0 ? this.xpOnDrop(RANDOM) : 0;
 	}
 }

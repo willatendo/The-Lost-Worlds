@@ -2,7 +2,7 @@ package lostworlds.library.block;
 
 import java.util.Random;
 
-import lostworlds.content.server.ModTags;
+import lostworlds.content.server.LostWorldsTags;
 import lostworlds.content.server.init.BlockInit;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -58,7 +58,7 @@ public class CalamtiesSuckowiiSaplingBlock extends Block implements IGrowable
 	@Override
 	public boolean canSurvive(BlockState state, IWorldReader reader, BlockPos pos) 
 	{
-		return reader.getBlockState(pos.below()).is(ModTags.ModBlockTags.CALAMITES_PLACEABLES);
+		return reader.getBlockState(pos.below()).is(LostWorldsTags.ModBlockTags.CALAMITES_PLACEABLES);
 	}
 	
 	@Override

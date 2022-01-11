@@ -36,150 +36,124 @@ import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationE
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class FossilEntity extends AnimalEntity implements ITyrannomatable
-{
+public class FossilEntity extends AnimalEntity implements ITyrannomatable {
 	private static final DataParameter<Boolean> PUSHING = EntityDataManager.defineId(FossilEntity.class, DataSerializers.BOOLEAN);
 	private static final DataParameter<Boolean> LOOKING = EntityDataManager.defineId(FossilEntity.class, DataSerializers.BOOLEAN);
-		
+
 	public static final String animation = "animation.skeleton.living";
-	
+
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
-	
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) 
-	{
+
+	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) {
 		event.getController().setAnimation(new TyrannomationBuilder().addAnimation(this.animation, true));
 		return PlayState.CONTINUE;
 	}
-	
-	public FossilEntity(EntityType<? extends FossilEntity> entity, World world) 
-	{
+
+	public FossilEntity(EntityType<? extends FossilEntity> entity, World world) {
 		super(entity, world);
 	}
-	
-	public static AttributeModifierMap createAttributes() 
-	{
+
+	public static AttributeModifierMap createAttributes() {
 		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, 100).build();
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
+	public void registerControllers(TyrannomationData data) {
 		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
-	
+
 	@Override
-	protected void registerGoals() 
-	{
+	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new LookAtPlayerGoal(this));
 	}
-	
+
 	@Override
-	protected void defineSynchedData() 
-	{
+	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(PUSHING, false);
 		this.entityData.define(LOOKING, false);
 	}
-	
+
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) 
-	{
+	public void addAdditionalSaveData(CompoundNBT nbt) {
 		super.addAdditionalSaveData(nbt);
 		nbt.putBoolean("IsPushable", this.isPushable());
 		nbt.putBoolean("IsLooking", this.isLooking());
 	}
-	
+
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) 
-	{
+	public void readAdditionalSaveData(CompoundNBT nbt) {
 		super.readAdditionalSaveData(nbt);
 		this.setPushable(nbt.getBoolean("IsPushable"));
 		this.setLooking(nbt.getBoolean("IsLooking"));
 	}
 
 	@Override
-	public boolean isPushable() 
-	{
+	public boolean isPushable() {
 		return this.canBePushed();
 	}
-	
+
 	@Override
-	protected void doPush(Entity entity) { }
-	
-	public boolean canBePushed() 
-	{
+	protected void doPush(Entity entity) {
+	}
+
+	public boolean canBePushed() {
 		return this.entityData.get(PUSHING);
 	}
 
-	public void setPushable(boolean isPushable) 
-	{
+	public void setPushable(boolean isPushable) {
 		this.entityData.set(PUSHING, isPushable);
 	}
-	
-	public boolean isLooking() 
-	{
+
+	public boolean isLooking() {
 		return this.entityData.get(LOOKING);
 	}
 
-	public void setLooking(boolean isLooking) 
-	{
+	public void setLooking(boolean isLooking) {
 		this.entityData.set(LOOKING, isLooking);
 	}
 
 	@Override
-	protected int getExperienceReward(PlayerEntity player) 
-	{
+	protected int getExperienceReward(PlayerEntity player) {
 		return 0;
 	}
 
 	@Override
-	public boolean canBreatheUnderwater() 
-	{
+	public boolean canBreatheUnderwater() {
 		return true;
 	}
-	
-	public void playBrokenSound() 
-	{
-		this.level.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.SKELETON_DEATH, SoundCategory.BLOCKS, 1.0F, 1.0F);
+
+	public void playBrokenSound() {
+		this.level.playSound((PlayerEntity) null, this.getX(), this.getY(), this.getZ(), SoundEvents.SKELETON_DEATH, SoundCategory.BLOCKS, 1.0F, 1.0F);
 	}
 
-	public void playParticles() 
-	{
-		if(this.level instanceof ServerWorld) 
-		{
-			((ServerWorld)this.level).addParticle(new BlockParticleData(ParticleTypes.BLOCK, Blocks.BONE_BLOCK.defaultBlockState()), this.getX(), this.getY(0.6666666666666666D), this.getZ(), 10, (double)(this.getBbWidth() / 4.0F), (double)(this.getBbHeight() / 4.0F));
+	public void playParticles() {
+		if (this.level instanceof ServerWorld) {
+			((ServerWorld) this.level).addParticle(new BlockParticleData(ParticleTypes.BLOCK, Blocks.BONE_BLOCK.defaultBlockState()), this.getX(), this.getY(0.6666666666666666D), this.getZ(), 10, (double) (this.getBbWidth() / 4.0F), (double) (this.getBbHeight() / 4.0F));
 		}
 	}
-	
+
 	@Override
-	public boolean hurt(DamageSource source, float amount) 
-	{
-		if(source == DamageSource.OUT_OF_WORLD)
-		{
+	public boolean hurt(DamageSource source, float amount) {
+		if (source == DamageSource.OUT_OF_WORLD) {
 			return super.hurt(source, amount);
-		}
-		else if(!(this instanceof DirtyFossilEntity))
-		{
-			if(source.getDirectEntity() instanceof PlayerEntity) 
-			{
+		} else if (!(this instanceof DirtyFossilEntity)) {
+			if (source.getDirectEntity() instanceof PlayerEntity) {
 				PlayerEntity player = (PlayerEntity) source.getDirectEntity();
-				if(player.getMainHandItem().getItem() instanceof ChiselItem)
-				{
+				if (player.getMainHandItem().getItem() instanceof ChiselItem) {
 					ItemStack stack = player.getMainHandItem();
-					
-					stack.hurtAndBreak(1, player, (playerentity) -> 
-					{
+
+					stack.hurtAndBreak(1, player, (playerentity) -> {
 						playerentity.broadcastBreakEvent(player.getUsedItemHand());
 					});
 					this.remove();
-					if(!this.level.isClientSide)
+					if (!this.level.isClientSide)
 						this.dropAllDeathLoot(source);
 					this.playBrokenSound();
 					this.playParticles();
@@ -188,27 +162,23 @@ public class FossilEntity extends AnimalEntity implements ITyrannomatable
 		}
 		return false;
 	}
-	
+
 	@Override
-	public boolean isAffectedByPotions() 
-	{
+	public boolean isAffectedByPotions() {
 		return false;
 	}
 
 	@Override
-	public boolean isPushedByFluid() 
-	{
-		return false;	
+	public boolean isPushedByFluid() {
+		return false;
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
-	{
+	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
 		return null;
 	}
-	
-	static class LookAtPlayerGoal extends Goal 
-	{
+
+	static class LookAtPlayerGoal extends Goal {
 		protected final FossilEntity entity;
 		protected Entity lookAt;
 		protected final float range;
@@ -217,91 +187,68 @@ public class FossilEntity extends AnimalEntity implements ITyrannomatable
 		protected final Class<? extends LivingEntity> lookAtType;
 		protected final EntityPredicate lookAtContext;
 
-		public LookAtPlayerGoal(FossilEntity entity) 
-		{
+		public LookAtPlayerGoal(FossilEntity entity) {
 			this(entity, PlayerEntity.class, 32.0F, 0.02F);
 		}
 
-		public LookAtPlayerGoal(FossilEntity entity, Class<? extends LivingEntity> lookAtEntity, float range, float probability) 
-		{
+		public LookAtPlayerGoal(FossilEntity entity, Class<? extends LivingEntity> lookAtEntity, float range, float probability) {
 			this.entity = entity;
 			this.lookAtType = lookAtEntity;
 			this.range = range;
 			this.probability = probability;
 			this.setFlags(EnumSet.of(Goal.Flag.LOOK));
-			if(lookAtEntity == PlayerEntity.class) 
-			{
-				this.lookAtContext = (new EntityPredicate()).range((double) range).allowSameTeam().allowInvulnerable().allowNonAttackable().selector((livingentity) -> 
-				{
+			if (lookAtEntity == PlayerEntity.class) {
+				this.lookAtContext = (new EntityPredicate()).range((double) range).allowSameTeam().allowInvulnerable().allowNonAttackable().selector((livingentity) -> {
 					return EntityPredicates.notRiding(entity).test(livingentity);
 				});
-			} 
-			else 
-			{
+			} else {
 				this.lookAtContext = (new EntityPredicate()).range((double) range).allowSameTeam().allowInvulnerable().allowNonAttackable();
 			}
 
 		}
 
 		@Override
-		public boolean canUse() 
-		{
-			if(entity.isLooking())
-			{
-				if(this.entity.getTarget() != null) 
-				{
+		public boolean canUse() {
+			if (entity.isLooking()) {
+				if (this.entity.getTarget() != null) {
 					this.lookAt = this.entity.getTarget();
 				}
 
-				if(this.lookAtType == PlayerEntity.class) 
-				{
+				if (this.lookAtType == PlayerEntity.class) {
 					this.lookAt = this.entity.level.getNearestPlayer(this.lookAtContext, this.entity, this.entity.getX(), this.entity.getEyeY(), this.entity.getZ());
-				} 
-				else 
-				{
+				} else {
 					this.lookAt = this.entity.level.getNearestLoadedEntity(this.lookAtType, this.lookAtContext, this.entity, this.entity.getX(), this.entity.getEyeY(), this.entity.getZ(), this.entity.getBoundingBox().inflate((double) this.range, 3.0D, (double) this.range));
 				}
 
 				return this.lookAt != null;
-			}
-			else
-			{
+			} else {
 				return false;
 			}
 		}
 
 		@Override
-		public boolean canContinueToUse() 
-		{
-			if(!this.lookAt.isAlive()) 
-			{
+		public boolean canContinueToUse() {
+			if (!this.lookAt.isAlive()) {
 				return false;
-			} 
-			else if(this.entity.distanceToSqr(this.lookAt) > (double) (this.range * this.range)) 
-			{
+			} else if (this.entity.distanceToSqr(this.lookAt) > (double) (this.range * this.range)) {
 				return false;
-			} 
-			else 
-			{
+			} else {
 				return this.lookTime > 0 && entity.isLooking();
 			}
 		}
 
 		@Override
-		public void start() 
-		{
+		public void start() {
 			this.lookTime = 40 + this.entity.getRandom().nextInt(40);
 		}
 
 		@Override
-		public void stop() 
-		{
+		public void stop() {
 			this.lookAt = null;
 		}
 
 		@Override
-		public void tick() 
-		{
+		public void tick() {
 			this.entity.getLookControl().setLookAt(this.lookAt.getX(), this.lookAt.getEyeY(), this.lookAt.getZ());
 			--this.lookTime;
 		}

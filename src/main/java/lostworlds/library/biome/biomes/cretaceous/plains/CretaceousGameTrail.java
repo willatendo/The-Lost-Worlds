@@ -11,19 +11,16 @@ import net.minecraft.world.biome.MobSpawnInfo;
 import tyrannotitanlib.library.base.biome.BaseBiomeInfo;
 import tyrannotitanlib.library.base.biome.TyrannoBiome;
 
-public class CretaceousGameTrail extends TyrannoBiome
-{
+public class CretaceousGameTrail extends TyrannoBiome {
 	public static final BiomeGenerationSettings.Builder GENERATION = genSettings(SurfaceBuilderInit.NAKED_CRETACEOUS_GAME_TRAIL, ModSurfaceBuilders.COARSE_DIRT);
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomeInfo.BASE_WATER_COLOUR).waterFogColor(BaseBiomeInfo.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomeInfo.BASE_FOG_COLOUR).skyColor(calculateSkyColor(2.0F));
-	
-	static
-	{		
+
+	static {
 		ModBiomeFeatures.cretaceousGameTrail(GENERATION);
 	}
-	
-	public CretaceousGameTrail() 
-	{
+
+	public CretaceousGameTrail() {
 		super(BaseBiomeInfo.biome(RainType.RAIN, Category.PLAINS, 0.125F, 0.05F, 0.0F, 2.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
 	}
 }

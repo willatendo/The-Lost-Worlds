@@ -23,55 +23,45 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
-public class FossilizedTrackBlock extends Block
-{
+public class FossilizedTrackBlock extends Block {
 	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 	private static Block turnTo;
-	
-	public FossilizedTrackBlock(Properties properties, Block turnTo) 
-	{
+
+	public FossilizedTrackBlock(Properties properties, Block turnTo) {
 		super(properties);
 		this.turnTo = turnTo;
 		this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH));
 	}
-	
+
 	@Override
-	public BlockState mirror(BlockState state, Mirror mirrorIn) 
-	{
+	public BlockState mirror(BlockState state, Mirror mirrorIn) {
 		return state.rotate(mirrorIn.getRotation(state.getValue(HORIZONTAL_FACING)));
 	}
 
 	@Override
-	public BlockState rotate(BlockState state, IWorld world, BlockPos pos, Rotation direction) 
-	{
+	public BlockState rotate(BlockState state, IWorld world, BlockPos pos, Rotation direction) {
 		return state.setValue(HORIZONTAL_FACING, direction.rotate(state.getValue(HORIZONTAL_FACING)));
 	}
-	
+
 	@Override
-	public boolean useShapeForLightOcclusion(BlockState state) 
-	{
+	public boolean useShapeForLightOcclusion(BlockState state) {
 		return true;
 	}
-	
+
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext context) 
-	{
+	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		return !this.defaultBlockState().canSurvive(context.getLevel(), context.getClickedPos()) ? turnTo.defaultBlockState() : this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite());
 	}
-	
+
 	@Override
-	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) 
-	{
-		if(entity.getItemInHand(hand) != null)
-		{
+	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) {
+		if (entity.getItemInHand(hand) != null) {
 			Item item = entity.getItemInHand(hand).getItem();
-			if(item instanceof WetPaperItem)
-			{
+			if (item instanceof WetPaperItem) {
 				world.setBlockAndUpdate(pos, BlockInit.PLASTERED_FOSSILIZED_TRACK.defaultBlockState().setValue(HORIZONTAL_FACING, state.getValue(HORIZONTAL_FACING)));
 				world.playSound(entity, pos, SoundEvents.WOOL_PLACE, SoundCategory.BLOCKS, 0.7F, 1.0F);
-				
-				if(!entity.abilities.instabuild)
-				{
+
+				if (!entity.abilities.instabuild) {
 					ItemStack stack = entity.getItemInHand(hand);
 					stack.shrink(1);
 				}
@@ -80,10 +70,9 @@ public class FossilizedTrackBlock extends Block
 		}
 		return super.use(state, world, pos, entity, hand, result);
 	}
-	
+
 	@Override
-	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) 
-	{
+	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(HORIZONTAL_FACING);
 	}
 }

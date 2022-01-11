@@ -13,32 +13,26 @@ import net.minecraft.util.Hand;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class TabletItem extends ModItem
-{
-	public TabletItem() 
-	{
+public class TabletItem extends ModItem {
+	public TabletItem() {
 		super(new Properties().tab(ModUtils.ITEMS).stacksTo(1));
 	}
-	
+
 	@OnlyIn(Dist.CLIENT)
 	@Override
-	public ActionResultType interactLivingEntity(ItemStack stack, PlayerEntity playerEntity, LivingEntity entity, Hand hand) 
-	{
+	public ActionResultType interactLivingEntity(ItemStack stack, PlayerEntity playerEntity, LivingEntity entity, Hand hand) {
 		Minecraft instance = Minecraft.getInstance();
-		
-		if(entity instanceof PrehistoricEntity)
-		{	
-			if(entity instanceof TaggedEntity)
-			{
+
+		if (entity instanceof PrehistoricEntity) {
+			if (entity instanceof TaggedEntity) {
 				TaggedEntity tagged = (TaggedEntity) entity;
-				if(tagged.isTagged())
-				{
+				if (tagged.isTagged()) {
 					instance.setScreen(new TabletScreen(tagged));
 					return ActionResultType.SUCCESS;
 				}
 			}
 		}
-		
+
 		return ActionResultType.FAIL;
 	}
 }

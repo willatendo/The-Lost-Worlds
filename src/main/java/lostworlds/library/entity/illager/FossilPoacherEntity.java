@@ -66,21 +66,17 @@ import net.minecraft.world.raid.Raid;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ForgeHooks;
 
-public class FossilPoacherEntity extends AbstractIllagerEntity
-{
-	private static final Predicate<Difficulty> DOOR_BREAKING_PREDICATE = (difficulty) -> 
-	{
+public class FossilPoacherEntity extends AbstractIllagerEntity {
+	private static final Predicate<Difficulty> DOOR_BREAKING_PREDICATE = (difficulty) -> {
 		return difficulty == Difficulty.NORMAL || difficulty == Difficulty.HARD;
 	};
-	
-	public FossilPoacherEntity(EntityType<? extends FossilPoacherEntity> entity, World world) 
-	{
+
+	public FossilPoacherEntity(EntityType<? extends FossilPoacherEntity> entity, World world) {
 		super(entity, world);
 	}
-	
+
 	@Override
-	protected void registerGoals() 
-	{
+	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new SwimGoal(this));
 		this.goalSelector.addGoal(2, new AbstractIllagerEntity.RaidOpenDoorGoal(this));
@@ -97,371 +93,301 @@ public class FossilPoacherEntity extends AbstractIllagerEntity
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillagerEntity.class, false));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolemEntity.class, true));
 	}
-	
+
 	@Override
-	protected void customServerAiStep() 
-	{
-		if(!this.isNoAi() && GroundPathHelper.hasGroundPathNavigation(this)) 
-		{
-			boolean flag = ((ServerWorld)this.level).isRaided(this.blockPosition());
-			((GroundPathNavigator)this.getNavigation()).setCanOpenDoors(flag);
+	protected void customServerAiStep() {
+		if (!this.isNoAi() && GroundPathHelper.hasGroundPathNavigation(this)) {
+			boolean flag = ((ServerWorld) this.level).isRaided(this.blockPosition());
+			((GroundPathNavigator) this.getNavigation()).setCanOpenDoors(flag);
 		}
-		
+
 		super.customServerAiStep();
 	}
-	
-	public static AttributeModifierMap createAttributes() 
-	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.35F).add(Attributes.MAX_HEALTH, 24.0D).add(Attributes.ATTACK_DAMAGE, 5.0D).add(Attributes.FOLLOW_RANGE, 32.0D).build();
+
+	public static AttributeModifierMap createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, 24.0D).add(Attributes.ATTACK_DAMAGE, 5.0D).add(Attributes.FOLLOW_RANGE, 32.0D).build();
 	}
-	
+
 	@Override
-	protected SoundEvent getAmbientSound() 
-	{
+	protected SoundEvent getAmbientSound() {
 		return SoundEvents.PILLAGER_AMBIENT;
 	}
-	
+
 	@Override
-	protected SoundEvent getDeathSound() 
-	{
+	protected SoundEvent getDeathSound() {
 		return SoundEvents.PILLAGER_DEATH;
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource source) 
-	{
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return SoundEvents.PILLAGER_HURT;
 	}
-	
+
 	@Override
-	public AbstractIllagerEntity.ArmPose getArmPose() 
-	{
+	public AbstractIllagerEntity.ArmPose getArmPose() {
 		return this.isAggressive() ? AbstractIllagerEntity.ArmPose.ATTACKING : AbstractIllagerEntity.ArmPose.NEUTRAL;
 	}
-	
+
 	@Nullable
 	@Override
-	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficulty, SpawnReason reason, @Nullable ILivingEntityData data, @Nullable CompoundNBT nbt) 
-	{
+	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficulty, SpawnReason reason, @Nullable ILivingEntityData data, @Nullable CompoundNBT nbt) {
 		ILivingEntityData ilivingentitydata = super.finalizeSpawn(world, difficulty, reason, data, nbt);
-		((GroundPathNavigator)this.getNavigation()).setCanOpenDoors(true);
+		((GroundPathNavigator) this.getNavigation()).setCanOpenDoors(true);
 		this.populateDefaultEquipmentSlots(difficulty);
 		this.populateDefaultEquipmentEnchantments(difficulty);
 		return ilivingentitydata;
 	}
 
 	@Override
-	public void applyRaidBuffs(int wave, boolean buff) 
-	{
+	public void applyRaidBuffs(int wave, boolean buff) {
 		ItemStack itemstack = new ItemStack(ItemInit.HAMMER);
 		Raid raid = this.getCurrentRaid();
 		int i = 1;
-		if(wave > raid.getNumGroups(Difficulty.NORMAL)) 
-		{
+		if (wave > raid.getNumGroups(Difficulty.NORMAL)) {
 			i = 2;
 		}
-		
+
 		boolean flag = this.random.nextFloat() <= raid.getEnchantOdds();
-		if(flag) 
-		{
+		if (flag) {
 			Map<Enchantment, Integer> map = Maps.newHashMap();
 			map.put(Enchantments.SHARPNESS, i);
 			EnchantmentHelper.setEnchantments(map, itemstack);
 		}
-		
+
 		this.setItemSlot(EquipmentSlotType.MAINHAND, itemstack);
 	}
-	
+
 	@Override
-	protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty) 
-	{
-		if(this.getCurrentRaid() == null) 
-		{
+	protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty) {
+		if (this.getCurrentRaid() == null) {
 			this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(ItemInit.HAMMER));
 		}
 	}
 
 	@Override
-	public SoundEvent getCelebrateSound() 
-	{
+	public SoundEvent getCelebrateSound() {
 		return SoundEvents.PILLAGER_CELEBRATE;
 	}
 
 	@Override
-	public boolean isAlliedTo(Entity entity) 
-	{
-		if(super.isAlliedTo(entity)) 
-		{
+	public boolean isAlliedTo(Entity entity) {
+		if (super.isAlliedTo(entity)) {
 			return true;
-		} 
-		else if(entity instanceof LivingEntity && ((LivingEntity)entity).getMobType() == CreatureAttribute.ILLAGER) 
-		{
+		} else if (entity instanceof LivingEntity && ((LivingEntity) entity).getMobType() == CreatureAttribute.ILLAGER) {
 			return this.getTeam() == null && entity.getTeam() == null;
-		} 
-		else 
-		{
+		} else {
 			return false;
 		}
 	}
-	
-	static class FossilPoacherBreakDoorGoal extends BreakDoorGoal 
-	{
-		public FossilPoacherBreakDoorGoal(MobEntity entity) 
-		{
+
+	static class FossilPoacherBreakDoorGoal extends BreakDoorGoal {
+		public FossilPoacherBreakDoorGoal(MobEntity entity) {
 			super(entity, 6, FossilPoacherEntity.DOOR_BREAKING_PREDICATE);
 			this.setFlags(EnumSet.of(Goal.Flag.MOVE));
 		}
-		
-		public boolean canContinueToUse() 
-		{
-			FossilPoacherEntity fossilpoacher = (FossilPoacherEntity)this.mob;
+
+		public boolean canContinueToUse() {
+			FossilPoacherEntity fossilpoacher = (FossilPoacherEntity) this.mob;
 			return fossilpoacher.hasActiveRaid() && super.canContinueToUse();
 		}
-		
-		public boolean canUse() 
-		{
-			FossilPoacherEntity fossilpoacher = (FossilPoacherEntity)this.mob;
+
+		public boolean canUse() {
+			FossilPoacherEntity fossilpoacher = (FossilPoacherEntity) this.mob;
 			return fossilpoacher.hasActiveRaid() && fossilpoacher.random.nextInt(10) == 0 && super.canUse();
 		}
-		
-		public void start() 
-		{
+
+		public void start() {
 			super.start();
 			this.mob.setNoActionTime(0);
 		}
 	}
-	
-	static class SmashPlantFossilGoal extends BreakBlockGoal 
-	{
+
+	static class SmashPlantFossilGoal extends BreakBlockGoal {
 		private final FossilPoacherEntity entity;
-		
-		SmashPlantFossilGoal(FossilPoacherEntity entity, double searchRange, int verticalSearchRange) 
-		{
+
+		SmashPlantFossilGoal(FossilPoacherEntity entity, double searchRange, int verticalSearchRange) {
 			super(BlockInit.PLANT_FOSSIL, entity, searchRange, verticalSearchRange);
 			this.entity = entity;
 		}
 
 		@Override
-		public void playDestroyProgressSound(IWorld world, BlockPos pos) 
-		{
+		public void playDestroyProgressSound(IWorld world, BlockPos pos) {
 			world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.HOSTILE, 0.5F, 0.9F + entity.random.nextFloat() * 0.2F);
 		}
 
 		@Override
-		public void playBreakSound(World world, BlockPos pos) 
-		{
+		public void playBreakSound(World world, BlockPos pos) {
 			world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
 		}
 
 		@Override
-		public double acceptedDistance() 
-		{
+		public double acceptedDistance() {
 			return 1.14D;
 		}
 	}
-	
-	static class SmashSoftStoneGoal extends BreakBlockGoal 
-	{
+
+	static class SmashSoftStoneGoal extends BreakBlockGoal {
 		private final FossilPoacherEntity entity;
-		
-		SmashSoftStoneGoal(FossilPoacherEntity entity, double searchRange, int verticalSearchRange) 
-		{
+
+		SmashSoftStoneGoal(FossilPoacherEntity entity, double searchRange, int verticalSearchRange) {
 			super(BlockInit.SOFT_STONE, entity, searchRange, verticalSearchRange);
 			this.entity = entity;
 		}
 
 		@Override
-		public void playDestroyProgressSound(IWorld world, BlockPos pos) 
-		{
+		public void playDestroyProgressSound(IWorld world, BlockPos pos) {
 			world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.HOSTILE, 0.5F, 0.9F + entity.random.nextFloat() * 0.2F);
 		}
 
 		@Override
-		public void playBreakSound(World world, BlockPos pos) 
-		{
+		public void playBreakSound(World world, BlockPos pos) {
 			world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
 		}
 
 		@Override
-		public double acceptedDistance() 
-		{
+		public double acceptedDistance() {
 			return 1.14D;
 		}
 	}
-	
-	static class SmashSoftDirtGoal extends BreakBlockGoal 
-	{
+
+	static class SmashSoftDirtGoal extends BreakBlockGoal {
 		private final FossilPoacherEntity entity;
-		
-		SmashSoftDirtGoal(FossilPoacherEntity entity, double searchRange, int verticalSearchRange) 
-		{
+
+		SmashSoftDirtGoal(FossilPoacherEntity entity, double searchRange, int verticalSearchRange) {
 			super(BlockInit.SOFT_DIRT, entity, searchRange, verticalSearchRange);
 			this.entity = entity;
 		}
 
 		@Override
-		public void playDestroyProgressSound(IWorld world, BlockPos pos) 
-		{
+		public void playDestroyProgressSound(IWorld world, BlockPos pos) {
 			world.playSound((PlayerEntity) null, pos, SoundEvents.GRAVEL_BREAK, SoundCategory.HOSTILE, 0.5F, 0.9F + entity.random.nextFloat() * 0.2F);
 		}
 
 		@Override
-		public void playBreakSound(World world, BlockPos pos) 
-		{
+		public void playBreakSound(World world, BlockPos pos) {
 			world.playSound((PlayerEntity) null, pos, SoundEvents.GRAVEL_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
 		}
 
 		@Override
-		public double acceptedDistance() 
-		{
+		public double acceptedDistance() {
 			return 1.14D;
 		}
 	}
-	
-	static class BreakBlockGoal extends MoveToBlockGoal 
-	{
+
+	static class BreakBlockGoal extends MoveToBlockGoal {
 		private final Block blockToRemove;
 		private final MobEntity removerMob;
 		private int ticksSinceReachedGoal;
-		
-		public BreakBlockGoal(Block block, CreatureEntity entity, double searchRange, int verticalSearchRange) 
-		{
+
+		public BreakBlockGoal(Block block, CreatureEntity entity, double searchRange, int verticalSearchRange) {
 			super(entity, searchRange, 24, verticalSearchRange);
 			this.blockToRemove = block;
 			this.removerMob = entity;
 		}
-		
+
 		@Override
-		public boolean canUse() 
-		{
-			if(!ForgeHooks.canEntityDestroy(this.removerMob.level, this.blockPos, this.removerMob)) 
-			{
+		public boolean canUse() {
+			if (!ForgeHooks.canEntityDestroy(this.removerMob.level, this.blockPos, this.removerMob)) {
 				return false;
-			} 
-			else if(this.nextStartTick > 0) 
-			{
+			} else if (this.nextStartTick > 0) {
 				--this.nextStartTick;
 				return false;
-			} 
-			else if(this.tryFindBlock()) 
-			{
+			} else if (this.tryFindBlock()) {
 				this.nextStartTick = 20;
 				return true;
-			} 
-			else 
-			{
+			} else {
 				this.nextStartTick = this.nextStartTick(this.mob);
 				return false;
 			}
 		}
-		
-		private boolean tryFindBlock() 
-		{
+
+		private boolean tryFindBlock() {
 			return this.blockPos != null && this.isValidTarget(this.mob.level, this.blockPos) ? true : this.findNearestBlock();
 		}
-		
+
 		@Override
-		public void stop() 
-		{
+		public void stop() {
 			super.stop();
 			this.removerMob.fallDistance = 1.0F;
 		}
-		
+
 		@Override
-		public void start() 
-		{
+		public void start() {
 			super.start();
 			this.ticksSinceReachedGoal = 0;
 		}
-		
-		public void playDestroyProgressSound(IWorld world, BlockPos pos) { }
-		
-		public void playBreakSound(World world, BlockPos pos) { }
-		
+
+		public void playDestroyProgressSound(IWorld world, BlockPos pos) {
+		}
+
+		public void playBreakSound(World world, BlockPos pos) {
+		}
+
 		@Override
-		public void tick() 
-		{
+		public void tick() {
 			super.tick();
 			World world = this.removerMob.level;
 			BlockPos blockpos = this.removerMob.blockPosition();
 			BlockPos blockpos1 = this.getPosWithBlock(blockpos, world);
 			Random random = this.removerMob.getRandom();
-			if(this.isReachedTarget() && blockpos1 != null) 
-			{
-				if(this.ticksSinceReachedGoal > 0) 
-				{
+			if (this.isReachedTarget() && blockpos1 != null) {
+				if (this.ticksSinceReachedGoal > 0) {
 					Vector3d vector3d = this.removerMob.getDeltaMovement();
 					this.removerMob.setDeltaMovement(vector3d.x, 0.3D, vector3d.z);
-					if(!world.isClientSide) 
-					{
-						((ServerWorld)world).sendParticles(new ItemParticleData(ParticleTypes.ITEM, new ItemStack(BlockInit.PLANT_FOSSIL)), (double)blockpos1.getX() + 0.5D, (double)blockpos1.getY() + 0.7D, (double)blockpos1.getZ() + 0.5D, 3, ((double)random.nextFloat() - 0.5D) * 0.08D, ((double)random.nextFloat() - 0.5D) * 0.08D, ((double)random.nextFloat() - 0.5D) * 0.08D, (double)0.15F);
-		            }
+					if (!world.isClientSide) {
+						((ServerWorld) world).sendParticles(new ItemParticleData(ParticleTypes.ITEM, new ItemStack(BlockInit.PLANT_FOSSIL)), (double) blockpos1.getX() + 0.5D, (double) blockpos1.getY() + 0.7D, (double) blockpos1.getZ() + 0.5D, 3, ((double) random.nextFloat() - 0.5D) * 0.08D, ((double) random.nextFloat() - 0.5D) * 0.08D, ((double) random.nextFloat() - 0.5D) * 0.08D, (double) 0.15F);
+					}
 				}
-				
-				if(this.ticksSinceReachedGoal % 2 == 0) 
-				{
+
+				if (this.ticksSinceReachedGoal % 2 == 0) {
 					Vector3d vector3d1 = this.removerMob.getDeltaMovement();
 					this.removerMob.setDeltaMovement(vector3d1.x, -0.3D, vector3d1.z);
-					if(this.ticksSinceReachedGoal % 6 == 0) 
-					{
+					if (this.ticksSinceReachedGoal % 6 == 0) {
 						this.playDestroyProgressSound(world, this.blockPos);
 					}
 				}
-				
-				if(this.ticksSinceReachedGoal > 60) 
-				{	
+
+				if (this.ticksSinceReachedGoal > 60) {
 					world.removeBlock(blockpos1, false);
-					if(!world.isClientSide) 
-					{
-						for(int i = 0; i < 20; ++i) 
-						{
+					if (!world.isClientSide) {
+						for (int i = 0; i < 20; ++i) {
 							double d3 = random.nextGaussian() * 0.02D;
 							double d1 = random.nextGaussian() * 0.02D;
 							double d2 = random.nextGaussian() * 0.02D;
-							((ServerWorld)world).sendParticles(ParticleTypes.POOF, (double)blockpos1.getX() + 0.5D, (double)blockpos1.getY(), (double)blockpos1.getZ() + 0.5D, 1, d3, d1, d2, (double)0.15F);
+							((ServerWorld) world).sendParticles(ParticleTypes.POOF, (double) blockpos1.getX() + 0.5D, (double) blockpos1.getY(), (double) blockpos1.getZ() + 0.5D, 1, d3, d1, d2, (double) 0.15F);
 						}
-						
+
 						this.playBreakSound(world, blockpos1);
 					}
 				}
-				
+
 				++this.ticksSinceReachedGoal;
 			}
 		}
-		
+
 		@Nullable
-		private BlockPos getPosWithBlock(BlockPos pos, IBlockReader reader) 
-		{
-			if(reader.getBlockState(pos).is(this.blockToRemove)) 
-			{
+		private BlockPos getPosWithBlock(BlockPos pos, IBlockReader reader) {
+			if (reader.getBlockState(pos).is(this.blockToRemove)) {
 				return pos;
-			} 
-			else 
-			{
-				BlockPos[] ablockpos = new BlockPos[]{pos.below(), pos.west(), pos.east(), pos.north(), pos.south(), pos.below(2)};
-				
-				for(BlockPos blockpos : ablockpos) 
-				{
-					if(reader.getBlockState(blockpos).is(this.blockToRemove)) 
-					{
+			} else {
+				BlockPos[] ablockpos = new BlockPos[] { pos.below(), pos.west(), pos.east(), pos.north(), pos.south(), pos.below(2) };
+
+				for (BlockPos blockpos : ablockpos) {
+					if (reader.getBlockState(blockpos).is(this.blockToRemove)) {
 						return blockpos;
 					}
 				}
-				
+
 				return null;
 			}
 		}
-		
+
 		@Override
-		protected boolean isValidTarget(IWorldReader reader, BlockPos pos) 
-		{
+		protected boolean isValidTarget(IWorldReader reader, BlockPos pos) {
 			IChunk ichunk = reader.getChunk(pos.getX() >> 4, pos.getZ() >> 4, ChunkStatus.FULL, false);
-			if(ichunk == null) 
-			{
+			if (ichunk == null) {
 				return false;
-			} 
-			else 
-			{
+			} else {
 				return ichunk.getBlockState(pos).is(this.blockToRemove) && ichunk.getBlockState(pos.above()).isAir() && ichunk.getBlockState(pos.above(2)).isAir();
 			}
 		}

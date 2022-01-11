@@ -4,7 +4,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import lostworlds.content.server.ModTags;
+import lostworlds.content.server.LostWorldsTags;
 import lostworlds.content.server.init.BlockInit;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -98,7 +98,7 @@ public class CalamtiesSuckowiiBlock extends Block implements IGrowable
 		else 
 		{
 			BlockState blockstate = context.getLevel().getBlockState(context.getClickedPos().below());
-			if(blockstate.is(ModTags.ModBlockTags.CALAMITES_PLACEABLES)) 
+			if(blockstate.is(LostWorldsTags.ModBlockTags.CALAMITES_PLACEABLES)) 
 			{
 				if(blockstate.is(BlockInit.CALAMITES_SUCKOWII_SAPLING)) 
 				{
@@ -157,7 +157,7 @@ public class CalamtiesSuckowiiBlock extends Block implements IGrowable
 	@Override
 	public boolean canSurvive(BlockState state, IWorldReader reader, BlockPos pos) 
 	{
-		return reader.getBlockState(pos.below()).is(ModTags.ModBlockTags.CALAMITES_PLACEABLES);
+		return reader.getBlockState(pos.below()).is(LostWorldsTags.ModBlockTags.CALAMITES_PLACEABLES);
 	}
 	
 	@Override

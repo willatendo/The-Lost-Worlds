@@ -9,12 +9,10 @@ import net.minecraft.block.trees.Tree;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 
-public class CalamitesTree extends Tree
-{
+public class CalamitesTree extends Tree {
 	@Nullable
 	@Override
-	public ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean big) 
-	{
+	public ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean big) {
 		return ModConfiguredFeatures.CALAMITIES_TREE;
 	}
 }

@@ -27,8 +27,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.util.IStringSerializable;
 
-public enum DinoTypes implements IStringSerializable
-{
+public enum DinoTypes implements IStringSerializable {
 	ALLOSAURUS("allosaurus", EntityInit.ALLOSAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x9f9f5a, 0x9f9f5a, 0xd68812, 5, 8, 0.4F, 0.8F),
 	ANOMALOCARIS("anomalocaris", EntityInit.ANOMALOCARIS, false, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0xb94f33, 0xb94f33, 0x631312, 2, 4, 0.2F, 0.4F),
 	CARNOTAURUS("carnotaurus", EntityInit.CARNOTAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xbd7868, 0xbd7868, 0xe6d3bc, 6, 9, 0.4F, 0.8F),
@@ -58,15 +57,13 @@ public enum DinoTypes implements IStringSerializable
 	TETRACERATOPS("tetraceratops", EntityInit.TETRACERATOPS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x623015, 0x623015, 0x21369b, 3, 5, 0.3F, 0.54F),
 	TYRANNOSAURUS("tyrannosaurus", EntityInit.TYRANNOSAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x889a55, 0x889a55, 0x973229, 8, 11, 0.5F, 0.8F),
 	UTAHRAPTOR("utahraptor", EntityInit.UTAHRAPTOR, true, true, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x503524, 0x503524, 0x635f5e, 5, 7, 0.5F, 0.64F),
-	ZEPHYROSAURUS("zephyrosaurus", EntityInit.ZEPHYROSAURUS, true, true, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x577476, 0x577476, 0x9ba3a3, 3, 5, 0.3F, 0.54F),
-	;
-	
+	ZEPHYROSAURUS("zephyrosaurus", EntityInit.ZEPHYROSAURUS, true, true, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x577476, 0x577476, 0x9ba3a3, 3, 5, 0.3F, 0.54F),;
+
 	public static final Codec<DinoTypes> CODEC = IStringSerializable.fromEnum(DinoTypes::values, DinoTypes::byName);
-	private static final Map<String, DinoTypes> BY_NAME = Arrays.stream(values()).collect(Collectors.toMap(DinoTypes::getId, (types) -> 
-	{
+	private static final Map<String, DinoTypes> BY_NAME = Arrays.stream(values()).collect(Collectors.toMap(DinoTypes::getId, (types) -> {
 		return types;
 	}));
-	
+
 	private final String id;
 	private EntityType<? extends PrehistoricEntity> entitytype;
 	private EntityType<FossilEntity> dirtySkull;
@@ -105,9 +102,8 @@ public enum DinoTypes implements IStringSerializable
 	private final int cookedNutrition;
 	private final float rawSaturation;
 	private final float cookedSaturation;
-	
-	private DinoTypes(String id, EntityType entity, boolean eggLaying, boolean feathered, boolean createHide, Size eggSize, CreatureDiet diet, int eggSetColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation)
-	{		
+
+	private DinoTypes(String id, EntityType entity, boolean eggLaying, boolean feathered, boolean createHide, Size eggSize, CreatureDiet diet, int eggSetColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation) {
 		this.id = id;
 		this.entitytype = entity;
 		this.eggLaying = eggLaying;
@@ -123,342 +119,278 @@ public enum DinoTypes implements IStringSerializable
 		this.rawSaturation = rawSaturation;
 		this.cookedSaturation = cookedSaturation;
 	}
-	
-	public int getColour(int colour, int colour1, int colour2) 
-	{
+
+	public int getColour(int colour, int colour1, int colour2) {
 		return colour == 0 ? colour1 : colour2;
 	}
-	
-	public String getId()
-	{
+
+	public String getId() {
 		return this.id;
 	}
-	
-	public EntityType<FossilEntity> setDirtySkull(EntityType<FossilEntity> entity)
-	{
+
+	public EntityType<FossilEntity> setDirtySkull(EntityType<FossilEntity> entity) {
 		return this.dirtySkull = entity;
 	}
 
-	public EntityType<FossilEntity> setDirtyArmBones(EntityType<FossilEntity> entity)
-	{
+	public EntityType<FossilEntity> setDirtyArmBones(EntityType<FossilEntity> entity) {
 		return this.dirtyArmBones = entity;
 	}
-	
-	public EntityType<FossilEntity> setDirtyLegBones(EntityType<FossilEntity> entity)
-	{
+
+	public EntityType<FossilEntity> setDirtyLegBones(EntityType<FossilEntity> entity) {
 		return this.dirtyLegBones = entity;
 	}
-	
-	public EntityType<FossilEntity> setDirtyRibCage(EntityType<FossilEntity> entity)
-	{
+
+	public EntityType<FossilEntity> setDirtyRibCage(EntityType<FossilEntity> entity) {
 		return this.dirtyRibCage = entity;
 	}
-	
-	public EntityType<FossilEntity> setDirtyTail(EntityType<FossilEntity> entity)
-	{
+
+	public EntityType<FossilEntity> setDirtyTail(EntityType<FossilEntity> entity) {
 		return this.dirtyTail = entity;
 	}
-	
-	public EntityType<FossilEntity> setSkull(EntityType<FossilEntity> entity)
-	{
+
+	public EntityType<FossilEntity> setSkull(EntityType<FossilEntity> entity) {
 		return this.skull = entity;
 	}
 
-	public EntityType<FossilEntity> setArmBones(EntityType<FossilEntity> entity)
-	{
+	public EntityType<FossilEntity> setArmBones(EntityType<FossilEntity> entity) {
 		return this.armBones = entity;
 	}
-	
-	public EntityType<FossilEntity> setLegBones(EntityType<FossilEntity> entity)
-	{
+
+	public EntityType<FossilEntity> setLegBones(EntityType<FossilEntity> entity) {
 		return this.legBones = entity;
 	}
-	
-	public EntityType<FossilEntity> setRibCage(EntityType<FossilEntity> entity)
-	{
+
+	public EntityType<FossilEntity> setRibCage(EntityType<FossilEntity> entity) {
 		return this.ribCage = entity;
 	}
-	
-	public EntityType<FossilEntity> setTail(EntityType<FossilEntity> entity)
-	{
+
+	public EntityType<FossilEntity> setTail(EntityType<FossilEntity> entity) {
 		return this.tail = entity;
 	}
-	
-	public EntityType<FossilEntity> setSkeleton(EntityType<FossilEntity> entity)
-	{
+
+	public EntityType<FossilEntity> setSkeleton(EntityType<FossilEntity> entity) {
 		return this.skeleton = entity;
 	}
-	
-	public EntityType<FossilEntity> setDirtyExoskeleton(EntityType<FossilEntity> entity)
-	{
+
+	public EntityType<FossilEntity> setDirtyExoskeleton(EntityType<FossilEntity> entity) {
 		return this.dirtyExoskeleton = entity;
 	}
-	
-	public EntityType<FossilEntity> setExoskeleton(EntityType<FossilEntity> entity)
-	{
+
+	public EntityType<FossilEntity> setExoskeleton(EntityType<FossilEntity> entity) {
 		return this.exoskeleton = entity;
 	}
-	
-	public EntityType<FossilEntity> setDirtyBody(EntityType<FossilEntity> entity)
-	{
+
+	public EntityType<FossilEntity> setDirtyBody(EntityType<FossilEntity> entity) {
 		return this.dirtyBody = entity;
 	}
-	
-	public EntityType<FossilEntity> setBody(EntityType<FossilEntity> entity)
-	{
+
+	public EntityType<FossilEntity> setBody(EntityType<FossilEntity> entity) {
 		return this.body = entity;
 	}
-	
-	public Item setSkeletonPick(Item item)
-	{
+
+	public Item setSkeletonPick(Item item) {
 		return this.skeletonPick = item;
 	}
-	
-	public EntityType<? extends PrehistoricEntity> getEntityType()
-	{
+
+	public EntityType<? extends PrehistoricEntity> getEntityType() {
 		return this.entitytype;
 	}
-	
-	public EntityType<FossilEntity> getDirtySkull()
-	{
+
+	public EntityType<FossilEntity> getDirtySkull() {
 		return this.dirtySkull;
 	}
 
-	public EntityType<FossilEntity> getDirtyArmBones()
-	{
+	public EntityType<FossilEntity> getDirtyArmBones() {
 		return this.dirtyArmBones;
 	}
-	
-	public EntityType<FossilEntity> getDirtyLegBones()
-	{
+
+	public EntityType<FossilEntity> getDirtyLegBones() {
 		return this.dirtyLegBones;
 	}
-	
-	public EntityType<FossilEntity> getDirtyRibCage()
-	{
+
+	public EntityType<FossilEntity> getDirtyRibCage() {
 		return this.dirtyRibCage;
 	}
-	
-	public EntityType<FossilEntity> getDirtyTail()
-	{
+
+	public EntityType<FossilEntity> getDirtyTail() {
 		return this.dirtyTail;
 	}
-	
-	public EntityType<FossilEntity> getSkull()
-	{
+
+	public EntityType<FossilEntity> getSkull() {
 		return this.skull;
 	}
 
-	public EntityType<FossilEntity> getArmBones()
-	{
+	public EntityType<FossilEntity> getArmBones() {
 		return this.armBones;
 	}
-	
-	public EntityType<FossilEntity> getLegBones()
-	{
+
+	public EntityType<FossilEntity> getLegBones() {
 		return this.legBones;
 	}
-	
-	public EntityType<FossilEntity> getRibCage()
-	{
+
+	public EntityType<FossilEntity> getRibCage() {
 		return this.ribCage;
 	}
-	
-	public EntityType<FossilEntity> getTail()
-	{
+
+	public EntityType<FossilEntity> getTail() {
 		return this.tail;
 	}
-	
-	public EntityType<FossilEntity> getSkeleton()
-	{
+
+	public EntityType<FossilEntity> getSkeleton() {
 		return this.skeleton;
 	}
-	
-	public EntityType<FossilEntity> getDirtyExoskeleton()
-	{
+
+	public EntityType<FossilEntity> getDirtyExoskeleton() {
 		return this.dirtyExoskeleton;
 	}
-	
-	public EntityType<FossilEntity> getExoskeleton()
-	{
+
+	public EntityType<FossilEntity> getExoskeleton() {
 		return this.exoskeleton;
 	}
 
-	public EntityType<FossilEntity> getDirtyBody()
-	{
+	public EntityType<FossilEntity> getDirtyBody() {
 		return this.dirtyBody;
 	}
 
-	public EntityType<FossilEntity> getBody()
-	{
+	public EntityType<FossilEntity> getBody() {
 		return this.body;
 	}
-	
-	public Item setMeat(Item meat)
-	{
+
+	public Item setMeat(Item meat) {
 		return this.meat = meat;
 	}
-	
-	public Item getMeat()
-	{
+
+	public Item getMeat() {
 		return this.meat;
 	}
-	
-	public Item setFishBucket(Item fishBucket)
-	{
+
+	public Item setFishBucket(Item fishBucket) {
 		return this.fishBucket = fishBucket;
 	}
-	
-	public Item getFishBucket()
-	{
+
+	public Item getFishBucket() {
 		return this.fishBucket;
 	}
-	
-	public Item setFeather(Item feather)
-	{
+
+	public Item setFeather(Item feather) {
 		return this.feather = feather;
 	}
-	
-	public Item getFeather()
-	{
+
+	public Item getFeather() {
 		return this.feather;
 	}
-	
-	public Item setSpawn(Item spawn)
-	{
+
+	public Item setSpawn(Item spawn) {
 		return this.spawn = spawn;
 	}
-	
-	public Item getSpawn()
-	{
+
+	public Item getSpawn() {
 		return this.spawn;
 	}
-	
-	public Block setExtraBlock(Block extraBlock)
-	{
+
+	public Block setExtraBlock(Block extraBlock) {
 		return this.extraBlock = extraBlock;
 	}
-	
-	public Block getExtraBlock()
-	{
+
+	public Block getExtraBlock() {
 		return this.extraBlock;
 	}
-	
-	public Block setEgg(Block egg)
-	{
+
+	public Block setEgg(Block egg) {
 		return this.egg = egg;
 	}
-	
-	public Block getEgg()
-	{
+
+	public Block getEgg() {
 		return this.egg;
 	}
-	
-	public Block getEgg(EntityType<? extends PrehistoricEntity> entity)
-	{
+
+	public Block getEgg(EntityType<? extends PrehistoricEntity> entity) {
 		Properties abstractProperties = Properties.of(Material.EGG).strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion();
-		
-		switch(this.eggSize)
-		{
-			case TINY:
-				Block tinyegg = new TinyEggBlock(abstractProperties, () -> entity);
-				this.egg = tinyegg;
-				return tinyegg;
-			case SMALL:
-				Block smallegg = new SmallEggBlock(abstractProperties, () -> entity);
-				this.egg = smallegg;
-				return smallegg;
-			case MEDIUM:
-				Block mediumegg = new MediumEggBlock(abstractProperties, () -> entity);
-				this.egg = mediumegg;
-				return mediumegg;
-			case LARGE:
-				Block largeegg = new LargeEggBlock(abstractProperties, () -> entity);
-				this.egg = largeegg;
-				return largeegg;
-			case NONE:
-			default:
-				return null;
+
+		switch (this.eggSize) {
+		case TINY:
+			Block tinyegg = new TinyEggBlock(abstractProperties, () -> entity);
+			this.egg = tinyegg;
+			return tinyegg;
+		case SMALL:
+			Block smallegg = new SmallEggBlock(abstractProperties, () -> entity);
+			this.egg = smallegg;
+			return smallegg;
+		case MEDIUM:
+			Block mediumegg = new MediumEggBlock(abstractProperties, () -> entity);
+			this.egg = mediumegg;
+			return mediumegg;
+		case LARGE:
+			Block largeegg = new LargeEggBlock(abstractProperties, () -> entity);
+			this.egg = largeegg;
+			return largeegg;
+		case NONE:
+		default:
+			return null;
 		}
 	}
-	
-	public CreatureDiet getDiet()
-	{
+
+	public CreatureDiet getDiet() {
 		return this.diet;
 	}
-	
-	public Item getSkeletonPick()
-	{
+
+	public Item getSkeletonPick() {
 		return this.skeletonPick;
 	}
-	
-	public Item getDNA()
-	{
+
+	public Item getDNA() {
 		return this.dna;
 	}
-	
-	public Item setDNA(Item item)
-	{
+
+	public Item setDNA(Item item) {
 		return this.dna = item;
 	}
-	
-	public Item getBloodSample()
-	{
+
+	public Item getBloodSample() {
 		return this.bloodSample;
 	}
-	
-	public Item setBloodSample(Item item)
-	{
+
+	public Item setBloodSample(Item item) {
 		return this.bloodSample = item;
 	}
-	
-	public Callable<ItemStackTileEntityRenderer> getISTER()
-	{
+
+	public Callable<ItemStackTileEntityRenderer> getISTER() {
 		return new SkeletonRenderer(this.id);
 	}
-	
-	public Callable<ItemStackTileEntityRenderer> getISTER(String part)
-	{
+
+	public Callable<ItemStackTileEntityRenderer> getISTER(String part) {
 		return new SkeletonRenderer(this.id + "_" + part, this.id);
 	}
-	
-	public int getSetEggColour()
-	{
+
+	public int getSetEggColour() {
 		return this.eggSetColour;
 	}
-	
-	public int getPrimaryColour()
-	{
+
+	public int getPrimaryColour() {
 		return this.primaryColour;
 	}
-	
-	public int getSecondaryColour()
-	{
+
+	public int getSecondaryColour() {
 		return this.secondaryColour;
 	}
-	
-	public int getRawNutrition()
-	{
+
+	public int getRawNutrition() {
 		return this.rawNutrition;
 	}
-	
-	public int getCookedNutrition()
-	{
+
+	public int getCookedNutrition() {
 		return this.cookedNutrition;
 	}
-	
-	public float getRawSaturation()
-	{
+
+	public float getRawSaturation() {
 		return this.rawSaturation;
 	}
-	
-	public float getCookedSaturation()
-	{
+
+	public float getCookedSaturation() {
 		return this.cookedSaturation;
 	}
-	
-	public static ArrayList<DinoTypes> hasSpawn()
-	{
+
+	public static ArrayList<DinoTypes> hasSpawn() {
 		ArrayList<DinoTypes> list = new ArrayList<>();
 		list.add(ANOMALOCARIS);
 		list.add(NAUTILUS);
@@ -466,76 +398,61 @@ public enum DinoTypes implements IStringSerializable
 		list.add(RHINESUCHUS);
 		return list;
 	}
-	
-	public static ArrayList<DinoTypes> liveBirth()
-	{
+
+	public static ArrayList<DinoTypes> liveBirth() {
 		ArrayList<DinoTypes> list = new ArrayList<>();
-		for(DinoTypes type : DinoTypes.values())
-		{
-			if(!type.eggLaying && !(type.hasSpawn().contains(type)))
-			{
+		for (DinoTypes type : DinoTypes.values()) {
+			if (!type.eggLaying && !(type.hasSpawn().contains(type))) {
 				list.add(type);
 			}
 		}
 		return list;
 	}
-	
-	public static ArrayList<DinoTypes> eggLaying()
-	{
+
+	public static ArrayList<DinoTypes> eggLaying() {
 		ArrayList<DinoTypes> list = new ArrayList<>();
-		for(DinoTypes type : DinoTypes.values())
-		{
-			if(type.eggLaying)
-			{
+		for (DinoTypes type : DinoTypes.values()) {
+			if (type.eggLaying) {
 				list.add(type);
 			}
 		}
 		return list;
 	}
-	
-	public static ArrayList<DinoTypes> feathered()
-	{
+
+	public static ArrayList<DinoTypes> feathered() {
 		ArrayList<DinoTypes> list = new ArrayList<>();
-		for(DinoTypes type : DinoTypes.values())
-		{
-			if(type.feathered)
-			{
+		for (DinoTypes type : DinoTypes.values()) {
+			if (type.feathered) {
 				list.add(type);
 			}
 		}
 		return list;
 	}
-	
-	public static ArrayList<DinoTypes> createHide()
-	{
+
+	public static ArrayList<DinoTypes> createHide() {
 		ArrayList<DinoTypes> list = new ArrayList<>();
-		for(DinoTypes type : DinoTypes.values())
-		{
-			if(type.createHide)
-			{
+		for (DinoTypes type : DinoTypes.values()) {
+			if (type.createHide) {
 				list.add(type);
 			}
 		}
 		return list;
 	}
-	
-	public static ArrayList<DinoTypes> fish()
-	{
+
+	public static ArrayList<DinoTypes> fish() {
 		ArrayList<DinoTypes> list = new ArrayList<>();
 		list.add(PALAEONISCUM);
 		list.add(ANOMALOCARIS);
 		return list;
 	}
-	
+
 	@Nullable
-	public static DinoTypes byName(String id) 
-	{
+	public static DinoTypes byName(String id) {
 		return BY_NAME.get(id);
 	}
 
 	@Override
-	public String getSerializedName() 
-	{
+	public String getSerializedName() {
 		return this.id;
 	}
 }

@@ -16,24 +16,20 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.Tags;
 
-public abstract class ExtendableStemBlock extends SixWayBlock 
-{	
-	public ExtendableStemBlock(Properties properties) 
-	{
+public abstract class ExtendableStemBlock extends SixWayBlock {
+	public ExtendableStemBlock(Properties properties) {
 		super(0.3125F, properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(NORTH, Boolean.valueOf(false)).setValue(EAST, Boolean.valueOf(false)).setValue(SOUTH, Boolean.valueOf(false)).setValue(WEST, Boolean.valueOf(false)).setValue(UP, Boolean.valueOf(false)).setValue(DOWN, Boolean.valueOf(false)));
 	}
-	
+
 	public abstract Block flower();
 
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext context) 
-	{
+	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		return this.getStateForPlacement(context.getLevel(), context.getClickedPos());
 	}
 
-	public BlockState getStateForPlacement(IBlockReader reader, BlockPos pos) 
-	{
+	public BlockState getStateForPlacement(IBlockReader reader, BlockPos pos) {
 		Block block = reader.getBlockState(pos.below()).getBlock();
 		Block block1 = reader.getBlockState(pos.above()).getBlock();
 		Block block2 = reader.getBlockState(pos.north()).getBlock();
@@ -44,50 +40,39 @@ public abstract class ExtendableStemBlock extends SixWayBlock
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction direction, BlockState newstate, IWorld world, BlockPos pos, BlockPos newpos) 
-	{	
-		if(!state.canSurvive(world, pos)) 
-		{
+	public BlockState updateShape(BlockState state, Direction direction, BlockState newstate, IWorld world, BlockPos pos, BlockPos newpos) {
+		if (!state.canSurvive(world, pos)) {
 			world.getBlockTicks().scheduleTick(pos, this, 1);
 			return super.updateShape(state, direction, newstate, world, pos, newpos);
-		} 
-		else 
-		{
+		} else {
 			boolean flag = newstate.getBlock() == this || newstate.is(this.flower()) || direction == Direction.DOWN && newstate.is(Tags.Blocks.DIRT);
 			return state.setValue(PROPERTY_BY_DIRECTION.get(direction), Boolean.valueOf(flag));
 		}
 	}
 
 	@Override
-	public void tick(BlockState state, ServerWorld world, BlockPos pos, Random rand) 
-	{
-		if(!state.canSurvive(world, pos)) 
-		{
+	public void tick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
+		if (!state.canSurvive(world, pos)) {
 			world.destroyBlock(pos, true);
 		}
 
 	}
 
 	@Override
-	public boolean canSurvive(BlockState state, IWorldReader reader, BlockPos pos) 
-	{
+	public boolean canSurvive(BlockState state, IWorldReader reader, BlockPos pos) {
 		BlockState blockstate = reader.getBlockState(pos.below());
 		boolean flag = !reader.getBlockState(pos.above()).isAir() && !blockstate.isAir();
 
-		for(Direction direction : Direction.Plane.HORIZONTAL) 
-		{
+		for (Direction direction : Direction.Plane.HORIZONTAL) {
 			BlockPos blockpos = pos.relative(direction);
 			Block block = reader.getBlockState(blockpos).getBlock();
-			if(block == this) 
-			{
-				if(flag) 
-				{
+			if (block == this) {
+				if (flag) {
 					return false;
 				}
 
 				Block block1 = reader.getBlockState(blockpos.below()).getBlock();
-				if(block1 == this || block1.is(Tags.Blocks.DIRT))
-				{
+				if (block1 == this || block1.is(Tags.Blocks.DIRT)) {
 					return true;
 				}
 			}
@@ -98,14 +83,12 @@ public abstract class ExtendableStemBlock extends SixWayBlock
 	}
 
 	@Override
-	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) 
-	{
+	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(NORTH, EAST, SOUTH, WEST, UP, DOWN);
 	}
 
 	@Override
-	public boolean isPathfindable(BlockState state, IBlockReader reader, BlockPos pos, PathType type) 
-	{
+	public boolean isPathfindable(BlockState state, IBlockReader reader, BlockPos pos, PathType type) {
 		return false;
 	}
 }

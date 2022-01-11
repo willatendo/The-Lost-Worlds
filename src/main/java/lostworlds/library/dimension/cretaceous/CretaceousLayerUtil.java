@@ -26,26 +26,22 @@ import net.minecraft.world.gen.layer.SmoothLayer;
 import net.minecraft.world.gen.layer.ZoomLayer;
 import net.minecraft.world.gen.layer.traits.IAreaTransformer1;
 
-public class CretaceousLayerUtil 
-{
+public class CretaceousLayerUtil {
 	private static Registry<Biome> biomeRegistry;
 
-	public static int getBiomeId(RegistryKey<Biome> define) 
-	{
+	public static int getBiomeId(RegistryKey<Biome> define) {
 		Biome biome = biomeRegistry.get(define);
 		return biomeRegistry.getId(biome);
 	}
-	
-	public static Layer buildCretaceous(long seed, Registry<Biome> registry) 
-	{
+
+	public static Layer buildCretaceous(long seed, Registry<Biome> registry) {
 		biomeRegistry = registry;
-		
+
 		final IAreaFactory<LazyArea> noiseLayer = makeLayers(procedure -> new LazyAreaLayerContext(25, seed, procedure), registry);
 		return new CretaceousLookupLayer(noiseLayer);
 	}
 
-	public static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> makeLayers(LongFunction<C> context, Registry<Biome> registry) 
-	{
+	public static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> makeLayers(LongFunction<C> context, Registry<Biome> registry) {
 		IAreaFactory<T> islandLayer = new CretaceousIslandLayer().run(context.apply(1));
 		IAreaFactory<T> fuzzyZoomLayer = ZoomLayer.FUZZY.run(context.apply(2000), islandLayer);
 		IAreaFactory<T> addIslandLayer = CretaceousAddIslandLayer.forest3().run(context.apply(3), fuzzyZoomLayer);
@@ -86,45 +82,36 @@ public class CretaceousLayerUtil
 		IAreaFactory<T> magnifyLayer = magnify(2007L, ZoomLayer.NORMAL, zoomLayer, 3, context);
 		IAreaFactory<T> biomeLayer = new CretaceousShoreLayer().run(context.apply(20), magnifyLayer);
 		biomeLayer = magnify(20, ZoomLayer.NORMAL, biomeLayer, 2, context);
-		
+
 		biomeLayer = SmoothLayer.INSTANCE.run(context.apply(17L), biomeLayer);
 		biomeLayer = new CretaceousRiverMixLayer().run(context.apply(17), biomeLayer, riverLayer);
 
 		return biomeLayer;
 	}
 
-	public static boolean isSame(int biomeSeed1, int biomeSeed2) 
-	{
-		if(biomeSeed1 == biomeSeed2) 
-		{
+	public static boolean isSame(int biomeSeed1, int biomeSeed2) {
+		if (biomeSeed1 == biomeSeed2) {
 			return true;
-		} 
-		else 
-		{
+		} else {
 			return false;
 		}
 	}
 
-	public static boolean isOcean(int biomeSeed) 
-	{
+	public static boolean isOcean(int biomeSeed) {
 		return biomeSeed == getBiomeId(BiomeKeys.CRETACEOUS_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.WARM_CRETACEOUS_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.COLD_CRETACEOUS_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.DEEP_CRETACEOUS_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.WARM_DEEP_CRETACEOUS_OCEAN) || biomeSeed == getBiomeId(BiomeKeys.COLD_DEEP_CRETACEOUS_OCEAN);
 	}
-	
-	public static boolean isRiver(int biomeSeed) 
-	{
+
+	public static boolean isRiver(int biomeSeed) {
 		return biomeSeed == getBiomeId(BiomeKeys.CRETACEOUS_RIVER);
 	}
 
-	public static boolean isLand(int biomeSeed) 
-	{
+	public static boolean isLand(int biomeSeed) {
 		return biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_ARAUCARIA_FOREST) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_ARAUCARIA_FOREST_HILLS) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_ARCTIC) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_ARCTIC_HILLS) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_ARCTIC_SPIRES) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_BOG) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_CONIFER_FOREST) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_CONIFER_FOREST_HILLS) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_DESERT) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_DESERT_HILLS) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_ERRODED_MOUNTAINS) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_FEN) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_FLOOD_BASALTS) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_FROZEN_FOREST) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_FROZEN_FOREST_HILLS) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_GAME_TRAIL) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_GINKGO_FOREST) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_GINKGO_FOREST_HILLS) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_MARSH) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_MEDOW) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_MOUNTAINS) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_PLAINS) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_PLAINS_HILLS) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_RED_DESERT) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_RED_DESERT_HILLS) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_RIVER) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_SHORE) || biomeSeed == CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_SWAMP);
 	}
-	
-	private static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> magnify(long seed, IAreaTransformer1 zoomLayer, IAreaFactory<T> layer, int count, LongFunction<C> context) 
-	{
+
+	private static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> magnify(long seed, IAreaTransformer1 zoomLayer, IAreaFactory<T> layer, int count, LongFunction<C> context) {
 		IAreaFactory<T> result = layer;
-		for(int i = 0; i < count; i++) 
-		{
+		for (int i = 0; i < count; i++) {
 			result = zoomLayer.run(context.apply(seed + i), result);
 		}
 		return result;

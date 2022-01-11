@@ -18,49 +18,39 @@ import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationE
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class OphthalmosaurusEntity extends DolphinLikeEntity implements ITyrannomatable
-{
+public class OphthalmosaurusEntity extends DolphinLikeEntity implements ITyrannomatable {
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
-	
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) 
-	{
-		if(event.isMoving())
-		{
+
+	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) {
+		if (event.isMoving()) {
 			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.ophthalmosaurus.swim", true));
 			return PlayState.CONTINUE;
-		}
-		else
-		{
+		} else {
 			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.ophthalmosaurus.idle", true));
 			return PlayState.CONTINUE;
 		}
 	}
 
-	public OphthalmosaurusEntity(EntityType<? extends DolphinLikeEntity> entity, World world) 
-	{
+	public OphthalmosaurusEntity(EntityType<? extends DolphinLikeEntity> entity, World world) {
 		super(entity, world);
 	}
-	
-	public static AttributeModifierMap createAttributes() 
-	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.ophthalmosaurusHeath.get()).add(Attributes.MOVEMENT_SPEED, LostWorldsConfig.COMMON_CONFIG.ophthalmosaurusSpeed.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.ophthalmosaurusAttackDamage.get()).build();
+
+	public static AttributeModifierMap createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, LostWorldsConfig.SERVER_CONFIG.ophthalmosaurusHeath.get()).add(Attributes.MOVEMENT_SPEED, LostWorldsConfig.SERVER_CONFIG.ophthalmosaurusSpeed.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.SERVER_CONFIG.ophthalmosaurusAttackDamage.get()).build();
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
+	public void registerControllers(TyrannomationData data) {
 		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
-	{
+	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
 		return EntityInit.OPHTHALMOSAURUS.create(world);
 	}
 }

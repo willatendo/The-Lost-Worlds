@@ -28,8 +28,7 @@ import tyrannotitanlib.library.tyrannobook.client.data.element.TyrannobookElemen
 import tyrannotitanlib.library.tyrannobook.client.screen.TyrannobookScreen;
 
 @OnlyIn(Dist.CLIENT)
-public class ContentArchaeology extends PageContent 
-{
+public class ContentArchaeology extends PageContent {
 	public static final transient String ID = "archaeology";
 
 	public static final transient int TEX_SIZE = 256;
@@ -53,8 +52,7 @@ public class ContentArchaeology extends PageContent
 	public String recipe;
 
 	@Override
-	public void build(TyrannobookData book, ArrayList<TyrannobookElement> list, boolean rightSide) 
-	{
+	public void build(TyrannobookData book, ArrayList<TyrannobookElement> list, boolean rightSide) {
 		int x = 0;
 		int y = 16;
 		int height = 100;
@@ -65,16 +63,13 @@ public class ContentArchaeology extends PageContent
 		tdTitle.underlined = true;
 		list.add(new TextElement(0, 0, TyrannobookScreen.PAGE_WIDTH, 9, tdTitle));
 
-		if(this.grid_size.equalsIgnoreCase("small")) 
-		{
+		if (this.grid_size.equalsIgnoreCase("small")) {
 			x = TyrannobookScreen.PAGE_WIDTH / 2 - IMG_CRAFTING_SMALL.width / 2;
 			height = y + IMG_CRAFTING_SMALL.height;
 			list.add(new ImageElement(x, y, IMG_CRAFTING_SMALL.width, IMG_CRAFTING_SMALL.height, IMG_CRAFTING_SMALL, book.appearance.slotColor));
 			resultX = x + X_RESULT_SMALL;
 			resultY = y + Y_RESULT_SMALL;
-		} 
-		else if(this.grid_size.equalsIgnoreCase("large")) 
-		{
+		} else if (this.grid_size.equalsIgnoreCase("large")) {
 			x = TyrannobookScreen.PAGE_WIDTH / 2 - IMG_CRAFTING_LARGE.width / 2;
 			height = y + IMG_CRAFTING_LARGE.height;
 			list.add(new ImageElement(x, y, IMG_CRAFTING_LARGE.width, IMG_CRAFTING_LARGE.height, IMG_CRAFTING_LARGE, book.appearance.slotColor));
@@ -82,14 +77,10 @@ public class ContentArchaeology extends PageContent
 			resultY = y + Y_RESULT_LARGE;
 		}
 
-		if(this.grid != null) 
-		{
-			for(int i = 0; i < this.grid.length; i++) 
-			{
-				for(int j = 0; j < this.grid[i].length; j++) 
-				{
-					if(this.grid[i][j] == null || this.grid[i][j].getItems().isEmpty()) 
-					{
+		if (this.grid != null) {
+			for (int i = 0; i < this.grid.length; i++) {
+				for (int j = 0; j < this.grid[i].length; j++) {
+					if (this.grid[i][j] == null || this.grid[i][j].getItems().isEmpty()) {
 						continue;
 					}
 					list.add(new ItemElement(x + SLOT_MARGIN + (SLOT_PADDING + Math.round(ItemElement.ITEM_SIZE_HARDCODED * ITEM_SCALE)) * j, y + SLOT_MARGIN + (SLOT_PADDING + Math.round(ItemElement.ITEM_SIZE_HARDCODED * ITEM_SCALE)) * i, ITEM_SCALE, this.grid[i][j].getItems(), this.grid[i][j].action));
@@ -97,40 +88,33 @@ public class ContentArchaeology extends PageContent
 			}
 		}
 
-		if(this.result != null) 
-		{
+		if (this.result != null) {
 			list.add(new ItemElement(resultX, resultY, ITEM_SCALE, this.result.getItems(), this.result.action));
 		}
 
-		if(this.description != null && this.description.length > 0)
-		{
+		if (this.description != null && this.description.length > 0) {
 			list.add(new TextElement(0, height + 5, TyrannobookScreen.PAGE_WIDTH, TyrannobookScreen.PAGE_HEIGHT - height - 5, this.description));
 		}
 	}
 
 	@Override
-	public void load() 
-	{
+	public void load() {
 		super.load();
 
-		if(!StringUtils.isEmpty(recipe) && ResourceLocation.isValidResourceLocation(recipe)) 
-		{
+		if (!StringUtils.isEmpty(recipe) && ResourceLocation.isValidResourceLocation(recipe)) {
 			int w = 0, h = 0;
-			switch (grid_size.toLowerCase()) 
-			{
-				case "large":
-					w = h = 3;
-					break;
-				case "small":
-					w = h = 2;
-					break;
+			switch (grid_size.toLowerCase()) {
+			case "large":
+				w = h = 3;
+				break;
+			case "small":
+				w = h = 2;
+				break;
 			}
 
 			IRecipe<?> recipe = Minecraft.getInstance().level.getRecipeManager().byKey(new ResourceLocation(this.recipe)).orElse(null);
-			if(recipe instanceof ArchaeologyTableRecipe) 
-			{
-				if(!recipe.canCraftInDimensions(w, h)) 
-				{
+			if (recipe instanceof ArchaeologyTableRecipe) {
+				if (!recipe.canCraftInDimensions(w, h)) {
 					throw new TyrannobookLoadException("Recipe " + this.recipe + " cannot fit in a " + w + "x" + h + " crafting grid");
 				}
 
@@ -138,16 +122,13 @@ public class ContentArchaeology extends PageContent
 
 				NonNullList<Ingredient> ingredients = recipe.getIngredients();
 
-				if(recipe instanceof IShapedRecipe) 
-				{
+				if (recipe instanceof IShapedRecipe) {
 					IShapedRecipe shaped = (IShapedRecipe) recipe;
 
 					grid = new ItemStackData[shaped.getRecipeHeight()][shaped.getRecipeWidth()];
 
-					for(int y = 0; y < grid.length; y++) 
-					{
-						for(int x = 0; x < grid[y].length; x++) 
-						{
+					for (int y = 0; y < grid.length; y++) {
+						for (int x = 0; x < grid[y].length; x++) {
 							grid[y][x] = ItemStackData.getItemStackData(NonNullList.of(ItemStack.EMPTY, ingredients.get(x + y * grid[y].length).getItems()));
 						}
 					}
@@ -156,8 +137,7 @@ public class ContentArchaeology extends PageContent
 				}
 
 				grid = new ItemStackData[h][w];
-				for(int i = 0; i < ingredients.size(); i++) 
-				{
+				for (int i = 0; i < ingredients.size(); i++) {
 					grid[i / h][i % w] = ItemStackData.getItemStackData(NonNullList.of(ItemStack.EMPTY, ingredients.get(i).getItems()));
 				}
 			}

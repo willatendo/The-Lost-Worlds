@@ -6,22 +6,21 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 
-public class BiomeKeys 
-{
-	//Permian
+public class BiomeKeys {
+	// Permian
 	public static final RegistryKey<Biome> PERMIAN_ASHY_MEDOWS = register("permian_ashy_medows");
-	
+
 	public static final RegistryKey<Biome> PERMIAN_CONIFER_FOREST = register("permian_conifer_forest");
 	public static final RegistryKey<Biome> PERMIAN_CONIFER_FOREST_HILLS = register("permian_conifer_forest_hills");
-	
+
 	public static final RegistryKey<Biome> PERMIAN_DESERT = register("permian_desert");
 	public static final RegistryKey<Biome> PERMIAN_DESERT_HILLS = register("permian_desert_hills");
-	
+
 	public static final RegistryKey<Biome> PERMIAN_DRIED_PLAINS = register("permian_dried_plains");
 	public static final RegistryKey<Biome> PERMIAN_DRIED_PLAINS_HILLS = register("permian_dried_plains_hills");
 
 	public static final RegistryKey<Biome> PERMIAN_FLOOD_BASALTS = register("permian_flood_basalts");
-	
+
 	public static final RegistryKey<Biome> PERMIAN_GINKGO_FOREST = register("permian_ginkgo_forest");
 	public static final RegistryKey<Biome> PERMIAN_GINKGO_FOREST_HILLS = register("permian_ginkgo_forest_hills");
 
@@ -35,19 +34,19 @@ public class BiomeKeys
 	public static final RegistryKey<Biome> WARM_PERMIAN_OCEAN = register("warm_permian_ocean");
 	public static final RegistryKey<Biome> DEEP_PERMIAN_OCEAN = register("deep_permian_ocean");
 	public static final RegistryKey<Biome> WARM_DEEP_PERMIAN_OCEAN = register("warm_deep_permian_ocean");
-	
+
 	public static final RegistryKey<Biome> PERMIAN_PLAINS = register("permian_plains");
 	public static final RegistryKey<Biome> PERMIAN_PLAINS_HILLS = register("permian_plains_hills");
-	
+
 	public static final RegistryKey<Biome> PERMIAN_SHORE = register("permian_shore");
-	
-	//Jurassic
+
+	// Jurassic
 	public static final RegistryKey<Biome> JURASSIC_ARAUCARIA_FOREST = register("jurassic_araucaria_forest");
 	public static final RegistryKey<Biome> JURASSIC_ARAUCARIA_FOREST_HILLS = register("jurassic_araucaria_forest_hills");
-	
+
 	public static final RegistryKey<Biome> JURASSIC_CONIFER_FOREST = register("jurassic_conifer_forest");
 	public static final RegistryKey<Biome> JURASSIC_CONIFER_FOREST_HILLS = register("jurassic_conifer_forest_hills");
-	
+
 	public static final RegistryKey<Biome> JURASSIC_GINKGO_FOREST = register("jurassic_ginkgo_forest");
 	public static final RegistryKey<Biome> JURASSIC_GINKGO_FOREST_HILLS = register("jurassic_ginkgo_forest_hills");
 
@@ -77,26 +76,26 @@ public class BiomeKeys
 	public static final RegistryKey<Biome> JURASSIC_RIVER = register("jurassic_river");
 
 	public static final RegistryKey<Biome> JURASSIC_SHORE = register("jurassic_shore");
-	
-	//Creataceous
+
+	// Creataceous
 	public static final RegistryKey<Biome> CRETACEOUS_ARAUCARIA_FOREST = register("cretaceous_araucaria_forest");
 	public static final RegistryKey<Biome> CRETACEOUS_ARAUCARIA_FOREST_HILLS = register("cretaceous_araucaria_forest_hills");
 
 	public static final RegistryKey<Biome> CRETACEOUS_CONIFER_FOREST = register("cretaceous_conifer_forest");
 	public static final RegistryKey<Biome> CRETACEOUS_CONIFER_FOREST_HILLS = register("cretaceous_conifer_forest_hills");
-	
+
 	public static final RegistryKey<Biome> CRETACEOUS_GINKGO_FOREST = register("cretaceous_ginkgo_forest");
 	public static final RegistryKey<Biome> CRETACEOUS_GINKGO_FOREST_HILLS = register("cretaceous_ginkgo_forest_hills");
-	
+
 	public static final RegistryKey<Biome> CRETACEOUS_GAME_TRAIL = register("cretaceous_game_trail");
-	
+
 	public static final RegistryKey<Biome> CRETACEOUS_MEDOW = register("cretaceous_medow");
-	
+
 	public static final RegistryKey<Biome> CRETACEOUS_PLAINS = register("cretaceous_plains");
 	public static final RegistryKey<Biome> CRETACEOUS_PLAINS_HILLS = register("cretaceous_plains_hills");
 
 	public static final RegistryKey<Biome> CRETACEOUS_FLOOD_BASALTS = register("cretaceous_flood_basalts");
-	
+
 	public static final RegistryKey<Biome> CRETACEOUS_ARCTIC = register("cretaceous_arctic");
 	public static final RegistryKey<Biome> CRETACEOUS_ARCTIC_HILLS = register("cretaceous_arctic_hills");
 
@@ -132,23 +131,22 @@ public class BiomeKeys
 
 	public static final RegistryKey<Biome> CRETACEOUS_SHORE = register("cretaceous_shore");
 
-	//Overworld
+	// Overworld
 	public static final RegistryKey<Biome> ARAUCARIA_FOREST = register("araucaria_forest");
 	public static final RegistryKey<Biome> ARAUCARIA_FOREST_HILLS = register("araucaria_forest_hills");
-	
+
 	public static final RegistryKey<Biome> CONIFER_FOREST = register("conifer_forest");
 	public static final RegistryKey<Biome> CONIFER_FOREST_HILLS = register("conifer_forest_hills");
-	
+
 	public static final RegistryKey<Biome> GINKGO_FOREST = register("ginkgo_forest");
 	public static final RegistryKey<Biome> GINKGO_FOREST_HILLS = register("ginkgo_forest_hills");
-	
+
 	public static final RegistryKey<Biome> REDWOODS_FOREST = register("redwoods_forest");
 	public static final RegistryKey<Biome> REDWOODS_FOREST_HILLS = register("redwoods_forest_hills");
 
 	public static final RegistryKey<Biome> VOLCANO = register("volcano");
-	
-	private static RegistryKey<Biome> register(String id)
-	{
+
+	private static RegistryKey<Biome> register(String id) {
 		return RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(ModUtils.ID, id));
 	}
 }

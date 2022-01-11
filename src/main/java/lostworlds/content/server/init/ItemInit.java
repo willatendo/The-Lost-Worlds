@@ -58,143 +58,122 @@ import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 
-public class ItemInit
-{	
-	//Tools
-	public static final Item CRYSTAL_SCARAB_SWORD = ModRegistry.register("crystal_scarab_sword", new SwordItem(ModItemTier.CRYSTAL_SCARAB, 3, -2.4F, new Properties().tab(ModUtils.ITEMS).setNoRepair())
-	{
+public class ItemInit {
+	// Tools
+	public static final Item CRYSTAL_SCARAB_SWORD = ModRegistry.register("crystal_scarab_sword", new SwordItem(ModItemTier.CRYSTAL_SCARAB, 3, -2.4F, new Properties().tab(ModUtils.ITEMS).setNoRepair()) {
 		@Override
-		public boolean isEnchantable(ItemStack stack) 
-		{
+		public boolean isEnchantable(ItemStack stack) {
 			return false;
 		};
-		
+
 		@Override
-		public boolean isBookEnchantable(ItemStack stack, ItemStack book) 
-		{
+		public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
 			return false;
 		};
-		
+
 		@Override
-		public boolean isFoil(ItemStack stack) 
-		{
+		public boolean isFoil(ItemStack stack) {
 			return true;
 		};
 	});
-	
-	public static final Item CRYSTAL_SCARAB_SHOVEL = ModRegistry.register("crystal_scarab_shovel", new ShovelItem(ModItemTier.CRYSTAL_SCARAB, 1.5F, -3.0F, new Properties().tab(ModUtils.ITEMS).setNoRepair())
-	{
+
+	public static final Item CRYSTAL_SCARAB_SHOVEL = ModRegistry.register("crystal_scarab_shovel", new ShovelItem(ModItemTier.CRYSTAL_SCARAB, 1.5F, -3.0F, new Properties().tab(ModUtils.ITEMS).setNoRepair()) {
 		@Override
-		public boolean isEnchantable(ItemStack stack) 
-		{
+		public boolean isEnchantable(ItemStack stack) {
 			return false;
 		};
-		
+
 		@Override
-		public boolean isBookEnchantable(ItemStack stack, ItemStack book) 
-		{
+		public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
 			return false;
 		};
-		
+
 		@Override
-		public boolean isFoil(ItemStack stack) 
-		{
+		public boolean isFoil(ItemStack stack) {
 			return true;
 		};
 	});
-	
-	public static final Item CRYSTAL_SCARAB_PICKAXE = ModRegistry.register("crystal_scarab_pickaxe", new PickaxeItem(ModItemTier.CRYSTAL_SCARAB, 1, -2.8F, new Properties().tab(ModUtils.ITEMS).setNoRepair())
-	{
+
+	public static final Item CRYSTAL_SCARAB_PICKAXE = ModRegistry.register("crystal_scarab_pickaxe", new PickaxeItem(ModItemTier.CRYSTAL_SCARAB, 1, -2.8F, new Properties().tab(ModUtils.ITEMS).setNoRepair()) {
 		@Override
-		public boolean isEnchantable(ItemStack stack) 
-		{
+		public boolean isEnchantable(ItemStack stack) {
 			return false;
 		};
-		
+
 		@Override
-		public boolean isBookEnchantable(ItemStack stack, ItemStack book) 
-		{
+		public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
 			return false;
 		};
-		
+
 		@Override
-		public boolean isFoil(ItemStack stack) 
-		{
+		public boolean isFoil(ItemStack stack) {
 			return true;
 		};
 	});
-	
-	public static final Item CRYSTAL_SCARAB_AXE = ModRegistry.register("crystal_scarab_axe", new AxeItem(ModItemTier.CRYSTAL_SCARAB, 6.0F, -3.2F, new Properties().tab(ModUtils.ITEMS).setNoRepair())
-	{
+
+	public static final Item CRYSTAL_SCARAB_AXE = ModRegistry.register("crystal_scarab_axe", new AxeItem(ModItemTier.CRYSTAL_SCARAB, 6.0F, -3.2F, new Properties().tab(ModUtils.ITEMS).setNoRepair()) {
 		@Override
-		public boolean isEnchantable(ItemStack stack) 
-		{
+		public boolean isEnchantable(ItemStack stack) {
 			return false;
 		};
-		
+
 		@Override
-		public boolean isBookEnchantable(ItemStack stack, ItemStack book) 
-		{
+		public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
 			return false;
 		};
-		
+
 		@Override
-		public boolean isFoil(ItemStack stack) 
-		{
+		public boolean isFoil(ItemStack stack) {
 			return true;
 		};
 	});
-	
-	public static final Item CRYSTAL_SCARAB_HOE = ModRegistry.register("crystal_scarab_hoe", new HoeItem(ModItemTier.CRYSTAL_SCARAB, 0, -3.0F, new Properties().tab(ModUtils.ITEMS).setNoRepair())
-	{
+
+	public static final Item CRYSTAL_SCARAB_HOE = ModRegistry.register("crystal_scarab_hoe", new HoeItem(ModItemTier.CRYSTAL_SCARAB, 0, -3.0F, new Properties().tab(ModUtils.ITEMS).setNoRepair()) {
 		@Override
-		public boolean isEnchantable(ItemStack stack) 
-		{
+		public boolean isEnchantable(ItemStack stack) {
 			return false;
 		};
-		
+
 		@Override
-		public boolean isBookEnchantable(ItemStack stack, ItemStack book) 
-		{
+		public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
 			return false;
 		};
-		
+
 		@Override
-		public boolean isFoil(ItemStack stack) 
-		{
+		public boolean isFoil(ItemStack stack) {
 			return true;
 		};
 	});
-	
+
 	public static final Item LEATHER_BRUSH = ModRegistry.register("leather_brush", new BrushItem(ModItemTier.LEATHER));
 	public static final Item IRON_BRUSH = ModRegistry.register("iron_brush", new BrushItem(ModItemTier.IRON));
 	public static final Item GOLD_BRUSH = ModRegistry.register("gold_brush", new BrushItem(ModItemTier.GOLD));
 	public static final Item DIAMOND_BRUSH = ModRegistry.register("diamond_brush", new BrushItem(ModItemTier.DIAMOND));
 	public static final Item NETHERITE_BRUSH = ModRegistry.register("netherite_brush", new BrushItem(ModItemTier.NETHERITE));
 	public static final Item CRYSTAL_SCARAB_BRUSH = ModRegistry.register("crystal_scarab_brush", new CrystalScarabGemBrushItem());
-	
+
 	public static final Item HAMMER = ModRegistry.register("hammer", new HammerItem(ItemTier.IRON, 6.0F, -3.1F, (new Item.Properties()).tab(ModUtils.ITEMS)));
-	
+
 	public static final Item CHISEL = ModRegistry.register("chisel", new ChiselItem());
-	
-	//Armour
+
+	// Armour
 	public static final Item CLOTH_MASK = ModRegistry.register("cloth_mask", new MaskItem(ModArmourMaterial.CLOTH_MASK));
-	
-	//Utilities
+
+	// Utilities
 	public static final Item WET_PAPER = ModRegistry.register("wet_paper", new WetPaperItem());
 	public static final Item SYRINGE = ModRegistry.register("syringe", new SyringeItem());
 	public static final Item LOST_WORLDS_LEXICON = ModRegistry.register("lost_worlds_lexicon", new LostWorldsLexicon(new Properties().tab(ModUtils.ITEMS).stacksTo(1).rarity(Rarity.RARE).fireResistant()));
 	public static final Item FIELD_GUIDE = ModRegistry.register("field_guide", new FieldGuideItem());
 	public static final Item TABLET = ModRegistry.register("tablet", new TabletItem());
 	public static final Item CONTRACEPTIVES = ModRegistry.register("contraceptives", new ModItem());
-	
+
 	public static final Item PERMIAN_PERIOD_TIME_BOOK = ModRegistry.register("permian_period_time_book", new TimeBookItem(TimeEras.PERMIAN_PERIOD, DimensionInit.PERMIAN_WORLD));
 	public static final Item JURASSIC_PERIOD_TIME_BOOK = ModRegistry.register("jurassic_period_time_book", new TimeBookItem(TimeEras.JURASSIC_PERIOD, DimensionInit.JURASSIC_WORLD));
 	public static final Item CRETACEOUS_PERIOD_TIME_BOOK = ModRegistry.register("cretaceous_period_time_book", new TimeBookItem(TimeEras.CRETACEOUS_PERIOD, DimensionInit.CRETACEOUS_WORLD));
-	
+
 	public static final Item MUD_BALL = ModRegistry.register("mud_ball", new ModItem());
 
-	//Electronics
+	// Electronics
 	public static final Item COPPER_WIRE = ModRegistry.register("copper_wire", new ModItem());
 	public static final Item COMPUTER_FAN = ModRegistry.register("computer_fan", new ModItem());
 	public static final Item COMPUTER_SCREEN = ModRegistry.register("computer_screen", new ModItem());
@@ -203,32 +182,32 @@ public class ItemInit
 	public static final Item MOTHERBOARD = ModRegistry.register("motherboard", new ModItem());
 	public static final Item CPU = ModRegistry.register("cpu", new ModItem());
 	public static final Item RAM = ModRegistry.register("ram", new ModItem());
-	
+
 	public static final Item COMPUTER_CORE = ModRegistry.register("computer_core", new ModItem());
-	
+
 	public static final Item STORAGE_DISC = ModRegistry.register("storage_disc", new ModItem());
 
-	public static final Item TAG = ModRegistry.register("tag", new ModItem(16));	
-	
-	//Decoration
+	public static final Item TAG = ModRegistry.register("tag", new ModItem(16));
+
+	// Decoration
 	public static final Item AMBER_KEYCHAIN = ModRegistry.register("amber_keychain", new CollectibleItem());
 	public static final Item DINO_BUTTON = ModRegistry.register("dino_button", new PinItem());
 	public static final Item BALLOON = ModRegistry.register("balloon", new CollectibleItem());
-	public static final Item TYRANNOSAURUS_PLUSH = ModRegistry.register("tyrannosaurus_plush", new CollectibleItem());	
+	public static final Item TYRANNOSAURUS_PLUSH = ModRegistry.register("tyrannosaurus_plush", new CollectibleItem());
 
-	//Miscellaneous
+	// Miscellaneous
 	public static final Item EMPTY_VILE = ModRegistry.register("empty_vile", new ModItem());
-	
+
 	public static final Item FERN_LEAVES = ModRegistry.register("fern_leaves", new ModItem(FoodInit.FERN_LEAVES));
 	public static final Item COOKED_FERN_LEAVES = ModRegistry.register("cooked_fern_leaves", new ModItem(FoodInit.COOKED_LEAVES));
 
 	public static final Item PALEO_SALAD = ModRegistry.register("paleo_salad", new ModItem(FoodInit.PALEO_SALAD));
-	
+
 	public static final Item SCARAB_BANNER_PATTERN = ModRegistry.register("scarab_banner_pattern", new BannerPatternItem(BannerInit.SCARAB, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1)));
-	
+
 	public static final Item FOSSIL_POACHER_SPAWN_EGG = ModRegistry.register("fossil_poacher_spawn_egg", new ModSpawnEggItem(() -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031, ItemGroup.TAB_MISC));
-	
-	//Fossils
+
+	// Fossils
 	public static final Item AMBER = ModRegistry.register("amber", new AmberItem());
 	public static final Item FOSSILIZED_FEATHER = ModRegistry.register("fossilized_feather", new ModItem());
 	public static final Item FOSSILIZED_SKIN_IMPRESSION = ModRegistry.register("fossilized_skin_impression", new ModItem());
@@ -242,16 +221,13 @@ public class ItemInit
 	public static final Item GINKGO_BARK_SAMPLE = ModRegistry.register("ginkgo_bark_sample", new ModItem());
 	public static final Item SEQUOIA_BARK_SAMPLE = ModRegistry.register("sequoia_bark_sample", new ModItem());
 
-	public static void init() 
-	{
-		ModUtils.LOGGER.debug("Registering Mod Items"); 
-		
+	public static void init() {
+		ModUtils.LOGGER.debug("Registering Mod Items");
+
 		CrystalScarabGemItem.createAll();
-		
-		for(DinoTypes dinos : DinoTypes.values())
-		{
-			if(dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS)
-			{
+
+		for (DinoTypes dinos : DinoTypes.values()) {
+			if (dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS) {
 				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_rib_cage", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getRibCage(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "rib_cage")));
 				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_leg_bones", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getLegBones(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "leg_bones")));
 				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_arm_bones", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getArmBones(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "arm_bones")));
@@ -265,34 +241,29 @@ public class ItemInit
 				Item skeleton = ModRegistry.register(dinos.name().toLowerCase() + "_skeleton", new FossilItem(new Properties().tab(ModUtils.ITEMS).setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "skeleton")));
 				dinos.setSkeletonPick(skeleton);
 			}
-						
-			if(dinos == DinoTypes.ANOMALOCARIS)
-			{
+
+			if (dinos == DinoTypes.ANOMALOCARIS) {
 				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_exoskeleton", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getExoskeleton(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "exoskeleton")));
 				ModRegistry.register(dinos.name().toLowerCase() + "_exoskeleton", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getExoskeleton(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "exoskeleton")));
 			}
-			
-			if(dinos == DinoTypes.PALAEONISCUM)
-			{
+
+			if (dinos == DinoTypes.PALAEONISCUM) {
 				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_body", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getExoskeleton(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "body")));
 				ModRegistry.register(dinos.name().toLowerCase() + "_body", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getExoskeleton(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "body")));
 			}
-			
-			if(dinos.feathered().contains(dinos))
-			{
+
+			if (dinos.feathered().contains(dinos)) {
 				Item feather = ModRegistry.register(dinos.name().toLowerCase() + "_feather", new FeatherItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));
 				dinos.setFeather(feather);
 			}
-			if(dinos.createHide().contains(dinos))
-			{
+			if (dinos.createHide().contains(dinos)) {
 				ModRegistry.register(dinos.name().toLowerCase() + "_hide", new HideItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));
 			}
-			if(dinos.hasSpawn().contains(dinos))
-			{
+			if (dinos.hasSpawn().contains(dinos)) {
 				Item spawn = ModRegistry.register(dinos.name().toLowerCase() + "_spawn", new SpawnItem(() -> dinos.getEntityType(), ModUtils.tTC("entity", dinos.name().toLowerCase())));
 				dinos.setSpawn(spawn);
 			}
-			
+
 			ModRegistry.register(dinos.name().toLowerCase() + "_spawn_egg", new DinoSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), ItemGroup.TAB_MISC, ModUtils.tTC("entity", dinos.name().toLowerCase())));
 			ModRegistry.register(dinos.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(ModUtils.tTC("entity", dinos.toString().toLowerCase())));
 			Item bloodSample = ModRegistry.register(dinos.name().toLowerCase() + "_blood_sample", new FullSyringeItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));
@@ -300,39 +271,30 @@ public class ItemInit
 			Item dna = ModRegistry.register(dinos.name().toLowerCase() + "_dna", new DNAItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));
 			dinos.setDNA(dna);
 			ModRegistry.register(dinos.name().toLowerCase() + "_dna_disc", new DNADiscItem(ModUtils.tTC("entity", dinos.name().toLowerCase())));
-			if(!dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS)
-			{
+			if (!dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS) {
 				Item meat = ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_meat", new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), true));
 				ModRegistry.register("cooked_" + dinos.name().toLowerCase() + "_meat", new DinoFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), false));
 				dinos.setMeat(meat);
-			}
-			else if(dinos == DinoTypes.NAUTILUS)
-			{
+			} else if (dinos == DinoTypes.NAUTILUS) {
 				Item meat = ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_tentacle", new EntityFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).fast().build())));
 				ModRegistry.register("cooked_" + dinos.name().toLowerCase() + "_tentacle", new EntityFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).fast().build())));
 				dinos.setMeat(meat);
-			}
-			else if(dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS)
-			{
+			} else if (dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS) {
 				Item bucket = ModRegistry.register(dinos.name().toLowerCase() + "_bucket", new ModFishBucketItem(() -> dinos.getEntityType(), Fluids.WATER, new Properties().tab(ModUtils.ITEMS).stacksTo(1)));
 				dinos.setFishBucket(bucket);
-				if(dinos != DinoTypes.ANOMALOCARIS)
-				{
+				if (dinos != DinoTypes.ANOMALOCARIS) {
 					Item meat = ModRegistry.register(dinos.name().toLowerCase(), new FishFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), true));
 					ModRegistry.register("cooked_" + dinos.name().toLowerCase(), new FishFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), ModUtils.tTC("entity", dinos.name().toLowerCase()), false));
 					dinos.setMeat(meat);
-				}
-				else
-				{
+				} else {
 					Item meat = ModRegistry.register("raw_" + dinos.name().toLowerCase() + "_claw", new EntityFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())));
 					ModRegistry.register("cooked_" + dinos.name().toLowerCase() + "_claw", new EntityFoodItem(new Item.Properties().tab(ModUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build())));
 					dinos.setMeat(meat);
 				}
 			}
 		}
-		
-		for(Plants plants : Plants.values())
-		{	
+
+		for (Plants plants : Plants.values()) {
 			Item item = ModRegistry.register(plants.toString().toLowerCase() + "_fossil", new PlantFossilItem(ModUtils.tTC("block", plants.toString().toLowerCase())));
 			plants.setDrop(item);
 			ModRegistry.register(plants.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(ModUtils.tTC("block", plants.toString().toLowerCase())));
@@ -341,14 +303,13 @@ public class ItemInit
 			Item seed = SeedItem.create(plants.toString().toLowerCase(), plants.getPlant(), ModUtils.tTC("block", plants.toString().toLowerCase()));
 			plants.setSeed(seed);
 		}
-		
-		for(Trees trees : Trees.values())
-		{
+
+		for (Trees trees : Trees.values()) {
 			ModRegistry.register(trees.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(ModUtils.tTC("tree", trees.toString().toLowerCase())));
 			ModRegistry.register(trees.toString().toLowerCase() + "_dna", new DNAItem(ModUtils.tTC("tree", trees.toString().toLowerCase())));
 			ModRegistry.register(trees.toString().toLowerCase() + "_dna_disc", new DNADiscItem(ModUtils.tTC("tree", trees.toString().toLowerCase())));
 		}
-		
+
 		RecipeManager.initAlternateRecipes();
 		Foods.init();
 	}

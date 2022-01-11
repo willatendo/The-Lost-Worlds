@@ -10,26 +10,22 @@ import net.minecraft.world.biome.MobSpawnInfo;
 import tyrannotitanlib.library.base.biome.BaseBiomeInfo;
 import tyrannotitanlib.library.base.biome.TyrannoBiome;
 
-public class PermianDesert extends TyrannoBiome
-{
+public class PermianDesert extends TyrannoBiome {
 	public static final BiomeGenerationSettings.Builder GENERATION = new BiomeGenerationSettings.Builder();
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomeInfo.BASE_WATER_COLOUR).waterFogColor(BaseBiomeInfo.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomeInfo.BASE_FOG_COLOUR).skyColor(calculateSkyColor(3.0F));
-	
-	static
-	{
-		GENERATION.surfaceBuilder(ModSurfaceBuilders.PERMIAN_DESERT_BUILDER);	
-		
+
+	static {
+		GENERATION.surfaceBuilder(ModSurfaceBuilders.PERMIAN_DESERT_BUILDER);
+
 		ModBiomeFeatures.permianDesert(GENERATION);
 	}
-	
-	public PermianDesert(float depth, float scale) 
-	{
+
+	public PermianDesert(float depth, float scale) {
 		super(BaseBiomeInfo.biome(RainType.NONE, Category.DESERT, depth, scale, 0.0F, 3.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
 	}
-	
-	public PermianDesert() 
-	{
+
+	public PermianDesert() {
 		this(0.125F, 0.05F);
 	}
 }

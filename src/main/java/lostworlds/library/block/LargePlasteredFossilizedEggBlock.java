@@ -22,54 +22,44 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class LargePlasteredFossilizedEggBlock extends Block 
-{
+public class LargePlasteredFossilizedEggBlock extends Block {
 	private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 8, 16);
 	public static final IntegerProperty EGGS = ModBlockStateProperties.LARGE_EGGS;
-	
-	public LargePlasteredFossilizedEggBlock(AbstractBlock.Properties properties) 
-	{
+
+	public LargePlasteredFossilizedEggBlock(AbstractBlock.Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(EGGS, Integer.valueOf(1)));
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) 
-	{
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
 		return SHAPE;
 	}
 
 	@Override
-	public boolean canBeReplaced(BlockState state, BlockItemUseContext context) 
-	{
+	public boolean canBeReplaced(BlockState state, BlockItemUseContext context) {
 		return context.getItemInHand().getItem() == this.asItem() && state.getValue(EGGS) < 3 ? true : super.canBeReplaced(state, context);
 	}
 
 	@Override
 	@Nullable
-	public BlockState getStateForPlacement(BlockItemUseContext context) 
-	{
+	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		BlockState blockstate = context.getLevel().getBlockState(context.getClickedPos());
 		return blockstate.is(this) ? blockstate.setValue(EGGS, Integer.valueOf(Math.min(3, blockstate.getValue(EGGS) + 1))) : super.getStateForPlacement(context);
 	}
 
 	@Override
-	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) 
-	{
+	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(EGGS);
 	}
-	
+
 	@Override
-	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) 
-	{
-		if(entity.isCrouching())
-		{
+	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) {
+		if (entity.isCrouching()) {
 			world.setBlockAndUpdate(pos, BlockInit.LARGE_FOSSILISED_EGG.defaultBlockState().setValue(EGGS, state.getValue(EGGS)));
 			world.playSound(entity, pos, SoundEvents.WOOL_BREAK, SoundCategory.BLOCKS, 0.7F, 1.0F);
 			return ActionResultType.SUCCESS;
-		}
-		else
-		{
+		} else {
 			return ActionResultType.FAIL;
 		}
 	}

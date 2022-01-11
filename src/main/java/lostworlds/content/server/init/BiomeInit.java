@@ -62,9 +62,8 @@ import lostworlds.library.biome.biomes.permian.shore.PermianShore;
 import lostworlds.library.biome.biomes.permian.swamp.PermianMarsh;
 import net.minecraft.world.biome.Biome;
 
-public class BiomeInit 
-{
-	//Permian	
+public class BiomeInit {
+	// Permian
 	public static final Biome PERMIAN_CONIFER_FOREST = ModRegistry.register("permian_conifer_forest", new PermianConiferForest());
 	public static final Biome PERMIAN_CONIFER_FOREST_HILLS = ModRegistry.register("permian_conifer_forest_hills", new PermianConiferForest(0.45F, 0.3F));
 
@@ -91,19 +90,19 @@ public class BiomeInit
 
 	public static final Biome PERMIAN_OCEAN = ModRegistry.register("permian_ocean", new PermianOcean());
 	public static final Biome DEEP_PERMIAN_OCEAN = ModRegistry.register("deep_permian_ocean", new PermianOcean(-1.8F, 0.1F));
-	
-	public static final Biome WARM_PERMIAN_OCEAN = ModRegistry.register("warm_permian_ocean", new WarmPermianOcean());	
+
+	public static final Biome WARM_PERMIAN_OCEAN = ModRegistry.register("warm_permian_ocean", new WarmPermianOcean());
 	public static final Biome WARM_DEEP_PERMIAN_OCEAN = ModRegistry.register("warm_deep_permian_ocean", new WarmPermianOcean());
 
 	public static final Biome PERMIAN_SHORE = ModRegistry.register("permian_shore", new PermianShore());
-	
-	//Jurassic
+
+	// Jurassic
 	public static final Biome JURASSIC_ARAUCARIA_FOREST = ModRegistry.register("jurassic_araucaria_forest", new JurassicAraucariaForest());
 	public static final Biome JURASSIC_ARAUCARIA_FOREST_HILLS = ModRegistry.register("jurassic_araucaria_forest_hills", new JurassicAraucariaForest(0.45F, 0.3F));
 
 	public static final Biome JURASSIC_CONIFER_FOREST = ModRegistry.register("jurassic_conifer_forest", new JurassicConiferForest());
 	public static final Biome JURASSIC_CONIFER_FOREST_HILLS = ModRegistry.register("jurassic_conifer_forest_hills", new JurassicConiferForest(0.45F, 0.3F));
-	
+
 	public static final Biome JURASSIC_GINKGO_FOREST = ModRegistry.register("jurassic_ginkgo_forest", new JurassicGinkgoForest());
 	public static final Biome JURASSIC_GINKGO_FOREST_HILLS = ModRegistry.register("jurassic_ginkgo_forest_hills", new JurassicGinkgoForest(0.45F, 0.3F));
 
@@ -135,25 +134,25 @@ public class BiomeInit
 
 	public static final Biome JURASSIC_SHORE = ModRegistry.register("jurassic_shore", new JurassicShore());
 
-	//Creataceous
+	// Creataceous
 	public static final Biome CRETACEOUS_ARAUCARIA_FOREST = ModRegistry.register("cretaceous_araucaria_forest", new CretaceousAraucariaForest());
 	public static final Biome CRETACEOUS_ARAUCARIA_FOREST_HILLS = ModRegistry.register("cretaceous_araucaria_forest_hills", new CretaceousAraucariaForest(0.45F, 0.3F));
 
 	public static final Biome CRETACEOUS_CONIFER_FOREST = ModRegistry.register("cretaceous_conifer_forest", new CretaceousConiferForest());
 	public static final Biome CRETACEOUS_CONIFER_FOREST_HILLS = ModRegistry.register("cretaceous_conifer_forest_hills", new CretaceousConiferForest(0.45F, 0.3F));
-	
+
 	public static final Biome CRETACEOUS_GINKGO_FOREST = ModRegistry.register("cretaceous_ginkgo_forest", new CretaceousGinkgoForest());
 	public static final Biome CRETACEOUS_GINKGO_FOREST_HILLS = ModRegistry.register("cretaceous_ginkgo_forest_hills", new CretaceousGinkgoForest(0.45F, 0.3F));
-	
+
 	public static final Biome CRETACEOUS_GAME_TRAIL = ModRegistry.register("cretaceous_game_trail", new CretaceousGameTrail());
-	
+
 	public static final Biome CRETACEOUS_MEDOW = ModRegistry.register("cretaceous_medow", new CretaceousMedow());
-	
+
 	public static final Biome CRETACEOUS_PLAINS = ModRegistry.register("cretaceous_plains", new CretaceousPlains());
 	public static final Biome CRETACEOUS_PLAINS_HILLS = ModRegistry.register("cretaceous_plains_hills", new CretaceousPlains(0.45F, 0.3F));
 
 	public static final Biome CRETACEOUS_FLOOD_BASALTS = ModRegistry.register("cretaceous_flood_basalts", new CretaceousFloodBasalts());
-	
+
 	public static final Biome CRETACEOUS_ARCTIC = ModRegistry.register("cretaceous_arctic", new CretaceousArctic());
 	public static final Biome CRETACEOUS_ARCTIC_HILLS = ModRegistry.register("cretaceous_arctic_hills", new CretaceousArctic(0.45F, 0.3F));
 
@@ -189,21 +188,23 @@ public class BiomeInit
 
 	public static final Biome CRETACEOUS_SHORE = ModRegistry.register("cretaceous_shore", new CretaceousShore());
 
-	//Overworld
+	// Overworld
 	public static final Biome ARAUCARIA_FOREST = ModRegistry.register("araucaria_forest", new AraucariaForest());
 	public static final Biome ARAUCARIA_FOREST_HILLS = ModRegistry.register("araucaria_forest_hills", new AraucariaForest(0.45F, 0.3F));
-	
+
 	public static final Biome CONIFER_FOREST = ModRegistry.register("conifer_forest", new ConiferForest());
 	public static final Biome CONIFER_FOREST_HILLS = ModRegistry.register("conifer_forest_hills", new ConiferForest(0.45F, 0.3F));
-	
+
 	public static final Biome GINKGO_FOREST = ModRegistry.register("ginkgo_forest", new GinkgoForest());
 	public static final Biome GINKGO_FOREST_HILLS = ModRegistry.register("ginkgo_forest_hills", new GinkgoForest(0.45F, 0.3F));
-	
+
 	public static final Biome REDWOODS_FOREST = ModRegistry.register("redwoods_forest", new SequoiaForest());
 	public static final Biome REDWOODS_FOREST_HILLS = ModRegistry.register("redwoods_forest_hills", new SequoiaForest(0.45F, 0.3F));
 
 	public static final Biome VOLCANO = ModRegistry.register("volcano", new Volcano());
 
-	//Registry
-	public static void init() { ModUtils.LOGGER.debug("Registering Mod Biomes"); }
+	// Registry
+	public static void init() {
+		ModUtils.LOGGER.debug("Registering Mod Biomes");
+	}
 }
