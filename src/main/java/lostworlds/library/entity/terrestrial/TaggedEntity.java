@@ -32,8 +32,6 @@ public abstract class TaggedEntity extends PrehistoricEntity {
 
 	public TaggedEntity(EntityType<? extends TaggedEntity> entity, World world) {
 		super(entity, world);
-
-		reassessTameGoals();
 	}
 
 	@Override
@@ -83,11 +81,6 @@ public abstract class TaggedEntity extends PrehistoricEntity {
 		} else {
 			this.entityData.set(DATA_FLAGS_ID, (byte) (b0 & -5));
 		}
-
-		this.reassessTameGoals();
-	}
-
-	protected void reassessTameGoals() {
 	}
 
 	@Nullable

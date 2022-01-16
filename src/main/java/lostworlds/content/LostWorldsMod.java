@@ -80,7 +80,7 @@ public class LostWorldsMod extends ModUtils {
 	public LostWorldsMod() {
 		this.modBus();
 		this.forgeBus();
-		
+
 		lostWorldRegistry();
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, LostWorldsConfig.clientSpec);
@@ -99,7 +99,7 @@ public class LostWorldsMod extends ModUtils {
 
 		bus.addListener(this::biomeModification);
 //		bus.addListener(EventPriority.HIGH, DinosaurSpawn::addDinosaursToOverworld);
-		bus.addListener(this::onPlayerLoggedIn);	
+		bus.addListener(this::onPlayerLoggedIn);
 		bus.addListener(this::onLivingTick);
 		bus.addListener(this::onPlayerHarvest);
 	}
@@ -113,7 +113,7 @@ public class LostWorldsMod extends ModUtils {
 
 	private static void lostWorldRegistry() {
 		ModRegistry.register();
-		
+
 		// Game Objects
 		BlockInit.init();
 		ItemInit.init();

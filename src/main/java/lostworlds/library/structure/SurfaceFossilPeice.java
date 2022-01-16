@@ -6,6 +6,7 @@ import java.util.Random;
 
 import lostworlds.content.ModUtils;
 import lostworlds.content.server.init.StructurePieceInit;
+import lostworlds.library.entity.utils.enums.DinoTypes;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;
@@ -30,12 +31,14 @@ public class SurfaceFossilPeice {
 	public static final ArrayList<ResourceLocation> locations = new ArrayList<>();
 
 	public static void addStructure(TemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> piece, Random rand, Biome biome) {
-		locations.add(ModUtils.rL("fossil/chilesaurus_fossil_1"));
-		locations.add(ModUtils.rL("fossil/chilesaurus_fossil_2"));
-		locations.add(ModUtils.rL("fossil/chilesaurus_fossil_3"));
-		locations.add(ModUtils.rL("fossil/chilesaurus_fossil_4"));
-		locations.add(ModUtils.rL("fossil/chilesaurus_fossil_5"));
-		locations.add(ModUtils.rL("fossil/chilesaurus_fossil_6"));
+		for (DinoTypes types : DinoTypes.values()) {
+			locations.add(ModUtils.rL("fossil/" + types.toString().toLowerCase() + "_fossil_1"));
+			locations.add(ModUtils.rL("fossil/" + types.toString().toLowerCase() + "_fossil_2"));
+			locations.add(ModUtils.rL("fossil/" + types.toString().toLowerCase() + "_fossil_3"));
+			locations.add(ModUtils.rL("fossil/" + types.toString().toLowerCase() + "_fossil_4"));
+			locations.add(ModUtils.rL("fossil/" + types.toString().toLowerCase() + "_fossil_5"));
+			locations.add(ModUtils.rL("fossil/" + types.toString().toLowerCase() + "_fossil_6"));
+		}
 
 		int fossil = rand.nextInt(locations.size());
 		piece.add(new SurfaceFossilPeice.Piece(manager, locations.get(fossil), pos, rotation));

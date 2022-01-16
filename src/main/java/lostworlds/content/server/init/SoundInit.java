@@ -5,6 +5,8 @@ import lostworlds.content.ModUtils;
 import net.minecraft.util.SoundEvent;
 
 public class SoundInit {
+	public static final SoundEvent ASCENTED = ModRegistry.register("ascented", new SoundEvent(ModUtils.rL("disc.sound.ascented")));
+
 	public static final SoundEvent MACHINE_WHIRLING = ModRegistry.register("machine_whirling", new SoundEvent(ModUtils.rL("block.sound.machine_whirling")));
 	public static final SoundEvent POT_SMASH = ModRegistry.register("pot_smash", new SoundEvent(ModUtils.rL("block.sound.pot_smash")));
 

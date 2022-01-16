@@ -28,41 +28,42 @@ import net.minecraft.item.Item;
 import net.minecraft.util.IStringSerializable;
 
 public enum DinoTypes implements IStringSerializable {
-	ALLOSAURUS("allosaurus", EntityInit.ALLOSAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x9f9f5a, 0x9f9f5a, 0xd68812, 5, 8, 0.4F, 0.8F),
-	ANOMALOCARIS("anomalocaris", EntityInit.ANOMALOCARIS, false, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0xb94f33, 0xb94f33, 0x631312, 2, 4, 0.2F, 0.4F),
-	CARNOTAURUS("carnotaurus", EntityInit.CARNOTAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xbd7868, 0xbd7868, 0xe6d3bc, 6, 9, 0.4F, 0.8F),
-	CHILESAURUS("chilesaurus", EntityInit.CHILESAURUS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0xb08533, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
-	CRYOLOPHOSAURUS("cryolophosaurus", EntityInit.CRYOLOPHOSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0xab5a14, 0xab5a14, 0x1a2c5f, 5, 7, 0.5F, 0.6F),
-	DIICTODON("diictodon", EntityInit.DIICTODON, false, false, false, Size.TINY, CreatureDiet.HERBIVORE, 0xdc8a54, 0xdc8a54, 0x8b462e, 1, 2, 0.1F, 0.2F),
-	DILOPHOSAURUS("dilophosaurus", EntityInit.DILOPHOSAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xc49838, 0xc49838, 0xc75539, 5, 7, 0.5F, 0.76F),
-	DIMETRODON("dimetrodon", EntityInit.DIMETRODON, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x81644c, 0x81644c, 0xcba755, 5, 7, 0.5F, 0.76F),
-	EDAPHOSAURUS("edaphosaurus", EntityInit.EDAPHOSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x57614e, 0x57614e, 0xdf9046, 5, 7, 0.5F, 0.76F),
-	EORAPTOR("eoraptor", EntityInit.EORAPTOR, true, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x523c3e, 0x523c3e, 0x824b78, 1, 3, 0.1F, 0.35F),
-	FUKUIVENATOR("fukuivenator", EntityInit.FUKUIVENATOR, true, true, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x52526f, 0x52526f, 0x5757959, 4, 5, 0.3F, 0.35F),
-	GIGANOTOSAURUS("giganotosaurus", EntityInit.GIGANOTOSAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x9f6b41, 0x9f6b41, 0x943c24, 9, 12, 0.5F, 0.8F),
-	GORGONOPS("gorgonops", EntityInit.GORGONOPS, true, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0x443619, 0x443619, 0x3b3e2d, 3, 5, 0.3F, 0.46F),
-	GREAT_AUK("great_auk", EntityInit.GREAT_AUK, true, true, false, Size.SMALL, CreatureDiet.PISCIVORE, 0x000000, 0x000000, 0xFFFFFF, 3, 5, 0.3F, 0.46F),
-	KENTROSAURUS("kentrosaurus", EntityInit.KENTROSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0xd99760, 0xd99760, 0x612c00, 3, 6, 0.4F, 0.66F),
-	LIAONINGOSAURUS("liaoningosaurus", EntityInit.LIAONINGOSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x712d0d, 0x712d0d, 0x7c8237, 4, 7, 0.45F, 0.68F),
-	NAUTILUS("nautilus", EntityInit.NAUTILUS, false, false, false, Size.SMALL, CreatureDiet.NONE, 0xd4ccc3, 0xd4ccc3, 0xca7548, 2, 5, 0.3F, 0.5F),
-	OPHTHALMOSAURUS("ophthalmosaurus", EntityInit.OPHTHALMOSAURUS, false, false, false, Size.MEDIUM, CreatureDiet.PISCIVORE, 0x858794, 0x858794, 0x0e131b, 4, 7, 0.4F, 0.6F),
-	OSTROMIA("ostromia", EntityInit.OSTROMIA, true, true, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x47a373, 0x47a373, 0x2c4d86, 2, 4, 0.2F, 0.3F),
-	OURANOSAURUS("ouranosaurus", EntityInit.OURANOSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x999554, 0x999554, 0x90bdb4, 7, 10, 0.5F, 0.76F),
-	PALAEONISCUM("palaeoniscum", EntityInit.PALAEONISCUM, false, false, false, Size.TINY, CreatureDiet.NONE, 0x72797a, 0x72797a, 0x2f3a3d, 2, 5, 0.3F, 0.5F),
-	PROCOMPSOGNATHUS("procompsognathus", EntityInit.PROCOMPSOGNATHUS, true, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x445a2f, 0x445a2f, 0x404727, 1, 2, 0.1F, 0.2F),
-	PROTOSUCHUS("protosuchus", EntityInit.PROTOSUCHUS, true, false, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x8e2317, 0x8e2317, 0xb0492e, 3, 5, 0.3F, 0.54F),
-	PSITTACOSAURUS("psittacosaurus", EntityInit.PSITTACOSAURUS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x4c2c21, 0x4c2c21, 0x938639, 3, 5, 0.3F, 0.54F),
-	RHINESUCHUS("rhinesuchus", EntityInit.RHINESUCHUS, false, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0x576b54, 0x576b54, 0xaf944a, 3, 5, 0.3F, 0.54F),
-	SUCHOMIMUS("suchomimus", EntityInit.SUCHOMIMUS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x57737b, 0x57737b, 0xcd9528, 5, 7, 0.5F, 0.64F),
-	TETRACERATOPS("tetraceratops", EntityInit.TETRACERATOPS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x623015, 0x623015, 0x21369b, 3, 5, 0.3F, 0.54F),
-	TYRANNOSAURUS("tyrannosaurus", EntityInit.TYRANNOSAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x889a55, 0x889a55, 0x973229, 8, 11, 0.5F, 0.8F),
-	UTAHRAPTOR("utahraptor", EntityInit.UTAHRAPTOR, true, true, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x503524, 0x503524, 0x635f5e, 5, 7, 0.5F, 0.64F),
-	ZEPHYROSAURUS("zephyrosaurus", EntityInit.ZEPHYROSAURUS, true, true, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x577476, 0x577476, 0x9ba3a3, 3, 5, 0.3F, 0.54F),;
+	ALLOSAURUS(0, "allosaurus", EntityInit.ALLOSAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x9f9f5a, 0x9f9f5a, 0xd68812, 5, 8, 0.4F, 0.8F),
+	ANOMALOCARIS(1, "anomalocaris", EntityInit.ANOMALOCARIS, false, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0xb94f33, 0xb94f33, 0x631312, 2, 4, 0.2F, 0.4F),
+	CARNOTAURUS(2, "carnotaurus", EntityInit.CARNOTAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xbd7868, 0xbd7868, 0xe6d3bc, 6, 9, 0.4F, 0.8F),
+	CHILESAURUS(3, "chilesaurus", EntityInit.CHILESAURUS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0xb08533, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
+	CRYOLOPHOSAURUS(4, "cryolophosaurus", EntityInit.CRYOLOPHOSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0xab5a14, 0xab5a14, 0x1a2c5f, 5, 7, 0.5F, 0.6F),
+	DIICTODON(5, "diictodon", EntityInit.DIICTODON, false, false, false, Size.TINY, CreatureDiet.HERBIVORE, 0xdc8a54, 0xdc8a54, 0x8b462e, 1, 2, 0.1F, 0.2F),
+	DILOPHOSAURUS(6, "dilophosaurus", EntityInit.DILOPHOSAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xc49838, 0xc49838, 0xc75539, 5, 7, 0.5F, 0.76F),
+	DIMETRODON(7, "dimetrodon", EntityInit.DIMETRODON, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x81644c, 0x81644c, 0xcba755, 5, 7, 0.5F, 0.76F),
+	EDAPHOSAURUS(8, "edaphosaurus", EntityInit.EDAPHOSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x57614e, 0x57614e, 0xdf9046, 5, 7, 0.5F, 0.76F),
+	EORAPTOR(9, "eoraptor", EntityInit.EORAPTOR, true, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x523c3e, 0x523c3e, 0x824b78, 1, 3, 0.1F, 0.35F),
+	FUKUIVENATOR(10, "fukuivenator", EntityInit.FUKUIVENATOR, true, true, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x52526f, 0x52526f, 0x5757959, 4, 5, 0.3F, 0.35F),
+	GIGANOTOSAURUS(11, "giganotosaurus", EntityInit.GIGANOTOSAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x9f6b41, 0x9f6b41, 0x943c24, 9, 12, 0.5F, 0.8F),
+	GORGONOPS(12, "gorgonops", EntityInit.GORGONOPS, true, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0x443619, 0x443619, 0x3b3e2d, 3, 5, 0.3F, 0.46F),
+	GREAT_AUK(13, "great_auk", EntityInit.GREAT_AUK, true, true, false, Size.SMALL, CreatureDiet.PISCIVORE, 0x000000, 0x000000, 0xFFFFFF, 3, 5, 0.3F, 0.46F),
+	KENTROSAURUS(14, "kentrosaurus", EntityInit.KENTROSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0xd99760, 0xd99760, 0x612c00, 3, 6, 0.4F, 0.66F),
+	LIAONINGOSAURUS(15, "liaoningosaurus", EntityInit.LIAONINGOSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x712d0d, 0x712d0d, 0x7c8237, 4, 7, 0.45F, 0.68F),
+	NAUTILUS(16, "nautilus", EntityInit.NAUTILUS, false, false, false, Size.SMALL, CreatureDiet.NONE, 0xd4ccc3, 0xd4ccc3, 0xca7548, 2, 5, 0.3F, 0.5F),
+	OPHTHALMOSAURUS(17, "ophthalmosaurus", EntityInit.OPHTHALMOSAURUS, false, false, false, Size.MEDIUM, CreatureDiet.PISCIVORE, 0x858794, 0x858794, 0x0e131b, 4, 7, 0.4F, 0.6F),
+	OSTROMIA(18, "ostromia", EntityInit.OSTROMIA, true, true, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x47a373, 0x47a373, 0x2c4d86, 2, 4, 0.2F, 0.3F),
+	OURANOSAURUS(19, "ouranosaurus", EntityInit.OURANOSAURUS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x999554, 0x999554, 0x90bdb4, 7, 10, 0.5F, 0.76F),
+	PALAEONISCUM(20, "palaeoniscum", EntityInit.PALAEONISCUM, false, false, false, Size.TINY, CreatureDiet.NONE, 0x72797a, 0x72797a, 0x2f3a3d, 2, 5, 0.3F, 0.5F),
+	PROCOMPSOGNATHUS(21, "procompsognathus", EntityInit.PROCOMPSOGNATHUS, true, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x445a2f, 0x445a2f, 0x404727, 1, 2, 0.1F, 0.2F),
+	PROTOSUCHUS(22, "protosuchus", EntityInit.PROTOSUCHUS, true, false, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x8e2317, 0x8e2317, 0xb0492e, 3, 5, 0.3F, 0.54F),
+	PSITTACOSAURUS(23, "psittacosaurus", EntityInit.PSITTACOSAURUS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x4c2c21, 0x4c2c21, 0x938639, 3, 5, 0.3F, 0.54F),
+	RHINESUCHUS(24, "rhinesuchus", EntityInit.RHINESUCHUS, false, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0x576b54, 0x576b54, 0xaf944a, 3, 5, 0.3F, 0.54F),
+	SUCHOMIMUS(25, "suchomimus", EntityInit.SUCHOMIMUS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x57737b, 0x57737b, 0xcd9528, 5, 7, 0.5F, 0.64F),
+	TETRACERATOPS(26, "tetraceratops", EntityInit.TETRACERATOPS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x623015, 0x623015, 0x21369b, 3, 5, 0.3F, 0.54F),
+	TYRANNOSAURUS(27, "tyrannosaurus", EntityInit.TYRANNOSAURUS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x889a55, 0x889a55, 0x973229, 8, 11, 0.5F, 0.8F),
+	UTAHRAPTOR(28, "utahraptor", EntityInit.UTAHRAPTOR, true, true, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x503524, 0x503524, 0x635f5e, 5, 7, 0.5F, 0.64F),
+	ZEPHYROSAURUS(29, "zephyrosaurus", EntityInit.ZEPHYROSAURUS, true, true, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x577476, 0x577476, 0x9ba3a3, 3, 5, 0.3F, 0.54F),;
 
 	public static final Codec<DinoTypes> CODEC = IStringSerializable.fromEnum(DinoTypes::values, DinoTypes::byName);
 	private static final Map<String, DinoTypes> BY_NAME = Arrays.stream(values()).collect(Collectors.toMap(DinoTypes::getId, (types) -> {
 		return types;
 	}));
+	public final DinoTypes[] dinoTypes = new DinoTypes[256];
 
 	private final String id;
 	private EntityType<? extends PrehistoricEntity> entitytype;
@@ -103,7 +104,7 @@ public enum DinoTypes implements IStringSerializable {
 	private final float rawSaturation;
 	private final float cookedSaturation;
 
-	private DinoTypes(String id, EntityType entity, boolean eggLaying, boolean feathered, boolean createHide, Size eggSize, CreatureDiet diet, int eggSetColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation) {
+	private DinoTypes(int internalId, String id, EntityType entity, boolean eggLaying, boolean feathered, boolean createHide, Size eggSize, CreatureDiet diet, int eggSetColour, int primaryColour, int secondaryColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation) {
 		this.id = id;
 		this.entitytype = entity;
 		this.eggLaying = eggLaying;
@@ -118,6 +119,16 @@ public enum DinoTypes implements IStringSerializable {
 		this.cookedNutrition = cookedNutrition;
 		this.rawSaturation = rawSaturation;
 		this.cookedSaturation = cookedSaturation;
+
+		if (this.dinoTypes[internalId] != null) {
+			throw new IllegalArgumentException("Slot " + internalId + " is already occupied by " + dinoTypes[internalId] + " when adding " + this);
+		} else {
+			this.dinoTypes[internalId] = this;
+		}
+	}
+
+	public DinoTypes getViaNumberId(int id) {
+		return this.dinoTypes[id];
 	}
 
 	public int getColour(int colour, int colour1, int colour2) {

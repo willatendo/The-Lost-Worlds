@@ -414,6 +414,20 @@ public class ModBiomeFeatures {
 		addDicksonia(builder);
 	}
 
+	public static void cretaceousRedwoods(BiomeGenerationSettings.Builder builder) {
+		addCretaceousRock(builder);
+		addCretaceousOres(builder);
+		addModCarvers(builder);
+		addSpring(builder);
+		addCretaceousUndergroundVariety(builder);
+		addAlethopteris(builder);
+		addFernGroundClutter(builder);
+
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SCANT_CONIFER_TREES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_BABY_SEQUOIA_TREES);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_SEQUOIA_TREES);
+	}
+
 	public static void cretaceousGameTrail(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
 		addCretaceousOres(builder);

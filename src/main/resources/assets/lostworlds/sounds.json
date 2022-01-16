@@ -1,4 +1,10 @@
 {
+	"disc.sound.ascented": {
+		"subtitle": "subtitle.lostworlds.ascented",
+		"sounds": [
+			"lostworlds:ascented"
+		]
+	},
 	"block.sound.machine_whirling": {
 		"subtitle": "subtitle.lostworlds.machine_whirling",
 		"sounds": [

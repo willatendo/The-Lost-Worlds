@@ -87,6 +87,9 @@ public class BiomeKeys {
 	public static final RegistryKey<Biome> CRETACEOUS_GINKGO_FOREST = register("cretaceous_ginkgo_forest");
 	public static final RegistryKey<Biome> CRETACEOUS_GINKGO_FOREST_HILLS = register("cretaceous_ginkgo_forest_hills");
 
+	public static final RegistryKey<Biome> CRETACEOUS_REDWOODS_FOREST = register("cretaceous_redwoods_forest");
+	public static final RegistryKey<Biome> CRETACEOUS_REDWOODS_FOREST_HILLS = register("cretaceous_redwoods_forest_hills");
+
 	public static final RegistryKey<Biome> CRETACEOUS_GAME_TRAIL = register("cretaceous_game_trail");
 
 	public static final RegistryKey<Biome> CRETACEOUS_MEDOW = register("cretaceous_medow");

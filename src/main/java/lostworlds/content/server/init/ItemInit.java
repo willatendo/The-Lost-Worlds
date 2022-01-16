@@ -53,6 +53,7 @@ import net.minecraft.item.Item.Properties;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTier;
+import net.minecraft.item.MusicDiscItem;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
@@ -207,6 +208,8 @@ public class ItemInit {
 
 	public static final Item FOSSIL_POACHER_SPAWN_EGG = ModRegistry.register("fossil_poacher_spawn_egg", new ModSpawnEggItem(() -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031, ItemGroup.TAB_MISC));
 
+	public static final Item MUSIC_DISC_ASCENTED = ModRegistry.register("music_disc_ascented", new MusicDiscItem(13, () -> SoundInit.ASCENTED, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1).rarity(Rarity.RARE)));
+	
 	// Fossils
 	public static final Item AMBER = ModRegistry.register("amber", new AmberItem());
 	public static final Item FOSSILIZED_FEATHER = ModRegistry.register("fossilized_feather", new ModItem());
@@ -248,8 +251,8 @@ public class ItemInit {
 			}
 
 			if (dinos == DinoTypes.PALAEONISCUM) {
-				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_body", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getExoskeleton(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "body")));
-				ModRegistry.register(dinos.name().toLowerCase() + "_body", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getExoskeleton(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "body")));
+				ModRegistry.register("plastered_" + dinos.name().toLowerCase() + "_body", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getBody(), true, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "body")));
+				ModRegistry.register(dinos.name().toLowerCase() + "_body", new FossilItem(new Properties().tab(ModUtils.ITEMS), () -> dinos.getBody(), false, ModUtils.tTC("entity", dinos.name().toLowerCase()), ModUtils.tTC("fossilPart", "body")));
 			}
 
 			if (dinos.feathered().contains(dinos)) {

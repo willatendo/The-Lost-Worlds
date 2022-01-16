@@ -137,6 +137,8 @@
 	"effect.lostworlds.ashy_lung_effect": "Ashy Lung",
 	"enchantment.lostworlds.precision": "Precision",
 	"enchantment.lostworlds.curse_of_breaking": "Curse of Breaking",
+	"item.lostworlds.music_disc_ascented": "Music Disc",
+	"item.lostworlds.music_disc_ascented.desc": "Willatendo - Ascented",
 	
 	//Only for Enchantment Descriptions mod.
 	"enchantment.lostworlds.precision.desc": "Reduces the chance of breaking a fossil.",	

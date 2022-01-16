@@ -10,6 +10,7 @@ import lostworlds.library.biome.biomes.cretaceous.desert.CretaceousRedDesert;
 import lostworlds.library.biome.biomes.cretaceous.forest.CretaceousAraucariaForest;
 import lostworlds.library.biome.biomes.cretaceous.forest.CretaceousConiferForest;
 import lostworlds.library.biome.biomes.cretaceous.forest.CretaceousGinkgoForest;
+import lostworlds.library.biome.biomes.cretaceous.forest.CretaceousRedwoodsForest;
 import lostworlds.library.biome.biomes.cretaceous.mountains.CretaceousErrodedMountains;
 import lostworlds.library.biome.biomes.cretaceous.mountains.CretaceousMountains;
 import lostworlds.library.biome.biomes.cretaceous.ocean.ColdCretaceousOcean;
@@ -143,6 +144,9 @@ public class BiomeInit {
 
 	public static final Biome CRETACEOUS_GINKGO_FOREST = ModRegistry.register("cretaceous_ginkgo_forest", new CretaceousGinkgoForest());
 	public static final Biome CRETACEOUS_GINKGO_FOREST_HILLS = ModRegistry.register("cretaceous_ginkgo_forest_hills", new CretaceousGinkgoForest(0.45F, 0.3F));
+
+	public static final Biome CRETACEOUS_REDWOODS_FOREST = ModRegistry.register("cretaceous_redwoods_forest", new CretaceousRedwoodsForest());
+	public static final Biome CRETACEOUS_REDWOODS_FOREST_HILLS = ModRegistry.register("cretaceous_redwoods_forest_hills", new CretaceousRedwoodsForest(0.45F, 0.3F));
 
 	public static final Biome CRETACEOUS_GAME_TRAIL = ModRegistry.register("cretaceous_game_trail", new CretaceousGameTrail());
 
