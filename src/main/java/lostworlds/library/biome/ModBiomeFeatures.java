@@ -449,6 +449,7 @@ public class ModBiomeFeatures {
 		addFernGroundClutter(builder);
 		addModCarvers(builder);
 
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.ARCHAEFRUTUS_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.EUDICOTS_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.MAGNOLIA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPARSE_CONIFER_TREES);

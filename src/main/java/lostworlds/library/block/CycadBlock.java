@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import tyrannotitanlib.library.base.block.TyrannoBushBlock;
 
@@ -18,7 +19,8 @@ public class CycadBlock extends TyrannoBushBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
-		return SHAPE;
+		Vector3d vector3d = state.getOffset(reader, pos);
+		return SHAPE.move(vector3d.x, vector3d.y, vector3d.z);
 	}
 
 	@Override
