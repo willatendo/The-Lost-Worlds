@@ -15,6 +15,7 @@ import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -118,6 +119,10 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 		super(entity, world);
 		this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 16.0F);
 		this.setPathfindingMalus(PathNodeType.DAMAGE_FIRE, -1.0F);
+	}
+
+	public boolean isHungry(LivingEntity entity) {
+		return this.isHungry();
 	}
 
 	public abstract int maxHunger();

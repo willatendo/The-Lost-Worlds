@@ -955,5 +955,11 @@
 	
 	//Map
 	"filled_map.surface_fossil": "Fossil Map",
-	"filled_map.subterranean_fossil": "Fossil Map"
+	"filled_map.subterranean_fossil": "Fossil Map",
+	
+	"subtitle.lostworlds.machine_whirling": "Machine Wirling",
+	"subtitle.lostworlds.pot_smash": "Pot Smashes",
+	"subtitle.lostworlds.big_walk": "Big Creature Walks",
+	"subtitle.lostworlds.medium_walk": "Medium Creature Walks",
+	"subtitle.lostworlds.small_walk": "Small Creature Walks"
 }

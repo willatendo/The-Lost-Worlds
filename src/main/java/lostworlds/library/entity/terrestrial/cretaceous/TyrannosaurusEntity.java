@@ -25,6 +25,7 @@ import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.goal.ResetAngerGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -80,19 +81,20 @@ public class TyrannosaurusEntity extends CarnivoreEntity implements IReasonableA
 		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.GIGANOTOSAURUS));
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
-		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, PlayerEntity.class, this::isHungry));
-		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, PlayerEntity.class, this::isAngryAt));
-		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, GiganotosaurusEntity.class, this::isAngryAt));
-		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, GiganotosaurusEntity.class, this::isHungry));
-		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, TyrannosaurusEntity.class, this::isAngryAt));
-		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, TyrannosaurusEntity.class, this::isHungry));
-		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, OuranosaurusEntity.class, this::isHungry));
-		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, OuranosaurusEntity.class, this::isAngryAt));
-		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, UtahraptorEntity.class, this::isHungry));
-		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, UtahraptorEntity.class, this::isAngryAt));
-		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, FukuivenatorEntity.class, this::isHungry));
-		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, PsittacosaurusEntity.class, this::isHungry));
-		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, ZephyrosaurusEntity.class, this::isHungry));
+//		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, PlayerEntity.class, this::isHungry));
+//		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, PlayerEntity.class, this::isAngryAt));
+//		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, GiganotosaurusEntity.class, this::isAngryAt));
+//		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, GiganotosaurusEntity.class, this::isHungry));
+//		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, TyrannosaurusEntity.class, this::isAngryAt));
+//		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, TyrannosaurusEntity.class, this::isHungry));
+//		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, OuranosaurusEntity.class, this::isHungry));
+//		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, OuranosaurusEntity.class, this::isAngryAt));
+//		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, UtahraptorEntity.class, this::isHungry));
+//		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, UtahraptorEntity.class, this::isAngryAt));
+//		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, FukuivenatorEntity.class, this::isHungry));
+//		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, PsittacosaurusEntity.class, this::isHungry));
+//		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, ZephyrosaurusEntity.class, this::isHungry));
+		this.goalSelector.addGoal(1, new ResetAngerGoal(this, false));
 	}
 
 	@Override
@@ -124,7 +126,7 @@ public class TyrannosaurusEntity extends CarnivoreEntity implements IReasonableA
 	@Override
 	public void readAdditionalSaveData(CompoundNBT nbt) {
 		super.readAdditionalSaveData(nbt);
-		if (level.isClientSide) {
+		if (this.level.isClientSide) {
 			this.readPersistentAngerSaveData((ServerWorld) this.level, nbt);
 		}
 	}

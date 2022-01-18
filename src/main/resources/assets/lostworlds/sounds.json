@@ -1,6 +1,5 @@
 {
 	"disc.sound.ascented": {
-		"subtitle": "subtitle.lostworlds.ascented",
 		"sounds": [
 			"lostworlds:ascented"
 		]

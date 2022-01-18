@@ -307,10 +307,10 @@ public class ServerConfigs
 		this.sequoiaForestShouldSpawn = builder.comment("Sets if the Sequoia Forest should spawn in the overworld. To change the weight, go to sequoiaForestWeight").translation(TRANSLATION_TEXT + "sequoiaForestShouldSpawn").define("sequoiaForestShouldSpawn", true);
 		this.volcanoShouldSpawn = builder.comment("Sets if the Volcano should spawn in the overworld. To change the weight, go to volcanoWeight").translation(TRANSLATION_TEXT + "volcanoShouldSpawn").define("volcanoShouldSpawn", true);
 
-		this.araucariaForestWeight = builder.comment("Sets the weight of the Araucaria Forest spawning in the overworld. To disable this, got to araucariaForestShouldSpawn").translation(TRANSLATION_TEXT + "araucariaForestWeight").defineInRange("araucariaForestWeight", 3, 1, 999);
-		this.coniferForestWeight = builder.comment("Sets the weight of the Conifer Forest spawning in the overworld. To disable this, got to coniferForestShouldSpawn").translation(TRANSLATION_TEXT + "coniferForestWeight").defineInRange("coniferForestWeight", 3, 1, 999);
-		this.ginkgoForestWeight = builder.comment("Sets the weight of the Ginkgo Forest spawning in the overworld. To disable this, got to ginkgoForestShouldSpawn").translation(TRANSLATION_TEXT + "ginkgoForestWeight").defineInRange("ginkgoForestWeight", 3, 1, 999);
-		this.sequoiaForestWeight = builder.comment("Sets the weight of the Sequoia Forest spawning in the overworld. To disable this, got to sequoiaForestShouldSpawn").translation(TRANSLATION_TEXT + "sequoiaForestWeight").defineInRange("sequoiaForestWeight", 2, 1, 999);
+		this.araucariaForestWeight = builder.comment("Sets the weight of the Araucaria Forest spawning in the overworld. To disable this, got to araucariaForestShouldSpawn").translation(TRANSLATION_TEXT + "araucariaForestWeight").defineInRange("araucariaForestWeight", 1, 1, 999);
+		this.coniferForestWeight = builder.comment("Sets the weight of the Conifer Forest spawning in the overworld. To disable this, got to coniferForestShouldSpawn").translation(TRANSLATION_TEXT + "coniferForestWeight").defineInRange("coniferForestWeight", 1, 1, 999);
+		this.ginkgoForestWeight = builder.comment("Sets the weight of the Ginkgo Forest spawning in the overworld. To disable this, got to ginkgoForestShouldSpawn").translation(TRANSLATION_TEXT + "ginkgoForestWeight").defineInRange("ginkgoForestWeight", 1, 1, 999);
+		this.sequoiaForestWeight = builder.comment("Sets the weight of the Sequoia Forest spawning in the overworld. To disable this, got to sequoiaForestShouldSpawn").translation(TRANSLATION_TEXT + "sequoiaForestWeight").defineInRange("sequoiaForestWeight", 1, 1, 999);
 		this.volcanoWeight = builder.comment("Sets the weight of the Volcano spawning in the overworld. To disable this, got to volcanoShouldSpawn").translation(TRANSLATION_TEXT + "volcanoWeight").defineInRange("volcanoWeight", 1, 1, 999);
 
 		//Dinosaurs		

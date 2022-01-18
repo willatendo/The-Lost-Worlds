@@ -1,121 +1,112 @@
 {
 	"variants": {
-		"era=modern_minecraft,damage=none,potential_part=none": {
+		"damage=none,potential_part=none": {
 			"model": "minecraft:block/stone"
 		},
-		"era=modern_minecraft,damage=chipped,potential_part=none": {
+		"damage=chipped,potential_part=none": {
 			"model": "lostworlds:block/stone_chipped"
 		},
-		"era=modern_minecraft,damage=slightly,potential_part=none": {
+		"damage=slightly,potential_part=none": {
 			"model": "lostworlds:block/stone_slightly"
 		},
-		"era=modern_minecraft,damage=cracked,potential_part=none": {
+		"damage=cracked,potential_part=none": {
 			"model": "lostworlds:block/stone_cracked"
 		},
-		"era=modern_minecraft,damage=damaged,potential_part=none": {
+		"damage=damaged,potential_part=none": {
 			"model": "lostworlds:block/stone_damaged"
 		},
-		"era=modern_minecraft,damage=completely,potential_part=none": {
+		"damage=completely,potential_part=none": {
 			"model": "lostworlds:block/stone_completely"
 		},
-		"era=modern_minecraft,damage=none,potential_part=skull": {
+		"damage=none,potential_part=skull": {
 			"model": "lostworlds:block/stone_fossil"
 		},
-		"era=modern_minecraft,damage=chipped,potential_part=skull": {
+		"damage=chipped,potential_part=skull": {
 			"model": "lostworlds:block/stone_fossil_chipped"
 		},
-		"era=modern_minecraft,damage=slightly,potential_part=skull": {
+		"damage=slightly,potential_part=skull": {
 			"model": "lostworlds:block/stone_fossil_slightly"
 		},
-		"era=modern_minecraft,damage=cracked,potential_part=skull": {
+		"damage=cracked,potential_part=skull": {
 			"model": "lostworlds:block/stone_fossil_cracked"
 		},
-		"era=modern_minecraft,damage=damaged,potential_part=skull": {
+		"damage=damaged,potential_part=skull": {
 			"model": "lostworlds:block/stone_fossil_damaged"
 		},
-		"era=modern_minecraft,damage=completely,potential_part=skull": {
+		"damage=completely,potential_part=skull": {
 			"model": "lostworlds:block/stone_fossil_completely"
 		},
-		"era=modern_minecraft,damage=none,potential_part=arm": {
+		"damage=none,potential_part=arm": {
 			"model": "lostworlds:block/stone_fossil"
 		},
-		"era=modern_minecraft,damage=chipped,potential_part=arm": {
+		"damage=chipped,potential_part=arm": {
 			"model": "lostworlds:block/stone_fossil_chipped"
 		},
-		"era=modern_minecraft,damage=slightly,potential_part=arm": {
+		"damage=slightly,potential_part=arm": {
 			"model": "lostworlds:block/stone_fossil_slightly"
 		},
-		"era=modern_minecraft,damage=cracked,potential_part=arm": {
+		"damage=cracked,potential_part=arm": {
 			"model": "lostworlds:block/stone_fossil_cracked"
 		},
-		"era=modern_minecraft,damage=damaged,potential_part=arm": {
+		"damage=damaged,potential_part=arm": {
 			"model": "lostworlds:block/stone_fossil_damaged"
 		},
-		"era=modern_minecraft,damage=completely,potential_part=arm": {
+		"damage=completely,potential_part=arm": {
 			"model": "lostworlds:block/stone_fossil_completely"
 		},
-		"era=modern_minecraft,damage=none,potential_part=leg": {
+		"damage=none,potential_part=leg": {
 			"model": "lostworlds:block/stone_fossil"
 		},
-		"era=modern_minecraft,damage=chipped,potential_part=leg": {
+		"damage=chipped,potential_part=leg": {
 			"model": "lostworlds:block/stone_fossil_chipped"
 		},
-		"era=modern_minecraft,damage=slightly,potential_part=leg": {
+		"damage=slightly,potential_part=leg": {
 			"model": "lostworlds:block/stone_fossil_slightly"
 		},
-		"era=modern_minecraft,damage=cracked,potential_part=leg": {
+		"damage=cracked,potential_part=leg": {
 			"model": "lostworlds:block/stone_fossil_cracked"
 		},
-		"era=modern_minecraft,damage=damaged,potential_part=leg": {
+		"damage=damaged,potential_part=leg": {
 			"model": "lostworlds:block/stone_fossil_damaged"
 		},
-		"era=modern_minecraft,damage=completely,potential_part=leg": {
+		"damage=completely,potential_part=leg": {
 			"model": "lostworlds:block/stone_fossil_completely"
 		},
-		"era=modern_minecraft,damage=none,potential_part=rib_cage": {
+		"damage=none,potential_part=rib_cage": {
 			"model": "lostworlds:block/stone_fossil"
 		},
-		"era=modern_minecraft,damage=chipped,potential_part=rib_cage": {
+		"damage=chipped,potential_part=rib_cage": {
 			"model": "lostworlds:block/stone_fossil_chipped"
 		},
-		"era=modern_minecraft,damage=slightly,potential_part=rib_cage": {
+		"damage=slightly,potential_part=rib_cage": {
 			"model": "lostworlds:block/stone_fossil_slightly"
 		},
-		"era=modern_minecraft,damage=cracked,potential_part=rib_cage": {
+		"damage=cracked,potential_part=rib_cage": {
 			"model": "lostworlds:block/stone_fossil_cracked"
 		},
-		"era=modern_minecraft,damage=damaged,potential_part=rib_cage": {
+		"damage=damaged,potential_part=rib_cage": {
 			"model": "lostworlds:block/stone_fossil_damaged"
 		},
-		"era=modern_minecraft,damage=completely,potential_part=rib_cage": {
+		"damage=completely,potential_part=rib_cage": {
 			"model": "lostworlds:block/stone_fossil_completely"
 		},
-		"era=modern_minecraft,damage=none,potential_part=tail": {
+		"damage=none,potential_part=tail": {
 			"model": "lostworlds:block/stone_fossil"
 		},
-		"era=modern_minecraft,damage=chipped,potential_part=tail": {
+		"damage=chipped,potential_part=tail": {
 			"model": "lostworlds:block/stone_fossil_chipped"
 		},
-		"era=modern_minecraft,damage=slightly,potential_part=tail": {
+		"damage=slightly,potential_part=tail": {
 			"model": "lostworlds:block/stone_fossil_slightly"
 		},
-		"era=modern_minecraft,damage=cracked,potential_part=tail": {
+		"damage=cracked,potential_part=tail": {
 			"model": "lostworlds:block/stone_fossil_cracked"
 		},
-		"era=modern_minecraft,damage=damaged,potential_part=tail": {
+		"damage=damaged,potential_part=tail": {
 			"model": "lostworlds:block/stone_fossil_damaged"
 		},
-		"era=modern_minecraft,damage=completely,potential_part=tail": {
+		"damage=completely,potential_part=tail": {
 			"model": "lostworlds:block/stone_fossil_completely"
-		},
-		"era=triassic_period,damage=none": {
-			"model": "minecraft:block/red_sandstone"
-		},
-		"era=jurassic_period,damage=none": {
-			"model": "minecraft:block/diorite"
-		},
-		"era=permian_period,damage=none": {
-			"model": "minecraft:block/sandstone"
 		}
 	}
 }

@@ -1,6 +1,8 @@
 package lostworlds.library.entity.terrestrial;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.pathfinding.ClimberPathNavigator;
+import net.minecraft.pathfinding.PathNavigator;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
@@ -12,6 +14,11 @@ public abstract class GlidingCarnivoreEntity extends CarnivoreEntity {
 
 	public GlidingCarnivoreEntity(EntityType<? extends CarnivoreEntity> entity, World world) {
 		super(entity, world);
+	}
+	
+	@Override
+	protected PathNavigator createNavigation(World world) {
+		return new ClimberPathNavigator(this, world);
 	}
 
 	@Override

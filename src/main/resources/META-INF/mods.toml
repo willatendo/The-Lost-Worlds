@@ -42,6 +42,6 @@ Modlers:
 [[dependencies.lostworlds]]
     modId="tyrannotitanlib"
     mandatory=true
-    versionRange="[1.4.0,)"
+    versionRange="[1.4.1,)"
     ordering="NONE"
     side="BOTH"

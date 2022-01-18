@@ -73,11 +73,11 @@ repositories {
 
 dependencies {
 	//Minecraft
-    minecraft 'net.minecraftforge:forge:1.16.5-36.2.20'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.2.23'
 	
 	//Easy Client-Side Mods
-	compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.6.1.75:api")
-	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.6.1.75")
+	compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.145:api")
+	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.145")
 	
 	compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:1.16-3.0.6-8")
 	
