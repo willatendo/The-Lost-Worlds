@@ -18,7 +18,8 @@ public class PermianShore extends TyrannoBiome {
 	static {
 		GENERATION.surfaceBuilder(ModSurfaceBuilders.PERMIAN_DESERT_BUILDER);
 
-		ModBiomeFeatures.jurassicShore(GENERATION);
+		ModBiomeFeatures.permianShore(GENERATION);
+		ModBiomeFeatures.permianShoreSpawns(MOB_SPAWNS);
 	}
 
 	public PermianShore() {

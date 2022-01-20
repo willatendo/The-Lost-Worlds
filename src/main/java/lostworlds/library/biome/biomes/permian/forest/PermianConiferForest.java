@@ -18,6 +18,7 @@ public class PermianConiferForest extends TyrannoBiome {
 
 	static {
 		ModBiomeFeatures.permianConiferForest(GENERATION);
+		ModBiomeFeatures.permianConiferForestSpawns(MOB_SPAWNS);
 	}
 
 	public PermianConiferForest(float depth, float scale) {

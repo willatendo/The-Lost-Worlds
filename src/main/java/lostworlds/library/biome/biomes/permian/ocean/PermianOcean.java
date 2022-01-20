@@ -18,6 +18,7 @@ public class PermianOcean extends TyrannoBiome {
 
 	static {
 		ModBiomeFeatures.permianOcean(GENERATION);
+		ModBiomeFeatures.permianOceanSpawns(MOB_SPAWNS);
 	}
 
 	public PermianOcean(float depth, float scale) {

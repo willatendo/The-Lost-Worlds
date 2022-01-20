@@ -19,6 +19,7 @@ public class PermianDesert extends TyrannoBiome {
 		GENERATION.surfaceBuilder(ModSurfaceBuilders.PERMIAN_DESERT_BUILDER);
 
 		ModBiomeFeatures.permianDesert(GENERATION);
+		ModBiomeFeatures.permianDesertSpawns(MOB_SPAWNS);
 	}
 
 	public PermianDesert(float depth, float scale) {

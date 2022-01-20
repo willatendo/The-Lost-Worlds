@@ -18,6 +18,7 @@ public class PermianGinkgoForest extends TyrannoBiome {
 
 	static {
 		ModBiomeFeatures.permianGinkgoForest(GENERATION);
+		ModBiomeFeatures.permianGinkgoForestSpawns(MOB_SPAWNS);
 	}
 
 	public PermianGinkgoForest(float depth, float scale) {

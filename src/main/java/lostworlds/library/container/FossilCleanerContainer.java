@@ -8,7 +8,6 @@ import lostworlds.library.block.FossilCleanerBlock;
 import lostworlds.library.block.entity.FossilCleanerTileEntity;
 import lostworlds.library.container.recipes.FossilCleanerRecipe;
 import lostworlds.library.container.slot.FossilCleanerFuelSlot;
-import lostworlds.library.container.slot.PlasteredFossilSlot;
 import lostworlds.library.container.slot.ResultSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -43,7 +42,7 @@ public class FossilCleanerContainer extends Container {
 		this.level = playerInv.player.level;
 		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 
-		this.addSlot(new PlasteredFossilSlot(tile, 0, 56, 17));
+		this.addSlot(new Slot(tile, 0, 56, 17));
 		this.addSlot(new FossilCleanerFuelSlot(tile, 1, 56, 53));
 		this.addSlot(new ResultSlot(playerInv.player, tile, 2, 116, 35));
 

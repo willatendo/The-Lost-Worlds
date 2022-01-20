@@ -18,6 +18,7 @@ public class PermianMountain extends TyrannoBiome {
 
 	static {
 		ModBiomeFeatures.permianMountains(GENERATION);
+		ModBiomeFeatures.permianMountainsSpawns(MOB_SPAWNS);
 	}
 
 	public PermianMountain() {

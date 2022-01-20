@@ -21,6 +21,7 @@ public class PermianFloodBasalts extends TyrannoBiome {
 		GENERATION.surfaceBuilder(ConfiguredSurfaceBuilders.BASALT_DELTAS);
 
 		ModBiomeFeatures.permianFloodBasalts(GENERATION);
+		ModBiomeFeatures.permianFloodBasaltsSpawns(MOB_SPAWNS);
 	}
 
 	public PermianFloodBasalts() {

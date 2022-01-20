@@ -19,6 +19,7 @@ public class PermianAshyMedow extends TyrannoBiome {
 		GENERATION.surfaceBuilder(ModSurfaceBuilders.PERMIAN_ASHY_MEDOWS_BUILDER);
 
 		ModBiomeFeatures.permianAshyMedows(GENERATION);
+		ModBiomeFeatures.permianAshyMedowsSpawns(MOB_SPAWNS);
 	}
 
 	public PermianAshyMedow() {

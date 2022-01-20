@@ -18,6 +18,7 @@ public class PermianMarsh extends TyrannoBiome {
 
 	static {
 		ModBiomeFeatures.permianMarsh(GENERATION);
+		ModBiomeFeatures.permianMarshSpawns(MOB_SPAWNS);
 	}
 
 	public PermianMarsh() {

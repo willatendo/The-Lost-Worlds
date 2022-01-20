@@ -18,6 +18,7 @@ public class PermianDriedPlains extends TyrannoBiome {
 
 	static {
 		ModBiomeFeatures.permianDriedPlains(GENERATION);
+		ModBiomeFeatures.permianDriedPlainsSpawns(MOB_SPAWNS);
 	}
 
 	public PermianDriedPlains(float depth, float scale) {

@@ -19,6 +19,7 @@ public class CretaceousArctic extends TyrannoBiome {
 		GENERATION.surfaceBuilder(ModSurfaceBuilders.CRETACEOUS_SNOW_BUILDER);
 
 		ModBiomeFeatures.cretaceousArctic(GENERATION);
+		ModBiomeFeatures.permianAshyMedowsSpawns(MOB_SPAWNS);
 	}
 
 	public CretaceousArctic(float depth, float scale) {

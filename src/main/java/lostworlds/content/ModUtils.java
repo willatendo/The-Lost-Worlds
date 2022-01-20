@@ -24,6 +24,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.raid.Raid;
+import net.minecraftforge.fml.ModList;
 
 //Random Constantly Called Things
 public class ModUtils {
@@ -32,6 +33,10 @@ public class ModUtils {
 	public static final String ID = "lostworlds";
 	public static final String NAME = "Lost Worlds";
 
+	public static boolean modLoaded(String id) {
+		return ModList.get().isLoaded(id);
+	}
+	
 	public static ResourceLocation rL(String location) {
 		return new ResourceLocation(ID, location);
 	}

@@ -19,6 +19,7 @@ public class WarmPermianOcean extends TyrannoBiome {
 		GENERATION.surfaceBuilder(ModSurfaceBuilders.PERMIAN_WARM_OCEAN_BUILDER);
 
 		ModBiomeFeatures.permianCoralReef(GENERATION);
+		ModBiomeFeatures.permianCoralReefSpawns(MOB_SPAWNS);
 	}
 
 	public WarmPermianOcean(float depth, float scale) {

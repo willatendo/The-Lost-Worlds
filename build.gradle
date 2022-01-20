@@ -69,6 +69,10 @@ repositories {
 	maven { url "https://maven.tterrag.com/" }
 	//Tyrannotitan Lib
 	maven { url "https://www.cursemaven.com" }
+	//Craft Tweaker
+	maven { url "https://maven.blamejared.com" }
+	//Dynamic Trees
+	maven { url "https://harleyoconnor.com/maven" }
 }	
 
 dependencies {
@@ -79,7 +83,12 @@ dependencies {
 	compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.145:api")
 	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.145")
 	
+	compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.473")
+	
 	compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:1.16-3.0.6-8")
+	
+	implementation fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-1.16.5:0.10.0-Beta30")
+    runtimeOnly fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-1.16.5:0.1.0-Beta12")
 	
 	//Library
 	implementation fg.deobf("curse.maven:tyrannotitan-library-forge-425570:3540881")

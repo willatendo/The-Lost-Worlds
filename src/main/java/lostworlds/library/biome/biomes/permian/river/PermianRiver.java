@@ -19,6 +19,7 @@ public class PermianRiver extends TyrannoBiome {
 		GENERATION.surfaceBuilder(ModSurfaceBuilders.PERMIAN_DESERT_BUILDER);
 
 		ModBiomeFeatures.permianRiver(GENERATION);
+		ModBiomeFeatures.permianRiverSpawns(MOB_SPAWNS);
 	}
 
 	public PermianRiver() {
