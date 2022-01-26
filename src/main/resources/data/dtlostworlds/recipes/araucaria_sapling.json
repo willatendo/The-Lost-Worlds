@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "dtlostworlds:araucaria_seed"
+		},
+		{
+			"item": "dynamictrees:dirt_bucket"
+		}
+	],
+	"result": {
+		"item": "lostworlds:araucaria_sapling"
+	}
+}

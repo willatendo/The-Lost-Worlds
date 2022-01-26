@@ -1,0 +1,8 @@
+{
+	"common_leaves": "dtlostworlds:araucaria",
+	"common_species": "dtlostworlds:araucaria",
+	"primitive_log": "lostworlds:araucaria_log",
+	"primitive_stripped_log": "lostworlds:stripped_araucaria_log",
+	"max_branch_radius": 24,
+	"conifer_variants": true
+}

@@ -1,0 +1,7 @@
+{
+	"loader": "dynamictrees:branch",
+	"textures": {
+		"bark": "lostworlds:block/stripped_araucaria_log",
+		"rings": "lostworlds:block/stripped_araucaria_log_top"
+	}
+}

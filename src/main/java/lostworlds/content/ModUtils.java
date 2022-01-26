@@ -31,6 +31,7 @@ public class ModUtils {
 	public static final Logger LOGGER = LogManager.getLogger(ModUtils.ID);
 
 	public static final String ID = "lostworlds";
+	public static final String DT_ID = "dtlostworlds";
 	public static final String NAME = "Lost Worlds";
 
 	public static boolean modLoaded(String id) {

@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:item/branch",
+	"textures": {
+		"bark": "lostworlds:block/stripped_calamites_log",
+		"rings": "lostworlds:block/stripped_calamites_log_top"
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"loader": "dynamictrees:branch",
+	"textures": {
+		"bark": "lostworlds:block/calamites_log",
+		"rings": "lostworlds:block/calamites_log_top"
+	}
+}

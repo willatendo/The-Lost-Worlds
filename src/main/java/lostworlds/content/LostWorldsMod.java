@@ -3,6 +3,7 @@ package lostworlds.content;
 import java.util.Arrays;
 import java.util.List;
 
+import com.ferreusveritas.dynamictrees.DynamicTrees;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
@@ -31,6 +32,7 @@ import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.content.server.init.VillagerProfessionInit;
 import lostworlds.content.server.init.WorldCarverInit;
 import lostworlds.content.server.init.WorldTypeInit;
+import lostworlds.content.trees.LostWorldsDynamicTreesRegistry;
 import lostworlds.library.biome.BiomeKeys;
 import lostworlds.library.biome.ModConfiguredCarvers;
 import lostworlds.library.biome.ModConfiguredFeatures;
@@ -85,6 +87,10 @@ public class LostWorldsMod extends ModUtils {
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, LostWorldsConfig.clientSpec);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, LostWorldsConfig.serverSpec);
+
+		if (modLoaded(DynamicTrees.MOD_ID)) {
+			LostWorldsDynamicTreesRegistry.init();
+		}
 	}
 
 	private void modBus() {

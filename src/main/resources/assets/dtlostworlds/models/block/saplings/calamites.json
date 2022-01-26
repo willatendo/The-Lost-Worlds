@@ -1,0 +1,8 @@
+{
+	"parent": "dynamictrees:block/smartmodel/sapling",
+	"textures": {
+		"particle": "lostworlds:block/calamites_leaves",
+		"log": "lostworlds:block/calamites_log",
+		"leaves": "lostworlds:block/calamites_leaves"
+	}
+}

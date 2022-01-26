@@ -1,0 +1,8 @@
+{
+	"common_leaves": "dtlostworlds:calamites",
+	"common_species": "dtlostworlds:calamites",
+	"primitive_log": "lostworlds:calamites_log",
+	"primitive_stripped_log": "lostworlds:stripped_calamites_log",
+	"max_branch_radius": 10,
+	"conifer_variants": true
+}
