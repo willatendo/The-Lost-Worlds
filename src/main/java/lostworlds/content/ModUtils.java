@@ -34,13 +34,13 @@ public class ModUtils {
 	public static final String ID = "lostworlds";
 	public static final String DT_ID = "dtlostworlds";
 	public static final String NAME = "Lost Worlds";
-	public static final String VERSION = "11";
+	public static final String VERSION = "a11_dev";
 	public static final Version VERSION_PARSER = Version.getVersion(VERSION);
 
 	public static boolean modLoaded(String id) {
 		return ModList.get().isLoaded(id);
 	}
-	
+
 	public static ResourceLocation rL(String location) {
 		return new ResourceLocation(ID, location);
 	}
@@ -49,8 +49,18 @@ public class ModUtils {
 		return new TranslationTextComponent(type + "." + ID + "." + key);
 	}
 
+	public static TranslationTextComponent tTCA(String type, String key, String args) {
+		return new TranslationTextComponent(type + "." + ID + "." + key, args);
+	}
+
 	public static TranslationTextComponent cTC(String type, String key, TextFormatting... format) {
 		TranslationTextComponent text = tTC(type, key);
+		text.withStyle(format);
+		return text;
+	}
+
+	public static TranslationTextComponent cTCA(String type, String key, String args, TextFormatting... format) {
+		TranslationTextComponent text = tTCA(type, key, args);
 		text.withStyle(format);
 		return text;
 	}
@@ -60,7 +70,7 @@ public class ModUtils {
 		text.withStyle(TextFormatting.GRAY);
 		return text;
 	}
-	
+
 	public static final ServerConfigs SERVER_CONFIG = LostWorldsConfig.SERVER_CONFIG;
 	public static final ClientConfigs CLIENT_CONFIG = LostWorldsConfig.CLIENT_CONFIG;
 

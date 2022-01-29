@@ -419,7 +419,7 @@ public class ServerConfigs
 		this.nautilusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Nautilus in a spawn group").translation(TRANSLATION_TEXT + "nautilusSpawnGroupMaximum").defineInRange("nautilusSpawnGroupMaximum", 1, 1, 100);
 
 		this.ophthalmosaurusHeath = builder.comment("Sets the heath of the Ophthalmosaurus").translation(TRANSLATION_TEXT + "ophthalmosaurusHeath").defineInRange("ophthalmosaurusHeath", 25.0D, 1.0D, 999.0D);
-		this.ophthalmosaurusSpeed = builder.comment("Sets the speed of the Ophthalmosaurus").translation(TRANSLATION_TEXT + "ophthalmosaurusSpeed").defineInRange("ophthalmosaurusSpeed", 1.6D, 1.0D, 999.0D);
+		this.ophthalmosaurusSpeed = builder.comment("Sets the speedModifer of the Ophthalmosaurus").translation(TRANSLATION_TEXT + "ophthalmosaurusSpeed").defineInRange("ophthalmosaurusSpeed", 1.6D, 1.0D, 999.0D);
 		this.ophthalmosaurusAttackDamage = builder.comment("Sets the attack damage of the Ophthalmosaurus").translation(TRANSLATION_TEXT + "ophthalmosaurusAttackDamage").defineInRange("ophthalmosaurusAttackDamage", 5.0D, 1.0D, 999.0D);
 		this.ophthalmosaurusSpawnWeight = builder.comment("Sets the weight of Ophthalmosaurus spawning").translation(TRANSLATION_TEXT + "ophthalmosaurusSpawnWeight").defineInRange("ophthalmosaurusSpawnWeight", 1, 1, 100);
 		this.ophthalmosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Ophthalmosaurus in a spawn group").translation(TRANSLATION_TEXT + "ophthalmosaurusSpawnGroupMinimum").defineInRange("ophthalmosaurusSpawnGroupMinimum", 2, 1, 100);

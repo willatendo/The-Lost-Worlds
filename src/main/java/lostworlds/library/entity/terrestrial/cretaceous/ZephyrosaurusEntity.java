@@ -3,6 +3,7 @@ package lostworlds.library.entity.terrestrial.cretaceous;
 import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.init.EntityInit;
 import lostworlds.library.entity.goal.NaturalBreedingGoal;
+import lostworlds.library.entity.goal.terrestrial.PanicGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepyAvoidEntityGoal;
 import lostworlds.library.entity.goal.terrestrial.SleepyBreedGoal;
@@ -19,6 +20,7 @@ import lostworlds.library.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.library.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.library.entity.terrestrial.EggLayingEntity;
 import lostworlds.library.entity.utils.FoodLists;
+import lostworlds.library.entity.utils.IHerdPanic;
 import lostworlds.library.entity.utils.enums.ActivityType;
 import lostworlds.library.entity.utils.enums.CreatureDiet;
 import lostworlds.library.entity.utils.enums.DinoTypes;
@@ -38,7 +40,7 @@ import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationContro
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class ZephyrosaurusEntity extends EggLayingEntity {
+public class ZephyrosaurusEntity extends EggLayingEntity implements IHerdPanic {
 	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
 
@@ -75,6 +77,7 @@ public class ZephyrosaurusEntity extends EggLayingEntity {
 		this.goalSelector.addGoal(4, new TerrestrialEatGrassGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialEatPodzolGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialEatMossySoilGoal(this));
+		this.goalSelector.addGoal(5, new PanicGoal(this, 1.0F));
 		this.goalSelector.addGoal(5, new SleepGoal(this));
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, UtahraptorEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
@@ -107,5 +110,14 @@ public class ZephyrosaurusEntity extends EggLayingEntity {
 	@Override
 	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
 		return EntityInit.ZEPHYROSAURUS.create(world);
+	}
+
+	@Override
+	public void onPanic() {		
+	}
+
+	@Override
+	public boolean canPanic() {
+		return true;
 	}
 }

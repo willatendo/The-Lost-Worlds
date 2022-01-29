@@ -332,7 +332,7 @@ public class LostWorldsMod {
 	@OnlyIn(Dist.CLIENT)
 	private void onClientPlayerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event) {
 		PlayerEntity player = event.getPlayer();
-		player.sendMessage(Version.getMessage(ModUtils.VERSION_PARSER), player.getUUID());
+		player.sendMessage(Version.getMessage(ModUtils.VERSION_PARSER, Version.toStringVersion(ModUtils.VERSION)), player.getUUID());
 	}
 
 	private void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {

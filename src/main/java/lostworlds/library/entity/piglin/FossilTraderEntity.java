@@ -5,7 +5,7 @@ public class FossilTraderEntity // extends AbstractPiglinEntity
 //	private static final DataParameter<Boolean> DATA_BABY_ID = EntityDataManager.defineId(FossilTraderEntity.class, DataSerializers.BOOLEAN);
 //	private static final DataParameter<Boolean> DATA_IS_DANCING = EntityDataManager.defineId(FossilTraderEntity.class, DataSerializers.BOOLEAN);
 //	private static final UUID SPEED_MODIFIER_BABY_UUID = UUID.fromString("766bfa64-11f3-11ea-8d71-362b9e155667");
-//	private static final AttributeModifier SPEED_MODIFIER_BABY = new AttributeModifier(SPEED_MODIFIER_BABY_UUID, "Baby speed boost", (double)0.2F, AttributeModifier.Operation.MULTIPLY_BASE);
+//	private static final AttributeModifier SPEED_MODIFIER_BABY = new AttributeModifier(SPEED_MODIFIER_BABY_UUID, "Baby speedModifer boost", (double)0.2F, AttributeModifier.Operation.MULTIPLY_BASE);
 //	private final Inventory inventory = new Inventory(16);
 //	private boolean cannotHunt = false;
 //	protected static final ImmutableList<SensorType<? extends Sensor<? super FossilTraderEntity>>> SENSOR_TYPES = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.NEAREST_ITEMS, SensorType.HURT_BY, SensorType.PIGLIN_SPECIFIC_SENSOR);

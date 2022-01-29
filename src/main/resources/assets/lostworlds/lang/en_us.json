@@ -838,6 +838,9 @@
 	//Villagers
 	"entity.minecraft.villager.lostworlds.archaeologist": "Archaeologist",
 	"entity.minecraft.villager.lostworlds.paleontologist": "Paleontologist",
+
+	//Utils
+	"entity.lostworlds.mod_boat": "Boat",
 	
 	// BIOMES
 	
@@ -945,9 +948,10 @@
 	"keybinding.lostworlds.wander": "Wander",
 	
 	//Load
-	"event.lostworlds.load_dev_build": "You are running Alpha 11: Dev Edition. Do not redistribute.",
-	"event.lostworlds.load_snapshot_build": "You are running an Alpha 11 snapshot. Do not redistribute and report any and all bugs.",
-	"event.lostworlds.load": "Thank you for downloading the mod! You are running Public Alpha 11.",
+	"event.lostworlds.load_dev_build": "You are running %s: Dev Edition. Do not redistribute.",
+	"event.lostworlds.load_snapshot_build": "You are running an %s snapshot. Do not redistribute and report any and all bugs.",
+	"event.lostworlds.load_youtube_build": "Thank you for playing with the mod! I greatly appreciate the distrabution of the mod. You are running Youtube Version %s.",
+	"event.lostworlds.load": "Thank you for downloading the mod! You are running Public %s.",
 	
 	//Time Book
 	"timeBook.lostworlds.doesnt_work": "Time doesn't exist in this dimension!",
