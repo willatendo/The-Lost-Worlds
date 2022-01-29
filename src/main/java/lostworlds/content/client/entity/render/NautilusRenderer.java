@@ -21,7 +21,7 @@ public class NautilusRenderer extends TyrannomationEntityRenderer<NautilusEntity
 	}
 
 	@Override
-	public RenderType getRenderType(NautilusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
+	public RenderType getRenderType(NautilusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLight, ResourceLocation textureLocation) {
 		return RenderType.entityTranslucent(getTextureLocation(animatable));
 	}
 }

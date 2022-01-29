@@ -21,17 +21,22 @@ public class AllosaurusRenderer extends TyrannomationEntityRenderer<AllosaurusEn
 	}
 
 	@Override
-	public RenderType getRenderType(AllosaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
+	public RenderType getRenderType(AllosaurusEntity animatable, float partialTicks, MatrixStack stack, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLight, ResourceLocation textureLocation) {
 		return RenderType.entityTranslucent(getTextureLocation(animatable));
 	}
 
 	@Override
-	public void render(AllosaurusEntity entity, float entityYaw, float partialTicks, MatrixStack stack, IRenderTypeBuffer bufferIn, int packedLightIn) {
+	public void render(AllosaurusEntity entity, float entityYaw, float partialTicks, MatrixStack stack, IRenderTypeBuffer buffer, int packedLight) {
+		stack.pushPose();
+
+		// Todo: Fix Adult Model So We Don't Scale it up
 		if (entity.isBaby()) {
 			stack.scale(0.15F, 0.15F, 0.15F);
 		}
 		stack.scale(1.3F, 1.3F, 1.3F);
 
-		super.render(entity, entityYaw, partialTicks, stack, bufferIn, packedLightIn);
+		stack.popPose();
+
+		super.render(entity, entityYaw, partialTicks, stack, buffer, packedLight);
 	}
 }

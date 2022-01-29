@@ -55,8 +55,8 @@ public class ModBoatRenderer extends EntityRenderer<ModBoatEntity> {
 		this.modelBoat.renderToBuffer(stack, ivertexbuilder, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 		IVertexBuilder ivertexbuilder1 = buffer.getBuffer(RenderType.waterMask());
 		this.modelBoat.waterPatch().render(stack, ivertexbuilder1, packedLight, OverlayTexture.NO_OVERLAY);
-		stack.popPose();
 		super.render(entity, entityYaw, partialTicks, stack, buffer, packedLight);
+		stack.popPose();
 	}
 
 	@Override
