@@ -945,8 +945,9 @@
 	"keybinding.lostworlds.wander": "Wander",
 	
 	//Load
-	"event.lostworlds.dev_load": "You are running Alpha 11: Dev Edition. Do not redistribute.",
-	"event.lostworlds.player_load": "Thank you for downloading the mod! You are running Public Alpha 11.",
+	"event.lostworlds.load_dev_build": "You are running Alpha 11: Dev Edition. Do not redistribute.",
+	"event.lostworlds.load_snapshot_build": "You are running an Alpha 11 snapshot. Do not redistribute and report any and all bugs.",
+	"event.lostworlds.load": "Thank you for downloading the mod! You are running Public Alpha 11.",
 	
 	//Time Book
 	"timeBook.lostworlds.doesnt_work": "Time doesn't exist in this dimension!",

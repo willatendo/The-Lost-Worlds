@@ -1,8 +1,0 @@
-{
-	"common_leaves": "dtlostworlds:conifer",
-	"common_species": "dtlostworlds:conifer",
-	"primitive_log": "lostworlds:conifer_log",
-	"primitive_stripped_log": "lostworlds:stripped_conifer_log",
-	"max_branch_radius": 24,
-	"conifer_variants": true
-}

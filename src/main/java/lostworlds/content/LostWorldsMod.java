@@ -3,7 +3,6 @@ package lostworlds.content;
 import java.util.Arrays;
 import java.util.List;
 
-import com.ferreusveritas.dynamictrees.DynamicTrees;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
@@ -32,11 +31,11 @@ import lostworlds.content.server.init.TileEntityInit;
 import lostworlds.content.server.init.VillagerProfessionInit;
 import lostworlds.content.server.init.WorldCarverInit;
 import lostworlds.content.server.init.WorldTypeInit;
-import lostworlds.content.trees.LostWorldsDynamicTreesRegistry;
 import lostworlds.library.biome.BiomeKeys;
 import lostworlds.library.biome.ModConfiguredCarvers;
 import lostworlds.library.biome.ModConfiguredFeatures;
 import lostworlds.library.biome.ModConfiguredStructures;
+import lostworlds.library.util.Version;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -50,7 +49,6 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.potion.Potions;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.gen.GenerationStage;
@@ -77,20 +75,17 @@ import net.minecraftforge.items.ItemHandlerHelper;
 import tyrannotitanlib.library.base.biome.generation.TyrannoWorld;
 
 //Main Class
-@Mod(LostWorldsMod.ID)
-public class LostWorldsMod extends ModUtils {
+@Mod(ModUtils.ID)
+public class LostWorldsMod {
 	public LostWorldsMod() {
 		this.modBus();
 		this.forgeBus();
+		this.clientForgeBus();
 
 		lostWorldRegistry();
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, LostWorldsConfig.clientSpec);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, LostWorldsConfig.serverSpec);
-
-		if (modLoaded(DynamicTrees.MOD_ID)) {
-			LostWorldsDynamicTreesRegistry.init();
-		}
 	}
 
 	private void modBus() {
@@ -159,8 +154,8 @@ public class LostWorldsMod extends ModUtils {
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(BlockInit.VOLCANIC_ASH.asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), PotionInit.ASHY_LUNG_POTION));
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), ItemInit.CONTRACEPTIVES.getDefaultInstance());
 
-		ITEMS.setIcon(ItemInit.LOST_WORLDS_LEXICON.getDefaultInstance());
-		BLOCKS.setIcon(BlockInit.PLASTERED_FOSSILIZED_TRACK.asItem().getDefaultInstance());
+		ModUtils.ITEMS.setIcon(ItemInit.LOST_WORLDS_LEXICON.getDefaultInstance());
+		ModUtils.BLOCKS.setIcon(BlockInit.PLASTERED_FOSSILIZED_TRACK.asItem().getDefaultInstance());
 
 		event.enqueueWork(() -> {
 			StructurePieceInit.registerBiomeGeneration();
@@ -169,80 +164,80 @@ public class LostWorldsMod extends ModUtils {
 			DimensionInit.initBiomeSourcesAndChunkGenerator();
 		});
 
-		translateToWaves(EntityInit.FOSSIL_POACHER, Arrays.asList(1, 0, 0, 0, 1, 2, 2, 3));
+		ModUtils.translateToWaves(EntityInit.FOSSIL_POACHER, Arrays.asList(1, 0, 0, 0, 1, 2, 2, 3));
 	}
 
 	private void biomeModification(BiomeLoadingEvent event) {
 		// Biomes
-		if (SERVER_CONFIG.araucariaForestShouldSpawn.get()) {
+		if (ModUtils.SERVER_CONFIG.araucariaForestShouldSpawn.get()) {
 			if (event.getName().equals(BiomeInit.ARAUCARIA_FOREST.getRegistryName())) {
-				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.ARAUCARIA_FOREST, SERVER_CONFIG.araucariaForestWeight.get()));
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.ARAUCARIA_FOREST, ModUtils.SERVER_CONFIG.araucariaForestWeight.get()));
 				BiomeDictionary.addTypes(BiomeKeys.ARAUCARIA_FOREST, Type.FOREST, Type.CONIFEROUS);
 			}
 
 			if (event.getName().equals(BiomeInit.ARAUCARIA_FOREST_HILLS.getRegistryName())) {
-				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.ARAUCARIA_FOREST_HILLS, SERVER_CONFIG.araucariaForestWeight.get()));
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.ARAUCARIA_FOREST_HILLS, ModUtils.SERVER_CONFIG.araucariaForestWeight.get()));
 				BiomeDictionary.addTypes(BiomeKeys.ARAUCARIA_FOREST_HILLS, Type.FOREST, Type.CONIFEROUS, Type.HILLS);
 			}
 		}
 
-		if (SERVER_CONFIG.coniferForestShouldSpawn.get()) {
+		if (ModUtils.SERVER_CONFIG.coniferForestShouldSpawn.get()) {
 			if (event.getName().equals(BiomeInit.CONIFER_FOREST.getRegistryName())) {
-				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.CONIFER_FOREST, SERVER_CONFIG.coniferForestWeight.get()));
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.CONIFER_FOREST, ModUtils.SERVER_CONFIG.coniferForestWeight.get()));
 				BiomeDictionary.addTypes(BiomeKeys.CONIFER_FOREST, Type.FOREST, Type.CONIFEROUS);
 			}
 
 			if (event.getName().equals(BiomeInit.CONIFER_FOREST_HILLS.getRegistryName())) {
-				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.CONIFER_FOREST_HILLS, SERVER_CONFIG.coniferForestWeight.get()));
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.CONIFER_FOREST_HILLS, ModUtils.SERVER_CONFIG.coniferForestWeight.get()));
 				BiomeDictionary.addTypes(BiomeKeys.CONIFER_FOREST_HILLS, Type.FOREST, Type.CONIFEROUS, Type.HILLS);
 			}
 		}
 
-		if (SERVER_CONFIG.ginkgoForestShouldSpawn.get()) {
+		if (ModUtils.SERVER_CONFIG.ginkgoForestShouldSpawn.get()) {
 			if (event.getName().equals(BiomeInit.GINKGO_FOREST.getRegistryName())) {
-				BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(BiomeKeys.GINKGO_FOREST, SERVER_CONFIG.ginkgoForestWeight.get()));
+				BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(BiomeKeys.GINKGO_FOREST, ModUtils.SERVER_CONFIG.ginkgoForestWeight.get()));
 				BiomeDictionary.addTypes(BiomeKeys.GINKGO_FOREST, Type.FOREST, Type.DENSE);
 			}
 
 			if (event.getName().equals(BiomeInit.GINKGO_FOREST_HILLS.getRegistryName())) {
-				BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(BiomeKeys.GINKGO_FOREST_HILLS, SERVER_CONFIG.ginkgoForestWeight.get()));
+				BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(BiomeKeys.GINKGO_FOREST_HILLS, ModUtils.SERVER_CONFIG.ginkgoForestWeight.get()));
 				BiomeDictionary.addTypes(BiomeKeys.GINKGO_FOREST_HILLS, Type.FOREST, Type.DENSE, Type.HILLS);
 			}
 		}
 
-		if (SERVER_CONFIG.sequoiaForestShouldSpawn.get()) {
+		if (ModUtils.SERVER_CONFIG.sequoiaForestShouldSpawn.get()) {
 			if (event.getName().equals(BiomeInit.REDWOODS_FOREST.getRegistryName())) {
-				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.REDWOODS_FOREST, SERVER_CONFIG.sequoiaForestWeight.get()));
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.REDWOODS_FOREST, ModUtils.SERVER_CONFIG.sequoiaForestWeight.get()));
 				BiomeDictionary.addTypes(BiomeKeys.REDWOODS_FOREST, Type.FOREST, Type.COLD, Type.CONIFEROUS);
 			}
 
 			if (event.getName().equals(BiomeInit.REDWOODS_FOREST_HILLS.getRegistryName())) {
-				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.REDWOODS_FOREST_HILLS, SERVER_CONFIG.sequoiaForestWeight.get()));
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.REDWOODS_FOREST_HILLS, ModUtils.SERVER_CONFIG.sequoiaForestWeight.get()));
 				BiomeDictionary.addTypes(BiomeKeys.REDWOODS_FOREST_HILLS, Type.FOREST, Type.COLD, Type.CONIFEROUS);
 			}
 		}
 
-		if (SERVER_CONFIG.volcanoShouldSpawn.get()) {
+		if (ModUtils.SERVER_CONFIG.volcanoShouldSpawn.get()) {
 			if (event.getName().equals(BiomeInit.VOLCANO.getRegistryName())) {
-				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.VOLCANO, SERVER_CONFIG.volcanoWeight.get()));
+				BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(BiomeKeys.VOLCANO, ModUtils.SERVER_CONFIG.volcanoWeight.get()));
 				BiomeDictionary.addTypes(BiomeKeys.VOLCANO, Type.MOUNTAIN, Type.HOT);
 			}
 		}
 
 		// Spawns
-		if (SERVER_CONFIG.livingFossils.get()) {
+		if (ModUtils.SERVER_CONFIG.livingFossils.get()) {
 			List<? extends String> nautilusBiomes = Lists.newArrayList("minecraft:warm_ocean");
 			if (nautilusBiomes.contains(event.getName().toString())) {
-				TyrannoWorld.addSpawn(event, EntityClassification.WATER_CREATURE, EntityInit.NAUTILUS, SERVER_CONFIG.nautilusSpawnWeight.get(), SERVER_CONFIG.nautilusSpawnGroupMinimum.get(), SERVER_CONFIG.nautilusSpawnGroupMaximum.get());
+				TyrannoWorld.addSpawn(event, EntityClassification.WATER_CREATURE, EntityInit.NAUTILUS, ModUtils.SERVER_CONFIG.nautilusSpawnWeight.get(), ModUtils.SERVER_CONFIG.nautilusSpawnGroupMinimum.get(), ModUtils.SERVER_CONFIG.nautilusSpawnGroupMaximum.get());
 			}
 		}
 
 		// Features
-		if (SERVER_CONFIG.amberOre.get()) {
+		if (ModUtils.SERVER_CONFIG.amberOre.get()) {
 			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_AMBER_ORE);
 		}
 
-		if (SERVER_CONFIG.plantFossilsInOverworld.get()) {
+		if (ModUtils.SERVER_CONFIG.plantFossilsInOverworld.get()) {
 			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_ALETHOPTERIS);
 			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_BRAZILEA);
 			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_CALAMITES_SUCKOWII);
@@ -254,17 +249,17 @@ public class LostWorldsMod extends ModUtils {
 			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_ZAMITES);
 		}
 
-		if (SERVER_CONFIG.siltPatchGeneration.get()) {
+		if (ModUtils.SERVER_CONFIG.siltPatchGeneration.get()) {
 			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.SILT_PATCH);
 		}
 
-		if (SERVER_CONFIG.mudDisksInSwamps.get()) {
+		if (ModUtils.SERVER_CONFIG.mudDisksInSwamps.get()) {
 			if (event.getCategory() == Category.SWAMP) {
 				TyrannoWorld.addFeature(event, GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.MUD_DISK);
 			}
 		}
 
-		if (SERVER_CONFIG.cypressTreesInSwamps.get()) {
+		if (ModUtils.SERVER_CONFIG.cypressTreesInSwamps.get()) {
 			List<? extends String> biomes = Lists.newArrayList("minecraft:swamp", "minecraft:swamp_hills");
 
 			if (biomes.contains(event.getName().toString())) {
@@ -272,23 +267,23 @@ public class LostWorldsMod extends ModUtils {
 			}
 		}
 
-		if (SERVER_CONFIG.petrifiedAraucariaTreeShouldSpawn.get()) {
+		if (ModUtils.SERVER_CONFIG.petrifiedAraucariaTreeShouldSpawn.get()) {
 			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_ARAUCARIA);
 		}
 
-		if (SERVER_CONFIG.petrifiedCalamitesTreeShouldSpawn.get()) {
+		if (ModUtils.SERVER_CONFIG.petrifiedCalamitesTreeShouldSpawn.get()) {
 			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_CALAMITES);
 		}
 
-		if (SERVER_CONFIG.petrifiedConiferTreeShouldSpawn.get()) {
+		if (ModUtils.SERVER_CONFIG.petrifiedConiferTreeShouldSpawn.get()) {
 			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_CONIFER);
 		}
 
-		if (SERVER_CONFIG.petrifiedGinkgoTreeShouldSpawn.get()) {
+		if (ModUtils.SERVER_CONFIG.petrifiedGinkgoTreeShouldSpawn.get()) {
 			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_GINKGO);
 		}
 
-		if (SERVER_CONFIG.fossilsInOverworld.get()) {
+		if (ModUtils.SERVER_CONFIG.fossilsInOverworld.get()) {
 			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_TINY_NEST);
 			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_SMALL_NEST);
 			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_MEDIUM_NEST);
@@ -296,26 +291,26 @@ public class LostWorldsMod extends ModUtils {
 		}
 
 		// Structures
-		if (SERVER_CONFIG.blackMarketShouldSpawn.get()) {
-			if (SIMPLE_SPAWNABLE_BIOME_CATEGORIES.contains(event.getCategory())) {
+		if (ModUtils.SERVER_CONFIG.blackMarketShouldSpawn.get()) {
+			if (ModUtils.SIMPLE_SPAWNABLE_BIOME_CATEGORIES.contains(event.getCategory())) {
 				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_BLACK_MARKET);
 			}
 		}
 
-		if (SERVER_CONFIG.meteoriteShouldSpawn.get()) {
-			if (SIMPLE_SPAWNABLE_BIOME_CATEGORIES.contains(event.getCategory())) {
+		if (ModUtils.SERVER_CONFIG.meteoriteShouldSpawn.get()) {
+			if (ModUtils.SIMPLE_SPAWNABLE_BIOME_CATEGORIES.contains(event.getCategory())) {
 				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_METEORITE);
 			}
 		}
 
-		if (SERVER_CONFIG.fossilsInOverworld.get()) {
-			if (FOSSIL_BIOMES.contains(event.getCategory())) {
+		if (ModUtils.SERVER_CONFIG.fossilsInOverworld.get()) {
+			if (ModUtils.FOSSIL_BIOMES.contains(event.getCategory())) {
 				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_SURFACE_FOSSIL);
 			}
-			if (FOSSIL_BIOMES.contains(event.getCategory())) {
+			if (ModUtils.FOSSIL_BIOMES.contains(event.getCategory())) {
 				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_SUBTERRANEAN_FOSSIL);
 			}
-			if (FOSSIL_BIOMES.contains(event.getCategory())) {
+			if (ModUtils.FOSSIL_BIOMES.contains(event.getCategory())) {
 				event.getGeneration().getStructures().add(() -> ModConfiguredStructures.CONFIGURED_TRACE_FOSSIL);
 			}
 		}
@@ -334,14 +329,10 @@ public class LostWorldsMod extends ModUtils {
 		DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientSetup::setupOther);
 	}
 
+	@OnlyIn(Dist.CLIENT)
 	private void onClientPlayerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event) {
-		if (!FMLEnvironment.production) {
-			PlayerEntity player = event.getPlayer();
-			player.sendMessage(ModUtils.gTC("event", "dev_load"), player.getUUID());
-		} else {
-			PlayerEntity player = event.getPlayer();
-			player.sendMessage(ModUtils.cTC("event", "player_load", TextFormatting.GOLD), player.getUUID());
-		}
+		PlayerEntity player = event.getPlayer();
+		player.sendMessage(Version.getMessage(ModUtils.VERSION_PARSER), player.getUUID());
 	}
 
 	private void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {

@@ -16,13 +16,15 @@ import tyrannotitanlib.library.base.recipe.TyrannoRandomOutputGenerator;
 @ZenRegister
 @ZenCodeType.Name("mods.lostworlds.amber_dna_extractor")
 public class AmberDNAExtractorRecipeManager implements IRecipeManager {
+	public static final TyrannoRandomOutputGenerator amber = new TyrannoRandomOutputGenerator(ItemInit.AMBER.getDefaultInstance());
+
 	@ZenCodeType.Method
-	public void addAdditionalOutputs(IItemStack... additionalOutput) {
-		TyrannoRandomOutputGenerator amber = new TyrannoRandomOutputGenerator(ItemInit.AMBER.getDefaultInstance());
-		for (IItemStack iStacks : additionalOutput) {
-			amber.addOutput(() -> iStacks.getDefinition());
-			new AmberDNAExtractorRecipe(iStacks.getInternal());
-		}
+	public void addAdditionalOutput(IItemStack additionalOutput) {
+		amber.addOutput(() -> additionalOutput.getDefinition());
+		new AmberDNAExtractorRecipe(additionalOutput.getInternal());
+	}
+
+	public static void init() {
 		RecipeManager.registerAmber(amber);
 	}
 

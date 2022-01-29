@@ -15,6 +15,7 @@ import lostworlds.content.config.LostWorldsConfig;
 import lostworlds.content.server.ServerConfigs;
 import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.tab.ModTab;
+import lostworlds.library.util.Version;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
@@ -33,6 +34,8 @@ public class ModUtils {
 	public static final String ID = "lostworlds";
 	public static final String DT_ID = "dtlostworlds";
 	public static final String NAME = "Lost Worlds";
+	public static final String VERSION = "11";
+	public static final Version VERSION_PARSER = Version.getVersion(VERSION);
 
 	public static boolean modLoaded(String id) {
 		return ModList.get().isLoaded(id);
@@ -46,9 +49,9 @@ public class ModUtils {
 		return new TranslationTextComponent(type + "." + ID + "." + key);
 	}
 
-	public static TranslationTextComponent cTC(String type, String key, TextFormatting colour) {
+	public static TranslationTextComponent cTC(String type, String key, TextFormatting... format) {
 		TranslationTextComponent text = tTC(type, key);
-		text.withStyle(colour);
+		text.withStyle(format);
 		return text;
 	}
 

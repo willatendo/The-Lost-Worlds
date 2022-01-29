@@ -1,7 +1,0 @@
-{
-	"loader": "dynamictrees:branch",
-	"textures": {
-		"bark": "lostworlds:block/stripped_conifer_log",
-		"rings": "lostworlds:block/stripped_conifer_log_top"
-	}
-}

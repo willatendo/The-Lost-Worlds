@@ -2,6 +2,7 @@ package lostworlds.content.server.init;
 
 import lostworlds.content.ModRegistry;
 import lostworlds.content.ModUtils;
+import lostworlds.content.craft.AmberDNAExtractorRecipeManager;
 import lostworlds.library.block.Plants;
 import lostworlds.library.block.Trees;
 import lostworlds.library.block.utils.Foods;
@@ -209,7 +210,7 @@ public class ItemInit {
 	public static final Item FOSSIL_POACHER_SPAWN_EGG = ModRegistry.register("fossil_poacher_spawn_egg", new ModSpawnEggItem(() -> EntityInit.FOSSIL_POACHER, 0x959b9b, 0x363031, ItemGroup.TAB_MISC));
 
 	public static final Item MUSIC_DISC_ASCENTED = ModRegistry.register("music_disc_ascented", new MusicDiscItem(13, () -> SoundInit.ASCENTED, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1).rarity(Rarity.RARE)));
-	
+
 	// Fossils
 	public static final Item AMBER = ModRegistry.register("amber", new AmberItem());
 	public static final Item FOSSILIZED_FEATHER = ModRegistry.register("fossilized_feather", new ModItem());
@@ -314,6 +315,7 @@ public class ItemInit {
 		}
 
 		RecipeManager.initAlternateRecipes();
+		AmberDNAExtractorRecipeManager.init();
 		Foods.init();
 	}
 }
