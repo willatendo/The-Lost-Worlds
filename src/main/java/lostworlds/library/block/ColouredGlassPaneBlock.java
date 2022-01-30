@@ -2,7 +2,7 @@ package lostworlds.library.block;
 
 import java.util.ArrayList;
 
-import lostworlds.library.block.builder.BlockAndItemBuilder;
+import lostworlds.library.block.builder.BlockUtils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.PaneBlock;
@@ -19,12 +19,12 @@ public class ColouredGlassPaneBlock extends PaneBlock {
 
 	public static void create() {
 		for (DyeColor colour : DyeColor.values()) {
-			Block block = BlockAndItemBuilder.create(colour.getName().toLowerCase() + "_glass_pane", new ColouredGlassPaneBlock());
+			Block block = BlockUtils.create(colour.getName().toLowerCase() + "_glass_pane", new ColouredGlassPaneBlock());
 			entries.add(block);
 		}
-		Block clear = BlockAndItemBuilder.create("clear_glass_pane", new ColouredGlassPaneBlock());
-		Block tinted = BlockAndItemBuilder.create("tinted_glass_pane", new ColouredGlassPaneBlock());
-		Block shaded = BlockAndItemBuilder.create("shaded_glass_pane", new ColouredGlassPaneBlock());
+		Block clear = BlockUtils.create("clear_glass_pane", new ColouredGlassPaneBlock());
+		Block tinted = BlockUtils.create("tinted_glass_pane", new ColouredGlassPaneBlock());
+		Block shaded = BlockUtils.create("shaded_glass_pane", new ColouredGlassPaneBlock());
 		entries.add(clear);
 		entries.add(tinted);
 		entries.add(shaded);

@@ -1,7 +1,7 @@
 package lostworlds.library.block;
 
 import lostworlds.content.server.init.TileEntityInit;
-import lostworlds.library.block.builder.BlockAndItemBuilder;
+import lostworlds.library.block.builder.BlockUtils;
 import lostworlds.library.block.builder.MachineBlockBuilder;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -44,6 +44,6 @@ public class AnalyzerBlock extends MachineBlockBuilder {
 	}
 
 	public static Block create() {
-		return BlockAndItemBuilder.create("analyzer", new AnalyzerBlock());
+		return BlockUtils.create("analyzer", new AnalyzerBlock());
 	}
 }

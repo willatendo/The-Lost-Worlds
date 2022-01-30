@@ -3,7 +3,7 @@ package lostworlds.library.block;
 import java.util.Random;
 
 import lostworlds.content.server.init.TileEntityInit;
-import lostworlds.library.block.builder.BlockAndItemBuilder;
+import lostworlds.library.block.builder.BlockUtils;
 import lostworlds.library.block.builder.MachineBlockBuilder;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -61,6 +61,6 @@ public class CultivatorBlock extends MachineBlockBuilder {
 	}
 
 	public static Block create() {
-		return BlockAndItemBuilder.create("cultivator", new CultivatorBlock());
+		return BlockUtils.create("cultivator", new CultivatorBlock());
 	}
 }

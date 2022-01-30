@@ -1,6 +1,5 @@
 package lostworlds.library.block;
 
-import lostworlds.library.block.builder.BlockAndItemBuilder;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -54,34 +53,8 @@ public class PaleobotanyTableBlock extends Block implements IWaterLoggable {
 		return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
 	}
 
-//	@Override
-//	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) 
-//	{
-//		if(world.isClientSide)
-//		{
-//			return ActionResultType.SUCCESS;
-//		} 
-//		else 
-//		{
-//			player.openMenu(state.getMenuProvider(world, pos));
-//			return ActionResultType.CONSUME;
-//		}
-//	}
-
-//	public INamedContainerProvider getMenuProvider(BlockState state, World world, BlockPos pos) 
-//	{
-//		return new SimpleNamedContainerProvider((windowId, playerInv, p_220270_4_) -> 
-//		{
-//			return new PaleontologyTableContainer(windowId, playerInv, IWorldPosCallable.create(world, pos));
-//		}, NAME);
-//	}
-
 	@Override
 	public float getShadeBrightness(BlockState state, IBlockReader reader, BlockPos pos) {
 		return 1.0F;
-	}
-
-	public static Block create() {
-		return BlockAndItemBuilder.create("paleobotany_table", new PaleobotanyTableBlock());
 	}
 }

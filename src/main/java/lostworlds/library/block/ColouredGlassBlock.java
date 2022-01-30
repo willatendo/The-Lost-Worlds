@@ -2,7 +2,7 @@ package lostworlds.library.block;
 
 import java.util.ArrayList;
 
-import lostworlds.library.block.builder.BlockAndItemBuilder;
+import lostworlds.library.block.builder.BlockUtils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -18,12 +18,12 @@ public class ColouredGlassBlock extends Block {
 
 	public static void create() {
 		for (DyeColor colour : DyeColor.values()) {
-			Block block = BlockAndItemBuilder.create(colour.getName().toLowerCase() + "_glass", new ColouredGlassBlock());
+			Block block = BlockUtils.create(colour.getName().toLowerCase() + "_glass", new ColouredGlassBlock());
 			entries.add(block);
 		}
-		Block clear = BlockAndItemBuilder.create("clear_glass", new ColouredGlassBlock());
-		Block tinted = BlockAndItemBuilder.create("tinted_glass", new ColouredGlassBlock());
-		Block shaded = BlockAndItemBuilder.create("shaded_glass", new ColouredGlassBlock());
+		Block clear = BlockUtils.create("clear_glass", new ColouredGlassBlock());
+		Block tinted = BlockUtils.create("tinted_glass", new ColouredGlassBlock());
+		Block shaded = BlockUtils.create("shaded_glass", new ColouredGlassBlock());
 		entries.add(clear);
 		entries.add(tinted);
 		entries.add(shaded);

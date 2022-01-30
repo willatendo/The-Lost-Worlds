@@ -2,16 +2,16 @@
 	"parent": "minecraft:recipes/root",
 	"rewards": {
 		"recipes": [
-			"lostworlds:dark_oak_paleontology_table"
+			"lostworlds:paleontology_table"
 		]
 	},
 	"criteria": {
-		"has_item": {
+		"has_workbench": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": {
 				"items": [
 					{
-						"item": "minecraft:dark_oak_planks"
+						"item": "minecraft:crafting_table"
 					}
 				]
 			}
@@ -19,13 +19,13 @@
 		"has_the_recipe": {
 			"trigger": "minecraft:recipe_unlocked",
 			"conditions": {
-				"recipe": "lostworlds:dark_oak_paleontology_table"
+				"recipe": "lostworlds:paleontology_table"
 			}
 		}
 	},
 	"requirements": [
 		[
-			"has_item",
+			"has_workbench",
 			"has_the_recipe"
 		]
 	]

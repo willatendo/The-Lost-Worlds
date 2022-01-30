@@ -1,7 +1,6 @@
 package lostworlds.library.block;
 
 import lostworlds.content.ModUtils;
-import lostworlds.library.block.builder.BlockAndItemBuilder;
 import lostworlds.library.container.PaleontologyTableContainer;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -83,9 +82,5 @@ public class PaleontologyTableBlock extends Block implements IWaterLoggable {
 	@Override
 	public float getShadeBrightness(BlockState state, IBlockReader reader, BlockPos pos) {
 		return 1.0F;
-	}
-
-	public static Block create(String wood) {
-		return BlockAndItemBuilder.create(wood + "_paleontology_table", new PaleontologyTableBlock());
 	}
 }

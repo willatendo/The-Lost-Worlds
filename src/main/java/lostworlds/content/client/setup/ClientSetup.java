@@ -107,6 +107,10 @@ public class ClientSetup {
 			}
 		}
 
+		blockcolours.register((state, reader, pos, color) -> {
+			return reader != null && pos != null ? BiomeColors.getAverageWaterColor(reader, pos) : -1;
+		}, BlockInit.POTTED_ARCHAEFRUTUS);
+
 		for (DinoTypes types : DinoTypes.hasSpawn()) {
 			itemcolours.register((stack, colour) -> {
 				return types.getColour(colour, 0x000000, types.getSetEggColour());
@@ -117,6 +121,7 @@ public class ClientSetup {
 	public static void renderSetup() {
 		RenderTypeLookup.setRenderLayer(BlockInit.ARCHAEFRUTUS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.POTTED_ARCHAEFRUTUS, RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.POTTED_ARCHAEFRUTUS, RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.ALETHOPTERIS, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_SUCKOWII, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.CALAMITES_SUCKOWII_SAPLING, RenderType.cutout());

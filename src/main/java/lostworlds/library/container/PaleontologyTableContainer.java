@@ -103,7 +103,7 @@ public class PaleontologyTableContainer extends Container {
 
 	@Override
 	public boolean stillValid(PlayerEntity player) {
-		return stillValid(this.access, player, BlockInit.ACACIA_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.ARAUCARIA_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.BIRCH_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.CALAMITES_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.CONIFER_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.CRIMSON_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.CYPRESS_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.CONIFER_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.DARK_OAK_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.GINKGO_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.JUNGLE_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.OAK_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.SCORCHED_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.CALAMITES_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.SEQUOIA_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.SPRUCE_PALEONTOLOGY_TABLE) || stillValid(this.access, player, BlockInit.WARPED_PALEONTOLOGY_TABLE);
+		return stillValid(this.access, player, BlockInit.PALEONTOLOGY_TABLE);
 	}
 
 	@Override

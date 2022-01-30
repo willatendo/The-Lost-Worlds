@@ -1,165 +1,21 @@
 {
 	"variants": {
-		"potential_plant=alethopteris,damage=none": {
+		"damage=none": {
 			"model": "lostworlds:block/stone_fossil"
 		},
-		"potential_plant=brazilea,damage=none": {
-			"model": "lostworlds:block/stone_fossil"
-		},
-		"potential_plant=calamites_suckowii,damage=none": {
-			"model": "lostworlds:block/stone_fossil"
-		},
-		"potential_plant=cephalotaxus,damage=none": {
-			"model": "lostworlds:block/stone_fossil"
-		},
-		"potential_plant=dillhoffia,damage=none": {
-			"model": "lostworlds:block/stone_fossil"
-		},
-		"potential_plant=duisbergia,damage=none": {
-			"model": "lostworlds:block/stone_fossil"
-		},
-		"potential_plant=osmunda,damage=none": {
-			"model": "lostworlds:block/stone_fossil"
-		},
-		"potential_plant=williamsonia,damage=none": {
-			"model": "lostworlds:block/stone_fossil"
-		},
-		"potential_plant=zamites,damage=none": {
-			"model": "lostworlds:block/stone_fossil"
-		},
-		"potential_plant=alethopteris,damage=chipped": {
+		"damage=chipped": {
 			"model": "lostworlds:block/stone_fossil_chipped"
 		},
-		"potential_plant=brazilea,damage=chipped": {
-			"model": "lostworlds:block/stone_fossil_chipped"
-		},
-		"potential_plant=calamites_suckowii,damage=chipped": {
-			"model": "lostworlds:block/stone_fossil_chipped"
-		},
-		"potential_plant=cephalotaxus,damage=chipped": {
-			"model": "lostworlds:block/stone_fossil_chipped"
-		},
-		"potential_plant=dillhoffia,damage=chipped": {
-			"model": "lostworlds:block/stone_fossil_chipped"
-		},
-		"potential_plant=duisbergia,damage=chipped": {
-			"model": "lostworlds:block/stone_fossil_chipped"
-		},
-		"potential_plant=osmunda,damage=chipped": {
-			"model": "lostworlds:block/stone_fossil_chipped"
-		},
-		"potential_plant=williamsonia,damage=chipped": {
-			"model": "lostworlds:block/stone_fossil_chipped"
-		},
-		"potential_plant=zamites,damage=chipped": {
-			"model": "lostworlds:block/stone_fossil_chipped"
-		},
-		"potential_plant=alethopteris,damage=slightly": {
+		"damage=slightly": {
 			"model": "lostworlds:block/stone_fossil_slightly"
 		},
-		"potential_plant=brazilea,damage=slightly": {
-			"model": "lostworlds:block/stone_fossil_slightly"
-		},
-		"potential_plant=calamites_suckowii,damage=slightly": {
-			"model": "lostworlds:block/stone_fossil_slightly"
-		},
-		"potential_plant=cephalotaxus,damage=slightly": {
-			"model": "lostworlds:block/stone_fossil_slightly"
-		},
-		"potential_plant=dillhoffia,damage=slightly": {
-			"model": "lostworlds:block/stone_fossil_slightly"
-		},
-		"potential_plant=duisbergia,damage=slightly": {
-			"model": "lostworlds:block/stone_fossil_slightly"
-		},
-		"potential_plant=osmunda,damage=slightly": {
-			"model": "lostworlds:block/stone_fossil_slightly"
-		},
-		"potential_plant=williamsonia,damage=slightly": {
-			"model": "lostworlds:block/stone_fossil_slightly"
-		},
-		"potential_plant=zamites,damage=slightly": {
-			"model": "lostworlds:block/stone_fossil_slightly"
-		},
-		"potential_plant=alethopteris,damage=cracked": {
+		"damage=cracked": {
 			"model": "lostworlds:block/stone_fossil_cracked"
 		},
-		"potential_plant=brazilea,damage=cracked": {
-			"model": "lostworlds:block/stone_fossil_cracked"
-		},
-		"potential_plant=calamites_suckowii,damage=cracked": {
-			"model": "lostworlds:block/stone_fossil_cracked"
-		},
-		"potential_plant=cephalotaxus,damage=cracked": {
-			"model": "lostworlds:block/stone_fossil_cracked"
-		},
-		"potential_plant=dillhoffia,damage=cracked": {
-			"model": "lostworlds:block/stone_fossil_cracked"
-		},
-		"potential_plant=duisbergia,damage=cracked": {
-			"model": "lostworlds:block/stone_fossil_cracked"
-		},
-		"potential_plant=osmunda,damage=cracked": {
-			"model": "lostworlds:block/stone_fossil_cracked"
-		},
-		"potential_plant=williamsonia,damage=cracked": {
-			"model": "lostworlds:block/stone_fossil_cracked"
-		},
-		"potential_plant=zamites,damage=cracked": {
-			"model": "lostworlds:block/stone_fossil_cracked"
-		},
-		"potential_plant=alethopteris,damage=damaged": {
+		"damage=damaged": {
 			"model": "lostworlds:block/stone_fossil_damaged"
 		},
-		"potential_plant=brazilea,damage=damaged": {
-			"model": "lostworlds:block/stone_fossil_damaged"
-		},
-		"potential_plant=calamites_suckowii,damage=damaged": {
-			"model": "lostworlds:block/stone_fossil_damaged"
-		},
-		"potential_plant=cephalotaxus,damage=damaged": {
-			"model": "lostworlds:block/stone_fossil_damaged"
-		},
-		"potential_plant=dillhoffia,damage=damaged": {
-			"model": "lostworlds:block/stone_fossil_damaged"
-		},
-		"potential_plant=duisbergia,damage=damaged": {
-			"model": "lostworlds:block/stone_fossil_damaged"
-		},
-		"potential_plant=osmunda,damage=damaged": {
-			"model": "lostworlds:block/stone_fossil_damaged"
-		},
-		"potential_plant=williamsonia,damage=damaged": {
-			"model": "lostworlds:block/stone_fossil_damaged"
-		},
-		"potential_plant=zamites,damage=damaged": {
-			"model": "lostworlds:block/stone_fossil_damaged"
-		},
-		"potential_plant=alethopteris,damage=completely": {
-			"model": "lostworlds:block/stone_fossil_completely"
-		},
-		"potential_plant=brazilea,damage=completely": {
-			"model": "lostworlds:block/stone_fossil_completely"
-		},
-		"potential_plant=calamites_suckowii,damage=completely": {
-			"model": "lostworlds:block/stone_fossil_completely"
-		},
-		"potential_plant=cephalotaxus,damage=completely": {
-			"model": "lostworlds:block/stone_fossil_completely"
-		},
-		"potential_plant=dillhoffia,damage=completely": {
-			"model": "lostworlds:block/stone_fossil_completely"
-		},
-		"potential_plant=duisbergia,damage=completely": {
-			"model": "lostworlds:block/stone_fossil_completely"
-		},
-		"potential_plant=osmunda,damage=completely": {
-			"model": "lostworlds:block/stone_fossil_completely"
-		},
-		"potential_plant=williamsonia,damage=completely": {
-			"model": "lostworlds:block/stone_fossil_completely"
-		},
-		"potential_plant=zamites,damage=completely": {
+		"damage=completely": {
 			"model": "lostworlds:block/stone_fossil_completely"
 		}
 	}

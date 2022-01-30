@@ -1,7 +1,7 @@
 package lostworlds.library.block;
 
 import lostworlds.content.ModUtils;
-import lostworlds.library.block.builder.BlockAndItemBuilder;
+import lostworlds.library.block.builder.BlockUtils;
 import lostworlds.library.container.ArchaeologyTableContainer;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -88,6 +88,6 @@ public class ArchaeologyTableBlock extends Block implements IWaterLoggable {
 	}
 
 	public static Block create(String wood) {
-		return BlockAndItemBuilder.create("archaeology_table", new ArchaeologyTableBlock());
+		return BlockUtils.create("archaeology_table", new ArchaeologyTableBlock());
 	}
 }

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import lostworlds.content.server.init.BlockInit;
-import lostworlds.library.block.builder.BlockAndItemBuilder;
+import lostworlds.library.block.builder.BlockUtils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -119,6 +119,6 @@ public class MossySoilBlock extends Block implements IGrowable {
 	}
 
 	public static Block create() {
-		return BlockAndItemBuilder.create("mossy_soil", new MossySoilBlock());
+		return BlockUtils.create("mossy_soil", new MossySoilBlock());
 	}
 }

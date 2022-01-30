@@ -4,6 +4,7 @@ import lostworlds.content.server.init.BlockInit;
 import lostworlds.library.item.WetPaperItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
@@ -21,6 +22,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
 public class FossilizedTrackBlock extends Block {
@@ -49,8 +51,22 @@ public class FossilizedTrackBlock extends Block {
 	}
 
 	@Override
+	public boolean canSurvive(BlockState state, IWorldReader reader, BlockPos pos) {
+		return reader.getBlockState(pos.above()).is(Blocks.AIR);
+	}
+
+	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		return !this.defaultBlockState().canSurvive(context.getLevel(), context.getClickedPos()) ? turnTo.defaultBlockState() : this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite());
+	}
+
+	@Override
+	public BlockState updateShape(BlockState state, Direction direction, BlockState newstate, IWorld world, BlockPos pos, BlockPos newpos) {
+		if (!world.getBlockState(pos.above()).is(Blocks.AIR)) {
+			world.setBlock(pos, turnTo.defaultBlockState(), 3);
+		}
+
+		return super.updateShape(state, direction, newstate, world, pos, newpos);
 	}
 
 	@Override

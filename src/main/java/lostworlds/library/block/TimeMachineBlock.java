@@ -3,7 +3,7 @@ package lostworlds.library.block;
 import javax.annotation.Nullable;
 
 import lostworlds.content.ModUtils;
-import lostworlds.library.block.builder.BlockAndItemBuilder;
+import lostworlds.library.block.builder.BlockUtils;
 import lostworlds.library.container.TimeMachineContainer;
 import lostworlds.library.item.tool.ModMaterials;
 import net.minecraft.block.Block;
@@ -61,6 +61,6 @@ public class TimeMachineBlock extends Block {
 	}
 
 	public static Block create() {
-		return BlockAndItemBuilder.create("time_machine", new TimeMachineBlock());
+		return BlockUtils.create("time_machine", new TimeMachineBlock());
 	}
 }

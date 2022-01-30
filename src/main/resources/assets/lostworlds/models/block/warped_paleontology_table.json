@@ -1,9 +1,0 @@
-{
-	"parent": "lostworlds:block/template_paleontology_table",
-	"textures": {
-		"planks": "block/warped_planks",
-		"log": "block/warped_stem",
-		"strippedlog": "block/stripped_warped_stem",
-		"top": "block/crafting_table_top"
-	}
-}

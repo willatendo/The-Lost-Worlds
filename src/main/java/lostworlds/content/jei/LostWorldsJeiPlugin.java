@@ -131,21 +131,7 @@ public class LostWorldsJeiPlugin implements IModPlugin {
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.CULTIVATOR), LostWorldsJeiConstants.CULTIVATOR_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.TIME_MACHINE), LostWorldsJeiConstants.TIME_MACHINE_CATEGORY);
 		registration.addRecipeCatalyst(new ItemStack(BlockInit.ARCHAEOLOGY_TABLE), LostWorldsJeiConstants.ARCHAEOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.ACACIA_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.ARAUCARIA_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.BIRCH_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.CALAMITES_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.CONIFER_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.CRIMSON_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.CYPRESS_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.DARK_OAK_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.GINKGO_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.JUNGLE_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.OAK_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.SCORCHED_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.SPRUCE_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.SEQUOIA_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(BlockInit.WARPED_PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
+		registration.addRecipeCatalyst(new ItemStack(BlockInit.PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
 	}
 
 	private static Collection<?> getRecipes(RecipeManager manager, IRecipeType<?> type) {

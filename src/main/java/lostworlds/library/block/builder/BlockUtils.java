@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.text.ITextComponent;
 import tyrannotitanlib.library.base.block.TyrannoConnectedTextureBlock;
 
-public class BlockAndItemBuilder {
+public class BlockUtils {
 	public static Block create(String id, Block block, Item item) {
 		ModRegistry.register(id, block);
 		ModRegistry.register(id, item);

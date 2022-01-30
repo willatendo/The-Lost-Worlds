@@ -3,23 +3,20 @@
 	"pattern": [
 		"$@$",
 		"$#$",
-		"% %"
+		"# #"
 	],
 	"key": {
 		"#": {
-			"item": "minecraft:stripped_oak_log"
+			"tag": "minecraft:logs"
 		},
 		"$": {
-			"item": "minecraft:oak_planks"
+			"tag": "minecraft:planks"
 		},
 		"@": {
 			"item": "minecraft:crafting_table"
-		},
-		"%": {
-			"item": "minecraft:oak_log"
 		}
 	},
 	"result": {
-		"item": "lostworlds:oak_paleontology_table"
+		"item": "lostworlds:paleontology_table"
 	}
 }
