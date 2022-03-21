@@ -10,6 +10,10 @@ buildscript {
     }
 }
 
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
@@ -20,6 +24,10 @@ group = 'lostworlds'
 archivesBaseName = 'lostworlds'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+
+configurations {
+    shade
+}
 
 minecraft {
     mappings channel: 'official', version: '1.16.5'
@@ -71,13 +79,16 @@ repositories {
 	maven { url "https://www.cursemaven.com" }
 	//Craft Tweaker
 	maven { url "https://maven.blamejared.com" }
+	// Registrate
+	maven { url "https://maven.tterrag.com/" }
+    mavenLocal()
 }	
 
 dependencies {
 	//Minecraft
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.23'
 	
-	//Easy Client-Side Mods
+	//Supported Mods
 	compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.145:api")
 	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.145")
 	
@@ -88,8 +99,17 @@ dependencies {
 	//Library
 	implementation fg.deobf("curse.maven:tyrannotitan-library-forge-425570:3540881")
 	
+	def registrate = "com.tterrag.registrate:Registrate:MC1.16.5-1.0.10"
+    implementation fg.deobf(registrate)
+    shade registrate
+	
 	//Mixins
 	annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
+}
+
+shadowJar {
+    configurations = [project.configurations.shade]
+    relocate 'com.tterrag.registrate', 'lostworlds.registrate'
 }
 
 jar {
@@ -106,5 +126,11 @@ jar {
         ])
     }
 }
+
+reobf {
+    shadowJar {}
+}
  
+build.dependsOn shadowJar
+build.dependsOn reobfShadowJar
 jar.finalizedBy('reobfJar')

@@ -2,7 +2,7 @@ package lostworlds.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 
-import lostworlds.library.util.AlphabeticalItemCategoryFillerUtil;
+import lostworlds.server.util.AlphabeticalItemCategoryFillerUtil;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
