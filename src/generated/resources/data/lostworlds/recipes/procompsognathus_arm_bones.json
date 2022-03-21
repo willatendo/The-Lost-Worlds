@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "fossil": {
+    "item": "lostworlds:plastered_procompsognathus_arm_bones"
+  },
+  "output": "lostworlds:procompsognathus_arm_bones"
+}

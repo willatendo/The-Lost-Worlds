@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:dna_extractor",
+  "input": {
+    "item": "lostworlds:edaphosaurus_soft_tissue"
+  },
+  "vile": {
+    "item": "lostworlds:empty_vile"
+  },
+  "output": "lostworlds:edaphosaurus_dna"
+}

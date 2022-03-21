@@ -13,20 +13,20 @@ import net.minecraft.world.World;
 
 public class DNAExtractorRecipe implements IRecipe<IInventory> {
 	private final ResourceLocation id;
-	private Ingredient softTissue;
+	private Ingredient input;
 	private Ingredient vile;
 	private final ItemStack output;
 
-	public DNAExtractorRecipe(ResourceLocation id, Ingredient softTissue, Ingredient vile, ItemStack output) {
+	public DNAExtractorRecipe(ResourceLocation id, Ingredient input, Ingredient vile, ItemStack output) {
 		this.id = id;
 		this.output = output;
-		this.softTissue = softTissue;
+		this.input = input;
 		this.vile = vile;
 	}
 
 	@Override
 	public boolean matches(IInventory inv, World worldIn) {
-		if (this.softTissue.test(inv.getItem(0))) {
+		if (this.input.test(inv.getItem(0))) {
 			return true;
 		}
 		if (this.vile.test(inv.getItem(0))) {
@@ -68,7 +68,7 @@ public class DNAExtractorRecipe implements IRecipe<IInventory> {
 	@Override
 	public NonNullList<Ingredient> getIngredients() {
 		NonNullList<Ingredient> nonnulllist = NonNullList.create();
-		nonnulllist.add(this.softTissue);
+		nonnulllist.add(this.input);
 		nonnulllist.add(this.vile);
 		return nonnulllist;
 	}

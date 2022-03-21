@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:fossil_cleaner",
-	"output": {
-		"item": "lostworlds:gorgonops_leg_bones"
-	},
-	"fossil": {
-		"item": "lostworlds:plastered_gorgonops_leg_bones"
-	}
-}

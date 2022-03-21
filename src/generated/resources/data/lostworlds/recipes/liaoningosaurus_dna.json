@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:dna_extractor",
+  "input": {
+    "item": "lostworlds:liaoningosaurus_soft_tissue"
+  },
+  "vile": {
+    "item": "lostworlds:empty_vile"
+  },
+  "output": "lostworlds:liaoningosaurus_dna"
+}

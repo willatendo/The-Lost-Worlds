@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:fossil_cleaner",
-	"output": {
-		"item": "lostworlds:cryolophosaurus_leg_bones"
-	},
-	"fossil": {
-		"item": "lostworlds:plastered_cryolophosaurus_leg_bones"
-	}
-}

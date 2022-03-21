@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:analyzer",
+  "dna": {
+    "item": "lostworlds:utahraptor_dna"
+  },
+  "dnaDisc": {
+    "item": "lostworlds:storage_disc"
+  },
+  "output": "lostworlds:utahraptor_dna_disc"
+}

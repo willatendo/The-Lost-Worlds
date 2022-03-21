@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:analyzer",
+  "dna": {
+    "item": "lostworlds:tetraceratops_dna"
+  },
+  "dnaDisc": {
+    "item": "lostworlds:storage_disc"
+  },
+  "output": "lostworlds:tetraceratops_dna_disc"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "fossil": {
+    "item": "lostworlds:plastered_eoraptor_rib_cage"
+  },
+  "output": "lostworlds:eoraptor_rib_cage"
+}

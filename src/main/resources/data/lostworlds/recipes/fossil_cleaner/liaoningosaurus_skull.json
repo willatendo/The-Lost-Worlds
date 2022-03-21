@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:fossil_cleaner",
-	"output": {
-		"item": "lostworlds:liaoningosaurus_skull"
-	},
-	"fossil": {
-		"item": "lostworlds:plastered_liaoningosaurus_skull"
-	}
-}

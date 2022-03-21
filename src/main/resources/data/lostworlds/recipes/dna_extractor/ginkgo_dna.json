@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_extractor",
-	"output": {
-		"item": "lostworlds:ginkgo_dna"
-	},
-	"softTissue": {
-		"item": "lostworlds:ginkgo_soft_tissue"
-	}
-}

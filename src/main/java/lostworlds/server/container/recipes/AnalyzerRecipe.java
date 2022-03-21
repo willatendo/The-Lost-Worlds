@@ -13,8 +13,8 @@ import net.minecraft.world.World;
 
 public class AnalyzerRecipe implements IRecipe<IInventory> {
 	private final ResourceLocation id;
-	private Ingredient dna;
-	private Ingredient dnaDisc;
+	private final Ingredient dna;
+	private final Ingredient dnaDisc;
 	private final ItemStack output;
 
 	public AnalyzerRecipe(ResourceLocation id, Ingredient dna, Ingredient dnaDisc, ItemStack output) {

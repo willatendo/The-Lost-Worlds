@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:dna_extractor",
+  "input": {
+    "item": "lostworlds:tyrannosaurus_soft_tissue"
+  },
+  "vile": {
+    "item": "lostworlds:empty_vile"
+  },
+  "output": "lostworlds:tyrannosaurus_dna"
+}

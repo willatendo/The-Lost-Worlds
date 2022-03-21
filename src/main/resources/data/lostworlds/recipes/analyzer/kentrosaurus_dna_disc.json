@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:analyzer",
-	"output": {
-		"item": "lostworlds:kentrosaurus_dna_disc"
-	},
-	"dna": {
-		"item": "lostworlds:kentrosaurus_dna"
-	}
-}

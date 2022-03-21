@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "fossil": {
+    "item": "lostworlds:plastered_ostromia_tail"
+  },
+  "output": "lostworlds:ostromia_tail"
+}

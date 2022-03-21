@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:analyzer",
-	"output": {
-		"item": "lostworlds:magnolia_dna_disc"
-	},
-	"dna": {
-		"item": "lostworlds:magnolia_dna"
-	}
-}

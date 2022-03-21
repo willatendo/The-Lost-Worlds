@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:analyzer",
-	"output": {
-		"item": "lostworlds:osmunda_dna_disc"
-	},
-	"dna": {
-		"item": "lostworlds:osmunda_dna"
-	}
-}

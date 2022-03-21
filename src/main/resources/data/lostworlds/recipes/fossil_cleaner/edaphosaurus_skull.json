@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:fossil_cleaner",
-	"output": {
-		"item": "lostworlds:edaphosaurus_skull"
-	},
-	"fossil": {
-		"item": "lostworlds:plastered_edaphosaurus_skull"
-	}
-}

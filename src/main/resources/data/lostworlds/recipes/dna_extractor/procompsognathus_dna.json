@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_extractor",
-	"output": {
-		"item": "lostworlds:procompsognathus_dna"
-	},
-	"softTissue": {
-		"item": "lostworlds:procompsognathus_soft_tissue"
-	}
-}

@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "fossil": {
+    "item": "lostworlds:plastered_cryolophosaurus_tail"
+  },
+  "output": "lostworlds:cryolophosaurus_tail"
+}

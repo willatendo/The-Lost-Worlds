@@ -3,7 +3,6 @@ package lostworlds.server.container.recipes.serialiser;
 import com.google.gson.JsonObject;
 
 import lostworlds.server.container.recipes.AnalyzerRecipe;
-import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
@@ -18,7 +17,7 @@ public class AnalyzerRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializ
 	public AnalyzerRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 		ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
 		Ingredient dna = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "dna"));
-		Ingredient dnaDisc = Ingredient.of(LostWorldsItems.STORAGE_DISC);
+		Ingredient dnaDisc = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "dnaDisc"));
 
 		return new AnalyzerRecipe(recipeId, dna, dnaDisc, output);
 	}

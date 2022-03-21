@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:dna_extractor",
+  "input": {
+    "item": "lostworlds:dimetrodon_soft_tissue"
+  },
+  "vile": {
+    "item": "lostworlds:empty_vile"
+  },
+  "output": "lostworlds:dimetrodon_dna"
+}

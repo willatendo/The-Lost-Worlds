@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_extractor",
-	"output": {
-		"item": "lostworlds:psittacosaurus_dna"
-	},
-	"softTissue": {
-		"item": "lostworlds:psittacosaurus_soft_tissue"
-	}
-}

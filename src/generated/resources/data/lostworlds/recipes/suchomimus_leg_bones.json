@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "fossil": {
+    "item": "lostworlds:plastered_suchomimus_leg_bones"
+  },
+  "output": "lostworlds:suchomimus_leg_bones"
+}

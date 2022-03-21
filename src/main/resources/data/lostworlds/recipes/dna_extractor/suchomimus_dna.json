@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_extractor",
-	"output": {
-		"item": "lostworlds:suchomimus_dna"
-	},
-	"softTissue": {
-		"item": "lostworlds:suchomimus_soft_tissue"
-	}
-}

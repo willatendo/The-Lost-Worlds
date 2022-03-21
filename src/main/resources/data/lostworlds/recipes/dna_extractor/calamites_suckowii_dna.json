@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_extractor",
-	"output": {
-		"item": "lostworlds:calamites_suckowii_dna"
-	},
-	"softTissue": {
-		"item": "lostworlds:calamites_suckowii_soft_tissue"
-	}
-}

@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:fossil_cleaner",
-	"output": {
-		"item": "lostworlds:chilesaurus_skull"
-	},
-	"fossil": {
-		"item": "lostworlds:plastered_chilesaurus_skull"
-	}
-}

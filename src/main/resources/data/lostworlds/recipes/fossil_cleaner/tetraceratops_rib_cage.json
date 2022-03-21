@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:fossil_cleaner",
-	"output": {
-		"item": "lostworlds:tetraceratops_rib_cage"
-	},
-	"fossil": {
-		"item": "lostworlds:plastered_tetraceratops_rib_cage"
-	}
-}

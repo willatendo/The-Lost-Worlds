@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_extractor",
-	"output": {
-		"item": "lostworlds:rhinesuchus_dna"
-	},
-	"softTissue": {
-		"item": "lostworlds:rhinesuchus_soft_tissue"
-	}
-}

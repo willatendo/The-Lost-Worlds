@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_extractor",
-	"output": {
-		"item": "lostworlds:williamsonia_dna"
-	},
-	"softTissue": {
-		"item": "lostworlds:williamsonia_soft_tissue"
-	}
-}

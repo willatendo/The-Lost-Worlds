@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:fossil_cleaner",
-	"output": {
-		"item": "lostworlds:utahraptor_tail"
-	},
-	"fossil": {
-		"item": "lostworlds:plastered_utahraptor_tail"
-	}
-}

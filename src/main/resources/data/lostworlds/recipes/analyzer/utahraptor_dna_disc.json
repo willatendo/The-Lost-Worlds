@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:analyzer",
-	"output": {
-		"item": "lostworlds:utahraptor_dna_disc"
-	},
-	"dna": {
-		"item": "lostworlds:utahraptor_dna"
-	}
-}

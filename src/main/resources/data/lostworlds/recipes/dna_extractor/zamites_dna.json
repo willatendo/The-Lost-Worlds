@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_extractor",
-	"output": {
-		"item": "lostworlds:zamites_dna"
-	},
-	"softTissue": {
-		"item": "lostworlds:zamites_soft_tissue"
-	}
-}

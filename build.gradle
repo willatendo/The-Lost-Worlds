@@ -62,7 +62,22 @@ minecraft {
                 }
             }
         }
+        
+        data {
+            workingDirectory project.file('run')
+            args '--mod', 'lostworlds', '--all', '--existing', file('src/main/resources').toString(), '--existing', file('src/generated/resources').toString(), '--output', file('src/generated/resources/')
+                    
+            mods {
+                lostworlds {
+                    source sourceSets.main
+                }
+            }
+        }
     }
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
 }
 
 mixin {

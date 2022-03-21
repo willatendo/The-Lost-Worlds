@@ -207,16 +207,26 @@ public class LostWorldsItems {
 
 		for (DinoTypes dinos : DinoTypes.values()) {
 			if (dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS) {
-				LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_rib_cage", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getRibCage(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "rib_cage")));
-				LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_leg_bones", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getLegBones(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "leg_bones")));
-				LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_arm_bones", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getArmBones(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "arm_bones")));
-				LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_tail", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getTail(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "tail")));
-				LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_skull", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getSkull(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "skull")));
-				LostWorldsRegistry.register(dinos.name().toLowerCase() + "_rib_cage", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("rib_cage")), () -> dinos.getRibCage(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "rib_cage")));
-				LostWorldsRegistry.register(dinos.name().toLowerCase() + "_leg_bones", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("leg_bones")), () -> dinos.getLegBones(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "leg_bones")));
-				LostWorldsRegistry.register(dinos.name().toLowerCase() + "_arm_bones", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("arm_bones")), () -> dinos.getArmBones(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "arm_bones")));
-				LostWorldsRegistry.register(dinos.name().toLowerCase() + "_tail", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("tail")), () -> dinos.getTail(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "tail")));
-				LostWorldsRegistry.register(dinos.name().toLowerCase() + "_skull", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("skull")), () -> dinos.getSkull(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "skull")));
+				Item plasteredRibCage = LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_rib_cage", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getRibCage(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "rib_cage")));
+				dinos.setPlasteredRibCageItem(plasteredRibCage);
+				Item plasteredLegBones = LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_leg_bones", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getLegBones(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "leg_bones")));
+				dinos.setPlasteredLegBonesItem(plasteredLegBones);
+				Item plasteredArmBones = LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_arm_bones", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getArmBones(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "arm_bones")));
+				dinos.setPlasteredArmBonesItem(plasteredArmBones);
+				Item plasteredTail = LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_tail", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getTail(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "tail")));
+				dinos.setPlasteredTailItem(plasteredTail);
+				Item plasteredSkull = LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_skull", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getSkull(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "skull")));
+				dinos.setPlasteredSkullItem(plasteredSkull);
+				Item ribCage = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_rib_cage", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("rib_cage")), () -> dinos.getRibCage(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "rib_cage")));
+				dinos.setRibCageItem(ribCage);
+				Item legBones = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_leg_bones", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("leg_bones")), () -> dinos.getLegBones(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "leg_bones")));
+				dinos.setLegBonesItem(legBones);
+				Item armBones = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_arm_bones", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("arm_bones")), () -> dinos.getArmBones(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "arm_bones")));
+				dinos.setArmBonesItem(armBones);
+				Item tail = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_tail", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("tail")), () -> dinos.getTail(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "tail")));
+				dinos.setTailItem(tail);
+				Item skull = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_skull", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("skull")), () -> dinos.getSkull(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "skull")));
+				dinos.setSkullItem(skull);
 				Item skeleton = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_skeleton", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "skeleton")));
 				dinos.setSkeletonPick(skeleton);
 			}
@@ -244,12 +254,14 @@ public class LostWorldsItems {
 			}
 
 			LostWorldsRegistry.register(dinos.name().toLowerCase() + "_spawn_egg", new DinoSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), ItemGroup.TAB_MISC, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase())));
-			LostWorldsRegistry.register(dinos.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(LostWorldsUtils.tTC("entity", dinos.toString().toLowerCase())));
+			Item softTissue = LostWorldsRegistry.register(dinos.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(LostWorldsUtils.tTC("entity", dinos.toString().toLowerCase())));
+			dinos.setSoftTissue(softTissue);
 			Item bloodSample = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_blood_sample", new FullSyringeItem(LostWorldsUtils.tTC("entity", dinos.name().toLowerCase())));
 			dinos.setBloodSample(bloodSample);
 			Item dna = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_dna", new DNAItem(LostWorldsUtils.tTC("entity", dinos.name().toLowerCase())));
 			dinos.setDNA(dna);
-			LostWorldsRegistry.register(dinos.name().toLowerCase() + "_dna_disc", new DNADiscItem(LostWorldsUtils.tTC("entity", dinos.name().toLowerCase())));
+			Item dnaDisc = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_dna_disc", new DNADiscItem(LostWorldsUtils.tTC("entity", dinos.name().toLowerCase())));
+			dinos.setDNADisc(dnaDisc);
 			if (!dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS) {
 				Item meat = LostWorldsRegistry.register("raw_" + dinos.name().toLowerCase() + "_meat", new DinoFoodItem(new Item.Properties().tab(LostWorldsUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), true));
 				LostWorldsRegistry.register("cooked_" + dinos.name().toLowerCase() + "_meat", new DinoFoodItem(new Item.Properties().tab(LostWorldsUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), false));

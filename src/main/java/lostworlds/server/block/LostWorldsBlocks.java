@@ -71,8 +71,6 @@ public class LostWorldsBlocks {
 
 	public static final Block ROCKY_SOIL = BlockUtils.create("rocky_soil", new SandBlock(0x8a8a8e, AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).requiresCorrectToolForDrops().strength(1.5F)));
 
-	public static final Block FOG = BlockUtils.create("fog", new FogBlock(AbstractBlock.Properties.of(Material.STONE).instabreak().noOcclusion().noCollission().sound(SoundType.WOOL)));
-
 	public static final Block PERMAFROST = BlockUtils.create("permafrost", new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.ICE).strength(0.5F).sound(SoundType.GRAVEL)));
 
 	// Stones

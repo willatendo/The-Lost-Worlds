@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "fossil": {
+    "item": "lostworlds:plastered_rhinesuchus_arm_bones"
+  },
+  "output": "lostworlds:rhinesuchus_arm_bones"
+}

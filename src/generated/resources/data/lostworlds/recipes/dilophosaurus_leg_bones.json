@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "fossil": {
+    "item": "lostworlds:plastered_dilophosaurus_leg_bones"
+  },
+  "output": "lostworlds:dilophosaurus_leg_bones"
+}

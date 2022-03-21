@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:analyzer",
-	"output": {
-		"item": "lostworlds:alethopteris_dna_disc"
-	},
-	"dna": {
-		"item": "lostworlds:alethopteris_dna"
-	}
-}

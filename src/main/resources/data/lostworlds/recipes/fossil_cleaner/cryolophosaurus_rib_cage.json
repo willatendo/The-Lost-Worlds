@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:fossil_cleaner",
-	"output": {
-		"item": "lostworlds:cryolophosaurus_rib_cage"
-	},
-	"fossil": {
-		"item": "lostworlds:plastered_cryolophosaurus_rib_cage"
-	}
-}

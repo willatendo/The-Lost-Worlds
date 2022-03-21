@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:analyzer",
-	"output": {
-		"item": "lostworlds:giganotosaurus_dna_disc"
-	},
-	"dna": {
-		"item": "lostworlds:giganotosaurus_dna"
-	}
-}

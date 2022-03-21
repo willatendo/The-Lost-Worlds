@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "fossil": {
+    "item": "lostworlds:plastered_tyrannosaurus_skull"
+  },
+  "output": "lostworlds:tyrannosaurus_skull"
+}

@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_extractor",
-	"output": {
-		"item": "lostworlds:dillhoffia_dna"
-	},
-	"softTissue": {
-		"item": "lostworlds:dillhoffia_soft_tissue"
-	}
-}

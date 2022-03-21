@@ -143,8 +143,6 @@ public class ClientSetup {
 		RenderTypeLookup.setRenderLayer(LostWorldsBlocks.WILLIAMSONIA, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(LostWorldsBlocks.ZAMITES, RenderType.cutout());
 
-		RenderTypeLookup.setRenderLayer(LostWorldsBlocks.FOG, RenderType.translucent());
-
 		RenderTypeLookup.setRenderLayer(LostWorldsBlocks.DISPLAY_CASE, RenderType.cutout());
 
 		RenderTypeLookup.setRenderLayer(LostWorldsBlocks.FOSSIL_CLEANER, RenderType.translucent());

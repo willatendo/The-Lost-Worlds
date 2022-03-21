@@ -3,18 +3,6 @@
 	
 	"itemGroup.lostworlds.items": "Lost Worlds Items",
 	"itemGroup.lostworlds.block": "Lost Worlds Blocks",
-	
-	"gui.lostworlds.enable_filters": "Enable Filters",
-	"gui.lostworlds.disable_filters": "Disable Filters",
-	
-	"gui.lostworlds.tools": "Tools",
-	"gui.lostworlds.armour": "Armor",
-	"gui.lostworlds.utilities": "Utilities",
-	"gui.lostworlds.electronics": "Electronics",
-	"gui.lostworlds.decoration": "Decoration",
-	"gui.lostworlds.miscellaneous": "Miscellaneous",
-	"gui.lostworlds.creature_items": "Creature Items",
-	"gui.lostworlds.plant_items": "Plant Items",
 
 	// ITEMS & EFFECTS & ENCHANTMENTS
 

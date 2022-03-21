@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_extractor",
-	"output": {
-		"item": "lostworlds:dimetrodon_dna"
-	},
-	"softTissue": {
-		"item": "lostworlds:dimetrodon_soft_tissue"
-	}
-}

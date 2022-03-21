@@ -84,8 +84,20 @@ public enum DinoTypes implements IStringSerializable {
 	private EntityType<FossilEntity> body;
 	private Block egg;
 	private Block extraBlock;
+	private Item plasteredSkullItem;
+	private Item plasteredArmBonesItem;
+	private Item plasteredLegBonesItem;
+	private Item plasteredRibCageItem;
+	private Item plasteredTailItem;
+	private Item skullItem;
+	private Item armBonesItem;
+	private Item legBonesItem;
+	private Item ribCageItem;
+	private Item tailItem;
 	private Item skeletonPick;
+	private Item softTissue;
 	private Item dna;
+	private Item dnaDisc;
 	private Item bloodSample;
 	private Item meat;
 	private Item fishBucket;
@@ -349,12 +361,108 @@ public enum DinoTypes implements IStringSerializable {
 		return this.skeletonPick;
 	}
 
+	public Item getPlasteredSkullItem() {
+		return this.plasteredSkullItem;
+	}
+
+	public Item setPlasteredSkullItem(Item item) {
+		return this.plasteredSkullItem = item;
+	}
+
+	public Item getPlasteredArmBonesItem() {
+		return this.plasteredArmBonesItem;
+	}
+
+	public Item setPlasteredArmBonesItem(Item item) {
+		return this.plasteredArmBonesItem = item;
+	}
+
+	public Item getPlasteredLegBonesItem() {
+		return this.plasteredLegBonesItem;
+	}
+
+	public Item setPlasteredLegBonesItem(Item item) {
+		return this.plasteredLegBonesItem = item;
+	}
+
+	public Item getPlasteredRibCageBonesItem() {
+		return this.plasteredRibCageItem;
+	}
+
+	public Item setPlasteredRibCageItem(Item item) {
+		return this.plasteredRibCageItem = item;
+	}
+
+	public Item getPlasteredTailBonesItem() {
+		return this.plasteredTailItem;
+	}
+
+	public Item setPlasteredTailItem(Item item) {
+		return this.plasteredTailItem = item;
+	}
+
+	public Item getSkullItem() {
+		return this.skullItem;
+	}
+
+	public Item setSkullItem(Item item) {
+		return this.skullItem = item;
+	}
+
+	public Item getArmBonesItem() {
+		return this.armBonesItem;
+	}
+
+	public Item setArmBonesItem(Item item) {
+		return this.armBonesItem = item;
+	}
+
+	public Item getLegBonesItem() {
+		return this.legBonesItem;
+	}
+
+	public Item setLegBonesItem(Item item) {
+		return this.legBonesItem = item;
+	}
+
+	public Item getRibCageBonesItem() {
+		return this.ribCageItem;
+	}
+
+	public Item setRibCageItem(Item item) {
+		return this.ribCageItem = item;
+	}
+
+	public Item getTailBonesItem() {
+		return this.tailItem;
+	}
+
+	public Item setTailItem(Item item) {
+		return this.tailItem = item;
+	}
+
+	public Item getSoftTissue() {
+		return this.softTissue;
+	}
+
+	public Item setSoftTissue(Item item) {
+		return this.softTissue = item;
+	}
+
 	public Item getDNA() {
 		return this.dna;
 	}
 
 	public Item setDNA(Item item) {
 		return this.dna = item;
+	}
+
+	public Item getDNADisc() {
+		return this.dnaDisc;
+	}
+
+	public Item setDNADisc(Item item) {
+		return this.dnaDisc = item;
 	}
 
 	public Item getBloodSample() {

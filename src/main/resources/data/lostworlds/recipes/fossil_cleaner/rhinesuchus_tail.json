@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:fossil_cleaner",
-	"output": {
-		"item": "lostworlds:rhinesuchus_tail"
-	},
-	"fossil": {
-		"item": "lostworlds:plastered_rhinesuchus_tail"
-	}
-}

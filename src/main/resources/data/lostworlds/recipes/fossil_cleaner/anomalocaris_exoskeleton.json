@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:fossil_cleaner",
-	"output": {
-		"item": "lostworlds:anomalocaris_exoskeleton"
-	},
-	"fossil": {
-		"item": "lostworlds:plastered_anomalocaris_exoskeleton"
-	}
-}

@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_extractor",
-	"output": {
-		"item": "lostworlds:palaeoniscum_dna"
-	},
-	"softTissue": {
-		"item": "lostworlds:palaeoniscum_soft_tissue"
-	}
-}

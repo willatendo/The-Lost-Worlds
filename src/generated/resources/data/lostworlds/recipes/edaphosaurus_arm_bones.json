@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "fossil": {
+    "item": "lostworlds:plastered_edaphosaurus_arm_bones"
+  },
+  "output": "lostworlds:edaphosaurus_arm_bones"
+}

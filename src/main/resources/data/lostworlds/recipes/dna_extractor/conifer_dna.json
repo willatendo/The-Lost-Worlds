@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_extractor",
-	"output": {
-		"item": "lostworlds:conifer_dna"
-	},
-	"softTissue": {
-		"item": "lostworlds:conifer_soft_tissue"
-	}
-}

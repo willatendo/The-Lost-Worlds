@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_extractor",
-	"output": {
-		"item": "lostworlds:great_auk_dna"
-	},
-	"softTissue": {
-		"item": "lostworlds:great_auk_soft_tissue"
-	}
-}
