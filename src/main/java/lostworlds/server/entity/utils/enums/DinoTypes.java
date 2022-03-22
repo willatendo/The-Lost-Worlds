@@ -425,7 +425,7 @@ public enum DinoTypes implements IStringSerializable {
 		return this.legBonesItem = item;
 	}
 
-	public Item getRibCageBonesItem() {
+	public Item getRibCageItem() {
 		return this.ribCageItem;
 	}
 
@@ -433,7 +433,7 @@ public enum DinoTypes implements IStringSerializable {
 		return this.ribCageItem = item;
 	}
 
-	public Item getTailBonesItem() {
+	public Item getTailItem() {
 		return this.tailItem;
 	}
 

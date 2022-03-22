@@ -172,6 +172,11 @@ public class FossilEntity extends AnimalEntity implements ITyrannomatable {
 	public boolean isPushedByFluid() {
 		return false;
 	}
+	
+	@Override
+	protected boolean shouldDropLoot() {
+		return true;
+	}
 
 	@Override
 	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
@@ -209,7 +214,7 @@ public class FossilEntity extends AnimalEntity implements ITyrannomatable {
 
 		@Override
 		public boolean canUse() {
-			if (entity.isLooking()) {
+			if (this.entity.isLooking()) {
 				if (this.entity.getTarget() != null) {
 					this.lookAt = this.entity.getTarget();
 				}

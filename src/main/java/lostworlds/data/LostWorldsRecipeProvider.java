@@ -23,8 +23,8 @@ public class LostWorldsRecipeProvider extends RecipeProvider {
 				FossilCleanerRecipeBuilder.simple(Ingredient.of(dinos.getPlasteredSkullItem()), dinos.getSkullItem()).unlockedBy("has_item", has(dinos.getSkullItem())).save(consumer);
 				FossilCleanerRecipeBuilder.simple(Ingredient.of(dinos.getPlasteredArmBonesItem()), dinos.getArmBonesItem()).unlockedBy("has_item", has(dinos.getArmBonesItem())).save(consumer);
 				FossilCleanerRecipeBuilder.simple(Ingredient.of(dinos.getPlasteredLegBonesItem()), dinos.getLegBonesItem()).unlockedBy("has_item", has(dinos.getLegBonesItem())).save(consumer);
-				FossilCleanerRecipeBuilder.simple(Ingredient.of(dinos.getPlasteredRibCageBonesItem()), dinos.getRibCageBonesItem()).unlockedBy("has_item", has(dinos.getRibCageBonesItem())).save(consumer);
-				FossilCleanerRecipeBuilder.simple(Ingredient.of(dinos.getPlasteredTailBonesItem()), dinos.getTailBonesItem()).unlockedBy("has_item", has(dinos.getTailBonesItem())).save(consumer);
+				FossilCleanerRecipeBuilder.simple(Ingredient.of(dinos.getPlasteredRibCageBonesItem()), dinos.getRibCageItem()).unlockedBy("has_item", has(dinos.getRibCageItem())).save(consumer);
+				FossilCleanerRecipeBuilder.simple(Ingredient.of(dinos.getPlasteredTailBonesItem()), dinos.getTailItem()).unlockedBy("has_item", has(dinos.getTailItem())).save(consumer);
 			}
 			DnaExtractorRecipeBuilder.simple(Ingredient.of(dinos.getSoftTissue()), dinos.getDNA()).unlockedBy("has_item", has(dinos.getDNA())).save(consumer);
 			AnalyzerRecipeBuilder.simple(Ingredient.of(dinos.getDNA()), dinos.getDNADisc()).unlockedBy("has_item", has(dinos.getDNA())).save(consumer);
