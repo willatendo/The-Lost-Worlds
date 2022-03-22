@@ -21,7 +21,7 @@ public class LostWorldsLexicon extends TyrannobookItem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> text, ITooltipFlag flag) {
-		text.add(LostWorldsUtils.gTC("lexicon", "desc"));
+		text.add(LostWorldsUtils.gTC("item", "lost_worlds_lexicon.desc"));
 	}
 
 	@Override

@@ -24,8 +24,8 @@ public class AmberDNAExtractorRecipe {
 
 	public NonNullList<Ingredient> getIngredients() {
 		NonNullList<Ingredient> nonnulllist = NonNullList.create();
-		nonnulllist.add(Ingredient.of(LostWorldsItems.AMBER));
-		nonnulllist.add(Ingredient.of(LostWorldsItems.EMPTY_VILE));
+		nonnulllist.add(Ingredient.of(LostWorldsItems.AMBER.get()));
+		nonnulllist.add(Ingredient.of(LostWorldsItems.EMPTY_VILE.get()));
 		return nonnulllist;
 	}
 }

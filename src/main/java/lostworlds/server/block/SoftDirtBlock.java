@@ -40,9 +40,9 @@ public class SoftDirtBlock extends Block {
 				world.setBlockAndUpdate(pos, LostWorldsBlocks.LARGE_FOSSILISED_EGG.defaultBlockState().setValue(LargeFossilisedEggBlock.EGGS, Integer.valueOf(rand.nextInt(3) + 1)));
 			}
 		} else if (drop == 1) {
-			this.popResource(world, pos, LostWorldsItems.FOSSILIZED_FEATHER.getDefaultInstance());
+			this.popResource(world, pos, LostWorldsItems.FOSSILIZED_FEATHER.get().getDefaultInstance());
 		} else if (drop == 2) {
-			this.popResource(world, pos, LostWorldsItems.FOSSILIZED_SKIN_IMPRESSION.getDefaultInstance());
+			this.popResource(world, pos, LostWorldsItems.FOSSILIZED_SKIN_IMPRESSION.get().getDefaultInstance());
 		} else if (drop == 3) {
 			int feather = rand.nextInt(DinoTypes.feathered().size());
 			this.popResource(world, pos, DinoTypes.feathered().get(feather).getFeather().getDefaultInstance());

@@ -36,7 +36,7 @@ public class DnaExtractorRecipeBuilder {
 	}
 
 	public static DnaExtractorRecipeBuilder simple(Ingredient input, IItemProvider result) {
-		return simple(input, Ingredient.of(LostWorldsItems.EMPTY_VILE), result);
+		return simple(input, Ingredient.of(LostWorldsItems.EMPTY_VILE.get()), result);
 	}
 
 	public DnaExtractorRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {

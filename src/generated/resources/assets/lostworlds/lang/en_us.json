@@ -1,17 +1,3 @@
 {
-  "item.lostworlds.chisel": "Chisel",
-  "item.lostworlds.cloth_mask": "Cloth Mask",
-  "item.lostworlds.crystal_scarab_axe": "Crystal Scarab Axe",
-  "item.lostworlds.crystal_scarab_brush": "Crystal Scarab Brush",
-  "item.lostworlds.crystal_scarab_hoe": "Crystal Scarab Hoe",
-  "item.lostworlds.crystal_scarab_pickaxe": "Crystal Scarab Pickaxe",
-  "item.lostworlds.crystal_scarab_shovel": "Crystal Scarab Shovel",
-  "item.lostworlds.crystal_scarab_sword": "Crystal Scarab Sword",
-  "item.lostworlds.diamond_brush": "Diamond Brush",
-  "item.lostworlds.gold_brush": "Gold Brush",
-  "item.lostworlds.hammer": "Hammer",
-  "item.lostworlds.iron_brush": "Iron Brush",
-  "item.lostworlds.leather_brush": "Leather Brush",
-  "item.lostworlds.netherite_brush": "Netherite Brush",
-  "item.lostworlds.wet_paper": "Wet Paper"
+  "item.lostworlds.lost_worlds_lexicon.desc": "An Everything-You-Need-to-Know Book!"
 }

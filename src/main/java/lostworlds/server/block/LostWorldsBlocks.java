@@ -229,7 +229,7 @@ public class LostWorldsBlocks {
 	public static final Item ARAUCARIA_SIGN_ITEM = LostWorldsRegistry.register("araucaria_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), ARAUCARIA_SIGN, ARAUCARIA_WALL_SIGN));
 	public static final Item ARAUCARIA_BOAT = LostWorldsRegistry.register("araucaria_boat", new ModBoatItem(ModBoatType.ARAUCARIA));
 
-	public static final Block PETRIFIED_ARAUCARIA_LOG = BlockUtils.create("petrified_araucaria_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), LostWorldsItems.ARAUCARIA_BARK_SAMPLE));
+	public static final Block PETRIFIED_ARAUCARIA_LOG = BlockUtils.create("petrified_araucaria_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), () -> LostWorldsItems.ARAUCARIA_BARK_SAMPLE.get()));
 	public static final Block STRIPPED_PETRIFIED_ARAUCARIA_LOG = BlockUtils.create("stripped_petrified_araucaria_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
 	// Calamite
@@ -253,7 +253,7 @@ public class LostWorldsBlocks {
 	public static final Item CALAMITES_SIGN_ITEM = LostWorldsRegistry.register("calamites_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), CALAMITES_SIGN, CALAMITES_WALL_SIGN));
 	public static final Item CALAMITES_BOAT = LostWorldsRegistry.register("calamites_boat", new ModBoatItem(ModBoatType.CALAMITES));
 
-	public static final Block PETRIFIED_CALAMITES_LOG = BlockUtils.create("petrified_calamites_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), LostWorldsItems.CALAMITES_BARK_SAMPLE));
+	public static final Block PETRIFIED_CALAMITES_LOG = BlockUtils.create("petrified_calamites_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), () -> LostWorldsItems.CALAMITES_BARK_SAMPLE.get()));
 	public static final Block STRIPPED_PETRIFIED_CALAMITES_LOG = BlockUtils.create("stripped_petrified_calamites_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
 	// Conifer
@@ -277,7 +277,7 @@ public class LostWorldsBlocks {
 	public static final Item CONIFER_SIGN_ITEM = LostWorldsRegistry.register("conifer_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), CONIFER_SIGN, CONIFER_WALL_SIGN));
 	public static final Item CONIFER_BOAT = LostWorldsRegistry.register("conifer_boat", new ModBoatItem(ModBoatType.CONIFER));
 
-	public static final Block PETRIFIED_CONIFER_LOG = BlockUtils.create("petrified_conifer_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), LostWorldsItems.CONIFER_BARK_SAMPLE));
+	public static final Block PETRIFIED_CONIFER_LOG = BlockUtils.create("petrified_conifer_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), () -> LostWorldsItems.CONIFER_BARK_SAMPLE.get()));
 	public static final Block STRIPPED_PETRIFIED_CONIFER_LOG = BlockUtils.create("stripped_petrified_conifer_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
 	// Cypress
@@ -301,7 +301,7 @@ public class LostWorldsBlocks {
 	public static final Item CYPRESS_SIGN_ITEM = LostWorldsRegistry.register("cypress_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), CYPRESS_SIGN, CYPRESS_WALL_SIGN));
 	public static final Item CYPRESS_BOAT = LostWorldsRegistry.register("cypress_boat", new ModBoatItem(ModBoatType.CYPRESS));
 
-	public static final Block PETRIFIED_CYPRESS_LOG = BlockUtils.create("petrified_cypress_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), LostWorldsItems.CYPRESS_BARK_SAMPLE));
+	public static final Block PETRIFIED_CYPRESS_LOG = BlockUtils.create("petrified_cypress_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), () -> LostWorldsItems.CYPRESS_BARK_SAMPLE.get()));
 	public static final Block STRIPPED_PETRIFIED_CYPRESS_LOG = BlockUtils.create("stripped_petrified_cypress_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
 	// Ginkgo
@@ -325,7 +325,7 @@ public class LostWorldsBlocks {
 	public static final Item GINKGO_SIGN_ITEM = LostWorldsRegistry.register("ginkgo_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), GINKGO_SIGN, GINKGO_WALL_SIGN));
 	public static final Item GINKGO_BOAT = LostWorldsRegistry.register("ginkgo_boat", new ModBoatItem(ModBoatType.GINKGO));
 
-	public static final Block PETRIFIED_GINKGO_LOG = BlockUtils.create("petrified_ginkgo_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), LostWorldsItems.GINKGO_BARK_SAMPLE));
+	public static final Block PETRIFIED_GINKGO_LOG = BlockUtils.create("petrified_ginkgo_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), () -> LostWorldsItems.GINKGO_BARK_SAMPLE.get()));
 	public static final Block STRIPPED_PETRIFIED_GINKGO_LOG = BlockUtils.create("stripped_petrified_ginkgo_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
 	// Scorched
@@ -368,7 +368,7 @@ public class LostWorldsBlocks {
 	public static final Item SEQUOIA_SIGN_ITEM = LostWorldsRegistry.register("sequoia_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), SEQUOIA_SIGN, SEQUOIA_WALL_SIGN));
 	public static final Item SEQUOIA_BOAT = LostWorldsRegistry.register("sequoia_boat", new ModBoatItem(ModBoatType.SEQUOIA));
 
-	public static final Block PETRIFIED_SEQUOIA_LOG = BlockUtils.create("petrified_sequoia_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_RED).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), LostWorldsItems.SEQUOIA_BARK_SAMPLE));
+	public static final Block PETRIFIED_SEQUOIA_LOG = BlockUtils.create("petrified_sequoia_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_RED).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), () -> LostWorldsItems.SEQUOIA_BARK_SAMPLE.get()));
 	public static final Block STRIPPED_PETRIFIED_SEQUOIA_LOG = BlockUtils.create("stripped_petrified_sequoia_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_RED).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
 	// Sigillaria

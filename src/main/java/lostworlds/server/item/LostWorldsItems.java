@@ -2,7 +2,10 @@ package lostworlds.server.item;
 
 import static lostworlds.LostWorldsMod.CENTRAL_REGISTRATE;
 
+import com.tterrag.registrate.providers.DataGenContext;
+import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 
 import lostworlds.client.craft.AmberDNAExtractorRecipeManager;
 import lostworlds.client.sounds.LostWorldsSounds;
@@ -17,6 +20,8 @@ import lostworlds.server.dimension.LostWorldsDimensions;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.entity.utils.enums.TimeEras;
+import lostworlds.server.item.CrystalScarabGemItem.CEChargedCrystalScarabGemItem;
+import lostworlds.server.item.CrystalScarabGemItem.CECrystalScarabGemItem;
 import lostworlds.server.item.armour.MaskItem;
 import lostworlds.server.item.armour.ModArmourMaterial;
 import lostworlds.server.item.armour.PinItem;
@@ -26,6 +31,7 @@ import lostworlds.server.item.tool.CrystalScarabGemBrushItem;
 import lostworlds.server.item.tool.ModItemTier;
 import lostworlds.server.util.LostWorldsRegistrate;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BannerPatternItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
@@ -60,73 +66,88 @@ public class LostWorldsItems {
 	public static final ItemEntry<MaskItem> CLOTH_MASK = REGISTRATE.item("cloth_mask", properties -> new MaskItem(ModArmourMaterial.CLOTH_MASK, properties)).lang("Cloth Mask").register();
 
 	// Utilities
-	public static final ItemEntry<WetPaperItem> WET_PAPER = REGISTRATE.item("wet_paper", properties -> new WetPaperItem(properties)).lang("Wet Paper").register();
-	public static final ItemEntry<SyringeItem> SYRINGE = REGISTRATE.item("syringe", properties -> new SyringeItem(properties.stacksTo(1))).lang("Syringe").register();
-	public static final ItemEntry<LostWorldsLexicon> LOST_WORLDS_LEXICON = REGISTRATE.item("lost_worlds_lexicon", properties -> new LostWorldsLexicon(properties.stacksTo(1).rarity(Rarity.RARE).fireResistant())).lang("Lost Worlds Lexicon").register();
-	public static final Item FIELD_GUIDE = LostWorldsRegistry.register("field_guide", new FieldGuideItem());
-	public static final Item TABLET = LostWorldsRegistry.register("tablet", new TabletItem());
-	public static final Item CONTRACEPTIVES = LostWorldsRegistry.register("contraceptives", new ModItem());
+	public static final ItemEntry<WetPaperItem> WET_PAPER = REGISTRATE.item("wet_paper", WetPaperItem::new).lang("Wet Paper").register();
+	public static final ItemEntry<SyringeItem> SYRINGE = REGISTRATE.item("syringe", SyringeItem::new).properties(properties -> properties.stacksTo(1)).lang("Syringe").register();
+	public static final ItemEntry<LostWorldsLexicon> LOST_WORLDS_LEXICON = REGISTRATE.item("lost_worlds_lexicon", LostWorldsLexicon::new).properties(properties -> properties.stacksTo(1).rarity(Rarity.RARE).fireResistant()).lang("Lost Worlds Lexicon").register();
+	public static final ItemEntry<FieldGuideItem> FIELD_GUIDE = REGISTRATE.item("field_guide", FieldGuideItem::new).properties(properties -> properties.stacksTo(1)).lang("Field Guide").register();
+	public static final ItemEntry<TabletItem> TABLET = REGISTRATE.item("tablet", TabletItem::new).properties(Properties -> Properties.stacksTo(1)).lang("Tablet").register();
+	public static final ItemEntry<Item> CONTRACEPTIVES = REGISTRATE.item("contraceptives", Item::new).lang("Contraceptives").register();
 
-	public static final Item PERMIAN_PERIOD_TIME_BOOK = LostWorldsRegistry.register("permian_period_time_book", new TimeBookItem(TimeEras.PERMIAN_PERIOD, LostWorldsDimensions.PERMIAN_WORLD));
-	public static final Item JURASSIC_PERIOD_TIME_BOOK = LostWorldsRegistry.register("jurassic_period_time_book", new TimeBookItem(TimeEras.JURASSIC_PERIOD, LostWorldsDimensions.JURASSIC_WORLD));
-	public static final Item CRETACEOUS_PERIOD_TIME_BOOK = LostWorldsRegistry.register("cretaceous_period_time_book", new TimeBookItem(TimeEras.CRETACEOUS_PERIOD, LostWorldsDimensions.CRETACEOUS_WORLD));
+	public static final ItemEntry<TimeBookItem> PERMIAN_PERIOD_TIME_BOOK = REGISTRATE.item("permian_period_time_book", properties -> new TimeBookItem(properties, TimeEras.PERMIAN_PERIOD, LostWorldsDimensions.PERMIAN_WORLD)).lang("Permian Period Time Book").register(),
+			JURASSIC_PERIOD_TIME_BOOK = REGISTRATE.item("jurassic_period_time_book", properties -> new TimeBookItem(properties, TimeEras.JURASSIC_PERIOD, LostWorldsDimensions.JURASSIC_WORLD)).lang("Jurassic Period Time Book").register(),
+			CRETACEOUS_PERIOD_TIME_BOOK = REGISTRATE.item("cretaceous_period_time_book", properties -> new TimeBookItem(properties, TimeEras.CRETACEOUS_PERIOD, LostWorldsDimensions.CRETACEOUS_WORLD)).lang("Cretaceous Period Time Book").register();
 
-	public static final Item MUD_BALL = LostWorldsRegistry.register("mud_ball", new ModItem());
+	public static final ItemEntry<Item> MUD_BALL = REGISTRATE.item("mud_ball", Item::new).lang("Mud Ball").register();
 
 	// Electronics
-	public static final Item COPPER_WIRE = LostWorldsRegistry.register("copper_wire", new ModItem());
-	public static final Item COMPUTER_FAN = LostWorldsRegistry.register("computer_fan", new ModItem());
-	public static final Item COMPUTER_SCREEN = LostWorldsRegistry.register("computer_screen", new ModItem());
-	public static final Item COMPUTER_FRAME = LostWorldsRegistry.register("computer_frame", new ModItem());
-	public static final Item COMPUTER_STORAGE_PORT = LostWorldsRegistry.register("computer_storage_port", new ModItem());
-	public static final Item MOTHERBOARD = LostWorldsRegistry.register("motherboard", new ModItem());
-	public static final Item CPU = LostWorldsRegistry.register("cpu", new ModItem());
-	public static final Item RAM = LostWorldsRegistry.register("ram", new ModItem());
-
-	public static final Item COMPUTER_CORE = LostWorldsRegistry.register("computer_core", new ModItem());
-
-	public static final Item STORAGE_DISC = LostWorldsRegistry.register("storage_disc", new ModItem());
-
-	public static final Item TAG = LostWorldsRegistry.register("tag", new ModItem(16));
+	public static final ItemEntry<Item> COPPER_WIRE = REGISTRATE.item("copper_wire", Item::new).lang("Copper Wire").register(),
+			COMPUTER_FAN = REGISTRATE.item("computer_fan", Item::new).lang("Computer Fan").register(),
+			COMPUTER_SCREEN = REGISTRATE.item("computer_screen", Item::new).lang("Computer Screen").register(),
+			COMPUTER_FRAME = REGISTRATE.item("computer_frame", Item::new).model(existingItemModel()).lang("Computer Frame").register(),
+			COMPUTER_STORAGE_PORT = REGISTRATE.item("computer_storage_port", Item::new).lang("Computer Storage Port").register(),
+			MOTHERBOARD = REGISTRATE.item("motherboard", Item::new).lang("Motherboard").register(),
+			CPU = REGISTRATE.item("cpu", Item::new).lang("CPU").register(),
+			RAM = REGISTRATE.item("ram", Item::new).lang("RAM").register(),
+			COMPUTER_CORE = REGISTRATE.item("computer_core", Item::new).model(existingItemModel()).lang("Computer Core").register(),
+			STORAGE_DISC = REGISTRATE.item("storage_disc", Item::new).lang("Storage Disc").register(),
+			TAG = REGISTRATE.item("tag", Item::new).lang("Tag").register();
 
 	// Decoration
-	public static final Item AMBER_KEYCHAIN = LostWorldsRegistry.register("amber_keychain", new CollectibleItem());
-	public static final Item DINO_BUTTON = LostWorldsRegistry.register("dino_button", new PinItem());
-	public static final Item BALLOON = LostWorldsRegistry.register("balloon", new CollectibleItem());
-	public static final Item TYRANNOSAURUS_PLUSH = LostWorldsRegistry.register("tyrannosaurus_plush", new CollectibleItem());
+	public static final ItemEntry<CollectibleItem> AMBER_KEYCHAIN = REGISTRATE.item("amber_keychain", CollectibleItem::new).lang("Amber Keychain").register(),
+			BALLOON = REGISTRATE.item("balloon", CollectibleItem::new).lang("Balloon").register(),
+			TYRANNOSAURUS_PLUSH = REGISTRATE.item("tyrannosaurus_plush", CollectibleItem::new).model(existingItemModel()).lang("Tyrannosaurus Plush").register();
+	public static final ItemEntry<PinItem> DINO_BUTTON = REGISTRATE.item("dino_button", properties -> new PinItem(ModArmourMaterial.DECO, EquipmentSlotType.CHEST, properties)).lang("Dino Button").register();
 
 	// Miscellaneous
-	public static final Item EMPTY_VILE = LostWorldsRegistry.register("empty_vile", new ModItem());
+	public static final ItemEntry<Item> EMPTY_VILE = REGISTRATE.item("empty_vile", Item::new).lang("Empty Vile").register();
 
-	public static final Item FERN_LEAVES = LostWorldsRegistry.register("fern_leaves", new ModItem(LostWorldsFoods.FERN_LEAVES));
-	public static final Item COOKED_FERN_LEAVES = LostWorldsRegistry.register("cooked_fern_leaves", new ModItem(LostWorldsFoods.COOKED_LEAVES));
+	public static final ItemEntry<Item> FERN_LEAVES = REGISTRATE.item("fern_leaves", Item::new).properties(properties -> properties.food(LostWorldsFoods.FERN_LEAVES)).lang("Fern Leaves").register(),
+			COOKED_FERN_LEAVES = REGISTRATE.item("cooked_fern_leaves", Item::new).properties(properties -> properties.food(LostWorldsFoods.COOKED_LEAVES)).lang("Cooked Fern Leaves").register(),
+			PALEO_SALAD = REGISTRATE.item("paleo_salad", Item::new).properties(properties -> properties.food(LostWorldsFoods.PALEO_SALAD)).lang("Paleo Salad").register();
 
-	public static final Item PALEO_SALAD = LostWorldsRegistry.register("paleo_salad", new ModItem(LostWorldsFoods.PALEO_SALAD));
+	public static final ItemEntry<BannerPatternItem> SCARAB_BANNER_PATTERN = REGISTRATE.item("scarab_banner_pattern", properties -> new BannerPatternItem(LostWorldsBanners.SCARAB, properties)).lang("Banner Pattern").register();
 
-	public static final Item SCARAB_BANNER_PATTERN = LostWorldsRegistry.register("scarab_banner_pattern", new BannerPatternItem(LostWorldsBanners.SCARAB, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1)));
-
-	public static final Item FOSSIL_POACHER_SPAWN_EGG = LostWorldsRegistry.register("fossil_poacher_spawn_egg", new ModSpawnEggItem(() -> LostWorldsEntities.FOSSIL_POACHER, 0x959b9b, 0x363031, ItemGroup.TAB_MISC));
+	public static final ItemEntry<ModSpawnEggItem> FOSSIL_POACHER_SPAWN_EGG = REGISTRATE.item("fossil_poacher_spawn_egg", properties -> new ModSpawnEggItem(() -> LostWorldsEntities.FOSSIL_POACHER, 0x959b9b, 0x363031, ItemGroup.TAB_MISC)).lang("Fossil Poacher Spawn Egg").model(spawnEgg()).register();
 
 	public static final Item MUSIC_DISC_ASCENTED = LostWorldsRegistry.register("music_disc_ascented", new MusicDiscItem(13, () -> LostWorldsSounds.ASCENTED, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1).rarity(Rarity.RARE)));
 
 	// Fossils
-	public static final Item AMBER = LostWorldsRegistry.register("amber", new AmberItem());
-	public static final Item FOSSILIZED_FEATHER = LostWorldsRegistry.register("fossilized_feather", new ModItem());
-	public static final Item FOSSILIZED_SKIN_IMPRESSION = LostWorldsRegistry.register("fossilized_skin_impression", new ModItem());
-	public static final Item GROUND_FOSSIL = LostWorldsRegistry.register("ground_fossil", new ModBoneMealItem());
-	public static final Item PLANT_WASTE = LostWorldsRegistry.register("plant_waste", new ModBoneMealItem());
+	public static final ItemEntry<CEChargedCrystalScarabGemItem> CHARGED_CRYSTAL_SCARAB_GEM = REGISTRATE.item("charged_crystal_scarab_gem", CEChargedCrystalScarabGemItem::new).properties(properties -> properties.fireResistant().rarity(Rarity.RARE)).model(itemModel("crystal_scarab_gem")).lang("Charged Crystal Scarab Gem").register();
+	public static final ItemEntry<CECrystalScarabGemItem> CRYSTAL_SCARAB_GEM = REGISTRATE.item("crystal_scarab_gem", CECrystalScarabGemItem::new).properties(properties -> properties.fireResistant().rarity(Rarity.RARE)).lang("Crystal Scarab Gem").register();
+	public static final ItemEntry<Item> CRYSTAL_SCARAB_ABDOMEN = REGISTRATE.item("crystal_scarab_abdomen", Item::new).properties(properties -> properties.fireResistant().rarity(Rarity.UNCOMMON)).lang("Crystal Scarab Abdomen").register(),
+			CRYSTAL_SCARAB_BOTTOM_LEFT_LEG = REGISTRATE.item("crystal_scarab_bottom_left_leg", Item::new).properties(properties -> properties.fireResistant().rarity(Rarity.UNCOMMON)).lang("Crystal Scarab Bottom Left Leg").register(),
+			CRYSTAL_SCARAB_BOTTOM_RIGHT_LEG = REGISTRATE.item("crystal_scarab_bottom_right_leg", Item::new).properties(properties -> properties.fireResistant().rarity(Rarity.UNCOMMON)).lang("Crystal Scarab Bottom Right Leg").register(),
+			CRYSTAL_SCARAB_THORAX = REGISTRATE.item("crystal_scarab_thorax", Item::new).properties(properties -> properties.fireResistant().rarity(Rarity.UNCOMMON)).lang("Crystal Scarab Thorax").register(),
+			CRYSTAL_SCARAB_TOP_LEFT_LEG = REGISTRATE.item("crystal_scarab_top_left_leg", Item::new).properties(properties -> properties.fireResistant().rarity(Rarity.UNCOMMON)).lang("Crystal Scarab Top Left Leg").register(),
+			CRYSTAL_SCARAB_TOP_RIGHT_LEG = REGISTRATE.item("crystal_scarab_top_right_leg", Item::new).properties(properties -> properties.fireResistant().rarity(Rarity.UNCOMMON)).lang("Crystal Scarab Top Right Leg").register();
 
-	public static final Item ARAUCARIA_BARK_SAMPLE = LostWorldsRegistry.register("araucaria_bark_sample", new ModItem());
-	public static final Item CALAMITES_BARK_SAMPLE = LostWorldsRegistry.register("calamites_bark_sample", new ModItem());
-	public static final Item CONIFER_BARK_SAMPLE = LostWorldsRegistry.register("conifer_bark_sample", new ModItem());
-	public static final Item CYPRESS_BARK_SAMPLE = LostWorldsRegistry.register("cypress_bark_sample", new ModItem());
-	public static final Item GINKGO_BARK_SAMPLE = LostWorldsRegistry.register("ginkgo_bark_sample", new ModItem());
-	public static final Item SEQUOIA_BARK_SAMPLE = LostWorldsRegistry.register("sequoia_bark_sample", new ModItem());
+	public static final ItemEntry<AmberItem> AMBER = REGISTRATE.item("amber", AmberItem::new).lang("Amber").register();
+	public static final ItemEntry<Item> FOSSILIZED_FEATHER = REGISTRATE.item("fossilized_feather", Item::new).lang("Fossilized Feather").register(),
+			FOSSILIZED_SKIN_IMPRESSION = REGISTRATE.item("fossilized_skin_impression", Item::new).lang("Fossilized Skin Impression").register();
+	public static final ItemEntry<ModBoneMealItem> GROUND_FOSSIL = REGISTRATE.item("ground_fossil", ModBoneMealItem::new).lang("Ground Fossil").register(),
+			PLANT_WASTE = REGISTRATE.item("plant_waste", ModBoneMealItem::new).lang("Plant Waste").register();
+
+	public static final ItemEntry<Item> ARAUCARIA_BARK_SAMPLE = REGISTRATE.item("araucaria_bark_sample", Item::new).lang("Araucaria Bark Sample").register(),
+			CALAMITES_BARK_SAMPLE = REGISTRATE.item("calamites_bark_sample", Item::new).lang("Calamites Bark Sample").register(),
+			CONIFER_BARK_SAMPLE = REGISTRATE.item("conifer_bark_sample", Item::new).lang("Conifer Bark Sample").register(),
+			CYPRESS_BARK_SAMPLE = REGISTRATE.item("cypress_bark_sample", Item::new).lang("Cypress Bark Sample").register(),
+			GINKGO_BARK_SAMPLE = REGISTRATE.item("ginkgo_bark_sample", Item::new).lang("Ginkgo Bark Sample").register(),
+			SEQUOIA_BARK_SAMPLE = REGISTRATE.item("sequoia_bark_sample", Item::new).lang("Sequoia Bark Sample").register();
+
+	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> existingItemModel() {
+		return (c, p) -> p.getExistingFile(p.modLoc("item/" + c.getName()));
+	}
+
+	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> spawnEgg() {
+		return (c, p) -> p.withExistingParent(c.get().getRegistryName().getPath(), p.mcLoc("item/template_spawn_egg"));
+	}
+
+	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> itemModel(String model) {
+		return (c, p) -> p.generated(() -> c.get(), p.modLoc("item/" + model));
+	}
 
 	public static void init() {
 		LostWorldsUtils.LOGGER.debug("Registering Mod Items");
-
-		CrystalScarabGemItem.createAll();
 
 		for (DinoTypes dinos : DinoTypes.values()) {
 			if (dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS) {

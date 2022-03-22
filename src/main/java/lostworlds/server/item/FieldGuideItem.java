@@ -15,8 +15,8 @@ import net.minecraft.world.World;
 import tyrannotitanlib.library.tyrannobook.item.TyrannobookItem;
 
 public class FieldGuideItem extends TyrannobookItem {
-	public FieldGuideItem() {
-		super(new Properties().tab(LostWorldsUtils.ITEMS).stacksTo(1));
+	public FieldGuideItem(Properties properties) {
+		super(properties);
 	}
 
 	@Override

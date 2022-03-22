@@ -13,8 +13,8 @@ import net.minecraftforge.registries.ForgeRegistryEntry;
 public class AmberDNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<AmberDNAExtractorRecipe> {
 	@Override
 	public AmberDNAExtractorRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
-		Ingredient softTissue = Ingredient.of(LostWorldsItems.AMBER);
-		Ingredient vile = Ingredient.of(LostWorldsItems.EMPTY_VILE);
+		Ingredient softTissue = Ingredient.of(LostWorldsItems.AMBER.get());
+		Ingredient vile = Ingredient.of(LostWorldsItems.EMPTY_VILE.get());
 
 		return new AmberDNAExtractorRecipe(recipeId, softTissue, vile);
 	}

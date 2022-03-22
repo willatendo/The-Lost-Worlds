@@ -186,7 +186,7 @@ public abstract class TaggedEntity extends PrehistoricEntity {
 	}
 
 	public boolean isTag(ItemStack stack) {
-		Ingredient tag = Ingredient.of(LostWorldsItems.TAG);
+		Ingredient tag = Ingredient.of(LostWorldsItems.TAG.get());
 		return tag.test(stack);
 	}
 }

@@ -8,15 +8,15 @@ import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 
 import lostworlds.client.jei.recipe.AmberDNAExtractorRecipe;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
+import lostworlds.server.container.recipes.RandomItemGenerator;
 import lostworlds.server.container.recipes.RecipeManager;
 import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.item.crafting.IRecipeType;
-import tyrannotitanlib.library.base.recipe.TyrannoRandomOutputGenerator;
 
 @ZenRegister
 @ZenCodeType.Name("mods.lostworlds.amber_dna_extractor")
 public class AmberDNAExtractorRecipeManager implements IRecipeManager {
-	public static final TyrannoRandomOutputGenerator amber = new TyrannoRandomOutputGenerator(LostWorldsItems.AMBER.getDefaultInstance());
+	public static final RandomItemGenerator amber = new RandomItemGenerator(() -> LostWorldsItems.AMBER.get().getDefaultInstance());
 
 	@ZenCodeType.Method
 	public void addAdditionalOutput(IItemStack additionalOutput) {

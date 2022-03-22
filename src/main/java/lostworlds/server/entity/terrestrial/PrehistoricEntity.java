@@ -314,7 +314,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	}
 
 	public boolean isContraceptives(ItemStack stack) {
-		return stack.getItem() == LostWorldsItems.CONTRACEPTIVES;
+		return stack.getItem() == LostWorldsItems.CONTRACEPTIVES.get();
 	}
 
 	public byte getVarient() {

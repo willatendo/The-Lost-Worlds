@@ -3,7 +3,7 @@ package lostworlds.server.container.recipes.serialiser;
 import com.google.gson.JsonObject;
 
 import lostworlds.server.container.recipes.TimeMachineRecipe;
-import lostworlds.server.item.CrystalScarabGemItem;
+import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -19,7 +19,7 @@ public class TimeMachineRecipeSerialiser extends ForgeRegistryEntry<IRecipeSeria
 		String s1 = JSONUtils.getAsString(json, "result");
 		int i = JSONUtils.getAsInt(json, "count");
 		ItemStack itemstack = new ItemStack(Registry.ITEM.get(new ResourceLocation(s1)), i);
-		return new TimeMachineRecipe(recipeId, itemstack, Ingredient.of(Items.BOOK), Ingredient.of(CrystalScarabGemItem.Gems.CHARGED_CRYSTAL_SCARAB_GEM.getItem()));
+		return new TimeMachineRecipe(recipeId, itemstack, Ingredient.of(Items.BOOK), Ingredient.of(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get()));
 	}
 
 	public TimeMachineRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {

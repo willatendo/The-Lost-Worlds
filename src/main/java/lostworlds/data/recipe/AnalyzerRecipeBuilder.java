@@ -36,7 +36,7 @@ public class AnalyzerRecipeBuilder {
 	}
 
 	public static AnalyzerRecipeBuilder simple(Ingredient dna, IItemProvider result) {
-		return simple(dna, Ingredient.of(LostWorldsItems.STORAGE_DISC), result);
+		return simple(dna, Ingredient.of(LostWorldsItems.STORAGE_DISC.get()), result);
 	}
 
 	public AnalyzerRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {

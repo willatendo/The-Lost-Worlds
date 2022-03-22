@@ -18,8 +18,8 @@ public class FossilGrinderRecipe implements IRecipe<IInventory> {
 	private final ResourceLocation id;
 	private Ingredient fossil;
 	public final ItemStack output;
-	public final ItemStack broken_fossil = LostWorldsItems.GROUND_FOSSIL.getDefaultInstance();
-	public final ItemStack broken_plant = LostWorldsItems.PLANT_WASTE.getDefaultInstance();
+	public final ItemStack broken_fossil = LostWorldsItems.GROUND_FOSSIL.get().getDefaultInstance();
+	public final ItemStack broken_plant = LostWorldsItems.PLANT_WASTE.get().getDefaultInstance();
 	private final boolean plant;
 
 	public FossilGrinderRecipe(ResourceLocation id, Ingredient fossil, ItemStack output, boolean plant) {

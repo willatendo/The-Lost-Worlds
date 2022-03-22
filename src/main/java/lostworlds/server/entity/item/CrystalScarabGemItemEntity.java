@@ -1,7 +1,7 @@
 package lostworlds.server.entity.item;
 
 import lostworlds.server.entity.LostWorldsEntities;
-import lostworlds.server.item.CrystalScarabGemItem;
+import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.item.ItemEntity;
@@ -24,7 +24,7 @@ public class CrystalScarabGemItemEntity extends ModItemEntity {
 	public void thunderHit(ServerWorld world, LightningBoltEntity lightning) {
 		ItemEntity entity = EntityType.ITEM.create(world);
 		entity.moveTo(this.getX(), this.getY(), this.getZ(), this.yRot, this.xRot);
-		entity.setItem(CrystalScarabGemItem.Gems.CHARGED_CRYSTAL_SCARAB_GEM.getItem().getDefaultInstance());
+		entity.setItem(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get().getDefaultInstance());
 		world.addFreshEntity(entity);
 		this.remove();
 	}

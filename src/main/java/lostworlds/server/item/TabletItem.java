@@ -1,7 +1,6 @@
 package lostworlds.server.item;
 
 import lostworlds.client.screen.tablet.TabletScreen;
-import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.terrestrial.PrehistoricEntity;
 import lostworlds.server.entity.terrestrial.TaggedEntity;
 import net.minecraft.client.Minecraft;
@@ -14,8 +13,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class TabletItem extends ModItem {
-	public TabletItem() {
-		super(new Properties().tab(LostWorldsUtils.ITEMS).stacksTo(1));
+	public TabletItem(Properties properties) {
+		super(properties);
 	}
 
 	@OnlyIn(Dist.CLIENT)

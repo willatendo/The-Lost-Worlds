@@ -32,7 +32,7 @@ import lostworlds.server.container.FossilCleanerContainer;
 import lostworlds.server.container.FossilGrinderContainer;
 import lostworlds.server.container.PaleontologyTableContainer;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
-import lostworlds.server.item.CrystalScarabGemItem;
+import lostworlds.server.item.LostWorldsItems;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
@@ -75,7 +75,7 @@ public class LostWorldsJeiPlugin implements IModPlugin {
 		registration.addRecipes(getRecipes(manager, LostWorldsRecipes.ARCHAEOLOGY_TABLE_RECIPE), LostWorldsJeiConstants.ARCHAEOLOGY_TABLE_CATEGORY);
 		registration.addRecipes(getRecipes(manager, LostWorldsRecipes.PALEONTOLOGY_TABLE_RECIPE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
 
-		registration.addIngredientInfo(CrystalScarabGemItem.Gems.CHARGED_CRYSTAL_SCARAB_GEM.getItem().getDefaultInstance(), VanillaTypes.ITEM, LostWorldsUtils.tTC("jeiInfo", "charged_crystal_scarab_gem").getString());
+		registration.addIngredientInfo(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get().getDefaultInstance(), VanillaTypes.ITEM, LostWorldsUtils.tTC("jeiInfo", "charged_crystal_scarab_gem").getString());
 	}
 
 	@Override

@@ -11,7 +11,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.item.Rarity;
 import net.minecraft.item.ShootableItem;
 import net.minecraft.item.UseAction;
 import net.minecraft.server.MinecraftServer;
@@ -31,8 +30,8 @@ public class TimeBookItem extends ShootableItem {
 	private final TimeEras era;
 	private final RegistryKey<World> worldToTransportTo;
 
-	public TimeBookItem(TimeEras eras, RegistryKey<World> world) {
-		super(new Properties().tab(LostWorldsUtils.ITEMS).stacksTo(1).rarity(Rarity.RARE).fireResistant());
+	public TimeBookItem(Properties properites, TimeEras eras, RegistryKey<World> world) {
+		super(properites);
 		this.era = eras;
 		this.worldToTransportTo = world;
 	}

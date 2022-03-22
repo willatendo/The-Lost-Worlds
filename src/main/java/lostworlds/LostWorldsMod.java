@@ -148,7 +148,7 @@ public class LostWorldsMod {
 
 	private void commonSetup(FMLCommonSetupEvent event) {
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(LostWorldsBlocks.VOLCANIC_ASH.asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), LostWorldsPotions.ASHY_LUNG_POTION));
-		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), LostWorldsItems.CONTRACEPTIVES.getDefaultInstance());
+		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), LostWorldsItems.CONTRACEPTIVES.get().getDefaultInstance());
 
 		LostWorldsUtils.ITEMS.setIcon(LostWorldsItems.LOST_WORLDS_LEXICON.get().getDefaultInstance());
 		LostWorldsUtils.BLOCKS.setIcon(LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.asItem().getDefaultInstance());

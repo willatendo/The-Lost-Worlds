@@ -7,7 +7,7 @@ import com.google.common.collect.Lists;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
 import lostworlds.server.container.recipes.TimeMachineRecipe;
-import lostworlds.server.item.CrystalScarabGemItem;
+import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftResultInventory;
@@ -213,7 +213,7 @@ public class TimeMachineContainer extends Container {
 				}
 			}
 
-			else if (itemstack1.getItem() == CrystalScarabGemItem.Gems.CHARGED_CRYSTAL_SCARAB_GEM.getItem()) {
+			else if (itemstack1.getItem() == LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get()) {
 				if (!this.moveItemStackTo(itemstack1, 1, 2, true)) {
 					return ItemStack.EMPTY;
 				}

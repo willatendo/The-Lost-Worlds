@@ -12,6 +12,6 @@ public class VileSlot extends Slot {
 
 	@Override
 	public boolean mayPlace(ItemStack stack) {
-		return stack.getItem() == LostWorldsItems.EMPTY_VILE;
+		return stack.getItem() == LostWorldsItems.EMPTY_VILE.get();
 	}
 }
