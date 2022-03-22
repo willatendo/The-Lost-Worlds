@@ -3,8 +3,8 @@ package lostworlds.server.item.tool;
 import net.minecraft.item.ItemStack;
 
 public class CrystalScarabGemBrushItem extends BrushItem {
-	public CrystalScarabGemBrushItem() {
-		super(ModItemTier.CRYSTAL_SCARAB, new Properties().setNoRepair());
+	public CrystalScarabGemBrushItem(Properties properties) {
+		super(ModItemTier.CRYSTAL_SCARAB, properties);
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.client.book.LostWorldsBooks;
@@ -26,8 +27,8 @@ import lostworlds.server.dimension.LostWorldsDimensions;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.LostWorldsPOIs;
 import lostworlds.server.entity.LostWorldsVillagerProfessions;
-import lostworlds.server.feature.LostWorldsPlacements;
 import lostworlds.server.feature.LostWorldsFeatures;
+import lostworlds.server.feature.LostWorldsPlacements;
 import lostworlds.server.item.LostWorldsBanners;
 import lostworlds.server.item.LostWorldsEnchantments;
 import lostworlds.server.item.LostWorldsItems;
@@ -35,6 +36,7 @@ import lostworlds.server.item.LostWorldsPotions;
 import lostworlds.server.structure.LostWorldsStructurePecies;
 import lostworlds.server.structure.LostWorldsStructures;
 import lostworlds.server.tree.LostWorldsFoliagePlacers;
+import lostworlds.server.util.LostWorldsRegistrate;
 import lostworlds.server.util.Version;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.LivingEntity;
@@ -76,7 +78,7 @@ import tyrannotitanlib.library.base.biome.generation.TyrannoWorld;
 @Mod(LostWorldsMod.ID)
 public class LostWorldsMod {
 	public static final String ID = "lostworlds";
-//	public static final NonNullLazyValue<Registrate> CENTRAL_REGISTRATE = new NonNullLazyValue(() -> Registrate.create(LostWorldsMod.ID));
+	public static final NonNullSupplier<LostWorldsRegistrate> CENTRAL_REGISTRATE = LostWorldsRegistrate.lazy(ID);
 
 	public LostWorldsMod() {
 		this.modBus();
@@ -148,7 +150,7 @@ public class LostWorldsMod {
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(LostWorldsBlocks.VOLCANIC_ASH.asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), LostWorldsPotions.ASHY_LUNG_POTION));
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), LostWorldsItems.CONTRACEPTIVES.getDefaultInstance());
 
-		LostWorldsUtils.ITEMS.setIcon(LostWorldsItems.LOST_WORLDS_LEXICON.getDefaultInstance());
+		LostWorldsUtils.ITEMS.setIcon(LostWorldsItems.LOST_WORLDS_LEXICON.get().getDefaultInstance());
 		LostWorldsUtils.BLOCKS.setIcon(LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.asItem().getDefaultInstance());
 
 		event.enqueueWork(() -> {
@@ -333,7 +335,7 @@ public class LostWorldsMod {
 		CompoundNBT playerData = event.getPlayer().getPersistentData();
 		CompoundNBT data = playerData.getCompound(PlayerEntity.PERSISTED_NBT_TAG);
 		if (data != null && !data.getBoolean("has_lexicon")) {
-			ItemHandlerHelper.giveItemToPlayer(event.getPlayer(), new ItemStack(LostWorldsItems.LOST_WORLDS_LEXICON));
+			ItemHandlerHelper.giveItemToPlayer(event.getPlayer(), new ItemStack(LostWorldsItems.LOST_WORLDS_LEXICON.get()));
 			data.putBoolean("has_lexicon", true);
 			playerData.put(PlayerEntity.PERSISTED_NBT_TAG, data);
 		}
@@ -366,7 +368,7 @@ public class LostWorldsMod {
 	}
 
 	public static boolean isWearingMask(LivingEntity living, EquipmentSlotType pieceValue) {
-		List<Item> mask = ImmutableList.of(LostWorldsItems.CLOTH_MASK);
+		List<Item> mask = ImmutableList.of(LostWorldsItems.CLOTH_MASK.get());
 		return mask.contains(living.getItemBySlot(pieceValue).getItem());
 	}
 }

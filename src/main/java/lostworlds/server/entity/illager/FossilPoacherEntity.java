@@ -140,7 +140,7 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 
 	@Override
 	public void applyRaidBuffs(int wave, boolean buff) {
-		ItemStack itemstack = new ItemStack(LostWorldsItems.HAMMER);
+		ItemStack itemstack = LostWorldsItems.HAMMER.get().getDefaultInstance();
 		Raid raid = this.getCurrentRaid();
 		int i = 1;
 		if (wave > raid.getNumGroups(Difficulty.NORMAL)) {
@@ -160,7 +160,7 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 	@Override
 	protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty) {
 		if (this.getCurrentRaid() == null) {
-			this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(LostWorldsItems.HAMMER));
+			this.setItemSlot(EquipmentSlotType.MAINHAND, LostWorldsItems.HAMMER.get().getDefaultInstance());
 		}
 	}
 

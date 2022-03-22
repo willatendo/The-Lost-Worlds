@@ -13,6 +13,7 @@ public class LostWorldsTags
 		public static final ITag.INamedTag<Item> ARAUCARIA_LOGS = tag("araucaria_logs");
 		public static final ITag.INamedTag<Item> BLOOD_SYRINGES = tag("blood_syringes");
 		public static final ITag.INamedTag<Item> BLOOD_VILES = tag("blood_viles");
+		public static final ITag.INamedTag<Item> BRUSHES = tag("brushes");
 		public static final ITag.INamedTag<Item> CALAMITES_LOGS = tag("calamties_logs");
 		public static final ITag.INamedTag<Item> CONIFER_LOGS = tag("conifer_logs");
 		public static final ITag.INamedTag<Item> DNA_DISCS = tag("dna_discs");

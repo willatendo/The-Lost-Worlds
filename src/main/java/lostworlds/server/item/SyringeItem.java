@@ -12,8 +12,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvents;
 
 public class SyringeItem extends ModItem {
-	public SyringeItem() {
-		super(1);
+	public SyringeItem(Properties properties) {
+		super(properties);
 	}
 
 	@Override
