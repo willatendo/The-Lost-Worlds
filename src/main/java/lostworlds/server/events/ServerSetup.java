@@ -117,13 +117,13 @@ public class ServerSetup {
 
 			ArrayList<Item> dnaForSale = Lists.newArrayList();
 			for (Trees trees : Trees.values()) {
-				dnaForSale.add(trees.getDNA());
+				dnaForSale.add(trees.getDNA().get());
 			}
 			for (Plants plants : Plants.values()) {
-				dnaForSale.add(plants.getDNA());
+				dnaForSale.add(plants.getDNA().get());
 			}
 			for (DinoTypes dinos : DinoTypes.values()) {
-				dnaForSale.add(dinos.getDNA());
+				dnaForSale.add(dinos.getDNA().get());
 			}
 			VillagerTrades.ITrade[] paleontology5 = new VillagerTrades.ITrade[] { new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsItems.CONTRACEPTIVES.get(), 12, 5, 20), new MultiItemForEmeraldsTrade(dnaForSale, ImmutableList.of(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), ImmutableList.of(64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64), 1, 200) };
 

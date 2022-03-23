@@ -9,7 +9,6 @@ import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 
 import lostworlds.client.craft.AmberDNAExtractorRecipeManager;
 import lostworlds.client.sounds.LostWorldsSounds;
-import lostworlds.server.LostWorldsRegistry;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.Plants;
@@ -35,11 +34,13 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BannerPatternItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.Properties;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemTier;
-import net.minecraft.item.MusicDiscItem;
 import net.minecraft.item.Rarity;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.generators.ModelBuilder.Perspective;
+import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.common.Tags;
 
 public class LostWorldsItems {
 	private static final LostWorldsRegistrate REGISTRATE = CENTRAL_REGISTRATE.get().itemGroup(() -> LostWorldsUtils.ITEMS);
@@ -83,23 +84,23 @@ public class LostWorldsItems {
 	public static final ItemEntry<Item> COPPER_WIRE = REGISTRATE.item("copper_wire", Item::new).lang("Copper Wire").register(),
 			COMPUTER_FAN = REGISTRATE.item("computer_fan", Item::new).lang("Computer Fan").register(),
 			COMPUTER_SCREEN = REGISTRATE.item("computer_screen", Item::new).lang("Computer Screen").register(),
-			COMPUTER_FRAME = REGISTRATE.item("computer_frame", Item::new).model(existingItemModel()).lang("Computer Frame").register(),
+			COMPUTER_FRAME = REGISTRATE.item("computer_frame", Item::new).model(custom((item, provider) -> provider.withExistingParent("computer_frame", provider.modLoc("item/computer_frame")))).lang("Computer Frame").register(),
 			COMPUTER_STORAGE_PORT = REGISTRATE.item("computer_storage_port", Item::new).lang("Computer Storage Port").register(),
 			MOTHERBOARD = REGISTRATE.item("motherboard", Item::new).lang("Motherboard").register(),
 			CPU = REGISTRATE.item("cpu", Item::new).lang("CPU").register(),
 			RAM = REGISTRATE.item("ram", Item::new).lang("RAM").register(),
-			COMPUTER_CORE = REGISTRATE.item("computer_core", Item::new).model(existingItemModel()).lang("Computer Core").register(),
+			COMPUTER_CORE = REGISTRATE.item("computer_core", Item::new).model(custom((item, provider) -> provider.withExistingParent("computer_core", provider.modLoc("item/computer_core")))).lang("Computer Core").register(),
 			STORAGE_DISC = REGISTRATE.item("storage_disc", Item::new).lang("Storage Disc").register(),
 			TAG = REGISTRATE.item("tag", Item::new).lang("Tag").register();
 
 	// Decoration
 	public static final ItemEntry<CollectibleItem> AMBER_KEYCHAIN = REGISTRATE.item("amber_keychain", CollectibleItem::new).lang("Amber Keychain").register(),
 			BALLOON = REGISTRATE.item("balloon", CollectibleItem::new).lang("Balloon").register(),
-			TYRANNOSAURUS_PLUSH = REGISTRATE.item("tyrannosaurus_plush", CollectibleItem::new).model(existingItemModel()).lang("Tyrannosaurus Plush").register();
+			TYRANNOSAURUS_PLUSH = REGISTRATE.item("tyrannosaurus_plush", CollectibleItem::new).model(custom((item, provider) -> provider.withExistingParent("tyrannosaurus_plush", provider.modLoc("item/tyrannosaurus_plush")))).lang("Tyrannosaurus Plush").register();
 	public static final ItemEntry<PinItem> DINO_BUTTON = REGISTRATE.item("dino_button", properties -> new PinItem(ModArmourMaterial.DECO, EquipmentSlotType.CHEST, properties)).lang("Dino Button").register();
 
 	// Miscellaneous
-	public static final ItemEntry<Item> EMPTY_VILE = REGISTRATE.item("empty_vile", Item::new).lang("Empty Vile").register();
+	public static final ItemEntry<Item> EMPTY_VILE = REGISTRATE.item("empty_vile", Item::new).register();
 
 	public static final ItemEntry<Item> FERN_LEAVES = REGISTRATE.item("fern_leaves", Item::new).properties(properties -> properties.food(LostWorldsFoods.FERN_LEAVES)).lang("Fern Leaves").register(),
 			COOKED_FERN_LEAVES = REGISTRATE.item("cooked_fern_leaves", Item::new).properties(properties -> properties.food(LostWorldsFoods.COOKED_LEAVES)).lang("Cooked Fern Leaves").register(),
@@ -107,12 +108,12 @@ public class LostWorldsItems {
 
 	public static final ItemEntry<BannerPatternItem> SCARAB_BANNER_PATTERN = REGISTRATE.item("scarab_banner_pattern", properties -> new BannerPatternItem(LostWorldsBanners.SCARAB, properties)).lang("Banner Pattern").register();
 
-	public static final ItemEntry<ModSpawnEggItem> FOSSIL_POACHER_SPAWN_EGG = REGISTRATE.item("fossil_poacher_spawn_egg", properties -> new ModSpawnEggItem(() -> LostWorldsEntities.FOSSIL_POACHER, 0x959b9b, 0x363031, ItemGroup.TAB_MISC)).lang("Fossil Poacher Spawn Egg").model(spawnEgg()).register();
+	public static final ItemEntry<ModSpawnEggItem> FOSSIL_POACHER_SPAWN_EGG = REGISTRATE.item("fossil_poacher_spawn_egg", properties -> new ModSpawnEggItem(() -> LostWorldsEntities.FOSSIL_POACHER, 0x959b9b, 0x363031, properties)).properties(properties -> properties.tab(ItemGroup.TAB_MISC)).lang("Fossil Poacher Spawn Egg").model(spawnEgg()).register();
 
-	public static final Item MUSIC_DISC_ASCENTED = LostWorldsRegistry.register("music_disc_ascented", new MusicDiscItem(13, () -> LostWorldsSounds.ASCENTED, new Properties().tab(ItemGroup.TAB_MISC).stacksTo(1).rarity(Rarity.RARE)));
+	public static final ItemEntry<AscentedMusicDiscItem> MUSIC_DISC_ASCENTED = REGISTRATE.item("music_disc_ascented", properties -> new AscentedMusicDiscItem(13, () -> LostWorldsSounds.ASCENTED, properties)).lang("Music Disc").register();
 
 	// Fossils
-	public static final ItemEntry<CEChargedCrystalScarabGemItem> CHARGED_CRYSTAL_SCARAB_GEM = REGISTRATE.item("charged_crystal_scarab_gem", CEChargedCrystalScarabGemItem::new).properties(properties -> properties.fireResistant().rarity(Rarity.RARE)).model(itemModel("crystal_scarab_gem")).lang("Charged Crystal Scarab Gem").register();
+	public static final ItemEntry<CEChargedCrystalScarabGemItem> CHARGED_CRYSTAL_SCARAB_GEM = REGISTRATE.item("charged_crystal_scarab_gem", CEChargedCrystalScarabGemItem::new).properties(properties -> properties.fireResistant().rarity(Rarity.RARE)).model(textured("crystal_scarab_gem")).lang("Charged Crystal Scarab Gem").register();
 	public static final ItemEntry<CECrystalScarabGemItem> CRYSTAL_SCARAB_GEM = REGISTRATE.item("crystal_scarab_gem", CECrystalScarabGemItem::new).properties(properties -> properties.fireResistant().rarity(Rarity.RARE)).lang("Crystal Scarab Gem").register();
 	public static final ItemEntry<Item> CRYSTAL_SCARAB_ABDOMEN = REGISTRATE.item("crystal_scarab_abdomen", Item::new).properties(properties -> properties.fireResistant().rarity(Rarity.UNCOMMON)).lang("Crystal Scarab Abdomen").register(),
 			CRYSTAL_SCARAB_BOTTOM_LEFT_LEG = REGISTRATE.item("crystal_scarab_bottom_left_leg", Item::new).properties(properties -> properties.fireResistant().rarity(Rarity.UNCOMMON)).lang("Crystal Scarab Bottom Left Leg").register(),
@@ -127,126 +128,146 @@ public class LostWorldsItems {
 	public static final ItemEntry<ModBoneMealItem> GROUND_FOSSIL = REGISTRATE.item("ground_fossil", ModBoneMealItem::new).lang("Ground Fossil").register(),
 			PLANT_WASTE = REGISTRATE.item("plant_waste", ModBoneMealItem::new).lang("Plant Waste").register();
 
-	public static final ItemEntry<Item> ARAUCARIA_BARK_SAMPLE = REGISTRATE.item("araucaria_bark_sample", Item::new).lang("Araucaria Bark Sample").register(),
-			CALAMITES_BARK_SAMPLE = REGISTRATE.item("calamites_bark_sample", Item::new).lang("Calamites Bark Sample").register(),
-			CONIFER_BARK_SAMPLE = REGISTRATE.item("conifer_bark_sample", Item::new).lang("Conifer Bark Sample").register(),
-			CYPRESS_BARK_SAMPLE = REGISTRATE.item("cypress_bark_sample", Item::new).lang("Cypress Bark Sample").register(),
-			GINKGO_BARK_SAMPLE = REGISTRATE.item("ginkgo_bark_sample", Item::new).lang("Ginkgo Bark Sample").register(),
-			SEQUOIA_BARK_SAMPLE = REGISTRATE.item("sequoia_bark_sample", Item::new).lang("Sequoia Bark Sample").register();
-
-	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> existingItemModel() {
-		return (c, p) -> p.getExistingFile(p.modLoc("item/" + c.getName()));
-	}
-
-	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> spawnEgg() {
-		return (c, p) -> p.withExistingParent(c.get().getRegistryName().getPath(), p.mcLoc("item/template_spawn_egg"));
-	}
-
-	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> itemModel(String model) {
-		return (c, p) -> p.generated(() -> c.get(), p.modLoc("item/" + model));
-	}
+	public static final ItemEntry<Item> ARAUCARIA_BARK_SAMPLE = REGISTRATE.item("araucaria_bark_sample", Item::new).tag(LostWorldsTags.ModItemTags.BARK_SAMPLES).register(),
+			CALAMITES_BARK_SAMPLE = REGISTRATE.item("calamites_bark_sample", Item::new).tag(LostWorldsTags.ModItemTags.BARK_SAMPLES).register(),
+			CONIFER_BARK_SAMPLE = REGISTRATE.item("conifer_bark_sample", Item::new).tag(LostWorldsTags.ModItemTags.BARK_SAMPLES).register(),
+			CYPRESS_BARK_SAMPLE = REGISTRATE.item("cypress_bark_sample", Item::new).tag(LostWorldsTags.ModItemTags.BARK_SAMPLES).register(),
+			GINKGO_BARK_SAMPLE = REGISTRATE.item("ginkgo_bark_sample", Item::new).tag(LostWorldsTags.ModItemTags.BARK_SAMPLES).register(),
+			SEQUOIA_BARK_SAMPLE = REGISTRATE.item("sequoia_bark_sample", Item::new).tag(LostWorldsTags.ModItemTags.BARK_SAMPLES).register();
 
 	public static void init() {
 		LostWorldsUtils.LOGGER.debug("Registering Mod Items");
 
 		for (DinoTypes dinos : DinoTypes.values()) {
 			if (dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS) {
-				Item plasteredRibCage = LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_rib_cage", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getRibCage(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "rib_cage")));
-				dinos.setPlasteredRibCageItem(plasteredRibCage);
-				Item plasteredLegBones = LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_leg_bones", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getLegBones(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "leg_bones")));
-				dinos.setPlasteredLegBonesItem(plasteredLegBones);
-				Item plasteredArmBones = LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_arm_bones", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getArmBones(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "arm_bones")));
-				dinos.setPlasteredArmBonesItem(plasteredArmBones);
-				Item plasteredTail = LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_tail", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getTail(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "tail")));
-				dinos.setPlasteredTailItem(plasteredTail);
-				Item plasteredSkull = LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_skull", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getSkull(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "skull")));
-				dinos.setPlasteredSkullItem(plasteredSkull);
-				Item ribCage = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_rib_cage", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("rib_cage")), () -> dinos.getRibCage(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "rib_cage")));
-				dinos.setRibCageItem(ribCage);
-				Item legBones = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_leg_bones", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("leg_bones")), () -> dinos.getLegBones(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "leg_bones")));
-				dinos.setLegBonesItem(legBones);
-				Item armBones = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_arm_bones", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("arm_bones")), () -> dinos.getArmBones(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "arm_bones")));
-				dinos.setArmBonesItem(armBones);
-				Item tail = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_tail", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("tail")), () -> dinos.getTail(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "tail")));
-				dinos.setTailItem(tail);
-				Item skull = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_skull", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER("skull")), () -> dinos.getSkull(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "skull")));
-				dinos.setSkullItem(skull);
-				Item skeleton = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_skeleton", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS).setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "skeleton")));
-				dinos.setSkeletonPick(skeleton);
+				ItemEntry<FossilItem> plasteredRibCage = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_rib_cage", properties -> new FossilItem(properties, () -> dinos.getRibCage(), true)).model(textured("plastered_fossil")).register();
+				dinos.setPlasteredRibCageItem(() -> plasteredRibCage.get());
+				ItemEntry<FossilItem> plasteredLegBones = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_leg_bones", properties -> new FossilItem(properties, () -> dinos.getLegBones(), true)).model(textured("plastered_fossil")).register();
+				dinos.setPlasteredLegBonesItem(() -> plasteredLegBones.get());
+				ItemEntry<FossilItem> plasteredArmBones = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_arm_bones", properties -> new FossilItem(properties, () -> dinos.getArmBones(), true)).model(textured("plastered_fossil")).register();
+				dinos.setPlasteredArmBonesItem(() -> plasteredArmBones.get());
+				ItemEntry<FossilItem> plasteredTail = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_tail", properties -> new FossilItem(properties, () -> dinos.getTail(), true)).model(textured("plastered_fossil")).register();
+				dinos.setPlasteredTailItem(() -> plasteredTail.get());
+				ItemEntry<FossilItem> plasteredSkull = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_skull", properties -> new FossilItem(properties, () -> dinos.getSkull(), true)).model(textured("plastered_fossil")).register();
+				dinos.setPlasteredSkullItem(() -> plasteredSkull.get());
+				ItemEntry<FossilItem> ribCage = REGISTRATE.item(dinos.name().toLowerCase() + "_rib_cage", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("rib_cage")), () -> dinos.getRibCage(), false)).model(fossil()).register();
+				dinos.setRibCageItem(() -> ribCage.get());
+				ItemEntry<FossilItem> legBones = REGISTRATE.item(dinos.name().toLowerCase() + "_leg_bones", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("leg_bones")), () -> dinos.getLegBones(), false)).model(fossil()).register();
+				dinos.setLegBonesItem(() -> legBones.get());
+				ItemEntry<FossilItem> armBones = REGISTRATE.item(dinos.name().toLowerCase() + "_arm_bones", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("arm_bones")), () -> dinos.getArmBones(), false)).model(fossil()).register();
+				dinos.setArmBonesItem(() -> armBones.get());
+				ItemEntry<FossilItem> tail = REGISTRATE.item(dinos.name().toLowerCase() + "_tail", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("tail")), () -> dinos.getTail(), false)).model(fossil()).register();
+				dinos.setTailItem(() -> tail.get());
+				ItemEntry<FossilItem> skull = REGISTRATE.item(dinos.name().toLowerCase() + "_skull", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("skull")), () -> dinos.getSkull(), false)).model(fossil()).register();
+				dinos.setSkullItem(() -> skull.get());
+				ItemEntry<FossilItem> skeleton = REGISTRATE.item(dinos.name().toLowerCase() + "_skeleton", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton(), false)).model(fossil()).register();
+				dinos.setSkeletonPick(() -> skeleton.get());
 			}
 
 			if (dinos == DinoTypes.ANOMALOCARIS) {
-				LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_exoskeleton", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getExoskeleton(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "exoskeleton")));
-				LostWorldsRegistry.register(dinos.name().toLowerCase() + "_exoskeleton", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getExoskeleton(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "exoskeleton")));
+				REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_exoskeleton", properties -> new FossilItem(properties, () -> dinos.getExoskeleton(), true)).model(textured("plastered_fossil")).register();
+				REGISTRATE.item(dinos.name().toLowerCase() + "_exoskeleton", properties -> new FossilItem(properties, () -> dinos.getExoskeleton(), false)).register();
 			}
 
 			if (dinos == DinoTypes.PALAEONISCUM) {
-				LostWorldsRegistry.register("plastered_" + dinos.name().toLowerCase() + "_body", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getBody(), true, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "body")));
-				LostWorldsRegistry.register(dinos.name().toLowerCase() + "_body", new FossilItem(new Properties().tab(LostWorldsUtils.ITEMS), () -> dinos.getBody(), false, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), LostWorldsUtils.tTC("fossilPart", "body")));
+				REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_body", properties -> new FossilItem(properties, () -> dinos.getBody(), true)).model(textured("plastered_fossil")).register();
+				REGISTRATE.item(dinos.name().toLowerCase() + "_body", properties -> new FossilItem(properties, () -> dinos.getBody(), false)).register();
 			}
 
 			if (dinos.feathered().contains(dinos)) {
-				Item feather = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_feather", new FeatherItem(LostWorldsUtils.tTC("entity", dinos.name().toLowerCase())));
-				dinos.setFeather(feather);
+				ItemEntry<Item> feather = REGISTRATE.item(dinos.name().toLowerCase() + "_feather", Item::new).tag(Tags.Items.FEATHERS).register();
+				dinos.setFeather(() -> feather.get());
 			}
 			if (dinos.createHide().contains(dinos)) {
-				LostWorldsRegistry.register(dinos.name().toLowerCase() + "_hide", new HideItem(LostWorldsUtils.tTC("entity", dinos.name().toLowerCase())));
+				REGISTRATE.item(dinos.name().toLowerCase() + "_hide", Item::new).model(textured("plastered_fossil")).tag(Tags.Items.LEATHER).register();
 			}
 			if (dinos.hasSpawn().contains(dinos)) {
-				Item spawn = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_spawn", new SpawnItem(() -> dinos.getEntityType(), LostWorldsUtils.tTC("entity", dinos.name().toLowerCase())));
-				dinos.setSpawn(spawn);
+				ItemEntry<SpawnItem> spawn = REGISTRATE.item(dinos.name().toLowerCase() + "_spawn", properties -> new SpawnItem(properties, () -> dinos.getEntityType())).model(model("template_spawn")).register();
+				dinos.setSpawn(() -> spawn.get());
 			}
 
-			LostWorldsRegistry.register(dinos.name().toLowerCase() + "_spawn_egg", new DinoSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), ItemGroup.TAB_MISC, LostWorldsUtils.tTC("entity", dinos.name().toLowerCase())));
-			Item softTissue = LostWorldsRegistry.register(dinos.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(LostWorldsUtils.tTC("entity", dinos.toString().toLowerCase())));
-			dinos.setSoftTissue(softTissue);
-			Item bloodSample = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_blood_sample", new FullSyringeItem(LostWorldsUtils.tTC("entity", dinos.name().toLowerCase())));
-			dinos.setBloodSample(bloodSample);
-			Item dna = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_dna", new DNAItem(LostWorldsUtils.tTC("entity", dinos.name().toLowerCase())));
-			dinos.setDNA(dna);
-			Item dnaDisc = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_dna_disc", new DNADiscItem(LostWorldsUtils.tTC("entity", dinos.name().toLowerCase())));
-			dinos.setDNADisc(dnaDisc);
+			REGISTRATE.item(dinos.name().toLowerCase() + "_spawn_egg", properties -> new ModSpawnEggItem(() -> dinos.getEntityType(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), properties)).properties(properties -> properties.tab(ItemGroup.TAB_MISC)).model(spawnEgg()).register();
+			ItemEntry<Item> softTissue = REGISTRATE.item(dinos.toString().toLowerCase() + "_soft_tissue", Item::new).tag(LostWorldsTags.ModItemTags.SOFT_TISSUE).model(textured("soft_tissue")).register();
+			dinos.setSoftTissue(() -> softTissue.get());
+			ItemEntry<Item> bloodSample = REGISTRATE.item(dinos.name().toLowerCase() + "_blood_syringe", Item::new).model(textured("blood_syringe")).tag(LostWorldsTags.ModItemTags.BLOOD_SYRINGES).register();
+			dinos.setBloodSample(() -> bloodSample.get());
+			REGISTRATE.item(dinos.name().toLowerCase() + "_blood_vile", Item::new).model(textured("blood_vile")).tag(LostWorldsTags.ModItemTags.BLOOD_VILES).register();
+			ItemEntry<Item> dna = REGISTRATE.item(dinos.name().toLowerCase() + "_dna", Item::new).tag(LostWorldsTags.ModItemTags.DNA).register();
+			dinos.setDNA(() -> dna.get());
+			ItemEntry<Item> dnaDisc = REGISTRATE.item(dinos.name().toLowerCase() + "_dna_disc", Item::new).tag(LostWorldsTags.ModItemTags.DNA_DISCS).model(textured("storage_disc")).register();
+			dinos.setDNADisc(() -> dnaDisc.get());
 			if (!dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS) {
-				Item meat = LostWorldsRegistry.register("raw_" + dinos.name().toLowerCase() + "_meat", new DinoFoodItem(new Item.Properties().tab(LostWorldsUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), true));
-				LostWorldsRegistry.register("cooked_" + dinos.name().toLowerCase() + "_meat", new DinoFoodItem(new Item.Properties().tab(LostWorldsUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), false));
-				dinos.setMeat(meat);
+				ItemEntry<Item> raw = REGISTRATE.item("raw_" + dinos.name().toLowerCase() + "_meat", Item::new).properties(properties -> properties.food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())).model(mcTextured("barrier")).register();
+				REGISTRATE.item("cooked_" + dinos.name().toLowerCase() + "_meat", Item::new).properties(properties -> properties.food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build())).model(mcTextured("barrier")).register();
+				dinos.setMeat(() -> raw.get());
 			} else if (dinos == DinoTypes.NAUTILUS) {
-				Item meat = LostWorldsRegistry.register("raw_" + dinos.name().toLowerCase() + "_tentacle", new EntityFoodItem(new Item.Properties().tab(LostWorldsUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).fast().build())));
-				LostWorldsRegistry.register("cooked_" + dinos.name().toLowerCase() + "_tentacle", new EntityFoodItem(new Item.Properties().tab(LostWorldsUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).fast().build())));
-				dinos.setMeat(meat);
+				ItemEntry<Item> raw = REGISTRATE.item("raw_" + dinos.name().toLowerCase() + "_tentacle", Item::new).properties(properties -> properties.food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).fast().build())).model(mcTextured("barrier")).register();
+				REGISTRATE.item("cooked_" + dinos.name().toLowerCase() + "_tentacle", Item::new).properties(properties -> properties.food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).fast().build())).model(mcTextured("barrier")).register();
+				dinos.setMeat(() -> raw.get());
 			} else if (dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS) {
-				Item bucket = LostWorldsRegistry.register(dinos.name().toLowerCase() + "_bucket", new ModFishBucketItem(() -> dinos.getEntityType(), Fluids.WATER, new Properties().tab(LostWorldsUtils.ITEMS).stacksTo(1)));
-				dinos.setFishBucket(bucket);
+				ItemEntry<ModFishBucketItem> bucket = REGISTRATE.item(dinos.name().toLowerCase() + "_bucket", properties -> new ModFishBucketItem(() -> dinos.getEntityType(), Fluids.WATER, properties)).register();
+				dinos.setFishBucket(() -> bucket.get());
 				if (dinos != DinoTypes.ANOMALOCARIS) {
-					Item meat = LostWorldsRegistry.register(dinos.name().toLowerCase(), new FishFoodItem(new Item.Properties().tab(LostWorldsUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build()), LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), true));
-					LostWorldsRegistry.register("cooked_" + dinos.name().toLowerCase(), new FishFoodItem(new Item.Properties().tab(LostWorldsUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build()), LostWorldsUtils.tTC("entity", dinos.name().toLowerCase()), false));
-					dinos.setMeat(meat);
+					ItemEntry<Item> meat = REGISTRATE.item(dinos.name().toLowerCase(), Item::new).properties(properties -> properties.food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())).model(mcTextured("barrier")).register();
+					REGISTRATE.item("cooked_" + dinos.name().toLowerCase(), Item::new).properties(properties -> properties.food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build())).model(mcTextured("barrier")).register();
+					dinos.setMeat(() -> meat.get());
 				} else {
-					Item meat = LostWorldsRegistry.register("raw_" + dinos.name().toLowerCase() + "_claw", new EntityFoodItem(new Item.Properties().tab(LostWorldsUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())));
-					LostWorldsRegistry.register("cooked_" + dinos.name().toLowerCase() + "_claw", new EntityFoodItem(new Item.Properties().tab(LostWorldsUtils.ITEMS).food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build())));
-					dinos.setMeat(meat);
+					ItemEntry<Item> raw = REGISTRATE.item("raw_" + dinos.name().toLowerCase() + "_claw", Item::new).properties(properties -> properties.food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())).model(mcTextured("barrier")).register();
+					REGISTRATE.item("cooked_" + dinos.name().toLowerCase() + "_claw", Item::new).properties(properties -> properties.food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build())).model(mcTextured("barrier")).register();
+					dinos.setMeat(() -> raw.get());
 				}
 			}
 		}
 
 		for (Plants plants : Plants.values()) {
-			Item item = LostWorldsRegistry.register(plants.toString().toLowerCase() + "_fossil", new PlantFossilItem(LostWorldsUtils.tTC("block", plants.toString().toLowerCase())));
-			plants.setDrop(item);
-			LostWorldsRegistry.register(plants.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(LostWorldsUtils.tTC("block", plants.toString().toLowerCase())));
-			LostWorldsRegistry.register(plants.toString().toLowerCase() + "_dna", new DNAItem(LostWorldsUtils.tTC("block", plants.toString().toLowerCase())));
-			LostWorldsRegistry.register(plants.toString().toLowerCase() + "_dna_disc", new DNADiscItem(LostWorldsUtils.tTC("block", plants.toString().toLowerCase())));
-			Item seed = SeedItem.create(plants.toString().toLowerCase(), plants.getPlant(), LostWorldsUtils.tTC("block", plants.toString().toLowerCase()));
-			plants.setSeed(seed);
+			ItemEntry<Item> item = REGISTRATE.item(plants.toString().toLowerCase() + "_fossil", Item::new).model(textured("plant_fossil")).register();
+			plants.setDrop(() -> item.get());
+			REGISTRATE.item(plants.toString().toLowerCase() + "_soft_tissue", Item::new).tag(LostWorldsTags.ModItemTags.SOFT_TISSUE).model(textured("soft_tissue")).register();
+			REGISTRATE.item(plants.toString().toLowerCase() + "_dna", Item::new).tag(LostWorldsTags.ModItemTags.DNA).model(textured("plant_dna")).register();
+			REGISTRATE.item(plants.toString().toLowerCase() + "_dna_disc", Item::new).tag(LostWorldsTags.ModItemTags.DNA_DISCS).model(textured("storage_disc")).register();
+			ItemEntry<SeedItem> seed = REGISTRATE.item(plants.toString().toLowerCase() + "_seeds", properties -> new SeedItem(plants.getPlant(), properties)).tag(LostWorldsTags.ModItemTags.ANCIENT_SEEDS).register();
+			plants.setSeed(() -> seed.get());
 		}
 
 		for (Trees trees : Trees.values()) {
-			LostWorldsRegistry.register(trees.toString().toLowerCase() + "_soft_tissue", new SoftTissueItem(LostWorldsUtils.tTC("tree", trees.toString().toLowerCase())));
-			LostWorldsRegistry.register(trees.toString().toLowerCase() + "_dna", new DNAItem(LostWorldsUtils.tTC("tree", trees.toString().toLowerCase())));
-			LostWorldsRegistry.register(trees.toString().toLowerCase() + "_dna_disc", new DNADiscItem(LostWorldsUtils.tTC("tree", trees.toString().toLowerCase())));
+			REGISTRATE.item(trees.toString().toLowerCase() + "_soft_tissue", Item::new).tag(LostWorldsTags.ModItemTags.SOFT_TISSUE).model(textured("soft_tissue")).register();
+			ItemEntry<Item> dna = REGISTRATE.item(trees.toString().toLowerCase() + "_dna", Item::new).tag(LostWorldsTags.ModItemTags.DNA).model(textured("plant_dna")).register();
+			trees.setDNA(() -> dna.get());
+			REGISTRATE.item(trees.toString().toLowerCase() + "_dna_disc", Item::new).tag(LostWorldsTags.ModItemTags.DNA_DISCS).model(textured("storage_disc")).register();
 		}
 
 		RecipeManager.initAlternateRecipes();
 		AmberDNAExtractorRecipeManager.init();
 		Foods.init();
+	}
+
+	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> custom(NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> consumer) {
+		return consumer;
+	}
+
+	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> fossil() {
+		ModelFile parent = new ModelFile(new ResourceLocation("builtin/entity")) {
+			@Override
+			protected boolean exists() {
+				return true;
+			}
+		};
+		return (item, provider) -> provider.getBuilder(item.get().getRegistryName().getPath()).parent(parent).transforms().transform(Perspective.THIRDPERSON_RIGHT).rotation(75, 45, 0).translation(0, 2.5F, 0).scale(0.375F).end().transform(Perspective.THIRDPERSON_LEFT).rotation(75, 45, 0).translation(0, 2.5F, 0).scale(0.375F).end().transform(Perspective.FIRSTPERSON_RIGHT).rotation(0, 45, 0).translation(1, -1.5F, 1.5F).scale(0.4F).end().transform(Perspective.FIRSTPERSON_LEFT).rotation(0, 45, 0).translation(1, -1.5F, 1.5F).scale(0.4F).end().transform(Perspective.GROUND).translation(0, 3, 0).scale(0.25F).end().transform(Perspective.GUI).rotation(30, 225, 0).translation(1.75F, -4.5F, 0).scale(0.3F).end().transform(Perspective.FIXED).rotation(0, -90, 0).translation(2.25F, -3.75F, 0).scale(0.3F).end().end();
+	}
+
+	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> spawnEgg() {
+		return (item, provider) -> provider.withExistingParent(item.get().getRegistryName().getPath(), provider.mcLoc("item/template_spawn_egg"));
+	}
+
+	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> textured(String model) {
+		return (item, provider) -> provider.generated(() -> item.get(), provider.modLoc("item/" + model));
+	}
+
+	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> mcTextured(String model) {
+		return (item, provider) -> provider.generated(() -> item.get(), provider.mcLoc("item/" + model));
+	}
+
+	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> model(String model) {
+		return (item, provider) -> provider.withExistingParent(item.get().getRegistryName().getPath(), provider.modLoc("item/" + model));
 	}
 }

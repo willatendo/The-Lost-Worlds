@@ -11,6 +11,8 @@ public class LostWorldsTags
 	public static class ModItemTags
 	{
 		public static final ITag.INamedTag<Item> ARAUCARIA_LOGS = tag("araucaria_logs");
+		public static final ITag.INamedTag<Item> ANCIENT_SEEDS = tag("ancient_seeds");
+		public static final ITag.INamedTag<Item> BARK_SAMPLES = tag("bark_samples");
 		public static final ITag.INamedTag<Item> BLOOD_SYRINGES = tag("blood_syringes");
 		public static final ITag.INamedTag<Item> BLOOD_VILES = tag("blood_viles");
 		public static final ITag.INamedTag<Item> BRUSHES = tag("brushes");

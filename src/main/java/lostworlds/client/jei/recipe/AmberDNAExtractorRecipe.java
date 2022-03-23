@@ -1,14 +1,16 @@
 package lostworlds.client.jei.recipe;
 
+import java.util.function.Supplier;
+
 import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 
 public class AmberDNAExtractorRecipe {
-	private final ItemStack output;
+	private final Supplier<ItemStack> output;
 
-	public AmberDNAExtractorRecipe(ItemStack output) {
+	public AmberDNAExtractorRecipe(Supplier<ItemStack> output) {
 		this.output = output;
 	}
 
@@ -18,7 +20,7 @@ public class AmberDNAExtractorRecipe {
 
 	public NonNullList<ItemStack> getOutputs() {
 		NonNullList<ItemStack> nonnulllist = NonNullList.create();
-		nonnulllist.add(this.output);
+		nonnulllist.add(this.output.get());
 		return nonnulllist;
 	}
 

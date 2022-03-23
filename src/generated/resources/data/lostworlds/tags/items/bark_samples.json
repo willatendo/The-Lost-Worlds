@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:araucaria_bark_sample",
+    "lostworlds:calamites_bark_sample",
+    "lostworlds:conifer_bark_sample",
+    "lostworlds:cypress_bark_sample",
+    "lostworlds:ginkgo_bark_sample",
+    "lostworlds:sequoia_bark_sample"
+  ]
+}

@@ -3,23 +3,23 @@ package lostworlds.server.container.recipes;
 import java.util.NavigableMap;
 import java.util.Random;
 import java.util.TreeMap;
+import java.util.function.Supplier;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.util.NonNullSupplier;
 
 public class RandomItemGenerator {
-	private NavigableMap<Float, ItemStack> outputMap = new TreeMap<Float, ItemStack>();
+	private NavigableMap<Float, Supplier<ItemStack>> outputMap = new TreeMap<Float, Supplier<ItemStack>>();
 	private float totalWeight;
-	private NonNullSupplier<ItemStack> input;
+	private Supplier<ItemStack> input;
 
-	public RandomItemGenerator(NonNullSupplier<ItemStack> input) {
+	public RandomItemGenerator(Supplier<ItemStack> input) {
 		this.input = input;
 	}
 
-	public RandomItemGenerator addOutput(NonNullSupplier<? extends Item> item) {
+	public RandomItemGenerator addOutput(Supplier<Item> item) {
 		totalWeight += 35.0F;
-		outputMap.put(totalWeight, item.get().getDefaultInstance());
+		outputMap.put(totalWeight, () -> item.get().getDefaultInstance());
 		return this;
 	}
 
@@ -34,10 +34,10 @@ public class RandomItemGenerator {
 			}
 		}
 		float entry = random.nextFloat() * totalWeight;
-		return outputMap.higherEntry(entry).getValue().copy();
+		return outputMap.higherEntry(entry).getValue().get().copy();
 	}
 
-	public NavigableMap<Float, ItemStack> getDisplayMap() {
+	public NavigableMap<Float, Supplier<ItemStack>> getDisplayMap() {
 		return outputMap;
 	}
 

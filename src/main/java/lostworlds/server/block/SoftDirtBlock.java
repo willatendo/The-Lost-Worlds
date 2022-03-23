@@ -45,7 +45,7 @@ public class SoftDirtBlock extends Block {
 			this.popResource(world, pos, LostWorldsItems.FOSSILIZED_SKIN_IMPRESSION.get().getDefaultInstance());
 		} else if (drop == 3) {
 			int feather = rand.nextInt(DinoTypes.feathered().size());
-			this.popResource(world, pos, DinoTypes.feathered().get(feather).getFeather().getDefaultInstance());
+			this.popResource(world, pos, DinoTypes.feathered().get(feather).getFeather().get().getDefaultInstance());
 		} else if (drop == 4) {
 			this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().asItem().getDefaultInstance());
 		}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.Callable;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
@@ -84,25 +85,25 @@ public enum DinoTypes implements IStringSerializable {
 	private EntityType<FossilEntity> body;
 	private Block egg;
 	private Block extraBlock;
-	private Item plasteredSkullItem;
-	private Item plasteredArmBonesItem;
-	private Item plasteredLegBonesItem;
-	private Item plasteredRibCageItem;
-	private Item plasteredTailItem;
-	private Item skullItem;
-	private Item armBonesItem;
-	private Item legBonesItem;
-	private Item ribCageItem;
-	private Item tailItem;
-	private Item skeletonPick;
-	private Item softTissue;
-	private Item dna;
-	private Item dnaDisc;
-	private Item bloodSample;
-	private Item meat;
-	private Item fishBucket;
-	private Item feather;
-	private Item spawn;
+	private Supplier<Item> plasteredSkullItem;
+	private Supplier<Item> plasteredArmBonesItem;
+	private Supplier<Item> plasteredLegBonesItem;
+	private Supplier<Item> plasteredRibCageItem;
+	private Supplier<Item> plasteredTailItem;
+	private Supplier<Item> skullItem;
+	private Supplier<Item> armBonesItem;
+	private Supplier<Item> legBonesItem;
+	private Supplier<Item> ribCageItem;
+	private Supplier<Item> tailItem;
+	private Supplier<Item> skeletonPick;
+	private Supplier<Item> softTissue;
+	private Supplier<Item> dna;
+	private Supplier<Item> dnaDisc;
+	private Supplier<Item> bloodSample;
+	private Supplier<Item> meat;
+	private Supplier<Item> fishBucket;
+	private Supplier<Item> feather;
+	private Supplier<Item> spawn;
 	private final boolean eggLaying;
 	private final boolean feathered;
 	private final boolean createHide;
@@ -211,7 +212,7 @@ public enum DinoTypes implements IStringSerializable {
 		return this.body = entity;
 	}
 
-	public Item setSkeletonPick(Item item) {
+	public Supplier<Item> setSkeletonPick(Supplier<Item> item) {
 		return this.skeletonPick = item;
 	}
 
@@ -279,35 +280,35 @@ public enum DinoTypes implements IStringSerializable {
 		return this.body;
 	}
 
-	public Item setMeat(Item meat) {
+	public Supplier<Item> setMeat(Supplier<Item> meat) {
 		return this.meat = meat;
 	}
 
-	public Item getMeat() {
+	public Supplier<Item> getMeat() {
 		return this.meat;
 	}
 
-	public Item setFishBucket(Item fishBucket) {
+	public Supplier<Item> setFishBucket(Supplier<Item> fishBucket) {
 		return this.fishBucket = fishBucket;
 	}
 
-	public Item getFishBucket() {
+	public Supplier<Item> getFishBucket() {
 		return this.fishBucket;
 	}
 
-	public Item setFeather(Item feather) {
+	public Supplier<Item> setFeather(Supplier<Item> feather) {
 		return this.feather = feather;
 	}
 
-	public Item getFeather() {
+	public Supplier<Item> getFeather() {
 		return this.feather;
 	}
 
-	public Item setSpawn(Item spawn) {
+	public Supplier<Item> setSpawn(Supplier<Item> spawn) {
 		return this.spawn = spawn;
 	}
 
-	public Item getSpawn() {
+	public Supplier<Item> getSpawn() {
 		return this.spawn;
 	}
 
@@ -357,119 +358,119 @@ public enum DinoTypes implements IStringSerializable {
 		return this.diet;
 	}
 
-	public Item getSkeletonPick() {
+	public Supplier<Item> getSkeletonPick() {
 		return this.skeletonPick;
 	}
 
-	public Item getPlasteredSkullItem() {
+	public Supplier<Item> getPlasteredSkullItem() {
 		return this.plasteredSkullItem;
 	}
 
-	public Item setPlasteredSkullItem(Item item) {
+	public Supplier<Item> setPlasteredSkullItem(Supplier<Item> item) {
 		return this.plasteredSkullItem = item;
 	}
 
-	public Item getPlasteredArmBonesItem() {
+	public Supplier<Item> getPlasteredArmBonesItem() {
 		return this.plasteredArmBonesItem;
 	}
 
-	public Item setPlasteredArmBonesItem(Item item) {
+	public Supplier<Item> setPlasteredArmBonesItem(Supplier<Item> item) {
 		return this.plasteredArmBonesItem = item;
 	}
 
-	public Item getPlasteredLegBonesItem() {
+	public Supplier<Item> getPlasteredLegBonesItem() {
 		return this.plasteredLegBonesItem;
 	}
 
-	public Item setPlasteredLegBonesItem(Item item) {
+	public Supplier<Item> setPlasteredLegBonesItem(Supplier<Item> item) {
 		return this.plasteredLegBonesItem = item;
 	}
 
-	public Item getPlasteredRibCageBonesItem() {
+	public Supplier<Item> getPlasteredRibCageBonesItem() {
 		return this.plasteredRibCageItem;
 	}
 
-	public Item setPlasteredRibCageItem(Item item) {
+	public Supplier<Item> setPlasteredRibCageItem(Supplier<Item> item) {
 		return this.plasteredRibCageItem = item;
 	}
 
-	public Item getPlasteredTailBonesItem() {
+	public Supplier<Item> getPlasteredTailBonesItem() {
 		return this.plasteredTailItem;
 	}
 
-	public Item setPlasteredTailItem(Item item) {
+	public Supplier<Item> setPlasteredTailItem(Supplier<Item> item) {
 		return this.plasteredTailItem = item;
 	}
 
-	public Item getSkullItem() {
+	public Supplier<Item> getSkullItem() {
 		return this.skullItem;
 	}
 
-	public Item setSkullItem(Item item) {
+	public Supplier<Item> setSkullItem(Supplier<Item> item) {
 		return this.skullItem = item;
 	}
 
-	public Item getArmBonesItem() {
+	public Supplier<Item> getArmBonesItem() {
 		return this.armBonesItem;
 	}
 
-	public Item setArmBonesItem(Item item) {
+	public Supplier<Item> setArmBonesItem(Supplier<Item> item) {
 		return this.armBonesItem = item;
 	}
 
-	public Item getLegBonesItem() {
+	public Supplier<Item> getLegBonesItem() {
 		return this.legBonesItem;
 	}
 
-	public Item setLegBonesItem(Item item) {
+	public Supplier<Item> setLegBonesItem(Supplier<Item> item) {
 		return this.legBonesItem = item;
 	}
 
-	public Item getRibCageItem() {
+	public Supplier<Item> getRibCageItem() {
 		return this.ribCageItem;
 	}
 
-	public Item setRibCageItem(Item item) {
+	public Supplier<Item> setRibCageItem(Supplier<Item> item) {
 		return this.ribCageItem = item;
 	}
 
-	public Item getTailItem() {
+	public Supplier<Item> getTailItem() {
 		return this.tailItem;
 	}
 
-	public Item setTailItem(Item item) {
+	public Supplier<Item> setTailItem(Supplier<Item> item) {
 		return this.tailItem = item;
 	}
 
-	public Item getSoftTissue() {
+	public Supplier<Item> getSoftTissue() {
 		return this.softTissue;
 	}
 
-	public Item setSoftTissue(Item item) {
+	public Supplier<Item> setSoftTissue(Supplier<Item> item) {
 		return this.softTissue = item;
 	}
 
-	public Item getDNA() {
+	public Supplier<Item> getDNA() {
 		return this.dna;
 	}
 
-	public Item setDNA(Item item) {
+	public Supplier<Item> setDNA(Supplier<Item> item) {
 		return this.dna = item;
 	}
 
-	public Item getDNADisc() {
+	public Supplier<Item> getDNADisc() {
 		return this.dnaDisc;
 	}
 
-	public Item setDNADisc(Item item) {
+	public Supplier<Item> setDNADisc(Supplier<Item> item) {
 		return this.dnaDisc = item;
 	}
 
-	public Item getBloodSample() {
+	public Supplier<Item> getBloodSample() {
 		return this.bloodSample;
 	}
 
-	public Item setBloodSample(Item item) {
+	public Supplier<Item> setBloodSample(Supplier<Item> item) {
 		return this.bloodSample = item;
 	}
 

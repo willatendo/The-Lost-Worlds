@@ -2,6 +2,7 @@ package lostworlds.server;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -73,13 +74,13 @@ public class LostWorldsUtils {
 	public static final ClientConfigs CLIENT_CONFIG = LostWorldsConfig.CLIENT_CONFIG;
 
 	public static final ModTab ITEMS = new ModTab("items");
-	public static final ModTab BLOCKS = new ModTab("block");
+	public static final ModTab BLOCKS = new ModTab("blocks");
 
 	public static final HashSet<Biome.Category> SIMPLE_SPAWNABLE_BIOME_CATEGORIES = Stream.of(Biome.Category.FOREST, Biome.Category.JUNGLE, Biome.Category.DESERT, Biome.Category.PLAINS, Biome.Category.SAVANNA).collect(Collectors.toCollection(HashSet::new));
 	public static final HashSet<Biome.Category> FOSSIL_BIOMES = Stream.of(Biome.Category.FOREST, Biome.Category.EXTREME_HILLS, Biome.Category.DESERT, Biome.Category.PLAINS, Biome.Category.SAVANNA, Biome.Category.MUSHROOM, Biome.Category.SWAMP).collect(Collectors.toCollection(HashSet::new));
 
-	public static ImmutableSet<Block> carverBlocks() {
-		return ImmutableSet.of(LostWorldsBlocks.PERMIAN_SAND, LostWorldsBlocks.PERMIAN_STONE, LostWorldsBlocks.PERMIAN_COBBLESTONE, LostWorldsBlocks.JURASSIC_STONE, LostWorldsBlocks.JURASSIC_COBBLESTONE, LostWorldsBlocks.LATERLITE, LostWorldsBlocks.RAW_MARBLE, LostWorldsBlocks.LIMESTONE, LostWorldsBlocks.MOSSY_SOIL, LostWorldsBlocks.DRIED_SOIL, LostWorldsBlocks.CRACKED_SOIL, LostWorldsBlocks.VOLCANIC_ASH, LostWorldsBlocks.VOLCANIC_ASH_LAYER, Blocks.BASALT, Blocks.BLACKSTONE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRAVEL, Blocks.MAGMA_BLOCK, Blocks.STONE, Blocks.SNOW_BLOCK);
+	public static Set<Block> carverBlocks() {
+		return ImmutableSet.of(LostWorldsBlocks.PERMIAN_SAND, LostWorldsBlocks.PERMIAN_STONE, LostWorldsBlocks.PERMIAN_COBBLESTONE, LostWorldsBlocks.JURASSIC_STONE, LostWorldsBlocks.JURASSIC_COBBLESTONE, LostWorldsBlocks.LATERLITE, LostWorldsBlocks.RAW_MARBLE, LostWorldsBlocks.LIMESTONE, LostWorldsBlocks.MOSSY_SOIL/*, LostWorldsBlocks.DRIED_SOIL.get()*/, LostWorldsBlocks.CRACKED_SOIL, LostWorldsBlocks.VOLCANIC_ASH, LostWorldsBlocks.VOLCANIC_ASH_LAYER, Blocks.BASALT, Blocks.BLACKSTONE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRAVEL, Blocks.MAGMA_BLOCK, Blocks.STONE, Blocks.SNOW_BLOCK);
 	}
 
 	public static void translateToWaves(EntityType<? extends AbstractRaiderEntity> type, List<? extends Integer> list) {

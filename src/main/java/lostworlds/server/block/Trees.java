@@ -1,5 +1,7 @@
 package lostworlds.server.block;
 
+import java.util.function.Supplier;
+
 import net.minecraft.item.Item;
 import net.minecraft.util.IStringSerializable;
 
@@ -12,17 +14,17 @@ public enum Trees implements IStringSerializable {
 	SEQUOIA("sequoia");
 
 	private final String id;
-	private Item dna;
+	private Supplier<Item> dna;
 
 	private Trees(String id) {
 		this.id = id;
 	}
 
-	public Item setDNA(Item item) {
+	public Supplier<Item> setDNA(Supplier<Item> item) {
 		return this.dna = item;
 	}
 
-	public Item getDNA() {
+	public Supplier<Item> getDNA() {
 		return this.dna;
 	}
 

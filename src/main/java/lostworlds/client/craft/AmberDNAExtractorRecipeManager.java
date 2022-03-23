@@ -21,7 +21,7 @@ public class AmberDNAExtractorRecipeManager implements IRecipeManager {
 	@ZenCodeType.Method
 	public void addAdditionalOutput(IItemStack additionalOutput) {
 		amber.addOutput(() -> additionalOutput.getDefinition());
-		new AmberDNAExtractorRecipe(additionalOutput.getInternal());
+		new AmberDNAExtractorRecipe(() -> additionalOutput.getInternal());
 	}
 
 	public static void init() {

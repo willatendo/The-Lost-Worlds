@@ -10,6 +10,7 @@ import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.nbt.CompoundNBT;
@@ -22,25 +23,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.common.util.NonNullSupplier;
 
-public class SpawnItem extends ModItem {
+public class SpawnItem extends Item {
 	private final Lazy<? extends EntityType<?>> entityTypeSupplier;
-	private final ITextComponent name;
 
-	public SpawnItem(NonNullSupplier<? extends EntityType<? extends CreatureEntity>> entityTypeSupplier, ITextComponent name) {
+	public SpawnItem(Properties properties, NonNullSupplier<? extends EntityType<? extends CreatureEntity>> entityTypeSupplier) {
+		super(properties);
 		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
-		this.name = name;
-	}
-
-	@Override
-	public ITextComponent getName(ItemStack stack) {
-		return new TranslationTextComponent("item.lostworlds.spawn", this.name);
 	}
 
 	@Override

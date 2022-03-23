@@ -47,7 +47,7 @@ public class AnomalocarisEntity extends BasicFishLikeEntity implements ITyrannom
 
 	@Override
 	protected ItemStack getBucketItemStack() {
-		return DinoTypes.ANOMALOCARIS.getFishBucket().getDefaultInstance();
+		return DinoTypes.ANOMALOCARIS.getFishBucket().get().getDefaultInstance();
 	}
 
 	@Override

@@ -22,8 +22,8 @@ public class RecipeManager {
 	public static void initAlternateRecipes() {
 		RandomItemGenerator amber = new RandomItemGenerator(() -> LostWorldsItems.AMBER.get().getDefaultInstance());
 		for (DinoTypes types : DinoTypes.values()) {
-			amber.addOutput(() -> types.getDNA());
-			new AmberDNAExtractorRecipe(types.getDNA().getDefaultInstance());
+			amber.addOutput(types.getDNA());
+			new AmberDNAExtractorRecipe(() -> types.getDNA().get().getDefaultInstance());
 		}
 		registerAmber(amber);
 	}
@@ -45,7 +45,7 @@ public class RecipeManager {
 	public static List<AmberDNAExtractorRecipe> getAmberRecipes() {
 		List<AmberDNAExtractorRecipe> recipes = new ArrayList<>();
 		for (DinoTypes types : DinoTypes.values()) {
-			recipes.add(new AmberDNAExtractorRecipe(types.getDNA().getDefaultInstance()));
+			recipes.add(new AmberDNAExtractorRecipe(() -> types.getDNA().get().getDefaultInstance()));
 		}
 		return recipes;
 	}

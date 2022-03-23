@@ -1,11 +1,10 @@
 package lostworlds.server.item.block;
 
 import java.util.Map;
+import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
-import lostworlds.server.LostWorldsRegistry;
-import lostworlds.server.LostWorldsUtils;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -26,19 +25,14 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 public class SeedItem extends Item {
-	@Deprecated
-	private final Block block;
-	private final ITextComponent name;
+	private final Supplier<Block> block;
 
-	public SeedItem(Block block, ITextComponent name) {
-		super(new Properties().tab(LostWorldsUtils.ITEMS));
+	public SeedItem(Supplier<Block> block, Properties properties) {
+		super(properties);
 		this.block = block;
-		this.name = name;
 	}
 
 	@Override
@@ -186,7 +180,7 @@ public class SeedItem extends Item {
 	}
 
 	private Block getBlockRaw() {
-		return this.block;
+		return this.block.get();
 	}
 
 	public void registerBlocks(Map<Block, Item> blockToItemMap, Item item) {
@@ -195,16 +189,5 @@ public class SeedItem extends Item {
 
 	public void removeFromBlockToItemMap(Map<Block, Item> blockToItemMap, Item item) {
 		blockToItemMap.remove(this.getBlock());
-	}
-
-	@Override
-	public ITextComponent getName(ItemStack stack) {
-		return new TranslationTextComponent("item.lostworlds.seed", this.name);
-	}
-
-	public static Item create(String plant, Block block, ITextComponent name) {
-		Item item = new SeedItem(block, name);
-		LostWorldsRegistry.register(plant + "_seeds", item);
-		return item;
 	}
 }

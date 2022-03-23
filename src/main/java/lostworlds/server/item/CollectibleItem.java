@@ -18,7 +18,7 @@ public class CollectibleItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> text, ITooltipFlag flag) {
 		if (ClientUtils.isHoldingLeftShift()) {
-			text.add(LostWorldsUtils.gTC("toolTip", "item.collectible"));
+			text.add(LostWorldsUtils.gTC("item", "collectible.desc"));
 		}
 	}
 }

@@ -23,13 +23,13 @@ public class SyringeItem extends ModItem {
 			if (entity instanceof ChilesaurusEntity) {
 				player.playSound(SoundEvents.PLAYER_HURT, 1.0F, 1.0F);
 				entity.hurt(ModDamageSources.PRICK, 1);
-				ItemStack blood = DinoTypes.CHILESAURUS.getBloodSample().getDefaultInstance();
+				ItemStack blood = DinoTypes.CHILESAURUS.getBloodSample().get().getDefaultInstance();
 				player.setItemInHand(hand, blood);
 				return ActionResultType.SUCCESS;
 			} else if (entity instanceof KentrosaurusEntity) {
 				player.playSound(SoundEvents.PLAYER_HURT, 1.0F, 1.0F);
 				entity.hurt(ModDamageSources.PRICK, 1);
-				ItemStack blood = DinoTypes.KENTROSAURUS.getBloodSample().getDefaultInstance();
+				ItemStack blood = DinoTypes.KENTROSAURUS.getBloodSample().get().getDefaultInstance();
 				player.setItemInHand(hand, blood);
 				return ActionResultType.SUCCESS;
 			}

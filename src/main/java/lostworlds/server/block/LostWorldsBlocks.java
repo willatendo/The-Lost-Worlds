@@ -56,6 +56,8 @@ import tyrannotitanlib.library.base.block.TyrannoSaplingBlock;
 import tyrannotitanlib.library.base.block.TyrannoSignManager;
 
 public class LostWorldsBlocks {
+//	private static final LostWorldsRegistrate REGISTRATE = CENTRAL_REGISTRATE.get().itemGroup(() -> LostWorldsUtils.BLOCKS);
+
 	// Soils
 	public static final Block DRIED_SOIL = BlockUtils.create("dried_soil", new DriedSoilBlock(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).harvestTool(ToolType.SHOVEL).sound(SoundType.GRAVEL).randomTicks()));
 	public static final Block CRACKED_SOIL = BlockUtils.create("cracked_soil", new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).harvestTool(ToolType.SHOVEL).sound(SoundType.GRAVEL)));

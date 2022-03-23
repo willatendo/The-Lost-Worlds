@@ -1,5 +1,7 @@
 package lostworlds.server.biome;
 
+import static lostworlds.LostWorldsMod.CENTRAL_REGISTRATE;
+
 import lostworlds.server.LostWorldsRegistry;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.biomes.cretaceous.arctic.CretaceousArctic;
@@ -61,9 +63,12 @@ import lostworlds.server.biome.biomes.permian.plains.PermianPlains;
 import lostworlds.server.biome.biomes.permian.river.PermianRiver;
 import lostworlds.server.biome.biomes.permian.shore.PermianShore;
 import lostworlds.server.biome.biomes.permian.swamp.PermianMarsh;
+import lostworlds.server.util.LostWorldsRegistrate;
 import net.minecraft.world.biome.Biome;
 
 public class LostWorldsBiomes {
+	private static final LostWorldsRegistrate REGISTRATE = CENTRAL_REGISTRATE.get();
+	
 	// Permian
 	public static final Biome PERMIAN_CONIFER_FOREST = LostWorldsRegistry.register("permian_conifer_forest", new PermianConiferForest());
 	public static final Biome PERMIAN_CONIFER_FOREST_HILLS = LostWorldsRegistry.register("permian_conifer_forest_hills", new PermianConiferForest(0.45F, 0.3F));

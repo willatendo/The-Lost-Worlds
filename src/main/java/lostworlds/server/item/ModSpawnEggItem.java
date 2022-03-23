@@ -9,28 +9,20 @@ import net.minecraft.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.common.util.NonNullSupplier;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 public class ModSpawnEggItem extends SpawnEggItem {
 	protected static final List<ModSpawnEggItem> UNADDED_EGGS = new ArrayList<ModSpawnEggItem>();
 	private final Lazy<? extends EntityType<?>> entityTypeSupplier;
 
-	public ModSpawnEggItem(NonNullSupplier<? extends EntityType<?>> entityTypeSupplier, int primaryColour, int secondaryColour, ItemGroup group) {
-		super(null, primaryColour, secondaryColour, new Properties().tab(group));
-		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
-		UNADDED_EGGS.add(this);
-	}
-
-	public ModSpawnEggItem(RegistryObject<? extends EntityType<?>> entityTypeSupplier, int primaryColour, int secondaryColour, ItemGroup group) {
-		super(null, primaryColour, secondaryColour, new Properties().tab(group));
+	public ModSpawnEggItem(NonNullSupplier<? extends EntityType<?>> entityTypeSupplier, int primaryColour, int secondaryColour, Properties properties) {
+		super(null, primaryColour, secondaryColour, properties);
 		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
 		UNADDED_EGGS.add(this);
 	}

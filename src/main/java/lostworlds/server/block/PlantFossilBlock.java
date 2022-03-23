@@ -105,30 +105,30 @@ public class PlantFossilBlock extends Block {
 			world.destroyBlock(pos, false);
 		} else {
 			if (damage == Damage.NONE) {
-				this.popResource(world, pos, plant.getDrop().getDefaultInstance());
+				this.popResource(world, pos, plant.getDrop().get().getDefaultInstance());
 			}
 			if (damage == Damage.CHIPPED) {
 				int chance = rand.nextInt(5);
 				if (chance < 4) {
-					this.popResource(world, pos, plant.getDrop().getDefaultInstance());
+					this.popResource(world, pos, plant.getDrop().get().getDefaultInstance());
 				}
 			}
 			if (damage == Damage.SLIGHTLY) {
 				int chance = rand.nextInt(5);
 				if (chance < 3) {
-					this.popResource(world, pos, plant.getDrop().getDefaultInstance());
+					this.popResource(world, pos, plant.getDrop().get().getDefaultInstance());
 				}
 			}
 			if (damage == Damage.CRACKED) {
 				int chance = rand.nextInt(5);
 				if (chance < 2) {
-					this.popResource(world, pos, plant.getDrop().getDefaultInstance());
+					this.popResource(world, pos, plant.getDrop().get().getDefaultInstance());
 				}
 			}
 			if (damage == Damage.DAMAGED) {
 				int chance = rand.nextInt(5);
 				if (chance < 1) {
-					this.popResource(world, pos, plant.getDrop().getDefaultInstance());
+					this.popResource(world, pos, plant.getDrop().get().getDefaultInstance());
 				}
 			}
 		}

@@ -1,10 +1,10 @@
 package lostworlds.server.block;
 
+import java.util.function.Supplier;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.IStringSerializable;
-import net.minecraftforge.common.util.Lazy;
-import net.minecraftforge.common.util.NonNullSupplier;
 
 public enum Plants implements IStringSerializable {
 	ALETHOPTERIS("alethopteris", () -> LostWorldsBlocks.ALETHOPTERIS),
@@ -23,41 +23,41 @@ public enum Plants implements IStringSerializable {
 	ZAMITES("zamites", () -> LostWorldsBlocks.ZAMITES);
 
 	private final String id;
-	private final Lazy<? extends Block> block;
-	private Item item;
-	private Item seed;
-	private Item dna;
+	private final Supplier<Block> block;
+	private Supplier<Item> item;
+	private Supplier<Item> seed;
+	private Supplier<Item> dna;
 
-	private Plants(String id, NonNullSupplier<? extends Block> block) {
+	private Plants(String id, Supplier<Block> block) {
 		this.id = id;
-		this.block = Lazy.of(block::get);
+		this.block = block;
 	}
 
-	public Item setDNA(Item item) {
+	public Supplier<Item> setDNA(Supplier<Item> item) {
 		return this.dna = item;
 	}
 
-	public Item getDNA() {
+	public Supplier<Item> getDNA() {
 		return this.dna;
 	}
 
-	public Block getPlant() {
-		return this.block.get();
+	public Supplier<Block> getPlant() {
+		return this.block;
 	}
 
-	public Item setDrop(Item item) {
+	public Supplier<Item> setDrop(Supplier<Item> item) {
 		return this.item = item;
 	}
 
-	public Item getDrop() {
+	public Supplier<Item> getDrop() {
 		return this.item;
 	}
 
-	public Item setSeed(Item seed) {
+	public Supplier<Item> setSeed(Supplier<Item> seed) {
 		return this.seed = seed;
 	}
 
-	public Item getSeed() {
+	public Supplier<Item> getSeed() {
 		return this.seed;
 	}
 

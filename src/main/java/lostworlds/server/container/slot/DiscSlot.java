@@ -12,6 +12,6 @@ public class DiscSlot extends Slot {
 
 	@Override
 	public boolean mayPlace(ItemStack stack) {
-		return stack.getItem() == LostWorldsItems.STORAGE_DISC.get();
+		return stack.sameItem(LostWorldsItems.STORAGE_DISC.get().getDefaultInstance());
 	}
 }

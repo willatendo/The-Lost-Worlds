@@ -39,7 +39,7 @@ public class NautilusEntity extends BasicFishLikeEntity implements ITyrannomatab
 
 	@Override
 	protected ItemStack getBucketItemStack() {
-		return DinoTypes.NAUTILUS.getFishBucket().getDefaultInstance();
+		return DinoTypes.NAUTILUS.getFishBucket().get().getDefaultInstance();
 	}
 
 	@Override

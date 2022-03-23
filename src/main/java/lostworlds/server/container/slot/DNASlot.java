@@ -1,6 +1,6 @@
 package lostworlds.server.container.slot;
 
-import lostworlds.server.item.DNAItem;
+import lostworlds.server.LostWorldsTags;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
@@ -12,6 +12,6 @@ public class DNASlot extends Slot {
 
 	@Override
 	public boolean mayPlace(ItemStack stack) {
-		return stack.getItem() instanceof DNAItem;
+		return stack.getItem().is(LostWorldsTags.ModItemTags.DNA);
 	}
 }

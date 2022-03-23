@@ -114,7 +114,7 @@ public class ClientSetup {
 		for (DinoTypes types : DinoTypes.hasSpawn()) {
 			itemcolours.register((stack, colour) -> {
 				return types.getColour(colour, 0x000000, types.getSetEggColour());
-			}, types.getSpawn());
+			}, types.getSpawn().get());
 		}
 	}
 

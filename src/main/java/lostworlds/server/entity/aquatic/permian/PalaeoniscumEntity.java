@@ -29,7 +29,7 @@ public class PalaeoniscumEntity extends BasicFishLikeEntity implements ITyrannom
 
 	@Override
 	protected ItemStack getBucketItemStack() {
-		return DinoTypes.PALAEONISCUM.getFishBucket().getDefaultInstance();
+		return DinoTypes.PALAEONISCUM.getFishBucket().get().getDefaultInstance();
 	}
 
 	@Override
