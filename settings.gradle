@@ -1,1 +1,3 @@
+rootProject.name = 'lostworlds'
 include ':Tyrannotitan-Library'
+project(':Tyrannotitan-Library').projectDir = new File('./Tyrannotitan-Library')
