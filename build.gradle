@@ -17,6 +17,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'org.spongepowered.mixin'
 
 version = '1.0.0'
@@ -86,6 +87,8 @@ mixin {
 }
 
 repositories {
+	//Gecko
+	maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
 	//JEI
 	maven { url 'https://dvs1.progwml6.com/files/maven' }
 	//TOP
@@ -112,7 +115,11 @@ dependencies {
 	compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:1.16-3.0.6-8")
 	
 	//Library
-	implementation fg.deobf("curse.maven:tyrannotitan-library-forge-425570:3540881")
+	implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.16.5:3.0.65')
+	
+	def books = project(':Tyrannotitan-Library')
+	implementation fg.deobf(books)
+	shade books
 	
 	def registrate = "com.tterrag.registrate:Registrate:MC1.16.5-1.0.10"
     implementation fg.deobf(registrate)
@@ -123,8 +130,10 @@ dependencies {
 }
 
 shadowJar {
-    configurations = [project.configurations.shade]
-    relocate 'com.tterrag.registrate', 'lostworlds.registrate'
+	classifier = ''
+	configurations = [project.configurations.shade]
+	relocate 'com.tterrag.registrate', 'lostworlds.repack.registrate'
+	relocate 'tyrannotitanlib', 'lostworlds.repack.tyrannotitanlib'
 }
 
 jar {
@@ -143,9 +152,10 @@ jar {
 }
 
 reobf {
-    shadowJar {}
+	shadowJar {}
 }
- 
+
 build.dependsOn shadowJar
 build.dependsOn reobfShadowJar
+
 jar.finalizedBy('reobfJar')

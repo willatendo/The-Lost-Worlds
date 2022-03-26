@@ -35,10 +35,8 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	public static NonNullSupplier<LostWorldsRegistrate> lazy(String modid) {
 		return NonNullSupplier.of(() -> new LostWorldsRegistrate(modid).registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus()));
 	}
-	
 
-
-    public <T extends Entity, P> EntityBuilder<T, P> entity(P parent, String name, EntityType.IFactory<T> factory, EntityClassification classification) {
-        return entry(name, callback -> EntityBuilder.create(this, parent, name, callback, factory, classification));
-    }
+	public <T extends Entity, P> EntityBuilder<T, P> entity(P parent, String name, EntityType.IFactory<T> factory, EntityClassification classification) {
+		return entry(name, callback -> EntityBuilder.create(this, parent, name, callback, factory, classification));
+	}
 }

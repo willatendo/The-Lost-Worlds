@@ -67,8 +67,9 @@ import lostworlds.server.util.LostWorldsRegistrate;
 import net.minecraft.world.biome.Biome;
 
 public class LostWorldsBiomes {
+	@SuppressWarnings("unused")
 	private static final LostWorldsRegistrate REGISTRATE = CENTRAL_REGISTRATE.get();
-	
+
 	// Permian
 	public static final Biome PERMIAN_CONIFER_FOREST = LostWorldsRegistry.register("permian_conifer_forest", new PermianConiferForest());
 	public static final Biome PERMIAN_CONIFER_FOREST_HILLS = LostWorldsRegistry.register("permian_conifer_forest_hills", new PermianConiferForest(0.45F, 0.3F));
