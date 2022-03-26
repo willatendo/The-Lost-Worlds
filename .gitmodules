@@ -1,3 +1,4 @@
-[submodule "Tyrannotitan-Library"]
-	path = Tyrannotitan-Library
+[submodule "1.16.5-Books"]
+	path = 1.16.5-Books
 	url = https://github.com/willatendo/Tyrannotitan-Library.git
+	branch = books-1.16.5
