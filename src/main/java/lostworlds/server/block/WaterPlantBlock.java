@@ -1,6 +1,6 @@
 package lostworlds.server.block;
 
-import lostworlds.server.LostWorldsRegistry;
+import lostworlds.server.block.builder.BlockUtils;
 import lostworlds.server.item.WaterPlantItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -62,9 +62,7 @@ public class WaterPlantBlock extends FlowerBlock implements IWaterLoggable {
 
 	public static Block create(String id, Block block) {
 		Item item = new WaterPlantItem(block);
-		LostWorldsRegistry.register(id, block);
-		LostWorldsRegistry.register(id, item);
+		BlockUtils.create(id, block, item);
 		return block;
 	}
-
 }

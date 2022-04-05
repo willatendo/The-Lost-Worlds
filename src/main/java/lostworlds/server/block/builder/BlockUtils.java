@@ -1,17 +1,20 @@
 package lostworlds.server.block.builder;
 
-import lostworlds.server.LostWorldsRegistry;
+import lostworlds.server.LostWorldsUtils;
+import lostworlds.server.block.ConnectedTexturesBlock;
 import lostworlds.server.item.EggBlockItem;
 import lostworlds.server.item.block.GroupedBlockItem;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.text.ITextComponent;
-import tyrannotitanlib.library.base.block.TyrannoConnectedTextureBlock;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class BlockUtils {
 	public static Block create(String id, Block block, Item item) {
-		LostWorldsRegistry.register(id, block);
-		LostWorldsRegistry.register(id, item);
+		block.setRegistryName(LostWorldsUtils.rL(id));
+		ForgeRegistries.BLOCKS.register(block);
+		item.setRegistryName(LostWorldsUtils.rL(id));
+		ForgeRegistries.ITEMS.register(item);
 		return block;
 	}
 
@@ -25,10 +28,12 @@ public class BlockUtils {
 		return create(id, block, item);
 	}
 
-	public static TyrannoConnectedTextureBlock create(String id, TyrannoConnectedTextureBlock block) {
+	public static ConnectedTexturesBlock create(String id, ConnectedTexturesBlock block) {
 		Item item = new GroupedBlockItem(block);
-		LostWorldsRegistry.register(id, block);
-		LostWorldsRegistry.register(id, item);
+		block.setRegistryName(LostWorldsUtils.rL(id));
+		ForgeRegistries.BLOCKS.register(block);
+		item.setRegistryName(LostWorldsUtils.rL(id));
+		ForgeRegistries.ITEMS.register(item);
 		return block;
 	}
 }

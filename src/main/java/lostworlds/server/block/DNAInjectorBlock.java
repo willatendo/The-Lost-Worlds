@@ -1,7 +1,6 @@
 package lostworlds.server.block;
 
 import lostworlds.server.block.builder.BlockUtils;
-import lostworlds.server.block.builder.MachineBlockBuilder;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -15,7 +14,7 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
-public class DNAInjectorBlock extends MachineBlockBuilder {
+public class DNAInjectorBlock extends MachineBlock {
 	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 11, 15);
 
 	protected DNAInjectorBlock() {

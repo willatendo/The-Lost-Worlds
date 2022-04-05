@@ -1,5 +1,6 @@
 package lostworlds.server.dimension;
 
+import lostworlds.client.StandardDimensionRenderInfo;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.dimension.cretaceous.CretaceousBiomeProvider;
 import lostworlds.server.dimension.cretaceous.CretaceousChunkGenerator;
@@ -18,7 +19,6 @@ import net.minecraft.world.storage.DerivedWorldInfo;
 import net.minecraftforge.event.world.SleepFinishedTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import tyrannotitanlib.library.base.dimension.StandardDimensionRenderInfo;
 
 @EventBusSubscriber(modid = LostWorldsUtils.ID)
 public class LostWorldsDimensions {

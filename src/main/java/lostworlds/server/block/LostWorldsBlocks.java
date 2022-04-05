@@ -1,6 +1,14 @@
 package lostworlds.server.block;
 
-import lostworlds.server.LostWorldsRegistry;
+import static lostworlds.LostWorldsMod.CENTRAL_REGISTRATE;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
+import com.tterrag.registrate.util.entry.BlockEntry;
+
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.builder.BlockBuilder;
 import lostworlds.server.block.builder.BlockUtils;
@@ -15,6 +23,7 @@ import lostworlds.server.entity.utils.enums.ModBoatType;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.item.ModBoatItem;
 import lostworlds.server.item.tool.ModMaterials;
+import lostworlds.server.util.LostWorldsRegistrate;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -26,11 +35,13 @@ import net.minecraft.block.FlowerBlock;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.HayBlock;
 import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.OreBlock;
 import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.block.RedstoneOreBlock;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.SandBlock;
+import net.minecraft.block.SaplingBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.StairsBlock;
@@ -50,13 +61,13 @@ import net.minecraft.potion.Effects;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
-import tyrannotitanlib.library.base.block.TyrannoConnectedTextureBlock;
-import tyrannotitanlib.library.base.block.TyrannoOreBlock;
-import tyrannotitanlib.library.base.block.TyrannoSaplingBlock;
-import tyrannotitanlib.library.base.block.TyrannoSignManager;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsBlocks {
-//	private static final LostWorldsRegistrate REGISTRATE = CENTRAL_REGISTRATE.get().itemGroup(() -> LostWorldsUtils.BLOCKS);
+	private static final LostWorldsRegistrate REGISTRATE = CENTRAL_REGISTRATE.get().itemGroup(() -> LostWorldsUtils.BLOCKS);
+	public static final List<Supplier<? extends Block>> SIGN_BLOCKS = new ArrayList<>();
+
+	public static final BlockEntry<OreBlock> COPPER_ORE = REGISTRATE.block("copper_ore", OreBlock::new).initialProperties(() -> Blocks.COAL_ORE).simpleItem().register();
 
 	// Soils
 	public static final Block DRIED_SOIL = BlockUtils.create("dried_soil", new DriedSoilBlock(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).harvestTool(ToolType.SHOVEL).sound(SoundType.GRAVEL).randomTicks()));
@@ -82,14 +93,14 @@ public class LostWorldsBlocks {
 	public static final Block PERMIAN_STONE_PRESSURE_PLATE = BlockUtils.create("permian_stone_pressure_plate", new PressurePlateBlock(Sensitivity.MOBS, AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)));
 	public static final Block PERMIAN_STONE_BUTTON = BlockUtils.create("permian_stone_button", new StoneButtonBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)));
 
-	public static final Block PERMIAN_COPPER_ORE = BlockUtils.create("permian_copper_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 0));
-	public static final Block PERMIAN_GOLD_ORE = BlockUtils.create("permian_gold_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 0));
-	public static final Block PERMIAN_IRON_ORE = BlockUtils.create("permian_iron_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 0));
-	public static final Block PERMIAN_COAL_ORE = BlockUtils.create("permian_coal_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 2));
-	public static final Block PERMIAN_LAPIS_ORE = BlockUtils.create("permian_lapis_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 2, 5));
-	public static final Block PERMIAN_DIAMOND_ORE = BlockUtils.create("permian_diamond_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 3, 7));
+	public static final Block PERMIAN_COPPER_ORE = BlockUtils.create("permian_copper_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 0));
+	public static final Block PERMIAN_GOLD_ORE = BlockUtils.create("permian_gold_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 0));
+	public static final Block PERMIAN_IRON_ORE = BlockUtils.create("permian_iron_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 0));
+	public static final Block PERMIAN_COAL_ORE = BlockUtils.create("permian_coal_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 2));
+	public static final Block PERMIAN_LAPIS_ORE = BlockUtils.create("permian_lapis_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 2, 5));
+	public static final Block PERMIAN_DIAMOND_ORE = BlockUtils.create("permian_diamond_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 3, 7));
 	public static final Block PERMIAN_REDSTONE_ORE = BlockUtils.create("permian_redstone_ore", new RedstoneOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
-	public static final Block PERMIAN_EMERALD_ORE = BlockUtils.create("permian_emerald_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 3, 7));
+	public static final Block PERMIAN_EMERALD_ORE = BlockUtils.create("permian_emerald_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 3, 7));
 
 	public static final Block PERMIAN_COBBLESTONE = BlockUtils.create("permian_cobblestone", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)));
 	public static final Block PERMIAN_COBBLESTONE_STAIRS = BlockUtils.create("permian_cobblestone_stairs", new StairsBlock(() -> LostWorldsBlocks.PERMIAN_STONE.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)));
@@ -107,14 +118,14 @@ public class LostWorldsBlocks {
 	public static final Block JURASSIC_STONE_PRESSURE_PLATE = BlockUtils.create("jurassic_stone_pressure_plate", new PressurePlateBlock(Sensitivity.MOBS, AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)));
 	public static final Block JURASSIC_STONE_BUTTON = BlockUtils.create("jurassic_stone_button", new StoneButtonBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)));
 
-	public static final Block JURASSIC_COPPER_ORE = BlockUtils.create("jurassic_copper_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 0));
-	public static final Block JURASSIC_GOLD_ORE = BlockUtils.create("jurassic_gold_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 0));
-	public static final Block JURASSIC_IRON_ORE = BlockUtils.create("jurassic_iron_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 0));
-	public static final Block JURASSIC_COAL_ORE = BlockUtils.create("jurassic_coal_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 2));
-	public static final Block JURASSIC_LAPIS_ORE = BlockUtils.create("jurassic_lapis_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 2, 5));
-	public static final Block JURASSIC_DIAMOND_ORE = BlockUtils.create("jurassic_diamond_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 3, 7));
+	public static final Block JURASSIC_COPPER_ORE = BlockUtils.create("jurassic_copper_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 0));
+	public static final Block JURASSIC_GOLD_ORE = BlockUtils.create("jurassic_gold_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 0));
+	public static final Block JURASSIC_IRON_ORE = BlockUtils.create("jurassic_iron_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 0));
+	public static final Block JURASSIC_COAL_ORE = BlockUtils.create("jurassic_coal_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 0, 2));
+	public static final Block JURASSIC_LAPIS_ORE = BlockUtils.create("jurassic_lapis_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 2, 5));
+	public static final Block JURASSIC_DIAMOND_ORE = BlockUtils.create("jurassic_diamond_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 3, 7));
 	public static final Block JURASSIC_REDSTONE_ORE = BlockUtils.create("jurassic_redstone_ore", new RedstoneOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
-	public static final Block JURASSIC_EMERALD_ORE = BlockUtils.create("jurassic_emerald_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 3, 7));
+	public static final Block JURASSIC_EMERALD_ORE = BlockUtils.create("jurassic_emerald_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), 3, 7));
 
 	public static final Block JURASSIC_COBBLESTONE = BlockUtils.create("jurassic_cobblestone", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)));
 	public static final Block JURASSIC_COBBLESTONE_STAIRS = BlockUtils.create("jurassic_cobblestone_stairs", new StairsBlock(() -> LostWorldsBlocks.JURASSIC_COBBLESTONE.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)));
@@ -184,7 +195,7 @@ public class LostWorldsBlocks {
 	public static final Block LARGE_PLASTERED_FOSSILISED_EGG = BlockUtils.create("large_plastered_fossilized_egg", new LargePlasteredFossilizedEggBlock(AbstractBlock.Properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()));
 
 	// Overworld Ores
-	public static final Block AMBER_ORE = BlockUtils.create("amber_ore", new TyrannoOreBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.DIRT).requiresCorrectToolForDrops().strength(1.5F, 6.0F), 0, 0));
+	public static final Block AMBER_ORE = BlockUtils.create("amber_ore", new ModOreBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.DIRT).requiresCorrectToolForDrops().strength(1.5F, 6.0F), 0, 0));
 	public static final Block BASALT_DIAMOND_ORE = BlockUtils.create("basalt_diamond_ore", new ModOreRotatedPillerBlock(AbstractBlock.Properties.copy(Blocks.BASALT)));
 
 	// Machines
@@ -216,7 +227,7 @@ public class LostWorldsBlocks {
 	public static final Block ARAUCARIA_WOOD = BlockUtils.create("araucaria_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_ARAUCARIA_WOOD = BlockUtils.create("stripped_araucaria_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block ARAUCARIA_LEAVES = BlockUtils.create("araucaria_leaves", leaves());
-	public static final Block ARAUCARIA_SAPLING = BlockUtils.create("araucaria_sapling", new TyrannoSaplingBlock(new AraucariaTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final Block ARAUCARIA_SAPLING = BlockUtils.create("araucaria_sapling", new SaplingBlock(new AraucariaTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block ARAUCARIA_PLANKS = BlockUtils.create("araucaria_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block ARAUCARIA_STAIRS = BlockUtils.create("araucaria_stairs", new StairsBlock(() -> LostWorldsBlocks.ARAUCARIA_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block ARAUCARIA_SLAB = BlockUtils.create("araucaria_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -228,8 +239,8 @@ public class LostWorldsBlocks {
 	public static final Block ARAUCARIA_DOOR = BlockUtils.create("araucaria_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block ARAUCARIA_SIGN = BlockBuilder.create("araucaria_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.ARAUCARIA));
 	public static final Block ARAUCARIA_WALL_SIGN = BlockBuilder.create("araucaria_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(LostWorldsBlocks.ARAUCARIA_SIGN), ModWoodType.ARAUCARIA));
-	public static final Item ARAUCARIA_SIGN_ITEM = LostWorldsRegistry.register("araucaria_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), ARAUCARIA_SIGN, ARAUCARIA_WALL_SIGN));
-	public static final Item ARAUCARIA_BOAT = LostWorldsRegistry.register("araucaria_boat", new ModBoatItem(ModBoatType.ARAUCARIA));
+	public static final Item ARAUCARIA_SIGN_ITEM = register("araucaria_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), ARAUCARIA_SIGN, ARAUCARIA_WALL_SIGN));
+	public static final Item ARAUCARIA_BOAT = register("araucaria_boat", new ModBoatItem(ModBoatType.ARAUCARIA));
 
 	public static final Block PETRIFIED_ARAUCARIA_LOG = BlockUtils.create("petrified_araucaria_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), () -> LostWorldsItems.ARAUCARIA_BARK_SAMPLE.get()));
 	public static final Block STRIPPED_PETRIFIED_ARAUCARIA_LOG = BlockUtils.create("stripped_petrified_araucaria_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
@@ -240,7 +251,7 @@ public class LostWorldsBlocks {
 	public static final Block CALAMITES_WOOD = BlockUtils.create("calamites_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_CALAMITES_WOOD = BlockUtils.create("stripped_calamites_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block CALAMITES_LEAVES = BlockUtils.create("calamites_leaves", leaves());
-	public static final Block CALAMITES_SAPLING = BlockUtils.create("calamites_sapling", new TyrannoSaplingBlock(new CalamitesTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final Block CALAMITES_SAPLING = BlockUtils.create("calamites_sapling", new SaplingBlock(new CalamitesTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block CALAMITES_PLANKS = BlockUtils.create("calamites_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block CALAMITES_STAIRS = BlockUtils.create("calamites_stairs", new StairsBlock(() -> LostWorldsBlocks.CONIFER_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block CALAMITES_SLAB = BlockUtils.create("calamites_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -252,8 +263,8 @@ public class LostWorldsBlocks {
 	public static final Block CALAMITES_DOOR = BlockUtils.create("calamites_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block CALAMITES_SIGN = BlockBuilder.create("calamites_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CALAMITES));
 	public static final Block CALAMITES_WALL_SIGN = BlockBuilder.create("calamites_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(LostWorldsBlocks.CALAMITES_SIGN), ModWoodType.CALAMITES));
-	public static final Item CALAMITES_SIGN_ITEM = LostWorldsRegistry.register("calamites_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), CALAMITES_SIGN, CALAMITES_WALL_SIGN));
-	public static final Item CALAMITES_BOAT = LostWorldsRegistry.register("calamites_boat", new ModBoatItem(ModBoatType.CALAMITES));
+	public static final Item CALAMITES_SIGN_ITEM = register("calamites_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), CALAMITES_SIGN, CALAMITES_WALL_SIGN));
+	public static final Item CALAMITES_BOAT = register("calamites_boat", new ModBoatItem(ModBoatType.CALAMITES));
 
 	public static final Block PETRIFIED_CALAMITES_LOG = BlockUtils.create("petrified_calamites_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), () -> LostWorldsItems.CALAMITES_BARK_SAMPLE.get()));
 	public static final Block STRIPPED_PETRIFIED_CALAMITES_LOG = BlockUtils.create("stripped_petrified_calamites_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
@@ -264,7 +275,7 @@ public class LostWorldsBlocks {
 	public static final Block CONIFER_WOOD = BlockUtils.create("conifer_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_CONIFER_WOOD = BlockUtils.create("stripped_conifer_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F).sound(SoundType.WOOD)));
 	public static final Block CONIFER_LEAVES = BlockUtils.create("conifer_leaves", leaves());
-	public static final Block CONIFER_SAPLING = BlockUtils.create("conifer_sapling", new TyrannoSaplingBlock(new ConiferTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final Block CONIFER_SAPLING = BlockUtils.create("conifer_sapling", new SaplingBlock(new ConiferTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block CONIFER_PLANKS = BlockUtils.create("conifer_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block CONIFER_STAIRS = BlockUtils.create("conifer_stairs", new StairsBlock(() -> LostWorldsBlocks.CONIFER_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block CONIFER_SLAB = BlockUtils.create("conifer_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -276,8 +287,8 @@ public class LostWorldsBlocks {
 	public static final Block CONIFER_DOOR = BlockUtils.create("conifer_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block CONIFER_SIGN = BlockBuilder.create("conifer_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CONIFER));
 	public static final Block CONIFER_WALL_SIGN = BlockBuilder.create("conifer_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(LostWorldsBlocks.CONIFER_SIGN), ModWoodType.CONIFER));
-	public static final Item CONIFER_SIGN_ITEM = LostWorldsRegistry.register("conifer_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), CONIFER_SIGN, CONIFER_WALL_SIGN));
-	public static final Item CONIFER_BOAT = LostWorldsRegistry.register("conifer_boat", new ModBoatItem(ModBoatType.CONIFER));
+	public static final Item CONIFER_SIGN_ITEM = register("conifer_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), CONIFER_SIGN, CONIFER_WALL_SIGN));
+	public static final Item CONIFER_BOAT = register("conifer_boat", new ModBoatItem(ModBoatType.CONIFER));
 
 	public static final Block PETRIFIED_CONIFER_LOG = BlockUtils.create("petrified_conifer_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), () -> LostWorldsItems.CONIFER_BARK_SAMPLE.get()));
 	public static final Block STRIPPED_PETRIFIED_CONIFER_LOG = BlockUtils.create("stripped_petrified_conifer_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
@@ -288,7 +299,7 @@ public class LostWorldsBlocks {
 	public static final Block CYPRESS_WOOD = BlockUtils.create("cypress_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_CYPRESS_WOOD = BlockUtils.create("stripped_cypress_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F).sound(SoundType.WOOD)));
 	public static final Block CYPRESS_LEAVES = BlockUtils.create("cypress_leaves", leaves());
-	public static final Block CYPRESS_SAPLING = BlockUtils.create("cypress_sapling", new TyrannoSaplingBlock(new CypressTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final Block CYPRESS_SAPLING = BlockUtils.create("cypress_sapling", new SaplingBlock(new CypressTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block CYPRESS_PLANKS = BlockUtils.create("cypress_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block CYPRESS_STAIRS = BlockUtils.create("cypress_stairs", new StairsBlock(() -> LostWorldsBlocks.CYPRESS_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block CYPRESS_SLAB = BlockUtils.create("cypress_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -300,8 +311,8 @@ public class LostWorldsBlocks {
 	public static final Block CYPRESS_DOOR = BlockUtils.create("cypress_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block CYPRESS_SIGN = BlockBuilder.create("cypress_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.CYPRESS));
 	public static final Block CYPRESS_WALL_SIGN = BlockBuilder.create("cypress_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(LostWorldsBlocks.CYPRESS_SIGN), ModWoodType.CYPRESS));
-	public static final Item CYPRESS_SIGN_ITEM = LostWorldsRegistry.register("cypress_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), CYPRESS_SIGN, CYPRESS_WALL_SIGN));
-	public static final Item CYPRESS_BOAT = LostWorldsRegistry.register("cypress_boat", new ModBoatItem(ModBoatType.CYPRESS));
+	public static final Item CYPRESS_SIGN_ITEM = register("cypress_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), CYPRESS_SIGN, CYPRESS_WALL_SIGN));
+	public static final Item CYPRESS_BOAT = register("cypress_boat", new ModBoatItem(ModBoatType.CYPRESS));
 
 	public static final Block PETRIFIED_CYPRESS_LOG = BlockUtils.create("petrified_cypress_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), () -> LostWorldsItems.CYPRESS_BARK_SAMPLE.get()));
 	public static final Block STRIPPED_PETRIFIED_CYPRESS_LOG = BlockUtils.create("stripped_petrified_cypress_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
@@ -312,7 +323,7 @@ public class LostWorldsBlocks {
 	public static final Block GINKGO_WOOD = BlockUtils.create("ginkgo_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_GINKGO_WOOD = BlockUtils.create("stripped_ginkgo_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block GINKGO_LEAVES = BlockUtils.create("ginkgo_leaves", leaves());
-	public static final Block GINKGO_SAPLING = BlockUtils.create("ginkgo_sapling", new TyrannoSaplingBlock(new GinkgoTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final Block GINKGO_SAPLING = BlockUtils.create("ginkgo_sapling", new SaplingBlock(new GinkgoTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block GINKGO_PLANKS = BlockUtils.create("ginkgo_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block GINKGO_STAIRS = BlockUtils.create("ginkgo_stairs", new StairsBlock(() -> LostWorldsBlocks.CONIFER_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block GINKGO_SLAB = BlockUtils.create("ginkgo_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -324,8 +335,8 @@ public class LostWorldsBlocks {
 	public static final Block GINKGO_DOOR = BlockUtils.create("ginkgo_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block GINKGO_SIGN = BlockBuilder.create("ginkgo_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.GINKGO));
 	public static final Block GINKGO_WALL_SIGN = BlockBuilder.create("ginkgo_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(LostWorldsBlocks.GINKGO_SIGN), ModWoodType.GINKGO));
-	public static final Item GINKGO_SIGN_ITEM = LostWorldsRegistry.register("ginkgo_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), GINKGO_SIGN, GINKGO_WALL_SIGN));
-	public static final Item GINKGO_BOAT = LostWorldsRegistry.register("ginkgo_boat", new ModBoatItem(ModBoatType.GINKGO));
+	public static final Item GINKGO_SIGN_ITEM = register("ginkgo_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), GINKGO_SIGN, GINKGO_WALL_SIGN));
+	public static final Item GINKGO_BOAT = register("ginkgo_boat", new ModBoatItem(ModBoatType.GINKGO));
 
 	public static final Block PETRIFIED_GINKGO_LOG = BlockUtils.create("petrified_ginkgo_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), () -> LostWorldsItems.GINKGO_BARK_SAMPLE.get()));
 	public static final Block STRIPPED_PETRIFIED_GINKGO_LOG = BlockUtils.create("stripped_petrified_ginkgo_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
@@ -346,8 +357,8 @@ public class LostWorldsBlocks {
 	public static final Block SCORCHED_DOOR = BlockUtils.create("scorched_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block SCORCHED_SIGN = BlockBuilder.create("scorched_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.SCORCHED));
 	public static final Block SCORCHED_WALL_SIGN = BlockBuilder.create("scorched_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(LostWorldsBlocks.SCORCHED_SIGN), ModWoodType.SCORCHED));
-	public static final Item SCORCHED_SIGN_ITEM = LostWorldsRegistry.register("scorched_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), SCORCHED_SIGN, SCORCHED_WALL_SIGN));
-	public static final Item SCORCHED_BOAT = LostWorldsRegistry.register("scorched_boat", new ModBoatItem(ModBoatType.SCORCHED));
+	public static final Item SCORCHED_SIGN_ITEM = register("scorched_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), SCORCHED_SIGN, SCORCHED_WALL_SIGN));
+	public static final Item SCORCHED_BOAT = register("scorched_boat", new ModBoatItem(ModBoatType.SCORCHED));
 
 	// Sequoia
 	public static final Block SEQUOIA_LOG = BlockUtils.create("sequoia_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -355,7 +366,7 @@ public class LostWorldsBlocks {
 	public static final Block SEQUOIA_WOOD = BlockUtils.create("sequoia_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block STRIPPED_SEQUOIA_WOOD = BlockUtils.create("stripped_sequoia_wood", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block SEQUOIA_LEAVES = BlockUtils.create("sequoia_leaves", leaves());
-	public static final Block SEQUOIA_SAPLING = BlockUtils.create("sequoia_sapling", new TyrannoSaplingBlock(new SequoiaTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final Block SEQUOIA_SAPLING = BlockUtils.create("sequoia_sapling", new SaplingBlock(new SequoiaTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 	public static final Block SEQUOIA_PLANKS = BlockUtils.create("sequoia_planks", new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block SEQUOIA_STAIRS = BlockUtils.create("sequoia_stairs", new StairsBlock(() -> LostWorldsBlocks.CONIFER_PLANKS.defaultBlockState(), AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 	public static final Block SEQUOIA_SLAB = BlockUtils.create("sequoia_slab", new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -367,8 +378,8 @@ public class LostWorldsBlocks {
 	public static final Block SEQUOIA_DOOR = BlockUtils.create("sequoia_door", new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)));
 	public static final Block SEQUOIA_SIGN = BlockBuilder.create("sequoia_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD), ModWoodType.SEQUOIA));
 	public static final Block SEQUOIA_WALL_SIGN = BlockBuilder.create("sequoia_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).dropsLike(LostWorldsBlocks.SEQUOIA_SIGN), ModWoodType.SEQUOIA));
-	public static final Item SEQUOIA_SIGN_ITEM = LostWorldsRegistry.register("sequoia_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), SEQUOIA_SIGN, SEQUOIA_WALL_SIGN));
-	public static final Item SEQUOIA_BOAT = LostWorldsRegistry.register("sequoia_boat", new ModBoatItem(ModBoatType.SEQUOIA));
+	public static final Item SEQUOIA_SIGN_ITEM = register("sequoia_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), SEQUOIA_SIGN, SEQUOIA_WALL_SIGN));
+	public static final Item SEQUOIA_BOAT = register("sequoia_boat", new ModBoatItem(ModBoatType.SEQUOIA));
 
 	public static final Block PETRIFIED_SEQUOIA_LOG = BlockUtils.create("petrified_sequoia_log", new PetrifiedWoodBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_RED).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE), () -> LostWorldsItems.SEQUOIA_BARK_SAMPLE.get()));
 	public static final Block STRIPPED_PETRIFIED_SEQUOIA_LOG = BlockUtils.create("stripped_petrified_sequoia_log", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_RED).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
@@ -424,7 +435,7 @@ public class LostWorldsBlocks {
 	public static final Block LIGHT_CONCRETE_PRESSURE_PLATE = BlockUtils.create("light_concrete_pressure_plate", new PressurePlateBlock(Sensitivity.MOBS, AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.0F, 8.0F).noCollission().sound(SoundType.STONE)));
 	public static final Block LIGHT_CONCRETE_BUTTON = BlockUtils.create("light_concrete_button", new StoneButtonBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.0F, 8.0F).noCollission().sound(SoundType.STONE)));
 
-	public static final TyrannoConnectedTextureBlock POLISHED_LIGHT_CONCRETE = BlockUtils.create("polished_light_concrete", new TyrannoConnectedTextureBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE), LostWorldsUtils.ID, "polished_dark_concrete", true));
+	public static final ConnectedTexturesBlock POLISHED_LIGHT_CONCRETE = BlockUtils.create("polished_light_concrete", new ConnectedTexturesBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE), LostWorldsUtils.ID, "polished_dark_concrete", true));
 
 	public static final Block ACCENT_LIGHT_CONCRETE = BlockUtils.create("accent_light_concrete", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE)));
 	public static final Block ACCENT_LIGHT_CONCRETE_STAIRS = BlockUtils.create("accent_light_concrete_stairs", new StairsBlock(() -> LostWorldsBlocks.LIGHT_CONCRETE.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE)));
@@ -454,7 +465,7 @@ public class LostWorldsBlocks {
 	public static final Block DARK_CONCRETE_PRESSURE_PLATE = BlockUtils.create("dark_concrete_pressure_plate", new PressurePlateBlock(Sensitivity.MOBS, AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(8.0F, 10.0F).noCollission().sound(SoundType.STONE)));
 	public static final Block DARK_CONCRETE_BUTTON = BlockUtils.create("dark_concrete_button", new StoneButtonBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(8.0F, 10.0F).noCollission().sound(SoundType.STONE)));
 
-	public static final TyrannoConnectedTextureBlock POLISHED_DARK_CONCRETE = BlockUtils.create("polished_dark_concrete", new TyrannoConnectedTextureBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE), LostWorldsUtils.ID, "polished_dark_concrete", true));
+	public static final ConnectedTexturesBlock POLISHED_DARK_CONCRETE = BlockUtils.create("polished_dark_concrete", new ConnectedTexturesBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(6.5F, 8.5F).sound(SoundType.STONE), LostWorldsUtils.ID, "polished_dark_concrete", true));
 
 	public static final Block ACCENT_DARK_CONCRETE = BlockUtils.create("accent_dark_concrete", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(8.5F, 10.5F).sound(SoundType.STONE)));
 	public static final Block ACCENT_DARK_CONCRETE_STAIRS = BlockUtils.create("accent_dark_concrete_stairs", new StairsBlock(() -> LostWorldsBlocks.DARK_CONCRETE.defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops().strength(8.5F, 10.5F).sound(SoundType.STONE)));
@@ -474,7 +485,7 @@ public class LostWorldsBlocks {
 
 	public static final Block GLASS_SIGN = BlockBuilder.create("glass_sign", new StandingSignBlock(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS), ModWoodType.GLASS));
 	public static final Block GLASS_WALL_SIGN = BlockBuilder.create("glass_wall_sign", new WallSignBlock(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS).dropsLike(LostWorldsBlocks.GLASS_SIGN), ModWoodType.GLASS));
-	public static final Item GLASS_SIGN_ITEM = LostWorldsRegistry.register("glass_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), GLASS_SIGN, GLASS_WALL_SIGN));
+	public static final Item GLASS_SIGN_ITEM = register("glass_sign", new SignItem(new Properties().tab(LostWorldsUtils.BLOCKS).stacksTo(16), GLASS_SIGN, GLASS_WALL_SIGN));
 
 	public static final Block GLASS_SHOP_DOOR = BlockUtils.create("glass_shop_door", new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));
 	public static final Block INNOVATION_CENTER_DOOR = BlockUtils.create("innovation_center_door", new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));
@@ -506,25 +517,41 @@ public class LostWorldsBlocks {
 		return new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES).strength(0.2F).harvestTool(ToolType.HOE).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(LostWorldsBlocks::ocelotOrParrot).isSuffocating(LostWorldsBlocks::never).isViewBlocking(LostWorldsBlocks::never));
 	}
 
+	public static Item register(String id, Item item) {
+		item.setRegistryName(LostWorldsUtils.rL(id));
+		ForgeRegistries.ITEMS.register(item);
+		return item;
+	}
+
+	public static void registerSignBlock(Supplier<? extends Block> sign) {
+		synchronized (SIGN_BLOCKS) {
+			SIGN_BLOCKS.add(sign);
+		}
+	}
+
+	public static void forEachSignBlock(Consumer<? super Block> consumer) {
+		SIGN_BLOCKS.forEach(block -> consumer.accept(block.get()));
+	}
+
 	public static void init() {
 		LostWorldsUtils.LOGGER.debug("Registering Mod Blocks");
 
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.ARAUCARIA_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.ARAUCARIA_WALL_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.CALAMITES_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.CALAMITES_WALL_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.CONIFER_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.CONIFER_WALL_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.CYPRESS_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.CYPRESS_WALL_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.GINKGO_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.GINKGO_WALL_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.GLASS_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.GLASS_WALL_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.SCORCHED_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.SCORCHED_WALL_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.SEQUOIA_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> LostWorldsBlocks.SEQUOIA_WALL_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.ARAUCARIA_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.ARAUCARIA_WALL_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.CALAMITES_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.CALAMITES_WALL_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.CONIFER_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.CONIFER_WALL_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.CYPRESS_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.CYPRESS_WALL_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.GINKGO_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.GINKGO_WALL_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.GLASS_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.GLASS_WALL_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.SCORCHED_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.SCORCHED_WALL_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.SEQUOIA_SIGN);
+		registerSignBlock(() -> LostWorldsBlocks.SEQUOIA_WALL_SIGN);
 
 		ColouredGlassBlock.create();
 		ColouredGlassPaneBlock.create();

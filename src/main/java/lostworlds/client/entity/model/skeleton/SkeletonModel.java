@@ -5,10 +5,10 @@ import lostworlds.server.item.FossilItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 @OnlyIn(Dist.CLIENT)
-public class SkeletonModel extends TyrannomatedTyrannomationModel<FossilItem> {
+public class SkeletonModel extends AnimatedGeoModel<FossilItem> {
 //	private final String model;
 //	private final String texture;
 
@@ -35,7 +35,8 @@ public class SkeletonModel extends TyrannomatedTyrannomationModel<FossilItem> {
 
 	@Override
 	public ResourceLocation getTextureLocation(FossilItem item) {
-		// return LostWorldsUtils.rL("textures/model/entity/fossil/" + texture + "/skeleton.png");
+		// return LostWorldsUtils.rL("textures/model/entity/fossil/" + texture +
+		// "/skeleton.png");
 		return LostWorldsUtils.rL("textures/model/entity/unfinished_cube.png");
 	}
 }

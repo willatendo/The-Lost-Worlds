@@ -11,10 +11,10 @@ import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationEntityRenderer;
+import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class OphthalmosaurusRenderer extends TyrannomationEntityRenderer<OphthalmosaurusEntity> {
+public class OphthalmosaurusRenderer extends GeoEntityRenderer<OphthalmosaurusEntity> {
 	public OphthalmosaurusRenderer(EntityRendererManager renderManager) {
 		super(renderManager, new OphthalmosaurusModel());
 		this.shadowRadius = 0.5F;

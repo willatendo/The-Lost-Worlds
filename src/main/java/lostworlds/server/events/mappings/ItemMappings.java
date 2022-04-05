@@ -13,15 +13,14 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import tyrannotitanlib.content.server.init.TyrannoItems;
 
 @EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.MOD)
 public class ItemMappings {
 	private static final Map<ResourceLocation, Supplier<Item>> itemRemappings = new HashMap<ResourceLocation, Supplier<Item>>() {
 		private static final long serialVersionUID = 2729763913422843325L;
 		{
-			put(LostWorldsUtils.rL("copper_ingot"), () -> TyrannoItems.COPPER_INGOT);
-			put(LostWorldsUtils.rL("copper_nugget"), () -> TyrannoItems.COPPER_NUGGET);
+			put(LostWorldsUtils.rL("copper_ingot"), () -> LostWorldsItems.COPPER_INGOT.get());
+			put(LostWorldsUtils.rL("copper_nugget"), () -> LostWorldsItems.COPPER_NUGGET.get());
 
 			put(LostWorldsUtils.rL("permian_time_book"), () -> LostWorldsItems.PERMIAN_PERIOD_TIME_BOOK.get());
 			put(LostWorldsUtils.rL("jurassic_time_book"), () -> LostWorldsItems.JURASSIC_PERIOD_TIME_BOOK.get());

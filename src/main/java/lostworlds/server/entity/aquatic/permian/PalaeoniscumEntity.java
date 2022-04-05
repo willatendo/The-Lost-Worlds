@@ -7,19 +7,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
-import tyrannotitanlib.library.tyrannomation.core.ITyrannomatable;
-import tyrannotitanlib.library.tyrannomation.core.PlayState;
-import tyrannotitanlib.library.tyrannomation.core.builder.TyrannomationBuilder;
-import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationController;
-import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
-import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
-import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class PalaeoniscumEntity extends BasicFishLikeEntity implements ITyrannomatable {
-	private TyrannomationFactory factory = new TyrannomationFactory(this);
+public class PalaeoniscumEntity extends BasicFishLikeEntity implements IAnimatable {
+	private AnimationFactory factory = new AnimationFactory(this);
 
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) {
-		event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.palaeoniscum", true));
+	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+		event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.palaeoniscum", true));
 		return PlayState.CONTINUE;
 	}
 
@@ -38,12 +38,12 @@ public class PalaeoniscumEntity extends BasicFishLikeEntity implements ITyrannom
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) {
-		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
+	public void registerControllers(AnimationData data) {
+		data.addAnimationController(new AnimationController<IAnimatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() {
+	public AnimationFactory getFactory() {
 		return this.factory;
 	}
 }

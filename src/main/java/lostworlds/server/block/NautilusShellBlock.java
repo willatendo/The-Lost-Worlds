@@ -26,9 +26,8 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
-import tyrannotitanlib.library.base.block.TyrannoRequiresGroundBlock;
 
-public class NautilusShellBlock extends TyrannoRequiresGroundBlock implements IWaterLoggable {
+public class NautilusShellBlock extends GroundBlock implements IWaterLoggable {
 	protected static final Map<Block, Map<Direction, VoxelShape>> SHAPES = new HashMap<Block, Map<Direction, VoxelShape>>();
 	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 	private static final VoxelShape SHAPE = Block.box(6, 0, 5.5, 10, 5, 10.5);

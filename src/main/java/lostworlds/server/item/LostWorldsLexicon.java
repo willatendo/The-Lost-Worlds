@@ -3,6 +3,7 @@ package lostworlds.server.item;
 import java.util.List;
 
 import lostworlds.client.book.LostWorldsBooks;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.item.TyrannobookItem;
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,7 +13,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
-import tyrannotitanlib.library.tyrannobook.item.TyrannobookItem;
 
 public class LostWorldsLexicon extends TyrannobookItem {
 	public LostWorldsLexicon(Properties properties) {

@@ -45,6 +45,10 @@ import net.minecraftforge.common.Tags;
 public class LostWorldsItems {
 	private static final LostWorldsRegistrate REGISTRATE = CENTRAL_REGISTRATE.get().itemGroup(() -> LostWorldsUtils.ITEMS);
 
+	// Copper
+	public static final ItemEntry<Item> COPPER_INGOT = REGISTRATE.item("copper_ingot", Item::new).register(),
+			COPPER_NUGGET = REGISTRATE.item("copper_nugget", Item::new).register();
+
 	// Tools
 	public static final ItemEntry<CrystalScarabSwordItem> CRYSTAL_SCARAB_SWORD = REGISTRATE.item("crystal_scarab_sword", properties -> new CrystalScarabSwordItem(ModItemTier.CRYSTAL_SCARAB, 3, -2.4F, properties.setNoRepair())).lang("Crystal Scarab Sword").register();
 	public static final ItemEntry<CrystalScarabShovelItem> CRYSTAL_SCARAB_SHOVEL = REGISTRATE.item("crystal_scarab_shovel", properties -> new CrystalScarabShovelItem(ModItemTier.CRYSTAL_SCARAB, 1.5F, -3.0F, properties.setNoRepair())).lang("Crystal Scarab Shovel").register();

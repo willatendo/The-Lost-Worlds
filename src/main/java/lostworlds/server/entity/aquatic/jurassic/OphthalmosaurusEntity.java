@@ -10,23 +10,23 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import tyrannotitanlib.library.tyrannomation.core.ITyrannomatable;
-import tyrannotitanlib.library.tyrannomation.core.PlayState;
-import tyrannotitanlib.library.tyrannomation.core.builder.TyrannomationBuilder;
-import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationController;
-import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
-import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
-import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class OphthalmosaurusEntity extends DolphinLikeEntity implements ITyrannomatable {
-	private TyrannomationFactory factory = new TyrannomationFactory(this);
+public class OphthalmosaurusEntity extends DolphinLikeEntity implements IAnimatable {
+	private AnimationFactory factory = new AnimationFactory(this);
 
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) {
+	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
 		if (event.isMoving()) {
-			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.ophthalmosaurus.swim", true));
+			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ophthalmosaurus.swim", true));
 			return PlayState.CONTINUE;
 		} else {
-			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.ophthalmosaurus.idle", true));
+			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ophthalmosaurus.idle", true));
 			return PlayState.CONTINUE;
 		}
 	}
@@ -40,12 +40,12 @@ public class OphthalmosaurusEntity extends DolphinLikeEntity implements ITyranno
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) {
-		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
+	public void registerControllers(AnimationData data) {
+		data.addAnimationController(new AnimationController<IAnimatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() {
+	public AnimationFactory getFactory() {
 		return this.factory;
 	}
 

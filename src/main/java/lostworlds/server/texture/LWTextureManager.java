@@ -1,6 +1,7 @@
 package lostworlds.server.texture;
 
 import lostworlds.server.LostWorldsUtils;
+import lostworlds.server.block.ConnectedTexturesBlock;
 import lostworlds.server.block.LostWorldsBlocks;
 import net.minecraft.client.renderer.model.ModelResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -9,19 +10,15 @@ import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
-import tyrannotitanlib.library.base.block.TyrannoConnectedTextureBlock;
-import tyrannotitanlib.library.base.texture.TextureManager;
-import tyrannotitanlib.library.base.texture.TyrannoBakedModel;
-import tyrannotitanlib.library.base.texture.TyrannoConnectedBakedModel;
 
 @EventBusSubscriber(value = Dist.CLIENT, bus = Bus.MOD)
 public class LWTextureManager {
 	@SubscribeEvent
 	public static void onBake(ModelBakeEvent event) {
-		TyrannoConnectedTextureBlock lightConcrete = LostWorldsBlocks.POLISHED_LIGHT_CONCRETE;
-		TyrannoConnectedTextureBlock darkConcrete = LostWorldsBlocks.POLISHED_DARK_CONCRETE;
-		TyrannoBakedModel lightConcreteModel = new TyrannoConnectedBakedModel(lightConcrete);
-		TyrannoBakedModel darkConcreteModel = new TyrannoConnectedBakedModel(darkConcrete);
+		ConnectedTexturesBlock lightConcrete = LostWorldsBlocks.POLISHED_LIGHT_CONCRETE;
+		ConnectedTexturesBlock darkConcrete = LostWorldsBlocks.POLISHED_DARK_CONCRETE;
+		ConnectedTexturesBakedModel lightConcreteModel = new ConnectedTexturesModel(lightConcrete);
+		ConnectedTexturesBakedModel darkConcreteModel = new ConnectedTexturesModel(darkConcrete);
 		event.getModelRegistry().put(new ModelResourceLocation(lightConcrete.getRegistryName(), ""), lightConcreteModel);
 		event.getModelRegistry().put(new ModelResourceLocation(lightConcrete.getRegistryName(), "inventory"), lightConcreteModel);
 		event.getModelRegistry().put(new ModelResourceLocation(darkConcrete.getRegistryName(), ""), darkConcreteModel);
@@ -39,12 +36,12 @@ public class LWTextureManager {
 	@SubscribeEvent
 	public static void onStitch(TextureStitchEvent.Post event) {
 		if (event.getMap().location().toString().equals("minecraft:textures/atlas/blocks.png")) {
-			TyrannoConnectedTextureBlock lightConcrete = LostWorldsBlocks.POLISHED_LIGHT_CONCRETE;
-			TyrannoConnectedTextureBlock darkConcrete = LostWorldsBlocks.POLISHED_DARK_CONCRETE;
-			TextureManager.TEXTURES.put(lightConcrete, event.getMap().getSprite(LostWorldsUtils.rL("block/polished_light_concrete")));
-			TextureManager.PARTICLES.put(lightConcrete, event.getMap().getSprite(LostWorldsUtils.rL("block/accent_light_concrete")));
-			TextureManager.TEXTURES.put(darkConcrete, event.getMap().getSprite(LostWorldsUtils.rL("block/polished_dark_concrete")));
-			TextureManager.PARTICLES.put(darkConcrete, event.getMap().getSprite(LostWorldsUtils.rL("block/accent_dark_concrete")));
+			ConnectedTexturesBlock lightConcrete = LostWorldsBlocks.POLISHED_LIGHT_CONCRETE;
+			ConnectedTexturesBlock darkConcrete = LostWorldsBlocks.POLISHED_DARK_CONCRETE;
+			ConnectedTextures.TEXTURES.put(lightConcrete, event.getMap().getSprite(LostWorldsUtils.rL("block/polished_light_concrete")));
+			ConnectedTextures.PARTICLES.put(lightConcrete, event.getMap().getSprite(LostWorldsUtils.rL("block/accent_light_concrete")));
+			ConnectedTextures.TEXTURES.put(darkConcrete, event.getMap().getSprite(LostWorldsUtils.rL("block/polished_dark_concrete")));
+			ConnectedTextures.PARTICLES.put(darkConcrete, event.getMap().getSprite(LostWorldsUtils.rL("block/accent_dark_concrete")));
 		}
 	}
 }

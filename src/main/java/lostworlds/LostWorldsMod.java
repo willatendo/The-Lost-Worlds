@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
@@ -27,17 +28,18 @@ import lostworlds.server.dimension.LostWorldsDimensions;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.LostWorldsPOIs;
 import lostworlds.server.entity.LostWorldsVillagerProfessions;
+import lostworlds.server.feature.FeatureAdder;
 import lostworlds.server.feature.LostWorldsFeatures;
-import lostworlds.server.feature.LostWorldsPlacements;
 import lostworlds.server.item.LostWorldsBanners;
 import lostworlds.server.item.LostWorldsEnchantments;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.item.LostWorldsPotions;
+import lostworlds.server.placement.LostWorldsPlacements;
 import lostworlds.server.structure.LostWorldsStructurePecies;
 import lostworlds.server.structure.LostWorldsStructures;
-import lostworlds.server.tree.LostWorldsFoliagePlacers;
 import lostworlds.server.util.LostWorldsRegistrate;
 import lostworlds.server.util.Version;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -50,6 +52,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.potion.Potions;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome.Category;
@@ -73,7 +76,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.items.ItemHandlerHelper;
-import tyrannotitanlib.library.base.biome.generation.TyrannoWorld;
+import software.bernie.geckolib3.GeckoLib;
 
 @Mod(LostWorldsMod.ID)
 public class LostWorldsMod {
@@ -85,6 +88,7 @@ public class LostWorldsMod {
 		this.forgeBus();
 		this.clientForgeBus();
 
+		GeckoLib.initialize();
 		lostWorldRegistry();
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, LostWorldsConfig.clientSpec);
@@ -137,10 +141,9 @@ public class LostWorldsMod {
 		ModConfiguredCarvers.init();
 		LostWorldsSurfaceBuilders.init();
 		LostWorldsFeatures.init();
-		LostWorldsPlacements.init();
 		LostWorldsStructures.init();
 		LostWorldsStructurePecies.init();
-		LostWorldsFoliagePlacers.init();
+		LostWorldsPlacements.init();
 
 		// Data Driven
 		LostWorldsBiomes.init();
@@ -150,7 +153,7 @@ public class LostWorldsMod {
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(LostWorldsBlocks.VOLCANIC_ASH.asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), LostWorldsPotions.ASHY_LUNG_POTION));
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), LostWorldsItems.CONTRACEPTIVES.get().getDefaultInstance());
 
-		LostWorldsUtils.ITEMS.setIcon(LostWorldsItems.LOST_WORLDS_LEXICON.get().getDefaultInstance());
+		LostWorldsUtils.ITEMS.setIcon(LostWorldsItems.LOST_WORLDS_LEXICON.asStack());
 		LostWorldsUtils.BLOCKS.setIcon(LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.asItem().getDefaultInstance());
 
 		event.enqueueWork(() -> {
@@ -158,6 +161,11 @@ public class LostWorldsMod {
 			ModConfiguredStructures.init();
 
 			LostWorldsDimensions.initBiomeSourcesAndChunkGenerator();
+
+			ImmutableSet.Builder<Block> builder = ImmutableSet.builder();
+			builder.addAll(TileEntityType.SIGN.validBlocks);
+			LostWorldsBlocks.forEachSignBlock(builder::add);
+			TileEntityType.SIGN.validBlocks = builder.build();
 		});
 
 		LostWorldsUtils.translateToWaves(LostWorldsEntities.FOSSIL_POACHER, Arrays.asList(1, 0, 0, 0, 1, 2, 2, 3));
@@ -224,34 +232,34 @@ public class LostWorldsMod {
 		if (LostWorldsUtils.SERVER_CONFIG.livingFossils.get()) {
 			List<? extends String> nautilusBiomes = Lists.newArrayList("minecraft:warm_ocean");
 			if (nautilusBiomes.contains(event.getName().toString())) {
-				TyrannoWorld.addSpawn(event, EntityClassification.WATER_CREATURE, LostWorldsEntities.NAUTILUS, LostWorldsUtils.SERVER_CONFIG.nautilusSpawnWeight.get(), LostWorldsUtils.SERVER_CONFIG.nautilusSpawnGroupMinimum.get(), LostWorldsUtils.SERVER_CONFIG.nautilusSpawnGroupMaximum.get());
+				FeatureAdder.addSpawn(event, EntityClassification.WATER_CREATURE, LostWorldsEntities.NAUTILUS, LostWorldsUtils.SERVER_CONFIG.nautilusSpawnWeight.get(), LostWorldsUtils.SERVER_CONFIG.nautilusSpawnGroupMinimum.get(), LostWorldsUtils.SERVER_CONFIG.nautilusSpawnGroupMaximum.get());
 			}
 		}
 
 		// Features
 		if (LostWorldsUtils.SERVER_CONFIG.amberOre.get()) {
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_AMBER_ORE);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_AMBER_ORE);
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.plantFossilsInOverworld.get()) {
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_ALETHOPTERIS);
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_BRAZILEA);
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_CALAMITES_SUCKOWII);
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_CEPHALOTAXUS);
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_DILLHOFFIA);
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_DUISBERGIA);
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_OSMUNDA);
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_WILLIAMSONIA);
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_ZAMITES);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_ALETHOPTERIS);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_BRAZILEA);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_CALAMITES_SUCKOWII);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_CEPHALOTAXUS);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_DILLHOFFIA);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_DUISBERGIA);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_OSMUNDA);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_WILLIAMSONIA);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_ZAMITES);
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.siltPatchGeneration.get()) {
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.SILT_PATCH);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.SILT_PATCH);
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.mudDisksInSwamps.get()) {
 			if (event.getCategory() == Category.SWAMP) {
-				TyrannoWorld.addFeature(event, GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.MUD_DISK);
+				FeatureAdder.addFeature(event, GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.MUD_DISK);
 			}
 		}
 
@@ -259,31 +267,31 @@ public class LostWorldsMod {
 			List<? extends String> biomes = Lists.newArrayList("minecraft:swamp", "minecraft:swamp_hills");
 
 			if (biomes.contains(event.getName().toString())) {
-				TyrannoWorld.addFeature(event, GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.SCANT_CYPRESS_TREES);
+				FeatureAdder.addFeature(event, GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.SCANT_CYPRESS_TREES);
 			}
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.petrifiedAraucariaTreeShouldSpawn.get()) {
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_ARAUCARIA);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_ARAUCARIA);
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.petrifiedCalamitesTreeShouldSpawn.get()) {
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_CALAMITES);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_CALAMITES);
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.petrifiedConiferTreeShouldSpawn.get()) {
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_CONIFER);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_CONIFER);
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.petrifiedGinkgoTreeShouldSpawn.get()) {
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_GINKGO);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_GINKGO);
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.fossilsInOverworld.get()) {
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_TINY_NEST);
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_SMALL_NEST);
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_MEDIUM_NEST);
-			TyrannoWorld.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_LARGE_NEST);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_TINY_NEST);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_SMALL_NEST);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_MEDIUM_NEST);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_LARGE_NEST);
 		}
 
 		// Structures
@@ -335,7 +343,7 @@ public class LostWorldsMod {
 		CompoundNBT playerData = event.getPlayer().getPersistentData();
 		CompoundNBT data = playerData.getCompound(PlayerEntity.PERSISTED_NBT_TAG);
 		if (data != null && !data.getBoolean("has_lexicon")) {
-			ItemHandlerHelper.giveItemToPlayer(event.getPlayer(), new ItemStack(LostWorldsItems.LOST_WORLDS_LEXICON.get()));
+			ItemHandlerHelper.giveItemToPlayer(event.getPlayer(), LostWorldsItems.LOST_WORLDS_LEXICON.asStack());
 			data.putBoolean("has_lexicon", true);
 			playerData.put(PlayerEntity.PERSISTED_NBT_TAG, data);
 		}

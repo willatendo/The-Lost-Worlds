@@ -1,5 +1,7 @@
 package lostworlds.server.biome.biomes.cretaceous.plains;
 
+import lostworlds.server.biome.BaseBiomeInfo;
+import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.world.biome.Biome.Category;
@@ -9,10 +11,8 @@ import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.biome.ParticleEffectAmbience;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilders;
-import tyrannotitanlib.library.base.biome.BaseBiomeInfo;
-import tyrannotitanlib.library.base.biome.TyrannoBiome;
 
-public class CretaceousFloodBasalts extends TyrannoBiome {
+public class CretaceousFloodBasalts extends ModBiome {
 	public static final BiomeGenerationSettings.Builder GENERATION = new BiomeGenerationSettings.Builder();
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomeInfo.BASE_WATER_COLOUR).waterFogColor(BaseBiomeInfo.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomeInfo.BASE_FOG_COLOUR).skyColor(calculateSkyColor(5.0F)).ambientParticle(new ParticleEffectAmbience(ParticleTypes.ASH, 0.0625F));

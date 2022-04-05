@@ -11,10 +11,10 @@ import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationEntityRenderer;
+import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class ProcompsognathusRenderer extends TyrannomationEntityRenderer<ProcompsognathusEntity> {
+public class ProcompsognathusRenderer extends GeoEntityRenderer<ProcompsognathusEntity> {
 	public ProcompsognathusRenderer(EntityRendererManager renderManager) {
 		super(renderManager, new ProcompsognathusModel());
 		this.shadowRadius = 0.25F;

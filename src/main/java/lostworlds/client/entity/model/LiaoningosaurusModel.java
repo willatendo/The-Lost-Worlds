@@ -5,13 +5,13 @@ import lostworlds.server.entity.terrestrial.jurassic.LiaoningosaurusEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
-import tyrannotitanlib.library.tyrannomation.core.processor.IBone;
-import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
-import tyrannotitanlib.library.tyrannomation.model.provider.data.EntityModelData;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.processor.IBone;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class LiaoningosaurusModel extends TyrannomatedTyrannomationModel<LiaoningosaurusEntity> {
+public class LiaoningosaurusModel extends AnimatedGeoModel<LiaoningosaurusEntity> {
 	private static final ResourceLocation TEXTURE_1 = LostWorldsUtils.rL("textures/model/entity/liaoningosaurus/texture_1.png");
 	private static final ResourceLocation TEXTURE_2 = LostWorldsUtils.rL("textures/model/entity/liaoningosaurus/texture_2.png");
 	private ResourceLocation texture;
@@ -32,7 +32,7 @@ public class LiaoningosaurusModel extends TyrannomatedTyrannomationModel<Liaonin
 	}
 
 	@Override
-	public void setLivingAnimations(LiaoningosaurusEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) {
+	public void setLivingAnimations(LiaoningosaurusEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

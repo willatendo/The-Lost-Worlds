@@ -5,10 +5,10 @@ import lostworlds.server.entity.aquatic.cambrian.AnomalocarisEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 @OnlyIn(Dist.CLIENT)
-public class AnomalocarisModel extends TyrannomatedTyrannomationModel<AnomalocarisEntity> {
+public class AnomalocarisModel extends AnimatedGeoModel<AnomalocarisEntity> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(AnomalocarisEntity entity) {
 		return LostWorldsUtils.rL("animations/anomalocaris.animations.json");

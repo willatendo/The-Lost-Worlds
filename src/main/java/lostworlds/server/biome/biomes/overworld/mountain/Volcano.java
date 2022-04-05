@@ -1,16 +1,16 @@
 package lostworlds.server.biome.biomes.overworld.mountain;
 
+import lostworlds.server.biome.BaseBiomeInfo;
+import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
 import lostworlds.server.biome.ModSurfaceBuilders;
+import net.minecraft.world.biome.Biome.Category;
+import net.minecraft.world.biome.Biome.RainType;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
-import net.minecraft.world.biome.Biome.Category;
-import net.minecraft.world.biome.Biome.RainType;
-import tyrannotitanlib.library.base.biome.BaseBiomeInfo;
-import tyrannotitanlib.library.base.biome.TyrannoBiome;
 
-public class Volcano extends TyrannoBiome {
+public class Volcano extends ModBiome {
 	public static final BiomeGenerationSettings.Builder GENERATION = new BiomeGenerationSettings.Builder();
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomeInfo.BASE_WATER_COLOUR).waterFogColor(BaseBiomeInfo.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomeInfo.BASE_FOG_COLOUR).grassColorOverride(0x686868).foliageColorOverride(0x686868).skyColor(0x3a3a3a);

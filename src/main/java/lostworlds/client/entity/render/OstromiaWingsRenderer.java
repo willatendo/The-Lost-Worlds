@@ -8,10 +8,10 @@ import lostworlds.server.entity.terrestrial.jurassic.OstromiaEntity;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationLayerRenderer;
+import software.bernie.geckolib3.renderers.geo.GeoLayerRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class OstromiaWingsRenderer extends TyrannomationLayerRenderer<OstromiaEntity> {
+public class OstromiaWingsRenderer extends GeoLayerRenderer<OstromiaEntity> {
 	public OstromiaWingsRenderer() {
 		super(null);
 	}

@@ -5,10 +5,10 @@ import lostworlds.server.entity.aquatic.jurassic.OphthalmosaurusEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 @OnlyIn(Dist.CLIENT)
-public class OphthalmosaurusModel extends TyrannomatedTyrannomationModel<OphthalmosaurusEntity> {
+public class OphthalmosaurusModel extends AnimatedGeoModel<OphthalmosaurusEntity> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(OphthalmosaurusEntity entity) {
 		return LostWorldsUtils.rL("animations/ophthalmosaurus.animations.json");
@@ -25,7 +25,7 @@ public class OphthalmosaurusModel extends TyrannomatedTyrannomationModel<Ophthal
 	}
 
 //	@Override
-//	public void setLivingAnimations(OphthalmosaurusEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) 
+//	public void setLivingAnimations(OphthalmosaurusEntity entity, Integer uniqueID, AnimationEvent customPredicate) 
 //	{
 //		super.setLivingAnimations(entity, uniqueID, customPredicate);
 //		IBone body = this.getAnimationProcessor().getBone("body");

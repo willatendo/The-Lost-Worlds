@@ -3,7 +3,6 @@ package lostworlds.server.block;
 import java.util.Random;
 
 import lostworlds.server.block.builder.BlockUtils;
-import lostworlds.server.block.builder.MachineBlockBuilder;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -20,7 +19,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class CultivatorBlock extends MachineBlockBuilder {
+public class CultivatorBlock extends MachineBlock {
 	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 16, 15);
 
 	public CultivatorBlock() {

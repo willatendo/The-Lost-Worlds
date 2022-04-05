@@ -1,8 +1,8 @@
 package lostworlds.server.dimension.cretaceous.layer;
 
 import lostworlds.server.biome.BiomeKeys;
+import lostworlds.server.dimension.IIslandLayer;
 import lostworlds.server.dimension.cretaceous.CretaceousLayerUtil;
-import tyrannotitanlib.library.base.dimension.layer.IIslandLayer;
 
 public class CretaceousIslandLayer implements IIslandLayer {
 	@Override

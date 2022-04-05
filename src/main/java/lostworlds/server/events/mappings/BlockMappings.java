@@ -16,14 +16,13 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import tyrannotitanlib.content.server.init.TyrannoBlocks;
 
 @EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.MOD)
 public class BlockMappings {
 	private static final Map<ResourceLocation, Supplier<Block>> blockRemappings = new HashMap<ResourceLocation, Supplier<Block>>() {
 		private static final long serialVersionUID = 2729764913422843323L;
 		{
-			put(LostWorldsUtils.rL("copper_ore"), () -> TyrannoBlocks.COPPER_ORE);
+			put(LostWorldsUtils.rL("copper_ore"), () -> LostWorldsBlocks.COPPER_ORE.get());
 
 			put(LostWorldsUtils.rL("small_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB);
 			put(LostWorldsUtils.rL("medium_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB);

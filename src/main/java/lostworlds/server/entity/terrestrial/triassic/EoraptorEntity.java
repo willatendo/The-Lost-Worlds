@@ -32,14 +32,14 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import tyrannotitanlib.library.tyrannomation.core.ITyrannomatable;
-import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationController;
-import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
-import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class EoraptorEntity extends CarnivoreEntity {
 	private static final Ingredient FOOD_ITEMS = IngredientUtil.combine(FoodLists.CARNIVORE, FoodLists.HERBIVORE);
-	private TyrannomationFactory factory = new TyrannomationFactory(this);
+	private AnimationFactory factory = new AnimationFactory(this);
 
 	public EoraptorEntity(EntityType<? extends EoraptorEntity> entity, World world) {
 		super(entity, world);
@@ -72,12 +72,12 @@ public class EoraptorEntity extends CarnivoreEntity {
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) {
-		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
+	public void registerControllers(AnimationData data) {
+		data.addAnimationController(new AnimationController<IAnimatable>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() {
+	public AnimationFactory getFactory() {
 		return this.factory;
 	}
 

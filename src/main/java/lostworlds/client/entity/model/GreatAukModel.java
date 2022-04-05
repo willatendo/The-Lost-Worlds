@@ -5,13 +5,13 @@ import lostworlds.server.entity.semiaquatic.modern.GreatAukEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
-import tyrannotitanlib.library.tyrannomation.core.processor.IBone;
-import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
-import tyrannotitanlib.library.tyrannomation.model.provider.data.EntityModelData;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.processor.IBone;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class GreatAukModel extends TyrannomatedTyrannomationModel<GreatAukEntity> {
+public class GreatAukModel extends AnimatedGeoModel<GreatAukEntity> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(GreatAukEntity entity) {
 		return LostWorldsUtils.rL("animations/great_auk.animations.json");
@@ -28,7 +28,7 @@ public class GreatAukModel extends TyrannomatedTyrannomationModel<GreatAukEntity
 	}
 
 	@Override
-	public void setLivingAnimations(GreatAukEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) {
+	public void setLivingAnimations(GreatAukEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

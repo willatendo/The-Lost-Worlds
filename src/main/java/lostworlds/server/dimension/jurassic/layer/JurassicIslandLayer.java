@@ -1,8 +1,8 @@
 package lostworlds.server.dimension.jurassic.layer;
 
 import lostworlds.server.biome.BiomeKeys;
+import lostworlds.server.dimension.IIslandLayer;
 import lostworlds.server.dimension.jurassic.JurassicLayerUtil;
-import tyrannotitanlib.library.base.dimension.layer.IIslandLayer;
 
 public class JurassicIslandLayer implements IIslandLayer {
 	@Override

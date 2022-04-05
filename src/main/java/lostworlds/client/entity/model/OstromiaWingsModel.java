@@ -5,10 +5,10 @@ import lostworlds.server.entity.terrestrial.jurassic.OstromiaEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 @OnlyIn(Dist.CLIENT)
-public class OstromiaWingsModel extends TyrannomatedTyrannomationModel<OstromiaEntity> {
+public class OstromiaWingsModel extends AnimatedGeoModel<OstromiaEntity> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(OstromiaEntity entity) {
 		return LostWorldsUtils.rL("animations/ostromia_wing.animations.json");

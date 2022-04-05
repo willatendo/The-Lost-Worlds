@@ -5,10 +5,10 @@ import lostworlds.server.entity.aquatic.modern.NautilusEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 @OnlyIn(Dist.CLIENT)
-public class NautilusModel extends TyrannomatedTyrannomationModel<NautilusEntity> {
+public class NautilusModel extends AnimatedGeoModel<NautilusEntity> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(NautilusEntity entity) {
 		return LostWorldsUtils.rL("animations/nautilus.animations.json");

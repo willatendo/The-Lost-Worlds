@@ -5,10 +5,10 @@ import lostworlds.server.entity.fossil.FossilEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 @OnlyIn(Dist.CLIENT)
-public class KentrosaurusSkeletonModel extends TyrannomatedTyrannomationModel<FossilEntity> {
+public class KentrosaurusSkeletonModel extends AnimatedGeoModel<FossilEntity> {
 	private static final ResourceLocation TEXTURE = LostWorldsUtils.rL("textures/model/entity/fossil/kentrosaurus/skeleton.png");
 
 	@Override

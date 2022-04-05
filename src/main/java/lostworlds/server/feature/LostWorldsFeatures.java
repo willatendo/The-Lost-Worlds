@@ -1,6 +1,5 @@
 package lostworlds.server.feature;
 
-import lostworlds.server.LostWorldsRegistry;
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
@@ -8,6 +7,7 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureSpreadConfig;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsFeatures {
 	public static final Feature<NoFeatureConfig> ASH_LAYER_PLACEMENT = new AshFeature(NoFeatureConfig.CODEC);
@@ -24,16 +24,22 @@ public class LostWorldsFeatures {
 
 	public static final Feature<BlockStateFeatureConfig> PERMIAN_LAKE = new PermianLakesFeature(BlockStateFeatureConfig.CODEC);
 
+	public static Feature<?> register(String id, Feature<?> feature) {
+		feature.setRegistryName(LostWorldsUtils.rL(id));
+		ForgeRegistries.FEATURES.register(feature);
+		return feature;
+	}
+
 	public static void init() {
 		LostWorldsUtils.LOGGER.debug("Registering Mod Features");
 
-		LostWorldsRegistry.register("ash_layer_placement", ASH_LAYER_PLACEMENT);
-		LostWorldsRegistry.register("calamites_suckwii_placement", CALAMITES_SUCKOWII);
-		LostWorldsRegistry.register("geyser_block_placement", GEYSER_BLOCK_PLACEMENT);
-		LostWorldsRegistry.register("sponge_coloney_placement", SPONGE_COLONEY_PLACEMENT);
-		LostWorldsRegistry.register("scorched_tree", SCORCHED_TREE);
-		LostWorldsRegistry.register("frozen_tree", FROZEN_TREE);
-		LostWorldsRegistry.register("rock", ROCK);
-		LostWorldsRegistry.register("permian_lake", PERMIAN_LAKE);
+		register("ash_layer_placement", ASH_LAYER_PLACEMENT);
+		register("calamites_suckwii_placement", CALAMITES_SUCKOWII);
+		register("geyser_block_placement", GEYSER_BLOCK_PLACEMENT);
+		register("sponge_coloney_placement", SPONGE_COLONEY_PLACEMENT);
+		register("scorched_tree", SCORCHED_TREE);
+		register("frozen_tree", FROZEN_TREE);
+		register("rock", ROCK);
+		register("permian_lake", PERMIAN_LAKE);
 	}
 }

@@ -7,10 +7,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import lostworlds.server.dimension.WorldSeedHolder;
 import net.minecraft.util.registry.SimpleRegistry;
 import net.minecraft.world.Dimension;
 import net.minecraft.world.gen.settings.DimensionGeneratorSettings;
-import tyrannotitanlib.library.base.dimension.WorldSeedHolder;
 
 @Mixin(DimensionGeneratorSettings.class)
 public class DimensionGeneratorSettingsMixin {

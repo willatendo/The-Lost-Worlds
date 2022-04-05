@@ -43,13 +43,13 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
-import tyrannotitanlib.library.tyrannomation.core.ITyrannomatable;
-import tyrannotitanlib.library.tyrannomation.core.PlayState;
-import tyrannotitanlib.library.tyrannomation.core.builder.TyrannomationBuilder;
-import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationController;
-import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 
-public abstract class PrehistoricEntity extends AgeableEntity implements ITyrannomatable, IForTabletThings {
+public abstract class PrehistoricEntity extends AgeableEntity implements IAnimatable, IForTabletThings {
 	private static final EntityPredicate PARTNER_TARGETING = (new EntityPredicate()).range(8.0D).allowInvulnerable().allowSameTeam().allowUnseeable();
 
 	protected static final DataParameter<Byte> VARIENT = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BYTE);
@@ -62,14 +62,14 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 	public static final byte ANIMATION_WALL_WALK = 4;
 	public static final byte ANIMATION_FLY = 5;
 
-	public static final TyrannomationBuilder WALK_ANIMATION = new TyrannomationBuilder().addAnimation("walk", true);
-	public static final TyrannomationBuilder SWIM_ANIMATION = new TyrannomationBuilder().addAnimation("into_swim").addAnimation("swim", true).addAnimation("out_of_swim");
-	public static final TyrannomationBuilder IDLE_ANIMATION = new TyrannomationBuilder().addAnimation("idle", true);
-	public static final TyrannomationBuilder GLIDE_ANIMATION = new TyrannomationBuilder().addAnimation("into_glide").addAnimation("glide", true).addAnimation("out_of_glide");
-	public static final TyrannomationBuilder SLEEP_ANIMATION = new TyrannomationBuilder().addAnimation("into_sleep").addAnimation("sleep", true).addAnimation("out_of_sleep");
-	public static final TyrannomationBuilder EAT_ANIMATION = new TyrannomationBuilder().addAnimation("eat", false);
-	public static final TyrannomationBuilder WALL_WALK_ANIMATION = new TyrannomationBuilder().addAnimation("into_wall_walk").addAnimation("wall_walk", true).addAnimation("out_of_wall_walk");
-	public static final TyrannomationBuilder FLY_ANIMATION = new TyrannomationBuilder().addAnimation("fly_animation", true);
+	public static final AnimationBuilder WALK_ANIMATION = new AnimationBuilder().addAnimation("walk", true);
+	public static final AnimationBuilder SWIM_ANIMATION = new AnimationBuilder().addAnimation("into_swim").addAnimation("swim", true).addAnimation("out_of_swim");
+	public static final AnimationBuilder IDLE_ANIMATION = new AnimationBuilder().addAnimation("idle", true);
+	public static final AnimationBuilder GLIDE_ANIMATION = new AnimationBuilder().addAnimation("into_glide").addAnimation("glide", true).addAnimation("out_of_glide");
+	public static final AnimationBuilder SLEEP_ANIMATION = new AnimationBuilder().addAnimation("into_sleep").addAnimation("sleep", true).addAnimation("out_of_sleep");
+	public static final AnimationBuilder EAT_ANIMATION = new AnimationBuilder().addAnimation("eat", false);
+	public static final AnimationBuilder WALL_WALK_ANIMATION = new AnimationBuilder().addAnimation("into_wall_walk").addAnimation("wall_walk", true).addAnimation("out_of_wall_walk");
+	public static final AnimationBuilder FLY_ANIMATION = new AnimationBuilder().addAnimation("fly_animation", true);
 
 	public int inNaturalLove;
 	public UUID cause;
@@ -81,10 +81,10 @@ public abstract class PrehistoricEntity extends AgeableEntity implements ITyrann
 
 	private boolean contraceptives;
 
-	public <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) {
+	public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
 		float limbSwingAmount = event.getLimbSwingAmount();
 		boolean isMoving = !(limbSwingAmount > -0.05F && limbSwingAmount < 0.05F);
-		TyrannomationController controller = event.getController();
+		AnimationController controller = event.getController();
 
 		byte currentAnimation = this.getAnimation();
 		switch (currentAnimation) {

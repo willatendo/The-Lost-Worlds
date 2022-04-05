@@ -5,11 +5,11 @@ import lostworlds.server.entity.terrestrial.permian.DiictodonEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
-import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 @OnlyIn(Dist.CLIENT)
-public class DiictodonModel extends TyrannomatedTyrannomationModel<DiictodonEntity> {
+public class DiictodonModel extends AnimatedGeoModel<DiictodonEntity> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(DiictodonEntity entity) {
 		return LostWorldsUtils.rL("animations/diictodon.animations.json");
@@ -26,7 +26,7 @@ public class DiictodonModel extends TyrannomatedTyrannomationModel<DiictodonEnti
 	}
 
 	@Override
-	public void setLivingAnimations(DiictodonEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) {
+	public void setLivingAnimations(DiictodonEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 	}
 }

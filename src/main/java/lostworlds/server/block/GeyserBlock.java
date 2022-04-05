@@ -25,7 +25,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.base.block.ILavaLoggable;
 
 public class GeyserBlock extends Block implements ILavaLoggable {
 	public static final BooleanProperty LAVALOGGED = ModBlockStateProperties.LAVALOGGED;

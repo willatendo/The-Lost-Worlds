@@ -4,6 +4,18 @@ import java.util.ArrayList;
 
 import org.apache.commons.lang3.StringUtils;
 
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.TyrannibookTextures;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.TyrannobookData;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.TyrannobookLoadException;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.content.PageContent;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.ImageData;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.ImageElement;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.ItemElement;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.ItemStackData;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.TextData;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.TextElement;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.TyrannobookElement;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.screen.TyrannobookScreen;
 import lostworlds.server.container.recipes.ArchaeologyTableRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -14,26 +26,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.crafting.IShapedRecipe;
-import tyrannotitanlib.library.tyrannobook.client.Textures;
-import tyrannotitanlib.library.tyrannobook.client.data.TyrannobookData;
-import tyrannotitanlib.library.tyrannobook.client.data.TyrannobookLoadException;
-import tyrannotitanlib.library.tyrannobook.client.data.content.PageContent;
-import tyrannotitanlib.library.tyrannobook.client.data.element.ImageData;
-import tyrannotitanlib.library.tyrannobook.client.data.element.ImageElement;
-import tyrannotitanlib.library.tyrannobook.client.data.element.ItemElement;
-import tyrannotitanlib.library.tyrannobook.client.data.element.ItemStackData;
-import tyrannotitanlib.library.tyrannobook.client.data.element.TextData;
-import tyrannotitanlib.library.tyrannobook.client.data.element.TextElement;
-import tyrannotitanlib.library.tyrannobook.client.data.element.TyrannobookElement;
-import tyrannotitanlib.library.tyrannobook.client.screen.TyrannobookScreen;
 
 @OnlyIn(Dist.CLIENT)
 public class ContentArchaeology extends PageContent {
 	public static final transient String ID = "archaeology";
 
 	public static final transient int TEX_SIZE = 256;
-	public static final transient ImageData IMG_CRAFTING_LARGE = new ImageData(Textures.TEX_CRAFTING, 0, 0, 183, 114, TEX_SIZE, TEX_SIZE);
-	public static final transient ImageData IMG_CRAFTING_SMALL = new ImageData(Textures.TEX_CRAFTING, 0, 114, 155, 78, TEX_SIZE, TEX_SIZE);
+	public static final transient ImageData IMG_CRAFTING_LARGE = new ImageData(TyrannibookTextures.TEX_CRAFTING, 0, 0, 183, 114, TEX_SIZE, TEX_SIZE);
+	public static final transient ImageData IMG_CRAFTING_SMALL = new ImageData(TyrannibookTextures.TEX_CRAFTING, 0, 114, 155, 78, TEX_SIZE, TEX_SIZE);
 
 	public static final transient int X_RESULT_SMALL = 118;
 	public static final transient int Y_RESULT_SMALL = 23;

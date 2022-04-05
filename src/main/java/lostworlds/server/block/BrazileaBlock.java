@@ -1,6 +1,6 @@
 package lostworlds.server.block;
 
-import lostworlds.server.LostWorldsRegistry;
+import lostworlds.server.block.builder.BlockUtils;
 import lostworlds.server.item.block.BrazileaItem;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -55,8 +55,7 @@ public class BrazileaBlock extends BushBlock {
 	public static Block create(String id) {
 		Block block = new BrazileaBlock(AbstractBlock.Properties.of(Material.PLANT).instabreak().sound(SoundType.GRASS).noOcclusion().noCollission());
 		Item item = new BrazileaItem(block);
-		LostWorldsRegistry.register(id, block);
-		LostWorldsRegistry.register(id, item);
+		BlockUtils.create(id, block, item);
 		return block;
 	}
 }

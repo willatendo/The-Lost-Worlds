@@ -2,15 +2,15 @@ package lostworlds.client.book.content;
 
 import java.util.ArrayList;
 
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.TyrannobookData;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.content.ContentImageText;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.ImageData;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.ImageElement;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.TextElement;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.TyrannobookElement;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.screen.TyrannobookScreen;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannobook.client.data.TyrannobookData;
-import tyrannotitanlib.library.tyrannobook.client.data.content.ContentImageText;
-import tyrannotitanlib.library.tyrannobook.client.data.element.ImageData;
-import tyrannotitanlib.library.tyrannobook.client.data.element.ImageElement;
-import tyrannotitanlib.library.tyrannobook.client.data.element.TextElement;
-import tyrannotitanlib.library.tyrannobook.client.data.element.TyrannobookElement;
-import tyrannotitanlib.library.tyrannobook.client.screen.TyrannobookScreen;
 
 @OnlyIn(Dist.CLIENT)
 public class ContentImageText2 extends ContentImageText {

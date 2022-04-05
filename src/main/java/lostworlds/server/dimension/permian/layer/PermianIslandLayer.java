@@ -1,8 +1,8 @@
 package lostworlds.server.dimension.permian.layer;
 
 import lostworlds.server.biome.BiomeKeys;
+import lostworlds.server.dimension.IIslandLayer;
 import lostworlds.server.dimension.permian.PermianLayerUtil;
-import tyrannotitanlib.library.base.dimension.layer.IIslandLayer;
 
 public class PermianIslandLayer implements IIslandLayer {
 	@Override

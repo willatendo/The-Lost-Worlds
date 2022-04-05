@@ -2,15 +2,15 @@ package lostworlds.client.book;
 
 import lostworlds.client.book.content.ContentArchaeology;
 import lostworlds.client.book.content.ContentImageText2;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.FileRepository;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.PaddingBookTransformer;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.TyrannobookLoader;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.TyrannobookTransformer;
+import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.TyrannobookData;
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tyrannotitanlib.library.tyrannobook.client.FileRepository;
-import tyrannotitanlib.library.tyrannobook.client.PaddingBookTransformer;
-import tyrannotitanlib.library.tyrannobook.client.TyrannobookLoader;
-import tyrannotitanlib.library.tyrannobook.client.TyrannobookTransformer;
-import tyrannotitanlib.library.tyrannobook.client.data.TyrannobookData;
 
 @OnlyIn(Dist.CLIENT)
 public class LostWorldsBooks extends TyrannobookData {
