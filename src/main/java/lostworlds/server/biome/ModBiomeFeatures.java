@@ -113,7 +113,7 @@ public class ModBiomeFeatures {
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA);
 		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Features.BASALT_PILLAR);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, ModConfiguredFeatures.PERMIAN_MAGMA_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, OreFeatures.PERMIAN_MAGMA_ORE.get());
 		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.DELTA);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA_DOUBLE);
 		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.SMALL_BASALT_COLUMNS);
@@ -807,12 +807,12 @@ public class ModBiomeFeatures {
 
 	// Permian Features
 	private static void addPermianUndergroundVariety(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_DIRT_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_GRAVEL_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_DIRT_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_GRAVEL_ORE.get());
 
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_LATERLITE_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_RAW_MARBLE_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_LIMESTONE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_LATERLITE_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_RAW_MARBLE_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_LIMESTONE_ORE.get());
 	}
 
 	private static void addPermianDesertPlants(BiomeGenerationSettings.Builder builder) {
@@ -830,17 +830,17 @@ public class ModBiomeFeatures {
 	}
 
 	private static void addPermianOres(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_COAL_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_DIAMOND_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_GOLD_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_IRON_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_LAPIS_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_REDSTONE_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_COPPER_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_COAL_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_DIAMOND_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_GOLD_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_IRON_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_LAPIS_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_REDSTONE_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_COPPER_ORE.get());
 	}
 
 	private static void addPermianEmerald(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PERMIAN_EMERALD_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_EMERALD_ORE.get());
 	}
 
 	private static void addPermianLakes(BiomeGenerationSettings.Builder builder) {
@@ -920,7 +920,7 @@ public class ModBiomeFeatures {
 	}
 
 	private static void addSpring(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.ANCIENT_SPRING);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, WaterFeatures.ANCIENT_SPRING.get());
 	}
 
 	public static void addAraucariaTrees(BiomeGenerationSettings.Builder builder) {

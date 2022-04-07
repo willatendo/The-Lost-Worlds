@@ -15,12 +15,13 @@ import lostworlds.client.sounds.LostWorldsSounds;
 import lostworlds.repack.tyrannotitanlib.TyrannibookHelper;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.BiomeKeys;
+import lostworlds.server.biome.DisksFeatures;
 import lostworlds.server.biome.LostWorldsBiomes;
 import lostworlds.server.biome.LostWorldsWorldCarvers;
 import lostworlds.server.biome.ModConfiguredCarvers;
 import lostworlds.server.biome.ModConfiguredFeatures;
 import lostworlds.server.biome.ModConfiguredStructures;
-import lostworlds.server.biome.OverworldFeatures;
+import lostworlds.server.biome.OreFeatures;
 import lostworlds.server.biome.surfacebuilders.LostWorldsSurfaceBuilders;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
@@ -57,7 +58,6 @@ import net.minecraft.potion.Potions;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -152,7 +152,7 @@ public class LostWorldsMod {
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {
-		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(LostWorldsBlocks.VOLCANIC_ASH.asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), LostWorldsPotions.ASHY_LUNG_POTION));
+		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(LostWorldsBlocks.VOLCANIC_ASH.asStack()), PotionUtils.setPotion(new ItemStack(Items.POTION), LostWorldsPotions.ASHY_LUNG_POTION));
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), LostWorldsItems.CONTRACEPTIVES.get().getDefaultInstance());
 
 		LostWorldsUtils.ITEMS.setIcon(LostWorldsItems.LOST_WORLDS_LEXICON.asStack());
@@ -258,12 +258,14 @@ public class LostWorldsMod {
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.siltPatchGeneration.get()) {
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OverworldFeatures.SILT_PATCH.get());
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.SILT_PATCH.get());
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.mudDisksInSwamps.get()) {
-			if (event.getCategory() == Category.SWAMP) {
-				FeatureAdder.addFeature(event, GenerationStage.Decoration.TOP_LAYER_MODIFICATION, OverworldFeatures.MUD_DISK.get());
+			List<? extends String> biomes = Lists.newArrayList("minecraft:swamp", "minecraft:swamp_hills");
+
+			if (biomes.contains(event.getName().toString())) {
+				FeatureAdder.addFeature(event, GenerationStage.Decoration.TOP_LAYER_MODIFICATION, DisksFeatures.MUD_DISK.get());
 			}
 		}
 
@@ -361,7 +363,7 @@ public class LostWorldsMod {
 		if (entity != null) {
 			World world = entity.level;
 			BlockPos pos = entity.blockPosition();
-			if (world.getBlockState(pos).getBlock() == LostWorldsBlocks.VOLCANIC_ASH_LAYER) {
+			if (world.getBlockState(pos).is(LostWorldsBlocks.VOLCANIC_ASH_LAYER.get())) {
 				if (!isWearingMask(entity, EquipmentSlotType.HEAD)) {
 					entity.addEffect(new EffectInstance(LostWorldsPotions.ASHY_LUNG_EFFECT, 200));
 				}
@@ -373,7 +375,7 @@ public class LostWorldsMod {
 		PlayerEntity entity = event.getPlayer();
 
 		if (entity != null) {
-			if (event.getState() == LostWorldsBlocks.VOLCANIC_ASH_LAYER.defaultBlockState()) {
+			if (event.getState().is(LostWorldsBlocks.VOLCANIC_ASH_LAYER.get())) {
 				if (!isWearingMask(entity, EquipmentSlotType.HEAD)) {
 					entity.addEffect(new EffectInstance(LostWorldsPotions.ASHY_LUNG_EFFECT, 200));
 				}

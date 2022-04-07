@@ -3,12 +3,13 @@ package lostworlds.server.biome.biomes.jurassic.river;
 import lostworlds.server.biome.BaseBiomeInfo;
 import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
-import lostworlds.server.biome.ModConfiguredSurfaceBuilders;
+import lostworlds.server.biome.ModSurfaceBuilderConfigs;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.biome.Biome.RainType;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
+import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 
 public class JurassicRiver extends ModBiome {
 	public static final BiomeGenerationSettings.Builder GENERATION = new BiomeGenerationSettings.Builder();
@@ -16,7 +17,7 @@ public class JurassicRiver extends ModBiome {
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomeInfo.BASE_WATER_COLOUR).waterFogColor(BaseBiomeInfo.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomeInfo.BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
 	static {
-		GENERATION.surfaceBuilder(ModConfiguredSurfaceBuilders.JURASSIC_ROCKY_SOIL_BUILDER);
+		GENERATION.surfaceBuilder(() -> SurfaceBuilder.DEFAULT.configured(ModSurfaceBuilderConfigs.ROCKY_SOIL_CONFIG.get()));
 
 		ModBiomeFeatures.jurassicRiver(GENERATION);
 	}

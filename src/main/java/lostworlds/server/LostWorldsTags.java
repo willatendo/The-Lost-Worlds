@@ -6,10 +6,8 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 
-public class LostWorldsTags 
-{
-	public static class ModItemTags
-	{
+public class LostWorldsTags {
+	public static class ModItemTags {
 		public static final ITag.INamedTag<Item> ARAUCARIA_LOGS = tag("araucaria_logs");
 		public static final ITag.INamedTag<Item> ANCIENT_SEEDS = tag("ancient_seeds");
 		public static final ITag.INamedTag<Item> BARK_SAMPLES = tag("bark_samples");
@@ -27,16 +25,15 @@ public class LostWorldsTags
 		public static final ITag.INamedTag<Item> SOFT_TISSUE = tag("soft_tissue");
 		public static final ITag.INamedTag<Item> TIME_BOOK_FUEL = tag("time_book_fuel");
 		public static final ITag.INamedTag<Item> TIME_BOOKS = tag("time_books");
-		
-		private static ITag.INamedTag<Item> tag(String id)
-		{
+
+		private static ITag.INamedTag<Item> tag(String id) {
 			return ItemTags.createOptional(LostWorldsUtils.rL(id));
 		}
 	}
-	
-	public static class ModBlockTags
-	{
+
+	public static class ModBlockTags {
 		public static final ITag.INamedTag<Block> ARAUCARIA_LOGS = tag("araucaria_logs");
+		public static final ITag.INamedTag<Block> BASE_STONE_PERMIAN = tag("base_stone_permian");
 		public static final ITag.INamedTag<Block> CALAMITES_PLACEABLES = tag("calamites_placeables");
 		public static final ITag.INamedTag<Block> CALAMITES_LOGS = tag("calamites_logs");
 		public static final ITag.INamedTag<Block> CONIFER_LOGS = tag("conifer_logs");
@@ -53,9 +50,8 @@ public class LostWorldsTags
 		public static final ITag.INamedTag<Block> ROADS = tag("roads");
 		public static final ITag.INamedTag<Block> SCORCHED_LOGS = tag("scorched_logs");
 		public static final ITag.INamedTag<Block> WOODEN_PLANKS = tag("wooden_planks");
-		
-		private static ITag.INamedTag<Block> tag(String id)
-		{
+
+		private static ITag.INamedTag<Block> tag(String id) {
 			return BlockTags.createOptional(LostWorldsUtils.rL(id));
 		}
 	}

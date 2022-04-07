@@ -33,10 +33,10 @@ public class LostWorldsFeatures {
 	public static void init() {
 		LostWorldsUtils.LOGGER.debug("Registering Mod Features");
 
-		register("ash_layer_placement", ASH_LAYER_PLACEMENT);
-		register("calamites_suckwii_placement", CALAMITES_SUCKOWII);
-		register("geyser_block_placement", GEYSER_BLOCK_PLACEMENT);
-		register("sponge_coloney_placement", SPONGE_COLONEY_PLACEMENT);
+		register("ash_layer", ASH_LAYER_PLACEMENT);
+		register("calamites_suckwii", CALAMITES_SUCKOWII);
+		register("geyser_block", GEYSER_BLOCK_PLACEMENT);
+		register("sponge_coloney", SPONGE_COLONEY_PLACEMENT);
 		register("scorched_tree", SCORCHED_TREE);
 		register("frozen_tree", FROZEN_TREE);
 		register("rock", ROCK);

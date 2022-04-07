@@ -67,7 +67,7 @@ public class ScorchedTreeFeature extends Feature<BaseTreeFeatureConfig> {
 	private static boolean isValidPlacement(IWorldGenerationBaseReader reader, BlockPos pos) {
 		return reader.isStateAtPosition(pos, (blockstate) -> {
 			Block block = blockstate.getBlock();
-			return block == LostWorldsBlocks.VOLCANIC_ASH;
+			return block == LostWorldsBlocks.VOLCANIC_ASH.get();
 		});
 	}
 

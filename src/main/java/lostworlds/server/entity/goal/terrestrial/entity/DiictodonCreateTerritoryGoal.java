@@ -33,7 +33,7 @@ public class DiictodonCreateTerritoryGoal extends MoveToBlockGoal {
 	}
 
 	public static boolean isNatural(IBlockReader reader, BlockPos pos) {
-		return reader.getBlockState(pos).is(LostWorldsBlocks.PERMIAN_SAND);
+		return reader.getBlockState(pos).is(LostWorldsBlocks.PERMIAN_SAND.get());
 	}
 
 	@Override

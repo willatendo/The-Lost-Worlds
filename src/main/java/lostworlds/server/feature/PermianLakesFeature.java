@@ -98,8 +98,8 @@ public class PermianLakesFeature extends Feature<BlockStateFeatureConfig> {
 								BlockPos blockpos = pos.offset(i2, j4 - 1, j3);
 								if (isDirt(reader.getBlockState(blockpos).getBlock()) && reader.getBrightness(LightType.SKY, pos.offset(i2, j4, j3)) > 0) {
 									Biome biome = reader.getBiome(blockpos);
-									if (biome.getGenerationSettings().getSurfaceBuilderConfig().getTopMaterial().is(LostWorldsBlocks.PERMIAN_SAND)) {
-										reader.setBlock(blockpos, LostWorldsBlocks.PERMIAN_SAND.defaultBlockState(), 2);
+									if (biome.getGenerationSettings().getSurfaceBuilderConfig().getTopMaterial().is(LostWorldsBlocks.PERMIAN_SAND.get())) {
+										reader.setBlock(blockpos, LostWorldsBlocks.PERMIAN_SAND.getDefaultState(), 2);
 									} else {
 										reader.setBlock(blockpos, LostWorldsBlocks.MOSSY_SOIL.getDefaultState(), 2);
 									}
@@ -115,7 +115,7 @@ public class PermianLakesFeature extends Feature<BlockStateFeatureConfig> {
 							for (int k4 = 0; k4 < 8; ++k4) {
 								boolean flag1 = !aboolean[(j2 * 16 + k3) * 8 + k4] && (j2 < 15 && aboolean[((j2 + 1) * 16 + k3) * 8 + k4] || j2 > 0 && aboolean[((j2 - 1) * 16 + k3) * 8 + k4] || k3 < 15 && aboolean[(j2 * 16 + k3 + 1) * 8 + k4] || k3 > 0 && aboolean[(j2 * 16 + (k3 - 1)) * 8 + k4] || k4 < 7 && aboolean[(j2 * 16 + k3) * 8 + k4 + 1] || k4 > 0 && aboolean[(j2 * 16 + k3) * 8 + (k4 - 1)]);
 								if (flag1 && (k4 < 4 || rand.nextInt(2) != 0) && reader.getBlockState(pos.offset(j2, k4, k3)).getMaterial().isSolid()) {
-									reader.setBlock(pos.offset(j2, k4, k3), LostWorldsBlocks.PERMIAN_STONE.defaultBlockState(), 2);
+									reader.setBlock(pos.offset(j2, k4, k3), LostWorldsBlocks.PERMIAN_STONE.getDefaultState(), 2);
 								}
 							}
 						}

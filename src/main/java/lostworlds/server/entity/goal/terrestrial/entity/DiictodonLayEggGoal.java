@@ -60,6 +60,6 @@ public class DiictodonLayEggGoal extends MoveToBlockGoal {
 	}
 
 	public static boolean isNatural(IBlockReader reader, BlockPos pos) {
-		return reader.getBlockState(pos).is(LostWorldsBlocks.PERMIAN_SAND) || reader.getBlockState(pos).is(LostWorldsBlocks.DIICTODON_BURROW);
+		return reader.getBlockState(pos).is(LostWorldsBlocks.PERMIAN_SAND.get()) || reader.getBlockState(pos).is(LostWorldsBlocks.DIICTODON_BURROW);
 	}
 }

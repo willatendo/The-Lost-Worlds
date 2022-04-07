@@ -3,7 +3,6 @@ package lostworlds.server.biome;
 import java.util.OptionalInt;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.LostWorldsUtils;
@@ -17,7 +16,6 @@ import lostworlds.server.entity.utils.enums.TimeEras;
 import lostworlds.server.feature.LostWorldsFeatures;
 import lostworlds.server.placement.LostWorldsPlacements;
 import net.minecraft.block.Blocks;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.gen.Heightmap;
@@ -34,7 +32,6 @@ import net.minecraft.world.gen.feature.FeatureSpread;
 import net.minecraft.world.gen.feature.FeatureSpreadConfig;
 import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.feature.LiquidsConfig;
 import net.minecraft.world.gen.feature.MultipleRandomFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
@@ -124,8 +121,7 @@ public class ModConfiguredFeatures {
 	public static final ConfiguredFeature<?, ?> SINGLE_SCORCHED_TREE = register("single_scorched_tree", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(ModConfiguredFeatures.SCORCHED_TREE.weighted(0.33333334F)), ModConfiguredFeatures.SCORCHED_TREE)).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(0, 0.05F, 1))));
 
 	// Ores
-	public static final ConfiguredFeature<?, ?> PERMIAN_MAGMA_ORE = register("permian_magma_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, Blocks.MAGMA_BLOCK.defaultBlockState(), 33)).decorated(Placement.MAGMA.configured(NoPlacementConfig.INSTANCE)).squared().count(4));
-	public static final ConfiguredFeature<?, ?> JURASSIC_MAGMA_ORE = register("jurassic_magma_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE, Blocks.MAGMA_BLOCK.defaultBlockState(), 33)).decorated(Placement.MAGMA.configured(NoPlacementConfig.INSTANCE)).squared().count(4));
+	public static final ConfiguredFeature<?, ?> JURASSIC_MAGMA_ORE = register("jurassic_magma_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), Blocks.MAGMA_BLOCK.defaultBlockState(), 33)).decorated(Placement.MAGMA.configured(NoPlacementConfig.INSTANCE)).squared().count(4));
 	public static final ConfiguredFeature<?, ?> CRETACEOUS_MAGMA_ORE = register("cretaceous_magma_ore", Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, Blocks.MAGMA_BLOCK.defaultBlockState(), 33)).decorated(Placement.MAGMA.configured(NoPlacementConfig.INSTANCE)).squared().count(4));
 
 	public static final ConfiguredFeature<?, ?> PETRIFIED_ARAUCARIA = register("petrified_araucaria", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.STONE.defaultBlockState(), LostWorldsBlocks.PETRIFIED_ARAUCARIA_LOG.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE).chance(LostWorldsConfig.SERVER_CONFIG.petrifiedAraucariaChance.get())));
@@ -133,39 +129,23 @@ public class ModConfiguredFeatures {
 	public static final ConfiguredFeature<?, ?> PETRIFIED_CONIFER = register("petrified_conifer", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.STONE.defaultBlockState(), LostWorldsBlocks.PETRIFIED_CONIFER_LOG.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE).chance(LostWorldsConfig.SERVER_CONFIG.petrifiedConiferChance.get())));
 	public static final ConfiguredFeature<?, ?> PETRIFIED_GINKGO = register("petrified_ginkgo", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.STONE.defaultBlockState(), LostWorldsBlocks.PETRIFIED_GINKGO_LOG.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE).chance(LostWorldsConfig.SERVER_CONFIG.petrifiedGinkgoChance.get())));
 
-	public static final ConfiguredFeature<?, ?> BASALT_DIAMOND_ORE = register("basalt_diamond_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.BASALT, LostWorldsBlocks.BASALT_DIAMOND_ORE.defaultBlockState(), 10)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(40, 0, 100))).squared().count(30));
+	public static final ConfiguredFeature<?, ?> BASALT_DIAMOND_ORE = register("basalt_diamond_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.BASALT.get(), LostWorldsBlocks.BASALT_DIAMOND_ORE.defaultBlockState(), 10)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(40, 0, 100))).squared().count(30));
 
-	public static final ConfiguredFeature<?, ?> PERMIAN_COAL_ORE = register("permian_coal_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, LostWorldsBlocks.PERMIAN_COAL_ORE.defaultBlockState(), 17)).range(128).squared().count(20));
-	public static final ConfiguredFeature<?, ?> PERMIAN_IRON_ORE = register("permian_iron_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, LostWorldsBlocks.PERMIAN_IRON_ORE.defaultBlockState(), 9)).range(64).squared().count(20));
-	public static final ConfiguredFeature<?, ?> PERMIAN_GOLD_ORE = register("permian_gold_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, LostWorldsBlocks.PERMIAN_GOLD_ORE.defaultBlockState(), 9)).range(32).squared().count(2));
-	public static final ConfiguredFeature<?, ?> PERMIAN_REDSTONE_ORE = register("permian_redstone_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, LostWorldsBlocks.PERMIAN_REDSTONE_ORE.defaultBlockState(), 8)).range(16).squared().count(8));
-	public static final ConfiguredFeature<?, ?> PERMIAN_DIAMOND_ORE = register("permian_diamond_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, LostWorldsBlocks.PERMIAN_DIAMOND_ORE.defaultBlockState(), 8)).range(16).squared());
-	public static final ConfiguredFeature<?, ?> PERMIAN_LAPIS_ORE = register("permian_lapis_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, LostWorldsBlocks.PERMIAN_LAPIS_ORE.defaultBlockState(), 7)).decorated(Placement.DEPTH_AVERAGE.configured(new DepthAverageConfig(16, 16))).squared());
-	public static final ConfiguredFeature<?, ?> PERMIAN_EMERALD_ORE = register("permian_emerald_ore", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(LostWorldsBlocks.PERMIAN_STONE.defaultBlockState(), LostWorldsBlocks.PERMIAN_EMERALD_ORE.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE)));
-	public static final ConfiguredFeature<?, ?> PERMIAN_COPPER_ORE = register("permian_copper_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, LostWorldsBlocks.PERMIAN_COPPER_ORE.defaultBlockState(), LostWorldsConfig.SERVER_CONFIG.copperVeinSize.get())).range(LostWorldsConfig.SERVER_CONFIG.copperRange.get()).squared().count(LostWorldsConfig.SERVER_CONFIG.copperCountPerChunk.get()));
-
-	public static final ConfiguredFeature<?, ?> PERMIAN_DIRT_ORE = register("permian_dirt_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, Blocks.DIRT.defaultBlockState(), 33)).range(256).squared().count(10));
-	public static final ConfiguredFeature<?, ?> PERMIAN_GRAVEL_ORE = register("permian_gravel_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, Blocks.GRAVEL.defaultBlockState(), 33)).range(256).squared().count(8));
-
-	public static final ConfiguredFeature<?, ?> PERMIAN_LATERLITE_ORE = register("permian_laterlite_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, LostWorldsBlocks.LATERLITE.defaultBlockState(), 33)).range(256).squared().count(10));
-	public static final ConfiguredFeature<?, ?> PERMIAN_RAW_MARBLE_ORE = register("permian_raw_marble_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, LostWorldsBlocks.RAW_MARBLE.defaultBlockState(), 33)).range(256).squared().count(8));
-	public static final ConfiguredFeature<?, ?> PERMIAN_LIMESTONE_ORE = register("permian_limestone_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, LostWorldsBlocks.LIMESTONE.defaultBlockState(), 33)).range(256).squared().count(8));
-
-	public static final ConfiguredFeature<?, ?> JURASSIC_COAL_ORE = register("jurassic_coal_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE, LostWorldsBlocks.PERMIAN_COAL_ORE.defaultBlockState(), 17)).range(128).squared().count(20));
-	public static final ConfiguredFeature<?, ?> JURASSIC_IRON_ORE = register("jurassic_iron_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE, LostWorldsBlocks.JURASSIC_IRON_ORE.defaultBlockState(), 9)).range(64).squared().count(20));
-	public static final ConfiguredFeature<?, ?> JURASSIC_GOLD_ORE = register("jurassic_gold_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE, LostWorldsBlocks.JURASSIC_GOLD_ORE.defaultBlockState(), 9)).range(32).squared().count(2));
-	public static final ConfiguredFeature<?, ?> JURASSIC_REDSTONE_ORE = register("jurassic_redstone_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE, LostWorldsBlocks.JURASSIC_REDSTONE_ORE.defaultBlockState(), 8)).range(16).squared().count(8));
-	public static final ConfiguredFeature<?, ?> JURASSIC_DIAMOND_ORE = register("jurassic_diamond_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE, LostWorldsBlocks.JURASSIC_DIAMOND_ORE.defaultBlockState(), 8)).range(16).squared());
-	public static final ConfiguredFeature<?, ?> JURASSIC_LAPIS_ORE = register("jurassic_lapis_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE, LostWorldsBlocks.JURASSIC_LAPIS_ORE.defaultBlockState(), 7)).decorated(Placement.DEPTH_AVERAGE.configured(new DepthAverageConfig(16, 16))).squared());
+	public static final ConfiguredFeature<?, ?> JURASSIC_COAL_ORE = register("jurassic_coal_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), LostWorldsBlocks.JURASSIC_COAL_ORE.defaultBlockState(), 17)).range(128).squared().count(20));
+	public static final ConfiguredFeature<?, ?> JURASSIC_IRON_ORE = register("jurassic_iron_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), LostWorldsBlocks.JURASSIC_IRON_ORE.defaultBlockState(), 9)).range(64).squared().count(20));
+	public static final ConfiguredFeature<?, ?> JURASSIC_GOLD_ORE = register("jurassic_gold_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), LostWorldsBlocks.JURASSIC_GOLD_ORE.defaultBlockState(), 9)).range(32).squared().count(2));
+	public static final ConfiguredFeature<?, ?> JURASSIC_REDSTONE_ORE = register("jurassic_redstone_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), LostWorldsBlocks.JURASSIC_REDSTONE_ORE.defaultBlockState(), 8)).range(16).squared().count(8));
+	public static final ConfiguredFeature<?, ?> JURASSIC_DIAMOND_ORE = register("jurassic_diamond_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), LostWorldsBlocks.JURASSIC_DIAMOND_ORE.defaultBlockState(), 8)).range(16).squared());
+	public static final ConfiguredFeature<?, ?> JURASSIC_LAPIS_ORE = register("jurassic_lapis_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), LostWorldsBlocks.JURASSIC_LAPIS_ORE.defaultBlockState(), 7)).decorated(Placement.DEPTH_AVERAGE.configured(new DepthAverageConfig(16, 16))).squared());
 	public static final ConfiguredFeature<?, ?> JURASSIC_EMERALD_ORE = register("jurassic_emerald_ore", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(LostWorldsBlocks.JURASSIC_STONE.defaultBlockState(), LostWorldsBlocks.JURASSIC_EMERALD_ORE.defaultBlockState())).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE)));
-	public static final ConfiguredFeature<?, ?> JURASSIC_COPPER_ORE = register("jurassic_copper_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE, LostWorldsBlocks.JURASSIC_COPPER_ORE.defaultBlockState(), LostWorldsConfig.SERVER_CONFIG.copperVeinSize.get())).range(LostWorldsConfig.SERVER_CONFIG.copperRange.get()).squared().count(LostWorldsConfig.SERVER_CONFIG.copperCountPerChunk.get()));
+	public static final ConfiguredFeature<?, ?> JURASSIC_COPPER_ORE = register("jurassic_copper_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), LostWorldsBlocks.JURASSIC_COPPER_ORE.defaultBlockState(), LostWorldsConfig.SERVER_CONFIG.copperVeinSize.get())).range(LostWorldsConfig.SERVER_CONFIG.copperRange.get()).squared().count(LostWorldsConfig.SERVER_CONFIG.copperCountPerChunk.get()));
 
-	public static final ConfiguredFeature<?, ?> JURASSIC_DIRT_ORE = register("jurassic_dirt_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE, Blocks.DIRT.defaultBlockState(), 33)).range(256).squared().count(10));
-	public static final ConfiguredFeature<?, ?> JURASSIC_GRAVEL_ORE = register("jurassic_gravel_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE, Blocks.GRAVEL.defaultBlockState(), 33)).range(256).squared().count(8));
+	public static final ConfiguredFeature<?, ?> JURASSIC_DIRT_ORE = register("jurassic_dirt_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), Blocks.DIRT.defaultBlockState(), 33)).range(256).squared().count(10));
+	public static final ConfiguredFeature<?, ?> JURASSIC_GRAVEL_ORE = register("jurassic_gravel_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), Blocks.GRAVEL.defaultBlockState(), 33)).range(256).squared().count(8));
 
-	public static final ConfiguredFeature<?, ?> JURASSIC_LATERLITE_ORE = register("jurassic_laterlite_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE, LostWorldsBlocks.LATERLITE.defaultBlockState(), 33)).range(256).squared().count(10));
-	public static final ConfiguredFeature<?, ?> JURASSIC_RAW_MARBLE_ORE = register("jurassic_raw_marble_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE, LostWorldsBlocks.RAW_MARBLE.defaultBlockState(), 33)).range(256).squared().count(8));
-	public static final ConfiguredFeature<?, ?> JURASSIC_LIMESTONE_ORE = register("jurassic_limestone_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE, LostWorldsBlocks.LIMESTONE.defaultBlockState(), 33)).range(256).squared().count(8));
+	public static final ConfiguredFeature<?, ?> JURASSIC_LATERLITE_ORE = register("jurassic_laterlite_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), LostWorldsBlocks.LATERLITE.defaultBlockState(), 33)).range(256).squared().count(10));
+	public static final ConfiguredFeature<?, ?> JURASSIC_RAW_MARBLE_ORE = register("jurassic_raw_marble_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), LostWorldsBlocks.RAW_MARBLE.defaultBlockState(), 33)).range(256).squared().count(8));
+	public static final ConfiguredFeature<?, ?> JURASSIC_LIMESTONE_ORE = register("jurassic_limestone_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), LostWorldsBlocks.LIMESTONE.defaultBlockState(), 33)).range(256).squared().count(8));
 
 	// Rocks
 	public static final ConfiguredFeature<?, ?> PERMIAN_ROCK = register("permian_rock", LostWorldsFeatures.ROCK.configured(new BlockStateFeatureConfig(LostWorldsBlocks.PERMIAN_COBBLESTONE.defaultBlockState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));
@@ -175,8 +155,6 @@ public class ModConfiguredFeatures {
 	// Lakes
 	public static final ConfiguredFeature<?, ?> PERMIAN_WATER_LAKE = register("permian_water_lake", LostWorldsFeatures.PERMIAN_LAKE.configured(new BlockStateFeatureConfig(Blocks.WATER.defaultBlockState())).decorated(Placement.WATER_LAKE.configured(new ChanceConfig(4))));
 	public static final ConfiguredFeature<?, ?> PERMIAN_LAVA_LAKE = register("permian_lava_lake", LostWorldsFeatures.PERMIAN_LAKE.configured(new BlockStateFeatureConfig(Blocks.LAVA.defaultBlockState())).decorated(Placement.LAVA_LAKE.configured(new ChanceConfig(80))));
-
-	public static final ConfiguredFeature<?, ?> ANCIENT_SPRING = register("ancient_spring", Feature.SPRING.configured(new LiquidsConfig(Fluids.WATER.defaultFluidState(), true, 4, 1, ImmutableSet.of(LostWorldsBlocks.PERMIAN_STONE, LostWorldsBlocks.PERMIAN_STONE))).decorated(Placement.RANGE_BIASED.configured(new TopSolidRangeConfig(8, 8, 256))).squared().count(50));
 
 	// Fossils
 	public static final ConfiguredFeature<?, ?> OVERWORLD_AMBER_ORE = register("overworld_amber_ore", Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, LostWorldsBlocks.AMBER_ORE.defaultBlockState(), LostWorldsConfig.SERVER_CONFIG.amberVeinSize.get())).range(LostWorldsConfig.SERVER_CONFIG.amberRange.get()).squared().count(LostWorldsConfig.SERVER_CONFIG.amberCountPerChunk.get()));
