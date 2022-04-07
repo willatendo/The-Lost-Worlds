@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "lostworlds:block/mossy_soil_side",
+    "bottom": "minecraft:block/dirt",
+    "top": "lostworlds:block/mossy_soil_top"
+  }
+}

@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.mojang.serialization.Codec;
 
-import lostworlds.server.biome.ModSurfaceBuilders;
+import lostworlds.server.biome.ModSurfaceBuilderConfigs;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
@@ -37,9 +37,9 @@ public class PermianMarshSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
 		}
 
 		if (noise > 1.0D) {
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.MUD_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilderConfigs.MUD_CONFIG.get());
 		} else {
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.MOSSY_SOIL_SILT_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilderConfigs.MOSSY_SOIL_SILT_CONFIG.get());
 		}
 	}
 }

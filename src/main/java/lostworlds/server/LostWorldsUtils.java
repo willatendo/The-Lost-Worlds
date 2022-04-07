@@ -13,7 +13,6 @@ import com.google.common.collect.ImmutableSet;
 
 import lostworlds.client.ClientConfigs;
 import lostworlds.client.LostWorldsConfig;
-import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.tab.ModTab;
 import lostworlds.server.util.Version;
 import net.minecraft.block.Block;
@@ -80,7 +79,16 @@ public class LostWorldsUtils {
 	public static final HashSet<Biome.Category> FOSSIL_BIOMES = Stream.of(Biome.Category.FOREST, Biome.Category.EXTREME_HILLS, Biome.Category.DESERT, Biome.Category.PLAINS, Biome.Category.SAVANNA, Biome.Category.MUSHROOM, Biome.Category.SWAMP).collect(Collectors.toCollection(HashSet::new));
 
 	public static Set<Block> carverBlocks() {
-		return ImmutableSet.of(LostWorldsBlocks.PERMIAN_SAND, LostWorldsBlocks.PERMIAN_STONE, LostWorldsBlocks.PERMIAN_COBBLESTONE, LostWorldsBlocks.JURASSIC_STONE, LostWorldsBlocks.JURASSIC_COBBLESTONE, LostWorldsBlocks.LATERLITE, LostWorldsBlocks.RAW_MARBLE, LostWorldsBlocks.LIMESTONE, LostWorldsBlocks.MOSSY_SOIL/*, LostWorldsBlocks.DRIED_SOIL.get()*/, LostWorldsBlocks.CRACKED_SOIL, LostWorldsBlocks.VOLCANIC_ASH, LostWorldsBlocks.VOLCANIC_ASH_LAYER, Blocks.BASALT, Blocks.BLACKSTONE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRAVEL, Blocks.MAGMA_BLOCK, Blocks.STONE, Blocks.SNOW_BLOCK);
+		// LostWorldsBlocks.PERMIAN_SAND, LostWorldsBlocks.PERMIAN_STONE,
+		// LostWorldsBlocks.PERMIAN_COBBLESTONE, LostWorldsBlocks.JURASSIC_STONE,
+		// LostWorldsBlocks.JURASSIC_COBBLESTONE, LostWorldsBlocks.LATERLITE,
+		// LostWorldsBlocks.RAW_MARBLE, LostWorldsBlocks.LIMESTONE,
+		// LostWorldsBlocks.MOSSY_SOIL, LostWorldsBlocks.DRIED_SOIL,
+		// LostWorldsBlocks.CRACKED_SOIL, LostWorldsBlocks.VOLCANIC_ASH,
+		// LostWorldsBlocks.VOLCANIC_ASH_LAYER, Blocks.BASALT, Blocks.BLACKSTONE,
+		// Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRAVEL, Blocks.MAGMA_BLOCK,
+		// Blocks.STONE, Blocks.SNOW_BLOCK);
+		return ImmutableSet.of(Blocks.STONE);
 	}
 
 	public static void translateToWaves(EntityType<? extends AbstractRaiderEntity> type, List<? extends Integer> list) {

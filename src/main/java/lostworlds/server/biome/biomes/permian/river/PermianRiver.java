@@ -3,7 +3,7 @@ package lostworlds.server.biome.biomes.permian.river;
 import lostworlds.server.biome.BaseBiomeInfo;
 import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
-import lostworlds.server.biome.ModSurfaceBuilders;
+import lostworlds.server.biome.ModConfiguredSurfaceBuilders;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.biome.Biome.RainType;
 import net.minecraft.world.biome.BiomeAmbience;
@@ -16,7 +16,7 @@ public class PermianRiver extends ModBiome {
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomeInfo.BASE_WATER_COLOUR).waterFogColor(BaseBiomeInfo.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomeInfo.BASE_FOG_COLOUR).skyColor(calculateSkyColor(5.0F));
 
 	static {
-		GENERATION.surfaceBuilder(ModSurfaceBuilders.PERMIAN_DESERT_BUILDER);
+		GENERATION.surfaceBuilder(ModConfiguredSurfaceBuilders.PERMIAN_DESERT_BUILDER);
 
 		ModBiomeFeatures.permianRiver(GENERATION);
 		ModBiomeFeatures.permianRiverSpawns(MOB_SPAWNS);

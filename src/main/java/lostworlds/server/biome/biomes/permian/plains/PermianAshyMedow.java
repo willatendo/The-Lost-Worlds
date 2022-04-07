@@ -3,7 +3,7 @@ package lostworlds.server.biome.biomes.permian.plains;
 import lostworlds.server.biome.BaseBiomeInfo;
 import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
-import lostworlds.server.biome.ModSurfaceBuilders;
+import lostworlds.server.biome.ModConfiguredSurfaceBuilders;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.biome.Biome.RainType;
 import net.minecraft.world.biome.BiomeAmbience;
@@ -16,7 +16,7 @@ public class PermianAshyMedow extends ModBiome {
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomeInfo.BASE_WATER_COLOUR).waterFogColor(BaseBiomeInfo.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomeInfo.BASE_FOG_COLOUR).grassColorOverride(0x686868).foliageColorOverride(0x686868).skyColor(0x3a3a3a);
 
 	static {
-		GENERATION.surfaceBuilder(ModSurfaceBuilders.PERMIAN_ASHY_MEDOWS_BUILDER);
+		GENERATION.surfaceBuilder(ModConfiguredSurfaceBuilders.PERMIAN_ASHY_MEDOWS_BUILDER);
 
 		ModBiomeFeatures.permianAshyMedows(GENERATION);
 		ModBiomeFeatures.permianAshyMedowsSpawns(MOB_SPAWNS);

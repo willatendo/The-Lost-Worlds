@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.mojang.serialization.Codec;
 
-import lostworlds.server.biome.ModSurfaceBuilders;
+import lostworlds.server.biome.ModSurfaceBuilderConfigs;
 import net.minecraft.block.BlockState;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunk;
@@ -19,11 +19,11 @@ public class CretaceousDesertSurfaceBuilder extends SurfaceBuilder<SurfaceBuilde
 	@Override
 	public void apply(Random rand, IChunk iChunk, Biome biome, int x, int z, int startHeight, double noise, BlockState block, BlockState fluid, int seaLevel, long seed, SurfaceBuilderConfig config) {
 		if (noise > 1.75D) {
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.SAND_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilderConfigs.SAND_CONFIG.get());
 		} else if (noise > -0.95D) {
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.TERRACOTTA_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilderConfigs.TERRACOTTA_CONFIG.get());
 		} else {
-			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilders.ROCKY_SOIL_CONFIG);
+			SurfaceBuilder.DEFAULT.apply(rand, iChunk, biome, x, z, startHeight, noise, block, fluid, seaLevel, seed, ModSurfaceBuilderConfigs.ROCKY_SOIL_CONFIG.get());
 		}
 	}
 }

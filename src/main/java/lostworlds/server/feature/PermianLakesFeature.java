@@ -101,7 +101,7 @@ public class PermianLakesFeature extends Feature<BlockStateFeatureConfig> {
 									if (biome.getGenerationSettings().getSurfaceBuilderConfig().getTopMaterial().is(LostWorldsBlocks.PERMIAN_SAND)) {
 										reader.setBlock(blockpos, LostWorldsBlocks.PERMIAN_SAND.defaultBlockState(), 2);
 									} else {
-										reader.setBlock(blockpos, LostWorldsBlocks.MOSSY_SOIL.defaultBlockState(), 2);
+										reader.setBlock(blockpos, LostWorldsBlocks.MOSSY_SOIL.getDefaultState(), 2);
 									}
 								}
 							}

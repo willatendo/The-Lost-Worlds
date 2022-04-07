@@ -10,7 +10,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 public class TyrannibookHelper {
 	// Use This
-	public void commonSetup(FMLCommonSetupEvent event) {
+	public static void commonSetup(FMLCommonSetupEvent event) {
 		Tyranninetwork.registerPackets();
 	}
 

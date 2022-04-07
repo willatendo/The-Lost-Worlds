@@ -22,15 +22,13 @@ public class BlockMappings {
 	private static final Map<ResourceLocation, Supplier<Block>> blockRemappings = new HashMap<ResourceLocation, Supplier<Block>>() {
 		private static final long serialVersionUID = 2729764913422843323L;
 		{
-			put(LostWorldsUtils.rL("copper_ore"), () -> LostWorldsBlocks.COPPER_ORE.get());
-
 			put(LostWorldsUtils.rL("small_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB);
 			put(LostWorldsUtils.rL("medium_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB);
 			put(LostWorldsUtils.rL("large_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB);
 			put(LostWorldsUtils.rL("lycophyta"), () -> LostWorldsBlocks.OSMUNDA);
 			put(LostWorldsUtils.rL("tall_dicksonia"), () -> LostWorldsBlocks.DICKSONIA);
 			put(LostWorldsUtils.rL("power_supply_block"), () -> Blocks.REDSTONE_BLOCK);
-			put(LostWorldsUtils.rL("mossy_dirt"), () -> LostWorldsBlocks.MOSSY_SOIL);
+			put(LostWorldsUtils.rL("mossy_dirt"), () -> LostWorldsBlocks.MOSSY_SOIL.get());
 			put(LostWorldsUtils.rL("mossy_jurassic_stone"), () -> LostWorldsBlocks.JURASSIC_STONE);
 			put(LostWorldsUtils.rL("mossy_jurassic_stone_stairs"), () -> LostWorldsBlocks.JURASSIC_STONE_STAIRS);
 			put(LostWorldsUtils.rL("mossy_jurassic_stone_slab"), () -> LostWorldsBlocks.JURASSIC_STONE_SLAB);

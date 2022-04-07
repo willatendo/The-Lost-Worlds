@@ -3,7 +3,7 @@ package lostworlds.server.biome.biomes.cretaceous.ocean;
 import lostworlds.server.biome.BaseBiomeInfo;
 import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
-import lostworlds.server.biome.ModSurfaceBuilders;
+import lostworlds.server.biome.ModConfiguredSurfaceBuilders;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.biome.Biome.RainType;
 import net.minecraft.world.biome.BiomeAmbience;
@@ -16,7 +16,7 @@ public class ColdCretaceousOcean extends ModBiome {
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomeInfo.OCEAN_WATER_COLOUR).waterFogColor(BaseBiomeInfo.OCEAN_WATER_FOG_COLOUR).fogColor(BaseBiomeInfo.BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.2F));
 
 	static {
-		GENERATION.surfaceBuilder(ModSurfaceBuilders.JURASSIC_ROCKY_SOIL_BUILDER);
+		GENERATION.surfaceBuilder(ModConfiguredSurfaceBuilders.JURASSIC_ROCKY_SOIL_BUILDER);
 
 		ModBiomeFeatures.coldCretaceousOcean(GENERATION);
 	}

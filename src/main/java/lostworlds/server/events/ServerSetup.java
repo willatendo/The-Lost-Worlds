@@ -233,15 +233,12 @@ public class ServerSetup {
 	static class VanillaMaps {
 		@SubscribeEvent
 		public static void addToMaps(final FMLCommonSetupEvent event) {
-			LostWorldsUtils.LOGGER.debug("Adding to Stripping Map");
-
 			addToStrippingMap(LostWorldsBlocks.PETRIFIED_ARAUCARIA_LOG, LostWorldsBlocks.STRIPPED_PETRIFIED_ARAUCARIA_LOG);
 			addToStrippingMap(LostWorldsBlocks.PETRIFIED_CALAMITES_LOG, LostWorldsBlocks.STRIPPED_PETRIFIED_CALAMITES_LOG);
 			addToStrippingMap(LostWorldsBlocks.PETRIFIED_CONIFER_LOG, LostWorldsBlocks.STRIPPED_PETRIFIED_CONIFER_LOG);
 			addToStrippingMap(LostWorldsBlocks.PETRIFIED_CYPRESS_LOG, LostWorldsBlocks.STRIPPED_PETRIFIED_CYPRESS_LOG);
 			addToStrippingMap(LostWorldsBlocks.PETRIFIED_GINKGO_LOG, LostWorldsBlocks.STRIPPED_PETRIFIED_GINKGO_LOG);
 			addToStrippingMap(LostWorldsBlocks.PETRIFIED_SEQUOIA_LOG, LostWorldsBlocks.STRIPPED_PETRIFIED_SEQUOIA_LOG);
-
 			addToStrippingMap(LostWorldsBlocks.ARAUCARIA_LOG, LostWorldsBlocks.STRIPPED_ARAUCARIA_LOG);
 			addToStrippingMap(LostWorldsBlocks.ARAUCARIA_WOOD, LostWorldsBlocks.STRIPPED_ARAUCARIA_WOOD);
 			addToStrippingMap(LostWorldsBlocks.CALAMITES_LOG, LostWorldsBlocks.STRIPPED_CALAMITES_LOG);
@@ -256,23 +253,8 @@ public class ServerSetup {
 			addToStrippingMap(LostWorldsBlocks.SCORCHED_WOOD, LostWorldsBlocks.STRIPPED_SCORCHED_WOOD);
 			addToStrippingMap(LostWorldsBlocks.SEQUOIA_LOG, LostWorldsBlocks.STRIPPED_SEQUOIA_LOG);
 			addToStrippingMap(LostWorldsBlocks.SEQUOIA_WOOD, LostWorldsBlocks.STRIPPED_SEQUOIA_WOOD);
-
-			LostWorldsUtils.LOGGER.debug("Finished Adding to Stripping Map");
-
-			LostWorldsUtils.LOGGER.debug("Adding to Tilling Map");
-
-			addToTillingMap(LostWorldsBlocks.MOSSY_SOIL);
-
-			LostWorldsUtils.LOGGER.debug("Finished Adding to Tilling Map");
-
-			LostWorldsUtils.LOGGER.debug("Adding to Flattening Map");
-
-			addToFlatteningMap(LostWorldsBlocks.MOSSY_SOIL);
-
-			LostWorldsUtils.LOGGER.debug("Finished Adding to Flattening Map");
-
-			LostWorldsUtils.LOGGER.debug("Adding Flammables");
-
+			addToTillingMap(LostWorldsBlocks.MOSSY_SOIL.get());
+			addToFlatteningMap(LostWorldsBlocks.MOSSY_SOIL.get());
 			addToFlammables(LostWorldsBlocks.ARAUCARIA_FENCE, 5, 20);
 			addToFlammables(LostWorldsBlocks.ARAUCARIA_FENCE_GATE, 5, 20);
 			addToFlammables(LostWorldsBlocks.ARAUCARIA_LEAVES, 30, 60);
@@ -283,7 +265,6 @@ public class ServerSetup {
 			addToFlammables(LostWorldsBlocks.ARAUCARIA_WOOD, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_ARAUCARIA_LOG, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_ARAUCARIA_WOOD, 5, 5);
-
 			addToFlammables(LostWorldsBlocks.CALAMITES_FENCE, 5, 20);
 			addToFlammables(LostWorldsBlocks.CALAMITES_FENCE_GATE, 5, 20);
 			addToFlammables(LostWorldsBlocks.CALAMITES_LEAVES, 30, 60);
@@ -294,7 +275,6 @@ public class ServerSetup {
 			addToFlammables(LostWorldsBlocks.CALAMITES_WOOD, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_CALAMITES_LOG, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_CALAMITES_WOOD, 5, 5);
-
 			addToFlammables(LostWorldsBlocks.CONIFER_FENCE, 5, 20);
 			addToFlammables(LostWorldsBlocks.CONIFER_FENCE_GATE, 5, 20);
 			addToFlammables(LostWorldsBlocks.CONIFER_LEAVES, 30, 60);
@@ -305,7 +285,6 @@ public class ServerSetup {
 			addToFlammables(LostWorldsBlocks.CONIFER_WOOD, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_CONIFER_LOG, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_CONIFER_WOOD, 5, 5);
-
 			addToFlammables(LostWorldsBlocks.CYPRESS_FENCE, 5, 20);
 			addToFlammables(LostWorldsBlocks.CYPRESS_FENCE_GATE, 5, 20);
 			addToFlammables(LostWorldsBlocks.CYPRESS_LEAVES, 30, 60);
@@ -316,7 +295,6 @@ public class ServerSetup {
 			addToFlammables(LostWorldsBlocks.CYPRESS_WOOD, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_CYPRESS_LOG, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_CYPRESS_WOOD, 5, 5);
-
 			addToFlammables(LostWorldsBlocks.GINKGO_FENCE, 5, 20);
 			addToFlammables(LostWorldsBlocks.GINKGO_FENCE_GATE, 5, 20);
 			addToFlammables(LostWorldsBlocks.GINKGO_LEAVES, 30, 60);
@@ -327,7 +305,6 @@ public class ServerSetup {
 			addToFlammables(LostWorldsBlocks.GINKGO_WOOD, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_GINKGO_LOG, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_GINKGO_WOOD, 5, 5);
-
 			addToFlammables(LostWorldsBlocks.SCORCHED_FENCE, 5, 20);
 			addToFlammables(LostWorldsBlocks.SCORCHED_FENCE_GATE, 5, 20);
 			addToFlammables(LostWorldsBlocks.SCORCHED_LOG, 5, 5);
@@ -337,7 +314,6 @@ public class ServerSetup {
 			addToFlammables(LostWorldsBlocks.SCORCHED_WOOD, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_SCORCHED_LOG, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_SCORCHED_WOOD, 5, 5);
-
 			addToFlammables(LostWorldsBlocks.SEQUOIA_FENCE, 5, 20);
 			addToFlammables(LostWorldsBlocks.SEQUOIA_FENCE_GATE, 5, 20);
 			addToFlammables(LostWorldsBlocks.SEQUOIA_LOG, 5, 5);
@@ -347,8 +323,6 @@ public class ServerSetup {
 			addToFlammables(LostWorldsBlocks.SEQUOIA_WOOD, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_SEQUOIA_LOG, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_SEQUOIA_WOOD, 5, 5);
-
-			LostWorldsUtils.LOGGER.debug("Finished Adding Flammables");
 		}
 
 		private static void addToStrippingMap(Block logBlock, Block strippedLogBlock) {

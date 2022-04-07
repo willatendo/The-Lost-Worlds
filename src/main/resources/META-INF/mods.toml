@@ -40,8 +40,8 @@ Modlers/3d Artists:
     side="BOTH"
     
 [[dependencies.lostworlds]]
-    modId="tyrannotitanlib"
+    modId="geckolib3"
     mandatory=true
-    versionRange="[1.4.1,)"
+    versionRange="[3.0.66,)"
     ordering="NONE"
     side="BOTH"

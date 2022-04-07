@@ -60,6 +60,7 @@ import net.minecraft.item.SignItem;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -70,12 +71,12 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<OreBlock> COPPER_ORE = REGISTRATE.block("copper_ore", OreBlock::new).initialProperties(() -> Blocks.COAL_ORE).simpleItem().register();
 
 	// Soils
-	public static final Block DRIED_SOIL = BlockUtils.create("dried_soil", new DriedSoilBlock(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).harvestTool(ToolType.SHOVEL).sound(SoundType.GRAVEL).randomTicks()));
-	public static final Block CRACKED_SOIL = BlockUtils.create("cracked_soil", new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).harvestTool(ToolType.SHOVEL).sound(SoundType.GRAVEL)));
+	public static final BlockEntry<DriedSoilBlock> DRIED_SOIL = REGISTRATE.block("dried_soil", DriedSoilBlock::new).properties(properties -> properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).harvestTool(ToolType.SHOVEL).sound(SoundType.GRAVEL).randomTicks()).simpleItem().register();
+	public static final BlockEntry<Block> CRACKED_SOIL = REGISTRATE.block("cracked_soil", Block::new).properties(properties -> properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).harvestTool(ToolType.SHOVEL).sound(SoundType.GRAVEL)).simpleItem().register();
 
-	public static final Block MOSSY_SOIL = BlockUtils.create("mossy_soil", new MossySoilBlock(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).harvestTool(ToolType.SHOVEL).randomTicks().sound(SoundType.GRAVEL)));
-	public static final Block MUD = BlockUtils.create("mud", new MudBlock(AbstractBlock.Properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)));
-	public static final Block SILT = BlockUtils.create("silt", new Block(AbstractBlock.Properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)));
+	public static final BlockEntry<MossySoilBlock> MOSSY_SOIL = REGISTRATE.block("mossy_soil", MossySoilBlock::new).properties(properties -> properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).harvestTool(ToolType.SHOVEL).randomTicks().sound(SoundType.GRAVEL)).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().cubeBottomTop(block.getName(), provider.modLoc("block/mossy_soil_side"), provider.mcLoc("block/dirt"), provider.modLoc("block/mossy_soil_top"))))).simpleItem().register();
+	public static final BlockEntry<MudBlock> MUD = REGISTRATE.block("mud", MudBlock::new).properties(properties -> properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)).simpleItem().register();
+	public static final BlockEntry<Block> SILT = REGISTRATE.block("silt", Block::new).properties(properties -> properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)).simpleItem().register();
 
 	public static final Block VOLCANIC_ASH = BlockUtils.create("volcanic_ash", new SandBlock(0x888988, AbstractBlock.Properties.of(Material.SAND, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).harvestLevel(1).strength(0.5F).sound(SoundType.SAND)));
 	public static final Block VOLCANIC_ASH_LAYER = BlockUtils.create("volcanic_ash_layer", new VolcanicAshLayerBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).harvestLevel(1).strength(0.5F).sound(SoundType.SAND)));

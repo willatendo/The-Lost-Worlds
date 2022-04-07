@@ -12,6 +12,7 @@ import lostworlds.client.LostWorldsConfig;
 import lostworlds.client.book.LostWorldsBooks;
 import lostworlds.client.events.ClientSetup;
 import lostworlds.client.sounds.LostWorldsSounds;
+import lostworlds.repack.tyrannotitanlib.TyrannibookHelper;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.BiomeKeys;
 import lostworlds.server.biome.LostWorldsBiomes;
@@ -19,6 +20,7 @@ import lostworlds.server.biome.LostWorldsWorldCarvers;
 import lostworlds.server.biome.ModConfiguredCarvers;
 import lostworlds.server.biome.ModConfiguredFeatures;
 import lostworlds.server.biome.ModConfiguredStructures;
+import lostworlds.server.biome.OverworldFeatures;
 import lostworlds.server.biome.surfacebuilders.LostWorldsSurfaceBuilders;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
@@ -156,6 +158,8 @@ public class LostWorldsMod {
 		LostWorldsUtils.ITEMS.setIcon(LostWorldsItems.LOST_WORLDS_LEXICON.asStack());
 		LostWorldsUtils.BLOCKS.setIcon(LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.asItem().getDefaultInstance());
 
+		TyrannibookHelper.commonSetup(event);
+
 		event.enqueueWork(() -> {
 			LostWorldsStructurePecies.registerBiomeGeneration();
 			ModConfiguredStructures.init();
@@ -254,12 +258,12 @@ public class LostWorldsMod {
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.siltPatchGeneration.get()) {
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.SILT_PATCH);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OverworldFeatures.SILT_PATCH.get());
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.mudDisksInSwamps.get()) {
 			if (event.getCategory() == Category.SWAMP) {
-				FeatureAdder.addFeature(event, GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.MUD_DISK);
+				FeatureAdder.addFeature(event, GenerationStage.Decoration.TOP_LAYER_MODIFICATION, OverworldFeatures.MUD_DISK.get());
 			}
 		}
 
@@ -321,6 +325,8 @@ public class LostWorldsMod {
 	}
 
 	private void clientSetup(FMLClientSetupEvent event) {
+		TyrannibookHelper.listenersSetup(event);
+
 		LostWorldsBooks.initBooks();
 
 		LostWorldsDimensions.initClient();

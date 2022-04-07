@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 
 public class TerrestrialEatMossySoilGoal extends Goal {
-	private static final Predicate<BlockState> IS_TALL_GRASS = BlockStateMatcher.forBlock(LostWorldsBlocks.MOSSY_SOIL);
+	private static final Predicate<BlockState> IS_TALL_GRASS = BlockStateMatcher.forBlock(LostWorldsBlocks.MOSSY_SOIL.get());
 	private final EggLayingEntity entity;
 	private final World level;
 
@@ -34,7 +34,7 @@ public class TerrestrialEatMossySoilGoal extends Goal {
 			if (IS_TALL_GRASS.test(this.level.getBlockState(blockpos))) {
 				return true;
 			} else {
-				return this.level.getBlockState(blockpos.below()).is(LostWorldsBlocks.MOSSY_SOIL);
+				return this.level.getBlockState(blockpos.below()).is(LostWorldsBlocks.MOSSY_SOIL.get());
 			}
 		}
 	}
@@ -68,9 +68,9 @@ public class TerrestrialEatMossySoilGoal extends Goal {
 				this.entity.ate();
 			} else {
 				BlockPos blockpos1 = blockpos.below();
-				if (this.level.getBlockState(blockpos1).is(LostWorldsBlocks.MOSSY_SOIL)) {
+				if (this.level.getBlockState(blockpos1).is(LostWorldsBlocks.MOSSY_SOIL.get())) {
 					if (ForgeEventFactory.getMobGriefingEvent(this.level, this.entity)) {
-						this.level.levelEvent(2001, blockpos1, Block.getId(LostWorldsBlocks.MOSSY_SOIL.defaultBlockState()));
+						this.level.levelEvent(2001, blockpos1, Block.getId(LostWorldsBlocks.MOSSY_SOIL.getDefaultState()));
 						this.level.setBlock(blockpos1, Blocks.DIRT.defaultBlockState(), 2);
 					}
 

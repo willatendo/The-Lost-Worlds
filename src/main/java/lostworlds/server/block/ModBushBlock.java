@@ -23,7 +23,7 @@ public class ModBushBlock extends BushBlock implements IGrowable {
 	protected boolean mayPlaceOn(BlockState state, IBlockReader blockReader, BlockPos pos) {
 		Block block = state.getBlock();
 
-		return block.is(Blocks.DIRT) || block.is(LostWorldsBlocks.MOSSY_SOIL) || block.is(LostWorldsBlocks.PERMIAN_SAND) || block.is(LostWorldsBlocks.DRIED_SOIL);
+		return block.is(Blocks.DIRT) || block.is(LostWorldsBlocks.MOSSY_SOIL.get()) || block.is(LostWorldsBlocks.PERMIAN_SAND) || block.is(LostWorldsBlocks.DRIED_SOIL.get());
 	}
 
 	@Override
