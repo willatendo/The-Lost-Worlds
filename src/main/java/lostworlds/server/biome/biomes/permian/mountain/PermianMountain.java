@@ -12,11 +12,13 @@ import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 
 public class PermianMountain extends ModBiome {
-	public static final BiomeGenerationSettings.Builder GENERATION = genSettings(LostWorldsSurfaceBuilders.NAKED_PERMIAN_MOUNTAINS, ModSurfaceBuilderConfigs.PERMIAN_STONE_CONFIG.get());
+	public static final BiomeGenerationSettings.Builder GENERATION = new BiomeGenerationSettings.Builder();
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomeInfo.BASE_WATER_COLOUR).waterFogColor(BaseBiomeInfo.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomeInfo.BASE_FOG_COLOUR).skyColor(calculateSkyColor(5.0F));
 
 	static {
+		GENERATION.surfaceBuilder(() -> LostWorldsSurfaceBuilders.NAKED_PERMIAN_MOUNTAINS.configured(ModSurfaceBuilderConfigs.PERMIAN_STONE_CONFIG.get()));
+
 		ModBiomeFeatures.permianMountains(GENERATION);
 		ModBiomeFeatures.permianMountainsSpawns(MOB_SPAWNS);
 	}

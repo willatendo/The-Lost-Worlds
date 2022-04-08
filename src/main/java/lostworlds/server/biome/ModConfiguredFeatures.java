@@ -1,5 +1,7 @@
 package lostworlds.server.biome;
 
+import static lostworlds.server.util.BlockGetter.getStateWhenCan;
+
 import java.util.OptionalInt;
 
 import com.google.common.collect.ImmutableList;
@@ -148,7 +150,7 @@ public class ModConfiguredFeatures {
 	public static final ConfiguredFeature<?, ?> JURASSIC_LIMESTONE_ORE = register("jurassic_limestone_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), LostWorldsBlocks.LIMESTONE.defaultBlockState(), 33)).range(256).squared().count(8));
 
 	// Rocks
-	public static final ConfiguredFeature<?, ?> PERMIAN_ROCK = register("permian_rock", LostWorldsFeatures.ROCK.configured(new BlockStateFeatureConfig(LostWorldsBlocks.PERMIAN_COBBLESTONE.defaultBlockState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));
+	public static final ConfiguredFeature<?, ?> PERMIAN_ROCK = register("permian_rock", LostWorldsFeatures.ROCK.configured(new BlockStateFeatureConfig(getStateWhenCan(LostWorldsBlocks.PERMIAN_COBBLESTONE))).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));
 	public static final ConfiguredFeature<?, ?> JURASSIC_ROCK = register("jurassic_rock", LostWorldsFeatures.ROCK.configured(new BlockStateFeatureConfig(LostWorldsBlocks.JURASSIC_COBBLESTONE.defaultBlockState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));
 	public static final ConfiguredFeature<?, ?> CRETACEOUS_ROCK = register("cretaceous_rock", LostWorldsFeatures.ROCK.configured(new BlockStateFeatureConfig(Blocks.COBBLESTONE.defaultBlockState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));
 
@@ -175,7 +177,7 @@ public class ModConfiguredFeatures {
 	public static final ConfiguredFeature<?, ?> OVERWORLD_LARGE_NEST = register("overworld_large_nest", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(Blocks.DIRT.defaultBlockState(), LostWorldsBlocks.SOFT_DIRT.defaultBlockState().setValue(SoftDirtBlock.EGG, Egg.LARGE))).decorated(LostWorldsPlacements.NEST.configured(IPlacementConfig.NONE)).chance(LostWorldsConfig.SERVER_CONFIG.fossilChance.get()));
 
 	// Misc Decoration
-	public static final ConfiguredFeature<?, ?> ASH_LAYER = LostWorldsFeatures.ASH_LAYER_PLACEMENT.configured(IFeatureConfig.NONE);
+	public static final ConfiguredFeature<?, ?> ASH_LAYER = register("ash_layer", LostWorldsFeatures.ASH_LAYER_PLACEMENT.configured(IFeatureConfig.NONE));
 	public static final ConfiguredFeature<?, ?> PERMIAN_CORAL_REEF = register("permian_coral_reef", Feature.SIMPLE_RANDOM_SELECTOR.configured(new SingleRandomFeature(ImmutableList.of(() -> {
 		return Feature.CORAL_TREE.configured(IFeatureConfig.NONE);
 	}, () -> {
@@ -204,11 +206,5 @@ public class ModConfiguredFeatures {
 		public static final BlockClusterFeatureConfig MAGNOLIA_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(LostWorldsBlocks.MAGNOLIA.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(16).build();
 		public static final BlockClusterFeatureConfig OSMUNDA_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(LostWorldsBlocks.OSMUNDA.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(16).build();
 		public static final BlockClusterFeatureConfig ZAMITES_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(LostWorldsBlocks.ZAMITES.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(16).build();
-	}
-
-	public static void init() {
-		LostWorldsUtils.LOGGER.debug("Registering Mod Configured Features");
-
-		register("ash_layer", ASH_LAYER);
 	}
 }
