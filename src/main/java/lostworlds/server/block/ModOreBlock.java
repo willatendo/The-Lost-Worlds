@@ -9,7 +9,7 @@ public class ModOreBlock extends OreBlock {
 	public final int minXPDrop;
 	public final int maxXPDrop;
 
-	public ModOreBlock(Properties properties, int minXPDrop, int maxXPDrop) {
+	public ModOreBlock(int minXPDrop, int maxXPDrop, Properties properties) {
 		super(properties);
 		this.minXPDrop = minXPDrop;
 		this.maxXPDrop = maxXPDrop;

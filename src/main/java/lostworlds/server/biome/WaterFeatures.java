@@ -18,5 +18,5 @@ import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 
 public class WaterFeatures {
 	// Permian
-	public static final Supplier<ConfiguredFeature<?, ?>> ANCIENT_SPRING = () -> register("ancient_spring", Feature.SPRING.configured(new LiquidsConfig(Fluids.WATER.defaultFluidState(), true, 4, 1, ImmutableSet.of(getWhenCan(LostWorldsBlocks.PERMIAN_STONE), LostWorldsBlocks.JURASSIC_STONE, Blocks.STONE))).decorated(Placement.RANGE_BIASED.configured(new TopSolidRangeConfig(8, 8, 256))).squared().count(50));
+	public static final Supplier<ConfiguredFeature<?, ?>> ANCIENT_SPRING = () -> register("ancient_spring", Feature.SPRING.configured(new LiquidsConfig(Fluids.WATER.defaultFluidState(), true, 4, 1, ImmutableSet.of(getWhenCan(LostWorldsBlocks.PERMIAN_STONE), getWhenCan(LostWorldsBlocks.JURASSIC_STONE), Blocks.STONE))).decorated(Placement.RANGE_BIASED.configured(new TopSolidRangeConfig(8, 8, 256))).squared().count(50));
 }

@@ -34,6 +34,7 @@ public class LostWorldsTags {
 	public static class ModBlockTags {
 		public static final ITag.INamedTag<Block> ARAUCARIA_LOGS = tag("araucaria_logs");
 		public static final ITag.INamedTag<Block> BASE_STONE_PERMIAN = tag("base_stone_permian");
+		public static final ITag.INamedTag<Block> BASE_STONE_JURASSIC = tag("base_stone_jurassic");
 		public static final ITag.INamedTag<Block> CALAMITES_PLACEABLES = tag("calamites_placeables");
 		public static final ITag.INamedTag<Block> CALAMITES_LOGS = tag("calamites_logs");
 		public static final ITag.INamedTag<Block> CONIFER_LOGS = tag("conifer_logs");

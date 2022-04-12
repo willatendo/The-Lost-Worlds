@@ -12,10 +12,6 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
 public class KentrosaurusModel extends AnimatedGeoModel<KentrosaurusEntity> {
-	private static final ResourceLocation TEXTURE_1 = LostWorldsUtils.rL("textures/model/entity/kentrosaurus/texture_1.png");
-	private static final ResourceLocation TEXTURE_2 = LostWorldsUtils.rL("textures/model/entity/kentrosaurus/texture_2.png");
-	public ResourceLocation texture;
-
 	@Override
 	public ResourceLocation getAnimationFileLocation(KentrosaurusEntity entity) {
 		return LostWorldsUtils.rL("animations/kentrosaurus.animations.json");
@@ -28,7 +24,7 @@ public class KentrosaurusModel extends AnimatedGeoModel<KentrosaurusEntity> {
 
 	@Override
 	public ResourceLocation getTextureLocation(KentrosaurusEntity entity) {
-		return this.texture;
+		return LostWorldsUtils.rL("textures/model/entity/kentrosaurus/texture_1.png");
 	}
 
 	@Override
@@ -40,13 +36,6 @@ public class KentrosaurusModel extends AnimatedGeoModel<KentrosaurusEntity> {
 		if (!(entity.isEating() || entity.isSleeping())) {
 			head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
 			head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
-		}
-
-		if (entity.getVarient() == 0) {
-			this.texture = this.TEXTURE_1;
-		}
-		if (entity.getVarient() == 1) {
-			this.texture = this.TEXTURE_2;
 		}
 	}
 }

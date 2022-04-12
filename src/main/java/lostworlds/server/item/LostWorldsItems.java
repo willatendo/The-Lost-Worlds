@@ -1,6 +1,6 @@
 package lostworlds.server.item;
 
-import static lostworlds.LostWorldsMod.CENTRAL_REGISTRATE;
+import static lostworlds.LostWorldsMod.getRegistrate;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
@@ -43,7 +43,7 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
 
 public class LostWorldsItems {
-	private static final LostWorldsRegistrate REGISTRATE = CENTRAL_REGISTRATE.get().itemGroup(() -> LostWorldsUtils.ITEMS);
+	private static final LostWorldsRegistrate REGISTRATE = getRegistrate().itemGroup(() -> LostWorldsUtils.ITEMS);
 
 	// Copper
 	public static final ItemEntry<Item> COPPER_INGOT = REGISTRATE.item("copper_ingot", Item::new).register(),
@@ -128,8 +128,10 @@ public class LostWorldsItems {
 			CRYSTAL_SCARAB_TOP_RIGHT_LEG = REGISTRATE.item("crystal_scarab_top_right_leg", Item::new).properties(properties -> properties.fireResistant().rarity(Rarity.UNCOMMON)).register();
 
 	public static final ItemEntry<AmberItem> AMBER = REGISTRATE.item("amber", AmberItem::new).register();
-	public static final ItemEntry<Item> FOSSILIZED_FEATHER = REGISTRATE.item("fossilized_feather", Item::new).register(),FOSSILIZED_SKIN_IMPRESSION=REGISTRATE.item("fossilized_skin_impression",Item::new).register();
-	public static final ItemEntry<ModBoneMealItem> GROUND_FOSSIL = REGISTRATE.item("ground_fossil", ModBoneMealItem::new).register(),PLANT_WASTE=REGISTRATE.item("plant_waste",ModBoneMealItem::new).register();
+	public static final ItemEntry<Item> FOSSILIZED_FEATHER = REGISTRATE.item("fossilized_feather", Item::new).register(),
+			FOSSILIZED_SKIN_IMPRESSION = REGISTRATE.item("fossilized_skin_impression", Item::new).register();
+	public static final ItemEntry<ModBoneMealItem> GROUND_FOSSIL = REGISTRATE.item("ground_fossil", ModBoneMealItem::new).register(),
+			PLANT_WASTE = REGISTRATE.item("plant_waste", ModBoneMealItem::new).register();
 
 	public static final ItemEntry<Item> ARAUCARIA_BARK_SAMPLE = REGISTRATE.item("araucaria_bark_sample", Item::new).tag(LostWorldsTags.ModItemTags.BARK_SAMPLES).register(),
 			CALAMITES_BARK_SAMPLE = REGISTRATE.item("calamites_bark_sample", Item::new).tag(LostWorldsTags.ModItemTags.BARK_SAMPLES).register(),

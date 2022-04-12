@@ -863,21 +863,21 @@ public class ModBiomeFeatures {
 	}
 
 	private static void addJurassicOres(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_COAL_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_DIAMOND_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_GOLD_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_IRON_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_LAPIS_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_REDSTONE_ORE);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_COPPER_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_COAL_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_DIAMOND_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_GOLD_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_IRON_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_LAPIS_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_REDSTONE_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_COPPER_ORE.get());
 	}
 
 	private static void addJurassicEmerald(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_EMERALD_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_EMERALD_ORE.get());
 	}
 
 	private static void addExtraJurassicDiamonds(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.JURASSIC_DIAMOND_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_DIAMOND_ORE.get());
 	}
 
 	// Cretaceous Features

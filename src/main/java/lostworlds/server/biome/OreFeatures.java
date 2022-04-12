@@ -19,6 +19,7 @@ import net.minecraft.world.gen.placement.Placement;
 
 public class OreFeatures {
 	// Overworld
+	public static final Supplier<ConfiguredFeature<?, ?>> COPPER_ORE = () -> register("copper_ore", Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, getStateWhenCan(LostWorldsBlocks.COPPER_ORE), LostWorldsConfig.SERVER_CONFIG.copperVeinSize.get())).range(LostWorldsConfig.SERVER_CONFIG.copperRange.get()).squared().count(LostWorldsConfig.SERVER_CONFIG.copperCountPerChunk.get()));
 	public static final Supplier<ConfiguredFeature<?, ?>> SILT_PATCH = () -> register("silt_patch", Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, LostWorldsBlocks.SILT.getDefaultState(), LostWorldsConfig.SERVER_CONFIG.siltVeinSize.get())).range(LostWorldsConfig.SERVER_CONFIG.siltRange.get()).squared().count(LostWorldsConfig.SERVER_CONFIG.siltCountPerChunk.get()));
 
 	// Permian
@@ -40,4 +41,12 @@ public class OreFeatures {
 	public static final Supplier<ConfiguredFeature<?, ?>> PERMIAN_RAW_MARBLE_ORE = () -> register("permian_raw_marble_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE.get(), LostWorldsBlocks.RAW_MARBLE.defaultBlockState(), 33)).range(256).squared().count(8));
 	public static final Supplier<ConfiguredFeature<?, ?>> PERMIAN_LIMESTONE_ORE = () -> register("permian_limestone_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.PERMIAN_STONE.get(), LostWorldsBlocks.LIMESTONE.defaultBlockState(), 33)).range(256).squared().count(8));
 
+	public static final Supplier<ConfiguredFeature<?, ?>> JURASSIC_COAL_ORE = () -> register("jurassic_coal_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), getStateWhenCan(LostWorldsBlocks.JURASSIC_COAL_ORE), 17)).range(128).squared().count(20));
+	public static final Supplier<ConfiguredFeature<?, ?>> JURASSIC_IRON_ORE = () -> register("jurassic_iron_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), getStateWhenCan(LostWorldsBlocks.JURASSIC_IRON_ORE), 9)).range(64).squared().count(20));
+	public static final Supplier<ConfiguredFeature<?, ?>> JURASSIC_GOLD_ORE = () -> register("jurassic_gold_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), getStateWhenCan(LostWorldsBlocks.JURASSIC_GOLD_ORE), 9)).range(32).squared().count(2));
+	public static final Supplier<ConfiguredFeature<?, ?>> JURASSIC_REDSTONE_ORE = () -> register("jurassic_redstone_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), getStateWhenCan(LostWorldsBlocks.JURASSIC_REDSTONE_ORE), 8)).range(16).squared().count(8));
+	public static final Supplier<ConfiguredFeature<?, ?>> JURASSIC_DIAMOND_ORE = () -> register("jurassic_diamond_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), getStateWhenCan(LostWorldsBlocks.JURASSIC_DIAMOND_ORE), 8)).range(16).squared());
+	public static final Supplier<ConfiguredFeature<?, ?>> JURASSIC_LAPIS_ORE = () -> register("jurassic_lapis_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), getStateWhenCan(LostWorldsBlocks.JURASSIC_LAPIS_ORE), 7)).decorated(Placement.DEPTH_AVERAGE.configured(new DepthAverageConfig(16, 16))).squared());
+	public static final Supplier<ConfiguredFeature<?, ?>> JURASSIC_EMERALD_ORE = () -> register("jurassic_emerald_ore", Feature.EMERALD_ORE.configured(new ReplaceBlockConfig(getStateWhenCan(LostWorldsBlocks.JURASSIC_STONE), getStateWhenCan(LostWorldsBlocks.JURASSIC_EMERALD_ORE))).decorated(Placement.EMERALD_ORE.configured(IPlacementConfig.NONE)));
+	public static final Supplier<ConfiguredFeature<?, ?>> JURASSIC_COPPER_ORE = () -> register("jurassic_copper_ore", Feature.ORE.configured(new OreFeatureConfig(ModBlockFillerTypes.JURASSIC_STONE.get(), getStateWhenCan(LostWorldsBlocks.JURASSIC_COPPER_ORE), LostWorldsConfig.SERVER_CONFIG.copperVeinSize.get())).range(LostWorldsConfig.SERVER_CONFIG.copperRange.get()).squared().count(LostWorldsConfig.SERVER_CONFIG.copperCountPerChunk.get()));
 }

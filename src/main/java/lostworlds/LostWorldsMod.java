@@ -97,6 +97,10 @@ public class LostWorldsMod {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, LostWorldsConfig.serverSpec);
 	}
 
+	public static LostWorldsRegistrate getRegistrate() {
+		return CENTRAL_REGISTRATE.get();
+	}
+
 	private void modBus() {
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 

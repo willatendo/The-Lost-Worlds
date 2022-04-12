@@ -12,11 +12,13 @@ import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 
 public class JurassicErrodedMountains extends ModBiome {
-	public static final BiomeGenerationSettings.Builder GENERATION = genSettings(LostWorldsSurfaceBuilders.NAKED_JURASSIC_ERRODED_MOUNTAINS, ModSurfaceBuilderConfigs.JURASSIC_COBBLESTONE_CONFIG.get());
+	public static final BiomeGenerationSettings.Builder GENERATION = new BiomeGenerationSettings.Builder();
 	public static final MobSpawnInfo.Builder MOB_SPAWNS = new MobSpawnInfo.Builder();
 	public static final BiomeAmbience.Builder AMBIENCE = new BiomeAmbience.Builder().waterColor(BaseBiomeInfo.BASE_WATER_COLOUR).waterFogColor(BaseBiomeInfo.BASE_WATER_FOG_COLOUR).fogColor(BaseBiomeInfo.BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
 	static {
+		GENERATION.surfaceBuilder(() -> LostWorldsSurfaceBuilders.JURASSIC_ERRODED_MOUNTIANS.configured(ModSurfaceBuilderConfigs.JURASSIC_COBBLESTONE_CONFIG.get()));
+
 		ModBiomeFeatures.jurassicMountains(GENERATION);
 	}
 
