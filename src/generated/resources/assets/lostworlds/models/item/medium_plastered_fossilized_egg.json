@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "lostworlds:item/medium_plastered_fossilized_egg"
+  }
+}

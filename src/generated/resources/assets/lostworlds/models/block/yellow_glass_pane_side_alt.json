@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_side_alt",
+  "textures": {
+    "pane": "lostworlds:block/yellow_glass",
+    "edge": "lostworlds:block/clear_glass_pane_top"
+  }
+}

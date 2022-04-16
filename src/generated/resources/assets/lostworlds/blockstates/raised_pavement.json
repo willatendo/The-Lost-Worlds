@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "lostworlds:block/raised_pavement_top"
+    },
+    "type=bottom": {
+      "model": "lostworlds:block/raised_pavement"
+    },
+    "type=double": {
+      "model": "lostworlds:block/pavement"
+    }
+  }
+}

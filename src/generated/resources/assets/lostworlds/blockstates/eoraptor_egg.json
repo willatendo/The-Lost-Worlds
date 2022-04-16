@@ -1,0 +1,175 @@
+{
+  "variants": {
+    "hatch=0,tiny_eggs=1": {
+      "model": "lostworlds:block/eoraptor_egg1"
+    },
+    "hatch=1,tiny_eggs=1": {
+      "model": "lostworlds:block/eoraptor_egg1"
+    },
+    "hatch=2,tiny_eggs=1": {
+      "model": "lostworlds:block/eoraptor_egg1"
+    },
+    "hatch=0,tiny_eggs=2": {
+      "model": "lostworlds:block/eoraptor_egg2"
+    },
+    "hatch=1,tiny_eggs=2": {
+      "model": "lostworlds:block/eoraptor_egg2"
+    },
+    "hatch=2,tiny_eggs=2": {
+      "model": "lostworlds:block/eoraptor_egg2"
+    },
+    "hatch=0,tiny_eggs=3": {
+      "model": "lostworlds:block/eoraptor_egg3"
+    },
+    "hatch=1,tiny_eggs=3": {
+      "model": "lostworlds:block/eoraptor_egg3"
+    },
+    "hatch=2,tiny_eggs=3": {
+      "model": "lostworlds:block/eoraptor_egg3"
+    },
+    "hatch=0,tiny_eggs=4": {
+      "model": "lostworlds:block/eoraptor_egg4"
+    },
+    "hatch=1,tiny_eggs=4": {
+      "model": "lostworlds:block/eoraptor_egg4"
+    },
+    "hatch=2,tiny_eggs=4": {
+      "model": "lostworlds:block/eoraptor_egg4"
+    },
+    "hatch=0,tiny_eggs=5": {
+      "model": "lostworlds:block/eoraptor_egg5"
+    },
+    "hatch=1,tiny_eggs=5": {
+      "model": "lostworlds:block/eoraptor_egg5"
+    },
+    "hatch=2,tiny_eggs=5": {
+      "model": "lostworlds:block/eoraptor_egg5"
+    },
+    "hatch=0,tiny_eggs=6": {
+      "model": "lostworlds:block/eoraptor_egg6"
+    },
+    "hatch=1,tiny_eggs=6": {
+      "model": "lostworlds:block/eoraptor_egg6"
+    },
+    "hatch=2,tiny_eggs=6": {
+      "model": "lostworlds:block/eoraptor_egg6"
+    },
+    "hatch=0,tiny_eggs=7": {
+      "model": "lostworlds:block/eoraptor_egg7"
+    },
+    "hatch=1,tiny_eggs=7": {
+      "model": "lostworlds:block/eoraptor_egg7"
+    },
+    "hatch=2,tiny_eggs=7": {
+      "model": "lostworlds:block/eoraptor_egg7"
+    },
+    "hatch=0,tiny_eggs=8": {
+      "model": "lostworlds:block/eoraptor_egg8"
+    },
+    "hatch=1,tiny_eggs=8": {
+      "model": "lostworlds:block/eoraptor_egg8"
+    },
+    "hatch=2,tiny_eggs=8": {
+      "model": "lostworlds:block/eoraptor_egg8"
+    },
+    "hatch=0,tiny_eggs=9": {
+      "model": "lostworlds:block/eoraptor_egg9"
+    },
+    "hatch=1,tiny_eggs=9": {
+      "model": "lostworlds:block/eoraptor_egg9"
+    },
+    "hatch=2,tiny_eggs=9": {
+      "model": "lostworlds:block/eoraptor_egg9"
+    },
+    "hatch=0,tiny_eggs=10": {
+      "model": "lostworlds:block/eoraptor_egg10"
+    },
+    "hatch=1,tiny_eggs=10": {
+      "model": "lostworlds:block/eoraptor_egg10"
+    },
+    "hatch=2,tiny_eggs=10": {
+      "model": "lostworlds:block/eoraptor_egg10"
+    },
+    "hatch=0,tiny_eggs=11": {
+      "model": "lostworlds:block/eoraptor_egg11"
+    },
+    "hatch=1,tiny_eggs=11": {
+      "model": "lostworlds:block/eoraptor_egg11"
+    },
+    "hatch=2,tiny_eggs=11": {
+      "model": "lostworlds:block/eoraptor_egg11"
+    },
+    "hatch=0,tiny_eggs=12": {
+      "model": "lostworlds:block/eoraptor_egg12"
+    },
+    "hatch=1,tiny_eggs=12": {
+      "model": "lostworlds:block/eoraptor_egg12"
+    },
+    "hatch=2,tiny_eggs=12": {
+      "model": "lostworlds:block/eoraptor_egg12"
+    },
+    "hatch=0,tiny_eggs=13": {
+      "model": "lostworlds:block/eoraptor_egg13"
+    },
+    "hatch=1,tiny_eggs=13": {
+      "model": "lostworlds:block/eoraptor_egg13"
+    },
+    "hatch=2,tiny_eggs=13": {
+      "model": "lostworlds:block/eoraptor_egg13"
+    },
+    "hatch=0,tiny_eggs=14": {
+      "model": "lostworlds:block/eoraptor_egg14"
+    },
+    "hatch=1,tiny_eggs=14": {
+      "model": "lostworlds:block/eoraptor_egg14"
+    },
+    "hatch=2,tiny_eggs=14": {
+      "model": "lostworlds:block/eoraptor_egg14"
+    },
+    "hatch=0,tiny_eggs=15": {
+      "model": "lostworlds:block/eoraptor_egg15"
+    },
+    "hatch=1,tiny_eggs=15": {
+      "model": "lostworlds:block/eoraptor_egg15"
+    },
+    "hatch=2,tiny_eggs=15": {
+      "model": "lostworlds:block/eoraptor_egg15"
+    },
+    "hatch=0,tiny_eggs=16": {
+      "model": "lostworlds:block/eoraptor_egg16"
+    },
+    "hatch=1,tiny_eggs=16": {
+      "model": "lostworlds:block/eoraptor_egg16"
+    },
+    "hatch=2,tiny_eggs=16": {
+      "model": "lostworlds:block/eoraptor_egg16"
+    },
+    "hatch=0,tiny_eggs=17": {
+      "model": "lostworlds:block/eoraptor_egg17"
+    },
+    "hatch=1,tiny_eggs=17": {
+      "model": "lostworlds:block/eoraptor_egg17"
+    },
+    "hatch=2,tiny_eggs=17": {
+      "model": "lostworlds:block/eoraptor_egg17"
+    },
+    "hatch=0,tiny_eggs=18": {
+      "model": "lostworlds:block/eoraptor_egg18"
+    },
+    "hatch=1,tiny_eggs=18": {
+      "model": "lostworlds:block/eoraptor_egg18"
+    },
+    "hatch=2,tiny_eggs=18": {
+      "model": "lostworlds:block/eoraptor_egg18"
+    },
+    "hatch=0,tiny_eggs=19": {
+      "model": "lostworlds:block/eoraptor_egg19"
+    },
+    "hatch=1,tiny_eggs=19": {
+      "model": "lostworlds:block/eoraptor_egg19"
+    },
+    "hatch=2,tiny_eggs=19": {
+      "model": "lostworlds:block/eoraptor_egg19"
+    }
+  }
+}

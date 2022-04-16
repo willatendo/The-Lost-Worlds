@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom",
+  "textures": {
+    "bottom": "lostworlds:block/calamites_door_bottom",
+    "top": "lostworlds:block/calamites_door_top"
+  }
+}

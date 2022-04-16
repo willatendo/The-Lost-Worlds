@@ -38,6 +38,7 @@ public class LostWorldsTags {
 		public static final ITag.INamedTag<Block> CALAMITES_PLACEABLES = tag("calamites_placeables");
 		public static final ITag.INamedTag<Block> CALAMITES_LOGS = tag("calamites_logs");
 		public static final ITag.INamedTag<Block> CONIFER_LOGS = tag("conifer_logs");
+		public static final ITag.INamedTag<Block> CYPRESS_LOGS = tag("cypress_logs");
 		public static final ITag.INamedTag<Block> DARK_CONCRETE = tag("dark_concrete");
 		public static final ITag.INamedTag<Block> DECORATIVE_BLOCKS = tag("decorative_blocks");
 		public static final ITag.INamedTag<Block> DECORATIVE_DOORS = tag("decorative_doors");
@@ -50,6 +51,7 @@ public class LostWorldsTags {
 		public static final ITag.INamedTag<Block> REFINED_WOODEN_PLANKS = tag("refined_wooden_planks");
 		public static final ITag.INamedTag<Block> ROADS = tag("roads");
 		public static final ITag.INamedTag<Block> SCORCHED_LOGS = tag("scorched_logs");
+		public static final ITag.INamedTag<Block> SEQUOIA_LOGS = tag("sequoia_logs");
 		public static final ITag.INamedTag<Block> WOODEN_PLANKS = tag("wooden_planks");
 
 		private static ITag.INamedTag<Block> tag(String id) {

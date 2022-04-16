@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "small_eggs=1": {
+      "model": "lostworlds:block/small_plastered_fossilized_egg1"
+    },
+    "small_eggs=2": {
+      "model": "lostworlds:block/small_plastered_fossilized_egg2"
+    },
+    "small_eggs=3": {
+      "model": "lostworlds:block/small_plastered_fossilized_egg3"
+    },
+    "small_eggs=4": {
+      "model": "lostworlds:block/small_plastered_fossilized_egg4"
+    },
+    "small_eggs=5": {
+      "model": "lostworlds:block/small_plastered_fossilized_egg5"
+    },
+    "small_eggs=6": {
+      "model": "lostworlds:block/small_plastered_fossilized_egg6"
+    },
+    "small_eggs=7": {
+      "model": "lostworlds:block/small_plastered_fossilized_egg7"
+    },
+    "small_eggs=8": {
+      "model": "lostworlds:block/small_plastered_fossilized_egg8"
+    },
+    "small_eggs=9": {
+      "model": "lostworlds:block/small_plastered_fossilized_egg9"
+    },
+    "small_eggs=10": {
+      "model": "lostworlds:block/small_plastered_fossilized_egg10"
+    }
+  }
+}

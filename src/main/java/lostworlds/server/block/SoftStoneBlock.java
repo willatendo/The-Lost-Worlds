@@ -26,10 +26,10 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.ForgeEventFactory;
 
 public class SoftStoneBlock extends Block {
-	private static final EnumProperty<TimeEras> ERA = EnumProperty.create("era", TimeEras.class);
-	private static final EnumProperty<PotentialPart> POTENTIAL_PART = EnumProperty.create("potential_part", PotentialPart.class);
-	private static final EnumProperty<DinoTypes> POTENTIAL_CREATURE = EnumProperty.create("potential_creature", DinoTypes.class);
-	private static final EnumProperty<Damage> DAMAGE = EnumProperty.create("damage", Damage.class);
+	public static final EnumProperty<TimeEras> ERA = EnumProperty.create("era", TimeEras.class);
+	public static final EnumProperty<PotentialPart> POTENTIAL_PART = EnumProperty.create("potential_part", PotentialPart.class);
+	public static final EnumProperty<DinoTypes> POTENTIAL_CREATURE = EnumProperty.create("potential_creature", DinoTypes.class);
+	public static final EnumProperty<Damage> DAMAGE = EnumProperty.create("damage", Damage.class);
 
 	public SoftStoneBlock(Properties properties) {
 		super(properties);

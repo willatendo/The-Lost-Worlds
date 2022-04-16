@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_side",
+  "textures": {
+    "texture": "lostworlds:block/refined_wooden_planks"
+  }
+}

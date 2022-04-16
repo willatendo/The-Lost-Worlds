@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/bamboo3_age0",
+  "textures": {
+    "all": "lostworlds:block/calamites_suckowii_stalk",
+    "particle": "lostworlds:block/calamites_suckowii_stalk"
+  }
+}

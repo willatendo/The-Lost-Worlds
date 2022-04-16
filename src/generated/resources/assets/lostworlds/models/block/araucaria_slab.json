@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "side": "lostworlds:block/araucaria_planks",
+    "bottom": "lostworlds:block/araucaria_planks",
+    "top": "lostworlds:block/araucaria_planks"
+  }
+}

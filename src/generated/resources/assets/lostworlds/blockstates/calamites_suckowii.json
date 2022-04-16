@@ -1,0 +1,20 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "age": "0"
+      },
+      "apply": {
+        "model": "lostworlds:block/calamites_suckowii4_age0"
+      }
+    },
+    {
+      "when": {
+        "age": "1"
+      },
+      "apply": {
+        "model": "lostworlds:block/calamites_suckowii4_age1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "minecraft:block/stone",
+    "east": "minecraft:block/stone",
+    "south": "minecraft:block/stone",
+    "west": "minecraft:block/stone",
+    "up": "lostworlds:block/fossilized_track_top",
+    "down": "minecraft:block/stone",
+    "particle": "minecraft:block/stone"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "variants": {
+    "hatch=0,medium_eggs=1": {
+      "model": "lostworlds:block/suchomimus_egg1"
+    },
+    "hatch=1,medium_eggs=1": {
+      "model": "lostworlds:block/suchomimus_egg1"
+    },
+    "hatch=2,medium_eggs=1": {
+      "model": "lostworlds:block/suchomimus_egg1"
+    },
+    "hatch=0,medium_eggs=2": {
+      "model": "lostworlds:block/suchomimus_egg2"
+    },
+    "hatch=1,medium_eggs=2": {
+      "model": "lostworlds:block/suchomimus_egg2"
+    },
+    "hatch=2,medium_eggs=2": {
+      "model": "lostworlds:block/suchomimus_egg2"
+    },
+    "hatch=0,medium_eggs=3": {
+      "model": "lostworlds:block/suchomimus_egg3"
+    },
+    "hatch=1,medium_eggs=3": {
+      "model": "lostworlds:block/suchomimus_egg3"
+    },
+    "hatch=2,medium_eggs=3": {
+      "model": "lostworlds:block/suchomimus_egg3"
+    },
+    "hatch=0,medium_eggs=4": {
+      "model": "lostworlds:block/suchomimus_egg4"
+    },
+    "hatch=1,medium_eggs=4": {
+      "model": "lostworlds:block/suchomimus_egg4"
+    },
+    "hatch=2,medium_eggs=4": {
+      "model": "lostworlds:block/suchomimus_egg4"
+    },
+    "hatch=0,medium_eggs=5": {
+      "model": "lostworlds:block/suchomimus_egg5"
+    },
+    "hatch=1,medium_eggs=5": {
+      "model": "lostworlds:block/suchomimus_egg5"
+    },
+    "hatch=2,medium_eggs=5": {
+      "model": "lostworlds:block/suchomimus_egg5"
+    },
+    "hatch=0,medium_eggs=6": {
+      "model": "lostworlds:block/suchomimus_egg6"
+    },
+    "hatch=1,medium_eggs=6": {
+      "model": "lostworlds:block/suchomimus_egg6"
+    },
+    "hatch=2,medium_eggs=6": {
+      "model": "lostworlds:block/suchomimus_egg6"
+    }
+  }
+}

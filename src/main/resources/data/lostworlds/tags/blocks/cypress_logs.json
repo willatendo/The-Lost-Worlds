@@ -1,9 +1,0 @@
-{
-	"replace": false,
-	"values": [
-		"lostworlds:cypress_log",
-		"lostworlds:stripped_cypress_log",
-		"lostworlds:cypress_wood",
-		"lostworlds:stripped_cypress_wood"
-	]
-}

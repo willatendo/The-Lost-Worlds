@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:sand",
+    "#forge:dirt",
+    "lostworlds:calamites_suckowii",
+    "lostworlds:calamites_suckowii_sapling",
+    "minecraft:gravel"
+  ]
+}
