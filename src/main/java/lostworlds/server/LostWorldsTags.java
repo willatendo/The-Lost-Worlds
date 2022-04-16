@@ -21,10 +21,20 @@ public class LostWorldsTags {
 		public static final ITag.INamedTag<Item> FOOD_SEEDS = tag("food_seeds");
 		public static final ITag.INamedTag<Item> FOSSILS = tag("fossils");
 		public static final ITag.INamedTag<Item> GINKGO_LOGS = tag("ginkgo_logs");
+		public static final ITag.INamedTag<Item> GLASS = tag("glass");
+		public static final ITag.INamedTag<Item> JURASSIC_PARK_ERA = tag("jurassic_park_era");
+		public static final ITag.INamedTag<Item> JURASSIC_WORLD_ERA = tag("jurassic_world_era");
+		public static final ITag.INamedTag<Item> LIGHT_CONCRETE = tag("light_concrete");
+		public static final ITag.INamedTag<Item> PAVEMENT = tag("pavement");
+		public static final ITag.INamedTag<Item> PETRIFIED_LOGS = tag("petrified_logs");
+		public static final ITag.INamedTag<Item> REFINED_WOODEN_PLANKS = tag("refined_wooden_planks");
+		public static final ITag.INamedTag<Item> ROADS = tag("roads");
 		public static final ITag.INamedTag<Item> SCORCHED_LOGS = tag("scorched_logs");
+		public static final ITag.INamedTag<Item> SEQUOIA_LOGS = tag("sequoia_logs");
 		public static final ITag.INamedTag<Item> SOFT_TISSUE = tag("soft_tissue");
 		public static final ITag.INamedTag<Item> TIME_BOOK_FUEL = tag("time_book_fuel");
 		public static final ITag.INamedTag<Item> TIME_BOOKS = tag("time_books");
+		public static final ITag.INamedTag<Item> WOODEN_PLANKS = tag("wooden_planks");
 
 		private static ITag.INamedTag<Item> tag(String id) {
 			return ItemTags.createOptional(LostWorldsUtils.rL(id));
@@ -43,11 +53,15 @@ public class LostWorldsTags {
 		public static final ITag.INamedTag<Block> DECORATIVE_BLOCKS = tag("decorative_blocks");
 		public static final ITag.INamedTag<Block> DECORATIVE_DOORS = tag("decorative_doors");
 		public static final ITag.INamedTag<Block> DINO_SPAWNABLES = tag("dino_spawnables");
+		public static final ITag.INamedTag<Block> EGGS = tag("eggs");
 		public static final ITag.INamedTag<Block> FOSSILS = tag("");
 		public static final ITag.INamedTag<Block> GINKGO_LOGS = tag("ginkgo_logs");
 		public static final ITag.INamedTag<Block> GLASS = tag("glass");
+		public static final ITag.INamedTag<Block> JURASSIC_PARK_ERA = tag("jurassic_park_era");
+		public static final ITag.INamedTag<Block> JURASSIC_WORLD_ERA = tag("jurassic_world_era");
 		public static final ITag.INamedTag<Block> LIGHT_CONCRETE = tag("light_concrete");
 		public static final ITag.INamedTag<Block> PAVEMENT = tag("pavement");
+		public static final ITag.INamedTag<Block> PETRIFIED_LOGS = tag("petrified_logs");
 		public static final ITag.INamedTag<Block> REFINED_WOODEN_PLANKS = tag("refined_wooden_planks");
 		public static final ITag.INamedTag<Block> ROADS = tag("roads");
 		public static final ITag.INamedTag<Block> SCORCHED_LOGS = tag("scorched_logs");

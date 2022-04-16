@@ -44,6 +44,9 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		super(modid);
 
 		this.addDataGenerator(ProviderType.BLOCK_TAGS, provider -> provider.tag(LostWorldsTags.ModBlockTags.CALAMITES_PLACEABLES).addTag(BlockTags.SAND).addTag(Tags.Blocks.DIRT).add(LostWorldsBlocks.CALAMITES_SUCKOWII.get()).add(LostWorldsBlocks.CALAMITES_SUCKOWII_SAPLING.get()).add(Blocks.GRAVEL));
+		this.addDataGenerator(ProviderType.BLOCK_TAGS, provider -> provider.tag(LostWorldsTags.ModBlockTags.DINO_SPAWNABLES).addTag(Tags.Blocks.SAND).addTag(Tags.Blocks.GRAVEL).addTag(Tags.Blocks.DIRT).addTag(Tags.Blocks.STONE));
+		this.addDataGenerator(ProviderType.BLOCK_TAGS, provider -> provider.tag(LostWorldsTags.ModBlockTags.JURASSIC_PARK_ERA).addTag(LostWorldsTags.ModBlockTags.LIGHT_CONCRETE).addTag(LostWorldsTags.ModBlockTags.WOODEN_PLANKS));
+		this.addDataGenerator(ProviderType.BLOCK_TAGS, provider -> provider.tag(LostWorldsTags.ModBlockTags.JURASSIC_WORLD_ERA).addTag(LostWorldsTags.ModBlockTags.DARK_CONCRETE).addTag(LostWorldsTags.ModBlockTags.REFINED_WOODEN_PLANKS));
 
 		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("itemGroup.lostworlds.items", "Lost Worlds Items"));
 		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("itemGroup.lostworlds.blocks", "Lost Worlds Blocks"));
@@ -164,6 +167,6 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	}
 
 	public <T extends AbstractSignBlock> BlockBuilder<T, LostWorldsRegistrate> signBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().addModels(new ConfiguredModel(provider.models().getBuilder(name).texture("particle", provider.modLoc("block/" + texture)))));
+		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().addModels(new ConfiguredModel(provider.models().getBuilder(name).texture("particle", provider.modLoc("block/" + texture))))).lang(provider -> "block.lostworlds." + name + ".disabled", "Sign");
 	}
 }
