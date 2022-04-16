@@ -1,11 +1,13 @@
 package lostworlds.server.tab;
 
+import java.util.function.Supplier;
+
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
 public class ModTab extends ItemGroup {
-	private ItemStack icon;
+	private Supplier<ItemStack> icon;
 
 	public ModTab(String id) {
 		super(LostWorldsUtils.ID + "." + id);
@@ -13,10 +15,10 @@ public class ModTab extends ItemGroup {
 
 	@Override
 	public ItemStack makeIcon() {
-		return this.icon;
+		return this.icon.get();
 	}
 
-	public void setIcon(ItemStack icon) {
+	public void setIcon(Supplier<ItemStack> icon) {
 		this.icon = icon;
 	}
 }

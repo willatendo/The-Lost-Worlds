@@ -1,5 +1,7 @@
 package lostworlds.server.block;
 
+import java.util.function.Supplier;
+
 import lostworlds.server.item.WetPaperItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -26,11 +28,11 @@ import net.minecraft.world.World;
 
 public class FossilizedTrackBlock extends Block {
 	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
-	private static Block turnTo;
+	private final Supplier<Block> turnToBlock;
 
-	public FossilizedTrackBlock(Properties properties, Block turnTo) {
+	public FossilizedTrackBlock(Supplier<Block> turnToBlock, Properties properties) {
 		super(properties);
-		this.turnTo = turnTo;
+		this.turnToBlock = turnToBlock;
 		this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH));
 	}
 
@@ -56,13 +58,13 @@ public class FossilizedTrackBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		return !this.defaultBlockState().canSurvive(context.getLevel(), context.getClickedPos()) ? turnTo.defaultBlockState() : this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite());
+		return !this.defaultBlockState().canSurvive(context.getLevel(), context.getClickedPos()) ? turnToBlock.get().defaultBlockState() : this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite());
 	}
 
 	@Override
 	public BlockState updateShape(BlockState state, Direction direction, BlockState newstate, IWorld world, BlockPos pos, BlockPos newpos) {
 		if (!world.getBlockState(pos.above()).is(Blocks.AIR)) {
-			world.setBlock(pos, turnTo.defaultBlockState(), 3);
+			world.setBlock(pos, turnToBlock.get().defaultBlockState(), 3);
 		}
 
 		return super.updateShape(state, direction, newstate, world, pos, newpos);
@@ -73,7 +75,7 @@ public class FossilizedTrackBlock extends Block {
 		if (entity.getItemInHand(hand) != null) {
 			Item item = entity.getItemInHand(hand).getItem();
 			if (item instanceof WetPaperItem) {
-				world.setBlockAndUpdate(pos, LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.defaultBlockState().setValue(HORIZONTAL_FACING, state.getValue(HORIZONTAL_FACING)));
+				world.setBlockAndUpdate(pos, LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.getDefaultState().setValue(HORIZONTAL_FACING, state.getValue(HORIZONTAL_FACING)));
 				world.playSound(entity, pos, SoundEvents.WOOL_PLACE, SoundCategory.BLOCKS, 0.7F, 1.0F);
 
 				if (!entity.abilities.instabuild) {

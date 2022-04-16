@@ -98,7 +98,7 @@ public class DNAInjectorTileEntity extends TileEntity implements IInventory, INa
 	private ITextComponent name;
 
 	public DNAInjectorTileEntity() {
-		super(LostWorldsBlockEntities.DNA_INJECTOR_TILE_ENTITY);
+		super(LostWorldsBlockEntities.DNA_INJECTOR_TILE_ENTITY.get());
 	}
 
 	@Override

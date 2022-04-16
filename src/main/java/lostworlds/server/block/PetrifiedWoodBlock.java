@@ -14,7 +14,7 @@ import net.minecraftforge.common.ToolType;
 public class PetrifiedWoodBlock extends RotatedPillarBlock {
 	private final Supplier<Item> sample;
 
-	public PetrifiedWoodBlock(Properties properties, Supplier<Item> sample) {
+	public PetrifiedWoodBlock(Supplier<Item> sample, Properties properties) {
 		super(properties);
 		this.sample = sample;
 	}

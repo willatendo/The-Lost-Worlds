@@ -187,7 +187,7 @@ public class LostWorldsItems {
 				REGISTRATE.item(dinos.name().toLowerCase() + "_hide", Item::new).model(textured("plastered_fossil")).tag(Tags.Items.LEATHER).register();
 			}
 			if (dinos.hasSpawn().contains(dinos)) {
-				ItemEntry<SpawnItem> spawn = REGISTRATE.item(dinos.name().toLowerCase() + "_spawn", properties -> new SpawnItem(properties, () -> dinos.getEntityType())).model(model("template_spawn")).register();
+				ItemEntry<SpawnItem> spawn = REGISTRATE.item(dinos.name().toLowerCase() + "_spawn", properties -> new SpawnItem(properties, () -> dinos.getEntityType())).model(model("template_spawn")).color(() -> () -> (stack, colour) -> dinos.getColour(colour, 0x000000, dinos.getSetEggColour())).register();
 				dinos.setSpawn(() -> spawn.get());
 			}
 

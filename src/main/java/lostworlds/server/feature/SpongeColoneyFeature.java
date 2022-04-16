@@ -29,7 +29,7 @@ public class SpongeColoneyFeature extends Feature<FeatureSpreadConfig> {
 			int i1 = rand.nextInt(8) - rand.nextInt(8);
 			int j1 = seedReader.getHeight(Heightmap.Type.OCEAN_FLOOR, pos.getX() + l, pos.getZ() + i1);
 			BlockPos blockpos = new BlockPos(pos.getX() + l, j1, pos.getZ() + i1);
-			BlockState blockstate = LostWorldsBlocks.SPONGE_COLONY.defaultBlockState().setValue(SpongeColonyBlock.WATERLOGGED, Boolean.valueOf(true));
+			BlockState blockstate = LostWorldsBlocks.SPONGE_COLONY.getDefaultState().setValue(SpongeColonyBlock.WATERLOGGED, Boolean.valueOf(true));
 			if (seedReader.getBlockState(blockpos).is(Blocks.WATER) && blockstate.canSurvive(seedReader, blockpos)) {
 				seedReader.setBlock(blockpos, blockstate, 2);
 				++i;

@@ -20,7 +20,7 @@ public class DisplayCaseTileEntity extends LockableLootTileEntity implements INa
 	public DisplayCaseInventory handler;
 
 	public DisplayCaseTileEntity() {
-		super(LostWorldsBlockEntities.DISPLAY_CASE_TILE_ENTITY);
+		super(LostWorldsBlockEntities.DISPLAY_CASE_TILE_ENTITY.get());
 		handler = new DisplayCaseInventory(1, this::changed);
 	}
 

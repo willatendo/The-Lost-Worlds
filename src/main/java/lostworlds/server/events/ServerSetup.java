@@ -8,6 +8,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.tterrag.registrate.util.entry.BlockEntry;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -100,18 +101,18 @@ public class ServerSetup {
 			LostWorldsUtils.LOGGER.debug("Loading: Villager Trades");
 
 			// Archaeologist
-			VillagerTrades.ITrade[] archaeology1 = new VillagerTrades.ITrade[] { new VillagerTrades.ItemsForEmeraldsTrade(Items.CLAY_BALL, 2, 20, 2), new VillagerTrades.ItemsForEmeraldsTrade(Items.CLAY, 16, 10, 5), new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsBlocks.ARCHAEOLOGY_TABLE.asItem(), 15, 1, 3), };
+			VillagerTrades.ITrade[] archaeology1 = new VillagerTrades.ITrade[] { new VillagerTrades.ItemsForEmeraldsTrade(Items.CLAY_BALL, 2, 20, 2), new VillagerTrades.ItemsForEmeraldsTrade(Items.CLAY, 16, 10, 5), new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsBlocks.ARCHAEOLOGY_TABLE.get(), 15, 1, 12, 3), };
 			VillagerTrades.ITrade[] archaeology2 = new VillagerTrades.ITrade[] { new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsItems.WET_PAPER.get(), 3, 5, 4) };
 			VillagerTrades.ITrade[] archaeology3 = new VillagerTrades.ITrade[] { new MultiItemForEmeraldsTrade(ImmutableList.of(LostWorldsItems.GOLD_BRUSH.get(), LostWorldsItems.IRON_BRUSH.get(), LostWorldsItems.LEATHER_BRUSH.get()), ImmutableList.of(1, 1, 1), ImmutableList.of(32, 16, 4), 1, 36) };
 			VillagerTrades.ITrade[] archaeology4 = new VillagerTrades.ITrade[] { new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsItems.PERMIAN_PERIOD_TIME_BOOK.get(), 1, 1, 36), new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsItems.JURASSIC_PERIOD_TIME_BOOK.get(), 64, 1, 36), new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsItems.CRETACEOUS_PERIOD_TIME_BOOK.get(), 64, 1, 36) };
 			VillagerTrades.ITrade[] archaeology5 = new VillagerTrades.ITrade[] { new VillagerTrades.ItemsForEmeraldsTrade(Items.LODESTONE, 64, 1, 36), new EmeraldsForMultiItemTrade(ImmutableList.of(LostWorldsItems.DIAMOND_BRUSH.get(), LostWorldsItems.CLOTH_MASK.get(), LostWorldsItems.CRYSTAL_SCARAB_BRUSH.get(), LostWorldsItems.NETHERITE_BRUSH.get()), ImmutableList.of(1, 1, 1, 1), ImmutableList.of(32, 5, 64, 48), 1, 36), new MultiItemForEmeraldsTrade(ImmutableList.of(Items.GOLD_INGOT, Items.DIAMOND, Items.IRON_INGOT, Items.NETHERITE_SCRAP, LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get(), LostWorldsItems.CRYSTAL_SCARAB_BOTTOM_LEFT_LEG.get(), LostWorldsItems.CRYSTAL_SCARAB_BOTTOM_RIGHT_LEG.get(), LostWorldsItems.CRYSTAL_SCARAB_THORAX.get(), LostWorldsItems.CRYSTAL_SCARAB_TOP_LEFT_LEG.get(), LostWorldsItems.CRYSTAL_SCARAB_TOP_RIGHT_LEG.get()), ImmutableList.of(5, 1, 3, 1, 1), ImmutableList.of(10, 30, 20, 50, 64), 1, 36) };
 
 			// Paleontologist
-			VillagerTrades.ITrade[] paleontology1 = new VillagerTrades.ITrade[] { new VillagerTrades.EmeraldForItemsTrade(LostWorldsBlocks.TINY_FOSSILISED_EGG.asItem(), 4, 4, 10), new VillagerTrades.EmeraldForItemsTrade(LostWorldsBlocks.SMALL_PLASTERED_FOSSILISED_EGG.asItem(), 5, 4, 10), new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsBlocks.PALEONTOLOGY_TABLE.asItem(), 4, 1, 36) };
+			VillagerTrades.ITrade[] paleontology1 = new VillagerTrades.ITrade[] { new VillagerTrades.EmeraldForItemsTrade(LostWorldsBlocks.TINY_FOSSILISED_EGG.get(), 4, 4, 10), new VillagerTrades.EmeraldForItemsTrade(LostWorldsBlocks.SMALL_PLASTERED_FOSSILISED_EGG.get(), 5, 4, 10), new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsBlocks.PALEONTOLOGY_TABLE.get(), 4, 1, 12, 36) };
 
-			VillagerTrades.ITrade[] paleontology2 = new VillagerTrades.ITrade[] { new VillagerTrades.EmeraldForItemsTrade(LostWorldsBlocks.MEDIUM_PLASTERED_FOSSILISED_EGG.asItem(), 6, 4, 10), new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsItems.FIELD_GUIDE.get(), 25, 1, 20), new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsItems.WET_PAPER.get(), 3, 5, 12), new VillagerTrades.EmeraldForMapTrade(4, LostWorldsStructures.SURFACE_FOSSIL, MapDecoration.Type.RED_MARKER, 1, 42), new VillagerTrades.EmeraldForMapTrade(4, LostWorldsStructures.SUBTERRANEAN_FOSSIL, MapDecoration.Type.BANNER_RED, 1, 42) };
+			VillagerTrades.ITrade[] paleontology2 = new VillagerTrades.ITrade[] { new VillagerTrades.EmeraldForItemsTrade(LostWorldsBlocks.MEDIUM_PLASTERED_FOSSILISED_EGG.get(), 6, 4, 10), new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsItems.FIELD_GUIDE.get(), 25, 1, 20), new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsItems.WET_PAPER.get(), 3, 5, 12), new VillagerTrades.EmeraldForMapTrade(4, LostWorldsStructures.SURFACE_FOSSIL, MapDecoration.Type.RED_MARKER, 1, 42), new VillagerTrades.EmeraldForMapTrade(4, LostWorldsStructures.SUBTERRANEAN_FOSSIL, MapDecoration.Type.BANNER_RED, 1, 42) };
 
-			VillagerTrades.ITrade[] paleontology3 = new VillagerTrades.ITrade[] { new VillagerTrades.EmeraldForItemsTrade(LostWorldsBlocks.LARGE_FOSSILISED_EGG.asItem(), 7, 2, 15), new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsItems.HAMMER.get(), 16, 1, 20) };
+			VillagerTrades.ITrade[] paleontology3 = new VillagerTrades.ITrade[] { new VillagerTrades.EmeraldForItemsTrade(LostWorldsBlocks.LARGE_FOSSILISED_EGG.get(), 7, 2, 15), new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsItems.HAMMER.get(), 16, 1, 20) };
 
 			VillagerTrades.ITrade[] paleontology4 = new VillagerTrades.ITrade[] { new MultiItemForEmeraldsTrade(ImmutableList.of(LostWorldsItems.DIAMOND_BRUSH.get(), LostWorldsItems.GOLD_BRUSH.get(), LostWorldsItems.IRON_BRUSH.get(), LostWorldsItems.LEATHER_BRUSH.get()), ImmutableList.of(1, 1, 1, 1), ImmutableList.of(64, 32, 16, 4), 1, 26) };
 
@@ -127,8 +128,8 @@ public class ServerSetup {
 			}
 			VillagerTrades.ITrade[] paleontology5 = new VillagerTrades.ITrade[] { new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsItems.CONTRACEPTIVES.get(), 12, 5, 20), new MultiItemForEmeraldsTrade(dnaForSale, ImmutableList.of(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), ImmutableList.of(64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64), 1, 200) };
 
-			VillagerTrades.TRADES.put(LostWorldsVillagerProfessions.ARCHAEOLOGIST, toIntMap(ImmutableMap.of(1, archaeology1, 2, archaeology2, 3, archaeology3, 4, archaeology4, 5, archaeology5)));
-			VillagerTrades.TRADES.put(LostWorldsVillagerProfessions.PALEONTOLOGIST, toIntMap(ImmutableMap.of(1, paleontology1, 2, paleontology2, 3, paleontology3, 4, paleontology4, 5, paleontology5)));
+			VillagerTrades.TRADES.put(LostWorldsVillagerProfessions.ARCHAEOLOGIST.get(), toIntMap(ImmutableMap.of(1, archaeology1, 2, archaeology2, 3, archaeology3, 4, archaeology4, 5, archaeology5)));
+			VillagerTrades.TRADES.put(LostWorldsVillagerProfessions.PALEONTOLOGIST.get(), toIntMap(ImmutableMap.of(1, paleontology1, 2, paleontology2, 3, paleontology3, 4, paleontology4, 5, paleontology5)));
 
 			LostWorldsUtils.LOGGER.debug("Finished: Villager Trades");
 		}
@@ -166,8 +167,8 @@ public class ServerSetup {
 						if (!entity.isCreative()) {
 							stack.shrink(1);
 						}
-						world.setBlockAndUpdate(pos, LostWorldsBlocks.NAUTILUS_SHELL.defaultBlockState().setValue(NautilusShellBlock.HORIZONTAL_FACING, direction));
-						world.playSound(entity, pos, LostWorldsBlocks.NAUTILUS_SHELL.getSoundType(LostWorldsBlocks.NAUTILUS_SHELL.defaultBlockState()).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+						world.setBlockAndUpdate(pos, LostWorldsBlocks.NAUTILUS_SHELL.getDefaultState().setValue(NautilusShellBlock.HORIZONTAL_FACING, direction));
+						world.playSound(entity, pos, LostWorldsBlocks.NAUTILUS_SHELL.getDefaultState().getSoundType().getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
 					}
 				}
 
@@ -177,8 +178,8 @@ public class ServerSetup {
 						if (!entity.isCreative()) {
 							stack.shrink(1);
 						}
-						world.setBlockAndUpdate(pos, LostWorldsBlocks.NAUTILUS_SHELL.defaultBlockState().setValue(NautilusShellBlock.HORIZONTAL_FACING, direction));
-						world.playSound(entity, pos, LostWorldsBlocks.NAUTILUS_SHELL.getSoundType(LostWorldsBlocks.NAUTILUS_SHELL.defaultBlockState()).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+						world.setBlockAndUpdate(pos, LostWorldsBlocks.NAUTILUS_SHELL.getDefaultState().setValue(NautilusShellBlock.HORIZONTAL_FACING, direction));
+						world.playSound(entity, pos, LostWorldsBlocks.NAUTILUS_SHELL.getDefaultState().getSoundType().getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
 					}
 					event.setCanceled(true);
 				}
@@ -253,8 +254,8 @@ public class ServerSetup {
 			addToStrippingMap(LostWorldsBlocks.SCORCHED_WOOD, LostWorldsBlocks.STRIPPED_SCORCHED_WOOD);
 			addToStrippingMap(LostWorldsBlocks.SEQUOIA_LOG, LostWorldsBlocks.STRIPPED_SEQUOIA_LOG);
 			addToStrippingMap(LostWorldsBlocks.SEQUOIA_WOOD, LostWorldsBlocks.STRIPPED_SEQUOIA_WOOD);
-			addToTillingMap(LostWorldsBlocks.MOSSY_SOIL.get());
-			addToFlatteningMap(LostWorldsBlocks.MOSSY_SOIL.get());
+			addToTillingMap(LostWorldsBlocks.MOSSY_SOIL);
+			addToFlatteningMap(LostWorldsBlocks.MOSSY_SOIL);
 			addToFlammables(LostWorldsBlocks.ARAUCARIA_FENCE, 5, 20);
 			addToFlammables(LostWorldsBlocks.ARAUCARIA_FENCE_GATE, 5, 20);
 			addToFlammables(LostWorldsBlocks.ARAUCARIA_LEAVES, 30, 60);
@@ -325,24 +326,24 @@ public class ServerSetup {
 			addToFlammables(LostWorldsBlocks.STRIPPED_SEQUOIA_WOOD, 5, 5);
 		}
 
-		private static void addToStrippingMap(Block logBlock, Block strippedLogBlock) {
+		private static void addToStrippingMap(BlockEntry<? extends Block> logBlock, BlockEntry<? extends Block> strippedLogBlock) {
 			AxeItem.STRIPABLES = Maps.newHashMap(AxeItem.STRIPABLES);
-			AxeItem.STRIPABLES.put(logBlock, strippedLogBlock);
+			AxeItem.STRIPABLES.put(logBlock.get(), strippedLogBlock.get());
 		}
 
-		private static void addToTillingMap(Block dirt) {
+		private static void addToTillingMap(BlockEntry<? extends Block> dirt) {
 			HoeItem.TILLABLES = Maps.newHashMap(HoeItem.TILLABLES);
-			HoeItem.TILLABLES.put(dirt, Blocks.FARMLAND.defaultBlockState());
+			HoeItem.TILLABLES.put(dirt.get(), Blocks.FARMLAND.defaultBlockState());
 		}
 
-		private static void addToFlatteningMap(Block dirt) {
+		private static void addToFlatteningMap(BlockEntry<? extends Block> dirt) {
 			ShovelItem.FLATTENABLES = Maps.newHashMap(ShovelItem.FLATTENABLES);
-			ShovelItem.FLATTENABLES.put(dirt, Blocks.GRASS_PATH.defaultBlockState());
+			ShovelItem.FLATTENABLES.put(dirt.get(), Blocks.GRASS_PATH.defaultBlockState());
 		}
 
-		private static void addToFlammables(Block burnable, int catchFlame, int burn) {
+		private static void addToFlammables(BlockEntry<? extends Block> burnable, int catchFlame, int burn) {
 			FireBlock fireblock = (FireBlock) Blocks.FIRE;
-			fireblock.setFlammable(burnable, catchFlame, burn);
+			fireblock.setFlammable(burnable.get(), catchFlame, burn);
 		}
 	}
 }

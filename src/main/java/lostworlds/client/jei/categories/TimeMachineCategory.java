@@ -12,7 +12,6 @@ import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class TimeMachineCategory implements IRecipeCategory<TimeMachineRecipe> {
@@ -25,7 +24,7 @@ public class TimeMachineCategory implements IRecipeCategory<TimeMachineRecipe> {
 	public TimeMachineCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 0, 168, 125, 18);
-		this.icon = helper.createDrawableIngredient(new ItemStack(LostWorldsBlocks.TIME_MACHINE));
+		this.icon = helper.createDrawableIngredient(LostWorldsBlocks.TIME_MACHINE.asStack());
 	}
 
 	@Override

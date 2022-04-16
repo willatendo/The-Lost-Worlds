@@ -15,8 +15,8 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 public class LWTextureManager {
 	@SubscribeEvent
 	public static void onBake(ModelBakeEvent event) {
-		ConnectedTexturesBlock lightConcrete = LostWorldsBlocks.POLISHED_LIGHT_CONCRETE;
-		ConnectedTexturesBlock darkConcrete = LostWorldsBlocks.POLISHED_DARK_CONCRETE;
+		ConnectedTexturesBlock lightConcrete = LostWorldsBlocks.POLISHED_LIGHT_CONCRETE.get();
+		ConnectedTexturesBlock darkConcrete = LostWorldsBlocks.POLISHED_DARK_CONCRETE.get();
 		ConnectedTexturesBakedModel lightConcreteModel = new ConnectedTexturesModel(lightConcrete);
 		ConnectedTexturesBakedModel darkConcreteModel = new ConnectedTexturesModel(darkConcrete);
 		event.getModelRegistry().put(new ModelResourceLocation(lightConcrete.getRegistryName(), ""), lightConcreteModel);
@@ -36,8 +36,8 @@ public class LWTextureManager {
 	@SubscribeEvent
 	public static void onStitch(TextureStitchEvent.Post event) {
 		if (event.getMap().location().toString().equals("minecraft:textures/atlas/blocks.png")) {
-			ConnectedTexturesBlock lightConcrete = LostWorldsBlocks.POLISHED_LIGHT_CONCRETE;
-			ConnectedTexturesBlock darkConcrete = LostWorldsBlocks.POLISHED_DARK_CONCRETE;
+			ConnectedTexturesBlock lightConcrete = LostWorldsBlocks.POLISHED_LIGHT_CONCRETE.get();
+			ConnectedTexturesBlock darkConcrete = LostWorldsBlocks.POLISHED_DARK_CONCRETE.get();
 			ConnectedTextures.TEXTURES.put(lightConcrete, event.getMap().getSprite(LostWorldsUtils.rL("block/polished_light_concrete")));
 			ConnectedTextures.PARTICLES.put(lightConcrete, event.getMap().getSprite(LostWorldsUtils.rL("block/accent_light_concrete")));
 			ConnectedTextures.TEXTURES.put(darkConcrete, event.getMap().getSprite(LostWorldsUtils.rL("block/polished_dark_concrete")));

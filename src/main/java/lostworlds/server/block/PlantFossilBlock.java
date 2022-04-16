@@ -5,12 +5,8 @@ import java.util.Random;
 import lostworlds.server.entity.illager.FossilPoacherEntity;
 import lostworlds.server.entity.utils.enums.TimeEras;
 import lostworlds.server.item.LostWorldsEnchantments;
-import lostworlds.server.item.tool.ModMaterials;
-import lostworlds.server.item.tool.ModToolTypes;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -29,8 +25,8 @@ public class PlantFossilBlock extends Block {
 	public static final EnumProperty<Plants> POTENTIAL_PLANT = EnumProperty.create("potential_plant", Plants.class);
 	public static final EnumProperty<Damage> DAMAGE = EnumProperty.create("damage", Damage.class);
 
-	public PlantFossilBlock() {
-		super(AbstractBlock.Properties.of(ModMaterials.SOFT).harvestTool(ModToolTypes.HAMMER).strength(4.0F, 0.0F).noDrops().sound(SoundType.STONE));
+	public PlantFossilBlock(Properties properties) {
+		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(ERA, TimeEras.MODERN_MINECRAFT).setValue(POTENTIAL_PLANT, Plants.ALETHOPTERIS).setValue(DAMAGE, Damage.NONE));
 	}
 
@@ -53,7 +49,7 @@ public class PlantFossilBlock extends Block {
 		if (this.canDestroy(world, entity)) {
 			if (!world.isClientSide && world.random.nextInt(distance) == 0) {
 				BlockState blockstate = world.getBlockState(pos);
-				if (blockstate.is(LostWorldsBlocks.PLANT_FOSSIL)) {
+				if (blockstate.is(LostWorldsBlocks.PLANT_FOSSIL.get())) {
 					this.breakPlant(world, pos, blockstate);
 				}
 			}

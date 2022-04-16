@@ -3,9 +3,7 @@ package lostworlds.server.block;
 import javax.annotation.Nullable;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.block.builder.BlockUtils;
 import lostworlds.server.container.TimeMachineContainer;
-import lostworlds.server.item.tool.ModMaterials;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -22,14 +20,13 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ToolType;
 
 public class TimeMachineBlock extends Block {
 	private static final ITextComponent CONTAINER_NAME = LostWorldsUtils.tTC("container", "time_machine");
 	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 12, 16);
 
-	protected TimeMachineBlock() {
-		super(Properties.of(ModMaterials.MAGIC).harvestTool(ToolType.PICKAXE).harvestLevel(5).requiresCorrectToolForDrops().strength(50.0F, 1200.0F));
+	public TimeMachineBlock(Properties properties) {
+		super(properties);
 	}
 
 	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) {
@@ -58,9 +55,5 @@ public class TimeMachineBlock extends Block {
 
 	public BlockRenderType getRenderShape(BlockState state) {
 		return BlockRenderType.MODEL;
-	}
-
-	public static Block create() {
-		return BlockUtils.create("time_machine", new TimeMachineBlock());
 	}
 }

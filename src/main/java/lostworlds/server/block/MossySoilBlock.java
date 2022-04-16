@@ -76,7 +76,7 @@ public class MossySoilBlock extends Block implements IGrowable {
 	public void performBonemeal(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
 		BlockPos blockpos = pos.above();
 		BlockState growOne = Blocks.FERN.defaultBlockState();
-		BlockState growTwo = LostWorldsBlocks.GROUND_FERNS.defaultBlockState();
+		BlockState growTwo = LostWorldsBlocks.GROUND_FERNS.getDefaultState();
 
 		label48: for (int i = 0; i < 128; ++i) {
 			BlockPos blockpos1 = blockpos;

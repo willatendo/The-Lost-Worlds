@@ -85,6 +85,6 @@ public class DNAExtractorRecipe implements IRecipe<IInventory> {
 
 	@Override
 	public ItemStack getToastSymbol() {
-		return new ItemStack(LostWorldsBlocks.DNA_EXTRACTOR.asItem());
+		return LostWorldsBlocks.DNA_EXTRACTOR.asStack();
 	}
 }

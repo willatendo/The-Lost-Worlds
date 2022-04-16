@@ -102,7 +102,7 @@ public class ArchaeologyTableContainer extends Container {
 
 	@Override
 	public boolean stillValid(PlayerEntity player) {
-		return stillValid(this.access, player, LostWorldsBlocks.ARCHAEOLOGY_TABLE);
+		return stillValid(this.access, player, LostWorldsBlocks.ARCHAEOLOGY_TABLE.get());
 	}
 
 	@Override

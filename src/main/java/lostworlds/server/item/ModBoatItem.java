@@ -3,7 +3,6 @@ package lostworlds.server.item;
 import java.util.List;
 import java.util.function.Predicate;
 
-import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.ModBoatEntity;
 import lostworlds.server.entity.utils.enums.ModBoatType;
 import net.minecraft.entity.Entity;
@@ -24,8 +23,8 @@ public class ModBoatItem extends Item {
 	private static final Predicate<Entity> RIDERS = EntityPredicates.NO_SPECTATORS.and(Entity::isPickable);
 	private final ModBoatType type;
 
-	public ModBoatItem(ModBoatType type) {
-		super(new Properties().stacksTo(1).tab(LostWorldsUtils.BLOCKS));
+	public ModBoatItem(ModBoatType type, Properties properties) {
+		super(properties);
 		this.type = type;
 	}
 

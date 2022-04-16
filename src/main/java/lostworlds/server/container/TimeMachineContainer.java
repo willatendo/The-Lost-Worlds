@@ -122,7 +122,7 @@ public class TimeMachineContainer extends Container {
 
 	@Override
 	public boolean stillValid(PlayerEntity entity) {
-		return stillValid(this.access, entity, LostWorldsBlocks.TIME_MACHINE);
+		return stillValid(this.access, entity, LostWorldsBlocks.TIME_MACHINE.get());
 	}
 
 	@Override

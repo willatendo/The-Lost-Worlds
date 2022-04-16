@@ -1,33 +1,23 @@
 package lostworlds.server.entity;
 
-import java.util.Set;
-
-import com.google.common.collect.ImmutableSet;
-
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.village.PointOfInterestType;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsPOIs {
-	private static Set<BlockState> getBlockStates(Block block) {
-		return ImmutableSet.copyOf(block.getStateDefinition().getPossibleStates());
-	}
+	public static final DeferredRegister<PointOfInterestType> POI_TYPES = DeferredRegister.create(ForgeRegistries.POI_TYPES, LostWorldsUtils.ID);
 
-	public static final PointOfInterestType ARCHAEOLOGY_TABLE = register("archaeology_table", new PointOfInterestType("archaeology_table", getBlockStates(LostWorldsBlocks.ARCHAEOLOGY_TABLE), 1, 1));
-	public static final PointOfInterestType PALEONTOLOGY_TABLE = register("paleontology_table", new PointOfInterestType("paleontology_table", getBlockStates(LostWorldsBlocks.PALEONTOLOGY_TABLE), 1, 1));
-	public static final PointOfInterestType PALEOBOTANY_TABLE = register("paleobotany_table", new PointOfInterestType("paleobotany_table", getBlockStates(LostWorldsBlocks.PALEOBOTANY_TABLE), 1, 1));
-
-	public static PointOfInterestType register(String id, PointOfInterestType poi) {
-		poi.setRegistryName(LostWorldsUtils.rL(id));
-		ForgeRegistries.POI_TYPES.register(poi);
-		return poi;
-	}
+	public static final RegistryObject<PointOfInterestType> ARCHAEOLOGY_TABLE = POI_TYPES.register("archaeology_table", () -> new PointOfInterestType("archaeology_table", PointOfInterestType.getBlockStates(LostWorldsBlocks.ARCHAEOLOGY_TABLE.get()), 1, 1));
+	public static final RegistryObject<PointOfInterestType> PALEONTOLOGY_TABLE = POI_TYPES.register("paleontology_table", () -> new PointOfInterestType("paleontology_table", PointOfInterestType.getBlockStates(LostWorldsBlocks.PALEONTOLOGY_TABLE.get()), 1, 1));
+	public static final RegistryObject<PointOfInterestType> PALEOBOTANY_TABLE = POI_TYPES.register("paleobotany_table", () -> new PointOfInterestType("paleobotany_table", PointOfInterestType.getBlockStates(LostWorldsBlocks.PALEOBOTANY_TABLE.get()), 1, 1));
 
 	// Registry
-	public static void init() {
+	public static void init(IEventBus bus) {
+		POI_TYPES.register(bus);
 		LostWorldsUtils.LOGGER.debug("Registering Mod Points of Interest");
 	}
 }

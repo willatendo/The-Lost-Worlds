@@ -110,6 +110,6 @@ public class FossilGrinderRecipe implements IRecipe<IInventory> {
 
 	@Override
 	public ItemStack getToastSymbol() {
-		return new ItemStack(LostWorldsBlocks.FOSSIL_GRINDER.asItem());
+		return LostWorldsBlocks.FOSSIL_GRINDER.asStack();
 	}
 }

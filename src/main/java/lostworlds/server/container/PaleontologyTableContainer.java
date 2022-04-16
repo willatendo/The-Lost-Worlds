@@ -102,7 +102,7 @@ public class PaleontologyTableContainer extends Container {
 
 	@Override
 	public boolean stillValid(PlayerEntity player) {
-		return stillValid(this.access, player, LostWorldsBlocks.PALEONTOLOGY_TABLE);
+		return stillValid(this.access, player, LostWorldsBlocks.PALEONTOLOGY_TABLE.get());
 	}
 
 	@Override

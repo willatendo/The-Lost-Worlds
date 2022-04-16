@@ -55,7 +55,7 @@ public class TinyPlasteredFossilizedEggBlock extends Block {
 	@Override
 	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) {
 		if (entity.isCrouching()) {
-			world.setBlockAndUpdate(pos, LostWorldsBlocks.TINY_FOSSILISED_EGG.defaultBlockState().setValue(EGGS, state.getValue(EGGS)));
+			world.setBlockAndUpdate(pos, LostWorldsBlocks.TINY_FOSSILISED_EGG.getDefaultState().setValue(EGGS, state.getValue(EGGS)));
 			world.playSound(entity, pos, SoundEvents.WOOL_BREAK, SoundCategory.BLOCKS, 0.7F, 1.0F);
 			return ActionResultType.SUCCESS;
 		} else {

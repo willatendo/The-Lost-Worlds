@@ -2,12 +2,9 @@ package lostworlds.server.block;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.container.PaleontologyTableContainer;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -32,8 +29,8 @@ public class PaleontologyTableBlock extends Block implements IWaterLoggable {
 	private static final ITextComponent NAME = LostWorldsUtils.tTC("container", "paleontology_table");
 	private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-	public PaleontologyTableBlock() {
-		super(AbstractBlock.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD).noOcclusion());
+	public PaleontologyTableBlock(Properties properties) {
+		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 

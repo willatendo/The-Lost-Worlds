@@ -1,17 +1,17 @@
 package lostworlds.server.item;
 
-import lostworlds.server.item.block.GroupedBlockItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class WaterPlantItem extends GroupedBlockItem {
-	public WaterPlantItem(Block block) {
-		super(block);
+public class WaterPlantItem extends BlockItem {
+	public WaterPlantItem(Block block, Properties properties) {
+		super(block, properties);
 	}
 
 	@Override

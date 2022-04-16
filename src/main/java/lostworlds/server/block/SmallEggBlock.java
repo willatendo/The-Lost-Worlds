@@ -117,7 +117,7 @@ public class SmallEggBlock extends Block {
 	}
 
 	public static boolean isNest(IBlockReader blockReader, BlockPos pos) {
-		return blockReader.getBlockState(pos).is(LostWorldsBlocks.NESTING_BLOCK);
+		return blockReader.getBlockState(pos).is(LostWorldsBlocks.NESTING_BLOCK.get());
 	}
 
 	@Override

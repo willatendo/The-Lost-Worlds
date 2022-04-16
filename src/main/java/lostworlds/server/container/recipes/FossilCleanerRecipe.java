@@ -79,6 +79,6 @@ public class FossilCleanerRecipe implements IRecipe<IInventory> {
 
 	@Override
 	public ItemStack getToastSymbol() {
-		return new ItemStack(LostWorldsBlocks.FOSSIL_CLEANER.asItem());
+		return LostWorldsBlocks.FOSSIL_CLEANER.asStack();
 	}
 }

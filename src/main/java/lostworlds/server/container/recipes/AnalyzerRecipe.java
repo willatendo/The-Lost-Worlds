@@ -85,6 +85,6 @@ public class AnalyzerRecipe implements IRecipe<IInventory> {
 
 	@Override
 	public ItemStack getToastSymbol() {
-		return new ItemStack(LostWorldsBlocks.ANALYZER.asItem());
+		return LostWorldsBlocks.ANALYZER.asStack();
 	}
 }

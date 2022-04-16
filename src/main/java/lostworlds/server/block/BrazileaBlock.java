@@ -1,18 +1,12 @@
 package lostworlds.server.block;
 
-import lostworlds.server.block.builder.BlockUtils;
-import lostworlds.server.item.block.BrazileaItem;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -50,12 +44,5 @@ public class BrazileaBlock extends BushBlock {
 	@Override
 	public PlantType getPlantType(IBlockReader world, BlockPos pos) {
 		return PlantType.WATER;
-	}
-
-	public static Block create(String id) {
-		Block block = new BrazileaBlock(AbstractBlock.Properties.of(Material.PLANT).instabreak().sound(SoundType.GRASS).noOcclusion().noCollission());
-		Item item = new BrazileaItem(block);
-		BlockUtils.create(id, block, item);
-		return block;
 	}
 }

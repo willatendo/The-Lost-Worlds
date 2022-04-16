@@ -29,8 +29,8 @@ public class GeyserBlockFeature extends Feature<FeatureSpreadConfig> {
 			int i1 = rand.nextInt(8) - rand.nextInt(8);
 			int j1 = seedReader.getHeight(Heightmap.Type.WORLD_SURFACE, pos.getX() + l, pos.getZ() + i1);
 			BlockPos blockpos = new BlockPos(pos.getX() + l, j1, pos.getZ() + i1);
-			BlockState blockstateWithLava = LostWorldsBlocks.GEYSER_BLOCK.defaultBlockState().setValue(GeyserBlock.LAVALOGGED, Boolean.valueOf(true));
-			BlockState blockstate = LostWorldsBlocks.GEYSER_BLOCK.defaultBlockState().setValue(GeyserBlock.LAVALOGGED, Boolean.valueOf(false));
+			BlockState blockstateWithLava = LostWorldsBlocks.GEYSER_BLOCK.getDefaultState().setValue(GeyserBlock.LAVALOGGED, Boolean.valueOf(true));
+			BlockState blockstate = LostWorldsBlocks.GEYSER_BLOCK.getDefaultState().setValue(GeyserBlock.LAVALOGGED, Boolean.valueOf(false));
 			if (seedReader.getBlockState(blockpos).is(Blocks.LAVA) && blockstateWithLava.canSurvive(seedReader, blockpos)) {
 				seedReader.setBlock(blockpos, blockstateWithLava, 2);
 				++i;

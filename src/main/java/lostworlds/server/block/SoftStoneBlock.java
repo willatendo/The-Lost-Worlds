@@ -8,12 +8,8 @@ import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.entity.utils.enums.TimeEras;
 import lostworlds.server.item.HammerItem;
 import lostworlds.server.item.LostWorldsEnchantments;
-import lostworlds.server.item.tool.ModMaterials;
-import lostworlds.server.item.tool.ModToolTypes;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -35,8 +31,8 @@ public class SoftStoneBlock extends Block {
 	private static final EnumProperty<DinoTypes> POTENTIAL_CREATURE = EnumProperty.create("potential_creature", DinoTypes.class);
 	private static final EnumProperty<Damage> DAMAGE = EnumProperty.create("damage", Damage.class);
 
-	public SoftStoneBlock() {
-		super(AbstractBlock.Properties.of(ModMaterials.SOFT).harvestTool(ModToolTypes.HAMMER).strength(4.0F, 0.0F).noDrops().sound(SoundType.STONE));
+	public SoftStoneBlock(Properties properties) {
+		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(ERA, TimeEras.MODERN_MINECRAFT).setValue(POTENTIAL_PART, PotentialPart.NONE).setValue(POTENTIAL_CREATURE, DinoTypes.CHILESAURUS).setValue(DAMAGE, Damage.NONE));
 	}
 
@@ -59,7 +55,7 @@ public class SoftStoneBlock extends Block {
 		if (this.canDestroy(world, entity)) {
 			if (!world.isClientSide && world.random.nextInt(distance) == 0) {
 				BlockState blockstate = world.getBlockState(pos);
-				if (blockstate.is(LostWorldsBlocks.SOFT_STONE)) {
+				if (blockstate.is(LostWorldsBlocks.SOFT_STONE.get())) {
 					this.breakStone(world, pos, blockstate);
 				}
 			}
@@ -265,27 +261,27 @@ public class SoftStoneBlock extends Block {
 			BlockState south = world.getBlockState(pos.south());
 			BlockState east = world.getBlockState(pos.east());
 			BlockState west = world.getBlockState(pos.west());
-			if (up.is(LostWorldsBlocks.SOFT_STONE)) {
+			if (up.is(LostWorldsBlocks.SOFT_STONE.get())) {
 				world.destroyBlock(pos.above(), false);
 			}
 
-			if (below.is(LostWorldsBlocks.SOFT_STONE)) {
+			if (below.is(LostWorldsBlocks.SOFT_STONE.get())) {
 				world.destroyBlock(pos.below(), false);
 			}
 
-			if (north.is(LostWorldsBlocks.SOFT_STONE)) {
+			if (north.is(LostWorldsBlocks.SOFT_STONE.get())) {
 				world.destroyBlock(pos.north(), false);
 			}
 
-			if (south.is(LostWorldsBlocks.SOFT_STONE)) {
+			if (south.is(LostWorldsBlocks.SOFT_STONE.get())) {
 				world.destroyBlock(pos.south(), false);
 			}
 
-			if (east.is(LostWorldsBlocks.SOFT_STONE)) {
+			if (east.is(LostWorldsBlocks.SOFT_STONE.get())) {
 				world.destroyBlock(pos.east(), false);
 			}
 
-			if (west.is(LostWorldsBlocks.SOFT_STONE)) {
+			if (west.is(LostWorldsBlocks.SOFT_STONE.get())) {
 				world.destroyBlock(pos.west(), false);
 			}
 		} else {

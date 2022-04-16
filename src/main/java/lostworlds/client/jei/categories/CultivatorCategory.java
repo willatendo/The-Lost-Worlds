@@ -17,7 +17,6 @@ import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class CultivatorCategory implements IRecipeCategory<CultivatorRecipe> {
@@ -31,7 +30,7 @@ public class CultivatorCategory implements IRecipeCategory<CultivatorRecipe> {
 	public CultivatorCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 0, 230, 94, 26);
-		this.icon = helper.createDrawableIngredient(new ItemStack(LostWorldsBlocks.CULTIVATOR));
+		this.icon = helper.createDrawableIngredient(LostWorldsBlocks.CULTIVATOR.asStack());
 		this.cultivatorProgessBar = CacheBuilder.newBuilder().maximumSize(25).build(new CacheLoader<Integer, IDrawableAnimated>() {
 			@Override
 			public IDrawableAnimated load(Integer cookTime) {

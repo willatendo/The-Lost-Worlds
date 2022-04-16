@@ -19,7 +19,7 @@ import net.minecraftforge.common.util.NonNullSupplier;
 public class SpongeColonyBlock extends CoralPlantBlock {
 	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 7, 16);
 
-	public SpongeColonyBlock(Properties properties, NonNullSupplier<? extends Block> deadBlock) {
+	public SpongeColonyBlock(NonNullSupplier<? extends Block> deadBlock, Properties properties) {
 		super(deadBlock.get(), properties);
 	}
 

@@ -98,7 +98,7 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 	private ITextComponent name;
 
 	public DNAExtractorTileEntity() {
-		super(LostWorldsBlockEntities.DNA_EXTRACTOR_TILE_ENTITY);
+		super(LostWorldsBlockEntities.DNA_EXTRACTOR_TILE_ENTITY.get());
 	}
 
 	@Override

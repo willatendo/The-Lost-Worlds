@@ -5,8 +5,8 @@ issueTrackerURL="https://github.com/willatendo/Lost-Worlds/issues"
 
 [[mods]]
 modId="lostworlds"
-version="11-alpha PR 1"
-displayName="Lost Worlds"
+version="11-alpha"
+displayName="Lost Worlds - The Cretaceous Update"
 updateJSONURL="https://github.com/willatendo/The-Lost-Worlds/raw/main/updates.json"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/the-lost-worlds-forge"
 logoFile="lostworlds.png"

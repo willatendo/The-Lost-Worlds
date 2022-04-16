@@ -79,6 +79,6 @@ public class CultivatorRecipe implements IRecipe<IInventory> {
 
 	@Override
 	public ItemStack getToastSymbol() {
-		return new ItemStack(LostWorldsBlocks.CULTIVATOR.asItem());
+		return LostWorldsBlocks.CULTIVATOR.asStack();
 	}
 }

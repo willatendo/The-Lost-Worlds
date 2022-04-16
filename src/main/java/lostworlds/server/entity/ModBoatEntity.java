@@ -51,32 +51,32 @@ public class ModBoatEntity extends BoatEntity {
 	public Item getDropItem() {
 		switch (this.getModBoatType()) {
 		case ARAUCARIA:
-			return LostWorldsBlocks.ARAUCARIA_BOAT;
+			return LostWorldsBlocks.ARAUCARIA_BOAT.get();
 		case CALAMITES:
-			return LostWorldsBlocks.CALAMITES_BOAT;
+			return LostWorldsBlocks.CALAMITES_BOAT.get();
 		case CONIFER:
-			return LostWorldsBlocks.CONIFER_BOAT;
+			return LostWorldsBlocks.CONIFER_BOAT.get();
 		case GINKGO:
-			return LostWorldsBlocks.GINKGO_BOAT;
+			return LostWorldsBlocks.GINKGO_BOAT.get();
 		default:
 		case SCORCHED:
-			return LostWorldsBlocks.SCORCHED_BOAT;
+			return LostWorldsBlocks.SCORCHED_BOAT.get();
 		}
 	}
 
 	public Block getPlanks() {
 		switch (this.getModBoatType()) {
 		case ARAUCARIA:
-			return LostWorldsBlocks.ARAUCARIA_PLANKS;
+			return LostWorldsBlocks.ARAUCARIA_PLANKS.get();
 		case CALAMITES:
-			return LostWorldsBlocks.CALAMITES_PLANKS;
+			return LostWorldsBlocks.CALAMITES_PLANKS.get();
 		case CONIFER:
-			return LostWorldsBlocks.CONIFER_PLANKS;
+			return LostWorldsBlocks.CONIFER_PLANKS.get();
 		case GINKGO:
-			return LostWorldsBlocks.GINKGO_PLANKS;
+			return LostWorldsBlocks.GINKGO_PLANKS.get();
 		default:
 		case SCORCHED:
-			return LostWorldsBlocks.SCORCHED_PLANKS;
+			return LostWorldsBlocks.SCORCHED_PLANKS.get();
 		}
 	}
 

@@ -22,11 +22,11 @@ public class BlockMappings {
 	private static final Map<ResourceLocation, Supplier<Block>> blockRemappings = new HashMap<ResourceLocation, Supplier<Block>>() {
 		private static final long serialVersionUID = 2729764913422843323L;
 		{
-			put(LostWorldsUtils.rL("small_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB);
-			put(LostWorldsUtils.rL("medium_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB);
-			put(LostWorldsUtils.rL("large_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB);
-			put(LostWorldsUtils.rL("lycophyta"), () -> LostWorldsBlocks.OSMUNDA);
-			put(LostWorldsUtils.rL("tall_dicksonia"), () -> LostWorldsBlocks.DICKSONIA);
+			put(LostWorldsUtils.rL("small_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB.get());
+			put(LostWorldsUtils.rL("medium_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB.get());
+			put(LostWorldsUtils.rL("large_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB.get());
+			put(LostWorldsUtils.rL("lycophyta"), () -> LostWorldsBlocks.OSMUNDA.get());
+			put(LostWorldsUtils.rL("tall_dicksonia"), () -> LostWorldsBlocks.DICKSONIA.get());
 			put(LostWorldsUtils.rL("power_supply_block"), () -> Blocks.REDSTONE_BLOCK);
 			put(LostWorldsUtils.rL("mossy_dirt"), () -> LostWorldsBlocks.MOSSY_SOIL.get());
 			put(LostWorldsUtils.rL("mossy_jurassic_stone"), () -> LostWorldsBlocks.JURASSIC_STONE.get());
@@ -40,13 +40,13 @@ public class BlockMappings {
 			put(LostWorldsUtils.rL("mossy_jurassic_stone_brick_stairs"), () -> LostWorldsBlocks.JURASSIC_STONE_BRICK_STAIRS.get());
 			put(LostWorldsUtils.rL("mossy_jurassic_stone_brick_slab"), () -> LostWorldsBlocks.JURASSIC_STONE_BRICK_SLAB.get());
 			put(LostWorldsUtils.rL("mossy_jurassic_stone_brick_wall"), () -> LostWorldsBlocks.JURASSIC_STONE_BRICK_WALL.get());
-			put(LostWorldsUtils.rL("polished_light_concrete"), () -> LostWorldsBlocks.ACCENT_LIGHT_CONCRETE);
-			put(LostWorldsUtils.rL("polished_light_concrete_stairs"), () -> LostWorldsBlocks.ACCENT_LIGHT_CONCRETE_STAIRS);
-			put(LostWorldsUtils.rL("polished_light_concrete_slab"), () -> LostWorldsBlocks.ACCENT_LIGHT_CONCRETE_SLAB);
-			put(LostWorldsUtils.rL("polished_dark_concrete"), () -> LostWorldsBlocks.ACCENT_DARK_CONCRETE);
-			put(LostWorldsUtils.rL("polished_dark_concrete_stairs"), () -> LostWorldsBlocks.ACCENT_DARK_CONCRETE_STAIRS);
-			put(LostWorldsUtils.rL("polished_dark_concrete_slab"), () -> LostWorldsBlocks.ACCENT_DARK_CONCRETE_SLAB);
-			put(LostWorldsUtils.rL("thatch_block"), () -> LostWorldsBlocks.THATCH_BUNDLE);
+			put(LostWorldsUtils.rL("polished_light_concrete"), () -> LostWorldsBlocks.ACCENT_LIGHT_CONCRETE.get());
+			put(LostWorldsUtils.rL("polished_light_concrete_stairs"), () -> LostWorldsBlocks.ACCENT_LIGHT_CONCRETE_STAIRS.get());
+			put(LostWorldsUtils.rL("polished_light_concrete_slab"), () -> LostWorldsBlocks.ACCENT_LIGHT_CONCRETE_SLAB.get());
+			put(LostWorldsUtils.rL("polished_dark_concrete"), () -> LostWorldsBlocks.ACCENT_DARK_CONCRETE.get());
+			put(LostWorldsUtils.rL("polished_dark_concrete_stairs"), () -> LostWorldsBlocks.ACCENT_DARK_CONCRETE_STAIRS.get());
+			put(LostWorldsUtils.rL("polished_dark_concrete_slab"), () -> LostWorldsBlocks.ACCENT_DARK_CONCRETE_SLAB.get());
+			put(LostWorldsUtils.rL("thatch_block"), () -> LostWorldsBlocks.THATCH_BUNDLE.get());
 		}
 	};
 

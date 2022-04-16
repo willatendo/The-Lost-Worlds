@@ -122,7 +122,7 @@ public class MediumFossilisedEggBlock extends Block {
 		if (entity.getItemInHand(hand) != null) {
 			Item item = entity.getItemInHand(hand).getItem();
 			if (item instanceof WetPaperItem) {
-				world.setBlockAndUpdate(pos, LostWorldsBlocks.MEDIUM_PLASTERED_FOSSILISED_EGG.defaultBlockState().setValue(EGGS, state.getValue(EGGS)));
+				world.setBlockAndUpdate(pos, LostWorldsBlocks.MEDIUM_PLASTERED_FOSSILISED_EGG.getDefaultState().setValue(EGGS, state.getValue(EGGS)));
 				world.playSound(entity, pos, SoundEvents.WOOL_PLACE, SoundCategory.BLOCKS, 0.7F, 1.0F);
 
 				if (!entity.abilities.instabuild) {

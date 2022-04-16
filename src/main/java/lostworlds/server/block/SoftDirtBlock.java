@@ -4,12 +4,8 @@ import java.util.Random;
 
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.item.LostWorldsItems;
-import lostworlds.server.item.tool.ModMaterials;
-import lostworlds.server.item.tool.ModToolTypes;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
@@ -19,8 +15,8 @@ import net.minecraft.world.server.ServerWorld;
 public class SoftDirtBlock extends Block {
 	public static final EnumProperty<Egg> EGG = EnumProperty.create("egg", Egg.class);
 
-	public SoftDirtBlock() {
-		super(AbstractBlock.Properties.of(ModMaterials.SOFT).harvestTool(ModToolTypes.BRUSH).strength(4.0F, 0.0F).noDrops().sound(SoundType.GRAVEL));
+	public SoftDirtBlock(Properties properties) {
+		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(EGG, Egg.TINY));
 	}
 
@@ -31,13 +27,13 @@ public class SoftDirtBlock extends Block {
 		if (drop == 0) {
 			Egg egg = state.getValue(EGG);
 			if (egg == Egg.TINY) {
-				world.setBlockAndUpdate(pos, LostWorldsBlocks.TINY_FOSSILISED_EGG.defaultBlockState().setValue(TinyFossilizedEggBlock.EGGS, Integer.valueOf(rand.nextInt(19) + 1)));
+				world.setBlockAndUpdate(pos, LostWorldsBlocks.TINY_FOSSILISED_EGG.getDefaultState().setValue(TinyFossilizedEggBlock.EGGS, Integer.valueOf(rand.nextInt(19) + 1)));
 			} else if (egg == Egg.SMALL) {
-				world.setBlockAndUpdate(pos, LostWorldsBlocks.SMALL_FOSSILISED_EGG.defaultBlockState().setValue(SmallFossilizedEggBlock.EGGS, Integer.valueOf(rand.nextInt(10) + 1)));
+				world.setBlockAndUpdate(pos, LostWorldsBlocks.SMALL_FOSSILISED_EGG.getDefaultState().setValue(SmallFossilizedEggBlock.EGGS, Integer.valueOf(rand.nextInt(10) + 1)));
 			} else if (egg == Egg.MEDIUM) {
-				world.setBlockAndUpdate(pos, LostWorldsBlocks.MEDIUM_FOSSILISED_EGG.defaultBlockState().setValue(MediumFossilisedEggBlock.EGGS, Integer.valueOf(rand.nextInt(6) + 1)));
+				world.setBlockAndUpdate(pos, LostWorldsBlocks.MEDIUM_FOSSILISED_EGG.getDefaultState().setValue(MediumFossilisedEggBlock.EGGS, Integer.valueOf(rand.nextInt(6) + 1)));
 			} else {
-				world.setBlockAndUpdate(pos, LostWorldsBlocks.LARGE_FOSSILISED_EGG.defaultBlockState().setValue(LargeFossilisedEggBlock.EGGS, Integer.valueOf(rand.nextInt(3) + 1)));
+				world.setBlockAndUpdate(pos, LostWorldsBlocks.LARGE_FOSSILISED_EGG.getDefaultState().setValue(LargeFossilisedEggBlock.EGGS, Integer.valueOf(rand.nextInt(3) + 1)));
 			}
 		} else if (drop == 1) {
 			this.popResource(world, pos, LostWorldsItems.FOSSILIZED_FEATHER.get().getDefaultInstance());
@@ -47,7 +43,7 @@ public class SoftDirtBlock extends Block {
 			int feather = rand.nextInt(DinoTypes.feathered().size());
 			this.popResource(world, pos, DinoTypes.feathered().get(feather).getFeather().get().getDefaultInstance());
 		} else if (drop == 4) {
-			this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().asItem().getDefaultInstance());
+			this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().get().asItem().getDefaultInstance());
 		}
 	}
 

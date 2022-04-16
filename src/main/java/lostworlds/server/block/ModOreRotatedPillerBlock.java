@@ -14,7 +14,7 @@ public class ModOreRotatedPillerBlock extends RotatedPillarBlock {
 	}
 
 	protected int xpOnDrop(Random rand) {
-		return this == LostWorldsBlocks.BASALT_DIAMOND_ORE ? MathHelper.nextInt(rand, 0, 1) : 0;
+		return this == LostWorldsBlocks.BASALT_DIAMOND_ORE.get() ? MathHelper.nextInt(rand, 0, 1) : 0;
 	}
 
 	@Override

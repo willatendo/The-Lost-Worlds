@@ -46,7 +46,7 @@ public class DiictodonLayEggGoal extends MoveToBlockGoal {
 		if (!this.entity.isInWater() && this.isReachedTarget()) {
 			World world = this.entity.level;
 			world.playSound((PlayerEntity) null, blockpos, SoundEvents.TURTLE_LAY_EGG, SoundCategory.BLOCKS, 0.3F, 0.9F + world.random.nextFloat() * 0.2F);
-			Block block = LostWorldsBlocks.DIICTODON_BURROW.defaultBlockState().setValue(DiictodonBurrowBlock.EGGS, Integer.valueOf(new Random().nextInt(19) + 1)).getBlock();
+			Block block = LostWorldsBlocks.DIICTODON_BURROW.getDefaultState().setValue(DiictodonBurrowBlock.EGGS, Integer.valueOf(new Random().nextInt(19) + 1)).getBlock();
 			world.setBlock(this.blockPos.below(), block.defaultBlockState(), 3);
 			this.entity.setHasEgg(false);
 			this.entity.setInLoveTime(600);
@@ -60,6 +60,6 @@ public class DiictodonLayEggGoal extends MoveToBlockGoal {
 	}
 
 	public static boolean isNatural(IBlockReader reader, BlockPos pos) {
-		return reader.getBlockState(pos).is(LostWorldsBlocks.PERMIAN_SAND.get()) || reader.getBlockState(pos).is(LostWorldsBlocks.DIICTODON_BURROW);
+		return reader.getBlockState(pos).is(LostWorldsBlocks.PERMIAN_SAND.get()) || reader.getBlockState(pos).is(LostWorldsBlocks.DIICTODON_BURROW.get());
 	}
 }

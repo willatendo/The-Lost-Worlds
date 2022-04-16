@@ -35,7 +35,7 @@ public class PaleontologyTableCategory implements IRecipeCategory<PaleontologyTa
 	public PaleontologyTableCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 124, 0, width, height);
-		this.icon = helper.createDrawableIngredient(new ItemStack(LostWorldsBlocks.PALEONTOLOGY_TABLE));
+		this.icon = helper.createDrawableIngredient(LostWorldsBlocks.PALEONTOLOGY_TABLE.asStack());
 		craftingGridHelper = helper.createCraftingGridHelper(craftInputSlot1);
 	}
 

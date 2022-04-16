@@ -1,15 +1,10 @@
 package lostworlds.server.block;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.block.builder.BlockUtils;
 import lostworlds.server.container.ArchaeologyTableContainer;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -29,14 +24,13 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ToolType;
 
 public class ArchaeologyTableBlock extends Block implements IWaterLoggable {
 	private static final ITextComponent NAME = LostWorldsUtils.tTC("container", "archaeology_table");
 	private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-	public ArchaeologyTableBlock() {
-		super(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD));
+	public ArchaeologyTableBlock(Properties properties) {
+		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
@@ -85,9 +79,5 @@ public class ArchaeologyTableBlock extends Block implements IWaterLoggable {
 	@Override
 	public float getShadeBrightness(BlockState state, IBlockReader reader, BlockPos pos) {
 		return 1.0F;
-	}
-
-	public static Block create(String wood) {
-		return BlockUtils.create("archaeology_table", new ArchaeologyTableBlock());
 	}
 }

@@ -19,9 +19,9 @@ import lostworlds.server.biome.DisksFeatures;
 import lostworlds.server.biome.LostWorldsBiomes;
 import lostworlds.server.biome.LostWorldsWorldCarvers;
 import lostworlds.server.biome.ModConfiguredCarvers;
-import lostworlds.server.biome.ModConfiguredFeatures;
 import lostworlds.server.biome.ModConfiguredStructures;
 import lostworlds.server.biome.OreFeatures;
+import lostworlds.server.biome.TreeFeatures;
 import lostworlds.server.biome.surfacebuilders.LostWorldsSurfaceBuilders;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
@@ -70,7 +70,6 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -126,6 +125,8 @@ public class LostWorldsMod {
 	}
 
 	private static void lostWorldRegistry() {
+		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
 		// Game Objects
 		LostWorldsBlocks.init();
 		LostWorldsItems.init();
@@ -139,14 +140,14 @@ public class LostWorldsMod {
 		LostWorldsRecipes.init();
 
 		// Villagers
-		LostWorldsVillagerProfessions.init();
-		LostWorldsPOIs.init();
+		LostWorldsVillagerProfessions.init(bus);
+		LostWorldsPOIs.init(bus);
 
 		// World Generation
 		LostWorldsWorldCarvers.init();
 		ModConfiguredCarvers.init();
 		LostWorldsSurfaceBuilders.init();
-		LostWorldsFeatures.init();
+		LostWorldsFeatures.init(bus);
 		LostWorldsStructures.init();
 		LostWorldsStructurePecies.init();
 		LostWorldsPlacements.init();
@@ -159,8 +160,8 @@ public class LostWorldsMod {
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(LostWorldsBlocks.VOLCANIC_ASH.asStack()), PotionUtils.setPotion(new ItemStack(Items.POTION), LostWorldsPotions.ASHY_LUNG_POTION));
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), LostWorldsItems.CONTRACEPTIVES.get().getDefaultInstance());
 
-		LostWorldsUtils.ITEMS.setIcon(LostWorldsItems.LOST_WORLDS_LEXICON.asStack());
-		LostWorldsUtils.BLOCKS.setIcon(LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.asItem().getDefaultInstance());
+		LostWorldsUtils.ITEMS.setIcon(() -> LostWorldsItems.LOST_WORLDS_LEXICON.asStack());
+		LostWorldsUtils.BLOCKS.setIcon(() -> LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.asStack());
 
 		TyrannibookHelper.commonSetup(event);
 
@@ -246,19 +247,19 @@ public class LostWorldsMod {
 
 		// Features
 		if (LostWorldsUtils.SERVER_CONFIG.amberOre.get()) {
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_AMBER_ORE);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_AMBER_ORE.get());
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.plantFossilsInOverworld.get()) {
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_ALETHOPTERIS);
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_BRAZILEA);
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_CALAMITES_SUCKOWII);
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_CEPHALOTAXUS);
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_DILLHOFFIA);
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_DUISBERGIA);
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_OSMUNDA);
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_WILLIAMSONIA);
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_PLANT_FOSSIL_ZAMITES);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_PLANT_FOSSIL_ALETHOPTERIS.get());
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_PLANT_FOSSIL_BRAZILEA.get());
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_PLANT_FOSSIL_CALAMITES_SUCKOWII.get());
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_PLANT_FOSSIL_CEPHALOTAXUS.get());
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_PLANT_FOSSIL_DILLHOFFIA.get());
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_PLANT_FOSSIL_DUISBERGIA.get());
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_PLANT_FOSSIL_OSMUNDA.get());
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_PLANT_FOSSIL_WILLIAMSONIA.get());
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_PLANT_FOSSIL_ZAMITES.get());
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.siltPatchGeneration.get()) {
@@ -277,31 +278,31 @@ public class LostWorldsMod {
 			List<? extends String> biomes = Lists.newArrayList("minecraft:swamp", "minecraft:swamp_hills");
 
 			if (biomes.contains(event.getName().toString())) {
-				FeatureAdder.addFeature(event, GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.SCANT_CYPRESS_TREES);
+				FeatureAdder.addFeature(event, GenerationStage.Decoration.TOP_LAYER_MODIFICATION, TreeFeatures.SCANT_CYPRESS_TREES.get());
 			}
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.petrifiedAraucariaTreeShouldSpawn.get()) {
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_ARAUCARIA);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PETRIFIED_ARAUCARIA.get());
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.petrifiedCalamitesTreeShouldSpawn.get()) {
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_CALAMITES);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PETRIFIED_CALAMITES.get());
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.petrifiedConiferTreeShouldSpawn.get()) {
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_CONIFER);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PETRIFIED_CONIFER.get());
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.petrifiedGinkgoTreeShouldSpawn.get()) {
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.PETRIFIED_GINKGO);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PETRIFIED_GINKGO.get());
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.fossilsInOverworld.get()) {
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_TINY_NEST);
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_SMALL_NEST);
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_MEDIUM_NEST);
-			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.OVERWORLD_LARGE_NEST);
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_TINY_NEST.get());
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_SMALL_NEST.get());
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_MEDIUM_NEST.get());
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_LARGE_NEST.get());
 		}
 
 		// Structures
@@ -337,12 +338,8 @@ public class LostWorldsMod {
 
 		LostWorldsDimensions.initClient();
 
-		ClientSetup.blockColourSetup();
-		ClientSetup.renderSetup();
 		ClientSetup.screenSetup();
 		ClientSetup.entityRenderSetup();
-
-		DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientSetup::setupOther);
 	}
 
 	@OnlyIn(Dist.CLIENT)

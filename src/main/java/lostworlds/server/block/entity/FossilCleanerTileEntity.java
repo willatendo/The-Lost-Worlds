@@ -104,7 +104,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 	private ITextComponent name;
 
 	public FossilCleanerTileEntity() {
-		super(LostWorldsBlockEntities.FOSSIL_CLEANER_TILE_ENTITY);
+		super(LostWorldsBlockEntities.FOSSIL_CLEANER_TILE_ENTITY.get());
 	}
 
 	public static Map<Item, Integer> getFuel() {

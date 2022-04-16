@@ -52,7 +52,7 @@ public class TerrestrialLayEggGoal extends MoveToBlockGoal {
 		super.tick();
 		BlockPos blockpos = this.entity.blockPosition();
 		if (!this.entity.isInWater() && this.isReachedTarget()) {
-			Block egg = this.dino.getEgg();
+			Block egg = this.dino.getEgg().get();
 			World world = this.entity.level;
 			world.playSound((PlayerEntity) null, blockpos, SoundEvents.TURTLE_LAY_EGG, SoundCategory.BLOCKS, 0.3F, 0.9F + world.random.nextFloat() * 0.2F);
 			if (egg instanceof LargeEggBlock) {
@@ -68,7 +68,7 @@ public class TerrestrialLayEggGoal extends MoveToBlockGoal {
 				TinyEggBlock block = (TinyEggBlock) egg.defaultBlockState().setValue(TinyEggBlock.EGGS, Integer.valueOf(new Random().nextInt(19) + 1)).getBlock();
 				world.setBlock(this.blockPos.above(), block.defaultBlockState(), 3);
 			}
-			world.setBlock(this.blockPos, LostWorldsBlocks.NESTING_BLOCK.defaultBlockState(), 3);
+			world.setBlock(this.blockPos, LostWorldsBlocks.NESTING_BLOCK.getDefaultState(), 3);
 			this.entity.setHasEgg(false);
 			this.entity.setInLoveTime(600);
 			this.entity.setInNaturalLoveTime(600);
@@ -81,6 +81,6 @@ public class TerrestrialLayEggGoal extends MoveToBlockGoal {
 	}
 
 	public static boolean isNatural(IBlockReader reader, BlockPos pos) {
-		return reader.getBlockState(pos).is(BlockTags.SAND) || reader.getBlockState(pos).is(Tags.Blocks.DIRT) || reader.getBlockState(pos).is(LostWorldsBlocks.NESTING_BLOCK);
+		return reader.getBlockState(pos).is(BlockTags.SAND) || reader.getBlockState(pos).is(Tags.Blocks.DIRT) || reader.getBlockState(pos).is(LostWorldsBlocks.NESTING_BLOCK.get());
 	}
 }

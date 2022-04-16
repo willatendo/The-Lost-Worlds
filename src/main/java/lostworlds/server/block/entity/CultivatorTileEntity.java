@@ -95,7 +95,7 @@ public class CultivatorTileEntity extends TileEntity implements IInventory, INam
 	private ITextComponent name;
 
 	public CultivatorTileEntity() {
-		super(LostWorldsBlockEntities.CULTIVATOR_TILE_ENTITY);
+		super(LostWorldsBlockEntities.CULTIVATOR_TILE_ENTITY.get());
 	}
 
 	public int getcultivatingProgess() {

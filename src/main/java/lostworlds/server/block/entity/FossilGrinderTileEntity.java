@@ -96,7 +96,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 	private ITextComponent name;
 
 	public FossilGrinderTileEntity() {
-		super(LostWorldsBlockEntities.FOSSIL_GRINDER_TILE_ENTITY);
+		super(LostWorldsBlockEntities.FOSSIL_GRINDER_TILE_ENTITY.get());
 	}
 
 	public int getGrindingProgress() {

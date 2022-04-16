@@ -85,6 +85,6 @@ public class DNAInjectorRecipe implements IRecipe<IInventory> {
 
 	@Override
 	public ItemStack getToastSymbol() {
-		return new ItemStack(LostWorldsBlocks.DNA_INJECTOR.asItem());
+		return LostWorldsBlocks.DNA_INJECTOR.asStack();
 	}
 }

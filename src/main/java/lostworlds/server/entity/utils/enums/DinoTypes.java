@@ -83,8 +83,8 @@ public enum DinoTypes implements IStringSerializable {
 	private EntityType<FossilEntity> exoskeleton;
 	private EntityType<FossilEntity> dirtyBody;
 	private EntityType<FossilEntity> body;
-	private Block egg;
-	private Block extraBlock;
+	private Supplier<Block> egg;
+	private Supplier<Block> extraBlock;
 	private Supplier<Item> plasteredSkullItem;
 	private Supplier<Item> plasteredArmBonesItem;
 	private Supplier<Item> plasteredLegBonesItem;
@@ -312,19 +312,19 @@ public enum DinoTypes implements IStringSerializable {
 		return this.spawn;
 	}
 
-	public Block setExtraBlock(Block extraBlock) {
+	public Supplier<Block> setExtraBlock(Supplier<Block> extraBlock) {
 		return this.extraBlock = extraBlock;
 	}
 
-	public Block getExtraBlock() {
+	public Supplier<Block> getExtraBlock() {
 		return this.extraBlock;
 	}
 
-	public Block setEgg(Block egg) {
+	public Supplier<Block> setEgg(Supplier<Block> egg) {
 		return this.egg = egg;
 	}
 
-	public Block getEgg() {
+	public Supplier<Block> getEgg() {
 		return this.egg;
 	}
 
@@ -334,19 +334,19 @@ public enum DinoTypes implements IStringSerializable {
 		switch (this.eggSize) {
 		case TINY:
 			Block tinyegg = new TinyEggBlock(abstractProperties, () -> entity);
-			this.egg = tinyegg;
+			this.egg = () -> tinyegg;
 			return tinyegg;
 		case SMALL:
 			Block smallegg = new SmallEggBlock(abstractProperties, () -> entity);
-			this.egg = smallegg;
+			this.egg = () -> smallegg;
 			return smallegg;
 		case MEDIUM:
 			Block mediumegg = new MediumEggBlock(abstractProperties, () -> entity);
-			this.egg = mediumegg;
+			this.egg = () -> mediumegg;
 			return mediumegg;
 		case LARGE:
 			Block largeegg = new LargeEggBlock(abstractProperties, () -> entity);
-			this.egg = largeegg;
+			this.egg = () -> largeegg;
 			return largeegg;
 		case NONE:
 		default:

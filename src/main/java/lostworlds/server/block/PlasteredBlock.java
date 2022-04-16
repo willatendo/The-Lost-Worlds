@@ -1,5 +1,7 @@
 package lostworlds.server.block;
 
+import java.util.function.Supplier;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,9 +23,9 @@ import net.minecraft.world.World;
 
 public class PlasteredBlock extends Block {
 	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
-	private final Block turnToBlock;
+	private final Supplier<Block> turnToBlock;
 
-	public PlasteredBlock(Properties properties, Block turnToBlock) {
+	public PlasteredBlock(Supplier<Block> turnToBlock, Properties properties) {
 		super(properties);
 		this.turnToBlock = turnToBlock;
 		this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH));
@@ -47,7 +49,7 @@ public class PlasteredBlock extends Block {
 	@Override
 	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult result) {
 		if (entity.isCrouching()) {
-			world.setBlockAndUpdate(pos, turnToBlock.defaultBlockState().setValue(HORIZONTAL_FACING, state.getValue(HORIZONTAL_FACING)));
+			world.setBlockAndUpdate(pos, turnToBlock.get().defaultBlockState().setValue(HORIZONTAL_FACING, state.getValue(HORIZONTAL_FACING)));
 			world.playSound(entity, pos, SoundEvents.WOOL_BREAK, SoundCategory.BLOCKS, 0.7F, 1.0F);
 			return ActionResultType.SUCCESS;
 		} else {

@@ -17,7 +17,6 @@ import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class DNAExtractorCategory implements IRecipeCategory<DNAExtractorRecipe> {
@@ -31,7 +30,7 @@ public class DNAExtractorCategory implements IRecipeCategory<DNAExtractorRecipe>
 	public DNAExtractorCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 0, 100, 82, 38);
-		this.icon = helper.createDrawableIngredient(new ItemStack(LostWorldsBlocks.DNA_EXTRACTOR));
+		this.icon = helper.createDrawableIngredient(LostWorldsBlocks.DNA_EXTRACTOR.asStack());
 		this.extractionProgessBar = CacheBuilder.newBuilder().maximumSize(25).build(new CacheLoader<Integer, IDrawableAnimated>() {
 			@Override
 			public IDrawableAnimated load(Integer cookTime) {

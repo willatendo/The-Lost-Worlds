@@ -5,41 +5,37 @@ import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureSpreadConfig;
+import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsFeatures {
-	public static final Feature<NoFeatureConfig> ASH_LAYER_PLACEMENT = new AshFeature(NoFeatureConfig.CODEC);
+	public static final DeferredRegister<Feature<?>> FEATURE = DeferredRegister.create(ForgeRegistries.FEATURES, LostWorldsUtils.ID);
 
-	public static final Feature<ProbabilityConfig> CALAMITES_SUCKOWII = new CalamitesSuckowiiFeature(ProbabilityConfig.CODEC);
+	public static final Feature<NoFeatureConfig> ASH_LAYER = register("ash_layer", new AshFeature(NoFeatureConfig.CODEC));
 
-	public static final Feature<FeatureSpreadConfig> GEYSER_BLOCK_PLACEMENT = new GeyserBlockFeature(FeatureSpreadConfig.CODEC);
-	public static final Feature<FeatureSpreadConfig> SPONGE_COLONEY_PLACEMENT = new SpongeColoneyFeature(FeatureSpreadConfig.CODEC);
+	public static final Feature<ProbabilityConfig> CALAMITES_SUCKOWII = register("calamites_suckowii", new CalamitesSuckowiiFeature(ProbabilityConfig.CODEC));
 
-	public static final Feature<BaseTreeFeatureConfig> SCORCHED_TREE = new ScorchedTreeFeature(BaseTreeFeatureConfig.CODEC);
-	public static final Feature<BaseTreeFeatureConfig> FROZEN_TREE = new FrozenTreeFeature(BaseTreeFeatureConfig.CODEC);
+	public static final Feature<FeatureSpreadConfig> GEYSER = register("geyser", new GeyserBlockFeature(FeatureSpreadConfig.CODEC));
+	public static final Feature<FeatureSpreadConfig> SPONGE_COLONEY = register("sponge_coloney", new SpongeColoneyFeature(FeatureSpreadConfig.CODEC));
 
-	public static final Feature<BlockStateFeatureConfig> ROCK = new ModBlockBlobFeature(BlockStateFeatureConfig.CODEC);
+	public static final Feature<BaseTreeFeatureConfig> SCORCHED_TREE = register("scorched_tree", new ScorchedTreeFeature(BaseTreeFeatureConfig.CODEC));
+	public static final Feature<BaseTreeFeatureConfig> FROZEN_TREE = register("frozen_tree", new FrozenTreeFeature(BaseTreeFeatureConfig.CODEC));
 
-	public static final Feature<BlockStateFeatureConfig> PERMIAN_LAKE = new PermianLakesFeature(BlockStateFeatureConfig.CODEC);
+	public static final Feature<BlockStateFeatureConfig> MOD_ROCK = register("mod_rock", new ModBlockBlobFeature(BlockStateFeatureConfig.CODEC));
 
-	public static Feature<?> register(String id, Feature<?> feature) {
-		feature.setRegistryName(LostWorldsUtils.rL(id));
-		ForgeRegistries.FEATURES.register(feature);
+	public static final Feature<BlockStateFeatureConfig> MOD_LAKE = register("mod_lake", new PermianLakesFeature(BlockStateFeatureConfig.CODEC));
+
+	public static <T extends IFeatureConfig> Feature<T> register(String id, Feature<T> feature) {
+		FEATURE.register(id, () -> feature);
 		return feature;
 	}
 
-	public static void init() {
+	public static void init(IEventBus bus) {
+		FEATURE.register(bus);
 		LostWorldsUtils.LOGGER.debug("Registering Mod Features");
-
-		register("ash_layer", ASH_LAYER_PLACEMENT);
-		register("calamites_suckwii", CALAMITES_SUCKOWII);
-		register("geyser_block", GEYSER_BLOCK_PLACEMENT);
-		register("sponge_coloney", SPONGE_COLONEY_PLACEMENT);
-		register("scorched_tree", SCORCHED_TREE);
-		register("frozen_tree", FROZEN_TREE);
-		register("rock", ROCK);
-		register("permian_lake", PERMIAN_LAKE);
 	}
 }

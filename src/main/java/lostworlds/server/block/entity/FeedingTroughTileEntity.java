@@ -21,7 +21,7 @@ public class FeedingTroughTileEntity extends LockableLootTileEntity implements I
 	protected NonNullList<ItemStack> items = NonNullList.withSize(1, ItemStack.EMPTY);
 
 	public FeedingTroughTileEntity() {
-		super(LostWorldsBlockEntities.FEEDING_TROUGH_TILE_ENTITY);
+		super(LostWorldsBlockEntities.FEEDING_TROUGH_TILE_ENTITY.get());
 	}
 
 	@Override

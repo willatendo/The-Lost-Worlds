@@ -206,7 +206,7 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 		private final FossilPoacherEntity entity;
 
 		SmashPlantFossilGoal(FossilPoacherEntity entity, double searchRange, int verticalSearchRange) {
-			super(LostWorldsBlocks.PLANT_FOSSIL, entity, searchRange, verticalSearchRange);
+			super(LostWorldsBlocks.PLANT_FOSSIL.get(), entity, searchRange, verticalSearchRange);
 			this.entity = entity;
 		}
 
@@ -230,7 +230,7 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 		private final FossilPoacherEntity entity;
 
 		SmashSoftStoneGoal(FossilPoacherEntity entity, double searchRange, int verticalSearchRange) {
-			super(LostWorldsBlocks.SOFT_STONE, entity, searchRange, verticalSearchRange);
+			super(LostWorldsBlocks.SOFT_STONE.get(), entity, searchRange, verticalSearchRange);
 			this.entity = entity;
 		}
 
@@ -254,7 +254,7 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 		private final FossilPoacherEntity entity;
 
 		SmashSoftDirtGoal(FossilPoacherEntity entity, double searchRange, int verticalSearchRange) {
-			super(LostWorldsBlocks.SOFT_DIRT, entity, searchRange, verticalSearchRange);
+			super(LostWorldsBlocks.SOFT_DIRT.get(), entity, searchRange, verticalSearchRange);
 			this.entity = entity;
 		}
 
@@ -335,7 +335,7 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 					Vector3d vector3d = this.removerMob.getDeltaMovement();
 					this.removerMob.setDeltaMovement(vector3d.x, 0.3D, vector3d.z);
 					if (!world.isClientSide) {
-						((ServerWorld) world).sendParticles(new ItemParticleData(ParticleTypes.ITEM, new ItemStack(LostWorldsBlocks.PLANT_FOSSIL)), (double) blockpos1.getX() + 0.5D, (double) blockpos1.getY() + 0.7D, (double) blockpos1.getZ() + 0.5D, 3, ((double) random.nextFloat() - 0.5D) * 0.08D, ((double) random.nextFloat() - 0.5D) * 0.08D, ((double) random.nextFloat() - 0.5D) * 0.08D, (double) 0.15F);
+						((ServerWorld) world).sendParticles(new ItemParticleData(ParticleTypes.ITEM, LostWorldsBlocks.PLANT_FOSSIL.asStack()), (double) blockpos1.getX() + 0.5D, (double) blockpos1.getY() + 0.7D, (double) blockpos1.getZ() + 0.5D, 3, ((double) random.nextFloat() - 0.5D) * 0.08D, ((double) random.nextFloat() - 0.5D) * 0.08D, ((double) random.nextFloat() - 0.5D) * 0.08D, (double) 0.15F);
 					}
 				}
 

@@ -95,7 +95,7 @@ public class AnalyzerTileEntity extends TileEntity implements IInventory, INamed
 	private ITextComponent name;
 
 	public AnalyzerTileEntity() {
-		super(LostWorldsBlockEntities.ANALYZER_TILE_ENTITY);
+		super(LostWorldsBlockEntities.ANALYZER_TILE_ENTITY.get());
 	}
 
 	@Override

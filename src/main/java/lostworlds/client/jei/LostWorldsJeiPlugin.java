@@ -45,7 +45,6 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
 import mezz.jei.api.runtime.IIngredientManager;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.util.ResourceLocation;
@@ -123,15 +122,15 @@ public class LostWorldsJeiPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-		registration.addRecipeCatalyst(new ItemStack(LostWorldsBlocks.FOSSIL_CLEANER), LostWorldsJeiConstants.FOSSIL_CLEANER_CATEGORY, LostWorldsJeiConstants.WATER_FUEL_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(LostWorldsBlocks.FOSSIL_GRINDER), LostWorldsJeiConstants.FOSSIL_GRINDER_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(LostWorldsBlocks.DNA_EXTRACTOR), LostWorldsJeiConstants.DNA_EXTRACTOR_CATEGORY, LostWorldsJeiConstants.AMBER_DNA_EXTRACTOR_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(LostWorldsBlocks.ANALYZER), LostWorldsJeiConstants.ANALYZER_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(LostWorldsBlocks.DNA_INJECTOR), LostWorldsJeiConstants.DNA_INJECTOR_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(LostWorldsBlocks.CULTIVATOR), LostWorldsJeiConstants.CULTIVATOR_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(LostWorldsBlocks.TIME_MACHINE), LostWorldsJeiConstants.TIME_MACHINE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(LostWorldsBlocks.ARCHAEOLOGY_TABLE), LostWorldsJeiConstants.ARCHAEOLOGY_TABLE_CATEGORY);
-		registration.addRecipeCatalyst(new ItemStack(LostWorldsBlocks.PALEONTOLOGY_TABLE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
+		registration.addRecipeCatalyst(LostWorldsBlocks.FOSSIL_CLEANER.asStack(), LostWorldsJeiConstants.FOSSIL_CLEANER_CATEGORY, LostWorldsJeiConstants.WATER_FUEL_CATEGORY);
+		registration.addRecipeCatalyst(LostWorldsBlocks.FOSSIL_GRINDER.asStack(), LostWorldsJeiConstants.FOSSIL_GRINDER_CATEGORY);
+		registration.addRecipeCatalyst(LostWorldsBlocks.DNA_EXTRACTOR.asStack(), LostWorldsJeiConstants.DNA_EXTRACTOR_CATEGORY, LostWorldsJeiConstants.AMBER_DNA_EXTRACTOR_CATEGORY);
+		registration.addRecipeCatalyst(LostWorldsBlocks.ANALYZER.asStack(), LostWorldsJeiConstants.ANALYZER_CATEGORY);
+		registration.addRecipeCatalyst(LostWorldsBlocks.DNA_INJECTOR.asStack(), LostWorldsJeiConstants.DNA_INJECTOR_CATEGORY);
+		registration.addRecipeCatalyst(LostWorldsBlocks.CULTIVATOR.asStack(), LostWorldsJeiConstants.CULTIVATOR_CATEGORY);
+		registration.addRecipeCatalyst(LostWorldsBlocks.TIME_MACHINE.asStack(), LostWorldsJeiConstants.TIME_MACHINE_CATEGORY);
+		registration.addRecipeCatalyst(LostWorldsBlocks.ARCHAEOLOGY_TABLE.asStack(), LostWorldsJeiConstants.ARCHAEOLOGY_TABLE_CATEGORY);
+		registration.addRecipeCatalyst(LostWorldsBlocks.PALEONTOLOGY_TABLE.asStack(), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
 	}
 
 	private static Collection<?> getRecipes(RecipeManager manager, IRecipeType<?> type) {

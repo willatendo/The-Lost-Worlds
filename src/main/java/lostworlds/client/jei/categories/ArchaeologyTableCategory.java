@@ -35,7 +35,7 @@ public class ArchaeologyTableCategory implements IRecipeCategory<ArchaeologyTabl
 	public ArchaeologyTableCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 124, 0, width, height);
-		this.icon = helper.createDrawableIngredient(new ItemStack(LostWorldsBlocks.ARCHAEOLOGY_TABLE));
+		this.icon = helper.createDrawableIngredient(LostWorldsBlocks.ARCHAEOLOGY_TABLE.asStack());
 		craftingGridHelper = helper.createCraftingGridHelper(craftInputSlot1);
 	}
 

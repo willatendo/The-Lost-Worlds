@@ -7,20 +7,20 @@ import net.minecraft.item.Item;
 import net.minecraft.util.IStringSerializable;
 
 public enum Plants implements IStringSerializable {
-	ALETHOPTERIS("alethopteris", () -> LostWorldsBlocks.ALETHOPTERIS),
-	ARCHAEFRUTUS("archaefrutus", () -> LostWorldsBlocks.ARCHAEFRUTUS),
-	BRAZILEA("brazilea", () -> LostWorldsBlocks.BRAZILEA),
-	CALAMITES_SUCKOWII("calamites_suckowii", () -> LostWorldsBlocks.CALAMITES_SUCKOWII),
-	CEPHALOTAXUS("cephalotaxus", () -> LostWorldsBlocks.CEPHALOTAXUS),
-	CYCAD("cycad", () -> LostWorldsBlocks.CYCAD),
-	DICKSONIA("dicksonia", () -> LostWorldsBlocks.DICKSONIA),
-	DILLHOFFIA("dillhoffia", () -> LostWorldsBlocks.DILLHOFFIA),
-	DUISBERGIA("duisbergia", () -> LostWorldsBlocks.DUISBERGIA),
-	EUDICOTS("eudicots", () -> LostWorldsBlocks.EUDICOTS),
-	MAGNOLIA("magnolia", () -> LostWorldsBlocks.MAGNOLIA),
-	OSMUNDA("osmunda", () -> LostWorldsBlocks.OSMUNDA),
-	WILLIAMSONIA("williamsonia", () -> LostWorldsBlocks.WILLIAMSONIA),
-	ZAMITES("zamites", () -> LostWorldsBlocks.ZAMITES);
+	ALETHOPTERIS("alethopteris", () -> LostWorldsBlocks.ALETHOPTERIS.get()),
+	ARCHAEFRUTUS("archaefrutus", () -> LostWorldsBlocks.ARCHAEFRUTUS.get()),
+	BRAZILEA("brazilea", () -> LostWorldsBlocks.BRAZILEA.get()),
+	CALAMITES_SUCKOWII("calamites_suckowii", () -> LostWorldsBlocks.CALAMITES_SUCKOWII.get()),
+	CEPHALOTAXUS("cephalotaxus", () -> LostWorldsBlocks.CEPHALOTAXUS.get()),
+	CYCAD("cycad", () -> LostWorldsBlocks.CYCAD.get()),
+	DICKSONIA("dicksonia", () -> LostWorldsBlocks.DICKSONIA.get()),
+	DILLHOFFIA("dillhoffia", () -> LostWorldsBlocks.DILLHOFFIA.get()),
+	DUISBERGIA("duisbergia", () -> LostWorldsBlocks.DUISBERGIA.get()),
+	EUDICOTS("eudicots", () -> LostWorldsBlocks.EUDICOTS.get()),
+	MAGNOLIA("magnolia", () -> LostWorldsBlocks.MAGNOLIA.get()),
+	OSMUNDA("osmunda", () -> LostWorldsBlocks.OSMUNDA.get()),
+	WILLIAMSONIA("williamsonia", () -> LostWorldsBlocks.WILLIAMSONIA.get()),
+	ZAMITES("zamites", () -> LostWorldsBlocks.ZAMITES.get());
 
 	private final String id;
 	private final Supplier<Block> block;

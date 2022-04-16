@@ -17,7 +17,6 @@ import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class FossilCleanerCategory implements IRecipeCategory<FossilCleanerRecipe> {
@@ -31,7 +30,7 @@ public class FossilCleanerCategory implements IRecipeCategory<FossilCleanerRecip
 	public FossilCleanerCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 0, 0, 82, 54);
-		this.icon = helper.createDrawableIngredient(new ItemStack(LostWorldsBlocks.FOSSIL_CLEANER));
+		this.icon = helper.createDrawableIngredient(LostWorldsBlocks.FOSSIL_CLEANER.asStack());
 		this.cleanerProgessBar = CacheBuilder.newBuilder().maximumSize(25).build(new CacheLoader<Integer, IDrawableAnimated>() {
 			@Override
 			public IDrawableAnimated load(Integer cookTime) {

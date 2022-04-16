@@ -18,22 +18,22 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
 
 public class CalamitesSuckowiiFeature extends Feature<ProbabilityConfig> {
-	private static final BlockState CALAMITES_SUCKOWII_TRUNK = LostWorldsBlocks.CALAMITES_SUCKOWII.defaultBlockState().setValue(BambooBlock.AGE, Integer.valueOf(1)).setValue(BambooBlock.LEAVES, BambooLeaves.NONE).setValue(BambooBlock.STAGE, Integer.valueOf(0));
-	private static final BlockState CALAMITES_SUCKOWII_FINAL_LARGE = CALAMITES_SUCKOWII_TRUNK.setValue(BambooBlock.LEAVES, BambooLeaves.LARGE).setValue(BambooBlock.STAGE, Integer.valueOf(1));
-	private static final BlockState CALAMITES_SUCKOWII_TOP_LARGE = CALAMITES_SUCKOWII_TRUNK.setValue(BambooBlock.LEAVES, BambooLeaves.LARGE);
-	private static final BlockState CALAMITES_SUCKOWII_TOP_SMALL = CALAMITES_SUCKOWII_TRUNK.setValue(BambooBlock.LEAVES, BambooLeaves.SMALL);
-
 	public CalamitesSuckowiiFeature(Codec<ProbabilityConfig> codec) {
 		super(codec);
 	}
 
 	@Override
 	public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, ProbabilityConfig config) {
+		BlockState trunk = LostWorldsBlocks.CALAMITES_SUCKOWII.getDefaultState().setValue(BambooBlock.AGE, Integer.valueOf(1)).setValue(BambooBlock.LEAVES, BambooLeaves.NONE).setValue(BambooBlock.STAGE, Integer.valueOf(0));
+		BlockState finalLarge = trunk.setValue(BambooBlock.LEAVES, BambooLeaves.LARGE).setValue(BambooBlock.STAGE, Integer.valueOf(1));
+		BlockState topLarge = trunk.setValue(BambooBlock.LEAVES, BambooLeaves.LARGE);
+		BlockState topSmall = trunk.setValue(BambooBlock.LEAVES, BambooLeaves.SMALL);
+
 		int i = 0;
 		BlockPos.Mutable blockpos$mutable = pos.mutable();
 		BlockPos.Mutable blockpos$mutable1 = pos.mutable();
 		if (reader.isEmptyBlock(blockpos$mutable)) {
-			if (LostWorldsBlocks.CALAMITES_SUCKOWII.defaultBlockState().canSurvive(reader, blockpos$mutable)) {
+			if (LostWorldsBlocks.CALAMITES_SUCKOWII.getDefaultState().canSurvive(reader, blockpos$mutable)) {
 				int j = rand.nextInt(12) + 5;
 				if (rand.nextFloat() < config.probability) {
 					int k = rand.nextInt(4) + 1;
@@ -53,14 +53,14 @@ public class CalamitesSuckowiiFeature extends Feature<ProbabilityConfig> {
 				}
 
 				for (int l1 = 0; l1 < j && reader.isEmptyBlock(blockpos$mutable); ++l1) {
-					reader.setBlock(blockpos$mutable, CALAMITES_SUCKOWII_TRUNK, 2);
+					reader.setBlock(blockpos$mutable, trunk, 2);
 					blockpos$mutable.move(Direction.UP, 1);
 				}
 
 				if (blockpos$mutable.getY() - pos.getY() >= 3) {
-					reader.setBlock(blockpos$mutable, CALAMITES_SUCKOWII_FINAL_LARGE, 2);
-					reader.setBlock(blockpos$mutable.move(Direction.DOWN, 1), CALAMITES_SUCKOWII_TOP_LARGE, 2);
-					reader.setBlock(blockpos$mutable.move(Direction.DOWN, 1), CALAMITES_SUCKOWII_TOP_SMALL, 2);
+					reader.setBlock(blockpos$mutable, finalLarge, 2);
+					reader.setBlock(blockpos$mutable.move(Direction.DOWN, 1), topLarge, 2);
+					reader.setBlock(blockpos$mutable.move(Direction.DOWN, 1), topSmall, 2);
 				}
 			}
 
