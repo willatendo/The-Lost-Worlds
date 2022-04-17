@@ -1,11 +1,5 @@
 package lostworlds.server.util;
 
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.stream.Collectors;
-
-import org.apache.commons.lang3.StringUtils;
-
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.providers.ProviderType;
@@ -31,9 +25,10 @@ import net.minecraft.block.SlabBlock;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.block.TrapDoorBlock;
 import net.minecraft.block.WallBlock;
-import net.minecraft.item.DyeColor;
+import net.minecraft.item.Items;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.Tags;
@@ -48,15 +43,40 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.addDataGenerator(ProviderType.BLOCK_TAGS, provider -> provider.tag(LostWorldsTags.ModBlockTags.JURASSIC_PARK_ERA).addTag(LostWorldsTags.ModBlockTags.LIGHT_CONCRETE).addTag(LostWorldsTags.ModBlockTags.WOODEN_PLANKS));
 		this.addDataGenerator(ProviderType.BLOCK_TAGS, provider -> provider.tag(LostWorldsTags.ModBlockTags.JURASSIC_WORLD_ERA).addTag(LostWorldsTags.ModBlockTags.DARK_CONCRETE).addTag(LostWorldsTags.ModBlockTags.REFINED_WOODEN_PLANKS));
 
-		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("itemGroup.lostworlds.items", "Lost Worlds Items"));
-		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("itemGroup.lostworlds.blocks", "Lost Worlds Blocks"));
-		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("item.lostworlds.lost_worlds_lexicon.desc", "An Everything-You-Need-to-Know Book!"));
-		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("item.lostworlds.field_guide.desc", "Willatendo - Volume 3"));
-		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("item.lostworlds.music_disc_ascented.desc", "Willatendo - Ascented"));
-		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("item.lostworlds.collectible.desc", "It's a collectible!"));
-		for (DyeColor color : DyeColor.values()) {
-			this.addDataGenerator(ProviderType.LANG, provider -> provider.add("block.minecraft.banner.scarab." + color.getName(), Arrays.stream(color.getName().toLowerCase(Locale.ROOT).split("_")).map(StringUtils::capitalize).collect(Collectors.joining(" ")) + " Scarab"));
-		}
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.tag(ItemTags.STONE_TOOL_MATERIALS).add(LostWorldsBlocks.JURASSIC_COBBLESTONE.asStack().getItem()).add(LostWorldsBlocks.PERMIAN_COBBLESTONE.asStack().getItem()));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.tag(ItemTags.STONE_CRAFTING_MATERIALS).add(LostWorldsBlocks.JURASSIC_COBBLESTONE.asStack().getItem()).add(LostWorldsBlocks.PERMIAN_COBBLESTONE.asStack().getItem()));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.tag(LostWorldsTags.ModItemTags.TIME_BOOK_FUEL).add(Items.REDSTONE));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.ARAUCARIA_LOGS, LostWorldsTags.ModItemTags.ARAUCARIA_LOGS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.ANCIENT_SAPLINGS, LostWorldsTags.ModItemTags.ANCIENT_SAPLINGS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.CALAMITES_LOGS, LostWorldsTags.ModItemTags.CALAMITES_LOGS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.CONIFER_LOGS, LostWorldsTags.ModItemTags.CONIFER_LOGS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.CYPRESS_LOGS, LostWorldsTags.ModItemTags.CYPRESS_LOGS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.DARK_CONCRETE, LostWorldsTags.ModItemTags.DARK_CONCRETE));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.DECORATIVE_BLOCKS, LostWorldsTags.ModItemTags.DECORATIVE_BLOCKS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.DECORATIVE_DOORS, LostWorldsTags.ModItemTags.DECORATIVE_DOORS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.EGGS, LostWorldsTags.ModItemTags.EGGS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.FOSSILS, LostWorldsTags.ModItemTags.FOSSILS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.GINKGO_LOGS, LostWorldsTags.ModItemTags.GINKGO_LOGS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.JURASSIC_PARK_ERA, LostWorldsTags.ModItemTags.JURASSIC_PARK_ERA));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.JURASSIC_WORLD_ERA, LostWorldsTags.ModItemTags.JURASSIC_WORLD_ERA));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.LIGHT_CONCRETE, LostWorldsTags.ModItemTags.LIGHT_CONCRETE));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.PAVEMENT, LostWorldsTags.ModItemTags.PAVEMENT));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.PETRIFIED_LOGS, LostWorldsTags.ModItemTags.PETRIFIED_LOGS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.REFINED_WOODEN_PLANKS, LostWorldsTags.ModItemTags.REFINED_WOODEN_PLANKS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.ROADS, LostWorldsTags.ModItemTags.ROADS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.SCORCHED_LOGS, LostWorldsTags.ModItemTags.SCORCHED_LOGS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.SEQUOIA_LOGS, LostWorldsTags.ModItemTags.SEQUOIA_LOGS));
+		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.WOODEN_PLANKS, LostWorldsTags.ModItemTags.WOODEN_PLANKS));
+
+//		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("itemGroup.lostworlds.items", "Lost Worlds Items"));
+//		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("itemGroup.lostworlds.blocks", "Lost Worlds Blocks"));
+//		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("item.lostworlds.lost_worlds_lexicon.desc", "An Everything-You-Need-to-Know Book!"));
+//		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("item.lostworlds.field_guide.desc", "Willatendo - Volume 3"));
+//		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("item.lostworlds.music_disc_ascented.desc", "Willatendo - Ascented"));
+//		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("item.lostworlds.collectible.desc", "It's a collectible!"));
+//		for (DyeColor color : DyeColor.values()) {
+//			this.addDataGenerator(ProviderType.LANG, provider -> provider.add("block.minecraft.banner.scarab." + color.getName(), Arrays.stream(color.getName().toLowerCase(Locale.ROOT).split("_")).map(StringUtils::capitalize).collect(Collectors.joining(" ")) + " Scarab"));
+//		}
 	}
 
 	public static NonNullSupplier<LostWorldsRegistrate> lazy(String modid) {
@@ -73,6 +93,10 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> blockItemFlat(String name, NonNullFunction<Properties, T> factory) {
 		return super.block(name, factory).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("item/" + name))).build();
+	}
+
+	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> blockItemFlat(String name, String texture, NonNullFunction<Properties, T> factory) {
+		return super.block(name, factory).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("item/" + texture))).build();
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> plantColoured(String name, NonNullFunction<Properties, T> factory) {
@@ -115,39 +139,35 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> pottedBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().singleTexture(block.getName(), new ResourceLocation("block/flower_pot_cross"), "plant", new ResourceLocation(block.get().getRegistryName().getNamespace(), "block/" + texture)))));
+		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().singleTexture(block.getName(), new ResourceLocation("block/flower_pot_cross"), "plant", new ResourceLocation(block.get().getRegistryName().getNamespace(), "block/" + texture))))).tag(BlockTags.FLOWER_POTS);
 	}
 
 	public <T extends RotatedPillarBlock> BlockBuilder<T, LostWorldsRegistrate> rotatedBlock(String name, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.logBlock(block.get()));
+		return super.block(name, factory).blockstate((block, provider) -> provider.logBlock(block.get())).tag(BlockTags.LOGS_THAT_BURN, BlockTags.LOGS).simpleItem();
 	}
 
 	public <T extends RotatedPillarBlock> BlockBuilder<T, LostWorldsRegistrate> rotatedWoodBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.axisBlock(block.get(), provider.modLoc("block/" + texture), provider.modLoc("block/" + texture)));
+		return super.block(name, factory).blockstate((block, provider) -> provider.axisBlock(block.get(), provider.modLoc("block/" + texture), provider.modLoc("block/" + texture))).tag(BlockTags.LOGS_THAT_BURN, BlockTags.LOGS).simpleItem();
 	}
 
 	public <T extends StairsBlock> BlockBuilder<T, LostWorldsRegistrate> stairBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.stairsBlock((StairsBlock) block.get(), provider.modLoc("block/" + texture)));
+		return super.block(name, factory).blockstate((block, provider) -> provider.stairsBlock((StairsBlock) block.get(), provider.modLoc("block/" + texture))).simpleItem();
 	}
 
 	public <T extends SlabBlock> BlockBuilder<T, LostWorldsRegistrate> slabBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.slabBlock((SlabBlock) block.get(), provider.modLoc("block/" + texture), provider.modLoc("block/" + texture)));
+		return super.block(name, factory).blockstate((block, provider) -> provider.slabBlock((SlabBlock) block.get(), provider.modLoc("block/" + texture), provider.modLoc("block/" + texture))).simpleItem();
 	}
 
 	public <T extends WallBlock> BlockBuilder<T, LostWorldsRegistrate> wallBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.wallBlock((WallBlock) block.get(), provider.modLoc("block/" + texture))).item().model((item, provider) -> provider.withExistingParent(name, provider.modLoc("block/" + texture))).build();
+		return super.block(name, factory).blockstate((block, provider) -> provider.wallBlock((WallBlock) block.get(), provider.modLoc("block/" + texture))).item().model((item, provider) -> LostWorldsBlockModels.wallInv(item.get(), texture, provider)).build().tag(BlockTags.WALLS);
 	}
 
 	public <T extends FenceBlock> BlockBuilder<T, LostWorldsRegistrate> fenceBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.fenceBlock((FenceBlock) block.get(), provider.modLoc("block/" + texture)));
-	}
-
-	public <T extends FenceBlock> BlockBuilder<T, LostWorldsRegistrate> fenceBlock(String name, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.fenceBlock((FenceBlock) block.get(), provider.modLoc("block/" + name)));
+		return super.block(name, factory).blockstate((block, provider) -> provider.fenceBlock((FenceBlock) block.get(), provider.modLoc("block/" + texture))).item().model((block, provider) -> LostWorldsBlockModels.fenceInv(block.get(), texture, provider)).build();
 	}
 
 	public <T extends FenceGateBlock> BlockBuilder<T, LostWorldsRegistrate> fenceGateBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.fenceGateBlock((FenceGateBlock) block.get(), provider.modLoc("block/" + texture)));
+		return super.block(name, factory).blockstate((block, provider) -> provider.fenceGateBlock((FenceGateBlock) block.get(), provider.modLoc("block/" + texture))).tag(BlockTags.FENCE_GATES).simpleItem();
 	}
 
 	public <T extends AbstractButtonBlock> BlockBuilder<T, LostWorldsRegistrate> buttonBlock(String name, String texture, NonNullFunction<Properties, T> factory) {

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:eoraptor_egg",
+    "lostworlds:procompsognathus_egg",
+    "lostworlds:large_egg",
+    "lostworlds:medium_egg",
+    "lostworlds:small_egg"
+  ]
+}

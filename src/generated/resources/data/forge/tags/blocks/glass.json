@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:clear_glass",
+    "lostworlds:tinted_glass",
+    "lostworlds:shaded_glass",
+    "lostworlds:white_glass",
+    "lostworlds:orange_glass",
+    "lostworlds:magenta_glass",
+    "lostworlds:light_blue_glass",
+    "lostworlds:yellow_glass",
+    "lostworlds:lime_glass",
+    "lostworlds:pink_glass",
+    "lostworlds:gray_glass",
+    "lostworlds:light_gray_glass",
+    "lostworlds:cyan_glass",
+    "lostworlds:purple_glass",
+    "lostworlds:blue_glass",
+    "lostworlds:brown_glass",
+    "lostworlds:green_glass",
+    "lostworlds:red_glass",
+    "lostworlds:black_glass"
+  ]
+}

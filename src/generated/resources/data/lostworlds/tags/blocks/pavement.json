@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:pavement",
+    "lostworlds:pavement_slope",
+    "lostworlds:raised_pavement"
+  ]
+}

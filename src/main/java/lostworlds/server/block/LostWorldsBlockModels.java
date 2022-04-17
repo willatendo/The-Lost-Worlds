@@ -74,6 +74,14 @@ public class LostWorldsBlockModels {
 		});
 	}
 
+	public static ItemModelBuilder fenceInv(BlockItem block, String texture, RegistrateItemModelProvider provider) {
+		return provider.withExistingParent(block.getRegistryName().getPath() + "_inventory", provider.mcLoc("block/fence_inventory")).texture("texture", provider.modLoc("block/" + texture));
+	}
+
+	public static ItemModelBuilder wallInv(BlockItem block, String texture, RegistrateItemModelProvider provider) {
+		return provider.withExistingParent(block.getRegistryName().getPath() + "_inventory", provider.mcLoc("block/wall_inventory")).texture("wall", provider.modLoc("block/" + texture));
+	}
+
 	public static ItemModelBuilder buttonInv(BlockItem block, RegistrateItemModelProvider provider) {
 		return provider.withExistingParent(block.getRegistryName().getPath(), provider.modLoc("block/" + block.getRegistryName().getPath() + "_inventory"));
 	}

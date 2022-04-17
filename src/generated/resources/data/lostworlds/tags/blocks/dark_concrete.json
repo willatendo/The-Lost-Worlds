@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:dark_concrete",
+    "lostworlds:dark_concrete_stairs",
+    "lostworlds:dark_concrete_slab",
+    "lostworlds:dark_concrete_wall",
+    "lostworlds:dark_concrete_pressure_plate",
+    "lostworlds:dark_concrete_button",
+    "lostworlds:polished_dark_concrete",
+    "lostworlds:accent_dark_concrete",
+    "lostworlds:accent_dark_concrete_stairs",
+    "lostworlds:accent_dark_concrete_slab"
+  ]
+}

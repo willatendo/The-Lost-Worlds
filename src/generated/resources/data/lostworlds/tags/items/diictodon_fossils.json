@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:diictodon_rib_cage",
+    "lostworlds:diictodon_leg_bones",
+    "lostworlds:diictodon_arm_bones",
+    "lostworlds:diictodon_tail",
+    "lostworlds:diictodon_skull",
+    "lostworlds:diictodon_skeleton"
+  ]
+}

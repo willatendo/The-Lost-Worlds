@@ -16,19 +16,19 @@ public class AnalyzerRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializ
 	@Override
 	public AnalyzerRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 		ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
-		Ingredient dna = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "dna"));
-		Ingredient dnaDisc = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "dnaDisc"));
+		Ingredient input = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "input"));
+		Ingredient storage = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "storage"));
 
-		return new AnalyzerRecipe(recipeId, dna, dnaDisc, output);
+		return new AnalyzerRecipe(recipeId, input, storage, output);
 	}
 
 	@Override
 	public AnalyzerRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 		ItemStack output = buffer.readItem();
-		Ingredient dna = Ingredient.fromNetwork(buffer);
-		Ingredient dnaDisc = Ingredient.fromNetwork(buffer);
+		Ingredient input = Ingredient.fromNetwork(buffer);
+		Ingredient storage = Ingredient.fromNetwork(buffer);
 
-		return new AnalyzerRecipe(recipeId, dna, dnaDisc, output);
+		return new AnalyzerRecipe(recipeId, input, storage, output);
 	}
 
 	@Override

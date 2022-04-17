@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:permian_period_time_book",
+    "lostworlds:jurassic_period_time_book",
+    "lostworlds:cretaceous_period_time_book"
+  ]
+}

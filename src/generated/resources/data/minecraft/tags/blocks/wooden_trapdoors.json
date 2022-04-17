@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:araucaria_trapdoor",
+    "lostworlds:calamites_trapdoor",
+    "lostworlds:conifer_trapdoor",
+    "lostworlds:cypress_trapdoor",
+    "lostworlds:ginkgo_trapdoor",
+    "lostworlds:scorched_trapdoor",
+    "lostworlds:sequoia_trapdoor"
+  ]
+}

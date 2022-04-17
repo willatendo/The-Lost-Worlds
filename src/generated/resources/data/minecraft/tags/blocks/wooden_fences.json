@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:araucaria_fence",
+    "lostworlds:calamites_fence",
+    "lostworlds:conifer_fence",
+    "lostworlds:cypress_fence",
+    "lostworlds:ginkgo_fence",
+    "lostworlds:scorched_fence",
+    "lostworlds:sequoia_fence"
+  ]
+}

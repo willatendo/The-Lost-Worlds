@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:araucaria_stairs",
+    "lostworlds:calamites_stairs",
+    "lostworlds:conifer_stairs",
+    "lostworlds:cypress_stairs",
+    "lostworlds:ginkgo_stairs",
+    "lostworlds:scorched_stairs",
+    "lostworlds:sequoia_stairs"
+  ]
+}

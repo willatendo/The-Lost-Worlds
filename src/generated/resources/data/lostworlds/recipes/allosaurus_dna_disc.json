@@ -1,9 +1,9 @@
 {
   "type": "lostworlds:analyzer",
-  "dna": {
+  "input": {
     "item": "lostworlds:allosaurus_dna"
   },
-  "dnaDisc": {
+  "storage": {
     "item": "lostworlds:storage_disc"
   },
   "output": "lostworlds:allosaurus_dna_disc"

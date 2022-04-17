@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:araucaria_pressure_plate",
+    "lostworlds:calamites_pressure_plate",
+    "lostworlds:conifer_pressure_plate",
+    "lostworlds:cypress_pressure_plate",
+    "lostworlds:ginkgo_planks",
+    "lostworlds:scorched_pressure_plate",
+    "lostworlds:sequoia_pressure_plate"
+  ]
+}

@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "lostworlds:raised_dirt_road"
         }
       ],
       "conditions": [

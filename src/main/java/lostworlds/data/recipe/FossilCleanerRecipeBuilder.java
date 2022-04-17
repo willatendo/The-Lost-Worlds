@@ -19,13 +19,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
 public class FossilCleanerRecipeBuilder {
-	private final Item result;
-	private final Ingredient fossil;
+	private final Item output;
+	private final Ingredient input;
 	private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-	private FossilCleanerRecipeBuilder(IItemProvider result, Ingredient fossil) {
-		this.result = result.asItem();
-		this.fossil = fossil;
+	private FossilCleanerRecipeBuilder(IItemProvider output, Ingredient input) {
+		this.output = output.asItem();
+		this.input = input;
 	}
 
 	public static FossilCleanerRecipeBuilder simple(Ingredient dna, IItemProvider result) {
@@ -38,11 +38,11 @@ public class FossilCleanerRecipeBuilder {
 	}
 
 	public void save(Consumer<IFinishedRecipe> consumer) {
-		this.save(consumer, Registry.ITEM.getKey(this.result));
+		this.save(consumer, Registry.ITEM.getKey(this.output));
 	}
 
 	public void save(Consumer<IFinishedRecipe> consumer, String name) {
-		ResourceLocation resourcelocation = Registry.ITEM.getKey(this.result);
+		ResourceLocation resourcelocation = Registry.ITEM.getKey(this.output);
 		ResourceLocation resourcelocation1 = new ResourceLocation(name);
 		if (resourcelocation1.equals(resourcelocation)) {
 			throw new IllegalStateException("Recipe " + resourcelocation1 + " should remove its 'save' argument");
@@ -54,7 +54,7 @@ public class FossilCleanerRecipeBuilder {
 	public void save(Consumer<IFinishedRecipe> consumer, ResourceLocation name) {
 		this.ensureValid(name);
 		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(name)).rewards(AdvancementRewards.Builder.recipe(name)).requirements(IRequirementsStrategy.OR);
-		consumer.accept(new FossilCleanerRecipeBuilder.Result(name, this.fossil, this.result, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.result.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
+		consumer.accept(new FossilCleanerRecipeBuilder.Result(name, this.input, this.output, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.output.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
 	}
 
 	private void ensureValid(ResourceLocation id) {
@@ -66,13 +66,13 @@ public class FossilCleanerRecipeBuilder {
 	public static class Result implements IFinishedRecipe {
 		private final ResourceLocation id;
 		private final Item result;
-		private final Ingredient fossil;
+		private final Ingredient input;
 		private final Advancement.Builder advancement;
 		private final ResourceLocation advancementId;
 
-		public Result(ResourceLocation id, Ingredient fossil, Item result, Advancement.Builder advancement, ResourceLocation advancementId) {
+		public Result(ResourceLocation id, Ingredient input, Item result, Advancement.Builder advancement, ResourceLocation advancementId) {
 			this.id = id;
-			this.fossil = fossil;
+			this.input = input;
 			this.result = result;
 			this.advancement = advancement;
 			this.advancementId = advancementId;
@@ -80,7 +80,7 @@ public class FossilCleanerRecipeBuilder {
 
 		@Override
 		public void serializeRecipeData(JsonObject json) {
-			json.add("fossil", this.fossil.toJson());
+			json.add("input", this.input.toJson());
 			json.addProperty("output", Registry.ITEM.getKey(this.result).toString());
 		}
 

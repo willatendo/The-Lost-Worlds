@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:araucaria_button",
+    "lostworlds:calamites_button",
+    "lostworlds:conifer_button",
+    "lostworlds:cypress_button",
+    "lostworlds:ginkgo_button",
+    "lostworlds:scorched_button",
+    "lostworlds:sequoia_button"
+  ]
+}

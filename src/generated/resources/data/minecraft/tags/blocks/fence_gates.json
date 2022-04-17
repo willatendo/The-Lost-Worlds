@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:araucaria_fence_gate",
+    "lostworlds:calamites_fence_gate",
+    "lostworlds:conifer_fence_gate",
+    "lostworlds:cypress_fence_gate",
+    "lostworlds:ginkgo_fence_gate",
+    "lostworlds:scorched_fence_gate",
+    "lostworlds:sequoia_fence_gate",
+    "lostworlds:wooden_planks_fence_gate",
+    "lostworlds:refined_wooden_planks_fence_gate"
+  ]
+}

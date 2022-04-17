@@ -17,18 +17,18 @@ public class DNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSeri
 	public DNAExtractorRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 		ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
 		Ingredient input = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "input"));
-		Ingredient vile = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "vile"));
+		Ingredient storage = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "storage"));
 
-		return new DNAExtractorRecipe(recipeId, input, vile, output);
+		return new DNAExtractorRecipe(recipeId, input, storage, output);
 	}
 
 	@Override
 	public DNAExtractorRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 		ItemStack output = buffer.readItem();
 		Ingredient input = Ingredient.fromNetwork(buffer);
-		Ingredient vile = Ingredient.fromNetwork(buffer);
+		Ingredient storage = Ingredient.fromNetwork(buffer);
 
-		return new DNAExtractorRecipe(recipeId, input, vile, output);
+		return new DNAExtractorRecipe(recipeId, input, storage, output);
 	}
 
 	@Override

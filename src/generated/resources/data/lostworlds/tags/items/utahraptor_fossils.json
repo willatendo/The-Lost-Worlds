@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:utahraptor_rib_cage",
+    "lostworlds:utahraptor_leg_bones",
+    "lostworlds:utahraptor_arm_bones",
+    "lostworlds:utahraptor_tail",
+    "lostworlds:utahraptor_skull",
+    "lostworlds:utahraptor_skeleton"
+  ]
+}

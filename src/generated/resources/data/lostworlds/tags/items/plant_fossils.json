@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:alethopteris_fossil",
+    "lostworlds:archaefrutus_fossil",
+    "lostworlds:brazilea_fossil",
+    "lostworlds:calamites_suckowii_fossil",
+    "lostworlds:cephalotaxus_fossil",
+    "lostworlds:cycad_fossil",
+    "lostworlds:dicksonia_fossil",
+    "lostworlds:dillhoffia_fossil",
+    "lostworlds:duisbergia_fossil",
+    "lostworlds:eudicots_fossil",
+    "lostworlds:magnolia_fossil",
+    "lostworlds:osmunda_fossil",
+    "lostworlds:williamsonia_fossil",
+    "lostworlds:zamites_fossil"
+  ]
+}

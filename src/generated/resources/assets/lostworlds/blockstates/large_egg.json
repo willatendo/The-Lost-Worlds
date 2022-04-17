@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "hatch=0,large_eggs=1": {
+      "model": "lostworlds:block/large_egg1"
+    },
+    "hatch=1,large_eggs=1": {
+      "model": "lostworlds:block/large_egg1"
+    },
+    "hatch=2,large_eggs=1": {
+      "model": "lostworlds:block/large_egg1"
+    },
+    "hatch=0,large_eggs=2": {
+      "model": "lostworlds:block/large_egg2"
+    },
+    "hatch=1,large_eggs=2": {
+      "model": "lostworlds:block/large_egg2"
+    },
+    "hatch=2,large_eggs=2": {
+      "model": "lostworlds:block/large_egg2"
+    },
+    "hatch=0,large_eggs=3": {
+      "model": "lostworlds:block/large_egg3"
+    },
+    "hatch=1,large_eggs=3": {
+      "model": "lostworlds:block/large_egg3"
+    },
+    "hatch=2,large_eggs=3": {
+      "model": "lostworlds:block/large_egg3"
+    }
+  }
+}

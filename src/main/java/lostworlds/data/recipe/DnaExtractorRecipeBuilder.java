@@ -20,23 +20,23 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
 public class DnaExtractorRecipeBuilder {
-	private final Item result;
+	private final Item output;
 	private final Ingredient input;
-	private final Ingredient vile;
+	private final Ingredient storage;
 	private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-	private DnaExtractorRecipeBuilder(IItemProvider result, Ingredient input, Ingredient vile) {
-		this.result = result.asItem();
+	private DnaExtractorRecipeBuilder(IItemProvider output, Ingredient input, Ingredient vile) {
+		this.output = output.asItem();
 		this.input = input;
-		this.vile = vile;
+		this.storage = vile;
 	}
 
-	public static DnaExtractorRecipeBuilder simple(Ingredient input, Ingredient vile, IItemProvider result) {
-		return new DnaExtractorRecipeBuilder(result, input, vile);
+	public static DnaExtractorRecipeBuilder simple(Ingredient input, Ingredient storage, IItemProvider output) {
+		return new DnaExtractorRecipeBuilder(output, input, storage);
 	}
 
-	public static DnaExtractorRecipeBuilder simple(Ingredient input, IItemProvider result) {
-		return simple(input, Ingredient.of(LostWorldsItems.EMPTY_VILE.get()), result);
+	public static DnaExtractorRecipeBuilder simple(Ingredient input, IItemProvider output) {
+		return simple(input, Ingredient.of(LostWorldsItems.EMPTY_VILE.get()), output);
 	}
 
 	public DnaExtractorRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
@@ -45,11 +45,11 @@ public class DnaExtractorRecipeBuilder {
 	}
 
 	public void save(Consumer<IFinishedRecipe> consumer) {
-		this.save(consumer, Registry.ITEM.getKey(this.result));
+		this.save(consumer, Registry.ITEM.getKey(this.output));
 	}
 
 	public void save(Consumer<IFinishedRecipe> consumer, String name) {
-		ResourceLocation resourcelocation = Registry.ITEM.getKey(this.result);
+		ResourceLocation resourcelocation = Registry.ITEM.getKey(this.output);
 		ResourceLocation resourcelocation1 = new ResourceLocation(name);
 		if (resourcelocation1.equals(resourcelocation)) {
 			throw new IllegalStateException("Recipe " + resourcelocation1 + " should remove its 'save' argument");
@@ -61,7 +61,7 @@ public class DnaExtractorRecipeBuilder {
 	public void save(Consumer<IFinishedRecipe> consumer, ResourceLocation name) {
 		this.ensureValid(name);
 		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(name)).rewards(AdvancementRewards.Builder.recipe(name)).requirements(IRequirementsStrategy.OR);
-		consumer.accept(new DnaExtractorRecipeBuilder.Result(name, this.input, this.vile, this.result, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.result.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
+		consumer.accept(new DnaExtractorRecipeBuilder.Result(name, this.input, this.storage, this.output, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.output.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
 	}
 
 	private void ensureValid(ResourceLocation id) {
@@ -74,14 +74,14 @@ public class DnaExtractorRecipeBuilder {
 		private final ResourceLocation id;
 		private final Item result;
 		private final Ingredient input;
-		private final Ingredient vile;
+		private final Ingredient storage;
 		private final Advancement.Builder advancement;
 		private final ResourceLocation advancementId;
 
-		public Result(ResourceLocation id, Ingredient input, Ingredient vile, Item result, Advancement.Builder advancement, ResourceLocation advancementId) {
+		public Result(ResourceLocation id, Ingredient input, Ingredient storage, Item result, Advancement.Builder advancement, ResourceLocation advancementId) {
 			this.id = id;
 			this.input = input;
-			this.vile = vile;
+			this.storage = storage;
 			this.result = result;
 			this.advancement = advancement;
 			this.advancementId = advancementId;
@@ -90,7 +90,7 @@ public class DnaExtractorRecipeBuilder {
 		@Override
 		public void serializeRecipeData(JsonObject json) {
 			json.add("input", this.input.toJson());
-			json.add("vile", this.vile.toJson());
+			json.add("storage", this.storage.toJson());
 			json.addProperty("output", Registry.ITEM.getKey(this.result).toString());
 		}
 

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:giganotosaurus_rib_cage",
+    "lostworlds:giganotosaurus_leg_bones",
+    "lostworlds:giganotosaurus_arm_bones",
+    "lostworlds:giganotosaurus_tail",
+    "lostworlds:giganotosaurus_skull",
+    "lostworlds:giganotosaurus_skeleton"
+  ]
+}

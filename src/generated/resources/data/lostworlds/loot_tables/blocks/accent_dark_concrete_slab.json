@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "lostworlds:accent_dark_concrete_slab"
         }
       ],
       "conditions": [

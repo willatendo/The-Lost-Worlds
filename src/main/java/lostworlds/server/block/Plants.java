@@ -25,8 +25,10 @@ public enum Plants implements IStringSerializable {
 	private final String id;
 	private final Supplier<Block> block;
 	private Supplier<Item> item;
-	private Supplier<Item> seed;
+	private Supplier<Item> softTissue;
 	private Supplier<Item> dna;
+	private Supplier<Item> dnaDisc;
+	private Supplier<Item> seed;
 
 	private Plants(String id, Supplier<Block> block) {
 		this.id = id;
@@ -59,6 +61,22 @@ public enum Plants implements IStringSerializable {
 
 	public Supplier<Item> getSeed() {
 		return this.seed;
+	}
+
+	public Supplier<Item> getSoftTissue() {
+		return softTissue;
+	}
+
+	public Supplier<Item> getDNADisc() {
+		return dnaDisc;
+	}
+
+	public Supplier<Item> setSoftTissue(Supplier<Item> softTissue) {
+		return this.softTissue = softTissue;
+	}
+
+	public Supplier<Item> setDNADisc(Supplier<Item> dnaDisc) {
+		return this.dnaDisc = dnaDisc;
 	}
 
 	@Override

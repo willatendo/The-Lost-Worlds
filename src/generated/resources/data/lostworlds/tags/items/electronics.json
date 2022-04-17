@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:copper_wire",
+    "lostworlds:computer_fan",
+    "lostworlds:computer_screen",
+    "lostworlds:computer_frame",
+    "lostworlds:computer_storage_port",
+    "lostworlds:motherboard",
+    "lostworlds:ram",
+    "lostworlds:computer_core",
+    "lostworlds:storage_disc",
+    "lostworlds:tag"
+  ]
+}

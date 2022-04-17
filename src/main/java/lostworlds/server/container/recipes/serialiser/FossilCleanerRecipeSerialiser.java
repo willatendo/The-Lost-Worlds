@@ -16,17 +16,17 @@ public class FossilCleanerRecipeSerialiser extends ForgeRegistryEntry<IRecipeSer
 	@Override
 	public FossilCleanerRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 		ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
-		Ingredient fossil = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "fossil"));
+		Ingredient input = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "input"));
 
-		return new FossilCleanerRecipe(recipeId, fossil, output);
+		return new FossilCleanerRecipe(recipeId, input, output);
 	}
 
 	@Override
 	public FossilCleanerRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 		ItemStack output = buffer.readItem();
-		Ingredient fossil = Ingredient.fromNetwork(buffer);
+		Ingredient input = Ingredient.fromNetwork(buffer);
 
-		return new FossilCleanerRecipe(recipeId, fossil, output);
+		return new FossilCleanerRecipe(recipeId, input, output);
 	}
 
 	@Override
