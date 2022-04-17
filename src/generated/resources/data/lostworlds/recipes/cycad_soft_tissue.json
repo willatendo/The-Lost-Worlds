@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "item": "lostworlds:cycad_fossil"
+  },
+  "plant": true,
+  "output": "lostworlds:cycad_soft_tissue"
+}

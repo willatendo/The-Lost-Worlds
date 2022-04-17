@@ -3,7 +3,7 @@
   "input": {
     "item": "lostworlds:suchomimus_soft_tissue"
   },
-  "vile": {
+  "storage": {
     "item": "lostworlds:empty_vile"
   },
   "output": "lostworlds:suchomimus_dna"

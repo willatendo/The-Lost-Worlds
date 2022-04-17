@@ -3,7 +3,7 @@
   "input": {
     "item": "lostworlds:great_auk_soft_tissue"
   },
-  "vile": {
+  "storage": {
     "item": "lostworlds:empty_vile"
   },
   "output": "lostworlds:great_auk_dna"

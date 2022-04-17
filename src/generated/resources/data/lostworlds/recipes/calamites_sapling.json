@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:cultivator",
+  "input": {
+    "item": "lostworlds:calamites_dna_disc"
+  },
+  "output": "lostworlds:calamites_sapling"
+}

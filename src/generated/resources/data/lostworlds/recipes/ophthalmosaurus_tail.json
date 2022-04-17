@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_ophthalmosaurus_tail"
   },
   "output": "lostworlds:ophthalmosaurus_tail"

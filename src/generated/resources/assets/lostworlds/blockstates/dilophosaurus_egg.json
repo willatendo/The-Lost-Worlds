@@ -1,31 +1,13 @@
 {
   "variants": {
-    "hatch=0,large_eggs=1": {
-      "model": "lostworlds:block/dilophosaurus_egg1"
+    "large_eggs=1": {
+      "model": "lostworlds:block/dilophosaurus_egg_1"
     },
-    "hatch=1,large_eggs=1": {
-      "model": "lostworlds:block/dilophosaurus_egg1"
+    "large_eggs=2": {
+      "model": "lostworlds:block/dilophosaurus_egg_2"
     },
-    "hatch=2,large_eggs=1": {
-      "model": "lostworlds:block/dilophosaurus_egg1"
-    },
-    "hatch=0,large_eggs=2": {
-      "model": "lostworlds:block/dilophosaurus_egg2"
-    },
-    "hatch=1,large_eggs=2": {
-      "model": "lostworlds:block/dilophosaurus_egg2"
-    },
-    "hatch=2,large_eggs=2": {
-      "model": "lostworlds:block/dilophosaurus_egg2"
-    },
-    "hatch=0,large_eggs=3": {
-      "model": "lostworlds:block/dilophosaurus_egg3"
-    },
-    "hatch=1,large_eggs=3": {
-      "model": "lostworlds:block/dilophosaurus_egg3"
-    },
-    "hatch=2,large_eggs=3": {
-      "model": "lostworlds:block/dilophosaurus_egg3"
+    "large_eggs=3": {
+      "model": "lostworlds:block/dilophosaurus_egg_3"
     }
   }
 }

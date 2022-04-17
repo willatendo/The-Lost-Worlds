@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_psittacosaurus_skull"
   },
   "output": "lostworlds:psittacosaurus_skull"

@@ -25,10 +25,10 @@ public class DnaInjectorRecipeBuilder {
 	private final Ingredient storage;
 	private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-	private DnaInjectorRecipeBuilder(IItemProvider output, Ingredient input, Ingredient vile) {
+	private DnaInjectorRecipeBuilder(IItemProvider output, Ingredient input, Ingredient storage) {
 		this.output = output.asItem();
 		this.input = input;
-		this.storage = vile;
+		this.storage = storage;
 	}
 
 	public static DnaInjectorRecipeBuilder simple(Ingredient input, Ingredient storage, IItemProvider output) {

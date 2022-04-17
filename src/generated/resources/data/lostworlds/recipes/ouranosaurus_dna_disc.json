@@ -1,9 +1,9 @@
 {
   "type": "lostworlds:analyzer",
-  "dna": {
+  "input": {
     "item": "lostworlds:ouranosaurus_dna"
   },
-  "dnaDisc": {
+  "storage": {
     "item": "lostworlds:storage_disc"
   },
   "output": "lostworlds:ouranosaurus_dna_disc"

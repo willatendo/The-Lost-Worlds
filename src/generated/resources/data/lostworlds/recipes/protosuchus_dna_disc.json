@@ -1,9 +1,9 @@
 {
   "type": "lostworlds:analyzer",
-  "dna": {
+  "input": {
     "item": "lostworlds:protosuchus_dna"
   },
-  "dnaDisc": {
+  "storage": {
     "item": "lostworlds:storage_disc"
   },
   "output": "lostworlds:protosuchus_dna_disc"

@@ -1,9 +1,9 @@
 {
   "type": "lostworlds:analyzer",
-  "dna": {
+  "input": {
     "item": "lostworlds:rhinesuchus_dna"
   },
-  "dnaDisc": {
+  "storage": {
     "item": "lostworlds:storage_disc"
   },
   "output": "lostworlds:rhinesuchus_dna_disc"

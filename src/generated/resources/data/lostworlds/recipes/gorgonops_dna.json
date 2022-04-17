@@ -3,7 +3,7 @@
   "input": {
     "item": "lostworlds:gorgonops_soft_tissue"
   },
-  "vile": {
+  "storage": {
     "item": "lostworlds:empty_vile"
   },
   "output": "lostworlds:gorgonops_dna"

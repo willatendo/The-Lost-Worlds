@@ -3,7 +3,7 @@
   "input": {
     "item": "lostworlds:tyrannosaurus_soft_tissue"
   },
-  "vile": {
+  "storage": {
     "item": "lostworlds:empty_vile"
   },
   "output": "lostworlds:tyrannosaurus_dna"

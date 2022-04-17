@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_fukuivenator_skull"
   },
   "output": "lostworlds:fukuivenator_skull"

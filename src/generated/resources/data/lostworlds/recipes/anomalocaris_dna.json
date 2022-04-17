@@ -3,7 +3,7 @@
   "input": {
     "item": "lostworlds:anomalocaris_soft_tissue"
   },
-  "vile": {
+  "storage": {
     "item": "lostworlds:empty_vile"
   },
   "output": "lostworlds:anomalocaris_dna"

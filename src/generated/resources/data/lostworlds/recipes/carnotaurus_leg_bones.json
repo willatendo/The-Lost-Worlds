@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_carnotaurus_leg_bones"
   },
   "output": "lostworlds:carnotaurus_leg_bones"

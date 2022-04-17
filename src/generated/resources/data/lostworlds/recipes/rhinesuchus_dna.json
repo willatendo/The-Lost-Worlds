@@ -3,7 +3,7 @@
   "input": {
     "item": "lostworlds:rhinesuchus_soft_tissue"
   },
-  "vile": {
+  "storage": {
     "item": "lostworlds:empty_vile"
   },
   "output": "lostworlds:rhinesuchus_dna"

@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_injector",
-	"output": {
-		"item": "lostworlds:ouranosaurus_egg"
-	},
-	"dnaDisc": {
-		"item": "lostworlds:ouranosaurus_dna_disc"
-	}
-}

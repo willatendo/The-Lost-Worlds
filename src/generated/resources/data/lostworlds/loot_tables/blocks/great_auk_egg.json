@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "lostworlds:great_auk_egg"
         }
       ],
       "conditions": [

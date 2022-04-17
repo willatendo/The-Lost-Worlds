@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:cultivator",
-	"output": {
-		"item": "lostworlds:archaefrutus_seeds"
-	},
-	"dnaDisc": {
-		"item": "lostworlds:archaefrutus_dna_disc"
-	}
-}

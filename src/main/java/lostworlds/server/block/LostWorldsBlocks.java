@@ -18,7 +18,6 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.block.properties.ModBlockStateProperties;
 import lostworlds.server.block.tree.AraucariaTree;
 import lostworlds.server.block.tree.CalamitesTree;
 import lostworlds.server.block.tree.ConiferTree;
@@ -68,8 +67,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.color.IBlockColor;
+import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.SignItem;
 import net.minecraft.potion.Effects;
 import net.minecraft.tags.BlockTags;
@@ -205,14 +206,14 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<FossilizedTrackBlock> FOSSILIZED_TRACK = REGISTRATE.blockAndItem("fossilized_track", properties -> new FossilizedTrackBlock(() -> Blocks.STONE, properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)).blockstate(modelMcTexMc("cube", new String[] { "north", "east", "south", "west", "up", "down", "particle" }, new String[] { "minecraft:block/stone", "minecraft:block/stone", "minecraft:block/stone", "minecraft:block/stone", "lostworlds:block/fossilized_track_top", "minecraft:block/stone", "minecraft:block/stone" })).register();
 	public static final BlockEntry<PlasteredBlock> PLASTERED_FOSSILIZED_TRACK = REGISTRATE.blockAndItem("plastered_fossilized_track", properties -> new PlasteredBlock(() -> LostWorldsBlocks.FOSSILIZED_TRACK.get(), properties)).properties(properties -> properties.of(Material.STONE).instabreak().sound(SoundType.WOOL)).blockstate(diffTexture("plaster")).register();
 
-	public static final BlockEntry<TinyFossilizedEggBlock> TINY_FOSSILISED_EGG = REGISTRATE.blockItemFlat("tiny_fossilized_egg", TinyFossilizedEggBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + state.getValue(ModBlockStateProperties.TINY_EGGS), provider.modLoc(block.getName() + state.getValue(ModBlockStateProperties.TINY_EGGS)))).build())).tag(LostWorldsTags.ModBlockTags.FOSSILS).register();
-	public static final BlockEntry<TinyPlasteredFossilizedEggBlock> TINY_PLASTERED_FOSSILISED_EGG = REGISTRATE.blockItemFlat("tiny_plastered_fossilized_egg", TinyPlasteredFossilizedEggBlock::new).properties(properties -> properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + state.getValue(ModBlockStateProperties.TINY_EGGS), provider.modLoc(block.getName() + state.getValue(ModBlockStateProperties.TINY_EGGS)))).build())).register();
-	public static final BlockEntry<SmallFossilizedEggBlock> SMALL_FOSSILISED_EGG = REGISTRATE.blockItemFlat("small_fossilized_egg", SmallFossilizedEggBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + state.getValue(ModBlockStateProperties.SMALL_EGGS), provider.modLoc(block.getName() + state.getValue(ModBlockStateProperties.SMALL_EGGS)))).build())).tag(LostWorldsTags.ModBlockTags.FOSSILS).register();
-	public static final BlockEntry<SmallPlasteredFossilizedEggBlock> SMALL_PLASTERED_FOSSILISED_EGG = REGISTRATE.blockItemFlat("small_plastered_fossilized_egg", SmallPlasteredFossilizedEggBlock::new).properties(properties -> properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + state.getValue(ModBlockStateProperties.SMALL_EGGS), provider.modLoc(block.getName() + state.getValue(ModBlockStateProperties.SMALL_EGGS)))).build())).register();
-	public static final BlockEntry<MediumFossilisedEggBlock> MEDIUM_FOSSILISED_EGG = REGISTRATE.blockItemFlat("medium_fossilized_egg", MediumFossilisedEggBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + state.getValue(ModBlockStateProperties.MEDIUM_EGGS), provider.modLoc(block.getName() + state.getValue(ModBlockStateProperties.MEDIUM_EGGS)))).build())).tag(LostWorldsTags.ModBlockTags.FOSSILS).register();
-	public static final BlockEntry<MediumPlasteredFossilizedEggBlock> MEDIUM_PLASTERED_FOSSILISED_EGG = REGISTRATE.blockItemFlat("medium_plastered_fossilized_egg", MediumPlasteredFossilizedEggBlock::new).properties(properties -> properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + state.getValue(ModBlockStateProperties.MEDIUM_EGGS), provider.modLoc(block.getName() + state.getValue(ModBlockStateProperties.MEDIUM_EGGS)))).build())).register();
-	public static final BlockEntry<LargeFossilisedEggBlock> LARGE_FOSSILISED_EGG = REGISTRATE.blockItemFlat("large_fossilized_egg", LargeFossilisedEggBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + state.getValue(ModBlockStateProperties.LARGE_EGGS), provider.modLoc(block.getName() + state.getValue(ModBlockStateProperties.LARGE_EGGS)))).build())).tag(LostWorldsTags.ModBlockTags.FOSSILS).register();
-	public static final BlockEntry<LargePlasteredFossilizedEggBlock> LARGE_PLASTERED_FOSSILISED_EGG = REGISTRATE.blockItemFlat("large_plastered_fossilized_egg", LargePlasteredFossilizedEggBlock::new).properties(properties -> properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + state.getValue(ModBlockStateProperties.LARGE_EGGS), provider.modLoc(block.getName() + state.getValue(ModBlockStateProperties.LARGE_EGGS)))).build())).register();
+	public static final BlockEntry<TinyFossilizedEggBlock> TINY_FOSSILISED_EGG = REGISTRATE.blockItemFlat("tiny_fossilized_egg", TinyFossilizedEggBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()).blockstate(LostWorldsBlockModels.tinyEgg(new ResourceLocation("block/stone"))).tag(LostWorldsTags.ModBlockTags.FOSSILS).register();
+	public static final BlockEntry<TinyPlasteredFossilizedEggBlock> TINY_PLASTERED_FOSSILISED_EGG = REGISTRATE.blockItemFlat("tiny_plastered_fossilized_egg", TinyPlasteredFossilizedEggBlock::new).properties(properties -> properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()).blockstate(LostWorldsBlockModels.tinyEgg(LostWorldsUtils.rL("block/plastered_tiny_egg"))).register();
+	public static final BlockEntry<SmallFossilizedEggBlock> SMALL_FOSSILISED_EGG = REGISTRATE.blockItemFlat("small_fossilized_egg", SmallFossilizedEggBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()).blockstate(LostWorldsBlockModels.smallEgg(new ResourceLocation("block/stone"))).tag(LostWorldsTags.ModBlockTags.FOSSILS).register();
+	public static final BlockEntry<SmallPlasteredFossilizedEggBlock> SMALL_PLASTERED_FOSSILISED_EGG = REGISTRATE.blockItemFlat("small_plastered_fossilized_egg", SmallPlasteredFossilizedEggBlock::new).properties(properties -> properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()).blockstate(LostWorldsBlockModels.smallEgg(LostWorldsUtils.rL("block/plastered_small_egg"))).register();
+	public static final BlockEntry<MediumFossilisedEggBlock> MEDIUM_FOSSILISED_EGG = REGISTRATE.blockItemFlat("medium_fossilized_egg", MediumFossilisedEggBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()).blockstate(LostWorldsBlockModels.mediumEgg(new ResourceLocation("block/stone"))).tag(LostWorldsTags.ModBlockTags.FOSSILS).register();
+	public static final BlockEntry<MediumPlasteredFossilizedEggBlock> MEDIUM_PLASTERED_FOSSILISED_EGG = REGISTRATE.blockItemFlat("medium_plastered_fossilized_egg", MediumPlasteredFossilizedEggBlock::new).properties(properties -> properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()).blockstate(LostWorldsBlockModels.mediumEgg(LostWorldsUtils.rL("block/plastered_medium_egg"))).register();
+	public static final BlockEntry<LargeFossilisedEggBlock> LARGE_FOSSILISED_EGG = REGISTRATE.blockItemFlat("large_fossilized_egg", LargeFossilisedEggBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()).blockstate(LostWorldsBlockModels.largeEgg(new ResourceLocation("block/stone"))).tag(LostWorldsTags.ModBlockTags.FOSSILS).register();
+	public static final BlockEntry<LargePlasteredFossilizedEggBlock> LARGE_PLASTERED_FOSSILISED_EGG = REGISTRATE.blockItemFlat("large_plastered_fossilized_egg", LargePlasteredFossilizedEggBlock::new).properties(properties -> properties.of(Material.WOOL, MaterialColor.TERRACOTTA_WHITE).instabreak().noOcclusion()).blockstate(LostWorldsBlockModels.largeEgg(LostWorldsUtils.rL("block/plastered_large_egg"))).register();
 
 	// Overworld Ores
 	public static final BlockEntry<ModOreBlock> AMBER_ORE = REGISTRATE.blockAndItem("amber_ore", properties -> new ModOreBlock(0, 0, properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.DIRT).requiresCorrectToolForDrops().strength(1.5F, 6.0F)).register();
@@ -237,7 +238,7 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<FeedingTroughBlock> FEEDING_TROUGH = REGISTRATE.blockAndItem("feeding_trough", FeedingTroughBlock::new).properties(properties -> properties.of(Material.WOOD).harvestTool(ToolType.AXE).strength(2.5F).sound(SoundType.WOOD)).blockstate(parent("feeding_trough")).register();
 
 	// Museum Blocks
-	public static final BlockEntry<DisplayCaseBlock> DISPLAY_CASE = REGISTRATE.blockAndItem("display_case", DisplayCaseBlock::new).properties(properties -> properties.of(Material.STONE).harvestLevel(1).requiresCorrectToolForDrops().noOcclusion().strength(4.0F, 5.0F).sound(SoundType.GLASS)).addLayer(() -> RenderType::cutout).register();
+	public static final BlockEntry<DisplayCaseBlock> DISPLAY_CASE = REGISTRATE.blockAndItem("display_case", DisplayCaseBlock::new).properties(properties -> properties.of(Material.STONE).harvestLevel(1).requiresCorrectToolForDrops().noOcclusion().strength(4.0F, 5.0F).sound(SoundType.GLASS)).addLayer(() -> RenderType::cutout).blockstate((block, provider) -> provider.horizontalBlock(block.get(), provider.models().withExistingParent(block.getName(), provider.modLoc("block/casing")))).register();
 
 	// Wood
 
@@ -560,12 +561,29 @@ public class LostWorldsBlocks {
 	}
 
 	public static IBlockColor getEggBlock(DinoTypes types) {
-		return LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get() ? (state, world, pos, layer) -> pos != null && world != null ? BiomeColors.getAverageGrassColor(world, pos) : FoliageColors.get(0.5D, 1.0D) : new IBlockColor() {
-			@Override
-			public int getColor(BlockState state, IBlockDisplayReader reader, BlockPos pos, int colour) {
-				return types.getSetEggColour();
-			}
-		};
+		if (LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get()) {
+			return new IBlockColor() {
+				@Override
+				public int getColor(BlockState state, IBlockDisplayReader reader, BlockPos pos, int layer) {
+					return types.getSetEggColour();
+				}
+			};
+		} else {
+			return (state, world, pos, layer) -> pos != null && world != null ? BiomeColors.getAverageGrassColor(world, pos) : FoliageColors.get(0.5D, 1.0D);
+		}
+	}
+
+	public static IItemColor getEggItem(DinoTypes types) {
+		if (LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get()) {
+			return new IItemColor() {
+				@Override
+				public int getColor(ItemStack stack, int layer) {
+					return types.getSetEggColour();
+				}
+			};
+		} else {
+			return (stack, layer) -> FoliageColors.get(0.5D, 1.0D);
+		}
 	}
 
 	public static Item register(String id, Item item) {
@@ -606,16 +624,16 @@ public class LostWorldsBlocks {
 
 		for (DinoTypes types : DinoTypes.eggLaying()) {
 			if (types.getEgg(types.getEntityType()) instanceof TinyEggBlock) {
-				BlockEntry<Block> egg = REGISTRATE.blockItemFlat(types.getId() + "_egg", "tiny_egg", properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + state.getValue(ModBlockStateProperties.TINY_EGGS), provider.modLoc(block.getName() + state.getValue(ModBlockStateProperties.TINY_EGGS)))).build())).tag(LostWorldsTags.ModBlockTags.EGGS).register();
+				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "tiny_egg", types, properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.tinyEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
 				types.setEgg(() -> egg.get());
 			} else if (types.getEgg(types.getEntityType()) instanceof SmallEggBlock) {
-				BlockEntry<Block> egg = REGISTRATE.block(types.getId() + "_egg", "small_egg", properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + state.getValue(ModBlockStateProperties.SMALL_EGGS), provider.modLoc(block.getName() + state.getValue(ModBlockStateProperties.SMALL_EGGS)))).build())).tag(LostWorldsTags.ModBlockTags.EGGS).register();
+				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "small_egg", types, properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.smallEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
 				types.setEgg(() -> egg.get());
 			} else if (types.getEgg(types.getEntityType()) instanceof MediumEggBlock) {
-				BlockEntry<Block> egg = REGISTRATE.block(types.getId() + "_egg", "medium_egg", properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + state.getValue(ModBlockStateProperties.MEDIUM_EGGS), provider.modLoc(block.getName() + state.getValue(ModBlockStateProperties.MEDIUM_EGGS)))).build())).tag(LostWorldsTags.ModBlockTags.EGGS).register();
+				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "medium_egg", types, properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.mediumEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
 				types.setEgg(() -> egg.get());
 			} else if (types.getEgg(types.getEntityType()) instanceof LargeEggBlock) {
-				BlockEntry<Block> egg = REGISTRATE.block(types.getId() + "_egg", "large_egg", properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + state.getValue(ModBlockStateProperties.LARGE_EGGS), provider.modLoc(block.getName() + state.getValue(ModBlockStateProperties.LARGE_EGGS)))).build())).tag(LostWorldsTags.ModBlockTags.EGGS).register();
+				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "large_egg", types, properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.largeEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
 				types.setEgg(() -> egg.get());
 			}
 		}

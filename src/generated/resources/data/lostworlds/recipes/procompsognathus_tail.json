@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_procompsognathus_tail"
   },
   "output": "lostworlds:procompsognathus_tail"

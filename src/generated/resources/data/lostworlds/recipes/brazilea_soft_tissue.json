@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "item": "lostworlds:brazilea_fossil"
+  },
+  "plant": true,
+  "output": "lostworlds:brazilea_soft_tissue"
+}

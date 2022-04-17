@@ -3,7 +3,7 @@
   "input": {
     "item": "lostworlds:liaoningosaurus_soft_tissue"
   },
-  "vile": {
+  "storage": {
     "item": "lostworlds:empty_vile"
   },
   "output": "lostworlds:liaoningosaurus_dna"

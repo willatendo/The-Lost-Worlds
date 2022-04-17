@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "lostworlds:block/display_case"
-  }
+  "parent": "lostworlds:block/casing"
 }

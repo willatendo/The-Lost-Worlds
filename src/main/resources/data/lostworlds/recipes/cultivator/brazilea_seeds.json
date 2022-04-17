@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:cultivator",
-	"output": {
-		"item": "lostworlds:brazilea_seeds"
-	},
-	"dnaDisc": {
-		"item": "lostworlds:brazilea_dna_disc"
-	}
-}

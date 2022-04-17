@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:dna_injector",
+  "input": {
+    "item": "lostworlds:utahraptor_dna_disc"
+  },
+  "storage": {
+    "item": "minecraft:egg"
+  },
+  "output": "lostworlds:utahraptor_egg"
+}

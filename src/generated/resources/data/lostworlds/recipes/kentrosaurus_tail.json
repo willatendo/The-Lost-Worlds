@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_kentrosaurus_tail"
   },
   "output": "lostworlds:kentrosaurus_tail"

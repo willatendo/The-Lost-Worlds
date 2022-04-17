@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_eoraptor_tail"
   },
   "output": "lostworlds:eoraptor_tail"

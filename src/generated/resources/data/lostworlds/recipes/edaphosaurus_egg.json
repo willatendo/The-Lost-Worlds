@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:dna_injector",
+  "input": {
+    "item": "lostworlds:edaphosaurus_dna_disc"
+  },
+  "storage": {
+    "item": "minecraft:egg"
+  },
+  "output": "lostworlds:edaphosaurus_egg"
+}

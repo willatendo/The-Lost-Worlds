@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "tag": "lostworlds:dimetrodon_fossils"
+  },
+  "plant": false,
+  "output": "lostworlds:dimetrodon_soft_tissue"
+}

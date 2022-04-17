@@ -1,22 +1,22 @@
 {
   "variants": {
     "medium_eggs=1": {
-      "model": "lostworlds:block/medium_fossilized_egg1"
+      "model": "lostworlds:block/medium_fossilized_egg_1"
     },
     "medium_eggs=2": {
-      "model": "lostworlds:block/medium_fossilized_egg2"
+      "model": "lostworlds:block/medium_fossilized_egg_2"
     },
     "medium_eggs=3": {
-      "model": "lostworlds:block/medium_fossilized_egg3"
+      "model": "lostworlds:block/medium_fossilized_egg_3"
     },
     "medium_eggs=4": {
-      "model": "lostworlds:block/medium_fossilized_egg4"
+      "model": "lostworlds:block/medium_fossilized_egg_4"
     },
     "medium_eggs=5": {
-      "model": "lostworlds:block/medium_fossilized_egg5"
+      "model": "lostworlds:block/medium_fossilized_egg_5"
     },
     "medium_eggs=6": {
-      "model": "lostworlds:block/medium_fossilized_egg6"
+      "model": "lostworlds:block/medium_fossilized_egg_6"
     }
   }
 }

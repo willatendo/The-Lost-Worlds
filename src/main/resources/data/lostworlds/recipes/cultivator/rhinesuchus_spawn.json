@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:cultivator",
-	"output": {
-		"item": "lostworlds:rhinesuchus_spawn"
-	},
-	"dnaDisc": {
-		"item": "lostworlds:rhinesuchus_dna_disc"
-	}
-}

@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_giganotosaurus_rib_cage"
   },
   "output": "lostworlds:giganotosaurus_rib_cage"

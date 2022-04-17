@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "tag": "lostworlds:anomalocaris_fossils"
+  },
+  "plant": false,
+  "output": "lostworlds:anomalocaris_soft_tissue"
+}

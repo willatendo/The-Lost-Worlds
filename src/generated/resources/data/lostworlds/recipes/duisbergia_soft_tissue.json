@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "item": "lostworlds:duisbergia_fossil"
+  },
+  "plant": true,
+  "output": "lostworlds:duisbergia_soft_tissue"
+}

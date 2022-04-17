@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "item": "lostworlds:osmunda_fossil"
+  },
+  "plant": true,
+  "output": "lostworlds:osmunda_soft_tissue"
+}

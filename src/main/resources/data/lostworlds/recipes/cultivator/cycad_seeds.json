@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:cultivator",
-	"output": {
-		"item": "lostworlds:cycad_seeds"
-	},
-	"dnaDisc": {
-		"item": "lostworlds:cycad_dna_disc"
-	}
-}

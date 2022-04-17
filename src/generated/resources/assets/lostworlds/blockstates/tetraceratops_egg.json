@@ -1,94 +1,34 @@
 {
   "variants": {
-    "hatch=0,small_eggs=1": {
-      "model": "lostworlds:block/tetraceratops_egg1"
+    "small_eggs=1": {
+      "model": "lostworlds:block/tetraceratops_egg_1"
     },
-    "hatch=1,small_eggs=1": {
-      "model": "lostworlds:block/tetraceratops_egg1"
+    "small_eggs=2": {
+      "model": "lostworlds:block/tetraceratops_egg_2"
     },
-    "hatch=2,small_eggs=1": {
-      "model": "lostworlds:block/tetraceratops_egg1"
+    "small_eggs=3": {
+      "model": "lostworlds:block/tetraceratops_egg_3"
     },
-    "hatch=0,small_eggs=2": {
-      "model": "lostworlds:block/tetraceratops_egg2"
+    "small_eggs=4": {
+      "model": "lostworlds:block/tetraceratops_egg_4"
     },
-    "hatch=1,small_eggs=2": {
-      "model": "lostworlds:block/tetraceratops_egg2"
+    "small_eggs=5": {
+      "model": "lostworlds:block/tetraceratops_egg_5"
     },
-    "hatch=2,small_eggs=2": {
-      "model": "lostworlds:block/tetraceratops_egg2"
+    "small_eggs=6": {
+      "model": "lostworlds:block/tetraceratops_egg_6"
     },
-    "hatch=0,small_eggs=3": {
-      "model": "lostworlds:block/tetraceratops_egg3"
+    "small_eggs=7": {
+      "model": "lostworlds:block/tetraceratops_egg_7"
     },
-    "hatch=1,small_eggs=3": {
-      "model": "lostworlds:block/tetraceratops_egg3"
+    "small_eggs=8": {
+      "model": "lostworlds:block/tetraceratops_egg_8"
     },
-    "hatch=2,small_eggs=3": {
-      "model": "lostworlds:block/tetraceratops_egg3"
+    "small_eggs=9": {
+      "model": "lostworlds:block/tetraceratops_egg_9"
     },
-    "hatch=0,small_eggs=4": {
-      "model": "lostworlds:block/tetraceratops_egg4"
-    },
-    "hatch=1,small_eggs=4": {
-      "model": "lostworlds:block/tetraceratops_egg4"
-    },
-    "hatch=2,small_eggs=4": {
-      "model": "lostworlds:block/tetraceratops_egg4"
-    },
-    "hatch=0,small_eggs=5": {
-      "model": "lostworlds:block/tetraceratops_egg5"
-    },
-    "hatch=1,small_eggs=5": {
-      "model": "lostworlds:block/tetraceratops_egg5"
-    },
-    "hatch=2,small_eggs=5": {
-      "model": "lostworlds:block/tetraceratops_egg5"
-    },
-    "hatch=0,small_eggs=6": {
-      "model": "lostworlds:block/tetraceratops_egg6"
-    },
-    "hatch=1,small_eggs=6": {
-      "model": "lostworlds:block/tetraceratops_egg6"
-    },
-    "hatch=2,small_eggs=6": {
-      "model": "lostworlds:block/tetraceratops_egg6"
-    },
-    "hatch=0,small_eggs=7": {
-      "model": "lostworlds:block/tetraceratops_egg7"
-    },
-    "hatch=1,small_eggs=7": {
-      "model": "lostworlds:block/tetraceratops_egg7"
-    },
-    "hatch=2,small_eggs=7": {
-      "model": "lostworlds:block/tetraceratops_egg7"
-    },
-    "hatch=0,small_eggs=8": {
-      "model": "lostworlds:block/tetraceratops_egg8"
-    },
-    "hatch=1,small_eggs=8": {
-      "model": "lostworlds:block/tetraceratops_egg8"
-    },
-    "hatch=2,small_eggs=8": {
-      "model": "lostworlds:block/tetraceratops_egg8"
-    },
-    "hatch=0,small_eggs=9": {
-      "model": "lostworlds:block/tetraceratops_egg9"
-    },
-    "hatch=1,small_eggs=9": {
-      "model": "lostworlds:block/tetraceratops_egg9"
-    },
-    "hatch=2,small_eggs=9": {
-      "model": "lostworlds:block/tetraceratops_egg9"
-    },
-    "hatch=0,small_eggs=10": {
-      "model": "lostworlds:block/tetraceratops_egg10"
-    },
-    "hatch=1,small_eggs=10": {
-      "model": "lostworlds:block/tetraceratops_egg10"
-    },
-    "hatch=2,small_eggs=10": {
-      "model": "lostworlds:block/tetraceratops_egg10"
+    "small_eggs=10": {
+      "model": "lostworlds:block/tetraceratops_egg_10"
     }
   }
 }

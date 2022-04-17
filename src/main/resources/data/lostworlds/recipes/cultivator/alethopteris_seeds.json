@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:cultivator",
-	"output": {
-		"item": "lostworlds:alethopteris_seeds"
-	},
-	"dnaDisc": {
-		"item": "lostworlds:alethopteris_dna_disc"
-	}
-}

@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_suchomimus_skull"
   },
   "output": "lostworlds:suchomimus_skull"

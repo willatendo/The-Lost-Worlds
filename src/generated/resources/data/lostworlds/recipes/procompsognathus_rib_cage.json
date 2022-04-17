@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_procompsognathus_rib_cage"
   },
   "output": "lostworlds:procompsognathus_rib_cage"

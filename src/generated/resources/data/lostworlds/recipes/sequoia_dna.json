@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:dna_extractor",
+  "input": {
+    "item": "lostworlds:sequoia_soft_tissue"
+  },
+  "storage": {
+    "item": "lostworlds:empty_vile"
+  },
+  "output": "lostworlds:sequoia_dna"
+}

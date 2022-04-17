@@ -10,6 +10,7 @@ import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlockModels;
 import lostworlds.server.block.LostWorldsBlocks;
+import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.AbstractButtonBlock;
 import net.minecraft.block.AbstractSignBlock;
@@ -97,6 +98,10 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> blockItemFlat(String name, String texture, NonNullFunction<Properties, T> factory) {
 		return super.block(name, factory).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("item/" + texture))).build();
+	}
+
+	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> blockItemFlatColoured(String name, String texture, DinoTypes types, NonNullFunction<Properties, T> factory) {
+		return super.block(name, factory).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("item/" + texture))).color(() -> () -> LostWorldsBlocks.getEggItem(types)).build();
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> plantColoured(String name, NonNullFunction<Properties, T> factory) {

@@ -3,7 +3,7 @@
   "input": {
     "item": "lostworlds:eoraptor_soft_tissue"
   },
-  "vile": {
+  "storage": {
     "item": "lostworlds:empty_vile"
   },
   "output": "lostworlds:eoraptor_dna"

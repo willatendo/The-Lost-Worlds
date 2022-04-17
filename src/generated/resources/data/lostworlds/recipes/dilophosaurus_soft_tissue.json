@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "tag": "lostworlds:dilophosaurus_fossils"
+  },
+  "plant": false,
+  "output": "lostworlds:dilophosaurus_soft_tissue"
+}

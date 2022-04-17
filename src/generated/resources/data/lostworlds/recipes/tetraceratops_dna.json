@@ -3,7 +3,7 @@
   "input": {
     "item": "lostworlds:tetraceratops_soft_tissue"
   },
-  "vile": {
+  "storage": {
     "item": "lostworlds:empty_vile"
   },
   "output": "lostworlds:tetraceratops_dna"

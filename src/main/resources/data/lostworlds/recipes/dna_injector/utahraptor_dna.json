@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_injector",
-	"output": {
-		"item": "lostworlds:utahraptor_egg"
-	},
-	"dnaDisc": {
-		"item": "lostworlds:utahraptor_dna_disc"
-	}
-}

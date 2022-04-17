@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_injector",
-	"output": {
-		"item": "lostworlds:fukuivenator_egg"
-	},
-	"dnaDisc": {
-		"item": "lostworlds:fukuivenator_dna_disc"
-	}
-}

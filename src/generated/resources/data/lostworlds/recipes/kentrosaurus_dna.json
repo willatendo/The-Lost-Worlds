@@ -3,7 +3,7 @@
   "input": {
     "item": "lostworlds:kentrosaurus_soft_tissue"
   },
-  "vile": {
+  "storage": {
     "item": "lostworlds:empty_vile"
   },
   "output": "lostworlds:kentrosaurus_dna"

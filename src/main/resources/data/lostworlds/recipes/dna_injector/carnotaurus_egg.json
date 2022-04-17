@@ -1,9 +1,0 @@
-{
-	"type": "lostworlds:dna_injector",
-	"output": {
-		"item": "lostworlds:carnotaurus_egg"
-	},
-	"dnaDisc": {
-		"item": "lostworlds:carnotaurus_dna_disc"
-	}
-}

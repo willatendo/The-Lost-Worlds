@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_gorgonops_rib_cage"
   },
   "output": "lostworlds:gorgonops_rib_cage"

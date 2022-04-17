@@ -6,6 +6,7 @@ import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 
 import lostworlds.server.LostWorldsUtils;
+import lostworlds.server.block.properties.ModBlockStateProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.DoublePlantBlock;
 import net.minecraft.block.HayBlock;
@@ -126,6 +127,62 @@ public class LostWorldsBlockModels {
 
 			}
 		});
+	}
+
+	public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> tinyEgg(ResourceLocation texture) {
+		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStatesExcept(state -> {
+			int eggs = state.getValue(ModBlockStateProperties.TINY_EGGS);
+			return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_" + eggs, provider.modLoc("block/tiny_eggs_" + eggs)).texture("0", texture)).build();
+		}, BlockStateProperties.HATCH);
+	}
+
+	public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> smallEgg(ResourceLocation texture) {
+		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStatesExcept(state -> {
+			int eggs = state.getValue(ModBlockStateProperties.SMALL_EGGS);
+			return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_" + eggs, provider.modLoc("block/small_eggs_" + eggs)).texture("0", texture)).build();
+		}, BlockStateProperties.HATCH);
+	}
+
+	public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> mediumEgg(ResourceLocation texture) {
+		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStatesExcept(state -> {
+			int eggs = state.getValue(ModBlockStateProperties.MEDIUM_EGGS);
+			return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_" + eggs, provider.modLoc("block/medium_eggs_" + eggs)).texture("0", texture)).build();
+		}, BlockStateProperties.HATCH);
+	}
+
+	public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> largeEgg(ResourceLocation texture) {
+		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStatesExcept(state -> {
+			int eggs = state.getValue(ModBlockStateProperties.LARGE_EGGS);
+			return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_" + eggs, provider.modLoc("block/large_eggs_" + eggs)).texture("0", texture)).build();
+		}, BlockStateProperties.HATCH);
+	}
+
+	public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> tinyEgg() {
+		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStatesExcept(state -> {
+			int eggs = state.getValue(ModBlockStateProperties.TINY_EGGS);
+			return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_" + eggs, provider.modLoc("block/tiny_eggs_" + eggs))).build();
+		}, BlockStateProperties.HATCH);
+	}
+
+	public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> smallEgg() {
+		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStatesExcept(state -> {
+			int eggs = state.getValue(ModBlockStateProperties.SMALL_EGGS);
+			return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_" + eggs, provider.modLoc("block/small_eggs_" + eggs))).build();
+		}, BlockStateProperties.HATCH);
+	}
+
+	public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> mediumEgg() {
+		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStatesExcept(state -> {
+			int eggs = state.getValue(ModBlockStateProperties.MEDIUM_EGGS);
+			return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_" + eggs, provider.modLoc("block/medium_eggs_" + eggs))).build();
+		}, BlockStateProperties.HATCH);
+	}
+
+	public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> largeEgg() {
+		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStatesExcept(state -> {
+			int eggs = state.getValue(ModBlockStateProperties.LARGE_EGGS);
+			return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_" + eggs, provider.modLoc("block/large_eggs_" + eggs))).build();
+		}, BlockStateProperties.HATCH);
 	}
 
 	public static <T extends CalamtiesSuckowiiBlock> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> calamitesSuckowii() {

@@ -96,10 +96,6 @@ public class LostWorldsMod {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, LostWorldsConfig.serverSpec);
 	}
 
-	public static LostWorldsRegistrate getRegistrate() {
-		return CENTRAL_REGISTRATE.get();
-	}
-
 	private void modBus() {
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -387,5 +383,9 @@ public class LostWorldsMod {
 	public static boolean isWearingMask(LivingEntity living, EquipmentSlotType pieceValue) {
 		List<Item> mask = ImmutableList.of(LostWorldsItems.CLOTH_MASK.get());
 		return mask.contains(living.getItemBySlot(pieceValue).getItem());
+	}
+
+	public static LostWorldsRegistrate getRegistrate() {
+		return CENTRAL_REGISTRATE.get();
 	}
 }

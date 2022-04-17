@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_tetraceratops_tail"
   },
   "output": "lostworlds:tetraceratops_tail"

@@ -3,7 +3,7 @@
   "input": {
     "item": "lostworlds:ostromia_soft_tissue"
   },
-  "vile": {
+  "storage": {
     "item": "lostworlds:empty_vile"
   },
   "output": "lostworlds:ostromia_dna"

@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_tyrannosaurus_arm_bones"
   },
   "output": "lostworlds:tyrannosaurus_arm_bones"

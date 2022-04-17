@@ -1,6 +1,6 @@
 {
   "type": "lostworlds:fossil_cleaner",
-  "fossil": {
+  "input": {
     "item": "lostworlds:plastered_edaphosaurus_tail"
   },
   "output": "lostworlds:edaphosaurus_tail"
