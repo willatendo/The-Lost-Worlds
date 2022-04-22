@@ -1,31 +1,28 @@
 package lostworlds.server.container;
 
+import java.util.Objects;
+
 import lostworlds.server.block.entity.DisplayCaseTileEntity;
 import lostworlds.server.item.FossilItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class DisplayCaseContainer extends Container {
 	private ItemStackHandler handler;
 
-	public DisplayCaseContainer(ContainerType<?> container, int windowId) {
-		super(container, windowId);
-	}
-
-	public DisplayCaseContainer(int windowId, PlayerInventory inv, IInventory inventory, ItemStackHandler handler) {
-		super(LostWorldsContainers.DISPLAY_CASE_CONTAINER, windowId);
+	public DisplayCaseContainer(ContainerType<? extends DisplayCaseContainer> containerType, int windowId, PlayerInventory inv, IInventory inventory, ItemStackHandler handler) {
+		super(containerType, windowId);
 		this.handler = handler;
 
 		this.addSlot(new SlotItemHandler(handler, 0, 80, 20) {
@@ -56,9 +53,20 @@ public class DisplayCaseContainer extends Container {
 		}
 	}
 
-	public static DisplayCaseContainer create(int windowId, PlayerInventory inv, PacketBuffer buffer) {
-		BlockPos pos = buffer.readBlockPos();
-		return new DisplayCaseContainer(windowId, inv, new Inventory(1), ((DisplayCaseTileEntity) Minecraft.getInstance().level.getBlockEntity(pos)).handler);
+	public DisplayCaseContainer(ContainerType<? extends DisplayCaseContainer> containerType, int windowId, PlayerInventory playerInventory, PacketBuffer buffer) {
+		this(containerType, windowId, playerInventory, getTileEntity(playerInventory, buffer), ((DisplayCaseTileEntity) Minecraft.getInstance().level.getBlockEntity(buffer.readBlockPos())).handler);
+	}
+
+	private static DisplayCaseTileEntity getTileEntity(final PlayerInventory playerInventory, final PacketBuffer data) {
+		Objects.requireNonNull(playerInventory, "Error: " + DisplayCaseContainer.class.getSimpleName() + " - Player Inventory cannot be null!");
+		Objects.requireNonNull(data, "Error: " + DisplayCaseContainer.class.getSimpleName() + " - Packer Buffer Data cannot be null!");
+
+		final TileEntity tileEntityAtPos = playerInventory.player.level.getBlockEntity(data.readBlockPos());
+		if (tileEntityAtPos instanceof DisplayCaseTileEntity) {
+			return (DisplayCaseTileEntity) tileEntityAtPos;
+		}
+
+		throw new IllegalStateException("Error: " + DisplayCaseContainer.class.getSimpleName() + " - TileEntity is not corrent! " + tileEntityAtPos);
 	}
 
 	@Override

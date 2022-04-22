@@ -89,15 +89,15 @@ public class PlantFossilBlock extends Block {
 		int midbreakchance = rand.nextInt(16);
 		int lowbreakchance = rand.nextInt(32);
 
-		if (highbreakchance == 1 && EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING, stack) == 1) {
+		if (highbreakchance == 1 && EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
 			world.destroyBlock(pos, false);
 		}
 
-		if (breakchance == 7 && EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION, stack) == 0) {
+		if (breakchance == 7 && EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 0) {
 			world.destroyBlock(pos, false);
-		} else if (midbreakchance == 15 && EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION, stack) == 1) {
+		} else if (midbreakchance == 15 && EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 1) {
 			world.destroyBlock(pos, false);
-		} else if (lowbreakchance == 31 && EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION, stack) == 2) {
+		} else if (lowbreakchance == 31 && EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 2) {
 			world.destroyBlock(pos, false);
 		} else {
 			if (damage == Damage.NONE) {

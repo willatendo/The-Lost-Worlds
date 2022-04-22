@@ -6,6 +6,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.AnalyzerBlock;
 import lostworlds.server.container.AnalyzerContainer;
+import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.container.recipes.AnalyzerRecipe;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
 import net.minecraft.block.BlockState;
@@ -317,8 +318,8 @@ public class AnalyzerTileEntity extends TileEntity implements IInventory, INamed
 	}
 
 	@Override
-	public Container createMenu(int windowId, PlayerInventory playerInv, PlayerEntity player) {
-		return new AnalyzerContainer(windowId, playerInv, this, this);
+	public Container createMenu(int windowID, PlayerInventory playerInventory, PlayerEntity player) {
+		return new AnalyzerContainer(LostWorldsContainers.ANALYZER_CONTAINER.get(), windowID, playerInventory, this, this);
 	}
 
 	@Override

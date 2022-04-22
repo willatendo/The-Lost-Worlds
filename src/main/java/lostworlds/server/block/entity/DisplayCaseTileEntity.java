@@ -2,6 +2,7 @@ package lostworlds.server.block.entity;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.container.DisplayCaseContainer;
+import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.container.inventory.DisplayCaseInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -127,7 +128,7 @@ public class DisplayCaseTileEntity extends LockableLootTileEntity implements INa
 	}
 
 	@Override
-	protected Container createMenu(int windowID, PlayerInventory inv) {
-		return new DisplayCaseContainer(windowID, inv, this, this.handler);
+	protected Container createMenu(int windowID, PlayerInventory playerInventory) {
+		return new DisplayCaseContainer(LostWorldsContainers.DISPLAY_CASE_CONTAINER.get(), windowID, playerInventory, this, this.handler);
 	}
 }

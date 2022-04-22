@@ -6,6 +6,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.DNAExtractorBlock;
 import lostworlds.server.container.DNAExtractorContainer;
+import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.container.recipes.AmberDNAExtractorRecipe;
 import lostworlds.server.container.recipes.DNAExtractorRecipe;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
@@ -347,8 +348,8 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 	}
 
 	@Override
-	public Container createMenu(int windowId, PlayerInventory playerInv, PlayerEntity player) {
-		return new DNAExtractorContainer(windowId, playerInv, this);
+	public Container createMenu(int windowID, PlayerInventory playerInventory, PlayerEntity player) {
+		return new DNAExtractorContainer(LostWorldsContainers.DNA_EXTRACTOR_CONTAINER.get(), windowID, playerInventory, this, this);
 	}
 
 	@Override

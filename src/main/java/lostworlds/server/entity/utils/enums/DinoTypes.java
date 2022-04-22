@@ -33,7 +33,7 @@ import net.minecraft.util.IStringSerializable;
 public enum DinoTypes implements IStringSerializable {
 	ALLOSAURUS(0, "allosaurus", LostWorldsEntities.ALLOSAURUS, LostWorldsTags.ModItemTags.ALLOSAURUS_FOSSILS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x9f9f5a, 0x9f9f5a, 0xd68812, 5, 8, 0.4F, 0.8F),
 	ANOMALOCARIS(1, "anomalocaris", LostWorldsEntities.ANOMALOCARIS, LostWorldsTags.ModItemTags.ANOMALOCARIS_FOSSILS, false, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0xb94f33, 0xb94f33, 0x631312, 2, 4, 0.2F, 0.4F),
-	CARNOTAURUS(2, "carnotaurus", LostWorldsEntities.CARNOTAURUS, LostWorldsTags.ModItemTags.ALLOSAURUS_FOSSILS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xbd7868, 0xbd7868, 0xe6d3bc, 6, 9, 0.4F, 0.8F),
+	CARNOTAURUS(2, "carnotaurus", LostWorldsEntities.CARNOTAURUS, LostWorldsTags.ModItemTags.CARNOTAURUS_FOSSILS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xbd7868, 0xbd7868, 0xe6d3bc, 6, 9, 0.4F, 0.8F),
 	CHILESAURUS(3, "chilesaurus", LostWorldsEntities.CHILESAURUS, LostWorldsTags.ModItemTags.CHILESAURUS_FOSSILS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0xb08533, 0xb08533, 0x283c3f, 1, 3, 0.25F, 0.56F),
 	CRYOLOPHOSAURUS(4, "cryolophosaurus", LostWorldsEntities.CRYOLOPHOSAURUS, LostWorldsTags.ModItemTags.CRYOLOPHOSAURUS_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0xab5a14, 0xab5a14, 0x1a2c5f, 5, 7, 0.5F, 0.6F),
 	DIICTODON(5, "diictodon", LostWorldsEntities.DIICTODON, LostWorldsTags.ModItemTags.DIICTODON_FOSSILS, false, false, false, Size.TINY, CreatureDiet.HERBIVORE, 0xdc8a54, 0xdc8a54, 0x8b462e, 1, 2, 0.1F, 0.2F),

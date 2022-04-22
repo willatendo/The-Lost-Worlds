@@ -2,6 +2,7 @@ package lostworlds.server.block.entity;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.container.FeedingTroughContainer;
+import lostworlds.server.container.LostWorldsContainers;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -121,8 +122,8 @@ public class FeedingTroughTileEntity extends LockableLootTileEntity implements I
 	}
 
 	@Override
-	protected Container createMenu(int windowID, PlayerInventory inv) {
-		return new FeedingTroughContainer(windowID, inv, this);
+	protected Container createMenu(int windowID, PlayerInventory playerInventory) {
+		return new FeedingTroughContainer(LostWorldsContainers.FEEDING_TROUGH_CONTAINER.get(), windowID, playerInventory, this);
 	}
 
 	public boolean hasItems() {

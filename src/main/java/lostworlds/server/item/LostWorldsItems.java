@@ -16,7 +16,6 @@ import lostworlds.server.block.Trees;
 import lostworlds.server.block.utils.Foods;
 import lostworlds.server.container.recipes.RecipeManager;
 import lostworlds.server.dimension.LostWorldsDimensions;
-import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.entity.utils.enums.TimeEras;
 import lostworlds.server.item.CrystalScarabGemItem.CEChargedCrystalScarabGemItem;
@@ -112,8 +111,6 @@ public class LostWorldsItems {
 			PALEO_SALAD = REGISTRATE.item("paleo_salad", Item::new).properties(properties -> properties.food(LostWorldsFoods.PALEO_SALAD)).register();
 
 	public static final ItemEntry<BannerPatternItem> SCARAB_BANNER_PATTERN = REGISTRATE.item("scarab_banner_pattern", properties -> new BannerPatternItem(LostWorldsBanners.SCARAB, properties)).register();
-
-	public static final ItemEntry<ModSpawnEggItem> FOSSIL_POACHER_SPAWN_EGG = REGISTRATE.item("fossil_poacher_spawn_egg", properties -> new ModSpawnEggItem(() -> LostWorldsEntities.FOSSIL_POACHER, 0x959b9b, 0x363031, properties)).properties(properties -> properties.tab(ItemGroup.TAB_MISC)).model(spawnEgg()).register();
 
 	public static final ItemEntry<AscentedMusicDiscItem> MUSIC_DISC_ASCENTED = REGISTRATE.item("music_disc_ascented", properties -> new AscentedMusicDiscItem(13, () -> LostWorldsSounds.ASCENTED, properties)).register();
 

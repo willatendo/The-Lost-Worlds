@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "lostworlds:nautilus_shell"
+          "name": "minecraft:air"
         }
       ],
       "conditions": [

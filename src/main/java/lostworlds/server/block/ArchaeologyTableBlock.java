@@ -2,6 +2,7 @@ package lostworlds.server.block;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.container.ArchaeologyTableContainer;
+import lostworlds.server.container.LostWorldsContainers;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
@@ -71,8 +72,8 @@ public class ArchaeologyTableBlock extends Block implements IWaterLoggable {
 	}
 
 	public INamedContainerProvider getMenuProvider(BlockState state, World world, BlockPos pos) {
-		return new SimpleNamedContainerProvider((windowId, playerInv, p_220270_4_) -> {
-			return new ArchaeologyTableContainer(windowId, playerInv, IWorldPosCallable.create(world, pos));
+		return new SimpleNamedContainerProvider((windowID, playerInventory, player) -> {
+			return new ArchaeologyTableContainer(LostWorldsContainers.ARCHAEOLOGY_CONTAINER.get(), windowID, playerInventory, IWorldPosCallable.create(world, pos));
 		}, NAME);
 	}
 

@@ -48,12 +48,12 @@ public class TimeMachineContainer extends Container {
 	};
 	private final CraftResultInventory resultContainer = new CraftResultInventory();
 
-	public TimeMachineContainer(int windowId, PlayerInventory inv, PacketBuffer buffer) {
-		this(windowId, inv, IWorldPosCallable.NULL);
+	public TimeMachineContainer(ContainerType<? extends TimeMachineContainer> containerType, int windowId, PlayerInventory inv, PacketBuffer buffer) {
+		this(containerType, windowId, inv, IWorldPosCallable.NULL);
 	}
 
-	public TimeMachineContainer(int windowId, PlayerInventory inv, IWorldPosCallable worldPos) {
-		super(LostWorldsContainers.TIME_MACHINE_CONTAINER, windowId);
+	public TimeMachineContainer(ContainerType<? extends TimeMachineContainer> containerType, int windowId, PlayerInventory inv, IWorldPosCallable worldPos) {
+		super(containerType, windowId);
 
 		this.access = worldPos;
 		this.level = inv.player.level;
@@ -176,7 +176,7 @@ public class TimeMachineContainer extends Container {
 
 	@Override
 	public ContainerType<?> getType() {
-		return LostWorldsContainers.TIME_MACHINE_CONTAINER;
+		return LostWorldsContainers.TIME_MACHINE_CONTAINER.get();
 	}
 
 	@OnlyIn(Dist.CLIENT)

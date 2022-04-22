@@ -88,6 +88,10 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		return super.block(name, factory).simpleItem();
 	}
 
+	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> leaves(String name, NonNullFunction<Properties, T> factory) {
+		return super.block(name, factory).item().color(() -> LostWorldsBlocks::getGrassyItemColour).build();
+	}
+
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> blockItemModel(String name, String parent, NonNullFunction<Properties, T> factory) {
 		return super.block(name, factory).item().model((item, provider) -> provider.withExistingParent(item.getName(), provider.modLoc("block/" + parent))).build();
 	}
@@ -131,6 +135,17 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		})).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("block/" + name + "_top"))).build();
 	}
 
+	public <T extends DoublePlantBlock> BlockBuilder<T, LostWorldsRegistrate> doublePlantColouredItem(String name, NonNullFunction<Properties, T> factory) {
+		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> {
+			if (state.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.LOWER) {
+				return ConfiguredModel.builder().modelFile(provider.models().cross(block.getName(), provider.modLoc("block/" + block.getName() + "_bottom"))).build();
+			} else {
+				return ConfiguredModel.builder().modelFile(provider.models().cross(block.getName() + "_top", provider.modLoc("block/" + block.getName() + "_top"))).build();
+
+			}
+		})).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("block/" + name + "_top"))).color(() -> LostWorldsBlocks::getGrassyItemColour).build();
+	}
+
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> plant(String name, NonNullFunction<Properties, T> factory) {
 		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().cross(block.getName(), new ResourceLocation(block.get().getRegistryName().getNamespace(), "block/" + block.getName()))))).simpleItem();
 	}
@@ -164,11 +179,11 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	}
 
 	public <T extends WallBlock> BlockBuilder<T, LostWorldsRegistrate> wallBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.wallBlock((WallBlock) block.get(), provider.modLoc("block/" + texture))).item().model((item, provider) -> LostWorldsBlockModels.wallInv(item.get(), texture, provider)).build().tag(BlockTags.WALLS);
+		return super.block(name, factory).blockstate((block, provider) -> provider.wallBlock((WallBlock) block.get(), provider.modLoc("block/" + texture))).item().model(LostWorldsBlockModels.wallInv(texture)).build().tag(BlockTags.WALLS);
 	}
 
 	public <T extends FenceBlock> BlockBuilder<T, LostWorldsRegistrate> fenceBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.fenceBlock((FenceBlock) block.get(), provider.modLoc("block/" + texture))).item().model((block, provider) -> LostWorldsBlockModels.fenceInv(block.get(), texture, provider)).build();
+		return super.block(name, factory).blockstate((block, provider) -> provider.fenceBlock((FenceBlock) block.get(), provider.modLoc("block/" + texture))).item().model(LostWorldsBlockModels.fenceInv(texture)).build();
 	}
 
 	public <T extends FenceGateBlock> BlockBuilder<T, LostWorldsRegistrate> fenceGateBlock(String name, String texture, NonNullFunction<Properties, T> factory) {

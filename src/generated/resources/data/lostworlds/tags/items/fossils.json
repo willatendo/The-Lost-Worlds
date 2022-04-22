@@ -1,4 +1,12 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "lostworlds:soft_stone",
+    "lostworlds:soft_dirt",
+    "lostworlds:plant_fossil",
+    "lostworlds:tiny_fossilized_egg",
+    "lostworlds:small_fossilized_egg",
+    "lostworlds:medium_fossilized_egg",
+    "lostworlds:large_fossilized_egg"
+  ]
 }

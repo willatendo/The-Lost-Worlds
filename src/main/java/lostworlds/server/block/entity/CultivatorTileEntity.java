@@ -6,6 +6,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.CultivatorBlock;
 import lostworlds.server.container.CultivatorContainer;
+import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.container.recipes.CultivatorRecipe;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
 import net.minecraft.block.BlockState;
@@ -322,8 +323,8 @@ public class CultivatorTileEntity extends TileEntity implements IInventory, INam
 	}
 
 	@Override
-	public Container createMenu(int windowId, PlayerInventory playerInv, PlayerEntity player) {
-		return new CultivatorContainer(windowId, playerInv, this, this);
+	public Container createMenu(int windowID, PlayerInventory playerInventory, PlayerEntity player) {
+		return new CultivatorContainer(LostWorldsContainers.CULTIVATOR_CONTAINER.get(), windowID, playerInventory, this, this);
 	}
 
 	@Override

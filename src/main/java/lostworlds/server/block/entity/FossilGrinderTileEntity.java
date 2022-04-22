@@ -6,6 +6,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.FossilGrinderBlock;
 import lostworlds.server.container.FossilGrinderContainer;
+import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.container.recipes.FossilGrinderRecipe;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
 import lostworlds.server.item.ModBoneMealItem;
@@ -345,8 +346,8 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 	}
 
 	@Override
-	public Container createMenu(int windowId, PlayerInventory playerInv, PlayerEntity player) {
-		return new FossilGrinderContainer(windowId, playerInv, this, this);
+	public Container createMenu(int windowID, PlayerInventory playerInventory, PlayerEntity player) {
+		return new FossilGrinderContainer(LostWorldsContainers.FOSSIL_GRINDER_CONTAINER.get(), windowID, playerInventory, this, this);
 	}
 
 	@Override

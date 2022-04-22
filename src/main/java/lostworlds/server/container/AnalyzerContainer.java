@@ -14,6 +14,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;
@@ -30,43 +31,42 @@ public class AnalyzerContainer extends Container {
 	private final IIntArray data;
 	private final World level;
 	private final IRecipeType<AnalyzerRecipe> recipeType = LostWorldsRecipes.ANALYZER_RECIPE;
-	public final AnalyzerTileEntity tile;
 
-	public AnalyzerContainer(int windowID, PlayerInventory playerInv, AnalyzerTileEntity tileEntity, IInventory tile) {
-		super(LostWorldsContainers.ANALYZER_CONTAINER, windowID);
-		this.level = playerInv.player.level;
+	public AnalyzerContainer(ContainerType<? extends AnalyzerContainer> containerType, int windowID, PlayerInventory playerInventory, AnalyzerTileEntity tileEntity, IInventory inventory) {
+		super(containerType, windowID);
+		this.level = playerInventory.player.level;
 		this.data = tileEntity.getAnalysingData();
-		this.tile = tileEntity;
 		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 
-		this.addSlot(new DNASlot(tile, 0, 56, 25));
-		this.addSlot(new DiscSlot(tile, 1, 56, 45));
-		this.addSlot(new ResultSlot(playerInv.player, tile, 2, 116, 35));
+		this.addSlot(new DNASlot(inventory, 0, 56, 25));
+		this.addSlot(new DiscSlot(inventory, 1, 56, 45));
+		this.addSlot(new ResultSlot(playerInventory.player, inventory, 2, 116, 35));
 
 		for (int i = 0; i < 3; ++i) {
 			for (int j = 0; j < 9; ++j) {
-				this.addSlot(new Slot(playerInv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+				this.addSlot(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 
 		for (int k = 0; k < 9; ++k) {
-			this.addSlot(new Slot(playerInv, k, 8 + k * 18, 142));
+			this.addSlot(new Slot(playerInventory, k, 8 + k * 18, 142));
 		}
 
 		this.addDataSlots(this.data);
 	}
 
-	public AnalyzerContainer(int windowID, PlayerInventory playerInv, PacketBuffer data) {
-		this(windowID, playerInv, new AnalyzerTileEntity(), getTileEntity(playerInv, data));
+	public AnalyzerContainer(ContainerType<? extends AnalyzerContainer> containerType, int windowID, PlayerInventory playerInventory, PacketBuffer buffer) {
+		this(containerType, windowID, playerInventory, new AnalyzerTileEntity(), getTileEntity(playerInventory, buffer));
 	}
 
-	private static AnalyzerTileEntity getTileEntity(final PlayerInventory playerInventory, final PacketBuffer data) {
+	private static AnalyzerTileEntity getTileEntity(PlayerInventory playerInventory, PacketBuffer data) {
 		Objects.requireNonNull(playerInventory, "Error: " + AnalyzerContainer.class.getSimpleName() + " - Player Inventory cannot be null!");
 		Objects.requireNonNull(data, "Error: " + AnalyzerContainer.class.getSimpleName() + " - Packer Buffer Data cannot be null!");
 
 		final TileEntity tileEntityAtPos = playerInventory.player.level.getBlockEntity(data.readBlockPos());
-		if (tileEntityAtPos instanceof AnalyzerTileEntity)
+		if (tileEntityAtPos instanceof AnalyzerTileEntity) {
 			return (AnalyzerTileEntity) tileEntityAtPos;
+		}
 
 		throw new IllegalStateException("Error: " + AnalyzerContainer.class.getSimpleName() + " - TileEntity is not corrent! " + tileEntityAtPos);
 	}

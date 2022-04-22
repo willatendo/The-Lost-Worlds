@@ -90,7 +90,7 @@ public class SoftStoneBlock extends Block {
 		PotentialPart part = state.getValue(POTENTIAL_PART);
 		DinoTypes creature = state.getValue(POTENTIAL_CREATURE);
 
-		if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING, stack) == 1) {
+		if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
 			int breakchance = rand.nextInt(2);
 			if (breakchance != 0) {
 				if (part == PotentialPart.ARM) {
@@ -122,7 +122,7 @@ public class SoftStoneBlock extends Block {
 					this.breakStone(world, pos, state);
 				}
 			}
-		} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION, stack) == 3) {
+		} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 3) {
 			if (part == PotentialPart.ARM) {
 				FossilEntity fossil = creature.getDirtyArmBones().create(world);
 				fossil.setAge(0);
@@ -151,7 +151,7 @@ public class SoftStoneBlock extends Block {
 			} else {
 				this.breakStone(world, pos, state);
 			}
-		} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION, stack) == 2) {
+		} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 2) {
 			int lowbreakchance = rand.nextInt(16);
 			if (lowbreakchance != 0) {
 				if (part == PotentialPart.ARM) {
@@ -183,7 +183,7 @@ public class SoftStoneBlock extends Block {
 					this.breakStone(world, pos, state);
 				}
 			}
-		} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION, stack) == 1) {
+		} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 1) {
 			int mediumbreakchance = rand.nextInt(8);
 			if (mediumbreakchance != 0) {
 				if (part == PotentialPart.ARM) {

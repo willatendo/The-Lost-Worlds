@@ -1,6 +1,7 @@
 package lostworlds.server.block;
 
 import lostworlds.server.LostWorldsUtils;
+import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.container.PaleontologyTableContainer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -71,8 +72,8 @@ public class PaleontologyTableBlock extends Block implements IWaterLoggable {
 	}
 
 	public INamedContainerProvider getMenuProvider(BlockState state, World world, BlockPos pos) {
-		return new SimpleNamedContainerProvider((windowId, playerInv, p_220270_4_) -> {
-			return new PaleontologyTableContainer(windowId, playerInv, IWorldPosCallable.create(world, pos));
+		return new SimpleNamedContainerProvider((windowID, playerInventory, player) -> {
+			return new PaleontologyTableContainer(LostWorldsContainers.PALEONTOLOGY_CONTAINER.get(), windowID, playerInventory, IWorldPosCallable.create(world, pos));
 		}, NAME);
 	}
 

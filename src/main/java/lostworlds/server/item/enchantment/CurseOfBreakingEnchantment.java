@@ -1,11 +1,12 @@
 package lostworlds.server.item.enchantment;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 
 public class CurseOfBreakingEnchantment extends Enchantment {
-	public CurseOfBreakingEnchantment() {
-		super(Rarity.VERY_RARE, ModEnchantmentTypes.HAMMER, new EquipmentSlotType[] { EquipmentSlotType.MAINHAND });
+	public CurseOfBreakingEnchantment(Rarity rarity, EnchantmentType type, EquipmentSlotType[] slot) {
+		super(rarity, type, slot);
 	}
 
 	@Override

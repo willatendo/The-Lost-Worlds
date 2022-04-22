@@ -1,7 +1,7 @@
 {
   "type": "lostworlds:fossil_grinder",
   "input": {
-    "tag": "lostworlds:allosaurus_fossils"
+    "tag": "lostworlds:carnotaurus_fossils"
   },
   "plant": false,
   "output": "lostworlds:carnotaurus_soft_tissue"

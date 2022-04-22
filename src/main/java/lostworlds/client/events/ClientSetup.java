@@ -11,7 +11,6 @@ import lostworlds.client.entity.render.DilophosaurusRenderer;
 import lostworlds.client.entity.render.DimetrodonRenderer;
 import lostworlds.client.entity.render.EdaphosaurusRenderer;
 import lostworlds.client.entity.render.EoraptorRenderer;
-import lostworlds.client.entity.render.FossilPoacherRenderer;
 import lostworlds.client.entity.render.FukuivenatorRenderer;
 import lostworlds.client.entity.render.GiganotosaurusRenderer;
 import lostworlds.client.entity.render.GorgonopsRenderer;
@@ -35,43 +34,14 @@ import lostworlds.client.entity.render.TyrannosaurusRenderer;
 import lostworlds.client.entity.render.UtahraptorRenderer;
 import lostworlds.client.entity.render.ZephyrosaurusRenderer;
 import lostworlds.client.entity.render.bone.CustomisableRenderer;
-import lostworlds.client.screen.AnalyzerScreen;
-import lostworlds.client.screen.ArchaeologyTableScreen;
-import lostworlds.client.screen.CultivatorScreen;
-import lostworlds.client.screen.DNAExtractorScreen;
-import lostworlds.client.screen.DNAInjectorScreen;
-import lostworlds.client.screen.DisplayCaseScreen;
-import lostworlds.client.screen.FeedingTroughScreen;
-import lostworlds.client.screen.FossilCleanerScreen;
-import lostworlds.client.screen.FossilGrinderScreen;
-import lostworlds.client.screen.PaleontologyTableScreen;
-import lostworlds.client.screen.TimeMachineScreen;
-import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientSetup {
-	public static void screenSetup() {
-		ScreenManager.register(LostWorldsContainers.FOSSIL_CLEANER_CONTAINER, FossilCleanerScreen::new);
-		ScreenManager.register(LostWorldsContainers.FOSSIL_GRINDER_CONTAINER, FossilGrinderScreen::new);
-		ScreenManager.register(LostWorldsContainers.DNA_EXTRACTOR_CONTAINER, DNAExtractorScreen::new);
-		ScreenManager.register(LostWorldsContainers.ANALYZER_CONTAINER, AnalyzerScreen::new);
-		ScreenManager.register(LostWorldsContainers.DNA_INJECTOR_CONTAINER, DNAInjectorScreen::new);
-		ScreenManager.register(LostWorldsContainers.CULTIVATOR_CONTAINER, CultivatorScreen::new);
-
-		ScreenManager.register(LostWorldsContainers.TIME_MACHINE_CONTAINER, TimeMachineScreen::new);
-		ScreenManager.register(LostWorldsContainers.FEEDING_TROUGH_CONTAINER, FeedingTroughScreen::new);
-		ScreenManager.register(LostWorldsContainers.DISPLAY_CASE_CONTAINER, DisplayCaseScreen::new);
-		ScreenManager.register(LostWorldsContainers.ARCHAEOLOGY_CONTAINER, ArchaeologyTableScreen::new);
-		ScreenManager.register(LostWorldsContainers.PALEONTOLOGY_CONTAINER, PaleontologyTableScreen::new);
-	}
-
 	public static void entityRenderSetup() {
-		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.FOSSIL_POACHER, manager -> new FossilPoacherRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.MOD_BOAT, manager -> new ModBoatRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.CHARGED_CRYSTAL_SCARAB_GEM_ITEM, manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer()));
 		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.CRYSTAL_SCARAB_GEM_ITEM, manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer()));

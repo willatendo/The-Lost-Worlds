@@ -13,6 +13,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -25,18 +26,14 @@ import net.minecraft.world.World;
 public class PaleontologyTableContainer extends Container {
 	private final PaleontologyTableInventory craftSlots = new PaleontologyTableInventory(this, 3, 3);
 	private final PaleontologyTableResultInventory resultSlots = new PaleontologyTableResultInventory();
-	private final IWorldPosCallable access;
+	private final IWorldPosCallable posCallable;
 	private final PlayerEntity player;
 
-	public PaleontologyTableContainer(int windowId, PlayerInventory playerInv, PacketBuffer buffer) {
-		this(windowId, playerInv, IWorldPosCallable.NULL);
-	}
-
-	public PaleontologyTableContainer(int windowId, PlayerInventory playerInv, IWorldPosCallable callable) {
-		super(LostWorldsContainers.PALEONTOLOGY_CONTAINER, windowId);
-		this.access = callable;
-		this.player = playerInv.player;
-		this.addSlot(new PaleontologyTableResultSlot(playerInv.player, this.craftSlots, this.resultSlots, 0, 124, 35));
+	public PaleontologyTableContainer(ContainerType<? extends PaleontologyTableContainer> containerType, int windowID, PlayerInventory playerInventory, IWorldPosCallable posCallable) {
+		super(containerType, windowID);
+		this.posCallable = posCallable;
+		this.player = playerInventory.player;
+		this.addSlot(new PaleontologyTableResultSlot(playerInventory.player, this.craftSlots, this.resultSlots, 0, 124, 35));
 
 		for (int i = 0; i < 3; ++i) {
 			for (int j = 0; j < 3; ++j) {
@@ -46,13 +43,17 @@ public class PaleontologyTableContainer extends Container {
 
 		for (int k = 0; k < 3; ++k) {
 			for (int i1 = 0; i1 < 9; ++i1) {
-				this.addSlot(new Slot(playerInv, i1 + k * 9 + 9, 8 + i1 * 18, 84 + k * 18));
+				this.addSlot(new Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * 18, 84 + k * 18));
 			}
 		}
 
 		for (int l = 0; l < 9; ++l) {
-			this.addSlot(new Slot(playerInv, l, 8 + l * 18, 142));
+			this.addSlot(new Slot(playerInventory, l, 8 + l * 18, 142));
 		}
+	}
+
+	public PaleontologyTableContainer(ContainerType<? extends PaleontologyTableContainer> containerType, int windowId, PlayerInventory playerInventory, PacketBuffer buffer) {
+		this(containerType, windowId, playerInventory, IWorldPosCallable.NULL);
 	}
 
 	protected static void slotChangedCraftingGrid(int slot, World world, PlayerEntity player, PaleontologyTableInventory inv, PaleontologyTableResultInventory result) {
@@ -74,7 +75,7 @@ public class PaleontologyTableContainer extends Container {
 
 	@Override
 	public void slotsChanged(IInventory iinv) {
-		this.access.execute((world, pos) -> {
+		this.posCallable.execute((world, pos) -> {
 			slotChangedCraftingGrid(this.containerId, world, this.player, this.craftSlots, this.resultSlots);
 		});
 	}
@@ -95,14 +96,14 @@ public class PaleontologyTableContainer extends Container {
 	@Override
 	public void removed(PlayerEntity player) {
 		super.removed(player);
-		this.access.execute((world, pos) -> {
+		this.posCallable.execute((world, pos) -> {
 			this.clearContainer(player, world, this.craftSlots);
 		});
 	}
 
 	@Override
 	public boolean stillValid(PlayerEntity player) {
-		return stillValid(this.access, player, LostWorldsBlocks.PALEONTOLOGY_TABLE.get());
+		return stillValid(this.posCallable, player, LostWorldsBlocks.PALEONTOLOGY_TABLE.get());
 	}
 
 	@Override
@@ -113,7 +114,7 @@ public class PaleontologyTableContainer extends Container {
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
 			if (containerSlot == 0) {
-				this.access.execute((world, pos) -> {
+				this.posCallable.execute((world, pos) -> {
 					itemstack1.getItem().onCraftedBy(itemstack1, world, player);
 				});
 				if (!this.moveItemStackTo(itemstack1, 10, 46, true)) {

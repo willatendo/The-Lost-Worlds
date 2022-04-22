@@ -1,5 +1,10 @@
 package lostworlds.server.entity;
 
+import static lostworlds.LostWorldsMod.getRegistrate;
+
+import com.tterrag.registrate.util.entry.EntityEntry;
+
+import lostworlds.client.entity.render.FossilPoacherRenderer;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.aquatic.cambrian.AnomalocarisEntity;
 import lostworlds.server.entity.aquatic.jurassic.OphthalmosaurusEntity;
@@ -39,11 +44,13 @@ import lostworlds.server.entity.terrestrial.triassic.EoraptorEntity;
 import lostworlds.server.entity.terrestrial.triassic.ProcompsognathusEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.item.ModSpawnEggItem;
+import lostworlds.server.util.LostWorldsRegistrate;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EntityType.IFactory;
+import net.minecraft.loot.LootTable;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -54,9 +61,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 @EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.MOD)
 public class LostWorldsEntities {
+	public static final LostWorldsRegistrate REGISTRATE = getRegistrate();
+
 	public static final EntityClassification SEMI_AQUATIC_CREATURE = EntityClassification.create("semi_aquatic_creature", "semi_aquatic_creature", 10, true, true, 128);
 
-	public static final EntityType<FossilPoacherEntity> FOSSIL_POACHER = register("fossil_poacher", FossilPoacherEntity::new, EntityClassification.MONSTER, 0.6F, 1.95F);
+	public static final EntityEntry<FossilPoacherEntity> FOSSIL_POACHER = REGISTRATE.entity("fossil_poacher", FossilPoacherEntity::new, EntityClassification.MONSTER).properties(properties -> properties.sized(0.6F, 1.95F)).attributes(() -> FossilPoacherEntity.createAttributes()).defaultSpawnEgg(0x959b9b, 0x363031).renderer(() -> FossilPoacherRenderer::new).loot((provider, entity) -> LootTable.lootTable().build()).register();
 
 	public static final EntityType<ModBoatEntity> MOD_BOAT = register("mod_boat", ModBoatEntity::new, EntityClassification.MISC, 1.375F, 0.5625F);
 	public static final EntityType<ChargedCrystalScarabGemItemEntity> CHARGED_CRYSTAL_SCARAB_GEM_ITEM = register("charged_crystal_scarab_gem_item", ChargedCrystalScarabGemItemEntity::new, EntityClassification.MISC, 0.5F, 0.5F);
@@ -124,8 +133,6 @@ public class LostWorldsEntities {
 			}
 
 		}
-
-		event.put(LostWorldsEntities.FOSSIL_POACHER, FossilPoacherEntity.createAttributes());
 
 		event.put(LostWorldsEntities.ALLOSAURUS, AllosaurusEntity.createAttributes());
 		event.put(LostWorldsEntities.ANOMALOCARIS, AnomalocarisEntity.createAttributes());

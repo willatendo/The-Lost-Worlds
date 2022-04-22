@@ -13,6 +13,7 @@ import net.minecraft.block.HayBlock;
 import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.block.WoodButtonBlock;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.state.properties.AttachFace;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.state.properties.DoubleBlockHalf;
@@ -75,12 +76,12 @@ public class LostWorldsBlockModels {
 		});
 	}
 
-	public static ItemModelBuilder fenceInv(BlockItem block, String texture, RegistrateItemModelProvider provider) {
-		return provider.withExistingParent(block.getRegistryName().getPath() + "_inventory", provider.mcLoc("block/fence_inventory")).texture("texture", provider.modLoc("block/" + texture));
+	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> fenceInv(String texture) {
+		return (item, provider) -> provider.withExistingParent(item.getName(), provider.mcLoc("block/fence_inventory")).texture("texture", provider.modLoc("block/" + texture));
 	}
 
-	public static ItemModelBuilder wallInv(BlockItem block, String texture, RegistrateItemModelProvider provider) {
-		return provider.withExistingParent(block.getRegistryName().getPath() + "_inventory", provider.mcLoc("block/wall_inventory")).texture("wall", provider.modLoc("block/" + texture));
+	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> wallInv(String texture) {
+		return (item, provider) -> provider.withExistingParent(item.getName(), provider.mcLoc("block/wall_inventory")).texture("wall", provider.modLoc("block/" + texture));
 	}
 
 	public static ItemModelBuilder buttonInv(BlockItem block, RegistrateItemModelProvider provider) {

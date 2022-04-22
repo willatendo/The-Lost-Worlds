@@ -1,4 +1,29 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "lostworlds:allosaurus_egg",
+    "lostworlds:carnotaurus_egg",
+    "lostworlds:chilesaurus_egg",
+    "lostworlds:cryolophosaurus_egg",
+    "lostworlds:dilophosaurus_egg",
+    "lostworlds:dimetrodon_egg",
+    "lostworlds:edaphosaurus_egg",
+    "lostworlds:eoraptor_egg",
+    "lostworlds:fukuivenator_egg",
+    "lostworlds:giganotosaurus_egg",
+    "lostworlds:gorgonops_egg",
+    "lostworlds:great_auk_egg",
+    "lostworlds:kentrosaurus_egg",
+    "lostworlds:liaoningosaurus_egg",
+    "lostworlds:ostromia_egg",
+    "lostworlds:ouranosaurus_egg",
+    "lostworlds:procompsognathus_egg",
+    "lostworlds:protosuchus_egg",
+    "lostworlds:psittacosaurus_egg",
+    "lostworlds:suchomimus_egg",
+    "lostworlds:tetraceratops_egg",
+    "lostworlds:tyrannosaurus_egg",
+    "lostworlds:utahraptor_egg",
+    "lostworlds:zephyrosaurus_egg"
+  ]
 }

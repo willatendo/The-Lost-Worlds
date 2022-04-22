@@ -173,7 +173,7 @@ public class LostWorldsMod {
 			TileEntityType.SIGN.validBlocks = builder.build();
 		});
 
-		LostWorldsUtils.translateToWaves(LostWorldsEntities.FOSSIL_POACHER, Arrays.asList(1, 0, 0, 0, 1, 2, 2, 3));
+		LostWorldsUtils.translateToWaves(LostWorldsEntities.FOSSIL_POACHER.get(), Arrays.asList(1, 0, 0, 0, 1, 2, 2, 3));
 	}
 
 	private void biomeModification(BiomeLoadingEvent event) {
@@ -334,7 +334,6 @@ public class LostWorldsMod {
 
 		LostWorldsDimensions.initClient();
 
-		ClientSetup.screenSetup();
 		ClientSetup.entityRenderSetup();
 	}
 

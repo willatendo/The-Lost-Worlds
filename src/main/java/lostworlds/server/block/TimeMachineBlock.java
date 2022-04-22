@@ -3,7 +3,7 @@ package lostworlds.server.block;
 import javax.annotation.Nullable;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.container.TimeMachineContainer;
+import lostworlds.server.container.LostWorldsContainers;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -12,7 +12,6 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.inventory.container.SimpleNamedContainerProvider;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
-import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -40,8 +39,8 @@ public class TimeMachineBlock extends Block {
 
 	@Nullable
 	public INamedContainerProvider getMenuProvider(BlockState state, World world, BlockPos pos) {
-		return new SimpleNamedContainerProvider((windowId, inv, u) -> {
-			return new TimeMachineContainer(windowId, inv, IWorldPosCallable.create(world, pos));
+		return new SimpleNamedContainerProvider((windowId, playerInventory, player) -> {
+			return LostWorldsContainers.TIME_MACHINE_CONTAINER.create(windowId, playerInventory);
 		}, CONTAINER_NAME);
 	}
 

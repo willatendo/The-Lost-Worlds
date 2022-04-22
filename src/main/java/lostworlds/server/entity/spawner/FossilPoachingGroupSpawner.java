@@ -84,9 +84,9 @@ public class FossilPoachingGroupSpawner {
 
 	private boolean spawnMember(ServerWorld world, BlockPos pos, Random rand, boolean leader) {
 		BlockState blockstate = world.getBlockState(pos);
-		if (!WorldEntitySpawner.isValidEmptySpawnBlock(world, pos, blockstate, blockstate.getFluidState(), LostWorldsEntities.FOSSIL_POACHER)) {
+		if (!WorldEntitySpawner.isValidEmptySpawnBlock(world, pos, blockstate, blockstate.getFluidState(), LostWorldsEntities.FOSSIL_POACHER.get())) {
 			return false;
-		} else if (!PatrollerEntity.checkPatrollingMonsterSpawnRules(LostWorldsEntities.FOSSIL_POACHER, world, SpawnReason.PATROL, pos, rand)) {
+		} else if (!PatrollerEntity.checkPatrollingMonsterSpawnRules(LostWorldsEntities.FOSSIL_POACHER.get(), world, SpawnReason.PATROL, pos, rand)) {
 			return false;
 		} else {
 			PatrollerEntity patrollerentity = LostWorldsEntities.FOSSIL_POACHER.create(world);

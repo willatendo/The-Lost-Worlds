@@ -1,6 +1,6 @@
 package lostworlds.server.block.entity;
 
-import static lostworlds.LostWorldsMod.CENTRAL_REGISTRATE;
+import static lostworlds.LostWorldsMod.getRegistrate;
 
 import com.tterrag.registrate.util.entry.TileEntityEntry;
 
@@ -12,7 +12,7 @@ import net.minecraft.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsBlockEntities {
-	public static final LostWorldsRegistrate REGISTRATE = CENTRAL_REGISTRATE.get();
+	public static final LostWorldsRegistrate REGISTRATE = getRegistrate();
 
 	public static final TileEntityEntry<FossilCleanerTileEntity> FOSSIL_CLEANER_TILE_ENTITY = REGISTRATE.tileEntity("fossil_cleaner_tile_entity", FossilCleanerTileEntity::new).validBlock(() -> LostWorldsBlocks.FOSSIL_CLEANER.get()).register();
 	public static final TileEntityEntry<FossilGrinderTileEntity> FOSSIL_GRINDER_TILE_ENTITY = REGISTRATE.tileEntity("fossil_grinder_tile_entity", FossilGrinderTileEntity::new).validBlock(() -> LostWorldsBlocks.FOSSIL_GRINDER.get()).register();

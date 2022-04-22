@@ -8,6 +8,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.DNAInjectorBlock;
 import lostworlds.server.container.DNAInjectorContainer;
+import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.container.recipes.DNAInjectorRecipe;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
 import net.minecraft.block.BlockState;
@@ -327,8 +328,8 @@ public class DNAInjectorTileEntity extends TileEntity implements IInventory, INa
 	}
 
 	@Override
-	public Container createMenu(int windowId, PlayerInventory playerInv, PlayerEntity player) {
-		return new DNAInjectorContainer(windowId, playerInv, this, this);
+	public Container createMenu(int windowID, PlayerInventory playerInventory, PlayerEntity player) {
+		return new DNAInjectorContainer(LostWorldsContainers.DNA_INJECTOR_CONTAINER.get(), windowID, playerInventory, this, this);
 	}
 
 	@Override

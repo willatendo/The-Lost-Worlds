@@ -1,11 +1,12 @@
 package lostworlds.server.item.enchantment;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 
 public class PrecisionEnchantment extends Enchantment {
-	public PrecisionEnchantment() {
-		super(Rarity.RARE, ModEnchantmentTypes.HAMMER, new EquipmentSlotType[] { EquipmentSlotType.MAINHAND });
+	public PrecisionEnchantment(Rarity rarity, EnchantmentType type, EquipmentSlotType[] slot) {
+		super(rarity, type, slot);
 	}
 
 	@Override

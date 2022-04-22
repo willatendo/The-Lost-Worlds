@@ -10,6 +10,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.AnalyzerBlock;
 import lostworlds.server.container.FossilCleanerContainer;
+import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.container.recipes.FossilCleanerRecipe;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
 import net.minecraft.block.BlockState;
@@ -346,8 +347,8 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 	}
 
 	@Override
-	public Container createMenu(int windowId, PlayerInventory playerInv, PlayerEntity player) {
-		return new FossilCleanerContainer(windowId, playerInv, this, this);
+	public Container createMenu(int windowID, PlayerInventory playerInventory, PlayerEntity player) {
+		return new FossilCleanerContainer(LostWorldsContainers.FOSSIL_CLEANER_CONTAINER.get(), windowID, playerInventory, this, this);
 	}
 
 	@Override

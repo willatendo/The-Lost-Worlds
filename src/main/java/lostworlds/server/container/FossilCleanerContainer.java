@@ -13,6 +13,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -30,45 +31,44 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class FossilCleanerContainer extends Container {
 	private final IWorldPosCallable canInteractWithCallable;
 	private final IIntArray data;
-	protected final World level;
-	public final FossilCleanerTileEntity tile;
-	private final IRecipeType<? extends FossilCleanerRecipe> recipeType = LostWorldsRecipes.FOSSIL_CLEANER_RECIPE;
+	private final World level;
+	private final IRecipeType<FossilCleanerRecipe> recipeType = LostWorldsRecipes.FOSSIL_CLEANER_RECIPE;
 
-	public FossilCleanerContainer(int windowID, PlayerInventory playerInv, FossilCleanerTileEntity tileEntity, IInventory tile) {
-		super(LostWorldsContainers.FOSSIL_CLEANER_CONTAINER, windowID);
+	public FossilCleanerContainer(ContainerType<? extends FossilCleanerContainer> containerType, int windowID, PlayerInventory playerInventory, FossilCleanerTileEntity tileEntity, IInventory inventory) {
+		super(containerType, windowID);
 		this.data = tileEntity.getCleanerData();
-		this.tile = tileEntity;
-		this.level = playerInv.player.level;
+		this.level = playerInventory.player.level;
 		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 
-		this.addSlot(new Slot(tile, 0, 56, 17));
-		this.addSlot(new FossilCleanerFuelSlot(tile, 1, 56, 53));
-		this.addSlot(new ResultSlot(playerInv.player, tile, 2, 116, 35));
+		this.addSlot(new Slot(inventory, 0, 56, 17));
+		this.addSlot(new FossilCleanerFuelSlot(inventory, 1, 56, 53));
+		this.addSlot(new ResultSlot(playerInventory.player, inventory, 2, 116, 35));
 
 		for (int i = 0; i < 3; ++i) {
 			for (int j = 0; j < 9; ++j) {
-				this.addSlot(new Slot(playerInv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+				this.addSlot(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 
 		for (int k = 0; k < 9; ++k) {
-			this.addSlot(new Slot(playerInv, k, 8 + k * 18, 142));
+			this.addSlot(new Slot(playerInventory, k, 8 + k * 18, 142));
 		}
 
 		this.addDataSlots(this.data);
 	}
 
-	public FossilCleanerContainer(int windowID, PlayerInventory playerInv, PacketBuffer data) {
-		this(windowID, playerInv, new FossilCleanerTileEntity(), getTileEntity(playerInv, data));
+	public FossilCleanerContainer(ContainerType<? extends FossilCleanerContainer> containerType, int windowID, PlayerInventory playerInventory, PacketBuffer buffer) {
+		this(containerType, windowID, playerInventory, new FossilCleanerTileEntity(), getTileEntity(playerInventory, buffer));
 	}
 
-	private static FossilCleanerTileEntity getTileEntity(final PlayerInventory playerInventory, final PacketBuffer data) {
+	private static FossilCleanerTileEntity getTileEntity(PlayerInventory playerInventory, PacketBuffer data) {
 		Objects.requireNonNull(playerInventory, "Error: " + FossilCleanerContainer.class.getSimpleName() + " - Player Inventory cannot be null!");
 		Objects.requireNonNull(data, "Error: " + FossilCleanerContainer.class.getSimpleName() + " - Packer Buffer Data cannot be null!");
 
 		final TileEntity tileEntityAtPos = playerInventory.player.level.getBlockEntity(data.readBlockPos());
-		if (tileEntityAtPos instanceof FossilCleanerTileEntity)
+		if (tileEntityAtPos instanceof FossilCleanerTileEntity) {
 			return (FossilCleanerTileEntity) tileEntityAtPos;
+		}
 
 		throw new IllegalStateException("Error: " + FossilCleanerContainer.class.getSimpleName() + " - TileEntity is not corrent! " + tileEntityAtPos);
 	}

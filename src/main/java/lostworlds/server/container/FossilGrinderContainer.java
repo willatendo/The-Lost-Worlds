@@ -12,6 +12,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;
@@ -28,43 +29,42 @@ public class FossilGrinderContainer extends Container {
 	private final IIntArray data;
 	private final World level;
 	private final IRecipeType<FossilGrinderRecipe> recipeType = LostWorldsRecipes.FOSSIL_GRINDER_RECIPE;
-	public final FossilGrinderTileEntity tile;
 
-	public FossilGrinderContainer(int windowID, PlayerInventory playerInv, FossilGrinderTileEntity tileEntity, IInventory tile) {
-		super(LostWorldsContainers.FOSSIL_GRINDER_CONTAINER, windowID);
-		this.level = playerInv.player.level;
+	public FossilGrinderContainer(ContainerType<? extends FossilGrinderContainer> containerType, int windowID, PlayerInventory playerInventory, FossilGrinderTileEntity tileEntity, IInventory inventory) {
+		super(containerType, windowID);
+		this.level = playerInventory.player.level;
 		this.data = tileEntity.getGrinderData();
-		this.tile = tileEntity;
 		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 
-		this.addSlot(new Slot(tile, 0, 53, 35));
-		this.addSlot(new ResultSlot(playerInv.player, tile, 1, 116, 35));
-		this.addSlot(new ResultSlot(playerInv.player, tile, 2, 139, 35));
+		this.addSlot(new Slot(inventory, 0, 53, 35));
+		this.addSlot(new ResultSlot(playerInventory.player, inventory, 1, 116, 35));
+		this.addSlot(new ResultSlot(playerInventory.player, inventory, 2, 139, 35));
 
 		for (int i = 0; i < 3; ++i) {
 			for (int j = 0; j < 9; ++j) {
-				this.addSlot(new Slot(playerInv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+				this.addSlot(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 
 		for (int k = 0; k < 9; ++k) {
-			this.addSlot(new Slot(playerInv, k, 8 + k * 18, 142));
+			this.addSlot(new Slot(playerInventory, k, 8 + k * 18, 142));
 		}
 
 		this.addDataSlots(this.data);
 	}
 
-	public FossilGrinderContainer(int windowID, PlayerInventory playerInv, PacketBuffer data) {
-		this(windowID, playerInv, new FossilGrinderTileEntity(), getTileEntity(playerInv, data));
+	public FossilGrinderContainer(ContainerType<? extends FossilGrinderContainer> containerType, int windowID, PlayerInventory playerInventory, PacketBuffer buffer) {
+		this(containerType, windowID, playerInventory, new FossilGrinderTileEntity(), getTileEntity(playerInventory, buffer));
 	}
 
-	private static FossilGrinderTileEntity getTileEntity(final PlayerInventory playerInventory, final PacketBuffer data) {
+	private static FossilGrinderTileEntity getTileEntity(PlayerInventory playerInventory, PacketBuffer data) {
 		Objects.requireNonNull(playerInventory, "Error: " + FossilGrinderContainer.class.getSimpleName() + " - Player Inventory cannot be null!");
 		Objects.requireNonNull(data, "Error: " + FossilGrinderContainer.class.getSimpleName() + " - Packer Buffer Data cannot be null!");
 
 		final TileEntity tileEntityAtPos = playerInventory.player.level.getBlockEntity(data.readBlockPos());
-		if (tileEntityAtPos instanceof FossilGrinderTileEntity)
+		if (tileEntityAtPos instanceof FossilGrinderTileEntity) {
 			return (FossilGrinderTileEntity) tileEntityAtPos;
+		}
 
 		throw new IllegalStateException("Error: " + FossilGrinderContainer.class.getSimpleName() + " - TileEntity is not corrent! " + tileEntityAtPos);
 	}
