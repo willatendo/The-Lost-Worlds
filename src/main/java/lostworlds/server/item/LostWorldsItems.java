@@ -4,6 +4,7 @@ import static lostworlds.LostWorldsMod.getRegistrate;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
+import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 
@@ -11,6 +12,7 @@ import lostworlds.client.craft.AmberDNAExtractorRecipeManager;
 import lostworlds.client.sounds.LostWorldsSounds;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
+import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.Plants;
 import lostworlds.server.block.Trees;
 import lostworlds.server.block.utils.Foods;
@@ -28,6 +30,8 @@ import lostworlds.server.item.tool.BrushItem;
 import lostworlds.server.item.tool.CrystalScarabGemBrushItem;
 import lostworlds.server.item.tool.ModItemTier;
 import lostworlds.server.util.LostWorldsRegistrate;
+import net.minecraft.data.ShapelessRecipeBuilder;
+import net.minecraft.data.SmithingRecipeBuilder;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BannerPatternItem;
@@ -35,7 +39,9 @@ import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemTier;
+import net.minecraft.item.Items;
 import net.minecraft.item.Rarity;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ModelBuilder.Perspective;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -45,15 +51,19 @@ public class LostWorldsItems {
 	private static final LostWorldsRegistrate REGISTRATE = getRegistrate().itemGroup(() -> LostWorldsUtils.ITEMS);
 
 	// Copper
-	public static final ItemEntry<Item> COPPER_INGOT = REGISTRATE.item("copper_ingot", Item::new).register(),
-			COPPER_NUGGET = REGISTRATE.item("copper_nugget", Item::new).register();
+	public static final ItemEntry<Item> COPPER_INGOT = REGISTRATE.item("copper_ingot", Item::new).recipe((item, provider) -> {
+		provider.blasting(DataIngredient.items(LostWorldsBlocks.COPPER_ORE.get()), () -> item.get(), 0.7F);
+		provider.smelting(DataIngredient.items(LostWorldsBlocks.COPPER_ORE.get()), () -> item.get(), 0.7F);
+		provider.square(DataIngredient.items(LostWorldsItems.COPPER_NUGGET.get()), () -> item.get(), false);
+	}).register(),
+			COPPER_NUGGET = REGISTRATE.item("copper_nugget", Item::new).recipe((item, provider) -> ShapelessRecipeBuilder.shapeless(item.get()).requires(LostWorldsItems.COPPER_INGOT.get()).unlockedBy("has_item", provider.hasItem(LostWorldsItems.COPPER_INGOT.get())).save(provider)).register();
 
 	// Tools
-	public static final ItemEntry<CrystalScarabSwordItem> CRYSTAL_SCARAB_SWORD = REGISTRATE.item("crystal_scarab_sword", properties -> new CrystalScarabSwordItem(ModItemTier.CRYSTAL_SCARAB, 3, -2.4F, properties.setNoRepair())).register();
-	public static final ItemEntry<CrystalScarabShovelItem> CRYSTAL_SCARAB_SHOVEL = REGISTRATE.item("crystal_scarab_shovel", properties -> new CrystalScarabShovelItem(ModItemTier.CRYSTAL_SCARAB, 1.5F, -3.0F, properties.setNoRepair())).register();
-	public static final ItemEntry<CrystalScarabPickaxeItem> CRYSTAL_SCARAB_PICKAXE = REGISTRATE.item("crystal_scarab_pickaxe", properties -> new CrystalScarabPickaxeItem(ModItemTier.CRYSTAL_SCARAB, 1, -2.8F, properties.setNoRepair())).register();
-	public static final ItemEntry<CrystalScarabAxeItem> CRYSTAL_SCARAB_AXE = REGISTRATE.item("crystal_scarab_axe", properties -> new CrystalScarabAxeItem(ModItemTier.CRYSTAL_SCARAB, 6.0F, -3.2F, properties.setNoRepair())).register();
-	public static final ItemEntry<CrystalScarabHoeItem> CRYSTAL_SCARAB_HOE = REGISTRATE.item("crystal_scarab_hoe", properties -> new CrystalScarabHoeItem(ModItemTier.CRYSTAL_SCARAB, 0, -3.0F, properties.setNoRepair())).register();
+	public static final ItemEntry<CrystalScarabSwordItem> CRYSTAL_SCARAB_SWORD = REGISTRATE.item("crystal_scarab_sword", properties -> new CrystalScarabSwordItem(ModItemTier.CRYSTAL_SCARAB, 3, -2.4F, properties.setNoRepair())).recipe((item, provider) -> SmithingRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_SWORD), Ingredient.of(LostWorldsItems.CRYSTAL_SCARAB_GEM.get()), item.get()).unlocks("has_item", provider.hasItem(LostWorldsItems.CRYSTAL_SCARAB_GEM.get())).save(provider, LostWorldsUtils.rL("crystal_scarab_sword"))).register();
+	public static final ItemEntry<CrystalScarabShovelItem> CRYSTAL_SCARAB_SHOVEL = REGISTRATE.item("crystal_scarab_shovel", properties -> new CrystalScarabShovelItem(ModItemTier.CRYSTAL_SCARAB, 1.5F, -3.0F, properties.setNoRepair())).recipe((item, provider) -> SmithingRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_SHOVEL), Ingredient.of(LostWorldsItems.CRYSTAL_SCARAB_GEM.get()), item.get()).unlocks("has_item", provider.hasItem(LostWorldsItems.CRYSTAL_SCARAB_GEM.get())).save(provider, LostWorldsUtils.rL("crystal_scarab_shovel"))).register();
+	public static final ItemEntry<CrystalScarabPickaxeItem> CRYSTAL_SCARAB_PICKAXE = REGISTRATE.item("crystal_scarab_pickaxe", properties -> new CrystalScarabPickaxeItem(ModItemTier.CRYSTAL_SCARAB, 1, -2.8F, properties.setNoRepair())).recipe((item, provider) -> SmithingRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_PICKAXE), Ingredient.of(LostWorldsItems.CRYSTAL_SCARAB_GEM.get()), item.get()).unlocks("has_item", provider.hasItem(LostWorldsItems.CRYSTAL_SCARAB_GEM.get())).save(provider, LostWorldsUtils.rL("crystal_scarab_pickaxe"))).register();
+	public static final ItemEntry<CrystalScarabAxeItem> CRYSTAL_SCARAB_AXE = REGISTRATE.item("crystal_scarab_axe", properties -> new CrystalScarabAxeItem(ModItemTier.CRYSTAL_SCARAB, 6.0F, -3.2F, properties.setNoRepair())).recipe((item, provider) -> SmithingRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_AXE), Ingredient.of(LostWorldsItems.CRYSTAL_SCARAB_GEM.get()), item.get()).unlocks("has_item", provider.hasItem(LostWorldsItems.CRYSTAL_SCARAB_GEM.get())).save(provider, LostWorldsUtils.rL("crystal_scarab_hoe"))).register();
+	public static final ItemEntry<CrystalScarabHoeItem> CRYSTAL_SCARAB_HOE = REGISTRATE.item("crystal_scarab_hoe", properties -> new CrystalScarabHoeItem(ModItemTier.CRYSTAL_SCARAB, 0, -3.0F, properties.setNoRepair())).recipe((item, provider) -> SmithingRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_HOE), Ingredient.of(LostWorldsItems.CRYSTAL_SCARAB_GEM.get()), item.get()).unlocks("has_item", provider.hasItem(LostWorldsItems.CRYSTAL_SCARAB_GEM.get())).save(provider, LostWorldsUtils.rL("crystal_scarab_axe"))).register();
 
 	public static final ItemEntry<BrushItem> LEATHER_BRUSH = REGISTRATE.item("leather_brush", properties -> new BrushItem(ModItemTier.LEATHER, properties)).tag(LostWorldsTags.ModItemTags.BRUSHES).register(),
 			IRON_BRUSH = REGISTRATE.item("iron_brush", properties -> new BrushItem(ModItemTier.IRON, properties)).tag(LostWorldsTags.ModItemTags.BRUSHES).register(),

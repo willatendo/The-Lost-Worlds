@@ -1,0 +1,12 @@
+[
+  {
+    "name": "who_am_i",
+    "type": "text",
+    "data": "foremention/who_am_i.json"
+  },
+  {
+    "name": "who_am_i_continued",
+    "type": "text",
+    "data": "foremention/who_am_i_continued.json"
+  }
+]

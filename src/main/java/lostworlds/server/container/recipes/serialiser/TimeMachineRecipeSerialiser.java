@@ -16,7 +16,7 @@ import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class TimeMachineRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<TimeMachineRecipe> {
 	public TimeMachineRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
-		String s1 = JSONUtils.getAsString(json, "result");
+		String s1 = JSONUtils.getAsString(json, "output");
 		int i = JSONUtils.getAsInt(json, "count");
 		ItemStack itemstack = new ItemStack(Registry.ITEM.get(new ResourceLocation(s1)), i);
 		return new TimeMachineRecipe(recipeId, itemstack, Ingredient.of(Items.BOOK), Ingredient.of(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get()));

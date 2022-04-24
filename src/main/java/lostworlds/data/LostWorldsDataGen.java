@@ -14,5 +14,6 @@ public class LostWorldsDataGen {
 		DataGenerator dataGenerator = event.getGenerator();
 		dataGenerator.addProvider(new LostWorldsRecipeProvider(dataGenerator));
 		dataGenerator.addProvider(new LostWorldsBookProvider(dataGenerator));
+		dataGenerator.addProvider(new LostWorldsDimensionProvider(dataGenerator));
 	}
 }

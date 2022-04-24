@@ -203,11 +203,7 @@ public class LostWorldsBlockModels {
 	}
 
 	public static <T extends MachineBlock> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> machine() {
-		return (block, provider) -> machine(provider.models().withExistingParent(block.getName(), provider.modLoc("block/" + block.getName() + "_on")), provider.models().withExistingParent(block.getName(), provider.modLoc("block/" + block.getName())));
-	}
-
-	private static <T extends MachineBlock> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> machine(ModelFile on, ModelFile off) {
-		return (block, provider) -> provider.horizontalBlock(block.get(), state -> state.getValue(MachineBlock.ON) ? on : off);
+		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> state.getValue(MachineBlock.ON) ? ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_on_gen", provider.modLoc("block/" + block.getName() + "_on"))).rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 180) % 360).build() : ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_off_gen", provider.modLoc("block/" + block.getName() + "_on"))).rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 180) % 360).build());
 	}
 
 	public static <T extends HayBlock> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> thatch(ResourceLocation side, ResourceLocation top) {

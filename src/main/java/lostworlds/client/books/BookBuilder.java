@@ -6,6 +6,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mojang.datafixers.util.Pair;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
 
@@ -33,7 +34,7 @@ public class BookBuilder {
 		json.addProperty("title", this.title);
 		json.addProperty("subtitle", this.subtitle);
 		json.addProperty("drawSectionListText", true);
-		json.addProperty("coverColour", this.coverColour);
+		json.addProperty("coverColor", this.coverColour);
 		return json;
 	}
 
@@ -61,6 +62,11 @@ public class BookBuilder {
 		public SectionBuilder(String section, Item icon) {
 			this.section = section;
 			this.icon = icon;
+		}
+
+		public SectionBuilder(String section, Block icon) {
+			this.section = section;
+			this.icon = icon.asItem();
 		}
 
 		public JsonArray serializeSection() {
@@ -127,6 +133,12 @@ public class BookBuilder {
 			public PageBuilder addParagraph(String text, boolean isParagraph) {
 				this.paragraphs.add(Pair.of(text, isParagraph));
 				return this;
+			}
+
+			public static class TextPageBuilder extends PageBuilder {
+				public TextPageBuilder(String page) {
+					super(page, "text");
+				}
 			}
 		}
 	}

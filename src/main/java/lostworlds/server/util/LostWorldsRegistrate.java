@@ -92,6 +92,10 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		return super.block(name, factory).item().color(() -> LostWorldsBlocks::getGrassyItemColour).build();
 	}
 
+	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> blockItemModel(String name, NonNullFunction<Properties, T> factory) {
+		return this.blockItemModel(name, name + "_off", factory);
+	}
+
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> blockItemModel(String name, String parent, NonNullFunction<Properties, T> factory) {
 		return super.block(name, factory).item().model((item, provider) -> provider.withExistingParent(item.getName(), provider.modLoc("block/" + parent))).build();
 	}
