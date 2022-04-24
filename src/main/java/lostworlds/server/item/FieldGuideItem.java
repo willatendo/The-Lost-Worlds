@@ -3,7 +3,7 @@ package lostworlds.server.item;
 import java.util.List;
 
 import lostworlds.client.book.LostWorldsBooks;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.item.TyrannobookItem;
+import lostworlds.client.books.tyrannibook.item.TyrannobookItem;
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,7 +21,7 @@ public class FieldGuideItem extends TyrannobookItem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> toolTip, ITooltipFlag flag) {
-		toolTip.add(LostWorldsUtils.gTC("item", "field_guide.desc"));
+		toolTip.add(LostWorldsUtils.gTC("icon", "field_guide.desc"));
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package lostworlds.server.item;
 import java.util.List;
 
 import lostworlds.client.book.LostWorldsBooks;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.item.TyrannobookItem;
+import lostworlds.client.books.tyrannibook.item.TyrannobookItem;
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,7 +21,7 @@ public class LostWorldsLexicon extends TyrannobookItem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> text, ITooltipFlag flag) {
-		text.add(LostWorldsUtils.gTC("item", "lost_worlds_lexicon.desc"));
+		text.add(LostWorldsUtils.gTC("icon", "lost_worlds_lexicon.desc"));
 	}
 
 	@Override

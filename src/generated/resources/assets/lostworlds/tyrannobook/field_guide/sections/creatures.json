@@ -1,0 +1,72 @@
+[
+  {
+    "name": "allosaurus",
+    "type": "text",
+    "data": "creatures/allosaurus.json"
+  },
+  {
+    "name": "allosaurus_info",
+    "type": "text",
+    "data": "creatures/allosaurus_info.json"
+  },
+  {
+    "name": "anomalocaris",
+    "type": "text",
+    "data": "creatures/anomalocaris.json"
+  },
+  {
+    "name": "anomalocaris_info",
+    "type": "text",
+    "data": "creatures/anomalocaris_info.json"
+  },
+  {
+    "name": "carnotaurus",
+    "type": "text",
+    "data": "creatures/carnotaurus.json"
+  },
+  {
+    "name": "carnotaurus_info",
+    "type": "text",
+    "data": "creatures/carnotaurus_info.json"
+  },
+  {
+    "name": "chilesaurus",
+    "type": "text",
+    "data": "creatures/chilesaurus.json"
+  },
+  {
+    "name": "chilesaurus_info",
+    "type": "text",
+    "data": "creatures/chilesaurus_info.json"
+  },
+  {
+    "name": "cryolophosaurus",
+    "type": "text",
+    "data": "creatures/cryolophosaurus.json"
+  },
+  {
+    "name": "cryolophosaurus_info",
+    "type": "text",
+    "data": "creatures/cryolophosaurus_info.json"
+  },
+  {
+    "name": "diictodon",
+    "type": "text",
+    "data": "creatures/diictodon.json"
+  },
+  {
+    "name": "diictodon_info",
+    "type": "text",
+    "data": "creatures/diictodon_info.json"
+  },
+  {
+    "name": "dilophosaurus",
+    "type": "text",
+    "data": "creatures/dilophosaurus.json"
+  },
+  {
+    "name": "dilophosaurus_info",
+    "type": "text",
+    "data": "creatures/dilophosaurus_info.json"
+  }
+]

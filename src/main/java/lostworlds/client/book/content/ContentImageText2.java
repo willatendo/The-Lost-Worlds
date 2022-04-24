@@ -2,13 +2,13 @@ package lostworlds.client.book.content;
 
 import java.util.ArrayList;
 
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.TyrannobookData;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.content.ContentImageText;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.ImageData;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.ImageElement;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.TextElement;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.element.TyrannobookElement;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.screen.TyrannobookScreen;
+import lostworlds.client.books.tyrannibook.client.data.TyrannobookData;
+import lostworlds.client.books.tyrannibook.client.data.content.ContentImageText;
+import lostworlds.client.books.tyrannibook.client.data.element.ImageData;
+import lostworlds.client.books.tyrannibook.client.data.element.ImageElement;
+import lostworlds.client.books.tyrannibook.client.data.element.TextElement;
+import lostworlds.client.books.tyrannibook.client.data.element.TyrannobookElement;
+import lostworlds.client.books.tyrannibook.client.screen.TyrannobookScreen;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 

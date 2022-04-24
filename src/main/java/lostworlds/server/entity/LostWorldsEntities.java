@@ -5,6 +5,7 @@ import static lostworlds.LostWorldsMod.getRegistrate;
 import com.tterrag.registrate.util.entry.EntityEntry;
 
 import lostworlds.client.entity.render.FossilPoacherRenderer;
+import lostworlds.client.entity.render.ModBoatRenderer;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.aquatic.cambrian.AnomalocarisEntity;
 import lostworlds.server.entity.aquatic.jurassic.OphthalmosaurusEntity;
@@ -45,6 +46,8 @@ import lostworlds.server.entity.terrestrial.triassic.ProcompsognathusEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.item.ModSpawnEggItem;
 import lostworlds.server.util.LostWorldsRegistrate;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
@@ -65,11 +68,11 @@ public class LostWorldsEntities {
 
 	public static final EntityClassification SEMI_AQUATIC_CREATURE = EntityClassification.create("semi_aquatic_creature", "semi_aquatic_creature", 10, true, true, 128);
 
-	public static final EntityEntry<FossilPoacherEntity> FOSSIL_POACHER = REGISTRATE.entity("fossil_poacher", FossilPoacherEntity::new, EntityClassification.MONSTER).properties(properties -> properties.sized(0.6F, 1.95F)).attributes(() -> FossilPoacherEntity.createAttributes()).defaultSpawnEgg(0x959b9b, 0x363031).renderer(() -> FossilPoacherRenderer::new).loot((provider, entity) -> LootTable.lootTable().build()).register();
+	public static final EntityEntry<FossilPoacherEntity> FOSSIL_POACHER = REGISTRATE.entity("fossil_poacher", FossilPoacherEntity::new, EntityClassification.MONSTER).properties(properties -> properties.sized(0.6F, 1.95F)).attributes(() -> FossilPoacherEntity.createAttributes()).defaultSpawnEgg(0x959b9b, 0x363031).renderer(() -> FossilPoacherRenderer::new).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
 
-	public static final EntityType<ModBoatEntity> MOD_BOAT = register("mod_boat", ModBoatEntity::new, EntityClassification.MISC, 1.375F, 0.5625F);
-	public static final EntityType<ChargedCrystalScarabGemItemEntity> CHARGED_CRYSTAL_SCARAB_GEM_ITEM = register("charged_crystal_scarab_gem_item", ChargedCrystalScarabGemItemEntity::new, EntityClassification.MISC, 0.5F, 0.5F);
-	public static final EntityType<CrystalScarabGemItemEntity> CRYSTAL_SCARAB_GEM_ITEM = register("crystal_scarab_gem_item", CrystalScarabGemItemEntity::new, EntityClassification.MISC, 0.5F, 0.5F);
+	public static final EntityEntry<ModBoatEntity> MOD_BOAT = REGISTRATE.<ModBoatEntity>entity("mod_boat", ModBoatEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.375F, 0.5625F)).renderer(() -> ModBoatRenderer::new).register();
+	public static final EntityEntry<ChargedCrystalScarabGemItemEntity> CHARGED_CRYSTAL_SCARAB_GEM_ITEM = REGISTRATE.<ChargedCrystalScarabGemItemEntity>entity("charged_crystal_scarab_gem_item", ChargedCrystalScarabGemItemEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer())).register();
+	public static final EntityEntry<CrystalScarabGemItemEntity> CRYSTAL_SCARAB_GEM_ITEM = REGISTRATE.<CrystalScarabGemItemEntity>entity("crystal_scarab_gem_item", CrystalScarabGemItemEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer())).register();
 
 	public static final EntityType<AllosaurusEntity> ALLOSAURUS = register("allosaurus", AllosaurusEntity::new, EntityClassification.CREATURE, 2.0F, 1.5F);
 	public static final EntityType<AnomalocarisEntity> ANOMALOCARIS = register("anomalocaris", AnomalocarisEntity::new, EntityClassification.WATER_CREATURE, 1.0F, 1.0F);

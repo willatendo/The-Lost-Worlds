@@ -2,11 +2,11 @@ package lostworlds.client.book;
 
 import lostworlds.client.book.content.ContentArchaeology;
 import lostworlds.client.book.content.ContentImageText2;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.FileRepository;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.PaddingBookTransformer;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.TyrannobookLoader;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.TyrannobookTransformer;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.TyrannobookData;
+import lostworlds.client.books.tyrannibook.client.FileRepository;
+import lostworlds.client.books.tyrannibook.client.PaddingBookTransformer;
+import lostworlds.client.books.tyrannibook.client.TyrannobookLoader;
+import lostworlds.client.books.tyrannibook.client.TyrannobookTransformer;
+import lostworlds.client.books.tyrannibook.client.data.TyrannobookData;
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;

@@ -1,7 +1,7 @@
 buildscript {
 	repositories {
 		maven { url = 'https://maven.minecraftforge.net' }
-		maven { url = 'https://repo.spongepowered.org/maven' }
+		maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
 		mavenCentral()
 	}
 	dependencies {
@@ -38,11 +38,6 @@ minecraft {
 	runs {
 		client {
 			workingDirectory project.file('run')
-			property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-			property 'forge.logging.console.level', 'debug'
-
-			arg "-mixin.config=lostworlds.mixins.json"
-
 			mods {
 				lostworlds {
 					source sourceSets.main
@@ -52,11 +47,6 @@ minecraft {
 		
 		server {
 			workingDirectory project.file('run')
-			property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-			property 'forge.logging.console.level', 'debug'
-
-			arg "-mixin.config=lostworlds.mixins.json"
-
 			mods {
 				lostworlds {
 					source sourceSets.main
@@ -67,7 +57,6 @@ minecraft {
 		data {
 			workingDirectory project.file('run')
 			args '--mod', 'lostworlds', '--all', '--existing', file('src/main/resources').toString(), '--existing', file('src/generated/resources').toString(), '--output', file('src/generated/resources/')
-					
 			mods {
 				lostworlds {
 					source sourceSets.main
@@ -79,6 +68,12 @@ minecraft {
 
 sourceSets.main.resources {
 	srcDir 'src/generated/resources'
+}
+
+shadowJar {
+	classifier = ''
+	configurations = [project.configurations.shade]
+	relocate 'com.tterrag.registrate', 'lostworlds.repack.registrate'
 }
 
 mixin {
@@ -101,18 +96,18 @@ repositories {
 
 dependencies {
 	//Minecraft
-	minecraft 'net.minecraftforge:forge:1.16.5-36.2.23'
+	minecraft 'net.minecraftforge:forge:1.16.5-36.2.34'
 	
 	//Supported Mods
-	compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.145:api")
-	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.145")
+	compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.152:api")
+	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.152")
 	
 	compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.473")
 	
 	compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:1.16-3.0.6-8")
 	
 	//Library
-	implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.16.5:3.0.66')
+	implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.16.5:3.0.68')
 	
 	def registrate = "com.tterrag.registrate:Registrate:MC1.16.5-1.0.10"
 	implementation fg.deobf(registrate)
@@ -120,12 +115,6 @@ dependencies {
 	
 	//Mixins
 	annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
-}
-
-shadowJar {
-	classifier = ''
-	configurations = [project.configurations.shade]
-	relocate 'com.tterrag.registrate', 'lostworlds.repack.registrate'
 }
 
 jar {

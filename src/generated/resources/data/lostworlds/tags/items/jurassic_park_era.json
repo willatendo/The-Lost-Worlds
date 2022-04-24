@@ -2,20 +2,6 @@
   "replace": false,
   "values": [
     "#lostworlds:light_concrete",
-    "#lostworlds:wooden_planks",
-    "lostworlds:metal_fence",
-    "lostworlds:thatch_bundle",
-    "lostworlds:outdoor_toilet_door",
-    "lostworlds:visitor_center_door",
-    "lostworlds:security_door",
-    "lostworlds:pavement",
-    "lostworlds:pavement_slope",
-    "lostworlds:raised_pavement",
-    "lostworlds:gravel_road",
-    "lostworlds:raised_gravel_road",
-    "lostworlds:dirt_road",
-    "lostworlds:raised_dirt_road",
-    "lostworlds:paved_road",
-    "lostworlds:raised_paved_road"
+    "#lostworlds:wooden_planks"
   ]
 }

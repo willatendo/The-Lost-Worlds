@@ -18,7 +18,6 @@ import lostworlds.client.entity.render.GreatAukRenderer;
 import lostworlds.client.entity.render.KentrosaurusRenderer;
 import lostworlds.client.entity.render.KentrosaurusSkeletonRenderer;
 import lostworlds.client.entity.render.LiaoningosaurusRenderer;
-import lostworlds.client.entity.render.ModBoatRenderer;
 import lostworlds.client.entity.render.NautilusRenderer;
 import lostworlds.client.entity.render.OphthalmosaurusRenderer;
 import lostworlds.client.entity.render.OstromiaRenderer;
@@ -36,16 +35,10 @@ import lostworlds.client.entity.render.ZephyrosaurusRenderer;
 import lostworlds.client.entity.render.bone.CustomisableRenderer;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.utils.enums.DinoTypes;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientSetup {
 	public static void entityRenderSetup() {
-		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.MOD_BOAT, manager -> new ModBoatRenderer(manager));
-		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.CHARGED_CRYSTAL_SCARAB_GEM_ITEM, manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer()));
-		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.CRYSTAL_SCARAB_GEM_ITEM, manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer()));
-
 		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.ALLOSAURUS, manager -> new AllosaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.ANOMALOCARIS, manager -> new AnomalocarisRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.CARNOTAURUS, manager -> new CarnotaurusRenderer(manager));

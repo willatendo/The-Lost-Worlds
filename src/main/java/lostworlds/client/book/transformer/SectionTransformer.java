@@ -1,10 +1,10 @@
 package lostworlds.client.book.transformer;
 
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.TyrannobookTransformer;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.PageData;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.SectionData;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.TyrannobookData;
-import lostworlds.repack.tyrannotitanlib.tyrannibook.client.data.content.PageContent;
+import lostworlds.client.books.tyrannibook.client.TyrannobookTransformer;
+import lostworlds.client.books.tyrannibook.client.data.PageData;
+import lostworlds.client.books.tyrannibook.client.data.SectionData;
+import lostworlds.client.books.tyrannibook.client.data.TyrannobookData;
+import lostworlds.client.books.tyrannibook.client.data.content.PageContent;
 
 public abstract class SectionTransformer extends TyrannobookTransformer {
 	protected final String sectionName;

@@ -10,9 +10,9 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.client.book.LostWorldsBooks;
+import lostworlds.client.books.TyrannibookHelper;
 import lostworlds.client.events.ClientSetup;
 import lostworlds.client.sounds.LostWorldsSounds;
-import lostworlds.repack.tyrannotitanlib.TyrannibookHelper;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.BiomeKeys;
 import lostworlds.server.biome.DisksFeatures;

@@ -12,7 +12,7 @@ public class ChargedCrystalScarabGemItemEntity extends ModItemEntity {
 	}
 
 	public ChargedCrystalScarabGemItemEntity(World w, double x, double y, double z, ItemStack stack) {
-		super(LostWorldsEntities.CHARGED_CRYSTAL_SCARAB_GEM_ITEM, w, x, y, z, stack);
+		super(LostWorldsEntities.CHARGED_CRYSTAL_SCARAB_GEM_ITEM.get(), w, x, y, z, stack);
 		this.setExtendedLifetime();
 	}
 

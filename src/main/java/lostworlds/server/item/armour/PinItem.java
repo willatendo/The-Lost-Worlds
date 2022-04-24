@@ -20,7 +20,7 @@ public class PinItem extends ArmorItem {
 	@Override
 	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> text, ITooltipFlag flag) {
 		if (ClientUtils.isHoldingLeftShift()) {
-			text.add(LostWorldsUtils.gTC("toolTip", "item.collectible"));
+			text.add(LostWorldsUtils.gTC("toolTip", "icon.collectible"));
 		}
 	}
 }

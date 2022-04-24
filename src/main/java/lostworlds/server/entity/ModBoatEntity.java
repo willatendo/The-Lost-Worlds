@@ -31,7 +31,7 @@ public class ModBoatEntity extends BoatEntity {
 	private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.defineId(ModBoatEntity.class, DataSerializers.INT);
 
 	public ModBoatEntity(World world, double x, double y, double z) {
-		this(LostWorldsEntities.MOD_BOAT, world);
+		this(LostWorldsEntities.MOD_BOAT.get(), world);
 		this.setPos(x, y, z);
 		this.setDeltaMovement(Vector3d.ZERO);
 		this.xo = x;
@@ -44,7 +44,7 @@ public class ModBoatEntity extends BoatEntity {
 	}
 
 	public ModBoatEntity(FMLPlayMessages.SpawnEntity packet, World world) {
-		super(LostWorldsEntities.MOD_BOAT, world);
+		super(LostWorldsEntities.MOD_BOAT.get(), world);
 	}
 
 	@Override

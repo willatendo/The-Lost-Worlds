@@ -16,7 +16,7 @@ public class CrystalScarabGemItemEntity extends ModItemEntity {
 	}
 
 	public CrystalScarabGemItemEntity(World w, double x, double y, double z, ItemStack stack) {
-		super(LostWorldsEntities.CRYSTAL_SCARAB_GEM_ITEM, w, x, y, z, stack);
+		super(LostWorldsEntities.CRYSTAL_SCARAB_GEM_ITEM.get(), w, x, y, z, stack);
 		this.setExtendedLifetime();
 	}
 

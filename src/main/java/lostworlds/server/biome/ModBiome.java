@@ -7,8 +7,9 @@ import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.surfacebuilders.ISurfaceBuilderConfig;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
+import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class ModBiome {
+public class ModBiome extends ForgeRegistryEntry.UncheckedRegistryEntry<ModBiome> {
 	private final Biome biome;
 
 	public ModBiome(Biome.Builder builder) {
