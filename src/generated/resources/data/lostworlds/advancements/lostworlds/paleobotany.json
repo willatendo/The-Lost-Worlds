@@ -1,0 +1,35 @@
+{
+  "parent": "lostworlds:lostworlds/fossils",
+  "display": {
+    "icon": {
+      "item": "lostworlds:alethopteris_fossil"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.paleobotany.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.paleobotany.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "lostworlds:plant_fossils"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

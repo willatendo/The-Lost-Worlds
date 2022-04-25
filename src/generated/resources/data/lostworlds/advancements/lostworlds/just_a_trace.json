@@ -1,0 +1,35 @@
+{
+  "parent": "lostworlds:lostworlds/fossils",
+  "display": {
+    "icon": {
+      "item": "lostworlds:allosaurus_soft_tissue"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.just_a_trace.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.just_a_trace.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "lostworlds:soft_tissue"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

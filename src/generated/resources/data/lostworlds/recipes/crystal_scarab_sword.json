@@ -4,7 +4,7 @@
     "item": "minecraft:netherite_sword"
   },
   "addition": {
-    "item": "lostworlds:crystal_scarab_gem"
+    "item": "lostworlds:charged_crystal_scarab_gem"
   },
   "result": {
     "item": "lostworlds:crystal_scarab_sword"

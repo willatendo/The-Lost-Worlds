@@ -59,7 +59,7 @@ public class LostWorldsTags {
 		public static final ITag.INamedTag<Item> PETRIFIED_LOGS = tag("petrified_logs");
 		public static final ITag.INamedTag<Item> PLANT_FOSSILS = tag("plant_fossils");
 		public static final ITag.INamedTag<Item> PLANT_SOFT_TISSUE = tag("plant_soft_tissue");
-		public static final ITag.INamedTag<Item> PLASTERED_FOSSILIS = tag("plastered_fossilis");
+		public static final ITag.INamedTag<Item> PLASTERED_FOSSILS = tag("plastered_fossils");
 		public static final ITag.INamedTag<Item> PROCOMPSOGNATHUS_FOSSILS = tag("procompsognathus_fossils");
 		public static final ITag.INamedTag<Item> PROTOSUCHUS_FOSSILS = tag("protosuchus_fossils");
 		public static final ITag.INamedTag<Item> PSITTACOSAURUS_FOSSILS = tag("psittacosaurus_fossils");

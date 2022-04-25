@@ -1,0 +1,35 @@
+{
+  "parent": "lostworlds:lostworlds/the_museum",
+  "display": {
+    "icon": {
+      "item": "minecraft:bone"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.for_the_masses.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.for_the_masses.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "lostworlds:skeletons"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

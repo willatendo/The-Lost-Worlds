@@ -1,0 +1,35 @@
+{
+  "parent": "lostworlds:lostworlds/basic_explorer",
+  "display": {
+    "icon": {
+      "item": "lostworlds:time_machine"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.the_time_traveller.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.the_time_traveller.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "lostworlds:time_books"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

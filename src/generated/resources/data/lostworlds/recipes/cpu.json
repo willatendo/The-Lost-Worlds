@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "@$@",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:copper_wire"
+    },
+    "$": {
+      "item": "lostworlds:copper_ingot"
+    },
+    "@": {
+      "item": "minecraft:green_wool"
+    }
+  },
+  "result": {
+    "item": "lostworlds:cpu"
+  }
+}

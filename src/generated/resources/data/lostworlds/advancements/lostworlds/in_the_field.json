@@ -1,0 +1,35 @@
+{
+  "parent": "lostworlds:lostworlds/fossils",
+  "display": {
+    "icon": {
+      "item": "lostworlds:field_guide"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.in_the_field.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.in_the_field.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:field_guide"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

@@ -7,6 +7,7 @@
     "lostworlds:computer_frame",
     "lostworlds:computer_storage_port",
     "lostworlds:motherboard",
+    "lostworlds:cpu",
     "lostworlds:ram",
     "lostworlds:computer_core",
     "lostworlds:storage_disc",

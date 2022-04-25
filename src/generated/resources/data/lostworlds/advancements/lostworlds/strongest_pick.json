@@ -1,0 +1,39 @@
+{
+  "parent": "lostworlds:lostworlds/charged",
+  "display": {
+    "icon": {
+      "item": "lostworlds:crystal_scarab_pickaxe",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.strongest_pick.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.strongest_pick.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 500
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:crystal_scarab_pickaxe"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

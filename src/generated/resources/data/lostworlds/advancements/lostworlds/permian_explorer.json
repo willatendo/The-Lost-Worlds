@@ -1,0 +1,245 @@
+{
+  "parent": "lostworlds:lostworlds/the_permian",
+  "display": {
+    "icon": {
+      "item": "lostworlds:permian_period_time_book"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.permian_explorer.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.permian_explorer.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 500
+  },
+  "criteria": {
+    "in_permian_conifer_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_conifer_forest"
+        }
+      }
+    },
+    "in_permian_conifer_forest_hills": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_conifer_forest_hills"
+        }
+      }
+    },
+    "in_permian_ginkgo_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_ginkgo_forest"
+        }
+      }
+    },
+    "in_permian_ginkgo_forest_hills": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_ginkgo_forest_hills"
+        }
+      }
+    },
+    "in_permian_plains": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_plains"
+        }
+      }
+    },
+    "in_permian_plains_hills": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_plains_hills"
+        }
+      }
+    },
+    "in_permian_dried_plains": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_dried_plains"
+        }
+      }
+    },
+    "in_permian_dried_plains_hills": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_dried_plains_hills"
+        }
+      }
+    },
+    "in_permian_desert": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_desert"
+        }
+      }
+    },
+    "in_permian_desert_hills": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_desert_hills"
+        }
+      }
+    },
+    "in_permian_flood_basalts": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_flood_basalts"
+        }
+      }
+    },
+    "in_permian_ashy_medows": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_ashy_medows"
+        }
+      }
+    },
+    "in_permian_mountains": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_mountains"
+        }
+      }
+    },
+    "in_permian_marsh": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_marsh"
+        }
+      }
+    },
+    "in_permian_river": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_river"
+        }
+      }
+    },
+    "in_permian_ocean": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_ocean"
+        }
+      }
+    },
+    "in_deep_permian_ocean": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:deep_permian_ocean"
+        }
+      }
+    },
+    "in_warm_permian_ocean": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:warm_permian_ocean"
+        }
+      }
+    },
+    "in_warm_deep_permian_ocean": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:warm_deep_permian_ocean"
+        }
+      }
+    },
+    "in_permian_shore": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_shore"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "in_permian_conifer_forest"
+    ],
+    [
+      "in_permian_conifer_forest_hills"
+    ],
+    [
+      "in_permian_ginkgo_forest"
+    ],
+    [
+      "in_permian_ginkgo_forest_hills"
+    ],
+    [
+      "in_permian_plains"
+    ],
+    [
+      "in_permian_plains_hills"
+    ],
+    [
+      "in_permian_dried_plains"
+    ],
+    [
+      "in_permian_dried_plains_hills"
+    ],
+    [
+      "in_permian_desert"
+    ],
+    [
+      "in_permian_desert_hills"
+    ],
+    [
+      "in_permian_flood_basalts"
+    ],
+    [
+      "in_permian_ashy_medows"
+    ],
+    [
+      "in_permian_mountains"
+    ],
+    [
+      "in_permian_marsh"
+    ],
+    [
+      "in_permian_river"
+    ],
+    [
+      "in_permian_ocean"
+    ],
+    [
+      "in_deep_permian_ocean"
+    ],
+    [
+      "in_warm_permian_ocean"
+    ],
+    [
+      "in_warm_deep_permian_ocean"
+    ],
+    [
+      "in_permian_shore"
+    ]
+  ]
+}

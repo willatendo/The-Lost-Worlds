@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 
@@ -68,6 +69,7 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -96,11 +98,11 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<Block> CRACKED_SOIL = REGISTRATE.blockAndItem("cracked_soil", Block::new).properties(properties -> properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.75F).harvestTool(ToolType.SHOVEL).sound(SoundType.GRAVEL)).register();
 
 	public static final BlockEntry<MossySoilBlock> MOSSY_SOIL = REGISTRATE.blockAndItem("mossy_soil", MossySoilBlock::new).properties(properties -> properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).harvestTool(ToolType.SHOVEL).randomTicks().sound(SoundType.GRAVEL)).blockstate((block, provider) -> LostWorldsBlockModels.mossySoil(block.get(), provider)).tag(Tags.Blocks.DIRT).register();
-	public static final BlockEntry<MudBlock> MUD = REGISTRATE.blockAndItem("mud", MudBlock::new).properties(properties -> properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)).register();
+	public static final BlockEntry<MudBlock> MUD = REGISTRATE.blockAndItem("mud", MudBlock::new).properties(properties -> properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)).recipe((item, provider) -> provider.square(DataIngredient.items(LostWorldsItems.MUD_BALL), () -> item.get(), true)).register();
 	public static final BlockEntry<Block> SILT = REGISTRATE.blockAndItem("silt", Block::new).properties(properties -> properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)).register();
 
 	public static final BlockEntry<SandBlock> VOLCANIC_ASH = REGISTRATE.blockAndItem("volcanic_ash", properties -> new SandBlock(0x888988, properties)).properties(properties -> properties.of(Material.SAND, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).harvestLevel(1).strength(0.5F).sound(SoundType.SAND)).register();
-	public static final BlockEntry<VolcanicAshLayerBlock> VOLCANIC_ASH_LAYER = REGISTRATE.blockAndItem("volcanic_ash_layer", VolcanicAshLayerBlock::new).properties(properties -> properties.of(Material.SAND, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).harvestLevel(1).strength(0.5F).sound(SoundType.SAND)).blockstate((block, provider) -> LostWorldsBlockModels.volcanicAshLayer(block.get(), provider)).item().model((item, provider) -> provider.withExistingParent(item.getName(), LostWorldsUtils.rL("block/volcanic_ash_layer_height2"))).build().register();
+	public static final BlockEntry<VolcanicAshLayerBlock> VOLCANIC_ASH_LAYER = REGISTRATE.blockAndItem("volcanic_ash_layer", VolcanicAshLayerBlock::new).properties(properties -> properties.of(Material.SAND, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).harvestLevel(1).strength(0.5F).sound(SoundType.SAND)).blockstate((block, provider) -> LostWorldsBlockModels.volcanicAshLayer(block.get(), provider)).item().model((item, provider) -> provider.withExistingParent(item.getName(), LostWorldsUtils.rL("block/volcanic_ash_layer_height2"))).build().recipe((item, provider) -> ShapedRecipeBuilder.shaped(item.get()).pattern("###").define('#', LostWorldsBlocks.VOLCANIC_ASH.get()).unlockedBy("has_item", provider.hasItem(LostWorldsBlocks.VOLCANIC_ASH.get())).save(provider)).register();
 
 	public static final BlockEntry<SandBlock> PERMIAN_SAND = REGISTRATE.blockAndItem("permian_sand", properties -> new SandBlock(0xaa915c, properties)).properties(properties -> properties.of(Material.SAND, MaterialColor.SAND).harvestTool(ToolType.SHOVEL).strength(1.5F).sound(SoundType.SAND)).tag(Tags.Blocks.SAND, BlockTags.SAND).register(),
 			ROCKY_SOIL = REGISTRATE.blockAndItem("rocky_soil", properties -> new SandBlock(0x8a8a8e, properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).requiresCorrectToolForDrops().strength(1.5F)).register();
@@ -108,7 +110,7 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<Block> PERMAFROST = REGISTRATE.blockAndItem("permafrost", Block::new).properties(properties -> properties.of(Material.DIRT, MaterialColor.ICE).strength(0.5F).sound(SoundType.GRAVEL)).register();
 
 	// Stones
-	public static final BlockEntry<Block> PERMIAN_STONE = REGISTRATE.blockAndItem("permian_stone", Block::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).tag(LostWorldsTags.ModBlockTags.BASE_STONE_PERMIAN, Tags.Blocks.STONE).register();
+	public static final BlockEntry<Block> PERMIAN_STONE = REGISTRATE.blockAndItem("permian_stone", Block::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).tag(LostWorldsTags.ModBlockTags.BASE_STONE_PERMIAN, Tags.Blocks.STONE).recipe((block, provider) -> provider.smeltingAndBlasting(DataIngredient.items(LostWorldsBlocks.PERMIAN_COBBLESTONE.get()), () -> block.get(), 0.7F)).register();
 	public static final BlockEntry<StairsBlock> PERMIAN_STONE_STAIRS = REGISTRATE.stairBlock("permian_stone_stairs", "permian_stone", properties -> new StairsBlock(() -> LostWorldsBlocks.PERMIAN_STONE.getDefaultState(), properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).register();
 	public static final BlockEntry<SlabBlock> PERMIAN_STONE_SLAB = REGISTRATE.slabBlock("permian_stone_slab", "permian_stone", SlabBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).register();
 	public static final BlockEntry<PressurePlateBlock> PERMIAN_STONE_PRESSURE_PLATE = REGISTRATE.pressurePlateBlock("permian_stone_pressure_plate", "permian_stone", properties -> new PressurePlateBlock(Sensitivity.MOBS, properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)).register();

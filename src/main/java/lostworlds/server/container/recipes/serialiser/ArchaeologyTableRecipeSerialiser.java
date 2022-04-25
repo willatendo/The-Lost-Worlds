@@ -21,7 +21,7 @@ public class ArchaeologyTableRecipeSerialiser extends ForgeRegistryEntry<IRecipe
 		int i = astring[0].length();
 		int j = astring.length;
 		NonNullList<Ingredient> nonnulllist = ArchaeologyTableRecipe.dissolvePattern(astring, map, i, j);
-		ItemStack itemstack = ArchaeologyTableRecipe.itemFromJson(JSONUtils.getAsJsonObject(json, "result"));
+		ItemStack itemstack = ArchaeologyTableRecipe.itemFromJson(JSONUtils.getAsJsonObject(json, "output"));
 		return new ArchaeologyTableRecipe(id, i, j, nonnulllist, itemstack);
 	}
 

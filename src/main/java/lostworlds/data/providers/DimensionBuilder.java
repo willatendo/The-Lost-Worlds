@@ -50,6 +50,8 @@ public class DimensionBuilder {
 		this.bedrockRoofPosition = bedrockRoofPosition;
 		this.bedrockFloorPosition = bedrockFloorPosition;
 		this.seaLevel = seaLevel;
+		this.defaultStone = defaultStone;
+		this.defaultFluid = defaultFluid;
 		return this;
 	}
 
@@ -68,7 +70,7 @@ public class DimensionBuilder {
 		JsonObject structures = new JsonObject();
 		settings.add("structures", structures);
 		JsonObject structures2 = new JsonObject();
-		settings.add("structures", structures2);
+		structures.add("structures", structures2);
 		JsonObject noise = new JsonObject();
 		settings.add("noise", noise);
 		JsonObject top_slide = new JsonObject();
@@ -125,7 +127,7 @@ public class DimensionBuilder {
 		json.addProperty("has_raid", this.hasRaid);
 		json.addProperty("logical_height", this.logicalHeight);
 		json.addProperty("infiniburn", this.infiniburn.getName().getNamespace() + ":" + this.infiniburn.getName().getPath());
-		json.addProperty("logical_height", this.logicalHeight);
+		json.addProperty("effects", "lostworlds:" + this.dimensionName + "_render");
 		return json;
 	}
 }

@@ -1,0 +1,35 @@
+{
+  "parent": "lostworlds:lostworlds/just_a_remnant",
+  "display": {
+    "icon": {
+      "item": "lostworlds:paleontology_table"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.the_museum.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.the_museum.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:paleontology_table"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

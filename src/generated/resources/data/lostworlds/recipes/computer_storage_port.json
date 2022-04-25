@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "$#$",
+    "#@#",
+    "$#$"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "$": {
+      "item": "minecraft:stone"
+    },
+    "@": {
+      "item": "lostworlds:copper_wire"
+    }
+  },
+  "result": {
+    "item": "lostworlds:computer_storage_port"
+  }
+}
