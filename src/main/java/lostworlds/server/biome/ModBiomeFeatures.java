@@ -910,13 +910,13 @@ public class ModBiomeFeatures {
 
 	// General Features
 	private static void addModCarvers(BiomeGenerationSettings.Builder builder) {
-		builder.addCarver(GenerationStage.Carving.AIR, ModConfiguredCarvers.CAVE_CARVER);
-		builder.addCarver(GenerationStage.Carving.AIR, ModConfiguredCarvers.CANYON_CARVER);
+		builder.addCarver(GenerationStage.Carving.AIR, LostWorldsConfiguredCarvers.CAVE_CARVER);
+		builder.addCarver(GenerationStage.Carving.AIR, LostWorldsConfiguredCarvers.CANYON_CARVER);
 	}
 
 	private static void addModUnderwaterCarvers(BiomeGenerationSettings.Builder builder) {
-		builder.addCarver(GenerationStage.Carving.LIQUID, ModConfiguredCarvers.UNDERWATER_CAVE_CARVER);
-		builder.addCarver(GenerationStage.Carving.LIQUID, ModConfiguredCarvers.UNDERWATER_CANYON_CARVER);
+		builder.addCarver(GenerationStage.Carving.LIQUID, LostWorldsConfiguredCarvers.UNDERWATER_CAVE_CARVER);
+		builder.addCarver(GenerationStage.Carving.LIQUID, LostWorldsConfiguredCarvers.UNDERWATER_CANYON_CARVER);
 	}
 
 	private static void addSpring(BiomeGenerationSettings.Builder builder) {

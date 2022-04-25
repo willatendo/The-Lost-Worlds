@@ -61,6 +61,5 @@ public class LostWorldsRecipes {
 	}
 
 	public static void init() {
-		LostWorldsUtils.LOGGER.debug("Registering Mod Recipes");
 	}
 }

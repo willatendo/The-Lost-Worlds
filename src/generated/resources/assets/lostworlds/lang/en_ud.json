@@ -1,7 +1,9 @@
 {
+  "entity.lostworlds.allosaurus": "sn\u0279n\u0250so\u05DF\u05DF\u2C6F",
   "entity.lostworlds.charged_crystal_scarab_gem_item": "\u026F\u01DD\u0287I \u026F\u01DD\u2141 q\u0250\u0279\u0250\u0254S \u05DF\u0250\u0287s\u028E\u0279\u0186 p\u01DDb\u0279\u0250\u0265\u0186",
   "entity.lostworlds.crystal_scarab_gem_item": "\u026F\u01DD\u0287I \u026F\u01DD\u2141 q\u0250\u0279\u0250\u0254S \u05DF\u0250\u0287s\u028E\u0279\u0186",
   "entity.lostworlds.fossil_poacher": "\u0279\u01DD\u0265\u0254\u0250o\u0500 \u05DF\u0131sso\u2132",
   "entity.lostworlds.mod_boat": "\u0287\u0250o\u15FA poW",
+  "item.lostworlds.allosaurus_spawn_egg": "bb\u018E u\u028D\u0250dS sn\u0279n\u0250so\u05DF\u05DF\u2C6F",
   "item.lostworlds.fossil_poacher_spawn_egg": "bb\u018E u\u028D\u0250dS \u0279\u01DD\u0265\u0254\u0250o\u0500 \u05DF\u0131sso\u2132"
 }

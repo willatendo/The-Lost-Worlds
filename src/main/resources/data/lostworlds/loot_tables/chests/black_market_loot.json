@@ -108,12 +108,13 @@
 					"type": "item",
 					"name": "lostworlds:hammer",
 					"weight": 2
-				},
-				{
-					"type": "item",
-					"name": "lostworlds:music_disc_ascented",
-					"weight": 1
-				}
+				}				//,
+				//				{
+				//					"type": "item",
+				//					"name": "lostworlds:music_disc_ascented",
+				//					"weight": 1
+				//				}
+
 			]
 		}
 	]

@@ -24,11 +24,11 @@ public class LostWorldsStructurePecies {
 		Structure.STRUCTURES_REGISTRY.put("trace_fossil_piece", LostWorldsStructures.TRACE_FOSSIL);
 		Structure.STRUCTURES_REGISTRY.put("meteorite", LostWorldsStructures.METEORITE);
 		WorldGenRegistries.NOISE_GENERATOR_SETTINGS.forEach(settings -> {
-			settings.structureSettings().structureConfig().put(LostWorldsStructures.BLACK_MARKET, new StructureSeparationSettings(128, 8, LostWorldsConfig.SERVER_CONFIG.blackMarketGenerationId.get()));
-			settings.structureSettings().structureConfig().put(LostWorldsStructures.SURFACE_FOSSIL, new StructureSeparationSettings(32, 8, LostWorldsConfig.SERVER_CONFIG.surfaceFossilGenerationId.get()));
-			settings.structureSettings().structureConfig().put(LostWorldsStructures.SUBTERRANEAN_FOSSIL, new StructureSeparationSettings(32, 8, LostWorldsConfig.SERVER_CONFIG.subterraneanFossilGenerationId.get()));
-			settings.structureSettings().structureConfig().put(LostWorldsStructures.TRACE_FOSSIL, new StructureSeparationSettings(32, 8, LostWorldsConfig.SERVER_CONFIG.traceFossilGenerationId.get()));
-			settings.structureSettings().structureConfig().put(LostWorldsStructures.METEORITE, new StructureSeparationSettings(128, 8, LostWorldsConfig.SERVER_CONFIG.meteoriteGenerationId.get()));
+			settings.structureSettings().structureConfig().put(LostWorldsStructures.BLACK_MARKET, new StructureSeparationSettings(128, 8, LostWorldsConfig.COMMON_CONFIG.blackMarketGenerationId.get()));
+			settings.structureSettings().structureConfig().put(LostWorldsStructures.SURFACE_FOSSIL, new StructureSeparationSettings(32, 8, LostWorldsConfig.COMMON_CONFIG.surfaceFossilGenerationId.get()));
+			settings.structureSettings().structureConfig().put(LostWorldsStructures.SUBTERRANEAN_FOSSIL, new StructureSeparationSettings(32, 8, LostWorldsConfig.COMMON_CONFIG.subterraneanFossilGenerationId.get()));
+			settings.structureSettings().structureConfig().put(LostWorldsStructures.TRACE_FOSSIL, new StructureSeparationSettings(32, 8, LostWorldsConfig.COMMON_CONFIG.traceFossilGenerationId.get()));
+			settings.structureSettings().structureConfig().put(LostWorldsStructures.METEORITE, new StructureSeparationSettings(128, 8, LostWorldsConfig.COMMON_CONFIG.meteoriteGenerationId.get()));
 		});
 	}
 

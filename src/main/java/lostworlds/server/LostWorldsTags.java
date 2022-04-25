@@ -1,8 +1,10 @@
 package lostworlds.server;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 
@@ -114,6 +116,15 @@ public class LostWorldsTags {
 
 		private static ITag.INamedTag<Block> tag(String id) {
 			return BlockTags.createOptional(LostWorldsUtils.rL(id));
+		}
+	}
+
+	public static class ModEntityTypeTags {
+		public static final ITag.INamedTag<EntityType<?>> FOSSILS = tag("fossils");
+		public static final ITag.INamedTag<EntityType<?>> ANCIENT_CREATURES = tag("ancient_creatures");
+
+		private static ITag.INamedTag<EntityType<?>> tag(String id) {
+			return EntityTypeTags.createOptional(LostWorldsUtils.rL(id));
 		}
 	}
 }

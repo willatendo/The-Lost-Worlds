@@ -1,6 +1,7 @@
 {
+	"parent": "block/cube",
 	"textures": {
-		"0": "lostworlds:block/nautilus_shell",
+		"shell": "lostworlds:block/nautilus_shell",
 		"particle": "lostworlds:block/nautilus_shell"
 	},
 	"elements": [
@@ -23,7 +24,7 @@
 						9,
 						5
 					],
-					"texture": "#0"
+					"texture": "shell"
 				},
 				"east": {
 					"uv": [
@@ -32,7 +33,7 @@
 						5,
 						5
 					],
-					"texture": "#0"
+					"texture": "shell"
 				},
 				"south": {
 					"uv": [
@@ -41,7 +42,7 @@
 						9,
 						10
 					],
-					"texture": "#0"
+					"texture": "shell"
 				},
 				"west": {
 					"uv": [
@@ -50,7 +51,7 @@
 						5,
 						10
 					],
-					"texture": "#0"
+					"texture": "shell"
 				},
 				"up": {
 					"uv": [
@@ -59,7 +60,7 @@
 						9,
 						0
 					],
-					"texture": "#0"
+					"texture": "shell"
 				},
 				"down": {
 					"uv": [
@@ -68,7 +69,7 @@
 						9,
 						10
 					],
-					"texture": "#0"
+					"texture": "shell"
 				}
 			}
 		}

@@ -4,15 +4,12 @@ import static lostworlds.LostWorldsMod.getRegistrate;
 
 import com.tterrag.registrate.util.entry.RegistryEntry;
 
-import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.item.enchantment.CurseOfBreakingEnchantment;
 import lostworlds.server.item.enchantment.PrecisionEnchantment;
 import lostworlds.server.util.LostWorldsRegistrate;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantment.Rarity;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsEnchantments {
 	public static final LostWorldsRegistrate REGISTRATE = getRegistrate();
@@ -23,12 +20,6 @@ public class LostWorldsEnchantments {
 	public static final EnchantmentType HAMMER = EnchantmentType.create("hammer", (item) -> {
 		return item instanceof HammerItem;
 	});
-
-	public static Enchantment register(String id, Enchantment enchantment) {
-		enchantment.setRegistryName(LostWorldsUtils.rL(id));
-		ForgeRegistries.ENCHANTMENTS.register(enchantment);
-		return enchantment;
-	}
 
 	public static void init() {
 	}

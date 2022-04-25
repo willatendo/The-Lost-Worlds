@@ -18,6 +18,5 @@ public class LostWorldsPOIs {
 	// Registry
 	public static void init(IEventBus bus) {
 		POI_TYPES.register(bus);
-		LostWorldsUtils.LOGGER.debug("Registering Mod Points of Interest");
 	}
 }

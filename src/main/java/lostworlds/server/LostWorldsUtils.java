@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.common.collect.ImmutableSet;
 
-import lostworlds.client.ClientConfigs;
+import lostworlds.client.LostWorldsClientConfigs;
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.tab.ModTab;
 import lostworlds.server.util.Version;
@@ -69,8 +69,8 @@ public class LostWorldsUtils {
 		return text;
 	}
 
-	public static final LostWorldsCommonConfig SERVER_CONFIG = LostWorldsConfig.SERVER_CONFIG;
-	public static final ClientConfigs CLIENT_CONFIG = LostWorldsConfig.CLIENT_CONFIG;
+	public static final LostWorldsCommonConfig SERVER_CONFIG = LostWorldsConfig.COMMON_CONFIG;
+	public static final LostWorldsClientConfigs CLIENT_CONFIG = LostWorldsConfig.CLIENT_CONFIG;
 
 	public static final ModTab ITEMS = new ModTab("items");
 	public static final ModTab BLOCKS = new ModTab("blocks");

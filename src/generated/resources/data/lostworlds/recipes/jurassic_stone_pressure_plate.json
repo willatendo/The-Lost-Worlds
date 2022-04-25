@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "lostworlds:jurassic_stone"
+    }
+  },
+  "result": {
+    "item": "lostworlds:jurassic_stone_pressure_plate"
+  }
+}

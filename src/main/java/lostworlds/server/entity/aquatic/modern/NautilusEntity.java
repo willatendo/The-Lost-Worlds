@@ -34,7 +34,7 @@ public class NautilusEntity extends BasicFishLikeEntity implements IAnimatable {
 	}
 
 	public static AttributeModifierMap createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, LostWorldsConfig.SERVER_CONFIG.nautilusHeath.get()).add(Attributes.ARMOR, LostWorldsConfig.SERVER_CONFIG.nautilusArmour.get()).build();
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.nautilusHeath.get()).add(Attributes.ARMOR, LostWorldsConfig.COMMON_CONFIG.nautilusArmour.get()).build();
 	}
 
 	@Override

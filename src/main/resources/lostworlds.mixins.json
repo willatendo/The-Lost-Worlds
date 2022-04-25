@@ -6,7 +6,6 @@
 	"mixins": [
 		"DimensionGeneratorSettingsMixin",
 		"ItemMixin",
-		"MusicDiscItemMixin",
 		"SpawnEggItemMixin"
 	],
 	"injectors": {

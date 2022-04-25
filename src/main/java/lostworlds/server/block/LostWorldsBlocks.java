@@ -70,6 +70,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.data.ShapedRecipeBuilder;
+import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -110,11 +111,11 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<Block> PERMAFROST = REGISTRATE.blockAndItem("permafrost", Block::new).properties(properties -> properties.of(Material.DIRT, MaterialColor.ICE).strength(0.5F).sound(SoundType.GRAVEL)).register();
 
 	// Stones
-	public static final BlockEntry<Block> PERMIAN_STONE = REGISTRATE.blockAndItem("permian_stone", Block::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).tag(LostWorldsTags.ModBlockTags.BASE_STONE_PERMIAN, Tags.Blocks.STONE).recipe((block, provider) -> provider.smeltingAndBlasting(DataIngredient.items(LostWorldsBlocks.PERMIAN_COBBLESTONE.get()), () -> block.get(), 0.7F)).register();
-	public static final BlockEntry<StairsBlock> PERMIAN_STONE_STAIRS = REGISTRATE.stairBlock("permian_stone_stairs", "permian_stone", properties -> new StairsBlock(() -> LostWorldsBlocks.PERMIAN_STONE.getDefaultState(), properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).register();
-	public static final BlockEntry<SlabBlock> PERMIAN_STONE_SLAB = REGISTRATE.slabBlock("permian_stone_slab", "permian_stone", SlabBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).register();
-	public static final BlockEntry<PressurePlateBlock> PERMIAN_STONE_PRESSURE_PLATE = REGISTRATE.pressurePlateBlock("permian_stone_pressure_plate", "permian_stone", properties -> new PressurePlateBlock(Sensitivity.MOBS, properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)).register();
-	public static final BlockEntry<StoneButtonBlock> PERMIAN_STONE_BUTTON = REGISTRATE.buttonBlock("permian_stone_button", "permian_stone", StoneButtonBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)).register();
+	public static final BlockEntry<Block> PERMIAN_STONE = REGISTRATE.blockAndItem("permian_stone", Block::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).tag(LostWorldsTags.ModBlockTags.BASE_STONE_PERMIAN, Tags.Blocks.STONE).recipe((block, provider) -> provider.smeltingAndBlasting(DataIngredient.items(LostWorldsBlocks.PERMIAN_COBBLESTONE.get()), () -> block.get(), 0.7F)).loot((provider, block) -> provider.add(block, provider.droppingWithSilkTouch(block, LostWorldsBlocks.PERMIAN_COBBLESTONE.get()))).register();
+	public static final BlockEntry<StairsBlock> PERMIAN_STONE_STAIRS = REGISTRATE.stairBlock("permian_stone_stairs", "permian_stone", properties -> new StairsBlock(() -> LostWorldsBlocks.PERMIAN_STONE.getDefaultState(), properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).recipe((block, provider) -> provider.stairs(DataIngredient.items(LostWorldsBlocks.PERMIAN_STONE), () -> block.get(), null, true)).register();
+	public static final BlockEntry<SlabBlock> PERMIAN_STONE_SLAB = REGISTRATE.slabBlock("permian_stone_slab", "permian_stone", SlabBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).recipe((block, provider) -> provider.slab(DataIngredient.items(LostWorldsBlocks.PERMIAN_STONE), () -> block.get(), null, true)).loot((provider, block) -> provider.add(block, provider.droppingSlab(block))).register();
+	public static final BlockEntry<PressurePlateBlock> PERMIAN_STONE_PRESSURE_PLATE = REGISTRATE.pressurePlateBlock("permian_stone_pressure_plate", "permian_stone", properties -> new PressurePlateBlock(Sensitivity.MOBS, properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)).recipe((block, provider) -> ShapedRecipeBuilder.shaped(block.get()).pattern("XX").define('X', LostWorldsBlocks.PERMIAN_STONE.get()).unlockedBy("has_item", provider.hasItem(LostWorldsBlocks.PERMIAN_STONE.get())).save(provider)).register();
+	public static final BlockEntry<StoneButtonBlock> PERMIAN_STONE_BUTTON = REGISTRATE.buttonBlock("permian_stone_button", "permian_stone", StoneButtonBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)).recipe((block, provider) -> ShapelessRecipeBuilder.shapeless(block.get()).requires(LostWorldsBlocks.PERMIAN_STONE.get()).unlockedBy("has_item", provider.hasItem(LostWorldsBlocks.PERMIAN_STONE.get())).save(provider)).register();
 
 	public static final BlockEntry<ModOreBlock> PERMIAN_COPPER_ORE = REGISTRATE.blockAndItem("permian_copper_ore", properties -> new ModOreBlock(0, 0, properties)).properties(properties -> properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)).register(),
 			PERMIAN_GOLD_ORE = REGISTRATE.blockAndItem("permian_gold_ore", properties -> new ModOreBlock(0, 0, properties)).properties(properties -> properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)).tag(Tags.Blocks.ORES_GOLD, BlockTags.GOLD_ORES, BlockTags.GUARDED_BY_PIGLINS).register(),
@@ -126,20 +127,32 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<RedstoneOreBlock> PERMIAN_REDSTONE_ORE = REGISTRATE.blockAndItem("permian_redstone_ore", RedstoneOreBlock::new).properties(properties -> properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)).tag(Tags.Blocks.ORES_REDSTONE).register();
 
 	public static final BlockEntry<Block> PERMIAN_COBBLESTONE = REGISTRATE.blockAndItem("permian_cobblestone", Block::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).register();
-	public static final BlockEntry<StairsBlock> PERMIAN_COBBLESTONE_STAIRS = REGISTRATE.stairBlock("permian_cobblestone_stairs", "permian_cobblestone", properties -> new StairsBlock(() -> LostWorldsBlocks.PERMIAN_COBBLESTONE.getDefaultState(), properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).register();
-	public static final BlockEntry<SlabBlock> PERMIAN_COBBLESTONE_SLAB = REGISTRATE.slabBlock("permian_cobblestone_slab", "permian_cobblestone", SlabBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).register();
-	public static final BlockEntry<WallBlock> PERMIAN_COBBLESTONE_WALL = REGISTRATE.wallBlock("permian_cobblestone_wall", "permian_cobblestone", WallBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).register();
+	public static final BlockEntry<StairsBlock> PERMIAN_COBBLESTONE_STAIRS = REGISTRATE.stairBlock("permian_cobblestone_stairs", "permian_cobblestone", properties -> new StairsBlock(() -> LostWorldsBlocks.PERMIAN_COBBLESTONE.getDefaultState(), properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).recipe((block, provider) -> provider.stairs(DataIngredient.items(LostWorldsBlocks.PERMIAN_COBBLESTONE.get()), () -> block.get(), null, true)).register();
+	public static final BlockEntry<SlabBlock> PERMIAN_COBBLESTONE_SLAB = REGISTRATE.slabBlock("permian_cobblestone_slab", "permian_cobblestone", SlabBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).recipe((block, provider) -> provider.slab(DataIngredient.items(LostWorldsBlocks.PERMIAN_COBBLESTONE.get()), () -> block.get(), null, true)).loot((provider, block) -> provider.add(block, provider.droppingSlab(block))).register();
+	public static final BlockEntry<WallBlock> PERMIAN_COBBLESTONE_WALL = REGISTRATE.wallBlock("permian_cobblestone_wall", "permian_cobblestone", WallBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).recipe((block, provider) -> provider.wall(DataIngredient.items(LostWorldsBlocks.PERMIAN_COBBLESTONE.get()), () -> block.get())).register();
 
-	public static final BlockEntry<Block> PERMIAN_STONE_BRICKS = REGISTRATE.blockAndItem("permian_stone_bricks", Block::new).properties(properties -> AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).tag(BlockTags.STONE_BRICKS).register();
-	public static final BlockEntry<StairsBlock> PERMIAN_STONE_BRICK_STAIRS = REGISTRATE.stairBlock("permian_stone_brick_stairs", "permian_stone_bricks", properties -> new StairsBlock(() -> LostWorldsBlocks.PERMIAN_STONE_BRICKS.getDefaultState(), properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).register();
-	public static final BlockEntry<SlabBlock> PERMIAN_STONE_BRICK_SLAB = REGISTRATE.slabBlock("permian_stone_brick_slab", "permian_stone_bricks", SlabBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).register();
-	public static final BlockEntry<WallBlock> PERMIAN_STONE_BRICK_WALL = REGISTRATE.wallBlock("permian_stone_brick_wall", "permian_stone_bricks", WallBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).register();
+	public static final BlockEntry<Block> PERMIAN_STONE_BRICKS = REGISTRATE.blockAndItem("permian_stone_bricks", Block::new).properties(properties -> AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).tag(BlockTags.STONE_BRICKS).recipe((block, provider) -> {
+		ShapedRecipeBuilder.shaped(block.get(), 4).pattern("XX").pattern("XX").define('X', LostWorldsBlocks.PERMIAN_STONE.get()).unlockedBy("has_item", provider.hasItem(LostWorldsBlocks.PERMIAN_STONE.get())).save(provider);
+		provider.stonecutting(DataIngredient.items(LostWorldsBlocks.PERMIAN_STONE.get()), () -> block.get());
+	}).register();
+	public static final BlockEntry<StairsBlock> PERMIAN_STONE_BRICK_STAIRS = REGISTRATE.stairBlock("permian_stone_brick_stairs", "permian_stone_bricks", properties -> new StairsBlock(() -> LostWorldsBlocks.PERMIAN_STONE_BRICKS.getDefaultState(), properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).recipe((block, provider) -> {
+		provider.stairs(DataIngredient.items(LostWorldsBlocks.PERMIAN_STONE_BRICKS.get()), () -> block.get(), null, true);
+		provider.stonecutting(DataIngredient.items(LostWorldsBlocks.PERMIAN_STONE.get()), () -> block.get());
+	}).register();
+	public static final BlockEntry<SlabBlock> PERMIAN_STONE_BRICK_SLAB = REGISTRATE.slabBlock("permian_stone_brick_slab", "permian_stone_bricks", SlabBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).recipe((block, provider) -> {
+		provider.stairs(DataIngredient.items(LostWorldsBlocks.PERMIAN_STONE_BRICKS.get()), () -> block.get(), null, true);
+		provider.stonecutting(DataIngredient.items(LostWorldsBlocks.PERMIAN_STONE.get()), () -> block.get());
+	}).loot((provider, block) -> provider.add(block, provider.droppingSlab(block))).register();
+	public static final BlockEntry<WallBlock> PERMIAN_STONE_BRICK_WALL = REGISTRATE.wallBlock("permian_stone_brick_wall", "permian_stone_bricks", WallBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).recipe((block, provider) -> {
+		provider.wall(DataIngredient.items(LostWorldsBlocks.PERMIAN_STONE_BRICKS.get()), () -> block.get());
+		provider.stonecutting(DataIngredient.items(LostWorldsBlocks.PERMIAN_STONE.get()), () -> block.get());
+	}).register();
 
-	public static final BlockEntry<Block> JURASSIC_STONE = REGISTRATE.blockAndItem("jurassic_stone", Block::new).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)).tag(LostWorldsTags.ModBlockTags.BASE_STONE_JURASSIC, Tags.Blocks.STONE).register();
-	public static final BlockEntry<StairsBlock> JURASSIC_STONE_STAIRS = REGISTRATE.stairBlock("jurassic_stone_stairs", "jurassic_stone", properties -> new StairsBlock(() -> LostWorldsBlocks.JURASSIC_STONE.getDefaultState(), properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)).register();
-	public static final BlockEntry<SlabBlock> JURASSIC_STONE_SLAB = REGISTRATE.slabBlock("jurassic_stone_slab", "jurassic_stone", SlabBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)).register();
-	public static final BlockEntry<PressurePlateBlock> JURASSIC_STONE_PRESSURE_PLATE = REGISTRATE.pressurePlateBlock("jurassic_stone_pressure_plate", "jurassic_stone", properties -> new PressurePlateBlock(Sensitivity.MOBS, properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)).register();
-	public static final BlockEntry<StoneButtonBlock> JURASSIC_STONE_BUTTON = REGISTRATE.buttonBlock("jurassic_stone_button", "jurassic_stone", StoneButtonBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)).register();
+	public static final BlockEntry<Block> JURASSIC_STONE = REGISTRATE.blockAndItem("jurassic_stone", Block::new).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)).tag(LostWorldsTags.ModBlockTags.BASE_STONE_JURASSIC, Tags.Blocks.STONE).recipe((block, provider) -> provider.smeltingAndBlasting(DataIngredient.items(LostWorldsBlocks.JURASSIC_COBBLESTONE.get()), () -> block.get(), 0.7F)).loot((provider, block) -> provider.add(block, provider.droppingWithSilkTouch(block, LostWorldsBlocks.JURASSIC_COBBLESTONE.get()))).register();
+	public static final BlockEntry<StairsBlock> JURASSIC_STONE_STAIRS = REGISTRATE.stairBlock("jurassic_stone_stairs", "jurassic_stone", properties -> new StairsBlock(() -> LostWorldsBlocks.JURASSIC_STONE.getDefaultState(), properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)).recipe((block, provider) -> provider.stairs(DataIngredient.items(LostWorldsBlocks.JURASSIC_STONE), () -> block.get(), null, true)).register();
+	public static final BlockEntry<SlabBlock> JURASSIC_STONE_SLAB = REGISTRATE.slabBlock("jurassic_stone_slab", "jurassic_stone", SlabBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)).recipe((block, provider) -> provider.slab(DataIngredient.items(LostWorldsBlocks.JURASSIC_STONE), () -> block.get(), null, true)).loot((provider, block) -> provider.add(block, provider.droppingSlab(block))).register();
+	public static final BlockEntry<PressurePlateBlock> JURASSIC_STONE_PRESSURE_PLATE = REGISTRATE.pressurePlateBlock("jurassic_stone_pressure_plate", "jurassic_stone", properties -> new PressurePlateBlock(Sensitivity.MOBS, properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)).recipe((block, provider) -> ShapedRecipeBuilder.shaped(block.get()).pattern("XX").define('X', LostWorldsBlocks.JURASSIC_STONE.get()).unlockedBy("has_item", provider.hasItem(LostWorldsBlocks.JURASSIC_STONE.get())).save(provider)).register();
+	public static final BlockEntry<StoneButtonBlock> JURASSIC_STONE_BUTTON = REGISTRATE.buttonBlock("jurassic_stone_button", "jurassic_stone", StoneButtonBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().strength(3.0F)).recipe((block, provider) -> ShapelessRecipeBuilder.shapeless(block.get()).requires(LostWorldsBlocks.JURASSIC_STONE.get()).unlockedBy("has_item", provider.hasItem(LostWorldsBlocks.JURASSIC_STONE.get())).save(provider)).register();
 
 	public static final BlockEntry<ModOreBlock> JURASSIC_COPPER_ORE = REGISTRATE.blockAndItem("jurassic_copper_ore", properties -> new ModOreBlock(0, 0, properties)).properties(properties -> properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)).register(),
 			JURASSIC_GOLD_ORE = REGISTRATE.blockAndItem("jurassic_gold_ore", properties -> new ModOreBlock(0, 0, properties)).properties(properties -> properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)).tag(Tags.Blocks.ORES_GOLD, BlockTags.GOLD_ORES, BlockTags.GUARDED_BY_PIGLINS).register(),
@@ -151,9 +164,9 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<RedstoneOreBlock> JURASSIC_REDSTONE_ORE = REGISTRATE.blockAndItem("jurassic_redstone_ore", RedstoneOreBlock::new).properties(properties -> properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)).tag(Tags.Blocks.ORES_REDSTONE).register();
 
 	public static final BlockEntry<Block> JURASSIC_COBBLESTONE = REGISTRATE.blockAndItem("jurassic_cobblestone", Block::new).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)).register();
-	public static final BlockEntry<StairsBlock> JURASSIC_COBBLESTONE_STAIRS = REGISTRATE.stairBlock("jurassic_cobblestone_stairs", "jurassic_cobblestone", properties -> new StairsBlock(() -> LostWorldsBlocks.JURASSIC_COBBLESTONE.getDefaultState(), properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)).register();
-	public static final BlockEntry<SlabBlock> JURASSIC_COBBLESTONE_SLAB = REGISTRATE.slabBlock("jurassic_cobblestone_slab", "jurassic_cobblestone", SlabBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)).register();
-	public static final BlockEntry<WallBlock> JURASSIC_COBBLESTONE_WALL = REGISTRATE.wallBlock("jurassic_cobblestone_wall", "jurassic_cobblestone", WallBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)).register();
+	public static final BlockEntry<StairsBlock> JURASSIC_COBBLESTONE_STAIRS = REGISTRATE.stairBlock("jurassic_cobblestone_stairs", "jurassic_cobblestone", properties -> new StairsBlock(() -> LostWorldsBlocks.JURASSIC_COBBLESTONE.getDefaultState(), properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)).recipe((block, provider) -> provider.stairs(DataIngredient.items(LostWorldsBlocks.JURASSIC_COBBLESTONE.get()), () -> block.get(), null, true)).register();
+	public static final BlockEntry<SlabBlock> JURASSIC_COBBLESTONE_SLAB = REGISTRATE.slabBlock("jurassic_cobblestone_slab", "jurassic_cobblestone", SlabBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)).recipe((block, provider) -> provider.slab(DataIngredient.items(LostWorldsBlocks.PERMIAN_COBBLESTONE.get()), () -> block.get(), null, true)).loot((provider, block) -> provider.add(block, provider.droppingSlab(block))).register();
+	public static final BlockEntry<WallBlock> JURASSIC_COBBLESTONE_WALL = REGISTRATE.wallBlock("jurassic_cobblestone_wall", "jurassic_cobblestone", WallBlock::new).properties(properties -> properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F)).recipe((block, provider) -> provider.wall(DataIngredient.items(LostWorldsBlocks.PERMIAN_COBBLESTONE.get()), () -> block.get())).register();
 
 	public static final BlockEntry<Block> JURASSIC_STONE_BRICKS = REGISTRATE.blockAndItem("jurassic_stone_bricks", Block::new).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).tag(BlockTags.STONE_BRICKS).register();
 	public static final BlockEntry<StairsBlock> JURASSIC_STONE_BRICK_STAIRS = REGISTRATE.stairBlock("jurassic_stone_brick_stairs", "jurassic_stone_bricks", properties -> new StairsBlock(() -> LostWorldsBlocks.JURASSIC_STONE_BRICKS.getDefaultState(), properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE)).register();
@@ -432,6 +445,31 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<ModDoublePlantBlock> WILLIAMSONIA = REGISTRATE.doublePlantColoured("williamsonia", ModDoublePlantBlock::new).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).register();
 	public static final BlockEntry<ModBushBlock> ZAMITES = REGISTRATE.plantColoured("zamites", ModBushBlock::new).properties(properties -> AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).color(() -> LostWorldsBlocks::getGrassyColour).color(() -> LostWorldsBlocks::getGrassyColour).register();
 
+	static {
+		for (DinoTypes types : DinoTypes.eggLaying()) {
+			if (types.getEgg(types.getEntityType()) instanceof TinyEggBlock) {
+				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "tiny_egg", types, properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.tinyEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
+				types.setEgg(() -> egg.get());
+			} else if (types.getEgg(types.getEntityType()) instanceof SmallEggBlock) {
+				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "small_egg", types, properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.smallEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
+				types.setEgg(() -> egg.get());
+			} else if (types.getEgg(types.getEntityType()) instanceof MediumEggBlock) {
+				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "medium_egg", types, properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.mediumEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
+				types.setEgg(() -> egg.get());
+			} else if (types.getEgg(types.getEntityType()) instanceof LargeEggBlock) {
+				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "large_egg", types, properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.largeEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
+				types.setEgg(() -> egg.get());
+			}
+		}
+
+		for (DinoTypes types : DinoTypes.values()) {
+			if (types == DinoTypes.NAUTILUS) {
+				BlockEntry<NautilusShellBlock> shell = REGISTRATE.blockAndItem("fossilized_nautilus_shell", NautilusShellBlock::new).properties(properties -> properties.of(Material.SHULKER_SHELL).instabreak().noOcclusion().sound(SoundType.ANVIL)).blockstate((block, provider) -> provider.horizontalBlock(block.get(), provider.models().withExistingParent(block.getName(), provider.modLoc("shell")).texture("shell", LostWorldsUtils.rL("block/fossilized_nautilus_shell")).texture("particle", LostWorldsUtils.rL("block/fossilized_nautilus_shell")))).register();
+				types.setExtraBlock(() -> shell.get());
+			}
+		}
+	}
+
 	// Natural Blocks
 	public static final BlockEntry<DiictodonBurrowBlock> DIICTODON_BURROW = REGISTRATE.blockAndItem("diictodon_burrow", DiictodonBurrowBlock::new).properties(properties -> properties.of(Material.SAND, MaterialColor.SAND).harvestTool(ToolType.SHOVEL).strength(1.5F).sound(SoundType.SAND).randomTicks()).register();
 	public static final BlockEntry<Block> TUNNELED_SOIL = REGISTRATE.blockAndItem("tunneled_soil", Block::new).properties(properties -> properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).harvestTool(ToolType.SHOVEL).sound(SoundType.GRAVEL)).register();
@@ -609,8 +647,7 @@ public class LostWorldsBlocks {
 	}
 
 	public static void init() {
-		LostWorldsUtils.LOGGER.debug("Registering Mod Blocks");
-
+		// Signs
 		registerSignBlock(() -> LostWorldsBlocks.ARAUCARIA_SIGN.get());
 		registerSignBlock(() -> LostWorldsBlocks.ARAUCARIA_WALL_SIGN.get());
 		registerSignBlock(() -> LostWorldsBlocks.CALAMITES_SIGN.get());
@@ -627,28 +664,5 @@ public class LostWorldsBlocks {
 		registerSignBlock(() -> LostWorldsBlocks.SCORCHED_WALL_SIGN.get());
 		registerSignBlock(() -> LostWorldsBlocks.SEQUOIA_SIGN.get());
 		registerSignBlock(() -> LostWorldsBlocks.SEQUOIA_WALL_SIGN.get());
-
-		for (DinoTypes types : DinoTypes.eggLaying()) {
-			if (types.getEgg(types.getEntityType()) instanceof TinyEggBlock) {
-				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "tiny_egg", types, properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.tinyEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
-				types.setEgg(() -> egg.get());
-			} else if (types.getEgg(types.getEntityType()) instanceof SmallEggBlock) {
-				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "small_egg", types, properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.smallEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
-				types.setEgg(() -> egg.get());
-			} else if (types.getEgg(types.getEntityType()) instanceof MediumEggBlock) {
-				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "medium_egg", types, properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.mediumEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
-				types.setEgg(() -> egg.get());
-			} else if (types.getEgg(types.getEntityType()) instanceof LargeEggBlock) {
-				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "large_egg", types, properties -> types.getEgg(types.getEntityType())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.largeEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
-				types.setEgg(() -> egg.get());
-			}
-		}
-
-		for (DinoTypes types : DinoTypes.values()) {
-			if (types == DinoTypes.NAUTILUS) {
-				BlockEntry<NautilusShellBlock> shell = REGISTRATE.blockAndItem("fossilized_nautilus_shell", NautilusShellBlock::new).properties(properties -> properties.of(Material.SHULKER_SHELL).instabreak().noOcclusion().sound(SoundType.ANVIL)).register();
-				types.setExtraBlock(() -> shell.get());
-			}
-		}
 	}
 }

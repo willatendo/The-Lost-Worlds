@@ -1,7 +1,9 @@
 {
+  "entity.lostworlds.allosaurus": "Allosaurus",
   "entity.lostworlds.charged_crystal_scarab_gem_item": "Charged Crystal Scarab Gem Item",
   "entity.lostworlds.crystal_scarab_gem_item": "Crystal Scarab Gem Item",
   "entity.lostworlds.fossil_poacher": "Fossil Poacher",
   "entity.lostworlds.mod_boat": "Mod Boat",
+  "item.lostworlds.allosaurus_spawn_egg": "Allosaurus Spawn Egg",
   "item.lostworlds.fossil_poacher_spawn_egg": "Fossil Poacher Spawn Egg"
 }

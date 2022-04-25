@@ -23,6 +23,5 @@ public class LostWorldsWorldCarvers {
 	}
 
 	public static void init() {
-		LostWorldsUtils.LOGGER.debug("Registering Mod World Carvers");
 	}
 }

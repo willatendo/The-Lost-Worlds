@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "lostworlds:block/shell",
   "textures": {
-    "all": "lostworlds:block/fossilized_nautilus_shell"
+    "shell": "lostworlds:block/fossilized_nautilus_shell",
+    "particle": "lostworlds:block/fossilized_nautilus_shell"
   }
 }

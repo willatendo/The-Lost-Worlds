@@ -210,7 +210,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 
 		int i = this.getAge();
 		if (i == 0 && this.canFallInNaturalLove()) {
-			if (this.level.getNearbyEntities(this.getClass(), PARTNER_TARGETING, this, this.getBoundingBox().inflate(LostWorldsConfig.SERVER_CONFIG.maxSearchRange.get())).size() < LostWorldsConfig.SERVER_CONFIG.maxDinoGroup.get() && this.level.getNearbyEntities(this.getClass(), PARTNER_TARGETING, this, this.getBoundingBox().inflate(LostWorldsConfig.SERVER_CONFIG.maxSearchRange.get())).size() > 1) {
+			if (this.level.getNearbyEntities(this.getClass(), PARTNER_TARGETING, this, this.getBoundingBox().inflate(LostWorldsConfig.COMMON_CONFIG.maxSearchRange.get())).size() < LostWorldsConfig.COMMON_CONFIG.maxDinoGroup.get() && this.level.getNearbyEntities(this.getClass(), PARTNER_TARGETING, this, this.getBoundingBox().inflate(LostWorldsConfig.COMMON_CONFIG.maxSearchRange.get())).size() > 1) {
 				this.setInNaturalLove(this);
 			}
 		}

@@ -195,7 +195,7 @@ public abstract class MachineBlock extends Block {
 				double d1 = (double) pos.getY();
 				double d2 = (double) pos.getZ() + 0.5D;
 				if (rand.nextDouble() < 0.1D) {
-					world.playLocalSound(d0, d1, d2, LostWorldsSounds.MACHINE_WHIRLING, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+					world.playLocalSound(d0, d1, d2, LostWorldsSounds.MACHINE_WHIRLING.get(), SoundCategory.BLOCKS, 0.5F, 0.5F, false);
 				}
 			}
 		}
@@ -205,7 +205,7 @@ public abstract class MachineBlock extends Block {
 	public boolean hasAnalogOutputSignal(BlockState state) {
 		return true;
 	}
-	
+
 	@Override
 	public boolean hasTileEntity(BlockState state) {
 		return true;

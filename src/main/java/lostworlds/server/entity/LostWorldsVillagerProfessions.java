@@ -19,6 +19,5 @@ public class LostWorldsVillagerProfessions {
 	// Registry
 	public static void init(IEventBus bus) {
 		VILLAGER_PROFESSIONS.register(bus);
-		LostWorldsUtils.LOGGER.debug("Registering Mod Villager Professions");
 	}
 }

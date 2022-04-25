@@ -18,7 +18,7 @@ import lostworlds.server.biome.BiomeKeys;
 import lostworlds.server.biome.DisksFeatures;
 import lostworlds.server.biome.LostWorldsBiomes;
 import lostworlds.server.biome.LostWorldsWorldCarvers;
-import lostworlds.server.biome.ModConfiguredCarvers;
+import lostworlds.server.biome.LostWorldsConfiguredCarvers;
 import lostworlds.server.biome.ModConfiguredStructures;
 import lostworlds.server.biome.OreFeatures;
 import lostworlds.server.biome.TreeFeatures;
@@ -85,49 +85,40 @@ public class LostWorldsMod {
 	public static final NonNullSupplier<LostWorldsRegistrate> CENTRAL_REGISTRATE = LostWorldsRegistrate.lazy(ID);
 
 	public LostWorldsMod() {
-		this.modBus();
-		this.forgeBus();
-		this.clientForgeBus();
+		// Server/Common
+		final IEventBus mod = FMLJavaModLoadingContext.get().getModEventBus();
+		final IEventBus forge = MinecraftForge.EVENT_BUS;
+
+		mod.addListener(this::commonSetup);
+		mod.addListener(this::clientSetup);
+
+		forge.addListener(this::biomeModification);
+		forge.addListener(this::onPlayerLoggedIn);
+		forge.addListener(this::onLivingTick);
+		forge.addListener(this::onPlayerHarvest);
 
 		GeckoLib.initialize();
-		lostWorldRegistry();
+		this.lostWorldRegistry(mod);
+
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, LostWorldsConfig.commonSpec);
+
+		// Client
+		this.clientForgeBus(forge);
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, LostWorldsConfig.clientSpec);
-		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, LostWorldsConfig.serverSpec);
-	}
-
-	private void modBus() {
-		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-
-		bus.addListener(this::commonSetup);
-		bus.addListener(this::clientSetup);
-	}
-
-	private void forgeBus() {
-		final IEventBus bus = MinecraftForge.EVENT_BUS;
-
-		bus.addListener(this::biomeModification);
-//		bus.addListener(EventPriority.HIGH, DinosaurSpawn::addDinosaursToOverworld);
-		bus.addListener(this::onPlayerLoggedIn);
-		bus.addListener(this::onLivingTick);
-		bus.addListener(this::onPlayerHarvest);
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	private void clientForgeBus() {
-		final IEventBus bus = MinecraftForge.EVENT_BUS;
-
+	private void clientForgeBus(IEventBus bus) {
 		bus.addListener(this::onClientPlayerLoggedInEvent);
 	}
 
-	private static void lostWorldRegistry() {
-		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-
+	private void lostWorldRegistry(IEventBus bus) {
 		// Game Objects
 		LostWorldsBlocks.init();
 		LostWorldsItems.init();
-		LostWorldsPotions.init();
-		LostWorldsSounds.init();
+		LostWorldsPotions.init(bus);
+		LostWorldsSounds.init(bus);
 		LostWorldsEnchantments.init();
 		LostWorldsEntities.init();
 		LostWorldsBanners.init();
@@ -141,7 +132,7 @@ public class LostWorldsMod {
 
 		// World Generation
 		LostWorldsWorldCarvers.init();
-		ModConfiguredCarvers.init();
+		LostWorldsConfiguredCarvers.init();
 		LostWorldsSurfaceBuilders.init();
 		LostWorldsFeatures.init(bus);
 		LostWorldsStructures.init();
@@ -153,7 +144,6 @@ public class LostWorldsMod {
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {
-		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)), Ingredient.of(LostWorldsBlocks.VOLCANIC_ASH.asStack()), PotionUtils.setPotion(new ItemStack(Items.POTION), LostWorldsPotions.ASHY_LUNG_POTION));
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), LostWorldsItems.CONTRACEPTIVES.get().getDefaultInstance());
 
 		LostWorldsUtils.ITEMS.setIcon(() -> LostWorldsItems.LOST_WORLDS_LEXICON.asStack());
@@ -361,7 +351,7 @@ public class LostWorldsMod {
 			BlockPos pos = entity.blockPosition();
 			if (world.getBlockState(pos).is(LostWorldsBlocks.VOLCANIC_ASH_LAYER.get())) {
 				if (!isWearingMask(entity, EquipmentSlotType.HEAD)) {
-					entity.addEffect(new EffectInstance(LostWorldsPotions.ASHY_LUNG_EFFECT, 200));
+					entity.addEffect(new EffectInstance(LostWorldsPotions.ASHY_LUNG_EFFECT.get(), 200));
 				}
 			}
 		}
@@ -373,7 +363,7 @@ public class LostWorldsMod {
 		if (entity != null) {
 			if (event.getState().is(LostWorldsBlocks.VOLCANIC_ASH_LAYER.get())) {
 				if (!isWearingMask(entity, EquipmentSlotType.HEAD)) {
-					entity.addEffect(new EffectInstance(LostWorldsPotions.ASHY_LUNG_EFFECT, 200));
+					entity.addEffect(new EffectInstance(LostWorldsPotions.ASHY_LUNG_EFFECT.get(), 200));
 				}
 			}
 		}

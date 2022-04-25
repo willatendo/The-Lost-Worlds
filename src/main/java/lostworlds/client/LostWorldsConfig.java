@@ -5,21 +5,19 @@ import org.apache.commons.lang3.tuple.Pair;
 import lostworlds.server.LostWorldsCommonConfig;
 import net.minecraftforge.common.ForgeConfigSpec;
 
-public class LostWorldsConfig 
-{
-	public static final ForgeConfigSpec serverSpec;
-	public static final LostWorldsCommonConfig SERVER_CONFIG;
-	
-	public static final ForgeConfigSpec clientSpec;
-	public static final ClientConfigs CLIENT_CONFIG;
-	
-	static 
-	{
-		final Pair<LostWorldsCommonConfig, ForgeConfigSpec> serverSpecPair = new ForgeConfigSpec.Builder().configure(LostWorldsCommonConfig::new);
-		serverSpec = serverSpecPair.getRight();
-		SERVER_CONFIG = serverSpecPair.getLeft();
+public class LostWorldsConfig {
+	public static final ForgeConfigSpec commonSpec;
+	public static final LostWorldsCommonConfig COMMON_CONFIG;
 
-		final Pair<ClientConfigs, ForgeConfigSpec> clientSpecPair = new ForgeConfigSpec.Builder().configure(ClientConfigs::new);
+	public static final ForgeConfigSpec clientSpec;
+	public static final LostWorldsClientConfigs CLIENT_CONFIG;
+
+	static {
+		final Pair<LostWorldsCommonConfig, ForgeConfigSpec> serverSpecPair = new ForgeConfigSpec.Builder().configure(LostWorldsCommonConfig::new);
+		commonSpec = serverSpecPair.getRight();
+		COMMON_CONFIG = serverSpecPair.getLeft();
+
+		final Pair<LostWorldsClientConfigs, ForgeConfigSpec> clientSpecPair = new ForgeConfigSpec.Builder().configure(LostWorldsClientConfigs::new);
 		clientSpec = clientSpecPair.getRight();
 		CLIENT_CONFIG = clientSpecPair.getLeft();
 	}
