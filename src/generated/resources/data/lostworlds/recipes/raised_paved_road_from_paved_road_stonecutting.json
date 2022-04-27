@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lostworlds:paved_road"
+  },
+  "result": "lostworlds:raised_paved_road",
+  "count": 2
+}

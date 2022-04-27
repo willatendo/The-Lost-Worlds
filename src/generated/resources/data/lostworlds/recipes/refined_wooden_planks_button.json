@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "lostworlds:refined_wooden_planks"
+    }
+  ],
+  "result": {
+    "item": "lostworlds:refined_wooden_planks_button"
+  }
+}

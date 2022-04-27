@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:purple_glass"
+    }
+  },
+  "result": {
+    "item": "lostworlds:purple_glass_pane",
+    "count": 16
+  }
+}

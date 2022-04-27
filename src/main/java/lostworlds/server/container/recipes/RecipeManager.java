@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import lostworlds.client.jei.recipe.AmberDNAExtractorRecipe;
-import lostworlds.client.jei.recipe.WaterFuelRecipe;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.item.LostWorldsItems;
+import lostworlds.server.jei.recipe.AmberDNAExtractorRecipe;
+import lostworlds.server.jei.recipe.WaterFuelRecipe;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.runtime.IIngredientManager;

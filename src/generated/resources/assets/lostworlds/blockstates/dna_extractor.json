@@ -1,33 +1,33 @@
 {
   "variants": {
     "facing=north,on=false": {
-      "model": "lostworlds:block/dna_extractor_off_gen"
+      "model": "lostworlds:block/dna_extractor"
     },
     "facing=south,on=false": {
-      "model": "lostworlds:block/dna_extractor_off_gen",
+      "model": "lostworlds:block/dna_extractor",
       "y": 180
     },
     "facing=west,on=false": {
-      "model": "lostworlds:block/dna_extractor_off_gen",
+      "model": "lostworlds:block/dna_extractor",
       "y": 270
     },
     "facing=east,on=false": {
-      "model": "lostworlds:block/dna_extractor_off_gen",
+      "model": "lostworlds:block/dna_extractor",
       "y": 90
     },
     "facing=north,on=true": {
-      "model": "lostworlds:block/dna_extractor_on_gen"
+      "model": "lostworlds:block/dna_extractor_on"
     },
     "facing=south,on=true": {
-      "model": "lostworlds:block/dna_extractor_on_gen",
+      "model": "lostworlds:block/dna_extractor_on",
       "y": 180
     },
     "facing=west,on=true": {
-      "model": "lostworlds:block/dna_extractor_on_gen",
+      "model": "lostworlds:block/dna_extractor_on",
       "y": 270
     },
     "facing=east,on=true": {
-      "model": "lostworlds:block/dna_extractor_on_gen",
+      "model": "lostworlds:block/dna_extractor_on",
       "y": 90
     }
   }

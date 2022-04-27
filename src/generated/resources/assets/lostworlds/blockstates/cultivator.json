@@ -1,33 +1,33 @@
 {
   "variants": {
     "facing=north,on=false": {
-      "model": "lostworlds:block/cultivator_off_gen"
+      "model": "lostworlds:block/cultivator"
     },
     "facing=south,on=false": {
-      "model": "lostworlds:block/cultivator_off_gen",
+      "model": "lostworlds:block/cultivator",
       "y": 180
     },
     "facing=west,on=false": {
-      "model": "lostworlds:block/cultivator_off_gen",
+      "model": "lostworlds:block/cultivator",
       "y": 270
     },
     "facing=east,on=false": {
-      "model": "lostworlds:block/cultivator_off_gen",
+      "model": "lostworlds:block/cultivator",
       "y": 90
     },
     "facing=north,on=true": {
-      "model": "lostworlds:block/cultivator_on_gen"
+      "model": "lostworlds:block/cultivator_on"
     },
     "facing=south,on=true": {
-      "model": "lostworlds:block/cultivator_on_gen",
+      "model": "lostworlds:block/cultivator_on",
       "y": 180
     },
     "facing=west,on=true": {
-      "model": "lostworlds:block/cultivator_on_gen",
+      "model": "lostworlds:block/cultivator_on",
       "y": 270
     },
     "facing=east,on=true": {
-      "model": "lostworlds:block/cultivator_on_gen",
+      "model": "lostworlds:block/cultivator_on",
       "y": 90
     }
   }

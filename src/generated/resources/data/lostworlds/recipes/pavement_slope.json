@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "lostworlds:pavement"
+    }
+  },
+  "result": {
+    "item": "lostworlds:pavement_slope",
+    "count": 4
+  }
+}

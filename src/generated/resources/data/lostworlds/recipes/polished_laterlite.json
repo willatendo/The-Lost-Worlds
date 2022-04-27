@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "lostworlds:polished_laterlite"
+    }
+  },
+  "result": {
+    "item": "lostworlds:polished_laterlite",
+    "count": 4
+  }
+}

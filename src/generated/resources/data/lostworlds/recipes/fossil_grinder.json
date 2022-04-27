@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "mechanics",
+  "pattern": [
+    "$@$",
+    "T#D",
+    "$%$"
+  ],
+  "key": {
+    "$": {
+      "item": "minecraft:iron_ingot"
+    },
+    "@": {
+      "item": "minecraft:redstone"
+    },
+    "T": {
+      "item": "minecraft:cyan_terracotta"
+    },
+    "#": {
+      "item": "lostworlds:computer_core"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "%": {
+      "item": "minecraft:redstone_lamp"
+    }
+  },
+  "result": {
+    "item": "lostworlds:fossil_grinder"
+  }
+}

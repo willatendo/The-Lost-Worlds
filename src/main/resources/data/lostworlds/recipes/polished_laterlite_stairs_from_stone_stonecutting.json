@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "lostworlds:laterlite"
-  },
-  "result": "lostworlds:polished_laterlite_stairs",
-  "count": 1
-}

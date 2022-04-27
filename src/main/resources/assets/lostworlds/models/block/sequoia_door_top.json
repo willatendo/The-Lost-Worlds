@@ -1,7 +1,0 @@
-{
-	"parent": "minecraft:block/door_top",
-	"textures": {
-		"top": "lostworlds:block/sequoia_door_top",
-		"bottom": "lostworlds:block/sequoia_door_bottom"
-	}
-}

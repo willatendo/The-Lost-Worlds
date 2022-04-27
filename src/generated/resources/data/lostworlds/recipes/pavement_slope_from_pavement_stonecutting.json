@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lostworlds:pavement"
+  },
+  "result": "lostworlds:pavement_slope",
+  "count": 1
+}

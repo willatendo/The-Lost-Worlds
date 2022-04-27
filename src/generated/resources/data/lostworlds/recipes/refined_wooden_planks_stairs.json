@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "lostworlds:refined_wooden_planks"
+    }
+  },
+  "result": {
+    "item": "lostworlds:refined_wooden_planks_stairs",
+    "count": 4
+  }
+}

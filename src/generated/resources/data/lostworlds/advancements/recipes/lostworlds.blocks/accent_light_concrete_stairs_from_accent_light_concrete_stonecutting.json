@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:accent_light_concrete_stairs_from_accent_light_concrete_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_accent_light_concrete": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:accent_light_concrete"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:accent_light_concrete_stairs_from_accent_light_concrete_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_accent_light_concrete",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "lostworlds:light_concrete"
-  },
-  "result": "lostworlds:light_concrete_slab",
-  "count": 1
-}

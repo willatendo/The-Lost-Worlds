@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:raised_dirt_road_from_dirt_road_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_dirt_road": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:dirt_road"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:raised_dirt_road_from_dirt_road_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_dirt_road",
+      "has_the_recipe"
+    ]
+  ]
+}

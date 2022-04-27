@@ -5,13 +5,48 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "lostworlds:diictodon_burrow"
-        }
-      ],
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "enchantments": [
+                      {
+                        "enchantment": "minecraft:silk_touch",
+                        "levels": {
+                          "min": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "name": "lostworlds:diictodon_burrow"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.125
+                }
+              ],
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "min": 0.0,
+                    "max": 4.0,
+                    "type": "minecraft:uniform"
+                  }
+                }
+              ],
+              "name": "lostworlds:fern_leaves"
+            }
+          ]
         }
       ]
     }

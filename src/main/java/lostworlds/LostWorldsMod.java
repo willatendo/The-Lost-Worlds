@@ -9,8 +9,8 @@ import com.google.common.collect.Lists;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
 import lostworlds.client.LostWorldsConfig;
-import lostworlds.client.book.LostWorldsBooks;
 import lostworlds.client.books.TyrannibookHelper;
+import lostworlds.client.books.lostworlds.LostWorldsBooks;
 import lostworlds.client.events.ClientSetup;
 import lostworlds.client.sounds.LostWorldsSounds;
 import lostworlds.server.LostWorldsUtils;

@@ -2,7 +2,7 @@ package lostworlds.server.item;
 
 import java.util.List;
 
-import lostworlds.client.book.LostWorldsBooks;
+import lostworlds.client.books.lostworlds.LostWorldsBooks;
 import lostworlds.client.books.tyrannibook.item.TyrannobookItem;
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.client.util.ITooltipFlag;

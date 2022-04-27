@@ -1,8 +1,0 @@
-{
-	"parent": "minecraft:block/outer_stairs",
-	"textures": {
-		"bottom": "lostworlds:block/limestone",
-		"top": "lostworlds:block/limestone",
-		"side": "lostworlds:block/limestone"
-	}
-}

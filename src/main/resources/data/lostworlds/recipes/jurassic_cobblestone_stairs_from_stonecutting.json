@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "lostworlds:jurassic_cobblestone"
-  },
-  "result": "lostworlds:jurassic_cobblestone_stairs",
-  "count": 1
-}

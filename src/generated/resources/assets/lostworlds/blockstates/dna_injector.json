@@ -1,33 +1,33 @@
 {
   "variants": {
     "facing=north,on=false": {
-      "model": "lostworlds:block/dna_injector_off_gen"
+      "model": "lostworlds:block/dna_injector"
     },
     "facing=south,on=false": {
-      "model": "lostworlds:block/dna_injector_off_gen",
+      "model": "lostworlds:block/dna_injector",
       "y": 180
     },
     "facing=west,on=false": {
-      "model": "lostworlds:block/dna_injector_off_gen",
+      "model": "lostworlds:block/dna_injector",
       "y": 270
     },
     "facing=east,on=false": {
-      "model": "lostworlds:block/dna_injector_off_gen",
+      "model": "lostworlds:block/dna_injector",
       "y": 90
     },
     "facing=north,on=true": {
-      "model": "lostworlds:block/dna_injector_on_gen"
+      "model": "lostworlds:block/dna_injector_on"
     },
     "facing=south,on=true": {
-      "model": "lostworlds:block/dna_injector_on_gen",
+      "model": "lostworlds:block/dna_injector_on",
       "y": 180
     },
     "facing=west,on=true": {
-      "model": "lostworlds:block/dna_injector_on_gen",
+      "model": "lostworlds:block/dna_injector_on",
       "y": 270
     },
     "facing=east,on=true": {
-      "model": "lostworlds:block/dna_injector_on_gen",
+      "model": "lostworlds:block/dna_injector_on",
       "y": 90
     }
   }

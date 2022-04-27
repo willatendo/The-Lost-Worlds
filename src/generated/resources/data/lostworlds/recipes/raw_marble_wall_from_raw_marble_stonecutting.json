@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lostworlds:raw_marble"
+  },
+  "result": "lostworlds:raw_marble_wall",
+  "count": 1
+}

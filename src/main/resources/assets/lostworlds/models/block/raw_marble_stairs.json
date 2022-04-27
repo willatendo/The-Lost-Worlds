@@ -1,8 +1,0 @@
-{
-	"parent": "minecraft:block/stairs",
-	"textures": {
-		"bottom": "lostworlds:block/raw_marble",
-		"top": "lostworlds:block/raw_marble",
-		"side": "lostworlds:block/raw_marble"
-	}
-}

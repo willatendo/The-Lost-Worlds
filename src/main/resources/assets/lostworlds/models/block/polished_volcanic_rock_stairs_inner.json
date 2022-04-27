@@ -1,8 +1,0 @@
-{
-	"parent": "minecraft:block/inner_stairs",
-	"textures": {
-		"bottom": "lostworlds:block/polished_volcanic_rock",
-		"top": "lostworlds:block/polished_volcanic_rock",
-		"side": "lostworlds:block/polished_volcanic_rock"
-	}
-}

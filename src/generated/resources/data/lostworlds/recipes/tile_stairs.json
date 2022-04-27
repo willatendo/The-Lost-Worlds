@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "lostworlds:tile"
+    }
+  },
+  "result": {
+    "item": "lostworlds:tile_stairs",
+    "count": 4
+  }
+}

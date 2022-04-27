@@ -1,8 +1,0 @@
-{
-	"parent": "minecraft:block/slab",
-	"textures": {
-		"bottom": "lostworlds:block/volcanic_rock",
-		"top": "lostworlds:block/volcanic_rock",
-		"side": "lostworlds:block/volcanic_rock"
-	}
-}

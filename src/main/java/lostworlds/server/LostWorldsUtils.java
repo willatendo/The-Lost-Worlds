@@ -2,21 +2,16 @@ package lostworlds.server;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.google.common.collect.ImmutableSet;
-
 import lostworlds.client.LostWorldsClientConfigs;
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.tab.ModTab;
 import lostworlds.server.util.Version;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
 import net.minecraft.util.ResourceLocation;
@@ -77,19 +72,6 @@ public class LostWorldsUtils {
 
 	public static final HashSet<Biome.Category> SIMPLE_SPAWNABLE_BIOME_CATEGORIES = Stream.of(Biome.Category.FOREST, Biome.Category.JUNGLE, Biome.Category.DESERT, Biome.Category.PLAINS, Biome.Category.SAVANNA).collect(Collectors.toCollection(HashSet::new));
 	public static final HashSet<Biome.Category> FOSSIL_BIOMES = Stream.of(Biome.Category.FOREST, Biome.Category.EXTREME_HILLS, Biome.Category.DESERT, Biome.Category.PLAINS, Biome.Category.SAVANNA, Biome.Category.MUSHROOM, Biome.Category.SWAMP).collect(Collectors.toCollection(HashSet::new));
-
-	public static Set<Block> carverBlocks() {
-		// LostWorldsBlocks.PERMIAN_SAND, LostWorldsBlocks.PERMIAN_STONE,
-		// LostWorldsBlocks.PERMIAN_COBBLESTONE, LostWorldsBlocks.JURASSIC_STONE,
-		// LostWorldsBlocks.JURASSIC_COBBLESTONE, LostWorldsBlocks.LATERLITE,
-		// LostWorldsBlocks.RAW_MARBLE, LostWorldsBlocks.LIMESTONE,
-		// LostWorldsBlocks.MOSSY_SOIL, LostWorldsBlocks.DRIED_SOIL,
-		// LostWorldsBlocks.CRACKED_SOIL, LostWorldsBlocks.VOLCANIC_ASH,
-		// LostWorldsBlocks.VOLCANIC_ASH_LAYER, Blocks.BASALT, Blocks.BLACKSTONE,
-		// Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRAVEL, Blocks.MAGMA_BLOCK,
-		// Blocks.STONE, Blocks.SNOW_BLOCK);
-		return ImmutableSet.of(Blocks.STONE);
-	}
 
 	public static void translateToWaves(EntityType<? extends AbstractRaiderEntity> type, List<? extends Integer> list) {
 		Raid.WaveMember.create(type.getRegistryName().toString(), type, new int[] { list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7) });

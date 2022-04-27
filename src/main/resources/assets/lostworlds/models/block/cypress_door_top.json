@@ -1,7 +1,0 @@
-{
-	"parent": "minecraft:block/door_top",
-	"textures": {
-		"top": "lostworlds:block/cypress_door_top",
-		"bottom": "lostworlds:block/cypress_door_bottom"
-	}
-}

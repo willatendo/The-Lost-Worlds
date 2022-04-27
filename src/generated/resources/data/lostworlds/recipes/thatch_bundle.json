@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "result": {
+    "item": "lostworlds:thatch_bundle",
+    "count": 4
+  }
+}

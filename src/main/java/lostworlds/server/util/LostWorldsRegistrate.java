@@ -92,10 +92,6 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		return super.block(name, factory).item().color(() -> LostWorldsBlocks::getGrassyItemColour).build();
 	}
 
-	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> blockItemModel(String name, NonNullFunction<Properties, T> factory) {
-		return this.blockItemModel(name, name + "_off", factory);
-	}
-
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> blockItemModel(String name, String parent, NonNullFunction<Properties, T> factory) {
 		return super.block(name, factory).item().model((item, provider) -> provider.withExistingParent(item.getName(), provider.modLoc("block/" + parent))).build();
 	}
@@ -131,7 +127,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	public <T extends DoublePlantBlock> BlockBuilder<T, LostWorldsRegistrate> doublePlant(String name, NonNullFunction<Properties, T> factory) {
 		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> {
 			if (state.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.LOWER) {
-				return ConfiguredModel.builder().modelFile(provider.models().cross(block.getName(), provider.modLoc("block/" + block.getName() + "_bottom"))).build();
+				return ConfiguredModel.builder().modelFile(provider.models().cross(block.getName() + "_bottom", provider.modLoc("block/" + block.getName() + "_bottom"))).build();
 			} else {
 				return ConfiguredModel.builder().modelFile(provider.models().cross(block.getName() + "_top", provider.modLoc("block/" + block.getName() + "_top"))).build();
 
@@ -139,13 +135,12 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		})).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("block/" + name + "_top"))).build();
 	}
 
-	public <T extends DoublePlantBlock> BlockBuilder<T, LostWorldsRegistrate> doublePlantColouredItem(String name, NonNullFunction<Properties, T> factory) {
+	public <T extends DoublePlantBlock> BlockBuilder<T, LostWorldsRegistrate> cephalotaxus(String name, NonNullFunction<Properties, T> factory) {
 		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> {
 			if (state.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.LOWER) {
-				return ConfiguredModel.builder().modelFile(provider.models().cross(block.getName(), provider.modLoc("block/" + block.getName() + "_bottom"))).build();
+				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_bottom", provider.modLoc("block/dense_cross")).texture("plant", provider.modLoc("block/cephalotaxus_bottom"))).build();
 			} else {
-				return ConfiguredModel.builder().modelFile(provider.models().cross(block.getName() + "_top", provider.modLoc("block/" + block.getName() + "_top"))).build();
-
+				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_top", provider.modLoc("block/dense_cross")).texture("plant", provider.modLoc("block/cephalotaxus_top"))).build();
 			}
 		})).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("block/" + name + "_top"))).color(() -> LostWorldsBlocks::getGrassyItemColour).build();
 	}
@@ -155,7 +150,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> parentName(String name, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().addModels(new ConfiguredModel(provider.models().withExistingParent(block.getName(), LostWorldsUtils.rL(block.getName()))))).simpleItem();
+		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().addModels(new ConfiguredModel(provider.models().withExistingParent(block.getName(), LostWorldsUtils.rL(block.getName()))))).item().color(() -> LostWorldsBlocks::getGrassyItemColour).build();
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> parentNameNoItem(String name, NonNullFunction<Properties, T> factory) {
@@ -163,7 +158,11 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> pottedBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().singleTexture(block.getName(), new ResourceLocation("block/flower_pot_cross"), "plant", new ResourceLocation(block.get().getRegistryName().getNamespace(), "block/" + texture))))).tag(BlockTags.FLOWER_POTS);
+		if (texture == "archaefrutus") {
+			return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().singleTexture(block.getName(), new ResourceLocation("block/flower_pot_cross"), "plant", new ResourceLocation(block.get().getRegistryName().getNamespace(), "block/" + texture))))).tag(BlockTags.FLOWER_POTS);
+		} else {
+			return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().singleTexture(block.getName(), LostWorldsUtils.rL("block/water_flower_pot_cross"), "plant", new ResourceLocation(block.get().getRegistryName().getNamespace(), "block/" + texture))))).tag(BlockTags.FLOWER_POTS);
+		}
 	}
 
 	public <T extends RotatedPillarBlock> BlockBuilder<T, LostWorldsRegistrate> rotatedBlock(String name, NonNullFunction<Properties, T> factory) {

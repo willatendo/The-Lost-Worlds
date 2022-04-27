@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "lostworlds:light_concrete"
+    }
+  },
+  "result": {
+    "item": "lostworlds:light_concrete_wall",
+    "count": 6
+  }
+}

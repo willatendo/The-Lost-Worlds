@@ -6,10 +6,8 @@ import java.util.function.Supplier;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
-import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -46,54 +44,47 @@ public class BlockMappings {
 			put(LostWorldsUtils.rL("polished_dark_concrete"), () -> LostWorldsBlocks.ACCENT_DARK_CONCRETE.get());
 			put(LostWorldsUtils.rL("polished_dark_concrete_stairs"), () -> LostWorldsBlocks.ACCENT_DARK_CONCRETE_STAIRS.get());
 			put(LostWorldsUtils.rL("polished_dark_concrete_slab"), () -> LostWorldsBlocks.ACCENT_DARK_CONCRETE_SLAB.get());
-			put(LostWorldsUtils.rL("thatch_block"), () -> LostWorldsBlocks.THATCH_BUNDLE.get());
-		}
-	};
-
-	private static final Map<ResourceLocation, Supplier<Item>> itemRemappings = new HashMap<ResourceLocation, Supplier<Item>>() {
-		private static final long serialVersionUID = 2729763913422843325L;
-		{
-			put(LostWorldsUtils.rL("stone_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_stone_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("sandstone_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_sandstone_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("red_sandstone_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_red_sandstone_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("red_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_red_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("orange_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_orange_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("yellow_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_yellow_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("green_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_green_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("lime_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_lime_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("cyan_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_cyan_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("light_blue_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_light_blue_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("blue_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_blue_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("magenta_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_magenta_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("purple_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_purple_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("pink_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_pink_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("brown_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_brown_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("black_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_black_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("grey_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_grey_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("light_grey_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_light_grey_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("white_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("exposed_white_terracotta_fossil"), () -> LostWorldsItems.AMBER.get());
-			put(LostWorldsUtils.rL("plastered_fossil"), () -> LostWorldsItems.AMBER.get());
+			put(LostWorldsUtils.rL("stone_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_stone_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("sandstone_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_sandstone_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("red_sandstone_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_red_sandstone_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("red_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_red_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("orange_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_orange_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("yellow_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_yellow_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("green_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_green_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("lime_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_lime_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("cyan_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_cyan_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("light_blue_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_light_blue_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("blue_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_blue_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("magenta_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_magenta_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("purple_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_purple_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("pink_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_pink_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("brown_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_brown_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("black_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_black_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("grey_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_grey_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("light_grey_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_light_grey_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("white_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("exposed_white_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("plastered_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
 		}
 	};
 
@@ -103,17 +94,6 @@ public class BlockMappings {
 			event.getAllMappings().stream().filter(m -> m.key.getNamespace().equals(LostWorldsUtils.ID)).forEach(mapping -> {
 				if (blockRemappings.containsKey(mapping.key)) {
 					remap(mapping, blockRemappings);
-				}
-			});
-		}
-	}
-
-	@SubscribeEvent
-	public void updateItemMappings(RegistryEvent.MissingMappings<Item> event) {
-		if (event.getAllMappings().stream().filter(mapping -> mapping.key.getNamespace().equals(LostWorldsUtils.ID)).findAny().isPresent()) {
-			event.getAllMappings().stream().filter(mapping -> mapping.key.getNamespace().equals(LostWorldsUtils.ID)).forEach(mapping -> {
-				if (itemRemappings.containsKey(mapping.key)) {
-					remap(mapping, itemRemappings);
 				}
 			});
 		}

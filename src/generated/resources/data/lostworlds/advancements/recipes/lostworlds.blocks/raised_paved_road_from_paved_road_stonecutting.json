@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:raised_paved_road_from_paved_road_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_paved_road": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:paved_road"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:raised_paved_road_from_paved_road_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_paved_road",
+      "has_the_recipe"
+    ]
+  ]
+}

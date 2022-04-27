@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#$#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:clear_glass"
+    },
+    "$": {
+      "tag": "forge:dyes/green"
+    }
+  },
+  "result": {
+    "item": "lostworlds:green_glass",
+    "count": 8
+  }
+}

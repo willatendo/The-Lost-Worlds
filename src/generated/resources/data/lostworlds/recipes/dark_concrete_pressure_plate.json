@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "lostworlds:dark_concrete"
+    }
+  ],
+  "result": {
+    "item": "lostworlds:dark_concrete_pressure_plate"
+  }
+}

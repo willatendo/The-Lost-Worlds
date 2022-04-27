@@ -1,8 +1,0 @@
-{
-	"parent": "minecraft:block/slab",
-	"textures": {
-		"bottom": "lostworlds:block/dirt_road",
-		"top": "lostworlds:block/dirt_road",
-		"side": "lostworlds:block/dirt_road"
-	}
-}

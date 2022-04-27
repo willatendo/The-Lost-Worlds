@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "lostworlds:paved_road"
+    }
+  },
+  "result": {
+    "item": "lostworlds:raised_paved_road",
+    "count": 6
+  }
+}

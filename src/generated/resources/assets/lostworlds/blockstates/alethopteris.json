@@ -4,7 +4,7 @@
       "model": "lostworlds:block/alethopteris_top"
     },
     "half=lower": {
-      "model": "lostworlds:block/alethopteris"
+      "model": "lostworlds:block/alethopteris_bottom"
     }
   }
 }

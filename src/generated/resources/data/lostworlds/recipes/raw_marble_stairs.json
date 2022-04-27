@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "lostworlds:raw_marble"
+    }
+  },
+  "result": {
+    "item": "lostworlds:raw_marble_stairs",
+    "count": 4
+  }
+}

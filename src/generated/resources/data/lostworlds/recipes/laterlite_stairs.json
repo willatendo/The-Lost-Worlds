@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "lostworlds:laterlite"
+    }
+  },
+  "result": {
+    "item": "lostworlds:laterlite_stairs",
+    "count": 4
+  }
+}

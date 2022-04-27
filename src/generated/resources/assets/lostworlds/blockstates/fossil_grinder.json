@@ -1,33 +1,33 @@
 {
   "variants": {
     "facing=north,on=false": {
-      "model": "lostworlds:block/fossil_grinder_off_gen"
+      "model": "lostworlds:block/fossil_grinder"
     },
     "facing=south,on=false": {
-      "model": "lostworlds:block/fossil_grinder_off_gen",
+      "model": "lostworlds:block/fossil_grinder",
       "y": 180
     },
     "facing=west,on=false": {
-      "model": "lostworlds:block/fossil_grinder_off_gen",
+      "model": "lostworlds:block/fossil_grinder",
       "y": 270
     },
     "facing=east,on=false": {
-      "model": "lostworlds:block/fossil_grinder_off_gen",
+      "model": "lostworlds:block/fossil_grinder",
       "y": 90
     },
     "facing=north,on=true": {
-      "model": "lostworlds:block/fossil_grinder_on_gen"
+      "model": "lostworlds:block/fossil_grinder_on"
     },
     "facing=south,on=true": {
-      "model": "lostworlds:block/fossil_grinder_on_gen",
+      "model": "lostworlds:block/fossil_grinder_on",
       "y": 180
     },
     "facing=west,on=true": {
-      "model": "lostworlds:block/fossil_grinder_on_gen",
+      "model": "lostworlds:block/fossil_grinder_on",
       "y": 270
     },
     "facing=east,on=true": {
-      "model": "lostworlds:block/fossil_grinder_on_gen",
+      "model": "lostworlds:block/fossil_grinder_on",
       "y": 90
     }
   }

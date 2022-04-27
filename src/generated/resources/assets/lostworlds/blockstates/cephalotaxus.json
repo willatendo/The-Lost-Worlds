@@ -4,7 +4,7 @@
       "model": "lostworlds:block/cephalotaxus_top"
     },
     "half=lower": {
-      "model": "lostworlds:block/cephalotaxus"
+      "model": "lostworlds:block/cephalotaxus_bottom"
     }
   }
 }

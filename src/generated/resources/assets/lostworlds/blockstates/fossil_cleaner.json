@@ -1,33 +1,33 @@
 {
   "variants": {
     "facing=north,on=false": {
-      "model": "lostworlds:block/fossil_cleaner_off_gen"
+      "model": "lostworlds:block/fossil_cleaner"
     },
     "facing=south,on=false": {
-      "model": "lostworlds:block/fossil_cleaner_off_gen",
+      "model": "lostworlds:block/fossil_cleaner",
       "y": 180
     },
     "facing=west,on=false": {
-      "model": "lostworlds:block/fossil_cleaner_off_gen",
+      "model": "lostworlds:block/fossil_cleaner",
       "y": 270
     },
     "facing=east,on=false": {
-      "model": "lostworlds:block/fossil_cleaner_off_gen",
+      "model": "lostworlds:block/fossil_cleaner",
       "y": 90
     },
     "facing=north,on=true": {
-      "model": "lostworlds:block/fossil_cleaner_on_gen"
+      "model": "lostworlds:block/fossil_cleaner_on"
     },
     "facing=south,on=true": {
-      "model": "lostworlds:block/fossil_cleaner_on_gen",
+      "model": "lostworlds:block/fossil_cleaner_on",
       "y": 180
     },
     "facing=west,on=true": {
-      "model": "lostworlds:block/fossil_cleaner_on_gen",
+      "model": "lostworlds:block/fossil_cleaner_on",
       "y": 270
     },
     "facing=east,on=true": {
-      "model": "lostworlds:block/fossil_cleaner_on_gen",
+      "model": "lostworlds:block/fossil_cleaner_on",
       "y": 90
     }
   }

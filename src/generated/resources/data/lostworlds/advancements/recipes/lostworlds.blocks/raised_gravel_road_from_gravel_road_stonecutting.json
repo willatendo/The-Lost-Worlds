@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:raised_gravel_road_from_gravel_road_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_gravel_road": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:gravel_road"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:raised_gravel_road_from_gravel_road_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_gravel_road",
+      "has_the_recipe"
+    ]
+  ]
+}

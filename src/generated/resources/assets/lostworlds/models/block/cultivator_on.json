@@ -1,0 +1,6 @@
+{
+  "parent": "lostworlds:block/cultivator",
+  "textures": {
+    "texture": "lostworlds:block/cultivator_on"
+  }
+}

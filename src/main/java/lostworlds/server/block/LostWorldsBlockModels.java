@@ -122,10 +122,9 @@ public class LostWorldsBlockModels {
 	public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> alethopteris() {
 		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> {
 			if (state.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.LOWER) {
-				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName(), provider.modLoc("block/" + block.getName() + "_stem"))).build();
+				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_bottom", provider.modLoc("block/large_seed_fern_stem")).texture("stem", provider.modLoc("block/alethopteris_stem"))).build();
 			} else {
-				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_top", provider.modLoc("block/" + block.getName() + "_leaves"))).build();
-
+				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_top", provider.modLoc("block/large_seed_fern_leaves")).texture("leaves_end", provider.modLoc("block/alethopteris_stem")).texture("leaves", provider.modLoc("block/alethopteris_leaves_end")).texture("stem", provider.modLoc("block/alethopteris_stem_top"))).build();
 			}
 		});
 	}
@@ -203,7 +202,16 @@ public class LostWorldsBlockModels {
 	}
 
 	public static <T extends MachineBlock> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> machine() {
-		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> state.getValue(MachineBlock.ON) ? ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_on_gen", provider.modLoc("block/" + block.getName() + "_on"))).rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 180) % 360).build() : ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_off_gen", provider.modLoc("block/" + block.getName() + "_on"))).rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 180) % 360).build());
+		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> {
+			boolean on = state.getValue(MachineBlock.ON);
+			BlockModelBuilder model = on ? provider.models().withExistingParent(block.getName() + "_on", provider.modLoc("block/" + block.getName())) : provider.models().withExistingParent(block.getName(), provider.modLoc("block/" + block.getName()));
+			if (on) {
+				model.texture("texture", provider.modLoc("block/" + block.getName() + "_on"));
+			} else {
+				model.texture("texture", provider.modLoc("block/" + block.getName() + "_off"));
+			}
+			return ConfiguredModel.builder().modelFile(model).rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 180) % 360).build();
+		});
 	}
 
 	public static <T extends HayBlock> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> thatch(ResourceLocation side, ResourceLocation top) {

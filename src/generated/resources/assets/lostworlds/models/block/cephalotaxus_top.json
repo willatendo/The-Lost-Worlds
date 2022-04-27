@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "lostworlds:block/dense_cross",
   "textures": {
-    "cross": "lostworlds:block/cephalotaxus_top"
+    "plant": "lostworlds:block/cephalotaxus_top"
   }
 }

@@ -1,7 +1,0 @@
-{
-	"parent": "minecraft:block/cube_column",
-	"textures": {
-		"end": "lostworlds:block/cypress_log_top",
-		"side": "lostworlds:block/cypress_log"
-	}
-}
