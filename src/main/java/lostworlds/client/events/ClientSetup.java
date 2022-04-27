@@ -1,7 +1,5 @@
 package lostworlds.client.events;
 
-import lostworlds.client.entity.render.AnomalocarisRenderer;
-import lostworlds.client.entity.render.CarnotaurusRenderer;
 import lostworlds.client.entity.render.ChilesaurusRenderer;
 import lostworlds.client.entity.render.ChilesaurusSkeletonRenderer;
 import lostworlds.client.entity.render.CryolophosaurusRenderer;
@@ -38,8 +36,6 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientSetup {
 	public static void entityRenderSetup() {
-		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.ANOMALOCARIS, manager -> new AnomalocarisRenderer(manager));
-		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.CARNOTAURUS, manager -> new CarnotaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.CHILESAURUS, manager -> new ChilesaurusRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.CHILESAURUS_SKELETON, manager -> new ChilesaurusSkeletonRenderer(manager));
 		RenderingRegistry.registerEntityRenderingHandler(LostWorldsEntities.CRYOLOPHOSAURUS, manager -> new CryolophosaurusRenderer(manager));

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "lostworlds:block/geyser_block"
+      "model": "lostworlds:block/geyser_block_gen"
     }
   }
 }

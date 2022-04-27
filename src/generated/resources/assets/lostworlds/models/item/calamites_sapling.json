@@ -1,3 +1,6 @@
 {
-  "parent": "lostworlds:block/calamites_sapling"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "lostworlds:block/calamites_sapling"
+  }
 }

@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cross",
   "textures": {
-    "all": "lostworlds:block/sequoia_sapling"
+    "cross": "lostworlds:block/sequoia_sapling"
   }
 }

@@ -1,3 +1,6 @@
 {
-  "parent": "lostworlds:block/permian_desert_ferns"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "lostworlds:block/permian_desert_ferns"
+  }
 }

@@ -6,6 +6,15 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "lostworlds:cephalotaxus",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ],
           "name": "lostworlds:cephalotaxus"
         }
       ],

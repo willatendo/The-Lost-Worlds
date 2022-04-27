@@ -99,7 +99,7 @@ public enum DinoTypes implements IStringSerializable {
 	public final DinoTypes[] dinoTypes = new DinoTypes[256];
 
 	private final String id;
-	private EntityType<? extends PrehistoricEntity> entityType;
+	private Supplier<EntityType<? extends PrehistoricEntity>> entityType;
 	private Class<? extends Entity> entity;
 	private ITag.INamedTag<Item> fossilTag;
 	private EntityType<FossilEntity> dirtySkull;
@@ -133,7 +133,8 @@ public enum DinoTypes implements IStringSerializable {
 	private Supplier<Item> softTissue;
 	private Supplier<Item> dna;
 	private Supplier<Item> dnaDisc;
-	private Supplier<Item> bloodSample;
+	private Supplier<Item> bloodSyringe;
+	private Supplier<Item> bloodVile;
 	private Supplier<Item> meat;
 	private Supplier<Item> fishBucket;
 	private Supplier<Item> feather;
@@ -255,7 +256,7 @@ public enum DinoTypes implements IStringSerializable {
 		return this.skeletonPick = item;
 	}
 
-	public EntityType<? extends PrehistoricEntity> setEntityType(EntityType<? extends PrehistoricEntity> entityType) {
+	public Supplier<EntityType<? extends PrehistoricEntity>> setEntityType(Supplier<EntityType<? extends PrehistoricEntity>> entityType) {
 		return this.entityType = entityType;
 	}
 
@@ -371,8 +372,8 @@ public enum DinoTypes implements IStringSerializable {
 		return this.egg;
 	}
 
-	public EntityType<? extends PrehistoricEntity> getEntityType() {
-		return entityType;
+	public Supplier<EntityType<? extends PrehistoricEntity>> getEntityType() {
+		return this.entityType;
 	}
 
 	public Block getEgg(EntityType<? extends PrehistoricEntity> entity) {
@@ -513,12 +514,20 @@ public enum DinoTypes implements IStringSerializable {
 		return this.dnaDisc = item;
 	}
 
-	public Supplier<Item> getBloodSample() {
-		return this.bloodSample;
+	public Supplier<Item> getBloodSyringe() {
+		return this.bloodSyringe;
 	}
 
-	public Supplier<Item> setBloodSample(Supplier<Item> item) {
-		return this.bloodSample = item;
+	public Supplier<Item> setBloodSyringe(Supplier<Item> item) {
+		return this.bloodSyringe = item;
+	}
+
+	public Supplier<Item> getBloodVile() {
+		return this.bloodVile;
+	}
+
+	public Supplier<Item> setBloodVile(Supplier<Item> item) {
+		return this.bloodVile = item;
 	}
 
 	public Callable<ItemStackTileEntityRenderer> getISTER() {

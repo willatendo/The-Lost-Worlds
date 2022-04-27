@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "lostworlds:item/soft_tissue"
+    "layer0": "lostworlds:item/plant_soft_tissue"
   }
 }

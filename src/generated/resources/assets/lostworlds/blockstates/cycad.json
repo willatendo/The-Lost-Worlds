@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "lostworlds:block/cycad"
+      "model": "lostworlds:block/cycad_gen"
     }
   }
 }

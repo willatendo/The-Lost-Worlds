@@ -5,6 +5,8 @@ import static lostworlds.LostWorldsMod.getRegistrate;
 import com.tterrag.registrate.util.entry.EntityEntry;
 
 import lostworlds.client.entity.render.AllosaurusRenderer;
+import lostworlds.client.entity.render.AnomalocarisRenderer;
+import lostworlds.client.entity.render.CarnotaurusRenderer;
 import lostworlds.client.entity.render.FossilPoacherRenderer;
 import lostworlds.client.entity.render.ModBoatRenderer;
 import lostworlds.server.LostWorldsTags;
@@ -79,8 +81,8 @@ public class LostWorldsEntities {
 	public static final EntityEntry<CrystalScarabGemItemEntity> CRYSTAL_SCARAB_GEM_ITEM = REGISTRATE.<CrystalScarabGemItemEntity>entity("crystal_scarab_gem_item", CrystalScarabGemItemEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer())).register();
 
 	public static final EntityEntry<AllosaurusEntity> ALLOSAURUS = REGISTRATE.entity("allosaurus", AllosaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(2.0F, 1.5F)).renderer(() -> AllosaurusRenderer::new).defaultSpawnEgg(DinoTypes.ALLOSAURUS.getPrimaryColour(), DinoTypes.ALLOSAURUS.getSecondaryColour()).attributes(() -> AllosaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
-	public static final EntityType<AnomalocarisEntity> ANOMALOCARIS = register("anomalocaris", AnomalocarisEntity::new, EntityClassification.WATER_CREATURE, 1.0F, 1.0F);
-	public static final EntityType<CarnotaurusEntity> CARNOTAURUS = register("carnotaurus", CarnotaurusEntity::new, EntityClassification.CREATURE, 2.0F, 1.5F);
+	public static final EntityEntry<AnomalocarisEntity> ANOMALOCARIS = REGISTRATE.entity("anomalocaris", AnomalocarisEntity::new, EntityClassification.WATER_CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> AnomalocarisRenderer::new).defaultSpawnEgg(DinoTypes.ANOMALOCARIS.getPrimaryColour(), DinoTypes.ANOMALOCARIS.getSecondaryColour()).attributes(() -> AnomalocarisEntity.createAttributes()).spawnPlacement(PlacementType.IN_WATER, Type.OCEAN_FLOOR, AnomalocarisEntity::spawnRules).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<CarnotaurusEntity> CARNOTAURUS = REGISTRATE.entity("carnotaurus", CarnotaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(2.0F, 1.5F)).renderer(() -> CarnotaurusRenderer::new).defaultSpawnEgg(DinoTypes.CARNOTAURUS.getPrimaryColour(), DinoTypes.CARNOTAURUS.getSecondaryColour()).attributes(() -> CarnotaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
 	public static final EntityType<ChilesaurusEntity> CHILESAURUS = register("chilesaurus", ChilesaurusEntity::new, EntityClassification.CREATURE, 1.0F, 1.0F);
 	public static final EntityType<FossilEntity> CHILESAURUS_SKELETON = register("chilesaurus_skeleton", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
 	public static final EntityType<CryolophosaurusEntity> CRYOLOPHOSAURUS = register("cryolophosaurus", CryolophosaurusEntity::new, EntityClassification.CREATURE, 1.0F, 0.75F);
@@ -190,8 +192,6 @@ public class LostWorldsEntities {
 
 		}
 
-		event.put(LostWorldsEntities.ANOMALOCARIS, AnomalocarisEntity.createAttributes());
-		event.put(LostWorldsEntities.CARNOTAURUS, CarnotaurusEntity.createAttributes());
 		event.put(LostWorldsEntities.CHILESAURUS, ChilesaurusEntity.createAttributes());
 		event.put(LostWorldsEntities.CHILESAURUS_SKELETON, FossilEntity.createAttributes());
 		event.put(LostWorldsEntities.CRYOLOPHOSAURUS, CryolophosaurusEntity.createAttributes());
@@ -224,7 +224,6 @@ public class LostWorldsEntities {
 	}
 
 	static {
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.ANOMALOCARIS, EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.OCEAN_FLOOR, AnomalocarisEntity::spawnRules);
 		EntitySpawnPlacementRegistry.register(LostWorldsEntities.CHILESAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
 		EntitySpawnPlacementRegistry.register(LostWorldsEntities.CRYOLOPHOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
 		EntitySpawnPlacementRegistry.register(LostWorldsEntities.DIICTODON, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
@@ -255,5 +254,6 @@ public class LostWorldsEntities {
 	}
 
 	public static void init() {
+		DinoTypes.ALLOSAURUS.setEntityType(() -> ALLOSAURUS.get());
 	}
 }

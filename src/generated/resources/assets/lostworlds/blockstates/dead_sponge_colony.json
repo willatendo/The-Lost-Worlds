@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "lostworlds:block/dead_sponge_colony"
+      "model": "lostworlds:block/dead_sponge_colony_gen"
     }
   }
 }

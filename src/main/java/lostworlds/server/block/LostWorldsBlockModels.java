@@ -124,7 +124,7 @@ public class LostWorldsBlockModels {
 			if (state.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.LOWER) {
 				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_bottom", provider.modLoc("block/large_seed_fern_stem")).texture("stem", provider.modLoc("block/alethopteris_stem"))).build();
 			} else {
-				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_top", provider.modLoc("block/large_seed_fern_leaves")).texture("leaves_end", provider.modLoc("block/alethopteris_stem")).texture("leaves", provider.modLoc("block/alethopteris_leaves_end")).texture("stem", provider.modLoc("block/alethopteris_stem_top"))).build();
+				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_top", provider.modLoc("block/large_seed_fern_leaves")).texture("leaves_end", provider.modLoc("block/alethopteris_leaves_end")).texture("leaves", provider.modLoc("block/alethopteris_leaves")).texture("stem", provider.modLoc("block/alethopteris_stem_top"))).build();
 			}
 		});
 	}
@@ -204,7 +204,7 @@ public class LostWorldsBlockModels {
 	public static <T extends MachineBlock> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> machine() {
 		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> {
 			boolean on = state.getValue(MachineBlock.ON);
-			BlockModelBuilder model = on ? provider.models().withExistingParent(block.getName() + "_on", provider.modLoc("block/" + block.getName())) : provider.models().withExistingParent(block.getName(), provider.modLoc("block/" + block.getName()));
+			BlockModelBuilder model = on ? provider.models().withExistingParent(block.getName() + "_on", provider.modLoc("block/" + block.getName())) : provider.models().withExistingParent(block.getName() + "_off", provider.modLoc("block/" + block.getName()));
 			if (on) {
 				model.texture("texture", provider.modLoc("block/" + block.getName() + "_on"));
 			} else {

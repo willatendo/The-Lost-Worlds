@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:dna_extractor",
+  "input": {
+    "item": "lostworlds:protosuchus_blood_vile"
+  },
+  "storage": {
+    "item": "lostworlds:empty_vile"
+  },
+  "output": "lostworlds:protosuchus_dna"
+}

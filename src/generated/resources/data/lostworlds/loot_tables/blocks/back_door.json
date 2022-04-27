@@ -6,6 +6,15 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "lostworlds:back_door",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ],
           "name": "lostworlds:back_door"
         }
       ],

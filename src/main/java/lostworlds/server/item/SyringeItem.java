@@ -1,7 +1,5 @@
 package lostworlds.server.item;
 
-import lostworlds.server.entity.terrestrial.jurassic.ChilesaurusEntity;
-import lostworlds.server.entity.terrestrial.jurassic.KentrosaurusEntity;
 import lostworlds.server.entity.utils.ModDamageSources;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.entity.LivingEntity;
@@ -19,19 +17,13 @@ public class SyringeItem extends ModItem {
 	@Override
 	public ActionResultType interactLivingEntity(ItemStack stack, PlayerEntity player, LivingEntity entity, Hand hand) {
 		if (entity != null) {
-			// Modded
-			if (entity instanceof ChilesaurusEntity) {
-				player.playSound(SoundEvents.PLAYER_HURT, 1.0F, 1.0F);
-				entity.hurt(ModDamageSources.PRICK, 1);
-				ItemStack blood = DinoTypes.CHILESAURUS.getBloodSample().get().getDefaultInstance();
-				player.setItemInHand(hand, blood);
-				return ActionResultType.SUCCESS;
-			} else if (entity instanceof KentrosaurusEntity) {
-				player.playSound(SoundEvents.PLAYER_HURT, 1.0F, 1.0F);
-				entity.hurt(ModDamageSources.PRICK, 1);
-				ItemStack blood = DinoTypes.KENTROSAURUS.getBloodSample().get().getDefaultInstance();
-				player.setItemInHand(hand, blood);
-				return ActionResultType.SUCCESS;
+			for (DinoTypes types : DinoTypes.values()) {
+				if (entity.getClass() == types.getEntity()) {
+					player.playSound(SoundEvents.PLAYER_HURT, 1.0F, 1.0F);
+					entity.hurt(ModDamageSources.PRICK, 1);
+					ItemStack blood = types.getBloodSyringe().get().getDefaultInstance();
+					player.setItemInHand(hand, blood);
+				}
 			}
 		}
 

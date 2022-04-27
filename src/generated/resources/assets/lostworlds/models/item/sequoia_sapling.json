@@ -1,3 +1,6 @@
 {
-  "parent": "lostworlds:block/sequoia_sapling"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "lostworlds:block/sequoia_sapling"
+  }
 }

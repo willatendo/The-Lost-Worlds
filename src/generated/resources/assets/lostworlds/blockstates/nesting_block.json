@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "lostworlds:block/nesting_block"
+      "model": "lostworlds:block/nesting_block_gen"
     }
   }
 }

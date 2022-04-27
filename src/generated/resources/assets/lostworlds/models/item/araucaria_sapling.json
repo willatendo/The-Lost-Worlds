@@ -1,3 +1,6 @@
 {
-  "parent": "lostworlds:block/araucaria_sapling"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "lostworlds:block/araucaria_sapling"
+  }
 }

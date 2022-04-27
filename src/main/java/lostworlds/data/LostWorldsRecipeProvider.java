@@ -8,6 +8,7 @@ import lostworlds.data.recipe.DnaExtractorRecipeBuilder;
 import lostworlds.data.recipe.DnaInjectorRecipeBuilder;
 import lostworlds.data.recipe.FossilCleanerRecipeBuilder;
 import lostworlds.data.recipe.FossilGrinderRecipeBuilder;
+import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.Plants;
 import lostworlds.server.block.Trees;
 import lostworlds.server.entity.utils.enums.DinoTypes;
@@ -33,6 +34,7 @@ public class LostWorldsRecipeProvider extends RecipeProvider {
 			}
 			FossilGrinderRecipeBuilder.dino(Ingredient.of(dinos.getFossilTag()), dinos.getSoftTissue().get()).unlockedBy("has_item", has(dinos.getFossilTag())).save(consumer);
 			DnaExtractorRecipeBuilder.simple(Ingredient.of(dinos.getSoftTissue().get()), dinos.getDNA().get()).unlockedBy("has_item", has(dinos.getSoftTissue().get())).save(consumer);
+			DnaExtractorRecipeBuilder.simple(Ingredient.of(dinos.getBloodVile().get()), dinos.getDNA().get()).unlockedBy("has_item", has(dinos.getSoftTissue().get())).save(consumer, LostWorldsUtils.rL(dinos.getId() + "_dna_from_blood"));
 			AnalyzerRecipeBuilder.simple(Ingredient.of(dinos.getDNA().get()), dinos.getDNADisc().get()).unlockedBy("has_item", has(dinos.getDNA().get())).save(consumer);
 		}
 

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "lostworlds:block/dicksonia"
+      "model": "lostworlds:block/dicksonia_gen"
     }
   }
 }

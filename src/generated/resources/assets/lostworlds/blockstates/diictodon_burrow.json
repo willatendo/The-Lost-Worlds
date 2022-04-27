@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "lostworlds:block/diictodon_burrow"
+      "model": "lostworlds:block/diictodon_burrow_gen"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "lostworlds:block/osmunda"
+      "model": "lostworlds:block/osmunda_gen"
     }
   }
 }
