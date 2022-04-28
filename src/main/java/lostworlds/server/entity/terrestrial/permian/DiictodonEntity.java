@@ -17,6 +17,7 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialEatPodzolGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.server.entity.goal.terrestrial.entity.DiictodonCreateTerritoryGoal;
 import lostworlds.server.entity.goal.terrestrial.entity.DiictodonLayEggGoal;
+import lostworlds.server.entity.semiaquatic.permian.RhinesuchusEntity;
 import lostworlds.server.entity.terrestrial.EggLayingEntity;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
@@ -76,6 +77,9 @@ public class DiictodonEntity extends EggLayingEntity {
 		this.goalSelector.addGoal(4, new TerrestrialEatMossySoilGoal(this));
 		this.goalSelector.addGoal(5, new SleepGoal(this));
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, DimetrodonEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, GorgonopsEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, RhinesuchusEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new DiictodonCreateTerritoryGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new NaturalBreedingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));

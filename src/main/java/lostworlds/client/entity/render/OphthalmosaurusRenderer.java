@@ -27,14 +27,10 @@ public class OphthalmosaurusRenderer extends GeoEntityRenderer<OphthalmosaurusEn
 
 	@Override
 	public void render(OphthalmosaurusEntity entity, float entityYaw, float partialTicks, MatrixStack stack, IRenderTypeBuffer buffer, int packedLight) {
-		stack.pushPose();
-
 		if (entity.isBaby()) {
 			stack.scale(0.15F, 0.15F, 0.15F);
 		}
 		stack.scale(1.0F, 1.0F, 1.0F);
-
-		stack.popPose();
 
 		super.render(entity, entityYaw, partialTicks, stack, buffer, packedLight);
 	}

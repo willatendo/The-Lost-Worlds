@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.semiaquatic.cretaceous.SuchomimusEntity;
+import lostworlds.server.entity.terrestrial.cretaceous.SuchomimusEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;

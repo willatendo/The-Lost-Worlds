@@ -2,9 +2,12 @@ package lostworlds.server.entity.terrestrial.cretaceous;
 
 import java.util.UUID;
 
+import javax.annotation.Nullable;
+
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.goal.NaturalBreedingGoal;
+import lostworlds.server.entity.goal.ReasonedAttackableTargetGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyBreedGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyLookAtGoal;
@@ -18,18 +21,23 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialReasonableAttackGoal;
 import lostworlds.server.entity.terrestrial.CarnivoreEntity;
 import lostworlds.server.entity.utils.FoodLists;
-import lostworlds.server.entity.utils.IReasonableAngerable;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.IAngerable;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.goal.HurtByTargetGoal;
+import net.minecraft.entity.ai.goal.ResetAngerGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.RangedInteger;
 import net.minecraft.util.TickRangeConverter;
 import net.minecraft.world.World;
@@ -39,12 +47,11 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class CarnotaurusEntity extends CarnivoreEntity implements IReasonableAngerable {
+public class CarnotaurusEntity extends CarnivoreEntity implements IAngerable {
+	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(CarnotaurusEntity.class, DataSerializers.INT);
+	private static final RangedInteger PERSISTENT_ANGER_TIME = TickRangeConverter.rangeOfSeconds(20, 39);
 	private static final Ingredient FOOD_ITEMS = FoodLists.CARNIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);
-
-	private static final RangedInteger PERSISTENT_ANGER_TIME = TickRangeConverter.rangeOfSeconds(20, 39);
-	private int remainingPersistentAngerTime;
 	private UUID persistentAngerTarget;
 
 	public CarnotaurusEntity(EntityType<? extends CarnotaurusEntity> entity, World world) {
@@ -72,6 +79,7 @@ public class CarnotaurusEntity extends CarnivoreEntity implements IReasonableAng
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
+		this.goalSelector.addGoal(3, new HurtByTargetGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialReasonableAttackGoal(this, 1.8F));
 		this.goalSelector.addGoal(5, new SleepGoal(this));
 		this.goalSelector.addGoal(5, new TerrestrialCreateTerritoryGoal(this, 1.0D));
@@ -89,6 +97,7 @@ public class CarnotaurusEntity extends CarnivoreEntity implements IReasonableAng
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, FukuivenatorEntity.class, this::isHungry));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, PsittacosaurusEntity.class, this::isHungry));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, ZephyrosaurusEntity.class, this::isHungry));
+		this.targetSelector.addGoal(8, new ResetAngerGoal<>(this, true));
 	}
 
 	@Override
@@ -112,6 +121,12 @@ public class CarnotaurusEntity extends CarnivoreEntity implements IReasonableAng
 	}
 
 	@Override
+	protected void defineSynchedData() {
+		super.defineSynchedData();
+		this.entityData.define(DATA_REMAINING_ANGER_TIME, 0);
+	}
+
+	@Override
 	public void addAdditionalSaveData(CompoundNBT nbt) {
 		super.addAdditionalSaveData(nbt);
 		this.addPersistentAngerSaveData(nbt);
@@ -120,14 +135,14 @@ public class CarnotaurusEntity extends CarnivoreEntity implements IReasonableAng
 	@Override
 	public void readAdditionalSaveData(CompoundNBT nbt) {
 		super.readAdditionalSaveData(nbt);
-		if (level.isClientSide) {
+		if (!this.level.isClientSide) {
 			this.readPersistentAngerSaveData((ServerWorld) this.level, nbt);
 		}
 	}
 
 	@Override
-	public void aiStep() {
-		super.aiStep();
+	protected void customServerAiStep() {
+		super.customServerAiStep();
 
 		if (!this.level.isClientSide) {
 			this.updatePersistentAnger((ServerWorld) this.level, true);
@@ -135,27 +150,27 @@ public class CarnotaurusEntity extends CarnivoreEntity implements IReasonableAng
 	}
 
 	@Override
-	public void startPersistentAngerTimer() {
-		this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.randomValue(this.random));
+	public int getRemainingPersistentAngerTime() {
+		return this.entityData.get(DATA_REMAINING_ANGER_TIME);
 	}
 
 	@Override
 	public void setRemainingPersistentAngerTime(int anger) {
-		this.remainingPersistentAngerTime = anger;
-	}
-
-	@Override
-	public int getRemainingPersistentAngerTime() {
-		return this.remainingPersistentAngerTime;
-	}
-
-	@Override
-	public void setPersistentAngerTarget(UUID target) {
-		this.persistentAngerTarget = target;
+		this.entityData.set(DATA_REMAINING_ANGER_TIME, anger);
 	}
 
 	@Override
 	public UUID getPersistentAngerTarget() {
 		return this.persistentAngerTarget;
+	}
+
+	@Override
+	public void setPersistentAngerTarget(@Nullable UUID uuid) {
+		this.persistentAngerTarget = uuid;
+	}
+
+	@Override
+	public void startPersistentAngerTimer() {
+		this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.randomValue(this.random));
 	}
 }

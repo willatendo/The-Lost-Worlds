@@ -27,14 +27,10 @@ public class ZephyrosaurusRenderer extends GeoEntityRenderer<ZephyrosaurusEntity
 
 	@Override
 	public void render(ZephyrosaurusEntity entity, float entityYaw, float partialTicks, MatrixStack stack, IRenderTypeBuffer bufferIn, int packedLightIn) {
-		stack.pushPose();
-
 		if (entity.isBaby()) {
 			stack.scale(0.15F, 0.15F, 0.15F);
 		}
 		stack.scale(1.0F, 1.0F, 1.0F);
-
-		stack.popPose();
 
 		super.render(entity, entityYaw, partialTicks, stack, bufferIn, packedLightIn);
 	}

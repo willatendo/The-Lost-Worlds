@@ -47,7 +47,6 @@ import lostworlds.server.entity.fossil.FossilEntity;
 import lostworlds.server.entity.illager.FossilPoacherEntity;
 import lostworlds.server.entity.item.ChargedCrystalScarabGemItemEntity;
 import lostworlds.server.entity.item.CrystalScarabGemItemEntity;
-import lostworlds.server.entity.semiaquatic.cretaceous.SuchomimusEntity;
 import lostworlds.server.entity.semiaquatic.modern.GreatAukEntity;
 import lostworlds.server.entity.semiaquatic.permian.ProtosuchusEntity;
 import lostworlds.server.entity.semiaquatic.permian.RhinesuchusEntity;
@@ -57,6 +56,7 @@ import lostworlds.server.entity.terrestrial.cretaceous.FukuivenatorEntity;
 import lostworlds.server.entity.terrestrial.cretaceous.GiganotosaurusEntity;
 import lostworlds.server.entity.terrestrial.cretaceous.OuranosaurusEntity;
 import lostworlds.server.entity.terrestrial.cretaceous.PsittacosaurusEntity;
+import lostworlds.server.entity.terrestrial.cretaceous.SuchomimusEntity;
 import lostworlds.server.entity.terrestrial.cretaceous.TyrannosaurusEntity;
 import lostworlds.server.entity.terrestrial.cretaceous.UtahraptorEntity;
 import lostworlds.server.entity.terrestrial.cretaceous.ZephyrosaurusEntity;
@@ -91,7 +91,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.registries.ForgeRegistries;
 
-// Todo: Angry Entities
+// Todo: Angry Entities 
 @EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.MOD)
 public class LostWorldsEntities {
 	public static final LostWorldsRegistrate REGISTRATE = getRegistrate();

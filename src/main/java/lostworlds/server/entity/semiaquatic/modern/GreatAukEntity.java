@@ -5,6 +5,7 @@ import java.util.Random;
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.goal.NaturalBreedingGoal;
+import lostworlds.server.entity.goal.ReasonedAttackableTargetGoal;
 import lostworlds.server.entity.goal.semiaquatic.SemiAquaticFindWaterGoal;
 import lostworlds.server.entity.goal.semiaquatic.SemiAquaticLeaveWaterGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepGoal;
@@ -28,11 +29,9 @@ import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.BreatheAirGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.fish.CodEntity;
-import net.minecraft.entity.passive.fish.SalmonEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -79,8 +78,7 @@ public class GreatAukEntity extends CarnivoreSemiAquaticEntity {
 		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.GREAT_AUK));
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, CodEntity.class, true));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, SalmonEntity.class, true));
+		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, CodEntity.class, this::isHungry));
 	}
 
 	@Override

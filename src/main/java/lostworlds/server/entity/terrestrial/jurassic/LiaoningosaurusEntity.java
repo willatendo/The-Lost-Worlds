@@ -1,8 +1,13 @@
 package lostworlds.server.entity.terrestrial.jurassic;
 
+import java.util.UUID;
+
+import javax.annotation.Nullable;
+
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.goal.NaturalBreedingGoal;
+import lostworlds.server.entity.goal.ReasonedAttackableTargetGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyAvoidEntityGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyBreedGoal;
@@ -18,19 +23,29 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialEatPodzolGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.server.entity.terrestrial.EggLayingEntity;
+import lostworlds.server.entity.terrestrial.cretaceous.CarnotaurusEntity;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.CreatureDiet;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.IAngerable;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.goal.HurtByTargetGoal;
+import net.minecraft.entity.ai.goal.ResetAngerGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EntityPredicates;
+import net.minecraft.util.RangedInteger;
+import net.minecraft.util.TickRangeConverter;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -38,9 +53,12 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class LiaoningosaurusEntity extends EggLayingEntity {
+public class LiaoningosaurusEntity extends EggLayingEntity implements IAngerable {
+	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(CarnotaurusEntity.class, DataSerializers.INT);
+	private static final RangedInteger PERSISTENT_ANGER_TIME = TickRangeConverter.rangeOfSeconds(20, 39);
 	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);
+	private UUID persistentAngerTarget;
 
 	public LiaoningosaurusEntity(EntityType<? extends LiaoningosaurusEntity> entity, World world) {
 		super(entity, world);
@@ -72,6 +90,7 @@ public class LiaoningosaurusEntity extends EggLayingEntity {
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
+		this.goalSelector.addGoal(3, new HurtByTargetGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialEatGrassGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialEatPodzolGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialEatMossySoilGoal(this));
@@ -83,6 +102,12 @@ public class LiaoningosaurusEntity extends EggLayingEntity {
 		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.LIAONINGOSAURUS));
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
+		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, PlayerEntity.class, this::isAngryAt));
+		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, AllosaurusEntity.class, this::isAngryAt));
+		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, CryolophosaurusEntity.class, this::isAngryAt));
+		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, DilophosaurusEntity.class, this::isAngryAt));
+		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, DilophosaurusEntity.class, this::isAngryAt));
+		this.targetSelector.addGoal(8, new ResetAngerGoal<>(this, true));
 	}
 
 	@Override
@@ -103,5 +128,59 @@ public class LiaoningosaurusEntity extends EggLayingEntity {
 	@Override
 	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
 		return LostWorldsEntities.LIAONINGOSAURUS.create(world);
+	}
+
+	@Override
+	protected void defineSynchedData() {
+		super.defineSynchedData();
+		this.entityData.define(DATA_REMAINING_ANGER_TIME, 0);
+	}
+
+	@Override
+	public void addAdditionalSaveData(CompoundNBT nbt) {
+		super.addAdditionalSaveData(nbt);
+		this.addPersistentAngerSaveData(nbt);
+	}
+
+	@Override
+	public void readAdditionalSaveData(CompoundNBT nbt) {
+		super.readAdditionalSaveData(nbt);
+		if (!this.level.isClientSide) {
+			this.readPersistentAngerSaveData((ServerWorld) this.level, nbt);
+		}
+	}
+
+	@Override
+	protected void customServerAiStep() {
+		super.customServerAiStep();
+
+		if (!this.level.isClientSide) {
+			this.updatePersistentAnger((ServerWorld) this.level, true);
+		}
+	}
+
+	@Override
+	public int getRemainingPersistentAngerTime() {
+		return this.entityData.get(DATA_REMAINING_ANGER_TIME);
+	}
+
+	@Override
+	public void setRemainingPersistentAngerTime(int anger) {
+		this.entityData.set(DATA_REMAINING_ANGER_TIME, anger);
+	}
+
+	@Override
+	public UUID getPersistentAngerTarget() {
+		return this.persistentAngerTarget;
+	}
+
+	@Override
+	public void setPersistentAngerTarget(@Nullable UUID uuid) {
+		this.persistentAngerTarget = uuid;
+	}
+
+	@Override
+	public void startPersistentAngerTimer() {
+		this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.randomValue(this.random));
 	}
 }

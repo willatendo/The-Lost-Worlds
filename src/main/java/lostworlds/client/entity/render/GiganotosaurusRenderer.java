@@ -27,15 +27,10 @@ public class GiganotosaurusRenderer extends GeoEntityRenderer<GiganotosaurusEnti
 
 	@Override
 	public void render(GiganotosaurusEntity entity, float entityYaw, float partialTicks, MatrixStack stack, IRenderTypeBuffer buffer, int packedLight) {
-		stack.pushPose();
-
-		// Todo: Fix Adult Model So We Don't Scale it up
 		if (entity.isBaby()) {
 			stack.scale(0.15F, 0.15F, 0.15F);
 		}
 		stack.scale(1.5F, 1.5F, 1.5F);
-
-		stack.popPose();
 
 		super.render(entity, entityYaw, partialTicks, stack, buffer, packedLight);
 	}

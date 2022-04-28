@@ -27,15 +27,10 @@ public class AllosaurusRenderer extends GeoEntityRenderer<AllosaurusEntity> {
 
 	@Override
 	public void render(AllosaurusEntity entity, float entityYaw, float partialTicks, MatrixStack stack, IRenderTypeBuffer buffer, int packedLight) {
-		stack.pushPose();
-
-		// Todo: Fix Adult Model So We Don't Scale it up
 		if (entity.isBaby()) {
 			stack.scale(0.15F, 0.15F, 0.15F);
 		}
 		stack.scale(1.3F, 1.3F, 1.3F);
-
-		stack.popPose();
 
 		super.render(entity, entityYaw, partialTicks, stack, buffer, packedLight);
 	}
