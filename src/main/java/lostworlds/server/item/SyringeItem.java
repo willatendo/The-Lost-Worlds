@@ -1,16 +1,24 @@
 package lostworlds.server.item;
 
-import lostworlds.server.entity.terrestrial.jurassic.AllosaurusEntity;
+import java.util.ArrayList;
+import java.util.function.Supplier;
+
+import com.mojang.datafixers.util.Pair;
+
 import lostworlds.server.entity.utils.ModDamageSources;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvents;
 
 public class SyringeItem extends ModItem {
+	public static final ArrayList<Pair<Supplier<? extends EntityType<? extends Entity>>, Supplier<Item>>> MAP = new ArrayList<>();
+
 	public SyringeItem(Properties properties) {
 		super(properties);
 	}
@@ -18,13 +26,16 @@ public class SyringeItem extends ModItem {
 	@Override
 	public ActionResultType interactLivingEntity(ItemStack stack, PlayerEntity player, LivingEntity entity, Hand hand) {
 		if (entity != null) {
-			if (entity instanceof AllosaurusEntity) {
-				player.playSound(SoundEvents.PLAYER_HURT, 1.0F, 1.0F);
-				entity.hurt(ModDamageSources.PRICK, 1);
-				ItemStack blood = DinoTypes.ALLOSAURUS.getBloodSyringe().get().getDefaultInstance();
-				player.setItemInHand(hand, blood);
+			for (Pair<Supplier<? extends EntityType<? extends Entity>>, Supplier<Item>> map : MAP) {
+				if (entity.getType() == map.getFirst().get()) {
+					player.playSound(SoundEvents.PLAYER_HURT, 1.0F, 1.0F);
+					entity.hurt(ModDamageSources.PRICK, 1);
+					stack.shrink(1);
+					player.setItemInHand(hand, map.getSecond().get().getDefaultInstance());
+					return ActionResultType.SUCCESS;
+				}
 			}
 		}
-		return ActionResultType.FAIL;
+		return ActionResultType.PASS;
 	}
 }

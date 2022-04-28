@@ -501,7 +501,7 @@ public class LostWorldsCommonConfig {
 		this.rhinesuchusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Rhinesuchus in a spawn group").translation(TRANSLATION_TEXT + "rhinesuchusSpawnGroupMinimum").defineInRange("rhinesuchusSpawnGroupMinimum", 5, 1, 100);
 		this.rhinesuchusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Rhinesuchus in a spawn group").translation(TRANSLATION_TEXT + "rhinesuchusSpawnGroupMaximum").defineInRange("rhinesuchusSpawnGroupMaximum", 11, 1, 100);
 
-		this.suchomimusHeath = builder.comment("Sets the heath of the Suchomimus").translation(TRANSLATION_TEXT + "suchomimusHeath").defineInRange("suchomimusHeath", 10.0D, 1.0D, 999.0D);
+		this.suchomimusHeath = builder.comment("Sets the heath of the Suchomimus").translation(TRANSLATION_TEXT + "suchomimusHeath").defineInRange("suchomimusHeath", 20.0D, 1.0D, 999.0D);
 		this.suchomimusAttackDamage = builder.comment("Sets the attack damage of the Suchomimus").translation(TRANSLATION_TEXT + "suchomimusAttackDamage").defineInRange("suchomimusAttackDamage", 5.0D, 1.0D, 999.0D);
 		this.suchomimusSpawnWeight = builder.comment("Sets the weight of Suchomimus spawning").translation(TRANSLATION_TEXT + "suchomimusSpawnWeight").defineInRange("suchomimusSpawnWeight", 3, 1, 100);
 		this.suchomimusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Suchomimus in a spawn group").translation(TRANSLATION_TEXT + "suchomimusSpawnGroupMinimum").defineInRange("suchomimusSpawnGroupMinimum", 1, 1, 100);

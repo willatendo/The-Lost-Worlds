@@ -1,8 +1,18 @@
 [
   {
-    "name": "allosaurus",
+    "name": "allosaurus_1",
     "type": "text",
-    "data": "creatures/allosaurus.json"
+    "data": "creatures/allosaurus_1.json"
+  },
+  {
+    "name": "allosaurus_2",
+    "type": "text",
+    "data": "creatures/allosaurus_2.json"
+  },
+  {
+    "name": "allosaurus_3",
+    "type": "text",
+    "data": "creatures/allosaurus_3.json"
   },
   {
     "name": "allosaurus_info",
@@ -10,14 +20,24 @@
     "data": "creatures/allosaurus_info.json"
   },
   {
-    "name": "anomalocaris",
+    "name": "anomalocaris_1",
     "type": "text",
-    "data": "creatures/anomalocaris.json"
+    "data": "creatures/anomalocaris_1.json"
+  },
+  {
+    "name": "anomalocaris_2",
+    "type": "text",
+    "data": "creatures/anomalocaris_2.json"
   },
   {
     "name": "anomalocaris_info",
     "type": "text",
     "data": "creatures/anomalocaris_info.json"
+  },
+  {
+    "name": "anomalocaris_padding",
+    "type": "text",
+    "data": "creatures/anomalocaris_padding.json"
   },
   {
     "name": "carnotaurus",

@@ -8,6 +8,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
 import com.tterrag.registrate.util.entry.BlockEntry;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -23,6 +24,7 @@ import lostworlds.server.entity.illager.FossilPoacherEntity;
 import lostworlds.server.entity.spawner.FossilPoachingGroupSpawner;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.item.LostWorldsItems;
+import lostworlds.server.item.SyringeItem;
 import lostworlds.server.structure.LostWorldsStructures;
 import lostworlds.server.trades.EmeraldsForMultiItemTrade;
 import lostworlds.server.trades.MultiItemForEmeraldsTrade;
@@ -68,8 +70,6 @@ public class ServerSetup {
 		@SubscribeEvent
 		public static void onServerAboutToStartEvent(FMLServerAboutToStartEvent event) {
 			if (LostWorldsConfig.COMMON_CONFIG.villageStructures.get()) {
-				LostWorldsUtils.LOGGER.debug("Loading: Village Structures");
-
 				// Plains Village Structures
 				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/plains/houses"), LostWorldsUtils.rL("village/plains/plains_archaeologist_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
 				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/plains/houses"), LostWorldsUtils.rL("village/plains/plains_paleontology_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
@@ -89,8 +89,6 @@ public class ServerSetup {
 				// Desert Village Structures
 				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/desert/houses"), LostWorldsUtils.rL("village/desert/desert_archaeologist_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
 				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/desert/houses"), LostWorldsUtils.rL("village/desert/desert_paleontology_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
-
-				LostWorldsUtils.LOGGER.debug("Finished: Village Structures");
 			}
 		}
 	}
@@ -98,8 +96,6 @@ public class ServerSetup {
 	@EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.MOD)
 	static class ModVillagerTrades {
 		public static void fillTradeData() {
-			LostWorldsUtils.LOGGER.debug("Loading: Villager Trades");
-
 			// Archaeologist
 			VillagerTrades.ITrade[] archaeology1 = new VillagerTrades.ITrade[] { new VillagerTrades.ItemsForEmeraldsTrade(Items.CLAY_BALL, 2, 20, 2), new VillagerTrades.ItemsForEmeraldsTrade(Items.CLAY, 16, 10, 5), new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsBlocks.ARCHAEOLOGY_TABLE.get(), 15, 1, 12, 3), };
 			VillagerTrades.ITrade[] archaeology2 = new VillagerTrades.ITrade[] { new VillagerTrades.ItemsForEmeraldsTrade(LostWorldsItems.WET_PAPER.get(), 3, 5, 4) };
@@ -130,8 +126,6 @@ public class ServerSetup {
 
 			VillagerTrades.TRADES.put(LostWorldsVillagerProfessions.ARCHAEOLOGIST.get(), toIntMap(ImmutableMap.of(1, archaeology1, 2, archaeology2, 3, archaeology3, 4, archaeology4, 5, archaeology5)));
 			VillagerTrades.TRADES.put(LostWorldsVillagerProfessions.PALEONTOLOGIST.get(), toIntMap(ImmutableMap.of(1, paleontology1, 2, paleontology2, 3, paleontology3, 4, paleontology4, 5, paleontology5)));
-
-			LostWorldsUtils.LOGGER.debug("Finished: Villager Trades");
 		}
 
 		private static Int2ObjectMap<VillagerTrades.ITrade[]> toIntMap(ImmutableMap<Integer, VillagerTrades.ITrade[]> tradeMap) {
@@ -191,13 +185,10 @@ public class ServerSetup {
 	static class IllagerSetup {
 		@SubscribeEvent
 		public void onEntityJoin(EntityJoinWorldEvent event) {
-			LostWorldsUtils.LOGGER.debug("Loading: Adding Goals");
-
 			if (event.getEntity() instanceof VillagerEntity) {
 				VillagerEntity villager = (VillagerEntity) event.getEntity();
 				villager.goalSelector.addGoal(1, new AvoidEntityGoal(villager, FossilPoacherEntity.class, 16.0F, 0.7D, 0.7D));
 			}
-			LostWorldsUtils.LOGGER.debug("Finished: Adding Goals");
 		}
 	}
 
@@ -324,6 +315,10 @@ public class ServerSetup {
 			addToFlammables(LostWorldsBlocks.SEQUOIA_WOOD, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_SEQUOIA_LOG, 5, 5);
 			addToFlammables(LostWorldsBlocks.STRIPPED_SEQUOIA_WOOD, 5, 5);
+
+			for (DinoTypes types : DinoTypes.values()) {
+				SyringeItem.MAP.add(Pair.of(types.getEntityType(), types.getBloodSyringe()));
+			}
 		}
 
 		private static void addToStrippingMap(BlockEntry<? extends Block> logBlock, BlockEntry<? extends Block> strippedLogBlock) {

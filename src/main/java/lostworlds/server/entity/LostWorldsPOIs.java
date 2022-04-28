@@ -13,7 +13,6 @@ public class LostWorldsPOIs {
 
 	public static final RegistryObject<PointOfInterestType> ARCHAEOLOGY_TABLE = POI_TYPES.register("archaeology_table", () -> new PointOfInterestType("archaeology_table", PointOfInterestType.getBlockStates(LostWorldsBlocks.ARCHAEOLOGY_TABLE.get()), 1, 1));
 	public static final RegistryObject<PointOfInterestType> PALEONTOLOGY_TABLE = POI_TYPES.register("paleontology_table", () -> new PointOfInterestType("paleontology_table", PointOfInterestType.getBlockStates(LostWorldsBlocks.PALEONTOLOGY_TABLE.get()), 1, 1));
-	public static final RegistryObject<PointOfInterestType> PALEOBOTANY_TABLE = POI_TYPES.register("paleobotany_table", () -> new PointOfInterestType("paleobotany_table", PointOfInterestType.getBlockStates(LostWorldsBlocks.PALEOBOTANY_TABLE.get()), 1, 1));
 
 	// Registry
 	public static void init(IEventBus bus) {

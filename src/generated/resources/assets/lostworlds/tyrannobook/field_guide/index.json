@@ -1,14 +1,5 @@
 [
   {
-    "name": "foremention",
-    "data": "sections/foremention.json",
-    "icon": {
-      "item": {
-        "id": "minecraft:paper"
-      }
-    }
-  },
-  {
     "name": "creatures",
     "data": "sections/creatures.json",
     "icon": {

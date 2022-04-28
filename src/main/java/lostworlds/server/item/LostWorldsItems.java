@@ -86,7 +86,7 @@ public class LostWorldsItems {
 	// Utilities
 	public static final ItemEntry<WetPaperItem> WET_PAPER = REGISTRATE.item("wet_paper", WetPaperItem::new).recipe((item, provider) -> ShapelessRecipeBuilder.shapeless(item.get(), 8).requires(Ingredient.of(Items.PAPER), 8).requires(Items.WATER_BUCKET).unlockedBy("has_item", provider.hasItem(Items.WATER_BUCKET)).save(provider)).register();
 	public static final ItemEntry<SyringeItem> SYRINGE = REGISTRATE.item("syringe", SyringeItem::new).properties(properties -> properties.stacksTo(1)).recipe((item, provider) -> ShapedRecipeBuilder.shaped(item.get()).pattern(" $#").pattern(" #$").pattern("@  ").define('$', ItemTags.STONE_CRAFTING_MATERIALS).define('#', Blocks.GLASS_PANE).define('@', Items.GOLD_INGOT).unlockedBy("has_item", provider.hasItem(Items.GOLD_INGOT)).save(provider)).register();
-	public static final ItemEntry<LostWorldsLexicon> LOST_WORLDS_LEXICON = REGISTRATE.item("lost_worlds_lexicon", LostWorldsLexicon::new).properties(properties -> properties.stacksTo(1).rarity(Rarity.RARE).fireResistant()).register();
+	public static final ItemEntry<LexiconItem> LOST_WORLDS_LEXICON = REGISTRATE.item("lost_worlds_lexicon", LexiconItem::new).properties(properties -> properties.stacksTo(1).rarity(Rarity.RARE).fireResistant()).register();
 	public static final ItemEntry<FieldGuideItem> FIELD_GUIDE = REGISTRATE.item("field_guide", FieldGuideItem::new).properties(properties -> properties.stacksTo(1)).register();
 	public static final ItemEntry<TabletItem> TABLET = REGISTRATE.item("tablet", TabletItem::new).properties(Properties -> Properties.stacksTo(1)).recipe((item, provider) -> ShapedRecipeBuilder.shaped(item.get()).pattern("#@#").pattern("#$#").define('#', Items.IRON_INGOT).define('@', LostWorldsItems.COMPUTER_SCREEN.get()).define('$', LostWorldsItems.COMPUTER_CORE.get()).unlockedBy("has_item", provider.hasItem(Items.IRON_INGOT)).save(provider)).register();
 	public static final ItemEntry<Item> CONTRACEPTIVES = REGISTRATE.item("contraceptives", Item::new).register();
@@ -198,7 +198,7 @@ public class LostWorldsItems {
 				dinos.setFeather(() -> feather.get());
 			}
 			if (dinos.createHide().contains(dinos)) {
-				REGISTRATE.item(dinos.name().toLowerCase() + "_hide", Item::new).model(textured("plastered_fossil")).tag(Tags.Items.LEATHER, LostWorldsTags.ModItemTags.CREATURE_ITEMS).register();
+				REGISTRATE.item(dinos.name().toLowerCase() + "_hide", Item::new).model(textured("dino_hide")).tag(Tags.Items.LEATHER, LostWorldsTags.ModItemTags.CREATURE_ITEMS).register();
 			}
 			if (dinos.hasSpawn().contains(dinos)) {
 				ItemEntry<SpawnItem> spawn = REGISTRATE.item(dinos.name().toLowerCase() + "_spawn", properties -> new SpawnItem(properties, () -> (EntityType<? extends PrehistoricEntity>) dinos.getEntityType().get())).model(model("template_spawn")).color(() -> () -> (stack, colour) -> dinos.getColour(colour, 0x000000, dinos.getSetEggColour())).register();

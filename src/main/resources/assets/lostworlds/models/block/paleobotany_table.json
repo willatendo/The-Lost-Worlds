@@ -1,7 +1,0 @@
-{
-	"parent": "lostworlds:block/template_paleobotany_table",
-	"textures": {
-		"planks": "block/oak_planks",
-		"log": "block/oak_log"
-	}
-}

@@ -22,7 +22,6 @@ import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
@@ -75,10 +74,5 @@ public class ArchaeologyTableBlock extends Block implements IWaterLoggable {
 		return new SimpleNamedContainerProvider((windowID, playerInventory, player) -> {
 			return new ArchaeologyTableContainer(LostWorldsContainers.ARCHAEOLOGY_CONTAINER.get(), windowID, playerInventory, IWorldPosCallable.create(world, pos));
 		}, NAME);
-	}
-
-	@Override
-	public float getShadeBrightness(BlockState state, IBlockReader reader, BlockPos pos) {
-		return 1.0F;
 	}
 }

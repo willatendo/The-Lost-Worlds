@@ -82,7 +82,7 @@ import software.bernie.geckolib3.GeckoLib;
 @Mod(LostWorldsMod.ID)
 public class LostWorldsMod {
 	public static final String ID = "lostworlds";
-	public static final NonNullSupplier<LostWorldsRegistrate> CENTRAL_REGISTRATE = LostWorldsRegistrate.lazy(ID);
+	public static final NonNullSupplier<LostWorldsRegistrate> REGISTRATE = LostWorldsRegistrate.lazy(ID);
 
 	public LostWorldsMod() {
 		// Server/Common
@@ -375,6 +375,6 @@ public class LostWorldsMod {
 	}
 
 	public static LostWorldsRegistrate getRegistrate() {
-		return CENTRAL_REGISTRATE.get();
+		return REGISTRATE.get();
 	}
 }

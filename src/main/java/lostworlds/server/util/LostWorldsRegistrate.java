@@ -74,16 +74,6 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.SCORCHED_LOGS, LostWorldsTags.ModItemTags.SCORCHED_LOGS));
 		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.SEQUOIA_LOGS, LostWorldsTags.ModItemTags.SEQUOIA_LOGS));
 		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.WOODEN_PLANKS, LostWorldsTags.ModItemTags.WOODEN_PLANKS));
-
-//		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("itemGroup.lostworlds.items", "Lost Worlds Items"));
-//		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("itemGroup.lostworlds.blocks", "Lost Worlds Blocks"));
-//		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("icon.lostworlds.lost_worlds_lexicon.desc", "An Everything-You-Need-to-Know Book!"));
-//		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("icon.lostworlds.field_guide.desc", "Willatendo - Volume 3"));
-//		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("icon.lostworlds.music_disc_ascented.desc", "Willatendo - Ascented"));
-//		this.addDataGenerator(ProviderType.LANG, provider -> provider.add("icon.lostworlds.collectible.desc", "It's a collectible!"));
-//		for (DyeColor color : DyeColor.values()) {
-//			this.addDataGenerator(ProviderType.LANG, provider -> provider.add("block.minecraft.banner.scarab." + color.getName(), Arrays.stream(color.getName().toLowerCase(Locale.ROOT).split("_")).map(StringUtils::capitalize).collect(Collectors.joining(" ")) + " Scarab"));
-//		}
 	}
 
 	public static NonNullSupplier<LostWorldsRegistrate> lazy(String modid) {

@@ -1,7 +1,0 @@
-{
-	"parent": "lostworlds:block/template_two_part_cross",
-	"textures": {
-		"stem": "lostworlds:block/williamsonia_branch_stem",
-		"leaves": "lostworlds:block/williamsonia_branch_leaves"
-	}
-}

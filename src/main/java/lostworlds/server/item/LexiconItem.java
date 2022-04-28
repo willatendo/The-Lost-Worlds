@@ -14,14 +14,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
-public class LostWorldsLexicon extends TyrannobookItem {
-	public LostWorldsLexicon(Properties properties) {
+public class LexiconItem extends TyrannobookItem {
+	public LexiconItem(Properties properties) {
 		super(properties);
 	}
 
 	@Override
 	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> text, ITooltipFlag flag) {
-		text.add(LostWorldsUtils.gTC("icon", "lost_worlds_lexicon.desc"));
+		text.add(LostWorldsUtils.gTC("item", "lost_worlds_lexicon.desc"));
 	}
 
 	@Override
