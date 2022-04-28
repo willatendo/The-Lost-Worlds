@@ -19,6 +19,7 @@ import lostworlds.server.block.utils.Foods;
 import lostworlds.server.container.recipes.RecipeManager;
 import lostworlds.server.craft.AmberDNAExtractorRecipeManager;
 import lostworlds.server.dimension.LostWorldsDimensions;
+import lostworlds.server.entity.terrestrial.PrehistoricEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.entity.utils.enums.TimeEras;
 import lostworlds.server.item.CrystalScarabGemItem.CEChargedCrystalScarabGemItem;
@@ -35,12 +36,12 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.data.SmithingRecipeBuilder;
+import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BannerPatternItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemTier;
 import net.minecraft.item.Items;
 import net.minecraft.item.Rarity;
@@ -198,13 +199,10 @@ public class LostWorldsItems {
 				REGISTRATE.item(dinos.name().toLowerCase() + "_hide", Item::new).model(textured("plastered_fossil")).tag(Tags.Items.LEATHER, LostWorldsTags.ModItemTags.CREATURE_ITEMS).register();
 			}
 			if (dinos.hasSpawn().contains(dinos)) {
-				ItemEntry<SpawnItem> spawn = REGISTRATE.item(dinos.name().toLowerCase() + "_spawn", properties -> new SpawnItem(properties, () -> dinos.getEntityType().get())).model(model("template_spawn")).color(() -> () -> (stack, colour) -> dinos.getColour(colour, 0x000000, dinos.getSetEggColour())).register();
+				ItemEntry<SpawnItem> spawn = REGISTRATE.item(dinos.name().toLowerCase() + "_spawn", properties -> new SpawnItem(properties, () -> (EntityType<? extends PrehistoricEntity>) dinos.getEntityType().get())).model(model("template_spawn")).color(() -> () -> (stack, colour) -> dinos.getColour(colour, 0x000000, dinos.getSetEggColour())).register();
 				dinos.setSpawn(() -> spawn.get());
 			}
 
-			if (dinos != DinoTypes.ALLOSAURUS) {
-				REGISTRATE.item(dinos.name().toLowerCase() + "_spawn_egg", properties -> new ModSpawnEggItem(() -> dinos.getEntityType().get(), dinos.getPrimaryColour(), dinos.getSecondaryColour(), properties)).properties(properties -> properties.tab(ItemGroup.TAB_MISC)).model(spawnEgg()).register();
-			}
 			ItemEntry<Item> softTissue = REGISTRATE.item(dinos.toString().toLowerCase() + "_soft_tissue", Item::new).tag(LostWorldsTags.ModItemTags.SOFT_TISSUE).model(textured("soft_tissue")).tag(LostWorldsTags.ModItemTags.SOFT_TISSUE).register();
 			dinos.setSoftTissue(() -> softTissue.get());
 			ItemEntry<Item> bloodSyringe = REGISTRATE.item(dinos.name().toLowerCase() + "_blood_syringe", Item::new).properties(properties -> properties.craftRemainder(LostWorldsItems.SYRINGE.get())).model(textured("blood_syringe")).tag(LostWorldsTags.ModItemTags.BLOOD_SYRINGES).register();
@@ -224,7 +222,7 @@ public class LostWorldsItems {
 				REGISTRATE.item("cooked_" + dinos.name().toLowerCase() + "_tentacle", Item::new).properties(properties -> properties.food(new Food.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).fast().build())).model(mcTextured("barrier")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS).register();
 				dinos.setMeat(() -> raw.get());
 			} else if (dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS) {
-				ItemEntry<ModFishBucketItem> bucket = REGISTRATE.item(dinos.name().toLowerCase() + "_bucket", properties -> new ModFishBucketItem(() -> dinos.getEntityType().get(), Fluids.WATER, properties)).register();
+				ItemEntry<ModFishBucketItem> bucket = REGISTRATE.item(dinos.name().toLowerCase() + "_bucket", properties -> new ModFishBucketItem(() -> (EntityType<? extends PrehistoricEntity>) dinos.getEntityType().get(), Fluids.WATER, properties)).register();
 				dinos.setFishBucket(() -> bucket.get());
 				if (dinos != DinoTypes.ANOMALOCARIS) {
 					ItemEntry<Item> meat = REGISTRATE.item(dinos.name().toLowerCase(), Item::new).properties(properties -> properties.food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())).model(mcTextured("barrier")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS).register();

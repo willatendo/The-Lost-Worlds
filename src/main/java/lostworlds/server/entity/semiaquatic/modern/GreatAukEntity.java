@@ -25,7 +25,7 @@ import net.minecraft.block.TurtleEggBlock;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.BreatheAirGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
@@ -53,11 +53,11 @@ public class GreatAukEntity extends CarnivoreSemiAquaticEntity {
 		super(entity, world);
 	}
 
-	public static AttributeModifierMap createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.greatAukHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.greatAukAttackDamage.get()).build();
+	public static MutableAttribute createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.greatAukHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.greatAukAttackDamage.get());
 	}
 
-	public static boolean checkSpawnRules(EntityType<GreatAukEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
+	public static boolean canGreatAukSpawn(EntityType<GreatAukEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
 		return pos.getY() < world.getSeaLevel() + 4 && TurtleEggBlock.onSand(world, pos) && world.getRawBrightness(pos, 0) > 8;
 	}
 

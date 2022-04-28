@@ -278,7 +278,7 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity {
 		}
 	}
 
-	public static boolean checkBasicSpawnRules(EntityType<? extends DolphinLikeEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
+	public static boolean canDolphinLikeSpawn(EntityType<? extends DolphinLikeEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
 		if (pos.getY() > 45 && pos.getY() < world.getSeaLevel()) {
 			Optional<RegistryKey<Biome>> optional = world.getBiomeName(pos);
 			return (!Objects.equals(optional, Optional.of(Biomes.OCEAN)) || !Objects.equals(optional, Optional.of(Biomes.DEEP_OCEAN))) && world.getFluidState(pos).is(FluidTags.WATER);

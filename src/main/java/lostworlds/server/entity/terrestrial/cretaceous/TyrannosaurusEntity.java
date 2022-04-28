@@ -23,7 +23,7 @@ import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.ResetAngerGoal;
 import net.minecraft.entity.monster.MonsterEntity;
@@ -62,8 +62,8 @@ public class TyrannosaurusEntity extends CarnivoreEntity implements IReasonableA
 		return ActivityType.DIURNAL;
 	}
 
-	public static AttributeModifierMap createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.tyrannosaurusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.tyrannosaurusAttackDamage.get()).build();
+	public static MutableAttribute createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.tyrannosaurusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.tyrannosaurusAttackDamage.get());
 	}
 
 	@Override

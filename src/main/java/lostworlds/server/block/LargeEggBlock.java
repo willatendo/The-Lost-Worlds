@@ -1,6 +1,7 @@
 package lostworlds.server.block;
 
 import java.util.Random;
+import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
@@ -10,6 +11,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -31,7 +33,6 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.Lazy;
-import net.minecraftforge.common.util.NonNullSupplier;
 import net.minecraftforge.event.ForgeEventFactory;
 
 public class LargeEggBlock extends Block {
@@ -39,12 +40,12 @@ public class LargeEggBlock extends Block {
 	public static final IntegerProperty HATCH = BlockStateProperties.HATCH;
 	public static final IntegerProperty EGGS = ModBlockStateProperties.LARGE_EGGS;
 
-	private final Lazy<? extends EntityType<? extends PrehistoricEntity>> entityTypeSupplier;
+	private final Lazy<? extends EntityType<? extends CreatureEntity>> entityTypeSupplier;
 
-	public LargeEggBlock(AbstractBlock.Properties properties, NonNullSupplier<? extends EntityType<? extends PrehistoricEntity>> entity) {
+	public LargeEggBlock(AbstractBlock.Properties properties, Supplier<EntityType<? extends CreatureEntity>> supplier) {
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(HATCH, Integer.valueOf(0)).setValue(EGGS, Integer.valueOf(1)));
-		this.entityTypeSupplier = Lazy.of(entity::get);
+		this.entityTypeSupplier = Lazy.of(supplier::get);
 	}
 
 	@Override
@@ -103,7 +104,7 @@ public class LargeEggBlock extends Block {
 
 				for (int j = 0; j < state.getValue(EGGS); ++j) {
 					world.levelEvent(2001, pos, Block.getId(state));
-					PrehistoricEntity entity = this.entityTypeSupplier.get().create(world);
+					PrehistoricEntity entity = (PrehistoricEntity) this.entityTypeSupplier.get().create(world);
 					entity.moveTo((double) pos.getX() + 0.3D * 0.2D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(entity);
 					entity.setAge(-24000);

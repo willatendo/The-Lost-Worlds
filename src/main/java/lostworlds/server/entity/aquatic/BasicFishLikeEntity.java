@@ -14,7 +14,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.Pose;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.entity.ai.goal.PanicGoal;
@@ -54,8 +54,8 @@ public abstract class BasicFishLikeEntity extends CreatureEntity {
 		return size.height * 0.65F;
 	}
 
-	public static AttributeModifierMap createBasicAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, 3.0D).build();
+	public static MutableAttribute createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, 3.0D);
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public abstract class BasicFishLikeEntity extends CreatureEntity {
 		return super.requiresCustomPersistence() || this.fromBucket();
 	}
 
-	public static boolean spawnRules(EntityType<? extends BasicFishLikeEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
+	public static boolean canFishLikeSpawn(EntityType<? extends BasicFishLikeEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
 		return world.getBlockState(pos).is(Blocks.WATER) && world.getBlockState(pos.above()).is(Blocks.WATER);
 	}
 

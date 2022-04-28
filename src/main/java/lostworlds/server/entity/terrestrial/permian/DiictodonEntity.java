@@ -23,7 +23,7 @@ import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.CreatureDiet;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -60,8 +60,8 @@ public class DiictodonEntity extends EggLayingEntity {
 		return 9000;
 	}
 
-	public static AttributeModifierMap createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.2F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.diictodonHeath.get()).build();
+	public static MutableAttribute createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.2F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.diictodonHeath.get());
 	}
 
 	@Override

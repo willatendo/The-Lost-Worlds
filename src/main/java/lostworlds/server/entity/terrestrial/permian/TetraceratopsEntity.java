@@ -24,7 +24,7 @@ import lostworlds.server.entity.utils.enums.CreatureDiet;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -61,8 +61,8 @@ public class TetraceratopsEntity extends EggLayingEntity {
 		return 9000;
 	}
 
-	public static AttributeModifierMap createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.2F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.tetraceratopsHeath.get()).build();
+	public static MutableAttribute createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.2F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.tetraceratopsHeath.get());
 	}
 
 	@Override

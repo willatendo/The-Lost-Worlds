@@ -5,7 +5,7 @@ import lostworlds.server.entity.aquatic.BasicFishLikeEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.item.ItemStack;
@@ -33,8 +33,8 @@ public class NautilusEntity extends BasicFishLikeEntity implements IAnimatable {
 		super(entity, world);
 	}
 
-	public static AttributeModifierMap createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.nautilusHeath.get()).add(Attributes.ARMOR, LostWorldsConfig.COMMON_CONFIG.nautilusArmour.get()).build();
+	public static MutableAttribute createAttributes() {
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.nautilusHeath.get()).add(Attributes.ARMOR, LostWorldsConfig.COMMON_CONFIG.nautilusArmour.get());
 	}
 
 	@Override

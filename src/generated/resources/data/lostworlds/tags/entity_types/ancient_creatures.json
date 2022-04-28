@@ -1,6 +1,35 @@
 {
   "replace": false,
   "values": [
-    "lostworlds:allosaurus"
+    "lostworlds:allosaurus",
+    "lostworlds:anomalocaris",
+    "lostworlds:carnotaurus",
+    "lostworlds:chilesaurus",
+    "lostworlds:cryolophosaurus",
+    "lostworlds:diictodon",
+    "lostworlds:dilophosaurus",
+    "lostworlds:dimetrodon",
+    "lostworlds:edaphosaurus",
+    "lostworlds:eoraptor",
+    "lostworlds:fukuivenator",
+    "lostworlds:giganotosaurus",
+    "lostworlds:gorgonops",
+    "lostworlds:great_auk",
+    "lostworlds:kentrosaurus",
+    "lostworlds:liaoningosaurus",
+    "lostworlds:nautilus",
+    "lostworlds:ophthalmosaurus",
+    "lostworlds:ostromia",
+    "lostworlds:ouranosaurus",
+    "lostworlds:palaeoniscum",
+    "lostworlds:procompsognathus",
+    "lostworlds:protosuchus",
+    "lostworlds:psittacosaurus",
+    "lostworlds:rhinesuchus",
+    "lostworlds:suchomimus",
+    "lostworlds:utahraptor",
+    "lostworlds:tetraceratops",
+    "lostworlds:tyrannosaurus",
+    "lostworlds:zephyrosaurus"
   ]
 }

@@ -1,5 +1,7 @@
 package lostworlds.server.biome;
 
+import static lostworlds.server.util.GeneralGetter.getWhenCan;
+
 import lostworlds.server.entity.LostWorldsEntities;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -12,6 +14,7 @@ import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.structure.StructureFeatures;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilders;
 
+// To Do: Dino Spawns
 public class ModBiomeFeatures {
 	// Permian
 	public static void permianAshyMedows(BiomeGenerationSettings.Builder builder) {
@@ -42,8 +45,8 @@ public class ModBiomeFeatures {
 	}
 
 	public static void permianConiferForestSpawns(MobSpawnInfo.Builder builder) {
-		addSpawn(builder, LostWorldsEntities.EDAPHOSAURUS, 4, 1, 7);
-		addSpawn(builder, LostWorldsEntities.TETRACERATOPS, 2, 1, 6);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.EDAPHOSAURUS), 4, 1, 7);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.TETRACERATOPS), 2, 1, 6);
 	}
 
 	public static void permianDesert(BiomeGenerationSettings.Builder builder) {
@@ -57,9 +60,9 @@ public class ModBiomeFeatures {
 	}
 
 	public static void permianDesertSpawns(MobSpawnInfo.Builder builder) {
-		addSpawn(builder, LostWorldsEntities.RHINESUCHUS, 1, 1, 1);
-		addSpawn(builder, LostWorldsEntities.DIICTODON, 4, 2, 4);
-		addSpawn(builder, LostWorldsEntities.GORGONOPS, 2, 1, 1);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.RHINESUCHUS), 1, 1, 1);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.DIICTODON), 4, 2, 4);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.GORGONOPS), 2, 1, 1);
 	}
 
 	public static void permianDriedPlains(BiomeGenerationSettings.Builder builder) {
@@ -77,10 +80,10 @@ public class ModBiomeFeatures {
 	}
 
 	public static void permianDriedPlainsSpawns(MobSpawnInfo.Builder builder) {
-		addSpawn(builder, LostWorldsEntities.EDAPHOSAURUS, 4, 1, 7);
-		addSpawn(builder, LostWorldsEntities.DIMETRODON, 2, 1, 1);
-		addSpawn(builder, LostWorldsEntities.DIICTODON, 4, 2, 4);
-		addSpawn(builder, LostWorldsEntities.GORGONOPS, 2, 1, 1);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.EDAPHOSAURUS), 4, 1, 7);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.DIMETRODON), 2, 1, 1);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.DIICTODON), 4, 2, 4);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.GORGONOPS), 2, 1, 1);
 	}
 
 	public static void permianGinkgoForest(BiomeGenerationSettings.Builder builder) {
@@ -99,8 +102,8 @@ public class ModBiomeFeatures {
 	}
 
 	public static void permianGinkgoForestSpawns(MobSpawnInfo.Builder builder) {
-		addSpawn(builder, LostWorldsEntities.EDAPHOSAURUS, 4, 1, 7);
-		addSpawn(builder, LostWorldsEntities.TETRACERATOPS, 2, 1, 6);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.EDAPHOSAURUS), 4, 1, 7);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.TETRACERATOPS), 2, 1, 6);
 	}
 
 	public static void permianFloodBasalts(BiomeGenerationSettings.Builder builder) {
@@ -136,9 +139,9 @@ public class ModBiomeFeatures {
 	}
 
 	public static void permianMountainsSpawns(MobSpawnInfo.Builder builder) {
-		addSpawn(builder, LostWorldsEntities.DIMETRODON, 2, 1, 1);
-		addSpawn(builder, LostWorldsEntities.EDAPHOSAURUS, 2, 1, 3);
-		addSpawn(builder, LostWorldsEntities.TETRACERATOPS, 1, 1, 4);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.DIMETRODON), 2, 1, 1);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.EDAPHOSAURUS), 2, 1, 3);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.TETRACERATOPS), 1, 1, 4);
 	}
 
 	public static void permianOcean(BiomeGenerationSettings.Builder builder) {
@@ -152,7 +155,7 @@ public class ModBiomeFeatures {
 	}
 
 	public static void permianOceanSpawns(MobSpawnInfo.Builder builder) {
-		addSpawn(builder, LostWorldsEntities.PALAEONISCUM, 2, 1, 3);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.PALAEONISCUM), 2, 1, 3);
 	}
 
 	public static void permianMarsh(BiomeGenerationSettings.Builder builder) {
@@ -169,9 +172,9 @@ public class ModBiomeFeatures {
 	}
 
 	public static void permianMarshSpawns(MobSpawnInfo.Builder builder) {
-		addSpawn(builder, LostWorldsEntities.PROTOSUCHUS, 1, 1, 3);
-		addSpawn(builder, LostWorldsEntities.EDAPHOSAURUS, 2, 1, 3);
-		addSpawn(builder, LostWorldsEntities.PALAEONISCUM, 2, 1, 3);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.PROTOSUCHUS), 1, 1, 3);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.EDAPHOSAURUS), 2, 1, 3);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.PALAEONISCUM), 2, 1, 3);
 	}
 
 	public static void permianRiver(BiomeGenerationSettings.Builder builder) {
@@ -185,7 +188,7 @@ public class ModBiomeFeatures {
 	}
 
 	public static void permianRiverSpawns(MobSpawnInfo.Builder builder) {
-		addSpawn(builder, LostWorldsEntities.PALAEONISCUM, 2, 1, 3);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.PALAEONISCUM), 2, 1, 3);
 	}
 
 	public static void permianShore(BiomeGenerationSettings.Builder builder) {
@@ -211,7 +214,7 @@ public class ModBiomeFeatures {
 	}
 
 	public static void permianCoralReefSpawns(MobSpawnInfo.Builder builder) {
-		addSpawn(builder, LostWorldsEntities.PALAEONISCUM, 2, 1, 3);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.PALAEONISCUM), 2, 1, 3);
 	}
 
 	public static void permianPlains(BiomeGenerationSettings.Builder builder) {
@@ -227,8 +230,8 @@ public class ModBiomeFeatures {
 	}
 
 	public static void permianPlainsSpawns(MobSpawnInfo.Builder builder) {
-		addSpawn(builder, LostWorldsEntities.DIICTODON, 4, 2, 4);
-		addSpawn(builder, LostWorldsEntities.GORGONOPS, 2, 1, 1);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.DIICTODON), 4, 2, 4);
+		addSpawn(builder, getWhenCan(LostWorldsEntities.GORGONOPS), 2, 1, 1);
 	}
 
 	// Jurassic

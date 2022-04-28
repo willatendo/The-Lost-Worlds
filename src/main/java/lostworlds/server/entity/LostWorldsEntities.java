@@ -7,8 +7,35 @@ import com.tterrag.registrate.util.entry.EntityEntry;
 import lostworlds.client.entity.render.AllosaurusRenderer;
 import lostworlds.client.entity.render.AnomalocarisRenderer;
 import lostworlds.client.entity.render.CarnotaurusRenderer;
+import lostworlds.client.entity.render.ChilesaurusRenderer;
+import lostworlds.client.entity.render.CryolophosaurusRenderer;
+import lostworlds.client.entity.render.DiictodonRenderer;
+import lostworlds.client.entity.render.DilophosaurusRenderer;
+import lostworlds.client.entity.render.DimetrodonRenderer;
+import lostworlds.client.entity.render.EdaphosaurusRenderer;
+import lostworlds.client.entity.render.EoraptorRenderer;
 import lostworlds.client.entity.render.FossilPoacherRenderer;
+import lostworlds.client.entity.render.FukuivenatorRenderer;
+import lostworlds.client.entity.render.GiganotosaurusRenderer;
+import lostworlds.client.entity.render.GorgonopsRenderer;
+import lostworlds.client.entity.render.GreatAukRenderer;
+import lostworlds.client.entity.render.KentrosaurusRenderer;
+import lostworlds.client.entity.render.LiaoningosaurusRenderer;
 import lostworlds.client.entity.render.ModBoatRenderer;
+import lostworlds.client.entity.render.NautilusRenderer;
+import lostworlds.client.entity.render.OphthalmosaurusRenderer;
+import lostworlds.client.entity.render.OstromiaRenderer;
+import lostworlds.client.entity.render.OuranosaurusRenderer;
+import lostworlds.client.entity.render.PalaeoniscumRenderer;
+import lostworlds.client.entity.render.ProcompsognathusRenderer;
+import lostworlds.client.entity.render.ProtosuchusRenderer;
+import lostworlds.client.entity.render.PsittacosaurusRenderer;
+import lostworlds.client.entity.render.RhinesuchusRenderer;
+import lostworlds.client.entity.render.SuchomimusRenderer;
+import lostworlds.client.entity.render.TetraceratopsRenderer;
+import lostworlds.client.entity.render.TyrannosaurusRenderer;
+import lostworlds.client.entity.render.UtahraptorRenderer;
+import lostworlds.client.entity.render.ZephyrosaurusRenderer;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.aquatic.cambrian.AnomalocarisEntity;
@@ -48,26 +75,23 @@ import lostworlds.server.entity.terrestrial.permian.TetraceratopsEntity;
 import lostworlds.server.entity.terrestrial.triassic.EoraptorEntity;
 import lostworlds.server.entity.terrestrial.triassic.ProcompsognathusEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
-import lostworlds.server.item.ModSpawnEggItem;
 import lostworlds.server.util.LostWorldsRegistrate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntitySpawnPlacementRegistry.PlacementType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EntityType.IFactory;
 import net.minecraft.loot.LootTable;
-import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.Heightmap.Type;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.registries.ForgeRegistries;
 
+// Todo: Angry Entities
 @EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.MOD)
 public class LostWorldsEntities {
 	public static final LostWorldsRegistrate REGISTRATE = getRegistrate();
@@ -80,38 +104,36 @@ public class LostWorldsEntities {
 	public static final EntityEntry<ChargedCrystalScarabGemItemEntity> CHARGED_CRYSTAL_SCARAB_GEM_ITEM = REGISTRATE.<ChargedCrystalScarabGemItemEntity>entity("charged_crystal_scarab_gem_item", ChargedCrystalScarabGemItemEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer())).register();
 	public static final EntityEntry<CrystalScarabGemItemEntity> CRYSTAL_SCARAB_GEM_ITEM = REGISTRATE.<CrystalScarabGemItemEntity>entity("crystal_scarab_gem_item", CrystalScarabGemItemEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> manager -> new ItemRenderer(manager, Minecraft.getInstance().getItemRenderer())).register();
 
-	public static final EntityEntry<AllosaurusEntity> ALLOSAURUS = REGISTRATE.entity("allosaurus", AllosaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(2.0F, 1.5F)).renderer(() -> AllosaurusRenderer::new).defaultSpawnEgg(DinoTypes.ALLOSAURUS.getPrimaryColour(), DinoTypes.ALLOSAURUS.getSecondaryColour()).attributes(() -> AllosaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
-	public static final EntityEntry<AnomalocarisEntity> ANOMALOCARIS = REGISTRATE.entity("anomalocaris", AnomalocarisEntity::new, EntityClassification.WATER_CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> AnomalocarisRenderer::new).defaultSpawnEgg(DinoTypes.ANOMALOCARIS.getPrimaryColour(), DinoTypes.ANOMALOCARIS.getSecondaryColour()).attributes(() -> AnomalocarisEntity.createAttributes()).spawnPlacement(PlacementType.IN_WATER, Type.OCEAN_FLOOR, AnomalocarisEntity::spawnRules).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
-	public static final EntityEntry<CarnotaurusEntity> CARNOTAURUS = REGISTRATE.entity("carnotaurus", CarnotaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(2.0F, 1.5F)).renderer(() -> CarnotaurusRenderer::new).defaultSpawnEgg(DinoTypes.CARNOTAURUS.getPrimaryColour(), DinoTypes.CARNOTAURUS.getSecondaryColour()).attributes(() -> CarnotaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
-	public static final EntityType<ChilesaurusEntity> CHILESAURUS = register("chilesaurus", ChilesaurusEntity::new, EntityClassification.CREATURE, 1.0F, 1.0F);
-	public static final EntityType<FossilEntity> CHILESAURUS_SKELETON = register("chilesaurus_skeleton", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-	public static final EntityType<CryolophosaurusEntity> CRYOLOPHOSAURUS = register("cryolophosaurus", CryolophosaurusEntity::new, EntityClassification.CREATURE, 1.0F, 0.75F);
-	public static final EntityType<DiictodonEntity> DIICTODON = register("diictodon", DiictodonEntity::new, EntityClassification.CREATURE, 0.25F, 0.25F);
-	public static final EntityType<DilophosaurusEntity> DILOPHOSAURUS = register("dilophosaurus", DilophosaurusEntity::new, EntityClassification.CREATURE, 1.5F, 1.5F);
-	public static final EntityType<DimetrodonEntity> DIMETRODON = register("dimetrodon", DimetrodonEntity::new, EntityClassification.CREATURE, 1.5F, 1.5F);
-	public static final EntityType<EdaphosaurusEntity> EDAPHOSAURUS = register("edaphosaurus", EdaphosaurusEntity::new, EntityClassification.CREATURE, 1.0F, 1.0F);
-	public static final EntityType<EoraptorEntity> EORAPTOR = register("eoraptor", EoraptorEntity::new, EntityClassification.CREATURE, 0.5F, 0.5F);
-	public static final EntityType<FukuivenatorEntity> FUKUIVENATOR = register("fukuivenator", FukuivenatorEntity::new, EntityClassification.CREATURE, 0.5F, 0.5F);
-	public static final EntityType<GiganotosaurusEntity> GIGANOTOSAURUS = register("giganotosaurus", GiganotosaurusEntity::new, EntityClassification.CREATURE, 4.0F, 2.5F);
-	public static final EntityType<GorgonopsEntity> GORGONOPS = register("gorgonops", GorgonopsEntity::new, EntityClassification.CREATURE, 1.0F, 1.0F);
-	public static final EntityType<GreatAukEntity> GREAT_AUK = register("great_auk", GreatAukEntity::new, SEMI_AQUATIC_CREATURE, 0.75F, 1.5F);
-	public static final EntityType<KentrosaurusEntity> KENTROSAURUS = register("kentrosaurus", KentrosaurusEntity::new, EntityClassification.CREATURE, 1.0F, 0.75F);
-	public static final EntityType<FossilEntity> KENTROSAURUS_SKELETON = register("kentrosaurus_skeleton", FossilEntity::new, EntityClassification.MISC, 1.0F, 0.75F);
-	public static final EntityType<LiaoningosaurusEntity> LIAONINGOSAURUS = register("liaoningosaurus", LiaoningosaurusEntity::new, EntityClassification.CREATURE, 1.0F, 0.75F);
-	public static final EntityType<NautilusEntity> NAUTILUS = register("nautilus", NautilusEntity::new, EntityClassification.WATER_CREATURE, 0.5F, 0.5F);
-	public static final EntityType<OphthalmosaurusEntity> OPHTHALMOSAURUS = register("ophthalmosaurus", OphthalmosaurusEntity::new, EntityClassification.WATER_CREATURE, 2.0F, 2.0F);
-	public static final EntityType<OstromiaEntity> OSTROMIA = register("ostromia", OstromiaEntity::new, EntityClassification.CREATURE, 0.5F, 0.5F);
-	public static final EntityType<OuranosaurusEntity> OURANOSAURUS = register("ouranosaurus", OuranosaurusEntity::new, EntityClassification.CREATURE, 2.5F, 2.5F);
-	public static final EntityType<PalaeoniscumEntity> PALAEONISCUM = register("palaeoniscum", PalaeoniscumEntity::new, EntityClassification.WATER_CREATURE, 0.5F, 0.5F);
-	public static final EntityType<ProcompsognathusEntity> PROCOMPSOGNATHUS = register("procompsognathus", ProcompsognathusEntity::new, EntityClassification.CREATURE, 0.5F, 0.5F);
-	public static final EntityType<ProtosuchusEntity> PROTOSUCHUS = register("protosuchus", ProtosuchusEntity::new, EntityClassification.WATER_CREATURE, 0.5F, 0.5F);
-	public static final EntityType<PsittacosaurusEntity> PSITTACOSAURUS = register("psittacosaurus", PsittacosaurusEntity::new, EntityClassification.CREATURE, 0.5F, 0.5F);
-	public static final EntityType<RhinesuchusEntity> RHINESUCHUS = register("rhinesuchus", RhinesuchusEntity::new, EntityClassification.WATER_CREATURE, 0.5F, 0.5F);
-	public static final EntityType<SuchomimusEntity> SUCHOMIMUS = register("suchomimus", SuchomimusEntity::new, EntityClassification.CREATURE, 1.5F, 1.5F);
-	public static final EntityType<UtahraptorEntity> UTAHRAPTOR = register("utahraptor", UtahraptorEntity::new, EntityClassification.CREATURE, 1.5F, 1.0F);
-	public static final EntityType<TetraceratopsEntity> TETRACERATOPS = register("tetraceratops", TetraceratopsEntity::new, EntityClassification.CREATURE, 0.75F, 0.5F);
-	public static final EntityType<TyrannosaurusEntity> TYRANNOSAURUS = register("tyrannosaurus", TyrannosaurusEntity::new, EntityClassification.CREATURE, 2.75F, 2.5F);
-	public static final EntityType<ZephyrosaurusEntity> ZEPHYROSAURUS = register("zephyrosaurus", ZephyrosaurusEntity::new, EntityClassification.CREATURE, 0.5F, 0.5F);
+	public static final EntityEntry<AllosaurusEntity> ALLOSAURUS = REGISTRATE.entity("allosaurus", AllosaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(2.0F, 1.5F)).renderer(() -> AllosaurusRenderer::new).defaultSpawnEgg(0x9f9f5a, 0xd68812).attributes(() -> AllosaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<AnomalocarisEntity> ANOMALOCARIS = REGISTRATE.entity("anomalocaris", AnomalocarisEntity::new, EntityClassification.WATER_CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> AnomalocarisRenderer::new).defaultSpawnEgg(0xb94f33, 0x631312).attributes(() -> AnomalocarisEntity.createAttributes()).spawnPlacement(PlacementType.IN_WATER, Type.OCEAN_FLOOR, AnomalocarisEntity::canFishLikeSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<CarnotaurusEntity> CARNOTAURUS = REGISTRATE.entity("carnotaurus", CarnotaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(2.0F, 1.5F)).renderer(() -> CarnotaurusRenderer::new).defaultSpawnEgg(0xbd7868, 0xe6d3bc).attributes(() -> CarnotaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<ChilesaurusEntity> CHILESAURUS = REGISTRATE.entity("chilesaurus", ChilesaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> ChilesaurusRenderer::new).defaultSpawnEgg(0xb08533, 0x283c3f).attributes(() -> ChilesaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<CryolophosaurusEntity> CRYOLOPHOSAURUS = REGISTRATE.entity("cryolophosaurus", CryolophosaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.0F, 0.75F)).renderer(() -> CryolophosaurusRenderer::new).defaultSpawnEgg(0xab5a14, 0x1a2c5f).attributes(() -> CryolophosaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<DiictodonEntity> DIICTODON = REGISTRATE.entity("diictodon", DiictodonEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(0.25F, 0.25F)).renderer(() -> DiictodonRenderer::new).defaultSpawnEgg(0xdc8a54, 0x8b462e).attributes(() -> DiictodonEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<DilophosaurusEntity> DILOPHOSAURUS = REGISTRATE.entity("dilophosaurus", DilophosaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.5F, 1.5F)).renderer(() -> DilophosaurusRenderer::new).defaultSpawnEgg(0xc49838, 0xc75539).attributes(() -> DilophosaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<DimetrodonEntity> DIMETRODON = REGISTRATE.entity("dimetrodon", DimetrodonEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.5F, 1.5F)).renderer(() -> DimetrodonRenderer::new).defaultSpawnEgg(0x81644c, 0xcba755).attributes(() -> DimetrodonEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<EdaphosaurusEntity> EDAPHOSAURUS = REGISTRATE.entity("edaphosaurus", EdaphosaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> EdaphosaurusRenderer::new).defaultSpawnEgg(0x57614e, 0xdf9046).attributes(() -> EdaphosaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<EoraptorEntity> EORAPTOR = REGISTRATE.entity("eoraptor", EoraptorEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> EoraptorRenderer::new).defaultSpawnEgg(0x523c3e, 0x824b78).attributes(() -> EoraptorEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<FukuivenatorEntity> FUKUIVENATOR = REGISTRATE.entity("fukuivenator", FukuivenatorEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> FukuivenatorRenderer::new).defaultSpawnEgg(0x52526f, 0x5757959).attributes(() -> FukuivenatorEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<GiganotosaurusEntity> GIGANOTOSAURUS = REGISTRATE.entity("giganotosaurus", GiganotosaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(4.0F, 2.5F)).renderer(() -> GiganotosaurusRenderer::new).defaultSpawnEgg(0x9f6b41, 0x943c24).attributes(() -> GiganotosaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<GorgonopsEntity> GORGONOPS = REGISTRATE.entity("gorgonops", GorgonopsEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> GorgonopsRenderer::new).defaultSpawnEgg(0x443619, 0x3b3e2d).attributes(() -> GorgonopsEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<GreatAukEntity> GREAT_AUK = REGISTRATE.entity("great_auk", GreatAukEntity::new, SEMI_AQUATIC_CREATURE).properties(properties -> properties.sized(0.75F, 1.5F)).renderer(() -> GreatAukRenderer::new).defaultSpawnEgg(0x000000, 0xFFFFFF).attributes(() -> GreatAukEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, GreatAukEntity::canGreatAukSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<KentrosaurusEntity> KENTROSAURUS = REGISTRATE.entity("kentrosaurus", KentrosaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.0F, 0.75F)).renderer(() -> KentrosaurusRenderer::new).defaultSpawnEgg(0xd99760, 0x612c00).attributes(() -> KentrosaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<LiaoningosaurusEntity> LIAONINGOSAURUS = REGISTRATE.entity("liaoningosaurus", LiaoningosaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.0F, 0.75F)).renderer(() -> LiaoningosaurusRenderer::new).defaultSpawnEgg(0x712d0d, 0x7c8237).attributes(() -> LiaoningosaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<NautilusEntity> NAUTILUS = REGISTRATE.entity("nautilus", NautilusEntity::new, EntityClassification.WATER_CREATURE).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> NautilusRenderer::new).defaultSpawnEgg(0xd4ccc3, 0xca7548).attributes(() -> NautilusEntity.createAttributes()).spawnPlacement(PlacementType.IN_WATER, Type.OCEAN_FLOOR, NautilusEntity::canFishLikeSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<OphthalmosaurusEntity> OPHTHALMOSAURUS = REGISTRATE.entity("ophthalmosaurus", OphthalmosaurusEntity::new, EntityClassification.WATER_CREATURE).properties(properties -> properties.sized(2.0F, 2.0F)).renderer(() -> OphthalmosaurusRenderer::new).defaultSpawnEgg(0x858794, 0x0e131b).attributes(() -> OphthalmosaurusEntity.createAttributes()).spawnPlacement(PlacementType.IN_WATER, Type.OCEAN_FLOOR, OphthalmosaurusEntity::canDolphinLikeSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<OstromiaEntity> OSTROMIA = REGISTRATE.entity("ostromia", OstromiaEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> OstromiaRenderer::new).defaultSpawnEgg(0x47a373, 0x2c4d86).attributes(() -> OstromiaEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<OuranosaurusEntity> OURANOSAURUS = REGISTRATE.entity("ouranosaurus", OuranosaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(2.5F, 2.5F)).renderer(() -> OuranosaurusRenderer::new).defaultSpawnEgg(0x999554, 0x90bdb4).attributes(() -> OuranosaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<PalaeoniscumEntity> PALAEONISCUM = REGISTRATE.entity("palaeoniscum", PalaeoniscumEntity::new, EntityClassification.WATER_CREATURE).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> PalaeoniscumRenderer::new).defaultSpawnEgg(0x72797a, 0x2f3a3d).attributes(() -> PalaeoniscumEntity.createAttributes()).spawnPlacement(PlacementType.IN_WATER, Type.OCEAN_FLOOR, PalaeoniscumEntity::canFishLikeSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<ProcompsognathusEntity> PROCOMPSOGNATHUS = REGISTRATE.entity("procompsognathus", ProcompsognathusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> ProcompsognathusRenderer::new).defaultSpawnEgg(0x445a2f, 0x404727).attributes(() -> ProcompsognathusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<ProtosuchusEntity> PROTOSUCHUS = REGISTRATE.entity("protosuchus", ProtosuchusEntity::new, EntityClassification.WATER_CREATURE).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> ProtosuchusRenderer::new).defaultSpawnEgg(0x8e2317, 0xb0492e).attributes(() -> ProtosuchusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<PsittacosaurusEntity> PSITTACOSAURUS = REGISTRATE.entity("psittacosaurus", PsittacosaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> PsittacosaurusRenderer::new).defaultSpawnEgg(0x4c2c21, 0x938639).attributes(() -> PsittacosaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<RhinesuchusEntity> RHINESUCHUS = REGISTRATE.entity("rhinesuchus", RhinesuchusEntity::new, EntityClassification.WATER_CREATURE).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> RhinesuchusRenderer::new).defaultSpawnEgg(0x576b54, 0xaf944a).attributes(() -> RhinesuchusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<SuchomimusEntity> SUCHOMIMUS = REGISTRATE.entity("suchomimus", SuchomimusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.5F, 1.5F)).renderer(() -> SuchomimusRenderer::new).defaultSpawnEgg(0x57737b, 0xcd9528).attributes(() -> SuchomimusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<UtahraptorEntity> UTAHRAPTOR = REGISTRATE.entity("utahraptor", UtahraptorEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.5F, 1.0F)).renderer(() -> UtahraptorRenderer::new).defaultSpawnEgg(0x503524, 0x635f5e).attributes(() -> UtahraptorEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<TetraceratopsEntity> TETRACERATOPS = REGISTRATE.entity("tetraceratops", TetraceratopsEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(0.75F, 0.5F)).renderer(() -> TetraceratopsRenderer::new).defaultSpawnEgg(0x623015, 0x21369b).attributes(() -> TetraceratopsEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<TyrannosaurusEntity> TYRANNOSAURUS = REGISTRATE.entity("tyrannosaurus", TyrannosaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(2.75F, 2.5F)).renderer(() -> TyrannosaurusRenderer::new).defaultSpawnEgg(0x503524, 0x635f5e).attributes(() -> TyrannosaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
+	public static final EntityEntry<ZephyrosaurusEntity> ZEPHYROSAURUS = REGISTRATE.entity("zephyrosaurus", ZephyrosaurusEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> ZephyrosaurusRenderer::new).defaultSpawnEgg(0x577476, 0x9ba3a3).attributes(() -> ZephyrosaurusEntity.createAttributes()).spawnPlacement(PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn).tag(LostWorldsTags.ModEntityTypeTags.ANCIENT_CREATURES).loot((provider, entity) -> provider.add(entity, LootTable.lootTable())).register();
 
 	static {
 		for (DinoTypes dinos : DinoTypes.values()) {
@@ -136,14 +158,6 @@ public class LostWorldsEntities {
 				dinos.setRibCage(rib_cage);
 				EntityType<FossilEntity> tail = register(dinos.toString().toLowerCase() + "_tail", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
 				dinos.setTail(tail);
-				if (dinos == DinoTypes.KENTROSAURUS) {
-					dinos.setSkeleton(KENTROSAURUS_SKELETON);
-				}
-				if (dinos == DinoTypes.CHILESAURUS) {
-					dinos.setSkeleton(CHILESAURUS_SKELETON);
-				} else {
-					dinos.setSkeleton(KENTROSAURUS_SKELETON);
-				}
 			}
 
 			if (dinos == DinoTypes.ANOMALOCARIS) {
@@ -170,11 +184,6 @@ public class LostWorldsEntities {
 	}
 
 	@SubscribeEvent
-	public static void registerEntities(RegistryEvent.Register<EntityType<?>> event) {
-		ModSpawnEggItem.initSpawnEggs();
-	}
-
-	@SubscribeEvent
 	public static void giveAttributes(EntityAttributeCreationEvent event) {
 		for (DinoTypes dinos : DinoTypes.values()) {
 			if (dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS) {
@@ -189,71 +198,9 @@ public class LostWorldsEntities {
 				event.put(dinos.getSkull(), FossilEntity.createAttributes());
 				event.put(dinos.getTail(), FossilEntity.createAttributes());
 			}
-
 		}
-
-		event.put(LostWorldsEntities.CHILESAURUS, ChilesaurusEntity.createAttributes());
-		event.put(LostWorldsEntities.CHILESAURUS_SKELETON, FossilEntity.createAttributes());
-		event.put(LostWorldsEntities.CRYOLOPHOSAURUS, CryolophosaurusEntity.createAttributes());
-		event.put(LostWorldsEntities.DIICTODON, DiictodonEntity.createAttributes());
-		event.put(LostWorldsEntities.DILOPHOSAURUS, DilophosaurusEntity.createAttributes());
-		event.put(LostWorldsEntities.DIMETRODON, DimetrodonEntity.createAttributes());
-		event.put(LostWorldsEntities.EORAPTOR, EoraptorEntity.createAttributes());
-		event.put(LostWorldsEntities.EDAPHOSAURUS, EdaphosaurusEntity.createAttributes());
-		event.put(LostWorldsEntities.FUKUIVENATOR, FukuivenatorEntity.createAttributes());
-		event.put(LostWorldsEntities.GIGANOTOSAURUS, GiganotosaurusEntity.createAttributes());
-		event.put(LostWorldsEntities.GORGONOPS, GorgonopsEntity.createAttributes());
-		event.put(LostWorldsEntities.GREAT_AUK, GreatAukEntity.createAttributes());
-		event.put(LostWorldsEntities.KENTROSAURUS, GorgonopsEntity.createAttributes());
-		event.put(LostWorldsEntities.KENTROSAURUS_SKELETON, FossilEntity.createAttributes());
-		event.put(LostWorldsEntities.LIAONINGOSAURUS, LiaoningosaurusEntity.createAttributes());
-		event.put(LostWorldsEntities.NAUTILUS, NautilusEntity.createAttributes());
-		event.put(LostWorldsEntities.OPHTHALMOSAURUS, OphthalmosaurusEntity.createAttributes());
-		event.put(LostWorldsEntities.OSTROMIA, OstromiaEntity.createAttributes());
-		event.put(LostWorldsEntities.OURANOSAURUS, OuranosaurusEntity.createAttributes());
-		event.put(LostWorldsEntities.PALAEONISCUM, PalaeoniscumEntity.createBasicAttributes());
-		event.put(LostWorldsEntities.PROCOMPSOGNATHUS, ProcompsognathusEntity.createAttributes());
-		event.put(LostWorldsEntities.PROTOSUCHUS, ProtosuchusEntity.createAttributes());
-		event.put(LostWorldsEntities.PSITTACOSAURUS, PsittacosaurusEntity.createAttributes());
-		event.put(LostWorldsEntities.RHINESUCHUS, RhinesuchusEntity.createAttributes());
-		event.put(LostWorldsEntities.SUCHOMIMUS, SuchomimusEntity.createAttributes());
-		event.put(LostWorldsEntities.UTAHRAPTOR, UtahraptorEntity.createAttributes());
-		event.put(LostWorldsEntities.TETRACERATOPS, TetraceratopsEntity.createAttributes());
-		event.put(LostWorldsEntities.TYRANNOSAURUS, TyrannosaurusEntity.createAttributes());
-		event.put(LostWorldsEntities.ZEPHYROSAURUS, ZephyrosaurusEntity.createAttributes());
-	}
-
-	static {
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.CHILESAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.CRYOLOPHOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.DIICTODON, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.DILOPHOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.DIMETRODON, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.EORAPTOR, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.EDAPHOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.FUKUIVENATOR, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.GIGANOTOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.GORGONOPS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.GREAT_AUK, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GreatAukEntity::checkSpawnRules);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.KENTROSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.LIAONINGOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.NAUTILUS, EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.OCEAN_FLOOR, NautilusEntity::spawnRules);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.OPHTHALMOSAURUS, EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.OCEAN_FLOOR, OphthalmosaurusEntity::checkBasicSpawnRules);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.OSTROMIA, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.OURANOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.PALAEONISCUM, EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.OCEAN_FLOOR, PalaeoniscumEntity::spawnRules);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.PROCOMPSOGNATHUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.PROTOSUCHUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.PSITTACOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.RHINESUCHUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, RhinesuchusEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.SUCHOMIMUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, SuchomimusEntity::checkSpawnRules);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.UTAHRAPTOR, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.TETRACERATOPS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.TYRANNOSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
-		EntitySpawnPlacementRegistry.register(LostWorldsEntities.ZEPHYROSAURUS, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PrehistoricEntity::canPrehistoricSpawn);
 	}
 
 	public static void init() {
-		DinoTypes.ALLOSAURUS.setEntityType(() -> ALLOSAURUS.get());
 	}
 }

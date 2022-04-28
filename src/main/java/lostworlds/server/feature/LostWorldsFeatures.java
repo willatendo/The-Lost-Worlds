@@ -1,6 +1,7 @@
 package lostworlds.server.feature;
 
 import lostworlds.server.LostWorldsUtils;
+import lostworlds.server.feature.tree.GinkgoTreeFeature;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
@@ -22,7 +23,9 @@ public class LostWorldsFeatures {
 	public static final Feature<FeatureSpreadConfig> GEYSER = register("geyser", new GeyserBlockFeature(FeatureSpreadConfig.CODEC));
 	public static final Feature<FeatureSpreadConfig> SPONGE_COLONEY = register("sponge_coloney", new SpongeColoneyFeature(FeatureSpreadConfig.CODEC));
 
-	public static final Feature<BaseTreeFeatureConfig> SCORCHED_TREE = register("scorched_tree", new ScorchedTreeFeature(BaseTreeFeatureConfig.CODEC));
+	// Trees
+	public static final Feature<NoFeatureConfig> GINKGO_TREE = register("ginkgo_tree", new GinkgoTreeFeature(NoFeatureConfig.CODEC));
+
 	public static final Feature<BaseTreeFeatureConfig> FROZEN_TREE = register("frozen_tree", new FrozenTreeFeature(BaseTreeFeatureConfig.CODEC));
 
 	public static final Feature<BlockStateFeatureConfig> MOD_ROCK = register("mod_rock", new ModBlockBlobFeature(BlockStateFeatureConfig.CODEC));

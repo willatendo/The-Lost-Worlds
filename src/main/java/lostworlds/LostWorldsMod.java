@@ -17,8 +17,8 @@ import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.BiomeKeys;
 import lostworlds.server.biome.DisksFeatures;
 import lostworlds.server.biome.LostWorldsBiomes;
-import lostworlds.server.biome.LostWorldsWorldCarvers;
 import lostworlds.server.biome.LostWorldsConfiguredCarvers;
+import lostworlds.server.biome.LostWorldsWorldCarvers;
 import lostworlds.server.biome.ModConfiguredStructures;
 import lostworlds.server.biome.OreFeatures;
 import lostworlds.server.biome.TreeFeatures;
@@ -227,7 +227,7 @@ public class LostWorldsMod {
 		if (LostWorldsUtils.SERVER_CONFIG.livingFossils.get()) {
 			List<? extends String> nautilusBiomes = Lists.newArrayList("minecraft:warm_ocean");
 			if (nautilusBiomes.contains(event.getName().toString())) {
-				FeatureAdder.addSpawn(event, EntityClassification.WATER_CREATURE, LostWorldsEntities.NAUTILUS, LostWorldsUtils.SERVER_CONFIG.nautilusSpawnWeight.get(), LostWorldsUtils.SERVER_CONFIG.nautilusSpawnGroupMinimum.get(), LostWorldsUtils.SERVER_CONFIG.nautilusSpawnGroupMaximum.get());
+				FeatureAdder.addSpawn(event, EntityClassification.WATER_CREATURE, LostWorldsEntities.NAUTILUS.get(), LostWorldsUtils.SERVER_CONFIG.nautilusSpawnWeight.get(), LostWorldsUtils.SERVER_CONFIG.nautilusSpawnGroupMinimum.get(), LostWorldsUtils.SERVER_CONFIG.nautilusSpawnGroupMaximum.get());
 			}
 		}
 

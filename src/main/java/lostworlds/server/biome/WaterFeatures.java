@@ -1,7 +1,7 @@
 package lostworlds.server.biome;
 
 import static lostworlds.server.biome.ModConfiguredFeatures.register;
-import static lostworlds.server.util.BlockGetter.getWhenCan;
+import static lostworlds.server.util.GeneralGetter.getWhenCan;
 
 import java.util.function.Supplier;
 

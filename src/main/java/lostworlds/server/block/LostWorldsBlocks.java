@@ -28,6 +28,7 @@ import lostworlds.server.block.tree.GinkgoTree;
 import lostworlds.server.block.tree.SequoiaTree;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.entity.utils.enums.ModBoatType;
+import lostworlds.server.entity.utils.enums.Size;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.item.ModBoatItem;
 import lostworlds.server.item.WaterPlantItem;
@@ -119,7 +120,7 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<MudBlock> MUD = REGISTRATE.blockAndItem("mud", MudBlock::new).properties(properties -> properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)).recipe((item, provider) -> provider.square(DataIngredient.items(LostWorldsItems.MUD_BALL), () -> item.get(), true)).register();
 	public static final BlockEntry<Block> SILT = REGISTRATE.blockAndItem("silt", Block::new).properties(properties -> properties.of(Material.CLAY, MaterialColor.COLOR_BROWN).harvestTool(ToolType.SHOVEL).strength(0.6F).sound(SoundType.GRAVEL)).register();
 
-	public static final BlockEntry<SandBlock> VOLCANIC_ASH = REGISTRATE.blockAndItem("volcanic_ash", properties -> new SandBlock(0x888988, properties)).properties(properties -> properties.of(Material.SAND, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).harvestLevel(1).strength(0.5F).sound(SoundType.SAND)).register();
+	public static final BlockEntry<SandBlock> VOLCANIC_ASH = REGISTRATE.blockAndItem("volcanic_ash", properties -> new SandBlock(0x888988, properties)).properties(properties -> properties.of(Material.SAND, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).harvestLevel(1).strength(0.5F).sound(SoundType.SAND)).tag(Tags.Blocks.DIRT).register();
 	public static final BlockEntry<VolcanicAshLayerBlock> VOLCANIC_ASH_LAYER = REGISTRATE.blockAndItem("volcanic_ash_layer", VolcanicAshLayerBlock::new).properties(properties -> properties.of(Material.SAND, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).harvestLevel(1).strength(0.5F).sound(SoundType.SAND)).blockstate((block, provider) -> LostWorldsBlockModels.volcanicAshLayer(block.get(), provider)).item().model((item, provider) -> provider.withExistingParent(item.getName(), LostWorldsUtils.rL("block/volcanic_ash_layer_height2"))).build().recipe((item, provider) -> ShapedRecipeBuilder.shaped(item.get()).pattern("###").define('#', LostWorldsBlocks.VOLCANIC_ASH.get()).unlockedBy("has_item", provider.hasItem(LostWorldsBlocks.VOLCANIC_ASH.get())).save(provider)).register();
 
 	public static final BlockEntry<SandBlock> PERMIAN_SAND = REGISTRATE.blockAndItem("permian_sand", properties -> new SandBlock(0xaa915c, properties)).properties(properties -> properties.of(Material.SAND, MaterialColor.SAND).harvestTool(ToolType.SHOVEL).strength(1.5F).sound(SoundType.SAND)).tag(Tags.Blocks.SAND, BlockTags.SAND).register(),
@@ -424,7 +425,7 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<RotatedPillarBlock> GINKGO_WOOD = REGISTRATE.rotatedWoodBlock("ginkgo_wood", "ginkgo_log", RotatedPillarBlock::new).properties(properties -> properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)).tag(LostWorldsTags.ModBlockTags.GINKGO_LOGS).register();
 	public static final BlockEntry<RotatedPillarBlock> STRIPPED_GINKGO_WOOD = REGISTRATE.rotatedWoodBlock("stripped_ginkgo_wood", "ginkgo_log", RotatedPillarBlock::new).properties(properties -> properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)).tag(LostWorldsTags.ModBlockTags.GINKGO_LOGS).register();
 	public static final BlockEntry<LeavesBlock> GINKGO_LEAVES = REGISTRATE.leaves("ginkgo_leaves", LostWorldsBlocks::leaves).addLayer(() -> RenderType::cutout).tag(BlockTags.LEAVES).register();
-	public static final BlockEntry<SaplingBlock> GINKGO_SAPLING = REGISTRATE.sapling("ginkgo_sapling", properties -> new SaplingBlock(new GinkgoTree(), properties)).properties(properties -> properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).tag(LostWorldsTags.ModBlockTags.ANCIENT_SAPLINGS, BlockTags.SAPLINGS).register();
+	public static final BlockEntry<CustomTreeSaplingBlock> GINKGO_SAPLING = REGISTRATE.sapling("ginkgo_sapling", properties -> new CustomTreeSaplingBlock(new GinkgoTree(), properties)).properties(properties -> properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).tag(LostWorldsTags.ModBlockTags.ANCIENT_SAPLINGS, BlockTags.SAPLINGS).register();
 	public static final BlockEntry<Block> GINKGO_PLANKS = REGISTRATE.blockAndItem("ginkgo_planks", Block::new).properties(properties -> properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)).tag(BlockTags.PLANKS).register();
 	public static final BlockEntry<StairsBlock> GINKGO_STAIRS = REGISTRATE.stairBlock("ginkgo_stairs", "ginkgo_planks", properties -> new StairsBlock(() -> LostWorldsBlocks.GINKGO_PLANKS.getDefaultState(), properties)).properties(properties -> properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)).tag(BlockTags.WOODEN_STAIRS).register();
 	public static final BlockEntry<SlabBlock> GINKGO_SLAB = REGISTRATE.slabBlock("ginkgo_slab", "ginkgo_planks", SlabBlock::new).properties(properties -> properties.of(Material.WOOD, MaterialColor.SAND).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)).tag(BlockTags.WOODEN_SLABS).register();
@@ -511,17 +512,21 @@ public class LostWorldsBlocks {
 
 	static {
 		for (DinoTypes types : DinoTypes.eggLaying()) {
-			if (types.getEgg(types.getEntityType().get()) instanceof TinyEggBlock) {
-				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "tiny_egg", types, properties -> types.getEgg(types.getEntityType().get())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.tinyEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
+			Size size = types.getEggSize();
+			if (size == Size.TINY) {
+				BlockEntry<TinyEggBlock> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", size.getName(), types, properties -> new TinyEggBlock(properties, types.getEntityType())).initialProperties(() -> Blocks.TURTLE_EGG).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.tinyEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
 				types.setEgg(() -> egg.get());
-			} else if (types.getEgg(types.getEntityType().get()) instanceof SmallEggBlock) {
-				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "small_egg", types, properties -> types.getEgg(types.getEntityType().get())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.smallEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
+			}
+			if (size == Size.SMALL) {
+				BlockEntry<SmallEggBlock> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", size.getName(), types, properties -> new SmallEggBlock(properties, types.getEntityType())).initialProperties(() -> Blocks.TURTLE_EGG).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.smallEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
 				types.setEgg(() -> egg.get());
-			} else if (types.getEgg(types.getEntityType().get()) instanceof MediumEggBlock) {
-				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "medium_egg", types, properties -> types.getEgg(types.getEntityType().get())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.mediumEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
+			}
+			if (size == Size.MEDIUM) {
+				BlockEntry<MediumEggBlock> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", size.getName(), types, properties -> new MediumEggBlock(properties, types.getEntityType())).initialProperties(() -> Blocks.TURTLE_EGG).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.mediumEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
 				types.setEgg(() -> egg.get());
-			} else if (types.getEgg(types.getEntityType().get()) instanceof LargeEggBlock) {
-				BlockEntry<Block> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", "large_egg", types, properties -> types.getEgg(types.getEntityType().get())).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.largeEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
+			}
+			if (size == Size.LARGE) {
+				BlockEntry<LargeEggBlock> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", size.getName(), types, properties -> new LargeEggBlock(properties, types.getEntityType())).initialProperties(() -> Blocks.TURTLE_EGG).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.largeEgg()).tag(LostWorldsTags.ModBlockTags.EGGS).register();
 				types.setEgg(() -> egg.get());
 			}
 		}

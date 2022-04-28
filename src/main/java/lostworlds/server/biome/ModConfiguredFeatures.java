@@ -1,6 +1,6 @@
 package lostworlds.server.biome;
 
-import static lostworlds.server.util.BlockGetter.getStateWhenCan;
+import static lostworlds.server.util.GeneralGetter.getStateWhenCan;
 
 import java.util.function.Supplier;
 

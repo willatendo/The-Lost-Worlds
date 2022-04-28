@@ -1,6 +1,6 @@
 package lostworlds.server.dimension.carver;
 
-import static lostworlds.server.util.BlockGetter.getWhenCan;
+import static lostworlds.server.util.GeneralGetter.getWhenCan;
 
 import java.util.function.Supplier;
 

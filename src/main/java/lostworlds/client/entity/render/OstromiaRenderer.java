@@ -17,7 +17,7 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 public class OstromiaRenderer extends GeoEntityRenderer<OstromiaEntity> {
 	public OstromiaRenderer(EntityRendererManager renderManager) {
 		super(renderManager, new OstromiaModel());
-		this.layerRenderers.add(new OstromiaWingsRenderer());
+		this.layerRenderers.add(new OstromiaWingsRenderer(this));
 		this.shadowRadius = 0.25F;
 	}
 

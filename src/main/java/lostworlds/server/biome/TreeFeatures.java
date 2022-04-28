@@ -1,7 +1,7 @@
 package lostworlds.server.biome;
 
 import static lostworlds.server.biome.ModConfiguredFeatures.register;
-import static lostworlds.server.util.BlockGetter.getStateWhenCan;
+import static lostworlds.server.util.GeneralGetter.getStateWhenCan;
 
 import java.util.OptionalInt;
 import java.util.function.Supplier;
@@ -18,11 +18,12 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureSpread;
 import net.minecraft.world.gen.feature.Features;
+import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.MultipleRandomFeatureConfig;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.ThreeLayerFeature;
 import net.minecraft.world.gen.feature.TwoLayerFeature;
 import net.minecraft.world.gen.foliageplacer.DarkOakFoliagePlacer;
-import net.minecraft.world.gen.foliageplacer.FancyFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.JungleFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.MegaPineFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.SpruceFoliagePlacer;
@@ -58,7 +59,7 @@ public class TreeFeatures {
 	public static final Supplier<ConfiguredFeature<?, ?>> SCANT_CYPRESS_TREES = () -> register("scant_cypress_trees", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(CYPRESS_TREE.get().weighted(0.33333334F)), CYPRESS_TREE.get())).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(5, 0.1F, 1))));
 	public static final Supplier<ConfiguredFeature<?, ?>> SPARSE_CYPRESS_TREES = () -> register("sparse_cypress_trees", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(CYPRESS_TREE.get().weighted(0.33333334F)), CYPRESS_TREE.get())).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(0, 0.1F, 1))));
 
-	public static final Supplier<ConfiguredFeature<BaseTreeFeatureConfig, ?>> GINKGO_TREE = () -> register("ginkgo_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(getStateWhenCan(LostWorldsBlocks.GINKGO_LOG)), new SimpleBlockStateProvider(getStateWhenCan(LostWorldsBlocks.GINKGO_LEAVES)), new FancyFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(4), 4), new FancyTrunkPlacer(3, 11, 0), new TwoLayerFeature(0, 0, 0, OptionalInt.of(4)))).ignoreVines().heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
+	public static final Supplier<ConfiguredFeature<NoFeatureConfig, ?>> GINKGO_TREE = () -> register("ginkgo_tree", LostWorldsFeatures.GINKGO_TREE.configured(IFeatureConfig.NONE));
 	public static final Supplier<ConfiguredFeature<?, ?>> GINKGO_TREES = () -> register("ginkgo_trees", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(GINKGO_TREE.get().weighted(0.33333334F)), GINKGO_TREE.get())).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(3, 0.1F, 1))));
 
 	public static final Supplier<ConfiguredFeature<?, ?>> GINKGO_FOREST_TREES = () -> register("ginkgo_forest_trees", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(Features.OAK.weighted(0.33333334F), Features.FANCY_OAK.weighted(0.1F)), Features.OAK)).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(8, 0.1F, 1))));
@@ -72,7 +73,7 @@ public class TreeFeatures {
 	public static final Supplier<ConfiguredFeature<BaseTreeFeatureConfig, ?>> ARAUCARIA_TREE = () -> register("araucaria_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(getStateWhenCan(LostWorldsBlocks.ARAUCARIA_LOG)), new SimpleBlockStateProvider(getStateWhenCan(LostWorldsBlocks.ARAUCARIA_LEAVES)), new SpruceFoliagePlacer(FeatureSpread.of(2, 1), FeatureSpread.of(0, 2), FeatureSpread.of(1, 1)), new StraightTrunkPlacer(5, 2, 1), new TwoLayerFeature(2, 0, 2))).ignoreVines().build()));
 	public static final Supplier<ConfiguredFeature<?, ?>> ARAUCARIA_TREES = () -> register("araucaria_trees", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(ARAUCARIA_TREE.get().weighted(0.33333334F)), ARAUCARIA_TREE.get())).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(3, 0.1F, 1))));
 
-	public static final Supplier<ConfiguredFeature<BaseTreeFeatureConfig, ?>> SCORCHED_TREE = () -> register("scorched_tree", LostWorldsFeatures.SCORCHED_TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(getStateWhenCan(LostWorldsBlocks.SCORCHED_LOG)), new SimpleBlockStateProvider(Blocks.AIR.defaultBlockState()), new JungleFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0), 2), new FancyTrunkPlacer(3, 11, 0), new TwoLayerFeature(0, 0, 0, OptionalInt.of(4)))).ignoreVines().heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
+	public static final Supplier<ConfiguredFeature<BaseTreeFeatureConfig, ?>> SCORCHED_TREE = () -> register("scorched_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(getStateWhenCan(LostWorldsBlocks.SCORCHED_LOG)), new SimpleBlockStateProvider(Blocks.AIR.defaultBlockState()), new JungleFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0), 2), new StraightTrunkPlacer(3, 11, 0), new TwoLayerFeature(0, 0, 0, OptionalInt.of(4)))).ignoreVines().heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
 	public static final Supplier<ConfiguredFeature<?, ?>> SINGLE_SCORCHED_TREE = () -> register("single_scorched_tree", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(SCORCHED_TREE.get().weighted(0.33333334F)), SCORCHED_TREE.get())).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(0, 0.05F, 1))));
 
 }
