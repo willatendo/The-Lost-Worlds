@@ -40,6 +40,7 @@ public class LostWorldsTags {
 		public static final ITag.INamedTag<Item> EGGS = tag("eggs");
 		public static final ITag.INamedTag<Item> EORAPTOR_FOSSILS = tag("eoraptor_fossils");
 		public static final ITag.INamedTag<Item> ELECTRONICS = tag("electronics");
+		public static final ITag.INamedTag<Item> EUSTREPTOSPONDYLUS_FOSSILS = tag("eustreptospondylus_fossils");
 		public static final ITag.INamedTag<Item> FOOD_SEEDS = tag("food_seeds");
 		public static final ITag.INamedTag<Item> FOSSILS = tag("fossils");
 		public static final ITag.INamedTag<Item> FUKUIVENATOR_FOSSILS = tag("fukuivenator_fossils");

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:eustreptospondylus_rib_cage",
+    "lostworlds:eustreptospondylus_leg_bones",
+    "lostworlds:eustreptospondylus_arm_bones",
+    "lostworlds:eustreptospondylus_tail",
+    "lostworlds:eustreptospondylus_skull",
+    "lostworlds:eustreptospondylus_skeleton"
+  ]
+}

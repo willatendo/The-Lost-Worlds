@@ -140,6 +140,12 @@ public class LostWorldsCommonConfig {
 	public final IntValue eoraptorSpawnGroupMinimum;
 	public final IntValue eoraptorSpawnGroupMaximum;
 
+	public final DoubleValue eustreptospondylusHeath;
+	public final DoubleValue eustreptospondylusAttackDamage;
+	public final IntValue eustreptospondylusSpawnWeight;
+	public final IntValue eustreptospondylusSpawnGroupMinimum;
+	public final IntValue eustreptospondylusSpawnGroupMaximum;
+
 	public final DoubleValue fukuvenatorHeath;
 	public final DoubleValue fukuvenatorAttackDamage;
 	public final IntValue fukuvenatorSpawnWeight;
@@ -398,6 +404,12 @@ public class LostWorldsCommonConfig {
 		this.edaphosaurusSpawnWeight = builder.comment("Sets the weight of Edaphosaurus spawning").translation(TRANSLATION_TEXT + "edaphosaurusSpawnWeight").defineInRange("edaphosaurusSpawnWeight", 4, 1, 100);
 		this.edaphosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Edaphosaurus in a spawn group").translation(TRANSLATION_TEXT + "edaphosaurusSpawnGroupMinimum").defineInRange("edaphosaurusSpawnGroupMinimum", 5, 1, 100);
 		this.edaphosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Edaphosaurus in a spawn group").translation(TRANSLATION_TEXT + "edaphosaurusSpawnGroupMaximum").defineInRange("edaphosaurusSpawnGroupMaximum", 7, 1, 100);
+
+		this.eustreptospondylusHeath = builder.comment("Sets the heath of the Eustreptospondylus").translation(TRANSLATION_TEXT + "eustreptospondylusHeath").defineInRange("eustreptospondylusHeath", 35.0D, 1.0D, 999.0D);
+		this.eustreptospondylusAttackDamage = builder.comment("Sets the attack damage of the Eustreptospondylus").translation(TRANSLATION_TEXT + "eustreptospondylusAttackDamage").defineInRange("eustreptospondylusAttackDamage", 10.0D, 1.0D, 999.0D);
+		this.eustreptospondylusSpawnWeight = builder.comment("Sets the weight of Eustreptospondylus spawning").translation(TRANSLATION_TEXT + "eustreptospondylusSpawnWeight").defineInRange("eustreptospondylusSpawnWeight", 3, 1, 100);
+		this.eustreptospondylusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Eustreptospondylus in a spawn group").translation(TRANSLATION_TEXT + "eustreptospondylusSpawnGroupMinimum").defineInRange("eustreptospondylusSpawnGroupMinimum", 3, 1, 100);
+		this.eustreptospondylusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Eustreptospondylus in a spawn group").translation(TRANSLATION_TEXT + "eustreptospondylusSpawnGroupMaximum").defineInRange("eustreptospondylusSpawnGroupMaximum", 6, 1, 100);
 
 		this.fukuvenatorHeath = builder.comment("Sets the heath of the Fukuvenator").translation(TRANSLATION_TEXT + "fukuvenatorHeath").defineInRange("fukuvenatorHeath", 15.0D, 1.0D, 999.0D);
 		this.fukuvenatorAttackDamage = builder.comment("Sets the attack damage of the Fukuvenator").translation(TRANSLATION_TEXT + "fukuvenatorAttackDamage").defineInRange("fukuvenatorAttackDamage", 4.0D, 1.0D, 999.0D);

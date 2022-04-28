@@ -95,7 +95,9 @@ public class CryolophosaurusEntity extends CarnivoreEntity implements IAngerable
 		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, PlayerEntity.class, this::isAngryAt));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, DilophosaurusEntity.class, this::isHungry));
 		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, DilophosaurusEntity.class, this::isAngryAt));
-		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, AllosaurusEntity.class, this::isAngryAt));
+		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, EustreptospondylusEntity.class, this::isHungry));
+		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, EustreptospondylusEntity.class, this::isAngryAt));
+		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, AllosaurusEntity.class, this::isAngryAt));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, ChilesaurusEntity.class, this::isHungry));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, LiaoningosaurusEntity.class, this::isHungry));
 		this.targetSelector.addGoal(8, new ResetAngerGoal<>(this, true));

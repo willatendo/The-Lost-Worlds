@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:analyzer",
+  "input": {
+    "item": "lostworlds:eustreptospondylus_dna"
+  },
+  "storage": {
+    "item": "lostworlds:storage_disc"
+  },
+  "output": "lostworlds:eustreptospondylus_dna_disc"
+}

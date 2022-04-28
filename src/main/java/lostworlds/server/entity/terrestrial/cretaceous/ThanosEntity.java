@@ -119,7 +119,7 @@ public class ThanosEntity extends CarnivoreEntity implements IAngerable {
 
 	@Override
 	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
-		return LostWorldsEntities.CARNOTAURUS.create(world);
+		return LostWorldsEntities.THANOS.create(world);
 	}
 
 	@Override

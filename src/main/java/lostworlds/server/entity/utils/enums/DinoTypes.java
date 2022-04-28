@@ -34,6 +34,7 @@ public enum DinoTypes implements IStringSerializable {
 	DIMETRODON("dimetrodon", () -> LostWorldsEntities.DIMETRODON.get(), LostWorldsTags.ModItemTags.DIMETRODON_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x81644c, 5, 7, 0.5F, 0.76F),
 	EDAPHOSAURUS("edaphosaurus", () -> LostWorldsEntities.EDAPHOSAURUS.get(), LostWorldsTags.ModItemTags.EDAPHOSAURUS_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x57614e, 5, 7, 0.5F, 0.76F),
 	EORAPTOR("eoraptor", () -> LostWorldsEntities.EORAPTOR.get(), LostWorldsTags.ModItemTags.EORAPTOR_FOSSILS, true, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x523c3e, 1, 3, 0.1F, 0.35F),
+	EUSTREPTOSPONDYLUS("eustreptospondylus", () -> LostWorldsEntities.EUSTREPTOSPONDYLUS.get(), LostWorldsTags.ModItemTags.EUSTREPTOSPONDYLUS_FOSSILS, true, true, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x241d1a, 5, 7, 0.5F, 0.64F),
 	FUKUIVENATOR("fukuivenator", () -> LostWorldsEntities.FUKUIVENATOR.get(), LostWorldsTags.ModItemTags.FUKUIVENATOR_FOSSILS, true, true, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x52526f, 4, 5, 0.3F, 0.35F),
 	GIGANOTOSAURUS("giganotosaurus", () -> LostWorldsEntities.GIGANOTOSAURUS.get(), LostWorldsTags.ModItemTags.GIGANOTOSAURUS_FOSSILS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x9f6b41, 9, 12, 0.5F, 0.8F),
 	GORGONOPS("gorgonops", () -> LostWorldsEntities.GORGONOPS.get(), LostWorldsTags.ModItemTags.GORGONOPS_FOSSILS, true, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0x443619, 3, 5, 0.3F, 0.46F),
