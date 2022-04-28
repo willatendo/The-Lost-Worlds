@@ -80,6 +80,7 @@ public class ParksosaurusEntity extends EggLayingEntity {
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, CarnotaurusEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, FukuivenatorEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, GiganotosaurusEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, ThanosEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, TyrannosaurusEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, UtahraptorEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new TerrestrialCreateTerritoryGoal(this, 1.0D));
@@ -107,6 +108,6 @@ public class ParksosaurusEntity extends EggLayingEntity {
 
 	@Override
 	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
-		return LostWorldsEntities.CHILESAURUS.create(world);
+		return LostWorldsEntities.PARKSOSAURUS.create(world);
 	}
 }

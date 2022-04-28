@@ -247,6 +247,12 @@ public class LostWorldsCommonConfig {
 	public final IntValue tetraceratopsSpawnGroupMinimum;
 	public final IntValue tetraceratopsSpawnGroupMaximum;
 
+	public final DoubleValue thanosHeath;
+	public final DoubleValue thanosAttackDamage;
+	public final IntValue thanosSpawnWeight;
+	public final IntValue thanosSpawnGroupMinimum;
+	public final IntValue thanosSpawnGroupMaximum;
+
 	public final DoubleValue tyrannosaurusHeath;
 	public final DoubleValue tyrannosaurusAttackDamage;
 	public final IntValue tyrannosaurusSpawnWeight;
@@ -350,7 +356,7 @@ public class LostWorldsCommonConfig {
 
 		this.carnotaurusHeath = builder.comment("Sets the heath of the Carnotaurus").translation(TRANSLATION_TEXT + "carnotaurusHeath").defineInRange("carnotaurusHeath", 40.0D, 1.0D, 999.0D);
 		this.carnotaurusAttackDamage = builder.comment("Sets the attack damage of the Carnotaurus").translation(TRANSLATION_TEXT + "carnotaurusAttackDamage").defineInRange("carnotaurusAttackDamage", 14.0D, 1.0D, 999.0D);
-		this.carnotaurusSpawnWeight = builder.comment("Sets the weight of Allosaurus spawning").translation(TRANSLATION_TEXT + "carnotaurusSpawnWeight").defineInRange("carnotaurusSpawnWeight", 3, 1, 100);
+		this.carnotaurusSpawnWeight = builder.comment("Sets the weight of Carnotaurus spawning").translation(TRANSLATION_TEXT + "carnotaurusSpawnWeight").defineInRange("carnotaurusSpawnWeight", 3, 1, 100);
 		this.carnotaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Carnotaurus in a spawn group").translation(TRANSLATION_TEXT + "carnotaurusSpawnGroupMinimum").defineInRange("carnotaurusSpawnGroupMinimum", 1, 1, 100);
 		this.carnotaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Carnotaurus in a spawn group").translation(TRANSLATION_TEXT + "carnotaurusSpawnGroupMaximum").defineInRange("carnotaurusSpawnGroupMaximum", 2, 1, 100);
 
@@ -493,6 +499,12 @@ public class LostWorldsCommonConfig {
 		this.tetraceratopsSpawnWeight = builder.comment("Sets the weight of Tetraceratops spawning").translation(TRANSLATION_TEXT + "tetraceratopsSpawnWeight").defineInRange("tetraceratopsSpawnWeight", 3, 1, 100);
 		this.tetraceratopsSpawnGroupMinimum = builder.comment("Sets the minimum amount of Tetraceratops in a spawn group").translation(TRANSLATION_TEXT + "tetraceratopsSpawnGroupMinimum").defineInRange("tetraceratopsSpawnGroupMinimum", 1, 1, 100);
 		this.tetraceratopsSpawnGroupMaximum = builder.comment("Sets the maximum amount of Tetraceratops in a spawn group").translation(TRANSLATION_TEXT + "tetraceratopsSpawnGroupMaximum").defineInRange("tetraceratopsSpawnGroupMaximum", 2, 1, 100);
+
+		this.thanosHeath = builder.comment("Sets the heath of the Thanos").translation(TRANSLATION_TEXT + "thanosHeath").defineInRange("thanosHeath", 35.0D, 1.0D, 999.0D);
+		this.thanosAttackDamage = builder.comment("Sets the attack damage of the Thanos").translation(TRANSLATION_TEXT + "thanosAttackDamage").defineInRange("thanosAttackDamage", 14.0D, 1.0D, 999.0D);
+		this.thanosSpawnWeight = builder.comment("Sets the weight of Thanos spawning").translation(TRANSLATION_TEXT + "thanosSpawnWeight").defineInRange("thanosSpawnWeight", 3, 1, 100);
+		this.thanosSpawnGroupMinimum = builder.comment("Sets the minimum amount of Thanos in a spawn group").translation(TRANSLATION_TEXT + "thanosSpawnGroupMinimum").defineInRange("thanosSpawnGroupMinimum", 1, 1, 100);
+		this.thanosSpawnGroupMaximum = builder.comment("Sets the maximum amount of Thanos in a spawn group").translation(TRANSLATION_TEXT + "thanosSpawnGroupMaximum").defineInRange("thanosSpawnGroupMaximum", 2, 1, 100);
 
 		this.tyrannosaurusHeath = builder.comment("Sets the heath of the Tyrannosaurus").translation(TRANSLATION_TEXT + "tyrannosaurusHeath").defineInRange("tyrannosaurusHeath", 80.0D, 1.0D, 999.0D);
 		this.tyrannosaurusAttackDamage = builder.comment("Sets the attack damage of the Tyrannosaurus").translation(TRANSLATION_TEXT + "tyrannosaurusAttackDamage").defineInRange("tyrannosaurusAttackDamage", 20.0D, 1.0D, 999.0D);

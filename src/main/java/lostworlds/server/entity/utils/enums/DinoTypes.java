@@ -52,6 +52,7 @@ public enum DinoTypes implements IStringSerializable {
 	RHINESUCHUS("rhinesuchus", () -> LostWorldsEntities.RHINESUCHUS.get(), LostWorldsTags.ModItemTags.RHINESUCHUS_FOSSILS, false, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0x576b54, 3, 5, 0.3F, 0.54F),
 	SUCHOMIMUS("suchomimus", () -> LostWorldsEntities.SUCHOMIMUS.get(), LostWorldsTags.ModItemTags.SUCHOMIMUS_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x57737b, 5, 7, 0.5F, 0.64F),
 	TETRACERATOPS("tetraceratops", () -> LostWorldsEntities.TETRACERATOPS.get(), LostWorldsTags.ModItemTags.TETRACERATOPS_FOSSILS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x623015, 3, 5, 0.3F, 0.54F),
+	THANOS("thanos", () -> LostWorldsEntities.THANOS.get(), LostWorldsTags.ModItemTags.THANOS_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0xca2018, 6, 9, 0.4F, 0.8F),
 	TYRANNOSAURUS("tyrannosaurus", () -> LostWorldsEntities.TYRANNOSAURUS.get(), LostWorldsTags.ModItemTags.TYRANNOSAURUS_FOSSILS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x889a55, 8, 11, 0.5F, 0.8F),
 	UTAHRAPTOR("utahraptor", () -> LostWorldsEntities.UTAHRAPTOR.get(), LostWorldsTags.ModItemTags.UTAHRAPTOR_FOSSILS, true, true, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x503524, 5, 7, 0.5F, 0.64F),
 	ZEPHYROSAURUS("zephyrosaurus", () -> LostWorldsEntities.ZEPHYROSAURUS.get(), LostWorldsTags.ModItemTags.ZEPHYROSAURUS_FOSSILS, true, true, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x577476, 3, 5, 0.3F, 0.54F),;

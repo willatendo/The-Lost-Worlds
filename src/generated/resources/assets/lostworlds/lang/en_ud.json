@@ -31,6 +31,7 @@
   "entity.lostworlds.rhinesuchus": "sn\u0265\u0254ns\u01DDu\u0131\u0265\u1D1A",
   "entity.lostworlds.suchomimus": "sn\u026F\u0131\u026Fo\u0265\u0254nS",
   "entity.lostworlds.tetraceratops": "sdo\u0287\u0250\u0279\u01DD\u0254\u0250\u0279\u0287\u01DD\u27D8",
+  "entity.lostworlds.thanos": "sou\u0250\u0265\u27D8",
   "entity.lostworlds.tyrannosaurus": "sn\u0279n\u0250souu\u0250\u0279\u028E\u27D8",
   "entity.lostworlds.utahraptor": "\u0279o\u0287d\u0250\u0279\u0265\u0250\u0287\u2229",
   "entity.lostworlds.zephyrosaurus": "sn\u0279n\u0250so\u0279\u028E\u0265d\u01DDZ",
@@ -63,6 +64,7 @@
   "item.lostworlds.rhinesuchus_spawn_egg": "bb\u018E u\u028D\u0250dS sn\u0265\u0254ns\u01DDu\u0131\u0265\u1D1A",
   "item.lostworlds.suchomimus_spawn_egg": "bb\u018E u\u028D\u0250dS sn\u026F\u0131\u026Fo\u0265\u0254nS",
   "item.lostworlds.tetraceratops_spawn_egg": "bb\u018E u\u028D\u0250dS sdo\u0287\u0250\u0279\u01DD\u0254\u0250\u0279\u0287\u01DD\u27D8",
+  "item.lostworlds.thanos_spawn_egg": "bb\u018E u\u028D\u0250dS sou\u0250\u0265\u27D8",
   "item.lostworlds.tyrannosaurus_spawn_egg": "bb\u018E u\u028D\u0250dS sn\u0279n\u0250souu\u0250\u0279\u028E\u27D8",
   "item.lostworlds.utahraptor_spawn_egg": "bb\u018E u\u028D\u0250dS \u0279o\u0287d\u0250\u0279\u0265\u0250\u0287\u2229",
   "item.lostworlds.zephyrosaurus_spawn_egg": "bb\u018E u\u028D\u0250dS sn\u0279n\u0250so\u0279\u028E\u0265d\u01DDZ"

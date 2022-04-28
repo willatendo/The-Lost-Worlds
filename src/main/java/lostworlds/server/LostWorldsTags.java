@@ -77,6 +77,7 @@ public class LostWorldsTags {
 		public static final ITag.INamedTag<Item> TETRACERATOPS_FOSSILS = tag("tetraceratops_fossils");
 		public static final ITag.INamedTag<Item> TIME_BOOK_FUEL = tag("time_book_fuel");
 		public static final ITag.INamedTag<Item> TIME_BOOKS = tag("time_books");
+		public static final ITag.INamedTag<Item> THANOS_FOSSILS = tag("thanos_fossils");
 		public static final ITag.INamedTag<Item> TRACE_FOSSILS = tag("trace_fossils");
 		public static final ITag.INamedTag<Item> TYRANNOSAURUS_FOSSILS = tag("tyrannosaurus_fossils");
 		public static final ITag.INamedTag<Item> UTAHRAPTOR_FOSSILS = tag("utahraptor_fossils");
