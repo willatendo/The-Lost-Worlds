@@ -198,6 +198,11 @@ public class LostWorldsCommonConfig {
 	public final IntValue ouranosaurusSpawnGroupMinimum;
 	public final IntValue ouranosaurusSpawnGroupMaximum;
 
+	public final DoubleValue parksosaurusHeath;
+	public final IntValue parksosaurusSpawnWeight;
+	public final IntValue parksosaurusSpawnGroupMinimum;
+	public final IntValue parksosaurusSpawnGroupMaximum;
+
 	public final DoubleValue procompsognathusHeath;
 	public final DoubleValue procompsognathusAttackDamage;
 	public final IntValue procompsognathusSpawnWeight;
@@ -445,6 +450,11 @@ public class LostWorldsCommonConfig {
 		this.ouranosaurusSpawnWeight = builder.comment("Sets the weight of Ouranosaurus spawning").translation(TRANSLATION_TEXT + "ouranosaurusSpawnWeight").defineInRange("ouranosaurusSpawnWeight", 4, 1, 100);
 		this.ouranosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Ouranosaurus in a spawn group").translation(TRANSLATION_TEXT + "ouranosaurusSpawnGroupMinimum").defineInRange("ouranosaurusSpawnGroupMinimum", 2, 1, 100);
 		this.ouranosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Ouranosaurus in a spawn group").translation(TRANSLATION_TEXT + "ouranosaurusSpawnGroupMaximum").defineInRange("ouranosaurusSpawnGroupMaximum", 8, 1, 100);
+
+		this.parksosaurusHeath = builder.comment("Sets the heath of the Parksosaurus").translation(TRANSLATION_TEXT + "parksosaurusHeath").defineInRange("parksosaurusHeath", 10.0D, 1.0D, 999.0D);
+		this.parksosaurusSpawnWeight = builder.comment("Sets the weight of Parksosaurus spawning").translation(TRANSLATION_TEXT + "parksosaurusSpawnWeight").defineInRange("parksosaurusSpawnWeight", 4, 1, 100);
+		this.parksosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Parksosaurus in a spawn group").translation(TRANSLATION_TEXT + "parksosaurusSpawnGroupMinimum").defineInRange("parksosaurusSpawnGroupMinimum", 3, 1, 100);
+		this.parksosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Parksosaurus in a spawn group").translation(TRANSLATION_TEXT + "parksosaurusSpawnGroupMaximum").defineInRange("parksosaurusSpawnGroupMaximum", 10, 1, 100);
 
 		this.procompsognathusHeath = builder.comment("Sets the heath of the Procompsognathus").translation(TRANSLATION_TEXT + "procompsognathusHeath").defineInRange("procompsognathusHeath", 3.0D, 1.0D, 999.0D);
 		this.procompsognathusAttackDamage = builder.comment("Sets the attack damage of the Procompsognathus").translation(TRANSLATION_TEXT + "procompsognathusAttackDamage").defineInRange("procompsognathusAttackDamage", 1.0D, 1.0D, 999.0D);

@@ -53,7 +53,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class SuchomimusEntity extends CarnivoreEntity implements IAngerable {
-	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(CarnotaurusEntity.class, DataSerializers.INT);
+	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(SuchomimusEntity.class, DataSerializers.INT);
 	private static final RangedInteger PERSISTENT_ANGER_TIME = TickRangeConverter.rangeOfSeconds(20, 39);
 	private static final Ingredient FOOD_ITEMS = FoodLists.PISCIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);

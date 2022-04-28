@@ -23,7 +23,6 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialEatPodzolGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import lostworlds.server.entity.terrestrial.cretaceous.CarnotaurusEntity;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.CreatureDiet;
@@ -54,7 +53,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class LiaoningosaurusEntity extends EggLayingEntity implements IAngerable {
-	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(CarnotaurusEntity.class, DataSerializers.INT);
+	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(LiaoningosaurusEntity.class, DataSerializers.INT);
 	private static final RangedInteger PERSISTENT_ANGER_TIME = TickRangeConverter.rangeOfSeconds(20, 39);
 	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);

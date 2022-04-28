@@ -48,7 +48,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class TyrannosaurusEntity extends CarnivoreEntity implements IAngerable {
-	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(CarnotaurusEntity.class, DataSerializers.INT);
+	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(TyrannosaurusEntity.class, DataSerializers.INT);
 	private static final RangedInteger PERSISTENT_ANGER_TIME = TickRangeConverter.rangeOfSeconds(20, 39);
 	private static final Ingredient FOOD_ITEMS = FoodLists.CARNIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);
@@ -99,6 +99,7 @@ public class TyrannosaurusEntity extends CarnivoreEntity implements IAngerable {
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, UtahraptorEntity.class, this::isHungry));
 		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, UtahraptorEntity.class, this::isAngryAt));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, FukuivenatorEntity.class, this::isHungry));
+		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, ParksosaurusEntity.class, this::isHungry));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, PsittacosaurusEntity.class, this::isHungry));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, ZephyrosaurusEntity.class, this::isHungry));
 		this.targetSelector.addGoal(8, new ResetAngerGoal<>(this, true));

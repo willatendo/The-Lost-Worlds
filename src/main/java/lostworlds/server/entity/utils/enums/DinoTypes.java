@@ -44,6 +44,7 @@ public enum DinoTypes implements IStringSerializable {
 	OPHTHALMOSAURUS("ophthalmosaurus", () -> LostWorldsEntities.OPHTHALMOSAURUS.get(), LostWorldsTags.ModItemTags.OPHTHALMOSAURUS_FOSSILS, false, false, false, Size.MEDIUM, CreatureDiet.PISCIVORE, 0x858794, 4, 7, 0.4F, 0.6F),
 	OSTROMIA("ostromia", () -> LostWorldsEntities.OSTROMIA.get(), LostWorldsTags.ModItemTags.OSTROMIA_FOSSILS, true, true, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x47a373, 2, 4, 0.2F, 0.3F),
 	OURANOSAURUS("ouranosaurus", () -> LostWorldsEntities.OURANOSAURUS.get(), LostWorldsTags.ModItemTags.OURANOSAURUS_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x999554, 7, 10, 0.5F, 0.76F),
+	PARKSOSAURUS("parkososaurus", () -> LostWorldsEntities.PARKSOSAURUS.get(), LostWorldsTags.ModItemTags.PARKSOSAURUS_FOSSILS, false, false, false, Size.TINY, CreatureDiet.NONE, 0xa98460, 2, 5, 0.3F, 0.5F),
 	PALAEONISCUM("palaeoniscum", () -> LostWorldsEntities.PALAEONISCUM.get(), LostWorldsTags.ModItemTags.PALAEONISCUM_FOSSILS, false, false, false, Size.TINY, CreatureDiet.NONE, 0x72797a, 2, 5, 0.3F, 0.5F),
 	PROCOMPSOGNATHUS("procompsognathus", () -> LostWorldsEntities.PROCOMPSOGNATHUS.get(), LostWorldsTags.ModItemTags.PROCOMPSOGNATHUS_FOSSILS, true, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x445a2f, 1, 2, 0.1F, 0.2F),
 	PROTOSUCHUS("protosuchus", () -> LostWorldsEntities.PROTOSUCHUS.get(), LostWorldsTags.ModItemTags.PROTOSUCHUS_FOSSILS, true, false, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x8e2317, 3, 5, 0.3F, 0.54F),

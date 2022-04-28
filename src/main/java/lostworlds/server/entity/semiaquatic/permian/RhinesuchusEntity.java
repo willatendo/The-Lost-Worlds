@@ -21,7 +21,6 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialReasonableAttackGoal;
 import lostworlds.server.entity.semiaquatic.CarnivoreSemiAquaticEntity;
-import lostworlds.server.entity.terrestrial.cretaceous.CarnotaurusEntity;
 import lostworlds.server.entity.terrestrial.permian.DiictodonEntity;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
@@ -55,7 +54,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class RhinesuchusEntity extends CarnivoreSemiAquaticEntity implements IAngerable {
-	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(CarnotaurusEntity.class, DataSerializers.INT);
+	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(RhinesuchusEntity.class, DataSerializers.INT);
 	private static final RangedInteger PERSISTENT_ANGER_TIME = TickRangeConverter.rangeOfSeconds(20, 39);
 	public static final DataParameter<Integer> MOISTNESS_LEVEL = EntityDataManager.defineId(RhinesuchusEntity.class, DataSerializers.INT);
 	private static final Ingredient FOOD_ITEMS = IngredientUtil.combine(FoodLists.CARNIVORE, FoodLists.PISCIVORE);

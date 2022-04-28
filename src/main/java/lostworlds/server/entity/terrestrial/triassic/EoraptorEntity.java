@@ -23,7 +23,6 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialReasonableAttackGoal;
 import lostworlds.server.entity.terrestrial.CarnivoreEntity;
-import lostworlds.server.entity.terrestrial.cretaceous.CarnotaurusEntity;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.DinoTypes;
@@ -32,9 +31,9 @@ import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.IAngerable;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.HurtByTargetGoal;
 import net.minecraft.entity.ai.goal.ResetAngerGoal;
-import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.crafting.Ingredient;
@@ -52,7 +51,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class EoraptorEntity extends CarnivoreEntity implements IAngerable {
-	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(CarnotaurusEntity.class, DataSerializers.INT);
+	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(EoraptorEntity.class, DataSerializers.INT);
 	private static final RangedInteger PERSISTENT_ANGER_TIME = TickRangeConverter.rangeOfSeconds(20, 39);
 	private static final Ingredient FOOD_ITEMS = IngredientUtil.combine(FoodLists.CARNIVORE, FoodLists.HERBIVORE);
 	private AnimationFactory factory = new AnimationFactory(this);

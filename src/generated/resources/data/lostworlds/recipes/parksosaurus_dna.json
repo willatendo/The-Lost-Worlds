@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:dna_extractor",
+  "input": {
+    "item": "lostworlds:parksosaurus_soft_tissue"
+  },
+  "storage": {
+    "item": "lostworlds:empty_vile"
+  },
+  "output": "lostworlds:parksosaurus_dna"
+}

@@ -97,6 +97,7 @@ public class FukuivenatorEntity extends CarnivoreEntity implements IAngerable {
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, PlayerEntity.class, this::isHungry));
 		this.targetSelector.addGoal(3, new ReasonedAttackableTargetGoal<>(this, PlayerEntity.class, this::isAngryAt));
+		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, ParksosaurusEntity.class, this::isHungry));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, PsittacosaurusEntity.class, this::isHungry));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, ZephyrosaurusEntity.class, this::isHungry));
 		this.targetSelector.addGoal(8, new ResetAngerGoal<>(this, true));

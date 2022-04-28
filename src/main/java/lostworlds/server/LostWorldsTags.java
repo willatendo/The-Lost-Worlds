@@ -56,6 +56,7 @@ public class LostWorldsTags {
 		public static final ITag.INamedTag<Item> OPHTHALMOSAURUS_FOSSILS = tag("ophthalmosaurus_fossils");
 		public static final ITag.INamedTag<Item> OSTROMIA_FOSSILS = tag("ostromia_fossils");
 		public static final ITag.INamedTag<Item> OURANOSAURUS_FOSSILS = tag("ouranosaurus_fossils");
+		public static final ITag.INamedTag<Item> PARKSOSAURUS_FOSSILS = tag("parksosaurus_fossils");
 		public static final ITag.INamedTag<Item> PALAEONISCUM_FOSSILS = tag("palaeoniscum_fossils");
 		public static final ITag.INamedTag<Item> PAVEMENT = tag("pavement");
 		public static final ITag.INamedTag<Item> PETRIFIED_LOGS = tag("petrified_logs");
