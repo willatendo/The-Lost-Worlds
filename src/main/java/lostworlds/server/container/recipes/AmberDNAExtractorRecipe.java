@@ -27,7 +27,7 @@ public class AmberDNAExtractorRecipe implements IRecipe<IInventory> {
 	}
 
 	public ItemStack generateRandom() {
-		return this.output = RecipeManager.getItemForRecipe(LostWorldsItems.AMBER.get().getDefaultInstance()).generateOutput(new Random());
+		return this.output = LostWorldsRecipeManager.getItemForRecipe(LostWorldsItems.AMBER.get().getDefaultInstance()).generateOutput(new Random());
 	}
 
 	@Override

@@ -2,11 +2,9 @@ package lostworlds.server.util;
 
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.BlockBuilder;
-import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
-import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlockModels;
 import lostworlds.server.block.LostWorldsBlocks;
@@ -16,7 +14,6 @@ import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.AbstractButtonBlock;
 import net.minecraft.block.AbstractSignBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.DoorBlock;
 import net.minecraft.block.DoublePlantBlock;
 import net.minecraft.block.FenceBlock;
@@ -27,7 +24,6 @@ import net.minecraft.block.SlabBlock;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.block.TrapDoorBlock;
 import net.minecraft.block.WallBlock;
-import net.minecraft.item.Items;
 import net.minecraft.loot.ConstantRange;
 import net.minecraft.loot.ItemLootEntry;
 import net.minecraft.loot.LootPool;
@@ -35,45 +31,13 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.loot.conditions.BlockStateProperty;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrate> {
 	protected LostWorldsRegistrate(String modid) {
 		super(modid);
-
-		this.addDataGenerator(ProviderType.BLOCK_TAGS, provider -> provider.tag(LostWorldsTags.ModBlockTags.CALAMITES_PLACEABLES).addTag(BlockTags.SAND).addTag(Tags.Blocks.DIRT).add(LostWorldsBlocks.CALAMITES_SUCKOWII.get()).add(LostWorldsBlocks.CALAMITES_SUCKOWII_SAPLING.get()).add(Blocks.GRAVEL));
-		this.addDataGenerator(ProviderType.BLOCK_TAGS, provider -> provider.tag(LostWorldsTags.ModBlockTags.DINO_SPAWNABLES).addTag(Tags.Blocks.SAND).addTag(Tags.Blocks.GRAVEL).addTag(Tags.Blocks.DIRT).addTag(Tags.Blocks.STONE));
-		this.addDataGenerator(ProviderType.BLOCK_TAGS, provider -> provider.tag(LostWorldsTags.ModBlockTags.JURASSIC_PARK_ERA).addTag(LostWorldsTags.ModBlockTags.LIGHT_CONCRETE).addTag(LostWorldsTags.ModBlockTags.WOODEN_PLANKS));
-		this.addDataGenerator(ProviderType.BLOCK_TAGS, provider -> provider.tag(LostWorldsTags.ModBlockTags.JURASSIC_WORLD_ERA).addTag(LostWorldsTags.ModBlockTags.DARK_CONCRETE).addTag(LostWorldsTags.ModBlockTags.REFINED_WOODEN_PLANKS));
-
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.tag(ItemTags.STONE_TOOL_MATERIALS).add(LostWorldsBlocks.JURASSIC_COBBLESTONE.asStack().getItem()).add(LostWorldsBlocks.PERMIAN_COBBLESTONE.asStack().getItem()));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.tag(ItemTags.STONE_CRAFTING_MATERIALS).add(LostWorldsBlocks.JURASSIC_COBBLESTONE.asStack().getItem()).add(LostWorldsBlocks.PERMIAN_COBBLESTONE.asStack().getItem()));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.tag(LostWorldsTags.ModItemTags.TIME_BOOK_FUEL).add(Items.REDSTONE));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.ARAUCARIA_LOGS, LostWorldsTags.ModItemTags.ARAUCARIA_LOGS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.ANCIENT_SAPLINGS, LostWorldsTags.ModItemTags.ANCIENT_SAPLINGS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.CALAMITES_LOGS, LostWorldsTags.ModItemTags.CALAMITES_LOGS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.CONIFER_LOGS, LostWorldsTags.ModItemTags.CONIFER_LOGS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.CYPRESS_LOGS, LostWorldsTags.ModItemTags.CYPRESS_LOGS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.DARK_CONCRETE, LostWorldsTags.ModItemTags.DARK_CONCRETE));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.DECORATIVE_BLOCKS, LostWorldsTags.ModItemTags.DECORATIVE_BLOCKS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.DECORATIVE_DOORS, LostWorldsTags.ModItemTags.DECORATIVE_DOORS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.EGGS, LostWorldsTags.ModItemTags.EGGS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.FOSSILS, LostWorldsTags.ModItemTags.FOSSILS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.GINKGO_LOGS, LostWorldsTags.ModItemTags.GINKGO_LOGS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.JURASSIC_PARK_ERA, LostWorldsTags.ModItemTags.JURASSIC_PARK_ERA));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.JURASSIC_WORLD_ERA, LostWorldsTags.ModItemTags.JURASSIC_WORLD_ERA));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.LIGHT_CONCRETE, LostWorldsTags.ModItemTags.LIGHT_CONCRETE));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.PAVEMENT, LostWorldsTags.ModItemTags.PAVEMENT));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.PETRIFIED_LOGS, LostWorldsTags.ModItemTags.PETRIFIED_LOGS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.REFINED_WOODEN_PLANKS, LostWorldsTags.ModItemTags.REFINED_WOODEN_PLANKS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.ROADS, LostWorldsTags.ModItemTags.ROADS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.SCORCHED_LOGS, LostWorldsTags.ModItemTags.SCORCHED_LOGS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.SEQUOIA_LOGS, LostWorldsTags.ModItemTags.SEQUOIA_LOGS));
-		this.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.copy(LostWorldsTags.ModBlockTags.WOODEN_PLANKS, LostWorldsTags.ModItemTags.WOODEN_PLANKS));
 	}
 
 	public static NonNullSupplier<LostWorldsRegistrate> lazy(String modid) {

@@ -25,7 +25,7 @@ import net.minecraft.world.server.ServerWorld;
 
 public class TimeBookItem extends ShootableItem {
 	public static final Predicate<ItemStack> FUEL = (stack) -> {
-		return stack.getItem().is(LostWorldsTags.ModItemTags.TIME_BOOK_FUEL);
+		return stack.getItem().is(LostWorldsTags.ModItemTags.TIME_BOOK_FUEL.tag);
 	};
 	private final TimeEras era;
 	private final RegistryKey<World> worldToTransportTo;

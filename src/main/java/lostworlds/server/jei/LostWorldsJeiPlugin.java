@@ -62,11 +62,11 @@ public class LostWorldsJeiPlugin implements IModPlugin {
 		IJeiHelpers jeiHelpers = registration.getJeiHelpers();
 		IIngredientManager ingredientManager = registration.getIngredientManager();
 
-		registration.addRecipes(lostworlds.server.container.recipes.RecipeManager.getWaterFuelRecipes(ingredientManager, jeiHelpers), LostWorldsJeiConstants.WATER_FUEL_CATEGORY);
+		registration.addRecipes(lostworlds.server.container.recipes.LostWorldsRecipeManager.getWaterFuelRecipes(ingredientManager, jeiHelpers), LostWorldsJeiConstants.WATER_FUEL_CATEGORY);
 		registration.addRecipes(getRecipes(manager, LostWorldsRecipes.FOSSIL_CLEANER_RECIPE), LostWorldsJeiConstants.FOSSIL_CLEANER_CATEGORY);
 		registration.addRecipes(getRecipes(manager, LostWorldsRecipes.FOSSIL_GRINDER_RECIPE), LostWorldsJeiConstants.FOSSIL_GRINDER_CATEGORY);
 		registration.addRecipes(getRecipes(manager, LostWorldsRecipes.DNA_EXTRACTOR_RECIPE), LostWorldsJeiConstants.DNA_EXTRACTOR_CATEGORY);
-		registration.addRecipes(lostworlds.server.container.recipes.RecipeManager.getAmberRecipes(), LostWorldsJeiConstants.AMBER_DNA_EXTRACTOR_CATEGORY);
+		registration.addRecipes(lostworlds.server.container.recipes.LostWorldsRecipeManager.getAmberRecipes(), LostWorldsJeiConstants.AMBER_DNA_EXTRACTOR_CATEGORY);
 		registration.addRecipes(getRecipes(manager, LostWorldsRecipes.ANALYZER_RECIPE), LostWorldsJeiConstants.ANALYZER_CATEGORY);
 		registration.addRecipes(getRecipes(manager, LostWorldsRecipes.DNA_INJECTOR_RECIPE), LostWorldsJeiConstants.DNA_INJECTOR_CATEGORY);
 		registration.addRecipes(getRecipes(manager, LostWorldsRecipes.CULTIVATOR_RECIPE), LostWorldsJeiConstants.CULTIVATOR_CATEGORY);

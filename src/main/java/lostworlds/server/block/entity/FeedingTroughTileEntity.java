@@ -1,8 +1,11 @@
 package lostworlds.server.block.entity;
 
+import java.util.List;
+
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.container.FeedingTroughContainer;
 import lostworlds.server.container.LostWorldsContainers;
+import lostworlds.server.entity.terrestrial.PrehistoricEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -23,6 +26,21 @@ public class FeedingTroughTileEntity extends LockableLootTileEntity implements I
 
 	public FeedingTroughTileEntity() {
 		super(LostWorldsBlockEntities.FEEDING_TROUGH_TILE_ENTITY.get());
+	}
+
+	@Override
+	public void tick() {
+		List<PrehistoricEntity> list = this.level.getEntitiesOfClass(PrehistoricEntity.class, this.getRenderBoundingBox().inflate(400.0D));
+		for (PrehistoricEntity prehistoric : list) {
+			if (prehistoric.isHungry()) {
+				for (ItemStack items : this.items) {
+					if (prehistoric.isFood(items)) {
+						prehistoric.setHunger(prehistoric.maxHunger());
+						this.removeItem(0, 1);
+					}
+				}
+			}
+		}
 	}
 
 	@Override
@@ -124,15 +142,5 @@ public class FeedingTroughTileEntity extends LockableLootTileEntity implements I
 	@Override
 	protected Container createMenu(int windowID, PlayerInventory playerInventory) {
 		return new FeedingTroughContainer(LostWorldsContainers.FEEDING_TROUGH_CONTAINER.get(), windowID, playerInventory, this);
-	}
-
-	public boolean hasItems() {
-		ItemStack itemstack = this.items.get(0);
-		return !itemstack.isEmpty();
-	}
-
-	@Override
-	public void tick() {
-
 	}
 }

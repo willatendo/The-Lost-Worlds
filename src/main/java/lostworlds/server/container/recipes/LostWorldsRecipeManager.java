@@ -16,7 +16,7 @@ import net.minecraft.item.Items;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.potion.Potions;
 
-public class RecipeManager {
+public class LostWorldsRecipeManager {
 	public static List<RandomItemGenerator> amberRecipes = new ArrayList<>();
 
 	public static void initAlternateRecipes() {

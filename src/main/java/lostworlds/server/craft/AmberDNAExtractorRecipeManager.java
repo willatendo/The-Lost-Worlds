@@ -8,7 +8,7 @@ import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 
 import lostworlds.server.container.recipes.LostWorldsRecipes;
 import lostworlds.server.container.recipes.RandomItemGenerator;
-import lostworlds.server.container.recipes.RecipeManager;
+import lostworlds.server.container.recipes.LostWorldsRecipeManager;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.jei.recipe.AmberDNAExtractorRecipe;
 import net.minecraft.item.crafting.IRecipeType;
@@ -25,7 +25,7 @@ public class AmberDNAExtractorRecipeManager implements IRecipeManager {
 	}
 
 	public static void init() {
-		RecipeManager.registerAmber(amber);
+		LostWorldsRecipeManager.registerAmber(amber);
 	}
 
 	@Override

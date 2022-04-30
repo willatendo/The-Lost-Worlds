@@ -39,6 +39,7 @@ import lostworlds.client.entity.render.ThanosRenderer;
 import lostworlds.client.entity.render.TyrannosaurusRenderer;
 import lostworlds.client.entity.render.UtahraptorRenderer;
 import lostworlds.client.entity.render.ZephyrosaurusRenderer;
+import lostworlds.client.entity.render.bone.CustomisableRenderer;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.aquatic.cambrian.AnomalocarisEntity;
@@ -84,20 +85,13 @@ import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.util.LostWorldsRegistrate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry.PlacementType;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EntityType.IFactory;
 import net.minecraft.loot.LootTable;
 import net.minecraft.world.gen.Heightmap.Type;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
-import net.minecraftforge.registries.ForgeRegistries;
 
-// Todo: Angry Entities 
 @EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.MOD)
 public class LostWorldsEntities {
 	public static final LostWorldsRegistrate REGISTRATE = getRegistrate();
@@ -147,65 +141,42 @@ public class LostWorldsEntities {
 	static {
 		for (DinoTypes dinos : DinoTypes.values()) {
 			if (dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS) {
-				EntityType<FossilEntity> dirtyskull = register("dirty_" + dinos.toString().toLowerCase() + "_skull", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setDirtySkull(dirtyskull);
-				EntityType<FossilEntity> dirtyarmbones = register("dirty_" + dinos.toString().toLowerCase() + "_arm_bones", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setDirtyArmBones(dirtyarmbones);
-				EntityType<FossilEntity> dirtylegbones = register("dirty_" + dinos.toString().toLowerCase() + "_leg_bones", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setDirtyLegBones(dirtylegbones);
-				EntityType<FossilEntity> dirtyribcage = register("dirty_" + dinos.toString().toLowerCase() + "_rib_cage", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setDirtyRibCage(dirtyribcage);
-				EntityType<FossilEntity> dirtytail = register("dirty_" + dinos.toString().toLowerCase() + "_tail", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setDirtyTail(dirtytail);
-				EntityType<FossilEntity> skull = register(dinos.toString().toLowerCase() + "_skull", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setSkull(skull);
-				EntityType<FossilEntity> arm_bones = register(dinos.toString().toLowerCase() + "_arm_bones", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setArmBones(arm_bones);
-				EntityType<FossilEntity> leg_bones = register(dinos.toString().toLowerCase() + "_leg_bones", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setLegBones(leg_bones);
-				EntityType<FossilEntity> rib_cage = register(dinos.toString().toLowerCase() + "_rib_cage", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setRibCage(rib_cage);
-				EntityType<FossilEntity> tail = register(dinos.toString().toLowerCase() + "_tail", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setTail(tail);
+				EntityEntry<DirtyFossilEntity> dirtyskull = REGISTRATE.entity("dirty_" + dinos.toString().toLowerCase() + "_skull", DirtyFossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_skull", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setDirtySkull(() -> dirtyskull.get());
+				EntityEntry<DirtyFossilEntity> dirtyarmbones = REGISTRATE.entity("dirty_" + dinos.toString().toLowerCase() + "_arm_bones", DirtyFossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_arm_bones", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setDirtyArmBones(() -> dirtyarmbones.get());
+				EntityEntry<DirtyFossilEntity> dirtylegbones = REGISTRATE.entity("dirty_" + dinos.toString().toLowerCase() + "_leg_bones", DirtyFossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_leg_bones", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setDirtyLegBones(() -> dirtylegbones.get());
+				EntityEntry<DirtyFossilEntity> dirtyribcage = REGISTRATE.entity("dirty_" + dinos.toString().toLowerCase() + "_rib_cage", DirtyFossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_rib_cage", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setDirtyRibCage(() -> dirtyribcage.get());
+				EntityEntry<DirtyFossilEntity> dirtytail = REGISTRATE.entity("dirty_" + dinos.toString().toLowerCase() + "_tail", DirtyFossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_tail", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setDirtyTail(() -> dirtytail.get());
+				EntityEntry<FossilEntity> skull = REGISTRATE.entity(dinos.toString().toLowerCase() + "_skull", FossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_skull", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setSkull(() -> skull.get());
+				EntityEntry<FossilEntity> arm_bones = REGISTRATE.entity(dinos.toString().toLowerCase() + "_arm_bones", FossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_arm_bones", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setArmBones(() -> arm_bones.get());
+				EntityEntry<FossilEntity> leg_bones = REGISTRATE.entity(dinos.toString().toLowerCase() + "_leg_bones", FossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_leg_bones", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setLegBones(() -> leg_bones.get());
+				EntityEntry<FossilEntity> rib_cage = REGISTRATE.entity(dinos.toString().toLowerCase() + "_rib_cage", FossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_rib_cage", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setRibCage(() -> rib_cage.get());
+				EntityEntry<FossilEntity> tail = REGISTRATE.entity(dinos.toString().toLowerCase() + "_tail", FossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_tail", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setTail(() -> tail.get());
+				EntityEntry<FossilEntity> skeleton = REGISTRATE.entity(dinos.toString().toLowerCase() + "_skeleton", FossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_skeleton", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setSkeleton(() -> skeleton.get());
 			}
 
 			if (dinos == DinoTypes.ANOMALOCARIS) {
-				EntityType<FossilEntity> dirtyExoskeleton = register("dirty_" + dinos.toString().toLowerCase() + "_exoskeleton", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setDirtyExoskeleton(dirtyExoskeleton);
-				EntityType<FossilEntity> exoskeleton = register(dinos.toString().toLowerCase() + "_exoskeleton", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setExoskeleton(exoskeleton);
+				EntityEntry<DirtyFossilEntity> dirtyExoskeleton = REGISTRATE.entity("dirty_" + dinos.toString().toLowerCase() + "_exoskeleton", DirtyFossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_exoskeleton", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setDirtyExoskeleton(() -> dirtyExoskeleton.get());
+				EntityEntry<FossilEntity> exoskeleton = REGISTRATE.entity(dinos.toString().toLowerCase() + "_exoskeleton", FossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_exoskeleton", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setExoskeleton(() -> exoskeleton.get());
 			}
 
 			if (dinos == DinoTypes.PALAEONISCUM) {
-				EntityType<FossilEntity> dirtyBody = register("dirty_" + dinos.toString().toLowerCase() + "_body", DirtyFossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setDirtyBody(dirtyBody);
-				EntityType<FossilEntity> body = register(dinos.toString().toLowerCase() + "_body", FossilEntity::new, EntityClassification.MISC, 1.0F, 1.0F);
-				dinos.setBody(body);
-			}
-		}
-	}
-
-	public static <T extends Entity> EntityType<T> register(String id, IFactory<T> factory, EntityClassification classification, float width, float height) {
-		EntityType<T> entityType = EntityType.Builder.of(factory, classification).sized(width, height).build(id);
-		entityType.setRegistryName(LostWorldsUtils.rL(id));
-		ForgeRegistries.ENTITIES.register(entityType);
-		return entityType;
-	}
-
-	@SubscribeEvent
-	public static void giveAttributes(EntityAttributeCreationEvent event) {
-		for (DinoTypes dinos : DinoTypes.values()) {
-			if (dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS) {
-				event.put(dinos.getDirtyArmBones(), FossilEntity.createAttributes());
-				event.put(dinos.getDirtyLegBones(), FossilEntity.createAttributes());
-				event.put(dinos.getDirtyRibCage(), FossilEntity.createAttributes());
-				event.put(dinos.getDirtySkull(), FossilEntity.createAttributes());
-				event.put(dinos.getDirtyTail(), FossilEntity.createAttributes());
-				event.put(dinos.getArmBones(), FossilEntity.createAttributes());
-				event.put(dinos.getLegBones(), FossilEntity.createAttributes());
-				event.put(dinos.getRibCage(), FossilEntity.createAttributes());
-				event.put(dinos.getSkull(), FossilEntity.createAttributes());
-				event.put(dinos.getTail(), FossilEntity.createAttributes());
+				EntityEntry<DirtyFossilEntity> dirtyBody = REGISTRATE.entity("dirty_" + dinos.toString().toLowerCase() + "_body", DirtyFossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_body", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setDirtyBody(() -> dirtyBody.get());
+				EntityEntry<FossilEntity> body = REGISTRATE.entity(dinos.toString().toLowerCase() + "_body", FossilEntity::new, EntityClassification.MISC).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_body", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).register();
+				dinos.setBody(() -> body.get());
 			}
 		}
 	}

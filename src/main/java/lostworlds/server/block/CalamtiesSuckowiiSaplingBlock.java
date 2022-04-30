@@ -50,7 +50,7 @@ public class CalamtiesSuckowiiSaplingBlock extends Block implements IGrowable {
 
 	@Override
 	public boolean canSurvive(BlockState state, IWorldReader reader, BlockPos pos) {
-		return reader.getBlockState(pos.below()).is(LostWorldsTags.ModBlockTags.CALAMITES_PLACEABLES);
+		return reader.getBlockState(pos.below()).is(LostWorldsTags.ModBlockTags.CALAMITES_PLACEABLES.tag);
 	}
 
 	@Override

@@ -14,6 +14,7 @@ import com.mojang.serialization.Codec;
 import lostworlds.client.entity.render.bone.SkeletonRenderer;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.LostWorldsEntities;
+import lostworlds.server.entity.fossil.DirtyFossilEntity;
 import lostworlds.server.entity.fossil.FossilEntity;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
@@ -45,7 +46,7 @@ public enum DinoTypes implements IStringSerializable {
 	OPHTHALMOSAURUS("ophthalmosaurus", () -> LostWorldsEntities.OPHTHALMOSAURUS.get(), LostWorldsTags.ModItemTags.OPHTHALMOSAURUS_FOSSILS, false, false, false, Size.MEDIUM, CreatureDiet.PISCIVORE, 0x858794, 4, 7, 0.4F, 0.6F),
 	OSTROMIA("ostromia", () -> LostWorldsEntities.OSTROMIA.get(), LostWorldsTags.ModItemTags.OSTROMIA_FOSSILS, true, true, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x47a373, 2, 4, 0.2F, 0.3F),
 	OURANOSAURUS("ouranosaurus", () -> LostWorldsEntities.OURANOSAURUS.get(), LostWorldsTags.ModItemTags.OURANOSAURUS_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x999554, 7, 10, 0.5F, 0.76F),
-	PARKSOSAURUS("parkososaurus", () -> LostWorldsEntities.PARKSOSAURUS.get(), LostWorldsTags.ModItemTags.PARKSOSAURUS_FOSSILS, false, false, false, Size.TINY, CreatureDiet.NONE, 0xa98460, 2, 5, 0.3F, 0.5F),
+	PARKSOSAURUS("parkososaurus", () -> LostWorldsEntities.PARKSOSAURUS.get(), LostWorldsTags.ModItemTags.PARKSOSAURUS_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0xa98460, 2, 5, 0.3F, 0.5F),
 	PALAEONISCUM("palaeoniscum", () -> LostWorldsEntities.PALAEONISCUM.get(), LostWorldsTags.ModItemTags.PALAEONISCUM_FOSSILS, false, false, false, Size.TINY, CreatureDiet.NONE, 0x72797a, 2, 5, 0.3F, 0.5F),
 	PROCOMPSOGNATHUS("procompsognathus", () -> LostWorldsEntities.PROCOMPSOGNATHUS.get(), LostWorldsTags.ModItemTags.PROCOMPSOGNATHUS_FOSSILS, true, true, true, Size.TINY, CreatureDiet.CARNIVORE, 0x445a2f, 1, 2, 0.1F, 0.2F),
 	PROTOSUCHUS("protosuchus", () -> LostWorldsEntities.PROTOSUCHUS.get(), LostWorldsTags.ModItemTags.PROTOSUCHUS_FOSSILS, true, false, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x8e2317, 3, 5, 0.3F, 0.54F),
@@ -66,21 +67,21 @@ public enum DinoTypes implements IStringSerializable {
 	private final String id;
 	private Supplier<EntityType<? extends CreatureEntity>> entityType;
 	private ITag.INamedTag<Item> fossilTag;
-	private EntityType<FossilEntity> dirtySkull;
-	private EntityType<FossilEntity> dirtyArmBones;
-	private EntityType<FossilEntity> dirtyLegBones;
-	private EntityType<FossilEntity> dirtyRibCage;
-	private EntityType<FossilEntity> dirtyTail;
-	private EntityType<FossilEntity> skull;
-	private EntityType<FossilEntity> armBones;
-	private EntityType<FossilEntity> legBones;
-	private EntityType<FossilEntity> ribCage;
-	private EntityType<FossilEntity> tail;
-	private EntityType<FossilEntity> skeleton;
-	private EntityType<FossilEntity> dirtyExoskeleton;
-	private EntityType<FossilEntity> exoskeleton;
-	private EntityType<FossilEntity> dirtyBody;
-	private EntityType<FossilEntity> body;
+	private Supplier<EntityType<DirtyFossilEntity>> dirtySkull;
+	private Supplier<EntityType<DirtyFossilEntity>> dirtyArmBones;
+	private Supplier<EntityType<DirtyFossilEntity>> dirtyLegBones;
+	private Supplier<EntityType<DirtyFossilEntity>> dirtyRibCage;
+	private Supplier<EntityType<DirtyFossilEntity>> dirtyTail;
+	private Supplier<EntityType<FossilEntity>> skull;
+	private Supplier<EntityType<FossilEntity>> armBones;
+	private Supplier<EntityType<FossilEntity>> legBones;
+	private Supplier<EntityType<FossilEntity>> ribCage;
+	private Supplier<EntityType<FossilEntity>> tail;
+	private Supplier<EntityType<FossilEntity>> skeleton;
+	private Supplier<EntityType<DirtyFossilEntity>> dirtyExoskeleton;
+	private Supplier<EntityType<FossilEntity>> exoskeleton;
+	private Supplier<EntityType<DirtyFossilEntity>> dirtyBody;
+	private Supplier<EntityType<FossilEntity>> body;
 	private Supplier<Block> egg;
 	private Supplier<Block> extraBlock;
 	private Supplier<Item> plasteredSkullItem;
@@ -114,10 +115,10 @@ public enum DinoTypes implements IStringSerializable {
 	private final float rawSaturation;
 	private final float cookedSaturation;
 
-	private DinoTypes(String id, Supplier<EntityType<? extends CreatureEntity>> entityType, ITag.INamedTag<Item> fossilTag, boolean eggLaying, boolean feathered, boolean createHide, Size eggSize, CreatureDiet diet, int eggSetColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation) {
+	private DinoTypes(String id, Supplier<EntityType<? extends CreatureEntity>> entityType, LostWorldsTags.ModItemTags fossilTag, boolean eggLaying, boolean feathered, boolean createHide, Size eggSize, CreatureDiet diet, int eggSetColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation) {
 		this.id = id;
 		this.entityType = entityType;
-		this.fossilTag = fossilTag;
+		this.fossilTag = fossilTag.tag;
 		this.eggLaying = eggLaying;
 		this.feathered = feathered;
 		this.createHide = createHide;
@@ -142,63 +143,63 @@ public enum DinoTypes implements IStringSerializable {
 		return fossilTag;
 	}
 
-	public EntityType<FossilEntity> setDirtySkull(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<DirtyFossilEntity>> setDirtySkull(Supplier<EntityType<DirtyFossilEntity>> entity) {
 		return this.dirtySkull = entity;
 	}
 
-	public EntityType<FossilEntity> setDirtyArmBones(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<DirtyFossilEntity>> setDirtyArmBones(Supplier<EntityType<DirtyFossilEntity>> entity) {
 		return this.dirtyArmBones = entity;
 	}
 
-	public EntityType<FossilEntity> setDirtyLegBones(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<DirtyFossilEntity>> setDirtyLegBones(Supplier<EntityType<DirtyFossilEntity>> entity) {
 		return this.dirtyLegBones = entity;
 	}
 
-	public EntityType<FossilEntity> setDirtyRibCage(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<DirtyFossilEntity>> setDirtyRibCage(Supplier<EntityType<DirtyFossilEntity>> entity) {
 		return this.dirtyRibCage = entity;
 	}
 
-	public EntityType<FossilEntity> setDirtyTail(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<DirtyFossilEntity>> setDirtyTail(Supplier<EntityType<DirtyFossilEntity>> entity) {
 		return this.dirtyTail = entity;
 	}
 
-	public EntityType<FossilEntity> setSkull(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<FossilEntity>> setSkull(Supplier<EntityType<FossilEntity>> entity) {
 		return this.skull = entity;
 	}
 
-	public EntityType<FossilEntity> setArmBones(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<FossilEntity>> setArmBones(Supplier<EntityType<FossilEntity>> entity) {
 		return this.armBones = entity;
 	}
 
-	public EntityType<FossilEntity> setLegBones(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<FossilEntity>> setLegBones(Supplier<EntityType<FossilEntity>> entity) {
 		return this.legBones = entity;
 	}
 
-	public EntityType<FossilEntity> setRibCage(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<FossilEntity>> setRibCage(Supplier<EntityType<FossilEntity>> entity) {
 		return this.ribCage = entity;
 	}
 
-	public EntityType<FossilEntity> setTail(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<FossilEntity>> setTail(Supplier<EntityType<FossilEntity>> entity) {
 		return this.tail = entity;
 	}
 
-	public EntityType<FossilEntity> setSkeleton(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<FossilEntity>> setSkeleton(Supplier<EntityType<FossilEntity>> entity) {
 		return this.skeleton = entity;
 	}
 
-	public EntityType<FossilEntity> setDirtyExoskeleton(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<DirtyFossilEntity>> setDirtyExoskeleton(Supplier<EntityType<DirtyFossilEntity>> entity) {
 		return this.dirtyExoskeleton = entity;
 	}
 
-	public EntityType<FossilEntity> setExoskeleton(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<FossilEntity>> setExoskeleton(Supplier<EntityType<FossilEntity>> entity) {
 		return this.exoskeleton = entity;
 	}
 
-	public EntityType<FossilEntity> setDirtyBody(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<DirtyFossilEntity>> setDirtyBody(Supplier<EntityType<DirtyFossilEntity>> entity) {
 		return this.dirtyBody = entity;
 	}
 
-	public EntityType<FossilEntity> setBody(EntityType<FossilEntity> entity) {
+	public Supplier<EntityType<FossilEntity>> setBody(Supplier<EntityType<FossilEntity>> entity) {
 		return this.body = entity;
 	}
 
@@ -210,63 +211,63 @@ public enum DinoTypes implements IStringSerializable {
 		return this.entityType;
 	}
 
-	public EntityType<FossilEntity> getDirtySkull() {
+	public Supplier<EntityType<DirtyFossilEntity>> getDirtySkull() {
 		return this.dirtySkull;
 	}
 
-	public EntityType<FossilEntity> getDirtyArmBones() {
+	public Supplier<EntityType<DirtyFossilEntity>> getDirtyArmBones() {
 		return this.dirtyArmBones;
 	}
 
-	public EntityType<FossilEntity> getDirtyLegBones() {
+	public Supplier<EntityType<DirtyFossilEntity>> getDirtyLegBones() {
 		return this.dirtyLegBones;
 	}
 
-	public EntityType<FossilEntity> getDirtyRibCage() {
+	public Supplier<EntityType<DirtyFossilEntity>> getDirtyRibCage() {
 		return this.dirtyRibCage;
 	}
 
-	public EntityType<FossilEntity> getDirtyTail() {
+	public Supplier<EntityType<DirtyFossilEntity>> getDirtyTail() {
 		return this.dirtyTail;
 	}
 
-	public EntityType<FossilEntity> getSkull() {
+	public Supplier<EntityType<FossilEntity>> getSkull() {
 		return this.skull;
 	}
 
-	public EntityType<FossilEntity> getArmBones() {
+	public Supplier<EntityType<FossilEntity>> getArmBones() {
 		return this.armBones;
 	}
 
-	public EntityType<FossilEntity> getLegBones() {
+	public Supplier<EntityType<FossilEntity>> getLegBones() {
 		return this.legBones;
 	}
 
-	public EntityType<FossilEntity> getRibCage() {
+	public Supplier<EntityType<FossilEntity>> getRibCage() {
 		return this.ribCage;
 	}
 
-	public EntityType<FossilEntity> getTail() {
+	public Supplier<EntityType<FossilEntity>> getTail() {
 		return this.tail;
 	}
 
-	public EntityType<FossilEntity> getSkeleton() {
+	public Supplier<EntityType<FossilEntity>> getSkeleton() {
 		return this.skeleton;
 	}
 
-	public EntityType<FossilEntity> getDirtyExoskeleton() {
+	public Supplier<EntityType<DirtyFossilEntity>> getDirtyExoskeleton() {
 		return this.dirtyExoskeleton;
 	}
 
-	public EntityType<FossilEntity> getExoskeleton() {
+	public Supplier<EntityType<FossilEntity>> getExoskeleton() {
 		return this.exoskeleton;
 	}
 
-	public EntityType<FossilEntity> getDirtyBody() {
+	public Supplier<EntityType<DirtyFossilEntity>> getDirtyBody() {
 		return this.dirtyBody;
 	}
 
-	public EntityType<FossilEntity> getBody() {
+	public Supplier<EntityType<FossilEntity>> getBody() {
 		return this.body;
 	}
 

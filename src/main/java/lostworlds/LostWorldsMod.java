@@ -11,8 +11,8 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.client.books.TyrannibookHelper;
 import lostworlds.client.books.lostworlds.LostWorldsBooks;
-import lostworlds.client.events.ClientSetup;
 import lostworlds.client.sounds.LostWorldsSounds;
+import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.BiomeKeys;
 import lostworlds.server.biome.DisksFeatures;
@@ -70,6 +70,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -82,41 +83,21 @@ import software.bernie.geckolib3.GeckoLib;
 @Mod(LostWorldsMod.ID)
 public class LostWorldsMod {
 	public static final String ID = "lostworlds";
-	public static final NonNullSupplier<LostWorldsRegistrate> REGISTRATE = LostWorldsRegistrate.lazy(ID);
+	private static final NonNullSupplier<LostWorldsRegistrate> REGISTRATE = LostWorldsRegistrate.lazy(ID);
 
 	public LostWorldsMod() {
-		// Server/Common
-		final IEventBus mod = FMLJavaModLoadingContext.get().getModEventBus();
-		final IEventBus forge = MinecraftForge.EVENT_BUS;
+		this.makeMod();
+	}
 
-		mod.addListener(this::commonSetup);
-		mod.addListener(this::clientSetup);
-
-		forge.addListener(this::biomeModification);
-		forge.addListener(this::onPlayerLoggedIn);
-		forge.addListener(this::onLivingTick);
-		forge.addListener(this::onPlayerHarvest);
+	public void makeMod() {
+		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		IEventBus forge = MinecraftForge.EVENT_BUS;
 
 		GeckoLib.initialize();
-		this.lostWorldRegistry(mod);
 
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, LostWorldsConfig.commonSpec);
-
-		// Client
-		this.clientForgeBus(forge);
-
-		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, LostWorldsConfig.clientSpec);
-	}
-
-	@OnlyIn(Dist.CLIENT)
-	private void clientForgeBus(IEventBus bus) {
-		bus.addListener(this::onClientPlayerLoggedInEvent);
-	}
-
-	private void lostWorldRegistry(IEventBus bus) {
-		// Game Objects
 		LostWorldsBlocks.init();
 		LostWorldsItems.init();
+		LostWorldsTags.init();
 		LostWorldsPotions.init(bus);
 		LostWorldsSounds.init(bus);
 		LostWorldsEnchantments.init();
@@ -125,12 +106,8 @@ public class LostWorldsMod {
 		LostWorldsBlockEntities.init();
 		LostWorldsContainers.init();
 		LostWorldsRecipes.init();
-
-		// Villagers
 		LostWorldsVillagerProfessions.init(bus);
 		LostWorldsPOIs.init(bus);
-
-		// World Generation
 		LostWorldsWorldCarvers.init();
 		LostWorldsConfiguredCarvers.init();
 		LostWorldsSurfaceBuilders.init();
@@ -138,9 +115,25 @@ public class LostWorldsMod {
 		LostWorldsStructures.init();
 		LostWorldsStructurePecies.init();
 		LostWorldsPlacements.init();
-
-		// Data Driven
 		LostWorldsBiomes.init();
+
+		bus.addListener(this::commonSetup);
+		bus.addListener(this::clientSetup);
+
+		forge.addListener(this::biomeModification);
+		forge.addListener(this::onPlayerLoggedIn);
+		forge.addListener(this::onLivingTick);
+		forge.addListener(this::onPlayerHarvest);
+
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> this.clientForgeBus(forge));
+
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, LostWorldsConfig.commonSpec);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, LostWorldsConfig.clientSpec);
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	private void clientForgeBus(IEventBus bus) {
+		bus.addListener(this::onClientPlayerLoggedInEvent);
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {
@@ -323,8 +316,6 @@ public class LostWorldsMod {
 		LostWorldsBooks.initBooks();
 
 		LostWorldsDimensions.initClient();
-
-		ClientSetup.entityRenderSetup();
 	}
 
 	@OnlyIn(Dist.CLIENT)

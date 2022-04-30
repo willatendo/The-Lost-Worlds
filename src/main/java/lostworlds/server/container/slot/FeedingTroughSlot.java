@@ -12,6 +12,6 @@ public class FeedingTroughSlot extends Slot {
 
 	@Override
 	public boolean mayPlace(ItemStack stack) {
-		return Foods.HERBIVORE_FOODS.contains(stack.getItem()) || Foods.CARNIVORE_FOODS.contains(stack.getItem()) || Foods.PISCAVORE_FOODS.contains(stack.getItem()) || Foods.INSECTIVORE_FOODS.contains(stack.getItem());
+		return Foods.getHerbivoreFoods().contains(stack.getItem()) || Foods.getCarnivoreFoods().contains(stack.getItem()) || Foods.getPiscavoreFoods().contains(stack.getItem()) || Foods.getInsectivoreFoods().contains(stack.getItem());
 	}
 }
