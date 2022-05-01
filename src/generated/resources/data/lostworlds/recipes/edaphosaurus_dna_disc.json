@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:analyzer",
+  "input": {
+    "item": "lostworlds:edaphosaurus_dna"
+  },
+  "storage": {
+    "item": "lostworlds:storage_disc"
+  },
+  "output": "lostworlds:edaphosaurus_dna_disc"
+}

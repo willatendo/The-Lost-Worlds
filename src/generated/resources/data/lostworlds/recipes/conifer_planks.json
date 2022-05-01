@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "planks",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "tag": "lostworlds:conifer_logs"
+    }
+  },
+  "result": {
+    "item": "lostworlds:conifer_planks",
+    "count": 4
+  }
+}

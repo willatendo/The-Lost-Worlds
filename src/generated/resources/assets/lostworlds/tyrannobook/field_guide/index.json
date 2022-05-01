@@ -1,0 +1,11 @@
+[
+  {
+    "name": "creatures",
+    "data": "sections/creatures.json",
+    "icon": {
+      "item": {
+        "id": "minecraft:acacia_boat"
+      }
+    }
+  }
+]

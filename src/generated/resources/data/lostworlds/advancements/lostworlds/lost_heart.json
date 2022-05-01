@@ -1,0 +1,35 @@
+{
+  "parent": "lostworlds:lostworlds/dangerous_relic",
+  "display": {
+    "icon": {
+      "item": "lostworlds:crystal_scarab_gem"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.lost_heart.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.lost_heart.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:crystal_scarab_gem"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

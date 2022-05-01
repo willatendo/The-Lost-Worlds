@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "planks",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "tag": "lostworlds:scorched_logs"
+    }
+  },
+  "result": {
+    "item": "lostworlds:scorched_planks",
+    "count": 4
+  }
+}

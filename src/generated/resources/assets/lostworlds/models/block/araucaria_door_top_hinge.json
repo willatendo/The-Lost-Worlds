@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "bottom": "lostworlds:block/araucaria_door_bottom",
+    "top": "lostworlds:block/araucaria_door_top"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:dna_injector",
+  "input": {
+    "item": "lostworlds:eustreptospondylus_dna_disc"
+  },
+  "storage": {
+    "item": "minecraft:egg"
+  },
+  "output": "lostworlds:eustreptospondylus_egg"
+}

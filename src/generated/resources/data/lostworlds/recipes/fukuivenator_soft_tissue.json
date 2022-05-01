@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "tag": "lostworlds:fukuivenator_fossils"
+  },
+  "plant": false,
+  "output": "lostworlds:fukuivenator_soft_tissue"
+}

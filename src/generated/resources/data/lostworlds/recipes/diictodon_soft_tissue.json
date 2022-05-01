@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "tag": "lostworlds:diictodon_fossils"
+  },
+  "plant": false,
+  "output": "lostworlds:diictodon_soft_tissue"
+}

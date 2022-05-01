@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "%#%",
+    "$#$"
+  ],
+  "key": {
+    "%": {
+      "item": "minecraft:iron_nugget"
+    },
+    "#": {
+      "tag": "minecraft:wool"
+    },
+    "$": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "lostworlds:cloth_mask"
+  }
+}

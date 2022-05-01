@@ -2,8 +2,8 @@ package lostworlds.server.util;
 
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.BlockBuilder;
+import com.tterrag.registrate.util.NonNullLazyValue;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlockModels;
@@ -40,8 +40,8 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		super(modid);
 	}
 
-	public static NonNullSupplier<LostWorldsRegistrate> lazy(String modid) {
-		return NonNullSupplier.of(() -> new LostWorldsRegistrate(modid).registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus()));
+	public static NonNullLazyValue<LostWorldsRegistrate> lazy(String modid) {
+		return new NonNullLazyValue<>(() -> new LostWorldsRegistrate(modid).registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus()));
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> blockAndItem(String name, NonNullFunction<Properties, T> factory) {

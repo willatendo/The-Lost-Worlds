@@ -70,17 +70,17 @@ public enum Trees implements IStringSerializable {
 		switch (this) {
 		default:
 		case ARAUCARIA:
-			return () -> LostWorldsBlocks.ARAUCARIA_SAPLING.get();
+			return () -> LostWorldsBlocks.ARAUCARIA.getBlock(4).get().get();
 		case CALAMITES:
-			return () -> LostWorldsBlocks.CALAMITES_SAPLING.get();
+			return () -> LostWorldsBlocks.CALAMITES.getBlock(4).get().get();
 		case CONIFER:
-			return () -> LostWorldsBlocks.CONIFER_SAPLING.get();
+			return () -> LostWorldsBlocks.CONIFER.getBlock(4).get().get();
 		case CYPRESS:
-			return () -> LostWorldsBlocks.CYPRESS_SAPLING.get();
+			return () -> LostWorldsBlocks.CYPRESS.getBlock(4).get().get();
 		case GINKGO:
-			return () -> LostWorldsBlocks.GINKGO_SAPLING.get();
+			return () -> LostWorldsBlocks.GINKGO.getBlock(4).get().get();
 		case SEQUOIA:
-			return () -> LostWorldsBlocks.SEQUOIA_SAPLING.get();
+			return () -> LostWorldsBlocks.SEQUOIA.getBlock(4).get().get();
 		}
 	}
 

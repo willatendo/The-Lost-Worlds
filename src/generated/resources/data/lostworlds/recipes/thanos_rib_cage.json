@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "input": {
+    "item": "lostworlds:plastered_thanos_rib_cage"
+  },
+  "output": "lostworlds:thanos_rib_cage"
+}

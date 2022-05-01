@@ -55,7 +55,9 @@ public class LostWorldsCommonConfig {
 	public final BooleanValue petrifiedAraucariaTreeShouldSpawn;
 	public final BooleanValue petrifiedCalamitesTreeShouldSpawn;
 	public final BooleanValue petrifiedConiferTreeShouldSpawn;
+	public final BooleanValue petrifiedCypressTreeShouldSpawn;
 	public final BooleanValue petrifiedGinkgoTreeShouldSpawn;
+	public final BooleanValue petrifiedSequoiaTreeShouldSpawn;
 
 	public final IntValue petrifiedAraucariaChance;
 	public final IntValue petrifiedCalamitesChance;
@@ -318,7 +320,9 @@ public class LostWorldsCommonConfig {
 		this.petrifiedAraucariaTreeShouldSpawn = builder.comment("Sets if petrified araucaria trees should spawn in the overworld.").translation(TRANSLATION_TEXT + "petrifiedAraucariaTreeShouldSpawn").define("petrifiedAraucariaTreeShouldSpawn", true);
 		this.petrifiedCalamitesTreeShouldSpawn = builder.comment("Sets if petrified calamites trees should spawn in the overworld.").translation(TRANSLATION_TEXT + "petrifiedCalamitesTreeShouldSpawn").define("petrifiedCalamitesTreeShouldSpawn", true);
 		this.petrifiedConiferTreeShouldSpawn = builder.comment("Sets if petrified conifer trees should spawn in the overworld.").translation(TRANSLATION_TEXT + "petrifiedConiferTreeShouldSpawn").define("petrifiedConiferTreeShouldSpawn", true);
+		this.petrifiedCypressTreeShouldSpawn = builder.comment("Sets if petrified cypress trees should spawn in the overworld.").translation(TRANSLATION_TEXT + "petrifiedCypressTreeShouldSpawn").define("petrifiedCypressTreeShouldSpawn", true);
 		this.petrifiedGinkgoTreeShouldSpawn = builder.comment("Sets if petrified ginkgo trees should spawn in the overworld.").translation(TRANSLATION_TEXT + "petrifiedGinkgoTreeShouldSpawn").define("petrifiedGinkgoTreeShouldSpawn", true);
+		this.petrifiedSequoiaTreeShouldSpawn = builder.comment("Sets if petrified sequoia trees should spawn in the overworld.").translation(TRANSLATION_TEXT + "petrifiedSequoiaTreeShouldSpawn").define("petrifiedSequoiaTreeShouldSpawn", true);
 
 		this.petrifiedAraucariaChance = builder.comment("Sets the petrified araucaria chance of spawning in the overworld.").translation(TRANSLATION_TEXT + "petrifiedAraucariaChance").defineInRange("petrifiedAraucariaChance", 32, 0, 999);
 		this.petrifiedCalamitesChance = builder.comment("Sets the petrified calamites chance of spawning in the overworld.").translation(TRANSLATION_TEXT + "petrifiedCalamitesChance").defineInRange("petrifiedCalamitesChance", 32, 0, 999);

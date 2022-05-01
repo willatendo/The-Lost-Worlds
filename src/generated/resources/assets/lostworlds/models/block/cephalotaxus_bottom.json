@@ -1,0 +1,6 @@
+{
+  "parent": "lostworlds:block/dense_cross",
+  "textures": {
+    "plant": "lostworlds:block/cephalotaxus_bottom"
+  }
+}

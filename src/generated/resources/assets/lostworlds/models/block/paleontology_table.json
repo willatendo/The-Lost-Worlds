@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "lostworlds:block/paleontology_table_side",
+    "east": "lostworlds:block/paleontology_table_side",
+    "south": "lostworlds:block/paleontology_table_side",
+    "west": "lostworlds:block/paleontology_table_side",
+    "up": "lostworlds:block/paleontology_table_top",
+    "down": "lostworlds:block/paleontology_table_bottom",
+    "particle": "lostworlds:block/paleontology_table_side"
+  }
+}

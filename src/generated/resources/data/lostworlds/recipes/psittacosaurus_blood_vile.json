@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "lostworlds:psittacosaurus_blood_syringe"
+    },
+    {
+      "item": "lostworlds:empty_vile"
+    }
+  ],
+  "result": {
+    "item": "lostworlds:psittacosaurus_blood_vile"
+  }
+}

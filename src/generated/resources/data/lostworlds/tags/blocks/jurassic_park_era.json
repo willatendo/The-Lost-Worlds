@@ -14,6 +14,8 @@
     "lostworlds:dirt_road",
     "lostworlds:raised_dirt_road",
     "lostworlds:paved_road",
-    "lostworlds:raised_paved_road"
+    "lostworlds:raised_paved_road",
+    "#lostworlds:light_concrete",
+    "#lostworlds:wooden_planks"
   ]
 }

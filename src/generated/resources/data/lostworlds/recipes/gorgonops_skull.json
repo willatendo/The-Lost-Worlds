@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "input": {
+    "item": "lostworlds:plastered_gorgonops_skull"
+  },
+  "output": "lostworlds:gorgonops_skull"
+}

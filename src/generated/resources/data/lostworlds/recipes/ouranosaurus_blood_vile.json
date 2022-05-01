@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "lostworlds:ouranosaurus_blood_syringe"
+    },
+    {
+      "item": "lostworlds:empty_vile"
+    }
+  ],
+  "result": {
+    "item": "lostworlds:ouranosaurus_blood_vile"
+  }
+}

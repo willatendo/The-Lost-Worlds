@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "item": "lostworlds:ginkgo_bark_sample"
+  },
+  "plant": true,
+  "output": "lostworlds:ginkgo_soft_tissue"
+}

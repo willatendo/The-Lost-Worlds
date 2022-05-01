@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:cultivator",
+  "input": {
+    "item": "lostworlds:cephalotaxus_dna_disc"
+  },
+  "output": "lostworlds:cephalotaxus_seeds"
+}

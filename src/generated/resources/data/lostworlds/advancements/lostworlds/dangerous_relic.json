@@ -1,0 +1,35 @@
+{
+  "parent": "lostworlds:lostworlds/like_indiana_jones",
+  "display": {
+    "icon": {
+      "item": "lostworlds:crystal_scarab_gem"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.dangerous_relic.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.dangerous_relic.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "lostworlds:broken_crystal_scarab_gems"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

@@ -44,8 +44,8 @@ public class GinkgoTreeFeature extends Feature<NoFeatureConfig> {
 	public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
 		if (this.isOnDirt(reader, pos.below())) {
 			Direction[] horizontal = new Direction[] { Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST };
-			BlockState log = LostWorldsBlocks.GINKGO_LOG.getDefaultState();
-			BlockState leaves = LostWorldsBlocks.GINKGO_LEAVES.getDefaultState();
+			BlockState log = LostWorldsBlocks.GINKGO.getBlock(0).get().getDefaultState();
+			BlockState leaves = LostWorldsBlocks.GINKGO.getBlock(5).get().getDefaultState();
 
 			while (pos.getY() > 1 && isAirOrLeaves(reader, pos)) {
 				pos = pos.below();

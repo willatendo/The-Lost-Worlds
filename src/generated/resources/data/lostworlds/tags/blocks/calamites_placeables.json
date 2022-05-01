@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "lostworlds:calamites_suckowii_sapling",
-    "lostworlds:calamites_suckowii"
+    "lostworlds:calamites_suckowii",
+    "#minecraft:sand",
+    "#forge:dirt",
+    "#forge:gravel"
   ]
 }

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$",
+    "%@"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:redstone_lamp"
+    },
+    "$": {
+      "item": "minecraft:iron_ingot"
+    },
+    "%": {
+      "item": "lostworlds:computer_core"
+    },
+    "@": {
+      "item": "lostworlds:copper_wire"
+    }
+  },
+  "result": {
+    "item": "lostworlds:tag",
+    "count": 16
+  }
+}

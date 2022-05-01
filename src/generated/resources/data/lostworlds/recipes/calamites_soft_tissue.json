@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "item": "lostworlds:calamites_bark_sample"
+  },
+  "plant": true,
+  "output": "lostworlds:calamites_soft_tissue"
+}

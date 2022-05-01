@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:sequoia_fence"
+    ]
+  },
+  "criteria": {
+    "has_sequoia_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:sequoia_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:sequoia_fence"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_sequoia_planks",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:liaoningosaurus_rib_cage",
+    "lostworlds:liaoningosaurus_leg_bones",
+    "lostworlds:liaoningosaurus_arm_bones",
+    "lostworlds:liaoningosaurus_tail",
+    "lostworlds:liaoningosaurus_skull",
+    "lostworlds:liaoningosaurus_skeleton"
+  ]
+}

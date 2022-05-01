@@ -17,16 +17,16 @@ public class DyedBlockList<T extends Block> implements Iterable<BlockEntry<T>> {
 
 	public DyedBlockList(Function<DyeColor, BlockEntry<? extends T>> filler) {
 		for (DyeColor color : DyeColor.values()) {
-			values[color.ordinal()] = filler.apply(color);
+			this.values[color.ordinal()] = filler.apply(color);
 		}
 	}
 
 	public BlockEntry<T> get(DyeColor color) {
-		return (BlockEntry<T>) values[color.ordinal()];
+		return (BlockEntry<T>) this.values[color.ordinal()];
 	}
 
 	public boolean contains(Block block) {
-		for (BlockEntry<?> entry : values) {
+		for (BlockEntry<?> entry : this.values) {
 			if (entry.is(block)) {
 				return true;
 			}
@@ -35,7 +35,7 @@ public class DyedBlockList<T extends Block> implements Iterable<BlockEntry<T>> {
 	}
 
 	public BlockEntry<T>[] toArray() {
-		return (BlockEntry<T>[]) Arrays.copyOf(values, values.length);
+		return (BlockEntry<T>[]) Arrays.copyOf(this.values, this.values.length);
 	}
 
 	@Override

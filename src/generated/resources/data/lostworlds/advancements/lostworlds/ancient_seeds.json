@@ -1,0 +1,35 @@
+{
+  "parent": "lostworlds:lostworlds/plants_at_least_they_dont_kill",
+  "display": {
+    "icon": {
+      "item": "lostworlds:cycad_seeds"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.ancient_seeds.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.ancient_seeds.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "lostworlds:ancient_seeds"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

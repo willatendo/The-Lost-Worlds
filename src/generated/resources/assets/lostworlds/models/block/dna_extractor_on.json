@@ -1,0 +1,6 @@
+{
+  "parent": "lostworlds:block/dna_extractor",
+  "textures": {
+    "texture": "lostworlds:block/dna_extractor_on"
+  }
+}

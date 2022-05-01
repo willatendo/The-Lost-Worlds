@@ -41,7 +41,6 @@ import lostworlds.client.entity.render.UtahraptorRenderer;
 import lostworlds.client.entity.render.ZephyrosaurusRenderer;
 import lostworlds.client.entity.render.bone.CustomisableRenderer;
 import lostworlds.server.LostWorldsTags;
-import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.aquatic.cambrian.AnomalocarisEntity;
 import lostworlds.server.entity.aquatic.jurassic.OphthalmosaurusEntity;
 import lostworlds.server.entity.aquatic.modern.NautilusEntity;
@@ -89,10 +88,7 @@ import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry.PlacementType;
 import net.minecraft.loot.LootTable;
 import net.minecraft.world.gen.Heightmap.Type;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
-@EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.MOD)
 public class LostWorldsEntities {
 	public static final LostWorldsRegistrate REGISTRATE = getRegistrate();
 

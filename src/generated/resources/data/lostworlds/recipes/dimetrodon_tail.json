@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "input": {
+    "item": "lostworlds:plastered_dimetrodon_tail"
+  },
+  "output": "lostworlds:dimetrodon_tail"
+}

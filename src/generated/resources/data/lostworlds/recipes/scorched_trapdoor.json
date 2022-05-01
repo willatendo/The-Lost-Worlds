@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_trapdoor",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "lostworlds:scorched_slab"
+    }
+  },
+  "result": {
+    "item": "lostworlds:scorched_trapdoor",
+    "count": 2
+  }
+}

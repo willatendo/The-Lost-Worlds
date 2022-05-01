@@ -1,0 +1,6 @@
+{
+  "parent": "lostworlds:block/large_eggs_2",
+  "textures": {
+    "0": "minecraft:block/stone"
+  }
+}

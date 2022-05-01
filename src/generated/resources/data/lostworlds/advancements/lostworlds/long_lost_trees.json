@@ -1,0 +1,35 @@
+{
+  "parent": "lostworlds:lostworlds/scratching_trees",
+  "display": {
+    "icon": {
+      "item": "lostworlds:conifer_sapling"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.long_lost_trees.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.long_lost_trees.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "lostworlds:ancient_saplings"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

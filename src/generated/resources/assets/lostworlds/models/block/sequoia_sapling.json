@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "lostworlds:block/sequoia_sapling"
+  }
+}

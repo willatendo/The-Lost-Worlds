@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:rhinesuchus_rib_cage",
+    "lostworlds:rhinesuchus_leg_bones",
+    "lostworlds:rhinesuchus_arm_bones",
+    "lostworlds:rhinesuchus_tail",
+    "lostworlds:rhinesuchus_skull",
+    "lostworlds:rhinesuchus_skeleton"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "lostworlds:block/fossil_grinder",
+  "textures": {
+    "texture": "lostworlds:block/fossil_grinder_on"
+  }
+}

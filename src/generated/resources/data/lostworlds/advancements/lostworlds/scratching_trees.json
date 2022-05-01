@@ -1,0 +1,35 @@
+{
+  "parent": "lostworlds:lostworlds/petrified_trees",
+  "display": {
+    "icon": {
+      "item": "lostworlds:conifer_bark_sample"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.scratching_trees.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.scratching_trees.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "lostworlds:bark_samples"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

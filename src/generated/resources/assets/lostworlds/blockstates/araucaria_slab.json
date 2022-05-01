@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "lostworlds:block/araucaria_slab_top"
+    },
+    "type=bottom": {
+      "model": "lostworlds:block/araucaria_slab"
+    },
+    "type=double": {
+      "model": "lostworlds:block/araucaria_planks"
+    }
+  }
+}

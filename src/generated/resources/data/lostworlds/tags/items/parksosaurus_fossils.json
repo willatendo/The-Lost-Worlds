@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:parksosaurus_rib_cage",
+    "lostworlds:parksosaurus_leg_bones",
+    "lostworlds:parksosaurus_arm_bones",
+    "lostworlds:parksosaurus_tail",
+    "lostworlds:parksosaurus_skull",
+    "lostworlds:parksosaurus_skeleton"
+  ]
+}

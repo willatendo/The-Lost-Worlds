@@ -1,0 +1,10 @@
+{
+  "type": "lostworlds:analyzer",
+  "input": {
+    "item": "lostworlds:zephyrosaurus_dna"
+  },
+  "storage": {
+    "item": "lostworlds:storage_disc"
+  },
+  "output": "lostworlds:zephyrosaurus_dna_disc"
+}

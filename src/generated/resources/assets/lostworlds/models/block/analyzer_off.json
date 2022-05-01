@@ -1,0 +1,6 @@
+{
+  "parent": "lostworlds:block/analyzer",
+  "textures": {
+    "texture": "lostworlds:block/analyzer_off"
+  }
+}

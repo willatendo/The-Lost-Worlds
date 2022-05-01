@@ -45,3 +45,17 @@ Modlers/3d Artists:
     versionRange="[3.0.66,)"
     ordering="NONE"
     side="BOTH"
+    
+[[dependencies.lostworlds]]
+    modId="crafttweaker"
+    mandatory=false
+    versionRange="[6.0.0,)"
+    ordering="NONE"
+    side="BOTH"
+    
+[[dependencies.lostworlds]]
+    modId="jei"
+    mandatory=false
+    versionRange="[7.7.1.152,)"
+    ordering="NONE"
+    side="BOTH"

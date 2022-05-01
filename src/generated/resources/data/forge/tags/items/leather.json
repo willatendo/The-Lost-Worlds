@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:allosaurus_hide",
+    "lostworlds:carnotaurus_hide",
+    "lostworlds:chilesaurus_hide",
+    "lostworlds:cryolophosaurus_hide",
+    "lostworlds:dilophosaurus_hide",
+    "lostworlds:dimetrodon_hide",
+    "lostworlds:edaphosaurus_hide",
+    "lostworlds:eoraptor_hide",
+    "lostworlds:eustreptospondylus_hide",
+    "lostworlds:fukuivenator_hide",
+    "lostworlds:giganotosaurus_hide",
+    "lostworlds:kentrosaurus_hide",
+    "lostworlds:liaoningosaurus_hide",
+    "lostworlds:ostromia_hide",
+    "lostworlds:ouranosaurus_hide",
+    "lostworlds:parksosaurus_hide",
+    "lostworlds:procompsognathus_hide",
+    "lostworlds:protosuchus_hide",
+    "lostworlds:psittacosaurus_hide",
+    "lostworlds:suchomimus_hide",
+    "lostworlds:tetraceratops_hide",
+    "lostworlds:thanos_hide",
+    "lostworlds:tyrannosaurus_hide",
+    "lostworlds:utahraptor_hide",
+    "lostworlds:zephyrosaurus_hide"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "item": "lostworlds:calamites_suckowii_fossil"
+  },
+  "plant": true,
+  "output": "lostworlds:calamites_suckowii_soft_tissue"
+}

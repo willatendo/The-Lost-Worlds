@@ -1,0 +1,6 @@
+{
+  "parent": "lostworlds:block/water_flower_pot_cross",
+  "textures": {
+    "plant": "lostworlds:block/magnolia"
+  }
+}

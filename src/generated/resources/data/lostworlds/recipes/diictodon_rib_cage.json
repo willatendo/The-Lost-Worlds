@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "input": {
+    "item": "lostworlds:plastered_diictodon_rib_cage"
+  },
+  "output": "lostworlds:diictodon_rib_cage"
+}

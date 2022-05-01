@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "small_eggs=1": {
+      "model": "lostworlds:block/ostromia_egg_1"
+    },
+    "small_eggs=2": {
+      "model": "lostworlds:block/ostromia_egg_2"
+    },
+    "small_eggs=3": {
+      "model": "lostworlds:block/ostromia_egg_3"
+    },
+    "small_eggs=4": {
+      "model": "lostworlds:block/ostromia_egg_4"
+    },
+    "small_eggs=5": {
+      "model": "lostworlds:block/ostromia_egg_5"
+    },
+    "small_eggs=6": {
+      "model": "lostworlds:block/ostromia_egg_6"
+    },
+    "small_eggs=7": {
+      "model": "lostworlds:block/ostromia_egg_7"
+    },
+    "small_eggs=8": {
+      "model": "lostworlds:block/ostromia_egg_8"
+    },
+    "small_eggs=9": {
+      "model": "lostworlds:block/ostromia_egg_9"
+    },
+    "small_eggs=10": {
+      "model": "lostworlds:block/ostromia_egg_10"
+    }
+  }
+}

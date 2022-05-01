@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "boat",
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:araucaria_planks"
+    }
+  },
+  "result": {
+    "item": "lostworlds:araucaria_boat"
+  }
+}

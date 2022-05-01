@@ -1,0 +1,182 @@
+[
+  {
+    "name": "allosaurus_1",
+    "type": "text",
+    "data": "creatures/allosaurus_1.json"
+  },
+  {
+    "name": "allosaurus_2",
+    "type": "text",
+    "data": "creatures/allosaurus_2.json"
+  },
+  {
+    "name": "allosaurus_3",
+    "type": "text",
+    "data": "creatures/allosaurus_3.json"
+  },
+  {
+    "name": "allosaurus_info",
+    "type": "text",
+    "data": "creatures/allosaurus_info.json"
+  },
+  {
+    "name": "anomalocaris_1",
+    "type": "text",
+    "data": "creatures/anomalocaris_1.json"
+  },
+  {
+    "name": "anomalocaris_2",
+    "type": "text",
+    "data": "creatures/anomalocaris_2.json"
+  },
+  {
+    "name": "anomalocaris_info",
+    "type": "text",
+    "data": "creatures/anomalocaris_info.json"
+  },
+  {
+    "name": "anomalocaris_padding",
+    "type": "text",
+    "data": "creatures/anomalocaris_padding.json"
+  },
+  {
+    "name": "carnotaurus",
+    "type": "text",
+    "data": "creatures/carnotaurus.json"
+  },
+  {
+    "name": "carnotaurus_info",
+    "type": "text",
+    "data": "creatures/carnotaurus_info.json"
+  },
+  {
+    "name": "chilesaurus",
+    "type": "text",
+    "data": "creatures/chilesaurus.json"
+  },
+  {
+    "name": "chilesaurus_info",
+    "type": "text",
+    "data": "creatures/chilesaurus_info.json"
+  },
+  {
+    "name": "cryolophosaurus",
+    "type": "text",
+    "data": "creatures/cryolophosaurus.json"
+  },
+  {
+    "name": "cryolophosaurus_info",
+    "type": "text",
+    "data": "creatures/cryolophosaurus_info.json"
+  },
+  {
+    "name": "diictodon",
+    "type": "text",
+    "data": "creatures/diictodon.json"
+  },
+  {
+    "name": "diictodon_info",
+    "type": "text",
+    "data": "creatures/diictodon_info.json"
+  },
+  {
+    "name": "dilophosaurus",
+    "type": "text",
+    "data": "creatures/dilophosaurus.json"
+  },
+  {
+    "name": "dilophosaurus_info",
+    "type": "text",
+    "data": "creatures/dilophosaurus_info.json"
+  },
+  {
+    "name": "dimetrodon",
+    "type": "text",
+    "data": "creatures/dimetrodon.json"
+  },
+  {
+    "name": "dimetrodon_info",
+    "type": "text",
+    "data": "creatures/dimetrodon_info.json"
+  },
+  {
+    "name": "edaphosaurus",
+    "type": "text",
+    "data": "creatures/edaphosaurus.json"
+  },
+  {
+    "name": "edaphosaurus_info",
+    "type": "text",
+    "data": "creatures/edaphosaurus_info.json"
+  },
+  {
+    "name": "eoraptor",
+    "type": "text",
+    "data": "creatures/eoraptor.json"
+  },
+  {
+    "name": "eoraptor_info",
+    "type": "text",
+    "data": "creatures/eoraptor_info.json"
+  },
+  {
+    "name": "fukuivenator",
+    "type": "text",
+    "data": "creatures/fukuivenator.json"
+  },
+  {
+    "name": "fukuivenator_info",
+    "type": "text",
+    "data": "creatures/fukuivenator_info.json"
+  },
+  {
+    "name": "giganotosaurus",
+    "type": "text",
+    "data": "creatures/giganotosaurus.json"
+  },
+  {
+    "name": "giganotosaurus_info",
+    "type": "text",
+    "data": "creatures/giganotosaurus_info.json"
+  },
+  {
+    "name": "gorgonops",
+    "type": "text",
+    "data": "creatures/gorgonops.json"
+  },
+  {
+    "name": "gorgonops_info",
+    "type": "text",
+    "data": "creatures/gorgonops_info.json"
+  },
+  {
+    "name": "greak_auk",
+    "type": "text",
+    "data": "creatures/greak_auk.json"
+  },
+  {
+    "name": "greak_auk_info",
+    "type": "text",
+    "data": "creatures/greak_auk_info.json"
+  },
+  {
+    "name": "kentrosaurus",
+    "type": "text",
+    "data": "creatures/kentrosaurus.json"
+  },
+  {
+    "name": "kentrosaurus_info",
+    "type": "text",
+    "data": "creatures/kentrosaurus_info.json"
+  },
+  {
+    "name": "liaoningosaurus",
+    "type": "text",
+    "data": "creatures/liaoningosaurus.json"
+  },
+  {
+    "name": "liaoningosaurus_info",
+    "type": "text",
+    "data": "creatures/liaoningosaurus_info.json"
+  }
+]

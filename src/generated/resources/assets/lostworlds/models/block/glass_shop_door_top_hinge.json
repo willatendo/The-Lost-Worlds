@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "bottom": "lostworlds:block/glass_shop_door_bottom",
+    "top": "lostworlds:block/glass_shop_door_top"
+  }
+}

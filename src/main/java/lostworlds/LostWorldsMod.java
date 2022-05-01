@@ -6,7 +6,7 @@ import java.util.List;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import com.tterrag.registrate.util.NonNullLazyValue;
 
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.client.books.TyrannibookHelper;
@@ -83,7 +83,7 @@ import software.bernie.geckolib3.GeckoLib;
 @Mod(LostWorldsMod.ID)
 public class LostWorldsMod {
 	public static final String ID = "lostworlds";
-	private static final NonNullSupplier<LostWorldsRegistrate> REGISTRATE = LostWorldsRegistrate.lazy(ID);
+	private static final NonNullLazyValue<LostWorldsRegistrate> REGISTRATE = LostWorldsRegistrate.lazy(ID);
 
 	public LostWorldsMod() {
 		this.makeMod();
@@ -273,8 +273,16 @@ public class LostWorldsMod {
 			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PETRIFIED_CONIFER.get());
 		}
 
+		if (LostWorldsUtils.SERVER_CONFIG.petrifiedCypressTreeShouldSpawn.get()) {
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PETRIFIED_CYPRESS.get());
+		}
+
 		if (LostWorldsUtils.SERVER_CONFIG.petrifiedGinkgoTreeShouldSpawn.get()) {
 			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PETRIFIED_GINKGO.get());
+		}
+
+		if (LostWorldsUtils.SERVER_CONFIG.petrifiedSequoiaTreeShouldSpawn.get()) {
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PETRIFIED_SEQUOIA.get());
 		}
 
 		if (LostWorldsUtils.SERVER_CONFIG.fossilsInOverworld.get()) {

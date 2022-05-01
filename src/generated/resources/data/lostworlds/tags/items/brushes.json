@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:leather_brush",
+    "lostworlds:iron_brush",
+    "lostworlds:gold_brush",
+    "lostworlds:diamond_brush",
+    "lostworlds:netherite_brush",
+    "lostworlds:crystal_scarab_brush"
+  ]
+}

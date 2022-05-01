@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:scorched_slab"
+    ]
+  },
+  "criteria": {
+    "has_scorched_slab": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:scorched_slab"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:scorched_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_scorched_slab",
+      "has_the_recipe"
+    ]
+  ]
+}

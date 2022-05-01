@@ -18,6 +18,10 @@ public class GeneralGetter {
 		return ForgeRegistries.BLOCKS.getValue(entry.getId()).defaultBlockState();
 	}
 
+	public static BlockState getStateWhenCan(Block block) {
+		return ForgeRegistries.BLOCKS.getValue(block.getRegistryName()).defaultBlockState();
+	}
+
 	public static EntityType<?> getWhenCan(EntityEntry<? extends Entity> entry) {
 		return ForgeRegistries.ENTITIES.getValue(entry.getId());
 	}

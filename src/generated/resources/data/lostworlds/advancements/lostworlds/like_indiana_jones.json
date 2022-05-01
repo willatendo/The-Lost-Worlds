@@ -1,0 +1,35 @@
+{
+  "parent": "lostworlds:lostworlds/root",
+  "display": {
+    "icon": {
+      "item": "lostworlds:archaeology_table"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.like_indiana_jones.name"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.like_indiana_jones.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:archaeology_table"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

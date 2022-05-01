@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:scorched_log"
+    }
+  },
+  "result": {
+    "item": "lostworlds:scorched_wood",
+    "count": 3
+  }
+}

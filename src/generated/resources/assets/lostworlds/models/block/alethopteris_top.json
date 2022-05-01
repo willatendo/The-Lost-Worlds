@@ -1,0 +1,8 @@
+{
+  "parent": "lostworlds:block/large_seed_fern_leaves",
+  "textures": {
+    "leaves_end": "lostworlds:block/alethopteris_leaves_end",
+    "leaves": "lostworlds:block/alethopteris_leaves",
+    "stem": "lostworlds:block/alethopteris_stem_top"
+  }
+}

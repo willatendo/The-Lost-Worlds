@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "damage=none": {
+      "model": "lostworlds:block/plant_fossil_fossil"
+    },
+    "damage=chipped": {
+      "model": "lostworlds:block/plant_fossil_fossil_chipped"
+    },
+    "damage=slightly": {
+      "model": "lostworlds:block/plant_fossil_fossil_slightly"
+    },
+    "damage=cracked": {
+      "model": "lostworlds:block/plant_fossil_fossil_cracked"
+    },
+    "damage=damaged": {
+      "model": "lostworlds:block/plant_fossil_fossil_damaged"
+    },
+    "damage=completely": {
+      "model": "lostworlds:block/plant_fossil_fossil_completely"
+    }
+  }
+}

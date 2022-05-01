@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "input": {
+    "item": "lostworlds:plastered_great_auk_rib_cage"
+  },
+  "output": "lostworlds:great_auk_rib_cage"
+}

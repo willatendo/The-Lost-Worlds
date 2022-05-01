@@ -1,0 +1,35 @@
+{
+  "text": [
+    {
+      "text": "Danger: Timid"
+    },
+    {
+      "text": "Diet: Herbivore",
+      "paragraph": true
+    },
+    {
+      "text": "Range: Jurassic - 152 mya",
+      "paragraph": true
+    },
+    {
+      "text": "Clade: Dinosauria",
+      "paragraph": true
+    },
+    {
+      "text": "Order: Ornithischia",
+      "paragraph": true
+    },
+    {
+      "text": "Suborder: Stegosauria",
+      "paragraph": true
+    },
+    {
+      "text": "Family: Stegosauridae",
+      "paragraph": true
+    },
+    {
+      "text": "Genus: Kentrosaurus",
+      "paragraph": true
+    }
+  ]
+}

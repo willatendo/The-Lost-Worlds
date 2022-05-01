@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "item": "lostworlds:dicksonia_fossil"
+  },
+  "plant": true,
+  "output": "lostworlds:dicksonia_soft_tissue"
+}

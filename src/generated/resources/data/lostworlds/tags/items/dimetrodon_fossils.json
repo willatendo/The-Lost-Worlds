@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:dimetrodon_rib_cage",
+    "lostworlds:dimetrodon_leg_bones",
+    "lostworlds:dimetrodon_arm_bones",
+    "lostworlds:dimetrodon_tail",
+    "lostworlds:dimetrodon_skull",
+    "lostworlds:dimetrodon_skeleton"
+  ]
+}
