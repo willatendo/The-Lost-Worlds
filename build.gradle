@@ -2,16 +2,17 @@ buildscript {
 	repositories {
 		maven { url = 'https://maven.minecraftforge.net' }
 		mavenCentral()
+		jcenter()
 		maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
 	}
 	dependencies {
-		classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-		classpath group: 'org.spongepowered', name: 'mixingradle', version: "0.7-SNAPSHOT"
+		classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: "${forgegradle_version}", changing: true
+		classpath group: 'org.spongepowered', name: 'mixingradle', version: "${mixingradle_version}"
 	}
 }
-	
+
 plugins {
-	id 'com.github.johnrengelman.shadow' version '5.2.0'
+	id 'com.github.johnrengelman.shadow' version "${shadow_version}"
 }
 
 apply plugin: 'net.minecraftforge.gradle'
@@ -19,27 +20,21 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '1.0.0'
-group = 'lostworlds'
-archivesBaseName = 'lostworlds'
+version = '${mod_version}'
+group = '${mod_group}'
+archivesBaseName = '${mod_group}'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
-configurations {
-	shade
-}
-
 minecraft {
-	mappings channel: 'official', version: '1.16.5'
+	mappings channel: 'official', version: "${minecraft_version}"
 	
 	accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-
+	
 	runs {
 		client {
 			workingDirectory project.file('run')
-			
-			arg '-mixin.config=lostworlds.mixins.json'
-			
+
 			mods {
 				lostworlds {
 					source sourceSets.main
@@ -50,7 +45,7 @@ minecraft {
 		data {
 			workingDirectory project.file('run')
 			
-			args '--mod', 'lostworlds', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')			
+			args '--mod', 'lostworlds', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 			
 			mods {
 				lostworlds {
@@ -61,18 +56,12 @@ minecraft {
 	}
 }
 
-sourceSets.main.resources {
-	srcDir 'src/generated/resources'
+sourceSets.main.resources { 
+	srcDir 'src/generated/resources' 
 }
 
 mixin {
-	add sourceSets.main, 'lostworlds.refmap.json'
-}
-
-shadowJar {
-	classifier = ''
-	configurations = [project.configurations.shade]
-	relocate 'com.tterrag.registrate', 'lostworlds.repack.registrate'
+	add sourceSets.main, "${mod_group}.refmap.json"
 }
 
 repositories {
@@ -86,48 +75,50 @@ repositories {
 	maven { url "https://maven.tterrag.com/" }
 }	
 
+configurations {
+	shade
+}
+
 dependencies {
-	//Minecraft
-	minecraft 'net.minecraftforge:forge:1.16.5-36.2.34'
+	minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 	
-	//Supported Mods
-	
-	//JEI
-	compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.152:api")
-	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.152")
-	
-	// Craft Tweaker
-	compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.473")
-	
-	//Librarys
-	implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.16.5:3.0.68')
-	
-	def registrate = "com.tterrag.registrate:Registrate:MC1.16.5-1.0.10"
+	def registrate = "com.tterrag.registrate:Registrate:MC${minecraft_version}-${registrate_version}"
 	implementation fg.deobf(registrate)
 	shade registrate
 	
-	//Mixins
-	annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
+	compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api")
+	runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
+	
+	compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-${minecraft_version}:${crafttweaker_version}")
+	
+	implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_verison}")
 }
 
 jar {
 	manifest {
 		attributes([
-			"Specification-Title": "lostworlds",
+			"Specification-Title": "${mod_group}",
 			"Specification-Vendor": "Willatendo",
 			"Specification-Version": "1",
 			"Implementation-Title": project.name,
-			"Implementation-Version": "1.0.0",
+			"Implementation-Version": "${mod_version}",
 			"Implementation-Vendor" :"Willatendo",
-			"Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-			"MixinConfigs": "lostworlds.mixins.json"
+			"Implementation-Timestamp" : new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+			"MixinConfigs": "${mod_group}.mixins.json"
 		])
 	}
 }
 
-reobf {
-	shadowJar {}
+shadowJar {
+    classifier = ''
+    configurations = [project.configurations.shade]
+    relocate 'com.tterrag.registrate', '${mod_group}.repack.registrate'
 }
+
+reobf {
+    shadowJar {}
+}
+
 
 build.dependsOn shadowJar
 build.dependsOn reobfShadowJar
