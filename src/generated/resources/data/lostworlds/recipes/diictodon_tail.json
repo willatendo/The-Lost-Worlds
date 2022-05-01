@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_diictodon_tail"
-  },
-  "output": "lostworlds:diictodon_tail"
-}

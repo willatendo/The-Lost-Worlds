@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_fukuivenator_rib_cage"
-  },
-  "output": "lostworlds:fukuivenator_rib_cage"
-}

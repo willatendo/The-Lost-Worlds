@@ -1,8 +1,0 @@
-{
-  "type": "lostworlds:fossil_grinder",
-  "input": {
-    "tag": "lostworlds:parksosaurus_fossils"
-  },
-  "plant": false,
-  "output": "lostworlds:parksosaurus_soft_tissue"
-}

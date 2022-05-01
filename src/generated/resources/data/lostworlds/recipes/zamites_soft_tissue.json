@@ -1,8 +1,0 @@
-{
-  "type": "lostworlds:fossil_grinder",
-  "input": {
-    "item": "lostworlds:zamites_fossil"
-  },
-  "plant": true,
-  "output": "lostworlds:zamites_soft_tissue"
-}

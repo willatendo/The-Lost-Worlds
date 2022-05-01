@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_eustreptospondylus_leg_bones"
-  },
-  "output": "lostworlds:eustreptospondylus_leg_bones"
-}

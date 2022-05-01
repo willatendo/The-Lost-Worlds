@@ -1,6 +1,0 @@
-{
-  "parent": "lostworlds:block/large_seed_fern_stem",
-  "textures": {
-    "stem": "lostworlds:block/alethopteris_stem"
-  }
-}

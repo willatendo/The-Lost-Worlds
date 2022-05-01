@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:cultivator",
-  "input": {
-    "item": "lostworlds:ginkgo_dna_disc"
-  },
-  "output": "lostworlds:ginkgo_sapling"
-}

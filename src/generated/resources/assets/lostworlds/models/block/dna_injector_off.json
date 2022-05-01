@@ -1,6 +1,0 @@
-{
-  "parent": "lostworlds:block/dna_injector",
-  "textures": {
-    "texture": "lostworlds:block/dna_injector_off"
-  }
-}

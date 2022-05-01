@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "side": "lostworlds:block/calamites_planks",
-    "bottom": "lostworlds:block/calamites_planks",
-    "top": "lostworlds:block/calamites_planks"
-  }
-}

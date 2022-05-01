@@ -1,7 +1,0 @@
-{
-  "parent": "lostworlds:block/shell",
-  "textures": {
-    "shell": "lostworlds:block/fossilized_nautilus_shell",
-    "particle": "lostworlds:block/fossilized_nautilus_shell"
-  }
-}

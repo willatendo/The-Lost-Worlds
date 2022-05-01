@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:cultivator",
-  "input": {
-    "item": "lostworlds:anomalocaris_dna_disc"
-  },
-  "output": "lostworlds:anomalocaris_spawn"
-}

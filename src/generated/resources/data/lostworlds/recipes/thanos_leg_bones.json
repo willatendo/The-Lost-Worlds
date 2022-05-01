@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_thanos_leg_bones"
-  },
-  "output": "lostworlds:thanos_leg_bones"
-}

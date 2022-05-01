@@ -1,8 +1,0 @@
-{
-  "type": "lostworlds:fossil_grinder",
-  "input": {
-    "item": "lostworlds:alethopteris_fossil"
-  },
-  "plant": true,
-  "output": "lostworlds:alethopteris_soft_tissue"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_giganotosaurus_skull"
-  },
-  "output": "lostworlds:giganotosaurus_skull"
-}

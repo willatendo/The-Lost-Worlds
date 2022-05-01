@@ -1,8 +1,0 @@
-{
-  "type": "lostworlds:fossil_grinder",
-  "input": {
-    "item": "lostworlds:eudicots_fossil"
-  },
-  "plant": true,
-  "output": "lostworlds:eudicots_soft_tissue"
-}

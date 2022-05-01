@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "side": "lostworlds:block/accent_dark_concrete",
-    "bottom": "lostworlds:block/accent_dark_concrete",
-    "top": "lostworlds:block/accent_dark_concrete"
-  }
-}

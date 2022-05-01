@@ -1,8 +1,0 @@
-{
-  "type": "lostworlds:fossil_grinder",
-  "input": {
-    "item": "lostworlds:cephalotaxus_fossil"
-  },
-  "plant": true,
-  "output": "lostworlds:cephalotaxus_soft_tissue"
-}

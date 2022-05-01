@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "lostworlds:block/araucaria_log",
-    "end": "lostworlds:block/araucaria_log"
-  }
-}

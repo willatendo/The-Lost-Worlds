@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "lostworlds:block/petrified_ginkgo_log",
-    "end": "lostworlds:block/petrified_ginkgo_log_top"
-  }
-}

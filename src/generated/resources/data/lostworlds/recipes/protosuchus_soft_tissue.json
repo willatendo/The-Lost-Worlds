@@ -1,8 +1,0 @@
-{
-  "type": "lostworlds:fossil_grinder",
-  "input": {
-    "tag": "lostworlds:protosuchus_fossils"
-  },
-  "plant": false,
-  "output": "lostworlds:protosuchus_soft_tissue"
-}

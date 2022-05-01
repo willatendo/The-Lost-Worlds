@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:cultivator",
-  "input": {
-    "item": "lostworlds:eudicots_dna_disc"
-  },
-  "output": "lostworlds:eudicots_seeds"
-}

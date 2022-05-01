@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_ouranosaurus_skull"
-  },
-  "output": "lostworlds:ouranosaurus_skull"
-}

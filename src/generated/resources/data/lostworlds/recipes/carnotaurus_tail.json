@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_carnotaurus_tail"
-  },
-  "output": "lostworlds:carnotaurus_tail"
-}

@@ -11,5 +11,5 @@
 	"injectors": {
 		"defaultRequire": 1
 	},
-	"refmap": "lostworlds.mixins.refmap.json"
+	"refmap": "lostworlds.refmap.json"
 }

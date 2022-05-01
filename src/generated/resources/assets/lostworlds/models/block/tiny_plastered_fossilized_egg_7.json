@@ -1,6 +1,0 @@
-{
-  "parent": "lostworlds:block/tiny_eggs_7",
-  "textures": {
-    "0": "lostworlds:block/plastered_tiny_egg"
-  }
-}

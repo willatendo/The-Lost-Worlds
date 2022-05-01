@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:cultivator",
-  "input": {
-    "item": "lostworlds:nautilus_dna_disc"
-  },
-  "output": "lostworlds:nautilus_spawn"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "lostworlds:fossil_grinder",
-  "input": {
-    "tag": "lostworlds:thanos_fossils"
-  },
-  "plant": false,
-  "output": "lostworlds:thanos_soft_tissue"
-}

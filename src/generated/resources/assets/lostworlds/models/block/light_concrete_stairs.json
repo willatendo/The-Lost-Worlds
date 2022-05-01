@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "side": "lostworlds:block/light_concrete",
-    "bottom": "lostworlds:block/light_concrete",
-    "top": "lostworlds:block/light_concrete"
-  }
-}

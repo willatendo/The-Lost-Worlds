@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/fence_side",
-  "textures": {
-    "texture": "lostworlds:block/cypress_planks"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_utahraptor_skull"
-  },
-  "output": "lostworlds:utahraptor_skull"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:cultivator",
-  "input": {
-    "item": "lostworlds:williamsonia_dna_disc"
-  },
-  "output": "lostworlds:williamsonia_seeds"
-}

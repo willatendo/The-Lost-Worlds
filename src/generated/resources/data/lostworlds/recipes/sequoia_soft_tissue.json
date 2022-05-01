@@ -1,8 +1,0 @@
-{
-  "type": "lostworlds:fossil_grinder",
-  "input": {
-    "item": "lostworlds:sequoia_bark_sample"
-  },
-  "plant": true,
-  "output": "lostworlds:sequoia_soft_tissue"
-}

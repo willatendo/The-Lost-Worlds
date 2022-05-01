@@ -1,8 +1,0 @@
-{
-  "type": "lostworlds:fossil_grinder",
-  "input": {
-    "tag": "lostworlds:utahraptor_fossils"
-  },
-  "plant": false,
-  "output": "lostworlds:utahraptor_soft_tissue"
-}

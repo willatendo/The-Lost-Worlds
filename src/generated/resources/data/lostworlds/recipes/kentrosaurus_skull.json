@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_kentrosaurus_skull"
-  },
-  "output": "lostworlds:kentrosaurus_skull"
-}

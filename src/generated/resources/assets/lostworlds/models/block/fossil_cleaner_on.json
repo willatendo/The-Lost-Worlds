@@ -1,6 +1,0 @@
-{
-  "parent": "lostworlds:block/fossil_cleaner",
-  "textures": {
-    "texture": "lostworlds:block/fossil_cleaner_on"
-  }
-}

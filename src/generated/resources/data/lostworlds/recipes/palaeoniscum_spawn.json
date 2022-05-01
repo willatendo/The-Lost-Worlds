@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:cultivator",
-  "input": {
-    "item": "lostworlds:palaeoniscum_dna_disc"
-  },
-  "output": "lostworlds:palaeoniscum_spawn"
-}

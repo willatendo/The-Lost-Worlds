@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_rhinesuchus_leg_bones"
-  },
-  "output": "lostworlds:rhinesuchus_leg_bones"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_ostromia_arm_bones"
-  },
-  "output": "lostworlds:ostromia_arm_bones"
-}

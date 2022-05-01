@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_carnotaurus_rib_cage"
-  },
-  "output": "lostworlds:carnotaurus_rib_cage"
-}

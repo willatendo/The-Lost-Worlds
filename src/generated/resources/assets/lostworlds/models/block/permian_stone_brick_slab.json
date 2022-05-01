@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "side": "lostworlds:block/permian_stone_bricks",
-    "bottom": "lostworlds:block/permian_stone_bricks",
-    "top": "lostworlds:block/permian_stone_bricks"
-  }
-}

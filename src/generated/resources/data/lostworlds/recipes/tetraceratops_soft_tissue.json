@@ -1,8 +1,0 @@
-{
-  "type": "lostworlds:fossil_grinder",
-  "input": {
-    "tag": "lostworlds:tetraceratops_fossils"
-  },
-  "plant": false,
-  "output": "lostworlds:tetraceratops_soft_tissue"
-}

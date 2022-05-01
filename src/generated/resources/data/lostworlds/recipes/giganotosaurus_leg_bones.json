@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_giganotosaurus_leg_bones"
-  },
-  "output": "lostworlds:giganotosaurus_leg_bones"
-}

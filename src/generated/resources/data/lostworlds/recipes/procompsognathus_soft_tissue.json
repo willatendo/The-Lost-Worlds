@@ -1,8 +1,0 @@
-{
-  "type": "lostworlds:fossil_grinder",
-  "input": {
-    "tag": "lostworlds:procompsognathus_fossils"
-  },
-  "plant": false,
-  "output": "lostworlds:procompsognathus_soft_tissue"
-}

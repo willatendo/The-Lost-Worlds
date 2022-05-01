@@ -1,7 +1,0 @@
-{
-  "type": "lostworlds:fossil_cleaner",
-  "input": {
-    "item": "lostworlds:plastered_dimetrodon_skull"
-  },
-  "output": "lostworlds:dimetrodon_skull"
-}

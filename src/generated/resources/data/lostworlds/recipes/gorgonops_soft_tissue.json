@@ -1,8 +1,0 @@
-{
-  "type": "lostworlds:fossil_grinder",
-  "input": {
-    "tag": "lostworlds:gorgonops_fossils"
-  },
-  "plant": false,
-  "output": "lostworlds:gorgonops_soft_tissue"
-}
