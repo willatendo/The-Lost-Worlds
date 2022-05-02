@@ -16,4 +16,7 @@ import net.minecraft.world.gen.feature.SphereReplaceConfig;
 
 public class DisksFeatures {
 	public static final Supplier<ConfiguredFeature<?, ?>> MUD_DISK = () -> register("mud_disk", Feature.DISK.configured(new SphereReplaceConfig(LostWorldsBlocks.MUD.getDefaultState(), FeatureSpread.of(2, 1), 1, ImmutableList.of(Blocks.DIRT.defaultBlockState(), LostWorldsBlocks.MUD.getDefaultState()))).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE));
+
+	public static void init() {
+	}
 }

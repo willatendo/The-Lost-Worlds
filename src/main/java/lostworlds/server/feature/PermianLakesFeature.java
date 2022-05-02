@@ -5,6 +5,7 @@ import java.util.Random;
 import com.mojang.serialization.Codec;
 
 import lostworlds.server.block.LostWorldsBlocks;
+import lostworlds.server.feature.config.ModBlockstateFeatureConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
@@ -14,18 +15,17 @@ import net.minecraft.world.ISeedReader;
 import net.minecraft.world.LightType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.structure.Structure;
 
-public class PermianLakesFeature extends Feature<BlockStateFeatureConfig> {
+public class PermianLakesFeature extends Feature<ModBlockstateFeatureConfig> {
 	private static final BlockState AIR = Blocks.CAVE_AIR.defaultBlockState();
 
-	public PermianLakesFeature(Codec<BlockStateFeatureConfig> codec) {
+	public PermianLakesFeature(Codec<ModBlockstateFeatureConfig> codec) {
 		super(codec);
 	}
 
-	public boolean place(ISeedReader reader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, BlockStateFeatureConfig config) {
+	public boolean place(ISeedReader reader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, ModBlockstateFeatureConfig config) {
 		while (pos.getY() > 5 && reader.isEmptyBlock(pos)) {
 			pos = pos.below();
 		}
@@ -85,7 +85,7 @@ public class PermianLakesFeature extends Feature<BlockStateFeatureConfig> {
 					for (int i3 = 0; i3 < 16; ++i3) {
 						for (int i4 = 0; i4 < 8; ++i4) {
 							if (aboolean[(l1 * 16 + i3) * 8 + i4]) {
-								reader.setBlock(pos.offset(l1, i4, i3), i4 >= 4 ? AIR : config.state, 2);
+								reader.setBlock(pos.offset(l1, i4, i3), i4 >= 4 ? AIR : config.state.get(), 2);
 							}
 						}
 					}
@@ -109,7 +109,7 @@ public class PermianLakesFeature extends Feature<BlockStateFeatureConfig> {
 					}
 				}
 
-				if (config.state.getMaterial() == Material.LAVA) {
+				if (config.state.get().getMaterial() == Material.LAVA) {
 					for (int j2 = 0; j2 < 16; ++j2) {
 						for (int k3 = 0; k3 < 16; ++k3) {
 							for (int k4 = 0; k4 < 8; ++k4) {
@@ -122,7 +122,7 @@ public class PermianLakesFeature extends Feature<BlockStateFeatureConfig> {
 					}
 				}
 
-				if (config.state.getMaterial() == Material.WATER) {
+				if (config.state.get().getMaterial() == Material.WATER) {
 					for (int k2 = 0; k2 < 16; ++k2) {
 						for (int l3 = 0; l3 < 16; ++l3) {
 							BlockPos blockpos1 = pos.offset(k2, 4, l3);

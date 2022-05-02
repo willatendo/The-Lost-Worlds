@@ -1,10 +1,6 @@
-package lostworlds.server.biome;
+package lostworlds.server.dimension.carver;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.dimension.carver.ModCaveCarver;
-import lostworlds.server.dimension.carver.ModCayonCarver;
-import lostworlds.server.dimension.carver.ModUnderwaterCaveCarver;
-import lostworlds.server.dimension.carver.ModUnderwaterCayonCarver;
 import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
 import net.minecraftforge.registries.ForgeRegistries;

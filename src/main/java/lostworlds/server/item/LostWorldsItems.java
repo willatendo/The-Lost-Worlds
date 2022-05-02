@@ -53,7 +53,7 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
 
 public class LostWorldsItems {
-	private static final LostWorldsRegistrate REGISTRATE = getRegistrate().itemGroup(() -> LostWorldsUtils.ITEMS);
+	private static final LostWorldsRegistrate REGISTRATE = getRegistrate().itemGroup(() -> LostWorldsUtils.ITEMS, "Lost Worlds Items");
 
 	// Copper
 	public static final ItemEntry<Item> COPPER_INGOT = REGISTRATE.item("copper_ingot", Item::new).recipe((item, provider) -> {
@@ -128,7 +128,7 @@ public class LostWorldsItems {
 			}).register(),
 			PALEO_SALAD = REGISTRATE.item("paleo_salad", Item::new).properties(properties -> properties.food(LostWorldsFoods.PALEO_SALAD)).recipe((item, provider) -> ShapedRecipeBuilder.shaped(item.get()).pattern("###").pattern("#$#").pattern("###").define('#', LostWorldsTags.ModItemTags.ANCIENT_SEEDS.tag).define('$', Items.BOWL).unlockedBy("has_item", provider.hasItem(Items.BOWL)).save(provider)).register();
 
-	public static final ItemEntry<BannerPatternItem> SCARAB_BANNER_PATTERN = REGISTRATE.item("scarab_banner_pattern", properties -> new BannerPatternItem(LostWorldsBanners.SCARAB, properties)).register();
+	public static final ItemEntry<BannerPatternItem> SCARAB_BANNER_PATTERN = REGISTRATE.item("scarab_banner_pattern", properties -> new BannerPatternItem(LostWorldsBanners.SCARAB, properties)).lang("Banner Pattern").register();
 
 	// Fossils
 	public static final ItemEntry<CEChargedCrystalScarabGemItem> CHARGED_CRYSTAL_SCARAB_GEM = REGISTRATE.item("charged_crystal_scarab_gem", CEChargedCrystalScarabGemItem::new).properties(properties -> properties.fireResistant().rarity(Rarity.RARE)).model(textured("crystal_scarab_gem")).register();

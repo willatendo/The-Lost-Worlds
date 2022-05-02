@@ -1,4 +1,4 @@
-package lostworlds.server.biome;
+package lostworlds.server.dimension.carver;
 
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.util.registry.WorldGenRegistries;

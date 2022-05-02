@@ -74,7 +74,7 @@ public class LostWorldsJeiPlugin implements IModPlugin {
 		registration.addRecipes(getRecipes(manager, LostWorldsRecipes.ARCHAEOLOGY_TABLE_RECIPE), LostWorldsJeiConstants.ARCHAEOLOGY_TABLE_CATEGORY);
 		registration.addRecipes(getRecipes(manager, LostWorldsRecipes.PALEONTOLOGY_TABLE_RECIPE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
 
-		registration.addIngredientInfo(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get().getDefaultInstance(), VanillaTypes.ITEM, LostWorldsUtils.tTC("jeiInfo", "charged_crystal_scarab_gem").getString());
+		registration.addIngredientInfo(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get().getDefaultInstance(), VanillaTypes.ITEM, LostWorldsUtils.tTC("jei", "charged_crystal_scarab_gem"));
 	}
 
 	@Override

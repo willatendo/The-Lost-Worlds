@@ -13,6 +13,7 @@ import com.tterrag.registrate.util.nullness.NonNullFunction;
 import lostworlds.server.util.LostWorldsRegistrate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -207,6 +208,7 @@ public class LostWorldsTags {
 		ANCIENT_SAPLINGS,
 		BASE_STONE_PERMIAN,
 		BASE_STONE_JURASSIC,
+		CARVER_BLOCKS,
 		CALAMITES_PLACEABLES,
 		CALAMITES_LOGS,
 		CONIFER_LOGS,
@@ -305,5 +307,7 @@ public class LostWorldsTags {
 		ModBlockTags.JURASSIC_PARK_ERA.includeAll(ModBlockTags.LIGHT_CONCRETE.tag, ModBlockTags.WOODEN_PLANKS.tag);
 
 		ModBlockTags.JURASSIC_WORLD_ERA.includeAll(ModBlockTags.DARK_CONCRETE.tag, ModBlockTags.REFINED_WOODEN_PLANKS.tag);
+
+		ModBlockTags.CARVER_BLOCKS.add(Blocks.BASALT, Blocks.BLACKSTONE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRAVEL, Blocks.MAGMA_BLOCK, Blocks.STONE, Blocks.COBBLESTONE, Blocks.SNOW_BLOCK);
 	}
 }

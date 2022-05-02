@@ -4,19 +4,19 @@ import java.util.Random;
 
 import com.mojang.serialization.Codec;
 
+import lostworlds.server.feature.config.ModBlockstateFeatureConfig;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 
-public class ModBlockBlobFeature extends Feature<BlockStateFeatureConfig> {
-	public ModBlockBlobFeature(Codec<BlockStateFeatureConfig> codec) {
+public class ModBlockBlobFeature extends Feature<ModBlockstateFeatureConfig> {
+	public ModBlockBlobFeature(Codec<ModBlockstateFeatureConfig> codec) {
 		super(codec);
 	}
 
-	public boolean place(ISeedReader reader, ChunkGenerator chunckGenerator, Random rand, BlockPos pos, BlockStateFeatureConfig config) {
+	public boolean place(ISeedReader reader, ChunkGenerator chunckGenerator, Random rand, BlockPos pos, ModBlockstateFeatureConfig config) {
 		while (true) {
 			place: {
 				if (pos.getY() > 3) {
@@ -42,7 +42,7 @@ public class ModBlockBlobFeature extends Feature<BlockStateFeatureConfig> {
 
 					for (BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-i, -j, -k), pos.offset(i, j, k))) {
 						if (blockpos.distSqr(pos) <= (double) (f * f)) {
-							reader.setBlock(blockpos, config.state, 4);
+							reader.setBlock(blockpos, config.state.get(), 4);
 						}
 					}
 

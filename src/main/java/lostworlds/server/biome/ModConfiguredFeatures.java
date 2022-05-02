@@ -1,7 +1,5 @@
 package lostworlds.server.biome;
 
-import static lostworlds.server.util.GeneralGetter.getStateWhenCan;
-
 import java.util.function.Supplier;
 
 import com.google.common.collect.ImmutableList;
@@ -9,10 +7,10 @@ import com.google.common.collect.ImmutableList;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.feature.LostWorldsFeatures;
+import lostworlds.server.feature.config.ModBlockstateFeatureConfig;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
-import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureSpreadConfig;
@@ -25,13 +23,13 @@ import net.minecraft.world.gen.placement.TopSolidWithNoiseConfig;
 
 public class ModConfiguredFeatures {
 	// Rocks
-	public static final Supplier<ConfiguredFeature<?, ?>> PERMIAN_ROCK = () -> register("permian_rock", LostWorldsFeatures.MOD_ROCK.configured(new BlockStateFeatureConfig(getStateWhenCan(LostWorldsBlocks.PERMIAN_COBBLESTONE))).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));
-	public static final Supplier<ConfiguredFeature<?, ?>> JURASSIC_ROCK = () -> register("jurassic_rock", LostWorldsFeatures.MOD_ROCK.configured(new BlockStateFeatureConfig(getStateWhenCan(LostWorldsBlocks.JURASSIC_COBBLESTONE))).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));
-	public static final Supplier<ConfiguredFeature<?, ?>> CRETACEOUS_ROCK = () -> register("cretaceous_rock", LostWorldsFeatures.MOD_ROCK.configured(new BlockStateFeatureConfig(Blocks.COBBLESTONE.defaultBlockState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));
+	public static final Supplier<ConfiguredFeature<?, ?>> PERMIAN_ROCK = () -> register("permian_rock", LostWorldsFeatures.MOD_ROCK.configured(new ModBlockstateFeatureConfig(() -> LostWorldsBlocks.PERMIAN_COBBLESTONE.getDefaultState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));
+	public static final Supplier<ConfiguredFeature<?, ?>> JURASSIC_ROCK = () -> register("jurassic_rock", LostWorldsFeatures.MOD_ROCK.configured(new ModBlockstateFeatureConfig(() -> LostWorldsBlocks.JURASSIC_COBBLESTONE.getDefaultState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));
+	public static final Supplier<ConfiguredFeature<?, ?>> CRETACEOUS_ROCK = () -> register("cretaceous_rock", LostWorldsFeatures.MOD_ROCK.configured(new ModBlockstateFeatureConfig(() -> Blocks.COBBLESTONE.defaultBlockState())).decorated(Features.Placements.HEIGHTMAP_SQUARE).countRandom(1));
 
 	// Lakes
-	public static final Supplier<ConfiguredFeature<?, ?>> PERMIAN_WATER_LAKE = () -> register("permian_water_lake", LostWorldsFeatures.MOD_LAKE.configured(new BlockStateFeatureConfig(Blocks.WATER.defaultBlockState())).decorated(Placement.WATER_LAKE.configured(new ChanceConfig(4))));
-	public static final Supplier<ConfiguredFeature<?, ?>> PERMIAN_LAVA_LAKE = () -> register("permian_lava_lake", LostWorldsFeatures.MOD_LAKE.configured(new BlockStateFeatureConfig(Blocks.LAVA.defaultBlockState())).decorated(Placement.LAVA_LAKE.configured(new ChanceConfig(80))));
+	public static final Supplier<ConfiguredFeature<?, ?>> PERMIAN_WATER_LAKE = () -> register("permian_water_lake", LostWorldsFeatures.MOD_LAKE.configured(new ModBlockstateFeatureConfig(() -> Blocks.WATER.defaultBlockState())).decorated(Placement.WATER_LAKE.configured(new ChanceConfig(4))));
+	public static final Supplier<ConfiguredFeature<?, ?>> PERMIAN_LAVA_LAKE = () -> register("permian_lava_lake", LostWorldsFeatures.MOD_LAKE.configured(new ModBlockstateFeatureConfig(() -> Blocks.LAVA.defaultBlockState())).decorated(Placement.LAVA_LAKE.configured(new ChanceConfig(80))));
 
 	// Misc Decoration
 	public static final Supplier<ConfiguredFeature<?, ?>> ASH_LAYER = () -> register("ash_layer", LostWorldsFeatures.ASH_LAYER.configured(IFeatureConfig.NONE));
@@ -47,5 +45,13 @@ public class ModConfiguredFeatures {
 
 	public static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String id, ConfiguredFeature<FC, ?> configuredFeature) {
 		return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, LostWorldsUtils.rL(id), configuredFeature);
+	}
+
+	public static void init() {
+		OreFeatures.init();
+		PlantPatchFeatures.init();
+		DisksFeatures.init();
+		TreeFeatures.init();
+		WaterFeatures.init();
 	}
 }

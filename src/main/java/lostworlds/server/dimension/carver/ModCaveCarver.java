@@ -1,7 +1,5 @@
 package lostworlds.server.dimension.carver;
 
-import static lostworlds.server.util.GeneralGetter.getWhenCan;
-
 import java.util.function.Supplier;
 
 import com.google.common.collect.ImmutableSet;
@@ -9,16 +7,26 @@ import com.mojang.serialization.Codec;
 
 import lostworlds.server.block.LostWorldsBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.gen.carver.CaveWorldCarver;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
 
 public class ModCaveCarver extends CaveWorldCarver {
-	private final Supplier<ImmutableSet<Block>> blocks;
+	private final ImmutableSet<Supplier<Block>> blocks = ImmutableSet.of(() -> LostWorldsBlocks.PERMIAN_SAND.get(), () -> LostWorldsBlocks.PERMIAN_STONE.get(), () -> LostWorldsBlocks.PERMIAN_COBBLESTONE.get(), () -> LostWorldsBlocks.JURASSIC_STONE.get(), () -> LostWorldsBlocks.JURASSIC_COBBLESTONE.get(), () -> LostWorldsBlocks.LATERLITE.get(), () -> LostWorldsBlocks.RAW_MARBLE.get(), () -> LostWorldsBlocks.LIMESTONE.get(), () -> LostWorldsBlocks.MOSSY_SOIL.get(), () -> LostWorldsBlocks.DRIED_SOIL.get(), () -> LostWorldsBlocks.CRACKED_SOIL.get(), () -> LostWorldsBlocks.VOLCANIC_ASH.get(), () -> LostWorldsBlocks.VOLCANIC_ASH_LAYER.get(), () -> Blocks.BASALT, () -> Blocks.BLACKSTONE, () -> Blocks.DIRT, () -> Blocks.SAND, () -> Blocks.COARSE_DIRT, () -> Blocks.GRAVEL, () -> Blocks.MAGMA_BLOCK, () -> Blocks.STONE, () -> Blocks.SNOW_BLOCK);
 
-	public ModCaveCarver(Codec<ProbabilityConfig> codec, int probability) {
-		super(codec, probability);
-		this.blocks = () -> ImmutableSet.of(getWhenCan(LostWorldsBlocks.PERMIAN_SAND), getWhenCan(LostWorldsBlocks.PERMIAN_STONE), getWhenCan(LostWorldsBlocks.PERMIAN_COBBLESTONE), getWhenCan(LostWorldsBlocks.JURASSIC_STONE), getWhenCan(LostWorldsBlocks.JURASSIC_COBBLESTONE), getWhenCan(LostWorldsBlocks.LATERLITE), getWhenCan(LostWorldsBlocks.RAW_MARBLE), getWhenCan(LostWorldsBlocks.LIMESTONE), getWhenCan(LostWorldsBlocks.MOSSY_SOIL), getWhenCan(LostWorldsBlocks.DRIED_SOIL), getWhenCan(LostWorldsBlocks.CRACKED_SOIL), getWhenCan(LostWorldsBlocks.VOLCANIC_ASH), getWhenCan(LostWorldsBlocks.VOLCANIC_ASH_LAYER), Blocks.BASALT, Blocks.BLACKSTONE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRAVEL, Blocks.MAGMA_BLOCK, Blocks.STONE, Blocks.SNOW_BLOCK);
-		this.replaceableBlocks = ImmutableSet.copyOf(this.blocks.get());
+	public ModCaveCarver(Codec<ProbabilityConfig> codec, int genHeight) {
+		super(codec, genHeight);
+	}
+
+	@Override
+	protected boolean canReplaceBlock(BlockState state) {
+		boolean flag = false;
+		for (Supplier<Block> blocks : this.blocks) {
+			if (state.is(blocks.get())) {
+				flag = true;
+			}
+		}
+		return flag;
 	}
 }

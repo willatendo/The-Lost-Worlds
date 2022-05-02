@@ -4,7 +4,6 @@ import java.util.function.Predicate;
 
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.dimension.LostWorldsDimensions;
 import lostworlds.server.entity.utils.enums.TimeEras;
 import lostworlds.server.util.ModTeleporter;
 import net.minecraft.entity.LivingEntity;
@@ -66,7 +65,7 @@ public class TimeBookItem extends ShootableItem {
 								ServerWorld serverworld1 = minecraftserver.getLevel(registrykey);
 								if (serverworld1 != null && !entity.isPassenger()) {
 									playerentity.changeDimension(serverworld1, new ModTeleporter());
-									if (registrykey.equals(LostWorldsDimensions.PERMIAN_WORLD)) {
+									if (!registrykey.equals(World.OVERWORLD)) {
 										entity.sendMessage(LostWorldsUtils.tTC("timeBook", "transport_to_" + era.toString().toLowerCase()), entity.getUUID());
 									} else {
 										entity.sendMessage(LostWorldsUtils.tTC("timeBook", "transport_to_overworld"), entity.getUUID());

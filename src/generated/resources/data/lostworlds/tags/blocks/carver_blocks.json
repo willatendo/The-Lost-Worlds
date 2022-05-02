@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:dried_soil",
+    "lostworlds:cracked_soil",
+    "lostworlds:mossy_soil",
+    "lostworlds:volcanic_ash",
+    "lostworlds:volcanic_ash_layer",
+    "lostworlds:permian_sand",
+    "lostworlds:permian_stone",
+    "lostworlds:permian_cobblestone",
+    "lostworlds:jurassic_stone",
+    "lostworlds:jurassic_cobblestone",
+    "lostworlds:laterlite",
+    "lostworlds:raw_marble",
+    "lostworlds:limestone",
+    "minecraft:basalt",
+    "minecraft:blackstone",
+    "minecraft:dirt",
+    "minecraft:coarse_dirt",
+    "minecraft:gravel",
+    "minecraft:magma_block",
+    "minecraft:stone",
+    "minecraft:cobblestone",
+    "minecraft:snow_block"
+  ]
+}
