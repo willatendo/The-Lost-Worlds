@@ -14,9 +14,14 @@ import lostworlds.server.container.recipes.serialiser.TimeMachineRecipeSerialise
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.registry.Registry;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsRecipes {
+	public static final DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, LostWorldsUtils.ID);
+
 	public static final IRecipeSerializer<FossilCleanerRecipe> FOSSIL_CLEANER_RECIPE_SERIALIZER = new FossilCleanerRecipeSerialiser();
 	public static final IRecipeSerializer<FossilGrinderRecipe> FOSSIL_GRINDER_RECIPE_SERIALIZER = new FossilGrinderRecipeSerialiser();
 	public static final IRecipeSerializer<DNAExtractorRecipe> DNA_EXTRACTOR_RECIPE_SERIALIZER = new DNAExtractorRecipeSerialiser();
@@ -39,27 +44,22 @@ public class LostWorldsRecipes {
 	public static final IRecipeType<PaleontologyTableRecipe> PALEONTOLOGY_TABLE_RECIPE = register("paleontology_table");
 	public static final IRecipeType<TimeMachineRecipe> TIME_MACHINE_RECIPE = register("time_machine");
 
-	public static final IRecipeSerializer<?> FOSSIL_CLEANER_SERIALIZER = register("fossil_cleaner", FOSSIL_CLEANER_RECIPE_SERIALIZER);
-	public static final IRecipeSerializer<?> FOSSIL_GRINDER_SERIALIZER = register("fossil_grinder", FOSSIL_GRINDER_RECIPE_SERIALIZER);
-	public static final IRecipeSerializer<?> AMBER_DNA_EXTRACTOR_SERIALIZER = register("amber_dna_extractor", AMBER_DNA_EXTRACTOR_RECIPE_SERIALIZER);
-	public static final IRecipeSerializer<?> DNA_EXTRACTOR_SERIALIZER = register("dna_extractor", DNA_EXTRACTOR_RECIPE_SERIALIZER);
-	public static final IRecipeSerializer<?> ANALYZER_SERIALIZER = register("analyzer", ANALYZER_RECIPE_SERIALIZER);
-	public static final IRecipeSerializer<?> DNA_INJECTOR_SERIALIZER = register("dna_injector", DNA_INJECTOR_RECIPE_SERIALIZER);
-	public static final IRecipeSerializer<?> CULTIVATOR_SERIALIZER = register("cultivator", CULTIVATOR_RECIPE_SERIALIZER);
-	public static final IRecipeSerializer<?> ARCHAEOLOGY_TABLE_SERIALIZER = register("archaeology_table", ARCHAEOLOGY_TABLE_RECIPE_SERIALIZER);
-	public static final IRecipeSerializer<?> PALEONTOLOGY_TABLE_SERIALIZER = register("paleontology_table", PALEONTOLOGY_TABLE_RECIPE_SERIALIZER);
-	public static final IRecipeSerializer<?> TIME_MACHINE_SERIALIZER = register("time_machine", TIME_MACHINE_RECIPE_SERIALIZER);
+	public static final RegistryObject<IRecipeSerializer<FossilCleanerRecipe>> FOSSIL_CLEANER_SERIALIZER = RECIPE_SERIALIZERS.register("fossil_cleaner", () -> FOSSIL_CLEANER_RECIPE_SERIALIZER);
+	public static final RegistryObject<IRecipeSerializer<FossilGrinderRecipe>> FOSSIL_GRINDER_SERIALIZER = RECIPE_SERIALIZERS.register("fossil_grinder", () -> FOSSIL_GRINDER_RECIPE_SERIALIZER);
+	public static final RegistryObject<IRecipeSerializer<AmberDNAExtractorRecipe>> AMBER_DNA_EXTRACTOR_SERIALIZER = RECIPE_SERIALIZERS.register("amber_dna_extractor", () -> AMBER_DNA_EXTRACTOR_RECIPE_SERIALIZER);
+	public static final RegistryObject<IRecipeSerializer<DNAExtractorRecipe>> DNA_EXTRACTOR_SERIALIZER = RECIPE_SERIALIZERS.register("dna_extractor", () -> DNA_EXTRACTOR_RECIPE_SERIALIZER);
+	public static final RegistryObject<IRecipeSerializer<AnalyzerRecipe>> ANALYZER_SERIALIZER = RECIPE_SERIALIZERS.register("analyzer", () -> ANALYZER_RECIPE_SERIALIZER);
+	public static final RegistryObject<IRecipeSerializer<DNAInjectorRecipe>> DNA_INJECTOR_SERIALIZER = RECIPE_SERIALIZERS.register("dna_injector", () -> DNA_INJECTOR_RECIPE_SERIALIZER);
+	public static final RegistryObject<IRecipeSerializer<CultivatorRecipe>> CULTIVATOR_SERIALIZER = RECIPE_SERIALIZERS.register("cultivator", () -> CULTIVATOR_RECIPE_SERIALIZER);
+	public static final RegistryObject<IRecipeSerializer<ArchaeologyTableRecipe>> ARCHAEOLOGY_TABLE_SERIALIZER = RECIPE_SERIALIZERS.register("archaeology_table", () -> ARCHAEOLOGY_TABLE_RECIPE_SERIALIZER);
+	public static final RegistryObject<IRecipeSerializer<PaleontologyTableRecipe>> PALEONTOLOGY_TABLE_SERIALIZER = RECIPE_SERIALIZERS.register("paleontology_table", () -> PALEONTOLOGY_TABLE_RECIPE_SERIALIZER);
+	public static final RegistryObject<IRecipeSerializer<TimeMachineRecipe>> TIME_MACHINE_SERIALIZER = RECIPE_SERIALIZERS.register("time_machine", () -> TIME_MACHINE_RECIPE_SERIALIZER);
 
 	public static <T extends IRecipeType> T register(String id) {
 		return (T) Registry.register(Registry.RECIPE_TYPE, LostWorldsUtils.rL(id), new ModRecipeType<>());
 	}
 
-	public static IRecipeSerializer<?> register(String id, IRecipeSerializer<?> recipe) {
-		recipe.setRegistryName(LostWorldsUtils.rL(id));
-		ForgeRegistries.RECIPE_SERIALIZERS.register(recipe);
-		return recipe;
-	}
-
-	public static void init() {
+	public static void deferred(IEventBus bus) {
+		RECIPE_SERIALIZERS.register(bus);
 	}
 }

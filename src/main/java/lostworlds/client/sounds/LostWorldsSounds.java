@@ -21,7 +21,7 @@ public class LostWorldsSounds {
 		return SOUND_EVENTS.register(id, () -> new SoundEvent(LostWorldsUtils.rL(type + ".sound." + id)));
 	}
 
-	public static void init(IEventBus bus) {
+	public static void deferred(IEventBus bus) {
 		SOUND_EVENTS.register(bus);
 	}
 }

@@ -15,7 +15,7 @@ public class LostWorldsPOIs {
 	public static final RegistryObject<PointOfInterestType> PALEONTOLOGY_TABLE = POI_TYPES.register("paleontology_table", () -> new PointOfInterestType("paleontology_table", PointOfInterestType.getBlockStates(LostWorldsBlocks.PALEONTOLOGY_TABLE.get()), 1, 1));
 
 	// Registry
-	public static void init(IEventBus bus) {
+	public static void deferred(IEventBus bus) {
 		POI_TYPES.register(bus);
 	}
 }

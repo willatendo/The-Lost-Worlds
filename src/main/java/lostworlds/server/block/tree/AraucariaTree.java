@@ -13,6 +13,6 @@ public class AraucariaTree extends Tree {
 	@Nullable
 	@Override
 	public ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean big) {
-		return TreeFeatures.ARAUCARIA_TREE.get();
+		return TreeFeatures.ARAUCARIA_TREE;
 	}
 }

@@ -22,6 +22,6 @@ public class LostWorldsBlockEntities {
 
 	public static final TileEntityEntry<DisplayCaseTileEntity> DISPLAY_CASE_TILE_ENTITY = REGISTRATE.tileEntity("display_case_tile_entity", DisplayCaseTileEntity::new).validBlock(() -> LostWorldsBlocks.DISPLAY_CASE.get()).renderer(() -> DisplayCaseRenderer::new).register();
 
-	public static void init() {
+	public static void registrate() {
 	}
 }

@@ -21,6 +21,6 @@ public class LostWorldsEnchantments {
 		return item instanceof HammerItem;
 	});
 
-	public static void init() {
+	public static void registrate() {
 	}
 }

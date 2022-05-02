@@ -31,7 +31,7 @@ public class TimeMachineRecipe implements IRecipe<IInventory> {
 
 	@Override
 	public IRecipeSerializer<?> getSerializer() {
-		return LostWorldsRecipes.TIME_MACHINE_SERIALIZER;
+		return LostWorldsRecipes.TIME_MACHINE_SERIALIZER.get();
 	}
 
 	@Override

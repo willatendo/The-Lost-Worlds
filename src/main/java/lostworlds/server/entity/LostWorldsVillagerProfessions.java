@@ -17,7 +17,7 @@ public class LostWorldsVillagerProfessions {
 	public static final RegistryObject<VillagerProfession> PALEONTOLOGIST = VILLAGER_PROFESSIONS.register("paleontologist", () -> new VillagerProfession("paleontologist", LostWorldsPOIs.PALEONTOLOGY_TABLE.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.VILLAGER_WORK_TOOLSMITH));
 
 	// Registry
-	public static void init(IEventBus bus) {
+	public static void deferred(IEventBus bus) {
 		VILLAGER_PROFESSIONS.register(bus);
 	}
 }

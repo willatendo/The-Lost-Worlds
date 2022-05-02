@@ -59,7 +59,7 @@ public class PaleontologyTableRecipe implements IRecipe<PaleontologyTableInvento
 
 	@Override
 	public IRecipeSerializer<?> getSerializer() {
-		return LostWorldsRecipes.PALEONTOLOGY_TABLE_SERIALIZER;
+		return LostWorldsRecipes.PALEONTOLOGY_TABLE_SERIALIZER.get();
 	}
 
 	@Override

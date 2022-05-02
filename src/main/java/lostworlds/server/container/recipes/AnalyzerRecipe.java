@@ -62,7 +62,7 @@ public class AnalyzerRecipe implements IRecipe<IInventory> {
 
 	@Override
 	public IRecipeSerializer<?> getSerializer() {
-		return LostWorldsRecipes.ANALYZER_SERIALIZER;
+		return LostWorldsRecipes.ANALYZER_SERIALIZER.get();
 	}
 
 	@Override

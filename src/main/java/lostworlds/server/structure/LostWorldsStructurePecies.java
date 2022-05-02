@@ -37,6 +37,5 @@ public class LostWorldsStructurePecies {
 	}
 
 	public static void init() {
-		LostWorldsUtils.LOGGER.debug("Registering Mod Structure Pieces and Generation");
 	}
 }

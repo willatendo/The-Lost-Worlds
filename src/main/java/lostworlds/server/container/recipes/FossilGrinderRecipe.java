@@ -88,7 +88,7 @@ public class FossilGrinderRecipe implements IRecipe<IInventory> {
 
 	@Override
 	public IRecipeSerializer<?> getSerializer() {
-		return LostWorldsRecipes.FOSSIL_GRINDER_SERIALIZER;
+		return LostWorldsRecipes.FOSSIL_GRINDER_SERIALIZER.get();
 	}
 
 	@Override

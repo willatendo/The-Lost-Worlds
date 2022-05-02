@@ -13,6 +13,6 @@ public class ConiferTree extends Tree {
 	@Nullable
 	@Override
 	public ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean big) {
-		return TreeFeatures.CONIFER_TREE.get();
+		return TreeFeatures.CONIFER_TREE;
 	}
 }

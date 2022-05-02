@@ -293,7 +293,7 @@ public class LostWorldsItems {
 		Foods.init();
 	}
 
-	public static void init() {
+	public static void registrate() {
 		doRandomItemStuff();
 	}
 }

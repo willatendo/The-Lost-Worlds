@@ -1,6 +1,14 @@
 package lostworlds.server.biome;
 
-import lostworlds.server.LostWorldsUtils;
+import static lostworlds.LostWorldsMod.getRegistrate;
+
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.stream.Collectors;
+
+import org.apache.commons.lang3.StringUtils;
+
+import lostworlds.LostWorldsMod;
 import lostworlds.server.biome.biomes.cretaceous.arctic.CretaceousArctic;
 import lostworlds.server.biome.biomes.cretaceous.arctic.CretaceousArcticSpires;
 import lostworlds.server.biome.biomes.cretaceous.arctic.CretaceousFrozenForest;
@@ -60,10 +68,16 @@ import lostworlds.server.biome.biomes.permian.plains.PermianPlains;
 import lostworlds.server.biome.biomes.permian.river.PermianRiver;
 import lostworlds.server.biome.biomes.permian.shore.PermianShore;
 import lostworlds.server.biome.biomes.permian.swamp.PermianMarsh;
+import lostworlds.server.util.LostWorldsRegistrate;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsBiomes {
+	private static final LostWorldsRegistrate REGISTRATE = getRegistrate();
+	public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, LostWorldsMod.ID);
+
 	// Permian
 	public static final Biome PERMIAN_CONIFER_FOREST = register("permian_conifer_forest", new PermianConiferForest());
 	public static final Biome PERMIAN_CONIFER_FOREST_HILLS = register("permian_conifer_forest_hills", new PermianConiferForest(0.45F, 0.3F));
@@ -209,13 +223,13 @@ public class LostWorldsBiomes {
 
 	public static Biome register(String id, ModBiome biome) {
 		Biome realBiome = biome.getBiome();
-		realBiome.setRegistryName(LostWorldsUtils.rL(id));
-		ForgeRegistries.BIOMES.register(realBiome);
+		BIOMES.register(id, () -> realBiome);
+		REGISTRATE.addRawLang("biome.lostworlds." + id, Arrays.stream(id.toLowerCase(Locale.ROOT).split("_")).map(StringUtils::capitalize).collect(Collectors.joining(" ")));
 		return realBiome;
 	}
 
 	// Registry
-	public static void init() {
-		LostWorldsUtils.LOGGER.debug("Registering Mod Biomes");
+	public static void deferred(IEventBus bus) {
+		BIOMES.register(bus);
 	}
 }

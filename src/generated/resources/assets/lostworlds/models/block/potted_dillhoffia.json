@@ -1,5 +1,5 @@
 {
-  "parent": "lostworlds:block/water_flower_pot_cross",
+  "parent": "minecraft:block/flower_pot_cross",
   "textures": {
     "plant": "lostworlds:block/dillhoffia"
   }

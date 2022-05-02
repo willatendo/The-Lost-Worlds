@@ -59,7 +59,7 @@ public class ArchaeologyTableRecipe implements IRecipe<ArchaeologyTableInventory
 
 	@Override
 	public IRecipeSerializer<?> getSerializer() {
-		return LostWorldsRecipes.ARCHAEOLOGY_TABLE_SERIALIZER;
+		return LostWorldsRecipes.ARCHAEOLOGY_TABLE_SERIALIZER.get();
 	}
 
 	@Override

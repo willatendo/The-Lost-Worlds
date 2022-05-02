@@ -62,7 +62,7 @@ public class DNAInjectorRecipe implements IRecipe<IInventory> {
 
 	@Override
 	public IRecipeSerializer<?> getSerializer() {
-		return LostWorldsRecipes.DNA_INJECTOR_SERIALIZER;
+		return LostWorldsRecipes.DNA_INJECTOR_SERIALIZER.get();
 	}
 
 	@Override

@@ -177,6 +177,6 @@ public class LostWorldsEntities {
 		}
 	}
 
-	public static void init() {
+	public static void registrate() {
 	}
 }

@@ -13,6 +13,6 @@ public class CalamitesTree extends Tree {
 	@Nullable
 	@Override
 	public ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean big) {
-		return TreeFeatures.CALAMITIES_TREE.get();
+		return TreeFeatures.CALAMITIES_TREE;
 	}
 }

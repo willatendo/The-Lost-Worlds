@@ -4,9 +4,13 @@ import lostworlds.server.LostWorldsUtils;
 import net.minecraft.world.gen.surfacebuilders.ISurfaceBuilderConfig;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsSurfaceBuilders {
+	public static final DeferredRegister<SurfaceBuilder<?>> SURFACE_BUILDERS = DeferredRegister.create(ForgeRegistries.SURFACE_BUILDERS, LostWorldsUtils.ID);
+
 	public static final SurfaceBuilder NAKED_PERMIAN_DRIED_PLAINS = new PermianDriedPlainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_PERMIAN_MOUNTAINS = new PermianMoutainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
 	public static final SurfaceBuilder NAKED_PERMIAN_PLAINS = new PermianPlainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
@@ -52,12 +56,11 @@ public class LostWorldsSurfaceBuilders {
 	public static final SurfaceBuilder CRETACEOUS_SWAMP = register("cretaceous_swamp_sb", NAKED_CRETACEOUS_SWAMP);
 
 	public static <T extends ISurfaceBuilderConfig> SurfaceBuilder<T> register(String id, SurfaceBuilder<T> surfaceBuilder) {
-		surfaceBuilder.setRegistryName(LostWorldsUtils.rL(id));
-		ForgeRegistries.SURFACE_BUILDERS.register(surfaceBuilder);
+		SURFACE_BUILDERS.register(id, () -> surfaceBuilder);
 		return surfaceBuilder;
 	}
 
-	public static void init() {
-		LostWorldsUtils.LOGGER.debug("Registering Mod Surface Builders");
+	public static void deferred(IEventBus bus) {
+		SURFACE_BUILDERS.register(bus);
 	}
 }

@@ -97,29 +97,30 @@ public class LostWorldsMod {
 
 		GeckoLib.initialize();
 
-		LostWorldsBlocks.init();
-		LostWorldsItems.init();
-		LostWorldsTags.init();
-		LostWorldsPotions.init(bus);
-		LostWorldsSounds.init(bus);
-		LostWorldsEnchantments.init();
-		LostWorldsEntities.init();
+		LostWorldsBlocks.registrate();
+		LostWorldsItems.registrate();
+		LostWorldsPotions.deferred(bus);
+		LostWorldsSounds.deferred(bus);
+		LostWorldsEnchantments.registrate();
+		LostWorldsEntities.registrate();
 		LostWorldsBanners.init();
-		LostWorldsBlockEntities.init();
-		LostWorldsContainers.init();
-		LostWorldsRecipes.init();
-		LostWorldsVillagerProfessions.init(bus);
-		LostWorldsPOIs.init(bus);
-		LostWorldsBlockstateProviders.BLOCK_STATE_PROVIDER.register(bus);
+		LostWorldsBlockEntities.registrate();
+		LostWorldsContainers.registrate();
+		LostWorldsRecipes.deferred(bus);
+		LostWorldsVillagerProfessions.deferred(bus);
+		LostWorldsPOIs.deferred(bus);
+		LostWorldsBlockstateProviders.deferred(bus);
 		ModConfiguredFeatures.init();
-		LostWorldsWorldCarvers.init();
+		LostWorldsWorldCarvers.deferred(bus);
 		LostWorldsConfiguredCarvers.init();
-		LostWorldsSurfaceBuilders.init();
-		LostWorldsFeatures.init(bus);
-		LostWorldsStructures.init();
+		LostWorldsSurfaceBuilders.deferred(bus);
+		LostWorldsFeatures.deferred(bus);
+		LostWorldsStructures.deferred(bus);
 		LostWorldsStructurePecies.init();
-		LostWorldsPlacements.init();
-		LostWorldsBiomes.init();
+		LostWorldsPlacements.deferred(bus);
+		LostWorldsBiomes.deferred(bus);
+
+		LostWorldsTags.init();
 
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
@@ -261,7 +262,7 @@ public class LostWorldsMod {
 			List<? extends String> biomes = Lists.newArrayList("minecraft:swamp", "minecraft:swamp_hills");
 
 			if (biomes.contains(event.getName().toString())) {
-				FeatureAdder.addFeature(event, GenerationStage.Decoration.TOP_LAYER_MODIFICATION, TreeFeatures.SCANT_CYPRESS_TREES.get());
+				FeatureAdder.addFeature(event, GenerationStage.Decoration.TOP_LAYER_MODIFICATION, TreeFeatures.SCANT_CYPRESS_TREES);
 			}
 		}
 

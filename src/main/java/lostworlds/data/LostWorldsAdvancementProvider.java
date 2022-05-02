@@ -1,5 +1,7 @@
 package lostworlds.data;
 
+import static lostworlds.LostWorldsMod.getRegistrate;
+
 import java.util.function.Consumer;
 
 import com.mojang.datafixers.util.Pair;
@@ -12,6 +14,7 @@ import lostworlds.server.block.Plants;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.structure.LostWorldsStructures;
+import lostworlds.server.util.LostWorldsRegistrate;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.FrameType;
@@ -34,6 +37,8 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class LostWorldsAdvancementProvider extends AdvancementProvider {
+	public static final LostWorldsRegistrate REGISTRATE = getRegistrate();
+
 	public LostWorldsAdvancementProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
 		super(generator, fileHelper);
 	}
@@ -41,7 +46,7 @@ public class LostWorldsAdvancementProvider extends AdvancementProvider {
 	@Override
 	protected void registerAdvancements(Consumer<Advancement> consumer, ExistingFileHelper fileHelper) {
 		Advancement root = Advancement.Builder.advancement().display(LostWorldsItems.LOST_WORLDS_LEXICON.asStack(), LostWorldsUtils.tTC("advancement", "root.name"), LostWorldsUtils.tTC("advancement", "root.desc"), LostWorldsUtils.rL("textures/block/dried_soil.png"), FrameType.TASK, false, false, false).addCriterion("tick", new TickTrigger.Instance(EntityPredicate.AndPredicate.ANY)).save(consumer, LostWorldsUtils.rL("lostworlds/root"), fileHelper);
-		Advancement aTerribleMarket = this.addAdvancement(consumer, fileHelper, root, LostWorldsItems.HAMMER.get(), "a_terrible_market", FrameType.TASK, true, true, false, Pair.of(PositionTrigger.Instance.located(LocationPredicate.inFeature(LostWorldsStructures.BLACK_MARKET.getStructure())), "in_black_market"));
+		Advancement aTerribleMarket = this.addAdvancement(consumer, fileHelper, root, LostWorldsItems.HAMMER.get(), "a_terrible_market", "A Terrible Market", "Find a Black Market. A place full of greedy pillagers, but more importantly, a hammer.", FrameType.TASK, true, true, false, Pair.of(PositionTrigger.Instance.located(LocationPredicate.inFeature(LostWorldsStructures.BLACK_MARKET.getStructure())), "in_black_market"));
 		Advancement basicExplorer = this.addAdvancement(consumer, fileHelper, root, LostWorldsBlocks.CONIFER.getBlock(0).get().get(), "basic_explorer", FrameType.GOAL, true, true, false, this.biomeCriteria(BiomeKeys.ARAUCARIA_FOREST), this.biomeCriteria(BiomeKeys.ARAUCARIA_FOREST_HILLS), this.biomeCriteria(BiomeKeys.CONIFER_FOREST), this.biomeCriteria(BiomeKeys.CONIFER_FOREST_HILLS), this.biomeCriteria(BiomeKeys.GINKGO_FOREST), this.biomeCriteria(BiomeKeys.GINKGO_FOREST_HILLS), this.biomeCriteria(BiomeKeys.REDWOODS_FOREST), this.biomeCriteria(BiomeKeys.REDWOODS_FOREST_HILLS), this.biomeCriteria(BiomeKeys.VOLCANO));
 		Advancement fossils = this.addAdvancement(consumer, fileHelper, aTerribleMarket, LostWorldsItems.HAMMER.get(), "fossils", FrameType.TASK, true, true, false, this.itemCriteria(LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag));
 		this.addAdvancement(consumer, fileHelper, fossils, LostWorldsItems.FOSSILIZED_FEATHER.get(), "decoration", FrameType.TASK, true, true, false, this.itemCriteria(LostWorldsTags.ModItemTags.TRACE_FOSSILS.tag));
@@ -82,17 +87,27 @@ public class LostWorldsAdvancementProvider extends AdvancementProvider {
 		return this.addAdvancement(consumer, fileHelper, parent, icon, name, type, showToast, announceToChat, hidden, false, criteria);
 	}
 
+	private Advancement addAdvancement(Consumer<Advancement> consumer, ExistingFileHelper fileHelper, Advancement parent, IItemProvider icon, String name, String title, String description, FrameType type, boolean showToast, boolean announceToChat, boolean hidden, Pair<CriterionInstance, String>... criteria) {
+		REGISTRATE.addRawLang("advancement.lostworlds." + name + ".name", title);
+		REGISTRATE.addRawLang("advancement.lostworlds." + name + ".desc", description);
+
+		return this.addAdvancement(consumer, fileHelper, parent, icon, name, type, showToast, announceToChat, hidden, false, criteria);
+	}
+
 	private Advancement addAdvancement(Consumer<Advancement> consumer, ExistingFileHelper fileHelper, Advancement parent, IItemProvider icon, String name, FrameType type, boolean showToast, boolean announceToChat, boolean hidden, boolean criteriaIsOr, Pair<CriterionInstance, String>... criteria) {
 		Advancement.Builder advancement = Advancement.Builder.advancement().parent(parent).display(icon, LostWorldsUtils.tTC("advancement", name + ".name"), LostWorldsUtils.tTC("advancement", name + ".desc"), null, type, showToast, announceToChat, hidden);
 		for (Pair<CriterionInstance, String> advancementCriteria : criteria) {
 			advancement.addCriterion(advancementCriteria.getSecond(), advancementCriteria.getFirst());
 		}
+
 		if (criteriaIsOr) {
 			advancement.requirements(IRequirementsStrategy.OR);
 		}
+
 		if (type == FrameType.CHALLENGE) {
 			advancement.rewards(AdvancementRewards.Builder.experience(500));
 		}
+
 		return advancement.save(consumer, LostWorldsUtils.rL("lostworlds/" + name), fileHelper);
 	}
 

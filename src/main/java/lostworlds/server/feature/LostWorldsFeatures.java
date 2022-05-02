@@ -45,8 +45,7 @@ public class LostWorldsFeatures {
 		return feature;
 	}
 
-	public static void init(IEventBus bus) {
+	public static void deferred(IEventBus bus) {
 		FEATURE.register(bus);
-		LostWorldsUtils.LOGGER.debug("Registering Mod Features");
 	}
 }

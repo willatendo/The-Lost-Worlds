@@ -125,7 +125,7 @@ public class WoodList {
 			}
 
 			if (types == WoodTypes.DOOR) {
-				BlockEntry<DoorBlock> door = this.registrate.doorBlock(id + "_" + types.toString().toLowerCase(), DoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)).tag(BlockTags.WOODEN_DOORS).recipe((block, provider) -> provider.door(DataIngredient.items(this.blocks.get(6).get()), () -> block.get(), "wooden_door")).register();
+				BlockEntry<DoorBlock> door = this.registrate.doorBlock(id + "_" + types.toString().toLowerCase(), DoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)).tag(BlockTags.WOODEN_DOORS).recipe((block, provider) -> provider.door(DataIngredient.items(this.blocks.get(6).get()), () -> block.get(), "wooden_door")).loot((provider, block) -> provider.add(block, provider.createDoorTable(block))).register();
 				this.blocks.add(() -> door);
 			}
 

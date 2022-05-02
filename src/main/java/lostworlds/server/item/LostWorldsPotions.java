@@ -13,7 +13,7 @@ public class LostWorldsPotions {
 
 	public static final RegistryObject<AshyLungEffect> ASHY_LUNG_EFFECT = EFFECTS.register("ashy_lung_effect", () -> new AshyLungEffect());
 
-	public static void init(IEventBus bus) {
+	public static void deferred(IEventBus bus) {
 		EFFECTS.register(bus);
 	}
 }

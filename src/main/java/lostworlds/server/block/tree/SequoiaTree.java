@@ -12,11 +12,11 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 public class SequoiaTree extends BigTree {
 	@Nullable
 	protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean big) {
-		return TreeFeatures.BABY_SEQUOIA_TREE.get();
+		return TreeFeatures.BABY_SEQUOIA_TREE;
 	}
 
 	@Nullable
 	protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredMegaFeature(Random rand) {
-		return TreeFeatures.SEQUOIA_TREE.get();
+		return TreeFeatures.SEQUOIA_TREE;
 	}
 }

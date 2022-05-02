@@ -62,7 +62,7 @@ public class DNAExtractorRecipe implements IRecipe<IInventory> {
 
 	@Override
 	public IRecipeSerializer<?> getSerializer() {
-		return LostWorldsRecipes.DNA_EXTRACTOR_SERIALIZER;
+		return LostWorldsRecipes.DNA_EXTRACTOR_SERIALIZER.get();
 	}
 
 	@Override

@@ -10,6 +10,6 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 public class CypressTree extends Tree {
 	@Override
 	protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean big) {
-		return TreeFeatures.CYPRESS_TREE.get();
+		return TreeFeatures.CYPRESS_TREE;
 	}
 }
