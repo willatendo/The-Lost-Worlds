@@ -6,7 +6,7 @@
       "nbt": "{Damage:0}"
     },
     "title": {
-      "translate": "advancement.lostworlds.strongest_pick.name"
+      "translate": "advancement.lostworlds.strongest_pick.title"
     },
     "description": {
       "translate": "advancement.lostworlds.strongest_pick.desc"

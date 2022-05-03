@@ -5,7 +5,7 @@
       "item": "lostworlds:field_guide"
     },
     "title": {
-      "translate": "advancement.lostworlds.in_the_field.name"
+      "translate": "advancement.lostworlds.in_the_field.title"
     },
     "description": {
       "translate": "advancement.lostworlds.in_the_field.desc"

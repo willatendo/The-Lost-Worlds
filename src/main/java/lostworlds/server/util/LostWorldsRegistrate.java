@@ -139,6 +139,43 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.subtitle("big_walk", "Big Creature Walks");
 		this.subtitle("medium_walk", "Medium Creature Walks");
 		this.subtitle("small_walk", "Small Creature Walks");
+
+		this.advancement("root", "Lost Worlds", "Welcome to the Lost Worlds!");
+		this.advancement("a_terrible_market", "A Terrible Market", "Find a Black Market. A place full of greedy pillagers, but more importantly, a hammer.");
+		this.advancement("basic_explorer", "Basic Explorer", "Just the start of your exploring journey.");
+		this.advancement("fossils", "Fossils", "Break your first fossil! Soon, you'll have a museum or a park or a battle arena!");
+		this.advancement("decoration", "Decoration", "May not bring back creatures, but still cool!");
+		this.advancement("in_the_field", "In The Field", "Aquire the field guide! A paleontologist's book!");
+		this.advancement("just_a_remnant", "Just a Remnant", "Find a fossil. The last signs of species long lost.");
+		this.advancement("just_a_trace", "Just a Trace", "Aquire the soft tissue of an extinct creature.");
+		this.advancement("like_indiana_jones", "Like Indiana Jones", "Just the start of archaeology. Soon, you'll be like the famous Indiana Jones!");
+		this.advancement("dangerous_relic", "Dangerous Relic", "The broken heart of ancient civilizations! When brought together, it has the power of 8 kilatons of tnt.");
+		this.advancement("lost_heart", "Lost Heart", "The heart of ancient civilizations. One of the most powerful and dangerous items of the world!");
+		this.advancement("charged", "Charged", "You've done it! It's more powerful then ever! If only it could come into contact with netherite...");
+		this.advancement("executioner_style", "Executioner-Style", "The strongest axe on the planet, perfect for anything. After a lot of work!");
+		this.advancement("sharpest_sword", "Sharpest Sword", "Kills a wither in a few swings!");
+		this.advancement("shovel_thats_all", "Shovel...That's All", "No puns or cleverness.");
+		this.advancement("strongest_pick", "The Strongest Pick", "The strongest pickaxe on the planet, who could possibly break it!");
+		this.advancement("ungodly_dedication", "Ungodly Dedication", "To whomever completed this in survival, how?");
+		this.advancement("paleobotany", "Paleobotany", "Plants are cool! Ancient plants are cooler!");
+		this.advancement("petrified_trees", "Petrified Trees", "You found the remains of an ancient tree!");
+		this.advancement("plants_at_least_they_dont_kill", "Plants! At Least They Don't Kill...", "Plants may be an odd choise to bring back, but they don't kill people!");
+		this.advancement("ancient_seeds", "Ancient Seeds", "After lots of work, you got some seeds!");
+		this.advancement("scratching_trees", "Scratching Trees", "You stripped a petrified tree! Soon, they'll be extant again!");
+		this.advancement("long_lost_trees", "Long Lost Trees", "Bring back a dead tree!");
+		this.advancement("the_broken_k_t_boundry", "The Broken K-T Boundry", "Aquire the DNA of an ancient creature!");
+		this.advancement("digitalization", "Digitalization", "Write DNA to a disc!");
+		this.advancement("dr_frankenstein", "Dr Frankenstein", "Aquire an egg, spawn, or a syringe!");
+		this.advancement("the_museum", "The Museum", "You aquired all you need to make a museum, a paleontology table!");
+		this.advancement("for_the_masses", "For The Masses", "You started articulating a skeleton!");
+		this.advancement("the_time_traveller", "The Time Traveller", "Travelled to every time era in the mod.");
+		this.advancement("the_cretaceous", "The Cretaceous", "Acquire volume 3 of the Time Lord's work!");
+		this.advancement("cretaceous_explorer", "Cretaceous Explorer", "Explore every biome in the Cretaceous!");
+		this.advancement("the_jurassic", "The Jurassic", "Acquire volume 2 of the Time Lord's work!");
+		this.advancement("jurassic_explorer", "Jurassic Explorer", "Explore every biome in the Jurassic!");
+		this.advancement("the_permian", "The Permian", "Acquire volume 1 of the Time Lord's work!");
+		this.advancement("permian_explorer", "Jurassic Permian", "Explore every biome in the Permian!");
+		this.advancement("time_travelling", "Time Travelling", "Just like Doc, you'll find yourself lost in time! Or, maybe, you'll be a lord of it!");
 	}
 
 	public void addDescription(String item, String desc) {
@@ -151,6 +188,11 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 
 	public void subtitle(String sound, String value) {
 		this.addRawLang("subtitle.lostworlds." + sound, value);
+	}
+
+	public void advancement(String advancement, String title, String desc) {
+		this.addRawLang("advancement.lostworlds." + advancement + ".title", title);
+		this.addRawLang("advancement.lostworlds." + advancement + ".desc", desc);
 	}
 
 	@Override

@@ -5,7 +5,7 @@
       "item": "lostworlds:allosaurus_dna_disc"
     },
     "title": {
-      "translate": "advancement.lostworlds.digitalization.name"
+      "translate": "advancement.lostworlds.digitalization.title"
     },
     "description": {
       "translate": "advancement.lostworlds.digitalization.desc"

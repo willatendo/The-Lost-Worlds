@@ -4,7 +4,7 @@
       "item": "lostworlds:lost_worlds_lexicon"
     },
     "title": {
-      "translate": "advancement.lostworlds.root.name"
+      "translate": "advancement.lostworlds.root.title"
     },
     "description": {
       "translate": "advancement.lostworlds.root.desc"

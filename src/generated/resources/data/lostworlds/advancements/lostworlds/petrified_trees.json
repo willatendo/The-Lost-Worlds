@@ -5,7 +5,7 @@
       "item": "lostworlds:petrified_conifer_log"
     },
     "title": {
-      "translate": "advancement.lostworlds.petrified_trees.name"
+      "translate": "advancement.lostworlds.petrified_trees.title"
     },
     "description": {
       "translate": "advancement.lostworlds.petrified_trees.desc"

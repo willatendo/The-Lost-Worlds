@@ -5,7 +5,7 @@
       "item": "lostworlds:conifer_log"
     },
     "title": {
-      "translate": "advancement.lostworlds.basic_explorer.name"
+      "translate": "advancement.lostworlds.basic_explorer.title"
     },
     "description": {
       "translate": "advancement.lostworlds.basic_explorer.desc"

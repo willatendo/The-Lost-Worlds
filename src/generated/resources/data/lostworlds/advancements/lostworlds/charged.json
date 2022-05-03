@@ -5,7 +5,7 @@
       "item": "lostworlds:charged_crystal_scarab_gem"
     },
     "title": {
-      "translate": "advancement.lostworlds.charged.name"
+      "translate": "advancement.lostworlds.charged.title"
     },
     "description": {
       "translate": "advancement.lostworlds.charged.desc"

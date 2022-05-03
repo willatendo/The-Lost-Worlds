@@ -5,7 +5,7 @@
       "item": "lostworlds:fossilized_feather"
     },
     "title": {
-      "translate": "advancement.lostworlds.decoration.name"
+      "translate": "advancement.lostworlds.decoration.title"
     },
     "description": {
       "translate": "advancement.lostworlds.decoration.desc"

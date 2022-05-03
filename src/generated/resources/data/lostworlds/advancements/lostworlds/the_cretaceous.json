@@ -1,11 +1,11 @@
 {
-  "parent": "lostworlds:lostworlds/the_time_traveller",
+  "parent": "lostworlds:lostworlds/time_travelling",
   "display": {
     "icon": {
       "item": "lostworlds:cretaceous_period_time_book"
     },
     "title": {
-      "translate": "advancement.lostworlds.the_cretaceous.name"
+      "translate": "advancement.lostworlds.the_cretaceous.title"
     },
     "description": {
       "translate": "advancement.lostworlds.the_cretaceous.desc"

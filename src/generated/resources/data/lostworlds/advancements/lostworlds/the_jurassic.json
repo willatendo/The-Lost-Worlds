@@ -1,11 +1,11 @@
 {
-  "parent": "lostworlds:lostworlds/the_time_traveller",
+  "parent": "lostworlds:lostworlds/time_travelling",
   "display": {
     "icon": {
       "item": "lostworlds:jurassic_period_time_book"
     },
     "title": {
-      "translate": "advancement.lostworlds.the_jurassic.name"
+      "translate": "advancement.lostworlds.the_jurassic.title"
     },
     "description": {
       "translate": "advancement.lostworlds.the_jurassic.desc"

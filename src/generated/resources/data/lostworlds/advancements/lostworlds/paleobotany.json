@@ -5,7 +5,7 @@
       "item": "lostworlds:alethopteris_fossil"
     },
     "title": {
-      "translate": "advancement.lostworlds.paleobotany.name"
+      "translate": "advancement.lostworlds.paleobotany.title"
     },
     "description": {
       "translate": "advancement.lostworlds.paleobotany.desc"

@@ -5,7 +5,7 @@
       "item": "lostworlds:jurassic_period_time_book"
     },
     "title": {
-      "translate": "advancement.lostworlds.jurassic_explorer.name"
+      "translate": "advancement.lostworlds.jurassic_explorer.title"
     },
     "description": {
       "translate": "advancement.lostworlds.jurassic_explorer.desc"

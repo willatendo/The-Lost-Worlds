@@ -5,7 +5,7 @@
       "item": "lostworlds:crystal_scarab_gem"
     },
     "title": {
-      "translate": "advancement.lostworlds.lost_heart.name"
+      "translate": "advancement.lostworlds.lost_heart.title"
     },
     "description": {
       "translate": "advancement.lostworlds.lost_heart.desc"

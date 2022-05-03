@@ -5,7 +5,7 @@
       "item": "lostworlds:alethopteris_soft_tissue"
     },
     "title": {
-      "translate": "advancement.lostworlds.plants_at_least_they_dont_kill.name"
+      "translate": "advancement.lostworlds.plants_at_least_they_dont_kill.title"
     },
     "description": {
       "translate": "advancement.lostworlds.plants_at_least_they_dont_kill.desc"

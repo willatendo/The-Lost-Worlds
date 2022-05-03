@@ -6,7 +6,7 @@
       "nbt": "{Damage:0}"
     },
     "title": {
-      "translate": "advancement.lostworlds.a_terrible_market.name"
+      "translate": "advancement.lostworlds.a_terrible_market.title"
     },
     "description": {
       "translate": "advancement.lostworlds.a_terrible_market.desc"
@@ -20,7 +20,9 @@
     "in_black_market": {
       "trigger": "minecraft:location",
       "conditions": {
-        "location": {}
+        "location": {
+          "feature": "lostworlds:black_market"
+        }
       }
     }
   },

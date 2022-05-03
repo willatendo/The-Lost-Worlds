@@ -5,7 +5,7 @@
       "item": "lostworlds:soft_stone"
     },
     "title": {
-      "translate": "advancement.lostworlds.just_a_remnant.name"
+      "translate": "advancement.lostworlds.just_a_remnant.title"
     },
     "description": {
       "translate": "advancement.lostworlds.just_a_remnant.desc"
@@ -19,13 +19,17 @@
     "in_surface_fossil": {
       "trigger": "minecraft:location",
       "conditions": {
-        "location": {}
+        "location": {
+          "feature": "lostworlds:surface_fossil"
+        }
       }
     },
     "in_subterranean_fossil": {
       "trigger": "minecraft:location",
       "conditions": {
-        "location": {}
+        "location": {
+          "feature": "lostworlds:subterranean_fossil"
+        }
       }
     }
   },

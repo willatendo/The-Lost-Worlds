@@ -6,7 +6,7 @@
       "nbt": "{Damage:0}"
     },
     "title": {
-      "translate": "advancement.lostworlds.sharpest_sword.name"
+      "translate": "advancement.lostworlds.sharpest_sword.title"
     },
     "description": {
       "translate": "advancement.lostworlds.sharpest_sword.desc"

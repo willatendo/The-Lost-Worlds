@@ -5,7 +5,7 @@
       "item": "minecraft:bone"
     },
     "title": {
-      "translate": "advancement.lostworlds.for_the_masses.name"
+      "translate": "advancement.lostworlds.for_the_masses.title"
     },
     "description": {
       "translate": "advancement.lostworlds.for_the_masses.desc"

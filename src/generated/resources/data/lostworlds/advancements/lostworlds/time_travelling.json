@@ -5,7 +5,7 @@
       "item": "lostworlds:time_machine"
     },
     "title": {
-      "translate": "advancement.lostworlds.time_travelling.name"
+      "translate": "advancement.lostworlds.time_travelling.title"
     },
     "description": {
       "translate": "advancement.lostworlds.time_travelling.desc"

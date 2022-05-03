@@ -5,7 +5,7 @@
       "item": "lostworlds:allosaurus_soft_tissue"
     },
     "title": {
-      "translate": "advancement.lostworlds.just_a_trace.name"
+      "translate": "advancement.lostworlds.just_a_trace.title"
     },
     "description": {
       "translate": "advancement.lostworlds.just_a_trace.desc"

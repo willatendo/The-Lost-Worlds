@@ -5,7 +5,7 @@
       "item": "lostworlds:conifer_sapling"
     },
     "title": {
-      "translate": "advancement.lostworlds.long_lost_trees.name"
+      "translate": "advancement.lostworlds.long_lost_trees.title"
     },
     "description": {
       "translate": "advancement.lostworlds.long_lost_trees.desc"

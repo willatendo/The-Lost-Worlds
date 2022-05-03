@@ -1,11 +1,11 @@
 {
-  "parent": "lostworlds:lostworlds/the_time_traveller",
+  "parent": "lostworlds:lostworlds/time_travelling",
   "display": {
     "icon": {
       "item": "lostworlds:permian_period_time_book"
     },
     "title": {
-      "translate": "advancement.lostworlds.the_permian.name"
+      "translate": "advancement.lostworlds.the_permian.title"
     },
     "description": {
       "translate": "advancement.lostworlds.the_permian.desc"

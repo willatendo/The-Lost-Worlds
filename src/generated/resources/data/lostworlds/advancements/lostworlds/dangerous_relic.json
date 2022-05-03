@@ -5,7 +5,7 @@
       "item": "lostworlds:crystal_scarab_gem"
     },
     "title": {
-      "translate": "advancement.lostworlds.dangerous_relic.name"
+      "translate": "advancement.lostworlds.dangerous_relic.title"
     },
     "description": {
       "translate": "advancement.lostworlds.dangerous_relic.desc"

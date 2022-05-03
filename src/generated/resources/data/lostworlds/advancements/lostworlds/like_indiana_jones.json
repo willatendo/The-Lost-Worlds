@@ -5,7 +5,7 @@
       "item": "lostworlds:archaeology_table"
     },
     "title": {
-      "translate": "advancement.lostworlds.like_indiana_jones.name"
+      "translate": "advancement.lostworlds.like_indiana_jones.title"
     },
     "description": {
       "translate": "advancement.lostworlds.like_indiana_jones.desc"

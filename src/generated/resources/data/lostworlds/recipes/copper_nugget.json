@@ -6,6 +6,7 @@
     }
   ],
   "result": {
-    "item": "lostworlds:copper_nugget"
+    "item": "lostworlds:copper_nugget",
+    "count": 9
   }
 }

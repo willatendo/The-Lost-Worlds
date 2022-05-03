@@ -6,7 +6,7 @@
       "nbt": "{Damage:0}"
     },
     "title": {
-      "translate": "advancement.lostworlds.executioner_style.name"
+      "translate": "advancement.lostworlds.executioner_style.title"
     },
     "description": {
       "translate": "advancement.lostworlds.executioner_style.desc"

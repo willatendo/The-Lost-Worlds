@@ -5,7 +5,7 @@
       "item": "lostworlds:paleontology_table"
     },
     "title": {
-      "translate": "advancement.lostworlds.the_museum.name"
+      "translate": "advancement.lostworlds.the_museum.title"
     },
     "description": {
       "translate": "advancement.lostworlds.the_museum.desc"

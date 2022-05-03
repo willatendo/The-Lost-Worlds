@@ -5,7 +5,7 @@
       "item": "lostworlds:cycad_seeds"
     },
     "title": {
-      "translate": "advancement.lostworlds.ancient_seeds.name"
+      "translate": "advancement.lostworlds.ancient_seeds.title"
     },
     "description": {
       "translate": "advancement.lostworlds.ancient_seeds.desc"
