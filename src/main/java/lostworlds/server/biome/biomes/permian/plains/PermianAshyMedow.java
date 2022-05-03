@@ -24,6 +24,6 @@ public class PermianAshyMedow extends ModBiome {
 	}
 
 	public PermianAshyMedow() {
-		super(BaseBiomeInfo.biome(RainType.NONE, Category.PLAINS, 0.125F, 0.05F, 0.8F, 0.7F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
+		super(BaseBiomeInfo.biome(RainType.NONE, Category.PLAINS, 0.125F, 0.05F, 0.8F, 5.0F, AMBIENCE.build(), GENERATION.build(), MOB_SPAWNS.build()));
 	}
 }

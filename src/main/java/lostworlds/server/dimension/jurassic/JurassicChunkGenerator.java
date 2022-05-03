@@ -5,13 +5,13 @@ import java.util.function.Supplier;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import lostworlds.server.dimension.SeedNoiseChunkGenerator;
 import lostworlds.server.dimension.WorldSeedHolder;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.DimensionSettings;
+import net.minecraft.world.gen.NoiseChunkGenerator;
 
-public class JurassicChunkGenerator extends SeedNoiseChunkGenerator {
+public class JurassicChunkGenerator extends NoiseChunkGenerator {
 	public static final Codec<JurassicChunkGenerator> CODEC = RecordCodecBuilder.create((c) -> {
 		return c.group(BiomeProvider.CODEC.fieldOf("biome_source").forGetter((chunkGenerator) -> {
 			return chunkGenerator.biomeSource;
@@ -36,10 +36,10 @@ public class JurassicChunkGenerator extends SeedNoiseChunkGenerator {
 
 	@Override
 	public ChunkGenerator withSeed(long seed) {
-		return new JurassicChunkGenerator(biomeSource.withSeed(seed), seed, getDimensionSettings());
+		return new JurassicChunkGenerator(biomeSource.withSeed(WorldSeedHolder.getSeed()), WorldSeedHolder.getSeed(), getDimensionSettings());
 	}
 
 	private Supplier<DimensionSettings> getDimensionSettings() {
-		return settings;
+		return this.settings;
 	}
 }

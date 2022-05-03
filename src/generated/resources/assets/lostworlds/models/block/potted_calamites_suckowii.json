@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/potted_bamboo",
+  "textures": {
+    "bamboo": "lostworlds:block/calamites_suckowii_stalk",
+    "leaf": "lostworlds:block/calamites_suckowii_singleleaf"
+  }
+}

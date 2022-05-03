@@ -8,6 +8,7 @@ public enum WoodTypes {
 	WOOD,
 	STRIPPED_WOOD,
 	SAPLING,
+	POTTED_SAPLING,
 	LEAVES,
 	PLANKS,
 	STAIRS,
@@ -33,6 +34,7 @@ public enum WoodTypes {
 
 		if (living) {
 			types.add(SAPLING);
+			types.add(POTTED_SAPLING);
 			types.add(LEAVES);
 		}
 

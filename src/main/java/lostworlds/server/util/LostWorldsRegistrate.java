@@ -279,8 +279,10 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> pottedBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
-		if (texture != "archaefrutus") {
+		if (texture != "archaefrutus" && texture != "calamites_suckowii") {
 			return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().singleTexture(block.getName(), new ResourceLocation("block/flower_pot_cross"), "plant", new ResourceLocation(block.get().getRegistryName().getNamespace(), "block/" + texture))))).tag(BlockTags.FLOWER_POTS);
+		} else if (texture == "calamites_suckowii") {
+			return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().withExistingParent(block.getName(), new ResourceLocation("block/potted_bamboo")).texture("bamboo", LostWorldsUtils.rL("block/calamites_suckowii_stalk")).texture("leaf", LostWorldsUtils.rL("block/calamites_suckowii_singleleaf"))))).tag(BlockTags.FLOWER_POTS);
 		} else {
 			return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().singleTexture(block.getName(), LostWorldsUtils.rL("block/water_flower_pot_cross"), "plant", new ResourceLocation(block.get().getRegistryName().getNamespace(), "block/" + texture))))).addLayer(() -> RenderType::translucent).color(() -> LostWorldsBlocks::getWaterColour).tag(BlockTags.FLOWER_POTS);
 		}

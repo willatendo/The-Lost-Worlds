@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/bamboo_large_leaves",
+  "textures": {
+    "texture": "lostworlds:block/calamites_suckowii_large_leaves",
+    "particle": "lostworlds:block/calamites_suckowii_large_leaves"
+  }
+}

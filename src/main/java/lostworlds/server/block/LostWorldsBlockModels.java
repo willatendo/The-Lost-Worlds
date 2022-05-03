@@ -15,6 +15,7 @@ import net.minecraft.block.WoodButtonBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.state.properties.AttachFace;
+import net.minecraft.state.properties.BambooLeaves;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.ResourceLocation;
@@ -186,7 +187,40 @@ public class LostWorldsBlockModels {
 	}
 
 	public static <T extends CalamtiesSuckowiiBlock> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> calamitesSuckowii() {
-		return (block, provider) -> provider.getMultipartBuilder(block.get()).part().modelFile(provider.models().withExistingParent("calamites_suckowii1_age0", provider.mcLoc("block/bamboo1_age0")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk"))).modelFile(provider.models().withExistingParent("calamites_suckowii2_age0", provider.mcLoc("block/bamboo2_age0")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk"))).modelFile(provider.models().withExistingParent("calamites_suckowii3_age0", provider.mcLoc("block/bamboo3_age0")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk"))).modelFile(provider.models().withExistingParent("calamites_suckowii4_age0", provider.mcLoc("block/bamboo4_age0")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk"))).addModel().condition(CalamtiesSuckowiiBlock.AGE, 0).end().part().modelFile(provider.models().withExistingParent("calamites_suckowii1_age1", provider.mcLoc("block/bamboo1_age1")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk"))).modelFile(provider.models().withExistingParent("calamites_suckowii2_age1", provider.mcLoc("block/bamboo2_age1")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk"))).modelFile(provider.models().withExistingParent("calamites_suckowii3_age1", provider.mcLoc("block/bamboo3_age1")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk"))).modelFile(provider.models().withExistingParent("calamites_suckowii4_age1", provider.mcLoc("block/bamboo4_age1")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk"))).addModel().condition(CalamtiesSuckowiiBlock.AGE, 1).end();
+		return (block, provider) -> provider.getMultipartBuilder(block.get()).part().modelFile(provider.models().withExistingParent("calamites_suckowii1_age0",
+				provider.mcLoc("block/bamboo1_age0")).texture("all",
+						provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
+						provider.modLoc("block/calamites_suckowii_stalk"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii2_age0",
+								provider.mcLoc("block/bamboo2_age0")).texture("all",
+										 provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
+										provider.modLoc("block/calamites_suckowii_stalk"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii3_age0",
+												provider.mcLoc("block/bamboo3_age0")).texture("all",
+														provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
+														provider.modLoc("block/calamites_suckowii_stalk")))
+				.nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii4_age0",
+						 provider.mcLoc("block/bamboo4_age0")).texture("all",
+								 provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
+								 provider.modLoc("block/calamites_suckowii_stalk"))).addModel().condition(BlockStateProperties.AGE_1, 0).end().part().modelFile(provider.models().withExistingParent("calamites_suckowii1_age1",
+											provider.mcLoc("block/bamboo1_age1")).texture("all",
+													provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
+													provider.modLoc("block/calamites_suckowii_stalk"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii2_age1",
+															provider.mcLoc("block/bamboo2_age1")).texture("all",
+																	 provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
+																	provider.modLoc("block/calamites_suckowii_stalk"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii3_age1",
+																			provider.mcLoc("block/bamboo3_age1")).texture("all",
+																					provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
+																					provider.modLoc("block/calamites_suckowii_stalk")))
+											.nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii4_age1",
+													 provider.mcLoc("block/bamboo4_age1")).texture("all",
+															 provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
+															 provider.modLoc("block/calamites_suckowii_stalk"))).addModel().condition(BlockStateProperties.AGE_1, 1).end()
+			.part().modelFile(provider.models().withExistingParent("calamites_suckowii_small_leaves",
+					provider.mcLoc("block/bamboo_small_leaves")).texture("texture",
+							provider.modLoc("block/calamites_suckowii_small_leaves")).texture("particle",
+							provider.modLoc("block/calamites_suckowii_small_leaves"))).addModel().condition(BlockStateProperties.BAMBOO_LEAVES, BambooLeaves.SMALL).end().part().modelFile(provider.models().withExistingParent("calamites_suckowii_large_leaves",
+									provider.mcLoc("block/bamboo_large_leaves")).texture("texture",
+											provider.modLoc("block/calamites_suckowii_large_leaves")).texture("particle",
+											provider.modLoc("block/calamites_suckowii_large_leaves"))).addModel().condition(BlockStateProperties.BAMBOO_LEAVES, BambooLeaves.LARGE).end();
 	}
 
 	public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> diffTextureMC(String texture) {

@@ -3,6 +3,7 @@ package lostworlds.server.block;
 import java.util.function.Supplier;
 
 import lostworlds.server.item.LostWorldsItems;
+import lostworlds.server.util.registrate.WoodTypes;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.IStringSerializable;
@@ -70,17 +71,17 @@ public enum Trees implements IStringSerializable {
 		switch (this) {
 		default:
 		case ARAUCARIA:
-			return () -> LostWorldsBlocks.ARAUCARIA.getBlock(4).get().get();
+			return () -> LostWorldsBlocks.ARAUCARIA.getBlock(WoodTypes.SAPLING).get().get();
 		case CALAMITES:
-			return () -> LostWorldsBlocks.CALAMITES.getBlock(4).get().get();
+			return () -> LostWorldsBlocks.CALAMITES.getBlock(WoodTypes.SAPLING).get().get();
 		case CONIFER:
-			return () -> LostWorldsBlocks.CONIFER.getBlock(4).get().get();
+			return () -> LostWorldsBlocks.CONIFER.getBlock(WoodTypes.SAPLING).get().get();
 		case CYPRESS:
-			return () -> LostWorldsBlocks.CYPRESS.getBlock(4).get().get();
+			return () -> LostWorldsBlocks.CYPRESS.getBlock(WoodTypes.SAPLING).get().get();
 		case GINKGO:
-			return () -> LostWorldsBlocks.GINKGO.getBlock(4).get().get();
+			return () -> LostWorldsBlocks.GINKGO.getBlock(WoodTypes.SAPLING).get().get();
 		case SEQUOIA:
-			return () -> LostWorldsBlocks.SEQUOIA.getBlock(4).get().get();
+			return () -> LostWorldsBlocks.SEQUOIA.getBlock(WoodTypes.SAPLING).get().get();
 		}
 	}
 

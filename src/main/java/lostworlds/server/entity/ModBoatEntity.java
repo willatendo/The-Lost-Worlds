@@ -2,6 +2,7 @@ package lostworlds.server.entity;
 
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.entity.utils.enums.ModBoatType;
+import lostworlds.server.util.registrate.WoodTypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -71,20 +72,20 @@ public class ModBoatEntity extends BoatEntity {
 	public Block getPlanks() {
 		switch (this.getModBoatType()) {
 		case ARAUCARIA:
-			return LostWorldsBlocks.ARAUCARIA.getBlock(6).get().get();
+			return LostWorldsBlocks.ARAUCARIA.getBlock(WoodTypes.PLANKS).get().get();
 		case CALAMITES:
-			return LostWorldsBlocks.CALAMITES.getBlock(6).get().get();
+			return LostWorldsBlocks.CALAMITES.getBlock(WoodTypes.PLANKS).get().get();
 		case CONIFER:
-			return LostWorldsBlocks.CONIFER.getBlock(6).get().get();
+			return LostWorldsBlocks.CONIFER.getBlock(WoodTypes.PLANKS).get().get();
 		case CYPRESS:
-			return LostWorldsBlocks.CYPRESS.getBlock(6).get().get();
+			return LostWorldsBlocks.CYPRESS.getBlock(WoodTypes.PLANKS).get().get();
 		case GINKGO:
-			return LostWorldsBlocks.GINKGO.getBlock(6).get().get();
+			return LostWorldsBlocks.GINKGO.getBlock(WoodTypes.PLANKS).get().get();
 		case SEQUOIA:
-			return LostWorldsBlocks.SEQUOIA.getBlock(6).get().get();
+			return LostWorldsBlocks.SEQUOIA.getBlock(WoodTypes.PLANKS).get().get();
 		default:
 		case SCORCHED:
-			return LostWorldsBlocks.SCORCHED.getBlock(6).get().get();
+			return LostWorldsBlocks.SCORCHED.getBlock(WoodTypes.PLANKS).get().get();
 		}
 	}
 

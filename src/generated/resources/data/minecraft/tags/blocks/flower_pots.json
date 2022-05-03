@@ -1,7 +1,14 @@
 {
   "replace": false,
   "values": [
+    "lostworlds:potted_araucaria_sapling",
+    "lostworlds:potted_calamites_sapling",
+    "lostworlds:potted_conifer_sapling",
+    "lostworlds:potted_cypress_sapling",
+    "lostworlds:potted_ginkgo_sapling",
+    "lostworlds:potted_sequoia_sapling",
     "lostworlds:potted_archaefrutus",
+    "lostworlds:potted_calamites_suckowii",
     "lostworlds:potted_dillhoffia",
     "lostworlds:potted_eudicots",
     "lostworlds:potted_magnolia"

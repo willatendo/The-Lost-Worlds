@@ -18,6 +18,8 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
@@ -27,12 +29,18 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class GeyserBlock extends Block implements ILavaLoggable {
+	public static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 16, 14);
 	public static final BooleanProperty LAVALOGGED = ModBlockStateProperties.LAVALOGGED;
 	public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
 
 	public GeyserBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.defaultBlockState().setValue(LIT, Boolean.valueOf(false)));
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
+		return SHAPE;
 	}
 
 	public void neighborChanged(BlockState state, World world, BlockPos pos, Block block, BlockPos newPos, boolean b) {
