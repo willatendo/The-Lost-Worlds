@@ -10,7 +10,7 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 
-import lostworlds.server.util.LostWorldsRegistrate;
+import lostworlds.server.util.registrate.LostWorldsRegistrate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

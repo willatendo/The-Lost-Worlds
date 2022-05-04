@@ -81,7 +81,7 @@ import lostworlds.server.entity.terrestrial.permian.TetraceratopsEntity;
 import lostworlds.server.entity.terrestrial.triassic.EoraptorEntity;
 import lostworlds.server.entity.terrestrial.triassic.ProcompsognathusEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
-import lostworlds.server.util.LostWorldsRegistrate;
+import lostworlds.server.util.registrate.LostWorldsRegistrate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.entity.EntityClassification;

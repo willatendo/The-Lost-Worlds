@@ -31,7 +31,7 @@ import lostworlds.server.item.block.SeedItem;
 import lostworlds.server.item.tool.BrushItem;
 import lostworlds.server.item.tool.CrystalScarabGemBrushItem;
 import lostworlds.server.item.tool.ModItemTier;
-import lostworlds.server.util.LostWorldsRegistrate;
+import lostworlds.server.util.registrate.LostWorldsRegistrate;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;

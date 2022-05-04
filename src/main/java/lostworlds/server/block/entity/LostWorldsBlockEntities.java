@@ -6,7 +6,7 @@ import com.tterrag.registrate.util.entry.TileEntityEntry;
 
 import lostworlds.client.entity.render.block.DisplayCaseRenderer;
 import lostworlds.server.block.LostWorldsBlocks;
-import lostworlds.server.util.LostWorldsRegistrate;
+import lostworlds.server.util.registrate.LostWorldsRegistrate;
 
 public class LostWorldsBlockEntities {
 	public static final LostWorldsRegistrate REGISTRATE = getRegistrate();

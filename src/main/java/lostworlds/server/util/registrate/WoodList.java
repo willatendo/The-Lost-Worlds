@@ -15,7 +15,6 @@ import lostworlds.server.block.PetrifiedWoodBlock;
 import lostworlds.server.block.tree.CustomTree;
 import lostworlds.server.entity.utils.enums.ModBoatType;
 import lostworlds.server.item.ModBoatItem;
-import lostworlds.server.util.LostWorldsRegistrate;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;

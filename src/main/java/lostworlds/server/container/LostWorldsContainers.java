@@ -15,7 +15,7 @@ import lostworlds.client.screen.FossilCleanerScreen;
 import lostworlds.client.screen.FossilGrinderScreen;
 import lostworlds.client.screen.PaleontologyTableScreen;
 import lostworlds.client.screen.TimeMachineScreen;
-import lostworlds.server.util.LostWorldsRegistrate;
+import lostworlds.server.util.registrate.LostWorldsRegistrate;
 
 public class LostWorldsContainers {
 	public static final LostWorldsRegistrate REGISTRATE = getRegistrate();

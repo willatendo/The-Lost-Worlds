@@ -21,7 +21,7 @@ public class FieldGuideItem extends TyrannobookItem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> toolTip, ITooltipFlag flag) {
-		toolTip.add(LostWorldsUtils.gTC("icon", "field_guide.desc"));
+		toolTip.add(LostWorldsUtils.gTC("item", "field_guide.desc"));
 	}
 
 	@Override
