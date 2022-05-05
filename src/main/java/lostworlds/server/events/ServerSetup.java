@@ -15,6 +15,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.LostWorldsUtils;
+import lostworlds.server.biome.LostWorldsConfiguredFeatures;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.NautilusShellBlock;
 import lostworlds.server.block.Plants;
@@ -51,8 +52,10 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.MapDecoration;
+import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
@@ -66,6 +69,14 @@ import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
 import net.minecraftforge.fml.event.server.FMLServerStoppedEvent;
 
 public class ServerSetup {
+	@EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.MOD)
+	static class Registry {
+		@SubscribeEvent
+		public static void registerFeatures(Register<Feature<?>> event) {
+			LostWorldsConfiguredFeatures.init();
+		}
+	}
+
 	@EventBusSubscriber
 	static class AddVillageStructures {
 		@SubscribeEvent

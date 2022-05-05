@@ -2,13 +2,14 @@ package lostworlds.server.biome.biomes.permian.shore;
 
 import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
-import lostworlds.server.biome.ModConfiguredSurfaceBuilders;
+import lostworlds.server.biome.ModSurfaceBuilderConfigs;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.biome.Biome.RainType;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
+import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 
 public class PermianShoreBiome extends ModBiome {
 	@Override
@@ -19,7 +20,7 @@ public class PermianShoreBiome extends ModBiome {
 	@Override
 	public BiomeGenerationSettings generation() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
-		generation.surfaceBuilder(() -> ModConfiguredSurfaceBuilders.CRETACEOUS_SHORE_BUILDER);
+		generation.surfaceBuilder(() -> SurfaceBuilder.DEFAULT.configured(ModSurfaceBuilderConfigs.PERMIAN_SAND_CONFIG.get()));
 		ModBiomeFeatures.permianRiver(generation);
 		return generation.build();
 	}

@@ -26,7 +26,7 @@ public class PermianGinkgoForestBiome extends ModBiome {
 
 	@Override
 	public Biome getBiome() {
-		return this.biome(RainType.RAIN, Category.FOREST, this.depth, this.scale, 0.0F, 0.7F, this.ambience(), this.generation(), this.spawn()).build();
+		return this.biome(RainType.RAIN, Category.FOREST, this.depth, this.scale, 0.8F, 0.7F, this.ambience(), this.generation(), this.spawn()).build();
 	}
 
 	@Override

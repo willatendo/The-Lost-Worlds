@@ -238,9 +238,9 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	public <T extends DoublePlantBlock> BlockBuilder<T, LostWorldsRegistrate> doublePlantColoured(String name, NonNullFunction<Properties, T> factory) {
 		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> {
 			if (state.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.LOWER) {
-				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_stem", provider.modLoc("block/template_two_part_cross")).texture("stem", "block/" + block.getName() + "_stem_bottom").texture("leaves", "block/" + block.getName() + "_leaves_bottom")).build();
+				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_bottom", provider.modLoc("block/template_two_part_cross")).texture("stem", "block/" + block.getName() + "_stem_bottom").texture("leaves", "block/" + block.getName() + "_leaves_bottom")).build();
 			} else {
-				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_stem", provider.modLoc("block/template_two_part_cross")).texture("stem", "block/" + block.getName() + "_branch_stem").texture("leaves", "block/" + block.getName() + "_branch_leaves")).build();
+				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_top", provider.modLoc("block/template_two_part_cross")).texture("stem", "block/" + block.getName() + "_branch_stem").texture("leaves", "block/" + block.getName() + "_branch_leaves")).build();
 			}
 		})).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("block/" + name))).build();
 	}

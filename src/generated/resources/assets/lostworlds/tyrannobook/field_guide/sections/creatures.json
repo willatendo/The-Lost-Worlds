@@ -40,9 +40,14 @@
     "data": "creatures/anomalocaris_padding.json"
   },
   {
-    "name": "carnotaurus",
+    "name": "carnotaurus_1",
     "type": "text",
-    "data": "creatures/carnotaurus.json"
+    "data": "creatures/carnotaurus_1.json"
+  },
+  {
+    "name": "carnotaurus_2",
+    "type": "text",
+    "data": "creatures/carnotaurus_2.json"
   },
   {
     "name": "carnotaurus_info",

@@ -52,14 +52,14 @@ public class TyrannobookLoader implements ISelectiveResourceReloadListener {
 		registerPageType("blank", ContentBlank.class);
 		registerPageType("text", ContentText.class);
 		registerPageType("image", ContentImage.class);
-		registerPageType("image with text below", ContentImageText.class);
-		registerPageType("text with image below", ContentTextImage.class);
-		registerPageType("text with left image etch", ContentTextLeftImage.class);
-		registerPageType("text with right image etch", ContentTextRightImage.class);
+		registerPageType("image_with_text_below", ContentImageText.class);
+		registerPageType("text_with_image_below", ContentTextImage.class);
+		registerPageType("text_with_left_image etch", ContentTextLeftImage.class);
+		registerPageType("text_with_right_image etch", ContentTextRightImage.class);
 		registerPageType("crafting", ContentCrafting.class);
 		registerPageType("smelting", ContentSmelting.class);
 		registerPageType("smithing", ContentSmithing.class);
-		registerPageType("block interaction", ContentBlockInteraction.class);
+		registerPageType("block_interaction", ContentBlockInteraction.class);
 		registerPageType(ContentStructure.ID, ContentStructure.class);
 
 		StringActionProcessor.registerProtocol(new ProtocolGoToPage());

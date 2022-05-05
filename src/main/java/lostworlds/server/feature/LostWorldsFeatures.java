@@ -2,6 +2,7 @@ package lostworlds.server.feature;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.feature.config.ModBlockstateFeatureConfig;
+import lostworlds.server.feature.config.ModLakeFeatureConfig;
 import lostworlds.server.feature.config.ModOreFeatureConfig;
 import lostworlds.server.feature.config.ModReplaceBlockConfig;
 import lostworlds.server.feature.tree.GinkgoTreeFeature;
@@ -38,7 +39,7 @@ public class LostWorldsFeatures {
 
 	public static final Feature<ModBlockstateFeatureConfig> MOD_ROCK = register("mod_rock", new ModBlockBlobFeature(ModBlockstateFeatureConfig.CODEC));
 
-	public static final Feature<ModBlockstateFeatureConfig> MOD_LAKE = register("mod_lake", new PermianLakesFeature(ModBlockstateFeatureConfig.CODEC));
+	public static final Feature<ModLakeFeatureConfig> MOD_LAKE = register("mod_lake", new ModLakesFeature(ModLakeFeatureConfig.CODEC));
 
 	public static <T extends IFeatureConfig> Feature<T> register(String id, Feature<T> feature) {
 		FEATURE.register(id, () -> feature);

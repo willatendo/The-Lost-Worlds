@@ -1,6 +1,6 @@
 package lostworlds.server.biome;
 
-import static lostworlds.server.biome.ModConfiguredFeatures.register;
+import static lostworlds.server.biome.LostWorldsConfiguredFeatures.register;
 
 import java.util.OptionalInt;
 

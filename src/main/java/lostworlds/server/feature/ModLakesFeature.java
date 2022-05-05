@@ -5,7 +5,7 @@ import java.util.Random;
 import com.mojang.serialization.Codec;
 
 import lostworlds.server.block.LostWorldsBlocks;
-import lostworlds.server.feature.config.ModBlockstateFeatureConfig;
+import lostworlds.server.feature.config.ModLakeFeatureConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
@@ -18,14 +18,14 @@ import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.structure.Structure;
 
-public class PermianLakesFeature extends Feature<ModBlockstateFeatureConfig> {
+public class ModLakesFeature extends Feature<ModLakeFeatureConfig> {
 	private static final BlockState AIR = Blocks.CAVE_AIR.defaultBlockState();
 
-	public PermianLakesFeature(Codec<ModBlockstateFeatureConfig> codec) {
+	public ModLakesFeature(Codec<ModLakeFeatureConfig> codec) {
 		super(codec);
 	}
 
-	public boolean place(ISeedReader reader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, ModBlockstateFeatureConfig config) {
+	public boolean place(ISeedReader reader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, ModLakeFeatureConfig config) {
 		while (pos.getY() > 5 && reader.isEmptyBlock(pos)) {
 			pos = pos.below();
 		}
@@ -73,7 +73,7 @@ public class PermianLakesFeature extends Feature<ModBlockstateFeatureConfig> {
 									return false;
 								}
 
-								if (k < 4 && !material.isSolid() && reader.getBlockState(pos.offset(k1, k, l2)) != config.state) {
+								if (k < 4 && !material.isSolid() && reader.getBlockState(pos.offset(k1, k, l2)) != config.liquid.get()) {
 									return false;
 								}
 							}
@@ -85,7 +85,7 @@ public class PermianLakesFeature extends Feature<ModBlockstateFeatureConfig> {
 					for (int i3 = 0; i3 < 16; ++i3) {
 						for (int i4 = 0; i4 < 8; ++i4) {
 							if (aboolean[(l1 * 16 + i3) * 8 + i4]) {
-								reader.setBlock(pos.offset(l1, i4, i3), i4 >= 4 ? AIR : config.state.get(), 2);
+								reader.setBlock(pos.offset(l1, i4, i3), i4 >= 4 ? AIR : config.liquid.get(), 2);
 							}
 						}
 					}
@@ -99,7 +99,7 @@ public class PermianLakesFeature extends Feature<ModBlockstateFeatureConfig> {
 								if (isDirt(reader.getBlockState(blockpos).getBlock()) && reader.getBrightness(LightType.SKY, pos.offset(i2, j4, j3)) > 0) {
 									Biome biome = reader.getBiome(blockpos);
 									if (biome.getGenerationSettings().getSurfaceBuilderConfig().getTopMaterial().is(LostWorldsBlocks.PERMIAN_SAND.get())) {
-										reader.setBlock(blockpos, LostWorldsBlocks.PERMIAN_SAND.getDefaultState(), 2);
+										reader.setBlock(blockpos, config.stone.get().getBlockState(), 2);
 									} else {
 										reader.setBlock(blockpos, LostWorldsBlocks.MOSSY_SOIL.getDefaultState(), 2);
 									}
@@ -109,20 +109,20 @@ public class PermianLakesFeature extends Feature<ModBlockstateFeatureConfig> {
 					}
 				}
 
-				if (config.state.get().getMaterial() == Material.LAVA) {
+				if (config.liquid.get().getMaterial() == Material.LAVA) {
 					for (int j2 = 0; j2 < 16; ++j2) {
 						for (int k3 = 0; k3 < 16; ++k3) {
 							for (int k4 = 0; k4 < 8; ++k4) {
 								boolean flag1 = !aboolean[(j2 * 16 + k3) * 8 + k4] && (j2 < 15 && aboolean[((j2 + 1) * 16 + k3) * 8 + k4] || j2 > 0 && aboolean[((j2 - 1) * 16 + k3) * 8 + k4] || k3 < 15 && aboolean[(j2 * 16 + k3 + 1) * 8 + k4] || k3 > 0 && aboolean[(j2 * 16 + (k3 - 1)) * 8 + k4] || k4 < 7 && aboolean[(j2 * 16 + k3) * 8 + k4 + 1] || k4 > 0 && aboolean[(j2 * 16 + k3) * 8 + (k4 - 1)]);
 								if (flag1 && (k4 < 4 || rand.nextInt(2) != 0) && reader.getBlockState(pos.offset(j2, k4, k3)).getMaterial().isSolid()) {
-									reader.setBlock(pos.offset(j2, k4, k3), LostWorldsBlocks.PERMIAN_STONE.getDefaultState(), 2);
+									reader.setBlock(pos.offset(j2, k4, k3), config.stone.get().getBlockState(), 2);
 								}
 							}
 						}
 					}
 				}
 
-				if (config.state.get().getMaterial() == Material.WATER) {
+				if (config.liquid.get().getMaterial() == Material.WATER) {
 					for (int k2 = 0; k2 < 16; ++k2) {
 						for (int l3 = 0; l3 < 16; ++l3) {
 							BlockPos blockpos1 = pos.offset(k2, 4, l3);

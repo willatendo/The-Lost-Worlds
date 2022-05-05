@@ -140,6 +140,62 @@ public class BookBuilder {
 					super(page, "text");
 				}
 			}
+
+			public static class RecipePageBuilder extends PageBuilder {
+				private final String recipe;
+
+				public RecipePageBuilder(String page, String recipe) {
+					super(page, "crafting");
+					this.recipe = recipe;
+				}
+
+				@Override
+				public JsonObject serializePage() {
+					JsonObject json = new JsonObject();
+					if (this.hasTitle) {
+						json.addProperty("title", this.title);
+					}
+					json.addProperty("recipe", this.recipe);
+					return json;
+				}
+			}
+
+			public static class PictureAndDescriptionPageBuilder extends PageBuilder {
+				private final String picture;
+				private final int width;
+				private final int height;
+
+				public PictureAndDescriptionPageBuilder(String page, String picture, int width, int height) {
+					super(page, "image_with_text_below");
+					this.picture = picture;
+					this.width = width;
+					this.height = height;
+				}
+
+				@Override
+				public JsonObject serializePage() {
+					JsonObject json = new JsonObject();
+					if (this.hasTitle) {
+						json.addProperty("title", this.title);
+					}
+					JsonObject image = new JsonObject();
+					json.add("image", image);
+					image.addProperty("file", this.picture);
+					image.addProperty("width", this.width);
+					image.addProperty("height", this.height);
+					JsonArray array = new JsonArray();
+					json.add("text", array);
+					for (Pair<String, Boolean> paragraphs : this.paragraphs) {
+						JsonObject text = new JsonObject();
+						array.add(text);
+						text.addProperty("text", paragraphs.getFirst());
+						if (paragraphs.getSecond()) {
+							text.addProperty("paragraph", true);
+						}
+					}
+					return json;
+				}
+			}
 		}
 	}
 }

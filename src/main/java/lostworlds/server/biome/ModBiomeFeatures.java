@@ -110,7 +110,7 @@ public class ModBiomeFeatures {
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA);
 		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Features.BASALT_PILLAR);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, OreFeatures.PERMIAN_MAGMA_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, OreFeatures.PERMIAN_MAGMA_ORE);
 		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.DELTA);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA_DOUBLE);
 		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.SMALL_BASALT_COLUMNS);
@@ -143,8 +143,8 @@ public class ModBiomeFeatures {
 		addModUnderwaterCarvers(builder);
 		addPermianUndergroundVariety(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY.get());
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
 	}
 
@@ -159,9 +159,9 @@ public class ModBiomeFeatures {
 		addPermianLakes(builder);
 		addPermianUndergroundVariety(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.CALAMITES_SUCKOWII.get());
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY.get());
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.CALAMITES_SUCKOWII);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.CALAMITIES_TREES);
 	}
 
@@ -177,8 +177,8 @@ public class ModBiomeFeatures {
 		addPermianLakes(builder);
 		addPermianUndergroundVariety(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY.get());
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 	}
 
 	public static void permianRiverSpawns(MobSpawnInfo.Builder builder) {
@@ -191,7 +191,7 @@ public class ModBiomeFeatures {
 		addPermianLakes(builder);
 		addPermianUndergroundVariety(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 	}
 
 	public static void permianShoreSpawns(MobSpawnInfo.Builder builder) {
@@ -202,9 +202,9 @@ public class ModBiomeFeatures {
 		addModUnderwaterCarvers(builder);
 		addPermianUndergroundVariety(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.MOD_CORAL_REEF.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.MOD_CORAL_REEF);
 	}
 
 	public static void permianCoralReefSpawns(MobSpawnInfo.Builder builder) {
@@ -242,6 +242,7 @@ public class ModBiomeFeatures {
 		addAlethopteris(builder);
 		addCycad(builder);
 		addDicksonia(builder);
+		addJurassicLakes(builder);
 	}
 
 	public static void jurassicGinkgoForest(BiomeGenerationSettings.Builder builder) {
@@ -257,6 +258,7 @@ public class ModBiomeFeatures {
 		addAlethopteris(builder);
 		addCycad(builder);
 		addDicksonia(builder);
+		addJurassicLakes(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SPARSE_CONIFER_TREES);
 	}
@@ -274,6 +276,7 @@ public class ModBiomeFeatures {
 		addAlethopteris(builder);
 		addCycad(builder);
 		addDicksonia(builder);
+		addJurassicLakes(builder);
 	}
 
 	public static void jurassicPlains(BiomeGenerationSettings.Builder builder) {
@@ -286,6 +289,7 @@ public class ModBiomeFeatures {
 		addAlethopteris(builder);
 		addOsmunda(builder);
 		addCycad(builder);
+		addJurassicLakes(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_DEAD_BUSH_BADLANDS);
 
@@ -303,6 +307,7 @@ public class ModBiomeFeatures {
 		addAlethopteris(builder);
 		addDicksonia(builder);
 		addOsmunda(builder);
+		addJurassicLakes(builder);
 
 		DefaultBiomeFeatures.addSurfaceFreezing(builder);
 
@@ -316,8 +321,9 @@ public class ModBiomeFeatures {
 		addExtraJurassicDiamonds(builder);
 		addJurassicUndergroundVariety(builder);
 		addGeyser(builder);
+		addJurassicLakes(builder);
 
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_MAGMA_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_MAGMA_ORE);
 	}
 
 	public static void jurassicDesert(BiomeGenerationSettings.Builder builder) {
@@ -326,6 +332,7 @@ public class ModBiomeFeatures {
 		addModCarvers(builder);
 		addSpring(builder);
 		addJurassicUndergroundVariety(builder);
+		addJurassicLakes(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_DEAD_BUSH_BADLANDS);
 	}
@@ -338,6 +345,7 @@ public class ModBiomeFeatures {
 		addJurassicUndergroundVariety(builder);
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
+		addJurassicLakes(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SCANT_CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SPARSE_BABY_SEQUOIA_TREES);
@@ -352,8 +360,9 @@ public class ModBiomeFeatures {
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
 		addZamites(builder);
+		addJurassicLakes(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SPARSE_CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SPARSE_CYPRESS_TREES);
 	}
@@ -365,9 +374,10 @@ public class ModBiomeFeatures {
 		addJurassicUndergroundVariety(builder);
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
+		addJurassicLakes(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY.get());
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SPARSE_CYPRESS_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SCANT_CYPRESS_TREES);
 	}
@@ -379,8 +389,9 @@ public class ModBiomeFeatures {
 		addJurassicUndergroundVariety(builder);
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
+		addJurassicLakes(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SCANT_CONIFER_TREES);
 	}
 
@@ -391,10 +402,11 @@ public class ModBiomeFeatures {
 		addJurassicUndergroundVariety(builder);
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
+		addJurassicLakes(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_SUGAR_CANE);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SCANT_CONIFER_TREES);
 	}
 
@@ -403,7 +415,7 @@ public class ModBiomeFeatures {
 		addModUnderwaterCarvers(builder);
 		addPermianUndergroundVariety(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
 	}
 
@@ -412,9 +424,9 @@ public class ModBiomeFeatures {
 		addModUnderwaterCarvers(builder);
 		addJurassicUndergroundVariety(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.MOD_CORAL_REEF.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.MOD_CORAL_REEF);
 	}
 
 	public static void jurassicRiver(BiomeGenerationSettings.Builder builder) {
@@ -511,9 +523,9 @@ public class ModBiomeFeatures {
 		addFernGroundClutter(builder);
 		addModCarvers(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.ARCHAEFRUTUS_PATCH.get());
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.EUDICOTS_PATCH.get());
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.MAGNOLIA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.ARCHAEFRUTUS_PATCH);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.EUDICOTS_PATCH);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.MAGNOLIA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SPARSE_CONIFER_TREES);
 	}
 
@@ -607,7 +619,7 @@ public class ModBiomeFeatures {
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA);
 		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Features.BASALT_PILLAR);
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, OreFeatures.CRETACEOUS_MAGMA_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, OreFeatures.CRETACEOUS_MAGMA_ORE);
 		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.DELTA);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SPRING_LAVA_DOUBLE);
 		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.SMALL_BASALT_COLUMNS);
@@ -623,7 +635,7 @@ public class ModBiomeFeatures {
 		addFernGroundClutter(builder);
 		addZamites(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SPARSE_CONIFER_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SPARSE_CYPRESS_TREES);
 	}
@@ -636,8 +648,8 @@ public class ModBiomeFeatures {
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY.get());
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SCANT_CYPRESS_TREES);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SPARSE_CYPRESS_TREES);
 	}
@@ -664,7 +676,7 @@ public class ModBiomeFeatures {
 
 		DefaultBiomeFeatures.addLightBambooVegetation(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SCANT_CONIFER_TREES);
 	}
 
@@ -673,7 +685,7 @@ public class ModBiomeFeatures {
 		addModUnderwaterCarvers(builder);
 		addCretaceousUndergroundVariety(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
 	}
 
@@ -682,7 +694,7 @@ public class ModBiomeFeatures {
 		addModUnderwaterCarvers(builder);
 		addCretaceousUndergroundVariety(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
 	}
 
@@ -691,9 +703,9 @@ public class ModBiomeFeatures {
 		addModUnderwaterCarvers(builder);
 		addCretaceousUndergroundVariety(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.SPONGE_COLONEY.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.MOD_CORAL_REEF.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.MOD_CORAL_REEF);
 	}
 
 	public static void cretaceousShore(BiomeGenerationSettings.Builder builder) {
@@ -804,77 +816,82 @@ public class ModBiomeFeatures {
 
 	// Permian Features
 	private static void addPermianUndergroundVariety(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_DIRT_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_GRAVEL_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_DIRT_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_GRAVEL_ORE);
 
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_LATERLITE_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_RAW_MARBLE_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_LIMESTONE_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_LATERLITE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_RAW_MARBLE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_LIMESTONE_ORE);
 	}
 
 	private static void addPermianDesertPlants(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.PERMIAN_DESERT_SHRUB_PATCH.get());
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.PERMIAN_DESERT_FERNS_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.PERMIAN_DESERT_SHRUB_PATCH);
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.PERMIAN_DESERT_FERNS_PATCH);
 	}
 
 	private static void addFernGroundClutter(BiomeGenerationSettings.Builder builder) {
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_LARGE_FERN);
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.FERN_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.FERN_PATCH);
 	}
 
 	private static void addPermianRock(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ModConfiguredFeatures.PERMIAN_ROCK.get());
+		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, LostWorldsConfiguredFeatures.PERMIAN_ROCK);
 	}
 
 	private static void addPermianOres(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_COAL_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_DIAMOND_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_GOLD_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_IRON_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_LAPIS_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_REDSTONE_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_COPPER_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_COAL_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_DIAMOND_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_GOLD_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_IRON_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_LAPIS_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_REDSTONE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_COPPER_ORE);
 	}
 
 	private static void addPermianEmerald(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_EMERALD_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.PERMIAN_EMERALD_ORE);
 	}
 
 	private static void addPermianLakes(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.LAKES, ModConfiguredFeatures.PERMIAN_WATER_LAKE.get());
-		builder.addFeature(GenerationStage.Decoration.LAKES, ModConfiguredFeatures.PERMIAN_LAVA_LAKE.get());
+		builder.addFeature(GenerationStage.Decoration.LAKES, WaterFeatures.PERMIAN_WATER_LAKE);
+		builder.addFeature(GenerationStage.Decoration.LAKES, WaterFeatures.PERMIAN_LAVA_LAKE);
 	}
 
 	// Jurassic Features
 	private static void addJurassicUndergroundVariety(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_DIRT_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_GRAVEL_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_DIRT_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_GRAVEL_ORE);
 
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_LATERLITE_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_RAW_MARBLE_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_LIMESTONE_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_LATERLITE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_RAW_MARBLE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_LIMESTONE_ORE);
 	}
 
 	private static void addJurassicRock(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ModConfiguredFeatures.JURASSIC_ROCK.get());
+		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, LostWorldsConfiguredFeatures.JURASSIC_ROCK);
 	}
 
 	private static void addJurassicOres(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_COAL_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_DIAMOND_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_GOLD_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_IRON_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_LAPIS_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_REDSTONE_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_COPPER_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_COAL_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_DIAMOND_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_GOLD_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_IRON_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_LAPIS_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_REDSTONE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_COPPER_ORE);
 	}
 
 	private static void addJurassicEmerald(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_EMERALD_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_EMERALD_ORE);
 	}
 
 	private static void addExtraJurassicDiamonds(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_DIAMOND_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_DIAMOND_ORE);
+	}
+
+	private static void addJurassicLakes(BiomeGenerationSettings.Builder builder) {
+		builder.addFeature(GenerationStage.Decoration.LAKES, WaterFeatures.JURASSIC_WATER_LAKE);
+		builder.addFeature(GenerationStage.Decoration.LAKES, WaterFeatures.JURASSIC_LAVA_LAKE);
 	}
 
 	// Cretaceous Features
@@ -882,13 +899,13 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_DIRT);
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_GRAVEL);
 
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_LATERLITE_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_RAW_MARBLE_ORE.get());
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_LIMESTONE_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_LATERLITE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_RAW_MARBLE_ORE);
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.JURASSIC_LIMESTONE_ORE);
 	}
 
 	private static void addCretaceousRock(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ModConfiguredFeatures.CRETACEOUS_ROCK.get());
+		builder.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, LostWorldsConfiguredFeatures.CRETACEOUS_ROCK);
 	}
 
 	private static void addCretaceousOres(BiomeGenerationSettings.Builder builder) {
@@ -898,7 +915,7 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_IRON);
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_LAPIS);
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_REDSTONE);
-//		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.COPPER_ORE);
+//		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, LostWorldsConfiguredFeatures.COPPER_ORE);
 	}
 
 	private static void addCretaceousEmerald(BiomeGenerationSettings.Builder builder) {
@@ -917,7 +934,7 @@ public class ModBiomeFeatures {
 	}
 
 	private static void addSpring(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, WaterFeatures.ANCIENT_SPRING.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, WaterFeatures.ANCIENT_SPRING);
 	}
 
 	public static void addAraucariaTrees(BiomeGenerationSettings.Builder builder) {
@@ -942,43 +959,43 @@ public class ModBiomeFeatures {
 	}
 
 	private static void addAshLayer(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, ModConfiguredFeatures.ASH_LAYER.get());
+		builder.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, LostWorldsConfiguredFeatures.ASH_LAYER);
 	}
 
 	private static void addAlethopteris(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.ALETHOPTERIS_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.ALETHOPTERIS_PATCH);
 	}
 
 	private static void addCycad(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.CYCAD_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.CYCAD_PATCH);
 	}
 
 	private static void addDuisbergia(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.DUISBERGIA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.DUISBERGIA_PATCH);
 	}
 
 	private static void addDicksonia(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.DICKSONIA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.DICKSONIA_PATCH);
 	}
 
 	private static void addOsmunda(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.OSMUNDA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.OSMUNDA_PATCH);
 	}
 
 	private static void addWilliamsonia(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.WILLIAMSONIA_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.WILLIAMSONIA_PATCH);
 	}
 
 	private static void addZamites(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.ZAMITES_PATCH.get());
+		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.ZAMITES_PATCH);
 	}
 
 	private static void addBasaltDiamondOre(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.BASALT_DIAMOND_ORE.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.BASALT_DIAMOND_ORE);
 	}
 
 	private static void addGeyser(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.GEYSER_BLOCK.get());
+		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, LostWorldsConfiguredFeatures.GEYSER_BLOCK);
 	}
 
 	// Spawns

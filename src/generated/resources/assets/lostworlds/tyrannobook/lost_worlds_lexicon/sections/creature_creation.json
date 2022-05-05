@@ -1,1 +1,27 @@
-[]
+[
+  {
+    "name": "where_to_start",
+    "type": "text",
+    "data": "creature_creation/where_to_start.json"
+  },
+  {
+    "name": "paleontology_101",
+    "type": "text",
+    "data": "creature_creation/paleontology_101.json"
+  },
+  {
+    "name": "paleontology_102",
+    "type": "text",
+    "data": "creature_creation/paleontology_102.json"
+  },
+  {
+    "name": "analyzer_recipe",
+    "type": "crafting",
+    "data": "creature_creation/analyzer_recipe.json"
+  },
+  {
+    "name": "nest_example",
+    "type": "image_with_text_below",
+    "data": "creature_creation/nest_example.json"
+  }
+]
