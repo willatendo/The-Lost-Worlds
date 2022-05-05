@@ -89,6 +89,8 @@ public enum DinoTypes implements IStringSerializable {
 	private Supplier<Item> plasteredLegBonesItem;
 	private Supplier<Item> plasteredRibCageItem;
 	private Supplier<Item> plasteredTailItem;
+	private Supplier<Item> plasteredExoskeletonItem;
+	private Supplier<Item> plasteredBodyItem;
 	private Supplier<Item> skullItem;
 	private Supplier<Item> armBonesItem;
 	private Supplier<Item> legBonesItem;
@@ -104,6 +106,7 @@ public enum DinoTypes implements IStringSerializable {
 	private Supplier<Item> fishBucket;
 	private Supplier<Item> feather;
 	private Supplier<Item> spawn;
+	private Supplier<Item> hide;
 	private final boolean eggLaying;
 	private final boolean feathered;
 	private final boolean createHide;
@@ -303,6 +306,14 @@ public enum DinoTypes implements IStringSerializable {
 		return this.spawn;
 	}
 
+	public Supplier<Item> setHide(Supplier<Item> hide) {
+		return this.hide = hide;
+	}
+
+	public Supplier<Item> getHide() {
+		return this.hide;
+	}
+
 	public Supplier<Block> setExtraBlock(Supplier<Block> extraBlock) {
 		return this.extraBlock = extraBlock;
 	}
@@ -365,6 +376,22 @@ public enum DinoTypes implements IStringSerializable {
 
 	public Supplier<Item> setPlasteredTailItem(Supplier<Item> item) {
 		return this.plasteredTailItem = item;
+	}
+
+	public Supplier<Item> getPlasteredBodyItem() {
+		return this.plasteredBodyItem;
+	}
+
+	public Supplier<Item> setPlasteredBodyItem(Supplier<Item> plasteredBodyItem) {
+		return this.plasteredBodyItem = plasteredBodyItem;
+	}
+
+	public Supplier<Item> getPlasteredExoskeletonItem() {
+		return this.plasteredExoskeletonItem;
+	}
+
+	public Supplier<Item> setPlasteredExoskeletonItem(Supplier<Item> plasteredExoskeletonItem) {
+		return this.plasteredExoskeletonItem = plasteredExoskeletonItem;
 	}
 
 	public Supplier<Item> getSkullItem() {

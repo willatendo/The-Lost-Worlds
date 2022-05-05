@@ -182,13 +182,15 @@ public class LostWorldsItems {
 			}
 
 			if (dinos == DinoTypes.ANOMALOCARIS) {
-				REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_exoskeleton", properties -> new FossilItem(properties, () -> dinos.getExoskeleton().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).register();
+				ItemEntry<FossilItem> plasteredExoskeleton = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_exoskeleton", properties -> new FossilItem(properties, () -> dinos.getExoskeleton().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).register();
+				dinos.setPlasteredExoskeletonItem(() -> plasteredExoskeleton.get());
 				ItemEntry<FossilItem> exoskeleton = REGISTRATE.item(dinos.name().toLowerCase() + "_exoskeleton", properties -> new FossilItem(properties, () -> dinos.getExoskeleton().get(), false)).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, dinos.getFossilTag()).register();
 				dinos.setSkeletonPick(() -> exoskeleton.get());
 			}
 
 			if (dinos == DinoTypes.PALAEONISCUM) {
-				REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_body", properties -> new FossilItem(properties, () -> dinos.getBody().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).register();
+				ItemEntry<FossilItem> plasteredBody = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_body", properties -> new FossilItem(properties, () -> dinos.getBody().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).register();
+				dinos.setPlasteredBodyItem(() -> plasteredBody.get());
 				ItemEntry<FossilItem> body = REGISTRATE.item(dinos.name().toLowerCase() + "_body", properties -> new FossilItem(properties, () -> dinos.getBody().get(), false)).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, dinos.getFossilTag()).register();
 				dinos.setSkeletonPick(() -> body.get());
 			}
@@ -198,7 +200,8 @@ public class LostWorldsItems {
 				dinos.setFeather(() -> feather.get());
 			}
 			if (dinos.createHide().contains(dinos)) {
-				REGISTRATE.item(dinos.name().toLowerCase() + "_hide", Item::new).model(textured("dino_hide")).tag(Tags.Items.LEATHER, LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).register();
+				ItemEntry<Item> hide = REGISTRATE.item(dinos.name().toLowerCase() + "_hide", Item::new).model(textured("dino_hide")).tag(Tags.Items.LEATHER, LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).register();
+				dinos.setHide(() -> hide.get());
 			}
 			if (dinos.hasSpawn().contains(dinos)) {
 				ItemEntry<SpawnItem> spawn = REGISTRATE.item(dinos.name().toLowerCase() + "_spawn", properties -> new SpawnItem(properties, () -> (EntityType<? extends PrehistoricEntity>) dinos.getEntityType().get())).model(model("template_spawn")).color(() -> () -> (stack, colour) -> dinos.getColour(colour, 0x000000, dinos.getSetEggColour())).register();

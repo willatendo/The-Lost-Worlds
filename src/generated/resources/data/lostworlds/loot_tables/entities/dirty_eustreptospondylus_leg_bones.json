@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "lostworlds:plastered_eustreptospondylus_leg_bones"
+        }
+      ]
+    }
+  ]
+}
