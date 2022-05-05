@@ -5,7 +5,12 @@ import java.util.List;
 import java.util.Random;
 
 import lostworlds.server.LostWorldsUtils;
+import lostworlds.server.block.Damage;
+import lostworlds.server.block.LostWorldsBlocks;
+import lostworlds.server.block.PotentialPart;
+import lostworlds.server.block.SoftStoneBlock;
 import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.TimeEras;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;
@@ -30,28 +35,29 @@ public class SurfaceFossilPeice {
 	public static final ArrayList<ResourceLocation> locations = new ArrayList<>();
 
 	public static void addStructure(TemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> piece, Random rand, Biome biome) {
-		for (DinoTypes types : DinoTypes.values()) {
-			locations.add(LostWorldsUtils.rL("fossil/" + types.toString().toLowerCase() + "_fossil_1"));
-			locations.add(LostWorldsUtils.rL("fossil/" + types.toString().toLowerCase() + "_fossil_2"));
-			locations.add(LostWorldsUtils.rL("fossil/" + types.toString().toLowerCase() + "_fossil_3"));
-			locations.add(LostWorldsUtils.rL("fossil/" + types.toString().toLowerCase() + "_fossil_4"));
-			locations.add(LostWorldsUtils.rL("fossil/" + types.toString().toLowerCase() + "_fossil_5"));
-			locations.add(LostWorldsUtils.rL("fossil/" + types.toString().toLowerCase() + "_fossil_6"));
-		}
+		locations.add(LostWorldsUtils.rL("fossil/fossil_1"));
+		locations.add(LostWorldsUtils.rL("fossil/fossil_2"));
+		locations.add(LostWorldsUtils.rL("fossil/fossil_3"));
+		locations.add(LostWorldsUtils.rL("fossil/fossil_4"));
+		locations.add(LostWorldsUtils.rL("fossil/fossil_5"));
+		locations.add(LostWorldsUtils.rL("fossil/fossil_6"));
 
 		int fossil = rand.nextInt(locations.size());
-		piece.add(new SurfaceFossilPeice.Piece(manager, locations.get(fossil), pos, rotation));
+		int type = rand.nextInt(DinoTypes.values().length);
+		piece.add(new SurfaceFossilPeice.Piece(manager, locations.get(fossil), DinoTypes.values()[type], pos, rotation));
 	}
 
 	public static class Piece extends TemplateStructurePiece {
 		private final ResourceLocation templateLocation;
 		private final Rotation rotation;
+		private final DinoTypes type;
 
-		public Piece(TemplateManager manager, ResourceLocation location, BlockPos pos, Rotation rotation) {
+		public Piece(TemplateManager manager, ResourceLocation location, DinoTypes type, BlockPos pos, Rotation rotation) {
 			super(LostWorldsStructurePecies.SURFACE_FOSSIL_PIECE, 0);
 			this.templateLocation = location;
 			this.templatePosition = pos;
 			this.rotation = rotation;
+			this.type = type;
 			this.loadTemplate(manager);
 		}
 
@@ -59,6 +65,7 @@ public class SurfaceFossilPeice {
 			super(LostWorldsStructurePecies.SURFACE_FOSSIL_PIECE, nbt);
 			this.templateLocation = new ResourceLocation(nbt.getString("Template"));
 			this.rotation = Rotation.valueOf(nbt.getString("Rot"));
+			this.type = DinoTypes.byName(nbt.getString("Type"));
 			this.loadTemplate(manager);
 		}
 
@@ -73,10 +80,34 @@ public class SurfaceFossilPeice {
 			super.addAdditionalSaveData(nbt);
 			nbt.putString("Template", this.templateLocation.toString());
 			nbt.putString("Rot", this.rotation.name());
+			nbt.putString("Type", this.type.getId());
 		}
 
 		@Override
 		protected void handleDataMarker(String data, BlockPos pos, IServerWorld world, Random rand, MutableBoundingBox box) {
+			if ("skull".equals(data)) {
+				world.setBlock(pos, LostWorldsBlocks.SOFT_STONE.getDefaultState().setValue(SoftStoneBlock.DAMAGE, Damage.NONE).setValue(SoftStoneBlock.ERA, TimeEras.MODERN_MINECRAFT).setValue(SoftStoneBlock.POTENTIAL_CREATURE, this.type).setValue(SoftStoneBlock.POTENTIAL_PART, PotentialPart.SKULL), 3);
+			}
+
+			if ("arm".equals(data)) {
+				world.setBlock(pos, LostWorldsBlocks.SOFT_STONE.getDefaultState().setValue(SoftStoneBlock.DAMAGE, Damage.NONE).setValue(SoftStoneBlock.ERA, TimeEras.MODERN_MINECRAFT).setValue(SoftStoneBlock.POTENTIAL_CREATURE, this.type).setValue(SoftStoneBlock.POTENTIAL_PART, PotentialPart.ARM), 3);
+			}
+
+			if ("rib_cage".equals(data)) {
+				world.setBlock(pos, LostWorldsBlocks.SOFT_STONE.getDefaultState().setValue(SoftStoneBlock.DAMAGE, Damage.NONE).setValue(SoftStoneBlock.ERA, TimeEras.MODERN_MINECRAFT).setValue(SoftStoneBlock.POTENTIAL_CREATURE, this.type).setValue(SoftStoneBlock.POTENTIAL_PART, PotentialPart.RIB_CAGE), 3);
+			}
+
+			if ("leg".equals(data)) {
+				world.setBlock(pos, LostWorldsBlocks.SOFT_STONE.getDefaultState().setValue(SoftStoneBlock.DAMAGE, Damage.NONE).setValue(SoftStoneBlock.ERA, TimeEras.MODERN_MINECRAFT).setValue(SoftStoneBlock.POTENTIAL_CREATURE, this.type).setValue(SoftStoneBlock.POTENTIAL_PART, PotentialPart.LEG), 3);
+			}
+
+			if ("tail".equals(data)) {
+				world.setBlock(pos, LostWorldsBlocks.SOFT_STONE.getDefaultState().setValue(SoftStoneBlock.DAMAGE, Damage.NONE).setValue(SoftStoneBlock.ERA, TimeEras.MODERN_MINECRAFT).setValue(SoftStoneBlock.POTENTIAL_CREATURE, this.type).setValue(SoftStoneBlock.POTENTIAL_PART, PotentialPart.TAIL), 3);
+			}
+
+			if ("stone".equals(data)) {
+				world.setBlock(pos, LostWorldsBlocks.SOFT_STONE.getDefaultState().setValue(SoftStoneBlock.DAMAGE, Damage.NONE).setValue(SoftStoneBlock.ERA, TimeEras.MODERN_MINECRAFT).setValue(SoftStoneBlock.POTENTIAL_CREATURE, this.type).setValue(SoftStoneBlock.POTENTIAL_PART, PotentialPart.NONE), 3);
+			}
 		}
 
 		@Override

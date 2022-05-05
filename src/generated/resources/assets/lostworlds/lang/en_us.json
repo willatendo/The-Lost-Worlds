@@ -597,6 +597,7 @@
   "block.minecraft.banner.scarab.red": "Red Scarab",
   "block.minecraft.banner.scarab.white": "White Scarab",
   "block.minecraft.banner.scarab.yellow": "Yellow Scarab",
+  "command.lostworlds.data_change.success": "Successfully modified the data of the blocks in the area",
   "container.lostworlds.analyzer": "Analyzer",
   "container.lostworlds.archaeology_table": "Archaeology Table",
   "container.lostworlds.cultivator": "Cultivator",

@@ -176,6 +176,8 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.advancement("the_permian", "The Permian", "Acquire volume 1 of the Time Lord's work!");
 		this.advancement("permian_explorer", "Jurassic Permian", "Explore every biome in the Permian!");
 		this.advancement("time_travelling", "Time Travelling", "Just like Doc, you'll find yourself lost in time! Or, maybe, you'll be a lord of it!");
+
+		this.addRawLang("command.lostworlds.data_change.success", "Successfully modified the data of the blocks in the area");
 	}
 
 	public void addDescription(String item, String desc) {

@@ -3,7 +3,6 @@ package lostworlds.server.biome;
 import lostworlds.server.dimension.carver.LostWorldsConfiguredCarvers;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
-import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.structure.StructureFeatures;
@@ -21,9 +20,6 @@ public class ModBiomeFeatures {
 		addPermianUndergroundVariety(builder);
 	}
 
-	public static void permianAshyMedowsSpawns(MobSpawnInfo.Builder builder) {
-	}
-
 	public static void permianConiferForest(BiomeGenerationSettings.Builder builder) {
 		addFernGroundClutter(builder);
 		addPermianRock(builder);
@@ -38,11 +34,6 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SCANT_CONIFER_TREES);
 	}
 
-	public static void permianConiferForestSpawns(MobSpawnInfo.Builder builder) {
-//		addSpawn(builder, LostWorldsEntities.EDAPHOSAURUS.get(), 4, 1, 7);
-//		addSpawn(builder, LostWorldsEntities.TETRACERATOPS.get(), 2, 1, 6);
-	}
-
 	public static void permianDesert(BiomeGenerationSettings.Builder builder) {
 		addPermianDesertPlants(builder);
 		addFernGroundClutter(builder);
@@ -51,12 +42,6 @@ public class ModBiomeFeatures {
 		addModCarvers(builder);
 		addPermianLakes(builder);
 		addPermianUndergroundVariety(builder);
-	}
-
-	public static void permianDesertSpawns(MobSpawnInfo.Builder builder) {
-//		addSpawn(builder, LostWorldsEntities.RHINESUCHUS.get(), 1, 1, 1);
-//		addSpawn(builder, LostWorldsEntities.DIICTODON.get(), 4, 2, 4);
-//		addSpawn(builder, LostWorldsEntities.GORGONOPS.get(), 2, 1, 1);
 	}
 
 	public static void permianDriedPlains(BiomeGenerationSettings.Builder builder) {
@@ -73,13 +58,6 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SPARSE_CONIFER_TREES);
 	}
 
-	public static void permianDriedPlainsSpawns(MobSpawnInfo.Builder builder) {
-//		addSpawn(builder, LostWorldsEntities.EDAPHOSAURUS.get(), 4, 1, 7);
-//		addSpawn(builder, LostWorldsEntities.DIMETRODON.get(), 2, 1, 1);
-//		addSpawn(builder, LostWorldsEntities.DIICTODON.get(), 4, 2, 4);
-//		addSpawn(builder, LostWorldsEntities.GORGONOPS.get(), 2, 1, 1);
-	}
-
 	public static void permianGinkgoForest(BiomeGenerationSettings.Builder builder) {
 		addFernGroundClutter(builder);
 		addPermianRock(builder);
@@ -93,11 +71,6 @@ public class ModBiomeFeatures {
 		addCycad(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SPARSE_CONIFER_TREES);
-	}
-
-	public static void permianGinkgoForestSpawns(MobSpawnInfo.Builder builder) {
-//		addSpawn(builder, LostWorldsEntities.EDAPHOSAURUS.get(), 4, 1, 7);
-//		addSpawn(builder, LostWorldsEntities.TETRACERATOPS.get(), 2, 1, 6);
 	}
 
 	public static void permianFloodBasalts(BiomeGenerationSettings.Builder builder) {
@@ -117,9 +90,6 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Features.LARGE_BASALT_COLUMNS);
 	}
 
-	public static void permianFloodBasaltsSpawns(MobSpawnInfo.Builder builder) {
-	}
-
 	public static void permianMountains(BiomeGenerationSettings.Builder builder) {
 		addConiferTrees(builder);
 		addPermianRock(builder);
@@ -132,12 +102,6 @@ public class ModBiomeFeatures {
 		DefaultBiomeFeatures.addSurfaceFreezing(builder);
 	}
 
-	public static void permianMountainsSpawns(MobSpawnInfo.Builder builder) {
-//		addSpawn(builder, LostWorldsEntities.DIMETRODON.get(), 2, 1, 1);
-//		addSpawn(builder, LostWorldsEntities.EDAPHOSAURUS.get(), 2, 1, 3);
-//		addSpawn(builder, LostWorldsEntities.TETRACERATOPS.get(), 1, 1, 4);
-	}
-
 	public static void permianOcean(BiomeGenerationSettings.Builder builder) {
 		addPermianOres(builder);
 		addModUnderwaterCarvers(builder);
@@ -146,10 +110,6 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_NORMAL);
-	}
-
-	public static void permianOceanSpawns(MobSpawnInfo.Builder builder) {
-//		addSpawn(builder, LostWorldsEntities.PALAEONISCUM.get(), 2, 1, 3);
 	}
 
 	public static void permianMarsh(BiomeGenerationSettings.Builder builder) {
@@ -165,12 +125,6 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.CALAMITIES_TREES);
 	}
 
-	public static void permianMarshSpawns(MobSpawnInfo.Builder builder) {
-//		addSpawn(builder, LostWorldsEntities.PROTOSUCHUS.get(), 1, 1, 3);
-//		addSpawn(builder, LostWorldsEntities.EDAPHOSAURUS.get(), 2, 1, 3);
-//		addSpawn(builder, LostWorldsEntities.PALAEONISCUM.get(), 2, 1, 3);
-	}
-
 	public static void permianRiver(BiomeGenerationSettings.Builder builder) {
 		addPermianOres(builder);
 		addModCarvers(builder);
@@ -181,10 +135,6 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 	}
 
-	public static void permianRiverSpawns(MobSpawnInfo.Builder builder) {
-//		addSpawn(builder, LostWorldsEntities.PALAEONISCUM.get(), 2, 1, 3);
-	}
-
 	public static void permianShore(BiomeGenerationSettings.Builder builder) {
 		addPermianOres(builder);
 		addModCarvers(builder);
@@ -192,9 +142,6 @@ public class ModBiomeFeatures {
 		addPermianUndergroundVariety(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
-	}
-
-	public static void permianShoreSpawns(MobSpawnInfo.Builder builder) {
 	}
 
 	public static void permianCoralReef(BiomeGenerationSettings.Builder builder) {
@@ -207,10 +154,6 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, LostWorldsConfiguredFeatures.MOD_CORAL_REEF);
 	}
 
-	public static void permianCoralReefSpawns(MobSpawnInfo.Builder builder) {
-//		addSpawn(builder, LostWorldsEntities.PALAEONISCUM.get(), 2, 1, 3);
-	}
-
 	public static void permianPlains(BiomeGenerationSettings.Builder builder) {
 		addFernGroundClutter(builder);
 		addPermianRock(builder);
@@ -221,11 +164,6 @@ public class ModBiomeFeatures {
 		addAlethopteris(builder);
 
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SPARSE_CONIFER_TREES);
-	}
-
-	public static void permianPlainsSpawns(MobSpawnInfo.Builder builder) {
-//		addSpawn(builder, LostWorldsEntities.DIICTODON.get(), 4, 2, 4);
-//		addSpawn(builder, LostWorldsEntities.GORGONOPS.get(), 2, 1, 1);
 	}
 
 	// Jurassic
@@ -997,9 +935,4 @@ public class ModBiomeFeatures {
 	private static void addGeyser(BiomeGenerationSettings.Builder builder) {
 		builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, LostWorldsConfiguredFeatures.GEYSER_BLOCK);
 	}
-
-	// Spawns
-//	private static void addSpawn(MobSpawnInfo.Builder builder, EntityType<? extends Entity> entity, int weight, int minCount, int maxCount) {
-//		builder.addSpawn(entity.getCategory(), new Spawners(entity, weight, minCount, maxCount));
-//	}
 }

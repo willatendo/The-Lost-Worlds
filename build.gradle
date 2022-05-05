@@ -20,14 +20,14 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '${mod_version}'
-group = '${mod_group}'
-archivesBaseName = '${mod_group}'
+version = 'alpha.11'
+group = 'lostworlds'
+archivesBaseName = 'lostworlds'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
 minecraft {
-	mappings channel: 'official', version: "${minecraft_version}"
+	mappings channel: 'official', version: "1.16.5"
 	
 	accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 	
@@ -61,7 +61,7 @@ sourceSets.main.resources {
 }
 
 mixin {
-	add sourceSets.main, "${mod_group}.refmap.json"
+	add sourceSets.main, "lostworlds.refmap.json"
 }
 
 repositories {
@@ -97,14 +97,14 @@ dependencies {
 jar {
 	manifest {
 		attributes([
-			"Specification-Title": "${mod_group}",
+			"Specification-Title": "lostworlds",
 			"Specification-Vendor": "Willatendo",
 			"Specification-Version": "1",
 			"Implementation-Title": project.name,
-			"Implementation-Version": "${mod_version}",
+			"Implementation-Version": "alpha.11",
 			"Implementation-Vendor" :"Willatendo",
 			"Implementation-Timestamp" : new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-			"MixinConfigs": "${mod_group}.mixins.json"
+			"MixinConfigs": "lostworlds.mixins.json"
 		])
 	}
 }
@@ -112,7 +112,7 @@ jar {
 shadowJar {
     classifier = ''
     configurations = [project.configurations.shade]
-    relocate 'com.tterrag.registrate', '${mod_group}.repack.registrate'
+    relocate 'com.tterrag.registrate', 'lostworlds.repack.registrate'
 }
 
 reobf {

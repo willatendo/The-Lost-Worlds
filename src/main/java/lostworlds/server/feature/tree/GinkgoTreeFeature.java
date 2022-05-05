@@ -105,19 +105,24 @@ public class GinkgoTreeFeature extends Feature<NoFeatureConfig> {
 					if (l == (length / 2)) {
 						int chance = rand.nextInt(4);
 						if (chance >= 1 && chance <= 2) {
-							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getClockWise(), 1).above(1), log.setValue(RotatedPillarBlock.AXIS, directions.getClockWise().getAxis()), 3);
+							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
+							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getClockWise(), 1).above(2), log.setValue(RotatedPillarBlock.AXIS, directions.getClockWise().getAxis()), 3);
 							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getClockWise(), 2).above(2), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
 						}
 						if (chance >= 2 && chance <= 3) {
-							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getCounterClockWise(), 1).above(1), log.setValue(RotatedPillarBlock.AXIS, directions.getCounterClockWise().getAxis()), 3);
+							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getCounterClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
+							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getCounterClockWise(), 1).above(2), log.setValue(RotatedPillarBlock.AXIS, directions.getCounterClockWise().getAxis()), 3);
 							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getCounterClockWise(), 2).above(2), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
 						}
 					}
 				}
+
 				reader.setBlock(pos.relative(directions, length + 2).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
 				reader.setBlock(pos.relative(directions, length + 3).above(2), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
+				reader.setBlock(pos.relative(directions, length + 2).above(2), log.setValue(RotatedPillarBlock.AXIS, directions.getAxis()), 3);
 				reader.setBlock(pos.relative(directions, length + 1).relative(directions.getClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
 				reader.setBlock(pos.relative(directions, length + 1).relative(directions.getCounterClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
+
 			}
 		} else {
 			for (Direction directions : horizontal) {
@@ -127,6 +132,7 @@ public class GinkgoTreeFeature extends Feature<NoFeatureConfig> {
 				}
 				reader.setBlock(pos.relative(directions, length + 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
 				reader.setBlock(pos.relative(directions, length + 2).above(2), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
+				reader.setBlock(pos.relative(directions, length + 1).above(2), log.setValue(RotatedPillarBlock.AXIS, directions.getAxis()), 3);
 				reader.setBlock(pos.relative(directions, length).relative(directions.getClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
 				reader.setBlock(pos.relative(directions, length).relative(directions.getCounterClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
 			}

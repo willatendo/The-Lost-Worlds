@@ -2,13 +2,14 @@ package lostworlds.server.biome.biomes.overworld.mountain;
 
 import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
+import lostworlds.server.biome.ModSurfaceBuilderConfigs;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.biome.Biome.RainType;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
-import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilders;
+import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 
 public class VolcanoBiome extends ModBiome {
 	@Override
@@ -19,8 +20,8 @@ public class VolcanoBiome extends ModBiome {
 	@Override
 	public BiomeGenerationSettings generation() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
-		generation.surfaceBuilder(() -> ConfiguredSurfaceBuilders.GRASS);
-		ModBiomeFeatures.redwoodsForest(generation);
+		generation.surfaceBuilder(() -> SurfaceBuilder.DEFAULT.configured(ModSurfaceBuilderConfigs.VOLCANIC_ASH_CONFIG.get()));
+		ModBiomeFeatures.volcano(generation);
 		return generation.build();
 	}
 

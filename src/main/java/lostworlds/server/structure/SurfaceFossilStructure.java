@@ -38,7 +38,7 @@ public class SurfaceFossilStructure extends Structure<NoFeatureConfig> {
 		public void generatePieces(DynamicRegistries registries, ChunkGenerator generator, TemplateManager manager, int chunkX, int chunkY, Biome biome, NoFeatureConfig config) {
 			BlockPos blockpos = new BlockPos(chunkX * 16, 90, chunkY * 16);
 			Rotation rotation = Rotation.values()[this.random.nextInt((Rotation.values()).length)];
-			SurfaceFossilPeice.addStructure(manager, blockpos, rotation, pieces, random, biome);
+			SurfaceFossilPeice.addStructure(manager, blockpos, rotation, this.pieces, this.random, biome);
 			this.calculateBoundingBox();
 		}
 	}

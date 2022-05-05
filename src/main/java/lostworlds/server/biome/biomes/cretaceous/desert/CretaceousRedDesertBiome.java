@@ -40,7 +40,6 @@ public class CretaceousRedDesertBiome extends ModBiome {
 	@Override
 	public MobSpawnInfo spawn() {
 		MobSpawnInfo.Builder spawns = new MobSpawnInfo.Builder();
-		ModBiomeFeatures.permianAshyMedowsSpawns(spawns);
 		return spawns.build();
 	}
 

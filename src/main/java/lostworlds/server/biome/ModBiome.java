@@ -1,6 +1,5 @@
 package lostworlds.server.biome;
 
-import lostworlds.server.biome.biomes.BiomeParts;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
