@@ -1,10 +1,19 @@
 [
   {
-    "name": "creatures",
-    "data": "sections/creatures.json",
+    "name": "cretaceous",
+    "data": "sections/cretaceous.json",
     "icon": {
       "item": {
-        "id": "minecraft:acacia_boat"
+        "id": "lostworlds:tyrannosaurus_skeleton"
+      }
+    }
+  },
+  {
+    "name": "jurassic",
+    "data": "sections/jurassic.json",
+    "icon": {
+      "item": {
+        "id": "lostworlds:allosaurus_skeleton"
       }
     }
   }

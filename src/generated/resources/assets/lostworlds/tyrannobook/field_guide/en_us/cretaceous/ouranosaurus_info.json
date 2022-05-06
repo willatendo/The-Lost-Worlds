@@ -1,14 +1,14 @@
 {
   "text": [
     {
-      "text": "Danger: Small"
+      "text": "Danger: Territorial"
     },
     {
-      "text": "Diet: Carnivore",
+      "text": "Diet: Herbivore",
       "paragraph": true
     },
     {
-      "text": "Range: Cretaceous - 127-115 mya",
+      "text": "Range: Cretaceous - 112-125 mya",
       "paragraph": true
     },
     {
@@ -16,23 +16,23 @@
       "paragraph": true
     },
     {
-      "text": "Clade: Saurischia",
+      "text": "Order: Ornithischia",
       "paragraph": true
     },
     {
-      "text": "Clade: Theropoda",
+      "text": "Clade: Ornithopoda",
       "paragraph": true
     },
     {
-      "text": "Clade: Maniraptoriformes",
+      "text": "Clade: Styracosterna",
       "paragraph": true
     },
     {
-      "text": "Clade: Maniraptora",
+      "text": "Clade: Hadrosauriformes",
       "paragraph": true
     },
     {
-      "text": "Genus: Fukuivenator",
+      "text": "Genus: Ouranosaurus",
       "paragraph": true
     }
   ]
