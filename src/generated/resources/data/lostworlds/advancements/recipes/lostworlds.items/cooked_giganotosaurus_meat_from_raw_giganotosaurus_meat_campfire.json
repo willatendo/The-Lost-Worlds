@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:cooked_giganotosaurus_meat_from_raw_giganotosaurus_meat_campfire"
+    ]
+  },
+  "criteria": {
+    "has_raw_giganotosaurus_meat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:raw_giganotosaurus_meat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:cooked_giganotosaurus_meat_from_raw_giganotosaurus_meat_campfire"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_giganotosaurus_meat",
+      "has_the_recipe"
+    ]
+  ]
+}

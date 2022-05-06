@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:cooked_kentrosaurus_meat_from_raw_kentrosaurus_meat_smoking"
+    ]
+  },
+  "criteria": {
+    "has_raw_kentrosaurus_meat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:raw_kentrosaurus_meat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:cooked_kentrosaurus_meat_from_raw_kentrosaurus_meat_smoking"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_kentrosaurus_meat",
+      "has_the_recipe"
+    ]
+  ]
+}

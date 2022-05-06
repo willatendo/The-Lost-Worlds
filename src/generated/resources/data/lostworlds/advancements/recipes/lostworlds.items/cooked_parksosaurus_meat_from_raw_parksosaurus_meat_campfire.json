@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:cooked_parksosaurus_meat_from_raw_parksosaurus_meat_campfire"
+    ]
+  },
+  "criteria": {
+    "has_raw_parksosaurus_meat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:raw_parksosaurus_meat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:cooked_parksosaurus_meat_from_raw_parksosaurus_meat_campfire"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_parksosaurus_meat",
+      "has_the_recipe"
+    ]
+  ]
+}

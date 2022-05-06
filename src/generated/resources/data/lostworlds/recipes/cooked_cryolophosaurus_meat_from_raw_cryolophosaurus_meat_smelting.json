@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "lostworlds:raw_cryolophosaurus_meat"
+  },
+  "result": "lostworlds:cooked_cryolophosaurus_meat",
+  "experience": 0.7,
+  "cookingtime": 200
+}

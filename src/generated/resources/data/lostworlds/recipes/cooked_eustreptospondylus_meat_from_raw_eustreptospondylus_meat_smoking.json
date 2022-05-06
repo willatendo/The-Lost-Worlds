@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "lostworlds:raw_eustreptospondylus_meat"
+  },
+  "result": "lostworlds:cooked_eustreptospondylus_meat",
+  "experience": 0.7,
+  "cookingtime": 100
+}

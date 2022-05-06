@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:cooked_psittacosaurus_meat_from_raw_psittacosaurus_meat_smelting"
+    ]
+  },
+  "criteria": {
+    "has_raw_psittacosaurus_meat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:raw_psittacosaurus_meat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:cooked_psittacosaurus_meat_from_raw_psittacosaurus_meat_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_psittacosaurus_meat",
+      "has_the_recipe"
+    ]
+  ]
+}

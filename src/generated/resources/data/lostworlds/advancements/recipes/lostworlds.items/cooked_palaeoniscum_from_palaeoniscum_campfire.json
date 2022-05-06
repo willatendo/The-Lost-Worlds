@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:cooked_palaeoniscum_from_palaeoniscum_campfire"
+    ]
+  },
+  "criteria": {
+    "has_palaeoniscum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:palaeoniscum"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:cooked_palaeoniscum_from_palaeoniscum_campfire"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_palaeoniscum",
+      "has_the_recipe"
+    ]
+  ]
+}

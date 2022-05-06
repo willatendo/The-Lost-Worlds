@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "lostworlds:raw_rhinesuchus_meat"
+  },
+  "result": "lostworlds:cooked_rhinesuchus_meat",
+  "experience": 0.7,
+  "cookingtime": 100
+}

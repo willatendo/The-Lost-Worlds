@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "lostworlds:raw_ouranosaurus_meat"
+  },
+  "result": "lostworlds:cooked_ouranosaurus_meat",
+  "experience": 0.7,
+  "cookingtime": 100
+}

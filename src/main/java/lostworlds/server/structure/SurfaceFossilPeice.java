@@ -43,7 +43,7 @@ public class SurfaceFossilPeice {
 		locations.add(LostWorldsUtils.rL("fossil/fossil_6"));
 
 		int fossil = rand.nextInt(locations.size());
-		int type = rand.nextInt(DinoTypes.values().length);
+		int type = rand.nextInt(DinoTypes.hasNoSpecialFossil().size());
 		piece.add(new SurfaceFossilPeice.Piece(manager, locations.get(fossil), DinoTypes.values()[type], pos, rotation));
 	}
 

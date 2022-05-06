@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "lostworlds:raw_liaoningosaurus_meat"
+  },
+  "result": "lostworlds:cooked_liaoningosaurus_meat",
+  "experience": 0.7,
+  "cookingtime": 200
+}

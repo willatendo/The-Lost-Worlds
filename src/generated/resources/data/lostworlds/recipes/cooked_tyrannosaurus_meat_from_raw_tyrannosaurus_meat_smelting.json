@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "lostworlds:raw_tyrannosaurus_meat"
+  },
+  "result": "lostworlds:cooked_tyrannosaurus_meat",
+  "experience": 0.7,
+  "cookingtime": 200
+}

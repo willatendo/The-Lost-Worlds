@@ -506,6 +506,16 @@ public enum DinoTypes implements IStringSerializable {
 		return this.cookedSaturation;
 	}
 
+	public static ArrayList<DinoTypes> hasNoSpecialFossil() {
+		ArrayList<DinoTypes> list = new ArrayList<>();
+		for (DinoTypes dinos : DinoTypes.values()) {
+			if (dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS) {
+				list.add(dinos);
+			}
+		}
+		return list;
+	}
+
 	public static ArrayList<DinoTypes> hasSpawn() {
 		ArrayList<DinoTypes> list = new ArrayList<>();
 		list.add(ANOMALOCARIS);

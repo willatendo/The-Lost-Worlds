@@ -2,7 +2,6 @@ package lostworlds.server.block;
 
 import static lostworlds.LostWorldsMod.getRegistrate;
 import static lostworlds.server.block.LostWorldsBlockModels.diffTexture;
-import static lostworlds.server.block.LostWorldsBlockModels.diffTextureMC;
 import static lostworlds.server.block.LostWorldsBlockModels.machine;
 import static lostworlds.server.block.LostWorldsBlockModels.modelMcTexMc;
 import static lostworlds.server.block.LostWorldsBlockModels.parent;
@@ -277,7 +276,7 @@ public class LostWorldsBlocks {
 	}).loot((provider, block) -> provider.add(block, provider.droppingSlab(block))).register();
 
 	public static final BlockEntry<SoftStoneBlock> SOFT_STONE = REGISTRATE.blockAndItem("soft_stone", SoftStoneBlock::new).properties(properties -> properties.of(ModMaterials.SOFT).harvestTool(ModToolTypes.HAMMER).strength(4.0F, 0.0F).noDrops().sound(SoundType.STONE).noDrops()).blockstate(LostWorldsBlockModels.softStone()).tag(LostWorldsTags.ModBlockTags.FOSSILS.tag).register();
-	public static final BlockEntry<SoftDirtBlock> SOFT_DIRT = REGISTRATE.blockAndItem("soft_dirt", SoftDirtBlock::new).properties(properties -> properties.of(ModMaterials.SOFT).harvestTool(ModToolTypes.BRUSH).strength(4.0F, 0.0F).noDrops().sound(SoundType.GRAVEL).noDrops()).blockstate(diffTextureMC("dirt")).tag(LostWorldsTags.ModBlockTags.FOSSILS.tag).register();
+	public static final BlockEntry<SoftDirtBlock> SOFT_DIRT = REGISTRATE.blockAndItem("soft_dirt", SoftDirtBlock::new).properties(properties -> properties.of(ModMaterials.SOFT).harvestTool(ModToolTypes.BRUSH).strength(4.0F, 0.0F).noDrops().sound(SoundType.GRAVEL).noDrops()).blockstate(diffTexture("dirt_fossil")).tag(LostWorldsTags.ModBlockTags.FOSSILS.tag).register();
 	public static final BlockEntry<PlantFossilBlock> PLANT_FOSSIL = REGISTRATE.blockItemModel("plant_fossil", "stone_fossil", PlantFossilBlock::new).properties(properties -> properties.of(ModMaterials.SOFT).harvestTool(ModToolTypes.HAMMER).strength(4.0F, 0.0F).noDrops().sound(SoundType.STONE).noDrops()).blockstate(LostWorldsBlockModels.plantFossil()).tag(LostWorldsTags.ModBlockTags.FOSSILS.tag).register();
 
 	public static final BlockEntry<FossilizedTrackBlock> FOSSILIZED_TRACK = REGISTRATE.blockAndItem("fossilized_track", properties -> new FossilizedTrackBlock(() -> Blocks.STONE, properties)).properties(properties -> properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).noDrops()).blockstate(modelMcTexMc("cube", new String[] { "north", "east", "south", "west", "up", "down", "particle" }, new String[] { "minecraft:block/stone", "minecraft:block/stone", "minecraft:block/stone", "minecraft:block/stone", "lostworlds:block/fossilized_track_top", "minecraft:block/stone", "minecraft:block/stone" })).register();

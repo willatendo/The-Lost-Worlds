@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "lostworlds:raw_great_auk_meat"
+  },
+  "result": "lostworlds:cooked_great_auk_meat",
+  "experience": 0.7,
+  "cookingtime": 100
+}

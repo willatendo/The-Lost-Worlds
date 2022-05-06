@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:cooked_protosuchus_meat_from_raw_protosuchus_meat_smelting"
+    ]
+  },
+  "criteria": {
+    "has_raw_protosuchus_meat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:raw_protosuchus_meat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:cooked_protosuchus_meat_from_raw_protosuchus_meat_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_protosuchus_meat",
+      "has_the_recipe"
+    ]
+  ]
+}

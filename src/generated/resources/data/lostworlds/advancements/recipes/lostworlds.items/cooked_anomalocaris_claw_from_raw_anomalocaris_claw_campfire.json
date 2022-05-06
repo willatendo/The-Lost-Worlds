@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:cooked_anomalocaris_claw_from_raw_anomalocaris_claw_campfire"
+    ]
+  },
+  "criteria": {
+    "has_raw_anomalocaris_claw": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:raw_anomalocaris_claw"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:cooked_anomalocaris_claw_from_raw_anomalocaris_claw_campfire"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_anomalocaris_claw",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "lostworlds:palaeoniscum"
+  },
+  "result": "lostworlds:cooked_palaeoniscum",
+  "experience": 0.7,
+  "cookingtime": 100
+}

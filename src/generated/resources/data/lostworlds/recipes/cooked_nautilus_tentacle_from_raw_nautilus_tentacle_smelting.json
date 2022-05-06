@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "lostworlds:raw_nautilus_tentacle"
+  },
+  "result": "lostworlds:cooked_nautilus_tentacle",
+  "experience": 0.7,
+  "cookingtime": 200
+}
