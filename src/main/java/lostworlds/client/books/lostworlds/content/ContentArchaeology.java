@@ -101,9 +101,9 @@ public class ContentArchaeology extends PageContent {
 	public void load() {
 		super.load();
 
-		if (!StringUtils.isEmpty(recipe) && ResourceLocation.isValidResourceLocation(recipe)) {
+		if (!StringUtils.isEmpty(this.recipe) && ResourceLocation.isValidResourceLocation(this.recipe)) {
 			int w = 0, h = 0;
-			switch (grid_size.toLowerCase()) {
+			switch (this.grid_size.toLowerCase()) {
 			case "large":
 				w = h = 3;
 				break;

@@ -1,7 +1,5 @@
 package lostworlds.server.biome;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.Category;
@@ -10,7 +8,6 @@ import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.biome.MobSpawnInfo;
-import net.minecraft.world.biome.MobSpawnInfo.Spawners;
 
 public class BiomeParts {
 	public static final int BASE_WATER_COLOUR = 4159204;
@@ -45,9 +42,5 @@ public class BiomeParts {
 
 	public Biome.Builder biome(RainType rain, Category category, float depth, float scale, float downfall, float temperature, BiomeAmbience ambience, BiomeGenerationSettings settings, MobSpawnInfo spawningInfo) {
 		return new Biome.Builder().precipitation(rain).biomeCategory(category).depth(depth).scale(scale).downfall(downfall).temperature(temperature).generationSettings(settings).specialEffects(ambience).mobSpawnSettings(spawningInfo);
-	}
-
-	public void addSpawn(MobSpawnInfo.Builder builder, EntityType<? extends Entity> type, int weight, int minGroup, int maxGroup) {
-		builder.addSpawn(type.getCategory(), new Spawners(type, weight, minGroup, maxGroup));
 	}
 }

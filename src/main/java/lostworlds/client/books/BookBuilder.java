@@ -158,8 +158,35 @@ public class BookBuilder {
 				private final String recipe;
 
 				public RecipePageBuilder(String page, String recipe) {
+					this(page, "lostworlds", recipe);
+				}
+
+				public RecipePageBuilder(String page, String namespace, String recipe) {
 					super(page, "crafting");
-					this.recipe = recipe;
+					this.recipe = namespace + ":" + recipe;
+				}
+
+				@Override
+				public JsonObject serializePage() {
+					JsonObject json = new JsonObject();
+					if (this.hasTitle) {
+						json.addProperty("title", this.title);
+					}
+					json.addProperty("recipe", this.recipe);
+					return json;
+				}
+			}
+
+			public static class ArchaeologyPageBuilder extends PageBuilder {
+				private final String recipe;
+
+				public ArchaeologyPageBuilder(String page, String recipe) {
+					this(page, "lostworlds", recipe);
+				}
+
+				public ArchaeologyPageBuilder(String page, String namespace, String recipe) {
+					super(page, "archaeology");
+					this.recipe = namespace + ":" + recipe;
 				}
 
 				@Override

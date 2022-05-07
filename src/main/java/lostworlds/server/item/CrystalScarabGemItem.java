@@ -12,15 +12,6 @@ public class CrystalScarabGemItem extends Item {
 		super(properties);
 	}
 
-//		CHARGED_CRYSTAL_SCARAB_GEM(new CEChargedCrystalScarabGemItem(Variant.CHARGED)),
-//		CRYSTAL_SCARAB_GEM(new CECrystalScarabGemItem(Variant.UNCHARGED)),
-//		CRYSTAL_SCARAB_ABDOMEN(new CrystalScarabGemItem(Variant.BROKEN)),
-//		CRYSTAL_SCARAB_BOTTOM_LEFT_LEG(new CrystalScarabGemItem(Variant.BROKEN)),
-//		CRYSTAL_SCARAB_BOTTOM_RIGHT_LEG(new CrystalScarabGemItem(Variant.BROKEN)),
-//		CRYSTAL_SCARAB_THORAX(new CrystalScarabGemItem(Variant.BROKEN)),
-//		CRYSTAL_SCARAB_TOP_LEFT_LEG(new CrystalScarabGemItem(Variant.BROKEN)),
-//		CRYSTAL_SCARAB_TOP_RIGHT_LEG(new CrystalScarabGemItem(Variant.BROKEN));
-
 	public static class CECrystalScarabGemItem extends CrystalScarabGemItem {
 		public CECrystalScarabGemItem(Properties properties) {
 			super(properties);

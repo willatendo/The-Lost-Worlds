@@ -5,22 +5,22 @@
     "#$!"
   ],
   "key": {
-    "#": {
+    "@": {
       "item": "lostworlds:crystal_scarab_top_left_leg"
     },
     "$": {
       "item": "lostworlds:crystal_scarab_abdomen"
     },
-    "!": {
+    "^": {
       "item": "lostworlds:crystal_scarab_top_right_leg"
     },
-    "@": {
+    "#": {
       "item": "lostworlds:crystal_scarab_bottom_left_leg"
     },
     "%": {
       "item": "lostworlds:crystal_scarab_thorax"
     },
-    "^": {
+    "!": {
       "item": "lostworlds:crystal_scarab_bottom_right_leg"
     }
   },
