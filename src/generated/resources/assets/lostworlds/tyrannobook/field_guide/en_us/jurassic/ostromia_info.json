@@ -1,14 +1,14 @@
 {
   "text": [
     {
-      "text": "Danger: Timid"
+      "text": "Danger: None"
     },
     {
-      "text": "Diet: Omnivore",
+      "text": "Diet: Carnivore",
       "paragraph": true
     },
     {
-      "text": "Range: Triassic - 231-228 mya",
+      "text": "Range: Jurassic - 150–145 mya",
       "paragraph": true
     },
     {
@@ -20,11 +20,15 @@
       "paragraph": true
     },
     {
-      "text": "Clade: Sauropodomorpha",
+      "text": "Clade: Theropoda",
       "paragraph": true
     },
     {
-      "text": "Genus: Eoraptor",
+      "text": "Family: Anchiornithidae",
+      "paragraph": true
+    },
+    {
+      "text": "Genus: Ostromia",
       "paragraph": true
     }
   ]

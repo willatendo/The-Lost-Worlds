@@ -1,38 +1,38 @@
 {
   "text": [
     {
-      "text": "Danger: Large"
+      "text": "Danger: Medium"
     },
     {
       "text": "Diet: Carnivore",
       "paragraph": true
     },
     {
-      "text": "Range: Jurassic - 155-145 mya",
+      "text": "Range: Permian - 260-254 mya",
       "paragraph": true
     },
     {
-      "text": "Clade: Dinosauria",
+      "text": "Clade: Synapsida",
       "paragraph": true
     },
     {
-      "text": "Clade: Saurischia",
+      "text": "Clade: Therapsida",
       "paragraph": true
     },
     {
-      "text": "Clade: Theropoda",
+      "text": "Clade: Gorgonopsia",
       "paragraph": true
     },
     {
-      "text": "Family: Allosauridae",
+      "text": "Family: Gorgonopsidae",
       "paragraph": true
     },
     {
-      "text": "Subfamily: Allosaurinae",
+      "text": "Subfamily: Gorgonopsinae",
       "paragraph": true
     },
     {
-      "text": "Genus: Allosaurus",
+      "text": "Genus: Gorgonops",
       "paragraph": true
     }
   ]

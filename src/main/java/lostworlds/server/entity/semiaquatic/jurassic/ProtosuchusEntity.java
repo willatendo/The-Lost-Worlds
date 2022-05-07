@@ -1,4 +1,4 @@
-package lostworlds.server.entity.semiaquatic.permian;
+package lostworlds.server.entity.semiaquatic.jurassic;
 
 import java.util.UUID;
 
@@ -21,7 +21,7 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialReasonableAttackGoal;
 import lostworlds.server.entity.semiaquatic.CarnivoreSemiAquaticEntity;
-import lostworlds.server.entity.terrestrial.permian.DiictodonEntity;
+import lostworlds.server.entity.terrestrial.jurassic.ChilesaurusEntity;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.DinoTypes;
@@ -101,9 +101,7 @@ public class ProtosuchusEntity extends CarnivoreSemiAquaticEntity implements IAn
 		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.PROTOSUCHUS));
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
-		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, DiictodonEntity.class, this::isHungry));
-		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, RhinesuchusEntity.class, this::isHungry));
-		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, RhinesuchusEntity.class, this::isAngryAt));
+		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, ChilesaurusEntity.class, this::isHungry));
 		this.targetSelector.addGoal(8, new ResetAngerGoal<>(this, true));
 	}
 

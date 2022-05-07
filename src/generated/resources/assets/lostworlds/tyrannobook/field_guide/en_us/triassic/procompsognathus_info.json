@@ -1,22 +1,22 @@
 {
   "text": [
     {
-      "text": "Danger: Large"
+      "text": "Danger: None"
     },
     {
       "text": "Diet: Carnivore",
       "paragraph": true
     },
     {
-      "text": "Range: Jurassic - 155-145 mya",
+      "text": "Range: Triassic - 210 mya",
       "paragraph": true
     },
     {
-      "text": "Clade: Dinosauria",
+      "text": "Clade Dinosauria",
       "paragraph": true
     },
     {
-      "text": "Clade: Saurischia",
+      "text": "Clade Saurischia",
       "paragraph": true
     },
     {
@@ -24,15 +24,11 @@
       "paragraph": true
     },
     {
-      "text": "Family: Allosauridae",
+      "text": "Family: Coelophysidae",
       "paragraph": true
     },
     {
-      "text": "Subfamily: Allosaurinae",
-      "paragraph": true
-    },
-    {
-      "text": "Genus: Allosaurus",
+      "text": "Genus: Procompsognathus",
       "paragraph": true
     }
   ]

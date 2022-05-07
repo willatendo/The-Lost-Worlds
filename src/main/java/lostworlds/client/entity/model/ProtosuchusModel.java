@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.semiaquatic.permian.ProtosuchusEntity;
+import lostworlds.server.entity.semiaquatic.jurassic.ProtosuchusEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;

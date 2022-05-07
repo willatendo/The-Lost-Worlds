@@ -1,0 +1,22 @@
+[
+  {
+    "name": "eoraptor_1",
+    "type": "text",
+    "data": "triassic/eoraptor_1.json"
+  },
+  {
+    "name": "eoraptor_info",
+    "type": "text",
+    "data": "triassic/eoraptor_info.json"
+  },
+  {
+    "name": "procompsognathus_1",
+    "type": "text",
+    "data": "triassic/procompsognathus_1.json"
+  },
+  {
+    "name": "procompsognathus_info",
+    "type": "text",
+    "data": "triassic/procompsognathus_info.json"
+  }
+]

@@ -21,6 +21,7 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialReasonableAttackGoal;
 import lostworlds.server.entity.semiaquatic.CarnivoreSemiAquaticEntity;
+import lostworlds.server.entity.semiaquatic.jurassic.ProtosuchusEntity;
 import lostworlds.server.entity.terrestrial.permian.DiictodonEntity;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
