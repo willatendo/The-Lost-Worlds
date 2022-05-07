@@ -35,6 +35,7 @@ public abstract class BookProvider implements IDataProvider {
 		this.makeBooks((bookBuilder) -> {
 			this.saveToBook(cache, bookBuilder.serializeAppearance(), path.resolve("assets/" + this.id + "/tyrannobook/" + bookBuilder.bookName + "/appearance.json"));
 			this.saveToBook(cache, bookBuilder.serializeIndex(), path.resolve("assets/" + this.id + "/tyrannobook/" + bookBuilder.bookName + "/index.json"));
+			this.saveToBook(cache, bookBuilder.serializeLang(), path.resolve("assets/" + this.id + "/tyrannobook/" + bookBuilder.bookName + "/en_us/language.json"));
 			for (SectionBuilder sections : bookBuilder.sections) {
 				this.saveToBook(cache, sections.serializeSection(), path.resolve("assets/" + this.id + "/tyrannobook/" + bookBuilder.bookName + "/sections/" + sections.section + ".json"));
 				for (PageBuilder pages : sections.pages) {

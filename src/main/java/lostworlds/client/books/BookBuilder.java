@@ -1,6 +1,11 @@
 package lostworlds.client.books;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.stream.Collectors;
+
+import org.apache.commons.lang3.StringUtils;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -52,6 +57,14 @@ public class BookBuilder {
 			icon.addProperty("id", Registry.ITEM.getKey(sections.icon).toString());
 		}
 		return array;
+	}
+
+	public JsonObject serializeLang() {
+		JsonObject object = new JsonObject();
+		for (SectionBuilder sections : this.sections) {
+			object.addProperty(sections.section, Arrays.stream(sections.section.toLowerCase(Locale.ROOT).split("_")).map(StringUtils::capitalize).collect(Collectors.joining(" ")));
+		}
+		return object;
 	}
 
 	public static class SectionBuilder {

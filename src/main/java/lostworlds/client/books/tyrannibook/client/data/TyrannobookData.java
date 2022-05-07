@@ -1,8 +1,7 @@
 package lostworlds.client.books.tyrannibook.client.data;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -26,10 +25,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.resources.IResource;
+import net.minecraft.resources.IResourceManager;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.LanguageMap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -111,28 +112,11 @@ public class TyrannobookData implements DataItem {
 					}
 				}
 
-				ResourceLocation languageLocation = repo.getResourceLocation("language.lang");
+				ResourceLocation languageLocation = repo.getResourceLocation("language.json");
 
 				if (repo.resourceExists(languageLocation)) {
-					try {
-						IResource resource = repo.getResource(languageLocation);
-						if (resource != null) {
-							BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8));
-							String next = br.readLine();
-
-							while (next != null) {
-								if (!next.startsWith("//") && next.contains("=")) {
-									String key = next.substring(0, next.indexOf('='));
-									String value = next.substring(next.indexOf('=') + 1);
-
-									this.strings.put(key, value);
-								}
-
-								next = br.readLine();
-							}
-						}
-					} catch (Exception ignored) {
-					}
+					IResourceManager resourceManager = Minecraft.getInstance().getResourceManager();
+					this.getFromJson(resourceManager.getResources(languageLocation));
 				}
 			}
 
@@ -197,6 +181,16 @@ public class TyrannobookData implements DataItem {
 
 			e.printStackTrace();
 		}
+	}
+
+	private void getFromJson(List<IResource> resource) {
+		for (IResource iresource : resource) {
+			try (InputStream inputstream = iresource.getInputStream()) {
+				LanguageMap.loadFromJson(inputstream, this.strings::put);
+			} catch (IOException ioexception) {
+			}
+		}
+
 	}
 
 	@Nullable
