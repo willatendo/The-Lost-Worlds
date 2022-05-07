@@ -120,12 +120,12 @@ public class WoodList {
 			}
 
 			if (types == WoodTypes.TRAPDOOR) {
-				BlockEntry<TrapDoorBlock> trapdoor = this.registrate.trapdoorBlock(id + "_" + types.toString().toLowerCase(), TrapDoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)).tag(BlockTags.WOODEN_TRAPDOORS).recipe((block, provider) -> provider.trapDoor(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_trapdoor")).register();
+				BlockEntry<TrapDoorBlock> trapdoor = this.registrate.trapdoorBlock(id + "_" + types.toString().toLowerCase(), TrapDoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_TRAPDOORS).addLayer(() -> RenderType::cutout).recipe((block, provider) -> provider.trapDoor(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_trapdoor")).register();
 				this.blocks.add(() -> trapdoor);
 			}
 
 			if (types == WoodTypes.DOOR) {
-				BlockEntry<DoorBlock> door = this.registrate.doorBlock(id + "_" + types.toString().toLowerCase(), DoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)).tag(BlockTags.WOODEN_DOORS).recipe((block, provider) -> provider.door(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_door")).loot((provider, block) -> provider.add(block, provider.createDoorTable(block))).register();
+				BlockEntry<DoorBlock> door = this.registrate.doorBlock(id + "_" + types.toString().toLowerCase(), DoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_DOORS).addLayer(() -> RenderType::cutout).recipe((block, provider) -> provider.door(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_door")).loot((provider, block) -> provider.add(block, provider.createDoorTable(block))).register();
 				this.blocks.add(() -> door);
 			}
 
@@ -222,12 +222,12 @@ public class WoodList {
 			}
 
 			if (types == WoodTypes.TRAPDOOR) {
-				BlockEntry<TrapDoorBlock> trapdoor = this.registrate.trapdoorBlock(id + "_" + types.toString().toLowerCase(), TrapDoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)).tag(BlockTags.WOODEN_TRAPDOORS).recipe((block, provider) -> provider.trapDoor(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_trapdoor")).register();
+				BlockEntry<TrapDoorBlock> trapdoor = this.registrate.trapdoorBlock(id + "_" + types.toString().toLowerCase(), TrapDoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_TRAPDOORS).addLayer(() -> RenderType::cutout).recipe((block, provider) -> provider.trapDoor(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_trapdoor")).register();
 				this.blocks.add(() -> trapdoor);
 			}
 
 			if (types == WoodTypes.DOOR) {
-				BlockEntry<DoorBlock> door = this.registrate.doorBlock(id + "_" + types.toString().toLowerCase(), DoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)).tag(BlockTags.WOODEN_DOORS).recipe((block, provider) -> provider.door(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_door")).register();
+				BlockEntry<DoorBlock> door = this.registrate.doorBlock(id + "_" + types.toString().toLowerCase(), DoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_DOORS).addLayer(() -> RenderType::cutout).recipe((block, provider) -> provider.door(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_door")).register();
 				this.blocks.add(() -> door);
 			}
 
@@ -335,12 +335,12 @@ public class WoodList {
 			}
 
 			if (types == WoodTypes.TRAPDOOR) {
-				BlockEntry<TrapDoorBlock> trapdoor = this.registrate.trapdoorBlock(id + "_" + types.toString().toLowerCase(), TrapDoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)).tag(BlockTags.WOODEN_TRAPDOORS).recipe((block, provider) -> provider.trapDoor(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_trapdoor")).register();
+				BlockEntry<TrapDoorBlock> trapdoor = this.registrate.trapdoorBlock(id + "_" + types.toString().toLowerCase(), TrapDoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_TRAPDOORS).addLayer(() -> RenderType::cutout).recipe((block, provider) -> provider.trapDoor(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_trapdoor")).register();
 				this.blocks.add(() -> trapdoor);
 			}
 
 			if (types == WoodTypes.DOOR) {
-				BlockEntry<DoorBlock> door = this.registrate.doorBlock(id + "_" + types.toString().toLowerCase(), DoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD)).tag(BlockTags.WOODEN_DOORS).recipe((block, provider) -> provider.door(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_door")).register();
+				BlockEntry<DoorBlock> door = this.registrate.doorBlock(id + "_" + types.toString().toLowerCase(), DoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_DOORS).addLayer(() -> RenderType::cutout).recipe((block, provider) -> provider.door(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_door")).register();
 				this.blocks.add(() -> door);
 			}
 

@@ -134,12 +134,6 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.addRawLang("filled_map.surface_fossil", "Fossil Map");
 		this.addRawLang("filled_map.subterranean_fossil", "Fossil Map");
 
-		this.subtitle("machine_whirling", "Machine Wirling");
-		this.subtitle("pot_smash", "Pot Smashes");
-		this.subtitle("big_walk", "Big Creature Walks");
-		this.subtitle("medium_walk", "Medium Creature Walks");
-		this.subtitle("small_walk", "Small Creature Walks");
-
 		this.advancement("root", "Lost Worlds", "Welcome to the Lost Worlds!");
 		this.advancement("a_terrible_market", "A Terrible Market", "Find a Black Market. A place full of greedy pillagers, but more importantly, a hammer.");
 		this.advancement("basic_explorer", "Basic Explorer", "Just the start of your exploring journey.");
@@ -176,8 +170,6 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.advancement("the_permian", "The Permian", "Acquire volume 1 of the Time Lord's work!");
 		this.advancement("permian_explorer", "Jurassic Permian", "Explore every biome in the Permian!");
 		this.advancement("time_travelling", "Time Travelling", "Just like Doc, you'll find yourself lost in time! Or, maybe, you'll be a lord of it!");
-
-		this.addRawLang("command.lostworlds.data_change.success", "Successfully modified the data of the blocks in the area");
 	}
 
 	public void addDescription(String item, String desc) {
@@ -189,7 +181,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	}
 
 	public void subtitle(String sound, String value) {
-		this.addRawLang("subtitle.lostworlds." + sound, value);
+		this.addRawLang("subtitle." + sound, value);
 	}
 
 	public void advancement(String advancement, String title, String desc) {

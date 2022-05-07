@@ -1,0 +1,32 @@
+{
+  "block.sound.machine_whirling": {
+    "subtitle": "subtitle.block.machine_whirling",
+    "sounds": [
+      "lostworlds:block.sound.machine_whirling"
+    ]
+  },
+  "block.sound.pot_smash": {
+    "subtitle": "subtitle.block.pot_smash",
+    "sounds": [
+      "lostworlds:block.sound.pot_smash"
+    ]
+  },
+  "entity.sound.big_walk": {
+    "subtitle": "subtitle.entity.big_walk",
+    "sounds": [
+      "lostworlds:entity.sound.big_walk"
+    ]
+  },
+  "entity.sound.medium_walk": {
+    "subtitle": "subtitle.entity.medium_walk",
+    "sounds": [
+      "lostworlds:entity.sound.medium_walk"
+    ]
+  },
+  "entity.sound.small_walk": {
+    "subtitle": "subtitle.entity.small_walk",
+    "sounds": [
+      "lostworlds:entity.sound.small_walk"
+    ]
+  }
+}
