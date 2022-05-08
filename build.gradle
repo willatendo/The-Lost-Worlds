@@ -61,7 +61,8 @@ sourceSets.main.resources {
 }
 
 mixin {
-	add sourceSets.main, "lostworlds.refmap.json"
+	add sourceSets.main, 'lostworlds.mixins.refmap.json'
+	config 'lostworlds.mixins.json'
 }
 
 repositories {

@@ -292,7 +292,9 @@ public class LostWorldsItems {
 
 	private static void doRandomItemStuff() {
 		LostWorldsRecipeManager.initAlternateRecipes();
-		AmberDNAExtractorRecipeManager.init();
+		if (LostWorldsUtils.modLoaded("crafttweaker")) {
+			AmberDNAExtractorRecipeManager.init();
+		}
 		Foods.init();
 	}
 
