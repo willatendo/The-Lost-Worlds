@@ -148,11 +148,11 @@ public class LostWorldsCommonConfig {
 	public final IntValue eustreptospondylusSpawnGroupMinimum;
 	public final IntValue eustreptospondylusSpawnGroupMaximum;
 
-	public final DoubleValue fukuvenatorHeath;
-	public final DoubleValue fukuvenatorAttackDamage;
-	public final IntValue fukuvenatorSpawnWeight;
-	public final IntValue fukuvenatorSpawnGroupMinimum;
-	public final IntValue fukuvenatorSpawnGroupMaximum;
+	public final DoubleValue fukuivenatorHeath;
+	public final DoubleValue fukuivenatorAttackDamage;
+	public final IntValue fukuivenatorSpawnWeight;
+	public final IntValue fukuivenatorSpawnGroupMinimum;
+	public final IntValue fukuivenatorSpawnGroupMaximum;
 
 	public final DoubleValue giganotosaurusHeath;
 	public final DoubleValue giganotosaurusAttackDamage;
@@ -415,11 +415,11 @@ public class LostWorldsCommonConfig {
 		this.eustreptospondylusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Eustreptospondylus in a spawn group").translation(TRANSLATION_TEXT + "eustreptospondylusSpawnGroupMinimum").defineInRange("eustreptospondylusSpawnGroupMinimum", 3, 1, 100);
 		this.eustreptospondylusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Eustreptospondylus in a spawn group").translation(TRANSLATION_TEXT + "eustreptospondylusSpawnGroupMaximum").defineInRange("eustreptospondylusSpawnGroupMaximum", 6, 1, 100);
 
-		this.fukuvenatorHeath = builder.comment("Sets the heath of the Fukuvenator").translation(TRANSLATION_TEXT + "fukuvenatorHeath").defineInRange("fukuvenatorHeath", 15.0D, 1.0D, 999.0D);
-		this.fukuvenatorAttackDamage = builder.comment("Sets the attack damage of the Fukuvenator").translation(TRANSLATION_TEXT + "fukuvenatorAttackDamage").defineInRange("fukuvenatorAttackDamage", 4.0D, 1.0D, 999.0D);
-		this.fukuvenatorSpawnWeight = builder.comment("Sets the weight of Fukuvenator spawning").translation(TRANSLATION_TEXT + "fukuvenatorSpawnWeight").defineInRange("fukuvenatorSpawnWeight", 4, 1, 100);
-		this.fukuvenatorSpawnGroupMinimum = builder.comment("Sets the minimum amount of Fukuvenator in a spawn group").translation(TRANSLATION_TEXT + "fukuvenatorSpawnGroupMinimum").defineInRange("fukuvenatorSpawnGroupMinimum", 1, 1, 100);
-		this.fukuvenatorSpawnGroupMaximum = builder.comment("Sets the maximum amount of Fukuvenator in a spawn group").translation(TRANSLATION_TEXT + "fukuvenatorSpawnGroupMaximum").defineInRange("fukuvenatorSpawnGroupMaximum", 3, 1, 100);
+		this.fukuivenatorHeath = builder.comment("Sets the heath of the Fukuvenator").translation(TRANSLATION_TEXT + "fukuivenatorHeath").defineInRange("fukuivenatorHeath", 15.0D, 1.0D, 999.0D);
+		this.fukuivenatorAttackDamage = builder.comment("Sets the attack damage of the Fukuvenator").translation(TRANSLATION_TEXT + "fukuivenatorAttackDamage").defineInRange("fukuivenatorAttackDamage", 4.0D, 1.0D, 999.0D);
+		this.fukuivenatorSpawnWeight = builder.comment("Sets the weight of Fukuvenator spawning").translation(TRANSLATION_TEXT + "fukuivenatorSpawnWeight").defineInRange("fukuivenatorSpawnWeight", 4, 1, 100);
+		this.fukuivenatorSpawnGroupMinimum = builder.comment("Sets the minimum amount of Fukuvenator in a spawn group").translation(TRANSLATION_TEXT + "fukuivenatorSpawnGroupMinimum").defineInRange("fukuivenatorSpawnGroupMinimum", 1, 1, 100);
+		this.fukuivenatorSpawnGroupMaximum = builder.comment("Sets the maximum amount of Fukuvenator in a spawn group").translation(TRANSLATION_TEXT + "fukuivenatorSpawnGroupMaximum").defineInRange("fukuivenatorSpawnGroupMaximum", 3, 1, 100);
 
 		this.giganotosaurusHeath = builder.comment("Sets the heath of the Gorgonops").translation(TRANSLATION_TEXT + "giganotosaurusHeath").defineInRange("giganotosaurusHeath", 95.0D, 1.0D, 999.0D);
 		this.giganotosaurusAttackDamage = builder.comment("Sets the attack damage of the Gorgonops").translation(TRANSLATION_TEXT + "giganotosaurusAttackDamage").defineInRange("giganotosaurusAttackDamage", 30.0D, 1.0D, 999.0D);

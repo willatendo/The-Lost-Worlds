@@ -27,7 +27,7 @@ public class LostWorldsUtils {
 
 	public static final String ID = "lostworlds";
 	public static final String NAME = "Lost Worlds";
-	public static final String VERSION = "a11_dev";
+	public static final String VERSION = "a11";
 	public static final Version VERSION_PARSER = Version.getVersion(VERSION);
 
 	public static boolean modLoaded(String id) {

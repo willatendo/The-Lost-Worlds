@@ -1,7 +1,5 @@
 package lostworlds.server.entity.aquatic;
 
-import java.util.Objects;
-import java.util.Optional;
 import java.util.Random;
 import java.util.function.Predicate;
 
@@ -51,7 +49,6 @@ import net.minecraft.pathfinding.PathNavigator;
 import net.minecraft.pathfinding.SwimmerPathNavigator;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.RegistryKey;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -61,8 +58,6 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biomes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -280,8 +275,7 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity {
 
 	public static boolean canDolphinLikeSpawn(EntityType<? extends DolphinLikeEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
 		if (pos.getY() > 45 && pos.getY() < world.getSeaLevel()) {
-			Optional<RegistryKey<Biome>> optional = world.getBiomeName(pos);
-			return (!Objects.equals(optional, Optional.of(Biomes.OCEAN)) || !Objects.equals(optional, Optional.of(Biomes.DEEP_OCEAN))) && world.getFluidState(pos).is(FluidTags.WATER);
+			return world.getFluidState(pos).is(FluidTags.WATER);
 		} else {
 			return false;
 		}
