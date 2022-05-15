@@ -2,7 +2,6 @@ package lostworlds.server.entity.terrestrial.permian;
 
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.entity.LostWorldsEntities;
-import lostworlds.server.entity.goal.NaturalBreedingGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyAvoidEntityGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyBreedGoal;
@@ -80,7 +79,6 @@ public class TetraceratopsEntity extends EggLayingEntity {
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, DimetrodonEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, GorgonopsEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new TerrestrialCreateTerritoryGoal(this, 1.0D));
-		this.goalSelector.addGoal(6, new NaturalBreedingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.TETRACERATOPS));
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));

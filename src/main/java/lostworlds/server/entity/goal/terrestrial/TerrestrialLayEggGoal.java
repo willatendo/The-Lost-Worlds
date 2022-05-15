@@ -71,7 +71,6 @@ public class TerrestrialLayEggGoal extends MoveToBlockGoal {
 			world.setBlock(this.blockPos, LostWorldsBlocks.NESTING_BLOCK.getDefaultState(), 3);
 			this.entity.setHasEgg(false);
 			this.entity.setInLoveTime(600);
-			this.entity.setInNaturalLoveTime(600);
 		}
 	}
 

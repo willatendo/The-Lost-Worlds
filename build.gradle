@@ -34,6 +34,10 @@ minecraft {
 	runs {
 		client {
 			workingDirectory project.file('run')
+			
+			arg '-mixin.config=lostworlds.mixins.json'
+			property 'mixin.env.remapRefMap', 'true'
+			property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
 			mods {
 				lostworlds {
@@ -45,6 +49,8 @@ minecraft {
 		data {
 			workingDirectory project.file('run')
 			
+			property 'mixin.env.remapRefMap', 'true'
+			property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 			args '--mod', 'lostworlds', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 			
 			mods {
@@ -94,7 +100,7 @@ dependencies {
 	
 	implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_verison}")
 	
-	annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
+	annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 }
 
 jar {

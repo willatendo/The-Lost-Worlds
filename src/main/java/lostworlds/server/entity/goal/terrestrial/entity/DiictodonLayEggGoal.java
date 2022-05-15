@@ -50,7 +50,6 @@ public class DiictodonLayEggGoal extends MoveToBlockGoal {
 			world.setBlock(this.blockPos.below(), block.defaultBlockState(), 3);
 			this.entity.setHasEgg(false);
 			this.entity.setInLoveTime(600);
-			this.entity.setInNaturalLoveTime(600);
 		}
 	}
 

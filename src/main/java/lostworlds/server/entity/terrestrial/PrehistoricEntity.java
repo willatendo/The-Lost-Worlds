@@ -1,23 +1,19 @@
 package lostworlds.server.entity.terrestrial;
 
 import java.util.Random;
-import java.util.UUID;
 
 import javax.annotation.Nullable;
 
-import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.semiaquatic.CarnivoreSemiAquaticEntity;
 import lostworlds.server.entity.utils.IForTabletThings;
 import lostworlds.server.entity.utils.ModDamageSources;
 import lostworlds.server.item.LostWorldsItems;
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.item.ExperienceOrbEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -26,32 +22,23 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.stats.Stats;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ActionResultType;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.GameRules;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 
-public abstract class PrehistoricEntity extends AgeableEntity implements IAnimatable, IForTabletThings {
-	private static final EntityPredicate PARTNER_TARGETING = (new EntityPredicate()).range(8.0D).allowInvulnerable().allowSameTeam().allowUnseeable();
-
+public abstract class PrehistoricEntity extends AnimalEntity implements IAnimatable, IForTabletThings {
 	protected static final DataParameter<Byte> VARIENT = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BYTE);
 	protected static final DataParameter<Byte> ANIMATION = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BYTE);
 
@@ -71,14 +58,7 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 	public static final AnimationBuilder WALL_WALK_ANIMATION = new AnimationBuilder().addAnimation("into_wall_walk").addAnimation("wall_walk", true).addAnimation("out_of_wall_walk");
 	public static final AnimationBuilder FLY_ANIMATION = new AnimationBuilder().addAnimation("fly_animation", true);
 
-	public int inNaturalLove;
-	public UUID cause;
-
-	public int inLove;
-	public UUID loveCause;
-
 	private int hunger;
-
 	private boolean contraceptives;
 
 	public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
@@ -117,8 +97,6 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 
 	public PrehistoricEntity(EntityType<? extends PrehistoricEntity> entity, World world) {
 		super(entity, world);
-		this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 16.0F);
-		this.setPathfindingMalus(PathNodeType.DAMAGE_FIRE, -1.0F);
 	}
 
 	public boolean isHungry(LivingEntity entity) {
@@ -185,35 +163,8 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 	}
 
 	@Override
-	protected void customServerAiStep() {
-		if (this.getAge() != 0) {
-			this.inNaturalLove = 0;
-		}
-
-		if (this.getAge() != 0) {
-			this.inLove = 0;
-		}
-
-		super.customServerAiStep();
-	}
-
-	@Override
 	public void aiStep() {
 		super.aiStep();
-		if (this.getAge() != 0) {
-			this.inNaturalLove = 0;
-		}
-
-		if (this.inNaturalLove > 0) {
-			--this.inNaturalLove;
-		}
-
-		int i = this.getAge();
-		if (i == 0 && this.canFallInNaturalLove()) {
-			if (this.level.getNearbyEntities(this.getClass(), PARTNER_TARGETING, this, this.getBoundingBox().inflate(LostWorldsConfig.COMMON_CONFIG.maxSearchRange.get())).size() < LostWorldsConfig.COMMON_CONFIG.maxDinoGroup.get() && this.level.getNearbyEntities(this.getClass(), PARTNER_TARGETING, this, this.getBoundingBox().inflate(LostWorldsConfig.COMMON_CONFIG.maxSearchRange.get())).size() > 1) {
-				this.setInNaturalLove(this);
-			}
-		}
 
 		if (this.isAlive() && !this.isSleeping()) {
 			int hunger = this.getHunger();
@@ -223,17 +174,6 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 
 		if (this.getHunger() < -5000) {
 			this.hurt(ModDamageSources.HUNGER, 3.0F);
-		}
-	}
-
-	@Override
-	public boolean hurt(DamageSource source, float damage) {
-		if (this.isInvulnerableTo(source)) {
-			return false;
-		} else {
-			this.inNaturalLove = 0;
-			this.inLove = 0;
-			return super.hurt(source, damage);
 		}
 	}
 
@@ -254,29 +194,16 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 	public void addAdditionalSaveData(CompoundNBT nbt) {
 		super.addAdditionalSaveData(nbt);
 		nbt.putBoolean("Contraceptives", isOnContraceptives());
-		nbt.putInt("InNaturalLove", this.inNaturalLove);
 		nbt.putInt("Hunger", this.getHunger());
 		nbt.putByte("Varient", getVarient());
-
-		if (this.cause != null) {
-			nbt.putUUID("Cause", this.cause);
-		}
-		nbt.putInt("InLove", this.inLove);
-		if (this.loveCause != null) {
-			nbt.putUUID("LoveCause", this.loveCause);
-		}
 	}
 
 	@Override
 	public void readAdditionalSaveData(CompoundNBT nbt) {
 		super.readAdditionalSaveData(nbt);
 		this.setOnContraceptives(nbt.getBoolean("Contraceptives"));
-		this.inNaturalLove = nbt.getInt("InNaturalLove");
 		this.setVarient(nbt.getByte("Varient"));
 		this.setHunger(nbt.getInt("Hunger"));
-		this.cause = nbt.hasUUID("Cause") ? nbt.getUUID("Cause") : null;
-		this.inLove = nbt.getInt("InLove");
-		this.loveCause = nbt.hasUUID("LoveCause") ? nbt.getUUID("LoveCause") : null;
 	}
 
 	@Override
@@ -417,117 +344,6 @@ public abstract class PrehistoricEntity extends AgeableEntity implements IAnimat
 	protected void usePlayerItem(PlayerEntity entity, ItemStack stack) {
 		if (!entity.abilities.instabuild) {
 			stack.shrink(1);
-		}
-	}
-
-//	@Nullable
-//	protected PrehistoricEntity getUUID(UUID uuid) {
-//		if (uuid.equals(this.getUUID())) {
-//			PrehistoricEntity prehistoric = this.getUUID(uuid);
-//			return prehistoric;
-//		}
-//		return null;
-//	}
-
-	public boolean canFallInNaturalLove() {
-		return this.inNaturalLove <= 0 || !this.isBaby();
-	}
-
-	public void setInNaturalLove(@Nullable PrehistoricEntity entity) {
-		this.inNaturalLove = 600;
-		if (entity != null) {
-			this.cause = entity.getUUID();
-		}
-
-		this.level.broadcastEntityEvent(this, (byte) 18);
-	}
-
-	public void setInNaturalLoveTime(int love) {
-		this.inNaturalLove = love;
-	}
-
-	public int getInNaturalLoveTime() {
-		return this.inNaturalLove;
-	}
-
-	public boolean isInNaturalLove() {
-		return this.inNaturalLove > 0;
-	}
-
-	public void resetNaturalLove() {
-		this.inNaturalLove = 0;
-	}
-
-	public boolean canMate(PrehistoricEntity entity) {
-		PrehistoricEntity prehistoric = entity;
-		if (prehistoric == this) {
-			return false;
-		} else if (this.isOnContraceptives()) {
-			return false;
-		} else if (this.getClass() != prehistoric.getClass()) {
-			return false;
-		} else {
-			return this.isInLove() && prehistoric.isInLove() || this.isInNaturalLove() && prehistoric.isInNaturalLove();
-		}
-	}
-
-	public void spawnChildFromNaturalBreeding(ServerWorld world, PrehistoricEntity entity) {
-		AgeableEntity ageableentity = this.getBreedOffspring(world, entity);
-		final BabyEntitySpawnEvent event = new BabyEntitySpawnEvent(this, entity, ageableentity);
-		final boolean cancelled = MinecraftForge.EVENT_BUS.post(event);
-		ageableentity = event.getChild();
-		if (cancelled) {
-			this.setAge(6000);
-			entity.setAge(6000);
-			this.resetNaturalLove();
-			entity.resetNaturalLove();
-			return;
-		}
-		if (ageableentity != null) {
-			this.setAge(6000);
-			entity.setAge(6000);
-			this.resetNaturalLove();
-			entity.resetNaturalLove();
-			ageableentity.setBaby(true);
-			ageableentity.moveTo(this.getX(), this.getY(), this.getZ(), 0.0F, 0.0F);
-			world.addFreshEntityWithPassengers(ageableentity);
-			world.broadcastEntityEvent(this, (byte) 18);
-		}
-	}
-
-	public void spawnChildFromBreeding(ServerWorld world, PrehistoricEntity partner) {
-		AgeableEntity ageableentity = this.getBreedOffspring(world, partner);
-		final BabyEntitySpawnEvent event = new BabyEntitySpawnEvent(this, partner, ageableentity);
-		final boolean cancelled = MinecraftForge.EVENT_BUS.post(event);
-		ageableentity = event.getChild();
-		if (cancelled) {
-			this.setAge(6000);
-			partner.setAge(6000);
-			this.resetLove();
-			partner.resetLove();
-			return;
-		}
-		if (ageableentity != null) {
-			ServerPlayerEntity serverplayerentity = this.getLoveCause();
-			if (serverplayerentity == null && partner.getLoveCause() != null) {
-				serverplayerentity = partner.getLoveCause();
-			}
-
-			if (serverplayerentity != null) {
-				serverplayerentity.awardStat(Stats.ANIMALS_BRED);
-			}
-
-			this.setAge(6000);
-			partner.setAge(6000);
-			this.resetLove();
-			partner.resetLove();
-			ageableentity.setBaby(true);
-			ageableentity.moveTo(this.getX(), this.getY(), this.getZ(), 0.0F, 0.0F);
-			world.addFreshEntityWithPassengers(ageableentity);
-			world.broadcastEntityEvent(this, (byte) 18);
-			if (world.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) {
-				world.addFreshEntity(new ExperienceOrbEntity(world, this.getX(), this.getY(), this.getZ(), this.getRandom().nextInt(7) + 1));
-			}
 		}
 	}
 }

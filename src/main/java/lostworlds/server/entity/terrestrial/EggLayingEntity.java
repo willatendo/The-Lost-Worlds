@@ -93,9 +93,4 @@ public abstract class EggLayingEntity extends TaggedEntity {
 	public boolean canFallInLove() {
 		return super.canFallInLove() && !this.hasEgg();
 	}
-
-	@Override
-	public boolean canFallInNaturalLove() {
-		return super.canFallInNaturalLove() && !this.hasEgg();
-	}
 }

@@ -6,7 +6,6 @@ import javax.annotation.Nullable;
 
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.entity.LostWorldsEntities;
-import lostworlds.server.entity.goal.NaturalBreedingGoal;
 import lostworlds.server.entity.goal.ReasonedAttackableTargetGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyBreedGoal;
@@ -27,9 +26,9 @@ import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.IAngerable;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.HurtByTargetGoal;
 import net.minecraft.entity.ai.goal.ResetAngerGoal;
-import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -83,7 +82,6 @@ public class GiganotosaurusEntity extends CarnivoreEntity implements IAngerable 
 		this.goalSelector.addGoal(4, new TerrestrialReasonableAttackGoal(this, 1.8F));
 		this.goalSelector.addGoal(5, new SleepGoal(this));
 		this.goalSelector.addGoal(5, new TerrestrialCreateTerritoryGoal(this, 1.0D));
-		this.goalSelector.addGoal(6, new NaturalBreedingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.GIGANOTOSAURUS));
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));

@@ -1,4 +1,4 @@
-package lostworlds.mixin;
+package lostworlds.core;
 
 import java.util.Optional;
 
@@ -15,7 +15,7 @@ import net.minecraft.world.gen.settings.DimensionGeneratorSettings;
 @Mixin(DimensionGeneratorSettings.class)
 public class DimensionGeneratorSettingsMixin {
 	@Inject(method = "<init>(JZZLnet/minecraft/util/registry/SimpleRegistry;Ljava/util/Optional;)V", at = @At(value = "RETURN"))
-	private void seedGetter(long seed, boolean generateFeatures, boolean bonusChest, SimpleRegistry<Dimension> registry, Optional<String> s, CallbackInfo ci) {
+	private void seedGetter(long seed, boolean generateFeatures, boolean bonusChest, SimpleRegistry<Dimension> registry, Optional<String> string, CallbackInfo ci) {
 		WorldSeedHolder.setSeed(seed);
 	}
 }

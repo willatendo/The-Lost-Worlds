@@ -6,7 +6,6 @@ import javax.annotation.Nullable;
 
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.entity.LostWorldsEntities;
-import lostworlds.server.entity.goal.NaturalBreedingGoal;
 import lostworlds.server.entity.goal.ReasonedAttackableTargetGoal;
 import lostworlds.server.entity.goal.semiaquatic.SemiAquaticFindWaterGoal;
 import lostworlds.server.entity.goal.semiaquatic.SemiAquaticLeaveWaterGoal;
@@ -116,7 +115,6 @@ public class RhinesuchusEntity extends CarnivoreSemiAquaticEntity implements IAn
 		this.goalSelector.addGoal(4, new TerrestrialReasonableAttackGoal(this, 1.2F));
 		this.goalSelector.addGoal(5, new SleepGoal(this));
 		this.goalSelector.addGoal(5, new TerrestrialCreateTerritoryGoal(this, 1.0D));
-		this.goalSelector.addGoal(6, new NaturalBreedingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.RHINESUCHUS));
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
