@@ -126,6 +126,12 @@ public class ProtosuchusEntity extends CarnivoreSemiAquaticEntity implements IAn
 	}
 
 	@Override
+	protected void defineSynchedData() {
+		super.defineSynchedData();
+		this.entityData.define(DATA_REMAINING_ANGER_TIME, 0);
+	}
+
+	@Override
 	public void addAdditionalSaveData(CompoundNBT nbt) {
 		super.addAdditionalSaveData(nbt);
 		this.addPersistentAngerSaveData(nbt);
