@@ -67,6 +67,21 @@ public class BookBuilder {
 		return object;
 	}
 
+	public static enum LangGenerating {
+		EN_US("en_us"),
+		EN_UD("en_ud");
+
+		private final String lang;
+
+		private LangGenerating(String lang) {
+			this.lang = lang;
+		}
+
+		public String getLang() {
+			return this.lang;
+		}
+	}
+
 	public static class SectionBuilder {
 		public final String section;
 		public final Item icon;

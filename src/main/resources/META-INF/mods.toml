@@ -49,10 +49,10 @@ Modlers/3d Artists:
 [[dependencies.lostworlds]]
     modId="crafttweaker"
     mandatory=false
-    versionRange="[6.0.0,)"
+    versionRange="[7.1.2,)"
     ordering="NONE"
     side="BOTH"
-    
+
 [[dependencies.lostworlds]]
     modId="jei"
     mandatory=false

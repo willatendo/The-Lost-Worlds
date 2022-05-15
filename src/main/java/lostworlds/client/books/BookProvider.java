@@ -79,6 +79,10 @@ public abstract class BookProvider implements IDataProvider {
 
 	public abstract void makeBooks(Consumer<BookBuilder> consumer);
 
+	public void addBook(BookBuilder bookBuilder, Consumer<BookBuilder> consumer) {
+		consumer.accept(bookBuilder);
+	}
+
 	@Override
 	public String getName() {
 		return "Books";
