@@ -235,7 +235,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.advancement("ancient_seeds", "Ancient Seeds", "After lots of work, you got some seeds!");
 		this.advancement("scratching_trees", "Scratching Trees", "You stripped a petrified tree! Soon, they'll be extant again!");
 		this.advancement("long_lost_trees", "Long Lost Trees", "Bring back a dead tree!");
-		this.advancement("the_broken_k_t_boundry", "The Broken K-T Boundry", "Aquire the DNA of an ancient creature!");
+		this.advancement("the_broken_kt_boundry", "The Broken K-T Boundry", "Aquire the DNA of an ancient creature!");
 		this.advancement("digitalization", "Digitalization", "Write DNA to a disc!");
 		this.advancement("dr_frankenstein", "Dr Frankenstein", "Aquire an egg, spawn, or a syringe!");
 		this.advancement("the_museum", "The Museum", "You aquired all you need to make a museum, a paleontology table!");
@@ -246,7 +246,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.advancement("the_jurassic", "The Jurassic", "Acquire volume 2 of the Time Lord's work!");
 		this.advancement("jurassic_explorer", "Jurassic Explorer", "Explore every biome in the Jurassic!");
 		this.advancement("the_permian", "The Permian", "Acquire volume 1 of the Time Lord's work!");
-		this.advancement("permian_explorer", "Jurassic Permian", "Explore every biome in the Permian!");
+		this.advancement("permian_explorer", "Permian Explorer", "Explore every biome in the Permian!");
 		this.advancement("time_travelling", "Time Travelling", "Just like Doc, you'll find yourself lost in time! Or, maybe, you'll be a lord of it!");
 	}
 
