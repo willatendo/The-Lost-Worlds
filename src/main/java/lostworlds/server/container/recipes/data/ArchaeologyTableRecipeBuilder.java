@@ -1,4 +1,4 @@
-package lostworlds.data.recipe;
+package lostworlds.server.container.recipes.data;
 
 import java.util.List;
 import java.util.Map;

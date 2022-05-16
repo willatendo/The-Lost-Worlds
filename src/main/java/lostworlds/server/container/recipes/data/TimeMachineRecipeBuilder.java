@@ -1,11 +1,10 @@
-package lostworlds.data.recipe;
+package lostworlds.server.container.recipes.data;
 
 import java.util.function.Consumer;
 
 import com.google.gson.JsonObject;
 
 import lostworlds.server.container.recipes.LostWorldsRecipes;
-import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.ICriterionInstance;
@@ -14,32 +13,25 @@ import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
-public class AnalyzerRecipeBuilder {
+public class TimeMachineRecipeBuilder {
 	private final Item output;
-	private final Ingredient input;
-	private final Ingredient storage;
+	private final int count;
 	private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-	private AnalyzerRecipeBuilder(IItemProvider output, Ingredient input, Ingredient storage) {
+	private TimeMachineRecipeBuilder(IItemProvider output, int count) {
 		this.output = output.asItem();
-		this.input = input;
-		this.storage = storage;
+		this.count = count;
 	}
 
-	public static AnalyzerRecipeBuilder simple(Ingredient input, Ingredient storage, IItemProvider output) {
-		return new AnalyzerRecipeBuilder(output, input, storage);
+	public static TimeMachineRecipeBuilder simple(IItemProvider output, int count) {
+		return new TimeMachineRecipeBuilder(output, count);
 	}
 
-	public static AnalyzerRecipeBuilder simple(Ingredient input, IItemProvider output) {
-		return simple(input, Ingredient.of(LostWorldsItems.STORAGE_DISC.get()), output);
-	}
-
-	public AnalyzerRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
+	public TimeMachineRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
 		this.advancement.addCriterion(name, criteria);
 		return this;
 	}
@@ -61,7 +53,7 @@ public class AnalyzerRecipeBuilder {
 	public void save(Consumer<IFinishedRecipe> consumer, ResourceLocation name) {
 		this.ensureValid(name);
 		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(name)).rewards(AdvancementRewards.Builder.recipe(name)).requirements(IRequirementsStrategy.OR);
-		consumer.accept(new AnalyzerRecipeBuilder.Result(name, this.input, this.storage, this.output, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.output.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
+		consumer.accept(new TimeMachineRecipeBuilder.Result(name, this.output, this.count, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.output.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
 	}
 
 	private void ensureValid(ResourceLocation id) {
@@ -73,30 +65,27 @@ public class AnalyzerRecipeBuilder {
 	public static class Result implements IFinishedRecipe {
 		private final ResourceLocation id;
 		private final Item output;
-		private final Ingredient input;
-		private final Ingredient storage;
+		private final int count;
 		private final Advancement.Builder advancement;
 		private final ResourceLocation advancementId;
 
-		public Result(ResourceLocation id, Ingredient input, Ingredient storage, Item output, Advancement.Builder advancement, ResourceLocation advancementId) {
+		public Result(ResourceLocation id, Item output, int count, Advancement.Builder advancement, ResourceLocation advancementId) {
 			this.id = id;
-			this.input = input;
-			this.storage = storage;
 			this.output = output;
+			this.count = count;
 			this.advancement = advancement;
 			this.advancementId = advancementId;
 		}
 
 		@Override
 		public void serializeRecipeData(JsonObject json) {
-			json.add("input", this.input.toJson());
-			json.add("storage", this.storage.toJson());
 			json.addProperty("output", Registry.ITEM.getKey(this.output).toString());
+			json.addProperty("count", this.count);
 		}
 
 		@Override
 		public IRecipeSerializer<?> getType() {
-			return LostWorldsRecipes.ANALYZER_RECIPE_SERIALIZER;
+			return LostWorldsRecipes.TIME_MACHINE_RECIPE_SERIALIZER;
 		}
 
 		@Override

@@ -1,4 +1,4 @@
-package lostworlds.data.recipe;
+package lostworlds.server.container.recipes.data;
 
 import java.util.function.Consumer;
 
@@ -13,25 +13,26 @@ import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
-public class TimeMachineRecipeBuilder {
+public class FossilCleanerRecipeBuilder {
 	private final Item output;
-	private final int count;
+	private final Ingredient input;
 	private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-	private TimeMachineRecipeBuilder(IItemProvider output, int count) {
+	private FossilCleanerRecipeBuilder(IItemProvider output, Ingredient input) {
 		this.output = output.asItem();
-		this.count = count;
+		this.input = input;
 	}
 
-	public static TimeMachineRecipeBuilder simple(IItemProvider output, int count) {
-		return new TimeMachineRecipeBuilder(output, count);
+	public static FossilCleanerRecipeBuilder simple(Ingredient dna, IItemProvider result) {
+		return new FossilCleanerRecipeBuilder(result, dna);
 	}
 
-	public TimeMachineRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
+	public FossilCleanerRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
 		this.advancement.addCriterion(name, criteria);
 		return this;
 	}
@@ -53,7 +54,7 @@ public class TimeMachineRecipeBuilder {
 	public void save(Consumer<IFinishedRecipe> consumer, ResourceLocation name) {
 		this.ensureValid(name);
 		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(name)).rewards(AdvancementRewards.Builder.recipe(name)).requirements(IRequirementsStrategy.OR);
-		consumer.accept(new TimeMachineRecipeBuilder.Result(name, this.output, this.count, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.output.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
+		consumer.accept(new FossilCleanerRecipeBuilder.Result(name, this.input, this.output, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.output.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
 	}
 
 	private void ensureValid(ResourceLocation id) {
@@ -64,28 +65,28 @@ public class TimeMachineRecipeBuilder {
 
 	public static class Result implements IFinishedRecipe {
 		private final ResourceLocation id;
-		private final Item output;
-		private final int count;
+		private final Item result;
+		private final Ingredient input;
 		private final Advancement.Builder advancement;
 		private final ResourceLocation advancementId;
 
-		public Result(ResourceLocation id, Item output, int count, Advancement.Builder advancement, ResourceLocation advancementId) {
+		public Result(ResourceLocation id, Ingredient input, Item result, Advancement.Builder advancement, ResourceLocation advancementId) {
 			this.id = id;
-			this.output = output;
-			this.count = count;
+			this.input = input;
+			this.result = result;
 			this.advancement = advancement;
 			this.advancementId = advancementId;
 		}
 
 		@Override
 		public void serializeRecipeData(JsonObject json) {
-			json.addProperty("output", Registry.ITEM.getKey(this.output).toString());
-			json.addProperty("count", this.count);
+			json.add("input", this.input.toJson());
+			json.addProperty("output", Registry.ITEM.getKey(this.result).toString());
 		}
 
 		@Override
 		public IRecipeSerializer<?> getType() {
-			return LostWorldsRecipes.TIME_MACHINE_RECIPE_SERIALIZER;
+			return LostWorldsRecipes.FOSSIL_CLEANER_RECIPE_SERIALIZER;
 		}
 
 		@Override

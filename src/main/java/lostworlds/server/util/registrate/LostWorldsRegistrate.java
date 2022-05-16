@@ -22,6 +22,7 @@ import lostworlds.client.books.BookBuilder.SectionBuilder.PageBuilder.Archaeolog
 import lostworlds.client.books.BookBuilder.SectionBuilder.PageBuilder.PictureAndDescriptionPageBuilder;
 import lostworlds.client.books.BookBuilder.SectionBuilder.PageBuilder.RecipePageBuilder;
 import lostworlds.client.books.BookBuilder.SectionBuilder.PageBuilder.TextPageBuilder;
+import lostworlds.client.sounds.LostWorldsSounds;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlockModels;
 import lostworlds.server.block.LostWorldsBlocks;
@@ -57,19 +58,33 @@ import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.common.data.SoundDefinition;
+import net.minecraftforge.common.data.SoundDefinition.Sound;
+import net.minecraftforge.common.data.SoundDefinition.SoundType;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrate> {
 	public static final ProviderType<RegistrateBookProvider> BOOKS = ProviderType.register("books", (parent, event) -> new RegistrateBookProvider(parent, event.getGenerator()));
+	public static final ProviderType<RegistrateSoundProvider> SOUNDS = ProviderType.register("sounds", (parent, event) -> new RegistrateSoundProvider(parent, event.getGenerator(), event.getExistingFileHelper()));
 
 	protected LostWorldsRegistrate(String modid) {
 		super(modid);
+		this.addSounds();
 		this.addBooks();
 		this.extraLangStuff();
 	}
 
 	public static NonNullLazyValue<LostWorldsRegistrate> lazy(String modid) {
 		return new NonNullLazyValue<>(() -> new LostWorldsRegistrate(modid).registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus()));
+	}
+
+	public void addSounds() {
+		this.addDataGenerator(SOUNDS, provider -> provider.addSound(LostWorldsSounds.MACHINE_WHIRLING.get(), SoundDefinition.definition().with(Sound.sound(LostWorldsSounds.MACHINE_WHIRLING.get().getLocation(), SoundType.SOUND)).subtitle("subtitle.block.machine_whirling")));
+		this.addDataGenerator(SOUNDS, provider -> provider.addSound(LostWorldsSounds.POT_SMASH.get(), SoundDefinition.definition().with(Sound.sound(LostWorldsSounds.POT_SMASH.get().getLocation(), SoundType.SOUND)).subtitle("subtitle.block.pot_smash")));
+
+		this.addDataGenerator(SOUNDS, provider -> provider.addSound(LostWorldsSounds.BIG_WALK.get(), SoundDefinition.definition().with(Sound.sound(LostWorldsSounds.BIG_WALK.get().getLocation(), SoundType.SOUND)).subtitle("subtitle.entity.big_walk")));
+		this.addDataGenerator(SOUNDS, provider -> provider.addSound(LostWorldsSounds.MEDIUM_WALK.get(), SoundDefinition.definition().with(Sound.sound(LostWorldsSounds.MEDIUM_WALK.get().getLocation(), SoundType.SOUND)).subtitle("subtitle.entity.medium_walk")));
+		this.addDataGenerator(SOUNDS, provider -> provider.addSound(LostWorldsSounds.SMALL_WALK.get(), SoundDefinition.definition().with(Sound.sound(LostWorldsSounds.SMALL_WALK.get().getLocation(), SoundType.SOUND)).subtitle("subtitle.entity.small_walk")));
 	}
 
 	public void addBooks() {

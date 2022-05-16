@@ -1,11 +1,10 @@
-package lostworlds.data.recipe;
+package lostworlds.server.container.recipes.data;
 
 import java.util.function.Consumer;
 
 import com.google.gson.JsonObject;
 
 import lostworlds.server.container.recipes.LostWorldsRecipes;
-import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.ICriterionInstance;
@@ -19,37 +18,31 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
-public class DnaExtractorRecipeBuilder {
-	private final Item output;
+public class CultivatorRecipeBuilder {
+	private final Item result;
 	private final Ingredient input;
-	private final Ingredient storage;
 	private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-	private DnaExtractorRecipeBuilder(IItemProvider output, Ingredient input, Ingredient vile) {
-		this.output = output.asItem();
+	private CultivatorRecipeBuilder(IItemProvider result, Ingredient input) {
+		this.result = result.asItem();
 		this.input = input;
-		this.storage = vile;
 	}
 
-	public static DnaExtractorRecipeBuilder simple(Ingredient input, Ingredient storage, IItemProvider output) {
-		return new DnaExtractorRecipeBuilder(output, input, storage);
+	public static CultivatorRecipeBuilder simple(Ingredient input, IItemProvider result) {
+		return new CultivatorRecipeBuilder(result, input);
 	}
 
-	public static DnaExtractorRecipeBuilder simple(Ingredient input, IItemProvider output) {
-		return simple(input, Ingredient.of(LostWorldsItems.EMPTY_VILE.get()), output);
-	}
-
-	public DnaExtractorRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
+	public CultivatorRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
 		this.advancement.addCriterion(name, criteria);
 		return this;
 	}
 
 	public void save(Consumer<IFinishedRecipe> consumer) {
-		this.save(consumer, Registry.ITEM.getKey(this.output));
+		this.save(consumer, Registry.ITEM.getKey(this.result));
 	}
 
 	public void save(Consumer<IFinishedRecipe> consumer, String name) {
-		ResourceLocation resourcelocation = Registry.ITEM.getKey(this.output);
+		ResourceLocation resourcelocation = Registry.ITEM.getKey(this.result);
 		ResourceLocation resourcelocation1 = new ResourceLocation(name);
 		if (resourcelocation1.equals(resourcelocation)) {
 			throw new IllegalStateException("Recipe " + resourcelocation1 + " should remove its 'save' argument");
@@ -61,7 +54,7 @@ public class DnaExtractorRecipeBuilder {
 	public void save(Consumer<IFinishedRecipe> consumer, ResourceLocation name) {
 		this.ensureValid(name);
 		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(name)).rewards(AdvancementRewards.Builder.recipe(name)).requirements(IRequirementsStrategy.OR);
-		consumer.accept(new DnaExtractorRecipeBuilder.Result(name, this.input, this.storage, this.output, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.output.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
+		consumer.accept(new CultivatorRecipeBuilder.Result(name, this.input, this.result, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.result.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
 	}
 
 	private void ensureValid(ResourceLocation id) {
@@ -74,14 +67,12 @@ public class DnaExtractorRecipeBuilder {
 		private final ResourceLocation id;
 		private final Item result;
 		private final Ingredient input;
-		private final Ingredient storage;
 		private final Advancement.Builder advancement;
 		private final ResourceLocation advancementId;
 
-		public Result(ResourceLocation id, Ingredient input, Ingredient storage, Item result, Advancement.Builder advancement, ResourceLocation advancementId) {
+		public Result(ResourceLocation id, Ingredient input, Item result, Advancement.Builder advancement, ResourceLocation advancementId) {
 			this.id = id;
 			this.input = input;
-			this.storage = storage;
 			this.result = result;
 			this.advancement = advancement;
 			this.advancementId = advancementId;
@@ -90,13 +81,12 @@ public class DnaExtractorRecipeBuilder {
 		@Override
 		public void serializeRecipeData(JsonObject json) {
 			json.add("input", this.input.toJson());
-			json.add("storage", this.storage.toJson());
 			json.addProperty("output", Registry.ITEM.getKey(this.result).toString());
 		}
 
 		@Override
 		public IRecipeSerializer<?> getType() {
-			return LostWorldsRecipes.DNA_EXTRACTOR_RECIPE_SERIALIZER;
+			return LostWorldsRecipes.CULTIVATOR_RECIPE_SERIALIZER;
 		}
 
 		@Override

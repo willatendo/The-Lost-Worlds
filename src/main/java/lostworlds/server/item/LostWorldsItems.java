@@ -8,8 +8,6 @@ import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 
-import lostworlds.data.recipe.ArchaeologyTableRecipeBuilder;
-import lostworlds.data.recipe.TimeMachineRecipeBuilder;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
@@ -17,6 +15,8 @@ import lostworlds.server.block.Plants;
 import lostworlds.server.block.Trees;
 import lostworlds.server.block.utils.Foods;
 import lostworlds.server.container.recipes.LostWorldsRecipeManager;
+import lostworlds.server.container.recipes.data.ArchaeologyTableRecipeBuilder;
+import lostworlds.server.container.recipes.data.TimeMachineRecipeBuilder;
 import lostworlds.server.craft.AmberDNAExtractorRecipeManager;
 import lostworlds.server.dimension.LostWorldsDimensions;
 import lostworlds.server.entity.terrestrial.PrehistoricEntity;

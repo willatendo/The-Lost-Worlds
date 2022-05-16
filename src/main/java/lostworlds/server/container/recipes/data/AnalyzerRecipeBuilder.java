@@ -1,10 +1,11 @@
-package lostworlds.data.recipe;
+package lostworlds.server.container.recipes.data;
 
 import java.util.function.Consumer;
 
 import com.google.gson.JsonObject;
 
 import lostworlds.server.container.recipes.LostWorldsRecipes;
+import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.ICriterionInstance;
@@ -18,21 +19,27 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
-public class FossilCleanerRecipeBuilder {
+public class AnalyzerRecipeBuilder {
 	private final Item output;
 	private final Ingredient input;
+	private final Ingredient storage;
 	private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-	private FossilCleanerRecipeBuilder(IItemProvider output, Ingredient input) {
+	private AnalyzerRecipeBuilder(IItemProvider output, Ingredient input, Ingredient storage) {
 		this.output = output.asItem();
 		this.input = input;
+		this.storage = storage;
 	}
 
-	public static FossilCleanerRecipeBuilder simple(Ingredient dna, IItemProvider result) {
-		return new FossilCleanerRecipeBuilder(result, dna);
+	public static AnalyzerRecipeBuilder simple(Ingredient input, Ingredient storage, IItemProvider output) {
+		return new AnalyzerRecipeBuilder(output, input, storage);
 	}
 
-	public FossilCleanerRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
+	public static AnalyzerRecipeBuilder simple(Ingredient input, IItemProvider output) {
+		return simple(input, Ingredient.of(LostWorldsItems.STORAGE_DISC.get()), output);
+	}
+
+	public AnalyzerRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
 		this.advancement.addCriterion(name, criteria);
 		return this;
 	}
@@ -54,7 +61,7 @@ public class FossilCleanerRecipeBuilder {
 	public void save(Consumer<IFinishedRecipe> consumer, ResourceLocation name) {
 		this.ensureValid(name);
 		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(name)).rewards(AdvancementRewards.Builder.recipe(name)).requirements(IRequirementsStrategy.OR);
-		consumer.accept(new FossilCleanerRecipeBuilder.Result(name, this.input, this.output, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.output.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
+		consumer.accept(new AnalyzerRecipeBuilder.Result(name, this.input, this.storage, this.output, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.output.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
 	}
 
 	private void ensureValid(ResourceLocation id) {
@@ -65,15 +72,17 @@ public class FossilCleanerRecipeBuilder {
 
 	public static class Result implements IFinishedRecipe {
 		private final ResourceLocation id;
-		private final Item result;
+		private final Item output;
 		private final Ingredient input;
+		private final Ingredient storage;
 		private final Advancement.Builder advancement;
 		private final ResourceLocation advancementId;
 
-		public Result(ResourceLocation id, Ingredient input, Item result, Advancement.Builder advancement, ResourceLocation advancementId) {
+		public Result(ResourceLocation id, Ingredient input, Ingredient storage, Item output, Advancement.Builder advancement, ResourceLocation advancementId) {
 			this.id = id;
 			this.input = input;
-			this.result = result;
+			this.storage = storage;
+			this.output = output;
 			this.advancement = advancement;
 			this.advancementId = advancementId;
 		}
@@ -81,12 +90,13 @@ public class FossilCleanerRecipeBuilder {
 		@Override
 		public void serializeRecipeData(JsonObject json) {
 			json.add("input", this.input.toJson());
-			json.addProperty("output", Registry.ITEM.getKey(this.result).toString());
+			json.add("storage", this.storage.toJson());
+			json.addProperty("output", Registry.ITEM.getKey(this.output).toString());
 		}
 
 		@Override
 		public IRecipeSerializer<?> getType() {
-			return LostWorldsRecipes.FOSSIL_CLEANER_RECIPE_SERIALIZER;
+			return LostWorldsRecipes.ANALYZER_RECIPE_SERIALIZER;
 		}
 
 		@Override

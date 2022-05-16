@@ -1,4 +1,4 @@
-package lostworlds.data.recipe;
+package lostworlds.server.container.recipes.data;
 
 import java.util.function.Consumer;
 
@@ -18,21 +18,31 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
-public class CultivatorRecipeBuilder {
+public class FossilGrinderRecipeBuilder {
 	private final Item result;
 	private final Ingredient input;
+	private final boolean plant;
 	private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-	private CultivatorRecipeBuilder(IItemProvider result, Ingredient input) {
+	private FossilGrinderRecipeBuilder(IItemProvider result, Ingredient input, boolean plant) {
 		this.result = result.asItem();
 		this.input = input;
+		this.plant = plant;
 	}
 
-	public static CultivatorRecipeBuilder simple(Ingredient input, IItemProvider result) {
-		return new CultivatorRecipeBuilder(result, input);
+	public static FossilGrinderRecipeBuilder simple(Ingredient input, boolean plant, IItemProvider result) {
+		return new FossilGrinderRecipeBuilder(result, input, plant);
 	}
 
-	public CultivatorRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
+	public static FossilGrinderRecipeBuilder dino(Ingredient input, IItemProvider result) {
+		return simple(input, false, result);
+	}
+
+	public static FossilGrinderRecipeBuilder plant(Ingredient input, IItemProvider result) {
+		return simple(input, true, result);
+	}
+
+	public FossilGrinderRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
 		this.advancement.addCriterion(name, criteria);
 		return this;
 	}
@@ -54,7 +64,7 @@ public class CultivatorRecipeBuilder {
 	public void save(Consumer<IFinishedRecipe> consumer, ResourceLocation name) {
 		this.ensureValid(name);
 		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(name)).rewards(AdvancementRewards.Builder.recipe(name)).requirements(IRequirementsStrategy.OR);
-		consumer.accept(new CultivatorRecipeBuilder.Result(name, this.input, this.result, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.result.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
+		consumer.accept(new FossilGrinderRecipeBuilder.Result(name, this.input, this.plant, this.result, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.result.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
 	}
 
 	private void ensureValid(ResourceLocation id) {
@@ -67,12 +77,14 @@ public class CultivatorRecipeBuilder {
 		private final ResourceLocation id;
 		private final Item result;
 		private final Ingredient input;
+		private final boolean plant;
 		private final Advancement.Builder advancement;
 		private final ResourceLocation advancementId;
 
-		public Result(ResourceLocation id, Ingredient input, Item result, Advancement.Builder advancement, ResourceLocation advancementId) {
+		public Result(ResourceLocation id, Ingredient input, boolean plant, Item result, Advancement.Builder advancement, ResourceLocation advancementId) {
 			this.id = id;
 			this.input = input;
+			this.plant = plant;
 			this.result = result;
 			this.advancement = advancement;
 			this.advancementId = advancementId;
@@ -81,12 +93,13 @@ public class CultivatorRecipeBuilder {
 		@Override
 		public void serializeRecipeData(JsonObject json) {
 			json.add("input", this.input.toJson());
+			json.addProperty("plant", this.plant);
 			json.addProperty("output", Registry.ITEM.getKey(this.result).toString());
 		}
 
 		@Override
 		public IRecipeSerializer<?> getType() {
-			return LostWorldsRecipes.CULTIVATOR_RECIPE_SERIALIZER;
+			return LostWorldsRecipes.FOSSIL_GRINDER_RECIPE_SERIALIZER;
 		}
 
 		@Override

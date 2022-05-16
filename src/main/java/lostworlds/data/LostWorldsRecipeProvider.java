@@ -2,15 +2,15 @@ package lostworlds.data;
 
 import java.util.function.Consumer;
 
-import lostworlds.data.recipe.AnalyzerRecipeBuilder;
-import lostworlds.data.recipe.CultivatorRecipeBuilder;
-import lostworlds.data.recipe.DnaExtractorRecipeBuilder;
-import lostworlds.data.recipe.DnaInjectorRecipeBuilder;
-import lostworlds.data.recipe.FossilCleanerRecipeBuilder;
-import lostworlds.data.recipe.FossilGrinderRecipeBuilder;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.Plants;
 import lostworlds.server.block.Trees;
+import lostworlds.server.container.recipes.data.AnalyzerRecipeBuilder;
+import lostworlds.server.container.recipes.data.CultivatorRecipeBuilder;
+import lostworlds.server.container.recipes.data.DnaExtractorRecipeBuilder;
+import lostworlds.server.container.recipes.data.DnaInjectorRecipeBuilder;
+import lostworlds.server.container.recipes.data.FossilCleanerRecipeBuilder;
+import lostworlds.server.container.recipes.data.FossilGrinderRecipeBuilder;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
