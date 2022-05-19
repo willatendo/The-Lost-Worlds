@@ -1,0 +1,30 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.diictodon",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "Diictodon",
+					"pivot": [-0.5, 1.5, 0]
+				},
+				{
+					"name": "frontleg2",
+					"parent": "Diictodon",
+					"pivot": [0, 0.5, 0],
+					"rotation": [0, 0, 90],
+					"cubes": [
+						{"origin": [-0.5, -0.5, -0.5], "size": [1, 2, 1], "uv": [10, 10]}
+					]
+				}
+			]
+		}
+	]
+}

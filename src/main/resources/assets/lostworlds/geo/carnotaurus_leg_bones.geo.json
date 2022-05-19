@@ -1,0 +1,115 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.carnotaurus",
+				"texture_width": 256,
+				"texture_height": 256,
+				"visible_bounds_width": 12,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [
+					0,
+					1.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Carnotaurus",
+					"pivot": [
+						0,
+						33,
+						0
+					]
+				},
+				{
+					"name": "rightleg",
+					"parent": "Carnotaurus",
+					"pivot": [
+						10.5,
+						7,
+						-0.5
+					],
+					"rotation": [
+						0,
+						0,
+						90
+					],
+					"cubes": [
+						{
+							"origin": [
+								3.5,
+								-2.5,
+								-9
+							],
+							"size": [
+								14,
+								19,
+								17
+							],
+							"uv": [
+								93,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "knee2",
+					"parent": "rightleg",
+					"pivot": [
+						7,
+						-1.5,
+						6
+					],
+					"cubes": [
+						{
+							"origin": [
+								5,
+								-21.5,
+								2
+							],
+							"size": [
+								7,
+								24,
+								7
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "foot2",
+					"parent": "knee2",
+					"pivot": [
+						9,
+						-21.5,
+						6
+					],
+					"cubes": [
+						{
+							"origin": [
+								4,
+								-22.5,
+								-2
+							],
+							"size": [
+								9,
+								3,
+								10
+							],
+							"uv": [
+								116,
+								62
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

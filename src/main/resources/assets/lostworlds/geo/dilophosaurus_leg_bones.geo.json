@@ -1,0 +1,178 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.dilophosaurus",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 10,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [
+					0,
+					1.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Dilophosaurus",
+					"pivot": [
+						0,
+						20,
+						-5
+					]
+				},
+				{
+					"name": "Leg2",
+					"parent": "Dilophosaurus",
+					"pivot": [
+						7,
+						3.5,
+						2.5
+					],
+					"rotation": [
+						0,
+						0,
+						90
+					],
+					"cubes": [
+						{
+							"origin": [
+								3.5,
+								-3,
+								-3
+							],
+							"size": [
+								7,
+								13,
+								11
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "knee2",
+					"parent": "Leg2",
+					"pivot": [
+						6.5,
+						-2,
+						7
+					],
+					"cubes": [
+						{
+							"origin": [
+								4.5,
+								-14,
+								4
+							],
+							"size": [
+								4,
+								13,
+								5
+							],
+							"uv": [
+								0,
+								41
+							]
+						}
+					]
+				},
+				{
+					"name": "Feet2",
+					"parent": "knee2",
+					"pivot": [
+						6.5,
+						-13,
+						7
+					]
+				},
+				{
+					"name": "Toe4",
+					"parent": "Feet2",
+					"pivot": [
+						6.5,
+						-14,
+						7
+					],
+					"cubes": [
+						{
+							"origin": [
+								5,
+								-15,
+								-1
+							],
+							"size": [
+								3,
+								3,
+								9
+							],
+							"uv": [
+								77,
+								34
+							]
+						}
+					]
+				},
+				{
+					"name": "Toe5",
+					"parent": "Feet2",
+					"pivot": [
+						12.5,
+						-1,
+						-10
+					],
+					"cubes": [
+						{
+							"origin": [
+								4,
+								-15,
+								2
+							],
+							"size": [
+								1,
+								2,
+								6
+							],
+							"uv": [
+								92,
+								30
+							]
+						}
+					]
+				},
+				{
+					"name": "Toe6",
+					"parent": "Feet2",
+					"pivot": [
+						12.5,
+						-1,
+						-10
+					],
+					"cubes": [
+						{
+							"origin": [
+								8,
+								-15,
+								2
+							],
+							"size": [
+								1,
+								2,
+								6
+							],
+							"uv": [
+								56,
+								84
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

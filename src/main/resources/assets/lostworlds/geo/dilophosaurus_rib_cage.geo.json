@@ -1,0 +1,88 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.dilophosaurus",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 10,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [
+					0,
+					1.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Dilophosaurus",
+					"pivot": [
+						0,
+						20,
+						-5
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Dilophosaurus",
+					"pivot": [
+						0,
+						8,
+						5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-6,
+								1,
+								-13
+							],
+							"size": [
+								12,
+								13,
+								11
+							],
+							"uv": [
+								51,
+								60
+							]
+						},
+						{
+							"origin": [
+								-7,
+								0,
+								-2
+							],
+							"size": [
+								14,
+								14,
+								16
+							],
+							"uv": [
+								48,
+								0
+							]
+						},
+						{
+							"origin": [
+								0,
+								14,
+								-9
+							],
+							"size": [
+								0,
+								2,
+								23
+							],
+							"uv": [
+								39,
+								18
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

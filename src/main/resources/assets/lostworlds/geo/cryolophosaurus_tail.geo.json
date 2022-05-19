@@ -1,0 +1,92 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.cryolophosaurus",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 8,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [
+					0,
+					1.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Cryolophosaurus",
+					"pivot": [
+						0,
+						21,
+						-1
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Cryolophosaurus",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "body",
+					"pivot": [
+						0,
+						4.25,
+						-22
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3.5,
+								0,
+								-22
+							],
+							"size": [
+								7,
+								7,
+								21
+							],
+							"uv": [
+								0,
+								36
+							]
+						}
+					]
+				},
+				{
+					"name": "tailpart1",
+					"parent": "tail",
+					"pivot": [
+						0,
+						5.25,
+						-1
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2,
+								4,
+								-1
+							],
+							"size": [
+								4,
+								3,
+								21
+							],
+							"uv": [
+								35,
+								43
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
