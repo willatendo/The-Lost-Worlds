@@ -23,12 +23,10 @@ public abstract class BookProvider implements IDataProvider {
 	protected static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().create();
 	protected final DataGenerator generator;
 	protected final String id;
-	protected final String lang;
 
-	public BookProvider(DataGenerator generator, String id, String lang) {
+	public BookProvider(DataGenerator generator, String id) {
 		this.generator = generator;
 		this.id = id;
-		this.lang = lang;
 	}
 
 	@Override
