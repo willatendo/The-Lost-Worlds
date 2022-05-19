@@ -17,7 +17,6 @@ import lostworlds.server.block.utils.Foods;
 import lostworlds.server.container.recipes.LostWorldsRecipeManager;
 import lostworlds.server.container.recipes.data.ArchaeologyTableRecipeBuilder;
 import lostworlds.server.container.recipes.data.TimeMachineRecipeBuilder;
-import lostworlds.server.craft.AmberDNAExtractorRecipeManager;
 import lostworlds.server.dimension.LostWorldsDimensions;
 import lostworlds.server.entity.terrestrial.PrehistoricEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
@@ -157,41 +156,41 @@ public class LostWorldsItems {
 	static {
 		for (DinoTypes dinos : DinoTypes.values()) {
 			if (dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS) {
-				ItemEntry<FossilItem> plasteredRibCage = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_rib_cage", properties -> new FossilItem(properties, () -> dinos.getRibCage().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag).register();
+				ItemEntry<FossilItem> plasteredRibCage = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_rib_cage", properties -> new FossilItem(properties, () -> dinos.getRibCage().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
 				dinos.setPlasteredRibCageItem(() -> plasteredRibCage.get());
-				ItemEntry<FossilItem> plasteredLegBones = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_leg_bones", properties -> new FossilItem(properties, () -> dinos.getLegBones().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag).register();
+				ItemEntry<FossilItem> plasteredLegBones = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_leg_bones", properties -> new FossilItem(properties, () -> dinos.getLegBones().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
 				dinos.setPlasteredLegBonesItem(() -> plasteredLegBones.get());
-				ItemEntry<FossilItem> plasteredArmBones = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_arm_bones", properties -> new FossilItem(properties, () -> dinos.getArmBones().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag).register();
+				ItemEntry<FossilItem> plasteredArmBones = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_arm_bones", properties -> new FossilItem(properties, () -> dinos.getArmBones().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
 				dinos.setPlasteredArmBonesItem(() -> plasteredArmBones.get());
-				ItemEntry<FossilItem> plasteredTail = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_tail", properties -> new FossilItem(properties, () -> dinos.getTail().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag).register();
+				ItemEntry<FossilItem> plasteredTail = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_tail", properties -> new FossilItem(properties, () -> dinos.getTail().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
 				dinos.setPlasteredTailItem(() -> plasteredTail.get());
-				ItemEntry<FossilItem> plasteredSkull = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_skull", properties -> new FossilItem(properties, () -> dinos.getSkull().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag).register();
+				ItemEntry<FossilItem> plasteredSkull = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_skull", properties -> new FossilItem(properties, () -> dinos.getSkull().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
 				dinos.setPlasteredSkullItem(() -> plasteredSkull.get());
-				ItemEntry<FossilItem> ribCage = REGISTRATE.item(dinos.name().toLowerCase() + "_rib_cage", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("rib_cage")), () -> dinos.getRibCage().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, dinos.getFossilTag()).register();
+				ItemEntry<FossilItem> ribCage = REGISTRATE.item(dinos.name().toLowerCase() + "_rib_cage", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("rib_cage")), () -> dinos.getRibCage().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
 				dinos.setRibCageItem(() -> ribCage.get());
-				ItemEntry<FossilItem> legBones = REGISTRATE.item(dinos.name().toLowerCase() + "_leg_bones", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("leg_bones")), () -> dinos.getLegBones().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, dinos.getFossilTag()).register();
+				ItemEntry<FossilItem> legBones = REGISTRATE.item(dinos.name().toLowerCase() + "_leg_bones", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("leg_bones")), () -> dinos.getLegBones().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
 				dinos.setLegBonesItem(() -> legBones.get());
-				ItemEntry<FossilItem> armBones = REGISTRATE.item(dinos.name().toLowerCase() + "_arm_bones", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("arm_bones")), () -> dinos.getArmBones().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, dinos.getFossilTag()).register();
+				ItemEntry<FossilItem> armBones = REGISTRATE.item(dinos.name().toLowerCase() + "_arm_bones", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("arm_bones")), () -> dinos.getArmBones().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
 				dinos.setArmBonesItem(() -> armBones.get());
-				ItemEntry<FossilItem> tail = REGISTRATE.item(dinos.name().toLowerCase() + "_tail", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("tail")), () -> dinos.getTail().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, dinos.getFossilTag()).register();
+				ItemEntry<FossilItem> tail = REGISTRATE.item(dinos.name().toLowerCase() + "_tail", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("tail")), () -> dinos.getTail().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
 				dinos.setTailItem(() -> tail.get());
-				ItemEntry<FossilItem> skull = REGISTRATE.item(dinos.name().toLowerCase() + "_skull", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("skull")), () -> dinos.getSkull().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, dinos.getFossilTag()).register();
+				ItemEntry<FossilItem> skull = REGISTRATE.item(dinos.name().toLowerCase() + "_skull", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("skull")), () -> dinos.getSkull().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
 				dinos.setSkullItem(() -> skull.get());
-				ItemEntry<FossilItem> skeleton = REGISTRATE.item(dinos.name().toLowerCase() + "_skeleton", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, dinos.getFossilTag()).register();
+				ItemEntry<FossilItem> skeleton = REGISTRATE.item(dinos.name().toLowerCase() + "_skeleton", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
 				dinos.setSkeletonPick(() -> skeleton.get());
 			}
 
 			if (dinos == DinoTypes.ANOMALOCARIS) {
-				ItemEntry<FossilItem> plasteredExoskeleton = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_exoskeleton", properties -> new FossilItem(properties, () -> dinos.getExoskeleton().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).register();
+				ItemEntry<FossilItem> plasteredExoskeleton = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_exoskeleton", properties -> new FossilItem(properties, () -> dinos.getExoskeleton().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
 				dinos.setPlasteredExoskeletonItem(() -> plasteredExoskeleton.get());
-				ItemEntry<FossilItem> exoskeleton = REGISTRATE.item(dinos.name().toLowerCase() + "_exoskeleton", properties -> new FossilItem(properties, () -> dinos.getExoskeleton().get(), false)).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, dinos.getFossilTag()).register();
+				ItemEntry<FossilItem> exoskeleton = REGISTRATE.item(dinos.name().toLowerCase() + "_exoskeleton", properties -> new FossilItem(properties, () -> dinos.getExoskeleton().get(), false)).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
 				dinos.setSkeletonPick(() -> exoskeleton.get());
 			}
 
 			if (dinos == DinoTypes.PALAEONISCUM) {
-				ItemEntry<FossilItem> plasteredBody = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_body", properties -> new FossilItem(properties, () -> dinos.getBody().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).register();
+				ItemEntry<FossilItem> plasteredBody = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_body", properties -> new FossilItem(properties, () -> dinos.getBody().get(), true)).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
 				dinos.setPlasteredBodyItem(() -> plasteredBody.get());
-				ItemEntry<FossilItem> body = REGISTRATE.item(dinos.name().toLowerCase() + "_body", properties -> new FossilItem(properties, () -> dinos.getBody().get(), false)).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, dinos.getFossilTag()).register();
+				ItemEntry<FossilItem> body = REGISTRATE.item(dinos.name().toLowerCase() + "_body", properties -> new FossilItem(properties, () -> dinos.getBody().get(), false)).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
 				dinos.setSkeletonPick(() -> body.get());
 			}
 
@@ -292,9 +291,6 @@ public class LostWorldsItems {
 
 	private static void doRandomItemStuff() {
 		LostWorldsRecipeManager.initAlternateRecipes();
-		if (LostWorldsUtils.modLoaded("crafttweaker")) {
-			AmberDNAExtractorRecipeManager.init();
-		}
 		Foods.init();
 	}
 

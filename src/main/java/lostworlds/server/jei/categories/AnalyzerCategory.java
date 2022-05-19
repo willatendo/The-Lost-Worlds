@@ -30,7 +30,7 @@ public class AnalyzerCategory implements IRecipeCategory<AnalyzerRecipe> {
 	public AnalyzerCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 0, 138, 82, 38);
-		this.icon = helper.createDrawableIngredient(LostWorldsBlocks.DNA_EXTRACTOR.asStack());
+		this.icon = helper.createDrawableIngredient(LostWorldsBlocks.ANALYZER.asStack());
 		this.analyseProgessBar = CacheBuilder.newBuilder().maximumSize(25).build(new CacheLoader<Integer, IDrawableAnimated>() {
 			@Override
 			public IDrawableAnimated load(Integer cookTime) {

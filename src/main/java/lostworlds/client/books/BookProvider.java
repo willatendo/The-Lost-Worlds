@@ -20,13 +20,15 @@ import net.minecraft.data.DirectoryCache;
 import net.minecraft.data.IDataProvider;
 
 public abstract class BookProvider implements IDataProvider {
-	private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().create();
-	private final DataGenerator generator;
-	private final String id;
+	protected static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().create();
+	protected final DataGenerator generator;
+	protected final String id;
+	protected final String lang;
 
-	public BookProvider(DataGenerator generator, String id) {
+	public BookProvider(DataGenerator generator, String id, String lang) {
 		this.generator = generator;
 		this.id = id;
+		this.lang = lang;
 	}
 
 	@Override
@@ -45,7 +47,7 @@ public abstract class BookProvider implements IDataProvider {
 		});
 	}
 
-	private void saveToBook(DirectoryCache cache, JsonObject json, Path path) {
+	protected void saveToBook(DirectoryCache cache, JsonObject json, Path path) {
 		try {
 			String s = GSON.toJson((JsonElement) json);
 			String s1 = SHA1.hashUnencodedChars(s).toString();
@@ -61,7 +63,7 @@ public abstract class BookProvider implements IDataProvider {
 		}
 	}
 
-	private void saveToBook(DirectoryCache cache, JsonArray json, Path path) {
+	protected void saveToBook(DirectoryCache cache, JsonArray json, Path path) {
 		try {
 			String s = GSON.toJson((JsonElement) json);
 			String s1 = SHA1.hashUnencodedChars(s).toString();

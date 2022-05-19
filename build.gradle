@@ -77,9 +77,11 @@ repositories {
 	// JEI
 	maven { url 'https://dvs1.progwml6.com/files/maven' }
 	// Craft Tweaker
-	maven { url "https://maven.blamejared.com" }
+	maven { url 'https://maven.blamejared.com' }
 	// Registrate
-	maven { url "https://maven.tterrag.com/" }
+	maven { url 'https://maven.tterrag.com/' }
+	// REI 	
+	maven { url 'https://maven.shedaniel.me' }
 }	
 
 configurations {

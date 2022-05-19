@@ -2,6 +2,7 @@ package lostworlds.data;
 
 import java.util.function.Consumer;
 
+import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.Plants;
 import lostworlds.server.block.Trees;
@@ -15,7 +16,10 @@ import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
+import net.minecraft.data.ShapelessRecipeBuilder;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraftforge.common.Tags;
 
 public class LostWorldsRecipeProvider extends RecipeProvider {
 	public LostWorldsRecipeProvider(DataGenerator generator) {
@@ -59,5 +63,7 @@ public class LostWorldsRecipeProvider extends RecipeProvider {
 			AnalyzerRecipeBuilder.simple(Ingredient.of(plants.getDNA().get()), plants.getDNADisc().get()).unlockedBy("has_item", has(plants.getDNA().get())).save(consumer);
 			CultivatorRecipeBuilder.simple(Ingredient.of(plants.getDNADisc().get()), plants.getSeed().get()).unlockedBy("has_item", has(plants.getDNADisc().get())).save(consumer);
 		}
+
+		ShapelessRecipeBuilder.shapeless(Items.BONE_MEAL, 4).requires(Tags.Items.BONES).unlockedBy("has_item", has(LostWorldsTags.ModItemTags.FOSSILS.tag)).save(consumer, LostWorldsUtils.rL("bone_meal_from_bone"));
 	}
 }

@@ -15,7 +15,7 @@ public class RegistrateBookProvider extends BookProvider implements RegistratePr
 	private Consumer<BookBuilder> callback;
 
 	public RegistrateBookProvider(AbstractRegistrate<?> owner, DataGenerator generator) {
-		super(generator, owner.getModid());
+		super(generator, owner.getModid(), "en_us");
 		this.owner = owner;
 	}
 

@@ -57,13 +57,13 @@ public class GinkgoTreeFeature extends Feature<NoFeatureConfig> {
 
 			if (pos.getY() >= 1 && pos.getY() + 7 + 1 < reader.getHeight()) {
 				for (int y = pos.getY() + 1; y < pos.getY() + height + 1; y++) {
-					reader.setBlock(new BlockPos(pos.getX(), y, pos.getZ()), log, 3);
+					placeBlock(new BlockPos(pos.getX(), y, pos.getZ()), log, reader);
 				}
 				for (int y = pos.getY() + 1; y < (pos.getY() + (height / 2)) + 1; y++) {
-					reader.setBlock(new BlockPos(pos.getX(), y, pos.north(1).getZ()), log, 3);
-					reader.setBlock(new BlockPos(pos.getX(), y, pos.south(1).getZ()), log, 3);
-					reader.setBlock(new BlockPos(pos.east(1).getX(), y, pos.getZ()), log, 3);
-					reader.setBlock(new BlockPos(pos.west(1).getX(), y, pos.getZ()), log, 3);
+					placeBlock(new BlockPos(pos.getX(), y, pos.north(1).getZ()), log, reader);
+					placeBlock(new BlockPos(pos.getX(), y, pos.south(1).getZ()), log, reader);
+					placeBlock(new BlockPos(pos.east(1).getX(), y, pos.getZ()), log, reader);
+					placeBlock(new BlockPos(pos.west(1).getX(), y, pos.getZ()), log, reader);
 				}
 			} else {
 				return false;
@@ -83,11 +83,11 @@ public class GinkgoTreeFeature extends Feature<NoFeatureConfig> {
 			}
 
 			// Leaves
-			reader.setBlock(new BlockPos(pos.getX(), pos.getY() + height + 1, pos.getZ()), leaves, 3);
-			reader.setBlock(new BlockPos(pos.getX(), pos.getY() + height + 2, pos.getZ()), leaves, 3);
+			placeBlock(new BlockPos(pos.getX(), pos.getY() + height + 1, pos.getZ()), leaves, reader);
+			placeBlock(new BlockPos(pos.getX(), pos.getY() + height + 2, pos.getZ()), leaves, reader);
 			for (Direction directions : horizontal) {
-				reader.setBlock(new BlockPos(pos.relative(directions, 1).getX(), pos.getY() + height + 1, pos.getZ()), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
-				reader.setBlock(new BlockPos(pos.relative(directions, 1).getX(), pos.getY() + height + 1, pos.relative(directions, 1).getZ()), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
+				placeBlock(new BlockPos(pos.relative(directions, 1).getX(), pos.getY() + height + 1, pos.getZ()), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
+				placeBlock(new BlockPos(pos.relative(directions, 1).getX(), pos.getY() + height + 1, pos.relative(directions, 1).getZ()), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
 			}
 			return true;
 		}
@@ -101,41 +101,47 @@ public class GinkgoTreeFeature extends Feature<NoFeatureConfig> {
 			for (Direction directions : horizontal) {
 				int length = 2 + rand.nextInt(2);
 				for (int l = 0; l < length; l++) {
-					reader.setBlock(pos.relative(directions, l + 2).above(1), log.setValue(RotatedPillarBlock.AXIS, directions.getAxis()), 3);
+					placeBlock(pos.relative(directions, l + 2).above(1), log.setValue(RotatedPillarBlock.AXIS, directions.getAxis()), reader);
 					if (l == (length / 2)) {
 						int chance = rand.nextInt(4);
 						if (chance >= 1 && chance <= 2) {
-							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
-							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getClockWise(), 1).above(2), log.setValue(RotatedPillarBlock.AXIS, directions.getClockWise().getAxis()), 3);
-							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getClockWise(), 2).above(2), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
+							placeBlock(pos.relative(directions, l + 2).relative(directions.getClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
+							placeBlock(pos.relative(directions, l + 2).relative(directions.getClockWise(), 1).above(2), log.setValue(RotatedPillarBlock.AXIS, directions.getClockWise().getAxis()), reader);
+							placeBlock(pos.relative(directions, l + 2).relative(directions.getClockWise(), 2).above(2), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
 						}
 						if (chance >= 2 && chance <= 3) {
-							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getCounterClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
-							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getCounterClockWise(), 1).above(2), log.setValue(RotatedPillarBlock.AXIS, directions.getCounterClockWise().getAxis()), 3);
-							reader.setBlock(pos.relative(directions, l + 2).relative(directions.getCounterClockWise(), 2).above(2), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
+							placeBlock(pos.relative(directions, l + 2).relative(directions.getCounterClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
+							placeBlock(pos.relative(directions, l + 2).relative(directions.getCounterClockWise(), 1).above(2), log.setValue(RotatedPillarBlock.AXIS, directions.getCounterClockWise().getAxis()), reader);
+							placeBlock(pos.relative(directions, l + 2).relative(directions.getCounterClockWise(), 2).above(2), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
 						}
 					}
 				}
 
-				reader.setBlock(pos.relative(directions, length + 2).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
-				reader.setBlock(pos.relative(directions, length + 3).above(2), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
-				reader.setBlock(pos.relative(directions, length + 2).above(2), log.setValue(RotatedPillarBlock.AXIS, directions.getAxis()), 3);
-				reader.setBlock(pos.relative(directions, length + 1).relative(directions.getClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
-				reader.setBlock(pos.relative(directions, length + 1).relative(directions.getCounterClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
+				placeBlock(pos.relative(directions, length + 2).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
+				placeBlock(pos.relative(directions, length + 3).above(2), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
+				placeBlock(pos.relative(directions, length + 2).above(2), log.setValue(RotatedPillarBlock.AXIS, directions.getAxis()), reader);
+				placeBlock(pos.relative(directions, length + 1).relative(directions.getClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
+				placeBlock(pos.relative(directions, length + 1).relative(directions.getCounterClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
 
 			}
 		} else {
 			for (Direction directions : horizontal) {
 				int length = 1 + rand.nextInt(1);
 				for (int l = 0; l < length; l++) {
-					reader.setBlock(pos.relative(directions, l + 1).above(1), log.setValue(RotatedPillarBlock.AXIS, directions.getAxis()), 3);
+					placeBlock(pos.relative(directions, l + 1).above(1), log.setValue(RotatedPillarBlock.AXIS, directions.getAxis()), reader);
 				}
-				reader.setBlock(pos.relative(directions, length + 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
-				reader.setBlock(pos.relative(directions, length + 2).above(2), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
-				reader.setBlock(pos.relative(directions, length + 1).above(2), log.setValue(RotatedPillarBlock.AXIS, directions.getAxis()), 3);
-				reader.setBlock(pos.relative(directions, length).relative(directions.getClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
-				reader.setBlock(pos.relative(directions, length).relative(directions.getCounterClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), 3);
+				placeBlock(pos.relative(directions, length + 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
+				placeBlock(pos.relative(directions, length + 2).above(2), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
+				placeBlock(pos.relative(directions, length + 1).above(2), log.setValue(RotatedPillarBlock.AXIS, directions.getAxis()), reader);
+				placeBlock(pos.relative(directions, length).relative(directions.getClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
+				placeBlock(pos.relative(directions, length).relative(directions.getCounterClockWise(), 1).above(1), leaves.setValue(LeavesBlock.DISTANCE, 2), reader);
 			}
+		}
+	}
+
+	public void placeBlock(BlockPos pos, BlockState state, ISeedReader reader) {
+		if (reader.getBlockState(pos).canBeReplacedByLeaves(reader, pos)) {
+			reader.setBlock(pos, state, 3);
 		}
 	}
 }
