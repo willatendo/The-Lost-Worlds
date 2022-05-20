@@ -398,7 +398,7 @@
   "block.lostworlds.ouranosaurus_egg": "bb\u018E sn\u0279n\u0250sou\u0250\u0279nO",
   "block.lostworlds.outdoor_toilet_door": "\u0279oo\u15E1 \u0287\u01DD\u05DF\u0131o\u27D8 \u0279oop\u0287nO",
   "block.lostworlds.paleontology_table": "\u01DD\u05DFq\u0250\u27D8 \u028Ebo\u05DFo\u0287uo\u01DD\u05DF\u0250\u0500",
-  "block.lostworlds.parkososaurus_egg": "bb\u018E sn\u0279n\u0250soso\u029E\u0279\u0250\u0500",
+  "block.lostworlds.parksosaurus_egg": "bb\u018E sn\u0279n\u0250sos\u029E\u0279\u0250\u0500",
   "block.lostworlds.paved_road": "p\u0250o\u1D1A p\u01DD\u028C\u0250\u0500",
   "block.lostworlds.pavement": "\u0287u\u01DD\u026F\u01DD\u028C\u0250\u0500",
   "block.lostworlds.pavement_slope": "\u01DDdo\u05DFS \u0287u\u01DD\u026F\u01DD\u028C\u0250\u0500",
@@ -1841,8 +1841,8 @@
   "tablet.lostworlds.starving": "bu\u0131\u028C\u0279\u0250\u0287S",
   "tablet.lostworlds.tagged_to": ":o\u27D8 p\u01DDbb\u0250\u27D8",
   "timeBook.lostworlds.doesnt_work": "\u00A1uo\u0131su\u01DD\u026F\u0131p s\u0131\u0265\u0287 u\u0131 \u0287s\u0131x\u01DD \u0287,us\u01DDop \u01DD\u026F\u0131\u27D8",
-  "timeBook.lostworlds.transport_to_cretaceous_period": "\u00A1po\u0131\u0279\u01DD\u0500 sno\u01DD\u0254\u0250\u0287\u01DD\u0279\u0186 \u01DD\u0265\u0287 o\u0287 no\u028E bu\u0131\u0287\u0279odsu\u0250\u0279\u27D8",
-  "timeBook.lostworlds.transport_to_jurassic_period": "\u00A1po\u0131\u0279\u01DD\u0500 \u0254\u0131ss\u0250\u0279n\u017F \u01DD\u0265\u0287 o\u0287 no\u028E bu\u0131\u0287\u0279odsu\u0250\u0279\u27D8",
-  "timeBook.lostworlds.transport_to_overworld": "\u00A1\u01DD\u026Fo\u0265 \u029E\u0254\u0250q\u025F\u00A7 %s9\u00A7 bu\u0131\u0287\u0279odsu\u0250\u0279\u27D8",
-  "timeBook.lostworlds.transport_to_permian_period": "\u00A1po\u0131\u0279\u01DD\u0500 u\u0250\u0131\u026F\u0279\u01DD\u0500 \u01DD\u0265\u0287 o\u0287 no\u028E bu\u0131\u0287\u0279odsu\u0250\u0279\u27D8"
+  "timeBook.lostworlds.transport_to_cretaceous_period": "\u00A1po\u0131\u0279\u01DD\u0500 sno\u01DD\u0254\u0250\u0287\u01DD\u0279\u0186 \u01DD\u0265\u0287 o\u0287 %s bu\u0131\u0287\u0279odsu\u0250\u0279\u27D8",
+  "timeBook.lostworlds.transport_to_jurassic_period": "\u00A1po\u0131\u0279\u01DD\u0500 \u0254\u0131ss\u0250\u0279n\u017F \u01DD\u0265\u0287 o\u0287 %s bu\u0131\u0287\u0279odsu\u0250\u0279\u27D8",
+  "timeBook.lostworlds.transport_to_overworld": "\u00A1\u01DD\u026Fo\u0265 \u029E\u0254\u0250q %s bu\u0131\u0287\u0279odsu\u0250\u0279\u27D8",
+  "timeBook.lostworlds.transport_to_permian_period": "\u00A1po\u0131\u0279\u01DD\u0500 u\u0250\u0131\u026F\u0279\u01DD\u0500 \u01DD\u0265\u0287 o\u0287 %s bu\u0131\u0287\u0279odsu\u0250\u0279\u27D8"
 }

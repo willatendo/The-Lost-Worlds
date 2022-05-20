@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:procompsognathus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:procompsognathus_skull"
+    },
+    "@": {
+      "item": "lostworlds:procompsognathus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:procompsognathus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:procompsognathus_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:procompsognathus_skeleton"
+  }
+}

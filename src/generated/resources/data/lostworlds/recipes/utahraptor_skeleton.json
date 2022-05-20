@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:utahraptor_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:utahraptor_skull"
+    },
+    "@": {
+      "item": "lostworlds:utahraptor_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:utahraptor_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:utahraptor_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:utahraptor_skeleton"
+  }
+}

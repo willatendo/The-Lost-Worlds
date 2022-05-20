@@ -398,7 +398,7 @@
   "block.lostworlds.ouranosaurus_egg": "Ouranosaurus Egg",
   "block.lostworlds.outdoor_toilet_door": "Outdoor Toilet Door",
   "block.lostworlds.paleontology_table": "Paleontology Table",
-  "block.lostworlds.parkososaurus_egg": "Parkososaurus Egg",
+  "block.lostworlds.parksosaurus_egg": "Parksosaurus Egg",
   "block.lostworlds.paved_road": "Paved Road",
   "block.lostworlds.pavement": "Pavement",
   "block.lostworlds.pavement_slope": "Pavement Slope",
@@ -1841,8 +1841,8 @@
   "tablet.lostworlds.starving": "Starving",
   "tablet.lostworlds.tagged_to": "Tagged To:",
   "timeBook.lostworlds.doesnt_work": "Time doesn't exist in this dimension!",
-  "timeBook.lostworlds.transport_to_cretaceous_period": "Transporting you to the Cretaceous Period!",
-  "timeBook.lostworlds.transport_to_jurassic_period": "Transporting you to the Jurassic Period!",
+  "timeBook.lostworlds.transport_to_cretaceous_period": "Transporting %s to the Cretaceous Period!",
+  "timeBook.lostworlds.transport_to_jurassic_period": "Transporting %s to the Jurassic Period!",
   "timeBook.lostworlds.transport_to_overworld": "Transporting %s back home!",
-  "timeBook.lostworlds.transport_to_permian_period": "Transporting you to the Permian Period!"
+  "timeBook.lostworlds.transport_to_permian_period": "Transporting %s to the Permian Period!"
 }

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:zephyrosaurus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:zephyrosaurus_skull"
+    },
+    "@": {
+      "item": "lostworlds:zephyrosaurus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:zephyrosaurus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:zephyrosaurus_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:zephyrosaurus_skeleton"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:cryolophosaurus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:cryolophosaurus_skull"
+    },
+    "@": {
+      "item": "lostworlds:cryolophosaurus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:cryolophosaurus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:cryolophosaurus_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:cryolophosaurus_skeleton"
+  }
+}

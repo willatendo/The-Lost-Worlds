@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:dilophosaurus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:dilophosaurus_skull"
+    },
+    "@": {
+      "item": "lostworlds:dilophosaurus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:dilophosaurus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:dilophosaurus_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:dilophosaurus_skeleton"
+  }
+}

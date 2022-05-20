@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:ouranosaurus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:ouranosaurus_skull"
+    },
+    "@": {
+      "item": "lostworlds:ouranosaurus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:ouranosaurus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:ouranosaurus_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:ouranosaurus_skeleton"
+  }
+}

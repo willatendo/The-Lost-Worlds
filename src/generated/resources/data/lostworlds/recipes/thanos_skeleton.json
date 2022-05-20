@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:thanos_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:thanos_skull"
+    },
+    "@": {
+      "item": "lostworlds:thanos_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:thanos_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:thanos_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:thanos_skeleton"
+  }
+}

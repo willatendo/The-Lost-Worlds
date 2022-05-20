@@ -176,7 +176,7 @@ public class LostWorldsItems {
 				dinos.setTailItem(() -> tail.get());
 				ItemEntry<FossilItem> skull = REGISTRATE.item(dinos.name().toLowerCase() + "_skull", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER("skull")), () -> dinos.getSkull().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
 				dinos.setSkullItem(() -> skull.get());
-				ItemEntry<FossilItem> skeleton = REGISTRATE.item(dinos.name().toLowerCase() + "_skeleton", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton().get(), false)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
+				ItemEntry<FossilItem> skeleton = REGISTRATE.item(dinos.name().toLowerCase() + "_skeleton", properties -> new FossilItem(properties.setISTER(() -> dinos.getISTER()), () -> dinos.getSkeleton().get(), false)).recipe((item, provider) -> ShapedRecipeBuilder.shaped(item.get()).pattern("#$#").pattern("@%@").pattern(" ! ").define('#', dinos.getArmBonesItem().get()).define('$', dinos.getSkullItem().get()).define('@', dinos.getLegBonesItem().get()).define('%', dinos.getRibCageItem().get()).define('!', dinos.getTailItem().get()).unlockedBy("has_item", provider.hasItem(dinos.getFossilTag())).save(provider)).model(fossil()).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
 				dinos.setSkeletonPick(() -> skeleton.get());
 			}
 

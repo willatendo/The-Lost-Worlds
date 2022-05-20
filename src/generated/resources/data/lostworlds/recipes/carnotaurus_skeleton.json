@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:carnotaurus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:carnotaurus_skull"
+    },
+    "@": {
+      "item": "lostworlds:carnotaurus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:carnotaurus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:carnotaurus_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:carnotaurus_skeleton"
+  }
+}

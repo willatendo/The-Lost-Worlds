@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "lostworlds:parkososaurus_egg"
+      "lostworlds:fukuivenator_skeleton"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:parksosaurus_dna_disc"
+            "tag": "lostworlds:fukuivenator_fossils"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "lostworlds:parkososaurus_egg"
+        "recipe": "lostworlds:fukuivenator_skeleton"
       }
     }
   },

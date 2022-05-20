@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:suchomimus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:suchomimus_skull"
+    },
+    "@": {
+      "item": "lostworlds:suchomimus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:suchomimus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:suchomimus_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:suchomimus_skeleton"
+  }
+}

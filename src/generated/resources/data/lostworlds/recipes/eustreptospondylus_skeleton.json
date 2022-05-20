@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:eustreptospondylus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:eustreptospondylus_skull"
+    },
+    "@": {
+      "item": "lostworlds:eustreptospondylus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:eustreptospondylus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:eustreptospondylus_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:eustreptospondylus_skeleton"
+  }
+}

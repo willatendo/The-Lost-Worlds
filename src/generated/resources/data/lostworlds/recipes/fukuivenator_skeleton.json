@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:fukuivenator_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:fukuivenator_skull"
+    },
+    "@": {
+      "item": "lostworlds:fukuivenator_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:fukuivenator_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:fukuivenator_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:fukuivenator_skeleton"
+  }
+}

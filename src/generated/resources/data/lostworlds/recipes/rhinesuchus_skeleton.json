@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:rhinesuchus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:rhinesuchus_skull"
+    },
+    "@": {
+      "item": "lostworlds:rhinesuchus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:rhinesuchus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:rhinesuchus_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:rhinesuchus_skeleton"
+  }
+}

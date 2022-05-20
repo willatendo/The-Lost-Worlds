@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:dimetrodon_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:dimetrodon_skull"
+    },
+    "@": {
+      "item": "lostworlds:dimetrodon_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:dimetrodon_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:dimetrodon_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:dimetrodon_skeleton"
+  }
+}

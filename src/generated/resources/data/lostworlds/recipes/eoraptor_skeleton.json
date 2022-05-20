@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:eoraptor_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:eoraptor_skull"
+    },
+    "@": {
+      "item": "lostworlds:eoraptor_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:eoraptor_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:eoraptor_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:eoraptor_skeleton"
+  }
+}

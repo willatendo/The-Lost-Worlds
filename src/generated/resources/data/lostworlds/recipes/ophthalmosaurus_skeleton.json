@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:ophthalmosaurus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:ophthalmosaurus_skull"
+    },
+    "@": {
+      "item": "lostworlds:ophthalmosaurus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:ophthalmosaurus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:ophthalmosaurus_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:ophthalmosaurus_skeleton"
+  }
+}

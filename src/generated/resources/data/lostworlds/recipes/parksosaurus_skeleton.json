@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:parksosaurus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:parksosaurus_skull"
+    },
+    "@": {
+      "item": "lostworlds:parksosaurus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:parksosaurus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:parksosaurus_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:parksosaurus_skeleton"
+  }
+}

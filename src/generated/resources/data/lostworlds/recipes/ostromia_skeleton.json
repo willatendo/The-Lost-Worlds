@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:ostromia_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:ostromia_skull"
+    },
+    "@": {
+      "item": "lostworlds:ostromia_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:ostromia_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:ostromia_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:ostromia_skeleton"
+  }
+}

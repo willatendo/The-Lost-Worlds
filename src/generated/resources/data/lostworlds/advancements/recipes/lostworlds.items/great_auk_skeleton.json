@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "lostworlds:parkososaurus_dna_from_blood"
+      "lostworlds:great_auk_skeleton"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:parksosaurus_soft_tissue"
+            "tag": "lostworlds:great_auk_fossils"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "lostworlds:parkososaurus_dna_from_blood"
+        "recipe": "lostworlds:great_auk_skeleton"
       }
     }
   },

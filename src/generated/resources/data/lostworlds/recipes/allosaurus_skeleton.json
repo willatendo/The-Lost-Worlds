@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:allosaurus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:allosaurus_skull"
+    },
+    "@": {
+      "item": "lostworlds:allosaurus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:allosaurus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:allosaurus_tail"
+    }
+  },
+  "result": {
+    "item": "lostworlds:allosaurus_skeleton"
+  }
+}

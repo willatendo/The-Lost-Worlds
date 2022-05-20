@@ -2,7 +2,7 @@ package lostworlds.client.entity.render.bone;
 
 import java.util.concurrent.Callable;
 
-import lostworlds.client.entity.model.skeleton.SkeletonModel;
+import lostworlds.client.entity.model.skeleton.CustomisableModel;
 import lostworlds.server.item.FossilItem;
 import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -10,13 +10,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class SkeletonRenderer extends GeoItemRenderer<FossilItem> implements Callable<ItemStackTileEntityRenderer> {
-	public SkeletonRenderer(String modelAndTexture) {
-		super(new SkeletonModel(modelAndTexture));
+public class ItemCustomisableRenderer extends GeoItemRenderer<FossilItem> implements Callable<ItemStackTileEntityRenderer> {
+	public ItemCustomisableRenderer(String modelAndTexture) {
+		super(new CustomisableModel(modelAndTexture));
 	}
 
-	public SkeletonRenderer(String model, String texture) {
-		super(new SkeletonModel(model, texture));
+	public ItemCustomisableRenderer(String model, String texture) {
+		super(new CustomisableModel(model, texture));
 	}
 
 	@Override
