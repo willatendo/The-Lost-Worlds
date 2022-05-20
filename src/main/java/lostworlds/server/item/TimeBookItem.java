@@ -52,35 +52,35 @@ public class TimeBookItem extends ShootableItem {
 
 				float f = getPowerForTime(i);
 				if (!((double) f < 0.1D)) {
-					boolean flag1 = playerentity.abilities.instabuild;
 					if (!world.isClientSide) {
 						if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
 							if (entity.level instanceof ServerWorld) {
 								if (entity.level.dimension() == World.NETHER || entity.level.dimension() == World.END) {
 									entity.sendMessage(LostWorldsUtils.tTC("timeBook", "doesnt_work"), entity.getUUID());
+									return;
 								}
 								ServerWorld serverworld = (ServerWorld) entity.level;
 								MinecraftServer minecraftserver = serverworld.getServer();
-								RegistryKey<World> registrykey = entity.level.dimension() == worldToTransportTo ? World.OVERWORLD : worldToTransportTo;
+								RegistryKey<World> registrykey = entity.level.dimension() == this.worldToTransportTo ? World.OVERWORLD : this.worldToTransportTo;
 								ServerWorld serverworld1 = minecraftserver.getLevel(registrykey);
 								if (serverworld1 != null && !entity.isPassenger()) {
 									playerentity.changeDimension(serverworld1, new ModTeleporter());
 									if (!registrykey.equals(World.OVERWORLD)) {
-										entity.sendMessage(LostWorldsUtils.tTC("timeBook", "transport_to_" + era.toString().toLowerCase()), entity.getUUID());
+										entity.sendMessage(LostWorldsUtils.tTCA("timeBook", "transport_to_" + era.toString().toLowerCase(), playerentity.getName().getString()), entity.getUUID());
 									} else {
-										entity.sendMessage(LostWorldsUtils.tTC("timeBook", "transport_to_overworld"), entity.getUUID());
+										entity.sendMessage(LostWorldsUtils.tTCA("timeBook", "transport_to_overworld", playerentity.getName().getString()), entity.getUUID());
 									}
 								}
+
+								if (!flag) {
+									itemstack.shrink(1);
+									if (itemstack.isEmpty()) {
+										playerentity.inventory.removeItem(itemstack);
+									}
+								}
+
 								world.playSound((PlayerEntity) null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.PORTAL_TRAVEL, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
-
 							}
-						}
-					}
-
-					if (!flag1 && !playerentity.abilities.instabuild) {
-						itemstack.shrink(1);
-						if (itemstack.isEmpty()) {
-							playerentity.inventory.removeItem(itemstack);
 						}
 					}
 

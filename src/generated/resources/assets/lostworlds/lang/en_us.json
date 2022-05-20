@@ -1843,6 +1843,6 @@
   "timeBook.lostworlds.doesnt_work": "Time doesn't exist in this dimension!",
   "timeBook.lostworlds.transport_to_cretaceous_period": "Transporting you to the Cretaceous Period!",
   "timeBook.lostworlds.transport_to_jurassic_period": "Transporting you to the Jurassic Period!",
-  "timeBook.lostworlds.transport_to_overworld": "Transporting you back home!",
+  "timeBook.lostworlds.transport_to_overworld": "Transporting %s back home!",
   "timeBook.lostworlds.transport_to_permian_period": "Transporting you to the Permian Period!"
 }

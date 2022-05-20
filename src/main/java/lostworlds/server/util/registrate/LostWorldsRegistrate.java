@@ -219,10 +219,10 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.addRawLang("event.lostworlds.load", "Thank you for downloading the mod! You are running Public %s.");
 
 		this.addRawLang("timeBook.lostworlds.doesnt_work", "Time doesn't exist in this dimension!");
-		this.addRawLang("timeBook.lostworlds.transport_to_overworld", "Transporting you back home!");
-		this.addRawLang("timeBook.lostworlds.transport_to_permian_period", "Transporting you to the Permian Period!");
-		this.addRawLang("timeBook.lostworlds.transport_to_jurassic_period", "Transporting you to the Jurassic Period!");
-		this.addRawLang("timeBook.lostworlds.transport_to_cretaceous_period", "Transporting you to the Cretaceous Period!");
+		this.addRawLang("timeBook.lostworlds.transport_to_overworld", "Transporting %s back home!");
+		this.addRawLang("timeBook.lostworlds.transport_to_permian_period", "Transporting %s to the Permian Period!");
+		this.addRawLang("timeBook.lostworlds.transport_to_jurassic_period", "Transporting %s to the Jurassic Period!");
+		this.addRawLang("timeBook.lostworlds.transport_to_cretaceous_period", "Transporting %s to the Cretaceous Period!");
 
 		this.addRawLang("filled_map.surface_fossil", "Fossil Map");
 		this.addRawLang("filled_map.subterranean_fossil", "Fossil Map");
