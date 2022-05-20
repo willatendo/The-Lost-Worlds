@@ -12,17 +12,17 @@ displayURL="https://www.curseforge.com/minecraft/mc-mods/the-lost-worlds-forge"
 logoFile="lostworlds.png"
 description='''
 The Lost Worlds is a modern Minecraft mod that adds tonnes to explore. Hunt for fossils and save them from poachers, dive into a rich lore, explore prehistoric eras, and much more! All with a focus of natural history!
-
-Authors:
-Lead Developer:
-- Willatendo
-
-Modlers/3d Artists:
-- Dapper Dino
-- JZ
-
-2d Artists:
-- Santispik3
+ 
+Authors: 
+Lead Developer: 
+- Willatendo 
+ 
+Modlers/3d Artists: 
+- Dapper Dino 
+- JZ 
+ 
+2d Artists: 
+- Santispik3 
 '''
 
 [[dependencies.lostworlds]]

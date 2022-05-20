@@ -2,12 +2,10 @@ package lostworlds.server.block;
 
 import java.util.Random;
 
-import lostworlds.server.entity.fossil.DirtyFossilEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
@@ -45,17 +43,11 @@ public class SoftDirtBlock extends Block {
 			int feather = rand.nextInt(DinoTypes.feathered().size());
 			this.popResource(world, pos, DinoTypes.feathered().get(feather).getFeather().get().getDefaultInstance());
 		} else if (drop == 4) {
-			this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().get().asItem().getDefaultInstance());
+			this.popResource(world, pos, LostWorldsBlocks.FOSSILIZED_NAUTILUS_SHELL.asStack());
 		} else if (drop == 5) {
-			EntityType<DirtyFossilEntity> anomalocaris = DinoTypes.ANOMALOCARIS.getDirtyExoskeleton().get();
-			DirtyFossilEntity fossil = anomalocaris.create(world);
-			fossil.moveTo(pos, 0.0F, 0.0F);
-			world.addFreshEntity(fossil);
+			this.popResource(world, pos, DinoTypes.ANOMALOCARIS.getSkeletonPick().get().asItem().getDefaultInstance());
 		} else if (drop == 6) {
-			EntityType<DirtyFossilEntity> palaeoniscum = DinoTypes.PALAEONISCUM.getDirtyBody().get();
-			DirtyFossilEntity fossil = palaeoniscum.create(world);
-			fossil.moveTo(pos, 0.0F, 0.0F);
-			world.addFreshEntity(fossil);
+			this.popResource(world, pos, DinoTypes.PALAEONISCUM.getSkeletonPick().get().asItem().getDefaultInstance());
 		}
 	}
 

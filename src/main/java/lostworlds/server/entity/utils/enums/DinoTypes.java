@@ -78,10 +78,6 @@ public enum DinoTypes implements IStringSerializable {
 	private Supplier<EntityType<FossilEntity>> ribCage;
 	private Supplier<EntityType<FossilEntity>> tail;
 	private Supplier<EntityType<FossilEntity>> skeleton;
-	private Supplier<EntityType<DirtyFossilEntity>> dirtyExoskeleton;
-	private Supplier<EntityType<FossilEntity>> exoskeleton;
-	private Supplier<EntityType<DirtyFossilEntity>> dirtyBody;
-	private Supplier<EntityType<FossilEntity>> body;
 	private Supplier<Block> egg;
 	private Supplier<Block> extraBlock;
 	private Supplier<Item> plasteredSkullItem;
@@ -190,22 +186,6 @@ public enum DinoTypes implements IStringSerializable {
 		return this.skeleton = entity;
 	}
 
-	public Supplier<EntityType<DirtyFossilEntity>> setDirtyExoskeleton(Supplier<EntityType<DirtyFossilEntity>> entity) {
-		return this.dirtyExoskeleton = entity;
-	}
-
-	public Supplier<EntityType<FossilEntity>> setExoskeleton(Supplier<EntityType<FossilEntity>> entity) {
-		return this.exoskeleton = entity;
-	}
-
-	public Supplier<EntityType<DirtyFossilEntity>> setDirtyBody(Supplier<EntityType<DirtyFossilEntity>> entity) {
-		return this.dirtyBody = entity;
-	}
-
-	public Supplier<EntityType<FossilEntity>> setBody(Supplier<EntityType<FossilEntity>> entity) {
-		return this.body = entity;
-	}
-
 	public Supplier<Item> setSkeletonPick(Supplier<Item> item) {
 		return this.skeletonPick = item;
 	}
@@ -256,22 +236,6 @@ public enum DinoTypes implements IStringSerializable {
 
 	public Supplier<EntityType<FossilEntity>> getSkeleton() {
 		return this.skeleton;
-	}
-
-	public Supplier<EntityType<DirtyFossilEntity>> getDirtyExoskeleton() {
-		return this.dirtyExoskeleton;
-	}
-
-	public Supplier<EntityType<FossilEntity>> getExoskeleton() {
-		return this.exoskeleton;
-	}
-
-	public Supplier<EntityType<DirtyFossilEntity>> getDirtyBody() {
-		return this.dirtyBody;
-	}
-
-	public Supplier<EntityType<FossilEntity>> getBody() {
-		return this.body;
 	}
 
 	public Supplier<Item> setMeat(Supplier<Item> meat) {

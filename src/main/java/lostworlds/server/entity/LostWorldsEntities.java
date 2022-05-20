@@ -178,20 +178,6 @@ public class LostWorldsEntities {
 				EntityEntry<FossilEntity> skeleton = REGISTRATE.entity(dinos.toString().toLowerCase() + "_skeleton", FossilEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId(), dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).loot((provider, entity) -> provider.add(entity, LootTable.lootTable().withPool(LootPool.lootPool().add(ItemLootEntry.lootTableItem(dinos.getSkeletonPick().get()))))).register();
 				dinos.setSkeleton(() -> skeleton.get());
 			}
-
-			if (dinos == DinoTypes.ANOMALOCARIS) {
-				EntityEntry<DirtyFossilEntity> dirtyExoskeleton = REGISTRATE.entity("dirty_" + dinos.toString().toLowerCase() + "_exoskeleton", DirtyFossilEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_exoskeleton", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).loot((provider, entity) -> provider.add(entity, LootTable.lootTable().withPool(LootPool.lootPool().add(ItemLootEntry.lootTableItem(dinos.getPlasteredExoskeletonItem().get()))))).register();
-				dinos.setDirtyExoskeleton(() -> dirtyExoskeleton.get());
-				EntityEntry<FossilEntity> exoskeleton = REGISTRATE.entity(dinos.toString().toLowerCase() + "_exoskeleton", FossilEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_exoskeleton", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).loot((provider, entity) -> provider.add(entity, LootTable.lootTable().withPool(LootPool.lootPool().add(ItemLootEntry.lootTableItem(dinos.getSkeletonPick().get()))))).register();
-				dinos.setExoskeleton(() -> exoskeleton.get());
-			}
-
-			if (dinos == DinoTypes.PALAEONISCUM) {
-				EntityEntry<DirtyFossilEntity> dirtyBody = REGISTRATE.entity("dirty_" + dinos.toString().toLowerCase() + "_body", DirtyFossilEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_body", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).loot((provider, entity) -> provider.add(entity, LootTable.lootTable().withPool(LootPool.lootPool().add(ItemLootEntry.lootTableItem(dinos.getPlasteredBodyItem().get()))))).register();
-				dinos.setDirtyBody(() -> dirtyBody.get());
-				EntityEntry<FossilEntity> body = REGISTRATE.entity(dinos.toString().toLowerCase() + "_body", FossilEntity::new, EntityClassification.CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> manager -> new CustomisableRenderer(manager, dinos.getId() + "_body", dinos.getId(), 0.5F)).attributes(() -> FossilEntity.createAttributes()).loot((provider, entity) -> provider.add(entity, LootTable.lootTable().withPool(LootPool.lootPool().add(ItemLootEntry.lootTableItem(dinos.getSkeletonPick().get()))))).register();
-				dinos.setBody(() -> body.get());
-			}
 		}
 	}
 

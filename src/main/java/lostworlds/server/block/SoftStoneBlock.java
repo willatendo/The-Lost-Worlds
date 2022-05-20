@@ -90,6 +90,138 @@ public class SoftStoneBlock extends Block {
 		PotentialPart part = state.getValue(POTENTIAL_PART);
 		DinoTypes creature = state.getValue(POTENTIAL_CREATURE);
 
+		if (creature == DinoTypes.NAUTILUS) {
+			if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
+				int breakchance = rand.nextInt(2);
+				if (breakchance != 0) {
+					this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().get().asItem().getDefaultInstance());
+					return;
+				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 3) {
+					this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().get().asItem().getDefaultInstance());
+					return;
+				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 2) {
+					int lowbreakchance = rand.nextInt(16);
+					if (lowbreakchance != 0) {
+						this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().get().asItem().getDefaultInstance());
+						return;
+					}
+				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 1) {
+					int mediumbreakchance = rand.nextInt(8);
+					if (mediumbreakchance != 0) {
+						this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().get().asItem().getDefaultInstance());
+						return;
+					}
+				} else {
+					int normalbreakchance = rand.nextInt(4);
+					if (normalbreakchance != 0) {
+						this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().get().asItem().getDefaultInstance());
+						return;
+					} else {
+						this.breakStone(world, pos, state);
+					}
+				}
+			}
+		}
+
+		if (creature == DinoTypes.NAUTILUS) {
+			if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
+				int breakchance = rand.nextInt(2);
+				if (breakchance != 0) {
+					this.popResource(world, pos, LostWorldsBlocks.FOSSILIZED_NAUTILUS_SHELL.asStack());
+					return;
+				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 3) {
+					this.popResource(world, pos, LostWorldsBlocks.FOSSILIZED_NAUTILUS_SHELL.asStack());
+					return;
+				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 2) {
+					int lowbreakchance = rand.nextInt(16);
+					if (lowbreakchance != 0) {
+						this.popResource(world, pos, LostWorldsBlocks.FOSSILIZED_NAUTILUS_SHELL.asStack());
+						return;
+					}
+				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 1) {
+					int mediumbreakchance = rand.nextInt(8);
+					if (mediumbreakchance != 0) {
+						this.popResource(world, pos, LostWorldsBlocks.FOSSILIZED_NAUTILUS_SHELL.asStack());
+						return;
+					}
+				} else {
+					int normalbreakchance = rand.nextInt(4);
+					if (normalbreakchance != 0) {
+						this.popResource(world, pos, LostWorldsBlocks.FOSSILIZED_NAUTILUS_SHELL.asStack());
+						return;
+					} else {
+						this.breakStone(world, pos, state);
+					}
+				}
+			}
+		}
+
+		if (creature == DinoTypes.ANOMALOCARIS) {
+			if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
+				int breakchance = rand.nextInt(2);
+				if (breakchance != 0) {
+					this.popResource(world, pos, DinoTypes.ANOMALOCARIS.getSkeletonPick().get().asItem().getDefaultInstance());
+					return;
+				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 3) {
+					this.popResource(world, pos, DinoTypes.ANOMALOCARIS.getSkeletonPick().get().asItem().getDefaultInstance());
+					return;
+				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 2) {
+					int lowbreakchance = rand.nextInt(16);
+					if (lowbreakchance != 0) {
+						this.popResource(world, pos, DinoTypes.ANOMALOCARIS.getSkeletonPick().get().asItem().getDefaultInstance());
+						return;
+					}
+				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 1) {
+					int mediumbreakchance = rand.nextInt(8);
+					if (mediumbreakchance != 0) {
+						this.popResource(world, pos, DinoTypes.ANOMALOCARIS.getSkeletonPick().get().asItem().getDefaultInstance());
+						return;
+					}
+				} else {
+					int normalbreakchance = rand.nextInt(4);
+					if (normalbreakchance != 0) {
+						this.popResource(world, pos, DinoTypes.ANOMALOCARIS.getSkeletonPick().get().asItem().getDefaultInstance());
+						return;
+					} else {
+						this.breakStone(world, pos, state);
+					}
+				}
+			}
+		}
+
+		if (creature == DinoTypes.PALAEONISCUM) {
+			if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
+				int breakchance = rand.nextInt(2);
+				if (breakchance != 0) {
+					this.popResource(world, pos, DinoTypes.PALAEONISCUM.getSkeletonPick().get().asItem().getDefaultInstance());
+					return;
+				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 3) {
+					this.popResource(world, pos, DinoTypes.PALAEONISCUM.getSkeletonPick().get().asItem().getDefaultInstance());
+					return;
+				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 2) {
+					int lowbreakchance = rand.nextInt(16);
+					if (lowbreakchance != 0) {
+						this.popResource(world, pos, DinoTypes.PALAEONISCUM.getSkeletonPick().get().asItem().getDefaultInstance());
+						return;
+					}
+				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 1) {
+					int mediumbreakchance = rand.nextInt(8);
+					if (mediumbreakchance != 0) {
+						this.popResource(world, pos, DinoTypes.PALAEONISCUM.getSkeletonPick().get().asItem().getDefaultInstance());
+						return;
+					}
+				} else {
+					int normalbreakchance = rand.nextInt(4);
+					if (normalbreakchance != 0) {
+						this.popResource(world, pos, DinoTypes.PALAEONISCUM.getSkeletonPick().get().asItem().getDefaultInstance());
+						return;
+					} else {
+						this.breakStone(world, pos, state);
+					}
+				}
+			}
+		}
+
 		if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
 			int breakchance = rand.nextInt(2);
 			if (breakchance != 0) {
