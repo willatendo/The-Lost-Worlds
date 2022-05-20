@@ -6,38 +6,197 @@
 				"identifier": "geometry.kentrosaurus",
 				"texture_width": 128,
 				"texture_height": 128,
-				"visible_bounds_width": 7,
-				"visible_bounds_height": 2.5,
+				"visible_bounds_width": 8,
+				"visible_bounds_height": 3.5,
 				"visible_bounds_offset": [
 					0,
-					0.75,
+					1.25,
 					0
 				]
 			},
 			"bones": [
 				{
-					"name": "head",
+					"name": "Kentrosaurus",
 					"pivot": [
 						0,
-						1.55,
+						10,
+						0
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Kentrosaurus",
+					"pivot": [
+						0,
+						-6,
+						30
+					]
+				},
+				{
+					"name": "neck",
+					"parent": "body",
+					"pivot": [
+						0,
+						2,
+						16
+					]
+				},
+				{
+					"name": "head",
+					"parent": "neck",
+					"pivot": [
+						0,
+						2,
 						3
 					],
 					"cubes": [
 						{
 							"origin": [
 								-2.5,
-								0.05,
-								-3.5
+								0,
+								-1
 							],
 							"size": [
 								5,
-								3,
-								7
+								4,
+								5
 							],
-							"uv": [
-								58,
-								0
-							]
+							"uv": {
+								"north": {
+									"uv": [
+										98,
+										18
+									],
+									"uv_size": [
+										5,
+										4
+									]
+								},
+								"east": {
+									"uv": [
+										93,
+										18
+									],
+									"uv_size": [
+										5,
+										4
+									]
+								},
+								"south": {
+									"uv": [
+										108,
+										18
+									],
+									"uv_size": [
+										5,
+										4
+									]
+								},
+								"west": {
+									"uv": [
+										103,
+										18
+									],
+									"uv_size": [
+										5,
+										4
+									]
+								},
+								"up": {
+									"uv": [
+										98,
+										13
+									],
+									"uv_size": [
+										5,
+										5
+									]
+								},
+								"down": {
+									"uv": [
+										103,
+										18
+									],
+									"uv_size": [
+										5,
+										-5
+									]
+								}
+							}
+						},
+						{
+							"origin": [
+								-1.5,
+								0,
+								-5
+							],
+							"size": [
+								3,
+								3,
+								4
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										26,
+										65
+									],
+									"uv_size": [
+										3,
+										3
+									]
+								},
+								"east": {
+									"uv": [
+										22,
+										65
+									],
+									"uv_size": [
+										4,
+										3
+									]
+								},
+								"south": {
+									"uv": [
+										33,
+										65
+									],
+									"uv_size": [
+										3,
+										3
+									]
+								},
+								"west": {
+									"uv": [
+										29,
+										65
+									],
+									"uv_size": [
+										4,
+										3
+									]
+								},
+								"up": {
+									"uv": [
+										26,
+										61
+									],
+									"uv_size": [
+										3,
+										4
+									]
+								},
+								"down": {
+									"uv": [
+										29,
+										65
+									],
+									"uv_size": [
+										3,
+										-4
+									]
+								}
+							}
 						}
 					]
 				}

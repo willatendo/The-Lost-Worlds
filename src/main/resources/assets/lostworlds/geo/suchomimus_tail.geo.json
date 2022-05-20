@@ -1,0 +1,119 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.suchomimus",
+				"texture_width": 256,
+				"texture_height": 256,
+				"visible_bounds_width": 12,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Suchomimus",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Suchomimus",
+					"pivot": [
+						0,
+						-3.5,
+						-36
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "body",
+					"pivot": [
+						0,
+						5.5,
+						-29.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5,
+								0,
+								-29
+							],
+							"size": [
+								10,
+								11,
+								21
+							],
+							"uv": [
+								55,
+								23
+							]
+						}
+					]
+				},
+				{
+					"name": "tail2",
+					"parent": "tail",
+					"pivot": [
+						0,
+						7.5,
+						-8.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3,
+								4,
+								-8
+							],
+							"size": [
+								6,
+								7,
+								25
+							],
+							"uv": [
+								0,
+								44
+							]
+						}
+					]
+				},
+				{
+					"name": "tail3",
+					"parent": "tail2",
+					"pivot": [
+						0,
+						9,
+						17
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2,
+								7,
+								17
+							],
+							"size": [
+								4,
+								4,
+								24
+							],
+							"uv": [
+								38,
+								55
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

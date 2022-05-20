@@ -1,0 +1,74 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.procompsognathus",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "torso",
+					"parent": "body",
+					"pivot": [
+						0,
+						-3,
+						5
+					]
+				},
+				{
+					"name": "neck",
+					"parent": "torso",
+					"pivot": [
+						0,
+						-1,
+						0
+					]
+				},
+				{
+					"name": "head",
+					"parent": "neck",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1,
+								0,
+								-3
+							],
+							"size": [
+								2,
+								2,
+								4
+							],
+							"uv": [
+								10,
+								9
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

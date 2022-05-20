@@ -1,0 +1,70 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.tyrannosaurus",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 11,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "tyrannosaurus",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "body",
+					"parent": "tyrannosaurus",
+					"pivot": [
+						5,
+						-5,
+						19
+					],
+					"rotation": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"name": "arm2",
+					"parent": "body",
+					"pivot": [
+						-1,
+						-8.5,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2,
+								-12.5,
+								-1
+							],
+							"size": [
+								2,
+								5,
+								2
+							],
+							"uv": [
+								49,
+								46
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

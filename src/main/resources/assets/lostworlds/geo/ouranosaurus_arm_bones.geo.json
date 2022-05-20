@@ -1,0 +1,61 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.ouranosaurus",
+				"texture_width": 256,
+				"texture_height": 256,
+				"visible_bounds_width": 11,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [
+					0,
+					1.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "ouranosaurus",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "leg1",
+					"parent": "ouranosaurus",
+					"pivot": [
+						6,
+						2.5,
+						0.5
+					],
+					"rotation": [
+						0,
+						0,
+						90
+					],
+					"cubes": [
+						{
+							"origin": [
+								4.5,
+								-12.5,
+								-2
+							],
+							"size": [
+								4,
+								18,
+								5
+							],
+							"uv": [
+								0,
+								65
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

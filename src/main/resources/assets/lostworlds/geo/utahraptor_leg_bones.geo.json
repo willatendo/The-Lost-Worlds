@@ -1,0 +1,220 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.utahraptor",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 9,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [
+					0,
+					1.25,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Utahraptor",
+					"pivot": [
+						0,
+						21,
+						-8
+					]
+				},
+				{
+					"name": "rightleg",
+					"parent": "Utahraptor",
+					"pivot": [
+						9.5,
+						5,
+						0
+					],
+					"rotation": [
+						0,
+						0,
+						90
+					],
+					"cubes": [
+						{
+							"origin": [
+								7,
+								-3,
+								-5
+							],
+							"size": [
+								7,
+								12,
+								11
+							],
+							"uv": [
+								78,
+								29
+							],
+							"mirror": true
+						}
+					]
+				},
+				{
+					"name": "knee2",
+					"parent": "rightleg",
+					"pivot": [
+						9.5,
+						-1,
+						6
+					],
+					"cubes": [
+						{
+							"origin": [
+								8,
+								-15,
+								3
+							],
+							"size": [
+								3,
+								15,
+								4
+							],
+							"uv": [
+								41,
+								36
+							],
+							"mirror": true
+						}
+					]
+				},
+				{
+					"name": "feet2",
+					"parent": "knee2",
+					"pivot": [
+						9.5,
+						-13,
+						4
+					]
+				},
+				{
+					"name": "toe4",
+					"parent": "feet2",
+					"pivot": [
+						8,
+						-15,
+						5
+					],
+					"cubes": [
+						{
+							"origin": [
+								7.5,
+								-16,
+								0
+							],
+							"size": [
+								1,
+								2,
+								6
+							],
+							"uv": [
+								43,
+								8
+							],
+							"mirror": true
+						}
+					]
+				},
+				{
+					"name": "toe5",
+					"parent": "feet2",
+					"pivot": [
+						9.5,
+						-15,
+						5
+					],
+					"cubes": [
+						{
+							"origin": [
+								8.5,
+								-16,
+								-3
+							],
+							"size": [
+								2,
+								3,
+								9
+							],
+							"uv": [
+								91,
+								81
+							],
+							"mirror": true
+						}
+					]
+				},
+				{
+					"name": "toe6",
+					"parent": "feet2",
+					"pivot": [
+						11.5,
+						-14,
+						3
+					],
+					"cubes": [
+						{
+							"origin": [
+								11.5,
+								-13.11258,
+								-1.71051
+							],
+							"size": [
+								0,
+								2,
+								1
+							],
+							"pivot": [
+								11.5,
+								-11,
+								-1
+							],
+							"rotation": [
+								-47.5,
+								0,
+								0
+							],
+							"uv": [
+								2,
+								0
+							],
+							"mirror": true
+						},
+						{
+							"origin": [
+								10.5,
+								-15.03492,
+								-2.6247
+							],
+							"size": [
+								2,
+								2,
+								7
+							],
+							"pivot": [
+								11.5,
+								-14,
+								3
+							],
+							"rotation": [
+								-47.5,
+								0,
+								0
+							],
+							"uv": [
+								91,
+								93
+							],
+							"mirror": true
+						}
+					]
+				}
+			]
+		}
+	]
+}

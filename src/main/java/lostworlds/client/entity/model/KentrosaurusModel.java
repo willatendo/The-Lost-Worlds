@@ -24,7 +24,7 @@ public class KentrosaurusModel extends AnimatedGeoModel<KentrosaurusEntity> {
 
 	@Override
 	public ResourceLocation getTextureLocation(KentrosaurusEntity entity) {
-		return LostWorldsUtils.rL("textures/model/entity/kentrosaurus/texture_1.png");
+		return LostWorldsUtils.rL("textures/model/entity/kentrosaurus/texture.png");
 	}
 
 	@Override

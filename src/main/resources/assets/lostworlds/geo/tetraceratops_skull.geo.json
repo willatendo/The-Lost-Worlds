@@ -1,0 +1,161 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.tetraceratops",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [
+					0,
+					0.25,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Tetraceratops",
+					"pivot": [
+						0,
+						3,
+						0
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Tetraceratops",
+					"pivot": [
+						0,
+						0.25,
+						7
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [
+						0,
+						1,
+						1
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.5,
+								0,
+								-3
+							],
+							"size": [
+								3,
+								2,
+								4
+							],
+							"uv": [
+								19,
+								0
+							]
+						},
+						{
+							"origin": [
+								-2.5,
+								0,
+								0
+							],
+							"size": [
+								1,
+								1,
+								1
+							],
+							"uv": [
+								6,
+								6
+							]
+						},
+						{
+							"origin": [
+								1.5,
+								0,
+								0
+							],
+							"size": [
+								1,
+								1,
+								1
+							],
+							"uv": [
+								6,
+								0
+							]
+						},
+						{
+							"origin": [
+								1.5,
+								2,
+								-1
+							],
+							"size": [
+								0,
+								1,
+								1
+							],
+							"uv": [
+								8,
+								1
+							]
+						},
+						{
+							"origin": [
+								-1.5,
+								2,
+								-1
+							],
+							"size": [
+								0,
+								1,
+								1
+							],
+							"uv": [
+								0,
+								6
+							]
+						},
+						{
+							"origin": [
+								-1,
+								2,
+								-3
+							],
+							"size": [
+								0,
+								1,
+								1
+							],
+							"uv": [
+								0,
+								5
+							]
+						},
+						{
+							"origin": [
+								1,
+								2,
+								-3
+							],
+							"size": [
+								0,
+								1,
+								1
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

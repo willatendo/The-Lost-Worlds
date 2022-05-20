@@ -1,0 +1,72 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.ophthalmosaurus",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 6,
+				"visible_bounds_height": 4,
+				"visible_bounds_offset": [
+					0,
+					1,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Ophthalmosaurus",
+					"pivot": [
+						0,
+						20,
+						0
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Ophthalmosaurus",
+					"pivot": [
+						0,
+						6,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1,
+								13,
+								0
+							],
+							"size": [
+								2,
+								10,
+								6
+							],
+							"uv": [
+								0,
+								41
+							]
+						},
+						{
+							"origin": [
+								-6,
+								0,
+								-13
+							],
+							"size": [
+								12,
+								13,
+								28
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

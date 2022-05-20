@@ -3,32 +3,78 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.unknown",
+				"identifier": "geometry.ostromia_wings",
 				"texture_width": 32,
 				"texture_height": 32,
 				"visible_bounds_width": 4,
 				"visible_bounds_height": 2.5,
-				"visible_bounds_offset": [0, 0.75, 0]
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
 			},
 			"bones": [
 				{
 					"name": "Wing",
-					"pivot": [0, 0, 0]
+					"pivot": [
+						0,
+						0,
+						0
+					]
 				},
 				{
 					"name": "largeWing1",
 					"parent": "Wing",
-					"pivot": [0, 0, 0],
+					"pivot": [
+						0,
+						0,
+						0
+					],
 					"cubes": [
-						{"origin": [-5.5, 3, -5], "size": [5, 0, 8], "uv": [0, 8]}
+						{
+							"origin": [
+								-5.5,
+								3,
+								-5
+							],
+							"size": [
+								5,
+								0,
+								8
+							],
+							"uv": [
+								0,
+								8
+							]
+						}
 					]
 				},
 				{
 					"name": "largeWing2",
 					"parent": "Wing",
-					"pivot": [0, 0, 0],
+					"pivot": [
+						0,
+						0,
+						0
+					],
 					"cubes": [
-						{"origin": [0.5, 3, -5], "size": [5, 0, 8], "uv": [0, 0]}
+						{
+							"origin": [
+								0.5,
+								3,
+								-5
+							],
+							"size": [
+								5,
+								0,
+								8
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
 					]
 				}
 			]

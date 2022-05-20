@@ -1,0 +1,56 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.eustreptospondylus",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 8,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [
+					0,
+					1.25,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Eustreptospondylus",
+					"pivot": [
+						0,
+						18,
+						-2
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Eustreptospondylus",
+					"pivot": [
+						0,
+						6,
+						-2
+					],
+					"cubes": [
+						{
+							"origin": [
+								-6,
+								0,
+								-12
+							],
+							"size": [
+								12,
+								11,
+								23
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

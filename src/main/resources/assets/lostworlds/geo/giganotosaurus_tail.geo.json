@@ -1,0 +1,119 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.giganotosaurus",
+				"texture_width": 256,
+				"texture_height": 256,
+				"visible_bounds_width": 13,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Giganotosaurus",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Giganotosaurus",
+					"pivot": [
+						0,
+						3,
+						-50
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "body",
+					"pivot": [
+						0,
+						5.5,
+						-36
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5,
+								0,
+								-36
+							],
+							"size": [
+								10,
+								11,
+								26
+							],
+							"uv": [
+								0,
+								42
+							]
+						}
+					]
+				},
+				{
+					"name": "midTail",
+					"parent": "tail",
+					"pivot": [
+						0,
+						7.5,
+						-10
+					],
+					"cubes": [
+						{
+							"origin": [
+								-4,
+								4,
+								-10
+							],
+							"size": [
+								8,
+								7,
+								28
+							],
+							"uv": [
+								44,
+								51
+							]
+						}
+					]
+				},
+				{
+					"name": "endTail",
+					"parent": "midTail",
+					"pivot": [
+						0,
+						9,
+						18
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2,
+								7,
+								18
+							],
+							"size": [
+								4,
+								4,
+								19
+							],
+							"uv": [
+								67,
+								25
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

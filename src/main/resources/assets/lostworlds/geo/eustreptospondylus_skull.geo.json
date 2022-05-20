@@ -1,0 +1,181 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.eustreptospondylus",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 8,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [
+					0,
+					1.25,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Eustreptospondylus",
+					"pivot": [
+						0,
+						18,
+						-2
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Eustreptospondylus",
+					"pivot": [
+						0,
+						-4,
+						16
+					]
+				},
+				{
+					"name": "neck",
+					"parent": "body",
+					"pivot": [
+						0,
+						-4,
+						7
+					]
+				},
+				{
+					"name": "head",
+					"parent": "neck",
+					"pivot": [
+						0,
+						4,
+						5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2.5,
+								2.1,
+								-5.8
+							],
+							"size": [
+								5,
+								4,
+								7
+							],
+							"uv": [
+								0,
+								64
+							]
+						},
+						{
+							"origin": [
+								-3.5,
+								2.1,
+								1.2
+							],
+							"size": [
+								7,
+								4,
+								5
+							],
+							"uv": [
+								69,
+								36
+							]
+						},
+						{
+							"origin": [
+								-2.5,
+								3.1,
+								-5.8
+							],
+							"size": [
+								5,
+								0,
+								7
+							],
+							"uv": [
+								0,
+								16
+							]
+						},
+						{
+							"origin": [
+								-1.5,
+								1.1,
+								-4.8
+							],
+							"size": [
+								3,
+								2,
+								6
+							],
+							"uv": [
+								73,
+								14
+							]
+						}
+					]
+				},
+				{
+					"name": "jaw",
+					"parent": "head",
+					"pivot": [
+						0,
+						1,
+						6
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3.5,
+								0.1,
+								1.2
+							],
+							"size": [
+								7,
+								2,
+								5
+							],
+							"uv": [
+								70,
+								0
+							]
+						},
+						{
+							"origin": [
+								-2.5,
+								1.1,
+								-5.8
+							],
+							"size": [
+								5,
+								1,
+								7
+							],
+							"uv": [
+								0,
+								52
+							]
+						},
+						{
+							"origin": [
+								-1.5,
+								2.1,
+								-4.8
+							],
+							"size": [
+								3,
+								1,
+								6
+							],
+							"uv": [
+								18,
+								73
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

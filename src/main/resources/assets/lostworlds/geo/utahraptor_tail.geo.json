@@ -1,0 +1,108 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.utahraptor",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 9,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [
+					0,
+					1.25,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Utahraptor",
+					"pivot": [
+						0,
+						21,
+						-8
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Utahraptor",
+					"pivot": [
+						0,
+						3,
+						-39
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "body",
+					"pivot": [
+						0,
+						5,
+						-23
+					],
+					"cubes": [
+						{
+							"origin": [
+								-4,
+								0,
+								-23
+							],
+							"size": [
+								8,
+								8,
+								18
+							],
+							"uv": [
+								44,
+								44
+							]
+						}
+					]
+				},
+				{
+					"name": "tail2",
+					"parent": "tail",
+					"pivot": [
+						0,
+						5,
+						-5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3,
+								3,
+								-5
+							],
+							"size": [
+								6,
+								5,
+								31
+							],
+							"uv": [
+								0,
+								0
+							]
+						},
+						{
+							"origin": [
+								-5,
+								0,
+								8
+							],
+							"size": [
+								10,
+								5,
+								21
+							],
+							"uv": [
+								0,
+								36
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

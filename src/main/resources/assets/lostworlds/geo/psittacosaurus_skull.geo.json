@@ -1,0 +1,106 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.pisttacosaurus",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Psittacosaurus",
+					"pivot": [
+						0,
+						6,
+						0
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Psittacosaurus",
+					"pivot": [
+						0,
+						1,
+						9
+					]
+				},
+				{
+					"name": "neck",
+					"parent": "body",
+					"pivot": [
+						0,
+						2,
+						4
+					]
+				},
+				{
+					"name": "head",
+					"parent": "neck",
+					"pivot": [
+						0,
+						2,
+						1
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.5,
+								0,
+								-2
+							],
+							"size": [
+								3,
+								3,
+								3
+							],
+							"uv": [
+								18,
+								0
+							]
+						},
+						{
+							"origin": [
+								-2.5,
+								0,
+								0
+							],
+							"size": [
+								1,
+								1,
+								1
+							],
+							"uv": [
+								22,
+								8
+							]
+						},
+						{
+							"origin": [
+								1.5,
+								0,
+								0
+							],
+							"size": [
+								1,
+								1,
+								1
+							],
+							"uv": [
+								22,
+								6
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

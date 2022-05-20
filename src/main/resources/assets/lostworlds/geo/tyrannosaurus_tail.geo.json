@@ -1,0 +1,119 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.tyrannosaurus",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 11,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "tyrannosaurus",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "body",
+					"parent": "tyrannosaurus",
+					"pivot": [
+						0,
+						-1.5,
+						-29
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "body",
+					"pivot": [
+						0,
+						5,
+						-20
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5,
+								0,
+								-20
+							],
+							"size": [
+								10,
+								10,
+								17
+							],
+							"uv": [
+								45,
+								52
+							]
+						}
+					]
+				},
+				{
+					"name": "midTail",
+					"parent": "tail",
+					"pivot": [
+						0,
+						6.5,
+						-3
+					],
+					"cubes": [
+						{
+							"origin": [
+								-4,
+								3,
+								-3
+							],
+							"size": [
+								8,
+								7,
+								23
+							],
+							"uv": [
+								0,
+								39
+							]
+						}
+					]
+				},
+				{
+					"name": "endTail",
+					"parent": "midTail",
+					"pivot": [
+						0,
+						8,
+						20
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2,
+								6,
+								20
+							],
+							"size": [
+								4,
+								4,
+								15
+							],
+							"uv": [
+								50,
+								0
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

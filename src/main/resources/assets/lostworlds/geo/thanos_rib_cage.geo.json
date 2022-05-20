@@ -1,0 +1,72 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.thanos",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 9,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [
+					0,
+					1.25,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Thanos",
+					"pivot": [
+						0,
+						21,
+						-2
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Thanos",
+					"pivot": [
+						0,
+						8,
+						-2
+					],
+					"cubes": [
+						{
+							"origin": [
+								-8,
+								0,
+								-15
+							],
+							"size": [
+								16,
+								17,
+								29
+							],
+							"uv": [
+								0,
+								0
+							]
+						},
+						{
+							"origin": [
+								0,
+								17,
+								-15
+							],
+							"size": [
+								0,
+								1,
+								29
+							],
+							"uv": [
+								43,
+								17
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

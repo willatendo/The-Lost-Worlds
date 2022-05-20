@@ -1,0 +1,115 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.fukuivenator",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 7,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [
+					0,
+					1.25,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Fukuivenator",
+					"pivot": [
+						0,
+						8,
+						0
+					]
+				},
+				{
+					"name": "rightleg",
+					"parent": "Fukuivenator",
+					"pivot": [
+						6,
+						3,
+						-1
+					],
+					"rotation": [
+						0,
+						0,
+						90
+					],
+					"cubes": [
+						{
+							"origin": [
+								4,
+								-3,
+								-4
+							],
+							"size": [
+								5,
+								8,
+								6
+							],
+							"uv": [
+								38,
+								44
+							]
+						}
+					]
+				},
+				{
+					"name": "knee2",
+					"parent": "rightleg",
+					"pivot": [
+						6,
+						-3,
+						2
+					],
+					"cubes": [
+						{
+							"origin": [
+								5,
+								-10,
+								2
+							],
+							"size": [
+								2,
+								7,
+								0
+							],
+							"uv": [
+								14,
+								27
+							]
+						}
+					]
+				},
+				{
+					"name": "foot2",
+					"parent": "knee2",
+					"pivot": [
+						6,
+						-10,
+						2
+					],
+					"cubes": [
+						{
+							"origin": [
+								4.5,
+								-10,
+								-2
+							],
+							"size": [
+								3,
+								0,
+								4
+							],
+							"uv": [
+								4,
+								27
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
