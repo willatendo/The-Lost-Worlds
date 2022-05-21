@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 
 import com.mojang.serialization.Codec;
 
-import lostworlds.client.entity.render.bone.ItemCustomisableRenderer;
+import lostworlds.client.entity.render.ItemCustomisableRenderer;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.fossil.DirtyFossilEntity;

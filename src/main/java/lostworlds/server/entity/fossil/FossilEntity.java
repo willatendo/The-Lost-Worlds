@@ -26,6 +26,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityPredicates;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -44,6 +45,8 @@ public class FossilEntity extends AnimalEntity implements IAnimatable {
 
 	private AnimationFactory factory = new AnimationFactory(this);
 
+	private ItemStack stack;
+
 	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
 		event.getController().setAnimation(new AnimationBuilder().addAnimation(this.animation, true));
 		return PlayState.CONTINUE;
@@ -55,6 +58,16 @@ public class FossilEntity extends AnimalEntity implements IAnimatable {
 
 	public static MutableAttribute createAttributes() {
 		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, 100);
+	}
+
+	public FossilEntity setPick(ItemStack stack) {
+		this.stack = stack;
+		return this;
+	}
+
+	@Override
+	public ItemStack getPickedResult(RayTraceResult target) {
+		return this.stack;
 	}
 
 	@Override

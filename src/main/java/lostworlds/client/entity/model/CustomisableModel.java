@@ -1,4 +1,4 @@
-package lostworlds.client.entity.model.skeleton;
+package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.util.ResourceLocation;

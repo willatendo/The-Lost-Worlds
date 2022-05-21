@@ -1,6 +1,6 @@
-package lostworlds.client.entity.render.bone;
+package lostworlds.client.entity.render;
 
-import lostworlds.client.entity.model.skeleton.CustomisableModel;
+import lostworlds.client.entity.model.CustomisableModel;
 import lostworlds.server.entity.fossil.FossilEntity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraftforge.api.distmarker.Dist;

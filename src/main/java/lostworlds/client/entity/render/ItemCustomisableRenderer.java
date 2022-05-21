@@ -1,8 +1,8 @@
-package lostworlds.client.entity.render.bone;
+package lostworlds.client.entity.render;
 
 import java.util.concurrent.Callable;
 
-import lostworlds.client.entity.model.skeleton.CustomisableModel;
+import lostworlds.client.entity.model.CustomisableModel;
 import lostworlds.server.item.FossilItem;
 import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraftforge.api.distmarker.Dist;

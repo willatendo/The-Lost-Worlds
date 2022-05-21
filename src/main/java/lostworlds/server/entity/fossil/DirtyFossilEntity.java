@@ -15,6 +15,10 @@ public class DirtyFossilEntity extends FossilEntity {
 		super(entity, world);
 	}
 
+	public DirtyFossilEntity setPick(ItemStack stack) {
+		return this.setPick(stack);
+	}
+
 	@Override
 	public ActionResultType mobInteract(PlayerEntity entity, Hand hand) {
 		ItemStack stack = entity.getItemInHand(hand);
