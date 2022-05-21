@@ -1,9 +1,6 @@
 package lostworlds.server.container.recipes;
 
-import java.util.Random;
-
 import lostworlds.server.block.LostWorldsBlocks;
-import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -24,10 +21,6 @@ public class AmberDNAExtractorRecipe implements IRecipe<IInventory> {
 		this.id = id;
 		this.softTissue = softTissue;
 		this.vile = vile;
-	}
-
-	public ItemStack generateRandom() {
-		return this.output = LostWorldsRecipeManager.getItemForRecipe(LostWorldsItems.AMBER.get().getDefaultInstance()).generateOutput(new Random());
 	}
 
 	@Override

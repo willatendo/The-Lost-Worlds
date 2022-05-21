@@ -74,6 +74,7 @@ public class LostWorldsTags {
 
 	public enum ModItemTags {
 		ALLOSAURUS_FOSSILS,
+		AMBER_RESULTS,
 		ANOMALOCARIS_FOSSILS,
 		ARAUCARIA_LOGS,
 		ANCIENT_SAPLINGS,

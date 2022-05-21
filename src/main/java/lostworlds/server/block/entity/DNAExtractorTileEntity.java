@@ -1,8 +1,11 @@
 package lostworlds.server.block.entity;
 
+import java.util.Random;
+
 import javax.annotation.Nullable;
 
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.DNAExtractorBlock;
 import lostworlds.server.container.DNAExtractorContainer;
@@ -10,6 +13,7 @@ import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.container.recipes.AmberDNAExtractorRecipe;
 import lostworlds.server.container.recipes.DNAExtractorRecipe;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
+import lostworlds.server.item.AmberItem;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -145,40 +149,48 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 		if (!this.level.isClientSide) {
 			if (this.level.hasNeighborSignal(this.getBlockPos())) {
 				if (this.isOn() || !this.items.get(0).isEmpty()) {
-					IRecipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((IRecipeType<DNAExtractorRecipe>) this.recipeType, this, this.level).orElse(null);
-					IRecipe<?> isecondaryecipe = this.level.getRecipeManager().getRecipeFor((IRecipeType<AmberDNAExtractorRecipe>) this.secondaryRecipeType, this, this.level).orElse(null);
-					if (!this.isOn() && this.canExtractWith(irecipe)) {
-						this.onTime = this.getExtractDuration();
-						this.onDuration = this.onTime;
-						if (this.isOn()) {
-							flag1 = true;
+					if (this.items.get(0).getItem() instanceof AmberItem) {
+						if (!this.isOn() && this.canExtractAmber()) {
+							this.onTime = this.getExtractDuration();
+							this.onDuration = this.onTime;
+							if (this.isOn()) {
+								flag1 = true;
+							}
 						}
-					} else if (!this.isOn() && this.canExtractWith(isecondaryecipe)) {
-						this.onTime = this.getExtractDuration();
-						this.onDuration = this.onTime;
-						if (this.isOn()) {
-							flag1 = true;
-						}
-					}
 
-					if (this.isOn() && this.canExtractWith(irecipe)) {
-						++this.extractingProgress;
-						if (this.extractingProgress == this.extractingTotalTime) {
+						if (this.isOn() && this.canExtractAmber()) {
+							++this.extractingProgress;
+							if (this.extractingProgress == this.extractingTotalTime) {
+								this.extractingProgress = 0;
+								this.extractingTotalTime = this.getTotalExtractTime();
+								this.extractAmber();
+								flag1 = true;
+							}
+						} else {
 							this.extractingProgress = 0;
-							this.extractingTotalTime = this.getTotalExtractTime();
-							this.canExtract(irecipe);
-							flag1 = true;
-						}
-					} else if (this.isOn() && this.canExtractWith(isecondaryecipe)) {
-						++this.extractingProgress;
-						if (this.extractingProgress == this.extractingTotalTime) {
-							this.extractingProgress = 0;
-							this.extractingTotalTime = this.getTotalExtractTime();
-							this.canExtract(isecondaryecipe);
-							flag1 = true;
 						}
 					} else {
-						this.extractingProgress = 0;
+
+						IRecipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((IRecipeType<DNAExtractorRecipe>) this.recipeType, this, this.level).orElse(null);
+						if (!this.isOn() && this.canExtract(irecipe)) {
+							this.onTime = this.getExtractDuration();
+							this.onDuration = this.onTime;
+							if (this.isOn()) {
+								flag1 = true;
+							}
+						}
+
+						if (this.isOn() && this.canExtract(irecipe)) {
+							++this.extractingProgress;
+							if (this.extractingProgress == this.extractingTotalTime) {
+								this.extractingProgress = 0;
+								this.extractingTotalTime = this.getTotalExtractTime();
+								this.extract(irecipe);
+								flag1 = true;
+							}
+						} else {
+							this.extractingProgress = 0;
+						}
 					}
 				} else if (!this.isOn() && this.extractingProgress > 0) {
 					this.extractingProgress = MathHelper.clamp(this.extractingProgress - 2, 0, this.extractingTotalTime);
@@ -196,17 +208,58 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 		}
 	}
 
+	protected boolean canExtract(@Nullable IRecipe<?> recipe) {
+		if (!this.items.get(0).isEmpty() && !this.items.get(1).isEmpty() && recipe != null) {
+			ItemStack result = recipe.getResultItem();
+			if (result.isEmpty()) {
+				return false;
+			} else {
+				ItemStack output = this.items.get(2);
+				if (output.isEmpty()) {
+					return true;
+				} else if (!output.sameItem(result)) {
+					return false;
+				} else if (output.getCount() + result.getCount() <= this.getMaxStackSize() && output.getCount() + result.getCount() <= output.getMaxStackSize()) {
+					return true;
+				} else {
+					return output.getCount() + result.getCount() <= result.getMaxStackSize();
+				}
+			}
+		} else {
+			return false;
+		}
+	}
+
+	private void extract(@Nullable IRecipe<?> recipe) {
+		if (recipe != null && this.canExtract(recipe)) {
+			ItemStack input = this.items.get(0);
+			ItemStack vile = this.items.get(1);
+			ItemStack result = recipe.getResultItem();
+			ItemStack output = this.items.get(2);
+			if (output.isEmpty()) {
+				this.items.set(2, result.copy());
+			} else if (output.getItem() == result.getItem()) {
+				output.grow(result.getCount());
+			}
+
+			if (!this.level.isClientSide) {
+				this.setRecipeUsed(recipe);
+			}
+
+			input.shrink(1);
+			vile.shrink(1);
+		}
+	}
+
 	private ItemStack output = ItemStack.EMPTY;
 	private boolean hasOutput = false;
 
-	protected boolean canExtractWith(@Nullable IRecipe<?> recipe) {
-		if (!this.items.get(0).isEmpty() && !this.items.get(1).isEmpty() && recipe != null) {
-			if (recipe instanceof AmberDNAExtractorRecipe && !this.hasOutput) {
-				AmberDNAExtractorRecipe amber = (AmberDNAExtractorRecipe) recipe;
-				this.output = amber.generateRandom();
+	protected boolean canExtractAmber() {
+		Random rand = new Random();
+		if (!this.items.get(0).isEmpty() && !this.items.get(1).isEmpty()) {
+			if (!this.hasOutput) {
+				this.output = LostWorldsTags.ModItemTags.AMBER_RESULTS.tag.getValues().get(rand.nextInt(LostWorldsTags.ModItemTags.AMBER_RESULTS.tag.getValues().size())).getDefaultInstance();
 				this.hasOutput = true;
-			} else if (!(recipe instanceof AmberDNAExtractorRecipe)) {
-				this.output = recipe.getResultItem();
 			}
 
 			if (this.output.isEmpty()) {
@@ -229,20 +282,16 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 		}
 	}
 
-	private void canExtract(@Nullable IRecipe<?> recipe) {
-		if (recipe != null && this.canExtractWith(recipe)) {
+	private void extractAmber() {
+		if (this.canExtractAmber()) {
 			ItemStack input = this.items.get(0);
 			ItemStack vile = this.items.get(1);
-			ItemStack result = recipe instanceof AmberDNAExtractorRecipe ? this.output : recipe.getResultItem();
+			ItemStack result = this.output;
 			ItemStack slot = this.items.get(2);
 			if (slot.isEmpty()) {
 				this.items.set(2, result.copy());
 			} else if (slot.getItem() == result.getItem()) {
 				slot.grow(result.getCount());
-			}
-
-			if (!this.level.isClientSide) {
-				this.setRecipeUsed(recipe);
 			}
 
 			input.shrink(1);

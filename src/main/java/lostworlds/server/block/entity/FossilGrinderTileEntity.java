@@ -152,7 +152,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 			if (this.level.hasNeighborSignal(this.getBlockPos())) {
 				if (this.isOn() || !this.items.get(0).isEmpty()) {
 					IRecipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((IRecipeType<FossilGrinderRecipe>) this.recipeType, this, this.level).orElse(null);
-					if (!this.isOn() && this.canGrindWith(irecipe)) {
+					if (!this.isOn() && this.canGrind(irecipe)) {
 						this.onTime = this.getGrindDuration();
 						this.onDuration = this.onTime;
 						if (this.isOn()) {
@@ -160,12 +160,12 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 						}
 					}
 
-					if (this.isOn() && this.canGrindWith(irecipe)) {
+					if (this.isOn() && this.canGrind(irecipe)) {
 						++this.grindingProgress;
 						if (this.grindingProgress == this.grindingTotalTime) {
 							this.grindingProgress = 0;
 							this.grindingTotalTime = this.getTotalGrindTime();
-							this.canGrind(irecipe);
+							this.grind(irecipe);
 							flag1 = true;
 						}
 					} else {
@@ -187,7 +187,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 		}
 	}
 
-	protected boolean canGrindWith(@Nullable IRecipe<?> recipe) {
+	protected boolean canGrind(@Nullable IRecipe<?> recipe) {
 		if (!this.items.get(0).isEmpty() && recipe != null) {
 			ItemStack result = recipe.getResultItem();
 			if (result.isEmpty()) {
@@ -222,23 +222,23 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 		}
 	}
 
-	private void canGrind(@Nullable IRecipe<?> recipe) {
-		if (recipe != null && this.canGrindWith(recipe)) {
+	private void grind(@Nullable IRecipe<?> recipe) {
+		if (recipe != null && this.canGrind(recipe)) {
 			ItemStack fossil = this.items.get(0);
 			ItemStack result = recipe.getResultItem();
-			ItemStack slot1 = this.items.get(1);
-			ItemStack slot2 = this.items.get(2);
+			ItemStack output = this.items.get(1);
+			ItemStack waste = this.items.get(2);
 			if (result.getItem() instanceof ModBoneMealItem) {
-				if (slot2.isEmpty()) {
+				if (waste.isEmpty()) {
 					this.items.set(2, result.copy());
-				} else if (slot2.getItem() == result.getItem()) {
-					slot2.grow(result.getCount());
+				} else if (waste.getItem() == result.getItem()) {
+					waste.grow(result.getCount());
 				}
 			} else {
-				if (slot1.isEmpty()) {
+				if (output.isEmpty()) {
 					this.items.set(1, result.copy());
-				} else if (slot1.getItem() == result.getItem()) {
-					slot1.grow(result.getCount());
+				} else if (output.getItem() == result.getItem()) {
+					output.grow(result.getCount());
 				}
 			}
 

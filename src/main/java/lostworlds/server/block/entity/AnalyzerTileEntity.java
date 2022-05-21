@@ -143,7 +143,7 @@ public class AnalyzerTileEntity extends TileEntity implements IInventory, INamed
 			if (this.level.hasNeighborSignal(this.getBlockPos())) {
 				if (this.isOn() || !this.items.get(0).isEmpty()) {
 					IRecipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((IRecipeType<AnalyzerRecipe>) this.recipeType, this, this.level).orElse(null);
-					if (!this.isOn() && this.canAnalyseWith(irecipe)) {
+					if (!this.isOn() && this.canAnalyse(irecipe)) {
 						this.onTime = this.getAnalyseDuration();
 						this.onDuration = this.onTime;
 						if (this.isOn()) {
@@ -151,12 +151,12 @@ public class AnalyzerTileEntity extends TileEntity implements IInventory, INamed
 						}
 					}
 
-					if (this.isOn() && this.canAnalyseWith(irecipe)) {
+					if (this.isOn() && this.canAnalyse(irecipe)) {
 						++this.analysingProgress;
 						if (this.analysingProgress == this.analysingTotalTime) {
 							this.analysingProgress = 0;
 							this.analysingTotalTime = this.getTotalAnalyseTime();
-							this.canAnalyse(irecipe);
+							this.analyze(irecipe);
 							flag1 = true;
 						}
 					} else {
@@ -178,7 +178,7 @@ public class AnalyzerTileEntity extends TileEntity implements IInventory, INamed
 		}
 	}
 
-	protected boolean canAnalyseWith(@Nullable IRecipe<?> recipe) {
+	protected boolean canAnalyse(@Nullable IRecipe<?> recipe) {
 		if (!this.items.get(0).isEmpty() && !this.items.get(1).isEmpty() && recipe != null) {
 			ItemStack result = recipe.getResultItem();
 			if (result.isEmpty()) {
@@ -200,8 +200,8 @@ public class AnalyzerTileEntity extends TileEntity implements IInventory, INamed
 		}
 	}
 
-	private void canAnalyse(@Nullable IRecipe<?> recipe) {
-		if (recipe != null && this.canAnalyseWith(recipe)) {
+	private void analyze(@Nullable IRecipe<?> recipe) {
+		if (recipe != null && this.canAnalyse(recipe)) {
 			ItemStack dna = this.items.get(0);
 			ItemStack vile = this.items.get(1);
 			ItemStack result = recipe.getResultItem();

@@ -165,7 +165,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 				ItemStack fuel = this.items.get(1);
 				if (this.isOn() || !fuel.isEmpty() && !this.items.get(0).isEmpty()) {
 					IRecipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((IRecipeType<FossilCleanerRecipe>) this.recipeType, this, this.level).orElse(null);
-					if (!this.isOn() && this.canCleanWith(irecipe)) {
+					if (!this.isOn() && this.canClean(irecipe)) {
 						this.onTime = this.getCleanDuration(fuel);
 						this.onDuration = this.onTime;
 						if (this.isOn()) {
@@ -181,7 +181,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 						}
 					}
 
-					if (this.isOn() && this.canCleanWith(irecipe)) {
+					if (this.isOn() && this.canClean(irecipe)) {
 						++this.cleaningProgress;
 						if (this.cleaningProgress == this.cleaningTotalTime) {
 							this.cleaningProgress = 0;
@@ -208,7 +208,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 		}
 	}
 
-	protected boolean canCleanWith(@Nullable IRecipe<?> recipe) {
+	protected boolean canClean(@Nullable IRecipe<?> recipe) {
 		if (!this.items.get(0).isEmpty() && recipe != null) {
 			ItemStack result = recipe.getResultItem();
 			if (result.isEmpty()) {
@@ -231,7 +231,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 	}
 
 	private void clean(@Nullable IRecipe<?> recipe) {
-		if (recipe != null && this.canCleanWith(recipe)) {
+		if (recipe != null && this.canClean(recipe)) {
 			ItemStack input = this.items.get(0);
 			ItemStack result = recipe.getResultItem();
 			ItemStack output = this.items.get(2);

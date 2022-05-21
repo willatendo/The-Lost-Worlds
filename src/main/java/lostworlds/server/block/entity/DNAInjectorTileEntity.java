@@ -146,7 +146,7 @@ public class DNAInjectorTileEntity extends TileEntity implements IInventory, INa
 			if (this.level.hasNeighborSignal(this.getBlockPos())) {
 				if (this.isOn() || !this.items.get(0).isEmpty()) {
 					IRecipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((IRecipeType<DNAInjectorRecipe>) this.recipeType, this, this.level).orElse(null);
-					if (!this.isOn() && this.canInjectWith(irecipe)) {
+					if (!this.isOn() && this.canInject(irecipe)) {
 						this.onTime = this.getInjectDuration();
 						this.onDuration = this.onTime;
 						if (this.isOn()) {
@@ -154,12 +154,12 @@ public class DNAInjectorTileEntity extends TileEntity implements IInventory, INa
 						}
 					}
 
-					if (this.isOn() && this.canInjectWith(irecipe)) {
+					if (this.isOn() && this.canInject(irecipe)) {
 						++this.injectingProgress;
 						if (this.injectingProgress == this.injectingTotalTime) {
 							this.injectingProgress = 0;
 							this.injectingTotalTime = this.getTotalInjectTime();
-							this.canInject(irecipe);
+							this.inject(irecipe);
 							flag1 = true;
 						}
 					} else {
@@ -181,21 +181,21 @@ public class DNAInjectorTileEntity extends TileEntity implements IInventory, INa
 		}
 	}
 
-	protected boolean canInjectWith(@Nullable IRecipe<?> recipe) {
+	protected boolean canInject(@Nullable IRecipe<?> recipe) {
 		if (!this.items.get(0).isEmpty() && !this.items.get(1).isEmpty() && recipe != null) {
-			ItemStack itemstack = recipe.getResultItem();
-			if (itemstack.isEmpty()) {
+			ItemStack result = recipe.getResultItem();
+			if (result.isEmpty()) {
 				return false;
 			} else {
-				ItemStack itemstack1 = this.items.get(2);
-				if (itemstack1.isEmpty()) {
+				ItemStack output = this.items.get(2);
+				if (output.isEmpty()) {
 					return true;
-				} else if (!itemstack1.sameItem(itemstack)) {
+				} else if (!output.sameItem(result)) {
 					return false;
-				} else if (itemstack1.getCount() + itemstack.getCount() <= this.getMaxStackSize() && itemstack1.getCount() + itemstack.getCount() <= itemstack1.getMaxStackSize()) {
+				} else if (output.getCount() + result.getCount() <= this.getMaxStackSize() && output.getCount() + result.getCount() <= output.getMaxStackSize()) {
 					return true;
 				} else {
-					return itemstack1.getCount() + itemstack.getCount() <= itemstack.getMaxStackSize();
+					return output.getCount() + result.getCount() <= result.getMaxStackSize();
 				}
 			}
 		} else {
@@ -203,16 +203,16 @@ public class DNAInjectorTileEntity extends TileEntity implements IInventory, INa
 		}
 	}
 
-	private void canInject(@Nullable IRecipe<?> recipe) {
-		if (recipe != null && this.canInjectWith(recipe)) {
+	private void inject(@Nullable IRecipe<?> recipe) {
+		if (recipe != null && this.canInject(recipe)) {
 			ItemStack dnaDisc = this.items.get(0);
 			ItemStack egg = this.items.get(1);
-			ItemStack itemstack1 = recipe.getResultItem();
-			ItemStack itemstack2 = this.items.get(2);
-			if (itemstack2.isEmpty()) {
-				this.items.set(2, itemstack1.copy());
-			} else if (itemstack2.getItem() == itemstack1.getItem()) {
-				itemstack2.grow(itemstack1.getCount());
+			ItemStack result = recipe.getResultItem();
+			ItemStack output = this.items.get(2);
+			if (output.isEmpty()) {
+				this.items.set(2, result.copy());
+			} else if (output.getItem() == result.getItem()) {
+				output.grow(result.getCount());
 			}
 
 			if (!this.level.isClientSide) {

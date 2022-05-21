@@ -14,7 +14,6 @@ import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.Plants;
 import lostworlds.server.block.Trees;
 import lostworlds.server.block.utils.Foods;
-import lostworlds.server.container.recipes.LostWorldsRecipeManager;
 import lostworlds.server.container.recipes.data.ArchaeologyTableRecipeBuilder;
 import lostworlds.server.container.recipes.data.PaleontologyTableRecipeBuilder;
 import lostworlds.server.container.recipes.data.TimeMachineRecipeBuilder;
@@ -214,7 +213,7 @@ public class LostWorldsItems {
 			dinos.setBloodSyringe(() -> bloodSyringe.get());
 			ItemEntry<Item> bloodVile = REGISTRATE.item(dinos.name().toLowerCase() + "_blood_vile", Item::new).model(textured("blood_vile")).tag(LostWorldsTags.ModItemTags.BLOOD_VILES.tag).recipe((item, provider) -> ShapelessRecipeBuilder.shapeless(item.get()).requires(dinos.getBloodSyringe().get()).requires(LostWorldsItems.EMPTY_VILE.get()).unlockedBy("has_item", provider.hasItem(LostWorldsTags.ModItemTags.BLOOD_SYRINGES.tag)).save(provider)).register();
 			dinos.setBloodVile(() -> bloodVile.get());
-			ItemEntry<Item> dna = REGISTRATE.item(dinos.name().toLowerCase() + "_dna", Item::new).tag(LostWorldsTags.ModItemTags.DNA.tag).register();
+			ItemEntry<Item> dna = REGISTRATE.item(dinos.name().toLowerCase() + "_dna", Item::new).tag(LostWorldsTags.ModItemTags.DNA.tag, LostWorldsTags.ModItemTags.AMBER_RESULTS.tag).register();
 			dinos.setDNA(() -> dna.get());
 			ItemEntry<Item> dnaDisc = REGISTRATE.item(dinos.name().toLowerCase() + "_dna_disc", Item::new).properties(properties -> properties.defaultDurability(5)).tag(LostWorldsTags.ModItemTags.DNA_DISCS.tag).model(textured("storage_disc")).register();
 			dinos.setDNADisc(() -> dnaDisc.get());
@@ -291,7 +290,6 @@ public class LostWorldsItems {
 	}
 
 	private static void doRandomItemStuff() {
-		LostWorldsRecipeManager.initAlternateRecipes();
 		Foods.init();
 	}
 
