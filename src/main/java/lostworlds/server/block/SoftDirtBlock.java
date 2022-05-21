@@ -1,9 +1,9 @@
 package lostworlds.server.block;
 
+import static lostworlds.api.APIRegistry.SOFT_DIRT_FUNCTIONS;
+
 import java.util.Random;
 
-import lostworlds.server.entity.utils.enums.DinoTypes;
-import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
@@ -23,32 +23,8 @@ public class SoftDirtBlock extends Block {
 	@Override
 	public void spawnAfterBreak(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) {
 		Random rand = new Random();
-		int drop = rand.nextInt(7);
-		if (drop == 0) {
-			Egg egg = state.getValue(EGG);
-			if (egg == Egg.TINY) {
-				world.setBlockAndUpdate(pos, LostWorldsBlocks.TINY_FOSSILISED_EGG.getDefaultState().setValue(TinyFossilizedEggBlock.EGGS, Integer.valueOf(rand.nextInt(19) + 1)));
-			} else if (egg == Egg.SMALL) {
-				world.setBlockAndUpdate(pos, LostWorldsBlocks.SMALL_FOSSILISED_EGG.getDefaultState().setValue(SmallFossilizedEggBlock.EGGS, Integer.valueOf(rand.nextInt(10) + 1)));
-			} else if (egg == Egg.MEDIUM) {
-				world.setBlockAndUpdate(pos, LostWorldsBlocks.MEDIUM_FOSSILISED_EGG.getDefaultState().setValue(MediumFossilisedEggBlock.EGGS, Integer.valueOf(rand.nextInt(6) + 1)));
-			} else {
-				world.setBlockAndUpdate(pos, LostWorldsBlocks.LARGE_FOSSILISED_EGG.getDefaultState().setValue(LargeFossilisedEggBlock.EGGS, Integer.valueOf(rand.nextInt(3) + 1)));
-			}
-		} else if (drop == 1) {
-			this.popResource(world, pos, LostWorldsItems.FOSSILIZED_FEATHER.get().getDefaultInstance());
-		} else if (drop == 2) {
-			this.popResource(world, pos, LostWorldsItems.FOSSILIZED_SKIN_IMPRESSION.get().getDefaultInstance());
-		} else if (drop == 3) {
-			int feather = rand.nextInt(DinoTypes.feathered().size());
-			this.popResource(world, pos, DinoTypes.feathered().get(feather).getFeather().get().getDefaultInstance());
-		} else if (drop == 4) {
-			this.popResource(world, pos, LostWorldsBlocks.FOSSILIZED_NAUTILUS_SHELL.asStack());
-		} else if (drop == 5) {
-			this.popResource(world, pos, DinoTypes.ANOMALOCARIS.getSkeletonPick().get().asItem().getDefaultInstance());
-		} else if (drop == 6) {
-			this.popResource(world, pos, DinoTypes.PALAEONISCUM.getSkeletonPick().get().asItem().getDefaultInstance());
-		}
+		int drop = rand.nextInt(SOFT_DIRT_FUNCTIONS.size());
+		SOFT_DIRT_FUNCTIONS.get(drop).doFunction(state, world, pos, stack);
 	}
 
 	@Override

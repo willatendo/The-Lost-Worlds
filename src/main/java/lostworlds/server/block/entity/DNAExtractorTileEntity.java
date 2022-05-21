@@ -201,27 +201,27 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 
 	protected boolean canExtractWith(@Nullable IRecipe<?> recipe) {
 		if (!this.items.get(0).isEmpty() && !this.items.get(1).isEmpty() && recipe != null) {
-			if (recipe instanceof AmberDNAExtractorRecipe && !hasOutput) {
+			if (recipe instanceof AmberDNAExtractorRecipe && !this.hasOutput) {
 				AmberDNAExtractorRecipe amber = (AmberDNAExtractorRecipe) recipe;
-				output = amber.generateRandom();
-				hasOutput = true;
+				this.output = amber.generateRandom();
+				this.hasOutput = true;
 			} else if (!(recipe instanceof AmberDNAExtractorRecipe)) {
-				output = recipe.getResultItem();
+				this.output = recipe.getResultItem();
 			}
 
-			if (output.isEmpty()) {
-				hasOutput = false;
+			if (this.output.isEmpty()) {
+				this.hasOutput = false;
 				return false;
 			} else {
 				ItemStack itemstack1 = this.items.get(2);
 				if (itemstack1.isEmpty()) {
 					return true;
-				} else if (!itemstack1.sameItem(output)) {
+				} else if (!itemstack1.sameItem(this.output)) {
 					return false;
-				} else if (itemstack1.getCount() + output.getCount() <= this.getMaxStackSize() && itemstack1.getCount() + output.getCount() <= itemstack1.getMaxStackSize()) {
+				} else if (itemstack1.getCount() + this.output.getCount() <= this.getMaxStackSize() && itemstack1.getCount() + this.output.getCount() <= itemstack1.getMaxStackSize()) {
 					return true;
 				} else {
-					return itemstack1.getCount() + output.getCount() <= output.getMaxStackSize();
+					return itemstack1.getCount() + this.output.getCount() <= this.output.getMaxStackSize();
 				}
 			}
 		} else {
@@ -233,7 +233,7 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 		if (recipe != null && this.canExtractWith(recipe)) {
 			ItemStack input = this.items.get(0);
 			ItemStack vile = this.items.get(1);
-			ItemStack result = recipe instanceof AmberDNAExtractorRecipe ? output : recipe.getResultItem();
+			ItemStack result = recipe instanceof AmberDNAExtractorRecipe ? this.output : recipe.getResultItem();
 			ItemStack slot = this.items.get(2);
 			if (slot.isEmpty()) {
 				this.items.set(2, result.copy());

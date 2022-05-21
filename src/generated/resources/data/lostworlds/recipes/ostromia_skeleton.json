@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "lostworlds:paleontology_table",
   "pattern": [
     "#$#",
     "@%@",
@@ -22,7 +22,7 @@
       "item": "lostworlds:ostromia_tail"
     }
   },
-  "result": {
+  "output": {
     "item": "lostworlds:ostromia_skeleton"
   }
 }

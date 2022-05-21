@@ -13,6 +13,6 @@ public class DNAExtractorInputSlot extends Slot {
 
 	@Override
 	public boolean mayPlace(ItemStack stack) {
-		return stack.getItem().is(LostWorldsTags.ModItemTags.SOFT_TISSUE.tag) || stack.getItem() instanceof AmberItem;
+		return stack.getItem().is(LostWorldsTags.ModItemTags.SOFT_TISSUE.tag) || stack.getItem() instanceof AmberItem || stack.getItem().is(LostWorldsTags.ModItemTags.BLOOD_VILES.tag);
 	}
 }

@@ -2,10 +2,13 @@ package lostworlds.data;
 
 import java.util.function.Consumer;
 
+import com.google.gson.JsonObject;
+
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.Plants;
 import lostworlds.server.block.Trees;
+import lostworlds.server.container.recipes.LostWorldsRecipes;
 import lostworlds.server.container.recipes.data.AnalyzerRecipeBuilder;
 import lostworlds.server.container.recipes.data.CultivatorRecipeBuilder;
 import lostworlds.server.container.recipes.data.DnaExtractorRecipeBuilder;
@@ -13,12 +16,19 @@ import lostworlds.server.container.recipes.data.DnaInjectorRecipeBuilder;
 import lostworlds.server.container.recipes.data.FossilCleanerRecipeBuilder;
 import lostworlds.server.container.recipes.data.FossilGrinderRecipeBuilder;
 import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.item.LostWorldsItems;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementRewards;
+import net.minecraft.advancements.IRequirementsStrategy;
+import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.item.Items;
+import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 
 public class LostWorldsRecipeProvider extends RecipeProvider {
@@ -65,5 +75,31 @@ public class LostWorldsRecipeProvider extends RecipeProvider {
 		}
 
 		ShapelessRecipeBuilder.shapeless(Items.BONE_MEAL, 4).requires(Tags.Items.BONES).unlockedBy("has_item", has(LostWorldsTags.ModItemTags.FOSSILS.tag)).save(consumer, LostWorldsUtils.rL("bone_meal_from_bone"));
+
+		consumer.accept(new IFinishedRecipe() {
+			@Override
+			public void serializeRecipeData(JsonObject json) {
+			}
+
+			@Override
+			public JsonObject serializeAdvancement() {
+				return Advancement.Builder.advancement().parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(LostWorldsUtils.rL("amber_dna_extractor"))).rewards(AdvancementRewards.Builder.recipe(LostWorldsUtils.rL("amber_dna_extractor"))).requirements(IRequirementsStrategy.OR).serializeToJson();
+			}
+
+			@Override
+			public IRecipeSerializer<?> getType() {
+				return LostWorldsRecipes.AMBER_DNA_EXTRACTOR_RECIPE_SERIALIZER;
+			}
+
+			@Override
+			public ResourceLocation getId() {
+				return LostWorldsUtils.rL("amber_dna_extractor");
+			}
+
+			@Override
+			public ResourceLocation getAdvancementId() {
+				return LostWorldsUtils.rL("recipes/" + LostWorldsItems.AMBER.get().getItemCategory().getRecipeFolderName() + "/amber_dna_extractor");
+			}
+		});
 	}
 }

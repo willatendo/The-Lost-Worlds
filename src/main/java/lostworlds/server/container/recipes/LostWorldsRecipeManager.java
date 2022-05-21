@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lostworlds.api.APIAmberRecipe;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.jei.recipe.AmberDNAExtractorRecipe;
@@ -11,6 +12,7 @@ import lostworlds.server.jei.recipe.WaterFuelRecipe;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.runtime.IIngredientManager;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.PotionUtils;
@@ -20,12 +22,18 @@ public class LostWorldsRecipeManager {
 	public static List<RandomItemGenerator> amberRecipes = new ArrayList<>();
 
 	public static void initAlternateRecipes() {
-		RandomItemGenerator amber = new RandomItemGenerator(() -> LostWorldsItems.AMBER.get().getDefaultInstance());
+		RandomItemGenerator builtIn = new RandomItemGenerator(() -> LostWorldsItems.AMBER.get().getDefaultInstance());
 		for (DinoTypes types : DinoTypes.values()) {
-			amber.addOutput(types.getDNA());
+			builtIn.addOutput(types.getDNA());
 			new AmberDNAExtractorRecipe(() -> types.getDNA().get().getDefaultInstance());
 		}
-		registerAmber(amber);
+		registerAmber(builtIn);
+		RandomItemGenerator additional = new RandomItemGenerator(() -> LostWorldsItems.AMBER.get().getDefaultInstance());
+		for (Item item : APIAmberRecipe.ADDITIONAL_OUTPUTS) {
+			additional.addOutput(() -> item);
+			new AmberDNAExtractorRecipe(() -> item.getDefaultInstance());
+		}
+		registerAmber(additional);
 	}
 
 	public static void registerAmber(RandomItemGenerator recipe) {

@@ -1,5 +1,7 @@
 package lostworlds.server.block;
 
+import static lostworlds.api.APIRegistry.SOFT_STONE_FUNCTIONS;
+
 import java.util.Random;
 
 import lostworlds.server.entity.fossil.FossilEntity;
@@ -7,10 +9,8 @@ import lostworlds.server.entity.illager.FossilPoacherEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.entity.utils.enums.TimeEras;
 import lostworlds.server.item.HammerItem;
-import lostworlds.server.item.LostWorldsEnchantments;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -62,7 +62,7 @@ public class SoftStoneBlock extends Block {
 		}
 	}
 
-	private void breakStone(World world, BlockPos pos, BlockState state) {
+	public static void breakStone(World world, BlockPos pos, BlockState state) {
 		world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
 		Damage damage = state.getValue(DAMAGE);
 		if (damage == Damage.COMPLETELY) {
@@ -87,300 +87,8 @@ public class SoftStoneBlock extends Block {
 
 	private void doBreak(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) {
 		Random rand = new Random();
-		PotentialPart part = state.getValue(POTENTIAL_PART);
-		DinoTypes creature = state.getValue(POTENTIAL_CREATURE);
-
-		if (creature == DinoTypes.NAUTILUS) {
-			if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
-				int breakchance = rand.nextInt(2);
-				if (breakchance != 0) {
-					this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().get().asItem().getDefaultInstance());
-					return;
-				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 3) {
-					this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().get().asItem().getDefaultInstance());
-					return;
-				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 2) {
-					int lowbreakchance = rand.nextInt(16);
-					if (lowbreakchance != 0) {
-						this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().get().asItem().getDefaultInstance());
-						return;
-					}
-				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 1) {
-					int mediumbreakchance = rand.nextInt(8);
-					if (mediumbreakchance != 0) {
-						this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().get().asItem().getDefaultInstance());
-						return;
-					}
-				} else {
-					int normalbreakchance = rand.nextInt(4);
-					if (normalbreakchance != 0) {
-						this.popResource(world, pos, DinoTypes.NAUTILUS.getExtraBlock().get().asItem().getDefaultInstance());
-						return;
-					} else {
-						this.breakStone(world, pos, state);
-					}
-				}
-			}
-		}
-
-		if (creature == DinoTypes.NAUTILUS) {
-			if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
-				int breakchance = rand.nextInt(2);
-				if (breakchance != 0) {
-					this.popResource(world, pos, LostWorldsBlocks.FOSSILIZED_NAUTILUS_SHELL.asStack());
-					return;
-				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 3) {
-					this.popResource(world, pos, LostWorldsBlocks.FOSSILIZED_NAUTILUS_SHELL.asStack());
-					return;
-				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 2) {
-					int lowbreakchance = rand.nextInt(16);
-					if (lowbreakchance != 0) {
-						this.popResource(world, pos, LostWorldsBlocks.FOSSILIZED_NAUTILUS_SHELL.asStack());
-						return;
-					}
-				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 1) {
-					int mediumbreakchance = rand.nextInt(8);
-					if (mediumbreakchance != 0) {
-						this.popResource(world, pos, LostWorldsBlocks.FOSSILIZED_NAUTILUS_SHELL.asStack());
-						return;
-					}
-				} else {
-					int normalbreakchance = rand.nextInt(4);
-					if (normalbreakchance != 0) {
-						this.popResource(world, pos, LostWorldsBlocks.FOSSILIZED_NAUTILUS_SHELL.asStack());
-						return;
-					} else {
-						this.breakStone(world, pos, state);
-					}
-				}
-			}
-		}
-
-		if (creature == DinoTypes.ANOMALOCARIS) {
-			if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
-				int breakchance = rand.nextInt(2);
-				if (breakchance != 0) {
-					this.popResource(world, pos, DinoTypes.ANOMALOCARIS.getSkeletonPick().get().asItem().getDefaultInstance());
-					return;
-				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 3) {
-					this.popResource(world, pos, DinoTypes.ANOMALOCARIS.getSkeletonPick().get().asItem().getDefaultInstance());
-					return;
-				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 2) {
-					int lowbreakchance = rand.nextInt(16);
-					if (lowbreakchance != 0) {
-						this.popResource(world, pos, DinoTypes.ANOMALOCARIS.getSkeletonPick().get().asItem().getDefaultInstance());
-						return;
-					}
-				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 1) {
-					int mediumbreakchance = rand.nextInt(8);
-					if (mediumbreakchance != 0) {
-						this.popResource(world, pos, DinoTypes.ANOMALOCARIS.getSkeletonPick().get().asItem().getDefaultInstance());
-						return;
-					}
-				} else {
-					int normalbreakchance = rand.nextInt(4);
-					if (normalbreakchance != 0) {
-						this.popResource(world, pos, DinoTypes.ANOMALOCARIS.getSkeletonPick().get().asItem().getDefaultInstance());
-						return;
-					} else {
-						this.breakStone(world, pos, state);
-					}
-				}
-			}
-		}
-
-		if (creature == DinoTypes.PALAEONISCUM) {
-			if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
-				int breakchance = rand.nextInt(2);
-				if (breakchance != 0) {
-					this.popResource(world, pos, DinoTypes.PALAEONISCUM.getSkeletonPick().get().asItem().getDefaultInstance());
-					return;
-				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 3) {
-					this.popResource(world, pos, DinoTypes.PALAEONISCUM.getSkeletonPick().get().asItem().getDefaultInstance());
-					return;
-				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 2) {
-					int lowbreakchance = rand.nextInt(16);
-					if (lowbreakchance != 0) {
-						this.popResource(world, pos, DinoTypes.PALAEONISCUM.getSkeletonPick().get().asItem().getDefaultInstance());
-						return;
-					}
-				} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 1) {
-					int mediumbreakchance = rand.nextInt(8);
-					if (mediumbreakchance != 0) {
-						this.popResource(world, pos, DinoTypes.PALAEONISCUM.getSkeletonPick().get().asItem().getDefaultInstance());
-						return;
-					}
-				} else {
-					int normalbreakchance = rand.nextInt(4);
-					if (normalbreakchance != 0) {
-						this.popResource(world, pos, DinoTypes.PALAEONISCUM.getSkeletonPick().get().asItem().getDefaultInstance());
-						return;
-					} else {
-						this.breakStone(world, pos, state);
-					}
-				}
-			}
-		}
-
-		if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
-			int breakchance = rand.nextInt(2);
-			if (breakchance != 0) {
-				if (part == PotentialPart.ARM) {
-					FossilEntity fossil = creature.getDirtyArmBones().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.LEG) {
-					FossilEntity fossil = creature.getDirtyLegBones().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.RIB_CAGE) {
-					FossilEntity fossil = creature.getDirtyRibCage().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.TAIL) {
-					FossilEntity fossil = creature.getDirtyTail().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.SKULL) {
-					FossilEntity fossil = creature.getDirtySkull().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else {
-					this.breakStone(world, pos, state);
-				}
-			}
-		} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 3) {
-			if (part == PotentialPart.ARM) {
-				FossilEntity fossil = creature.getDirtyArmBones().get().create(world);
-				fossil.setAge(0);
-				fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-				world.addFreshEntity(fossil);
-			} else if (part == PotentialPart.LEG) {
-				FossilEntity fossil = creature.getDirtyLegBones().get().create(world);
-				fossil.setAge(0);
-				fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-				world.addFreshEntity(fossil);
-			} else if (part == PotentialPart.RIB_CAGE) {
-				FossilEntity fossil = creature.getDirtyRibCage().get().create(world);
-				fossil.setAge(0);
-				fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-				world.addFreshEntity(fossil);
-			} else if (part == PotentialPart.TAIL) {
-				FossilEntity fossil = creature.getDirtyTail().get().create(world);
-				fossil.setAge(0);
-				fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-				world.addFreshEntity(fossil);
-			} else if (part == PotentialPart.SKULL) {
-				FossilEntity fossil = creature.getDirtySkull().get().create(world);
-				fossil.setAge(0);
-				fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-				world.addFreshEntity(fossil);
-			} else {
-				this.breakStone(world, pos, state);
-			}
-		} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 2) {
-			int lowbreakchance = rand.nextInt(16);
-			if (lowbreakchance != 0) {
-				if (part == PotentialPart.ARM) {
-					FossilEntity fossil = creature.getDirtyArmBones().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.LEG) {
-					FossilEntity fossil = creature.getDirtyLegBones().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.RIB_CAGE) {
-					FossilEntity fossil = creature.getDirtyRibCage().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.TAIL) {
-					FossilEntity fossil = creature.getDirtyTail().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.SKULL) {
-					FossilEntity fossil = creature.getDirtySkull().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else {
-					this.breakStone(world, pos, state);
-				}
-			}
-		} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 1) {
-			int mediumbreakchance = rand.nextInt(8);
-			if (mediumbreakchance != 0) {
-				if (part == PotentialPart.ARM) {
-					FossilEntity fossil = creature.getDirtyArmBones().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.LEG) {
-					FossilEntity fossil = creature.getDirtyLegBones().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.RIB_CAGE) {
-					FossilEntity fossil = creature.getDirtyRibCage().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.TAIL) {
-					FossilEntity fossil = creature.getDirtyTail().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.SKULL) {
-					FossilEntity fossil = creature.getDirtySkull().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else {
-					this.breakStone(world, pos, state);
-				}
-			}
-		} else {
-			int normalbreakchance = rand.nextInt(4);
-			if (normalbreakchance != 0) {
-				if (part == PotentialPart.ARM) {
-					FossilEntity fossil = creature.getDirtyArmBones().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.LEG) {
-					FossilEntity fossil = creature.getDirtyLegBones().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.RIB_CAGE) {
-					FossilEntity fossil = creature.getDirtyRibCage().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.TAIL) {
-					FossilEntity fossil = creature.getDirtyTail().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				} else if (part == PotentialPart.SKULL) {
-					FossilEntity fossil = creature.getDirtySkull().get().create(world);
-					fossil.setAge(0);
-					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
-					world.addFreshEntity(fossil);
-				}
-
-			} else {
-				this.breakStone(world, pos, state);
-			}
-		}
+		int drop = rand.nextInt(SOFT_STONE_FUNCTIONS.size());
+		SOFT_STONE_FUNCTIONS.get(drop).doFunction(state, world, pos, stack);
 	}
 
 	@Override

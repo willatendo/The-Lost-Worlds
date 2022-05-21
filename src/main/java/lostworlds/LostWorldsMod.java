@@ -28,6 +28,7 @@ import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.LostWorldsPOIs;
 import lostworlds.server.entity.LostWorldsVillagerProfessions;
 import lostworlds.server.feature.LostWorldsFeatures;
+import lostworlds.server.impl.ImplInit;
 import lostworlds.server.item.LostWorldsBanners;
 import lostworlds.server.item.LostWorldsEnchantments;
 import lostworlds.server.item.LostWorldsItems;
@@ -88,6 +89,8 @@ public class LostWorldsMod {
 		IEventBus forge = MinecraftForge.EVENT_BUS;
 
 		GeckoLib.initialize();
+
+		ImplInit.init();
 
 		LostWorldsBlocks.registrate();
 		LostWorldsItems.registrate();

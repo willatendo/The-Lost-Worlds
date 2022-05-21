@@ -21,7 +21,7 @@ public class PaleontologyTableRecipeSerialiser extends ForgeRegistryEntry<IRecip
 		int i = astring[0].length();
 		int j = astring.length;
 		NonNullList<Ingredient> nonnulllist = PaleontologyTableRecipe.dissolvePattern(astring, map, i, j);
-		ItemStack itemstack = PaleontologyTableRecipe.itemFromJson(JSONUtils.getAsJsonObject(json, "result"));
+		ItemStack itemstack = PaleontologyTableRecipe.itemFromJson(JSONUtils.getAsJsonObject(json, "output"));
 		return new PaleontologyTableRecipe(id, i, j, nonnulllist, itemstack);
 	}
 
