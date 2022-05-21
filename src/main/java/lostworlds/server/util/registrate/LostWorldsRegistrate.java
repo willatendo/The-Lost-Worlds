@@ -202,6 +202,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.addRawLang("jei.lostworlds.dna_injector.title", "DNA Injecting");
 		this.addRawLang("jei.lostworlds.cultivator.title", "Cultivating");
 		this.addRawLang("jei.lostworlds.archaeology_table.title", "Archaeology");
+		this.addRawLang("jei.lostworlds.lightning.title", "Lightning Strike");
 		this.addRawLang("jei.lostworlds.paleontology_table.title", "Paleontology");
 		this.addRawLang("jei.lostworlds.time_machine.title", "Time Enchanting");
 

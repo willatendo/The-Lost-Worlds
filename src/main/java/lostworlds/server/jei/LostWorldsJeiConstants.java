@@ -13,7 +13,7 @@ public class LostWorldsJeiConstants {
 	public static final ResourceLocation ANALYZER_CATEGORY = LostWorldsUtils.rL("analyzer_category");
 	public static final ResourceLocation DNA_INJECTOR_CATEGORY = LostWorldsUtils.rL("dna_injector_category");
 	public static final ResourceLocation CULTIVATOR_CATEGORY = LostWorldsUtils.rL("cultivator_category");
-	public static final ResourceLocation KILN_CATEGORY = LostWorldsUtils.rL("kiln_category");
+	public static final ResourceLocation LIGHTNING_CATEGORY = LostWorldsUtils.rL("lightning_category");
 	public static final ResourceLocation TIME_MACHINE_CATEGORY = LostWorldsUtils.rL("time_machine_category");
 	public static final ResourceLocation ARCHAEOLOGY_TABLE_CATEGORY = LostWorldsUtils.rL("archaeology_table_category");
 	public static final ResourceLocation PALEONTOLOGY_TABLE_CATEGORY = LostWorldsUtils.rL("paleontology_table_category");

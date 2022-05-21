@@ -29,6 +29,7 @@ import lostworlds.server.jei.categories.DNAExtractorCategory;
 import lostworlds.server.jei.categories.DNAInjectorCategory;
 import lostworlds.server.jei.categories.FossilCleanerCategory;
 import lostworlds.server.jei.categories.FossilGrinderCategory;
+import lostworlds.server.jei.categories.LightningCategory;
 import lostworlds.server.jei.categories.PaleontologyTableCategory;
 import lostworlds.server.jei.categories.TimeMachineCategory;
 import lostworlds.server.jei.categories.WaterFuelCategory;
@@ -71,6 +72,7 @@ public class LostWorldsJeiPlugin implements IModPlugin {
 		registration.addRecipes(this.getRecipes(manager, LostWorldsRecipes.CULTIVATOR_RECIPE), LostWorldsJeiConstants.CULTIVATOR_CATEGORY);
 		registration.addRecipes(this.getRecipes(manager, LostWorldsRecipes.TIME_MACHINE_RECIPE), LostWorldsJeiConstants.TIME_MACHINE_CATEGORY);
 		registration.addRecipes(this.getRecipes(manager, LostWorldsRecipes.ARCHAEOLOGY_TABLE_RECIPE), LostWorldsJeiConstants.ARCHAEOLOGY_TABLE_CATEGORY);
+		registration.addRecipes(LostWorldsRecipeManager.getLightningRecipes(), LostWorldsJeiConstants.LIGHTNING_CATEGORY);
 		registration.addRecipes(this.getRecipes(manager, LostWorldsRecipes.PALEONTOLOGY_TABLE_RECIPE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
 
 		registration.addIngredientInfo(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get().getDefaultInstance(), VanillaTypes.ITEM, LostWorldsUtils.tTC("jei", "charged_crystal_scarab_gem"));
@@ -89,6 +91,7 @@ public class LostWorldsJeiPlugin implements IModPlugin {
 		registration.addRecipeCategories(new CultivatorCategory(helper));
 		registration.addRecipeCategories(new TimeMachineCategory(helper));
 		registration.addRecipeCategories(new ArchaeologyTableCategory(helper));
+		registration.addRecipeCategories(new LightningCategory(helper));
 		registration.addRecipeCategories(new PaleontologyTableCategory(helper));
 	}
 
