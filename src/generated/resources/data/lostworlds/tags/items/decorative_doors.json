@@ -1,4 +1,11 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "lostworlds:outdoor_toilet_door",
+    "lostworlds:visitor_center_door",
+    "lostworlds:security_door",
+    "lostworlds:glass_shop_door",
+    "lostworlds:innovation_center_door",
+    "lostworlds:back_door"
+  ]
 }

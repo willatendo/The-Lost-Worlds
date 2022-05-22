@@ -28,5 +28,32 @@
     "sounds": [
       "lostworlds:entity.sound.small_walk"
     ]
+  },
+  "entity.sound.fossil_poacher.celebrate": {
+    "subtitle": "subtitle.entity.fossil_poacher.celebrate",
+    "sounds": [
+      "lostworlds:entity.sound.fossil_poacher.celebrate"
+    ]
+  },
+  "entity.sound.fossil_poacher.death": {
+    "subtitle": "subtitle.entity.fossil_poacher.death",
+    "sounds": [
+      "lostworlds:entity.sound.fossil_poacher.death"
+    ]
+  },
+  "entity.sound.fossil_poacher.grunt": {
+    "subtitle": "subtitle.entity.fossil_poacher.grunt",
+    "sounds": [
+      "lostworlds:entity.sound.fossil_poacher.grunt_1",
+      "lostworlds:entity.sound.fossil_poacher.grunt_2",
+      "lostworlds:entity.sound.fossil_poacher.grunt_3"
+    ]
+  },
+  "entity.sound.fossil_poacher.hurt": {
+    "subtitle": "subtitle.entity.fossil_poacher.hurt",
+    "sounds": [
+      "lostworlds:entity.sound.fossil_poacher.hurt_1",
+      "lostworlds:entity.sound.fossil_poacher.hurt_2"
+    ]
   }
 }

@@ -3,14 +3,15 @@ package lostworlds.server.container.recipes;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.jei.recipe.LightningRecipe;
 import lostworlds.server.jei.recipe.WaterFuelRecipe;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.runtime.IIngredientManager;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
@@ -20,8 +21,8 @@ import net.minecraft.potion.Potions;
 public class LostWorldsRecipeManager {
 	public static ArrayList<DNAExtractorRecipe> getAmberRecipes() {
 		ArrayList<DNAExtractorRecipe> recipes = new ArrayList<>();
-		for (DinoTypes types : DinoTypes.values()) {
-			recipes.add(new DNAExtractorRecipe(LostWorldsUtils.rL("amber_recipes"), Ingredient.of(LostWorldsItems.AMBER.get()), Ingredient.of(LostWorldsItems.EMPTY_VILE.get()), types.getDNA().get().getDefaultInstance()));
+		for (Item types : LostWorldsTags.ModItemTags.AMBER_RESULTS.tag.getValues()) {
+			recipes.add(new DNAExtractorRecipe(LostWorldsUtils.rL("amber_recipes"), Ingredient.of(LostWorldsItems.AMBER.get()), Ingredient.of(LostWorldsItems.EMPTY_VILE.get()), types.getDefaultInstance()));
 		}
 		return recipes;
 	}

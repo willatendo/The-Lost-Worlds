@@ -310,5 +310,27 @@ public class LostWorldsTags {
 		ModBlockTags.JURASSIC_WORLD_ERA.includeAll(ModBlockTags.DARK_CONCRETE.tag, ModBlockTags.REFINED_WOODEN_PLANKS.tag);
 
 		ModBlockTags.CARVER_BLOCKS.add(Blocks.BASALT, Blocks.BLACKSTONE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRAVEL, Blocks.MAGMA_BLOCK, Blocks.STONE, Blocks.COBBLESTONE, Blocks.SNOW_BLOCK);
+
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.ANCIENT_SAPLINGS, LostWorldsTags.ModItemTags.ANCIENT_SAPLINGS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.ARAUCARIA_LOGS, LostWorldsTags.ModItemTags.ARAUCARIA_LOGS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.CALAMITES_LOGS, LostWorldsTags.ModItemTags.CALAMITES_LOGS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.CONIFER_LOGS, LostWorldsTags.ModItemTags.CONIFER_LOGS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.CYPRESS_LOGS, LostWorldsTags.ModItemTags.CYPRESS_LOGS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.DARK_CONCRETE, LostWorldsTags.ModItemTags.DARK_CONCRETE);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.DECORATIVE_BLOCKS, LostWorldsTags.ModItemTags.DECORATIVE_BLOCKS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.DECORATIVE_DOORS, LostWorldsTags.ModItemTags.DECORATIVE_DOORS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.EGGS, LostWorldsTags.ModItemTags.EGGS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.FOSSILS, LostWorldsTags.ModItemTags.FOSSILS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.GINKGO_LOGS, LostWorldsTags.ModItemTags.GINKGO_LOGS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.JURASSIC_PARK_ERA, LostWorldsTags.ModItemTags.JURASSIC_PARK_ERA);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.JURASSIC_WORLD_ERA, LostWorldsTags.ModItemTags.JURASSIC_WORLD_ERA);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.LIGHT_CONCRETE, LostWorldsTags.ModItemTags.LIGHT_CONCRETE);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.PAVEMENT, LostWorldsTags.ModItemTags.PAVEMENT);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.PETRIFIED_LOGS, LostWorldsTags.ModItemTags.PETRIFIED_LOGS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.REFINED_WOODEN_PLANKS, LostWorldsTags.ModItemTags.REFINED_WOODEN_PLANKS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.ROADS, LostWorldsTags.ModItemTags.ROADS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.SCORCHED_LOGS, LostWorldsTags.ModItemTags.SCORCHED_LOGS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.SEQUOIA_LOGS, LostWorldsTags.ModItemTags.SEQUOIA_LOGS);
+		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.WOODEN_PLANKS, LostWorldsTags.ModItemTags.WOODEN_PLANKS);
 	}
 }

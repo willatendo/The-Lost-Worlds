@@ -334,6 +334,13 @@
     "lostworlds:zephyrosaurus_arm_bones",
     "lostworlds:zephyrosaurus_tail",
     "lostworlds:zephyrosaurus_skull",
-    "lostworlds:zephyrosaurus_skeleton"
+    "lostworlds:zephyrosaurus_skeleton",
+    "lostworlds:soft_stone",
+    "lostworlds:soft_dirt",
+    "lostworlds:plant_fossil",
+    "lostworlds:tiny_fossilized_egg",
+    "lostworlds:small_fossilized_egg",
+    "lostworlds:medium_fossilized_egg",
+    "lostworlds:large_fossilized_egg"
   ]
 }

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "lostworlds:fossilized_nautilus_shell",
     "minecraft:nautilus_shell"
   ]
 }

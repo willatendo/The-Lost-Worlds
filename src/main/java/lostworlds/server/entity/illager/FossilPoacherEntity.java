@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Maps;
 
+import lostworlds.client.sounds.LostWorldsSounds;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.item.LostWorldsItems;
 import net.minecraft.block.Block;
@@ -110,17 +111,17 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 
 	@Override
 	protected SoundEvent getAmbientSound() {
-		return SoundEvents.PILLAGER_AMBIENT;
+		return LostWorldsSounds.FOSSIL_POACHER_GRUNT.get();
 	}
 
 	@Override
 	protected SoundEvent getDeathSound() {
-		return SoundEvents.PILLAGER_DEATH;
+		return LostWorldsSounds.FOSSIL_POACHER_DEATH.get();
 	}
 
 	@Override
 	protected SoundEvent getHurtSound(DamageSource source) {
-		return SoundEvents.PILLAGER_HURT;
+		return LostWorldsSounds.FOSSIL_POACHER_HURT.get();
 	}
 
 	@Override
@@ -166,7 +167,7 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 
 	@Override
 	public SoundEvent getCelebrateSound() {
-		return SoundEvents.PILLAGER_CELEBRATE;
+		return LostWorldsSounds.FOSSIL_POACHER_CELEBRATE.get();
 	}
 
 	@Override

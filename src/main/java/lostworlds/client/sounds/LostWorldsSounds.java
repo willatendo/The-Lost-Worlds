@@ -27,9 +27,18 @@ public class LostWorldsSounds {
 	public static final RegistryObject<SoundEvent> MEDIUM_WALK = register("medium_walk", "entity");
 	public static final RegistryObject<SoundEvent> SMALL_WALK = register("small_walk", "entity");
 
+	public static final RegistryObject<SoundEvent> FOSSIL_POACHER_CELEBRATE = register("fossil_poacher.celebrate", "entity", "Fossil Poacher Celebrates");
+	public static final RegistryObject<SoundEvent> FOSSIL_POACHER_DEATH = register("fossil_poacher.death", "entity", "Fossil Poacher Dies");
+	public static final RegistryObject<SoundEvent> FOSSIL_POACHER_GRUNT = register("fossil_poacher.grunt", "entity", "Fossil Poacher Grunts");
+	public static final RegistryObject<SoundEvent> FOSSIL_POACHER_HURT = register("fossil_poacher.hurt", "entity", "Fossil Poacher Hurts");
+
 	public static RegistryObject<SoundEvent> register(String id, String type) {
+		return register(id, type, Arrays.stream(id.toLowerCase(Locale.ROOT).split("_")).map(StringUtils::capitalize).collect(Collectors.joining(" ")));
+	}
+
+	public static RegistryObject<SoundEvent> register(String id, String type, String subtile) {
 		SoundEvent event = new SoundEvent(LostWorldsUtils.rL(type + ".sound." + id));
-		REGISTRATE.subtitle(type + "." + id, Arrays.stream(id.toLowerCase(Locale.ROOT).split("_")).map(StringUtils::capitalize).collect(Collectors.joining(" ")));
+		REGISTRATE.subtitle(type + "." + id, subtile);
 		return SOUND_EVENTS.register(id, () -> event);
 	}
 
