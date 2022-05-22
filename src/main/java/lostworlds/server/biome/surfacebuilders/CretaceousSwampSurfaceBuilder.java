@@ -5,25 +5,25 @@ import java.util.Random;
 import com.mojang.serialization.Codec;
 
 import lostworlds.server.biome.ModSurfaceBuilderConfigs;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.chunk.IChunk;
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilder;
+import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilderBaseConfiguration;
 
-public class CretaceousSwampSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> {
-	public CretaceousSwampSurfaceBuilder(Codec<SurfaceBuilderConfig> codec) {
+public class CretaceousSwampSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderBaseConfiguration> {
+	public CretaceousSwampSurfaceBuilder(Codec<SurfaceBuilderBaseConfiguration> codec) {
 		super(codec);
 	}
 
 	@Override
-	public void apply(Random rand, IChunk iChunk, Biome biome, int x, int z, int startHeight, double noise, BlockState block, BlockState fluid, int seaLevel, long seed, SurfaceBuilderConfig config) {
+	public void apply(Random rand, ChunkAccess iChunk, Biome biome, int x, int z, int startHeight, double noise, BlockState block, BlockState fluid, int seaLevel, long seed, SurfaceBuilderBaseConfiguration config) {
 		double d0 = Biome.BIOME_INFO_NOISE.getValue((double) x * 0.25D, (double) z * 0.25D, false);
 		if (d0 > 0.0D) {
 			int i = x & 15;
 			int j = z & 15;
-			BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
+			BlockPos.MutableBlockPos blockpos$mutable = new BlockPos.MutableBlockPos();
 
 			for (int k = seaLevel; k >= 0; --k) {
 				blockpos$mutable.set(i, k, j);

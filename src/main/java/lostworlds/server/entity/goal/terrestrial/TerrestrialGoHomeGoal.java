@@ -1,11 +1,11 @@
 package lostworlds.server.entity.goal.terrestrial;
 
 import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.ai.RandomPositionGenerator;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.entity.ai.util.RandomPos;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.Vec3;
 
 public class TerrestrialGoHomeGoal extends Goal {
 	private final EggLayingEntity entity;
@@ -53,14 +53,14 @@ public class TerrestrialGoHomeGoal extends Goal {
 		}
 
 		if (this.entity.getNavigation().isDone()) {
-			Vector3d vector3d = Vector3d.atBottomCenterOf(blockpos);
-			Vector3d vector3d1 = RandomPositionGenerator.getPosTowards(this.entity, 16, 3, vector3d, (double) ((float) Math.PI / 10F));
+			Vec3 vector3d = Vec3.atBottomCenterOf(blockpos);
+			Vec3 vector3d1 = RandomPos.getPosTowards(this.entity, 16, 3, vector3d, (double) ((float) Math.PI / 10F));
 			if (vector3d1 == null) {
-				vector3d1 = RandomPositionGenerator.getPosTowards(this.entity, 8, 7, vector3d);
+				vector3d1 = RandomPos.getPosTowards(this.entity, 8, 7, vector3d);
 			}
 
 			if (vector3d1 != null && !flag && !this.entity.level.getBlockState(new BlockPos(vector3d1)).is(Blocks.WATER)) {
-				vector3d1 = RandomPositionGenerator.getPosTowards(this.entity, 16, 5, vector3d);
+				vector3d1 = RandomPos.getPosTowards(this.entity, 16, 5, vector3d);
 			}
 
 			if (vector3d1 == null) {

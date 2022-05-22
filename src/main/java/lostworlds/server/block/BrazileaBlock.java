@@ -1,18 +1,18 @@
 package lostworlds.server.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BushBlock;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.BoatEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.PlantType;
 
 public class BrazileaBlock extends BushBlock {
@@ -23,26 +23,26 @@ public class BrazileaBlock extends BushBlock {
 	}
 
 	@Override
-	public void entityInside(BlockState state, World world, BlockPos pos, Entity entity) {
+	public void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {
 		super.entityInside(state, world, pos, entity);
-		if (world instanceof ServerWorld && entity instanceof BoatEntity) {
+		if (world instanceof ServerLevel && entity instanceof Boat) {
 			world.destroyBlock(new BlockPos(pos), true, entity);
 		}
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
+	public VoxelShape getShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context) {
 		return SHAPE;
 	}
 
 	@Override
-	protected boolean mayPlaceOn(BlockState state, IBlockReader reader, BlockPos pos) {
+	protected boolean mayPlaceOn(BlockState state, BlockGetter reader, BlockPos pos) {
 		FluidState fluidstate = reader.getFluidState(pos);
 		return (fluidstate.getType() == Fluids.WATER);
 	}
 
 	@Override
-	public PlantType getPlantType(IBlockReader world, BlockPos pos) {
+	public PlantType getPlantType(BlockGetter world, BlockPos pos) {
 		return PlantType.WATER;
 	}
 }

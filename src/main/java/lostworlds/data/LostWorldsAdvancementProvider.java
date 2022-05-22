@@ -17,25 +17,25 @@ import lostworlds.server.util.registrate.WoodTypes;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.FrameType;
-import net.minecraft.advancements.IRequirementsStrategy;
-import net.minecraft.advancements.criterion.CriterionInstance;
-import net.minecraft.advancements.criterion.EntityPredicate;
-import net.minecraft.advancements.criterion.InventoryChangeTrigger;
-import net.minecraft.advancements.criterion.ItemPredicate;
-import net.minecraft.advancements.criterion.LocationPredicate;
-import net.minecraft.advancements.criterion.PositionTrigger;
-import net.minecraft.advancements.criterion.TickTrigger;
-import net.minecraft.data.AdvancementProvider;
+import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.critereon.AbstractCriterionTriggerInstance;
+import net.minecraft.advancements.critereon.EntityPredicate;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.LocationPredicate;
+import net.minecraft.advancements.critereon.LocationTrigger;
+import net.minecraft.advancements.critereon.TickTrigger;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.tags.ITag;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.data.advancements.AdvancementProvider;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class LostWorldsAdvancementProvider extends AdvancementProvider {
@@ -45,8 +45,8 @@ public class LostWorldsAdvancementProvider extends AdvancementProvider {
 
 	@Override
 	protected void registerAdvancements(Consumer<Advancement> consumer, ExistingFileHelper fileHelper) {
-		Advancement root = Advancement.Builder.advancement().display(LostWorldsItems.LOST_WORLDS_LEXICON.asStack(), LostWorldsUtils.tTC("advancement", "root.title"), LostWorldsUtils.tTC("advancement", "root.desc"), LostWorldsUtils.rL("textures/block/dried_soil.png"), FrameType.TASK, false, false, false).addCriterion("tick", new TickTrigger.Instance(EntityPredicate.AndPredicate.ANY)).save(consumer, LostWorldsUtils.rL("lostworlds/root"), fileHelper);
-		Advancement aTerribleMarket = this.addAdvancement(consumer, fileHelper, root, LostWorldsItems.HAMMER.get(), "a_terrible_market", FrameType.TASK, true, true, false, Pair.of(PositionTrigger.Instance.located(LocationPredicate.inFeature(LostWorldsStructures.BLACK_MARKET.get())), "in_black_market"));
+		Advancement root = Advancement.Builder.advancement().display(LostWorldsItems.LOST_WORLDS_LEXICON.asStack(), LostWorldsUtils.tTC("advancement", "root.title"), LostWorldsUtils.tTC("advancement", "root.desc"), LostWorldsUtils.rL("textures/block/dried_soil.png"), FrameType.TASK, false, false, false).addCriterion("tick", new TickTrigger.TriggerInstance(EntityPredicate.Composite.ANY)).save(consumer, LostWorldsUtils.rL("lostworlds/root"), fileHelper);
+		Advancement aTerribleMarket = this.addAdvancement(consumer, fileHelper, root, LostWorldsItems.HAMMER.get(), "a_terrible_market", FrameType.TASK, true, true, false, Pair.of(LocationTrigger.TriggerInstance.located(LocationPredicate.inFeature(LostWorldsStructures.BLACK_MARKET.get())), "in_black_market"));
 		Advancement basicExplorer = this.addAdvancement(consumer, fileHelper, root, LostWorldsBlocks.CONIFER.getBlock(WoodTypes.LOG).get().get(), "basic_explorer", FrameType.GOAL, true, true, false, this.biomeCriteria(BiomeKeys.ARAUCARIA_FOREST), this.biomeCriteria(BiomeKeys.ARAUCARIA_FOREST_HILLS), this.biomeCriteria(BiomeKeys.CONIFER_FOREST), this.biomeCriteria(BiomeKeys.CONIFER_FOREST_HILLS), this.biomeCriteria(BiomeKeys.GINKGO_FOREST), this.biomeCriteria(BiomeKeys.GINKGO_FOREST_HILLS), this.biomeCriteria(BiomeKeys.REDWOODS_FOREST), this.biomeCriteria(BiomeKeys.REDWOODS_FOREST_HILLS), this.biomeCriteria(BiomeKeys.VOLCANO));
 		Advancement fossils = this.addAdvancement(consumer, fileHelper, aTerribleMarket, LostWorldsItems.HAMMER.get(), "fossils", FrameType.TASK, true, true, false, this.itemCriteria(LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag));
 		this.addAdvancement(consumer, fileHelper, fossils, LostWorldsItems.FOSSILIZED_FEATHER.get(), "decoration", FrameType.TASK, true, true, false, this.itemCriteria(LostWorldsTags.ModItemTags.TRACE_FOSSILS.tag));
@@ -83,18 +83,18 @@ public class LostWorldsAdvancementProvider extends AdvancementProvider {
 		this.addAdvancement(consumer, fileHelper, thePermian, LostWorldsItems.PERMIAN_PERIOD_TIME_BOOK.get(), "permian_explorer", FrameType.CHALLENGE, true, true, false, this.biomeCriteria(BiomeKeys.PERMIAN_CONIFER_FOREST), this.biomeCriteria(BiomeKeys.PERMIAN_CONIFER_FOREST_HILLS), this.biomeCriteria(BiomeKeys.PERMIAN_GINKGO_FOREST), this.biomeCriteria(BiomeKeys.PERMIAN_GINKGO_FOREST_HILLS), this.biomeCriteria(BiomeKeys.PERMIAN_PLAINS), this.biomeCriteria(BiomeKeys.PERMIAN_PLAINS_HILLS), this.biomeCriteria(BiomeKeys.PERMIAN_DRIED_PLAINS), this.biomeCriteria(BiomeKeys.PERMIAN_DRIED_PLAINS_HILLS), this.biomeCriteria(BiomeKeys.PERMIAN_DESERT), this.biomeCriteria(BiomeKeys.PERMIAN_DESERT_HILLS), this.biomeCriteria(BiomeKeys.PERMIAN_FLOOD_BASALTS), this.biomeCriteria(BiomeKeys.PERMIAN_ASHY_MEDOWS), this.biomeCriteria(BiomeKeys.PERMIAN_MOUNTAINS), this.biomeCriteria(BiomeKeys.PERMIAN_MARSH), this.biomeCriteria(BiomeKeys.PERMIAN_RIVER), this.biomeCriteria(BiomeKeys.PERMIAN_OCEAN), this.biomeCriteria(BiomeKeys.DEEP_PERMIAN_OCEAN), this.biomeCriteria(BiomeKeys.WARM_PERMIAN_OCEAN), this.biomeCriteria(BiomeKeys.WARM_DEEP_PERMIAN_OCEAN), this.biomeCriteria(BiomeKeys.PERMIAN_SHORE));
 	}
 
-	private Advancement addAdvancement(Consumer<Advancement> consumer, ExistingFileHelper fileHelper, Advancement parent, IItemProvider icon, String name, FrameType type, boolean showToast, boolean announceToChat, boolean hidden, Pair<CriterionInstance, String>... criteria) {
+	private Advancement addAdvancement(Consumer<Advancement> consumer, ExistingFileHelper fileHelper, Advancement parent, ItemLike icon, String name, FrameType type, boolean showToast, boolean announceToChat, boolean hidden, Pair<AbstractCriterionTriggerInstance, String>... criteria) {
 		return this.addAdvancement(consumer, fileHelper, parent, icon, name, type, showToast, announceToChat, hidden, false, criteria);
 	}
 
-	private Advancement addAdvancement(Consumer<Advancement> consumer, ExistingFileHelper fileHelper, Advancement parent, IItemProvider icon, String name, FrameType type, boolean showToast, boolean announceToChat, boolean hidden, boolean criteriaIsOr, Pair<CriterionInstance, String>... criteria) {
+	private Advancement addAdvancement(Consumer<Advancement> consumer, ExistingFileHelper fileHelper, Advancement parent, ItemLike icon, String name, FrameType type, boolean showToast, boolean announceToChat, boolean hidden, boolean criteriaIsOr, Pair<AbstractCriterionTriggerInstance, String>... criteria) {
 		Advancement.Builder advancement = Advancement.Builder.advancement().parent(parent).display(icon, LostWorldsUtils.tTC("advancement", name + ".title"), LostWorldsUtils.tTC("advancement", name + ".desc"), null, type, showToast, announceToChat, hidden);
-		for (Pair<CriterionInstance, String> advancementCriteria : criteria) {
+		for (Pair<AbstractCriterionTriggerInstance, String> advancementCriteria : criteria) {
 			advancement.addCriterion(advancementCriteria.getSecond(), advancementCriteria.getFirst());
 		}
 
 		if (criteriaIsOr) {
-			advancement.requirements(IRequirementsStrategy.OR);
+			advancement.requirements(RequirementsStrategy.OR);
 		}
 
 		if (type == FrameType.CHALLENGE) {
@@ -104,23 +104,23 @@ public class LostWorldsAdvancementProvider extends AdvancementProvider {
 		return advancement.save(consumer, LostWorldsUtils.rL("lostworlds/" + name), fileHelper);
 	}
 
-	public Pair<CriterionInstance, String> biomeCriteria(RegistryKey<Biome> biome) {
-		return Pair.of(PositionTrigger.Instance.located(LocationPredicate.inBiome(biome)), "in_" + biome.location().getPath());
+	public Pair<AbstractCriterionTriggerInstance, String> biomeCriteria(ResourceKey<Biome> biome) {
+		return Pair.of(LocationTrigger.TriggerInstance.located(LocationPredicate.inBiome(biome)), "in_" + biome.location().getPath());
 	}
 
-	public Pair<CriterionInstance, String> dimensionCriteria(RegistryKey<World> dimension) {
-		return Pair.of(PositionTrigger.Instance.located(LocationPredicate.inDimension(dimension)), "in_" + dimension.location().getPath());
+	public Pair<AbstractCriterionTriggerInstance, String> dimensionCriteria(ResourceKey<Level> dimension) {
+		return Pair.of(LocationTrigger.TriggerInstance.located(LocationPredicate.inDimension(dimension)), "in_" + dimension.location().getPath());
 	}
 
-	public Pair<CriterionInstance, String> structureCriteria(Structure<? extends IFeatureConfig> structure) {
-		return Pair.of(PositionTrigger.Instance.located(LocationPredicate.inFeature(structure)), "in_" + structure.getRegistryName().getPath());
+	public Pair<AbstractCriterionTriggerInstance, String> structureCriteria(StructureFeature<? extends FeatureConfiguration> structure) {
+		return Pair.of(LocationTrigger.TriggerInstance.located(LocationPredicate.inFeature(structure)), "in_" + structure.getRegistryName().getPath());
 	}
 
-	public Pair<CriterionInstance, String> itemCriteria(IItemProvider item) {
-		return Pair.of(InventoryChangeTrigger.Instance.hasItems(item), "has_item");
+	public Pair<AbstractCriterionTriggerInstance, String> itemCriteria(ItemLike item) {
+		return Pair.of(InventoryChangeTrigger.TriggerInstance.hasItems(item), "has_item");
 	}
 
-	public Pair<CriterionInstance, String> itemCriteria(ITag.INamedTag<Item> tag) {
-		return Pair.of(InventoryChangeTrigger.Instance.hasItems(ItemPredicate.Builder.item().of(tag).build()), "has_item");
+	public Pair<AbstractCriterionTriggerInstance, String> itemCriteria(TagKey<Item> tag) {
+		return Pair.of(InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(tag).build()), "has_item");
 	}
 }

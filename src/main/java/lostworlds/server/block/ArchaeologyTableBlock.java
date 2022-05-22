@@ -3,30 +3,32 @@ package lostworlds.server.block;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.container.ArchaeologyTableContainer;
 import lostworlds.server.container.LostWorldsContainers;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.IWaterLoggable;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.inventory.container.SimpleNamedContainerProvider;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.IWorldPosCallable;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
 
-public class ArchaeologyTableBlock extends Block implements IWaterLoggable {
-	private static final ITextComponent NAME = LostWorldsUtils.tTC("container", "archaeology_table");
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
+public class ArchaeologyTableBlock extends Block implements SimpleWaterloggedBlock {
+	private static final Component NAME = LostWorldsUtils.tTC("container", "archaeology_table");
 	private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
 	public ArchaeologyTableBlock(Properties properties) {
@@ -35,7 +37,7 @@ public class ArchaeologyTableBlock extends Block implements IWaterLoggable {
 	}
 
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext context) {
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
 		FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
 		boolean flag = fluidstate.getType() == Fluids.WATER;
 		return this.defaultBlockState().setValue(WATERLOGGED, Boolean.valueOf(flag));
@@ -48,7 +50,7 @@ public class ArchaeologyTableBlock extends Block implements IWaterLoggable {
 	}
 
 	@Override
-	public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+	public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
 		if (stateIn.getValue(WATERLOGGED)) {
 			worldIn.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
 		}
@@ -61,18 +63,18 @@ public class ArchaeologyTableBlock extends Block implements IWaterLoggable {
 		return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
 	}
 
-	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		if (world.isClientSide) {
-			return ActionResultType.SUCCESS;
+			return InteractionResult.SUCCESS;
 		} else {
 			player.openMenu(state.getMenuProvider(world, pos));
-			return ActionResultType.CONSUME;
+			return InteractionResult.CONSUME;
 		}
 	}
 
-	public INamedContainerProvider getMenuProvider(BlockState state, World world, BlockPos pos) {
-		return new SimpleNamedContainerProvider((windowID, playerInventory, player) -> {
-			return new ArchaeologyTableContainer(LostWorldsContainers.ARCHAEOLOGY_CONTAINER.get(), windowID, playerInventory, IWorldPosCallable.create(world, pos));
+	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
+		return new SimpleMenuProvider((windowID, playerInventory, player) -> {
+			return new ArchaeologyTableContainer(LostWorldsContainers.ARCHAEOLOGY_CONTAINER.get(), windowID, playerInventory, ContainerLevelAccess.create(world, pos));
 		}, NAME);
 	}
 }

@@ -1,13 +1,13 @@
 package lostworlds.server.biome;
 
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.Category;
-import net.minecraft.world.biome.Biome.RainType;
-import net.minecraft.world.biome.BiomeAmbience;
-import net.minecraft.world.biome.BiomeGenerationSettings;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
-import net.minecraft.world.biome.MobSpawnInfo;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biome.BiomeCategory;
+import net.minecraft.world.level.biome.Biome.Precipitation;
+import net.minecraft.world.level.biome.BiomeSpecialEffects;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 
 public class BiomeParts {
 	public static final int BASE_WATER_COLOUR = 4159204;
@@ -29,18 +29,18 @@ public class BiomeParts {
 
 	public static int calculateSkyColor(float temperature) {
 		float colour = temperature / 3.0F;
-		colour = MathHelper.clamp(colour, -1.0F, 1.0F);
-		return MathHelper.hsvToRgb(0.62222224F - colour * 0.05F, 0.5F + colour * 0.1F, 1.0F);
+		colour = Mth.clamp(colour, -1.0F, 1.0F);
+		return Mth.hsvToRgb(0.62222224F - colour * 0.05F, 0.5F + colour * 0.1F, 1.0F);
 	}
 
-	public static MobSpawnInfo.Builder defaultOverworldSpawns() {
-		MobSpawnInfo.Builder mobspawninfo$builder = new MobSpawnInfo.Builder();
-		DefaultBiomeFeatures.farmAnimals(mobspawninfo$builder);
-		DefaultBiomeFeatures.commonSpawns(mobspawninfo$builder);
+	public static MobSpawnSettings.Builder defaultOverworldSpawns() {
+		MobSpawnSettings.Builder mobspawninfo$builder = new MobSpawnSettings.Builder();
+		BiomeDefaultFeatures.farmAnimals(mobspawninfo$builder);
+		BiomeDefaultFeatures.commonSpawns(mobspawninfo$builder);
 		return mobspawninfo$builder;
 	}
 
-	public Biome.Builder biome(RainType rain, Category category, float depth, float scale, float downfall, float temperature, BiomeAmbience ambience, BiomeGenerationSettings settings, MobSpawnInfo spawningInfo) {
-		return new Biome.Builder().precipitation(rain).biomeCategory(category).depth(depth).scale(scale).downfall(downfall).temperature(temperature).generationSettings(settings).specialEffects(ambience).mobSpawnSettings(spawningInfo);
+	public Biome.BiomeBuilder biome(Precipitation rain, BiomeCategory category, float depth, float scale, float downfall, float temperature, BiomeSpecialEffects ambience, BiomeGenerationSettings settings, MobSpawnSettings spawningInfo) {
+		return new Biome.BiomeBuilder().precipitation(rain).biomeCategory(category).depth(depth).scale(scale).downfall(downfall).temperature(temperature).generationSettings(settings).specialEffects(ambience).mobSpawnSettings(spawningInfo);
 	}
 }

@@ -4,14 +4,14 @@ import java.util.EnumSet;
 import java.util.function.Predicate;
 
 import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import net.minecraft.entity.EntityPredicate;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.RandomPositionGenerator;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.pathfinding.Path;
-import net.minecraft.pathfinding.PathNavigator;
-import net.minecraft.util.EntityPredicates;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.util.RandomPos;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.level.pathfinder.Path;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.phys.Vec3;
 
 public class SleepyAvoidEntityGoal<T extends LivingEntity> extends Goal {
 	protected final EggLayingEntity entity;
@@ -20,16 +20,16 @@ public class SleepyAvoidEntityGoal<T extends LivingEntity> extends Goal {
 	protected T toAvoid;
 	protected final float maxDist;
 	protected Path path;
-	protected final PathNavigator pathNav;
+	protected final PathNavigation pathNav;
 	protected final Class<T> avoidClass;
 	protected final Predicate<LivingEntity> avoidPredicate;
 	protected final Predicate<LivingEntity> predicateOnAvoidEntity;
-	private final EntityPredicate avoidEntityTargeting;
+	private final TargetingConditions avoidEntityTargeting;
 
 	public SleepyAvoidEntityGoal(EggLayingEntity entity, Class<T> avoidEntity, float maxDist, double walkSpeedModifier, double sprintSpeedModifier) {
 		this(entity, avoidEntity, (p_200828_0_) -> {
 			return true;
-		}, maxDist, walkSpeedModifier, sprintSpeedModifier, EntityPredicates.NO_CREATIVE_OR_SPECTATOR::test);
+		}, maxDist, walkSpeedModifier, sprintSpeedModifier, EntitySelector.NO_CREATIVE_OR_SPECTATOR::test);
 	}
 
 	public SleepyAvoidEntityGoal(EggLayingEntity entity, Class<T> avoidEntity, Predicate<LivingEntity> avoidPredicate, float maxDist, double walkSpeedModifier, double sprintSpeedModifier, Predicate<LivingEntity> predicateOnAvoidEntity) {
@@ -42,7 +42,7 @@ public class SleepyAvoidEntityGoal<T extends LivingEntity> extends Goal {
 		this.predicateOnAvoidEntity = predicateOnAvoidEntity;
 		this.pathNav = entity.getNavigation();
 		this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-		this.avoidEntityTargeting = (new EntityPredicate()).range((double) maxDist).selector(predicateOnAvoidEntity.and(avoidPredicate));
+		this.avoidEntityTargeting = (new TargetingConditions()).range((double) maxDist).selector(predicateOnAvoidEntity.and(avoidPredicate));
 	}
 
 	public SleepyAvoidEntityGoal(EggLayingEntity entity, Class<T> avoidEntity, float maxDist, double walkSpeedModifier, double sprintSpeedModifier, Predicate<LivingEntity> predicateOnAvoidEntity) {
@@ -59,7 +59,7 @@ public class SleepyAvoidEntityGoal<T extends LivingEntity> extends Goal {
 		} else if (this.entity.isSleeping()) {
 			return false;
 		} else {
-			Vector3d vector3d = RandomPositionGenerator.getPosAvoid(this.entity, 16, 7, this.toAvoid.position());
+			Vec3 vector3d = RandomPos.getPosAvoid(this.entity, 16, 7, this.toAvoid.position());
 			if (vector3d == null) {
 				return false;
 			} else if (this.toAvoid.distanceToSqr(vector3d.x, vector3d.y, vector3d.z) < this.toAvoid.distanceToSqr(this.entity)) {

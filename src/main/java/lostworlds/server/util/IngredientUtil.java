@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import com.google.common.collect.Lists;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 
 public class IngredientUtil {
 	public static Ingredient combine(Ingredient ingredient1, Ingredient ingredient2) {

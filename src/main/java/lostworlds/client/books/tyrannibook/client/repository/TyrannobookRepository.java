@@ -5,8 +5,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import lostworlds.client.books.tyrannibook.client.data.SectionData;
-import net.minecraft.resources.IResource;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.resources.ResourceLocation;
 
 public abstract class TyrannobookRepository {
 	public static final TyrannobookRepository DUMMY = new DummyRepository();
@@ -19,7 +19,7 @@ public abstract class TyrannobookRepository {
 
 	public abstract ResourceLocation getResourceLocation(@Nullable String path, boolean safe);
 
-	public abstract IResource getResource(@Nullable ResourceLocation location);
+	public abstract Resource getResource(@Nullable ResourceLocation location);
 
 	public boolean resourceExists(@Nullable String location) {
 		if (location == null) {
@@ -31,9 +31,9 @@ public abstract class TyrannobookRepository {
 
 	public abstract boolean resourceExists(@Nullable ResourceLocation location);
 
-	public String resourceToString(@Nullable IResource resource) {
+	public String resourceToString(@Nullable Resource resource) {
 		return this.resourceToString(resource, true);
 	}
 
-	public abstract String resourceToString(@Nullable IResource resource, boolean skipComments);
+	public abstract String resourceToString(@Nullable Resource resource, boolean skipComments);
 }

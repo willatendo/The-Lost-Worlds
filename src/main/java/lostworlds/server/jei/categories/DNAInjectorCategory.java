@@ -3,21 +3,19 @@ package lostworlds.server.jei.categories;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.container.recipes.DNAInjectorRecipe;
 import lostworlds.server.jei.LostWorldsJeiConstants;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 
 public class DNAInjectorCategory implements IRecipeCategory<DNAInjectorRecipe> {
 	public static final ResourceLocation TEXTURE_LOCATION = LostWorldsUtils.rL("textures/gui/lost_worlds_backgrounds.png");
@@ -30,7 +28,7 @@ public class DNAInjectorCategory implements IRecipeCategory<DNAInjectorRecipe> {
 	public DNAInjectorCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 0, 100, 82, 38);
-		this.icon = helper.createDrawableIngredient(LostWorldsBlocks.DNA_INJECTOR.asStack());
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, LostWorldsBlocks.DNA_INJECTOR.asStack());
 		this.injectionProgessBar = CacheBuilder.newBuilder().maximumSize(25).build(new CacheLoader<Integer, IDrawableAnimated>() {
 			@Override
 			public IDrawableAnimated load(Integer cookTime) {
@@ -49,7 +47,7 @@ public class DNAInjectorCategory implements IRecipeCategory<DNAInjectorRecipe> {
 
 	@Override
 	public ResourceLocation getUid() {
-		return LostWorldsJeiConstants.DNA_INJECTOR_CATEGORY;
+		return LostWorldsJeiConstants.DNA_INJECTOR_CATEGORY.getUid();
 	}
 
 	@Override
@@ -58,8 +56,8 @@ public class DNAInjectorCategory implements IRecipeCategory<DNAInjectorRecipe> {
 	}
 
 	@Override
-	public String getTitle() {
-		return LostWorldsUtils.tTC("jei", "dna_injector.title").getString();
+	public Component getTitle() {
+		return LostWorldsUtils.tTC("jei", "dna_injector.title");
 	}
 
 	@Override
@@ -72,25 +70,25 @@ public class DNAInjectorCategory implements IRecipeCategory<DNAInjectorRecipe> {
 		return this.icon;
 	}
 
-	@Override
-	public void setIngredients(DNAInjectorRecipe recipe, IIngredients ingredients) {
-		ingredients.setInputIngredients(recipe.getIngredients());
-		ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputs());
-	}
+//	@Override
+//	public void setIngredients(DNAInjectorRecipe recipe, IIngredients ingredients) {
+//		ingredients.setInputIngredients(recipe.getIngredients());
+//		ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputs());
+//	}
+//
+//	@Override
+//	public void setRecipe(IRecipeLayout recipeLayout, DNAInjectorRecipe recipe, IIngredients ingredients) {
+//		IGuiItemStackGroup itemStackGroup = recipeLayout.getItemStacks();
+//
+//		itemStackGroup.init(0, true, 0, 0);
+//		itemStackGroup.init(1, true, 0, 20);
+//		itemStackGroup.init(2, false, 60, 10);
+//
+//		itemStackGroup.set(ingredients);
+//	}
 
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, DNAInjectorRecipe recipe, IIngredients ingredients) {
-		IGuiItemStackGroup itemStackGroup = recipeLayout.getItemStacks();
-
-		itemStackGroup.init(0, true, 0, 0);
-		itemStackGroup.init(1, true, 0, 20);
-		itemStackGroup.init(2, false, 60, 10);
-
-		itemStackGroup.set(ingredients);
-	}
-
-	@Override
-	public void draw(DNAInjectorRecipe recipe, MatrixStack stack, double mouseX, double mouseY) {
+	public void draw(DNAInjectorRecipe recipe, PoseStack stack, double mouseX, double mouseY) {
 		IDrawableAnimated arrow = getInjectionProgessBar(recipe);
 		arrow.draw(stack, 20, 14);
 	}

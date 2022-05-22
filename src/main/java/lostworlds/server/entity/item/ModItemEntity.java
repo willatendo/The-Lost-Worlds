@@ -1,18 +1,18 @@
 package lostworlds.server.entity.item;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.IPacket;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 public class ModItemEntity extends ItemEntity {
-	public ModItemEntity(EntityType<? extends ModItemEntity> entityType, World world) {
+	public ModItemEntity(EntityType<? extends ModItemEntity> entityType, Level world) {
 		super(entityType, world);
 	}
 
-	public ModItemEntity(EntityType<? extends ModItemEntity> entityType, World world, double x, double y, double z, ItemStack stack) {
+	public ModItemEntity(EntityType<? extends ModItemEntity> entityType, Level world, double x, double y, double z, ItemStack stack) {
 
 		this(entityType, world);
 		this.setPos(x, y, z);
@@ -23,7 +23,7 @@ public class ModItemEntity extends ItemEntity {
 	}
 
 	@Override
-	public IPacket<?> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 }

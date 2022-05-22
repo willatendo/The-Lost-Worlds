@@ -19,10 +19,10 @@ import com.blamejared.crafttweaker.impl.helper.ItemStackHelper;
 import com.blamejared.crafttweaker.impl.recipes.helper.CraftingTableRecipeConflictChecker;
 
 import lostworlds.server.container.recipes.ArchaeologyTableRecipe;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
 
 @ZenRegister
 @ZenCodeType.Name("mods.lostworlds.archaeology")
@@ -41,7 +41,7 @@ public class ArchaeologyTableRecipeManager implements IRecipeHandler<Archaeology
 	}
 
 	@Override
-	public <U extends IRecipe<?>> boolean doesConflict(final IRecipeManager manager, final ArchaeologyTableRecipe firstRecipe, final U secondRecipe) {
+	public <U extends Recipe<?>> boolean doesConflict(final IRecipeManager manager, final ArchaeologyTableRecipe firstRecipe, final U secondRecipe) {
 
 		return CraftingTableRecipeConflictChecker.checkConflicts(manager, firstRecipe, secondRecipe);
 	}

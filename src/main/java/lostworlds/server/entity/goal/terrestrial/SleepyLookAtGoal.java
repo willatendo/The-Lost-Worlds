@@ -3,12 +3,12 @@ package lostworlds.server.entity.goal.terrestrial;
 import java.util.EnumSet;
 
 import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityPredicate;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.EntityPredicates;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.EntitySelector;
 
 public class SleepyLookAtGoal extends Goal {
 	protected final EggLayingEntity entity;
@@ -17,7 +17,7 @@ public class SleepyLookAtGoal extends Goal {
 	private int lookTime;
 	protected final float probability;
 	protected final Class<? extends LivingEntity> lookAtType;
-	protected final EntityPredicate lookAtContext;
+	protected final TargetingConditions lookAtContext;
 
 	public SleepyLookAtGoal(EggLayingEntity entity, Class<? extends LivingEntity> lookAtEntity, float lookDistance) {
 		this(entity, lookAtEntity, lookDistance, 0.02F);
@@ -29,12 +29,12 @@ public class SleepyLookAtGoal extends Goal {
 		this.lookDistance = lookDistance;
 		this.probability = probability;
 		this.setFlags(EnumSet.of(Goal.Flag.LOOK));
-		if (lookAtEntity == PlayerEntity.class) {
-			this.lookAtContext = (new EntityPredicate()).range((double) lookDistance).allowSameTeam().allowInvulnerable().allowNonAttackable().selector((p_220715_1_) -> {
-				return EntityPredicates.notRiding(entity).test(p_220715_1_);
+		if (lookAtEntity == Player.class) {
+			this.lookAtContext = (new TargetingConditions()).range((double) lookDistance).allowSameTeam().allowInvulnerable().allowNonAttackable().selector((p_220715_1_) -> {
+				return EntitySelector.notRiding(entity).test(p_220715_1_);
 			});
 		} else {
-			this.lookAtContext = (new EntityPredicate()).range((double) lookDistance).allowSameTeam().allowInvulnerable().allowNonAttackable();
+			this.lookAtContext = (new TargetingConditions()).range((double) lookDistance).allowSameTeam().allowInvulnerable().allowNonAttackable();
 		}
 
 	}
@@ -50,7 +50,7 @@ public class SleepyLookAtGoal extends Goal {
 				this.lookAt = this.entity.getTarget();
 			}
 
-			if (this.lookAtType == PlayerEntity.class) {
+			if (this.lookAtType == Player.class) {
 				this.lookAt = this.entity.level.getNearestPlayer(this.lookAtContext, this.entity, this.entity.getX(), this.entity.getEyeY(), this.entity.getZ());
 			} else {
 				this.lookAt = this.entity.level.getNearestLoadedEntity(this.lookAtType, this.lookAtContext, this.entity, this.entity.getX(), this.entity.getEyeY(), this.entity.getZ(), this.entity.getBoundingBox().inflate((double) this.lookDistance, 3.0D, (double) this.lookDistance));

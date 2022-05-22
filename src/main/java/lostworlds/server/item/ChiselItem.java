@@ -1,10 +1,10 @@
 package lostworlds.server.item;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class ChiselItem extends Item {
 	public ChiselItem(Properties properties) {
@@ -12,8 +12,8 @@ public class ChiselItem extends Item {
 	}
 
 	@Override
-	public boolean canAttackBlock(BlockState state, World world, BlockPos pos, PlayerEntity entity) {
-		if (entity.isCreative()) {
+	public boolean canAttackBlock(BlockState state, Level level, BlockPos pos, Player player) {
+		if (player.isCreative()) {
 			return false;
 		} else {
 			return true;

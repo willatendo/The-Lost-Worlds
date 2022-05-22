@@ -19,15 +19,16 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
+apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remapper/main/classremapper.gradle'
 
 version = 'alpha.11'
 group = 'lostworlds'
 archivesBaseName = 'lostworlds'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-	mappings channel: 'official', version: "1.16.5"
+	mappings channel: 'official', version: "1.18.2"
 	
 	accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 	
@@ -98,9 +99,9 @@ dependencies {
 	compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api")
 	runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
 	
-	compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-${minecraft_version}:${crafttweaker_version}")
+	compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${minecraft_version}:${crafttweaker_version}")
 	
-	implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_verison}")
+	implementation fg.deobf("software.bernie.geckolib:geckolib-1.18-forge:${geckolib_verison}")
 	
 	annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 }

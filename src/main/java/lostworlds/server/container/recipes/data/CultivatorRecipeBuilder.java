@@ -7,41 +7,41 @@ import com.google.gson.JsonObject;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
-import net.minecraft.advancements.ICriterionInstance;
-import net.minecraft.advancements.IRequirementsStrategy;
-import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.advancements.CriterionTriggerInstance;
+import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.Registry;
 
 public class CultivatorRecipeBuilder {
 	private final Item result;
 	private final Ingredient input;
 	private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-	private CultivatorRecipeBuilder(IItemProvider result, Ingredient input) {
+	private CultivatorRecipeBuilder(ItemLike result, Ingredient input) {
 		this.result = result.asItem();
 		this.input = input;
 	}
 
-	public static CultivatorRecipeBuilder simple(Ingredient input, IItemProvider result) {
+	public static CultivatorRecipeBuilder simple(Ingredient input, ItemLike result) {
 		return new CultivatorRecipeBuilder(result, input);
 	}
 
-	public CultivatorRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
+	public CultivatorRecipeBuilder unlockedBy(String name, CriterionTriggerInstance criteria) {
 		this.advancement.addCriterion(name, criteria);
 		return this;
 	}
 
-	public void save(Consumer<IFinishedRecipe> consumer) {
+	public void save(Consumer<FinishedRecipe> consumer) {
 		this.save(consumer, Registry.ITEM.getKey(this.result));
 	}
 
-	public void save(Consumer<IFinishedRecipe> consumer, String name) {
+	public void save(Consumer<FinishedRecipe> consumer, String name) {
 		ResourceLocation resourcelocation = Registry.ITEM.getKey(this.result);
 		ResourceLocation resourcelocation1 = new ResourceLocation(name);
 		if (resourcelocation1.equals(resourcelocation)) {
@@ -51,9 +51,9 @@ public class CultivatorRecipeBuilder {
 		}
 	}
 
-	public void save(Consumer<IFinishedRecipe> consumer, ResourceLocation name) {
+	public void save(Consumer<FinishedRecipe> consumer, ResourceLocation name) {
 		this.ensureValid(name);
-		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(name)).rewards(AdvancementRewards.Builder.recipe(name)).requirements(IRequirementsStrategy.OR);
+		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(name)).rewards(AdvancementRewards.Builder.recipe(name)).requirements(RequirementsStrategy.OR);
 		consumer.accept(new CultivatorRecipeBuilder.Result(name, this.input, this.result, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.result.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
 	}
 
@@ -63,7 +63,7 @@ public class CultivatorRecipeBuilder {
 		}
 	}
 
-	public static class Result implements IFinishedRecipe {
+	public static class Result implements FinishedRecipe {
 		private final ResourceLocation id;
 		private final Item result;
 		private final Ingredient input;
@@ -85,7 +85,7 @@ public class CultivatorRecipeBuilder {
 		}
 
 		@Override
-		public IRecipeSerializer<?> getType() {
+		public RecipeSerializer<?> getType() {
 			return LostWorldsRecipes.CULTIVATOR_RECIPE_SERIALIZER;
 		}
 

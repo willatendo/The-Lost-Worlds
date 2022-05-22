@@ -4,13 +4,13 @@ import com.google.gson.JsonObject;
 
 import lostworlds.server.container.recipes.AmberDNAExtractorRecipe;
 import lostworlds.server.item.LostWorldsItems;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class AmberDNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<AmberDNAExtractorRecipe> {
+public class AmberDNAExtractorRecipeSerialiser extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<AmberDNAExtractorRecipe> {
 	@Override
 	public AmberDNAExtractorRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 		Ingredient softTissue = Ingredient.of(LostWorldsItems.AMBER.get());
@@ -20,7 +20,7 @@ public class AmberDNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecip
 	}
 
 	@Override
-	public AmberDNAExtractorRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
+	public AmberDNAExtractorRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
 		Ingredient softTissue = Ingredient.fromNetwork(buffer);
 		Ingredient vile = Ingredient.fromNetwork(buffer);
 
@@ -28,7 +28,7 @@ public class AmberDNAExtractorRecipeSerialiser extends ForgeRegistryEntry<IRecip
 	}
 
 	@Override
-	public void toNetwork(PacketBuffer buffer, AmberDNAExtractorRecipe recipe) {
+	public void toNetwork(FriendlyByteBuf buffer, AmberDNAExtractorRecipe recipe) {
 		buffer.writeItemStack(recipe.getResultItem(), false);
 
 		Ingredient input = recipe.getIngredients().get(0);

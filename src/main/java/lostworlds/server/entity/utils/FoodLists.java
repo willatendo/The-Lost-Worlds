@@ -3,8 +3,8 @@ package lostworlds.server.entity.utils;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.Plants;
 import lostworlds.server.entity.utils.enums.DinoTypes;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 
 public class FoodLists {
 	public static final Ingredient CARNIVORE = Ingredient.of(Items.BEEF, Items.CHICKEN, Items.MUTTON, Items.PORKCHOP, Items.RABBIT, DinoTypes.CHILESAURUS.getMeat().get(), DinoTypes.DIICTODON.getMeat().get(), DinoTypes.DILOPHOSAURUS.getMeat().get(), DinoTypes.KENTROSAURUS.getMeat().get(), DinoTypes.LIAONINGOSAURUS.getMeat().get(), DinoTypes.OPHTHALMOSAURUS.getMeat().get(), DinoTypes.PSITTACOSAURUS.getMeat().get(), DinoTypes.TETRACERATOPS.getMeat().get(), DinoTypes.ZEPHYROSAURUS.getMeat().get());

@@ -3,7 +3,7 @@ package lostworlds.server.entity.goal.terrestrial;
 import java.util.EnumSet;
 
 import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.tags.FluidTags;
 
 public class SleepySwimGoal extends Goal {

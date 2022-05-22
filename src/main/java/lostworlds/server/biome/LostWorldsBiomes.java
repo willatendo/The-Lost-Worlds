@@ -69,7 +69,7 @@ import lostworlds.server.biome.biomes.permian.river.PermianRiverBiome;
 import lostworlds.server.biome.biomes.permian.shore.PermianShoreBiome;
 import lostworlds.server.biome.biomes.permian.swamp.PermianMarshBiome;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;

@@ -1,7 +1,7 @@
 package lostworlds.server.item.tool;
 
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 
 public class ModMaterials {
 	public static final Material MADE_FOR_BRUSH = (new Material.Builder(MaterialColor.STONE).build());

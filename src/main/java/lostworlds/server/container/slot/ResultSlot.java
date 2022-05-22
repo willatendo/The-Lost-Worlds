@@ -1,16 +1,16 @@
 package lostworlds.server.container.slot;
 
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.Container;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.hooks.BasicEventHooks;
 
 public class ResultSlot extends Slot {
-	private final PlayerEntity player;
+	private final Player player;
 	private int removeCount;
 
-	public ResultSlot(PlayerEntity entity, IInventory inv, int slotId, int x, int y) {
+	public ResultSlot(Player entity, Container inv, int slotId, int x, int y) {
 		super(inv, slotId, x, y);
 		this.player = entity;
 	}
@@ -30,7 +30,7 @@ public class ResultSlot extends Slot {
 	}
 
 	@Override
-	public ItemStack onTake(PlayerEntity entity, ItemStack stack) {
+	public ItemStack onTake(Player entity, ItemStack stack) {
 		this.checkTakeAchievements(stack);
 		super.onTake(entity, stack);
 		return stack;

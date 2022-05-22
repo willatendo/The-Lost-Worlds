@@ -1,14 +1,14 @@
 package lostworlds.server.block;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BushBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class CycadBlock extends BushBlock {
 	private static final VoxelShape SHAPE = Block.box(6, 0, 6, 10, 8, 10);
@@ -18,13 +18,13 @@ public class CycadBlock extends BushBlock {
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
-		Vector3d vector3d = state.getOffset(reader, pos);
+	public VoxelShape getShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context) {
+		Vec3 vector3d = state.getOffset(reader, pos);
 		return SHAPE.move(vector3d.x, vector3d.y, vector3d.z);
 	}
 
 	@Override
-	public AbstractBlock.OffsetType getOffsetType() {
-		return AbstractBlock.OffsetType.XZ;
+	public BlockBehaviour.OffsetType getOffsetType() {
+		return BlockBehaviour.OffsetType.XZ;
 	}
 }

@@ -2,45 +2,45 @@ package lostworlds.client.screen;
 
 import java.util.List;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.container.TimeMachineContainer;
 import lostworlds.server.container.recipes.TimeMachineRecipe;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.SimpleSound;
-import net.minecraft.client.gui.screen.inventory.ContainerScreen;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
+import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class TimeMachineScreen extends ContainerScreen<TimeMachineContainer> {
+public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineContainer> {
 	private static final ResourceLocation TEXTURE = LostWorldsUtils.rL("textures/gui/time_machine.png");
 	private float scrollOffs;
 	private boolean scrolling;
 	private int startIndex;
 	private boolean displayRecipes;
 
-	public TimeMachineScreen(TimeMachineContainer container, PlayerInventory inv, ITextComponent text) {
+	public TimeMachineScreen(TimeMachineContainer container, Inventory inv, Component text) {
 		super(container, inv, text);
 		container.registerUpdateListener(this::containerChanged);
 		--this.titleLabelY;
 	}
 
 	@Override
-	public void render(MatrixStack stack, int mouseX, int mouseY, float partialTicks) {
+	public void render(PoseStack stack, int mouseX, int mouseY, float partialTicks) {
 		super.render(stack, mouseX, mouseY, partialTicks);
 		this.renderTooltip(stack, mouseX, mouseY);
 	}
 
 	@Override
-	protected void renderBg(MatrixStack stack, float partialTicks, int x, int y) {
+	protected void renderBg(PoseStack stack, float partialTicks, int x, int y) {
 		this.renderBackground(stack);
 		RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.minecraft.getTextureManager().bind(TEXTURE);
@@ -57,7 +57,7 @@ public class TimeMachineScreen extends ContainerScreen<TimeMachineContainer> {
 	}
 
 	@Override
-	protected void renderTooltip(MatrixStack stack, int mouseX, int mouseY) {
+	protected void renderTooltip(PoseStack stack, int mouseX, int mouseY) {
 		super.renderTooltip(stack, mouseX, mouseY);
 		if (this.displayRecipes) {
 			int i = this.leftPos + 52;
@@ -76,7 +76,7 @@ public class TimeMachineScreen extends ContainerScreen<TimeMachineContainer> {
 		}
 	}
 
-	private void renderButtons(MatrixStack stack, int int1, int int2, int int3, int int4, int int5) {
+	private void renderButtons(PoseStack stack, int int1, int int2, int int3, int int4, int int5) {
 		for (int i = this.startIndex; i < int5 && i < this.menu.getNumRecipes(); ++i) {
 			int j = i - this.startIndex;
 			int k = int3 + j % 4 * 16;
@@ -118,7 +118,7 @@ public class TimeMachineScreen extends ContainerScreen<TimeMachineContainer> {
 				double d0 = mouseX - (double) (i + i1 % 4 * 16);
 				double d1 = mouseY - (double) (j + i1 / 4 * 18);
 				if (d0 >= 0.0D && d1 >= 0.0D && d0 < 16.0D && d1 < 18.0D && this.menu.clickMenuButton(this.minecraft.player, l)) {
-					Minecraft.getInstance().getSoundManager().play(SimpleSound.forUI(SoundEvents.BEACON_ACTIVATE, 1.0F));
+					Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.BEACON_ACTIVATE, 1.0F));
 					this.minecraft.gameMode.handleInventoryButtonClick((this.menu).containerId, l);
 					return true;
 				}
@@ -140,7 +140,7 @@ public class TimeMachineScreen extends ContainerScreen<TimeMachineContainer> {
 			int i = this.topPos + 14;
 			int j = i + 54;
 			this.scrollOffs = ((float) mouseY - (float) i - 7.5F) / ((float) (j - i) - 15.0F);
-			this.scrollOffs = MathHelper.clamp(this.scrollOffs, 0.0F, 1.0F);
+			this.scrollOffs = Mth.clamp(this.scrollOffs, 0.0F, 1.0F);
 			this.startIndex = (int) ((double) (this.scrollOffs * (float) this.getOffscreenRows()) + 0.5D) * 4;
 			return true;
 		} else {
@@ -153,7 +153,7 @@ public class TimeMachineScreen extends ContainerScreen<TimeMachineContainer> {
 		if (this.isScrollBarActive()) {
 			int i = this.getOffscreenRows();
 			this.scrollOffs = (float) ((double) this.scrollOffs - d3 / (double) i);
-			this.scrollOffs = MathHelper.clamp(this.scrollOffs, 0.0F, 1.0F);
+			this.scrollOffs = Mth.clamp(this.scrollOffs, 0.0F, 1.0F);
 			this.startIndex = (int) ((double) (this.scrollOffs * (float) i) + 0.5D) * 4;
 		}
 

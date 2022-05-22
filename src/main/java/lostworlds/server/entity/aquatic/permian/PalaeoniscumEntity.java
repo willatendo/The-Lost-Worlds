@@ -2,11 +2,11 @@ package lostworlds.server.entity.aquatic.permian;
 
 import lostworlds.server.entity.aquatic.BasicFishLikeEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
-import net.minecraft.entity.EntityType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.Level;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -23,7 +23,7 @@ public class PalaeoniscumEntity extends BasicFishLikeEntity implements IAnimatab
 		return PlayState.CONTINUE;
 	}
 
-	public PalaeoniscumEntity(EntityType<? extends PalaeoniscumEntity> entity, World world) {
+	public PalaeoniscumEntity(EntityType<? extends PalaeoniscumEntity> entity, Level world) {
 		super(entity, world);
 	}
 

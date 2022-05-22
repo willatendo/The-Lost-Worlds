@@ -16,10 +16,10 @@ import com.google.gson.JsonObject;
 import lostworlds.client.books.BookBuilder.SectionBuilder;
 import lostworlds.client.books.BookBuilder.SectionBuilder.PageBuilder;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DirectoryCache;
-import net.minecraft.data.IDataProvider;
+import net.minecraft.data.HashCache;
+import net.minecraft.data.DataProvider;
 
-public abstract class BookProvider implements IDataProvider {
+public abstract class BookProvider implements DataProvider {
 	protected static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().create();
 	protected final DataGenerator generator;
 	protected final String id;
@@ -30,7 +30,7 @@ public abstract class BookProvider implements IDataProvider {
 	}
 
 	@Override
-	public void run(DirectoryCache cache) throws IOException {
+	public void run(HashCache cache) throws IOException {
 		Path path = this.generator.getOutputFolder();
 		this.makeBooks((bookBuilder) -> {
 			this.saveToBook(cache, bookBuilder.serializeAppearance(), path.resolve("assets/" + this.id + "/tyrannobook/" + bookBuilder.bookName + "/appearance.json"));
@@ -45,7 +45,7 @@ public abstract class BookProvider implements IDataProvider {
 		});
 	}
 
-	protected void saveToBook(DirectoryCache cache, JsonObject json, Path path) {
+	protected void saveToBook(HashCache cache, JsonObject json, Path path) {
 		try {
 			String s = GSON.toJson((JsonElement) json);
 			String s1 = SHA1.hashUnencodedChars(s).toString();
@@ -61,7 +61,7 @@ public abstract class BookProvider implements IDataProvider {
 		}
 	}
 
-	protected void saveToBook(DirectoryCache cache, JsonArray json, Path path) {
+	protected void saveToBook(HashCache cache, JsonArray json, Path path) {
 		try {
 			String s = GSON.toJson((JsonElement) json);
 			String s1 = SHA1.hashUnencodedChars(s).toString();

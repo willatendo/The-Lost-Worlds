@@ -3,10 +3,10 @@ package lostworlds.server.block;
 import java.util.Random;
 
 import lostworlds.server.block.tree.CustomTree;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SaplingBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.ForgeEventFactory;
 
 public class CustomTreeSaplingBlock extends SaplingBlock {
@@ -18,7 +18,7 @@ public class CustomTreeSaplingBlock extends SaplingBlock {
 	}
 
 	@Override
-	public void advanceTree(ServerWorld world, BlockPos pos, BlockState state, Random rand) {
+	public void advanceTree(ServerLevel world, BlockPos pos, BlockState state, Random rand) {
 		if (state.getValue(STAGE) == 0) {
 			world.setBlock(pos, state.cycle(STAGE), 4);
 		} else {

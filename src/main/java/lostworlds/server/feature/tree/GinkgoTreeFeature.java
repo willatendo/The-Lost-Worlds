@@ -6,35 +6,35 @@ import com.mojang.serialization.Codec;
 
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.util.registrate.WoodTypes;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.LeavesBlock;
-import net.minecraft.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ISeedReader;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.IWorldGenerationBaseReader;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
-public class GinkgoTreeFeature extends Feature<NoFeatureConfig> {
-	public GinkgoTreeFeature(Codec<NoFeatureConfig> config) {
+public class GinkgoTreeFeature extends Feature<NoneFeatureConfiguration> {
+	public GinkgoTreeFeature(Codec<NoneFeatureConfiguration> config) {
 		super(config);
 	}
 
-	private boolean isAirOrLeaves(IWorldGenerationBaseReader reader, BlockPos pos) {
-		if (!(reader instanceof IWorldReader)) {
+	private boolean isAirOrLeaves(LevelSimulatedReader reader, BlockPos pos) {
+		if (!(reader instanceof LevelReader)) {
 			return reader.isStateAtPosition(pos, state -> state.isAir() || state.is(BlockTags.LEAVES));
 		} else {
-			return reader.isStateAtPosition(pos, state -> state.canBeReplacedByLeaves((IWorldReader) reader, pos)) && reader.isStateAtPosition(pos, state -> state.canBeReplacedByLogs((IWorldReader) reader, pos));
+			return reader.isStateAtPosition(pos, state -> state.canBeReplacedByLeaves((LevelReader) reader, pos)) && reader.isStateAtPosition(pos, state -> state.canBeReplacedByLogs((LevelReader) reader, pos));
 		}
 	}
 
-	private boolean isOnDirt(IWorldGenerationBaseReader reader, BlockPos pos) {
+	private boolean isOnDirt(LevelSimulatedReader reader, BlockPos pos) {
 		return reader.isStateAtPosition(pos, (state) -> {
 			Block block = state.getBlock();
 			return isDirt(block) || block == Blocks.FARMLAND;
@@ -42,7 +42,7 @@ public class GinkgoTreeFeature extends Feature<NoFeatureConfig> {
 	}
 
 	@Override
-	public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+	public boolean place(WorldGenLevel reader, ChunkGenerator generator, Random rand, BlockPos pos, NoneFeatureConfiguration config) {
 		if (this.isOnDirt(reader, pos.below())) {
 			Direction[] horizontal = new Direction[] { Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST };
 			BlockState log = LostWorldsBlocks.GINKGO.getBlock(WoodTypes.LOG).get().getDefaultState();
@@ -95,7 +95,7 @@ public class GinkgoTreeFeature extends Feature<NoFeatureConfig> {
 		return false;
 	}
 
-	public void genBranch(BlockPos pos, boolean large, ISeedReader reader, BlockState log, BlockState leaves, Random rand) {
+	public void genBranch(BlockPos pos, boolean large, WorldGenLevel reader, BlockState log, BlockState leaves, Random rand) {
 		Direction[] horizontal = new Direction[] { Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST };
 		if (large) {
 			for (Direction directions : horizontal) {
@@ -139,7 +139,7 @@ public class GinkgoTreeFeature extends Feature<NoFeatureConfig> {
 		}
 	}
 
-	public void placeBlock(BlockPos pos, BlockState state, ISeedReader reader) {
+	public void placeBlock(BlockPos pos, BlockState state, WorldGenLevel reader) {
 		if (reader.getBlockState(pos).canBeReplacedByLeaves(reader, pos)) {
 			reader.setBlock(pos, state, 3);
 		}

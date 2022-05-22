@@ -1,27 +1,27 @@
 package lostworlds.client.screen;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.container.DNAExtractorContainer;
-import net.minecraft.client.gui.screen.inventory.ContainerScreen;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class DNAExtractorScreen extends ContainerScreen<DNAExtractorContainer> {
+public class DNAExtractorScreen extends AbstractContainerScreen<DNAExtractorContainer> {
 	private static final ResourceLocation TEXTURE = LostWorldsUtils.rL("textures/gui/machines/dna_extractor.png");
 
-	public DNAExtractorScreen(DNAExtractorContainer container, PlayerInventory playerInv, ITextComponent text) {
+	public DNAExtractorScreen(DNAExtractorContainer container, Inventory playerInv, Component text) {
 		super(container, playerInv, text);
 	}
 
 	@Override
-	public void render(MatrixStack stack, int i1, int i2, float f) {
+	public void render(PoseStack stack, int i1, int i2, float f) {
 		this.renderBackground(stack);
 		this.renderBg(stack, f, i1, i2);
 		super.render(stack, i1, i2, f);
@@ -29,7 +29,7 @@ public class DNAExtractorScreen extends ContainerScreen<DNAExtractorContainer> {
 	}
 
 	@Override
-	protected void renderBg(MatrixStack stack, float partialTicks, int x, int y) {
+	protected void renderBg(PoseStack stack, float partialTicks, int x, int y) {
 		RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.minecraft.getTextureManager().bind(TEXTURE);
 		int i = this.leftPos;

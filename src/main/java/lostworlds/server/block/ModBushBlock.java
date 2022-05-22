@@ -2,50 +2,47 @@ package lostworlds.server.block;
 
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.BushBlock;
-import net.minecraft.block.DoublePlantBlock;
-import net.minecraft.block.IGrowable;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.DoublePlantBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class ModBushBlock extends BushBlock implements IGrowable {
+public class ModBushBlock extends BushBlock implements BonemealableBlock {
 	public ModBushBlock(Properties properties) {
 		super(properties);
 	}
 
 	@Override
-	protected boolean mayPlaceOn(BlockState state, IBlockReader blockReader, BlockPos pos) {
-		Block block = state.getBlock();
-
-		return block.is(Blocks.DIRT) || block.is(LostWorldsBlocks.MOSSY_SOIL.get()) || block.is(LostWorldsBlocks.PERMIAN_SAND.get()) || block.is(LostWorldsBlocks.DRIED_SOIL.get());
+	protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
+		return state.is(Blocks.DIRT) || state.is(LostWorldsBlocks.MOSSY_SOIL.get()) || state.is(LostWorldsBlocks.PERMIAN_SAND.get()) || state.is(LostWorldsBlocks.DRIED_SOIL.get());
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(IBlockReader blockReader, BlockPos pos, BlockState state, boolean bool) {
+	public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean bool) {
 		return true;
 	}
 
 	@Override
-	public boolean isBonemealSuccess(World worldIn, Random rand, BlockPos pos, BlockState state) {
+	public boolean isBonemealSuccess(Level level, Random rand, BlockPos pos, BlockState state) {
 		return true;
 	}
 
 	@Override
-	public void performBonemeal(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+	public void performBonemeal(ServerLevel level, Random rand, BlockPos pos, BlockState state) {
 		DoublePlantBlock doubleplantblock = (DoublePlantBlock) (this == LostWorldsBlocks.GROUND_FERNS.get() ? Blocks.LARGE_FERN : Blocks.TALL_GRASS);
-		if (doubleplantblock.defaultBlockState().canSurvive(worldIn, pos) && worldIn.isEmptyBlock(pos.above())) {
-			doubleplantblock.placeAt(worldIn, pos, 2);
+		if (doubleplantblock.defaultBlockState().canSurvive(level, pos) && level.isEmptyBlock(pos.above())) {
+			doubleplantblock.placeAt(level, state, pos, 2);
 		}
 	}
 
 	@Override
-	public AbstractBlock.OffsetType getOffsetType() {
-		return AbstractBlock.OffsetType.XYZ;
+	public BlockBehaviour.OffsetType getOffsetType() {
+		return BlockBehaviour.OffsetType.XYZ;
 	}
 }

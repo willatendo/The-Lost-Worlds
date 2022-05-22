@@ -8,28 +8,28 @@ import lostworlds.server.container.inventory.PaleontologyTableResultInventory;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
 import lostworlds.server.container.recipes.PaleontologyTableRecipe;
 import lostworlds.server.container.slot.PaleontologyTableResultSlot;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.RecipeItemHelper;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.network.play.server.SSetSlotPacket;
-import net.minecraft.util.IWorldPosCallable;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Container;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.level.Level;
 
-public class PaleontologyTableContainer extends Container {
+public class PaleontologyTableContainer extends AbstractContainerMenu {
 	private final PaleontologyTableInventory craftSlots = new PaleontologyTableInventory(this, 3, 3);
 	private final PaleontologyTableResultInventory resultSlots = new PaleontologyTableResultInventory();
-	private final IWorldPosCallable posCallable;
-	private final PlayerEntity player;
+	private final ContainerLevelAccess posCallable;
+	private final Player player;
 
-	public PaleontologyTableContainer(ContainerType<? extends PaleontologyTableContainer> containerType, int windowID, PlayerInventory playerInventory, IWorldPosCallable posCallable) {
+	public PaleontologyTableContainer(MenuType<? extends PaleontologyTableContainer> containerType, int windowID, Inventory playerInventory, ContainerLevelAccess posCallable) {
 		super(containerType, windowID);
 		this.posCallable = posCallable;
 		this.player = playerInventory.player;
@@ -52,13 +52,13 @@ public class PaleontologyTableContainer extends Container {
 		}
 	}
 
-	public PaleontologyTableContainer(ContainerType<? extends PaleontologyTableContainer> containerType, int windowId, PlayerInventory playerInventory, PacketBuffer buffer) {
-		this(containerType, windowId, playerInventory, IWorldPosCallable.NULL);
+	public PaleontologyTableContainer(MenuType<? extends PaleontologyTableContainer> containerType, int windowId, Inventory playerInventory, FriendlyByteBuf buffer) {
+		this(containerType, windowId, playerInventory, ContainerLevelAccess.NULL);
 	}
 
-	protected static void slotChangedCraftingGrid(int slot, World world, PlayerEntity player, PaleontologyTableInventory inv, PaleontologyTableResultInventory result) {
+	protected static void slotChangedCraftingGrid(int slot, Level world, Player player, PaleontologyTableInventory inv, PaleontologyTableResultInventory result) {
 		if (!world.isClientSide) {
-			ServerPlayerEntity serverplayerentity = (ServerPlayerEntity) player;
+			ServerPlayer serverplayerentity = (ServerPlayer) player;
 			ItemStack itemstack = ItemStack.EMPTY;
 			Optional<PaleontologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(LostWorldsRecipes.PALEONTOLOGY_TABLE_RECIPE, inv, world);
 			if (optional.isPresent()) {
@@ -69,18 +69,18 @@ public class PaleontologyTableContainer extends Container {
 			}
 
 			result.setItem(0, itemstack);
-			serverplayerentity.connection.send(new SSetSlotPacket(slot, 0, itemstack));
+			serverplayerentity.connection.send(new ClientboundContainerSetSlotPacket(slot, 0, itemstack));
 		}
 	}
 
 	@Override
-	public void slotsChanged(IInventory iinv) {
+	public void slotsChanged(Container iinv) {
 		this.posCallable.execute((world, pos) -> {
 			slotChangedCraftingGrid(this.containerId, world, this.player, this.craftSlots, this.resultSlots);
 		});
 	}
 
-	public void fillCraftSlotsStackedContents(RecipeItemHelper helper) {
+	public void fillCraftSlotsStackedContents(StackedContents helper) {
 		this.craftSlots.fillStackedContents(helper);
 	}
 
@@ -89,12 +89,12 @@ public class PaleontologyTableContainer extends Container {
 		this.resultSlots.clearContent();
 	}
 
-	public boolean recipeMatches(IRecipe<? super PaleontologyTableInventory> iRecipe) {
+	public boolean recipeMatches(Recipe<? super PaleontologyTableInventory> iRecipe) {
 		return iRecipe.matches(this.craftSlots, this.player.level);
 	}
 
 	@Override
-	public void removed(PlayerEntity player) {
+	public void removed(Player player) {
 		super.removed(player);
 		this.posCallable.execute((world, pos) -> {
 			this.clearContainer(player, world, this.craftSlots);
@@ -102,12 +102,12 @@ public class PaleontologyTableContainer extends Container {
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity player) {
+	public boolean stillValid(Player player) {
 		return stillValid(this.posCallable, player, LostWorldsBlocks.PALEONTOLOGY_TABLE.get());
 	}
 
 	@Override
-	public ItemStack quickMoveStack(PlayerEntity player, int containerSlot) {
+	public ItemStack quickMoveStack(Player player, int containerSlot) {
 		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = this.slots.get(containerSlot);
 		if (slot != null && slot.hasItem()) {

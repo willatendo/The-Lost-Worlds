@@ -3,16 +3,16 @@ package lostworlds.server.entity.goal.terrestrial;
 import java.util.EnumSet;
 
 import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import net.minecraft.entity.EntityPredicate;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.pathfinding.FlyingPathNavigator;
-import net.minecraft.pathfinding.GroundPathNavigator;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 
 public class SleepyTemptGoal extends Goal {
-	private static final EntityPredicate TEMP_TARGETING = (new EntityPredicate()).range(10.0D).allowInvulnerable().allowSameTeam().allowNonAttackable().allowUnseeable();
+	private static final TargetingConditions TEMP_TARGETING = (new TargetingConditions()).range(10.0D).allowInvulnerable().allowSameTeam().allowNonAttackable().allowUnseeable();
 	protected final EggLayingEntity entity;
 	private final double speedModifier;
 	private double px;
@@ -20,7 +20,7 @@ public class SleepyTemptGoal extends Goal {
 	private double pz;
 	private double pRotX;
 	private double pRotY;
-	protected PlayerEntity player;
+	protected Player player;
 	private int calmDown;
 	private boolean isRunning;
 	private final Ingredient items;
@@ -36,7 +36,7 @@ public class SleepyTemptGoal extends Goal {
 		this.items = followIngredient;
 		this.canScare = canScare;
 		this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-		if (!(entity.getNavigation() instanceof GroundPathNavigator) && !(entity.getNavigation() instanceof FlyingPathNavigator)) {
+		if (!(entity.getNavigation() instanceof GroundPathNavigation) && !(entity.getNavigation() instanceof FlyingPathNavigation)) {
 			throw new IllegalArgumentException("Unsupported entity type for SleepyTemptGoal");
 		}
 	}

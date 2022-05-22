@@ -6,26 +6,24 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.state.Property;
-import net.minecraft.state.StateContainer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.phys.shapes.CollisionContext;
 
 public class SeedItem extends Item {
 	private final Supplier<Block> block;
@@ -36,46 +34,46 @@ public class SeedItem extends Item {
 	}
 
 	@Override
-	public ActionResultType useOn(ItemUseContext context) {
-		ActionResultType actionresulttype = this.place(new BlockItemUseContext(context));
+	public InteractionResult useOn(UseOnContext context) {
+		InteractionResult actionresulttype = this.place(new BlockPlaceContext(context));
 		return !actionresulttype.consumesAction() && this.isEdible() ? this.use(context.getLevel(), context.getPlayer(), context.getHand()).getResult() : actionresulttype;
 	}
 
-	public ActionResultType place(BlockItemUseContext context) {
+	public InteractionResult place(BlockPlaceContext context) {
 		if (!context.canPlace()) {
-			return ActionResultType.FAIL;
+			return InteractionResult.FAIL;
 		} else {
-			BlockItemUseContext blockitemusecontext = this.updatePlacementContext(context);
+			BlockPlaceContext blockitemusecontext = this.updatePlacementContext(context);
 			if (blockitemusecontext == null) {
-				return ActionResultType.FAIL;
+				return InteractionResult.FAIL;
 			} else {
 				BlockState blockstate = this.getPlacementState(blockitemusecontext);
 				if (blockstate == null) {
-					return ActionResultType.FAIL;
+					return InteractionResult.FAIL;
 				} else if (!this.placeBlock(blockitemusecontext, blockstate)) {
-					return ActionResultType.FAIL;
+					return InteractionResult.FAIL;
 				} else {
 					BlockPos blockpos = blockitemusecontext.getClickedPos();
-					World world = blockitemusecontext.getLevel();
-					PlayerEntity playerentity = blockitemusecontext.getPlayer();
+					Level world = blockitemusecontext.getLevel();
+					Player playerentity = blockitemusecontext.getPlayer();
 					ItemStack itemstack = blockitemusecontext.getItemInHand();
 					BlockState blockstate1 = world.getBlockState(blockpos);
 					Block block = blockstate1.getBlock();
 					if (block == blockstate.getBlock()) {
 						blockstate1 = this.updateBlockStateFromTag(blockpos, world, itemstack, blockstate1);
 						block.setPlacedBy(world, blockpos, blockstate1, playerentity, itemstack);
-						if (playerentity instanceof ServerPlayerEntity) {
-							CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayerEntity) playerentity, blockpos, itemstack);
+						if (playerentity instanceof ServerPlayer) {
+							CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) playerentity, blockpos, itemstack);
 						}
 					}
 
 					SoundType soundtype = blockstate1.getSoundType(world, blockpos, context.getPlayer());
-					world.playSound(playerentity, blockpos, this.getPlaceSound(blockstate1, world, blockpos, context.getPlayer()), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-					if (playerentity == null || !playerentity.abilities.instabuild) {
+					world.playSound(playerentity, blockpos, this.getPlaceSound(blockstate1, world, blockpos, context.getPlayer()), SoundSource.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+					if (playerentity == null || !playerentity.isCreative()) {
 						itemstack.shrink(1);
 					}
 
-					return ActionResultType.sidedSuccess(world.isClientSide);
+					return InteractionResult.sidedSuccess(world.isClientSide);
 				}
 			}
 		}
@@ -86,27 +84,27 @@ public class SeedItem extends Item {
 		return state.getSoundType().getPlaceSound();
 	}
 
-	protected SoundEvent getPlaceSound(BlockState state, World world, BlockPos pos, PlayerEntity entity) {
+	protected SoundEvent getPlaceSound(BlockState state, Level world, BlockPos pos, Player entity) {
 		return state.getSoundType(world, pos, entity).getPlaceSound();
 	}
 
 	@Nullable
-	public BlockItemUseContext updatePlacementContext(BlockItemUseContext context) {
+	public BlockPlaceContext updatePlacementContext(BlockPlaceContext context) {
 		return context;
 	}
 
 	@Nullable
-	protected BlockState getPlacementState(BlockItemUseContext context) {
+	protected BlockState getPlacementState(BlockPlaceContext context) {
 		BlockState blockstate = this.getBlock().getStateForPlacement(context);
 		return blockstate != null && this.canPlace(context, blockstate) ? blockstate : null;
 	}
 
-	private BlockState updateBlockStateFromTag(BlockPos pos, World world, ItemStack stack, BlockState state) {
+	private BlockState updateBlockStateFromTag(BlockPos pos, Level world, ItemStack stack, BlockState state) {
 		BlockState blockstate = state;
-		CompoundNBT compoundnbt = stack.getTag();
+		CompoundTag compoundnbt = stack.getTag();
 		if (compoundnbt != null) {
-			CompoundNBT compoundnbt1 = compoundnbt.getCompound("BlockStateTag");
-			StateContainer<Block, BlockState> statecontainer = state.getBlock().getStateDefinition();
+			CompoundTag compoundnbt1 = compoundnbt.getCompound("BlockStateTag");
+			StateDefinition<Block, BlockState> statecontainer = state.getBlock().getStateDefinition();
 
 			for (String s : compoundnbt1.getAllKeys()) {
 				Property<?> property = statecontainer.getProperty(s);
@@ -130,9 +128,9 @@ public class SeedItem extends Item {
 		}).orElse(state);
 	}
 
-	protected boolean canPlace(BlockItemUseContext context, BlockState state) {
-		PlayerEntity playerentity = context.getPlayer();
-		ISelectionContext iselectioncontext = playerentity == null ? ISelectionContext.empty() : ISelectionContext.of(playerentity);
+	protected boolean canPlace(BlockPlaceContext context, BlockState state) {
+		Player playerentity = context.getPlayer();
+		CollisionContext iselectioncontext = playerentity == null ? CollisionContext.empty() : CollisionContext.of(playerentity);
 		return (!this.mustSurvive() || state.canSurvive(context.getLevel(), context.getClickedPos())) && context.getLevel().isUnobstructed(state, context.getClickedPos(), iselectioncontext);
 	}
 
@@ -140,39 +138,8 @@ public class SeedItem extends Item {
 		return true;
 	}
 
-	protected boolean placeBlock(BlockItemUseContext context, BlockState state) {
+	protected boolean placeBlock(BlockPlaceContext context, BlockState state) {
 		return context.getLevel().setBlock(context.getClickedPos(), state, 11);
-	}
-
-	public static boolean updateCustomBlockEntityTag(World world, @Nullable PlayerEntity entity, BlockPos pos, ItemStack stack) {
-		MinecraftServer minecraftserver = world.getServer();
-		if (minecraftserver == null) {
-			return false;
-		} else {
-			CompoundNBT compoundnbt = stack.getTagElement("BlockEntityTag");
-			if (compoundnbt != null) {
-				TileEntity tileentity = world.getBlockEntity(pos);
-				if (tileentity != null) {
-					if (!world.isClientSide && tileentity.onlyOpCanSetNbt() && (entity == null || !entity.canUseGameMasterBlocks())) {
-						return false;
-					}
-
-					CompoundNBT compoundnbt1 = tileentity.save(new CompoundNBT());
-					CompoundNBT compoundnbt2 = compoundnbt1.copy();
-					compoundnbt1.merge(compoundnbt);
-					compoundnbt1.putInt("x", pos.getX());
-					compoundnbt1.putInt("y", pos.getY());
-					compoundnbt1.putInt("z", pos.getZ());
-					if (!compoundnbt1.equals(compoundnbt2)) {
-						tileentity.load(world.getBlockState(pos), compoundnbt1);
-						tileentity.setChanged();
-						return true;
-					}
-				}
-			}
-
-			return false;
-		}
 	}
 
 	public Block getBlock() {

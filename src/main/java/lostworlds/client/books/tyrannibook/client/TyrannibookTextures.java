@@ -1,7 +1,7 @@
 package lostworlds.client.books.tyrannibook.client;
 
 import lostworlds.client.books.tyrannibook.TyrannoUtils;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 
 public class TyrannibookTextures {
 	public static final ResourceLocation TEX_BOOK = TyrannoUtils.rL("textures/gui/book/book.png");

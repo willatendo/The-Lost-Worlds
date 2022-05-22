@@ -6,17 +6,17 @@ import com.mojang.serialization.Codec;
 
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.feature.config.ModLakeFeatureConfig;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.material.Material;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.SectionPos;
-import net.minecraft.world.ISeedReader;
-import net.minecraft.world.LightType;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.SectionPos;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.LightLayer;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
 
 public class ModLakesFeature extends Feature<ModLakeFeatureConfig> {
 	private static final BlockState AIR = Blocks.CAVE_AIR.defaultBlockState();
@@ -25,7 +25,7 @@ public class ModLakesFeature extends Feature<ModLakeFeatureConfig> {
 		super(codec);
 	}
 
-	public boolean place(ISeedReader reader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, ModLakeFeatureConfig config) {
+	public boolean place(WorldGenLevel reader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, ModLakeFeatureConfig config) {
 		while (pos.getY() > 5 && reader.isEmptyBlock(pos)) {
 			pos = pos.below();
 		}
@@ -34,7 +34,7 @@ public class ModLakesFeature extends Feature<ModLakeFeatureConfig> {
 			return false;
 		} else {
 			pos = pos.below(4);
-			if (reader.startsForFeature(SectionPos.of(pos), Structure.VILLAGE).findAny().isPresent()) {
+			if (reader.startsForFeature(SectionPos.of(pos), StructureFeature.VILLAGE).findAny().isPresent()) {
 				return false;
 			} else {
 				boolean[] aboolean = new boolean[2048];
@@ -96,7 +96,7 @@ public class ModLakesFeature extends Feature<ModLakeFeatureConfig> {
 						for (int j4 = 4; j4 < 8; ++j4) {
 							if (aboolean[(i2 * 16 + j3) * 8 + j4]) {
 								BlockPos blockpos = pos.offset(i2, j4 - 1, j3);
-								if (isDirt(reader.getBlockState(blockpos).getBlock()) && reader.getBrightness(LightType.SKY, pos.offset(i2, j4, j3)) > 0) {
+								if (isDirt(reader.getBlockState(blockpos).getBlock()) && reader.getBrightness(LightLayer.SKY, pos.offset(i2, j4, j3)) > 0) {
 									Biome biome = reader.getBiome(blockpos);
 									if (biome.getGenerationSettings().getSurfaceBuilderConfig().getTopMaterial().is(LostWorldsBlocks.PERMIAN_SAND.get())) {
 										reader.setBlock(blockpos, config.stone.get().getBlockState(), 2);

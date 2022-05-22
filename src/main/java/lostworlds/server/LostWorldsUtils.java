@@ -12,13 +12,13 @@ import lostworlds.client.LostWorldsClientConfigs;
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.tab.ModTab;
 import lostworlds.server.util.Version;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.monster.AbstractRaiderEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.raid.Raid;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.raid.Raider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.entity.raid.Raid;
 import net.minecraftforge.fml.ModList;
 
 //Random Constantly Called Things
@@ -38,29 +38,29 @@ public class LostWorldsUtils {
 		return new ResourceLocation(ID, location);
 	}
 
-	public static TranslationTextComponent tTC(String type, String key) {
-		return new TranslationTextComponent(type + "." + ID + "." + key);
+	public static TranslatableComponent tTC(String type, String key) {
+		return new TranslatableComponent(type + "." + ID + "." + key);
 	}
 
-	public static TranslationTextComponent tTCA(String type, String key, String args) {
-		return new TranslationTextComponent(type + "." + ID + "." + key, args);
+	public static TranslatableComponent tTCA(String type, String key, String args) {
+		return new TranslatableComponent(type + "." + ID + "." + key, args);
 	}
 
-	public static TranslationTextComponent cTC(String type, String key, TextFormatting... format) {
-		TranslationTextComponent text = tTC(type, key);
+	public static TranslatableComponent cTC(String type, String key, ChatFormatting... format) {
+		TranslatableComponent text = tTC(type, key);
 		text.withStyle(format);
 		return text;
 	}
 
-	public static TranslationTextComponent cTCA(String type, String key, String args, TextFormatting... format) {
-		TranslationTextComponent text = tTCA(type, key, args);
+	public static TranslatableComponent cTCA(String type, String key, String args, ChatFormatting... format) {
+		TranslatableComponent text = tTCA(type, key, args);
 		text.withStyle(format);
 		return text;
 	}
 
-	public static TranslationTextComponent gTC(String type, String key) {
-		TranslationTextComponent text = tTC(type, key);
-		text.withStyle(TextFormatting.GRAY);
+	public static TranslatableComponent gTC(String type, String key) {
+		TranslatableComponent text = tTC(type, key);
+		text.withStyle(ChatFormatting.GRAY);
 		return text;
 	}
 
@@ -70,10 +70,10 @@ public class LostWorldsUtils {
 	public static final ModTab ITEMS = new ModTab("items");
 	public static final ModTab BLOCKS = new ModTab("blocks");
 
-	public static final HashSet<Biome.Category> SIMPLE_SPAWNABLE_BIOME_CATEGORIES = Stream.of(Biome.Category.FOREST, Biome.Category.JUNGLE, Biome.Category.DESERT, Biome.Category.PLAINS, Biome.Category.SAVANNA).collect(Collectors.toCollection(HashSet::new));
-	public static final HashSet<Biome.Category> FOSSIL_BIOMES = Stream.of(Biome.Category.FOREST, Biome.Category.EXTREME_HILLS, Biome.Category.DESERT, Biome.Category.PLAINS, Biome.Category.SAVANNA, Biome.Category.MUSHROOM, Biome.Category.SWAMP).collect(Collectors.toCollection(HashSet::new));
+	public static final HashSet<Biome.BiomeCategory> SIMPLE_SPAWNABLE_BIOME_CATEGORIES = Stream.of(Biome.BiomeCategory.FOREST, Biome.BiomeCategory.JUNGLE, Biome.BiomeCategory.DESERT, Biome.BiomeCategory.PLAINS, Biome.BiomeCategory.SAVANNA).collect(Collectors.toCollection(HashSet::new));
+	public static final HashSet<Biome.BiomeCategory> FOSSIL_BIOMES = Stream.of(Biome.BiomeCategory.FOREST, Biome.BiomeCategory.EXTREME_HILLS, Biome.BiomeCategory.DESERT, Biome.BiomeCategory.PLAINS, Biome.BiomeCategory.SAVANNA, Biome.BiomeCategory.MUSHROOM, Biome.BiomeCategory.SWAMP).collect(Collectors.toCollection(HashSet::new));
 
-	public static void translateToWaves(EntityType<? extends AbstractRaiderEntity> type, List<? extends Integer> list) {
-		Raid.WaveMember.create(type.getRegistryName().toString(), type, new int[] { list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7) });
+	public static void translateToWaves(EntityType<? extends Raider> type, List<? extends Integer> list) {
+		Raid.RaiderType.create(type.getRegistryName().toString(), type, new int[] { list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7) });
 	}
 }

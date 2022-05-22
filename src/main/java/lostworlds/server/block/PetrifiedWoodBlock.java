@@ -2,27 +2,26 @@ package lostworlds.server.block;
 
 import java.util.function.Supplier;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.RotatedPillarBlock;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ToolType;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.ToolAction;
+import net.minecraftforge.common.ToolActions;
 
 public class PetrifiedWoodBlock extends RotatedPillarBlock {
-	private final Supplier<Item> sample;
+	private final Supplier<ItemStack> sample;
 
-	public PetrifiedWoodBlock(Supplier<Item> sample, Properties properties) {
+	public PetrifiedWoodBlock(Supplier<ItemStack> sample, Properties properties) {
 		super(properties);
 		this.sample = sample;
 	}
 
 	@Override
-	public BlockState getToolModifiedState(BlockState state, World world, BlockPos pos, PlayerEntity player, ItemStack stack, ToolType toolType) {
-		if (toolType == ToolType.AXE)
-			state.getBlock().popResource(world, pos, sample.get().getDefaultInstance());
-		return super.getToolModifiedState(state, world, pos, player, stack, toolType);
+	public BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+		if (toolAction == ToolActions.AXE_SCRAPE) {
+			this.popResource(context.getLevel(), context.getClickedPos(), this.sample.get());
+		}
+		return super.getToolModifiedState(state, context, toolAction, simulate);
 	}
 }

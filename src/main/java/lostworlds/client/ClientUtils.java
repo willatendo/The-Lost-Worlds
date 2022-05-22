@@ -3,9 +3,9 @@ package lostworlds.client;
 import org.lwjgl.glfw.GLFW;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.util.InputMappings;
-import net.minecraft.util.math.vector.Quaternion;
-import net.minecraft.util.math.vector.Vector3f;
+import com.mojang.blaze3d.platform.InputConstants;
+import com.mojang.math.Quaternion;
+import com.mojang.math.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -24,6 +24,6 @@ public class ClientUtils {
 	public static final Quaternion NX65 = Vector3f.XP.rotationDegrees(-65);
 
 	public static boolean isHoldingLeftShift() {
-		return InputMappings.isKeyDown(MINECRAFT_WINDOW, GLFW.GLFW_KEY_LEFT_SHIFT);
+		return InputConstants.isKeyDown(MINECRAFT_WINDOW, GLFW.GLFW_KEY_LEFT_SHIFT);
 	}
 }

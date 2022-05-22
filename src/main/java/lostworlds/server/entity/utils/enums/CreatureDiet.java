@@ -1,8 +1,8 @@
 package lostworlds.server.entity.utils.enums;
 
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.StringRepresentable;
 
-public enum CreatureDiet implements IStringSerializable {
+public enum CreatureDiet implements StringRepresentable {
 	NONE("none"),
 	CARNIVORE("carnivore"),
 	HERBIVORE("herbivore"),

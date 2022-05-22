@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.tterrag.registrate.util.NonNullLazyValue;
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.client.books.TyrannibookHelper;
@@ -33,7 +33,6 @@ import lostworlds.server.item.LostWorldsBanners;
 import lostworlds.server.item.LostWorldsEnchantments;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.item.LostWorldsPotions;
-import lostworlds.server.placement.LostWorldsPlacements;
 import lostworlds.server.structure.LostWorldsStructurePecies;
 import lostworlds.server.structure.LostWorldsStructures;
 import lostworlds.server.util.Version;
@@ -42,21 +41,21 @@ import lostworlds.server.world.BiomeGen;
 import lostworlds.server.world.EntitySpawns;
 import lostworlds.server.world.FeatureGen;
 import lostworlds.server.world.StructureGen;
-import net.minecraft.block.Block;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.PotionUtils;
-import net.minecraft.potion.Potions;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
@@ -78,7 +77,7 @@ import software.bernie.geckolib3.GeckoLib;
 @Mod(LostWorldsMod.ID)
 public class LostWorldsMod {
 	public static final String ID = "lostworlds";
-	private static final NonNullLazyValue<LostWorldsRegistrate> REGISTRATE = LostWorldsRegistrate.lazy(ID);
+	private static final NonNullSupplier<LostWorldsRegistrate> REGISTRATE = LostWorldsRegistrate.lazy(ID);
 
 	public LostWorldsMod() {
 		this.makeMod();
@@ -111,7 +110,6 @@ public class LostWorldsMod {
 		LostWorldsFeatures.deferred(bus);
 		LostWorldsStructures.deferred(bus);
 		LostWorldsStructurePecies.init();
-		LostWorldsPlacements.deferred(bus);
 		LostWorldsBiomes.deferred(bus);
 
 		LostWorldsTags.init();
@@ -150,9 +148,9 @@ public class LostWorldsMod {
 			LostWorldsDimensions.initBiomeSourcesAndChunkGenerator();
 
 			ImmutableSet.Builder<Block> builder = ImmutableSet.builder();
-			builder.addAll(TileEntityType.SIGN.validBlocks);
+			builder.addAll(BlockEntityType.SIGN.validBlocks);
 			LostWorldsBlocks.forEachSignBlock(builder::add);
-			TileEntityType.SIGN.validBlocks = builder.build();
+			BlockEntityType.SIGN.validBlocks = builder.build();
 		});
 
 		LostWorldsUtils.translateToWaves(LostWorldsEntities.FOSSIL_POACHER.get(), Arrays.asList(1, 0, 0, 0, 1, 2, 2, 3));
@@ -182,17 +180,17 @@ public class LostWorldsMod {
 
 	@OnlyIn(Dist.CLIENT)
 	private void onClientPlayerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event) {
-		PlayerEntity player = event.getPlayer();
+		Player player = event.getPlayer();
 		player.sendMessage(Version.getMessage(LostWorldsUtils.VERSION_PARSER, Version.toStringVersion(LostWorldsUtils.VERSION)), player.getUUID());
 	}
 
 	private void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-		CompoundNBT playerData = event.getPlayer().getPersistentData();
-		CompoundNBT data = playerData.getCompound(PlayerEntity.PERSISTED_NBT_TAG);
+		CompoundTag playerData = event.getPlayer().getPersistentData();
+		CompoundTag data = playerData.getCompound(Player.PERSISTED_NBT_TAG);
 		if (data != null && !data.getBoolean("has_lexicon")) {
 			ItemHandlerHelper.giveItemToPlayer(event.getPlayer(), LostWorldsItems.LOST_WORLDS_LEXICON.asStack());
 			data.putBoolean("has_lexicon", true);
-			playerData.put(PlayerEntity.PERSISTED_NBT_TAG, data);
+			playerData.put(Player.PERSISTED_NBT_TAG, data);
 		}
 	}
 
@@ -200,29 +198,29 @@ public class LostWorldsMod {
 		LivingEntity entity = event.getEntityLiving();
 
 		if (entity != null) {
-			World world = entity.level;
+			Level world = entity.level;
 			BlockPos pos = entity.blockPosition();
 			if (world.getBlockState(pos).is(LostWorldsBlocks.VOLCANIC_ASH_LAYER.get())) {
-				if (!isWearingMask(entity, EquipmentSlotType.HEAD)) {
-					entity.addEffect(new EffectInstance(LostWorldsPotions.ASHY_LUNG_EFFECT.get(), 200));
+				if (!isWearingMask(entity, EquipmentSlot.HEAD)) {
+					entity.addEffect(new MobEffectInstance(LostWorldsPotions.ASHY_LUNG_EFFECT.get(), 200));
 				}
 			}
 		}
 	}
 
 	public void onPlayerHarvest(PlayerEvent.BreakSpeed event) {
-		PlayerEntity entity = event.getPlayer();
+		Player entity = event.getPlayer();
 
 		if (entity != null) {
 			if (event.getState().is(LostWorldsBlocks.VOLCANIC_ASH_LAYER.get())) {
-				if (!isWearingMask(entity, EquipmentSlotType.HEAD)) {
-					entity.addEffect(new EffectInstance(LostWorldsPotions.ASHY_LUNG_EFFECT.get(), 200));
+				if (!isWearingMask(entity, EquipmentSlot.HEAD)) {
+					entity.addEffect(new MobEffectInstance(LostWorldsPotions.ASHY_LUNG_EFFECT.get(), 200));
 				}
 			}
 		}
 	}
 
-	public static boolean isWearingMask(LivingEntity living, EquipmentSlotType pieceValue) {
+	public static boolean isWearingMask(LivingEntity living, EquipmentSlot pieceValue) {
 		List<Item> mask = ImmutableList.of(LostWorldsItems.CLOTH_MASK.get());
 		return mask.contains(living.getItemBySlot(pieceValue).getItem());
 	}

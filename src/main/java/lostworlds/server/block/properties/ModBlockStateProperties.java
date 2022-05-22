@@ -1,7 +1,7 @@
 package lostworlds.server.block.properties;
 
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class ModBlockStateProperties {
 	public static final BooleanProperty ON = BooleanProperty.create("on");

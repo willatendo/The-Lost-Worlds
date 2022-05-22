@@ -1,11 +1,11 @@
 modLoader="javafml"
-loaderVersion="[36,)"
+loaderVersion="[40,)"
 license="https://github.com/willatendo/Willatendos-Licensing/blob/main/README.md"
 issueTrackerURL="https://github.com/willatendo/Lost-Worlds/issues"
 
 [[mods]]
 modId="lostworlds"
-version="11-alpha"
+version="11.1-alpha"
 displayName="Lost Worlds"
 updateJSONURL="https://github.com/willatendo/The-Lost-Worlds/raw/main/updates.json"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/the-lost-worlds-forge"
@@ -28,34 +28,34 @@ Modlers/3d Artists:
 [[dependencies.lostworlds]]
     modId="forge"
     mandatory=true
-    versionRange="[36,)"
+    versionRange="[40,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.lostworlds]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.5,1.17)"
+    versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
     
 [[dependencies.lostworlds]]
     modId="geckolib3"
     mandatory=true
-    versionRange="[3.0.66,)"
+    versionRange="[3.0.18,)"
     ordering="NONE"
     side="BOTH"
     
 [[dependencies.lostworlds]]
     modId="crafttweaker"
     mandatory=false
-    versionRange="[7.1.2,)"
+    versionRange="[9.1.140,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.lostworlds]]
     modId="jei"
     mandatory=false
-    versionRange="[7.7.1.152,)"
+    versionRange="[9.5.3.143,)"
     ordering="NONE"
     side="BOTH"

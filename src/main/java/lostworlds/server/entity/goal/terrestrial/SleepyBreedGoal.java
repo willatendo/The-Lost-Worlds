@@ -7,20 +7,20 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import net.minecraft.entity.EntityPredicate;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.item.ExperienceOrbEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.GameRules;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 
 public class SleepyBreedGoal extends Goal {
-	private static final EntityPredicate PARTNER_TARGETING = (new EntityPredicate()).range(8.0D).allowInvulnerable().allowSameTeam().allowUnseeable();
+	private static final TargetingConditions PARTNER_TARGETING = (new TargetingConditions()).range(8.0D).allowInvulnerable().allowSameTeam().allowUnseeable();
 	protected final EggLayingEntity entity;
 	private final Class<? extends EggLayingEntity> partnerClass;
-	protected final World level;
+	protected final Level level;
 	protected EggLayingEntity partner;
 	private int loveTime;
 	private final double speedModifier;
@@ -85,7 +85,7 @@ public class SleepyBreedGoal extends Goal {
 	}
 
 	protected void breed() {
-		this.entity.spawnChildFromBreeding((ServerWorld) this.level, this.partner);
+		this.entity.spawnChildFromBreeding((ServerLevel) this.level, this.partner);
 	}
 
 	public static class Egg extends SleepyBreedGoal {
@@ -103,7 +103,7 @@ public class SleepyBreedGoal extends Goal {
 
 		@Override
 		protected void breed() {
-			ServerPlayerEntity serverplayerentity = this.entity.getLoveCause();
+			ServerPlayer serverplayerentity = this.entity.getLoveCause();
 			if (serverplayerentity == null && this.partner.getLoveCause() != null) {
 				serverplayerentity = this.partner.getLoveCause();
 			}
@@ -117,7 +117,7 @@ public class SleepyBreedGoal extends Goal {
 			this.partner.resetLove();
 			Random random = this.entity.getRandom();
 			if (this.level.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) {
-				this.level.addFreshEntity(new ExperienceOrbEntity(this.level, this.entity.getX(), this.entity.getY(), this.entity.getZ(), random.nextInt(7) + 1));
+				this.level.addFreshEntity(new ExperienceOrb(this.level, this.entity.getX(), this.entity.getY(), this.entity.getZ(), random.nextInt(7) + 1));
 			}
 		}
 	}

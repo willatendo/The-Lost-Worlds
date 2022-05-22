@@ -1,8 +1,8 @@
 package lostworlds.server.block;
 
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.StringRepresentable;
 
-public enum Egg implements IStringSerializable {
+public enum Egg implements StringRepresentable {
 	TINY("tiny"),
 	SMALL("small"),
 	MEDIUM("medium"),

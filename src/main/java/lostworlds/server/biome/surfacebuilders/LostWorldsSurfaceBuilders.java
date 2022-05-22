@@ -1,9 +1,9 @@
 package lostworlds.server.biome.surfacebuilders;
 
 import lostworlds.server.LostWorldsUtils;
-import net.minecraft.world.gen.surfacebuilders.ISurfaceBuilderConfig;
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
+import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilderConfiguration;
+import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilder;
+import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilderBaseConfiguration;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -11,27 +11,27 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class LostWorldsSurfaceBuilders {
 	public static final DeferredRegister<SurfaceBuilder<?>> SURFACE_BUILDERS = DeferredRegister.create(ForgeRegistries.SURFACE_BUILDERS, LostWorldsUtils.ID);
 
-	public static final SurfaceBuilder NAKED_PERMIAN_DRIED_PLAINS = new PermianDriedPlainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_PERMIAN_MOUNTAINS = new PermianMoutainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_PERMIAN_PLAINS = new PermianPlainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_PERMIAN_OCEAN = new PermianOceanSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_PERMIAN_MARSH = new PermianMarshSurfaceBuilder(SurfaceBuilderConfig.CODEC);
+	public static final SurfaceBuilder NAKED_PERMIAN_DRIED_PLAINS = new PermianDriedPlainsSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_PERMIAN_MOUNTAINS = new PermianMoutainsSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_PERMIAN_PLAINS = new PermianPlainsSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_PERMIAN_OCEAN = new PermianOceanSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_PERMIAN_MARSH = new PermianMarshSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
 
-	public static final SurfaceBuilder NAKED_JURASSIC_FOREST = new JurassicForestSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_JURASSIC_PLAINS = new JurassicPlainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_JURASSIC_DESERT = new JurassicDesertSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_JURASSIC_MOUNTAINS = new JurassicMountainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_JURASSIC_ERRODED_MOUNTAINS = new JurassicErrodedMountainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_JURASSIC_SWAMP = new JurassicSwampSurfaceBuilder(SurfaceBuilderConfig.CODEC);
+	public static final SurfaceBuilder NAKED_JURASSIC_FOREST = new JurassicForestSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_JURASSIC_PLAINS = new JurassicPlainsSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_JURASSIC_DESERT = new JurassicDesertSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_JURASSIC_MOUNTAINS = new JurassicMountainsSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_JURASSIC_ERRODED_MOUNTAINS = new JurassicErrodedMountainsSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_JURASSIC_SWAMP = new JurassicSwampSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
 
-	public static final SurfaceBuilder NAKED_CRETACEOUS_FOREST = new CretaceousForestSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_CRETACEOUS_GAME_TRAIL = new CretaceousGameTrailSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_CRETACEOUS_PLAINS = new CretaceousPlainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_CRETACEOUS_MOUNTAINS = new CretaceousMountainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_CRETACEOUS_ERRODED_MOUNTAINS = new CretaceousErrodedMountainsSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_CRETACEOUS_DESERT = new CretaceousDesertSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_CRETACEOUS_RED_DESERT = new CretaceousRedDesertSurfaceBuilder(SurfaceBuilderConfig.CODEC);
-	public static final SurfaceBuilder NAKED_CRETACEOUS_SWAMP = new CretaceousSwampSurfaceBuilder(SurfaceBuilderConfig.CODEC);
+	public static final SurfaceBuilder NAKED_CRETACEOUS_FOREST = new CretaceousForestSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_CRETACEOUS_GAME_TRAIL = new CretaceousGameTrailSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_CRETACEOUS_PLAINS = new CretaceousPlainsSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_CRETACEOUS_MOUNTAINS = new CretaceousMountainsSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_CRETACEOUS_ERRODED_MOUNTAINS = new CretaceousErrodedMountainsSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_CRETACEOUS_DESERT = new CretaceousDesertSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_CRETACEOUS_RED_DESERT = new CretaceousRedDesertSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
+	public static final SurfaceBuilder NAKED_CRETACEOUS_SWAMP = new CretaceousSwampSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC);
 
 	public static final SurfaceBuilder PERMIAN_DRIED_PLAINS = register("permian_dried_plains_sb", NAKED_PERMIAN_DRIED_PLAINS);
 	public static final SurfaceBuilder PERMIAN_MOUNTAINS = register("permian_mountains_sb", NAKED_PERMIAN_MOUNTAINS);
@@ -55,7 +55,7 @@ public class LostWorldsSurfaceBuilders {
 	public static final SurfaceBuilder CRETACEOUS_RED_DESERT = register("cretaceous_red_desert_sb", NAKED_CRETACEOUS_RED_DESERT);
 	public static final SurfaceBuilder CRETACEOUS_SWAMP = register("cretaceous_swamp_sb", NAKED_CRETACEOUS_SWAMP);
 
-	public static <T extends ISurfaceBuilderConfig> SurfaceBuilder<T> register(String id, SurfaceBuilder<T> surfaceBuilder) {
+	public static <T extends SurfaceBuilderConfiguration> SurfaceBuilder<T> register(String id, SurfaceBuilder<T> surfaceBuilder) {
 		SURFACE_BUILDERS.register(id, () -> surfaceBuilder);
 		return surfaceBuilder;
 	}

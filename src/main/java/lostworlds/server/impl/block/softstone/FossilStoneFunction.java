@@ -8,15 +8,15 @@ import lostworlds.server.block.SoftStoneBlock;
 import lostworlds.server.entity.fossil.FossilEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.item.LostWorldsEnchantments;
-import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 
 public class FossilStoneFunction implements APISoftStoneFunction {
 	@Override
-	public void doFunction(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) {
+	public void doFunction(BlockState state, ServerLevel world, BlockPos pos, ItemStack stack) {
 		Random rand = new Random();
 		PotentialPart part = state.getValue(SoftStoneBlock.POTENTIAL_PART);
 		DinoTypes creature = state.getValue(SoftStoneBlock.POTENTIAL_CREATURE);

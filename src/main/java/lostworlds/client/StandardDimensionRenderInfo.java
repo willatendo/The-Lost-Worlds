@@ -1,6 +1,6 @@
 package lostworlds.client;
 
-import net.minecraft.client.world.DimensionRenderInfo;
+import net.minecraft.client.renderer.DimensionSpecialEffects;
 
-public class StandardDimensionRenderInfo extends DimensionRenderInfo.Overworld {
+public class StandardDimensionRenderInfo extends DimensionSpecialEffects.OverworldEffects {
 }

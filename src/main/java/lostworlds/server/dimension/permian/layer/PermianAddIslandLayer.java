@@ -2,10 +2,10 @@ package lostworlds.server.dimension.permian.layer;
 
 import lostworlds.server.biome.BiomeKeys;
 import lostworlds.server.dimension.permian.PermianLayerUtil;
-import net.minecraft.world.gen.INoiseRandom;
-import net.minecraft.world.gen.layer.traits.IBishopTransformer;
+import net.minecraft.world.level.newbiome.context.Context;
+import net.minecraft.world.level.newbiome.layer.traits.BishopTransformer;
 
-public class PermianAddIslandLayer implements IBishopTransformer {
+public class PermianAddIslandLayer implements BishopTransformer {
 	private final int chance;
 	private final int landId;
 
@@ -31,7 +31,7 @@ public class PermianAddIslandLayer implements IBishopTransformer {
 	}
 
 	@Override
-	public int apply(INoiseRandom random, int ne, int se, int sw, int nw, int center) {
+	public int apply(Context random, int ne, int se, int sw, int nw, int center) {
 		if (!PermianLayerUtil.isLand(nw) && !PermianLayerUtil.isLand(sw) && !PermianLayerUtil.isLand(ne) && !PermianLayerUtil.isLand(se) && !PermianLayerUtil.isLand(center) && random.nextRandom(chance) == 0) {
 			return landId;
 		}

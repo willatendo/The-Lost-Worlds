@@ -26,42 +26,42 @@ import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.util.IngredientUtil;
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.IAngerable;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.BreatheAirGoal;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
-import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.entity.ai.goal.ResetAngerGoal;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.RangedInteger;
-import net.minecraft.util.TickRangeConverter;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.entity.AgableMob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.NeutralMob;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier.Builder;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.BreathAirGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.util.IntRange;
+import net.minecraft.util.TimeUtil;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class RhinesuchusEntity extends CarnivoreSemiAquaticEntity implements IAngerable {
-	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(RhinesuchusEntity.class, DataSerializers.INT);
-	private static final RangedInteger PERSISTENT_ANGER_TIME = TickRangeConverter.rangeOfSeconds(20, 39);
-	public static final DataParameter<Integer> MOISTNESS_LEVEL = EntityDataManager.defineId(RhinesuchusEntity.class, DataSerializers.INT);
+public class RhinesuchusEntity extends CarnivoreSemiAquaticEntity implements NeutralMob {
+	private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(RhinesuchusEntity.class, EntityDataSerializers.INT);
+	private static final IntRange PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
+	public static final EntityDataAccessor<Integer> MOISTNESS_LEVEL = SynchedEntityData.defineId(RhinesuchusEntity.class, EntityDataSerializers.INT);
 	private static final Ingredient FOOD_ITEMS = IngredientUtil.combine(FoodLists.CARNIVORE, FoodLists.PISCIVORE);
 	private AnimationFactory factory = new AnimationFactory(this);
 	private UUID persistentAngerTarget;
 
-	public RhinesuchusEntity(EntityType<? extends CarnivoreSemiAquaticEntity> entity, World world) {
+	public RhinesuchusEntity(EntityType<? extends CarnivoreSemiAquaticEntity> entity, Level world) {
 		super(entity, world);
 	}
 
@@ -97,18 +97,18 @@ public class RhinesuchusEntity extends CarnivoreSemiAquaticEntity implements IAn
 		}
 	}
 
-	public static MutableAttribute createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.rhinesuchusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.rhinesuchusAttackDamage.get());
+	public static Builder createAttributes() {
+		return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.rhinesuchusHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.rhinesuchusAttackDamage.get());
 	}
 
 	@Override
 	protected void registerGoals() {
 		super.registerGoals();
-		this.goalSelector.addGoal(1, new BreatheAirGoal(this));
+		this.goalSelector.addGoal(1, new BreathAirGoal(this));
 		this.goalSelector.addGoal(2, new SemiAquaticFindWaterGoal(this));
 		this.goalSelector.addGoal(2, new SemiAquaticLeaveWaterGoal(this));
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
-		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
+		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(3, new RandomSwimmingGoal(this, 1.0D, 40));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
 		this.goalSelector.addGoal(3, new HurtByTargetGoal(this));
@@ -122,7 +122,7 @@ public class RhinesuchusEntity extends CarnivoreSemiAquaticEntity implements IAn
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, DiictodonEntity.class, this::isHungry));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, ProtosuchusEntity.class, this::isHungry));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, ProtosuchusEntity.class, this::isAngryAt));
-		this.targetSelector.addGoal(8, new ResetAngerGoal<>(this, true));
+		this.targetSelector.addGoal(8, new ResetUniversalAngerTargetGoal<>(this, true));
 	}
 
 	@Override
@@ -141,7 +141,7 @@ public class RhinesuchusEntity extends CarnivoreSemiAquaticEntity implements IAn
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
+	public AgableMob getBreedOffspring(ServerLevel world, AgableMob entity) {
 		return LostWorldsEntities.RHINESUCHUS.create(world);
 	}
 
@@ -161,16 +161,16 @@ public class RhinesuchusEntity extends CarnivoreSemiAquaticEntity implements IAn
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) {
+	public void addAdditionalSaveData(CompoundTag nbt) {
 		super.addAdditionalSaveData(nbt);
 		this.addPersistentAngerSaveData(nbt);
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) {
+	public void readAdditionalSaveData(CompoundTag nbt) {
 		super.readAdditionalSaveData(nbt);
 		if (!this.level.isClientSide) {
-			this.readPersistentAngerSaveData((ServerWorld) this.level, nbt);
+			this.readPersistentAngerSaveData((ServerLevel) this.level, nbt);
 		}
 	}
 
@@ -179,7 +179,7 @@ public class RhinesuchusEntity extends CarnivoreSemiAquaticEntity implements IAn
 		super.customServerAiStep();
 
 		if (!this.level.isClientSide) {
-			this.updatePersistentAnger((ServerWorld) this.level, true);
+			this.updatePersistentAnger((ServerLevel) this.level, true);
 		}
 	}
 

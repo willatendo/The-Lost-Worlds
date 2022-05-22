@@ -21,23 +21,23 @@ import lostworlds.server.entity.semiaquatic.CarnivoreSemiAquaticEntity;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.DinoTypes;
-import net.minecraft.block.TurtleEggBlock;
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.BreatheAirGoal;
-import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.fish.CodEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.TurtleEggBlock;
+import net.minecraft.world.entity.AgableMob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier.Builder;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.BreathAirGoal;
+import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.animal.Cod;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
@@ -47,27 +47,27 @@ public class GreatAukEntity extends CarnivoreSemiAquaticEntity {
 	private static final Ingredient FOOD_ITEMS = FoodLists.PISCIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);
 
-	public GreatAukEntity(EntityType<? extends CarnivoreSemiAquaticEntity> entity, World world) {
+	public GreatAukEntity(EntityType<? extends CarnivoreSemiAquaticEntity> entity, Level world) {
 		super(entity, world);
 	}
 
-	public static MutableAttribute createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.greatAukHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.greatAukAttackDamage.get());
+	public static Builder createAttributes() {
+		return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.greatAukHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.greatAukAttackDamage.get());
 	}
 
-	public static boolean canGreatAukSpawn(EntityType<GreatAukEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
+	public static boolean canGreatAukSpawn(EntityType<GreatAukEntity> entity, LevelAccessor world, MobSpawnType reason, BlockPos pos, Random rand) {
 		return pos.getY() < world.getSeaLevel() + 4 && TurtleEggBlock.onSand(world, pos) && world.getRawBrightness(pos, 0) > 8;
 	}
 
 	@Override
 	protected void registerGoals() {
 		super.registerGoals();
-		this.goalSelector.addGoal(1, new BreatheAirGoal(this));
+		this.goalSelector.addGoal(1, new BreathAirGoal(this));
 		this.goalSelector.addGoal(2, new SemiAquaticFindWaterGoal(this));
 		this.goalSelector.addGoal(2, new SemiAquaticLeaveWaterGoal(this));
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(3, new RandomSwimmingGoal(this, 1.0D, 40));
-		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
+		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialReasonableAttackGoal(this, 1.2F));
 		this.goalSelector.addGoal(5, new SleepGoal(this));
@@ -76,7 +76,7 @@ public class GreatAukEntity extends CarnivoreSemiAquaticEntity {
 		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.GREAT_AUK));
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
-		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, CodEntity.class, this::isHungry));
+		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, Cod.class, this::isHungry));
 	}
 
 	@Override
@@ -95,7 +95,7 @@ public class GreatAukEntity extends CarnivoreSemiAquaticEntity {
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
+	public AgableMob getBreedOffspring(ServerLevel world, AgableMob entity) {
 		return LostWorldsEntities.GREAT_AUK.create(world);
 	}
 

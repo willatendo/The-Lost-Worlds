@@ -8,21 +8,21 @@ import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lostworlds.server.biome.BiomeKeys;
 import lostworlds.server.dimension.cretaceous.CretaceousLayerUtil;
-import net.minecraft.util.WeightedRandom;
-import net.minecraft.world.gen.INoiseRandom;
-import net.minecraft.world.gen.layer.traits.IC0Transformer;
+import net.minecraft.util.WeighedRandom;
+import net.minecraft.world.level.newbiome.context.Context;
+import net.minecraft.world.level.newbiome.layer.traits.C0Transformer;
 
-public class CretaceousAddWeightedSubBiomeLayer implements IC0Transformer {
-	private List<WeightedRandom.Item> biomeWeights;
+public class CretaceousAddWeightedSubBiomeLayer implements C0Transformer {
+	private List<WeighedRandom.WeighedRandomItem> biomeWeights;
 	private int totalWeight;
 	final int baseID;
 	final int[] subBiomeIDs;
-	private final Object2IntMap<WeightedRandom.Item> biomeLookup = new Object2IntOpenHashMap<>();
+	private final Object2IntMap<WeighedRandom.WeighedRandomItem> biomeLookup = new Object2IntOpenHashMap<>();
 
-	public CretaceousAddWeightedSubBiomeLayer(final int baseID, final int[] subBiomeIDs, WeightedRandom.Item... weights) {
+	public CretaceousAddWeightedSubBiomeLayer(final int baseID, final int[] subBiomeIDs, WeighedRandom.WeighedRandomItem... weights) {
 		if (weights.length > 0) {
 			biomeWeights = Lists.newArrayList(weights);
-			totalWeight = WeightedRandom.getTotalWeight(biomeWeights);
+			totalWeight = WeighedRandom.getTotalWeight(biomeWeights);
 			for (int i = 0; i < weights.length; i++) {
 				biomeLookup.put(weights[i], subBiomeIDs[i]);
 			}
@@ -32,14 +32,14 @@ public class CretaceousAddWeightedSubBiomeLayer implements IC0Transformer {
 	}
 
 	public static CretaceousAddWeightedSubBiomeLayer ocean() {
-		return new CretaceousAddWeightedSubBiomeLayer(CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_OCEAN), new int[] { CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_OCEAN), CretaceousLayerUtil.getBiomeId(BiomeKeys.DEEP_CRETACEOUS_OCEAN), CretaceousLayerUtil.getBiomeId(BiomeKeys.WARM_CRETACEOUS_OCEAN), CretaceousLayerUtil.getBiomeId(BiomeKeys.WARM_DEEP_CRETACEOUS_OCEAN), CretaceousLayerUtil.getBiomeId(BiomeKeys.COLD_CRETACEOUS_OCEAN), CretaceousLayerUtil.getBiomeId(BiomeKeys.COLD_DEEP_CRETACEOUS_OCEAN) }, new WeightedRandom.Item(20), new WeightedRandom.Item(4), new WeightedRandom.Item(20), new WeightedRandom.Item(4), new WeightedRandom.Item(20), new WeightedRandom.Item(4));
+		return new CretaceousAddWeightedSubBiomeLayer(CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_OCEAN), new int[] { CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_OCEAN), CretaceousLayerUtil.getBiomeId(BiomeKeys.DEEP_CRETACEOUS_OCEAN), CretaceousLayerUtil.getBiomeId(BiomeKeys.WARM_CRETACEOUS_OCEAN), CretaceousLayerUtil.getBiomeId(BiomeKeys.WARM_DEEP_CRETACEOUS_OCEAN), CretaceousLayerUtil.getBiomeId(BiomeKeys.COLD_CRETACEOUS_OCEAN), CretaceousLayerUtil.getBiomeId(BiomeKeys.COLD_DEEP_CRETACEOUS_OCEAN) }, new WeighedRandom.WeighedRandomItem(20), new WeighedRandom.WeighedRandomItem(4), new WeighedRandom.WeighedRandomItem(20), new WeighedRandom.WeighedRandomItem(4), new WeighedRandom.WeighedRandomItem(20), new WeighedRandom.WeighedRandomItem(4));
 	}
 
 	@Override
-	public int apply(INoiseRandom random, int center) {
+	public int apply(Context random, int center) {
 		if (center == baseID) {
 			if (biomeLookup.size() > 0) {
-				return biomeLookup.getInt(WeightedRandom.getWeightedItem(biomeWeights, random.nextRandom(totalWeight)));
+				return biomeLookup.getInt(WeighedRandom.getWeightedItem(biomeWeights, random.nextRandom(totalWeight)));
 			}
 			return subBiomeIDs[random.nextRandom(subBiomeIDs.length)];
 		} else {

@@ -4,11 +4,11 @@ import java.util.List;
 
 import lostworlds.client.ClientUtils;
 import lostworlds.server.LostWorldsUtils;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.World;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
 public class CollectibleItem extends Item {
 	public CollectibleItem(Properties properties) {
@@ -16,7 +16,7 @@ public class CollectibleItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> text, ITooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, Level level, List<Component> text, TooltipFlag flag) {
 		if (ClientUtils.isHoldingLeftShift()) {
 			text.add(LostWorldsUtils.gTC("item", "collectible.desc"));
 		}

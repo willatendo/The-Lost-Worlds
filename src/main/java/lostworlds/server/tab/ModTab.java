@@ -3,10 +3,10 @@ package lostworlds.server.tab;
 import java.util.function.Supplier;
 
 import lostworlds.server.LostWorldsUtils;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 
-public class ModTab extends ItemGroup {
+public class ModTab extends CreativeModeTab {
 	private Supplier<ItemStack> icon;
 
 	public ModTab(String id) {

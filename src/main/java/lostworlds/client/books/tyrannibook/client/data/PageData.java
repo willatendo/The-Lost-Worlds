@@ -11,7 +11,7 @@ import lostworlds.client.books.tyrannibook.client.data.content.ContentError;
 import lostworlds.client.books.tyrannibook.client.data.content.PageContent;
 import lostworlds.client.books.tyrannibook.client.data.element.DataElement;
 import lostworlds.client.books.tyrannibook.client.repository.TyrannobookRepository;
-import net.minecraft.resources.IResource;
+import net.minecraft.server.packs.resources.Resource;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -49,7 +49,7 @@ public class PageData implements DataItem {
 		this.name = this.name.toLowerCase();
 
 		if (!this.data.equals("no-load")) {
-			IResource pageInfo = this.source.getResource(this.source.getResourceLocation(this.data));
+			Resource pageInfo = this.source.getResource(this.source.getResourceLocation(this.data));
 			if (pageInfo != null) {
 				String data = this.source.resourceToString(pageInfo);
 				if (!data.isEmpty()) {

@@ -4,7 +4,7 @@ import java.util.EnumSet;
 
 import lostworlds.server.entity.terrestrial.PrehistoricEntity;
 import lostworlds.server.entity.utils.enums.ActivityType;
-import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.Goal;
 
 public class SleepGoal extends Goal {
 	private final PrehistoricEntity entity;

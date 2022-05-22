@@ -3,13 +3,13 @@ package lostworlds.server.biome.biomes.permian.desert;
 import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
 import lostworlds.server.biome.ModSurfaceBuilderConfigs;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.Category;
-import net.minecraft.world.biome.Biome.RainType;
-import net.minecraft.world.biome.BiomeAmbience;
-import net.minecraft.world.biome.BiomeGenerationSettings;
-import net.minecraft.world.biome.MobSpawnInfo;
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biome.BiomeCategory;
+import net.minecraft.world.level.biome.Biome.Precipitation;
+import net.minecraft.world.level.biome.BiomeSpecialEffects;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilder;
 
 public class PermianDesertBiome extends ModBiome {
 	private float depth;
@@ -26,7 +26,7 @@ public class PermianDesertBiome extends ModBiome {
 
 	@Override
 	public Biome getBiome() {
-		return this.biome(RainType.NONE, Category.DESERT, this.depth, this.scale, 0.0F, 3.0F, this.ambience(), this.generation(), this.spawn()).build();
+		return this.biome(Precipitation.NONE, BiomeCategory.DESERT, this.depth, this.scale, 0.0F, 3.0F, this.ambience(), this.generation(), this.spawn()).build();
 	}
 
 	@Override
@@ -38,14 +38,14 @@ public class PermianDesertBiome extends ModBiome {
 	}
 
 	@Override
-	public MobSpawnInfo spawn() {
-		MobSpawnInfo.Builder spawns = new MobSpawnInfo.Builder();
+	public MobSpawnSettings spawn() {
+		MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
 		return spawns.build();
 	}
 
 	@Override
-	public BiomeAmbience ambience() {
-		BiomeAmbience.Builder ambience = new BiomeAmbience.Builder();
+	public BiomeSpecialEffects ambience() {
+		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(2.0F));
 		return ambience.build();
 	}

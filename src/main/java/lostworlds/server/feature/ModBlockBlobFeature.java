@@ -5,18 +5,18 @@ import java.util.Random;
 import com.mojang.serialization.Codec;
 
 import lostworlds.server.feature.config.ModBlockstateFeatureConfig;
-import net.minecraft.block.material.Material;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ISeedReader;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.feature.Feature;
 
 public class ModBlockBlobFeature extends Feature<ModBlockstateFeatureConfig> {
 	public ModBlockBlobFeature(Codec<ModBlockstateFeatureConfig> codec) {
 		super(codec);
 	}
 
-	public boolean place(ISeedReader reader, ChunkGenerator chunckGenerator, Random rand, BlockPos pos, ModBlockstateFeatureConfig config) {
+	public boolean place(WorldGenLevel reader, ChunkGenerator chunckGenerator, Random rand, BlockPos pos, ModBlockstateFeatureConfig config) {
 		while (true) {
 			place: {
 				if (pos.getY() > 3) {

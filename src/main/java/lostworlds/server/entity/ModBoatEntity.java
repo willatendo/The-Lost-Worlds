@@ -3,48 +3,48 @@ package lostworlds.server.entity;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.entity.utils.enums.ModBoatType;
 import lostworlds.server.util.registrate.WoodTypes;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.item.BoatEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.IndirectEntityDamageSource;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.GameRules;
-import net.minecraft.world.World;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.IndirectEntityDamageSource;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class ModBoatEntity extends BoatEntity {
-	private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.defineId(ModBoatEntity.class, DataSerializers.INT);
+public class ModBoatEntity extends Boat {
+	private static final EntityDataAccessor<Integer> BOAT_TYPE = SynchedEntityData.defineId(ModBoatEntity.class, EntityDataSerializers.INT);
 
-	public ModBoatEntity(World world, double x, double y, double z) {
+	public ModBoatEntity(Level world, double x, double y, double z) {
 		this(LostWorldsEntities.MOD_BOAT.get(), world);
 		this.setPos(x, y, z);
-		this.setDeltaMovement(Vector3d.ZERO);
+		this.setDeltaMovement(Vec3.ZERO);
 		this.xo = x;
 		this.yo = y;
 		this.zo = z;
 	}
 
-	public ModBoatEntity(EntityType<? extends ModBoatEntity> entity, World world) {
+	public ModBoatEntity(EntityType<? extends ModBoatEntity> entity, Level world) {
 		super(entity, world);
 	}
 
-	public ModBoatEntity(FMLPlayMessages.SpawnEntity packet, World world) {
+	public ModBoatEntity(FMLPlayMessages.SpawnEntity packet, Level world) {
 		super(LostWorldsEntities.MOD_BOAT.get(), world);
 	}
 
@@ -104,12 +104,12 @@ public class ModBoatEntity extends BoatEntity {
 	}
 
 	@Override
-	protected void addAdditionalSaveData(CompoundNBT compound) {
+	protected void addAdditionalSaveData(CompoundTag compound) {
 		compound.putString("BoatType", this.getModBoatType().getName());
 	}
 
 	@Override
-	protected void readAdditionalSaveData(CompoundNBT compound) {
+	protected void readAdditionalSaveData(CompoundTag compound) {
 		if (compound.contains("BoatType", 8)) {
 			this.setBYGBoatType(ModBoatType.getTypeFromString(compound.getString("BoatType")));
 		}
@@ -129,7 +129,7 @@ public class ModBoatEntity extends BoatEntity {
 		if (!this.isPassenger()) {
 			if (onGroundIn) {
 				if (this.fallDistance > 3.0F) {
-					if (this.status != BoatEntity.Status.ON_LAND) {
+					if (this.status != Boat.Status.ON_LAND) {
 						this.fallDistance = 0.0F;
 						return;
 					}
@@ -171,7 +171,7 @@ public class ModBoatEntity extends BoatEntity {
 				this.setHurtTime(10);
 				this.setDamage(this.getDamage() + amount * 10.0F);
 				this.markHurt();
-				boolean flag = source.getEntity() instanceof PlayerEntity && ((PlayerEntity) source.getEntity()).abilities.instabuild;
+				boolean flag = source.getEntity() instanceof Player && ((Player) source.getEntity()).abilities.instabuild;
 				if (flag || this.getDamage() > 40.0F) {
 					if (!flag && this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
 						this.spawnAtLocation(this.getDropItem());
@@ -188,7 +188,7 @@ public class ModBoatEntity extends BoatEntity {
 	}
 
 	@Override
-	public IPacket<?> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 }

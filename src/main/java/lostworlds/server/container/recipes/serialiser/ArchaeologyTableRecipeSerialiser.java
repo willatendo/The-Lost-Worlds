@@ -5,27 +5,27 @@ import java.util.Map;
 import com.google.gson.JsonObject;
 
 import lostworlds.server.container.recipes.ArchaeologyTableRecipe;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.JSONUtils;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class ArchaeologyTableRecipeSerialiser extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<ArchaeologyTableRecipe> {
+public class ArchaeologyTableRecipeSerialiser extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<ArchaeologyTableRecipe> {
 	public ArchaeologyTableRecipe fromJson(ResourceLocation id, JsonObject json) {
-		Map<String, Ingredient> map = ArchaeologyTableRecipe.keyFromJson(JSONUtils.getAsJsonObject(json, "key"));
-		String[] astring = ArchaeologyTableRecipe.shrink(ArchaeologyTableRecipe.patternFromJson(JSONUtils.getAsJsonArray(json, "pattern")));
+		Map<String, Ingredient> map = ArchaeologyTableRecipe.keyFromJson(GsonHelper.getAsJsonObject(json, "key"));
+		String[] astring = ArchaeologyTableRecipe.shrink(ArchaeologyTableRecipe.patternFromJson(GsonHelper.getAsJsonArray(json, "pattern")));
 		int i = astring[0].length();
 		int j = astring.length;
 		NonNullList<Ingredient> nonnulllist = ArchaeologyTableRecipe.dissolvePattern(astring, map, i, j);
-		ItemStack itemstack = ArchaeologyTableRecipe.itemFromJson(JSONUtils.getAsJsonObject(json, "output"));
+		ItemStack itemstack = ArchaeologyTableRecipe.itemFromJson(GsonHelper.getAsJsonObject(json, "output"));
 		return new ArchaeologyTableRecipe(id, i, j, nonnulllist, itemstack);
 	}
 
-	public ArchaeologyTableRecipe fromNetwork(ResourceLocation id, PacketBuffer buffer) {
+	public ArchaeologyTableRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
 		int i = buffer.readVarInt();
 		int j = buffer.readVarInt();
 		NonNullList<Ingredient> nonnulllist = NonNullList.withSize(i * j, Ingredient.EMPTY);
@@ -38,7 +38,7 @@ public class ArchaeologyTableRecipeSerialiser extends ForgeRegistryEntry<IRecipe
 		return new ArchaeologyTableRecipe(id, i, j, nonnulllist, itemstack);
 	}
 
-	public void toNetwork(PacketBuffer buffer, ArchaeologyTableRecipe recipe) {
+	public void toNetwork(FriendlyByteBuf buffer, ArchaeologyTableRecipe recipe) {
 		buffer.writeVarInt(recipe.width);
 		buffer.writeVarInt(recipe.height);
 

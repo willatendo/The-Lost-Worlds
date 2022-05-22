@@ -5,9 +5,11 @@ import java.util.Random;
 
 import lostworlds.server.entity.terrestrial.PrehistoricEntity;
 import lostworlds.server.entity.utils.ISemiAquatic;
-import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+
+import net.minecraft.world.entity.ai.goal.Goal.Flag;
 
 public class SemiAquaticFindWaterGoal extends Goal {
 	private final PrehistoricEntity creature;

@@ -5,10 +5,10 @@ import java.util.function.Supplier;
 
 import com.mojang.serialization.Codec;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.gen.blockstateprovider.BlockStateProvider;
-import net.minecraft.world.gen.blockstateprovider.BlockStateProviderType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
 
 public class SuppliedBlockStateProvider extends BlockStateProvider {
 	public static final Codec<SuppliedBlockStateProvider> CODEC = BlockState.CODEC.fieldOf("state").xmap(SuppliedBlockStateProvider::new, (provider) -> {

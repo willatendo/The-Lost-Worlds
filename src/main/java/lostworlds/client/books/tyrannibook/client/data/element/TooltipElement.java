@@ -2,16 +2,16 @@ package lostworlds.client.books.tyrannibook.client.data.element;
 
 import java.util.List;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.client.gui.Font;
+import net.minecraft.network.chat.Component;
 
 public class TooltipElement extends SizedTyrannobookElement 
 {
-	private final List<ITextComponent> tooltips;
+	private final List<Component> tooltips;
 
-	public TooltipElement(List<ITextComponent> tooltip, int x, int y, int width, int height) 
+	public TooltipElement(List<Component> tooltip, int x, int y, int width, int height) 
 	{
 		super(x, y, width, height);
 
@@ -19,10 +19,10 @@ public class TooltipElement extends SizedTyrannobookElement
 	}
 
 	@Override
-	public void draw(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer) { }
+	public void draw(PoseStack matrixStack, int mouseX, int mouseY, float partialTicks, Font fontRenderer) { }
 
 	@Override
-	public void drawOverlay(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer) 
+	public void drawOverlay(PoseStack matrixStack, int mouseX, int mouseY, float partialTicks, Font fontRenderer) 
 	{
 		if(this.isHovered(mouseX, mouseY)) 
 		{

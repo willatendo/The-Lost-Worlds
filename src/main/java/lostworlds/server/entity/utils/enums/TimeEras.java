@@ -1,8 +1,8 @@
 package lostworlds.server.entity.utils.enums;
 
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.StringRepresentable;
 
-public enum TimeEras implements IStringSerializable {
+public enum TimeEras implements StringRepresentable {
 	PRECAMBRIAN_EON("precambrian_eon"),
 	CAMBRIAN_PERIOD("cambrian_period"),
 	ORDOVICIAN_PERIOD("ordovician_period"),

@@ -2,25 +2,27 @@ package lostworlds.server.structure;
 
 import com.mojang.serialization.Codec;
 
-import net.minecraft.util.Rotation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MutableBoundingBox;
-import net.minecraft.util.registry.DynamicRegistries;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.GenerationStage.Decoration;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.structure.Structure;
-import net.minecraft.world.gen.feature.structure.StructureStart;
-import net.minecraft.world.gen.feature.template.TemplateManager;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraft.world.level.levelgen.structure.StructureStart;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 
-public class TraceFossilStructure extends Structure<NoFeatureConfig> {
-	public TraceFossilStructure(Codec<NoFeatureConfig> codec) {
+import net.minecraft.world.level.levelgen.feature.StructureFeature.StructureStartFactory;
+
+public class TraceFossilStructure extends StructureFeature<NoneFeatureConfiguration> {
+	public TraceFossilStructure(Codec<NoneFeatureConfiguration> codec) {
 		super(codec);
 	}
 
 	@Override
-	public IStartFactory<NoFeatureConfig> getStartFactory() {
+	public StructureStartFactory<NoneFeatureConfiguration> getStartFactory() {
 		return TraceFossilStructure.Start::new;
 	}
 
@@ -29,13 +31,13 @@ public class TraceFossilStructure extends Structure<NoFeatureConfig> {
 		return Decoration.SURFACE_STRUCTURES;
 	}
 
-	public static class Start extends StructureStart<NoFeatureConfig> {
-		public Start(Structure<NoFeatureConfig> structure, int x, int z, MutableBoundingBox box, int i3, long seed) {
+	public static class Start extends StructureStart<NoneFeatureConfiguration> {
+		public Start(StructureFeature<NoneFeatureConfiguration> structure, int x, int z, BoundingBox box, int i3, long seed) {
 			super(structure, x, z, box, i3, seed);
 		}
 
 		@Override
-		public void generatePieces(DynamicRegistries registries, ChunkGenerator generator, TemplateManager manager, int chunkX, int chunkY, Biome biome, NoFeatureConfig config) {
+		public void generatePieces(RegistryAccess registries, ChunkGenerator generator, StructureManager manager, int chunkX, int chunkY, Biome biome, NoneFeatureConfiguration config) {
 			BlockPos blockpos = new BlockPos(chunkX * 16, 90, chunkY * 16);
 			Rotation rotation = Rotation.values()[this.random.nextInt((Rotation.values()).length)];
 			TraceFossilPeice.addStructure(manager, blockpos, rotation, pieces, random, biome);

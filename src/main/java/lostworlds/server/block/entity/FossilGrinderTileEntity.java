@@ -10,35 +10,35 @@ import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.container.recipes.FossilGrinderRecipe;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
 import lostworlds.server.item.ModBoneMealItem;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.RecipeItemHelper;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
-import net.minecraft.util.IIntArray;
-import net.minecraft.util.INameable;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.Container;
+import net.minecraft.world.WorldlyContainer;
+import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.block.entity.TickableBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.Direction;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.Nameable;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.network.chat.Component;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-public class FossilGrinderTileEntity extends TileEntity implements IInventory, INamedContainerProvider, INameable, ITickableTileEntity, ISidedInventory {
+public class FossilGrinderTileEntity extends BlockEntity implements Container, MenuProvider, Nameable, TickableBlockEntity, WorldlyContainer {
 	private static final int[] SLOTS_FOR_UP = new int[] { 0 };
 	private static final int[] SLOTS_FOR_DOWN = new int[] { 2, 1 };
 	private static final int[] SLOTS_FOR_SIDES = new int[] { 0 };
@@ -50,7 +50,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 	private int grindingProgress;
 	private int grindingTotalTime;
 
-	protected final IIntArray grinderData = new IIntArray() {
+	protected final ContainerData grinderData = new ContainerData() {
 		@Override
 		public int get(int index) {
 			switch (index) {
@@ -92,9 +92,9 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final IRecipeType<FossilGrinderRecipe> recipeType = LostWorldsRecipes.FOSSIL_GRINDER_RECIPE;
+	protected final RecipeType<FossilGrinderRecipe> recipeType = LostWorldsRecipes.FOSSIL_GRINDER_RECIPE;
 
-	private ITextComponent name;
+	private Component name;
 
 	public FossilGrinderTileEntity() {
 		super(LostWorldsBlockEntities.FOSSIL_GRINDER_TILE_ENTITY.get());
@@ -109,30 +109,30 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 	}
 
 	@Override
-	public void load(BlockState state, CompoundNBT nbt) {
+	public void load(BlockState state, CompoundTag nbt) {
 		super.load(state, nbt);
 		this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-		ItemStackHelper.loadAllItems(nbt, this.items);
+		ContainerHelper.loadAllItems(nbt, this.items);
 		this.onTime = nbt.getInt("OnTime");
 		this.grindingProgress = nbt.getInt("GrindTime");
 		this.grindingTotalTime = nbt.getInt("GrindTimeTotal");
 		this.onDuration = this.getGrindDuration();
 		if (nbt.contains("CustomName", 8)) {
-			this.name = ITextComponent.Serializer.fromJson(nbt.getString("CustomName"));
+			this.name = Component.Serializer.fromJson(nbt.getString("CustomName"));
 		}
 	}
 
 	@Override
-	public CompoundNBT save(CompoundNBT nbt) {
+	public CompoundTag save(CompoundTag nbt) {
 		super.save(nbt);
 		nbt.putInt("OnTime", this.onTime);
 		nbt.putInt("GrindTime", this.grindingProgress);
 		nbt.putInt("GrindTimeTotal", this.grindingTotalTime);
-		ItemStackHelper.saveAllItems(nbt, this.items);
+		ContainerHelper.saveAllItems(nbt, this.items);
 		return nbt;
 	}
 
-	public IIntArray getGrinderData() {
+	public ContainerData getGrinderData() {
 		return this.grinderData;
 	}
 
@@ -151,7 +151,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 		if (!this.level.isClientSide) {
 			if (this.level.hasNeighborSignal(this.getBlockPos())) {
 				if (this.isOn() || !this.items.get(0).isEmpty()) {
-					IRecipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((IRecipeType<FossilGrinderRecipe>) this.recipeType, this, this.level).orElse(null);
+					Recipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((RecipeType<FossilGrinderRecipe>) this.recipeType, this, this.level).orElse(null);
 					if (!this.isOn() && this.canGrind(irecipe)) {
 						this.onTime = this.getGrindDuration();
 						this.onDuration = this.onTime;
@@ -172,7 +172,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 						this.grindingProgress = 0;
 					}
 				} else if (!this.isOn() && this.grindingProgress > 0) {
-					this.grindingProgress = MathHelper.clamp(this.grindingProgress - 2, 0, this.grindingTotalTime);
+					this.grindingProgress = Mth.clamp(this.grindingProgress - 2, 0, this.grindingTotalTime);
 				}
 
 				if (flag != this.isOn()) {
@@ -187,7 +187,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 		}
 	}
 
-	protected boolean canGrind(@Nullable IRecipe<?> recipe) {
+	protected boolean canGrind(@Nullable Recipe<?> recipe) {
 		if (!this.items.get(0).isEmpty() && recipe != null) {
 			ItemStack result = recipe.getResultItem();
 			if (result.isEmpty()) {
@@ -222,7 +222,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 		}
 	}
 
-	private void grind(@Nullable IRecipe<?> recipe) {
+	private void grind(@Nullable Recipe<?> recipe) {
 		if (recipe != null && this.canGrind(recipe)) {
 			ItemStack fossil = this.items.get(0);
 			ItemStack result = recipe.getResultItem();
@@ -251,7 +251,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 	}
 
 	protected int getTotalGrindTime() {
-		return this.level.getRecipeManager().getRecipeFor((IRecipeType<FossilGrinderRecipe>) this.recipeType, this, this.level).map(FossilGrinderRecipe::getGrindTime).orElse(300);
+		return this.level.getRecipeManager().getRecipeFor((RecipeType<FossilGrinderRecipe>) this.recipeType, this, this.level).map(FossilGrinderRecipe::getGrindTime).orElse(300);
 	}
 
 	protected int getGrindDuration() {
@@ -280,12 +280,12 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 
 	@Override
 	public ItemStack removeItem(int slot1, int slot2) {
-		return ItemStackHelper.removeItem(this.items, slot1, slot2);
+		return ContainerHelper.removeItem(this.items, slot1, slot2);
 	}
 
 	@Override
 	public ItemStack removeItemNoUpdate(int slot) {
-		return ItemStackHelper.takeItem(this.items, slot);
+		return ContainerHelper.takeItem(this.items, slot);
 	}
 
 	@Override
@@ -305,7 +305,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity player) {
+	public boolean stillValid(Player player) {
 		if (this.level.getBlockEntity(this.worldPosition) != this) {
 			return false;
 		} else {
@@ -327,7 +327,7 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 		this.items.clear();
 	}
 
-	public void setRecipeUsed(@Nullable IRecipe<?> recipe) {
+	public void setRecipeUsed(@Nullable Recipe<?> recipe) {
 		if (recipe != null) {
 			ResourceLocation resourcelocation = recipe.getId();
 			this.recipesUsed.addTo(resourcelocation, 1);
@@ -335,38 +335,38 @@ public class FossilGrinderTileEntity extends TileEntity implements IInventory, I
 	}
 
 	@Nullable
-	public IRecipe<?> getRecipeUsed() {
+	public Recipe<?> getRecipeUsed() {
 		return null;
 	}
 
-	public void fillStackedContents(RecipeItemHelper helper) {
+	public void fillStackedContents(StackedContents helper) {
 		for (ItemStack itemstack : this.items) {
 			helper.accountStack(itemstack);
 		}
 	}
 
 	@Override
-	public Container createMenu(int windowID, PlayerInventory playerInventory, PlayerEntity player) {
+	public AbstractContainerMenu createMenu(int windowID, Inventory playerInventory, Player player) {
 		return new FossilGrinderContainer(LostWorldsContainers.FOSSIL_GRINDER_CONTAINER.get(), windowID, playerInventory, this, this);
 	}
 
 	@Override
-	public ITextComponent getName() {
+	public Component getName() {
 		return LostWorldsUtils.tTC("container", "fossil_grinder");
 	}
 
 	@Override
-	public ITextComponent getDisplayName() {
+	public Component getDisplayName() {
 		return this.getName();
 	}
 
 	@Override
 	@Nullable
-	public ITextComponent getCustomName() {
+	public Component getCustomName() {
 		return this.name;
 	}
 
-	public void setCustomName(ITextComponent text) {
+	public void setCustomName(Component text) {
 		this.name = text;
 	}
 

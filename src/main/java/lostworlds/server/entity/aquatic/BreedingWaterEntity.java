@@ -1,18 +1,18 @@
 package lostworlds.server.entity.aquatic;
 
-import net.minecraft.entity.CreatureAttribute;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.util.DamageSource;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.Level;
 
-public abstract class BreedingWaterEntity extends AnimalEntity {
-	public BreedingWaterEntity(EntityType<? extends BreedingWaterEntity> entity, World world) {
+public abstract class BreedingWaterEntity extends Animal {
+	public BreedingWaterEntity(EntityType<? extends BreedingWaterEntity> entity, Level world) {
 		super(entity, world);
-		this.setPathfindingMalus(PathNodeType.WATER, 0.0F);
+		this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
 	}
 
 	@Override
@@ -21,12 +21,12 @@ public abstract class BreedingWaterEntity extends AnimalEntity {
 	}
 
 	@Override
-	public CreatureAttribute getMobType() {
-		return CreatureAttribute.WATER;
+	public MobType getMobType() {
+		return MobType.WATER;
 	}
 
 	@Override
-	public boolean checkSpawnObstruction(IWorldReader reader) {
+	public boolean checkSpawnObstruction(LevelReader reader) {
 		return reader.isUnobstructed(this);
 	}
 
@@ -36,7 +36,7 @@ public abstract class BreedingWaterEntity extends AnimalEntity {
 	}
 
 	@Override
-	protected int getExperienceReward(PlayerEntity entity) {
+	protected int getExperienceReward(Player entity) {
 		return 1 + this.level.random.nextInt(3);
 	}
 
@@ -66,7 +66,7 @@ public abstract class BreedingWaterEntity extends AnimalEntity {
 	}
 
 	@Override
-	public boolean canBeLeashed(PlayerEntity entity) {
+	public boolean canBeLeashed(Player entity) {
 		return false;
 	}
 }

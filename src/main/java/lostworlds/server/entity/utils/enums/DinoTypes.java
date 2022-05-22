@@ -3,7 +3,6 @@ package lostworlds.server.entity.utils.enums;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
-import java.util.concurrent.Callable;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -16,15 +15,15 @@ import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.fossil.DirtyFossilEntity;
 import lostworlds.server.entity.fossil.FossilEntity;
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.item.Item;
-import net.minecraft.tags.ITag;
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.tags.TagKey;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
-public enum DinoTypes implements IStringSerializable {
+public enum DinoTypes implements StringRepresentable {
 	ALLOSAURUS("allosaurus", () -> LostWorldsEntities.ALLOSAURUS.get(), LostWorldsTags.ModItemTags.ALLOSAURUS_FOSSILS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x9f9f5a, 5, 8, 0.4F, 0.8F),
 	ANOMALOCARIS("anomalocaris", () -> LostWorldsEntities.ANOMALOCARIS.get(), LostWorldsTags.ModItemTags.ANOMALOCARIS_FOSSILS, false, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0xb94f33, 2, 4, 0.2F, 0.4F),
 	CARNOTAURUS("carnotaurus", () -> LostWorldsEntities.CARNOTAURUS.get(), LostWorldsTags.ModItemTags.CARNOTAURUS_FOSSILS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xbd7868, 6, 9, 0.4F, 0.8F),
@@ -59,14 +58,14 @@ public enum DinoTypes implements IStringSerializable {
 	UTAHRAPTOR("utahraptor", () -> LostWorldsEntities.UTAHRAPTOR.get(), LostWorldsTags.ModItemTags.UTAHRAPTOR_FOSSILS, true, true, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x503524, 5, 7, 0.5F, 0.64F),
 	ZEPHYROSAURUS("zephyrosaurus", () -> LostWorldsEntities.ZEPHYROSAURUS.get(), LostWorldsTags.ModItemTags.ZEPHYROSAURUS_FOSSILS, true, true, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x577476, 3, 5, 0.3F, 0.54F),;
 
-	public static final Codec<DinoTypes> CODEC = IStringSerializable.fromEnum(DinoTypes::values, DinoTypes::byName);
+	public static final Codec<DinoTypes> CODEC = StringRepresentable.fromEnum(DinoTypes::values, DinoTypes::byName);
 	private static final Map<String, DinoTypes> BY_NAME = Arrays.stream(values()).collect(Collectors.toMap(DinoTypes::getId, (types) -> {
 		return types;
 	}));
 
 	private final String id;
-	private Supplier<EntityType<? extends CreatureEntity>> entityType;
-	private ITag.INamedTag<Item> fossilTag;
+	private Supplier<EntityType<? extends PathfinderMob>> entityType;
+	private TagKey<Item> fossilTag;
 	private Supplier<EntityType<DirtyFossilEntity>> dirtySkull;
 	private Supplier<EntityType<DirtyFossilEntity>> dirtyArmBones;
 	private Supplier<EntityType<DirtyFossilEntity>> dirtyLegBones;
@@ -114,7 +113,7 @@ public enum DinoTypes implements IStringSerializable {
 	private final float rawSaturation;
 	private final float cookedSaturation;
 
-	private DinoTypes(String id, Supplier<EntityType<? extends CreatureEntity>> entityType, LostWorldsTags.ModItemTags fossilTag, boolean eggLaying, boolean feathered, boolean createHide, Size eggSize, CreatureDiet diet, int eggSetColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation) {
+	private DinoTypes(String id, Supplier<EntityType<? extends PathfinderMob>> entityType, LostWorldsTags.ModItemTags fossilTag, boolean eggLaying, boolean feathered, boolean createHide, Size eggSize, CreatureDiet diet, int eggSetColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation) {
 		this.id = id;
 		this.entityType = entityType;
 		this.fossilTag = fossilTag.tag;
@@ -138,7 +137,7 @@ public enum DinoTypes implements IStringSerializable {
 		return this.id;
 	}
 
-	public ITag.INamedTag<Item> getFossilTag() {
+	public TagKey<Item> getFossilTag() {
 		return fossilTag;
 	}
 
@@ -190,7 +189,7 @@ public enum DinoTypes implements IStringSerializable {
 		return this.skeletonPick = item;
 	}
 
-	public Supplier<EntityType<? extends CreatureEntity>> getEntityType() {
+	public Supplier<EntityType<? extends PathfinderMob>> getEntityType() {
 		return this.entityType;
 	}
 
@@ -438,11 +437,11 @@ public enum DinoTypes implements IStringSerializable {
 		return this.bloodVile = item;
 	}
 
-	public Callable<ItemStackTileEntityRenderer> getISTER() {
+	public BlockEntityWithoutLevelRenderer getISTER() {
 		return new ItemCustomisableRenderer(this.id);
 	}
 
-	public Callable<ItemStackTileEntityRenderer> getISTER(String part) {
+	public BlockEntityWithoutLevelRenderer getISTER(String part) {
 		return new ItemCustomisableRenderer(this.id + "_" + part, this.id);
 	}
 

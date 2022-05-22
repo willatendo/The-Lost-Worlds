@@ -1,22 +1,22 @@
 package lostworlds.server.entity.navigators;
 
-import net.minecraft.entity.MobEntity;
-import net.minecraft.pathfinding.PathFinder;
-import net.minecraft.pathfinding.SwimmerPathNavigator;
-import net.minecraft.pathfinding.WalkAndSwimNodeProcessor;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceContext;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.level.pathfinder.PathFinder;
+import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
+import net.minecraft.world.level.pathfinder.TurtleNodeEvaluator;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.Level;
 
-public class AquaticPathNavigator extends SwimmerPathNavigator {
-	public AquaticPathNavigator(MobEntity entity, World world) {
+public class AquaticPathNavigator extends WaterBoundPathNavigation {
+	public AquaticPathNavigator(Mob entity, Level world) {
 		super(entity, world);
 	}
 
 	protected PathFinder getPathFinder(int maxVisitedNodes) {
-		this.nodeEvaluator = new WalkAndSwimNodeProcessor();
+		this.nodeEvaluator = new TurtleNodeEvaluator();
 		return new PathFinder(this.nodeEvaluator, maxVisitedNodes);
 	}
 
@@ -24,13 +24,13 @@ public class AquaticPathNavigator extends SwimmerPathNavigator {
 		return true;
 	}
 
-	protected Vector3d getEntityPosition() {
-		return new Vector3d(this.mob.getX(), this.mob.getY(0.5D), this.mob.getZ());
+	protected Vec3 getEntityPosition() {
+		return new Vec3(this.mob.getX(), this.mob.getY(0.5D), this.mob.getZ());
 	}
 
-	protected boolean isDirectPathBetweenPoints(Vector3d posVec31, Vector3d posVec32, int sizeX, int sizeY, int sizeZ) {
-		Vector3d vector3d = new Vector3d(posVec32.x, posVec32.y + (double) this.mob.getBbHeight() * 0.5D, posVec32.z);
-		return this.level.clip(new RayTraceContext(posVec31, vector3d, RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE, this.mob)).getType() == RayTraceResult.Type.MISS;
+	protected boolean isDirectPathBetweenPoints(Vec3 posVec31, Vec3 posVec32, int sizeX, int sizeY, int sizeZ) {
+		Vec3 vector3d = new Vec3(posVec32.x, posVec32.y + (double) this.mob.getBbHeight() * 0.5D, posVec32.z);
+		return this.level.clip(new ClipContext(posVec31, vector3d, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this.mob)).getType() == HitResult.Type.MISS;
 	}
 
 	public boolean canEntityStandOnPos(BlockPos pos) {

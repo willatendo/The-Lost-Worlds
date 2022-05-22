@@ -9,20 +9,20 @@ import lostworlds.server.entity.illager.FossilPoacherEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.entity.utils.enums.TimeEras;
 import lostworlds.server.item.HammerItem;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraftforge.event.ForgeEventFactory;
 
 public class SoftStoneBlock extends Block {
@@ -37,21 +37,21 @@ public class SoftStoneBlock extends Block {
 	}
 
 	@Override
-	public void stepOn(World world, BlockPos pos, Entity entity) {
+	public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
 		this.destroy(world, pos, entity, 100);
-		super.stepOn(world, pos, entity);
+		super.stepOn(world, pos, state, entity);
 	}
 
 	@Override
-	public void fallOn(World world, BlockPos pos, Entity entity, float distance) {
+	public void fallOn(Level world, BlockState state, BlockPos pos, Entity entity, float distance) {
 		if (!(entity instanceof FossilPoacherEntity)) {
 			this.destroy(world, pos, entity, 3);
 		}
 
-		super.fallOn(world, pos, entity, distance);
+		super.fallOn(world, state, pos, entity, distance);
 	}
 
-	private void destroy(World world, BlockPos pos, Entity entity, int distance) {
+	private void destroy(Level world, BlockPos pos, Entity entity, int distance) {
 		if (this.canDestroy(world, entity)) {
 			if (!world.isClientSide && world.random.nextInt(distance) == 0) {
 				BlockState blockstate = world.getBlockState(pos);
@@ -62,8 +62,8 @@ public class SoftStoneBlock extends Block {
 		}
 	}
 
-	public static void breakStone(World world, BlockPos pos, BlockState state) {
-		world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
+	public static void breakStone(Level world, BlockPos pos, BlockState state) {
+		world.playSound((Player) null, pos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
 		Damage damage = state.getValue(DAMAGE);
 		if (damage == Damage.COMPLETELY) {
 			world.destroyBlock(pos, false);
@@ -85,15 +85,15 @@ public class SoftStoneBlock extends Block {
 		}
 	}
 
-	private void doBreak(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) {
+	private void doBreak(BlockState state, ServerLevel world, BlockPos pos, ItemStack stack) {
 		Random rand = new Random();
 		int drop = rand.nextInt(SOFT_STONE_FUNCTIONS.size());
 		SOFT_STONE_FUNCTIONS.get(drop).doFunction(state, world, pos, stack);
 	}
 
 	@Override
-	public void playerDestroy(World world, PlayerEntity entity, BlockPos pos, BlockState state, TileEntity tileentity, ItemStack stack) {
-		ItemStack heldItem = entity.getItemInHand(Hand.MAIN_HAND);
+	public void playerDestroy(Level world, Player entity, BlockPos pos, BlockState state, BlockEntity tileentity, ItemStack stack) {
+		ItemStack heldItem = entity.getItemInHand(InteractionHand.MAIN_HAND);
 		if (!(heldItem.getItem() instanceof HammerItem)) {
 			BlockState up = world.getBlockState(pos.above());
 			BlockState below = world.getBlockState(pos.below());
@@ -125,7 +125,7 @@ public class SoftStoneBlock extends Block {
 				world.destroyBlock(pos.west(), false);
 			}
 		} else {
-			this.doBreak(state, (ServerWorld) world, pos, heldItem);
+			this.doBreak(state, (ServerLevel) world, pos, heldItem);
 		}
 	}
 
@@ -134,11 +134,11 @@ public class SoftStoneBlock extends Block {
 		builder.add(ERA, POTENTIAL_PART, POTENTIAL_CREATURE, DAMAGE);
 	}
 
-	private boolean canDestroy(World world, Entity entity) {
+	private boolean canDestroy(Level world, Entity entity) {
 		if (entity instanceof FossilEntity) {
 			return false;
 		} else {
-			return entity instanceof PlayerEntity || ForgeEventFactory.getMobGriefingEvent(world, entity);
+			return entity instanceof Player || ForgeEventFactory.getMobGriefingEvent(world, entity);
 		}
 	}
 }

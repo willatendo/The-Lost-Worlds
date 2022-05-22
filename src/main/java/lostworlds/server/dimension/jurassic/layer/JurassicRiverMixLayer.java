@@ -1,17 +1,17 @@
 package lostworlds.server.dimension.jurassic.layer;
 
 import lostworlds.server.dimension.jurassic.JurassicLayerUtil;
-import net.minecraft.world.gen.INoiseRandom;
-import net.minecraft.world.gen.area.IArea;
-import net.minecraft.world.gen.layer.traits.IAreaTransformer2;
-import net.minecraft.world.gen.layer.traits.IDimOffset0Transformer;
+import net.minecraft.world.level.newbiome.context.Context;
+import net.minecraft.world.level.newbiome.area.Area;
+import net.minecraft.world.level.newbiome.layer.traits.AreaTransformer2;
+import net.minecraft.world.level.newbiome.layer.traits.DimensionOffset0Transformer;
 
-public class JurassicRiverMixLayer implements IAreaTransformer2, IDimOffset0Transformer {
+public class JurassicRiverMixLayer implements AreaTransformer2, DimensionOffset0Transformer {
 	public JurassicRiverMixLayer() {
 	}
 
 	@Override
-	public int applyPixel(INoiseRandom random, IArea parent1, IArea parent2, int x, int y) {
+	public int applyPixel(Context random, Area parent1, Area parent2, int x, int y) {
 		final int biome = parent1.get(getParentX(x), getParentY(y));
 		final int river = parent2.get(getParentX(x), getParentY(y));
 

@@ -3,20 +3,22 @@ package lostworlds.server.entity.goal.semiaquatic;
 import java.util.EnumSet;
 
 import lostworlds.server.entity.utils.ISemiAquatic;
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.ai.RandomPositionGenerator;
-import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.util.RandomPos;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
+import net.minecraft.world.phys.Vec3;
+
+import net.minecraft.world.entity.ai.goal.Goal.Flag;
 
 public class SemiAquaticLeaveWaterGoal extends Goal {
-	private final CreatureEntity creature;
+	private final PathfinderMob creature;
 	private BlockPos targetPos;
 	private int executionChance = 30;
 
-	public SemiAquaticLeaveWaterGoal(CreatureEntity creature) {
+	public SemiAquaticLeaveWaterGoal(PathfinderMob creature) {
 		this.creature = creature;
 		this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
 	}
@@ -46,7 +48,7 @@ public class SemiAquaticLeaveWaterGoal extends Goal {
 		}
 		if (this.creature.horizontalCollision && this.creature.isInWater()) {
 			float f1 = creature.yRot * ((float) Math.PI / 180F);
-			creature.setDeltaMovement(creature.getDeltaMovement().add((double) (-MathHelper.sin(f1) * 0.2F), 0.1D, (double) (MathHelper.cos(f1) * 0.2F)));
+			creature.setDeltaMovement(creature.getDeltaMovement().add((double) (-Mth.sin(f1) * 0.2F), 0.1D, (double) (Mth.cos(f1) * 0.2F)));
 
 		}
 	}
@@ -61,18 +63,18 @@ public class SemiAquaticLeaveWaterGoal extends Goal {
 	}
 
 	public BlockPos generateTarget() {
-		Vector3d vector3d = RandomPositionGenerator.getLandPos(this.creature, 23, 7);
+		Vec3 vector3d = RandomPos.getLandPos(this.creature, 23, 7);
 		int tries = 0;
 		while (vector3d != null && tries < 8) {
 			boolean waterDetected = false;
-			for (BlockPos blockpos1 : BlockPos.betweenClosed(MathHelper.floor(vector3d.x - 2.0D), MathHelper.floor(vector3d.y - 1.0D), MathHelper.floor(vector3d.z - 2.0D), MathHelper.floor(vector3d.x + 2.0D), MathHelper.floor(vector3d.y), MathHelper.floor(vector3d.z + 2.0D))) {
+			for (BlockPos blockpos1 : BlockPos.betweenClosed(Mth.floor(vector3d.x - 2.0D), Mth.floor(vector3d.y - 1.0D), Mth.floor(vector3d.z - 2.0D), Mth.floor(vector3d.x + 2.0D), Mth.floor(vector3d.y), Mth.floor(vector3d.z + 2.0D))) {
 				if (this.creature.level.getFluidState(blockpos1).is(FluidTags.WATER)) {
 					waterDetected = true;
 					break;
 				}
 			}
 			if (waterDetected) {
-				vector3d = RandomPositionGenerator.getLandPos(this.creature, 23, 7);
+				vector3d = RandomPos.getLandPos(this.creature, 23, 7);
 			} else {
 				return new BlockPos(vector3d);
 			}

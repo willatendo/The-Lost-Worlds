@@ -2,7 +2,7 @@ package lostworlds.server.item;
 
 import java.util.Locale;
 
-import net.minecraft.tileentity.BannerPattern;
+import net.minecraft.world.level.block.entity.BannerPattern;
 
 public class LostWorldsBanners {
 	public static final BannerPattern SCARAB = register("scarab");

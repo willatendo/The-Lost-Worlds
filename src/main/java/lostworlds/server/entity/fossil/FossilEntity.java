@@ -3,32 +3,32 @@ package lostworlds.server.entity.fossil;
 import java.util.EnumSet;
 
 import lostworlds.server.item.ChiselItem;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityPredicate;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.BlockParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityPredicates;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.entity.AgableMob;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier.Builder;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -37,9 +37,9 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class FossilEntity extends AnimalEntity implements IAnimatable {
-	private static final DataParameter<Boolean> PUSHING = EntityDataManager.defineId(FossilEntity.class, DataSerializers.BOOLEAN);
-	private static final DataParameter<Boolean> LOOKING = EntityDataManager.defineId(FossilEntity.class, DataSerializers.BOOLEAN);
+public class FossilEntity extends Animal implements IAnimatable {
+	private static final EntityDataAccessor<Boolean> PUSHING = SynchedEntityData.defineId(FossilEntity.class, EntityDataSerializers.BOOLEAN);
+	private static final EntityDataAccessor<Boolean> LOOKING = SynchedEntityData.defineId(FossilEntity.class, EntityDataSerializers.BOOLEAN);
 
 	public static final String animation = "animation.skeleton.living";
 
@@ -52,12 +52,12 @@ public class FossilEntity extends AnimalEntity implements IAnimatable {
 		return PlayState.CONTINUE;
 	}
 
-	public FossilEntity(EntityType<? extends FossilEntity> entity, World world) {
+	public FossilEntity(EntityType<? extends FossilEntity> entity, Level world) {
 		super(entity, world);
 	}
 
-	public static MutableAttribute createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, 100);
+	public static Builder createAttributes() {
+		return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 100);
 	}
 
 	public FossilEntity setPick(ItemStack stack) {
@@ -66,7 +66,7 @@ public class FossilEntity extends AnimalEntity implements IAnimatable {
 	}
 
 	@Override
-	public ItemStack getPickedResult(RayTraceResult target) {
+	public ItemStack getPickedResult(HitResult target) {
 		return this.stack;
 	}
 
@@ -94,14 +94,14 @@ public class FossilEntity extends AnimalEntity implements IAnimatable {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) {
+	public void addAdditionalSaveData(CompoundTag nbt) {
 		super.addAdditionalSaveData(nbt);
 		nbt.putBoolean("IsPushable", this.isPushable());
 		nbt.putBoolean("IsLooking", this.isLooking());
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) {
+	public void readAdditionalSaveData(CompoundTag nbt) {
 		super.readAdditionalSaveData(nbt);
 		this.setPushable(nbt.getBoolean("IsPushable"));
 		this.setLooking(nbt.getBoolean("IsLooking"));
@@ -133,7 +133,7 @@ public class FossilEntity extends AnimalEntity implements IAnimatable {
 	}
 
 	@Override
-	protected int getExperienceReward(PlayerEntity player) {
+	protected int getExperienceReward(Player player) {
 		return 0;
 	}
 
@@ -143,12 +143,12 @@ public class FossilEntity extends AnimalEntity implements IAnimatable {
 	}
 
 	public void playBrokenSound() {
-		this.level.playSound((PlayerEntity) null, this.getX(), this.getY(), this.getZ(), SoundEvents.SKELETON_DEATH, SoundCategory.BLOCKS, 1.0F, 1.0F);
+		this.level.playSound((Player) null, this.getX(), this.getY(), this.getZ(), SoundEvents.SKELETON_DEATH, SoundSource.BLOCKS, 1.0F, 1.0F);
 	}
 
 	public void playParticles() {
-		if (this.level instanceof ServerWorld) {
-			((ServerWorld) this.level).addParticle(new BlockParticleData(ParticleTypes.BLOCK, Blocks.BONE_BLOCK.defaultBlockState()), this.getX(), this.getY(0.6666666666666666D), this.getZ(), 10, (double) (this.getBbWidth() / 4.0F), (double) (this.getBbHeight() / 4.0F));
+		if (this.level instanceof ServerLevel) {
+			((ServerLevel) this.level).addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.BONE_BLOCK.defaultBlockState()), this.getX(), this.getY(0.6666666666666666D), this.getZ(), 10, (double) (this.getBbWidth() / 4.0F), (double) (this.getBbHeight() / 4.0F));
 		}
 	}
 
@@ -157,8 +157,8 @@ public class FossilEntity extends AnimalEntity implements IAnimatable {
 		if (source == DamageSource.OUT_OF_WORLD) {
 			return super.hurt(source, amount);
 		} else if (!(this instanceof DirtyFossilEntity)) {
-			if (source.getDirectEntity() instanceof PlayerEntity) {
-				PlayerEntity player = (PlayerEntity) source.getDirectEntity();
+			if (source.getDirectEntity() instanceof Player) {
+				Player player = (Player) source.getDirectEntity();
 				if (player.getMainHandItem().getItem() instanceof ChiselItem) {
 					ItemStack stack = player.getMainHandItem();
 
@@ -192,7 +192,7 @@ public class FossilEntity extends AnimalEntity implements IAnimatable {
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
+	public AgableMob getBreedOffspring(ServerLevel world, AgableMob entity) {
 		return null;
 	}
 
@@ -203,10 +203,10 @@ public class FossilEntity extends AnimalEntity implements IAnimatable {
 		private int lookTime;
 		protected final float probability;
 		protected final Class<? extends LivingEntity> lookAtType;
-		protected final EntityPredicate lookAtContext;
+		protected final TargetingConditions lookAtContext;
 
 		public LookAtPlayerGoal(FossilEntity entity) {
-			this(entity, PlayerEntity.class, 32.0F, 0.02F);
+			this(entity, Player.class, 32.0F, 0.02F);
 		}
 
 		public LookAtPlayerGoal(FossilEntity entity, Class<? extends LivingEntity> lookAtEntity, float range, float probability) {
@@ -215,12 +215,12 @@ public class FossilEntity extends AnimalEntity implements IAnimatable {
 			this.range = range;
 			this.probability = probability;
 			this.setFlags(EnumSet.of(Goal.Flag.LOOK));
-			if (lookAtEntity == PlayerEntity.class) {
-				this.lookAtContext = (new EntityPredicate()).range((double) range).allowSameTeam().allowInvulnerable().allowNonAttackable().selector((livingentity) -> {
-					return EntityPredicates.notRiding(entity).test(livingentity);
+			if (lookAtEntity == Player.class) {
+				this.lookAtContext = (new TargetingConditions()).range((double) range).allowSameTeam().allowInvulnerable().allowNonAttackable().selector((livingentity) -> {
+					return EntitySelector.notRiding(entity).test(livingentity);
 				});
 			} else {
-				this.lookAtContext = (new EntityPredicate()).range((double) range).allowSameTeam().allowInvulnerable().allowNonAttackable();
+				this.lookAtContext = (new TargetingConditions()).range((double) range).allowSameTeam().allowInvulnerable().allowNonAttackable();
 			}
 
 		}
@@ -232,7 +232,7 @@ public class FossilEntity extends AnimalEntity implements IAnimatable {
 					this.lookAt = this.entity.getTarget();
 				}
 
-				if (this.lookAtType == PlayerEntity.class) {
+				if (this.lookAtType == Player.class) {
 					this.lookAt = this.entity.level.getNearestPlayer(this.lookAtContext, this.entity, this.entity.getX(), this.entity.getEyeY(), this.entity.getZ());
 				} else {
 					this.lookAt = this.entity.level.getNearestLoadedEntity(this.lookAtType, this.lookAtContext, this.entity, this.entity.getX(), this.entity.getEyeY(), this.entity.getZ(), this.entity.getBoundingBox().inflate((double) this.range, 3.0D, (double) this.range));

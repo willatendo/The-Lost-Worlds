@@ -1,44 +1,45 @@
 package lostworlds.server.item;
 
+import java.util.Random;
 import java.util.function.Predicate;
 
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.utils.enums.TimeEras;
 import lostworlds.server.util.ModTeleporter;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.ShootableItem;
-import net.minecraft.item.UseAction;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ProjectileWeaponItem;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.Level;
 
-public class TimeBookItem extends ShootableItem {
+public class TimeBookItem extends ProjectileWeaponItem {
 	public static final Predicate<ItemStack> FUEL = (stack) -> {
-		return stack.getItem().is(LostWorldsTags.ModItemTags.TIME_BOOK_FUEL.tag);
+		return stack.is(LostWorldsTags.ModItemTags.TIME_BOOK_FUEL.tag);
 	};
 	private final TimeEras era;
-	private final RegistryKey<World> worldToTransportTo;
+	private final ResourceKey<Level> levelToTransportTo;
 
-	public TimeBookItem(Properties properites, TimeEras eras, RegistryKey<World> world) {
+	public TimeBookItem(Properties properites, TimeEras eras, ResourceKey<Level> level) {
 		super(properites);
 		this.era = eras;
-		this.worldToTransportTo = world;
+		this.levelToTransportTo = level;
 	}
 
-	public void releaseUsing(ItemStack stack, World world, LivingEntity entity, int time) {
-		if (entity instanceof PlayerEntity) {
-			PlayerEntity playerentity = (PlayerEntity) entity;
-			boolean flag = playerentity.abilities.instabuild;
+	public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int time) {
+		if (entity instanceof Player) {
+			Player playerentity = (Player) entity;
+			boolean flag = playerentity.isCreative();
 			ItemStack itemstack = playerentity.getProjectile(stack);
 
 			int i = this.getUseDuration(stack) - time;
@@ -52,20 +53,20 @@ public class TimeBookItem extends ShootableItem {
 
 				float f = getPowerForTime(i);
 				if (!((double) f < 0.1D)) {
-					if (!world.isClientSide) {
+					if (!level.isClientSide) {
 						if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
-							if (entity.level instanceof ServerWorld) {
-								if (entity.level.dimension() == World.NETHER || entity.level.dimension() == World.END) {
+							if (entity.level instanceof ServerLevel) {
+								if (entity.level.dimension() == Level.NETHER || entity.level.dimension() == Level.END) {
 									entity.sendMessage(LostWorldsUtils.tTC("timeBook", "doesnt_work"), entity.getUUID());
 									return;
 								}
-								ServerWorld serverworld = (ServerWorld) entity.level;
+								ServerLevel serverworld = (ServerLevel) entity.level;
 								MinecraftServer minecraftserver = serverworld.getServer();
-								RegistryKey<World> registrykey = entity.level.dimension() == this.worldToTransportTo ? World.OVERWORLD : this.worldToTransportTo;
-								ServerWorld serverworld1 = minecraftserver.getLevel(registrykey);
+								ResourceKey<Level> registrykey = entity.level.dimension() == this.levelToTransportTo ? Level.OVERWORLD : this.levelToTransportTo;
+								ServerLevel serverworld1 = minecraftserver.getLevel(registrykey);
 								if (serverworld1 != null && !entity.isPassenger()) {
 									playerentity.changeDimension(serverworld1, new ModTeleporter());
-									if (!registrykey.equals(World.OVERWORLD)) {
+									if (!registrykey.equals(Level.OVERWORLD)) {
 										entity.sendMessage(LostWorldsUtils.tTCA("timeBook", "transport_to_" + era.toString().toLowerCase(), playerentity.getName().getString()), entity.getUUID());
 									} else {
 										entity.sendMessage(LostWorldsUtils.tTCA("timeBook", "transport_to_overworld", playerentity.getName().getString()), entity.getUUID());
@@ -75,11 +76,11 @@ public class TimeBookItem extends ShootableItem {
 								if (!flag) {
 									itemstack.shrink(1);
 									if (itemstack.isEmpty()) {
-										playerentity.inventory.removeItem(itemstack);
+										playerentity.getInventory().removeItem(itemstack);
 									}
 								}
 
-								world.playSound((PlayerEntity) null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.PORTAL_TRAVEL, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+								level.playSound((Player) null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 1.0F, 1.0F / (new Random().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 							}
 						}
 					}
@@ -91,15 +92,15 @@ public class TimeBookItem extends ShootableItem {
 	}
 
 	@Override
-	public ActionResult<ItemStack> use(World world, PlayerEntity entity, Hand hand) {
-		ItemStack itemstack = entity.getItemInHand(hand);
-		boolean flag = !entity.getProjectile(itemstack).isEmpty();
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		ItemStack itemstack = player.getItemInHand(hand);
+		boolean flag = !player.getProjectile(itemstack).isEmpty();
 
-		if (!entity.abilities.instabuild && !flag) {
-			return ActionResult.fail(itemstack);
+		if (!player.isCreative() && !flag) {
+			return InteractionResultHolder.fail(itemstack);
 		} else {
-			entity.startUsingItem(hand);
-			return ActionResult.consume(itemstack);
+			player.startUsingItem(hand);
+			return InteractionResultHolder.consume(itemstack);
 		}
 	}
 
@@ -118,8 +119,9 @@ public class TimeBookItem extends ShootableItem {
 		return 72000;
 	}
 
-	public UseAction getUseAnimation(ItemStack p_77661_1_) {
-		return UseAction.BOW;
+	@Override
+	public UseAnim getUseAnimation(ItemStack stack) {
+		return UseAnim.BOW;
 	}
 
 	@Override

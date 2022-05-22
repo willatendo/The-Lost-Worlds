@@ -1,7 +1,7 @@
 package lostworlds.client.books.tyrannibook.client.data.element;
 
 import lostworlds.client.books.tyrannibook.client.repository.TyrannobookRepository;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 
 public class ImageData extends DataLocation {
 	public static final ImageData MISSING = new ImageData();

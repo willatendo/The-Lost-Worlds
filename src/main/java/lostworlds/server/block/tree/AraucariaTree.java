@@ -5,14 +5,14 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import lostworlds.server.biome.TreeFeatures;
-import net.minecraft.block.trees.Tree;
-import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 
-public class AraucariaTree extends Tree {
+public class AraucariaTree extends AbstractTreeGrower {
 	@Nullable
 	@Override
-	public ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean big) {
+	public ConfiguredFeature<TreeConfiguration, ?> getConfiguredFeature(Random rand, boolean big) {
 		return TreeFeatures.ARAUCARIA_TREE;
 	}
 }

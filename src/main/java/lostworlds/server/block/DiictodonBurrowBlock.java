@@ -5,17 +5,17 @@ import java.util.Random;
 import lostworlds.server.block.properties.ModBlockStateProperties;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.terrestrial.PrehistoricEntity;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class DiictodonBurrowBlock extends Block {
 	public static final IntegerProperty HATCH = BlockStateProperties.HATCH;
@@ -27,14 +27,14 @@ public class DiictodonBurrowBlock extends Block {
 	}
 
 	@Override
-	public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
+	public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random rand) {
 		if (this.shouldUpdateHatchLevel(world) && state.getValue(EGGS) < 0) {
 			int i = state.getValue(HATCH);
 			if (i < 2) {
-				world.playSound((PlayerEntity) null, pos, SoundEvents.TURTLE_EGG_CRACK, SoundCategory.BLOCKS, 0.7F, 0.9F + rand.nextFloat() * 0.2F);
+				world.playSound((Player) null, pos, SoundEvents.TURTLE_EGG_CRACK, SoundSource.BLOCKS, 0.7F, 0.9F + rand.nextFloat() * 0.2F);
 				world.setBlock(pos, state.setValue(HATCH, Integer.valueOf(i + 1)), 2);
 			} else {
-				world.playSound((PlayerEntity) null, pos, SoundEvents.TURTLE_EGG_HATCH, SoundCategory.BLOCKS, 0.7F, 0.9F + rand.nextFloat() * 0.2F);
+				world.playSound((Player) null, pos, SoundEvents.TURTLE_EGG_HATCH, SoundSource.BLOCKS, 0.7F, 0.9F + rand.nextFloat() * 0.2F);
 
 				for (int j = 0; j < state.getValue(EGGS); ++j) {
 					world.levelEvent(2001, pos, Block.getId(state));
@@ -47,7 +47,7 @@ public class DiictodonBurrowBlock extends Block {
 		}
 	}
 
-	private boolean shouldUpdateHatchLevel(World world) {
+	private boolean shouldUpdateHatchLevel(Level world) {
 		float f = world.getTimeOfDay(1.0F);
 		if ((double) f < 0.69D && (double) f > 0.65D) {
 			return true;

@@ -1,7 +1,7 @@
 package lostworlds.server.item.tool;
 
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 
 public class ModItemTier {
 	public static final ItemTier LEATHER = new ItemTier(0, 59, 2.0F, 0.0F, 15, () -> {

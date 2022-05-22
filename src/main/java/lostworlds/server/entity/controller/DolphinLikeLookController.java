@@ -1,10 +1,10 @@
 package lostworlds.server.entity.controller;
 
 import lostworlds.server.entity.aquatic.DolphinLikeEntity;
-import net.minecraft.entity.ai.controller.LookController;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.entity.ai.control.LookControl;
+import net.minecraft.util.Mth;
 
-public class DolphinLikeLookController extends LookController {
+public class DolphinLikeLookController extends LookControl {
 	private final int maxYRotFromCenter;
 
 	public DolphinLikeLookController(DolphinLikeEntity entity, int maxYRotFromCenter) {
@@ -26,7 +26,7 @@ public class DolphinLikeLookController extends LookController {
 			this.mob.yHeadRot = this.rotateTowards(this.mob.yHeadRot, this.mob.yBodyRot, this.yMaxRotSpeed);
 		}
 
-		float f = MathHelper.wrapDegrees(this.mob.yHeadRot - this.mob.yBodyRot);
+		float f = Mth.wrapDegrees(this.mob.yHeadRot - this.mob.yBodyRot);
 		if (f < (float) (-this.maxYRotFromCenter)) {
 			this.mob.yBodyRot -= 4.0F;
 		} else if (f > (float) this.maxYRotFromCenter) {

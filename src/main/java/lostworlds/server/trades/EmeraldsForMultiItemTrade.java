@@ -3,14 +3,14 @@ package lostworlds.server.trades;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.merchant.villager.VillagerTrades.ITrade;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.MerchantOffer;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.npc.VillagerTrades.ItemListing;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.trading.MerchantOffer;
 
-public class EmeraldsForMultiItemTrade implements ITrade {
+public class EmeraldsForMultiItemTrade implements ItemListing {
 	private final List<Item> itemsWanted;
 	private final List<Integer> ammount;
 	private final List<Integer> offer;

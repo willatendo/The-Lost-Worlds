@@ -5,57 +5,57 @@ import java.util.Random;
 import lostworlds.server.entity.goal.aquatic.FishLikeSwimGoal;
 import lostworlds.server.entity.helper.FishLikeMoveHelper;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.CreatureAttribute;
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.MoverType;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.entity.ai.goal.PanicGoal;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.pathfinding.PathNavigator;
-import net.minecraft.pathfinding.SwimmerPathNavigator;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityPredicates;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier.Builder;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.ai.goal.PanicGoal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.Level;
 
-public abstract class BasicFishLikeEntity extends CreatureEntity {
-	private static final DataParameter<Boolean> FROM_BUCKET = EntityDataManager.defineId(BasicFishLikeEntity.class, DataSerializers.BOOLEAN);
+public abstract class BasicFishLikeEntity extends PathfinderMob {
+	private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(BasicFishLikeEntity.class, EntityDataSerializers.BOOLEAN);
 
-	public BasicFishLikeEntity(EntityType<? extends CreatureEntity> entity, World world) {
+	public BasicFishLikeEntity(EntityType<? extends PathfinderMob> entity, Level world) {
 		super(entity, world);
 		this.moveControl = new FishLikeMoveHelper(this);
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose pose, EntitySize size) {
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size) {
 		return size.height * 0.65F;
 	}
 
-	public static MutableAttribute createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, 3.0D);
+	public static Builder createAttributes() {
+		return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 3.0D);
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public abstract class BasicFishLikeEntity extends CreatureEntity {
 		return super.requiresCustomPersistence() || this.fromBucket();
 	}
 
-	public static boolean canFishLikeSpawn(EntityType<? extends BasicFishLikeEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
+	public static boolean canFishLikeSpawn(EntityType<? extends BasicFishLikeEntity> entity, LevelAccessor world, MobSpawnType reason, BlockPos pos, Random rand) {
 		return world.getBlockState(pos).is(Blocks.WATER) && world.getBlockState(pos.above()).is(Blocks.WATER);
 	}
 
@@ -92,12 +92,12 @@ public abstract class BasicFishLikeEntity extends CreatureEntity {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) {
+	public void addAdditionalSaveData(CompoundTag nbt) {
 		super.addAdditionalSaveData(nbt);
 		nbt.putBoolean("FromBucket", this.fromBucket());
 	}
 
-	public void readAdditionalSaveData(CompoundNBT p_70037_1_) {
+	public void readAdditionalSaveData(CompoundTag p_70037_1_) {
 		super.readAdditionalSaveData(p_70037_1_);
 		this.setFromBucket(p_70037_1_.getBoolean("FromBucket"));
 	}
@@ -106,17 +106,17 @@ public abstract class BasicFishLikeEntity extends CreatureEntity {
 	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new PanicGoal(this, 1.25D));
-		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(4, new FishLikeSwimGoal(this));
 	}
 
 	@Override
-	protected PathNavigator createNavigation(World world) {
-		return new SwimmerPathNavigator(this, world);
+	protected PathNavigation createNavigation(Level world) {
+		return new WaterBoundPathNavigation(this, world);
 	}
 
 	@Override
-	public void travel(Vector3d vec3d) {
+	public void travel(Vec3 vec3d) {
 		if (this.isEffectiveAi() && this.isInWater()) {
 			this.moveRelative(0.01F, vec3d);
 			this.move(MoverType.SELF, this.getDeltaMovement());
@@ -142,7 +142,7 @@ public abstract class BasicFishLikeEntity extends CreatureEntity {
 	}
 
 	@Override
-	protected ActionResultType mobInteract(PlayerEntity entity, Hand hand) {
+	protected InteractionResult mobInteract(Player entity, InteractionHand hand) {
 		ItemStack itemstack = entity.getItemInHand(hand);
 		if (itemstack.getItem() == Items.WATER_BUCKET && this.isAlive()) {
 			this.playSound(SoundEvents.BUCKET_FILL_FISH, 1.0F, 1.0F);
@@ -150,7 +150,7 @@ public abstract class BasicFishLikeEntity extends CreatureEntity {
 			ItemStack itemstack1 = this.getBucketItemStack();
 			this.saveToBucketTag(itemstack1);
 			if (!this.level.isClientSide) {
-				CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayerEntity) entity, itemstack1);
+				CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer) entity, itemstack1);
 			}
 
 			if (itemstack.isEmpty()) {
@@ -160,7 +160,7 @@ public abstract class BasicFishLikeEntity extends CreatureEntity {
 			}
 
 			this.remove();
-			return ActionResultType.sidedSuccess(this.level.isClientSide);
+			return InteractionResult.sidedSuccess(this.level.isClientSide);
 		} else {
 			return super.mobInteract(entity, hand);
 		}
@@ -196,12 +196,12 @@ public abstract class BasicFishLikeEntity extends CreatureEntity {
 	}
 
 	@Override
-	public CreatureAttribute getMobType() {
-		return CreatureAttribute.WATER;
+	public MobType getMobType() {
+		return MobType.WATER;
 	}
 
 	@Override
-	public boolean checkSpawnObstruction(IWorldReader reader) {
+	public boolean checkSpawnObstruction(LevelReader reader) {
 		return reader.isUnobstructed(this);
 	}
 
@@ -211,7 +211,7 @@ public abstract class BasicFishLikeEntity extends CreatureEntity {
 	}
 
 	@Override
-	protected int getExperienceReward(PlayerEntity entity) {
+	protected int getExperienceReward(Player entity) {
 		return 1 + this.level.random.nextInt(3);
 	}
 
@@ -239,7 +239,7 @@ public abstract class BasicFishLikeEntity extends CreatureEntity {
 		return false;
 	}
 
-	public boolean canBeLeashed(PlayerEntity entity) {
+	public boolean canBeLeashed(Player entity) {
 		return false;
 	}
 }

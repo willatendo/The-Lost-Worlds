@@ -5,9 +5,9 @@ import java.util.EnumSet;
 import javax.annotation.Nullable;
 
 import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import net.minecraft.entity.ai.RandomPositionGenerator;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.entity.ai.util.RandomPos;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.phys.Vec3;
 
 public class SleepyRandomWalkingGoal extends Goal {
 	protected final EggLayingEntity entity;
@@ -50,7 +50,7 @@ public class SleepyRandomWalkingGoal extends Goal {
 				}
 			}
 
-			Vector3d vector3d = this.getPosition();
+			Vec3 vector3d = this.getPosition();
 			if (vector3d == null) {
 				return false;
 			} else {
@@ -64,8 +64,8 @@ public class SleepyRandomWalkingGoal extends Goal {
 	}
 
 	@Nullable
-	protected Vector3d getPosition() {
-		return RandomPositionGenerator.getPos(this.entity, 10, 7);
+	protected Vec3 getPosition() {
+		return RandomPos.getPos(this.entity, 10, 7);
 	}
 
 	@Override

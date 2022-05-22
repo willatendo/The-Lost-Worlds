@@ -1,19 +1,19 @@
 package lostworlds.server.effect;
 
 import lostworlds.server.entity.utils.ModDamageSources;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 
-public class AshyLungEffect extends Effect {
+public class AshyLungEffect extends MobEffect {
 	public AshyLungEffect() {
-		super(EffectType.HARMFUL, 0x5b5858);
+		super(MobEffectCategory.HARMFUL, 0x5b5858);
 	}
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int tick) {
-		if (entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && !((PlayerEntity) entity).isSpectator()) {
+		if (entity instanceof Player && !((Player) entity).isCreative() && !((Player) entity).isSpectator()) {
 			entity.hurt(ModDamageSources.ASHY_LUNG, 2);
 		}
 	}
@@ -28,7 +28,7 @@ public class AshyLungEffect extends Effect {
 		}
 	}
 
-	public static boolean canKill(PlayerEntity player) {
+	public static boolean canKill(Player player) {
 		if (player.isCreative() || player.isSpectator()) {
 			return false;
 		} else {

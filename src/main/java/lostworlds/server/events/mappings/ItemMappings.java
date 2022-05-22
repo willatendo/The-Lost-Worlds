@@ -6,8 +6,8 @@ import java.util.function.Supplier;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.item.LostWorldsItems;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;

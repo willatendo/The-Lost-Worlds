@@ -1,21 +1,21 @@
 package lostworlds.server.container.inventory;
 
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.IRecipeHelperPopulator;
-import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.RecipeItemHelper;
-import net.minecraft.util.NonNullList;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.Container;
+import net.minecraft.world.inventory.StackedContentsCompatible;
+import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.core.NonNullList;
 
-public class PaleontologyTableInventory implements IInventory, IRecipeHelperPopulator {
+public class PaleontologyTableInventory implements Container, StackedContentsCompatible {
 	private final NonNullList<ItemStack> items;
 	private final int width;
 	private final int height;
-	private final Container menu;
+	private final AbstractContainerMenu menu;
 
-	public PaleontologyTableInventory(Container container, int width, int height) {
+	public PaleontologyTableInventory(AbstractContainerMenu container, int width, int height) {
 		this.items = NonNullList.withSize(width * height, ItemStack.EMPTY);
 		this.menu = container;
 		this.width = width;
@@ -45,12 +45,12 @@ public class PaleontologyTableInventory implements IInventory, IRecipeHelperPopu
 
 	@Override
 	public ItemStack removeItemNoUpdate(int slot) {
-		return ItemStackHelper.takeItem(this.items, slot);
+		return ContainerHelper.takeItem(this.items, slot);
 	}
 
 	@Override
 	public ItemStack removeItem(int width, int height) {
-		ItemStack itemstack = ItemStackHelper.removeItem(this.items, width, height);
+		ItemStack itemstack = ContainerHelper.removeItem(this.items, width, height);
 		if (!itemstack.isEmpty()) {
 			this.menu.slotsChanged(this);
 		}
@@ -69,7 +69,7 @@ public class PaleontologyTableInventory implements IInventory, IRecipeHelperPopu
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity player) {
+	public boolean stillValid(Player player) {
 		return true;
 	}
 
@@ -87,7 +87,7 @@ public class PaleontologyTableInventory implements IInventory, IRecipeHelperPopu
 	}
 
 	@Override
-	public void fillStackedContents(RecipeItemHelper helper) {
+	public void fillStackedContents(StackedContents helper) {
 		for (ItemStack itemstack : this.items) {
 			helper.accountSimpleStack(itemstack);
 		}

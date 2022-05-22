@@ -1,13 +1,13 @@
 package lostworlds.server.item;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 
 public class WaterPlantItem extends BlockItem {
 	public WaterPlantItem(Block block, Properties properties) {
@@ -15,9 +15,9 @@ public class WaterPlantItem extends BlockItem {
 	}
 
 	@Override
-	protected boolean canPlace(BlockItemUseContext context, BlockState state) {
+	protected boolean canPlace(BlockPlaceContext context, BlockState state) {
 		BlockPos pos = context.getClickedPos();
-		World world = context.getLevel();
+		Level world = context.getLevel();
 		return world.getBlockState(pos).getFluidState().getType() == Fluids.WATER && world.getBlockState(pos.above()).is(Blocks.AIR);
 	}
 }

@@ -4,11 +4,11 @@ import java.util.function.Supplier;
 
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.util.registrate.WoodTypes;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.Item;
+import net.minecraft.util.StringRepresentable;
 
-public enum Trees implements IStringSerializable {
+public enum Trees implements StringRepresentable {
 	ARAUCARIA("araucaria"),
 	CALAMITES("calamites"),
 	CONIFER("conifer"),

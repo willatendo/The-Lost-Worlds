@@ -1,10 +1,10 @@
 package lostworlds.server.dimension.cretaceous;
 
 import lostworlds.server.biome.BiomeKeys;
-import net.minecraft.world.gen.INoiseRandom;
-import net.minecraft.world.gen.layer.traits.IC0Transformer;
+import net.minecraft.world.level.newbiome.context.Context;
+import net.minecraft.world.level.newbiome.layer.traits.C0Transformer;
 
-public final class CretaceousBiomeLayer implements IC0Transformer {
+public final class CretaceousBiomeLayer implements C0Transformer {
 	private final int[] landIds;
 
 	public CretaceousBiomeLayer() {
@@ -12,7 +12,7 @@ public final class CretaceousBiomeLayer implements IC0Transformer {
 	}
 
 	@Override
-	public int apply(INoiseRandom iNoiseRandom, int center) {
+	public int apply(Context iNoiseRandom, int center) {
 		if (CretaceousLayerUtil.isLand(center)) {
 			return landIds[iNoiseRandom.nextRandom(landIds.length)];
 		}

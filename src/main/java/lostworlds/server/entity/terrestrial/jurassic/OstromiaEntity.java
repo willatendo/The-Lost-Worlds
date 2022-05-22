@@ -18,16 +18,16 @@ import lostworlds.server.entity.terrestrial.GlidingCarnivoreEntity;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.DinoTypes;
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.entity.AgableMob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier.Builder;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
@@ -37,7 +37,7 @@ public class OstromiaEntity extends GlidingCarnivoreEntity {
 	private static final Ingredient FOOD_ITEMS = FoodLists.CARNIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);
 
-	public OstromiaEntity(EntityType<? extends OstromiaEntity> entity, World world) {
+	public OstromiaEntity(EntityType<? extends OstromiaEntity> entity, Level world) {
 		super(entity, world);
 	}
 
@@ -51,8 +51,8 @@ public class OstromiaEntity extends GlidingCarnivoreEntity {
 		return ActivityType.NOCTURNAL;
 	}
 
-	public static MutableAttribute createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.ostromiaHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.ostromiaAttackDamage.get());
+	public static Builder createAttributes() {
+		return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.ostromiaHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.ostromiaAttackDamage.get());
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class OstromiaEntity extends GlidingCarnivoreEntity {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new SleepySwimGoal(this));
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
-		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
+		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialReasonableAttackGoal(this, 1.2F));
 		this.goalSelector.addGoal(5, new SleepGoal(this));
@@ -88,7 +88,7 @@ public class OstromiaEntity extends GlidingCarnivoreEntity {
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
+	public AgableMob getBreedOffspring(ServerLevel world, AgableMob entity) {
 		return LostWorldsEntities.OSTROMIA.create(world);
 	}
 }

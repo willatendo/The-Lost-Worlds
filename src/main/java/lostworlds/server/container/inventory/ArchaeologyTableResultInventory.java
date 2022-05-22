@@ -2,18 +2,18 @@ package lostworlds.server.container.inventory;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.IRecipeHolder;
-import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.NonNullList;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.Container;
+import net.minecraft.world.inventory.RecipeHolder;
+import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.core.NonNullList;
 
-public class ArchaeologyTableResultInventory implements IInventory, IRecipeHolder {
+public class ArchaeologyTableResultInventory implements Container, RecipeHolder {
 	private final NonNullList<ItemStack> itemStacks = NonNullList.withSize(1, ItemStack.EMPTY);
 	@Nullable
-	private IRecipe<?> recipeUsed;
+	private Recipe<?> recipeUsed;
 
 	@Override
 	public int getContainerSize() {
@@ -38,12 +38,12 @@ public class ArchaeologyTableResultInventory implements IInventory, IRecipeHolde
 
 	@Override
 	public ItemStack removeItem(int width, int height) {
-		return ItemStackHelper.takeItem(this.itemStacks, 0);
+		return ContainerHelper.takeItem(this.itemStacks, 0);
 	}
 
 	@Override
 	public ItemStack removeItemNoUpdate(int slot) {
-		return ItemStackHelper.takeItem(this.itemStacks, 0);
+		return ContainerHelper.takeItem(this.itemStacks, 0);
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class ArchaeologyTableResultInventory implements IInventory, IRecipeHolde
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity player) {
+	public boolean stillValid(Player player) {
 		return true;
 	}
 
@@ -66,13 +66,13 @@ public class ArchaeologyTableResultInventory implements IInventory, IRecipeHolde
 	}
 
 	@Override
-	public void setRecipeUsed(@Nullable IRecipe<?> recipe) {
+	public void setRecipeUsed(@Nullable Recipe<?> recipe) {
 		this.recipeUsed = recipe;
 	}
 
 	@Override
 	@Nullable
-	public IRecipe<?> getRecipeUsed() {
+	public Recipe<?> getRecipeUsed() {
 		return this.recipeUsed;
 	}
 }

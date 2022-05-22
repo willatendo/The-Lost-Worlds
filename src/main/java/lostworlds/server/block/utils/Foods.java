@@ -7,8 +7,8 @@ import com.google.common.collect.Lists;
 
 import lostworlds.server.block.Plants;
 import lostworlds.server.entity.utils.enums.DinoTypes;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 public class Foods {
 	public static final ArrayList<Supplier<Item>> HERBIVORE_FOODS = Lists.newArrayList(() -> Items.APPLE, () -> Items.WHEAT, () -> Items.WHEAT_SEEDS, () -> Items.MELON, () -> Items.MELON_SEEDS, () -> Items.PUMPKIN, () -> Items.PUMPKIN_SEEDS, () -> Items.CARROT, () -> Items.POTATO, () -> Items.BEETROOT, () -> Items.BEETROOT_SEEDS);

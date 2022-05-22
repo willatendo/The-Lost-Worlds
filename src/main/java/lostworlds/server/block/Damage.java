@@ -1,8 +1,8 @@
 package lostworlds.server.block;
 
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.StringRepresentable;
 
-public enum Damage implements IStringSerializable {
+public enum Damage implements StringRepresentable {
 	NONE,
 	CHIPPED,
 	SLIGHTLY,

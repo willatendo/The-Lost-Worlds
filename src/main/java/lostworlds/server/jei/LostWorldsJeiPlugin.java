@@ -1,6 +1,6 @@
 package lostworlds.server.jei;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import lostworlds.client.screen.AnalyzerScreen;
@@ -45,9 +45,9 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
 import mezz.jei.api.runtime.IIngredientManager;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.RecipeManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeType;
 
 @JeiPlugin
 public class LostWorldsJeiPlugin implements IModPlugin {
@@ -62,18 +62,18 @@ public class LostWorldsJeiPlugin implements IModPlugin {
 		IJeiHelpers jeiHelpers = registration.getJeiHelpers();
 		IIngredientManager ingredientManager = registration.getIngredientManager();
 
-		registration.addRecipes(LostWorldsRecipeManager.getWaterFuelRecipes(ingredientManager, jeiHelpers), LostWorldsJeiConstants.WATER_FUEL_CATEGORY);
-		registration.addRecipes(this.getRecipes(manager, LostWorldsRecipes.FOSSIL_CLEANER_RECIPE), LostWorldsJeiConstants.FOSSIL_CLEANER_CATEGORY);
-		registration.addRecipes(this.getRecipes(manager, LostWorldsRecipes.FOSSIL_GRINDER_RECIPE), LostWorldsJeiConstants.FOSSIL_GRINDER_CATEGORY);
-		registration.addRecipes(this.getRecipes(manager, LostWorldsRecipes.DNA_EXTRACTOR_RECIPE), LostWorldsJeiConstants.DNA_EXTRACTOR_CATEGORY);
-		registration.addRecipes(LostWorldsRecipeManager.getAmberRecipes(), LostWorldsJeiConstants.DNA_EXTRACTOR_CATEGORY);
-		registration.addRecipes(this.getRecipes(manager, LostWorldsRecipes.ANALYZER_RECIPE), LostWorldsJeiConstants.ANALYZER_CATEGORY);
-		registration.addRecipes(this.getRecipes(manager, LostWorldsRecipes.DNA_INJECTOR_RECIPE), LostWorldsJeiConstants.DNA_INJECTOR_CATEGORY);
-		registration.addRecipes(this.getRecipes(manager, LostWorldsRecipes.CULTIVATOR_RECIPE), LostWorldsJeiConstants.CULTIVATOR_CATEGORY);
-		registration.addRecipes(this.getRecipes(manager, LostWorldsRecipes.TIME_MACHINE_RECIPE), LostWorldsJeiConstants.TIME_MACHINE_CATEGORY);
-		registration.addRecipes(this.getRecipes(manager, LostWorldsRecipes.ARCHAEOLOGY_TABLE_RECIPE), LostWorldsJeiConstants.ARCHAEOLOGY_TABLE_CATEGORY);
-		registration.addRecipes(LostWorldsRecipeManager.getLightningRecipes(), LostWorldsJeiConstants.LIGHTNING_CATEGORY);
-		registration.addRecipes(this.getRecipes(manager, LostWorldsRecipes.PALEONTOLOGY_TABLE_RECIPE), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
+		registration.addRecipes(LostWorldsJeiConstants.WATER_FUEL_CATEGORY, LostWorldsRecipeManager.getWaterFuelRecipes(ingredientManager, jeiHelpers));
+		registration.addRecipes(LostWorldsJeiConstants.FOSSIL_CLEANER_CATEGORY, this.getRecipes(manager, LostWorldsRecipes.FOSSIL_CLEANER_RECIPE));
+		registration.addRecipes(LostWorldsJeiConstants.FOSSIL_GRINDER_CATEGORY, this.getRecipes(manager, LostWorldsRecipes.FOSSIL_GRINDER_RECIPE));
+		registration.addRecipes(LostWorldsJeiConstants.DNA_EXTRACTOR_CATEGORY, this.getRecipes(manager, LostWorldsRecipes.DNA_EXTRACTOR_RECIPE));
+		registration.addRecipes(LostWorldsJeiConstants.DNA_EXTRACTOR_CATEGORY, LostWorldsRecipeManager.getAmberRecipes());
+		registration.addRecipes(LostWorldsJeiConstants.ANALYZER_CATEGORY, this.getRecipes(manager, LostWorldsRecipes.ANALYZER_RECIPE));
+		registration.addRecipes(LostWorldsJeiConstants.DNA_INJECTOR_CATEGORY, this.getRecipes(manager, LostWorldsRecipes.DNA_INJECTOR_RECIPE));
+		registration.addRecipes(LostWorldsJeiConstants.CULTIVATOR_CATEGORY, this.getRecipes(manager, LostWorldsRecipes.CULTIVATOR_RECIPE));
+		registration.addRecipes(LostWorldsJeiConstants.TIME_MACHINE_CATEGORY, this.getRecipes(manager, LostWorldsRecipes.TIME_MACHINE_RECIPE));
+		registration.addRecipes(LostWorldsJeiConstants.ARCHAEOLOGY_TABLE_CATEGORY, this.getRecipes(manager, LostWorldsRecipes.ARCHAEOLOGY_TABLE_RECIPE));
+		registration.addRecipes(LostWorldsJeiConstants.LIGHTNING_CATEGORY, LostWorldsRecipeManager.getLightningRecipes());
+		registration.addRecipes(LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY, this.getRecipes(manager, LostWorldsRecipes.PALEONTOLOGY_TABLE_RECIPE));
 
 		registration.addIngredientInfo(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get().getDefaultInstance(), VanillaTypes.ITEM, LostWorldsUtils.tTC("jei", "charged_crystal_scarab_gem"));
 	}
@@ -132,7 +132,7 @@ public class LostWorldsJeiPlugin implements IModPlugin {
 		registration.addRecipeCatalyst(LostWorldsBlocks.PALEONTOLOGY_TABLE.asStack(), LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY);
 	}
 
-	private Collection<?> getRecipes(RecipeManager manager, IRecipeType<?> type) {
+	private List<?> getRecipes(RecipeManager manager, RecipeType<?> type) {
 		return manager.getRecipes().parallelStream().filter(recipe -> recipe.getType() == type).collect(Collectors.toList());
 	}
 }

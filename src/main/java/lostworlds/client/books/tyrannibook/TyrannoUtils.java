@@ -15,9 +15,9 @@ import javax.annotation.Nullable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.TranslatableComponent;
 
 public class TyrannoUtils {
 	public static List<String> TYRANNOTITANS = new ArrayList<>();
@@ -30,23 +30,23 @@ public class TyrannoUtils {
 		return new ResourceLocation(TYRANNO_ID, location);
 	}
 
-	public static TranslationTextComponent sTC(String key) {
-		return new TranslationTextComponent(key);
+	public static TranslatableComponent sTC(String key) {
+		return new TranslatableComponent(key);
 	}
 
-	public static TranslationTextComponent tTC(String type, String key) {
-		return new TranslationTextComponent(type + "." + TYRANNO_ID + "." + key);
+	public static TranslatableComponent tTC(String type, String key) {
+		return new TranslatableComponent(type + "." + TYRANNO_ID + "." + key);
 	}
 
-	public static TranslationTextComponent cTC(String type, String key, TextFormatting colour) {
-		TranslationTextComponent text = tTC(type, key);
+	public static TranslatableComponent cTC(String type, String key, ChatFormatting colour) {
+		TranslatableComponent text = tTC(type, key);
 		text.withStyle(colour);
 		return text;
 	}
 
-	public static TranslationTextComponent gTC(String type, String key) {
-		TranslationTextComponent text = tTC(type, key);
-		text.withStyle(TextFormatting.GRAY);
+	public static TranslatableComponent gTC(String type, String key) {
+		TranslatableComponent text = tTC(type, key);
+		text.withStyle(ChatFormatting.GRAY);
 		return text;
 	}
 

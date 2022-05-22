@@ -1,7 +1,7 @@
 package lostworlds.server.entity.goal.aquatic;
 
 import lostworlds.server.entity.aquatic.BasicFishLikeEntity;
-import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
 
 public class FishLikeSwimGoal extends RandomSwimmingGoal {
 	private final BasicFishLikeEntity fish;

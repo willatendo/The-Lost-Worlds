@@ -5,27 +5,27 @@ import javax.annotation.Nullable;
 import lostworlds.server.block.entity.FeedingTroughTileEntity;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
 import lostworlds.server.entity.utils.enums.CreatureDiet;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.InventoryHelper;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 
 public class FeedingTroughBlock extends Block {
 	private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 9, 16);
@@ -37,7 +37,7 @@ public class FeedingTroughBlock extends Block {
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
+	public VoxelShape getShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context) {
 		return SHAPE;
 	}
 
@@ -49,27 +49,27 @@ public class FeedingTroughBlock extends Block {
 
 	@Nullable
 	@Override
-	public INamedContainerProvider getMenuProvider(BlockState state, World world, BlockPos pos) {
-		TileEntity tileentity = world.getBlockEntity(pos);
-		return tileentity instanceof INamedContainerProvider ? (INamedContainerProvider) tileentity : null;
+	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
+		BlockEntity tileentity = world.getBlockEntity(pos);
+		return tileentity instanceof MenuProvider ? (MenuProvider) tileentity : null;
 	}
 
 	@Override
-	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		if (!world.isClientSide) {
-			TileEntity tile = world.getBlockEntity(pos);
+			BlockEntity tile = world.getBlockEntity(pos);
 			if (tile instanceof FeedingTroughTileEntity) {
-				NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) tile, pos);
-				return ActionResultType.SUCCESS;
+				NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) tile, pos);
+				return InteractionResult.SUCCESS;
 			}
 		}
-		return ActionResultType.SUCCESS;
+		return InteractionResult.SUCCESS;
 	}
 
 	@Override
-	public void setPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
+	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
 		if (stack.hasCustomHoverName()) {
-			TileEntity tileentity = world.getBlockEntity(pos);
+			BlockEntity tileentity = world.getBlockEntity(pos);
 			if (tileentity instanceof FeedingTroughTileEntity) {
 				((FeedingTroughTileEntity) tileentity).setCustomName(stack.getHoverName());
 			}
@@ -77,11 +77,11 @@ public class FeedingTroughBlock extends Block {
 	}
 
 	@Override
-	public void onRemove(BlockState state, World world, BlockPos pos, BlockState newState, boolean b) {
+	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean b) {
 		if (!state.is(newState.getBlock())) {
-			TileEntity tileentity = world.getBlockEntity(pos);
+			BlockEntity tileentity = world.getBlockEntity(pos);
 			if (tileentity instanceof FeedingTroughTileEntity) {
-				InventoryHelper.dropContents(world, pos, (FeedingTroughTileEntity) tileentity);
+				Containers.dropContents(world, pos, (FeedingTroughTileEntity) tileentity);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
 
@@ -95,13 +95,13 @@ public class FeedingTroughBlock extends Block {
 	}
 
 	@Override
-	public float getShadeBrightness(BlockState state, IBlockReader reader, BlockPos pos) {
+	public float getShadeBrightness(BlockState state, BlockGetter reader, BlockPos pos) {
 		return 1.0F;
 	}
 
 	@Override
-	public int getAnalogOutputSignal(BlockState state, World world, BlockPos pos) {
-		return Container.getRedstoneSignalFromBlockEntity(world.getBlockEntity(pos));
+	public int getAnalogOutputSignal(BlockState state, Level world, BlockPos pos) {
+		return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(world.getBlockEntity(pos));
 	}
 
 	@Override
@@ -110,7 +110,7 @@ public class FeedingTroughBlock extends Block {
 	}
 
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+	public BlockEntity createTileEntity(BlockState state, BlockGetter world) {
 		return LostWorldsBlockEntities.FEEDING_TROUGH_TILE_ENTITY.create();
 	}
 }

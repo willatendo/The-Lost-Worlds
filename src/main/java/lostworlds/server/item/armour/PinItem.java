@@ -4,21 +4,21 @@ import java.util.List;
 
 import lostworlds.client.ClientUtils;
 import lostworlds.server.LostWorldsUtils;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.World;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
 public class PinItem extends ArmorItem {
-	public PinItem(IArmorMaterial material, EquipmentSlotType slot, Properties properties) {
+	public PinItem(ArmorMaterial material, EquipmentSlot slot, Properties properties) {
 		super(material, slot, properties);
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> text, ITooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, Level world, List<Component> text, TooltipFlag flag) {
 		if (ClientUtils.isHoldingLeftShift()) {
 			text.add(LostWorldsUtils.gTC("toolTip", "icon.collectible"));
 		}

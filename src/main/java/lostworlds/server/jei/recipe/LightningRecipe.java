@@ -1,8 +1,8 @@
 package lostworlds.server.jei.recipe;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.NonNullList;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.core.NonNullList;
 
 public class LightningRecipe {
 	private final Ingredient input;

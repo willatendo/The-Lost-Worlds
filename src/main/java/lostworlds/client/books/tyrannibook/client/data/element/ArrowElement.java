@@ -1,22 +1,22 @@
 package lostworlds.client.books.tyrannibook.client.data.element;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 import lostworlds.client.books.tyrannibook.client.screen.ArrowButton;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.widget.button.Button.IPressable;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.components.Button.OnPress;
 
 public class ArrowElement extends ButtonElement {
 	protected final ArrowButton button;
 
-	public ArrowElement(int x, int y, ArrowButton.ArrowType arrowType, int arrowColor, int arrowColorHover, IPressable iPressable) {
+	public ArrowElement(int x, int y, ArrowButton.ArrowType arrowType, int arrowColor, int arrowColorHover, OnPress iPressable) {
 		super(x, y, arrowType.w, arrowType.h);
 
 		this.button = new ArrowButton(x, y, arrowType, arrowColor, arrowColorHover, iPressable);
 	}
 
 	@Override
-	public void draw(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer) {
+	public void draw(PoseStack matrixStack, int mouseX, int mouseY, float partialTicks, Font fontRenderer) {
 		this.button.renderButton(matrixStack, mouseX, mouseY, partialTicks);
 	}
 

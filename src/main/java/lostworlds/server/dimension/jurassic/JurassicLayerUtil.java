@@ -13,23 +13,23 @@ import lostworlds.server.dimension.jurassic.layer.JurassicRiverInitLayer;
 import lostworlds.server.dimension.jurassic.layer.JurassicRiverLayer;
 import lostworlds.server.dimension.jurassic.layer.JurassicRiverMixLayer;
 import lostworlds.server.dimension.jurassic.layer.JurassicShoreLayer;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.IExtendedNoiseRandom;
-import net.minecraft.world.gen.LazyAreaLayerContext;
-import net.minecraft.world.gen.area.IArea;
-import net.minecraft.world.gen.area.IAreaFactory;
-import net.minecraft.world.gen.area.LazyArea;
-import net.minecraft.world.gen.layer.Layer;
-import net.minecraft.world.gen.layer.SmoothLayer;
-import net.minecraft.world.gen.layer.ZoomLayer;
-import net.minecraft.world.gen.layer.traits.IAreaTransformer1;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.core.Registry;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.newbiome.context.BigContext;
+import net.minecraft.world.level.newbiome.context.LazyAreaContext;
+import net.minecraft.world.level.newbiome.area.Area;
+import net.minecraft.world.level.newbiome.area.AreaFactory;
+import net.minecraft.world.level.newbiome.area.LazyArea;
+import net.minecraft.world.level.newbiome.layer.Layer;
+import net.minecraft.world.level.newbiome.layer.SmoothLayer;
+import net.minecraft.world.level.newbiome.layer.ZoomLayer;
+import net.minecraft.world.level.newbiome.layer.traits.AreaTransformer1;
 
 public class JurassicLayerUtil {
 	private static Registry<Biome> biomeRegistry;
 
-	public static int getBiomeId(RegistryKey<Biome> define) {
+	public static int getBiomeId(ResourceKey<Biome> define) {
 		Biome biome = biomeRegistry.get(define);
 		return biomeRegistry.getId(biome);
 	}
@@ -37,46 +37,46 @@ public class JurassicLayerUtil {
 	public static Layer buildJurassic(long seed, Registry<Biome> registry) {
 		biomeRegistry = registry;
 
-		final IAreaFactory<LazyArea> noiseLayer = makeLayers(procedure -> new LazyAreaLayerContext(25, seed, procedure), registry);
+		final AreaFactory<LazyArea> noiseLayer = makeLayers(procedure -> new LazyAreaContext(25, seed, procedure), registry);
 		return new JurassicLookupLayer(noiseLayer);
 	}
 
-	public static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> makeLayers(LongFunction<C> context, Registry<Biome> registry) {
-		IAreaFactory<T> islandLayer = new JurassicIslandLayer().run(context.apply(1));
-		IAreaFactory<T> fuzzyZoomLayer = ZoomLayer.FUZZY.run(context.apply(2000), islandLayer);
-		IAreaFactory<T> addIslandLayer = JurassicAddIslandLayer.forest3().run(context.apply(3), fuzzyZoomLayer);
-		IAreaFactory<T> zoomLayer = ZoomLayer.NORMAL.run(context.apply(2000), addIslandLayer);
+	public static <T extends Area, C extends BigContext<T>> AreaFactory<T> makeLayers(LongFunction<C> context, Registry<Biome> registry) {
+		AreaFactory<T> islandLayer = new JurassicIslandLayer().run(context.apply(1));
+		AreaFactory<T> fuzzyZoomLayer = ZoomLayer.FUZZY.run(context.apply(2000), islandLayer);
+		AreaFactory<T> addIslandLayer = JurassicAddIslandLayer.forest3().run(context.apply(3), fuzzyZoomLayer);
+		AreaFactory<T> zoomLayer = ZoomLayer.NORMAL.run(context.apply(2000), addIslandLayer);
 
-		IAreaFactory<T> oceanLayer = new JurassicAddInlandLayer(20).run(context.apply(9), zoomLayer);
+		AreaFactory<T> oceanLayer = new JurassicAddInlandLayer(20).run(context.apply(9), zoomLayer);
 		oceanLayer = ZoomLayer.NORMAL.run(context.apply(9), oceanLayer);
 		addIslandLayer = JurassicAddIslandLayer.mountains().run(context.apply(6), oceanLayer);
 		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2001), addIslandLayer);
 		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2004), zoomLayer);
 		addIslandLayer = JurassicAddIslandLayer.forest2().run(context.apply(8), zoomLayer);
 
-		IAreaFactory<T> biomeLayerGen = new JurassicBiomeLayer().run(context.apply(15), addIslandLayer);
-		IAreaFactory<T> oceanLayerGen = JurassicAddWeightedSubBiomeLayer.ocean().run(context.apply(16), biomeLayerGen);
-		IAreaFactory<T> araucariaForest = JurassicAddSubBiomeLayer.araucariaForest().run(context.apply(17), oceanLayerGen);
+		AreaFactory<T> biomeLayerGen = new JurassicBiomeLayer().run(context.apply(15), addIslandLayer);
+		AreaFactory<T> oceanLayerGen = JurassicAddWeightedSubBiomeLayer.ocean().run(context.apply(16), biomeLayerGen);
+		AreaFactory<T> araucariaForest = JurassicAddSubBiomeLayer.araucariaForest().run(context.apply(17), oceanLayerGen);
 		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2002), araucariaForest);
-		IAreaFactory<T> coniferForest = JurassicAddSubBiomeLayer.coniferForest().run(context.apply(17), oceanLayerGen);
+		AreaFactory<T> coniferForest = JurassicAddSubBiomeLayer.coniferForest().run(context.apply(17), oceanLayerGen);
 		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2002), coniferForest);
-		IAreaFactory<T> ginkgoForest = JurassicAddSubBiomeLayer.ginkgoForest().run(context.apply(17), oceanLayerGen);
+		AreaFactory<T> ginkgoForest = JurassicAddSubBiomeLayer.ginkgoForest().run(context.apply(17), oceanLayerGen);
 		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2002), ginkgoForest);
-		IAreaFactory<T> redwoodsForest = JurassicAddSubBiomeLayer.redwoodsForest().run(context.apply(17), oceanLayerGen);
+		AreaFactory<T> redwoodsForest = JurassicAddSubBiomeLayer.redwoodsForest().run(context.apply(17), oceanLayerGen);
 		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2002), redwoodsForest);
-		IAreaFactory<T> desert = JurassicAddSubBiomeLayer.desert().run(context.apply(17), oceanLayerGen);
+		AreaFactory<T> desert = JurassicAddSubBiomeLayer.desert().run(context.apply(17), oceanLayerGen);
 		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2002), desert);
-		IAreaFactory<T> plains = JurassicAddSubBiomeLayer.plains().run(context.apply(17), oceanLayerGen);
+		AreaFactory<T> plains = JurassicAddSubBiomeLayer.plains().run(context.apply(17), oceanLayerGen);
 		zoomLayer = ZoomLayer.NORMAL.run(context.apply(2002), plains);
 
-		IAreaFactory<T> riverLayer = zoomLayer;
+		AreaFactory<T> riverLayer = zoomLayer;
 		riverLayer = new JurassicRiverInitLayer().run(context.apply(12), riverLayer);
 		riverLayer = magnify(2007, ZoomLayer.NORMAL, riverLayer, 5, context);
 		riverLayer = new JurassicRiverLayer().run(context.apply(13), riverLayer);
 		riverLayer = SmoothLayer.INSTANCE.run(context.apply(2008L), riverLayer);
 
-		IAreaFactory<T> magnifyLayer = magnify(2007L, ZoomLayer.NORMAL, zoomLayer, 3, context);
-		IAreaFactory<T> biomeLayer = new JurassicShoreLayer().run(context.apply(20), magnifyLayer);
+		AreaFactory<T> magnifyLayer = magnify(2007L, ZoomLayer.NORMAL, zoomLayer, 3, context);
+		AreaFactory<T> biomeLayer = new JurassicShoreLayer().run(context.apply(20), magnifyLayer);
 		biomeLayer = magnify(20, ZoomLayer.NORMAL, biomeLayer, 2, context);
 
 		biomeLayer = SmoothLayer.INSTANCE.run(context.apply(17L), biomeLayer);
@@ -105,8 +105,8 @@ public class JurassicLayerUtil {
 		return biomeSeed == getBiomeId(BiomeKeys.JURASSIC_ARAUCARIA_FOREST) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_ARAUCARIA_FOREST_HILLS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_BOG) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_FEN) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_SWAMP) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_MARSH) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_CONIFER_FOREST) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_CONIFER_FOREST_HILLS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_DESERT) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_DESERT_HILLS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_GINKGO_FOREST) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_GINKGO_FOREST_HILLS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_REDWOODS_FOREST) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_REDWOODS_FOREST_HILLS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_PLAINS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_PLAINS_HILLS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_MOUNTAINS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_ERRODED_MOUNTAINS) || biomeSeed == getBiomeId(BiomeKeys.JURASSIC_VOLCANIC_RANGE);
 	}
 
-	private static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> magnify(long seed, IAreaTransformer1 zoomLayer, IAreaFactory<T> layer, int count, LongFunction<C> context) {
-		IAreaFactory<T> result = layer;
+	private static <T extends Area, C extends BigContext<T>> AreaFactory<T> magnify(long seed, AreaTransformer1 zoomLayer, AreaFactory<T> layer, int count, LongFunction<C> context) {
+		AreaFactory<T> result = layer;
 		for (int i = 0; i < count; i++) {
 			result = zoomLayer.run(context.apply(seed + i), result);
 		}

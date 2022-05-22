@@ -8,21 +8,21 @@ import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lostworlds.server.biome.BiomeKeys;
 import lostworlds.server.dimension.jurassic.JurassicLayerUtil;
-import net.minecraft.util.WeightedRandom;
-import net.minecraft.world.gen.INoiseRandom;
-import net.minecraft.world.gen.layer.traits.IC0Transformer;
+import net.minecraft.util.WeighedRandom;
+import net.minecraft.world.level.newbiome.context.Context;
+import net.minecraft.world.level.newbiome.layer.traits.C0Transformer;
 
-public class JurassicAddWeightedSubBiomeLayer implements IC0Transformer {
-	private List<WeightedRandom.Item> biomeWeights;
+public class JurassicAddWeightedSubBiomeLayer implements C0Transformer {
+	private List<WeighedRandom.WeighedRandomItem> biomeWeights;
 	private int totalWeight;
 	final int baseID;
 	final int[] subBiomeIDs;
-	private final Object2IntMap<WeightedRandom.Item> biomeLookup = new Object2IntOpenHashMap<>();
+	private final Object2IntMap<WeighedRandom.WeighedRandomItem> biomeLookup = new Object2IntOpenHashMap<>();
 
-	public JurassicAddWeightedSubBiomeLayer(final int baseID, final int[] subBiomeIDs, WeightedRandom.Item... weights) {
+	public JurassicAddWeightedSubBiomeLayer(final int baseID, final int[] subBiomeIDs, WeighedRandom.WeighedRandomItem... weights) {
 		if (weights.length > 0) {
 			biomeWeights = Lists.newArrayList(weights);
-			totalWeight = WeightedRandom.getTotalWeight(biomeWeights);
+			totalWeight = WeighedRandom.getTotalWeight(biomeWeights);
 			for (int i = 0; i < weights.length; i++) {
 				biomeLookup.put(weights[i], subBiomeIDs[i]);
 			}
@@ -32,14 +32,14 @@ public class JurassicAddWeightedSubBiomeLayer implements IC0Transformer {
 	}
 
 	public static JurassicAddWeightedSubBiomeLayer ocean() {
-		return new JurassicAddWeightedSubBiomeLayer(JurassicLayerUtil.getBiomeId(BiomeKeys.JURASSIC_OCEAN), new int[] { JurassicLayerUtil.getBiomeId(BiomeKeys.JURASSIC_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.DEEP_JURASSIC_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.WARM_JURASSIC_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.WARM_DEEP_JURASSIC_OCEAN) }, new WeightedRandom.Item(20), new WeightedRandom.Item(4), new WeightedRandom.Item(20), new WeightedRandom.Item(4));
+		return new JurassicAddWeightedSubBiomeLayer(JurassicLayerUtil.getBiomeId(BiomeKeys.JURASSIC_OCEAN), new int[] { JurassicLayerUtil.getBiomeId(BiomeKeys.JURASSIC_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.DEEP_JURASSIC_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.WARM_JURASSIC_OCEAN), JurassicLayerUtil.getBiomeId(BiomeKeys.WARM_DEEP_JURASSIC_OCEAN) }, new WeighedRandom.WeighedRandomItem(20), new WeighedRandom.WeighedRandomItem(4), new WeighedRandom.WeighedRandomItem(20), new WeighedRandom.WeighedRandomItem(4));
 	}
 
 	@Override
-	public int apply(INoiseRandom random, int center) {
+	public int apply(Context random, int center) {
 		if (center == baseID) {
 			if (biomeLookup.size() > 0) {
-				return biomeLookup.getInt(WeightedRandom.getWeightedItem(biomeWeights, random.nextRandom(totalWeight)));
+				return biomeLookup.getInt(WeighedRandom.getWeightedItem(biomeWeights, random.nextRandom(totalWeight)));
 			}
 			return subBiomeIDs[random.nextRandom(subBiomeIDs.length)];
 		} else {

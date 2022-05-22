@@ -5,22 +5,22 @@ import java.util.function.Predicate;
 
 import lostworlds.server.entity.ModBoatEntity;
 import lostworlds.server.entity.utils.enums.ModBoatType;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EntityPredicates;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.RayTraceContext;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 public class ModBoatItem extends Item {
-	private static final Predicate<Entity> RIDERS = EntityPredicates.NO_SPECTATORS.and(Entity::isPickable);
+	private static final Predicate<Entity> RIDERS = EntitySelector.NO_SPECTATORS.and(Entity::isPickable);
 	private final ModBoatType type;
 
 	public ModBoatItem(ModBoatType type, Properties properties) {
@@ -29,44 +29,44 @@ public class ModBoatItem extends Item {
 	}
 
 	@Override
-	public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
-		ItemStack itemstack = playerIn.getItemInHand(handIn);
-		RayTraceResult raytraceresult = getPlayerPOVHitResult(worldIn, playerIn, RayTraceContext.FluidMode.ANY);
-		if (raytraceresult.getType() == RayTraceResult.Type.MISS) {
-			return ActionResult.pass(itemstack);
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		ItemStack itemstack = player.getItemInHand(hand);
+		HitResult raytraceresult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.ANY);
+		if (raytraceresult.getType() == HitResult.Type.MISS) {
+			return InteractionResultHolder.pass(itemstack);
 		} else {
-			Vector3d Vector3d = playerIn.getViewVector(1.0F);
-			List<Entity> list = worldIn.getEntities(playerIn, playerIn.getBoundingBox().expandTowards(Vector3d.scale(5.0D)).inflate(1.0D), RIDERS);
+			Vec3 Vector3d = player.getViewVector(1.0F);
+			List<Entity> list = level.getEntities(player, player.getBoundingBox().expandTowards(Vector3d.scale(5.0D)).inflate(1.0D), RIDERS);
 			if (!list.isEmpty()) {
-				Vector3d Vector3d1 = playerIn.getEyePosition(1.0F);
+				Vec3 Vector3d1 = player.getEyePosition(1.0F);
 
 				for (Entity entity : list) {
-					AxisAlignedBB axisalignedbb = entity.getBoundingBox().inflate(entity.getPickRadius());
+					AABB axisalignedbb = entity.getBoundingBox().inflate(entity.getPickRadius());
 					if (axisalignedbb.contains(Vector3d1)) {
-						return ActionResult.pass(itemstack);
+						return InteractionResultHolder.pass(itemstack);
 					}
 				}
 			}
 
-			if (raytraceresult.getType() == RayTraceResult.Type.BLOCK) {
-				ModBoatEntity boat = new ModBoatEntity(worldIn, raytraceresult.getLocation().x, raytraceresult.getLocation().y, raytraceresult.getLocation().z);
+			if (raytraceresult.getType() == HitResult.Type.BLOCK) {
+				ModBoatEntity boat = new ModBoatEntity(level, raytraceresult.getLocation().x, raytraceresult.getLocation().y, raytraceresult.getLocation().z);
 				boat.setBYGBoatType(this.type);
-				boat.yRot = playerIn.yRot;
-				if (!worldIn.noCollision(boat, boat.getBoundingBox().inflate(-0.1D))) {
-					return ActionResult.fail(itemstack);
+				boat.yRot = player.yRot;
+				if (!level.noCollision(boat, boat.getBoundingBox().inflate(-0.1D))) {
+					return InteractionResultHolder.fail(itemstack);
 				} else {
-					if (!worldIn.isClientSide) {
-						worldIn.addFreshEntity(boat);
-						if (!playerIn.abilities.instabuild) {
+					if (!level.isClientSide) {
+						level.addFreshEntity(boat);
+						if (!player.isCreative()) {
 							itemstack.shrink(1);
 						}
 					}
 
-					playerIn.awardStat(Stats.ITEM_USED.get(this));
-					return ActionResult.success(itemstack);
+					player.awardStat(Stats.ITEM_USED.get(this));
+					return InteractionResultHolder.success(itemstack);
 				}
 			} else {
-				return ActionResult.pass(itemstack);
+				return InteractionResultHolder.pass(itemstack);
 			}
 		}
 	}

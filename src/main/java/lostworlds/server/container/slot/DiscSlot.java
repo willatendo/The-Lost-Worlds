@@ -1,12 +1,12 @@
 package lostworlds.server.container.slot;
 
 import lostworlds.server.item.LostWorldsItems;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.Container;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 
 public class DiscSlot extends Slot {
-	public DiscSlot(IInventory inventory, int x, int z, int y) {
+	public DiscSlot(Container inventory, int x, int z, int y) {
 		super(inventory, x, z, y);
 	}
 

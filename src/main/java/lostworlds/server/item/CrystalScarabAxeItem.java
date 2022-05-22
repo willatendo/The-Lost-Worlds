@@ -1,11 +1,11 @@
 package lostworlds.server.item;
 
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
 
 public class CrystalScarabAxeItem extends AxeItem {
-	public CrystalScarabAxeItem(IItemTier teir, float damageMultiplier, float cooldown, Properties properties) {
+	public CrystalScarabAxeItem(Tier teir, float damageMultiplier, float cooldown, Properties properties) {
 		super(teir, damageMultiplier, cooldown, properties);
 	}
 

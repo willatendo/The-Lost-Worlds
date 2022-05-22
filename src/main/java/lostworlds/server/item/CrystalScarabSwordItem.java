@@ -1,11 +1,11 @@
 package lostworlds.server.item;
 
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tier;
 
 public class CrystalScarabSwordItem extends SwordItem {
-	public CrystalScarabSwordItem(IItemTier teir, int damageMultiplier, float cooldown, Properties properties) {
+	public CrystalScarabSwordItem(Tier teir, int damageMultiplier, float cooldown, Properties properties) {
 		super(teir, damageMultiplier, cooldown, properties);
 	}
 

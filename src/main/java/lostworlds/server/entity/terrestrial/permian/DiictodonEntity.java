@@ -21,17 +21,17 @@ import lostworlds.server.entity.terrestrial.EggLayingEntity;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.CreatureDiet;
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.EntityPredicates;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.entity.AgableMob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier.Builder;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
@@ -41,7 +41,7 @@ public class DiictodonEntity extends EggLayingEntity {
 	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);
 
-	public DiictodonEntity(EntityType<? extends DiictodonEntity> entity, World world) {
+	public DiictodonEntity(EntityType<? extends DiictodonEntity> entity, Level world) {
 		super(entity, world);
 	}
 
@@ -60,8 +60,8 @@ public class DiictodonEntity extends EggLayingEntity {
 		return 9000;
 	}
 
-	public static MutableAttribute createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.2F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.diictodonHeath.get());
+	public static Builder createAttributes() {
+		return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.2F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.diictodonHeath.get());
 	}
 
 	@Override
@@ -69,16 +69,16 @@ public class DiictodonEntity extends EggLayingEntity {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new SleepySwimGoal(this));
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
-		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
+		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialEatGrassGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialEatPodzolGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialEatMossySoilGoal(this));
 		this.goalSelector.addGoal(5, new SleepGoal(this));
-		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
-		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, DimetrodonEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
-		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, GorgonopsEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
-		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, RhinesuchusEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, Player.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, DimetrodonEntity.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, GorgonopsEntity.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, RhinesuchusEntity.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new DiictodonCreateTerritoryGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(6, new DiictodonLayEggGoal(this, 1.0D));
@@ -102,7 +102,7 @@ public class DiictodonEntity extends EggLayingEntity {
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
+	public AgableMob getBreedOffspring(ServerLevel world, AgableMob entity) {
 		return LostWorldsEntities.DIICTODON.create(world);
 	}
 }

@@ -8,33 +8,33 @@ import javax.annotation.Nullable;
 import com.google.common.base.Predicate;
 
 import lostworlds.server.entity.utils.IHerdPanic;
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.RandomPositionGenerator;
-import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.util.RandomPos;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.BlockGetter;
 
 public class PanicGoal extends Goal {
-	protected final CreatureEntity creature;
+	protected final PathfinderMob creature;
 	protected final double speedModifer;
-	protected final Predicate<? super CreatureEntity> targetEntitySelector;
+	protected final Predicate<? super PathfinderMob> targetEntitySelector;
 	protected double randPosX;
 	protected double randPosY;
 	protected double randPosZ;
 	protected boolean running;
 
-	public PanicGoal(CreatureEntity creature, double speedModifer) {
+	public PanicGoal(PathfinderMob creature, double speedModifer) {
 		this.creature = creature;
 		this.speedModifer = speedModifer;
 		this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-		this.targetEntitySelector = new Predicate<CreatureEntity>() {
+		this.targetEntitySelector = new Predicate<PathfinderMob>() {
 			@Override
-			public boolean apply(@Nullable CreatureEntity animal) {
+			public boolean apply(@Nullable PathfinderMob animal) {
 				if (animal instanceof IHerdPanic && animal.getType() == creature.getType()) {
 					return ((IHerdPanic) animal).canPanic();
 				}
@@ -59,8 +59,8 @@ public class PanicGoal extends Goal {
 			}
 			if (this.creature.getLastHurtByMob() != null && this.creature instanceof IHerdPanic && ((IHerdPanic) this.creature).canPanic()) {
 
-				List<CreatureEntity> list = this.creature.level.getEntitiesOfClass(this.creature.getClass(), this.getTargetableArea(), this.targetEntitySelector);
-				for (CreatureEntity creatureEntity : list) {
+				List<PathfinderMob> list = this.creature.level.getEntitiesOfClass(this.creature.getClass(), this.getTargetableArea(), this.targetEntitySelector);
+				for (PathfinderMob creatureEntity : list) {
 					creatureEntity.setLastHurtByMob(this.creature.getLastHurtByMob());
 				}
 				return this.findRandomPositionFrom(this.creature.getLastHurtByMob());
@@ -70,7 +70,7 @@ public class PanicGoal extends Goal {
 	}
 
 	private boolean findRandomPositionFrom(LivingEntity revengeTarget) {
-		Vector3d vector3d = RandomPositionGenerator.getPosAvoid(this.creature, 16, 7, revengeTarget.position());
+		Vec3 vector3d = RandomPos.getPosAvoid(this.creature, 16, 7, revengeTarget.position());
 		if (vector3d == null) {
 			return false;
 		} else {
@@ -81,15 +81,15 @@ public class PanicGoal extends Goal {
 		}
 	}
 
-	protected AxisAlignedBB getTargetableArea() {
-		Vector3d renderCenter = new Vector3d(this.creature.getX() + 0.5, this.creature.getY() + 0.5D, this.creature.getZ() + 0.5D);
+	protected AABB getTargetableArea() {
+		Vec3 renderCenter = new Vec3(this.creature.getX() + 0.5, this.creature.getY() + 0.5D, this.creature.getZ() + 0.5D);
 		double searchRadius = 15;
-		AxisAlignedBB aabb = new AxisAlignedBB(-searchRadius, -searchRadius, -searchRadius, searchRadius, searchRadius, searchRadius);
+		AABB aabb = new AABB(-searchRadius, -searchRadius, -searchRadius, searchRadius, searchRadius, searchRadius);
 		return aabb.move(renderCenter);
 	}
 
 	protected boolean findRandomPosition() {
-		Vector3d vector3d = RandomPositionGenerator.getPos(this.creature, 5, 4);
+		Vec3 vector3d = RandomPos.getPos(this.creature, 5, 4);
 		if (vector3d == null) {
 			return false;
 		} else {
@@ -124,14 +124,14 @@ public class PanicGoal extends Goal {
 	}
 
 	@Nullable
-	protected BlockPos getRandPos(IBlockReader world, Entity entity, int horizontalRange, int verticalRange) {
+	protected BlockPos getRandPos(BlockGetter world, Entity entity, int horizontalRange, int verticalRange) {
 		BlockPos blockpos = entity.blockPosition();
 		int i = blockpos.getX();
 		int j = blockpos.getY();
 		int k = blockpos.getZ();
 		float f = (float) (horizontalRange * horizontalRange * verticalRange * 2);
 		BlockPos blockpos1 = null;
-		BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
+		BlockPos.MutableBlockPos blockpos$mutable = new BlockPos.MutableBlockPos();
 
 		for (int l = i - horizontalRange; l <= i + horizontalRange; ++l) {
 			for (int i1 = j - verticalRange; i1 <= j + verticalRange; ++i1) {

@@ -1,15 +1,15 @@
 package lostworlds.server.dimension.cretaceous.layer;
 
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.area.IAreaFactory;
-import net.minecraft.world.gen.area.LazyArea;
-import net.minecraft.world.gen.layer.Layer;
+import net.minecraft.core.Registry;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.newbiome.area.AreaFactory;
+import net.minecraft.world.level.newbiome.area.LazyArea;
+import net.minecraft.world.level.newbiome.layer.Layer;
 
 public class CretaceousLookupLayer extends Layer {
 	private final LazyArea area;
 
-	public CretaceousLookupLayer(IAreaFactory<LazyArea> areaFactory) {
+	public CretaceousLookupLayer(AreaFactory<LazyArea> areaFactory) {
 		super(() -> null);
 		this.area = areaFactory.make();
 	}

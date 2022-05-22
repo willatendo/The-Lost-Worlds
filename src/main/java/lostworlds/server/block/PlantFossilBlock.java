@@ -5,19 +5,19 @@ import java.util.Random;
 import lostworlds.server.entity.illager.FossilPoacherEntity;
 import lostworlds.server.entity.utils.enums.TimeEras;
 import lostworlds.server.item.LostWorldsEnchantments;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraftforge.event.ForgeEventFactory;
 
 public class PlantFossilBlock extends Block {
@@ -31,21 +31,21 @@ public class PlantFossilBlock extends Block {
 	}
 
 	@Override
-	public void stepOn(World world, BlockPos pos, Entity entity) {
+	public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
 		this.destroy(world, pos, entity, 100);
-		super.stepOn(world, pos, entity);
+		super.stepOn(world, pos, state, entity);
 	}
 
 	@Override
-	public void fallOn(World world, BlockPos pos, Entity entity, float distance) {
+	public void fallOn(Level world, BlockState state, BlockPos pos, Entity entity, float distance) {
 		if (!(entity instanceof FossilPoacherEntity)) {
 			this.destroy(world, pos, entity, 3);
 		}
 
-		super.fallOn(world, pos, entity, distance);
+		super.fallOn(world, state, pos, entity, distance);
 	}
 
-	private void destroy(World world, BlockPos pos, Entity entity, int distance) {
+	private void destroy(Level world, BlockPos pos, Entity entity, int distance) {
 		if (this.canDestroy(world, entity)) {
 			if (!world.isClientSide && world.random.nextInt(distance) == 0) {
 				BlockState blockstate = world.getBlockState(pos);
@@ -56,8 +56,8 @@ public class PlantFossilBlock extends Block {
 		}
 	}
 
-	private void breakPlant(World world, BlockPos pos, BlockState state) {
-		world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
+	private void breakPlant(Level world, BlockPos pos, BlockState state) {
+		world.playSound((Player) null, pos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
 		Damage damage = state.getValue(DAMAGE);
 		if (damage == Damage.COMPLETELY) {
 			world.destroyBlock(pos, false);
@@ -80,7 +80,7 @@ public class PlantFossilBlock extends Block {
 	}
 
 	@Override
-	public void spawnAfterBreak(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) {
+	public void spawnAfterBreak(BlockState state, ServerLevel world, BlockPos pos, ItemStack stack) {
 		Plants plant = state.getValue(POTENTIAL_PLANT);
 		Damage damage = state.getValue(DAMAGE);
 		Random rand = new Random();
@@ -136,7 +136,7 @@ public class PlantFossilBlock extends Block {
 		builder.add(ERA, POTENTIAL_PLANT, DAMAGE);
 	}
 
-	private boolean canDestroy(World world, Entity entity) {
-		return entity instanceof PlayerEntity || ForgeEventFactory.getMobGriefingEvent(world, entity);
+	private boolean canDestroy(Level world, Entity entity) {
+		return entity instanceof Player || ForgeEventFactory.getMobGriefingEvent(world, entity);
 	}
 }

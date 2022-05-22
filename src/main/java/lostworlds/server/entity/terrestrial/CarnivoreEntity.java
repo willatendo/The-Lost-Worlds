@@ -1,13 +1,13 @@
 package lostworlds.server.entity.terrestrial;
 
 import lostworlds.server.entity.utils.enums.CreatureDiet;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 
 public abstract class CarnivoreEntity extends EggLayingEntity {
-	public CarnivoreEntity(EntityType<? extends CarnivoreEntity> entity, World world) {
+	public CarnivoreEntity(EntityType<? extends CarnivoreEntity> entity, Level world) {
 		super(entity, world);
 	}
 
@@ -17,7 +17,7 @@ public abstract class CarnivoreEntity extends EggLayingEntity {
 	}
 
 	@Override
-	public void killed(ServerWorld world, LivingEntity entity) {
+	public void killed(ServerLevel world, LivingEntity entity) {
 		super.killed(world, entity);
 		this.increaseHunger(this.maxHunger());
 		this.heal(3.0F);

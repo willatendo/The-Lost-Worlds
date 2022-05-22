@@ -2,10 +2,10 @@ package lostworlds.server.dimension.cretaceous.layer;
 
 import lostworlds.server.biome.BiomeKeys;
 import lostworlds.server.dimension.cretaceous.CretaceousLayerUtil;
-import net.minecraft.world.gen.INoiseRandom;
-import net.minecraft.world.gen.layer.traits.IC0Transformer;
+import net.minecraft.world.level.newbiome.context.Context;
+import net.minecraft.world.level.newbiome.layer.traits.C0Transformer;
 
-public class CretaceousAddSubBiomeLayer implements IC0Transformer {
+public class CretaceousAddSubBiomeLayer implements C0Transformer {
 	final int baseID;
 	final int[] subBiomeIDs;
 
@@ -47,7 +47,7 @@ public class CretaceousAddSubBiomeLayer implements IC0Transformer {
 	}
 
 	@Override
-	public int apply(INoiseRandom random, int center) {
+	public int apply(Context random, int center) {
 		if (center == baseID) {
 			return subBiomeIDs[random.nextRandom(subBiomeIDs.length)];
 		} else {

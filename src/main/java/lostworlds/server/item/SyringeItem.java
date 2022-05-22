@@ -6,17 +6,17 @@ import java.util.function.Supplier;
 import com.mojang.datafixers.util.Pair;
 
 import lostworlds.server.entity.utils.ModDamageSources;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
-public class SyringeItem extends ModItem {
+public class SyringeItem extends Item {
 	public static final ArrayList<Pair<Supplier<? extends EntityType<? extends Entity>>, Supplier<Item>>> MAP = new ArrayList<>();
 
 	public SyringeItem(Properties properties) {
@@ -24,7 +24,7 @@ public class SyringeItem extends ModItem {
 	}
 
 	@Override
-	public ActionResultType interactLivingEntity(ItemStack stack, PlayerEntity player, LivingEntity entity, Hand hand) {
+	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, InteractionHand hand) {
 		if (entity != null) {
 			for (Pair<Supplier<? extends EntityType<? extends Entity>>, Supplier<Item>> map : MAP) {
 				if (entity.getType() == map.getFirst().get()) {
@@ -32,10 +32,10 @@ public class SyringeItem extends ModItem {
 					entity.hurt(ModDamageSources.PRICK, 1);
 					stack.shrink(1);
 					player.setItemInHand(hand, map.getSecond().get().getDefaultInstance());
-					return ActionResultType.SUCCESS;
+					return InteractionResult.SUCCESS;
 				}
 			}
 		}
-		return ActionResultType.PASS;
+		return InteractionResult.PASS;
 	}
 }

@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 import lostworlds.client.books.tyrannibook.client.action.StringActionProcessor;
 import lostworlds.client.books.tyrannibook.client.screen.TextDataRenderer;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.client.gui.Font;
+import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class TextElement extends SizedTyrannobookElement {
 	public TextData[] text;
-	private final List<ITextComponent> tooltip = new ArrayList<ITextComponent>();
+	private final List<Component> tooltip = new ArrayList<Component>();
 
 	private boolean doAction = false;
 
@@ -35,7 +35,7 @@ public class TextElement extends SizedTyrannobookElement {
 	}
 
 	@Override
-	public void draw(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer) {
+	public void draw(PoseStack matrixStack, int mouseX, int mouseY, float partialTicks, Font fontRenderer) {
 		String action = TextDataRenderer.drawText(matrixStack, this.x, this.y, this.width, this.height, this.text, mouseX, mouseY, fontRenderer, this.tooltip);
 
 		if (this.doAction) {
@@ -45,7 +45,7 @@ public class TextElement extends SizedTyrannobookElement {
 	}
 
 	@Override
-	public void drawOverlay(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer) {
+	public void drawOverlay(PoseStack matrixStack, int mouseX, int mouseY, float partialTicks, Font fontRenderer) {
 		if (this.tooltip.size() > 0) {
 			TextDataRenderer.drawTooltip(matrixStack, this.tooltip, mouseX, mouseY, fontRenderer);
 			this.tooltip.clear();

@@ -1,10 +1,10 @@
 package lostworlds.server.dimension.jurassic;
 
 import lostworlds.server.biome.BiomeKeys;
-import net.minecraft.world.gen.INoiseRandom;
-import net.minecraft.world.gen.layer.traits.IC0Transformer;
+import net.minecraft.world.level.newbiome.context.Context;
+import net.minecraft.world.level.newbiome.layer.traits.C0Transformer;
 
-public final class JurassicBiomeLayer implements IC0Transformer {
+public final class JurassicBiomeLayer implements C0Transformer {
 	private final int[] landIds;
 
 	public JurassicBiomeLayer() {
@@ -12,7 +12,7 @@ public final class JurassicBiomeLayer implements IC0Transformer {
 	}
 
 	@Override
-	public int apply(INoiseRandom iNoiseRandom, int center) {
+	public int apply(Context iNoiseRandom, int center) {
 		if (JurassicLayerUtil.isLand(center)) {
 			return landIds[iNoiseRandom.nextRandom(landIds.length)];
 		}

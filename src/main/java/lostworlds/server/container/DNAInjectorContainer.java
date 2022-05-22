@@ -9,34 +9,34 @@ import lostworlds.server.container.recipes.LostWorldsRecipes;
 import lostworlds.server.container.slot.DNADiscSlot;
 import lostworlds.server.container.slot.EggSlot;
 import lostworlds.server.container.slot.ResultSlot;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IIntArray;
-import net.minecraft.util.IWorldPosCallable;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class DNAInjectorContainer extends Container {
-	private final IWorldPosCallable canInteractWithCallable;
-	private final IIntArray data;
-	private final World level;
-	private final IRecipeType<DNAInjectorRecipe> recipeType = LostWorldsRecipes.DNA_INJECTOR_RECIPE;
+public class DNAInjectorContainer extends AbstractContainerMenu {
+	private final ContainerLevelAccess canInteractWithCallable;
+	private final ContainerData data;
+	private final Level level;
+	private final RecipeType<DNAInjectorRecipe> recipeType = LostWorldsRecipes.DNA_INJECTOR_RECIPE;
 
-	public DNAInjectorContainer(ContainerType<? extends DNAInjectorContainer> containerType, int windowID, PlayerInventory playerInventory, DNAInjectorTileEntity tileEntity, IInventory inventory) {
+	public DNAInjectorContainer(MenuType<? extends DNAInjectorContainer> containerType, int windowID, Inventory playerInventory, DNAInjectorTileEntity tileEntity, Container inventory) {
 		super(containerType, windowID);
 		this.level = playerInventory.player.level;
 		this.data = tileEntity.getInjectorData();
-		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());
+		this.canInteractWithCallable = ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 
 		this.addSlot(new DNADiscSlot(inventory, 0, 56, 17));
 		this.addSlot(new EggSlot(inventory, 1, 56, 53));
@@ -55,15 +55,15 @@ public class DNAInjectorContainer extends Container {
 		this.addDataSlots(this.data);
 	}
 
-	public DNAInjectorContainer(ContainerType<? extends DNAInjectorContainer> containerType, int windowID, PlayerInventory playerInventory, PacketBuffer data) {
+	public DNAInjectorContainer(MenuType<? extends DNAInjectorContainer> containerType, int windowID, Inventory playerInventory, FriendlyByteBuf data) {
 		this(containerType, windowID, playerInventory, new DNAInjectorTileEntity(), getTileEntity(playerInventory, data));
 	}
 
-	private static DNAInjectorTileEntity getTileEntity(final PlayerInventory playerInventory, final PacketBuffer data) {
+	private static DNAInjectorTileEntity getTileEntity(final Inventory playerInventory, final FriendlyByteBuf data) {
 		Objects.requireNonNull(playerInventory, "Error: " + DNAInjectorContainer.class.getSimpleName() + " - Player Inventory cannot be null!");
 		Objects.requireNonNull(data, "Error: " + DNAInjectorContainer.class.getSimpleName() + " - Packer Buffer Data cannot be null!");
 
-		final TileEntity tileEntityAtPos = playerInventory.player.level.getBlockEntity(data.readBlockPos());
+		final BlockEntity tileEntityAtPos = playerInventory.player.level.getBlockEntity(data.readBlockPos());
 		if (tileEntityAtPos instanceof DNAInjectorTileEntity) {
 			return (DNAInjectorTileEntity) tileEntityAtPos;
 		}
@@ -72,7 +72,7 @@ public class DNAInjectorContainer extends Container {
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity playerIn) {
+	public boolean stillValid(Player playerIn) {
 		return this.canInteractWithCallable.evaluate((world, blockPos) -> world.getBlockState(blockPos).getBlock() instanceof DNAInjectorBlock && playerIn.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
 	}
 
@@ -84,7 +84,7 @@ public class DNAInjectorContainer extends Container {
 	}
 
 	@Override
-	public ItemStack quickMoveStack(PlayerEntity player, int i) {
+	public ItemStack quickMoveStack(Player player, int i) {
 		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = this.slots.get(i);
 		if (slot != null && slot.hasItem()) {
@@ -129,6 +129,6 @@ public class DNAInjectorContainer extends Container {
 	}
 
 	protected boolean canInject(ItemStack stack) {
-		return this.level.getRecipeManager().getRecipeFor((IRecipeType) this.recipeType, new Inventory(stack), this.level).isPresent();
+		return this.level.getRecipeManager().getRecipeFor((RecipeType) this.recipeType, new SimpleContainer(stack), this.level).isPresent();
 	}
 }

@@ -7,17 +7,17 @@ import com.google.gson.JsonObject;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
-import net.minecraft.advancements.ICriterionInstance;
-import net.minecraft.advancements.IRequirementsStrategy;
-import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.advancements.CriterionTriggerInstance;
+import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.Registry;
 
 public class DnaInjectorRecipeBuilder {
 	private final Item output;
@@ -25,30 +25,30 @@ public class DnaInjectorRecipeBuilder {
 	private final Ingredient storage;
 	private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-	private DnaInjectorRecipeBuilder(IItemProvider output, Ingredient input, Ingredient storage) {
+	private DnaInjectorRecipeBuilder(ItemLike output, Ingredient input, Ingredient storage) {
 		this.output = output.asItem();
 		this.input = input;
 		this.storage = storage;
 	}
 
-	public static DnaInjectorRecipeBuilder simple(Ingredient input, Ingredient storage, IItemProvider output) {
+	public static DnaInjectorRecipeBuilder simple(Ingredient input, Ingredient storage, ItemLike output) {
 		return new DnaInjectorRecipeBuilder(output, input, storage);
 	}
 
-	public static DnaInjectorRecipeBuilder simple(Ingredient input, IItemProvider output) {
+	public static DnaInjectorRecipeBuilder simple(Ingredient input, ItemLike output) {
 		return simple(input, Ingredient.of(Items.EGG), output);
 	}
 
-	public DnaInjectorRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
+	public DnaInjectorRecipeBuilder unlockedBy(String name, CriterionTriggerInstance criteria) {
 		this.advancement.addCriterion(name, criteria);
 		return this;
 	}
 
-	public void save(Consumer<IFinishedRecipe> consumer) {
+	public void save(Consumer<FinishedRecipe> consumer) {
 		this.save(consumer, Registry.ITEM.getKey(this.output));
 	}
 
-	public void save(Consumer<IFinishedRecipe> consumer, String name) {
+	public void save(Consumer<FinishedRecipe> consumer, String name) {
 		ResourceLocation resourcelocation = Registry.ITEM.getKey(this.output);
 		ResourceLocation resourcelocation1 = new ResourceLocation(name);
 		if (resourcelocation1.equals(resourcelocation)) {
@@ -58,9 +58,9 @@ public class DnaInjectorRecipeBuilder {
 		}
 	}
 
-	public void save(Consumer<IFinishedRecipe> consumer, ResourceLocation name) {
+	public void save(Consumer<FinishedRecipe> consumer, ResourceLocation name) {
 		this.ensureValid(name);
-		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(name)).rewards(AdvancementRewards.Builder.recipe(name)).requirements(IRequirementsStrategy.OR);
+		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(name)).rewards(AdvancementRewards.Builder.recipe(name)).requirements(RequirementsStrategy.OR);
 		consumer.accept(new DnaInjectorRecipeBuilder.Result(name, this.input, this.storage, this.output, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.output.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
 	}
 
@@ -70,7 +70,7 @@ public class DnaInjectorRecipeBuilder {
 		}
 	}
 
-	public static class Result implements IFinishedRecipe {
+	public static class Result implements FinishedRecipe {
 		private final ResourceLocation id;
 		private final Item output;
 		private final Ingredient input;
@@ -95,7 +95,7 @@ public class DnaInjectorRecipeBuilder {
 		}
 
 		@Override
-		public IRecipeSerializer<?> getType() {
+		public RecipeSerializer<?> getType() {
 			return LostWorldsRecipes.DNA_INJECTOR_RECIPE_SERIALIZER;
 		}
 

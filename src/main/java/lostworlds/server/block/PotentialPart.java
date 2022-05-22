@@ -1,8 +1,8 @@
 package lostworlds.server.block;
 
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.StringRepresentable;
 
-public enum PotentialPart implements IStringSerializable {
+public enum PotentialPart implements StringRepresentable {
 	SKULL("skull"),
 	ARM("arm"),
 	LEG("leg"),

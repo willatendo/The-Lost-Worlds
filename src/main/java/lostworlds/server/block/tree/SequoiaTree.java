@@ -5,18 +5,18 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import lostworlds.server.biome.TreeFeatures;
-import net.minecraft.block.trees.BigTree;
-import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.level.block.grower.AbstractMegaTreeGrower;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
-public class SequoiaTree extends BigTree {
+public class SequoiaTree extends AbstractMegaTreeGrower {
 	@Nullable
-	protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean big) {
+	protected ConfiguredFeature<TreeConfiguration, ?> getConfiguredFeature(Random rand, boolean big) {
 		return TreeFeatures.BABY_SEQUOIA_TREE;
 	}
 
 	@Nullable
-	protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredMegaFeature(Random rand) {
+	protected ConfiguredFeature<TreeConfiguration, ?> getConfiguredMegaFeature(Random rand) {
 		return TreeFeatures.SEQUOIA_TREE;
 	}
 }

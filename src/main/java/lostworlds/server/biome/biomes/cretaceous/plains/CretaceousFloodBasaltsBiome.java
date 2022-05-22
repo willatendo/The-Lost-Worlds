@@ -2,37 +2,37 @@ package lostworlds.server.biome.biomes.cretaceous.plains;
 
 import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.Category;
-import net.minecraft.world.biome.Biome.RainType;
-import net.minecraft.world.biome.BiomeAmbience;
-import net.minecraft.world.biome.BiomeGenerationSettings;
-import net.minecraft.world.biome.MobSpawnInfo;
-import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilders;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biome.BiomeCategory;
+import net.minecraft.world.level.biome.Biome.Precipitation;
+import net.minecraft.world.level.biome.BiomeSpecialEffects;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.data.worldgen.SurfaceBuilders;
 
 public class CretaceousFloodBasaltsBiome extends ModBiome {
 	@Override
 	public Biome getBiome() {
-		return this.biome(RainType.NONE, Category.PLAINS, 0.125F, 0.05F, 0.8F, 4.0F, this.ambience(), this.generation(), this.spawn()).build();
+		return this.biome(Precipitation.NONE, BiomeCategory.PLAINS, 0.125F, 0.05F, 0.8F, 4.0F, this.ambience(), this.generation(), this.spawn()).build();
 	}
 
 	@Override
 	public BiomeGenerationSettings generation() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
-		generation.surfaceBuilder(() -> ConfiguredSurfaceBuilders.BASALT_DELTAS);
+		generation.surfaceBuilder(() -> SurfaceBuilders.BASALT_DELTAS);
 		ModBiomeFeatures.cretaceousFloodBasalts(generation);
 		return generation.build();
 	}
 
 	@Override
-	public MobSpawnInfo spawn() {
-		MobSpawnInfo.Builder spawns = new MobSpawnInfo.Builder();
+	public MobSpawnSettings spawn() {
+		MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
 		return spawns.build();
 	}
 
 	@Override
-	public BiomeAmbience ambience() {
-		BiomeAmbience.Builder ambience = new BiomeAmbience.Builder();
+	public BiomeSpecialEffects ambience() {
+		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(4.0F));
 		return ambience.build();
 	}

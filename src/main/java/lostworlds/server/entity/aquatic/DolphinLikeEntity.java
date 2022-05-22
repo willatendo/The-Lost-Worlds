@@ -12,64 +12,64 @@ import lostworlds.server.entity.goal.aquatic.dolphin.DolphinLikeJumpGoal;
 import lostworlds.server.entity.goal.aquatic.dolphin.DolphinLikePlayWithItemsGoal;
 import lostworlds.server.entity.goal.aquatic.dolphin.SwimWithPlayerGoal;
 import lostworlds.server.entity.utils.FoodLists;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityPredicate;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.MoverType;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.entity.ai.goal.BreatheAirGoal;
-import net.minecraft.entity.ai.goal.BreedGoal;
-import net.minecraft.entity.ai.goal.FindWaterGoal;
-import net.minecraft.entity.ai.goal.FollowBoatGoal;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.monster.GuardianEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.pathfinding.PathNavigator;
-import net.minecraft.pathfinding.SwimmerPathNavigator;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.ai.goal.BreathAirGoal;
+import net.minecraft.world.entity.ai.goal.BreedGoal;
+import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
+import net.minecraft.world.entity.ai.goal.FollowBoatGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.monster.Guardian;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public abstract class DolphinLikeEntity extends BreedingWaterEntity {
-	public static final DataParameter<Integer> MOISTNESS_LEVEL = EntityDataManager.defineId(DolphinLikeEntity.class, DataSerializers.INT);
-	public static final EntityPredicate SWIM_WITH_PLAYER_TARGETING = (new EntityPredicate()).range(10.0D).allowSameTeam().allowInvulnerable().allowUnseeable();
+	public static final EntityDataAccessor<Integer> MOISTNESS_LEVEL = SynchedEntityData.defineId(DolphinLikeEntity.class, EntityDataSerializers.INT);
+	public static final TargetingConditions SWIM_WITH_PLAYER_TARGETING = (new TargetingConditions()).range(10.0D).allowSameTeam().allowInvulnerable().allowUnseeable();
 	public static final Predicate<ItemEntity> ALLOWED_ITEMS = (itementity) -> {
 		return !itementity.hasPickUpDelay() && itementity.isAlive() && itementity.isInWater();
 	};
 	private static final Ingredient FOOD_ITEMS = FoodLists.PISCIVORE;
 
-	public DolphinLikeEntity(EntityType<? extends DolphinLikeEntity> entity, World world) {
+	public DolphinLikeEntity(EntityType<? extends DolphinLikeEntity> entity, Level world) {
 		super(entity, world);
 		this.moveControl = new DolphinLikeMovementController(this);
 		this.lookControl = new DolphinLikeLookController(this, 10);
@@ -78,7 +78,7 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity {
 
 	@Override
 	@Nullable
-	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficulty, SpawnReason reason, @Nullable ILivingEntityData data, @Nullable CompoundNBT nbt) {
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData data, @Nullable CompoundTag nbt) {
 		this.setAirSupply(this.getMaxAirSupply());
 		this.xRot = 0.0F;
 		return super.finalizeSpawn(world, difficulty, reason, data, nbt);
@@ -107,33 +107,33 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) {
+	public void addAdditionalSaveData(CompoundTag nbt) {
 		super.addAdditionalSaveData(nbt);
 		nbt.putInt("Moistness", this.getMoistnessLevel());
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) {
+	public void readAdditionalSaveData(CompoundTag nbt) {
 		super.readAdditionalSaveData(nbt);
 		this.setMoisntessLevel(nbt.getInt("Moistness"));
 	}
 
 	@Override
 	protected void registerGoals() {
-		this.goalSelector.addGoal(0, new BreatheAirGoal(this));
-		this.goalSelector.addGoal(0, new FindWaterGoal(this));
+		this.goalSelector.addGoal(0, new BreathAirGoal(this));
+		this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
 		this.goalSelector.addGoal(2, new SwimWithPlayerGoal(this, 4.0D));
 		this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.0D, 10));
-		this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
-		this.goalSelector.addGoal(5, new LookAtGoal(this, PlayerEntity.class, 6.0F));
+		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
+		this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(5, new AquaticTemptGoal(this, 1.0F, FOOD_ITEMS));
 		this.goalSelector.addGoal(5, new BreedGoal(this, 1.0F));
 		this.goalSelector.addGoal(5, new DolphinLikeJumpGoal(this, 10));
 		this.goalSelector.addGoal(6, new MeleeAttackGoal(this, (double) 1.2F, true));
 		this.goalSelector.addGoal(8, new DolphinLikePlayWithItemsGoal(this));
 		this.goalSelector.addGoal(8, new FollowBoatGoal(this));
-		this.goalSelector.addGoal(9, new AvoidEntityGoal<>(this, GuardianEntity.class, 8.0F, 1.0D, 1.0D));
-		this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, GuardianEntity.class)).setAlertOthers());
+		this.goalSelector.addGoal(9, new AvoidEntityGoal<>(this, Guardian.class, 8.0F, 1.0D, 1.0D));
+		this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, Guardian.class)).setAlertOthers());
 	}
 
 	@Override
@@ -141,13 +141,13 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity {
 		return FOOD_ITEMS.test(stack);
 	}
 
-	public static AttributeModifierMap.MutableAttribute createBasicAttributes() {
-		return MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0D).add(Attributes.MOVEMENT_SPEED, (double) 1.2F).add(Attributes.ATTACK_DAMAGE, 3.0D);
+	public static AttributeSupplier.Builder createBasicAttributes() {
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0D).add(Attributes.MOVEMENT_SPEED, (double) 1.2F).add(Attributes.ATTACK_DAMAGE, 3.0D);
 	}
 
 	@Override
-	protected PathNavigator createNavigation(World world) {
-		return new SwimmerPathNavigator(this, world);
+	protected PathNavigation createNavigation(Level world) {
+		return new WaterBoundPathNavigation(this, world);
 	}
 
 	@Override
@@ -172,7 +172,7 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity {
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose pose, EntitySize size) {
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size) {
 		return 0.3F;
 	}
 
@@ -193,22 +193,22 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity {
 
 	@Override
 	public boolean canTakeItem(ItemStack stack) {
-		EquipmentSlotType equipmentslottype = MobEntity.getEquipmentSlotForItem(stack);
+		EquipmentSlot equipmentslottype = Mob.getEquipmentSlotForItem(stack);
 		if (!this.getItemBySlot(equipmentslottype).isEmpty()) {
 			return false;
 		} else {
-			return equipmentslottype == EquipmentSlotType.MAINHAND && super.canTakeItem(stack);
+			return equipmentslottype == EquipmentSlot.MAINHAND && super.canTakeItem(stack);
 		}
 	}
 
 	@Override
 	protected void pickUpItem(ItemEntity itementity) {
-		if (this.getItemBySlot(EquipmentSlotType.MAINHAND).isEmpty()) {
+		if (this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty()) {
 			ItemStack itemstack = itementity.getItem();
 			if (this.canHoldItem(itemstack)) {
 				this.onItemPickup(itementity);
-				this.setItemSlot(EquipmentSlotType.MAINHAND, itemstack);
-				this.handDropChances[EquipmentSlotType.MAINHAND.getIndex()] = 2.0F;
+				this.setItemSlot(EquipmentSlot.MAINHAND, itemstack);
+				this.handDropChances[EquipmentSlot.MAINHAND.getIndex()] = 2.0F;
 				this.take(itementity, itemstack.getCount());
 				itementity.remove();
 			}
@@ -238,9 +238,9 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity {
 			}
 
 			if (this.level.isClientSide && this.isInWater() && this.getDeltaMovement().lengthSqr() > 0.03D) {
-				Vector3d vector3d = this.getViewVector(0.0F);
-				float f = MathHelper.cos(this.yRot * ((float) Math.PI / 180F)) * 0.3F;
-				float f1 = MathHelper.sin(this.yRot * ((float) Math.PI / 180F)) * 0.3F;
+				Vec3 vector3d = this.getViewVector(0.0F);
+				float f = Mth.cos(this.yRot * ((float) Math.PI / 180F)) * 0.3F;
+				float f1 = Mth.sin(this.yRot * ((float) Math.PI / 180F)) * 0.3F;
 				float f2 = 1.2F - this.random.nextFloat() * 0.7F;
 
 				for (int i = 0; i < 2; ++i) {
@@ -264,7 +264,7 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity {
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	private void addParticlesAroundSelf(IParticleData data) {
+	private void addParticlesAroundSelf(ParticleOptions data) {
 		for (int i = 0; i < 7; ++i) {
 			double d0 = this.random.nextGaussian() * 0.01D;
 			double d1 = this.random.nextGaussian() * 0.01D;
@@ -273,7 +273,7 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity {
 		}
 	}
 
-	public static boolean canDolphinLikeSpawn(EntityType<? extends DolphinLikeEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
+	public static boolean canDolphinLikeSpawn(EntityType<? extends DolphinLikeEntity> entity, LevelAccessor world, MobSpawnType reason, BlockPos pos, Random rand) {
 		if (pos.getY() > 45 && pos.getY() < world.getSeaLevel()) {
 			return world.getFluidState(pos).is(FluidTags.WATER);
 		} else {
@@ -314,7 +314,7 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity {
 	}
 
 	@Override
-	public void travel(Vector3d vec3d) {
+	public void travel(Vec3 vec3d) {
 		if (this.isEffectiveAi() && this.isInWater()) {
 			this.moveRelative(this.getSpeed(), vec3d);
 			this.move(MoverType.SELF, this.getDeltaMovement());
@@ -329,7 +329,7 @@ public abstract class DolphinLikeEntity extends BreedingWaterEntity {
 	}
 
 	@Override
-	public boolean canBeLeashed(PlayerEntity entity) {
+	public boolean canBeLeashed(Player entity) {
 		return true;
 	}
 }

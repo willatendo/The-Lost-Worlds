@@ -2,17 +2,17 @@ package lostworlds.server.item.tool;
 
 import java.util.function.Supplier;
 
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.LazyValue;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.util.LazyLoadedValue;
 
-public class ItemTier implements IItemTier {
+public class ItemTier implements Tier {
 	private final int harvestLevel;
 	private final int maxUses;
 	private final float efficiency;
 	private final float attackDamage;
 	private final int enchantability;
-	private final LazyValue<Ingredient> repairItem;
+	private final LazyLoadedValue<Ingredient> repairItem;
 
 	public ItemTier(int harvestLevel, int maxUses, float efficiency, float attackDamage, int enchantability, Supplier<Ingredient> repairItem) {
 		this.harvestLevel = harvestLevel;
@@ -20,7 +20,7 @@ public class ItemTier implements IItemTier {
 		this.efficiency = efficiency;
 		this.attackDamage = attackDamage;
 		this.enchantability = enchantability;
-		this.repairItem = new LazyValue<>(repairItem);
+		this.repairItem = new LazyLoadedValue<>(repairItem);
 	}
 
 	@Override

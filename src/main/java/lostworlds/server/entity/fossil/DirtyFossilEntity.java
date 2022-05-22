@@ -1,17 +1,17 @@
 package lostworlds.server.entity.fossil;
 
 import lostworlds.server.item.WetPaperItem;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.Level;
 
 public class DirtyFossilEntity extends FossilEntity {
-	public DirtyFossilEntity(EntityType<? extends FossilEntity> entity, World world) {
+	public DirtyFossilEntity(EntityType<? extends FossilEntity> entity, Level world) {
 		super(entity, world);
 	}
 
@@ -20,7 +20,7 @@ public class DirtyFossilEntity extends FossilEntity {
 	}
 
 	@Override
-	public ActionResultType mobInteract(PlayerEntity entity, Hand hand) {
+	public InteractionResult mobInteract(Player entity, InteractionHand hand) {
 		ItemStack stack = entity.getItemInHand(hand);
 		if (stack.getItem() instanceof WetPaperItem) {
 			DirtyFossilEntity fossil = this;
@@ -30,8 +30,8 @@ public class DirtyFossilEntity extends FossilEntity {
 			}
 			fossil.remove();
 			stack.shrink(1);
-			return ActionResultType.SUCCESS;
+			return InteractionResult.SUCCESS;
 		}
-		return ActionResultType.FAIL;
+		return InteractionResult.FAIL;
 	}
 }

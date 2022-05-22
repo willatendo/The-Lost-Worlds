@@ -9,38 +9,38 @@ import lostworlds.server.entity.semiaquatic.CarnivoreSemiAquaticEntity;
 import lostworlds.server.entity.utils.IForTabletThings;
 import lostworlds.server.entity.utils.ModDamageSources;
 import lostworlds.server.item.LostWorldsItems;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 
-public abstract class PrehistoricEntity extends AnimalEntity implements IAnimatable, IForTabletThings {
-	protected static final DataParameter<Byte> VARIENT = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BYTE);
-	protected static final DataParameter<Byte> ANIMATION = EntityDataManager.defineId(PrehistoricEntity.class, DataSerializers.BYTE);
+public abstract class PrehistoricEntity extends Animal implements IAnimatable, IForTabletThings {
+	protected static final EntityDataAccessor<Byte> VARIENT = SynchedEntityData.defineId(PrehistoricEntity.class, EntityDataSerializers.BYTE);
+	protected static final EntityDataAccessor<Byte> ANIMATION = SynchedEntityData.defineId(PrehistoricEntity.class, EntityDataSerializers.BYTE);
 
 	public static final byte ANIMATION_IDLE = 0;
 	public static final byte ANIMATION_SLEEP = 1;
@@ -95,7 +95,7 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 		return PlayState.CONTINUE;
 	}
 
-	public PrehistoricEntity(EntityType<? extends PrehistoricEntity> entity, World world) {
+	public PrehistoricEntity(EntityType<? extends PrehistoricEntity> entity, Level world) {
 		super(entity, world);
 	}
 
@@ -148,7 +148,7 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 			this.setHunger(this.maxHunger());
 		}
 
-		this.level.playSound(null, this.blockPosition(), SoundEvents.GENERIC_EAT, SoundCategory.NEUTRAL, this.getSoundVolume(), this.getVoicePitch());
+		this.level.playSound(null, this.blockPosition(), SoundEvents.GENERIC_EAT, SoundSource.NEUTRAL, this.getSoundVolume(), this.getVoicePitch());
 		return true;
 	}
 
@@ -157,7 +157,7 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 	}
 
 	@Override
-	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficulty, SpawnReason reason, ILivingEntityData data, CompoundNBT nbt) {
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, SpawnGroupData data, CompoundTag nbt) {
 		this.hunger = this.maxHunger();
 		return super.finalizeSpawn(world, difficulty, reason, data, nbt);
 	}
@@ -177,7 +177,7 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 		}
 	}
 
-	public static boolean canPrehistoricSpawn(EntityType type, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
+	public static boolean canPrehistoricSpawn(EntityType type, LevelAccessor world, MobSpawnType reason, BlockPos pos, Random rand) {
 		boolean spawnBlock = BlockTags.getAllTags().getTag(LostWorldsTags.ModBlockTags.DINO_SPAWNABLES.tag.getName()).contains(world.getBlockState(pos.below()).getBlock());
 		return spawnBlock;
 	}
@@ -191,7 +191,7 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) {
+	public void addAdditionalSaveData(CompoundTag nbt) {
 		super.addAdditionalSaveData(nbt);
 		nbt.putBoolean("Contraceptives", isOnContraceptives());
 		nbt.putInt("Hunger", this.getHunger());
@@ -199,7 +199,7 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) {
+	public void readAdditionalSaveData(CompoundTag nbt) {
 		super.readAdditionalSaveData(nbt);
 		this.setOnContraceptives(nbt.getBoolean("Contraceptives"));
 		this.setVarient(nbt.getByte("Varient"));
@@ -227,12 +227,12 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 	}
 
 	@Override
-	public boolean canBeLeashed(PlayerEntity player) {
+	public boolean canBeLeashed(Player player) {
 		return true;
 	}
 
 	@Override
-	protected int getExperienceReward(PlayerEntity entity) {
+	protected int getExperienceReward(Player entity) {
 		return 1 + this.level.random.nextInt(3);
 	}
 
@@ -272,7 +272,7 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 		return this.inLove <= 0;
 	}
 
-	public void setInLove(@Nullable PlayerEntity entity) {
+	public void setInLove(@Nullable Player entity) {
 		this.inLove = 600;
 		if (entity != null) {
 			this.loveCause = entity.getUUID();
@@ -290,12 +290,12 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 	}
 
 	@Nullable
-	public ServerPlayerEntity getLoveCause() {
+	public ServerPlayer getLoveCause() {
 		if (this.loveCause == null) {
 			return null;
 		} else {
-			PlayerEntity playerentity = this.level.getPlayerByUUID(this.loveCause);
-			return playerentity instanceof ServerPlayerEntity ? (ServerPlayerEntity) playerentity : null;
+			Player playerentity = this.level.getPlayerByUUID(this.loveCause);
+			return playerentity instanceof ServerPlayer ? (ServerPlayer) playerentity : null;
 		}
 	}
 
@@ -308,24 +308,24 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 	}
 
 	@Override
-	public ActionResultType mobInteract(PlayerEntity entity, Hand hand) {
+	public InteractionResult mobInteract(Player entity, InteractionHand hand) {
 		ItemStack itemstack = entity.getItemInHand(hand);
 		if (this.isFood(itemstack)) {
 			int i = this.getAge();
 			if (!this.level.isClientSide && i == 0 && this.canFallInLove()) {
 				this.usePlayerItem(entity, itemstack);
 				this.setInLove(entity);
-				return ActionResultType.SUCCESS;
+				return InteractionResult.SUCCESS;
 			}
 
 			if (this.isBaby()) {
 				this.usePlayerItem(entity, itemstack);
 				this.ageUp((int) ((float) (-i / 20) * 0.1F), true);
-				return ActionResultType.sidedSuccess(this.level.isClientSide);
+				return InteractionResult.sidedSuccess(this.level.isClientSide);
 			}
 
 			if (this.level.isClientSide) {
-				return ActionResultType.CONSUME;
+				return InteractionResult.CONSUME;
 			}
 
 			this.increaseHunger(this.maxHunger());
@@ -334,14 +334,14 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 			if (!this.level.isClientSide && !this.isBaby()) {
 				this.usePlayerItem(entity, itemstack);
 				this.setOnContraceptives(true);
-				return ActionResultType.SUCCESS;
+				return InteractionResult.SUCCESS;
 			}
 		}
 
 		return super.mobInteract(entity, hand);
 	}
 
-	protected void usePlayerItem(PlayerEntity entity, ItemStack stack) {
+	protected void usePlayerItem(Player entity, ItemStack stack) {
 		if (!entity.abilities.instabuild) {
 			stack.shrink(1);
 		}

@@ -2,15 +2,15 @@ package lostworlds.server.dimension.cretaceous.layer;
 
 import lostworlds.server.biome.BiomeKeys;
 import lostworlds.server.dimension.cretaceous.CretaceousLayerUtil;
-import net.minecraft.world.gen.INoiseRandom;
-import net.minecraft.world.gen.layer.traits.IBishopTransformer;
+import net.minecraft.world.level.newbiome.context.Context;
+import net.minecraft.world.level.newbiome.layer.traits.BishopTransformer;
 
-public class CretaceousShoreLayer implements IBishopTransformer {
+public class CretaceousShoreLayer implements BishopTransformer {
 	public CretaceousShoreLayer() {
 	}
 
 	@Override
-	public int apply(INoiseRandom iNoiseRandom, int ne, int se, int sw, int nw, int center) {
+	public int apply(Context iNoiseRandom, int ne, int se, int sw, int nw, int center) {
 		if (CretaceousLayerUtil.isOcean(center) && (!CretaceousLayerUtil.isOcean(ne) || !CretaceousLayerUtil.isOcean(se) || !CretaceousLayerUtil.isOcean(sw) || !CretaceousLayerUtil.isOcean(nw))) {
 			return CretaceousLayerUtil.getBiomeId(BiomeKeys.CRETACEOUS_SHORE);
 		}

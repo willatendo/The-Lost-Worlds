@@ -13,19 +13,19 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 
 import lostworlds.server.container.inventory.PaleontologyTableInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.JSONUtils;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.IShapedRecipe;
 
-public class PaleontologyTableRecipe implements IRecipe<PaleontologyTableInventory>, IShapedRecipe<PaleontologyTableInventory> {
+public class PaleontologyTableRecipe implements Recipe<PaleontologyTableInventory>, IShapedRecipe<PaleontologyTableInventory> {
 	static int MAX_WIDTH = 3;
 	static int MAX_HEIGHT = 3;
 
@@ -58,7 +58,7 @@ public class PaleontologyTableRecipe implements IRecipe<PaleontologyTableInvento
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer() {
+	public RecipeSerializer<?> getSerializer() {
 		return LostWorldsRecipes.PALEONTOLOGY_TABLE_SERIALIZER.get();
 	}
 
@@ -84,7 +84,7 @@ public class PaleontologyTableRecipe implements IRecipe<PaleontologyTableInvento
 	}
 
 	@Override
-	public boolean matches(PaleontologyTableInventory inv, World world) {
+	public boolean matches(PaleontologyTableInventory inv, Level world) {
 		for (int i = 0; i <= inv.getWidth() - this.width; ++i) {
 			for (int j = 0; j <= inv.getHeight() - this.height; ++j) {
 				if (this.matches(inv, i, j, true)) {
@@ -230,7 +230,7 @@ public class PaleontologyTableRecipe implements IRecipe<PaleontologyTableInvento
 			throw new JsonSyntaxException("Invalid pattern: empty pattern not allowed");
 		} else {
 			for (int i = 0; i < astring.length; ++i) {
-				String s = JSONUtils.convertToString(array.get(i), "pattern[" + i + "]");
+				String s = GsonHelper.convertToString(array.get(i), "pattern[" + i + "]");
 				if (s.length() > MAX_WIDTH) {
 					throw new JsonSyntaxException("Invalid pattern: too many columns, " + MAX_WIDTH + " is maximum");
 				}
@@ -274,7 +274,7 @@ public class PaleontologyTableRecipe implements IRecipe<PaleontologyTableInvento
 	}
 
 	@Override
-	public IRecipeType<?> getType() {
+	public RecipeType<?> getType() {
 		return LostWorldsRecipes.PALEONTOLOGY_TABLE_RECIPE;
 	}
 }

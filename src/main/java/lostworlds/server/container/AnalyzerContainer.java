@@ -9,34 +9,34 @@ import lostworlds.server.container.recipes.LostWorldsRecipes;
 import lostworlds.server.container.slot.DNASlot;
 import lostworlds.server.container.slot.DiscSlot;
 import lostworlds.server.container.slot.ResultSlot;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IIntArray;
-import net.minecraft.util.IWorldPosCallable;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class AnalyzerContainer extends Container {
-	private final IWorldPosCallable canInteractWithCallable;
-	private final IIntArray data;
-	private final World level;
-	private final IRecipeType<AnalyzerRecipe> recipeType = LostWorldsRecipes.ANALYZER_RECIPE;
+public class AnalyzerContainer extends AbstractContainerMenu {
+	private final ContainerLevelAccess canInteractWithCallable;
+	private final ContainerData data;
+	private final Level level;
+	private final RecipeType<AnalyzerRecipe> recipeType = LostWorldsRecipes.ANALYZER_RECIPE;
 
-	public AnalyzerContainer(ContainerType<? extends AnalyzerContainer> containerType, int windowID, PlayerInventory playerInventory, AnalyzerTileEntity tileEntity, IInventory inventory) {
+	public AnalyzerContainer(MenuType<? extends AnalyzerContainer> containerType, int windowID, Inventory playerInventory, AnalyzerTileEntity tileEntity, Container inventory) {
 		super(containerType, windowID);
 		this.level = playerInventory.player.level;
 		this.data = tileEntity.getAnalysingData();
-		this.canInteractWithCallable = IWorldPosCallable.create(tileEntity.getLevel(), tileEntity.getBlockPos());
+		this.canInteractWithCallable = ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 
 		this.addSlot(new DNASlot(inventory, 0, 56, 25));
 		this.addSlot(new DiscSlot(inventory, 1, 56, 45));
@@ -55,15 +55,15 @@ public class AnalyzerContainer extends Container {
 		this.addDataSlots(this.data);
 	}
 
-	public AnalyzerContainer(ContainerType<? extends AnalyzerContainer> containerType, int windowID, PlayerInventory playerInventory, PacketBuffer buffer) {
+	public AnalyzerContainer(MenuType<? extends AnalyzerContainer> containerType, int windowID, Inventory playerInventory, FriendlyByteBuf buffer) {
 		this(containerType, windowID, playerInventory, new AnalyzerTileEntity(), getTileEntity(playerInventory, buffer));
 	}
 
-	private static AnalyzerTileEntity getTileEntity(PlayerInventory playerInventory, PacketBuffer data) {
+	private static AnalyzerTileEntity getTileEntity(Inventory playerInventory, FriendlyByteBuf data) {
 		Objects.requireNonNull(playerInventory, "Error: " + AnalyzerContainer.class.getSimpleName() + " - Player Inventory cannot be null!");
 		Objects.requireNonNull(data, "Error: " + AnalyzerContainer.class.getSimpleName() + " - Packer Buffer Data cannot be null!");
 
-		final TileEntity tileEntityAtPos = playerInventory.player.level.getBlockEntity(data.readBlockPos());
+		final BlockEntity tileEntityAtPos = playerInventory.player.level.getBlockEntity(data.readBlockPos());
 		if (tileEntityAtPos instanceof AnalyzerTileEntity) {
 			return (AnalyzerTileEntity) tileEntityAtPos;
 		}
@@ -72,7 +72,7 @@ public class AnalyzerContainer extends Container {
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity entity) {
+	public boolean stillValid(Player entity) {
 		return this.canInteractWithCallable.evaluate((world, blockPos) -> world.getBlockState(blockPos).getBlock() instanceof AnalyzerBlock && entity.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
 	}
 
@@ -84,7 +84,7 @@ public class AnalyzerContainer extends Container {
 	}
 
 	@Override
-	public ItemStack quickMoveStack(PlayerEntity player, int i) {
+	public ItemStack quickMoveStack(Player player, int i) {
 		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = this.slots.get(i);
 		if (slot != null && slot.hasItem()) {
@@ -129,6 +129,6 @@ public class AnalyzerContainer extends Container {
 	}
 
 	protected boolean canAnalyze(ItemStack stack) {
-		return this.level.getRecipeManager().getRecipeFor((IRecipeType) this.recipeType, new Inventory(stack), this.level).isPresent();
+		return this.level.getRecipeManager().getRecipeFor((RecipeType) this.recipeType, new SimpleContainer(stack), this.level).isPresent();
 	}
 }

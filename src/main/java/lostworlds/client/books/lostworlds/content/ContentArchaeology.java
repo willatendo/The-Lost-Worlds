@@ -18,11 +18,11 @@ import lostworlds.client.books.tyrannibook.client.data.element.TyrannobookElemen
 import lostworlds.client.books.tyrannibook.client.screen.TyrannobookScreen;
 import lostworlds.server.container.recipes.ArchaeologyTableRecipe;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.crafting.IShapedRecipe;
@@ -112,7 +112,7 @@ public class ContentArchaeology extends PageContent {
 				break;
 			}
 
-			IRecipe<?> recipe = Minecraft.getInstance().level.getRecipeManager().byKey(new ResourceLocation(this.recipe)).orElse(null);
+			Recipe<?> recipe = Minecraft.getInstance().level.getRecipeManager().byKey(new ResourceLocation(this.recipe)).orElse(null);
 			if (recipe instanceof ArchaeologyTableRecipe) {
 				if (!recipe.canCraftInDimensions(w, h)) {
 					throw new TyrannobookLoadException("Recipe " + this.recipe + " cannot fit in a " + w + "x" + h + " crafting grid");

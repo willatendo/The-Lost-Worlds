@@ -5,10 +5,10 @@ import java.util.function.Supplier;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 
-public class ModReplaceBlockConfig implements IFeatureConfig {
+public class ModReplaceBlockConfig implements FeatureConfiguration {
 	public static final Codec<ModReplaceBlockConfig> CODEC = RecordCodecBuilder.create((instance) -> {
 		return instance.group(BlockState.CODEC.fieldOf("target").forGetter((config) -> {
 			return config.target.get();

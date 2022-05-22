@@ -5,33 +5,33 @@ import java.util.Random;
 import com.mojang.serialization.Codec;
 
 import lostworlds.server.block.LostWorldsBlocks;
-import net.minecraft.block.BambooBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.state.properties.BambooLeaves;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ISeedReader;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.Heightmap;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.ProbabilityConfig;
+import net.minecraft.world.level.block.BambooBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BambooLeaves;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration;
 
-public class CalamitesSuckowiiFeature extends Feature<ProbabilityConfig> {
-	public CalamitesSuckowiiFeature(Codec<ProbabilityConfig> codec) {
+public class CalamitesSuckowiiFeature extends Feature<ProbabilityFeatureConfiguration> {
+	public CalamitesSuckowiiFeature(Codec<ProbabilityFeatureConfiguration> codec) {
 		super(codec);
 	}
 
 	@Override
-	public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, ProbabilityConfig config) {
+	public boolean place(WorldGenLevel reader, ChunkGenerator generator, Random rand, BlockPos pos, ProbabilityFeatureConfiguration config) {
 		BlockState trunk = LostWorldsBlocks.CALAMITES_SUCKOWII.getDefaultState().setValue(BambooBlock.AGE, Integer.valueOf(1)).setValue(BambooBlock.LEAVES, BambooLeaves.NONE).setValue(BambooBlock.STAGE, Integer.valueOf(0));
 		BlockState finalLarge = trunk.setValue(BambooBlock.LEAVES, BambooLeaves.LARGE).setValue(BambooBlock.STAGE, Integer.valueOf(1));
 		BlockState topLarge = trunk.setValue(BambooBlock.LEAVES, BambooLeaves.LARGE);
 		BlockState topSmall = trunk.setValue(BambooBlock.LEAVES, BambooLeaves.SMALL);
 
 		int i = 0;
-		BlockPos.Mutable blockpos$mutable = pos.mutable();
-		BlockPos.Mutable blockpos$mutable1 = pos.mutable();
+		BlockPos.MutableBlockPos blockpos$mutable = pos.mutable();
+		BlockPos.MutableBlockPos blockpos$mutable1 = pos.mutable();
 		if (reader.isEmptyBlock(blockpos$mutable)) {
 			if (LostWorldsBlocks.CALAMITES_SUCKOWII.getDefaultState().canSurvive(reader, blockpos$mutable)) {
 				int j = rand.nextInt(12) + 5;
@@ -43,7 +43,7 @@ public class CalamitesSuckowiiFeature extends Feature<ProbabilityConfig> {
 							int j1 = l - pos.getX();
 							int k1 = i1 - pos.getZ();
 							if (j1 * j1 + k1 * k1 <= k * k) {
-								blockpos$mutable1.set(l, reader.getHeight(Heightmap.Type.WORLD_SURFACE, l, i1) - 1, i1);
+								blockpos$mutable1.set(l, reader.getHeight(Heightmap.Types.WORLD_SURFACE, l, i1) - 1, i1);
 								if (isDirt(reader.getBlockState(blockpos$mutable1).getBlock())) {
 									reader.setBlock(blockpos$mutable1, Blocks.PODZOL.defaultBlockState(), 2);
 								}

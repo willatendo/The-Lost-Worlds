@@ -1,7 +1,7 @@
 package lostworlds.server.biome;
 
 import lostworlds.LostWorldsMod;
-import net.minecraft.world.gen.blockstateprovider.BlockStateProviderType;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;

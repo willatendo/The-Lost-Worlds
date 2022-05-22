@@ -1,17 +1,17 @@
 package lostworlds.server.container.recipes;
 
 import lostworlds.server.block.LostWorldsBlocks;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.world.Container;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 
-public class TimeMachineRecipe implements IRecipe<IInventory> {
+public class TimeMachineRecipe implements Recipe<Container> {
 	protected final Ingredient book;
 	protected final Ingredient power;
 	public final ItemStack result;
@@ -25,12 +25,12 @@ public class TimeMachineRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public IRecipeType<?> getType() {
+	public RecipeType<?> getType() {
 		return LostWorldsRecipes.TIME_MACHINE_RECIPE;
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer() {
+	public RecipeSerializer<?> getSerializer() {
 		return LostWorldsRecipes.TIME_MACHINE_SERIALIZER.get();
 	}
 
@@ -64,12 +64,12 @@ public class TimeMachineRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public ItemStack assemble(IInventory inv) {
+	public ItemStack assemble(Container inv) {
 		return this.result.copy();
 	}
 
 	@Override
-	public boolean matches(IInventory inv, World worldIn) {
+	public boolean matches(Container inv, Level worldIn) {
 		if (this.book.test(inv.getItem(0)) && this.power.test(inv.getItem(1))) {
 			return true;
 		}

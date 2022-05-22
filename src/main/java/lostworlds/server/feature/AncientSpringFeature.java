@@ -7,23 +7,23 @@ import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 
 import lostworlds.server.block.LostWorldsBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ISeedReader;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
-public class AncientSpringFeature extends Feature<NoFeatureConfig> {
-	public AncientSpringFeature(Codec<NoFeatureConfig> config) {
+public class AncientSpringFeature extends Feature<NoneFeatureConfiguration> {
+	public AncientSpringFeature(Codec<NoneFeatureConfiguration> config) {
 		super(config);
 	}
 
 	@Override
-	public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+	public boolean place(WorldGenLevel reader, ChunkGenerator generator, Random rand, BlockPos pos, NoneFeatureConfiguration config) {
 		Set<Block> validBlocks = ImmutableSet.of(LostWorldsBlocks.PERMIAN_STONE.get(), LostWorldsBlocks.JURASSIC_STONE.get(), Blocks.STONE);
 		if (!validBlocks.contains(reader.getBlockState(pos.above()).getBlock())) {
 			return false;

@@ -14,8 +14,8 @@ import org.apache.commons.io.IOUtils;
 import lostworlds.client.books.tyrannibook.client.data.SectionData;
 import lostworlds.client.books.tyrannibook.client.repository.TyrannobookRepository;
 import net.minecraft.client.Minecraft;
-import net.minecraft.resources.IResource;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.resources.ResourceLocation;
 
 public class FileRepository extends TyrannobookRepository {
 	public final String location;
@@ -71,7 +71,7 @@ public class FileRepository extends TyrannobookRepository {
 	}
 
 	@Override
-	public IResource getResource(@Nullable ResourceLocation loc) {
+	public Resource getResource(@Nullable ResourceLocation loc) {
 		if (loc == null) {
 			return null;
 		}
@@ -92,7 +92,7 @@ public class FileRepository extends TyrannobookRepository {
 	}
 
 	@Override
-	public String resourceToString(@Nullable IResource resource, boolean skipComments) {
+	public String resourceToString(@Nullable Resource resource, boolean skipComments) {
 		if (resource == null) {
 			return "";
 		}

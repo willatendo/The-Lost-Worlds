@@ -3,17 +3,17 @@ package lostworlds.server.biome.biomes.cretaceous.river;
 import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
 import lostworlds.server.biome.ModConfiguredSurfaceBuilders;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.Category;
-import net.minecraft.world.biome.Biome.RainType;
-import net.minecraft.world.biome.BiomeAmbience;
-import net.minecraft.world.biome.BiomeGenerationSettings;
-import net.minecraft.world.biome.MobSpawnInfo;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biome.BiomeCategory;
+import net.minecraft.world.level.biome.Biome.Precipitation;
+import net.minecraft.world.level.biome.BiomeSpecialEffects;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 
 public class CretaceousRiverBiome extends ModBiome {
 	@Override
 	public Biome getBiome() {
-		return this.biome(RainType.RAIN, Category.RIVER, -0.5F, 0.0F, 0.8F, 0.7F, this.ambience(), this.generation(), this.spawn()).build();
+		return this.biome(Precipitation.RAIN, BiomeCategory.RIVER, -0.5F, 0.0F, 0.8F, 0.7F, this.ambience(), this.generation(), this.spawn()).build();
 	}
 
 	@Override
@@ -25,14 +25,14 @@ public class CretaceousRiverBiome extends ModBiome {
 	}
 
 	@Override
-	public MobSpawnInfo spawn() {
-		MobSpawnInfo.Builder spawns = new MobSpawnInfo.Builder();
+	public MobSpawnSettings spawn() {
+		MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
 		return spawns.build();
 	}
 
 	@Override
-	public BiomeAmbience ambience() {
-		BiomeAmbience.Builder ambience = new BiomeAmbience.Builder();
+	public BiomeSpecialEffects ambience() {
+		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 		return ambience.build();
 	}

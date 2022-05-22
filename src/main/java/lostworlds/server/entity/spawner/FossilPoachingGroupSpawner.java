@@ -3,25 +3,25 @@ package lostworlds.server.entity.spawner;
 import java.util.Random;
 
 import lostworlds.server.entity.LostWorldsEntities;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.monster.PatrollerEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.GameRules;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.Heightmap;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraft.world.spawner.WorldEntitySpawner;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.monster.PatrollingMonster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.NaturalSpawner;
 import net.minecraftforge.common.ForgeHooks;
 
 public class FossilPoachingGroupSpawner {
 	private int nextTick;
 
-	public int tick(World world) {
+	public int tick(Level world) {
 		if (world.getGameRules().getBoolean(GameRules.RULE_DO_PATROL_SPAWNING)) {
 			Random random = world.random;
 			--this.nextTick;
@@ -38,19 +38,19 @@ public class FossilPoachingGroupSpawner {
 						if (j < 1) {
 							return 0;
 						} else {
-							PlayerEntity playerentity = world.players().get(random.nextInt(j));
+							Player playerentity = world.players().get(random.nextInt(j));
 							if (playerentity.isSpectator()) {
 								return 0;
 							} else {
 								int k = (24 + random.nextInt(24)) * (random.nextBoolean() ? -1 : 1);
 								int l = (24 + random.nextInt(24)) * (random.nextBoolean() ? -1 : 1);
-								BlockPos.Mutable blockpos$mutable = playerentity.blockPosition().mutable().move(k, 0, l);
+								BlockPos.MutableBlockPos blockpos$mutable = playerentity.blockPosition().mutable().move(k, 0, l);
 								if (!world.hasChunksAt(blockpos$mutable.getX() - 10, blockpos$mutable.getY() - 10, blockpos$mutable.getZ() - 10, blockpos$mutable.getX() + 10, blockpos$mutable.getY() + 10, blockpos$mutable.getZ() + 10)) {
 									return 0;
 								} else {
 									Biome biome = world.getBiome(blockpos$mutable);
-									Biome.Category biome$category = biome.getBiomeCategory();
-									if (biome$category == Biome.Category.MUSHROOM) {
+									Biome.BiomeCategory biome$category = biome.getBiomeCategory();
+									if (biome$category == Biome.BiomeCategory.MUSHROOM) {
 										return 0;
 									} else {
 										int i1 = 0;
@@ -58,13 +58,13 @@ public class FossilPoachingGroupSpawner {
 
 										for (int k1 = 0; k1 < j1; ++k1) {
 											++i1;
-											blockpos$mutable.setY(world.getHeightmapPos(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, blockpos$mutable).getY());
+											blockpos$mutable.setY(world.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, blockpos$mutable).getY());
 											if (k1 == 0) {
-												if (!this.spawnMember((ServerWorld) world, blockpos$mutable, random, true)) {
+												if (!this.spawnMember((ServerLevel) world, blockpos$mutable, random, true)) {
 													break;
 												}
 											} else {
-												this.spawnMember((ServerWorld) world, blockpos$mutable, random, false);
+												this.spawnMember((ServerLevel) world, blockpos$mutable, random, false);
 											}
 
 											blockpos$mutable.setX(blockpos$mutable.getX() + random.nextInt(5) - random.nextInt(5));
@@ -82,14 +82,14 @@ public class FossilPoachingGroupSpawner {
 		return 0;
 	}
 
-	private boolean spawnMember(ServerWorld world, BlockPos pos, Random rand, boolean leader) {
+	private boolean spawnMember(ServerLevel world, BlockPos pos, Random rand, boolean leader) {
 		BlockState blockstate = world.getBlockState(pos);
-		if (!WorldEntitySpawner.isValidEmptySpawnBlock(world, pos, blockstate, blockstate.getFluidState(), LostWorldsEntities.FOSSIL_POACHER.get())) {
+		if (!NaturalSpawner.isValidEmptySpawnBlock(world, pos, blockstate, blockstate.getFluidState(), LostWorldsEntities.FOSSIL_POACHER.get())) {
 			return false;
-		} else if (!PatrollerEntity.checkPatrollingMonsterSpawnRules(LostWorldsEntities.FOSSIL_POACHER.get(), world, SpawnReason.PATROL, pos, rand)) {
+		} else if (!PatrollingMonster.checkPatrollingMonsterSpawnRules(LostWorldsEntities.FOSSIL_POACHER.get(), world, MobSpawnType.PATROL, pos, rand)) {
 			return false;
 		} else {
-			PatrollerEntity patrollerentity = LostWorldsEntities.FOSSIL_POACHER.create(world);
+			PatrollingMonster patrollerentity = LostWorldsEntities.FOSSIL_POACHER.create(world);
 			if (patrollerentity != null) {
 				if (leader) {
 					patrollerentity.setPatrolLeader(true);
@@ -97,10 +97,10 @@ public class FossilPoachingGroupSpawner {
 				}
 
 				patrollerentity.setPos((double) pos.getX(), (double) pos.getY(), (double) pos.getZ());
-				if (ForgeHooks.canEntitySpawn(patrollerentity, world, pos.getX(), pos.getY(), pos.getZ(), null, SpawnReason.PATROL) == -1) {
+				if (ForgeHooks.canEntitySpawn(patrollerentity, world, pos.getX(), pos.getY(), pos.getZ(), null, MobSpawnType.PATROL) == -1) {
 					return false;
 				}
-				patrollerentity.finalizeSpawn(world, world.getCurrentDifficultyAt(pos), SpawnReason.PATROL, (ILivingEntityData) null, (CompoundNBT) null);
+				patrollerentity.finalizeSpawn(world, world.getCurrentDifficultyAt(pos), MobSpawnType.PATROL, (SpawnGroupData) null, (CompoundTag) null);
 				world.addFreshEntityWithPassengers(patrollerentity);
 				return true;
 			} else {

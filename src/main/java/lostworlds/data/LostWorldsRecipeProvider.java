@@ -14,11 +14,11 @@ import lostworlds.server.container.recipes.data.FossilCleanerRecipeBuilder;
 import lostworlds.server.container.recipes.data.FossilGrinderRecipeBuilder;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.data.RecipeProvider;
-import net.minecraft.data.ShapelessRecipeBuilder;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
 
 public class LostWorldsRecipeProvider extends RecipeProvider {
@@ -27,7 +27,7 @@ public class LostWorldsRecipeProvider extends RecipeProvider {
 	}
 
 	@Override
-	protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
+	protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 		for (DinoTypes dinos : DinoTypes.values()) {
 			if (dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS) {
 				FossilCleanerRecipeBuilder.simple(Ingredient.of(dinos.getPlasteredSkullItem().get()), dinos.getSkullItem().get()).unlockedBy("has_item", has(dinos.getSkullItem().get())).save(consumer);

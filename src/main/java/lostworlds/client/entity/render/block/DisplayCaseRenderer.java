@@ -1,29 +1,29 @@
 package lostworlds.client.entity.render.block;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 import lostworlds.client.ClientUtils;
 import lostworlds.server.block.DisplayCaseBlock;
 import lostworlds.server.block.entity.DisplayCaseTileEntity;
 import lostworlds.server.container.inventory.DisplayCaseInventory;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Direction;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.Direction;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class DisplayCaseRenderer extends TileEntityRenderer<DisplayCaseTileEntity> {
-	public DisplayCaseRenderer(TileEntityRendererDispatcher dispatcher) {
+public class DisplayCaseRenderer extends BlockEntityRenderer<DisplayCaseTileEntity> {
+	public DisplayCaseRenderer(BlockEntityRenderDispatcher dispatcher) {
 		super(dispatcher);
 	}
 
 	@Override
-	public void render(DisplayCaseTileEntity tile, float partialTicks, MatrixStack matrix, IRenderTypeBuffer buffer, int combinedLight, int combinedOverlay) {
+	public void render(DisplayCaseTileEntity tile, float partialTicks, PoseStack matrix, MultiBufferSource buffer, int combinedLight, int combinedOverlay) {
 		Direction direction = tile.getBlockState().getValue(DisplayCaseBlock.HORIZONTAL_FACING);
 		DisplayCaseInventory inventory = tile.handler;
 		ItemStack stack = inventory.getStackInSlot(0);
@@ -47,7 +47,7 @@ public class DisplayCaseRenderer extends TileEntityRenderer<DisplayCaseTileEntit
 				matrix.translate(0.5, 0.6, -0.3);
 				matrix.mulPose(ClientUtils.NX65);
 			}
-			Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemCameraTransforms.TransformType.GROUND, combinedLight, combinedOverlay, matrix, buffer);
+			Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.GROUND, combinedLight, combinedOverlay, matrix, buffer);
 			matrix.popPose();
 		}
 	}

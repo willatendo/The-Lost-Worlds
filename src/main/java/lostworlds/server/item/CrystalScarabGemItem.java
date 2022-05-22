@@ -2,10 +2,10 @@ package lostworlds.server.item;
 
 import lostworlds.server.entity.item.ChargedCrystalScarabGemItemEntity;
 import lostworlds.server.entity.item.CrystalScarabGemItemEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 public class CrystalScarabGemItem extends Item {
 	public CrystalScarabGemItem(Properties properties) {
@@ -18,7 +18,7 @@ public class CrystalScarabGemItem extends Item {
 		}
 
 		@Override
-		public int getEntityLifespan(ItemStack itemStack, World world) {
+		public int getEntityLifespan(ItemStack stack, Level level) {
 			return Integer.MAX_VALUE;
 		}
 
@@ -28,8 +28,8 @@ public class CrystalScarabGemItem extends Item {
 		}
 
 		@Override
-		public Entity createEntity(World world, Entity entity, ItemStack stack) {
-			final CrystalScarabGemItemEntity customentity = new CrystalScarabGemItemEntity(world, entity.getX(), entity.getY(), entity.getZ(), stack);
+		public Entity createEntity(Level level, Entity entity, ItemStack stack) {
+			final CrystalScarabGemItemEntity customentity = new CrystalScarabGemItemEntity(level, entity.getX(), entity.getY(), entity.getZ(), stack);
 			customentity.setDeltaMovement(entity.getDeltaMovement());
 			customentity.setPickUpDelay(40);
 
@@ -48,7 +48,7 @@ public class CrystalScarabGemItem extends Item {
 		}
 
 		@Override
-		public int getEntityLifespan(ItemStack itemStack, World world) {
+		public int getEntityLifespan(ItemStack stack, Level level) {
 			return Integer.MAX_VALUE;
 		}
 
@@ -58,7 +58,7 @@ public class CrystalScarabGemItem extends Item {
 		}
 
 		@Override
-		public Entity createEntity(World world, Entity entity, ItemStack stack) {
+		public Entity createEntity(Level world, Entity entity, ItemStack stack) {
 			final ChargedCrystalScarabGemItemEntity customentity = new ChargedCrystalScarabGemItemEntity(world, entity.getX(), entity.getY(), entity.getZ(), stack);
 			customentity.setDeltaMovement(entity.getDeltaMovement());
 			customentity.setPickUpDelay(40);

@@ -3,15 +3,15 @@ package lostworlds.server.entity.goal.aquatic.dolphin;
 import java.util.EnumSet;
 
 import lostworlds.server.entity.aquatic.DolphinLikeEntity;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 
 public class SwimWithPlayerGoal extends Goal {
 	private final DolphinLikeEntity entity;
 	private final double speedModifier;
-	private PlayerEntity player;
+	private Player player;
 
 	public SwimWithPlayerGoal(DolphinLikeEntity entity, double speedModifer) {
 		this.entity = entity;
@@ -36,7 +36,7 @@ public class SwimWithPlayerGoal extends Goal {
 
 	@Override
 	public void start() {
-		this.player.addEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 100));
+		this.player.addEffect(new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 100));
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class SwimWithPlayerGoal extends Goal {
 		}
 
 		if (this.player.isSwimming() && this.player.level.random.nextInt(6) == 0) {
-			this.player.addEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 100));
+			this.player.addEffect(new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 100));
 		}
 	}
 }

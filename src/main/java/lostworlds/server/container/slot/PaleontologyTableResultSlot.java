@@ -2,21 +2,21 @@ package lostworlds.server.container.slot;
 
 import lostworlds.server.container.inventory.PaleontologyTableInventory;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.IRecipeHolder;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.Container;
+import net.minecraft.world.inventory.RecipeHolder;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.NonNullList;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fml.hooks.BasicEventHooks;
 
 public class PaleontologyTableResultSlot extends Slot {
 	private final PaleontologyTableInventory craftSlots;
-	private final PlayerEntity player;
+	private final Player player;
 	private int removeCount;
 
-	public PaleontologyTableResultSlot(PlayerEntity player, PaleontologyTableInventory inv, IInventory iinv, int slotSeed, int x, int y) {
+	public PaleontologyTableResultSlot(Player player, PaleontologyTableInventory inv, Container iinv, int slotSeed, int x, int y) {
 		super(iinv, slotSeed, x, y);
 		this.player = player;
 		this.craftSlots = inv;
@@ -54,14 +54,14 @@ public class PaleontologyTableResultSlot extends Slot {
 			BasicEventHooks.firePlayerCraftingEvent(this.player, stack, this.craftSlots);
 		}
 
-		if (this.container instanceof IRecipeHolder) {
-			((IRecipeHolder) this.container).awardUsedRecipes(this.player);
+		if (this.container instanceof RecipeHolder) {
+			((RecipeHolder) this.container).awardUsedRecipes(this.player);
 		}
 
 		this.removeCount = 0;
 	}
 
-	public ItemStack onTake(PlayerEntity player, ItemStack stack) {
+	public ItemStack onTake(Player player, ItemStack stack) {
 		this.checkTakeAchievements(stack);
 		ForgeHooks.setCraftingPlayer(player);
 		NonNullList<ItemStack> nonnulllist = player.level.getRecipeManager().getRemainingItemsFor(LostWorldsRecipes.PALEONTOLOGY_TABLE_RECIPE, this.craftSlots, player.level);

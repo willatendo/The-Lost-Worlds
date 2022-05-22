@@ -1,8 +1,8 @@
 package lostworlds.server.block;
 
 import lostworlds.server.LostWorldsUtils;
-import net.minecraft.block.Block;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 
 public class ConnectedTexturesBlock extends Block {
 	public final ResourceLocation texture;

@@ -14,7 +14,7 @@ import lostworlds.client.books.tyrannibook.client.data.element.ImageData;
 import lostworlds.client.books.tyrannibook.client.repository.TyrannobookRepository;
 import lostworlds.client.books.tyrannibook.client.screen.TyrannobookScreen;
 import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.resources.IResource;
+import net.minecraft.server.packs.resources.Resource;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -54,7 +54,7 @@ public class SectionData implements DataItem {
 		this.name = this.name.toLowerCase();
 
 		if (!this.data.equals("no-load")) {
-			IResource pagesInfo = this.source.getResource(this.source.getResourceLocation(this.data));
+			Resource pagesInfo = this.source.getResource(this.source.getResourceLocation(this.data));
 			if (pagesInfo != null) {
 				String data = this.source.resourceToString(pagesInfo);
 				if (!data.isEmpty()) {

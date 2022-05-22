@@ -2,19 +2,19 @@ package lostworlds.server.entity.goal.terrestrial.entity;
 
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.ai.goal.MoveToBlockGoal;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.Level;
 
 public class DiictodonCreateTerritoryGoal extends MoveToBlockGoal {
 	private final EggLayingEntity entity;
-	private final World level;
+	private final Level level;
 
 	public DiictodonCreateTerritoryGoal(EggLayingEntity entity, double speedModifier) {
 		super(entity, speedModifier, 16);
@@ -32,7 +32,7 @@ public class DiictodonCreateTerritoryGoal extends MoveToBlockGoal {
 		return !this.entity.hasTerritory();
 	}
 
-	public static boolean isNatural(IBlockReader reader, BlockPos pos) {
+	public static boolean isNatural(BlockGetter reader, BlockPos pos) {
 		return reader.getBlockState(pos).is(LostWorldsBlocks.PERMIAN_SAND.get());
 	}
 
@@ -47,7 +47,7 @@ public class DiictodonCreateTerritoryGoal extends MoveToBlockGoal {
 		super.tick();
 		BlockPos blockpos = this.entity.blockPosition();
 		if (!this.entity.isInWater()) {
-			this.level.playSound((PlayerEntity) null, blockpos, SoundEvents.TURTLE_LAY_EGG, SoundCategory.BLOCKS, 0.3F, 0.9F + this.level.random.nextFloat() * 0.2F);
+			this.level.playSound((Player) null, blockpos, SoundEvents.TURTLE_LAY_EGG, SoundSource.BLOCKS, 0.3F, 0.9F + this.level.random.nextFloat() * 0.2F);
 		}
 	}
 
@@ -59,7 +59,7 @@ public class DiictodonCreateTerritoryGoal extends MoveToBlockGoal {
 	}
 
 	@Override
-	protected boolean isValidTarget(IWorldReader reader, BlockPos pos) {
+	protected boolean isValidTarget(LevelReader reader, BlockPos pos) {
 		return !reader.isEmptyBlock(pos.above()) ? false : isNatural(reader, pos);
 	}
 }

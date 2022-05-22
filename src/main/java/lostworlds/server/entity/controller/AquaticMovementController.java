@@ -1,23 +1,25 @@
 package lostworlds.server.entity.controller;
 
 import lostworlds.server.entity.utils.ISemiAquatic;
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.controller.MovementController;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.util.Mth;
 
-public class AquaticMovementController extends MovementController {
-	private final CreatureEntity entity;
+import net.minecraft.world.entity.ai.control.MoveControl.Operation;
+
+public class AquaticMovementController extends MoveControl {
+	private final PathfinderMob entity;
 	private float speedMulti;
 	private float yawLimit = 3.0F;
 
-	public AquaticMovementController(CreatureEntity entity, float speedMulti) {
+	public AquaticMovementController(PathfinderMob entity, float speedMulti) {
 		super(entity);
 		this.entity = entity;
 		this.speedMulti = speedMulti;
 	}
 
-	public AquaticMovementController(CreatureEntity entity, float speedMulti, float yawLimit) {
+	public AquaticMovementController(PathfinderMob entity, float speedMulti, float yawLimit) {
 		super(entity);
 		this.entity = entity;
 		this.yawLimit = yawLimit;
@@ -32,13 +34,13 @@ public class AquaticMovementController extends MovementController {
 			this.entity.setSpeed(0.0F);
 			return;
 		}
-		if (this.operation == Action.MOVE_TO && !this.entity.getNavigation().isDone()) {
+		if (this.operation == Operation.MOVE_TO && !this.entity.getNavigation().isDone()) {
 			double d0 = this.wantedX - this.entity.getX();
 			double d1 = this.wantedY - this.entity.getY();
 			double d2 = this.wantedZ - this.entity.getZ();
-			double d3 = (double) MathHelper.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
+			double d3 = (double) Mth.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
 			d1 /= d3;
-			float f = (float) (MathHelper.atan2(d2, d0) * 57.2957763671875D) - 90.0F;
+			float f = (float) (Mth.atan2(d2, d0) * 57.2957763671875D) - 90.0F;
 			this.entity.yRot = this.rotlerp(this.entity.yRot, f, yawLimit);
 			this.entity.yBodyRot = this.entity.yRot;
 			float f1 = (float) (this.speedModifier * this.entity.getAttributeValue(Attributes.MOVEMENT_SPEED) * speedMulti);

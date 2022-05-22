@@ -1,6 +1,6 @@
 package lostworlds.server.item.tool;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 
 public class CrystalScarabGemBrushItem extends BrushItem {
 	public CrystalScarabGemBrushItem(Properties properties) {

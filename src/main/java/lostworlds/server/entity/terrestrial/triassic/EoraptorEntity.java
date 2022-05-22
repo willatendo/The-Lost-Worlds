@@ -26,42 +26,42 @@ import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.util.IngredientUtil;
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.IAngerable;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
-import net.minecraft.entity.ai.goal.ResetAngerGoal;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.RangedInteger;
-import net.minecraft.util.TickRangeConverter;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.entity.AgableMob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.NeutralMob;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier.Builder;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.util.IntRange;
+import net.minecraft.util.TimeUtil;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class EoraptorEntity extends CarnivoreEntity implements IAngerable {
-	private static final DataParameter<Integer> DATA_REMAINING_ANGER_TIME = EntityDataManager.defineId(EoraptorEntity.class, DataSerializers.INT);
-	private static final RangedInteger PERSISTENT_ANGER_TIME = TickRangeConverter.rangeOfSeconds(20, 39);
+public class EoraptorEntity extends CarnivoreEntity implements NeutralMob {
+	private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(EoraptorEntity.class, EntityDataSerializers.INT);
+	private static final IntRange PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
 	private static final Ingredient FOOD_ITEMS = IngredientUtil.combine(FoodLists.CARNIVORE, FoodLists.HERBIVORE);
 	private AnimationFactory factory = new AnimationFactory(this);
 	private UUID persistentAngerTarget;
 
-	public EoraptorEntity(EntityType<? extends EoraptorEntity> entity, World world) {
+	public EoraptorEntity(EntityType<? extends EoraptorEntity> entity, Level world) {
 		super(entity, world);
 	}
 
-	public static MutableAttribute createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.eoraptorHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.eoraptorAttackDamage.get());
+	public static Builder createAttributes() {
+		return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.eoraptorHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.eoraptorAttackDamage.get());
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class EoraptorEntity extends CarnivoreEntity implements IAngerable {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new SleepySwimGoal(this));
 		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
-		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, PlayerEntity.class, 6.0F));
+		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
 		this.goalSelector.addGoal(3, new HurtByTargetGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialReasonableAttackGoal(this, 1.2F));
@@ -84,7 +84,7 @@ public class EoraptorEntity extends CarnivoreEntity implements IAngerable {
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, ProcompsognathusEntity.class, this::isHungry));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, ProcompsognathusEntity.class, this::isAngryAt));
-		this.targetSelector.addGoal(8, new ResetAngerGoal<>(this, true));
+		this.targetSelector.addGoal(8, new ResetUniversalAngerTargetGoal<>(this, true));
 	}
 
 	@Override
@@ -108,7 +108,7 @@ public class EoraptorEntity extends CarnivoreEntity implements IAngerable {
 	}
 
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
+	public AgableMob getBreedOffspring(ServerLevel world, AgableMob entity) {
 		return LostWorldsEntities.EORAPTOR.create(world);
 	}
 
@@ -119,16 +119,16 @@ public class EoraptorEntity extends CarnivoreEntity implements IAngerable {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) {
+	public void addAdditionalSaveData(CompoundTag nbt) {
 		super.addAdditionalSaveData(nbt);
 		this.addPersistentAngerSaveData(nbt);
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) {
+	public void readAdditionalSaveData(CompoundTag nbt) {
 		super.readAdditionalSaveData(nbt);
 		if (!this.level.isClientSide) {
-			this.readPersistentAngerSaveData((ServerWorld) this.level, nbt);
+			this.readPersistentAngerSaveData((ServerLevel) this.level, nbt);
 		}
 	}
 
@@ -137,7 +137,7 @@ public class EoraptorEntity extends CarnivoreEntity implements IAngerable {
 		super.customServerAiStep();
 
 		if (!this.level.isClientSide) {
-			this.updatePersistentAnger((ServerWorld) this.level, true);
+			this.updatePersistentAnger((ServerLevel) this.level, true);
 		}
 	}
 

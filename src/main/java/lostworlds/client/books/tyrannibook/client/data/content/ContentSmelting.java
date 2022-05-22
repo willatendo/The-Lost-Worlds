@@ -17,15 +17,15 @@ import lostworlds.client.books.tyrannibook.client.data.element.TextElement;
 import lostworlds.client.books.tyrannibook.client.data.element.TooltipElement;
 import lostworlds.client.books.tyrannibook.client.data.element.TyrannobookElement;
 import lostworlds.client.books.tyrannibook.client.screen.TyrannobookScreen;
-import net.minecraft.block.Blocks;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.AbstractCookingRecipe;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.TranslatableComponent;
 
 public class ContentSmelting extends PageContent {
 	private static final NonNullList<ItemStack> FUELS;
@@ -59,7 +59,7 @@ public class ContentSmelting extends PageContent {
 		tdTitle.underlined = true;
 		list.add(new TextElement(0, 0, TyrannobookScreen.PAGE_WIDTH, 9, tdTitle));
 		list.add(new ImageElement(x, y, IMG_SMELTING.width, IMG_SMELTING.height, IMG_SMELTING, book.appearance.slotColor));
-		list.add(new TooltipElement(ImmutableList.of(new TranslationTextComponent("tooltip.tyrannotitan.cooktime", this.cookTime / 20)), x + 7, y + 42, 60, 28));
+		list.add(new TooltipElement(ImmutableList.of(new TranslatableComponent("tooltip.tyrannotitan.cooktime", this.cookTime / 20)), x + 7, y + 42, 60, 28));
 
 		if (this.input != null && !this.input.getItems().isEmpty()) {
 			list.add(new ItemElement(x + INPUT_X, y + INPUT_Y, ITEM_SCALE, this.input.getItems(), this.input.action));
@@ -89,7 +89,7 @@ public class ContentSmelting extends PageContent {
 		super.load();
 
 		if (!StringUtils.isEmpty(this.recipe) && ResourceLocation.isValidResourceLocation(this.recipe)) {
-			IRecipe<?> recipe = Minecraft.getInstance().level.getRecipeManager().byKey(new ResourceLocation(this.recipe)).orElse(null);
+			Recipe<?> recipe = Minecraft.getInstance().level.getRecipeManager().byKey(new ResourceLocation(this.recipe)).orElse(null);
 
 			if (recipe instanceof AbstractCookingRecipe) {
 				this.input = ItemStackData.getItemStackData(NonNullList.of(ItemStack.EMPTY, recipe.getIngredients().get(0).getItems()));

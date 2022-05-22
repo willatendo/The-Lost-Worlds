@@ -5,33 +5,33 @@ import java.util.Random;
 import lostworlds.server.entity.controller.SemiAquaticMoveController;
 import lostworlds.server.entity.terrestrial.CarnivoreEntity;
 import lostworlds.server.entity.utils.ISemiAquatic;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.MoverType;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.controller.MovementController;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.pathfinding.GroundPathNavigator;
-import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.pathfinding.SwimmerPathNavigator;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.World;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.Level;
 
 public abstract class CarnivoreSemiAquaticEntity extends CarnivoreEntity implements ISemiAquatic {
-	public static final DataParameter<BlockPos> TRAVEL_POS = EntityDataManager.defineId(CarnivoreSemiAquaticEntity.class, DataSerializers.BLOCK_POS);
+	public static final EntityDataAccessor<BlockPos> TRAVEL_POS = SynchedEntityData.defineId(CarnivoreSemiAquaticEntity.class, EntityDataSerializers.BLOCK_POS);
 	public final Random random = new Random();
 	private boolean isLandNavigator;
 
-	public CarnivoreSemiAquaticEntity(EntityType<? extends CarnivoreSemiAquaticEntity> entity, World world) {
+	public CarnivoreSemiAquaticEntity(EntityType<? extends CarnivoreSemiAquaticEntity> entity, Level world) {
 		super(entity, world);
-		this.setPathfindingMalus(PathNodeType.WATER, 0.0F);
-		this.setPathfindingMalus(PathNodeType.WATER_BORDER, 0.0F);
+		this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
+		this.setPathfindingMalus(BlockPathTypes.WATER_BORDER, 0.0F);
 		switchNavigator(false);
 	}
 
@@ -45,12 +45,12 @@ public abstract class CarnivoreSemiAquaticEntity extends CarnivoreEntity impleme
 
 	private void switchNavigator(boolean onLand) {
 		if (onLand) {
-			this.moveControl = new MovementController(this);
-			this.navigation = new GroundPathNavigator(this, this.level);
+			this.moveControl = new MoveControl(this);
+			this.navigation = new GroundPathNavigation(this, this.level);
 			this.isLandNavigator = true;
 		} else {
 			this.moveControl = new SemiAquaticMoveController(this);
-			this.navigation = new SwimmerPathNavigator(this, this.level);
+			this.navigation = new WaterBoundPathNavigation(this, this.level);
 			this.isLandNavigator = false;
 		}
 	}
@@ -64,7 +64,7 @@ public abstract class CarnivoreSemiAquaticEntity extends CarnivoreEntity impleme
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) {
+	public void addAdditionalSaveData(CompoundTag nbt) {
 		super.addAdditionalSaveData(nbt);
 		nbt.putInt("TravelPosX", this.getTravelPos().getX());
 		nbt.putInt("TravelPosY", this.getTravelPos().getY());
@@ -72,7 +72,7 @@ public abstract class CarnivoreSemiAquaticEntity extends CarnivoreEntity impleme
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) {
+	public void readAdditionalSaveData(CompoundTag nbt) {
 		super.readAdditionalSaveData(nbt);
 		int l = nbt.getInt("TravelPosX");
 		int i1 = nbt.getInt("TravelPosY");
@@ -106,7 +106,7 @@ public abstract class CarnivoreSemiAquaticEntity extends CarnivoreEntity impleme
 	}
 
 	@Override
-	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficuilty, SpawnReason reason, ILivingEntityData data, CompoundNBT nbt) {
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficuilty, MobSpawnType reason, SpawnGroupData data, CompoundTag nbt) {
 		this.setAirSupply(this.getMaxAirSupply());
 		this.setTravelPos(BlockPos.ZERO);
 		return super.finalizeSpawn(world, difficuilty, reason, data, nbt);
@@ -141,7 +141,7 @@ public abstract class CarnivoreSemiAquaticEntity extends CarnivoreEntity impleme
 	}
 
 	@Override
-	public void travel(Vector3d vec3d) {
+	public void travel(Vec3 vec3d) {
 		if (!this.level.isClientSide() && this.isInWater()) {
 			this.moveRelative(this.getSpeed(), vec3d);
 			this.move(MoverType.SELF, this.getDeltaMovement());

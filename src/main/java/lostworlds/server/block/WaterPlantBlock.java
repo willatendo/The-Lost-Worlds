@@ -1,32 +1,32 @@
 package lostworlds.server.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.FlowerBlock;
-import net.minecraft.block.IWaterLoggable;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.potion.Effect;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FlowerBlock;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 
-public class WaterPlantBlock extends FlowerBlock implements IWaterLoggable {
+public class WaterPlantBlock extends FlowerBlock implements SimpleWaterloggedBlock {
 	private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-	public WaterPlantBlock(Effect effect, int lenght, Properties properties) {
+	public WaterPlantBlock(MobEffect effect, int lenght, Properties properties) {
 		super(effect, lenght, properties);
 
 		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext context) {
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
 		FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
 		boolean flag = fluidstate.getType() == Fluids.WATER;
 		return super.getStateForPlacement(context).setValue(WATERLOGGED, Boolean.valueOf(flag));
@@ -39,16 +39,16 @@ public class WaterPlantBlock extends FlowerBlock implements IWaterLoggable {
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState newstate, IWorld world, BlockPos pos, BlockPos newPos) {
+	public BlockState updateShape(BlockState state, Direction facing, BlockState newstate, LevelAccessor world, BlockPos pos, BlockPos newPos) {
 		if (state.getValue(WATERLOGGED)) {
-			world.getLiquidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
+			world.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
 		}
 
 		return super.updateShape(state, facing, newstate, world, pos, newPos);
 	}
 
 	@Override
-	public boolean canSurvive(BlockState state, IWorldReader reader, BlockPos pos) {
+	public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
 		return reader.getBlockState(pos).getFluidState().getType() == Fluids.WATER && !(reader.getBlockState(pos).getFluidState().getType() == Fluids.WATER);
 	}
 

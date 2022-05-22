@@ -2,11 +2,11 @@ package lostworlds.server.block;
 
 import java.util.function.Supplier;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.Item;
+import net.minecraft.util.StringRepresentable;
 
-public enum Plants implements IStringSerializable {
+public enum Plants implements StringRepresentable {
 	ALETHOPTERIS("alethopteris", () -> LostWorldsBlocks.ALETHOPTERIS.get()),
 	ARCHAEFRUTUS("archaefrutus", () -> LostWorldsBlocks.ARCHAEFRUTUS.get()),
 	BRAZILEA("brazilea", () -> LostWorldsBlocks.BRAZILEA.get()),

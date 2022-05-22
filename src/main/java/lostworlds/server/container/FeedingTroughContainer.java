@@ -4,18 +4,18 @@ import java.util.Objects;
 
 import lostworlds.server.block.entity.FeedingTroughTileEntity;
 import lostworlds.server.container.slot.FeedingTroughSlot;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.Container;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
-public class FeedingTroughContainer extends Container {
-	public FeedingTroughContainer(ContainerType<? extends FeedingTroughContainer> containerType, int windowId, PlayerInventory playerInventory, IInventory inventory) {
+public class FeedingTroughContainer extends AbstractContainerMenu {
+	public FeedingTroughContainer(MenuType<? extends FeedingTroughContainer> containerType, int windowId, Inventory playerInventory, Container inventory) {
 		super(containerType, windowId);
 
 		this.addSlot(new FeedingTroughSlot(inventory, 0, 80, 20));
@@ -31,15 +31,15 @@ public class FeedingTroughContainer extends Container {
 		}
 	}
 
-	public FeedingTroughContainer(ContainerType<? extends FeedingTroughContainer> containerType, int windowId, PlayerInventory playerInventory, PacketBuffer buffer) {
+	public FeedingTroughContainer(MenuType<? extends FeedingTroughContainer> containerType, int windowId, Inventory playerInventory, FriendlyByteBuf buffer) {
 		this(containerType, windowId, playerInventory, getTileEntity(playerInventory, buffer));
 	}
 
-	private static FeedingTroughTileEntity getTileEntity(final PlayerInventory playerInventory, final PacketBuffer data) {
+	private static FeedingTroughTileEntity getTileEntity(final Inventory playerInventory, final FriendlyByteBuf data) {
 		Objects.requireNonNull(playerInventory, "Error: " + FeedingTroughContainer.class.getSimpleName() + " - Player Inventory cannot be null!");
 		Objects.requireNonNull(data, "Error: " + FeedingTroughContainer.class.getSimpleName() + " - Packer Buffer Data cannot be null!");
 
-		final TileEntity tileEntityAtPos = playerInventory.player.level.getBlockEntity(data.readBlockPos());
+		final BlockEntity tileEntityAtPos = playerInventory.player.level.getBlockEntity(data.readBlockPos());
 		if (tileEntityAtPos instanceof FeedingTroughTileEntity) {
 			return (FeedingTroughTileEntity) tileEntityAtPos;
 		}
@@ -48,12 +48,12 @@ public class FeedingTroughContainer extends Container {
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity entity) {
+	public boolean stillValid(Player entity) {
 		return !entity.isSpectator();
 	}
 
 	@Override
-	public ItemStack quickMoveStack(PlayerEntity player, int fromSlot) {
+	public ItemStack quickMoveStack(Player player, int fromSlot) {
 		ItemStack previous = ItemStack.EMPTY;
 		Slot slot = (Slot) this.slots.get(fromSlot);
 

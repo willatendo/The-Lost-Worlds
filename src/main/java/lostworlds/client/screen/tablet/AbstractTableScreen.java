@@ -1,14 +1,14 @@
 package lostworlds.client.screen.tablet;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 
 public abstract class AbstractTableScreen extends Screen {
 	public static final ResourceLocation TEXTURE = LostWorldsUtils.rL("textures/gui/tablet.png");
@@ -23,7 +23,7 @@ public abstract class AbstractTableScreen extends Screen {
 	public float xMouse;
 	public float yMouse;
 
-	protected AbstractTableScreen(ITextComponent component) {
+	protected AbstractTableScreen(Component component) {
 		super(component);
 
 		this.titleLabelX = 22;
@@ -39,7 +39,7 @@ public abstract class AbstractTableScreen extends Screen {
 	}
 
 	@Override
-	public void render(MatrixStack stack, int mouseX, int mouseY, float partialTicks) {
+	public void render(PoseStack stack, int mouseX, int mouseY, float partialTicks) {
 		this.xMouse = (float) mouseX;
 		this.yMouse = (float) mouseY;
 		renderBackgroundElements(stack);
@@ -48,7 +48,7 @@ public abstract class AbstractTableScreen extends Screen {
 		this.renderComponentHoverEffect(stack, Style.EMPTY, mouseX, mouseY);
 	}
 
-	public void renderBackgroundElements(MatrixStack stack) {
+	public void renderBackgroundElements(PoseStack stack) {
 		this.renderBackground(stack, 0);
 		Minecraft.getInstance().getTextureManager().bind(TEXTURE);
 		RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);

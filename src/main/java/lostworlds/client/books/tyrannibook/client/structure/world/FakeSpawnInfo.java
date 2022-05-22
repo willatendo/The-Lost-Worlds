@@ -1,10 +1,10 @@
 package lostworlds.client.books.tyrannibook.client.structure.world;
 
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.GameRules;
-import net.minecraft.world.storage.ISpawnWorldInfo;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.storage.WritableLevelData;
 
-public class FakeSpawnInfo implements ISpawnWorldInfo {
+public class FakeSpawnInfo implements WritableLevelData {
 	private static final GameRules RULES = new GameRules();
 
 	private int spawnX;

@@ -12,101 +12,101 @@ import com.google.common.collect.Maps;
 import lostworlds.client.sounds.LostWorldsSounds;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.item.LostWorldsItems;
-import net.minecraft.block.Block;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.CreatureAttribute;
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.BreakDoorGoal;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.entity.ai.goal.MoveToBlockGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.ai.goal.RandomWalkingGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
-import net.minecraft.entity.monster.AbstractIllagerEntity;
-import net.minecraft.entity.monster.AbstractRaiderEntity;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.IronGolemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.particles.ItemParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.pathfinding.GroundPathNavigator;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.GroundPathHelper;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier.Builder;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.BreakDoorGoal;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.npc.AbstractVillager;
+import net.minecraft.world.entity.monster.AbstractIllager;
+import net.minecraft.world.entity.raid.Raider;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.particles.ItemParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.ai.util.GoalUtils;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraft.world.chunk.ChunkStatus;
-import net.minecraft.world.chunk.IChunk;
-import net.minecraft.world.raid.Raid;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.chunk.ChunkStatus;
+import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.entity.raid.Raid;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.common.ForgeHooks;
 
-public class FossilPoacherEntity extends AbstractIllagerEntity {
+public class FossilPoacherEntity extends AbstractIllager {
 	private static final Predicate<Difficulty> DOOR_BREAKING_PREDICATE = (difficulty) -> {
 		return difficulty == Difficulty.NORMAL || difficulty == Difficulty.HARD;
 	};
 
-	public FossilPoacherEntity(EntityType<? extends FossilPoacherEntity> entity, World world) {
+	public FossilPoacherEntity(EntityType<? extends FossilPoacherEntity> entity, Level world) {
 		super(entity, world);
 	}
 
 	@Override
 	protected void registerGoals() {
 		super.registerGoals();
-		this.goalSelector.addGoal(0, new SwimGoal(this));
-		this.goalSelector.addGoal(2, new AbstractIllagerEntity.RaidOpenDoorGoal(this));
-		this.goalSelector.addGoal(2, new AbstractRaiderEntity.FindTargetGoal(this, 10.0F));
+		this.goalSelector.addGoal(0, new FloatGoal(this));
+		this.goalSelector.addGoal(2, new AbstractIllager.RaiderOpenDoorGoal(this));
+		this.goalSelector.addGoal(2, new Raider.HoldGroundAttackGoal(this, 10.0F));
 		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, false));
 		this.goalSelector.addGoal(4, new SmashPlantFossilGoal(this, 1.0D, 3));
 		this.goalSelector.addGoal(4, new SmashSoftStoneGoal(this, 1.0D, 3));
 		this.goalSelector.addGoal(4, new SmashSoftDirtGoal(this, 1.0D, 3));
-		this.goalSelector.addGoal(8, new RandomWalkingGoal(this, 0.6D));
-		this.goalSelector.addGoal(9, new LookAtGoal(this, PlayerEntity.class, 15.0F, 1.0F));
-		this.goalSelector.addGoal(10, new LookAtGoal(this, MobEntity.class, 15.0F));
-		this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, AbstractRaiderEntity.class)).setAlertOthers());
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
-		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillagerEntity.class, false));
-		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolemEntity.class, true));
+		this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.6D));
+		this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 15.0F, 1.0F));
+		this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 15.0F));
+		this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, Raider.class)).setAlertOthers());
+		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 	}
 
 	@Override
 	protected void customServerAiStep() {
-		if (!this.isNoAi() && GroundPathHelper.hasGroundPathNavigation(this)) {
-			boolean flag = ((ServerWorld) this.level).isRaided(this.blockPosition());
-			((GroundPathNavigator) this.getNavigation()).setCanOpenDoors(flag);
+		if (!this.isNoAi() && GoalUtils.hasGroundPathNavigation(this)) {
+			boolean flag = ((ServerLevel) this.level).isRaided(this.blockPosition());
+			((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(flag);
 		}
 
 		super.customServerAiStep();
 	}
 
-	public static MutableAttribute createAttributes() {
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, 24.0D).add(Attributes.ATTACK_DAMAGE, 5.0D).add(Attributes.FOLLOW_RANGE, 32.0D);
+	public static Builder createAttributes() {
+		return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, 24.0D).add(Attributes.ATTACK_DAMAGE, 5.0D).add(Attributes.FOLLOW_RANGE, 32.0D);
 	}
 
 	@Override
@@ -125,15 +125,15 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 	}
 
 	@Override
-	public AbstractIllagerEntity.ArmPose getArmPose() {
-		return this.isAggressive() ? AbstractIllagerEntity.ArmPose.ATTACKING : AbstractIllagerEntity.ArmPose.NEUTRAL;
+	public AbstractIllager.IllagerArmPose getArmPose() {
+		return this.isAggressive() ? AbstractIllager.IllagerArmPose.ATTACKING : AbstractIllager.IllagerArmPose.NEUTRAL;
 	}
 
 	@Nullable
 	@Override
-	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficulty, SpawnReason reason, @Nullable ILivingEntityData data, @Nullable CompoundNBT nbt) {
-		ILivingEntityData ilivingentitydata = super.finalizeSpawn(world, difficulty, reason, data, nbt);
-		((GroundPathNavigator) this.getNavigation()).setCanOpenDoors(true);
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData data, @Nullable CompoundTag nbt) {
+		SpawnGroupData ilivingentitydata = super.finalizeSpawn(world, difficulty, reason, data, nbt);
+		((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(true);
 		this.populateDefaultEquipmentSlots(difficulty);
 		this.populateDefaultEquipmentEnchantments(difficulty);
 		return ilivingentitydata;
@@ -155,13 +155,13 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 			EnchantmentHelper.setEnchantments(map, itemstack);
 		}
 
-		this.setItemSlot(EquipmentSlotType.MAINHAND, itemstack);
+		this.setItemSlot(EquipmentSlot.MAINHAND, itemstack);
 	}
 
 	@Override
 	protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty) {
 		if (this.getCurrentRaid() == null) {
-			this.setItemSlot(EquipmentSlotType.MAINHAND, LostWorldsItems.HAMMER.get().getDefaultInstance());
+			this.setItemSlot(EquipmentSlot.MAINHAND, LostWorldsItems.HAMMER.get().getDefaultInstance());
 		}
 	}
 
@@ -174,7 +174,7 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 	public boolean isAlliedTo(Entity entity) {
 		if (super.isAlliedTo(entity)) {
 			return true;
-		} else if (entity instanceof LivingEntity && ((LivingEntity) entity).getMobType() == CreatureAttribute.ILLAGER) {
+		} else if (entity instanceof LivingEntity && ((LivingEntity) entity).getMobType() == MobType.ILLAGER) {
 			return this.getTeam() == null && entity.getTeam() == null;
 		} else {
 			return false;
@@ -182,7 +182,7 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 	}
 
 	static class FossilPoacherBreakDoorGoal extends BreakDoorGoal {
-		public FossilPoacherBreakDoorGoal(MobEntity entity) {
+		public FossilPoacherBreakDoorGoal(Mob entity) {
 			super(entity, 6, FossilPoacherEntity.DOOR_BREAKING_PREDICATE);
 			this.setFlags(EnumSet.of(Goal.Flag.MOVE));
 		}
@@ -212,13 +212,13 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 		}
 
 		@Override
-		public void playDestroyProgressSound(IWorld world, BlockPos pos) {
-			world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.HOSTILE, 0.5F, 0.9F + entity.random.nextFloat() * 0.2F);
+		public void playDestroyProgressSound(LevelAccessor world, BlockPos pos) {
+			world.playSound((Player) null, pos, SoundEvents.STONE_BREAK, SoundSource.HOSTILE, 0.5F, 0.9F + entity.random.nextFloat() * 0.2F);
 		}
 
 		@Override
-		public void playBreakSound(World world, BlockPos pos) {
-			world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
+		public void playBreakSound(Level world, BlockPos pos) {
+			world.playSound((Player) null, pos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
 		}
 
 		@Override
@@ -236,13 +236,13 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 		}
 
 		@Override
-		public void playDestroyProgressSound(IWorld world, BlockPos pos) {
-			world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.HOSTILE, 0.5F, 0.9F + entity.random.nextFloat() * 0.2F);
+		public void playDestroyProgressSound(LevelAccessor world, BlockPos pos) {
+			world.playSound((Player) null, pos, SoundEvents.STONE_BREAK, SoundSource.HOSTILE, 0.5F, 0.9F + entity.random.nextFloat() * 0.2F);
 		}
 
 		@Override
-		public void playBreakSound(World world, BlockPos pos) {
-			world.playSound((PlayerEntity) null, pos, SoundEvents.STONE_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
+		public void playBreakSound(Level world, BlockPos pos) {
+			world.playSound((Player) null, pos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
 		}
 
 		@Override
@@ -260,13 +260,13 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 		}
 
 		@Override
-		public void playDestroyProgressSound(IWorld world, BlockPos pos) {
-			world.playSound((PlayerEntity) null, pos, SoundEvents.GRAVEL_BREAK, SoundCategory.HOSTILE, 0.5F, 0.9F + entity.random.nextFloat() * 0.2F);
+		public void playDestroyProgressSound(LevelAccessor world, BlockPos pos) {
+			world.playSound((Player) null, pos, SoundEvents.GRAVEL_BREAK, SoundSource.HOSTILE, 0.5F, 0.9F + entity.random.nextFloat() * 0.2F);
 		}
 
 		@Override
-		public void playBreakSound(World world, BlockPos pos) {
-			world.playSound((PlayerEntity) null, pos, SoundEvents.GRAVEL_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
+		public void playBreakSound(Level world, BlockPos pos) {
+			world.playSound((Player) null, pos, SoundEvents.GRAVEL_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
 		}
 
 		@Override
@@ -277,10 +277,10 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 
 	static class BreakBlockGoal extends MoveToBlockGoal {
 		private final Block blockToRemove;
-		private final MobEntity removerMob;
+		private final Mob removerMob;
 		private int ticksSinceReachedGoal;
 
-		public BreakBlockGoal(Block block, CreatureEntity entity, double searchRange, int verticalSearchRange) {
+		public BreakBlockGoal(Block block, PathfinderMob entity, double searchRange, int verticalSearchRange) {
 			super(entity, searchRange, 24, verticalSearchRange);
 			this.blockToRemove = block;
 			this.removerMob = entity;
@@ -318,30 +318,30 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 			this.ticksSinceReachedGoal = 0;
 		}
 
-		public void playDestroyProgressSound(IWorld world, BlockPos pos) {
+		public void playDestroyProgressSound(LevelAccessor world, BlockPos pos) {
 		}
 
-		public void playBreakSound(World world, BlockPos pos) {
+		public void playBreakSound(Level world, BlockPos pos) {
 		}
 
 		@Override
 		public void tick() {
 			super.tick();
-			World world = this.removerMob.level;
+			Level world = this.removerMob.level;
 			BlockPos blockpos = this.removerMob.blockPosition();
 			BlockPos blockpos1 = this.getPosWithBlock(blockpos, world);
 			Random random = this.removerMob.getRandom();
 			if (this.isReachedTarget() && blockpos1 != null) {
 				if (this.ticksSinceReachedGoal > 0) {
-					Vector3d vector3d = this.removerMob.getDeltaMovement();
+					Vec3 vector3d = this.removerMob.getDeltaMovement();
 					this.removerMob.setDeltaMovement(vector3d.x, 0.3D, vector3d.z);
 					if (!world.isClientSide) {
-						((ServerWorld) world).sendParticles(new ItemParticleData(ParticleTypes.ITEM, LostWorldsBlocks.PLANT_FOSSIL.asStack()), (double) blockpos1.getX() + 0.5D, (double) blockpos1.getY() + 0.7D, (double) blockpos1.getZ() + 0.5D, 3, ((double) random.nextFloat() - 0.5D) * 0.08D, ((double) random.nextFloat() - 0.5D) * 0.08D, ((double) random.nextFloat() - 0.5D) * 0.08D, (double) 0.15F);
+						((ServerLevel) world).sendParticles(new ItemParticleOption(ParticleTypes.ITEM, LostWorldsBlocks.PLANT_FOSSIL.asStack()), (double) blockpos1.getX() + 0.5D, (double) blockpos1.getY() + 0.7D, (double) blockpos1.getZ() + 0.5D, 3, ((double) random.nextFloat() - 0.5D) * 0.08D, ((double) random.nextFloat() - 0.5D) * 0.08D, ((double) random.nextFloat() - 0.5D) * 0.08D, (double) 0.15F);
 					}
 				}
 
 				if (this.ticksSinceReachedGoal % 2 == 0) {
-					Vector3d vector3d1 = this.removerMob.getDeltaMovement();
+					Vec3 vector3d1 = this.removerMob.getDeltaMovement();
 					this.removerMob.setDeltaMovement(vector3d1.x, -0.3D, vector3d1.z);
 					if (this.ticksSinceReachedGoal % 6 == 0) {
 						this.playDestroyProgressSound(world, this.blockPos);
@@ -355,7 +355,7 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 							double d3 = random.nextGaussian() * 0.02D;
 							double d1 = random.nextGaussian() * 0.02D;
 							double d2 = random.nextGaussian() * 0.02D;
-							((ServerWorld) world).sendParticles(ParticleTypes.POOF, (double) blockpos1.getX() + 0.5D, (double) blockpos1.getY(), (double) blockpos1.getZ() + 0.5D, 1, d3, d1, d2, (double) 0.15F);
+							((ServerLevel) world).sendParticles(ParticleTypes.POOF, (double) blockpos1.getX() + 0.5D, (double) blockpos1.getY(), (double) blockpos1.getZ() + 0.5D, 1, d3, d1, d2, (double) 0.15F);
 						}
 
 						this.playBreakSound(world, blockpos1);
@@ -367,7 +367,7 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 		}
 
 		@Nullable
-		private BlockPos getPosWithBlock(BlockPos pos, IBlockReader reader) {
+		private BlockPos getPosWithBlock(BlockPos pos, BlockGetter reader) {
 			if (reader.getBlockState(pos).is(this.blockToRemove)) {
 				return pos;
 			} else {
@@ -384,8 +384,8 @@ public class FossilPoacherEntity extends AbstractIllagerEntity {
 		}
 
 		@Override
-		protected boolean isValidTarget(IWorldReader reader, BlockPos pos) {
-			IChunk ichunk = reader.getChunk(pos.getX() >> 4, pos.getZ() >> 4, ChunkStatus.FULL, false);
+		protected boolean isValidTarget(LevelReader reader, BlockPos pos) {
+			ChunkAccess ichunk = reader.getChunk(pos.getX() >> 4, pos.getZ() >> 4, ChunkStatus.FULL, false);
 			if (ichunk == null) {
 				return false;
 			} else {

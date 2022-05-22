@@ -2,14 +2,14 @@ package lostworlds.server.item.armour;
 
 import java.util.function.Supplier;
 
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.LazyValue;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.util.LazyLoadedValue;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 
-public class ArmourTier implements IArmorMaterial {
+public class ArmourTier implements ArmorMaterial {
 	private static final int[] MAX_SLOT_DAMAGE = new int[] { 13, 15, 16, 11 };
 	private final ResourceLocation name;
 	private final int maxDamage;
@@ -18,7 +18,7 @@ public class ArmourTier implements IArmorMaterial {
 	private final Supplier<SoundEvent> equipSound;
 	private final float toughness;
 	private final float knockbackResistance;
-	private final LazyValue<Ingredient> repairItem;
+	private final LazyLoadedValue<Ingredient> repairItem;
 
 	public ArmourTier(ResourceLocation name, int maxDamage, int[] damageReductionArray, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairItem) {
 		this(name, maxDamage, damageReductionArray, enchantability, () -> equipSound, toughness, knockbackResistance, repairItem);
@@ -32,16 +32,16 @@ public class ArmourTier implements IArmorMaterial {
 		this.equipSound = equipSound;
 		this.toughness = toughness;
 		this.knockbackResistance = knockbackResistance;
-		this.repairItem = new LazyValue<>(repairItem);
+		this.repairItem = new LazyLoadedValue<>(repairItem);
 	}
 
 	@Override
-	public int getDurabilityForSlot(EquipmentSlotType type) {
+	public int getDurabilityForSlot(EquipmentSlot type) {
 		return MAX_SLOT_DAMAGE[type.getIndex()] * this.maxDamage;
 	}
 
 	@Override
-	public int getDefenseForSlot(EquipmentSlotType type) {
+	public int getDefenseForSlot(EquipmentSlot type) {
 		return this.damageReductionArray[type.getIndex()];
 	}
 

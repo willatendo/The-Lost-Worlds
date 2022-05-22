@@ -6,31 +6,31 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 import lostworlds.server.item.LostWorldsItems;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.scoreboard.Team;
-import net.minecraft.server.management.PreYggdrasilConverter;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Util;
-import net.minecraft.world.GameRules;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.scores.Team;
+import net.minecraft.server.players.OldUsersConverter;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.Util;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
 
 public abstract class TaggedEntity extends PrehistoricEntity {
-	protected static final DataParameter<Byte> DATA_FLAGS_ID = EntityDataManager.defineId(TaggedEntity.class, DataSerializers.BYTE);
-	protected static final DataParameter<Optional<UUID>> DATA_OWNERUUID_ID = EntityDataManager.defineId(TaggedEntity.class, DataSerializers.OPTIONAL_UUID);
+	protected static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(TaggedEntity.class, EntityDataSerializers.BYTE);
+	protected static final EntityDataAccessor<Optional<UUID>> DATA_OWNERUUID_ID = SynchedEntityData.defineId(TaggedEntity.class, EntityDataSerializers.OPTIONAL_UUID);
 
-	public TaggedEntity(EntityType<? extends TaggedEntity> entity, World world) {
+	public TaggedEntity(EntityType<? extends TaggedEntity> entity, Level world) {
 		super(entity, world);
 	}
 
@@ -42,7 +42,7 @@ public abstract class TaggedEntity extends PrehistoricEntity {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) {
+	public void addAdditionalSaveData(CompoundTag nbt) {
 		super.addAdditionalSaveData(nbt);
 		if (this.getTaggedToUUID() != null) {
 			nbt.putUUID("TaggedTo", this.getTaggedToUUID());
@@ -50,14 +50,14 @@ public abstract class TaggedEntity extends PrehistoricEntity {
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) {
+	public void readAdditionalSaveData(CompoundTag nbt) {
 		super.readAdditionalSaveData(nbt);
 		UUID uuid;
 		if (nbt.hasUUID("TaggedTo")) {
 			uuid = nbt.getUUID("TaggedTo");
 		} else {
 			String s = nbt.getString("TaggedTo");
-			uuid = PreYggdrasilConverter.convertMobOwnerIfNecessary(this.getServer(), s);
+			uuid = OldUsersConverter.convertMobOwnerIfNecessary(this.getServer(), s);
 		}
 
 		if (uuid != null) {
@@ -92,7 +92,7 @@ public abstract class TaggedEntity extends PrehistoricEntity {
 		this.entityData.set(DATA_OWNERUUID_ID, Optional.ofNullable(uuid));
 	}
 
-	public void tag(PlayerEntity entity) {
+	public void tag(Player entity) {
 		this.setTagged(true);
 		this.setTaggedToUUID(entity.getUUID());
 	}
@@ -145,7 +145,7 @@ public abstract class TaggedEntity extends PrehistoricEntity {
 
 	@Override
 	public void die(DamageSource source) {
-		if (!this.level.isClientSide && this.level.getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayerEntity) {
+		if (!this.level.isClientSide && this.level.getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer) {
 			this.getOwner().sendMessage(this.getCombatTracker().getDeathMessage(), Util.NIL_UUID);
 		}
 
@@ -153,7 +153,7 @@ public abstract class TaggedEntity extends PrehistoricEntity {
 	}
 
 	@Override
-	public ActionResultType mobInteract(PlayerEntity entity, Hand hand) {
+	public InteractionResult mobInteract(Player entity, InteractionHand hand) {
 		ItemStack itemstack = entity.getItemInHand(hand);
 		if (this.isTag(itemstack)) {
 			if (itemstack.hasCustomHoverName()) {
@@ -165,19 +165,19 @@ public abstract class TaggedEntity extends PrehistoricEntity {
 
 		if (this.level.isClientSide) {
 			if (this.isTagged() && this.isTaggedBy(entity)) {
-				return ActionResultType.SUCCESS;
+				return InteractionResult.SUCCESS;
 			} else {
-				return !this.isFood(itemstack) || !(this.getHealth() < this.getMaxHealth()) && this.isTagged() ? ActionResultType.PASS : ActionResultType.SUCCESS;
+				return !this.isFood(itemstack) || !(this.getHealth() < this.getMaxHealth()) && this.isTagged() ? InteractionResult.PASS : InteractionResult.SUCCESS;
 			}
 		} else if (this.isTag(itemstack)) {
 			this.usePlayerItem(entity, itemstack);
 			this.tag(entity);
 			this.level.broadcastEntityEvent(this, (byte) 6);
 			this.setPersistenceRequired();
-			return ActionResultType.CONSUME;
+			return InteractionResult.CONSUME;
 		}
 
-		ActionResultType actionresulttype1 = super.mobInteract(entity, hand);
+		InteractionResult actionresulttype1 = super.mobInteract(entity, hand);
 		if (actionresulttype1.consumesAction()) {
 			this.setPersistenceRequired();
 		}

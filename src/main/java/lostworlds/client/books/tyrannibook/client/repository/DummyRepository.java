@@ -6,8 +6,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import lostworlds.client.books.tyrannibook.client.data.SectionData;
-import net.minecraft.resources.IResource;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.resources.ResourceLocation;
 
 public class DummyRepository extends TyrannobookRepository {
 	@Override
@@ -21,7 +21,7 @@ public class DummyRepository extends TyrannobookRepository {
 	}
 
 	@Override
-	public IResource getResource(@Nullable ResourceLocation loc) {
+	public Resource getResource(@Nullable ResourceLocation loc) {
 		return null;
 	}
 
@@ -31,7 +31,7 @@ public class DummyRepository extends TyrannobookRepository {
 	}
 
 	@Override
-	public String resourceToString(@Nullable IResource resource, boolean skipComments) {
+	public String resourceToString(@Nullable Resource resource, boolean skipComments) {
 		return "";
 	}
 }

@@ -6,22 +6,22 @@ import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.container.FeedingTroughContainer;
 import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.entity.terrestrial.PrehistoricEntity;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.LockableLootTileEntity;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.level.block.entity.TickableBlockEntity;
+import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
+import net.minecraft.core.NonNullList;
+import net.minecraft.network.chat.Component;
 
-public class FeedingTroughTileEntity extends LockableLootTileEntity implements INamedContainerProvider, ITickableTileEntity {
+public class FeedingTroughTileEntity extends RandomizableContainerBlockEntity implements MenuProvider, TickableBlockEntity {
 	protected NonNullList<ItemStack> items = NonNullList.withSize(1, ItemStack.EMPTY);
 
 	public FeedingTroughTileEntity() {
@@ -44,15 +44,15 @@ public class FeedingTroughTileEntity extends LockableLootTileEntity implements I
 	}
 
 	@Override
-	public void load(BlockState state, CompoundNBT nbt) {
+	public void load(BlockState state, CompoundTag nbt) {
 		super.load(state, nbt);
 		this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-		ItemStackHelper.loadAllItems(nbt, this.items);
+		ContainerHelper.loadAllItems(nbt, this.items);
 	}
 
 	@Override
-	public CompoundNBT save(CompoundNBT nbt) {
-		ItemStackHelper.saveAllItems(nbt, this.items);
+	public CompoundTag save(CompoundTag nbt) {
+		ContainerHelper.saveAllItems(nbt, this.items);
 		return super.save(nbt);
 	}
 
@@ -62,7 +62,7 @@ public class FeedingTroughTileEntity extends LockableLootTileEntity implements I
 
 	@Override
 	public ItemStack removeItem(int index, int count) {
-		return ItemStackHelper.removeItem(this.items, index, count);
+		return ContainerHelper.removeItem(this.items, index, count);
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class FeedingTroughTileEntity extends LockableLootTileEntity implements I
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity entity) {
+	public boolean stillValid(Player entity) {
 		return !entity.isSpectator();
 	}
 
@@ -110,37 +110,37 @@ public class FeedingTroughTileEntity extends LockableLootTileEntity implements I
 	}
 
 	@Override
-	public SUpdateTileEntityPacket getUpdatePacket() {
-		CompoundNBT update = getUpdateTag();
+	public ClientboundBlockEntityDataPacket getUpdatePacket() {
+		CompoundTag update = getUpdateTag();
 		int data = 0;
-		return new SUpdateTileEntityPacket(this.worldPosition, data, update);
+		return new ClientboundBlockEntityDataPacket(this.worldPosition, data, update);
 	}
 
 	@Override
-	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-		CompoundNBT update = pkt.getTag();
+	public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+		CompoundTag update = pkt.getTag();
 		handleUpdateTag(this.getBlockState(), update);
 	}
 
 	@Override
-	public CompoundNBT getUpdateTag() {
-		CompoundNBT nbt = new CompoundNBT();
+	public CompoundTag getUpdateTag() {
+		CompoundTag nbt = new CompoundTag();
 		save(nbt);
 		return nbt;
 	}
 
 	@Override
-	public void handleUpdateTag(BlockState state, CompoundNBT nbt) {
+	public void handleUpdateTag(BlockState state, CompoundTag nbt) {
 		load(state, nbt);
 	}
 
 	@Override
-	protected ITextComponent getDefaultName() {
+	protected Component getDefaultName() {
 		return LostWorldsUtils.tTC("container", "feeding_trough");
 	}
 
 	@Override
-	protected Container createMenu(int windowID, PlayerInventory playerInventory) {
+	protected AbstractContainerMenu createMenu(int windowID, Inventory playerInventory) {
 		return new FeedingTroughContainer(LostWorldsContainers.FEEDING_TROUGH_CONTAINER.get(), windowID, playerInventory, this);
 	}
 }

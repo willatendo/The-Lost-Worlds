@@ -11,8 +11,8 @@ import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 
 import lostworlds.server.container.recipes.FossilGrinderRecipe;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.resources.ResourceLocation;
 
 @ZenRegister
 @ZenCodeType.Name("mods.lostworlds.fossil_grinder")
@@ -30,7 +30,7 @@ public class FossilGrinderRecipeManager implements IRecipeManager {
 	}
 
 	@Override
-	public IRecipeType getRecipeType() {
+	public RecipeType getRecipeType() {
 		return LostWorldsRecipes.FOSSIL_GRINDER_RECIPE;
 	}
 }

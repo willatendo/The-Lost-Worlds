@@ -1,10 +1,10 @@
 package lostworlds.server.dimension.permian;
 
 import lostworlds.server.biome.BiomeKeys;
-import net.minecraft.world.gen.INoiseRandom;
-import net.minecraft.world.gen.layer.traits.IC0Transformer;
+import net.minecraft.world.level.newbiome.context.Context;
+import net.minecraft.world.level.newbiome.layer.traits.C0Transformer;
 
-public final class PermianBiomeLayer implements IC0Transformer {
+public final class PermianBiomeLayer implements C0Transformer {
 	private final int[] landIds;
 
 	public PermianBiomeLayer() {
@@ -12,7 +12,7 @@ public final class PermianBiomeLayer implements IC0Transformer {
 	}
 
 	@Override
-	public int apply(INoiseRandom iNoiseRandom, int center) {
+	public int apply(Context iNoiseRandom, int center) {
 		if (PermianLayerUtil.isLand(center)) {
 			return landIds[iNoiseRandom.nextRandom(landIds.length)];
 		}

@@ -1,12 +1,12 @@
 package lostworlds.server.container.slot;
 
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.world.Container;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public class EggSlot extends Slot {
-	public EggSlot(IInventory inventory, int x, int z, int y) {
+	public EggSlot(Container inventory, int x, int z, int y) {
 		super(inventory, x, z, y);
 	}
 

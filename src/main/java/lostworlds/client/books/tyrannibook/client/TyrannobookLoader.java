@@ -29,11 +29,11 @@ import lostworlds.client.books.tyrannibook.client.repository.TyrannobookReposito
 import lostworlds.client.books.tyranninetwork.Tyranninetwork;
 import lostworlds.client.books.tyranninetwork.packets.UpdateHeldPagePacket;
 import lostworlds.client.books.tyranninetwork.packets.UpdateLecturnPagePacket;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.resources.IResourceManager;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.core.BlockPos;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -98,7 +98,7 @@ public class TyrannobookLoader implements ISelectiveResourceReloadListener {
 		return info;
 	}
 
-	public static void updateSavedPage(@Nullable PlayerEntity player, Hand hand, String page) {
+	public static void updateSavedPage(@Nullable Player player, InteractionHand hand, String page) {
 		if (player != null) {
 			ItemStack item = player.getItemInHand(hand);
 			if (!item.isEmpty()) {
@@ -113,7 +113,7 @@ public class TyrannobookLoader implements ISelectiveResourceReloadListener {
 	}
 
 	@Override
-	public void onResourceManagerReload(IResourceManager resourceManager, Predicate<IResourceType> resourcePredicate) {
+	public void onResourceManagerReload(ResourceManager resourceManager, Predicate<IResourceType> resourcePredicate) {
 		books.forEach((s, bookData) -> bookData.reset());
 	}
 }

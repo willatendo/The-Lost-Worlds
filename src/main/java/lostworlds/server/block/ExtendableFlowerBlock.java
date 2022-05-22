@@ -4,25 +4,25 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.Tags;
 
 public abstract class ExtendableFlowerBlock extends Block {
 	private static final VoxelShape SHAPE = Block.box(6, 0, 6, 10, 8, 10);
@@ -38,12 +38,12 @@ public abstract class ExtendableFlowerBlock extends Block {
 	public abstract ExtendableStemBlock stem();
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
+	public VoxelShape getShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context) {
 		return SHAPE;
 	}
 
 	@Override
-	public void tick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
+	public void tick(BlockState state, ServerLevel world, BlockPos pos, Random rand) {
 		if (!state.canSurvive(world, pos)) {
 			world.destroyBlock(pos, true);
 		}
@@ -55,24 +55,24 @@ public abstract class ExtendableFlowerBlock extends Block {
 	}
 
 	@Override
-	public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
+	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random rand) {
 		BlockPos blockpos = pos.above();
-		if (world.isEmptyBlock(blockpos) && blockpos.getY() < 256) {
+		if (level.isEmptyBlock(blockpos) && blockpos.getY() < 256) {
 			int i = state.getValue(AGE);
-			if (i < 2 && ForgeHooks.onCropsGrowPre(world, blockpos, state, true)) {
+			if (i < 2 && ForgeHooks.onCropsGrowPre(level, blockpos, state, true)) {
 				boolean flag = false;
 				boolean flag1 = false;
-				BlockState blockstate = world.getBlockState(pos.below());
+				BlockState blockstate = level.getBlockState(pos.below());
 				Block block = blockstate.getBlock();
-				if (block.is(Tags.Blocks.DIRT)) {
+				if (blockstate.is(BlockTags.DIRT)) {
 					flag = true;
 				} else if (block == this.stem()) {
 					int j = 1;
 
 					for (int k = 0; k < 4; ++k) {
-						Block block1 = world.getBlockState(pos.below(j + 1)).getBlock();
+						Block block1 = level.getBlockState(pos.below(j + 1)).getBlock();
 						if (block1 != this.stem()) {
-							if (block1.is(Tags.Blocks.DIRT)) {
+							if (block1.defaultBlockState().is(BlockTags.DIRT)) {
 								flag1 = true;
 							}
 							break;
@@ -84,13 +84,13 @@ public abstract class ExtendableFlowerBlock extends Block {
 					if (j < 2 || j <= rand.nextInt(flag1 ? 5 : 4)) {
 						flag = true;
 					}
-				} else if (blockstate.isAir(world, pos.below())) {
+				} else if (blockstate.isAir()) {
 					flag = true;
 				}
 
-				if (flag && allNeighborsEmpty(world, blockpos, (Direction) null) && world.isEmptyBlock(pos.above(2))) {
-					world.setBlock(pos, this.stem().getStateForPlacement(world, pos), 2);
-					this.placeGrownFlower(world, blockpos, i);
+				if (flag && allNeighborsEmpty(level, blockpos, (Direction) null) && level.isEmptyBlock(pos.above(2))) {
+					level.setBlock(pos, this.stem().getStateForPlacement(level, pos), 2);
+					this.placeGrownFlower(level, blockpos, i);
 				} else if (i < 4) {
 					int l = rand.nextInt(4);
 					if (flag1) {
@@ -102,36 +102,36 @@ public abstract class ExtendableFlowerBlock extends Block {
 					for (int i1 = 0; i1 < l; ++i1) {
 						Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(rand);
 						BlockPos blockpos1 = pos.relative(direction);
-						if (world.isEmptyBlock(blockpos1) && world.isEmptyBlock(blockpos1.below()) && allNeighborsEmpty(world, blockpos1, direction.getOpposite())) {
-							this.placeGrownFlower(world, blockpos1, i + 1);
+						if (level.isEmptyBlock(blockpos1) && level.isEmptyBlock(blockpos1.below()) && allNeighborsEmpty(level, blockpos1, direction.getOpposite())) {
+							this.placeGrownFlower(level, blockpos1, i + 1);
 							flag2 = true;
 						}
 					}
 
 					if (flag2) {
-						world.setBlock(pos, this.stem().getStateForPlacement(world, pos), 2);
+						level.setBlock(pos, this.stem().getStateForPlacement(level, pos), 2);
 					} else {
-						this.placeDeadFlower(world, pos);
+						this.placeDeadFlower(level, pos);
 					}
 				} else {
-					this.placeDeadFlower(world, pos);
+					this.placeDeadFlower(level, pos);
 				}
-				ForgeHooks.onCropsGrowPost(world, pos, state);
+				ForgeHooks.onCropsGrowPost(level, pos, state);
 			}
 		}
 	}
 
-	private void placeGrownFlower(World world, BlockPos pos, int age) {
+	private void placeGrownFlower(Level world, BlockPos pos, int age) {
 		world.setBlock(pos, this.defaultBlockState().setValue(AGE, Integer.valueOf(age)), 2);
 		world.levelEvent(1033, pos, 0);
 	}
 
-	private void placeDeadFlower(World world, BlockPos pos) {
+	private void placeDeadFlower(Level world, BlockPos pos) {
 		world.setBlock(pos, this.defaultBlockState().setValue(AGE, Integer.valueOf(2)), 2);
 		world.levelEvent(1034, pos, 0);
 	}
 
-	private static boolean allNeighborsEmpty(IWorldReader reader, BlockPos pos, @Nullable Direction direction) {
+	private static boolean allNeighborsEmpty(LevelReader reader, BlockPos pos, @Nullable Direction direction) {
 		for (Direction directions : Direction.Plane.HORIZONTAL) {
 			if (directions != direction && !reader.isEmptyBlock(pos.relative(directions))) {
 				return false;
@@ -142,19 +142,19 @@ public abstract class ExtendableFlowerBlock extends Block {
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction direction, BlockState newstate, IWorld world, BlockPos pos, BlockPos newpos) {
+	public BlockState updateShape(BlockState state, Direction direction, BlockState newstate, LevelAccessor world, BlockPos pos, BlockPos newpos) {
 		if (direction != Direction.UP && !state.canSurvive(world, pos)) {
-			world.getBlockTicks().scheduleTick(pos, this, 1);
+			world.scheduleTick(pos, this, 1);
 		}
 
 		return super.updateShape(state, direction, newstate, world, pos, newpos);
 	}
 
 	@Override
-	public boolean canSurvive(BlockState sate, IWorldReader reader, BlockPos pos) {
+	public boolean canSurvive(BlockState sate, LevelReader reader, BlockPos pos) {
 		BlockState blockstate = reader.getBlockState(pos.below());
-		if (blockstate.getBlock() != this.stem() && !blockstate.is(Tags.Blocks.DIRT)) {
-			if (!blockstate.isAir(reader, pos.below())) {
+		if (blockstate.getBlock() != this.stem() && !blockstate.is(BlockTags.DIRT)) {
+			if (!blockstate.isAir()) {
 				return false;
 			} else {
 				boolean flag = false;
@@ -167,7 +167,7 @@ public abstract class ExtendableFlowerBlock extends Block {
 						}
 
 						flag = true;
-					} else if (!blockstate1.isAir(reader, pos.relative(direction))) {
+					} else if (!blockstate1.isAir()) {
 						return false;
 					}
 				}
@@ -180,16 +180,16 @@ public abstract class ExtendableFlowerBlock extends Block {
 	}
 
 	@Override
-	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(AGE);
 	}
 
-	public static void generatePlant(IWorld world, BlockPos pos, Random rand, int maxHeight) {
+	public static void generatePlant(LevelAccessor world, BlockPos pos, Random rand, int maxHeight) {
 		world.setBlock(pos, ((ExtendableStemBlock) stem).getStateForPlacement(world, pos), 2);
 		growTreeRecursive(world, pos, rand, pos, maxHeight, 0);
 	}
 
-	private static void growTreeRecursive(IWorld world, BlockPos pos, Random rand, BlockPos newpos, int maxHeight, int greater) {
+	private static void growTreeRecursive(LevelAccessor world, BlockPos pos, Random rand, BlockPos newpos, int maxHeight, int greater) {
 		ExtendableStemBlock block = (ExtendableStemBlock) stem;
 		int i = rand.nextInt(4) + 1;
 		if (greater == 0) {
@@ -232,7 +232,7 @@ public abstract class ExtendableFlowerBlock extends Block {
 	}
 
 	@Override
-	public void onProjectileHit(World world, BlockState state, BlockRayTraceResult result, ProjectileEntity entity) {
+	public void onProjectileHit(Level world, BlockState state, BlockHitResult result, Projectile entity) {
 		if (entity.getType().is(EntityTypeTags.IMPACT_PROJECTILES)) {
 			BlockPos blockpos = result.getBlockPos();
 			world.destroyBlock(blockpos, true, entity);

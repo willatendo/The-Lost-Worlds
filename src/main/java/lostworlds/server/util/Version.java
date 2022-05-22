@@ -1,8 +1,8 @@
 package lostworlds.server.util;
 
 import lostworlds.server.LostWorldsUtils;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.ChatFormatting;
 
 public enum Version {
 	DEV,
@@ -10,15 +10,15 @@ public enum Version {
 	YOUTUBE,
 	PUBLIC;
 
-	public static ITextComponent getMessage(Version version, String versionString) {
+	public static Component getMessage(Version version, String versionString) {
 		if (version == DEV) {
-			return LostWorldsUtils.cTCA("event", "load_dev_build", versionString, TextFormatting.DARK_RED, TextFormatting.BOLD);
+			return LostWorldsUtils.cTCA("event", "load_dev_build", versionString, ChatFormatting.DARK_RED, ChatFormatting.BOLD);
 		} else if (version == SNAPSHOT) {
-			return LostWorldsUtils.cTCA("event", "load_snapshot_build", versionString, TextFormatting.AQUA);
+			return LostWorldsUtils.cTCA("event", "load_snapshot_build", versionString, ChatFormatting.AQUA);
 		} else if (version == YOUTUBE) {
-			return LostWorldsUtils.cTCA("event", "load_youtube_build", versionString, TextFormatting.RED);
+			return LostWorldsUtils.cTCA("event", "load_youtube_build", versionString, ChatFormatting.RED);
 		} else {
-			return LostWorldsUtils.cTCA("event", "load", versionString, TextFormatting.GOLD, TextFormatting.ITALIC);
+			return LostWorldsUtils.cTCA("event", "load", versionString, ChatFormatting.GOLD, ChatFormatting.ITALIC);
 		}
 	}
 

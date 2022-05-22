@@ -1,25 +1,22 @@
 package lostworlds.server.jei.categories;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.jei.LostWorldsJeiConstants;
 import lostworlds.server.jei.recipe.WaterFuelRecipe;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.client.gui.Font;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public class WaterFuelCategory implements IRecipeCategory<WaterFuelRecipe> {
 	public static final ResourceLocation TEXTURE_LOCATION = LostWorldsUtils.rL("textures/gui/lost_worlds_backgrounds.png");
@@ -32,18 +29,18 @@ public class WaterFuelCategory implements IRecipeCategory<WaterFuelRecipe> {
 
 	public WaterFuelCategory(IGuiHelper helper) {
 		Minecraft minecraft = Minecraft.getInstance();
-		FontRenderer fontRenderer = minecraft.font;
-		ITextComponent smeltCountText = WaterFuelRecipe.createSmeltCountText(100000);
+		Font fontRenderer = minecraft.font;
+		Component smeltCountText = WaterFuelRecipe.createSmeltCountText(100000);
 		int stringWidth = fontRenderer.width(smeltCountText.getString());
 		this.background = helper.drawableBuilder(TEXTURE_LOCATION, 0, 18, 18, 35).addPadding(0, 0, 0, stringWidth + 20).build();
-		this.icon = helper.createDrawableIngredient(new ItemStack(Items.WATER_BUCKET));
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, new ItemStack(Items.WATER_BUCKET));
 		this.bucket = helper.createDrawable(TEXTURE_LOCATION, 82, 0, 22, 22);
 		this.animatedBucket = helper.createAnimatedDrawable(this.bucket, 300, IDrawableAnimated.StartDirection.TOP, true);
 	}
 
 	@Override
 	public ResourceLocation getUid() {
-		return LostWorldsJeiConstants.WATER_FUEL_CATEGORY;
+		return LostWorldsJeiConstants.WATER_FUEL_CATEGORY.getUid();
 	}
 
 	@Override
@@ -52,8 +49,8 @@ public class WaterFuelCategory implements IRecipeCategory<WaterFuelRecipe> {
 	}
 
 	@Override
-	public String getTitle() {
-		return LostWorldsUtils.tTC("jei", "fossil_cleaner_fuel.title").getString();
+	public Component getTitle() {
+		return LostWorldsUtils.tTC("jei", "fossil_cleaner_fuel.title");
 	}
 
 	@Override
@@ -66,25 +63,25 @@ public class WaterFuelCategory implements IRecipeCategory<WaterFuelRecipe> {
 		return this.icon;
 	}
 
-	@Override
-	public void setIngredients(WaterFuelRecipe recipe, IIngredients ingredients) {
-		ingredients.setInputs(VanillaTypes.ITEM, recipe.getInputs());
-	}
+//	@Override
+//	public void setIngredients(WaterFuelRecipe recipe, IIngredients ingredients) {
+//		ingredients.setInputs(VanillaTypes.ITEM, recipe.getInputs());
+//	}
+//
+//	@Override
+//	public void setRecipe(IRecipeLayout recipeLayout, WaterFuelRecipe recipe, IIngredients ingredients) {
+//		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
+//
+//		guiItemStacks.init(fuelSlot, true, 0, 18);
+//		guiItemStacks.set(ingredients);
+//	}
 
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, WaterFuelRecipe recipe, IIngredients ingredients) {
-		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
-
-		guiItemStacks.init(fuelSlot, true, 0, 18);
-		guiItemStacks.set(ingredients);
-	}
-
-	@Override
-	public void draw(WaterFuelRecipe recipe, MatrixStack matrixStack, double mouseX, double mouseY) {
+	public void draw(WaterFuelRecipe recipe, PoseStack matrixStack, double mouseX, double mouseY) {
 		IDrawableAnimated flame = recipe.getBucket();
 		flame.draw(matrixStack, 0, 0);
 		Minecraft minecraft = Minecraft.getInstance();
-		ITextComponent smeltCountText = recipe.getExtractCountText();
+		Component smeltCountText = recipe.getExtractCountText();
 		minecraft.font.draw(matrixStack, smeltCountText, 24, 13, 0xFF808080);
 	}
 }

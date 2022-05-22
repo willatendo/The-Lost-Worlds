@@ -1,30 +1,34 @@
 package lostworlds.server.item;
 
 import java.util.Objects;
+import java.util.function.Consumer;
 
 import javax.annotation.Nullable;
 
 import lostworlds.server.entity.fossil.FossilEntity;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.nbt.CompoundNBT;
+import lostworlds.server.entity.utils.enums.DinoTypes;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.RayTraceContext;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraftforge.client.IItemRenderProperties;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.common.util.NonNullSupplier;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -45,13 +49,30 @@ public class FossilItem extends Item implements IAnimatable {
 		return PlayState.CONTINUE;
 	}
 
+	private final DinoTypes type;
+	private final String part;
 	private final Lazy<? extends EntityType<?>> entityTypeSupplier;
 	private final boolean isPlastered;
 
-	public FossilItem(Properties properties, NonNullSupplier<? extends EntityType<FossilEntity>> entityTypeSupplier, boolean isPlastered) {
+	public FossilItem(Properties properties, DinoTypes type, String part, NonNullSupplier<? extends EntityType<FossilEntity>> entityTypeSupplier, boolean isPlastered) {
 		super(properties);
+		this.type = type;
+		this.part = part;
 		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
 		this.isPlastered = isPlastered;
+	}
+
+	@Override
+	public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+		super.initializeClient(consumer);
+		if (!this.isPlastered) {
+			consumer.accept(new IItemRenderProperties() {
+				@Override
+				public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+					return FossilItem.this.type.getISTER(FossilItem.this.part);
+				}
+			});
+		}
 	}
 
 	@Override
@@ -65,16 +86,16 @@ public class FossilItem extends Item implements IAnimatable {
 	}
 
 	@Override
-	public ActionResultType useOn(ItemUseContext cpmtext) {
-		World world = cpmtext.getLevel();
+	public InteractionResult useOn(UseOnContext context) {
+		Level world = context.getLevel();
 		if (this.isPlastered) {
-			return ActionResultType.FAIL;
-		} else if (!(world instanceof ServerWorld)) {
-			return ActionResultType.SUCCESS;
+			return InteractionResult.FAIL;
+		} else if (!(world instanceof ServerLevel)) {
+			return InteractionResult.SUCCESS;
 		} else {
-			ItemStack itemstack = cpmtext.getItemInHand();
-			BlockPos blockpos = cpmtext.getClickedPos();
-			Direction direction = cpmtext.getClickedFace();
+			ItemStack itemstack = context.getItemInHand();
+			BlockPos blockpos = context.getClickedPos();
+			Direction direction = context.getClickedFace();
 			BlockState blockstate = world.getBlockState(blockpos);
 			BlockPos blockpos1;
 			if (blockstate.getCollisionShape(world, blockpos).isEmpty()) {
@@ -84,50 +105,50 @@ public class FossilItem extends Item implements IAnimatable {
 			}
 
 			EntityType<?> entitytype = this.getType(itemstack.getTag());
-			if (entitytype.spawn((ServerWorld) world, itemstack, cpmtext.getPlayer(), blockpos1, SpawnReason.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) {
+			if (entitytype.spawn((ServerLevel) world, itemstack, context.getPlayer(), blockpos1, MobSpawnType.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) {
 				itemstack.shrink(1);
 			}
 
-			return ActionResultType.CONSUME;
+			return InteractionResult.CONSUME;
 		}
 	}
 
 	@Override
-	public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack itemstack = player.getItemInHand(hand);
-		RayTraceResult raytraceresult = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
+		HitResult raytraceresult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.SOURCE_ONLY);
 		if (!this.isPlastered) {
-			return ActionResult.fail(itemstack);
-		} else if (raytraceresult.getType() != RayTraceResult.Type.BLOCK) {
-			return ActionResult.pass(itemstack);
-		} else if (!(world instanceof ServerWorld)) {
-			return ActionResult.success(itemstack);
+			return InteractionResultHolder.fail(itemstack);
+		} else if (raytraceresult.getType() != HitResult.Type.BLOCK) {
+			return InteractionResultHolder.pass(itemstack);
+		} else if (!(level instanceof ServerLevel)) {
+			return InteractionResultHolder.success(itemstack);
 		} else {
-			BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult) raytraceresult;
+			BlockHitResult blockraytraceresult = (BlockHitResult) raytraceresult;
 			BlockPos blockpos = blockraytraceresult.getBlockPos();
-			if (!(world.getBlockState(blockpos).getBlock() instanceof FlowingFluidBlock)) {
-				return ActionResult.pass(itemstack);
-			} else if (world.mayInteract(player, blockpos) && player.mayUseItemAt(blockpos, blockraytraceresult.getDirection(), itemstack)) {
+			if (!(level.getBlockState(blockpos).getBlock() instanceof LiquidBlock)) {
+				return InteractionResultHolder.pass(itemstack);
+			} else if (level.mayInteract(player, blockpos) && player.mayUseItemAt(blockpos, blockraytraceresult.getDirection(), itemstack)) {
 				EntityType<?> entitytype = this.getType(itemstack.getTag());
-				if (entitytype.spawn((ServerWorld) world, itemstack, player, blockpos, SpawnReason.SPAWN_EGG, false, false) == null) {
-					return ActionResult.pass(itemstack);
+				if (entitytype.spawn((ServerLevel) level, itemstack, player, blockpos, MobSpawnType.SPAWN_EGG, false, false) == null) {
+					return InteractionResultHolder.pass(itemstack);
 				} else {
-					if (!player.abilities.instabuild) {
+					if (!player.isCreative()) {
 						itemstack.shrink(1);
 					}
 
 					player.awardStat(Stats.ITEM_USED.get(this));
-					return ActionResult.consume(itemstack);
+					return InteractionResultHolder.consume(itemstack);
 				}
 			} else {
-				return ActionResult.fail(itemstack);
+				return InteractionResultHolder.fail(itemstack);
 			}
 		}
 	}
 
-	public EntityType<?> getType(@Nullable CompoundNBT nbt) {
-		if (nbt != null && nbt.contains("EntityTag", 10)) {
-			CompoundNBT compoundnbt = nbt.getCompound("EntityTag");
+	public EntityType<?> getType(@Nullable CompoundTag tag) {
+		if (tag != null && tag.contains("EntityTag", 10)) {
+			CompoundTag compoundnbt = tag.getCompound("EntityTag");
 			if (compoundnbt.contains("id", 8)) {
 				return EntityType.byString(compoundnbt.getString("id")).orElse(this.entityTypeSupplier.get());
 			}

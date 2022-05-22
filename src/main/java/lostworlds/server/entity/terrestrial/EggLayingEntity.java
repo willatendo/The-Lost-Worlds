@@ -2,23 +2,23 @@ package lostworlds.server.entity.terrestrial;
 
 import java.util.Random;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 
 public abstract class EggLayingEntity extends TaggedEntity {
 	public final Random random = new Random();
-	protected static final DataParameter<BlockPos> HOME_POS = EntityDataManager.defineId(EggLayingEntity.class, DataSerializers.BLOCK_POS);
-	protected static final DataParameter<Boolean> HAS_EGG = EntityDataManager.defineId(EggLayingEntity.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> GOING_HOME = EntityDataManager.defineId(EggLayingEntity.class, DataSerializers.BOOLEAN);
+	protected static final EntityDataAccessor<BlockPos> HOME_POS = SynchedEntityData.defineId(EggLayingEntity.class, EntityDataSerializers.BLOCK_POS);
+	protected static final EntityDataAccessor<Boolean> HAS_EGG = SynchedEntityData.defineId(EggLayingEntity.class, EntityDataSerializers.BOOLEAN);
+	protected static final EntityDataAccessor<Boolean> GOING_HOME = SynchedEntityData.defineId(EggLayingEntity.class, EntityDataSerializers.BOOLEAN);
 	private boolean hasTerritory;
 	public int layEggCounter;
 
-	public EggLayingEntity(EntityType<? extends EggLayingEntity> entity, World world) {
+	public EggLayingEntity(EntityType<? extends EggLayingEntity> entity, Level world) {
 		super(entity, world);
 	}
 
@@ -67,7 +67,7 @@ public abstract class EggLayingEntity extends TaggedEntity {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT nbt) {
+	public void addAdditionalSaveData(CompoundTag nbt) {
 		super.addAdditionalSaveData(nbt);
 		nbt.putBoolean("HasTerritory", this.hasTerritory());
 		nbt.putInt("HomePosX", this.getHomePos().getX());
@@ -78,7 +78,7 @@ public abstract class EggLayingEntity extends TaggedEntity {
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT nbt) {
+	public void readAdditionalSaveData(CompoundTag nbt) {
 		int x = nbt.getInt("HomePosX");
 		int y = nbt.getInt("HomePosY");
 		int z = nbt.getInt("HomePosZ");

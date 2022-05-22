@@ -1,17 +1,17 @@
 package lostworlds.server.container.recipes;
 
 import lostworlds.server.block.LostWorldsBlocks;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.world.Container;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 
-public class DNAExtractorRecipe implements IRecipe<IInventory> {
+public class DNAExtractorRecipe implements Recipe<Container> {
 	private final ResourceLocation id;
 	private Ingredient input;
 	private Ingredient vile;
@@ -25,7 +25,7 @@ public class DNAExtractorRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public boolean matches(IInventory inv, World worldIn) {
+	public boolean matches(Container inv, Level worldIn) {
 		if (this.input.test(inv.getItem(0))) {
 			return true;
 		}
@@ -36,7 +36,7 @@ public class DNAExtractorRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public ItemStack assemble(IInventory inv) {
+	public ItemStack assemble(Container inv) {
 		return this.output;
 	}
 
@@ -61,7 +61,7 @@ public class DNAExtractorRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer() {
+	public RecipeSerializer<?> getSerializer() {
 		return LostWorldsRecipes.DNA_EXTRACTOR_SERIALIZER.get();
 	}
 
@@ -79,7 +79,7 @@ public class DNAExtractorRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public IRecipeType<?> getType() {
+	public RecipeType<?> getType() {
 		return LostWorldsRecipes.DNA_EXTRACTOR_RECIPE;
 	}
 

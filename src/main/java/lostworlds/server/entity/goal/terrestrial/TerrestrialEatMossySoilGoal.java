@@ -5,19 +5,19 @@ import java.util.function.Predicate;
 
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.pattern.BlockStateMatcher;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.ForgeEventFactory;
 
 public class TerrestrialEatMossySoilGoal extends Goal {
-	private static final Predicate<BlockState> IS_TALL_GRASS = BlockStateMatcher.forBlock(LostWorldsBlocks.MOSSY_SOIL.get());
+	private static final Predicate<BlockState> IS_TALL_GRASS = BlockStatePredicate.forBlock(LostWorldsBlocks.MOSSY_SOIL.get());
 	private final EggLayingEntity entity;
-	private final World level;
+	private final Level level;
 
 	public TerrestrialEatMossySoilGoal(EggLayingEntity entity) {
 		this.entity = entity;

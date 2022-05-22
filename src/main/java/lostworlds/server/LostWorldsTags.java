@@ -3,7 +3,8 @@ package lostworlds.server;
 import static lostworlds.LostWorldsMod.getRegistrate;
 import static lostworlds.server.LostWorldsTags.NameSpace.MOD;
 
-import java.util.function.Function;
+import java.util.Collections;
+import java.util.Locale;
 
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
@@ -11,45 +12,55 @@ import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.EntityType;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public class LostWorldsTags {
 	private static final LostWorldsRegistrate REGISTRATE = getRegistrate();
 
-	public static <T> ITag.INamedTag<T> tag(Function<ResourceLocation, ITag.INamedTag<T>> wrapperFactory, String namespace, String path) {
-		return wrapperFactory.apply(new ResourceLocation(namespace, path));
+	public static <T extends IForgeRegistryEntry<T>> TagKey<T> optionalTag(IForgeRegistry<T> registry, ResourceLocation id) {
+		return registry.tags().createOptionalTagKey(id, Collections.emptySet());
 	}
 
-	public static <T> ITag.INamedTag<T> forgeTag(Function<ResourceLocation, ITag.INamedTag<T>> wrapperFactory, String path) {
-		return tag(wrapperFactory, "forge", path);
+	public static <T extends IForgeRegistryEntry<T>> TagKey<T> forgeTag(IForgeRegistry<T> registry, String path) {
+		return optionalTag(registry, new ResourceLocation("forge", path));
 	}
 
-	public static ITag.INamedTag<Block> forgeBlockTag(String path) {
-		return forgeTag(BlockTags::createOptional, path);
+	public static TagKey<Block> forgeBlockTag(String path) {
+		return forgeTag(ForgeRegistries.BLOCKS, path);
 	}
 
-	public static ITag.INamedTag<Item> forgeItemTag(String path) {
-		return forgeTag(ItemTags::createOptional, path);
+	public static TagKey<Item> forgeItemTag(String path) {
+		return forgeTag(ForgeRegistries.ITEMS, path);
 	}
 
-	public static <T extends Block, P> NonNullFunction<BlockBuilder<T, P>, ItemBuilder<BlockItem, BlockBuilder<T, P>>> tagBlockAndItem(String path) {
-		return b -> b.tag(forgeBlockTag(path)).item().tag(forgeItemTag(path));
+	public static <T extends Block, P> NonNullFunction<BlockBuilder<T, P>, ItemBuilder<BlockItem, BlockBuilder<T, P>>> tagBlockAndItem(String... path) {
+		return b -> {
+			for (String p : path) {
+				b.tag(forgeBlockTag(p));
+			}
+			ItemBuilder<BlockItem, BlockBuilder<T, P>> item = b.item();
+			for (String p : path) {
+				item.tag(forgeItemTag(p));
+			}
+			return item;
+		};
 	}
 
-	public static void addToTag(ITag.INamedTag<Item> itemTag, Item... item) {
+	public static void addToTag(TagKey<Item> itemTag, Item... item) {
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.tag(itemTag).add(item));
 	}
 
@@ -149,58 +160,58 @@ public class LostWorldsTags {
 		WOODEN_PLANKS,
 		ZEPHYROSAURUS_FOSSILS;
 
-		public final ITag.INamedTag<Item> tag;
+		public final TagKey<Item> tag;
 
-		ModItemTags() {
+		private ModItemTags() {
 			this(MOD);
 		}
 
-		ModItemTags(NameSpace namespace) {
+		private ModItemTags(NameSpace namespace) {
 			this(namespace, namespace.optionalDefault, namespace.alwaysDatagenDefault);
 		}
 
-		ModItemTags(NameSpace namespace, String path) {
+		private ModItemTags(NameSpace namespace, String path) {
 			this(namespace, path, namespace.optionalDefault, namespace.alwaysDatagenDefault);
 		}
 
-		ModItemTags(NameSpace namespace, boolean optional, boolean alwaysDatagen) {
+		private ModItemTags(NameSpace namespace, boolean optional, boolean alwaysDatagen) {
 			this(namespace, null, optional, alwaysDatagen);
 		}
 
-		ModItemTags(NameSpace namespace, String path, boolean optional, boolean alwaysDatagen) {
-			ResourceLocation id = new ResourceLocation(namespace.id, path == null ? name().toLowerCase() : path);
+		private ModItemTags(NameSpace namespace, String path, boolean optional, boolean alwaysDatagen) {
+			ResourceLocation id = new ResourceLocation(namespace.id, path == null ? name().toLowerCase(Locale.ROOT) : path);
 			if (optional) {
-				tag = ItemTags.createOptional(id);
+				this.tag = optionalTag(ForgeRegistries.ITEMS, id);
 			} else {
-				tag = ItemTags.bind(id.toString());
+				this.tag = ItemTags.create(id);
 			}
 			if (alwaysDatagen) {
-				REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, prov -> prov.tag(tag));
+				REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, prov -> prov.tag(this.tag));
 			}
 		}
 
 		public boolean matches(Item item) {
-			return this.tag.contains(item);
+			return item.builtInRegistryHolder().is(this.tag);
 		}
 
 		public boolean matches(ItemStack stack) {
-			return this.tag.contains(stack.getItem());
+			return stack.is(this.tag);
 		}
 
 		public void add(Item... values) {
-			REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, prov -> prov.tag(tag).add(values));
+			REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, prov -> prov.tag(this.tag).add(values));
 		}
 
-		public void includeIn(ITag.INamedTag<Item> parent) {
-			REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, prov -> prov.tag(parent).addTag(tag));
+		public void includeIn(TagKey<Item> parent) {
+			REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, prov -> prov.tag(parent).addTag(this.tag));
 		}
 
 		public void includeIn(ModItemTags parent) {
 			includeIn(parent.tag);
 		}
 
-		public void includeAll(ITag.INamedTag<Item> child) {
-			REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, prov -> prov.tag(tag).addTag(child));
+		public void includeAll(TagKey<Item> child) {
+			REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, prov -> prov.tag(this.tag).addTag(child));
 		}
 	}
 
@@ -224,6 +235,8 @@ public class LostWorldsTags {
 		JURASSIC_PARK_ERA,
 		JURASSIC_WORLD_ERA,
 		LIGHT_CONCRETE,
+		MINEABLE_WITH_BRUSH,
+		MINEABLE_WITH_HAMMER,
 		PAVEMENT,
 		PETRIFIED_LOGS,
 		REFINED_WOODEN_PLANKS,
@@ -232,78 +245,70 @@ public class LostWorldsTags {
 		SEQUOIA_LOGS,
 		WOODEN_PLANKS;
 
-		public final ITag.INamedTag<Block> tag;
+		public final TagKey<Block> tag;
 
-		ModBlockTags() {
+		private ModBlockTags() {
 			this(MOD);
 		}
 
-		ModBlockTags(NameSpace namespace) {
+		private ModBlockTags(NameSpace namespace) {
 			this(namespace, namespace.optionalDefault, namespace.alwaysDatagenDefault);
 		}
 
-		ModBlockTags(NameSpace namespace, String path) {
+		private ModBlockTags(NameSpace namespace, String path) {
 			this(namespace, path, namespace.optionalDefault, namespace.alwaysDatagenDefault);
 		}
 
-		ModBlockTags(NameSpace namespace, boolean optional, boolean alwaysDatagen) {
+		private ModBlockTags(NameSpace namespace, boolean optional, boolean alwaysDatagen) {
 			this(namespace, null, optional, alwaysDatagen);
 		}
 
-		ModBlockTags(NameSpace namespace, String path, boolean optional, boolean alwaysDatagen) {
-			ResourceLocation id = new ResourceLocation(namespace.id, path == null ? name().toLowerCase() : path);
+		private ModBlockTags(NameSpace namespace, String path, boolean optional, boolean alwaysDatagen) {
+			ResourceLocation id = new ResourceLocation(namespace.id, path == null ? name().toLowerCase(Locale.ROOT) : path);
 			if (optional) {
-				tag = BlockTags.createOptional(id);
+				this.tag = optionalTag(ForgeRegistries.BLOCKS, id);
 			} else {
-				tag = BlockTags.bind(id.toString());
+				this.tag = BlockTags.create(id);
 			}
 			if (alwaysDatagen) {
-				REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, prov -> prov.tag(tag));
-				LostWorldsUtils.LOGGER.debug("Made " + tag.toString());
+				REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, prov -> prov.tag(this.tag));
 			}
 		}
 
 		public boolean matches(Block block) {
-			return tag.contains(block.getBlock());
+			return block.builtInRegistryHolder().is(this.tag);
 		}
 
 		public boolean matches(BlockState state) {
-			return matches(state.getBlock());
+			return state.is(this.tag);
 		}
 
 		public void add(Block... values) {
-			REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, prov -> prov.tag(tag).add(values));
+			REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, prov -> prov.tag(this.tag).add(values));
 		}
 
-		public void includeIn(ITag.INamedTag<Block> parent) {
-			REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, prov -> prov.tag(parent).addTag(tag));
+		public void includeIn(TagKey<Block> parent) {
+			REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, prov -> prov.tag(parent).addTag(this.tag));
 		}
 
 		public void includeIn(ModBlockTags parent) {
 			includeIn(parent.tag);
 		}
 
-		public void includeAll(ITag.INamedTag<Block>... childen) {
-			REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, prov -> prov.tag(tag).addTags(childen));
+		public void includeAll(TagKey<Block>... children) {
+			for (TagKey<Block> tag : children)
+				REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, prov -> prov.tag(this.tag).addTag(tag));
 		}
-	}
 
-	public static class ModEntityTypeTags {
-		public static final ITag.INamedTag<EntityType<?>> FOSSILS = tag("fossils");
-		public static final ITag.INamedTag<EntityType<?>> ANCIENT_CREATURES = tag("ancient_creatures");
-
-		private static ITag.INamedTag<EntityType<?>> tag(String id) {
-			return EntityTypeTags.createOptional(LostWorldsUtils.rL(id));
-		}
 	}
 
 	public static void init() {
 		ModItemTags.TIME_BOOK_FUEL.add(Items.REDSTONE);
 		ModItemTags.NAUTILUS_FOSSILS.add(Items.NAUTILUS_SHELL);
 
-		ModBlockTags.CALAMITES_PLACEABLES.includeAll(BlockTags.SAND, Tags.Blocks.DIRT, Tags.Blocks.GRAVEL);
+		ModBlockTags.CALAMITES_PLACEABLES.includeAll(BlockTags.SAND, BlockTags.DIRT, Tags.Blocks.GRAVEL);
 
-		ModBlockTags.DINO_SPAWNABLES.includeAll(BlockTags.SAND, Tags.Blocks.DIRT, Tags.Blocks.GRAVEL, Tags.Blocks.STONE);
+		ModBlockTags.DINO_SPAWNABLES.includeAll(BlockTags.SAND, BlockTags.DIRT, Tags.Blocks.GRAVEL, Tags.Blocks.STONE);
 
 		ModBlockTags.JURASSIC_PARK_ERA.includeAll(ModBlockTags.LIGHT_CONCRETE.tag, ModBlockTags.WOODEN_PLANKS.tag);
 

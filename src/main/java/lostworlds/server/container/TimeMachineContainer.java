@@ -8,29 +8,29 @@ import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
 import lostworlds.server.container.recipes.TimeMachineRecipe;
 import lostworlds.server.item.LostWorldsItems;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.CraftResultInventory;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.IWorldPosCallable;
-import net.minecraft.util.IntReferenceHolder;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.ResultContainer;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.DataSlot;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class TimeMachineContainer extends Container {
-	private final IWorldPosCallable access;
-	private final IntReferenceHolder selectedRecipeIndex = IntReferenceHolder.standalone();
-	private final World level;
+public class TimeMachineContainer extends AbstractContainerMenu {
+	private final ContainerLevelAccess access;
+	private final DataSlot selectedRecipeIndex = DataSlot.standalone();
+	private final Level level;
 	private List<TimeMachineRecipe> recipes = Lists.newArrayList();
 	private ItemStack input = ItemStack.EMPTY;
 	private long lastSoundTime;
@@ -39,20 +39,20 @@ public class TimeMachineContainer extends Container {
 	final Slot resultSlot;
 	private Runnable slotUpdateListener = () -> {
 	};
-	public final IInventory container = new Inventory(2) {
+	public final Container container = new SimpleContainer(2) {
 		public void setChanged() {
 			super.setChanged();
 			TimeMachineContainer.this.slotsChanged(this);
 			TimeMachineContainer.this.slotUpdateListener.run();
 		}
 	};
-	private final CraftResultInventory resultContainer = new CraftResultInventory();
+	private final ResultContainer resultContainer = new ResultContainer();
 
-	public TimeMachineContainer(ContainerType<? extends TimeMachineContainer> containerType, int windowId, PlayerInventory inv, PacketBuffer buffer) {
-		this(containerType, windowId, inv, IWorldPosCallable.NULL);
+	public TimeMachineContainer(MenuType<? extends TimeMachineContainer> containerType, int windowId, Inventory inv, FriendlyByteBuf buffer) {
+		this(containerType, windowId, inv, ContainerLevelAccess.NULL);
 	}
 
-	public TimeMachineContainer(ContainerType<? extends TimeMachineContainer> containerType, int windowId, PlayerInventory inv, IWorldPosCallable worldPos) {
+	public TimeMachineContainer(MenuType<? extends TimeMachineContainer> containerType, int windowId, Inventory inv, ContainerLevelAccess worldPos) {
 		super(containerType, windowId);
 
 		this.access = worldPos;
@@ -67,7 +67,7 @@ public class TimeMachineContainer extends Container {
 			}
 
 			@Override
-			public ItemStack onTake(PlayerEntity player, ItemStack stack) {
+			public ItemStack onTake(Player player, ItemStack stack) {
 				stack.onCraftedBy(player.level, player, stack.getCount());
 				TimeMachineContainer.this.resultContainer.awardUsedRecipes(player);
 				ItemStack book = TimeMachineContainer.this.bookSlot.remove(1);
@@ -79,7 +79,7 @@ public class TimeMachineContainer extends Container {
 				worldPos.execute((world, pos) -> {
 					long l = world.getGameTime();
 					if (TimeMachineContainer.this.lastSoundTime != l) {
-						world.playSound((PlayerEntity) null, pos, SoundEvents.BEACON_ACTIVATE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+						world.playSound((Player) null, pos, SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS, 1.0F, 1.0F);
 						TimeMachineContainer.this.lastSoundTime = l;
 					}
 				});
@@ -121,12 +121,12 @@ public class TimeMachineContainer extends Container {
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity entity) {
+	public boolean stillValid(Player entity) {
 		return stillValid(this.access, entity, LostWorldsBlocks.TIME_MACHINE.get());
 	}
 
 	@Override
-	public boolean clickMenuButton(PlayerEntity entity, int button) {
+	public boolean clickMenuButton(Player entity, int button) {
 		if (this.isValidRecipeIndex(button)) {
 			this.selectedRecipeIndex.set(button);
 			this.setupResultSlot();
@@ -140,7 +140,7 @@ public class TimeMachineContainer extends Container {
 	}
 
 	@Override
-	public void slotsChanged(IInventory inv) {
+	public void slotsChanged(Container inv) {
 		ItemStack book = this.bookSlot.getItem();
 		ItemStack power = this.powerSlot.getItem();
 		if (book.getItem() != this.input.getItem()) {
@@ -153,7 +153,7 @@ public class TimeMachineContainer extends Container {
 		}
 	}
 
-	private void setupRecipeList(IInventory inv, ItemStack stack) {
+	private void setupRecipeList(Container inv, ItemStack stack) {
 		this.recipes.clear();
 		this.selectedRecipeIndex.set(-1);
 		this.resultSlot.set(ItemStack.EMPTY);
@@ -175,7 +175,7 @@ public class TimeMachineContainer extends Container {
 	}
 
 	@Override
-	public ContainerType<?> getType() {
+	public MenuType<?> getType() {
 		return LostWorldsContainers.TIME_MACHINE_CONTAINER.get();
 	}
 
@@ -189,7 +189,7 @@ public class TimeMachineContainer extends Container {
 	}
 
 	@Override
-	public ItemStack quickMoveStack(PlayerEntity entity, int slotNum) {
+	public ItemStack quickMoveStack(Player entity, int slotNum) {
 		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = this.slots.get(slotNum);
 		if (slot != null && slot.hasItem()) {
@@ -244,7 +244,7 @@ public class TimeMachineContainer extends Container {
 		return itemstack;
 	}
 
-	public void removed(PlayerEntity player) {
+	public void removed(Player player) {
 		super.removed(player);
 		this.resultContainer.removeItemNoUpdate(1);
 		this.access.execute((world, pos) -> {

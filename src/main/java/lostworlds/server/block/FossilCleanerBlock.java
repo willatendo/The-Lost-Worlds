@@ -1,13 +1,15 @@
 package lostworlds.server.block;
 
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.level.BlockGetter;
+
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public class FossilCleanerBlock extends MachineBlock {
 	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 11, 15);
@@ -19,17 +21,17 @@ public class FossilCleanerBlock extends MachineBlock {
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
 		return SHAPES.get(this).get(state.getValue(HORIZONTAL_FACING));
 	}
 
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+	public BlockEntity createTileEntity(BlockState state, BlockGetter world) {
 		return LostWorldsBlockEntities.FOSSIL_CLEANER_TILE_ENTITY.create();
 	}
 
 	@Override
-	public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
+	public int getLightValue(BlockState state, BlockGetter world, BlockPos pos) {
 		if (state.getValue(ON)) {
 			return 15;
 		} else {

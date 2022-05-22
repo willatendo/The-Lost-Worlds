@@ -5,22 +5,22 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 import lostworlds.client.books.tyrannibook.TyrannoUtils;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
 
 public class TileEntityHelper {
-	public static <T> Optional<T> getTile(Class<T> clazz, @Nullable IBlockReader world, BlockPos pos) {
+	public static <T> Optional<T> getTile(Class<T> clazz, @Nullable BlockGetter world, BlockPos pos) {
 		return getTile(clazz, world, pos, false);
 	}
 
-	public static <T> Optional<T> getTile(Class<T> clazz, @Nullable IBlockReader world, BlockPos pos, boolean logWrongType) {
+	public static <T> Optional<T> getTile(Class<T> clazz, @Nullable BlockGetter world, BlockPos pos, boolean logWrongType) {
 		if (!isBlockLoaded(world, pos)) {
 			return Optional.empty();
 		}
 
-		TileEntity tile = world.getBlockEntity(pos);
+		BlockEntity tile = world.getBlockEntity(pos);
 		if (tile == null) {
 			return Optional.empty();
 		}
@@ -34,12 +34,12 @@ public class TileEntityHelper {
 		return Optional.empty();
 	}
 
-	public static boolean isBlockLoaded(@Nullable IBlockReader world, BlockPos pos) {
+	public static boolean isBlockLoaded(@Nullable BlockGetter world, BlockPos pos) {
 		if (world == null) {
 			return false;
 		}
-		if (world instanceof IWorldReader) {
-			return ((IWorldReader) world).hasChunkAt(pos);
+		if (world instanceof LevelReader) {
+			return ((LevelReader) world).hasChunkAt(pos);
 		}
 		return true;
 	}

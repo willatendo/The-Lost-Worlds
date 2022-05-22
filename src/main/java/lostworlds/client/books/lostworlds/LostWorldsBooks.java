@@ -8,7 +8,7 @@ import lostworlds.client.books.tyrannibook.client.TyrannobookLoader;
 import lostworlds.client.books.tyrannibook.client.TyrannobookTransformer;
 import lostworlds.client.books.tyrannibook.client.data.TyrannobookData;
 import lostworlds.server.LostWorldsUtils;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 

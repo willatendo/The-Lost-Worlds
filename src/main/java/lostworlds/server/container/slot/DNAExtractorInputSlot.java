@@ -2,12 +2,12 @@ package lostworlds.server.container.slot;
 
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.item.AmberItem;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.Container;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 
 public class DNAExtractorInputSlot extends Slot {
-	public DNAExtractorInputSlot(IInventory inventory, int x, int z, int y) {
+	public DNAExtractorInputSlot(Container inventory, int x, int z, int y) {
 		super(inventory, x, z, y);
 	}
 

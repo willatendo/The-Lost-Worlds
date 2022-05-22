@@ -1,11 +1,11 @@
 package lostworlds.server.item;
 
-import net.minecraft.item.HoeItem;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.HoeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
 
 public class CrystalScarabHoeItem extends HoeItem {
-	public CrystalScarabHoeItem(IItemTier teir, int damageMultiplier, float cooldown, Properties properties) {
+	public CrystalScarabHoeItem(Tier teir, int damageMultiplier, float cooldown, Properties properties) {
 		super(teir, damageMultiplier, cooldown, properties);
 	}
 

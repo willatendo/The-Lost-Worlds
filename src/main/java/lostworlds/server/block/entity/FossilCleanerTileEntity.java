@@ -13,40 +13,40 @@ import lostworlds.server.container.FossilCleanerContainer;
 import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.container.recipes.FossilCleanerRecipe;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.RecipeItemHelper;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.PotionUtils;
-import net.minecraft.potion.Potions;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
-import net.minecraft.util.IIntArray;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.INameable;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.Container;
+import net.minecraft.world.WorldlyContainer;
+import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.block.entity.TickableBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.Direction;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.Nameable;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.network.chat.Component;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-public class FossilCleanerTileEntity extends TileEntity implements IInventory, INamedContainerProvider, INameable, ITickableTileEntity, ISidedInventory {
+public class FossilCleanerTileEntity extends BlockEntity implements Container, MenuProvider, Nameable, TickableBlockEntity, WorldlyContainer {
 	private static final int[] SLOTS_FOR_UP = new int[] { 0 };
 	private static final int[] SLOTS_FOR_DOWN = new int[] { 2, 1 };
 	private static final int[] SLOTS_FOR_SIDES = new int[] { 1 };
@@ -58,7 +58,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 	private int cleaningProgress;
 	private int cleaningTotalTime = 1000;
 
-	protected final IIntArray cleanerData = new IIntArray() {
+	protected final ContainerData cleanerData = new ContainerData() {
 		@Override
 		public int get(int index) {
 			switch (index) {
@@ -100,9 +100,9 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final IRecipeType<FossilCleanerRecipe> recipeType = LostWorldsRecipes.FOSSIL_CLEANER_RECIPE;
+	protected final RecipeType<FossilCleanerRecipe> recipeType = LostWorldsRecipes.FOSSIL_CLEANER_RECIPE;
 
-	private ITextComponent name;
+	private Component name;
 
 	public FossilCleanerTileEntity() {
 		super(LostWorldsBlockEntities.FOSSIL_CLEANER_TILE_ENTITY.get());
@@ -115,36 +115,36 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 		return map;
 	}
 
-	private static void add(Map<Item, Integer> map, IItemProvider itemProvider, int length) {
+	private static void add(Map<Item, Integer> map, ItemLike itemProvider, int length) {
 		Item item = itemProvider.asItem();
 		map.put(item, length);
 	}
 
 	@Override
-	public void load(BlockState state, CompoundNBT nbt) {
+	public void load(BlockState state, CompoundTag nbt) {
 		super.load(state, nbt);
 		this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-		ItemStackHelper.loadAllItems(nbt, this.items);
+		ContainerHelper.loadAllItems(nbt, this.items);
 		this.onTime = nbt.getInt("OnTime");
 		this.cleaningProgress = nbt.getInt("CleanTime");
 		this.cleaningTotalTime = nbt.getInt("CleanTimeTotal");
 		this.onDuration = this.getCleanDuration(this.items.get(1));
 		if (nbt.contains("CustomName", 8)) {
-			this.name = ITextComponent.Serializer.fromJson(nbt.getString("CustomName"));
+			this.name = Component.Serializer.fromJson(nbt.getString("CustomName"));
 		}
 	}
 
 	@Override
-	public CompoundNBT save(CompoundNBT nbt) {
+	public CompoundTag save(CompoundTag nbt) {
 		super.save(nbt);
 		nbt.putInt("OnTime", this.onTime);
 		nbt.putInt("CleanTime", this.cleaningProgress);
 		nbt.putInt("CleanTimeTotal", this.cleaningTotalTime);
-		ItemStackHelper.saveAllItems(nbt, this.items);
+		ContainerHelper.saveAllItems(nbt, this.items);
 		return nbt;
 	}
 
-	public IIntArray getCleanerData() {
+	public ContainerData getCleanerData() {
 		return this.cleanerData;
 	}
 
@@ -164,7 +164,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 			if (this.level.hasNeighborSignal(this.getBlockPos())) {
 				ItemStack fuel = this.items.get(1);
 				if (this.isOn() || !fuel.isEmpty() && !this.items.get(0).isEmpty()) {
-					IRecipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((IRecipeType<FossilCleanerRecipe>) this.recipeType, this, this.level).orElse(null);
+					Recipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((RecipeType<FossilCleanerRecipe>) this.recipeType, this, this.level).orElse(null);
 					if (!this.isOn() && this.canClean(irecipe)) {
 						this.onTime = this.getCleanDuration(fuel);
 						this.onDuration = this.onTime;
@@ -193,7 +193,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 						this.cleaningProgress = 0;
 					}
 				} else if (!this.isOn() && this.cleaningProgress > 0) {
-					this.cleaningProgress = MathHelper.clamp(this.cleaningProgress - 2, 0, this.cleaningTotalTime);
+					this.cleaningProgress = Mth.clamp(this.cleaningProgress - 2, 0, this.cleaningTotalTime);
 				}
 
 				if (flag != this.isOn()) {
@@ -208,7 +208,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 		}
 	}
 
-	protected boolean canClean(@Nullable IRecipe<?> recipe) {
+	protected boolean canClean(@Nullable Recipe<?> recipe) {
 		if (!this.items.get(0).isEmpty() && recipe != null) {
 			ItemStack result = recipe.getResultItem();
 			if (result.isEmpty()) {
@@ -230,7 +230,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 		}
 	}
 
-	private void clean(@Nullable IRecipe<?> recipe) {
+	private void clean(@Nullable Recipe<?> recipe) {
 		if (recipe != null && this.canClean(recipe)) {
 			ItemStack input = this.items.get(0);
 			ItemStack result = recipe.getResultItem();
@@ -280,12 +280,12 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 
 	@Override
 	public ItemStack removeItem(int i1, int i2) {
-		return ItemStackHelper.removeItem(this.items, i1, i2);
+		return ContainerHelper.removeItem(this.items, i1, i2);
 	}
 
 	@Override
 	public ItemStack removeItemNoUpdate(int i) {
-		return ItemStackHelper.takeItem(this.items, i);
+		return ContainerHelper.takeItem(this.items, i);
 	}
 
 	@Override
@@ -305,7 +305,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity player) {
+	public boolean stillValid(Player player) {
 		if (this.level.getBlockEntity(this.worldPosition) != this) {
 			return false;
 		} else {
@@ -318,7 +318,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 		this.items.clear();
 	}
 
-	public void setRecipeUsed(@Nullable IRecipe<?> recipe) {
+	public void setRecipeUsed(@Nullable Recipe<?> recipe) {
 		if (recipe != null) {
 			ResourceLocation resourcelocation = recipe.getId();
 			this.recipesUsed.addTo(resourcelocation, 1);
@@ -329,7 +329,7 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 		return getFuel().containsKey(stack.getItem());
 	}
 
-	public void fillStackedContents(RecipeItemHelper helper) {
+	public void fillStackedContents(StackedContents helper) {
 		for (ItemStack itemstack : this.items) {
 			helper.accountStack(itemstack);
 		}
@@ -347,27 +347,27 @@ public class FossilCleanerTileEntity extends TileEntity implements IInventory, I
 	}
 
 	@Override
-	public Container createMenu(int windowID, PlayerInventory playerInventory, PlayerEntity player) {
+	public AbstractContainerMenu createMenu(int windowID, Inventory playerInventory, Player player) {
 		return new FossilCleanerContainer(LostWorldsContainers.FOSSIL_CLEANER_CONTAINER.get(), windowID, playerInventory, this, this);
 	}
 
 	@Override
-	public ITextComponent getName() {
+	public Component getName() {
 		return LostWorldsUtils.tTC("container", "fossil_cleaner");
 	}
 
 	@Override
-	public ITextComponent getDisplayName() {
+	public Component getDisplayName() {
 		return this.getName();
 	}
 
 	@Override
 	@Nullable
-	public ITextComponent getCustomName() {
+	public Component getCustomName() {
 		return this.name;
 	}
 
-	public void setCustomName(ITextComponent text) {
+	public void setCustomName(Component text) {
 		this.name = text;
 	}
 

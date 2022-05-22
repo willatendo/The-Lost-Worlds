@@ -8,11 +8,10 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.BlockBuilder;
-import com.tterrag.registrate.builders.ContainerBuilder;
-import com.tterrag.registrate.builders.ContainerBuilder.ForgeContainerFactory;
-import com.tterrag.registrate.builders.ContainerBuilder.ScreenFactory;
+import com.tterrag.registrate.builders.MenuBuilder;
+import com.tterrag.registrate.builders.MenuBuilder.ForgeMenuFactory;
+import com.tterrag.registrate.builders.MenuBuilder.ScreenFactory;
 import com.tterrag.registrate.providers.ProviderType;
-import com.tterrag.registrate.util.NonNullLazyValue;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
@@ -29,35 +28,35 @@ import lostworlds.server.block.LostWorldsBlockModels;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.item.LostWorldsItems;
-import net.minecraft.advancements.criterion.StatePropertiesPredicate;
-import net.minecraft.block.AbstractBlock.Properties;
-import net.minecraft.block.AbstractButtonBlock;
-import net.minecraft.block.AbstractSignBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.DoorBlock;
-import net.minecraft.block.DoublePlantBlock;
-import net.minecraft.block.FenceBlock;
-import net.minecraft.block.FenceGateBlock;
-import net.minecraft.block.PressurePlateBlock;
-import net.minecraft.block.RotatedPillarBlock;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.StairsBlock;
-import net.minecraft.block.TrapDoorBlock;
-import net.minecraft.block.WallBlock;
-import net.minecraft.client.gui.IHasContainer;
-import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.MenuAccess;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.DyeColor;
-import net.minecraft.item.Items;
-import net.minecraft.loot.ConstantRange;
-import net.minecraft.loot.ItemLootEntry;
-import net.minecraft.loot.LootPool;
-import net.minecraft.loot.LootTable;
-import net.minecraft.loot.conditions.BlockStateProperty;
-import net.minecraft.state.properties.DoubleBlockHalf;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.DoublePlantBlock;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SignBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.TrapDoorBlock;
+import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.SoundDefinition;
 import net.minecraftforge.common.data.SoundDefinition.Sound;
@@ -75,8 +74,8 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.extraLangStuff();
 	}
 
-	public static NonNullLazyValue<LostWorldsRegistrate> lazy(String modid) {
-		return new NonNullLazyValue<>(() -> new LostWorldsRegistrate(modid).registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus()));
+	public static NonNullSupplier<LostWorldsRegistrate> lazy(String modid) {
+		return NonNullSupplier.lazy(() -> new LostWorldsRegistrate(modid).registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus()));
 	}
 
 	public void addSounds() {
@@ -110,11 +109,11 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 				/* Suchomimus */
 				.addPages(new TextPageBuilder("suchomimus_1").addTitle("Suchomimus tenerensis").addFirst("Suchomimus, a medium spinosaurid from the Elrha formation in Niger. Unlike spinosaurids, Suchomimus most likely was not aquatic, despite its swampy enviroment. In 2022, a study was done to study the chances of Spinosaurs being an aquatic organism via bone density. Suchomimus was found to have a high chance of being a land animal").addNext("Suchomimus was 9.5-11 meters long. It had a small dorsal sail, however it would've been little more than a hump. It ate fish and other small animals. It was discribed in 1997.")).addPages(new TextPageBuilder("suchomimus_info").addFirst("Danger: Small").addNext("Range: Piscivore - 125-112 mya").addNext("Clade: Dinosauria").addNext("Clade: Saurischia").addNext("Clade: Theropoda").addNext("Family: Spinosauridae").addNext("Clade: Ceratosuchopsini").addNext("Genus: Suchomimus"))
 				/* Thanos */
-				.addPages(new TextPageBuilder("thanos_1").addTitle("Thanos simonattoi").addFirst("Thanos, a abelisaur from Brazil, near São José do Rio Preto. In 2020, Thanos was named by the Brazillian team in honor of the Mad Titan from Marvel. Thanos was a medium carnivore, 5.5-6.5 meters in length.")).addPages(new TextPageBuilder("thanos_information").addFirst("Danger: Medium").addNext("Diet: Carnivore").addNext("Range: Cretaceous - 86–83 mya").addNext("Clade: Dinosauria").addNext("Clade: Saurischia").addNext("Clade: Theropoda").addNext("Family: Abelisauridae").addNext("Clade: Brachyrostra").addNext("Genus: Thanos"))
+				.addPages(new TextPageBuilder("thanos_1").addTitle("Thanos simonattoi").addFirst("Thanos, a abelisaur from Brazil, near Sï¿½o Josï¿½ do Rio Preto. In 2020, Thanos was named by the Brazillian team in honor of the Mad Titan from Marvel. Thanos was a medium carnivore, 5.5-6.5 meters in length.")).addPages(new TextPageBuilder("thanos_information").addFirst("Danger: Medium").addNext("Diet: Carnivore").addNext("Range: Cretaceous - 86ï¿½83 mya").addNext("Clade: Dinosauria").addNext("Clade: Saurischia").addNext("Clade: Theropoda").addNext("Family: Abelisauridae").addNext("Clade: Brachyrostra").addNext("Genus: Thanos"))
 				/* Tyrannosaurus */
-				.addPages(new TextPageBuilder("tyrannosaurus_1").addTitle("Tyrannosaurus rex").addFirst("Tyrannosaurus, sometimes referred to as Tyrannosaurus rex or T-rex, is the most easily recognizable dinosaurs, a major American find, it has been the antagonist of many films to date. Most famously, it was the icon for the Jurassic Park movies and books*.").addNext("Tyrannosaurus is often seen as a large lizard-like creature due to its popularity in media before we learned many non-avian dinosaurs, mainly theropods, had feathers. Though it is debated to the extent of the coverage, it's widely concitered")).addPages(new TextPageBuilder("tyrannosaurus_2").addFirst("young Tyrannosaurs were covered in down and may have retained feathers around their head into adulthood. Tyrannosaurus was discovered in 1905, when paleontology was still a rather new professional in the world. It originally was in the 'Kangaroo Pose,' a product of early paleontology.").addNext("In modern years, it has been challenged if the large creature was even a predator of any sorts, only being able to reach speeds of 25-40 kph. It has been purposed by many paleontology of varying practice that it may have been a scavenger.")).addPages(new TextPageBuilder("tyrannosaurus_3").addFirst("The two largest specimens are Sue and Scotty, with Sue being a longer specimen and Scotty being taller. Sue was found on indigenous land and was a long legal battle that ended with the finder of the bones spending 2 years in a federal prison, and Sue almost being sold into a private collection, which would've set back our knowledge of Tyrannosaurus many years.").addNext("Thanks to the work of McDonalds and Disney, Sue ended up in the care of the Discovery Center of Idaho. The increably well preserved specimen has taught us a lot about the Tyrannosaurs. A realistic")).addPages(new TextPageBuilder("tyrannosaurus_4").addFirst("recreation of Sue when she was alive is on display in the Discovery Center of Idaho.").addNext("A controversial paper was publised in 2022, potentially spliting the Tyrant Lizard King into 3 groups, adding Tyrannosaurus imperator and Tyrannosaurus regina to the list. However, this is not widely recognized at the moment.")).addPages(new TextPageBuilder("tyrannosaurs_info").addFirst("Danger: High").addNext("Diet: Carnivore").addNext("Range: Cretaceous - 68–66 mya").addNext("Clade: Dinosauria").addNext("Clade: Saurischia").addNext("Clade: Theropoda").addNext("Family: Tyrannosauridae").addNext("Subfamily: Tyrannosaurinae").addNext("Genus: Tyrannosaurus"))
+				.addPages(new TextPageBuilder("tyrannosaurus_1").addTitle("Tyrannosaurus rex").addFirst("Tyrannosaurus, sometimes referred to as Tyrannosaurus rex or T-rex, is the most easily recognizable dinosaurs, a major American find, it has been the antagonist of many films to date. Most famously, it was the icon for the Jurassic Park movies and books*.").addNext("Tyrannosaurus is often seen as a large lizard-like creature due to its popularity in media before we learned many non-avian dinosaurs, mainly theropods, had feathers. Though it is debated to the extent of the coverage, it's widely concitered")).addPages(new TextPageBuilder("tyrannosaurus_2").addFirst("young Tyrannosaurs were covered in down and may have retained feathers around their head into adulthood. Tyrannosaurus was discovered in 1905, when paleontology was still a rather new professional in the world. It originally was in the 'Kangaroo Pose,' a product of early paleontology.").addNext("In modern years, it has been challenged if the large creature was even a predator of any sorts, only being able to reach speeds of 25-40 kph. It has been purposed by many paleontology of varying practice that it may have been a scavenger.")).addPages(new TextPageBuilder("tyrannosaurus_3").addFirst("The two largest specimens are Sue and Scotty, with Sue being a longer specimen and Scotty being taller. Sue was found on indigenous land and was a long legal battle that ended with the finder of the bones spending 2 years in a federal prison, and Sue almost being sold into a private collection, which would've set back our knowledge of Tyrannosaurus many years.").addNext("Thanks to the work of McDonalds and Disney, Sue ended up in the care of the Discovery Center of Idaho. The increably well preserved specimen has taught us a lot about the Tyrannosaurs. A realistic")).addPages(new TextPageBuilder("tyrannosaurus_4").addFirst("recreation of Sue when she was alive is on display in the Discovery Center of Idaho.").addNext("A controversial paper was publised in 2022, potentially spliting the Tyrant Lizard King into 3 groups, adding Tyrannosaurus imperator and Tyrannosaurus regina to the list. However, this is not widely recognized at the moment.")).addPages(new TextPageBuilder("tyrannosaurs_info").addFirst("Danger: High").addNext("Diet: Carnivore").addNext("Range: Cretaceous - 68ï¿½66 mya").addNext("Clade: Dinosauria").addNext("Clade: Saurischia").addNext("Clade: Theropoda").addNext("Family: Tyrannosauridae").addNext("Subfamily: Tyrannosaurinae").addNext("Genus: Tyrannosaurus"))
 				/* Utahraptor */
-				.addPages(new TextPageBuilder("utahraptor_1").addTitle("Utahraptor ostrommaysi").addFirst("Utahraptor, a large dromaeosaur from Cretaceous North America. One of the largest dromaeosaurs, the first member was found in a well in Utah in 1975. The Utahraptor was a very stocky, heavily built creature. Utahraptor is most famous for being a raptor around the size of the Velociraptors in Jurassic Park, also being found in a simular place since in the film Dr Grant finds Velociraptor fossils in Utah.").addNext("5.5 meters long, weighing an estimated 300 kg, this dinosaur feared little.")).addPages(new TextPageBuilder("utahraptor_info").addFirst("Danger: Medium").addNext("Diet: Carnivore").addNext("Range: Cretaceous - 135–130 mya").addNext("Clade: Dinosauria").addNext("Clade: Saurischia").addNext("Clade: Theropoda").addNext("Family: Dromaeosauridae").addNext("Clade: Eudromaeosauria").addNext("Subfamily: Dromaeosaurinae").addNext("Genus: Utahraptor"))
+				.addPages(new TextPageBuilder("utahraptor_1").addTitle("Utahraptor ostrommaysi").addFirst("Utahraptor, a large dromaeosaur from Cretaceous North America. One of the largest dromaeosaurs, the first member was found in a well in Utah in 1975. The Utahraptor was a very stocky, heavily built creature. Utahraptor is most famous for being a raptor around the size of the Velociraptors in Jurassic Park, also being found in a simular place since in the film Dr Grant finds Velociraptor fossils in Utah.").addNext("5.5 meters long, weighing an estimated 300 kg, this dinosaur feared little.")).addPages(new TextPageBuilder("utahraptor_info").addFirst("Danger: Medium").addNext("Diet: Carnivore").addNext("Range: Cretaceous - 135ï¿½130 mya").addNext("Clade: Dinosauria").addNext("Clade: Saurischia").addNext("Clade: Theropoda").addNext("Family: Dromaeosauridae").addNext("Clade: Eudromaeosauria").addNext("Subfamily: Dromaeosaurinae").addNext("Genus: Utahraptor"))
 				/* Zephyrosaurus */
 				.addPages(new TextPageBuilder("zephyrosaurus_1").addTitle("Zephyrosaurus schaffi").addFirst("Zephyrosaurus, a small ornithischian from Cretaceous North America. Fossils have been found in Montana, with tracks in Maryland and Virginia. Little is known about Zephyrosaurus, with only parts of it known.")).addPages(new TextPageBuilder("zephyrosaurus_info").addFirst("Danger: None").addNext("Diet: Herbivore").addNext("Range: Cretaceous - 113 mya").addNext("Clade: Dinosauria").addNext("Clade: Ornithischia").addNext("Family: Thescelosauridae").addNext("Subfamily: Orodrominae").addNext("Genus: Zephyrosaurus"))).addSections(new SectionBuilder("jurassic", DinoTypes.ALLOSAURUS.getSkeletonPick().get())
 						/* Allosaurus */
@@ -126,15 +125,15 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 						/* Dilophosaurus */
 						.addPages(new TextPageBuilder("dilophosaurus").addTitle("Dilophosaurus wetherilli").addFirst("Dilophosaurus, a large theropod from North America. This large dinosaur is a fierce creature that would've been an early top predator. First confirmed discovery in 1940, described in 1954, the Dilophosaurus got a face-lift in early 2020, with a more correct frill.").addNext("Dilophosaurus was 7 meters from nose to tail. It would've hunted down large game, and would be a mighty fow, thought it was solitary.")).addPages(new TextPageBuilder("dilophosaurus_info").addFirst("Danger: Aggressive").addNext("Diet: Carnivore").addNext("Range: Jurassic - 193 mya").addNext("Clade: Dinosauria").addNext("Clade: Saurischia").addNext("Clade: Theropoda").addNext("Genus: Dilophosaurus"))
 						/* Eustreptospondylus */
-						.addPages(new TextPageBuilder("eustreptospondylus").addTitle("Eustreptospondylus oxoniensis").addFirst("Eustreptospondylus, a medium theropod from England. This large dinosaur was fierce carnivore. First discovered in 1870, it was described in 1871 with no name util 1890, when it was labled a species of Megalosaurus.").addNext("Eustreptospondylus was 6 meters from nose to tail.")).addPages(new TextPageBuilder("eustreptospondylus_info").addFirst("Danger: Aggressive").addNext("Diet: Carnivore").addNext("Range: Jurassic - 163–154 mya").addNext("Clade: Dinosauria").addNext("Clade: Saurischia").addNext("Clade: Theropoda").addNext("Family: Megalosauridae").addNext("Subfamily: Eustreptospondylinae").addNext("Genus: Eustreptospondylus"))
+						.addPages(new TextPageBuilder("eustreptospondylus").addTitle("Eustreptospondylus oxoniensis").addFirst("Eustreptospondylus, a medium theropod from England. This large dinosaur was fierce carnivore. First discovered in 1870, it was described in 1871 with no name util 1890, when it was labled a species of Megalosaurus.").addNext("Eustreptospondylus was 6 meters from nose to tail.")).addPages(new TextPageBuilder("eustreptospondylus_info").addFirst("Danger: Aggressive").addNext("Diet: Carnivore").addNext("Range: Jurassic - 163ï¿½154 mya").addNext("Clade: Dinosauria").addNext("Clade: Saurischia").addNext("Clade: Theropoda").addNext("Family: Megalosauridae").addNext("Subfamily: Eustreptospondylinae").addNext("Genus: Eustreptospondylus"))
 						/* Kentrosaurus */
 						.addPages(new TextPageBuilder("kentrosaurus").addTitle("Kentrosaurus aethiopicus").addFirst("Kentrosaurus, a medium stegosaurid from Tanzania from the Tendaguru Formation. From stegosauridae, it's oftan thought to be a primitive stegosaur, but that is not the case, being closer related to Stegosaurus from the Morrison Formation. Discovered in 1909, described in 1915, it was a victim of WWII, with a lot of skeletons being destroyed.").addNext("Kentrosaurus was 4.6 meters from nose to tail, around the size of a large tigon. It would've been a grazer much like its North American cousin, Stegosaurus.")).addPages(new TextPageBuilder("kentrosaurus_info").addFirst("Danger: Timid").addNext("Diet: Herbivore").addNext("Range: Jurassic - 152 mya").addNext("Clade: Dinosauria").addNext("Order: Ornithischia").addNext("Suborder: Stegosauria").addNext("Family: Stegosauridae").addNext("Genus: Kentrosaurus"))
 						/* Liaoningosaurus */
 						.addPages(new TextPageBuilder("liaoningosaurus").addTitle("Liaoningosaurus paradoxus").addFirst("Liaoningosaurus, a small ankyolosaur from the Cretaceous. This small ankyolosaur is from the Yixian Formation in China. It wouldn't fear too much other than the larger carnivore that could break through it's strong back.").addNext("The only studied Liaoningosaurus fossil was 34 centimeters, but proven to only be 1 year old. It would've lived a standard lifestyle, grazing on small plants")).addPages(new TextPageBuilder("liaoningosaurus_info").addFirst("Danger: None").addNext("Diet: Herbivore").addNext("Range: Cretaceous - 122 mya").addNext("Clade: Dinosauria").addNext("Order: Ornithischia").addNext("Suborder: Ankylosauria").addNext("Clade: Euankylosauria").addNext("Family: Ankylosauridae").addNext("Genus: Liaoningosaurus"))
 						/* Ostromia */
-						.addPages(new TextPageBuilder("ostromia").addTitle("Ostromia crassipes").addFirst("Ostromia, a small anchiornithid from the Painten Formation of German. This dinosaur has a long history of identification. Discovered in 1855, it was orginally thought to have been a pterosaur, labeled Pterodactylus crassipes. In 1970, John Ostrom reexamined the bones and labled it as an Archaeopteryx. In 2017, it was identified much more like Anchiornis and was given the name Ostromia after Ostrom.").addNext("Ostromia only has fragmentary remains and size cannot be determined.")).addPages(new TextPageBuilder("ostromia_info").addFirst("Danger: None").addNext("Diet: Carnivore").addNext("Range: Jurassic - 150–145 mya").addNext("Clade: Dinosauria").addNext("Clade: Saurischia").addNext("Clade: Theropoda").addNext("Family: Anchiornithidae").addNext("Genus: Ostromia"))
+						.addPages(new TextPageBuilder("ostromia").addTitle("Ostromia crassipes").addFirst("Ostromia, a small anchiornithid from the Painten Formation of German. This dinosaur has a long history of identification. Discovered in 1855, it was orginally thought to have been a pterosaur, labeled Pterodactylus crassipes. In 1970, John Ostrom reexamined the bones and labled it as an Archaeopteryx. In 2017, it was identified much more like Anchiornis and was given the name Ostromia after Ostrom.").addNext("Ostromia only has fragmentary remains and size cannot be determined.")).addPages(new TextPageBuilder("ostromia_info").addFirst("Danger: None").addNext("Diet: Carnivore").addNext("Range: Jurassic - 150ï¿½145 mya").addNext("Clade: Dinosauria").addNext("Clade: Saurischia").addNext("Clade: Theropoda").addNext("Family: Anchiornithidae").addNext("Genus: Ostromia"))
 						/* Ophthalmosaurus */
-						.addPages(new TextPageBuilder("ophthalmosaurus").addTitle("Ophthalmosaurus icenicus").addFirst("Ophthalmosaurus, an ichthyosaur from the Jurassic, with fossils potentially from the Cretaceous. Ophthalmosaurus had famously large eyes, hence its name, and has been found in Eroupe and North America.")).addPages(new TextPageBuilder("ophthalmosaurus_info").addFirst("Danger: None").addNext("Diet: Piscivore").addNext("Range: Jurassic - 165–157 mya").addNext("Order: Ichthyosauria").addNext("Family: Ophthalmosauridae").addNext("Subfamily: Ophthalmosaurinae").addNext("Genus: Ophthalmosaurus"))
+						.addPages(new TextPageBuilder("ophthalmosaurus").addTitle("Ophthalmosaurus icenicus").addFirst("Ophthalmosaurus, an ichthyosaur from the Jurassic, with fossils potentially from the Cretaceous. Ophthalmosaurus had famously large eyes, hence its name, and has been found in Eroupe and North America.")).addPages(new TextPageBuilder("ophthalmosaurus_info").addFirst("Danger: None").addNext("Diet: Piscivore").addNext("Range: Jurassic - 165ï¿½157 mya").addNext("Order: Ichthyosauria").addNext("Family: Ophthalmosauridae").addNext("Subfamily: Ophthalmosaurinae").addNext("Genus: Ophthalmosaurus"))
 						/* Protosuchus */
 						.addPages(new TextPageBuilder("protosuchus_1").addTitle("Protosuchus richardsoni").addFirst("Protosuchus, a crocodylomorph from Arazona, Nova Scotia, and South Africa. It was one meter long and weighed 40 kilograms.")).addPages(new TextPageBuilder("protosuchus_info").addFirst("Danger: Low").addNext("Diet: Carnivore").addNext("Range: Jurassic").addNext("Clade: Pseudosuchia").addNext("Superorder: Crocodylomorpha").addNext("Family: Protosuchidae").addNext("Genus: Palaeoniscum"))).addSections(new SectionBuilder("triassic", DinoTypes.PROCOMPSOGNATHUS.getSkeletonPick().get())
 								/* Eoraptor */
@@ -294,9 +293,9 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	}
 
 	@Override
-	public <T extends Container, SC extends Screen & IHasContainer<T>> ContainerBuilder<T, SC, LostWorldsRegistrate> container(String name, ForgeContainerFactory<T> factory, NonNullSupplier<ScreenFactory<T, SC>> screenFactory) {
+	public <T extends AbstractContainerMenu, SC extends Screen & MenuAccess<T>> MenuBuilder<T, SC, LostWorldsRegistrate> menu(String name, ForgeMenuFactory<T> factory, NonNullSupplier<ScreenFactory<T, SC>> screenFactory) {
 		this.addRawLang("container.lostworlds." + name, Arrays.stream(name.toLowerCase(Locale.ROOT).split("_")).map(StringUtils::capitalize).collect(Collectors.joining(" ")));
-		return super.container(name, factory, screenFactory);
+		return super.menu(name, factory, screenFactory);
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> blockAndItem(String name, NonNullFunction<Properties, T> factory) {
@@ -361,7 +360,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 			} else {
 				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_top", provider.modLoc("block/dense_cross")).texture("plant", provider.modLoc("block/cephalotaxus_top"))).build();
 			}
-		})).loot((provider, block) -> provider.add(block, LootTable.lootTable().withPool(provider.withSurvivesExplosion(block, LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(block).when(BlockStateProperty.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))))).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("block/" + name + "_top"))).color(() -> LostWorldsBlocks::getGrassyItemColour).build();
+		})).loot((provider, block) -> provider.add(block, LootTable.lootTable().withPool(provider.applyExplosionDecay(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))))).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("block/" + name + "_top"))).color(() -> LostWorldsBlocks::getGrassyItemColour).build();
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> plant(String name, NonNullFunction<Properties, T> factory) {
@@ -394,8 +393,8 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		return super.block(name, factory).blockstate((block, provider) -> provider.axisBlock(block.get(), provider.modLoc("block/" + texture), provider.modLoc("block/" + texture))).tag(BlockTags.LOGS_THAT_BURN, BlockTags.LOGS).simpleItem();
 	}
 
-	public <T extends StairsBlock> BlockBuilder<T, LostWorldsRegistrate> stairBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.stairsBlock((StairsBlock) block.get(), provider.modLoc("block/" + texture))).simpleItem();
+	public <T extends StairBlock> BlockBuilder<T, LostWorldsRegistrate> stairBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
+		return super.block(name, factory).blockstate((block, provider) -> provider.stairsBlock((StairBlock) block.get(), provider.modLoc("block/" + texture))).simpleItem();
 	}
 
 	public <T extends SlabBlock> BlockBuilder<T, LostWorldsRegistrate> slabBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
@@ -414,7 +413,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		return super.block(name, factory).blockstate((block, provider) -> provider.fenceGateBlock((FenceGateBlock) block.get(), provider.modLoc("block/" + texture))).tag(BlockTags.FENCE_GATES).simpleItem();
 	}
 
-	public <T extends AbstractButtonBlock> BlockBuilder<T, LostWorldsRegistrate> buttonBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
+	public <T extends ButtonBlock> BlockBuilder<T, LostWorldsRegistrate> buttonBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
 		return super.block(name, factory).blockstate((block, provider) -> LostWorldsBlockModels.button(block.get(), texture, provider)).item().model((item, provider) -> LostWorldsBlockModels.buttonInv(item.get(), provider)).build();
 	}
 
@@ -430,7 +429,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		return super.block(name, factory).blockstate((block, provider) -> provider.doorBlock((DoorBlock) block.get(), provider.modLoc("block/" + name + "_bottom"), provider.modLoc("block/" + name + "_top"))).loot((provider, block) -> provider.add(block, provider.createDoorTable(block))).item().model((item, provider) -> provider.generated(() -> item.get())).build();
 	}
 
-	public <T extends AbstractSignBlock> BlockBuilder<T, LostWorldsRegistrate> signBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
+	public <T extends SignBlock> BlockBuilder<T, LostWorldsRegistrate> signBlock(String name, String texture, NonNullFunction<Properties, T> factory) {
 		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().addModels(new ConfiguredModel(provider.models().getBuilder(name).texture("particle", provider.modLoc("block/" + texture))))).lang(provider -> "block.lostworlds." + name + ".disabled", "Sign");
 	}
 }

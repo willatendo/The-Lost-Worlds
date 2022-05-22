@@ -3,21 +3,19 @@ package lostworlds.server.jei.categories;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.container.recipes.FossilCleanerRecipe;
 import lostworlds.server.jei.LostWorldsJeiConstants;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 
 public class FossilCleanerCategory implements IRecipeCategory<FossilCleanerRecipe> {
 	public static final ResourceLocation TEXTURE_LOCATION = LostWorldsUtils.rL("textures/gui/lost_worlds_backgrounds.png");
@@ -30,7 +28,7 @@ public class FossilCleanerCategory implements IRecipeCategory<FossilCleanerRecip
 	public FossilCleanerCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 0, 0, 82, 54);
-		this.icon = helper.createDrawableIngredient(LostWorldsBlocks.FOSSIL_CLEANER.asStack());
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, LostWorldsBlocks.FOSSIL_CLEANER.asStack());
 		this.cleanerProgessBar = CacheBuilder.newBuilder().maximumSize(25).build(new CacheLoader<Integer, IDrawableAnimated>() {
 			@Override
 			public IDrawableAnimated load(Integer cookTime) {
@@ -49,7 +47,7 @@ public class FossilCleanerCategory implements IRecipeCategory<FossilCleanerRecip
 
 	@Override
 	public ResourceLocation getUid() {
-		return LostWorldsJeiConstants.FOSSIL_CLEANER_CATEGORY;
+		return LostWorldsJeiConstants.FOSSIL_CLEANER_CATEGORY.getUid();
 	}
 
 	@Override
@@ -58,8 +56,8 @@ public class FossilCleanerCategory implements IRecipeCategory<FossilCleanerRecip
 	}
 
 	@Override
-	public String getTitle() {
-		return LostWorldsUtils.tTC("jei", "fossil_cleaner.title").getString();
+	public Component getTitle() {
+		return LostWorldsUtils.tTC("jei", "fossil_cleaner.title");
 	}
 
 	@Override
@@ -72,24 +70,24 @@ public class FossilCleanerCategory implements IRecipeCategory<FossilCleanerRecip
 		return this.icon;
 	}
 
-	@Override
-	public void setIngredients(FossilCleanerRecipe recipe, IIngredients ingredients) {
-		ingredients.setInputIngredients(recipe.getIngredients());
-		ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputs());
-	}
+//	@Override
+//	public void setIngredients(FossilCleanerRecipe recipe, IIngredients ingredients) {
+//		ingredients.setInputIngredients(recipe.getIngredients());
+//		ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputs());
+//	}
+//
+//	@Override
+//	public void setRecipe(IRecipeLayout recipeLayout, FossilCleanerRecipe recipe, IIngredients ingredients) {
+//		IGuiItemStackGroup itemStackGroup = recipeLayout.getItemStacks();
+//
+//		itemStackGroup.init(0, true, 0, 0);
+//		itemStackGroup.init(1, false, 60, 18);
+//
+//		itemStackGroup.set(ingredients);
+//	}
 
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, FossilCleanerRecipe recipe, IIngredients ingredients) {
-		IGuiItemStackGroup itemStackGroup = recipeLayout.getItemStacks();
-
-		itemStackGroup.init(0, true, 0, 0);
-		itemStackGroup.init(1, false, 60, 18);
-
-		itemStackGroup.set(ingredients);
-	}
-
-	@Override
-	public void draw(FossilCleanerRecipe recipe, MatrixStack stack, double mouseX, double mouseY) {
+	public void draw(FossilCleanerRecipe recipe, PoseStack stack, double mouseX, double mouseY) {
 		IDrawableAnimated arrow = getCleaningProgessBar(recipe);
 		arrow.draw(stack, 21, 18);
 	}

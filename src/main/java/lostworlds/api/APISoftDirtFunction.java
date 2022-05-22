@@ -1,9 +1,9 @@
 package lostworlds.api;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 
 /*
  * Adds functions to the {@link SoftDirtBlock} like dropping different items.
@@ -17,5 +17,5 @@ public interface APISoftDirtFunction {
 	/*
 	 * Do whatever you want to do.
 	 */
-	void doFunction(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack);
+	void doFunction(BlockState state, ServerLevel world, BlockPos pos, ItemStack stack);
 }

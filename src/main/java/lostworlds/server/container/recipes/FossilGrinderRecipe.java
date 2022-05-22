@@ -4,17 +4,17 @@ import java.util.Random;
 
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.item.LostWorldsItems;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.world.Container;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 
-public class FossilGrinderRecipe implements IRecipe<IInventory> {
+public class FossilGrinderRecipe implements Recipe<Container> {
 	private final ResourceLocation id;
 	private Ingredient fossil;
 	public final ItemStack output;
@@ -30,7 +30,7 @@ public class FossilGrinderRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public boolean matches(IInventory inv, World worldIn) {
+	public boolean matches(Container inv, Level worldIn) {
 		if (this.fossil.test(inv.getItem(0))) {
 			return true;
 		}
@@ -38,7 +38,7 @@ public class FossilGrinderRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public ItemStack assemble(IInventory inv) {
+	public ItemStack assemble(Container inv) {
 		Random rand = new Random();
 		int chance = rand.nextInt(4);
 
@@ -87,7 +87,7 @@ public class FossilGrinderRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer() {
+	public RecipeSerializer<?> getSerializer() {
 		return LostWorldsRecipes.FOSSIL_GRINDER_SERIALIZER.get();
 	}
 
@@ -104,7 +104,7 @@ public class FossilGrinderRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public IRecipeType<?> getType() {
+	public RecipeType<?> getType() {
 		return LostWorldsRecipes.FOSSIL_GRINDER_RECIPE;
 	}
 

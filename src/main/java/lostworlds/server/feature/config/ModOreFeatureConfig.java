@@ -5,11 +5,11 @@ import java.util.function.Supplier;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.feature.template.RuleTest;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 
-public class ModOreFeatureConfig implements IFeatureConfig {
+public class ModOreFeatureConfig implements FeatureConfiguration {
 	public static final Codec<ModOreFeatureConfig> CODEC = RecordCodecBuilder.create((instance) -> {
 		return instance.group(RuleTest.CODEC.fieldOf("target").forGetter((config) -> {
 			return config.target;

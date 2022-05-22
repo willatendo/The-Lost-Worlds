@@ -4,20 +4,20 @@ import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.container.DisplayCaseContainer;
 import lostworlds.server.container.LostWorldsContainers;
 import lostworlds.server.container.inventory.DisplayCaseInventory;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
-import net.minecraft.tileentity.LockableLootTileEntity;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
+import net.minecraft.core.NonNullList;
+import net.minecraft.network.chat.Component;
 
-public class DisplayCaseTileEntity extends LockableLootTileEntity implements INamedContainerProvider {
+public class DisplayCaseTileEntity extends RandomizableContainerBlockEntity implements MenuProvider {
 	public DisplayCaseInventory handler;
 
 	public DisplayCaseTileEntity() {
@@ -26,13 +26,13 @@ public class DisplayCaseTileEntity extends LockableLootTileEntity implements INa
 	}
 
 	@Override
-	public void load(BlockState state, CompoundNBT nbt) {
+	public void load(BlockState state, CompoundTag nbt) {
 		this.handler.deserializeNBT(nbt.getCompound("ItemStackHandler"));
 		super.load(state, nbt);
 	}
 
 	@Override
-	public CompoundNBT save(CompoundNBT nbt) {
+	public CompoundTag save(CompoundTag nbt) {
 		nbt.put("ItemStackHandler", this.handler.serializeNBT());
 		return super.save(nbt);
 	}
@@ -53,7 +53,7 @@ public class DisplayCaseTileEntity extends LockableLootTileEntity implements INa
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity entity) {
+	public boolean stillValid(Player entity) {
 		return !entity.isSpectator();
 	}
 
@@ -98,37 +98,37 @@ public class DisplayCaseTileEntity extends LockableLootTileEntity implements INa
 	}
 
 	@Override
-	public SUpdateTileEntityPacket getUpdatePacket() {
-		CompoundNBT update = getUpdateTag();
+	public ClientboundBlockEntityDataPacket getUpdatePacket() {
+		CompoundTag update = getUpdateTag();
 		int data = 0;
-		return new SUpdateTileEntityPacket(this.worldPosition, data, update);
+		return new ClientboundBlockEntityDataPacket(this.worldPosition, data, update);
 	}
 
 	@Override
-	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-		CompoundNBT update = pkt.getTag();
+	public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+		CompoundTag update = pkt.getTag();
 		handleUpdateTag(this.getBlockState(), update);
 	}
 
 	@Override
-	public CompoundNBT getUpdateTag() {
-		CompoundNBT nbt = new CompoundNBT();
+	public CompoundTag getUpdateTag() {
+		CompoundTag nbt = new CompoundTag();
 		save(nbt);
 		return nbt;
 	}
 
 	@Override
-	public void handleUpdateTag(BlockState state, CompoundNBT nbt) {
+	public void handleUpdateTag(BlockState state, CompoundTag nbt) {
 		load(state, nbt);
 	}
 
 	@Override
-	protected ITextComponent getDefaultName() {
+	protected Component getDefaultName() {
 		return LostWorldsUtils.tTC("container", "display_case");
 	}
 
 	@Override
-	protected Container createMenu(int windowID, PlayerInventory playerInventory) {
+	protected AbstractContainerMenu createMenu(int windowID, Inventory playerInventory) {
 		return new DisplayCaseContainer(LostWorldsContainers.DISPLAY_CASE_CONTAINER.get(), windowID, playerInventory, this, this.handler);
 	}
 }

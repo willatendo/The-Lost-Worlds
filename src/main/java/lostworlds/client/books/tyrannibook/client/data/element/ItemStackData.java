@@ -7,18 +7,18 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 import lostworlds.client.books.tyrannibook.client.TyrannobookLoader;
 import lostworlds.client.books.tyrannibook.client.repository.TyrannobookRepository;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.JsonToNBT;
-import net.minecraft.nbt.ListNBT;
-import net.minecraft.nbt.StringNBT;
-import net.minecraft.tags.ITag;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.TagParser;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.StringTag;
+import net.minecraft.tags.Tag;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StringUtils;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.StringUtil;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ItemStackData implements DataElement {
@@ -66,17 +66,17 @@ public class ItemStackData implements DataElement {
 
 		if (this.nbt != null) {
 			try {
-				itemStack.setTag(JsonToNBT.parseTag(filterJsonQuotes(this.nbt.toString())));
+				itemStack.setTag(TagParser.parseTag(filterJsonQuotes(this.nbt.toString())));
 			} catch (CommandSyntaxException ignored) {
 			}
 		}
 
 		if (isMissingItem) {
-			CompoundNBT display = itemStack.getOrCreateTagElement("display");
+			CompoundTag display = itemStack.getOrCreateTagElement("display");
 			display.putString("Name", "\u00A7rUnknown Item");
-			ListNBT lore = new ListNBT();
-			lore.add(StringNBT.valueOf("\u00A7r\u00A7eItem Name:"));
-			lore.add(StringNBT.valueOf("\u00A7r\u00A7e" + this.id));
+			ListTag lore = new ListTag();
+			lore.add(StringTag.valueOf("\u00A7r\u00A7eItem Name:"));
+			lore.add(StringTag.valueOf("\u00A7r\u00A7e" + this.id));
 			display.put("Lore", lore);
 		}
 
@@ -92,7 +92,7 @@ public class ItemStackData implements DataElement {
 		data.id = ForgeRegistries.ITEMS.getKey(stack.getItem()).toString();
 		data.amount = (byte) stack.getCount();
 		if (!ignoreNbt && stack.getTag() != null) {
-			data.nbt = TyrannobookLoader.GSON.toJsonTree(stack.getTag(), CompoundNBT.class).getAsJsonObject();
+			data.nbt = TyrannobookLoader.GSON.toJsonTree(stack.getTag(), CompoundTag.class).getAsJsonObject();
 		}
 
 		return data;
@@ -116,7 +116,7 @@ public class ItemStackData implements DataElement {
 		this.isTag = true;
 		this.tagLoaded = true;
 
-		ITag<Item> values = ItemTags.getAllTags().getTag(new ResourceLocation(this.tag));
+		Tag<Item> values = ItemTags.getAllTags().getTag(new ResourceLocation(this.tag));
 		if (values != null) {
 			this.items = values.getValues().stream().map(ItemStack::new).collect(Collectors.toCollection(NonNullList::create));
 		} else {
@@ -130,7 +130,7 @@ public class ItemStackData implements DataElement {
 			return;
 		}
 
-		if (!StringUtils.isNullOrEmpty(this.tag) && ResourceLocation.isValidResourceLocation(this.tag)) {
+		if (!StringUtil.isNullOrEmpty(this.tag) && ResourceLocation.isValidResourceLocation(this.tag)) {
 			this.loadTag();
 			this.id = "->itemList";
 			return;
