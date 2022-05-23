@@ -1,15 +1,15 @@
 package lostworlds.server.entity.helper;
 
-import lostworlds.server.entity.aquatic.BasicFishLikeEntity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.control.MoveControl;
+import lostworlds.server.entity.aquatic.BasicFishLikeMob;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.MoveControl;
 
 public class FishLikeMoveHelper extends MoveControl {
-	private final BasicFishLikeEntity fish;
+	private final BasicFishLikeMob fish;
 
-	public FishLikeMoveHelper(BasicFishLikeEntity entity) {
+	public FishLikeMoveHelper(BasicFishLikeMob entity) {
 		super(entity);
 		this.fish = entity;
 	}
@@ -27,7 +27,7 @@ public class FishLikeMoveHelper extends MoveControl {
 			double d1 = this.wantedY - this.fish.getY();
 			double d2 = this.wantedZ - this.fish.getZ();
 			if (d1 != 0.0D) {
-				double d3 = (double) Mth.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
+				double d3 = (double) Math.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
 				this.fish.setDeltaMovement(this.fish.getDeltaMovement().add(0.0D, (double) this.fish.getSpeed() * (d1 / d3) * 0.1D, 0.0D));
 			}
 

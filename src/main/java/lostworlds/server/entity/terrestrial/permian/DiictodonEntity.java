@@ -5,23 +5,25 @@ import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.goal.terrestrial.SleepGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyAvoidEntityGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyBreedGoal;
-import lostworlds.server.entity.goal.terrestrial.SleepyLookAtGoal;
+import lostworlds.server.entity.goal.terrestrial.SleepyLookAtPlayerGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyLookRandomlyGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepySwimGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyTemptGoal;
-import lostworlds.server.entity.goal.terrestrial.SleepyWaterAvoidingRandomWalkingGoal;
+import lostworlds.server.entity.goal.terrestrial.SleepyWaterAvoidingRandomStrollGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialEatGrassGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialEatMossySoilGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialEatPodzolGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.server.entity.goal.terrestrial.entity.DiictodonCreateTerritoryGoal;
 import lostworlds.server.entity.goal.terrestrial.entity.DiictodonLayEggGoal;
-import lostworlds.server.entity.semiaquatic.permian.RhinesuchusEntity;
-import lostworlds.server.entity.terrestrial.EggLayingEntity;
+import lostworlds.server.entity.semiaquatic.permian.Rhinesuchus;
+import lostworlds.server.entity.terrestrial.EggLayingMob;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.CreatureDiet;
-import net.minecraft.world.entity.AgableMob;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier.Builder;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -29,15 +31,13 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.level.Level;
-import net.minecraft.server.level.ServerLevel;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class DiictodonEntity extends EggLayingEntity {
+public class DiictodonEntity extends EggLayingMob {
 	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);
 
@@ -68,17 +68,17 @@ public class DiictodonEntity extends EggLayingEntity {
 	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new SleepySwimGoal(this));
-		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomWalkingGoal.Egg(this, 1.0D));
-		this.goalSelector.addGoal(2, new SleepyLookAtGoal(this, Player.class, 6.0F));
+		this.goalSelector.addGoal(1, new SleepyWaterAvoidingRandomStrollGoal.Egg(this, 1.0D));
+		this.goalSelector.addGoal(2, new SleepyLookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(3, new SleepyLookRandomlyGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialEatGrassGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialEatPodzolGoal(this));
 		this.goalSelector.addGoal(4, new TerrestrialEatMossySoilGoal(this));
 		this.goalSelector.addGoal(5, new SleepGoal(this));
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, Player.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
-		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, DimetrodonEntity.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
-		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, GorgonopsEntity.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
-		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, RhinesuchusEntity.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, Dimetrodon.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, Gorgonops.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, Rhinesuchus.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new DiictodonCreateTerritoryGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));
 		this.goalSelector.addGoal(6, new DiictodonLayEggGoal(this, 1.0D));
@@ -102,7 +102,7 @@ public class DiictodonEntity extends EggLayingEntity {
 	}
 
 	@Override
-	public AgableMob getBreedOffspring(ServerLevel world, AgableMob entity) {
+	public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob entity) {
 		return LostWorldsEntities.DIICTODON.create(world);
 	}
 }

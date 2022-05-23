@@ -2,22 +2,22 @@ package lostworlds.server.entity.goal.aquatic;
 
 import java.util.EnumSet;
 
-import lostworlds.server.entity.aquatic.BreedingWaterEntity;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import lostworlds.server.entity.aquatic.BreedingWaterMob;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public class AquaticTemptGoal extends Goal {
-	private static final TargetingConditions TEMPT_TARGETING = (new TargetingConditions()).range(10.0D).allowSameTeam().allowInvulnerable();
-	private final BreedingWaterEntity entity;
+	   private static final TargetingConditions TEMPT_TARGETING = TargetingConditions.forNonCombat().range(10.0D).ignoreLineOfSight();
+	private final BreedingWaterMob entity;
 	private final double speedModifier;
 	private Player player;
 	private int calmDown;
 	private final Ingredient items;
 
-	public AquaticTemptGoal(BreedingWaterEntity entity, double speedModifier, Ingredient items) {
+	public AquaticTemptGoal(BreedingWaterMob entity, double speedModifier, Ingredient items) {
 		this.entity = entity;
 		this.speedModifier = speedModifier;
 		this.items = items;

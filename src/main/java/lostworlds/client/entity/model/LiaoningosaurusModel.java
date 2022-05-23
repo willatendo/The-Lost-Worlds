@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.jurassic.LiaoningosaurusEntity;
+import lostworlds.server.entity.terrestrial.jurassic.Liaoningosaurus;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,28 +11,28 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class LiaoningosaurusModel extends AnimatedGeoModel<LiaoningosaurusEntity> {
+public class LiaoningosaurusModel extends AnimatedGeoModel<Liaoningosaurus> {
 	private static final ResourceLocation TEXTURE_1 = LostWorldsUtils.rL("textures/model/entity/liaoningosaurus/texture_1.png");
 	private static final ResourceLocation TEXTURE_2 = LostWorldsUtils.rL("textures/model/entity/liaoningosaurus/texture_2.png");
 	private ResourceLocation texture;
 
 	@Override
-	public ResourceLocation getAnimationFileLocation(LiaoningosaurusEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Liaoningosaurus entity) {
 		return LostWorldsUtils.rL("animations/liaoningosaurus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(LiaoningosaurusEntity entity) {
+	public ResourceLocation getModelLocation(Liaoningosaurus entity) {
 		return LostWorldsUtils.rL("geo/liaoningosaurus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(LiaoningosaurusEntity entity) {
+	public ResourceLocation getTextureLocation(Liaoningosaurus entity) {
 		return texture;
 	}
 
 	@Override
-	public void setLivingAnimations(LiaoningosaurusEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Liaoningosaurus entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

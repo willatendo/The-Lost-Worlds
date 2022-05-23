@@ -2,16 +2,16 @@ package lostworlds.server.entity.goal.terrestrial;
 
 import java.util.EnumSet;
 
-import lostworlds.server.entity.terrestrial.EggLayingEntity;
+import lostworlds.server.entity.terrestrial.EggLayingMob;
 import net.minecraft.world.entity.ai.goal.Goal;
 
 public class SleepyLookRandomlyGoal extends Goal {
-	private final EggLayingEntity entity;
+	private final EggLayingMob entity;
 	private double relX;
 	private double relZ;
 	private int lookTime;
 
-	public SleepyLookRandomlyGoal(EggLayingEntity entity) {
+	public SleepyLookRandomlyGoal(EggLayingMob entity) {
 		this.entity = entity;
 		this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
 	}

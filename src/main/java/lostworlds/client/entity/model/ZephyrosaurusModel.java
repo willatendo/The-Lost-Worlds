@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.cretaceous.ZephyrosaurusEntity;
+import lostworlds.server.entity.terrestrial.cretaceous.Zephyrosaurus;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,28 +11,28 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class ZephyrosaurusModel extends AnimatedGeoModel<ZephyrosaurusEntity> {
+public class ZephyrosaurusModel extends AnimatedGeoModel<Zephyrosaurus> {
 	private static final ResourceLocation TEXTURE_1 = LostWorldsUtils.rL("textures/model/entity/zephyrosaurus/texture_1.png");
 	private static final ResourceLocation TEXTURE_2 = LostWorldsUtils.rL("textures/model/entity/zephyrosaurus/texture_2.png");
 	private ResourceLocation texture;
 
 	@Override
-	public ResourceLocation getAnimationFileLocation(ZephyrosaurusEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Zephyrosaurus entity) {
 		return LostWorldsUtils.rL("animations/zephyrosaurus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(ZephyrosaurusEntity entity) {
+	public ResourceLocation getModelLocation(Zephyrosaurus entity) {
 		return LostWorldsUtils.rL("geo/zephyrosaurus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(ZephyrosaurusEntity entity) {
+	public ResourceLocation getTextureLocation(Zephyrosaurus entity) {
 		return this.texture;
 	}
 
 	@Override
-	public void setLivingAnimations(ZephyrosaurusEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Zephyrosaurus entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.cretaceous.UtahraptorEntity;
+import lostworlds.server.entity.terrestrial.cretaceous.Utahraptor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,24 +11,24 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class UtahraptorModel extends AnimatedGeoModel<UtahraptorEntity> {
+public class UtahraptorModel extends AnimatedGeoModel<Utahraptor> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(UtahraptorEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Utahraptor entity) {
 		return LostWorldsUtils.rL("animations/utahraptor.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(UtahraptorEntity entity) {
+	public ResourceLocation getModelLocation(Utahraptor entity) {
 		return LostWorldsUtils.rL("geo/utahraptor.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(UtahraptorEntity entity) {
+	public ResourceLocation getTextureLocation(Utahraptor entity) {
 		return LostWorldsUtils.rL("textures/model/entity/utahraptor/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(UtahraptorEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Utahraptor entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

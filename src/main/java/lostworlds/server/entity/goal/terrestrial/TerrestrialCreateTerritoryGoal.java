@@ -1,20 +1,19 @@
 package lostworlds.server.entity.goal.terrestrial;
 
-import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
-import net.minecraft.tags.BlockTags;
+import lostworlds.server.entity.terrestrial.EggLayingMob;
 import net.minecraft.core.BlockPos;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.Tags;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Blocks;
 
 public class TerrestrialCreateTerritoryGoal extends MoveToBlockGoal {
-	private final EggLayingEntity entity;
+	private final EggLayingMob entity;
 	private final Level level;
 
-	public TerrestrialCreateTerritoryGoal(EggLayingEntity entity, double speedModifier) {
+	public TerrestrialCreateTerritoryGoal(EggLayingMob entity, double speedModifier) {
 		super(entity, speedModifier, 16);
 		this.entity = entity;
 		this.level = entity.level;
@@ -31,7 +30,7 @@ public class TerrestrialCreateTerritoryGoal extends MoveToBlockGoal {
 	}
 
 	public static boolean isNatural(BlockGetter reader, BlockPos pos) {
-		return reader.getBlockState(pos).is(BlockTags.SAND) || reader.getBlockState(pos).is(Tags.Blocks.DIRT);
+		return reader.getBlockState(pos).is(BlockTags.SAND) || reader.getBlockState(pos).is(BlockTags.DIRT);
 	}
 
 	@Override

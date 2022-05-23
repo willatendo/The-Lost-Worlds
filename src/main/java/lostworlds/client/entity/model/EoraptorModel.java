@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.triassic.EoraptorEntity;
+import lostworlds.server.entity.terrestrial.triassic.Eoraptor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,24 +11,24 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class EoraptorModel extends AnimatedGeoModel<EoraptorEntity> {
+public class EoraptorModel extends AnimatedGeoModel<Eoraptor> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(EoraptorEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Eoraptor entity) {
 		return LostWorldsUtils.rL("animations/eoraptor.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(EoraptorEntity entity) {
+	public ResourceLocation getModelLocation(Eoraptor entity) {
 		return LostWorldsUtils.rL("geo/eoraptor.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(EoraptorEntity entity) {
+	public ResourceLocation getTextureLocation(Eoraptor entity) {
 		return LostWorldsUtils.rL("textures/model/entity/eoraptor/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(EoraptorEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Eoraptor entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

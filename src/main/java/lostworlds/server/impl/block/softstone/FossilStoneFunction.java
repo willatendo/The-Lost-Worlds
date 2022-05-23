@@ -5,7 +5,7 @@ import java.util.Random;
 import lostworlds.api.APISoftStoneFunction;
 import lostworlds.server.block.PotentialPart;
 import lostworlds.server.block.SoftStoneBlock;
-import lostworlds.server.entity.fossil.FossilEntity;
+import lostworlds.server.entity.fossil.Fossil;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.item.LostWorldsEnchantments;
 import net.minecraft.world.level.block.state.BlockState;
@@ -25,27 +25,27 @@ public class FossilStoneFunction implements APISoftStoneFunction {
 			int breakchance = rand.nextInt(2);
 			if (breakchance != 0) {
 				if (part == PotentialPart.ARM) {
-					FossilEntity fossil = creature.getDirtyArmBones().get().create(world);
+					Fossil fossil = creature.getDirtyArmBones().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.LEG) {
-					FossilEntity fossil = creature.getDirtyLegBones().get().create(world);
+					Fossil fossil = creature.getDirtyLegBones().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.RIB_CAGE) {
-					FossilEntity fossil = creature.getDirtyRibCage().get().create(world);
+					Fossil fossil = creature.getDirtyRibCage().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.TAIL) {
-					FossilEntity fossil = creature.getDirtyTail().get().create(world);
+					Fossil fossil = creature.getDirtyTail().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.SKULL) {
-					FossilEntity fossil = creature.getDirtySkull().get().create(world);
+					Fossil fossil = creature.getDirtySkull().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
@@ -55,27 +55,27 @@ public class FossilStoneFunction implements APISoftStoneFunction {
 			}
 		} else if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.PRECISION.get(), stack) == 3) {
 			if (part == PotentialPart.ARM) {
-				FossilEntity fossil = creature.getDirtyArmBones().get().create(world);
+				Fossil fossil = creature.getDirtyArmBones().get().create(world);
 				fossil.setAge(0);
 				fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 				world.addFreshEntity(fossil);
 			} else if (part == PotentialPart.LEG) {
-				FossilEntity fossil = creature.getDirtyLegBones().get().create(world);
+				Fossil fossil = creature.getDirtyLegBones().get().create(world);
 				fossil.setAge(0);
 				fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 				world.addFreshEntity(fossil);
 			} else if (part == PotentialPart.RIB_CAGE) {
-				FossilEntity fossil = creature.getDirtyRibCage().get().create(world);
+				Fossil fossil = creature.getDirtyRibCage().get().create(world);
 				fossil.setAge(0);
 				fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 				world.addFreshEntity(fossil);
 			} else if (part == PotentialPart.TAIL) {
-				FossilEntity fossil = creature.getDirtyTail().get().create(world);
+				Fossil fossil = creature.getDirtyTail().get().create(world);
 				fossil.setAge(0);
 				fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 				world.addFreshEntity(fossil);
 			} else if (part == PotentialPart.SKULL) {
-				FossilEntity fossil = creature.getDirtySkull().get().create(world);
+				Fossil fossil = creature.getDirtySkull().get().create(world);
 				fossil.setAge(0);
 				fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 				world.addFreshEntity(fossil);
@@ -86,27 +86,27 @@ public class FossilStoneFunction implements APISoftStoneFunction {
 			int lowbreakchance = rand.nextInt(16);
 			if (lowbreakchance != 0) {
 				if (part == PotentialPart.ARM) {
-					FossilEntity fossil = creature.getDirtyArmBones().get().create(world);
+					Fossil fossil = creature.getDirtyArmBones().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.LEG) {
-					FossilEntity fossil = creature.getDirtyLegBones().get().create(world);
+					Fossil fossil = creature.getDirtyLegBones().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.RIB_CAGE) {
-					FossilEntity fossil = creature.getDirtyRibCage().get().create(world);
+					Fossil fossil = creature.getDirtyRibCage().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.TAIL) {
-					FossilEntity fossil = creature.getDirtyTail().get().create(world);
+					Fossil fossil = creature.getDirtyTail().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.SKULL) {
-					FossilEntity fossil = creature.getDirtySkull().get().create(world);
+					Fossil fossil = creature.getDirtySkull().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
@@ -118,27 +118,27 @@ public class FossilStoneFunction implements APISoftStoneFunction {
 			int mediumbreakchance = rand.nextInt(8);
 			if (mediumbreakchance != 0) {
 				if (part == PotentialPart.ARM) {
-					FossilEntity fossil = creature.getDirtyArmBones().get().create(world);
+					Fossil fossil = creature.getDirtyArmBones().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.LEG) {
-					FossilEntity fossil = creature.getDirtyLegBones().get().create(world);
+					Fossil fossil = creature.getDirtyLegBones().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.RIB_CAGE) {
-					FossilEntity fossil = creature.getDirtyRibCage().get().create(world);
+					Fossil fossil = creature.getDirtyRibCage().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.TAIL) {
-					FossilEntity fossil = creature.getDirtyTail().get().create(world);
+					Fossil fossil = creature.getDirtyTail().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.SKULL) {
-					FossilEntity fossil = creature.getDirtySkull().get().create(world);
+					Fossil fossil = creature.getDirtySkull().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
@@ -150,27 +150,27 @@ public class FossilStoneFunction implements APISoftStoneFunction {
 			int normalbreakchance = rand.nextInt(4);
 			if (normalbreakchance != 0) {
 				if (part == PotentialPart.ARM) {
-					FossilEntity fossil = creature.getDirtyArmBones().get().create(world);
+					Fossil fossil = creature.getDirtyArmBones().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.LEG) {
-					FossilEntity fossil = creature.getDirtyLegBones().get().create(world);
+					Fossil fossil = creature.getDirtyLegBones().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.RIB_CAGE) {
-					FossilEntity fossil = creature.getDirtyRibCage().get().create(world);
+					Fossil fossil = creature.getDirtyRibCage().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.TAIL) {
-					FossilEntity fossil = creature.getDirtyTail().get().create(world);
+					Fossil fossil = creature.getDirtyTail().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);
 				} else if (part == PotentialPart.SKULL) {
-					FossilEntity fossil = creature.getDirtySkull().get().create(world);
+					Fossil fossil = creature.getDirtySkull().get().create(world);
 					fossil.setAge(0);
 					fossil.moveTo((double) pos.getX() + 0.3D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(fossil);

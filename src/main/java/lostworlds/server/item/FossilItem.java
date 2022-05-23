@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 
 import javax.annotation.Nullable;
 
-import lostworlds.server.entity.fossil.FossilEntity;
+import lostworlds.server.entity.fossil.Fossil;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
@@ -54,7 +54,7 @@ public class FossilItem extends Item implements IAnimatable {
 	private final Lazy<? extends EntityType<?>> entityTypeSupplier;
 	private final boolean isPlastered;
 
-	public FossilItem(Properties properties, DinoTypes type, String part, NonNullSupplier<? extends EntityType<FossilEntity>> entityTypeSupplier, boolean isPlastered) {
+	public FossilItem(Properties properties, DinoTypes type, String part, NonNullSupplier<? extends EntityType<Fossil>> entityTypeSupplier, boolean isPlastered) {
 		super(properties);
 		this.type = type;
 		this.part = part;

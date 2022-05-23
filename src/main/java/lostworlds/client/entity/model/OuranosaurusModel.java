@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.cretaceous.OuranosaurusEntity;
+import lostworlds.server.entity.terrestrial.cretaceous.Ouranosaurus;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,24 +11,24 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class OuranosaurusModel extends AnimatedGeoModel<OuranosaurusEntity> {
+public class OuranosaurusModel extends AnimatedGeoModel<Ouranosaurus> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(OuranosaurusEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Ouranosaurus entity) {
 		return LostWorldsUtils.rL("animations/ouranosaurus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(OuranosaurusEntity entity) {
+	public ResourceLocation getModelLocation(Ouranosaurus entity) {
 		return LostWorldsUtils.rL("geo/ouranosaurus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(OuranosaurusEntity entity) {
+	public ResourceLocation getTextureLocation(Ouranosaurus entity) {
 		return LostWorldsUtils.rL("textures/model/entity/ouranosaurus/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(OuranosaurusEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Ouranosaurus entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

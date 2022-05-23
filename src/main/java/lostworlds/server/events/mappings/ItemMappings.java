@@ -6,8 +6,9 @@ import java.util.function.Supplier;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.item.LostWorldsItems;
-import net.minecraft.world.item.Item;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -19,8 +20,7 @@ public class ItemMappings {
 	private static final Map<ResourceLocation, Supplier<Item>> itemRemappings = new HashMap<ResourceLocation, Supplier<Item>>() {
 		private static final long serialVersionUID = 2729763913422843325L;
 		{
-			put(LostWorldsUtils.rL("copper_ingot"), () -> LostWorldsItems.COPPER_INGOT.get());
-			put(LostWorldsUtils.rL("copper_nugget"), () -> LostWorldsItems.COPPER_NUGGET.get());
+			put(LostWorldsUtils.rL("copper_ingot"), () -> Items.COPPER_INGOT);
 
 			put(LostWorldsUtils.rL("permian_time_book"), () -> LostWorldsItems.PERMIAN_PERIOD_TIME_BOOK.get());
 			put(LostWorldsUtils.rL("jurassic_time_book"), () -> LostWorldsItems.JURASSIC_PERIOD_TIME_BOOK.get());

@@ -2,13 +2,13 @@ package lostworlds.server.entity.item;
 
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.item.LostWorldsItems;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.level.Level;
-import net.minecraft.server.level.ServerLevel;
 
 public class CrystalScarabGemItemEntity extends ModItemEntity {
 	public CrystalScarabGemItemEntity(EntityType<? extends CrystalScarabGemItemEntity> entityType, Level world) {
@@ -26,7 +26,7 @@ public class CrystalScarabGemItemEntity extends ModItemEntity {
 		entity.moveTo(this.getX(), this.getY(), this.getZ(), this.yRot, this.xRot);
 		entity.setItem(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get().getDefaultInstance());
 		world.addFreshEntity(entity);
-		this.remove();
+		this.kill();
 	}
 
 	@Override

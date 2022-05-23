@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.cretaceous.FukuivenatorEntity;
+import lostworlds.server.entity.terrestrial.cretaceous.Fukuivenator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,24 +11,24 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class FukuivenatorModel extends AnimatedGeoModel<FukuivenatorEntity> {
+public class FukuivenatorModel extends AnimatedGeoModel<Fukuivenator> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(FukuivenatorEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Fukuivenator entity) {
 		return LostWorldsUtils.rL("animations/fukuivenator.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(FukuivenatorEntity entity) {
+	public ResourceLocation getModelLocation(Fukuivenator entity) {
 		return LostWorldsUtils.rL("geo/fukuivenator.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(FukuivenatorEntity entity) {
+	public ResourceLocation getTextureLocation(Fukuivenator entity) {
 		return LostWorldsUtils.rL("textures/model/entity/fukuivenator/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(FukuivenatorEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Fukuivenator entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

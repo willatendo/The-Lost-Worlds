@@ -3,7 +3,7 @@ package lostworlds.server.item;
 import java.util.List;
 import java.util.function.Predicate;
 
-import lostworlds.server.entity.ModBoatEntity;
+import lostworlds.server.entity.ModBoat;
 import lostworlds.server.entity.utils.enums.ModBoatType;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -49,7 +49,7 @@ public class ModBoatItem extends Item {
 			}
 
 			if (raytraceresult.getType() == HitResult.Type.BLOCK) {
-				ModBoatEntity boat = new ModBoatEntity(level, raytraceresult.getLocation().x, raytraceresult.getLocation().y, raytraceresult.getLocation().z);
+				ModBoat boat = new ModBoat(level, raytraceresult.getLocation().x, raytraceresult.getLocation().y, raytraceresult.getLocation().z);
 				boat.setBYGBoatType(this.type);
 				boat.yRot = player.yRot;
 				if (!level.noCollision(boat, boat.getBoundingBox().inflate(-0.1D))) {

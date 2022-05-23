@@ -4,7 +4,7 @@ import java.util.Random;
 
 import lostworlds.server.block.properties.ModBlockStateProperties;
 import lostworlds.server.entity.LostWorldsEntities;
-import lostworlds.server.entity.terrestrial.PrehistoricEntity;
+import lostworlds.server.entity.terrestrial.PrehistoricMob;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -38,7 +38,7 @@ public class DiictodonBurrowBlock extends Block {
 
 				for (int j = 0; j < state.getValue(EGGS); ++j) {
 					world.levelEvent(2001, pos, Block.getId(state));
-					PrehistoricEntity entity = LostWorldsEntities.DIICTODON.create(world);
+					PrehistoricMob entity = LostWorldsEntities.DIICTODON.create(world);
 					entity.moveTo((double) pos.getX() + 0.3D * 0.2D, (double) pos.getY() + 16.0F, (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(entity);
 					entity.setAge(-24000);

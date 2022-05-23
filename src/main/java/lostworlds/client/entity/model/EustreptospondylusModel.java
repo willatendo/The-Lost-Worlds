@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.jurassic.EustreptospondylusEntity;
+import lostworlds.server.entity.terrestrial.jurassic.Eustreptospondylus;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,24 +11,24 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class EustreptospondylusModel extends AnimatedGeoModel<EustreptospondylusEntity> {
+public class EustreptospondylusModel extends AnimatedGeoModel<Eustreptospondylus> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(EustreptospondylusEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Eustreptospondylus entity) {
 		return LostWorldsUtils.rL("animations/eustreptospondylus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(EustreptospondylusEntity entity) {
+	public ResourceLocation getModelLocation(Eustreptospondylus entity) {
 		return LostWorldsUtils.rL("geo/eustreptospondylus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(EustreptospondylusEntity entity) {
+	public ResourceLocation getTextureLocation(Eustreptospondylus entity) {
 		return LostWorldsUtils.rL("textures/model/entity/eustreptospondylus/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(EustreptospondylusEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Eustreptospondylus entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

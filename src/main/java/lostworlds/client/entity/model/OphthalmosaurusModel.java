@@ -1,26 +1,26 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.aquatic.jurassic.OphthalmosaurusEntity;
+import lostworlds.server.entity.aquatic.jurassic.Ophthalmosaurus;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 @OnlyIn(Dist.CLIENT)
-public class OphthalmosaurusModel extends AnimatedGeoModel<OphthalmosaurusEntity> {
+public class OphthalmosaurusModel extends AnimatedGeoModel<Ophthalmosaurus> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(OphthalmosaurusEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Ophthalmosaurus entity) {
 		return LostWorldsUtils.rL("animations/ophthalmosaurus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(OphthalmosaurusEntity entity) {
+	public ResourceLocation getModelLocation(Ophthalmosaurus entity) {
 		return LostWorldsUtils.rL("geo/ophthalmosaurus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(OphthalmosaurusEntity entity) {
+	public ResourceLocation getTextureLocation(Ophthalmosaurus entity) {
 		return LostWorldsUtils.rL("textures/model/entity/ophthalmosaurus/texture.png");
 	}
 

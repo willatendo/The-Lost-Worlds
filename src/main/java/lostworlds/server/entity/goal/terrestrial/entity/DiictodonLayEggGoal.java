@@ -4,28 +4,28 @@ import java.util.Random;
 
 import lostworlds.server.block.DiictodonBurrowBlock;
 import lostworlds.server.block.LostWorldsBlocks;
-import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import net.minecraft.world.level.block.Block;
+import lostworlds.server.entity.terrestrial.EggLayingMob;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
 
 public class DiictodonLayEggGoal extends MoveToBlockGoal {
-	private final EggLayingEntity entity;
+	private final EggLayingMob entity;
 
-	public DiictodonLayEggGoal(EggLayingEntity entity, double speedModifer) {
+	public DiictodonLayEggGoal(EggLayingMob entity, double speedModifer) {
 		super(entity, speedModifer, 16);
 		this.entity = entity;
 	}
 
 	@Override
 	public boolean canUse() {
-		return this.entity.hasEgg() && this.entity.getHomePos().closerThan(this.entity.position(), 9.0D) ? super.canUse() : false;
+		return this.entity.hasEgg() && this.entity.getHomePos().closerToCenterThan(this.entity.position(), 9.0D) ? super.canUse() : false;
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class DiictodonLayEggGoal extends MoveToBlockGoal {
 
 	@Override
 	public boolean canContinueToUse() {
-		return super.canContinueToUse() && this.entity.hasEgg() && this.entity.getHomePos().closerThan(this.entity.position(), 9.0D);
+		return super.canContinueToUse() && this.entity.hasEgg() && this.entity.getHomePos().closerToCenterThan(this.entity.position(), 9.0D);
 	}
 
 	@Override

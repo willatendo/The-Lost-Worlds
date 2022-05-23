@@ -3,15 +3,13 @@ package lostworlds.server.entity.goal.semiaquatic;
 import java.util.EnumSet;
 
 import lostworlds.server.entity.utils.ISemiAquatic;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.util.RandomPos;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.util.DefaultRandomPos;
 import net.minecraft.world.phys.Vec3;
-
-import net.minecraft.world.entity.ai.goal.Goal.Flag;
 
 public class SemiAquaticLeaveWaterGoal extends Goal {
 	private final PathfinderMob creature;
@@ -63,7 +61,7 @@ public class SemiAquaticLeaveWaterGoal extends Goal {
 	}
 
 	public BlockPos generateTarget() {
-		Vec3 vector3d = RandomPos.getLandPos(this.creature, 23, 7);
+		Vec3 vector3d = DefaultRandomPos.getPos(this.creature, 23, 7);
 		int tries = 0;
 		while (vector3d != null && tries < 8) {
 			boolean waterDetected = false;
@@ -74,7 +72,7 @@ public class SemiAquaticLeaveWaterGoal extends Goal {
 				}
 			}
 			if (waterDetected) {
-				vector3d = RandomPos.getLandPos(this.creature, 23, 7);
+				vector3d = DefaultRandomPos.getPos(this.creature, 23, 7);
 			} else {
 				return new BlockPos(vector3d);
 			}

@@ -3,7 +3,7 @@ package lostworlds.server.entity.goal.aquatic.dolphin;
 import java.util.List;
 import java.util.Random;
 
-import lostworlds.server.entity.aquatic.DolphinLikeEntity;
+import lostworlds.server.entity.aquatic.DolphinLike;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.animal.Dolphin;
@@ -14,10 +14,10 @@ import net.minecraft.util.Mth;
 
 public class DolphinLikePlayWithItemsGoal extends Goal {
 	private int cooldown;
-	private DolphinLikeEntity entity;
+	private DolphinLike entity;
 	private Random rand = new Random();
 
-	public DolphinLikePlayWithItemsGoal(DolphinLikeEntity entity) {
+	public DolphinLikePlayWithItemsGoal(DolphinLike entity) {
 		this.entity = entity;
 	}
 

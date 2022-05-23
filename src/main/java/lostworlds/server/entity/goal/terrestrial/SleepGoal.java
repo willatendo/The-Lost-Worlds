@@ -2,14 +2,14 @@ package lostworlds.server.entity.goal.terrestrial;
 
 import java.util.EnumSet;
 
-import lostworlds.server.entity.terrestrial.PrehistoricEntity;
+import lostworlds.server.entity.terrestrial.PrehistoricMob;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import net.minecraft.world.entity.ai.goal.Goal;
 
 public class SleepGoal extends Goal {
-	private final PrehistoricEntity entity;
+	private final PrehistoricMob entity;
 
-	public SleepGoal(PrehistoricEntity entity) {
+	public SleepGoal(PrehistoricMob entity) {
 		this.entity = entity;
 		this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.JUMP));
 	}

@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.jurassic.ChilesaurusEntity;
+import lostworlds.server.entity.terrestrial.jurassic.Chilesaurus;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,28 +11,28 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class ChilesaurusModel extends AnimatedGeoModel<ChilesaurusEntity> {
+public class ChilesaurusModel extends AnimatedGeoModel<Chilesaurus> {
 	private static final ResourceLocation TEXTURE_1 = LostWorldsUtils.rL("textures/model/entity/chilesaurus/texture_1.png");
 	private static final ResourceLocation TEXTURE_2 = LostWorldsUtils.rL("textures/model/entity/chilesaurus/texture_2.png");
 	private ResourceLocation texture;
 
 	@Override
-	public ResourceLocation getAnimationFileLocation(ChilesaurusEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Chilesaurus entity) {
 		return LostWorldsUtils.rL("animations/chilesaurus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(ChilesaurusEntity entity) {
+	public ResourceLocation getModelLocation(Chilesaurus entity) {
 		return LostWorldsUtils.rL("geo/chilesaurus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(ChilesaurusEntity entity) {
+	public ResourceLocation getTextureLocation(Chilesaurus entity) {
 		return this.texture;
 	}
 
 	@Override
-	public void setLivingAnimations(ChilesaurusEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Chilesaurus entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

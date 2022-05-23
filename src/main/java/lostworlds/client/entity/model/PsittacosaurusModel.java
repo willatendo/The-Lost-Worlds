@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.cretaceous.PsittacosaurusEntity;
+import lostworlds.server.entity.terrestrial.cretaceous.Psittacosaurus;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,24 +11,24 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class PsittacosaurusModel extends AnimatedGeoModel<PsittacosaurusEntity> {
+public class PsittacosaurusModel extends AnimatedGeoModel<Psittacosaurus> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(PsittacosaurusEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Psittacosaurus entity) {
 		return LostWorldsUtils.rL("animations/psittacosaurus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(PsittacosaurusEntity entity) {
+	public ResourceLocation getModelLocation(Psittacosaurus entity) {
 		return LostWorldsUtils.rL("geo/psittacosaurus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(PsittacosaurusEntity entity) {
+	public ResourceLocation getTextureLocation(Psittacosaurus entity) {
 		return LostWorldsUtils.rL("textures/model/entity/psittacosaurus/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(PsittacosaurusEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Psittacosaurus entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

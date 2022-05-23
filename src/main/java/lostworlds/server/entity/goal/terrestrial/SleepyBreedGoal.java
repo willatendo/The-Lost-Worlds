@@ -6,30 +6,30 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ExperienceOrb;
+import lostworlds.server.entity.terrestrial.EggLayingMob;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
-import net.minecraft.server.level.ServerLevel;
 
 public class SleepyBreedGoal extends Goal {
-	private static final TargetingConditions PARTNER_TARGETING = (new TargetingConditions()).range(8.0D).allowInvulnerable().allowSameTeam().allowUnseeable();
-	protected final EggLayingEntity entity;
-	private final Class<? extends EggLayingEntity> partnerClass;
+	private static final TargetingConditions PARTNER_TARGETING = TargetingConditions.forNonCombat().range(8.0D).ignoreLineOfSight();
+	protected final EggLayingMob entity;
+	private final Class<? extends EggLayingMob> partnerClass;
 	protected final Level level;
-	protected EggLayingEntity partner;
+	protected EggLayingMob partner;
 	private int loveTime;
 	private final double speedModifier;
 
-	public SleepyBreedGoal(EggLayingEntity entity, double speedModifier) {
+	public SleepyBreedGoal(EggLayingMob entity, double speedModifier) {
 		this(entity, speedModifier, entity.getClass());
 	}
 
-	public SleepyBreedGoal(EggLayingEntity entity, double speedModifier, Class<? extends EggLayingEntity> partnerClass) {
+	public SleepyBreedGoal(EggLayingMob entity, double speedModifier, Class<? extends EggLayingMob> partnerClass) {
 		this.entity = entity;
 		this.level = entity.level;
 		this.partnerClass = partnerClass;
@@ -69,12 +69,12 @@ public class SleepyBreedGoal extends Goal {
 	}
 
 	@Nullable
-	private EggLayingEntity getFreePartner() {
-		List<EggLayingEntity> list = this.level.getNearbyEntities(this.partnerClass, PARTNER_TARGETING, this.entity, this.entity.getBoundingBox().inflate(8.0D));
+	private EggLayingMob getFreePartner() {
+		List<? extends EggLayingMob> list = this.level.getNearbyEntities(this.partnerClass, PARTNER_TARGETING, this.entity, this.entity.getBoundingBox().inflate(8.0D));
 		double d0 = Double.MAX_VALUE;
-		EggLayingEntity entityentity = null;
+		EggLayingMob entityentity = null;
 
-		for (EggLayingEntity entityentity1 : list) {
+		for (EggLayingMob entityentity1 : list) {
 			if (this.entity.canMate(entityentity1) && this.entity.distanceToSqr(entityentity1) < d0) {
 				entityentity = entityentity1;
 				d0 = this.entity.distanceToSqr(entityentity1);
@@ -89,9 +89,9 @@ public class SleepyBreedGoal extends Goal {
 	}
 
 	public static class Egg extends SleepyBreedGoal {
-		private final EggLayingEntity entity;
+		private final EggLayingMob entity;
 
-		public Egg(EggLayingEntity entity, double speedModifier) {
+		public Egg(EggLayingMob entity, double speedModifier) {
 			super(entity, speedModifier);
 			this.entity = entity;
 		}

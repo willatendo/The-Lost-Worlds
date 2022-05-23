@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.jurassic.OstromiaEntity;
+import lostworlds.server.entity.terrestrial.jurassic.Ostromia;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,24 +11,24 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class OstromiaModel extends AnimatedGeoModel<OstromiaEntity> {
+public class OstromiaModel extends AnimatedGeoModel<Ostromia> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(OstromiaEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Ostromia entity) {
 		return LostWorldsUtils.rL("animations/ostromia.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(OstromiaEntity entity) {
+	public ResourceLocation getModelLocation(Ostromia entity) {
 		return LostWorldsUtils.rL("geo/ostromia.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(OstromiaEntity entity) {
+	public ResourceLocation getTextureLocation(Ostromia entity) {
 		return LostWorldsUtils.rL("textures/model/entity/ostromia/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(OstromiaEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Ostromia entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

@@ -3,19 +3,20 @@ package lostworlds.server.entity.spawner;
 import java.util.Random;
 
 import lostworlds.server.entity.LostWorldsEntities;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.monster.PatrollingMonster;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.NaturalSpawner;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.ForgeHooks;
 
 public class FossilPoachingGroupSpawner {
@@ -48,8 +49,8 @@ public class FossilPoachingGroupSpawner {
 								if (!world.hasChunksAt(blockpos$mutable.getX() - 10, blockpos$mutable.getY() - 10, blockpos$mutable.getZ() - 10, blockpos$mutable.getX() + 10, blockpos$mutable.getY() + 10, blockpos$mutable.getZ() + 10)) {
 									return 0;
 								} else {
-									Biome biome = world.getBiome(blockpos$mutable);
-									Biome.BiomeCategory biome$category = biome.getBiomeCategory();
+									Holder<Biome> biome = world.getBiome(blockpos$mutable);
+									Biome.BiomeCategory biome$category = Biome.getBiomeCategory(biome);
 									if (biome$category == Biome.BiomeCategory.MUSHROOM) {
 										return 0;
 									} else {

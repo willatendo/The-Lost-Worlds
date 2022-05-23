@@ -1,8 +1,8 @@
 package lostworlds.server.item;
 
 import lostworlds.client.screen.tablet.TabletScreen;
-import lostworlds.server.entity.terrestrial.PrehistoricEntity;
-import lostworlds.server.entity.terrestrial.TaggedEntity;
+import lostworlds.server.entity.terrestrial.PrehistoricMob;
+import lostworlds.server.entity.terrestrial.TaggedMob;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -23,9 +23,9 @@ public class TabletItem extends Item {
 	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, InteractionHand hand) {
 		Minecraft instance = Minecraft.getInstance();
 
-		if (entity instanceof PrehistoricEntity) {
-			if (entity instanceof TaggedEntity) {
-				TaggedEntity tagged = (TaggedEntity) entity;
+		if (entity instanceof PrehistoricMob) {
+			if (entity instanceof TaggedMob) {
+				TaggedMob tagged = (TaggedMob) entity;
 				if (tagged.isTagged()) {
 					instance.setScreen(new TabletScreen(tagged));
 					return InteractionResult.SUCCESS;

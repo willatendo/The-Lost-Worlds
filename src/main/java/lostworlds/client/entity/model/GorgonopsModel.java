@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.permian.GorgonopsEntity;
+import lostworlds.server.entity.terrestrial.permian.Gorgonops;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,24 +11,24 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class GorgonopsModel extends AnimatedGeoModel<GorgonopsEntity> {
+public class GorgonopsModel extends AnimatedGeoModel<Gorgonops> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(GorgonopsEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Gorgonops entity) {
 		return LostWorldsUtils.rL("animations/gorgonops.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(GorgonopsEntity entity) {
+	public ResourceLocation getModelLocation(Gorgonops entity) {
 		return LostWorldsUtils.rL("geo/gorgonops.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(GorgonopsEntity entity) {
+	public ResourceLocation getTextureLocation(Gorgonops entity) {
 		return LostWorldsUtils.rL("textures/model/entity/gorgonops/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(GorgonopsEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Gorgonops entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

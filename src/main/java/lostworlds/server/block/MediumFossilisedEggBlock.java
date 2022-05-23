@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 
 import lostworlds.server.block.properties.ModBlockStateProperties;
 import lostworlds.server.entity.illager.FossilPoacherEntity;
-import lostworlds.server.entity.terrestrial.PrehistoricEntity;
+import lostworlds.server.entity.terrestrial.PrehistoricMob;
 import lostworlds.server.item.WetPaperItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -106,7 +106,7 @@ public class MediumFossilisedEggBlock extends Block {
 	}
 
 	private boolean canDestroyEgg(Level world, Entity entity) {
-		if (!(entity instanceof PrehistoricEntity) && !(entity instanceof Bat)) {
+		if (!(entity instanceof PrehistoricMob) && !(entity instanceof Bat)) {
 			if (!(entity instanceof LivingEntity)) {
 				return false;
 			} else {

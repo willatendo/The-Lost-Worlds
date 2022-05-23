@@ -59,3 +59,10 @@ Modlers/3d Artists:
     versionRange="[9.5.3.143,)"
     ordering="NONE"
     side="BOTH"
+    
+[[dependencies.lostworlds]]
+    modId="terrablender"
+    mandatory=false
+    versionRange="[1.1.0.99,)"
+    ordering="NONE"
+    side="BOTH"

@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.cretaceous.GiganotosaurusEntity;
+import lostworlds.server.entity.terrestrial.cretaceous.Giganotosaurus;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,24 +11,24 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class GiganotosaurusModel extends AnimatedGeoModel<GiganotosaurusEntity> {
+public class GiganotosaurusModel extends AnimatedGeoModel<Giganotosaurus> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(GiganotosaurusEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Giganotosaurus entity) {
 		return LostWorldsUtils.rL("animations/giganotosaurus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(GiganotosaurusEntity entity) {
+	public ResourceLocation getModelLocation(Giganotosaurus entity) {
 		return LostWorldsUtils.rL("geo/giganotosaurus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(GiganotosaurusEntity entity) {
+	public ResourceLocation getTextureLocation(Giganotosaurus entity) {
 		return LostWorldsUtils.rL("textures/model/entity/giganotosaurus/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(GiganotosaurusEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Giganotosaurus entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

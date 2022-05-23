@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.permian.EdaphosaurusEntity;
+import lostworlds.server.entity.terrestrial.permian.Edaphosaurus;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,24 +11,24 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class EdaphosaurusModel extends AnimatedGeoModel<EdaphosaurusEntity> {
+public class EdaphosaurusModel extends AnimatedGeoModel<Edaphosaurus> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(EdaphosaurusEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Edaphosaurus entity) {
 		return LostWorldsUtils.rL("animations/edaphosaurus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(EdaphosaurusEntity entity) {
+	public ResourceLocation getModelLocation(Edaphosaurus entity) {
 		return LostWorldsUtils.rL("geo/edaphosaurus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(EdaphosaurusEntity entity) {
+	public ResourceLocation getTextureLocation(Edaphosaurus entity) {
 		return LostWorldsUtils.rL("textures/model/entity/edaphosaurus/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(EdaphosaurusEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Edaphosaurus entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("head");
 

@@ -1,12 +1,10 @@
 package lostworlds.server.entity.controller;
 
 import lostworlds.server.entity.utils.ISemiAquatic;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
-import net.minecraft.util.Mth;
-
-import net.minecraft.world.entity.ai.control.MoveControl.Operation;
 
 public class AquaticMovementController extends MoveControl {
 	private final PathfinderMob entity;
@@ -38,7 +36,7 @@ public class AquaticMovementController extends MoveControl {
 			double d0 = this.wantedX - this.entity.getX();
 			double d1 = this.wantedY - this.entity.getY();
 			double d2 = this.wantedZ - this.entity.getZ();
-			double d3 = (double) Mth.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
+			double d3 = (double) Math.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
 			d1 /= d3;
 			float f = (float) (Mth.atan2(d2, d0) * 57.2957763671875D) - 90.0F;
 			this.entity.yRot = this.rotlerp(this.entity.yRot, f, yawLimit);

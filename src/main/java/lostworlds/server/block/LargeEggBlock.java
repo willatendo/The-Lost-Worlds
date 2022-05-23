@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 import lostworlds.server.block.properties.ModBlockStateProperties;
-import lostworlds.server.entity.terrestrial.PrehistoricEntity;
+import lostworlds.server.entity.terrestrial.PrehistoricMob;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -104,7 +104,7 @@ public class LargeEggBlock extends Block {
 
 				for (int j = 0; j < state.getValue(EGGS); ++j) {
 					world.levelEvent(2001, pos, Block.getId(state));
-					PrehistoricEntity entity = (PrehistoricEntity) this.entityTypeSupplier.get().create(world);
+					PrehistoricMob entity = (PrehistoricMob) this.entityTypeSupplier.get().create(world);
 					entity.moveTo((double) pos.getX() + 0.3D * 0.2D, (double) pos.getY(), (double) pos.getZ() + 0.3D, 0.0F, 0.0F);
 					world.addFreshEntity(entity);
 					entity.setAge(-24000);
@@ -161,7 +161,7 @@ public class LargeEggBlock extends Block {
 	}
 
 	private boolean canDestroyEgg(Level world, Entity entity) {
-		if (!(entity instanceof PrehistoricEntity) && !(entity instanceof Bat)) {
+		if (!(entity instanceof PrehistoricMob) && !(entity instanceof Bat)) {
 			if (!(entity instanceof LivingEntity)) {
 				return false;
 			} else {

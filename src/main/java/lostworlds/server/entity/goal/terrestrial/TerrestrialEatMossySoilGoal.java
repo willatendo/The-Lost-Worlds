@@ -4,7 +4,7 @@ import java.util.EnumSet;
 import java.util.function.Predicate;
 
 import lostworlds.server.block.LostWorldsBlocks;
-import lostworlds.server.entity.terrestrial.EggLayingEntity;
+import lostworlds.server.entity.terrestrial.EggLayingMob;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
@@ -16,10 +16,10 @@ import net.minecraftforge.event.ForgeEventFactory;
 
 public class TerrestrialEatMossySoilGoal extends Goal {
 	private static final Predicate<BlockState> IS_TALL_GRASS = BlockStatePredicate.forBlock(LostWorldsBlocks.MOSSY_SOIL.get());
-	private final EggLayingEntity entity;
+	private final EggLayingMob entity;
 	private final Level level;
 
-	public TerrestrialEatMossySoilGoal(EggLayingEntity entity) {
+	public TerrestrialEatMossySoilGoal(EggLayingMob entity) {
 		this.entity = entity;
 		this.level = entity.level;
 		this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.JUMP));

@@ -1,32 +1,24 @@
 package lostworlds.client.entity.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 
 import lostworlds.client.entity.model.DilophosaurusModel;
-import lostworlds.server.entity.terrestrial.jurassic.DilophosaurusEntity;
+import lostworlds.server.entity.terrestrial.jurassic.Dilophosaurus;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class DilophosaurusRenderer extends GeoEntityRenderer<DilophosaurusEntity> {
-	public DilophosaurusRenderer(EntityRenderDispatcher renderManager) {
-		super(renderManager, new DilophosaurusModel());
+public class DilophosaurusRenderer extends GeoEntityRenderer<Dilophosaurus> {
+	public DilophosaurusRenderer(Context context) {
+		super(context, new DilophosaurusModel());
 		this.shadowRadius = 0.5F;
 	}
 
 	@Override
-	public RenderType getRenderType(DilophosaurusEntity animatable, float partialTicks, PoseStack stack, MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLight, ResourceLocation textureLocation) {
-		return RenderType.entityTranslucent(getTextureLocation(animatable));
-	}
-
-	@Override
-	public void render(DilophosaurusEntity entity, float entityYaw, float partialTicks, PoseStack stack, MultiBufferSource buffer, int packedLight) {
+	public void render(Dilophosaurus entity, float entityYaw, float partialTicks, PoseStack stack, MultiBufferSource buffer, int packedLight) {
 		if (entity.isBaby()) {
 			stack.scale(0.15F, 0.15F, 0.15F);
 		}

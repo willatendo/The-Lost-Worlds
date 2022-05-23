@@ -2,14 +2,14 @@ package lostworlds.server.entity.goal.terrestrial;
 
 import java.util.EnumSet;
 
-import lostworlds.server.entity.terrestrial.EggLayingEntity;
+import lostworlds.server.entity.terrestrial.EggLayingMob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.tags.FluidTags;
 
 public class SleepySwimGoal extends Goal {
-	private final EggLayingEntity entity;
+	private final EggLayingMob entity;
 
-	public SleepySwimGoal(EggLayingEntity entity) {
+	public SleepySwimGoal(EggLayingMob entity) {
 		this.entity = entity;
 		this.setFlags(EnumSet.of(Goal.Flag.JUMP));
 		entity.getNavigation().setCanFloat(true);

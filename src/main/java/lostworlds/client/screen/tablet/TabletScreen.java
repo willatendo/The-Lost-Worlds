@@ -5,15 +5,15 @@ import java.text.NumberFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.TaggedEntity;
+import lostworlds.server.entity.terrestrial.TaggedMob;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 
 public class TabletScreen extends AbstractTableScreen {
-	private final TaggedEntity entity;
+	private final TaggedMob entity;
 
-	public TabletScreen(TaggedEntity entity) {
+	public TabletScreen(TaggedMob entity) {
 		super(entity.getDisplayName());
 
 		this.entity = entity;

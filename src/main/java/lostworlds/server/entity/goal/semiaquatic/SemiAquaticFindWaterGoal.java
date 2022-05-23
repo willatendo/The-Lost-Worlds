@@ -3,20 +3,18 @@ package lostworlds.server.entity.goal.semiaquatic;
 import java.util.EnumSet;
 import java.util.Random;
 
-import lostworlds.server.entity.terrestrial.PrehistoricEntity;
+import lostworlds.server.entity.terrestrial.PrehistoricMob;
 import lostworlds.server.entity.utils.ISemiAquatic;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.core.BlockPos;
-
-import net.minecraft.world.entity.ai.goal.Goal.Flag;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.world.entity.ai.goal.Goal;
 
 public class SemiAquaticFindWaterGoal extends Goal {
-	private final PrehistoricEntity creature;
+	private final PrehistoricMob creature;
 	private BlockPos targetPos;
 	private int executionChance = 30;
 
-	public SemiAquaticFindWaterGoal(PrehistoricEntity creature) {
+	public SemiAquaticFindWaterGoal(PrehistoricMob creature) {
 		this.creature = creature;
 		this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
 	}

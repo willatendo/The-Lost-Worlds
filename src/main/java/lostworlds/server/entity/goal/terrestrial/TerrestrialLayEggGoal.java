@@ -7,25 +7,24 @@ import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.MediumEggBlock;
 import lostworlds.server.block.SmallEggBlock;
 import lostworlds.server.block.TinyEggBlock;
-import lostworlds.server.entity.terrestrial.EggLayingEntity;
+import lostworlds.server.entity.terrestrial.EggLayingMob;
 import lostworlds.server.entity.utils.enums.DinoTypes;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.Tags;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
 
 public class TerrestrialLayEggGoal extends MoveToBlockGoal {
-	private final EggLayingEntity entity;
+	private final EggLayingMob entity;
 	private final DinoTypes dino;
 
-	public TerrestrialLayEggGoal(EggLayingEntity entity, double speedModifer, DinoTypes dino) {
+	public TerrestrialLayEggGoal(EggLayingMob entity, double speedModifer, DinoTypes dino) {
 		super(entity, speedModifer, 16);
 		this.entity = entity;
 		this.dino = dino;
@@ -33,7 +32,7 @@ public class TerrestrialLayEggGoal extends MoveToBlockGoal {
 
 	@Override
 	public boolean canUse() {
-		return this.entity.hasEgg() && this.entity.getHomePos().closerThan(this.entity.position(), 9.0D) ? super.canUse() : false;
+		return this.entity.hasEgg() && this.entity.getHomePos().closerToCenterThan(this.entity.position(), 9.0D) ? super.canUse() : false;
 	}
 
 	@Override
@@ -44,7 +43,7 @@ public class TerrestrialLayEggGoal extends MoveToBlockGoal {
 
 	@Override
 	public boolean canContinueToUse() {
-		return super.canContinueToUse() && this.entity.hasEgg() && this.entity.getHomePos().closerThan(this.entity.position(), 9.0D);
+		return super.canContinueToUse() && this.entity.hasEgg() && this.entity.getHomePos().closerToCenterThan(this.entity.position(), 9.0D);
 	}
 
 	@Override
@@ -80,6 +79,6 @@ public class TerrestrialLayEggGoal extends MoveToBlockGoal {
 	}
 
 	public static boolean isNatural(BlockGetter reader, BlockPos pos) {
-		return reader.getBlockState(pos).is(BlockTags.SAND) || reader.getBlockState(pos).is(Tags.Blocks.DIRT) || reader.getBlockState(pos).is(LostWorldsBlocks.NESTING_BLOCK.get());
+		return reader.getBlockState(pos).is(BlockTags.SAND) || reader.getBlockState(pos).is(BlockTags.DIRT) || reader.getBlockState(pos).is(LostWorldsBlocks.NESTING_BLOCK.get());
 	}
 }

@@ -1,7 +1,7 @@
 package lostworlds.server.entity.goal.terrestrial.entity;
 
 import lostworlds.server.block.LostWorldsBlocks;
-import lostworlds.server.entity.terrestrial.EggLayingEntity;
+import lostworlds.server.entity.terrestrial.EggLayingMob;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.world.entity.player.Player;
@@ -13,10 +13,10 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.Level;
 
 public class DiictodonCreateTerritoryGoal extends MoveToBlockGoal {
-	private final EggLayingEntity entity;
+	private final EggLayingMob entity;
 	private final Level level;
 
-	public DiictodonCreateTerritoryGoal(EggLayingEntity entity, double speedModifier) {
+	public DiictodonCreateTerritoryGoal(EggLayingMob entity, double speedModifier) {
 		super(entity, speedModifier, 16);
 		this.entity = entity;
 		this.level = entity.level;

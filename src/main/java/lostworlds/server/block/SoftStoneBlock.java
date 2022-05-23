@@ -4,7 +4,7 @@ import static lostworlds.api.APIRegistry.SOFT_STONE_FUNCTIONS;
 
 import java.util.Random;
 
-import lostworlds.server.entity.fossil.FossilEntity;
+import lostworlds.server.entity.fossil.Fossil;
 import lostworlds.server.entity.illager.FossilPoacherEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.entity.utils.enums.TimeEras;
@@ -135,7 +135,7 @@ public class SoftStoneBlock extends Block {
 	}
 
 	private boolean canDestroy(Level world, Entity entity) {
-		if (entity instanceof FossilEntity) {
+		if (entity instanceof Fossil) {
 			return false;
 		} else {
 			return entity instanceof Player || ForgeEventFactory.getMobGriefingEvent(world, entity);

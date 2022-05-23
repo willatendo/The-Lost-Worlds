@@ -13,8 +13,8 @@ import com.mojang.serialization.Codec;
 import lostworlds.client.entity.render.ItemCustomisableRenderer;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.LostWorldsEntities;
-import lostworlds.server.entity.fossil.DirtyFossilEntity;
-import lostworlds.server.entity.fossil.FossilEntity;
+import lostworlds.server.entity.fossil.DirtyFossil;
+import lostworlds.server.entity.fossil.Fossil;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.StringRepresentable;
@@ -66,17 +66,17 @@ public enum DinoTypes implements StringRepresentable {
 	private final String id;
 	private Supplier<EntityType<? extends PathfinderMob>> entityType;
 	private TagKey<Item> fossilTag;
-	private Supplier<EntityType<DirtyFossilEntity>> dirtySkull;
-	private Supplier<EntityType<DirtyFossilEntity>> dirtyArmBones;
-	private Supplier<EntityType<DirtyFossilEntity>> dirtyLegBones;
-	private Supplier<EntityType<DirtyFossilEntity>> dirtyRibCage;
-	private Supplier<EntityType<DirtyFossilEntity>> dirtyTail;
-	private Supplier<EntityType<FossilEntity>> skull;
-	private Supplier<EntityType<FossilEntity>> armBones;
-	private Supplier<EntityType<FossilEntity>> legBones;
-	private Supplier<EntityType<FossilEntity>> ribCage;
-	private Supplier<EntityType<FossilEntity>> tail;
-	private Supplier<EntityType<FossilEntity>> skeleton;
+	private Supplier<EntityType<DirtyFossil>> dirtySkull;
+	private Supplier<EntityType<DirtyFossil>> dirtyArmBones;
+	private Supplier<EntityType<DirtyFossil>> dirtyLegBones;
+	private Supplier<EntityType<DirtyFossil>> dirtyRibCage;
+	private Supplier<EntityType<DirtyFossil>> dirtyTail;
+	private Supplier<EntityType<Fossil>> skull;
+	private Supplier<EntityType<Fossil>> armBones;
+	private Supplier<EntityType<Fossil>> legBones;
+	private Supplier<EntityType<Fossil>> ribCage;
+	private Supplier<EntityType<Fossil>> tail;
+	private Supplier<EntityType<Fossil>> skeleton;
 	private Supplier<Block> egg;
 	private Supplier<Block> extraBlock;
 	private Supplier<Item> plasteredSkullItem;
@@ -141,47 +141,47 @@ public enum DinoTypes implements StringRepresentable {
 		return fossilTag;
 	}
 
-	public Supplier<EntityType<DirtyFossilEntity>> setDirtySkull(Supplier<EntityType<DirtyFossilEntity>> entity) {
+	public Supplier<EntityType<DirtyFossil>> setDirtySkull(Supplier<EntityType<DirtyFossil>> entity) {
 		return this.dirtySkull = entity;
 	}
 
-	public Supplier<EntityType<DirtyFossilEntity>> setDirtyArmBones(Supplier<EntityType<DirtyFossilEntity>> entity) {
+	public Supplier<EntityType<DirtyFossil>> setDirtyArmBones(Supplier<EntityType<DirtyFossil>> entity) {
 		return this.dirtyArmBones = entity;
 	}
 
-	public Supplier<EntityType<DirtyFossilEntity>> setDirtyLegBones(Supplier<EntityType<DirtyFossilEntity>> entity) {
+	public Supplier<EntityType<DirtyFossil>> setDirtyLegBones(Supplier<EntityType<DirtyFossil>> entity) {
 		return this.dirtyLegBones = entity;
 	}
 
-	public Supplier<EntityType<DirtyFossilEntity>> setDirtyRibCage(Supplier<EntityType<DirtyFossilEntity>> entity) {
+	public Supplier<EntityType<DirtyFossil>> setDirtyRibCage(Supplier<EntityType<DirtyFossil>> entity) {
 		return this.dirtyRibCage = entity;
 	}
 
-	public Supplier<EntityType<DirtyFossilEntity>> setDirtyTail(Supplier<EntityType<DirtyFossilEntity>> entity) {
+	public Supplier<EntityType<DirtyFossil>> setDirtyTail(Supplier<EntityType<DirtyFossil>> entity) {
 		return this.dirtyTail = entity;
 	}
 
-	public Supplier<EntityType<FossilEntity>> setSkull(Supplier<EntityType<FossilEntity>> entity) {
+	public Supplier<EntityType<Fossil>> setSkull(Supplier<EntityType<Fossil>> entity) {
 		return this.skull = entity;
 	}
 
-	public Supplier<EntityType<FossilEntity>> setArmBones(Supplier<EntityType<FossilEntity>> entity) {
+	public Supplier<EntityType<Fossil>> setArmBones(Supplier<EntityType<Fossil>> entity) {
 		return this.armBones = entity;
 	}
 
-	public Supplier<EntityType<FossilEntity>> setLegBones(Supplier<EntityType<FossilEntity>> entity) {
+	public Supplier<EntityType<Fossil>> setLegBones(Supplier<EntityType<Fossil>> entity) {
 		return this.legBones = entity;
 	}
 
-	public Supplier<EntityType<FossilEntity>> setRibCage(Supplier<EntityType<FossilEntity>> entity) {
+	public Supplier<EntityType<Fossil>> setRibCage(Supplier<EntityType<Fossil>> entity) {
 		return this.ribCage = entity;
 	}
 
-	public Supplier<EntityType<FossilEntity>> setTail(Supplier<EntityType<FossilEntity>> entity) {
+	public Supplier<EntityType<Fossil>> setTail(Supplier<EntityType<Fossil>> entity) {
 		return this.tail = entity;
 	}
 
-	public Supplier<EntityType<FossilEntity>> setSkeleton(Supplier<EntityType<FossilEntity>> entity) {
+	public Supplier<EntityType<Fossil>> setSkeleton(Supplier<EntityType<Fossil>> entity) {
 		return this.skeleton = entity;
 	}
 
@@ -193,47 +193,47 @@ public enum DinoTypes implements StringRepresentable {
 		return this.entityType;
 	}
 
-	public Supplier<EntityType<DirtyFossilEntity>> getDirtySkull() {
+	public Supplier<EntityType<DirtyFossil>> getDirtySkull() {
 		return this.dirtySkull;
 	}
 
-	public Supplier<EntityType<DirtyFossilEntity>> getDirtyArmBones() {
+	public Supplier<EntityType<DirtyFossil>> getDirtyArmBones() {
 		return this.dirtyArmBones;
 	}
 
-	public Supplier<EntityType<DirtyFossilEntity>> getDirtyLegBones() {
+	public Supplier<EntityType<DirtyFossil>> getDirtyLegBones() {
 		return this.dirtyLegBones;
 	}
 
-	public Supplier<EntityType<DirtyFossilEntity>> getDirtyRibCage() {
+	public Supplier<EntityType<DirtyFossil>> getDirtyRibCage() {
 		return this.dirtyRibCage;
 	}
 
-	public Supplier<EntityType<DirtyFossilEntity>> getDirtyTail() {
+	public Supplier<EntityType<DirtyFossil>> getDirtyTail() {
 		return this.dirtyTail;
 	}
 
-	public Supplier<EntityType<FossilEntity>> getSkull() {
+	public Supplier<EntityType<Fossil>> getSkull() {
 		return this.skull;
 	}
 
-	public Supplier<EntityType<FossilEntity>> getArmBones() {
+	public Supplier<EntityType<Fossil>> getArmBones() {
 		return this.armBones;
 	}
 
-	public Supplier<EntityType<FossilEntity>> getLegBones() {
+	public Supplier<EntityType<Fossil>> getLegBones() {
 		return this.legBones;
 	}
 
-	public Supplier<EntityType<FossilEntity>> getRibCage() {
+	public Supplier<EntityType<Fossil>> getRibCage() {
 		return this.ribCage;
 	}
 
-	public Supplier<EntityType<FossilEntity>> getTail() {
+	public Supplier<EntityType<Fossil>> getTail() {
 		return this.tail;
 	}
 
-	public Supplier<EntityType<FossilEntity>> getSkeleton() {
+	public Supplier<EntityType<Fossil>> getSkeleton() {
 		return this.skeleton;
 	}
 

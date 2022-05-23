@@ -1,13 +1,13 @@
 package lostworlds.server.entity.goal.terrestrial;
 
-import lostworlds.server.entity.terrestrial.EggLayingEntity;
+import lostworlds.server.entity.terrestrial.EggLayingMob;
 import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 
 public class TerrestrialReasonableAttackGoal extends MeleeAttackGoal {
-	private final EggLayingEntity entity;
+	private final EggLayingMob entity;
 
-	public TerrestrialReasonableAttackGoal(EggLayingEntity entity, double speedModifier) {
+	public TerrestrialReasonableAttackGoal(EggLayingMob entity, double speedModifier) {
 		super(entity, speedModifier, false);
 		this.entity = entity;
 	}

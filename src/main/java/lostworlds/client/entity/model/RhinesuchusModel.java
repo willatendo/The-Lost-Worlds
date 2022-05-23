@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.semiaquatic.permian.RhinesuchusEntity;
+import lostworlds.server.entity.semiaquatic.permian.Rhinesuchus;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,24 +11,24 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class RhinesuchusModel extends AnimatedGeoModel<RhinesuchusEntity> {
+public class RhinesuchusModel extends AnimatedGeoModel<Rhinesuchus> {
 	@Override
-	public ResourceLocation getAnimationFileLocation(RhinesuchusEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Rhinesuchus entity) {
 		return LostWorldsUtils.rL("animations/rhinesuchus.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(RhinesuchusEntity entity) {
+	public ResourceLocation getModelLocation(Rhinesuchus entity) {
 		return LostWorldsUtils.rL("geo/rhinesuchus.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(RhinesuchusEntity entity) {
+	public ResourceLocation getTextureLocation(Rhinesuchus entity) {
 		return LostWorldsUtils.rL("textures/model/entity/rhinesuchus/texture.png");
 	}
 
 	@Override
-	public void setLivingAnimations(RhinesuchusEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Rhinesuchus entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("head");
 

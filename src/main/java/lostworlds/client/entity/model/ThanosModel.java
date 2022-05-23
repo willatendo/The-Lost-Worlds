@@ -1,7 +1,7 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.cretaceous.ThanosEntity;
+import lostworlds.server.entity.terrestrial.cretaceous.Thanos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -11,28 +11,28 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class ThanosModel extends AnimatedGeoModel<ThanosEntity> {
+public class ThanosModel extends AnimatedGeoModel<Thanos> {
 	private static final ResourceLocation TEXTURE_1 = LostWorldsUtils.rL("textures/model/entity/thanos/texture_1.png");
 	private static final ResourceLocation TEXTURE_2 = LostWorldsUtils.rL("textures/model/entity/thanos/texture_2.png");
 	private ResourceLocation texture;
 
 	@Override
-	public ResourceLocation getAnimationFileLocation(ThanosEntity entity) {
+	public ResourceLocation getAnimationFileLocation(Thanos entity) {
 		return LostWorldsUtils.rL("animations/thanos.animations.json");
 	}
 
 	@Override
-	public ResourceLocation getModelLocation(ThanosEntity entity) {
+	public ResourceLocation getModelLocation(Thanos entity) {
 		return LostWorldsUtils.rL("geo/thanos.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(ThanosEntity entity) {
+	public ResourceLocation getTextureLocation(Thanos entity) {
 		return texture;
 	}
 
 	@Override
-	public void setLivingAnimations(ThanosEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(Thanos entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("neck");
 

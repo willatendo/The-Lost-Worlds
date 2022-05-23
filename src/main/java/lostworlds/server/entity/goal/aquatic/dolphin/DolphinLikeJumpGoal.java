@@ -1,23 +1,22 @@
 package lostworlds.server.entity.goal.aquatic.dolphin;
 
-import lostworlds.server.entity.aquatic.DolphinLikeEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ai.goal.JumpGoal;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.tags.FluidTags;
+import lostworlds.server.entity.aquatic.DolphinLike;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.core.BlockPos;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.ai.goal.JumpGoal;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 
 public class DolphinLikeJumpGoal extends JumpGoal {
 	private static final int[] STEPS_TO_CHECK = new int[] { 0, 1, 4, 5, 6, 7 };
-	private final DolphinLikeEntity entity;
+	private final DolphinLike entity;
 	private final int interval;
 	private boolean breached;
 
-	public DolphinLikeJumpGoal(DolphinLikeEntity entity, int interval) {
+	public DolphinLikeJumpGoal(DolphinLike entity, int interval) {
 		this.entity = entity;
 		this.interval = interval;
 	}
@@ -86,14 +85,13 @@ public class DolphinLikeJumpGoal extends JumpGoal {
 			this.entity.playSound(SoundEvents.DOLPHIN_JUMP, 1.0F, 1.0F);
 		}
 
-		Vec3 vector3d = this.entity.getDeltaMovement();
-		if (vector3d.y * vector3d.y < (double) 0.03F && this.entity.xRot != 0.0F) {
-			this.entity.xRot = Mth.rotlerp(this.entity.xRot, 0.0F, 0.2F);
-		} else {
-			double d0 = Math.sqrt(Entity.getHorizontalDistanceSqr(vector3d));
-			double d1 = Math.signum(-vector3d.y) * Math.acos(d0 / vector3d.length()) * (double) (180F / (float) Math.PI);
-			this.entity.xRot = (float) d1;
+		Vec3 vec3 = this.entity.getDeltaMovement();
+		if (vec3.y * vec3.y < (double) 0.03F && this.entity.getXRot() != 0.0F) {
+			this.entity.setXRot(Mth.rotlerp(this.entity.getXRot(), 0.0F, 0.2F));
+		} else if (vec3.length() > (double) 1.0E-5F) {
+			double d0 = vec3.horizontalDistance();
+			double d1 = Math.atan2(-vec3.y, d0) * (double) (180F / (float) Math.PI);
+			this.entity.setXRot((float) d1);
 		}
-
 	}
 }

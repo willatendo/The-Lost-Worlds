@@ -2,18 +2,18 @@ package lostworlds.server.entity.goal.terrestrial;
 
 import java.util.EnumSet;
 
-import lostworlds.server.entity.terrestrial.EggLayingEntity;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import lostworlds.server.entity.terrestrial.EggLayingMob;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
-import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 
 public class SleepyTemptGoal extends Goal {
-	private static final TargetingConditions TEMP_TARGETING = (new TargetingConditions()).range(10.0D).allowInvulnerable().allowSameTeam().allowNonAttackable().allowUnseeable();
-	protected final EggLayingEntity entity;
+	private static final TargetingConditions TEMP_TARGETING = TargetingConditions.forNonCombat().range(10.0D).ignoreLineOfSight();
+	protected final EggLayingMob entity;
 	private final double speedModifier;
 	private double px;
 	private double py;
@@ -26,11 +26,11 @@ public class SleepyTemptGoal extends Goal {
 	private final Ingredient items;
 	private final boolean canScare;
 
-	public SleepyTemptGoal(EggLayingEntity entity, double speedModifier, Ingredient followIngredient, boolean canScare) {
+	public SleepyTemptGoal(EggLayingMob entity, double speedModifier, Ingredient followIngredient, boolean canScare) {
 		this(entity, speedModifier, canScare, followIngredient);
 	}
 
-	public SleepyTemptGoal(EggLayingEntity entity, double speedModifier, boolean canScare, Ingredient followIngredient) {
+	public SleepyTemptGoal(EggLayingMob entity, double speedModifier, boolean canScare, Ingredient followIngredient) {
 		this.entity = entity;
 		this.speedModifier = speedModifier;
 		this.items = followIngredient;

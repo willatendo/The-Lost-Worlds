@@ -3,7 +3,7 @@ package lostworlds.server.block.entity;
 import java.util.List;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.entity.terrestrial.PrehistoricEntity;
+import lostworlds.server.entity.terrestrial.PrehistoricMob;
 import lostworlds.server.menu.FeedingTroughMenu;
 import lostworlds.server.menu.LostWorldsMenus;
 import net.minecraft.core.BlockPos;
@@ -31,8 +31,8 @@ public class FeedingTroughBlockEntity extends RandomizableContainerBlockEntity i
 	}
 
 	public static void serverTick(Level level, BlockPos pos, BlockState state, FeedingTroughBlockEntity blockEntity) {
-		List<PrehistoricEntity> list = blockEntity.level.getEntitiesOfClass(PrehistoricEntity.class, blockEntity.getRenderBoundingBox().inflate(400.0D));
-		for (PrehistoricEntity prehistoric : list) {
+		List<PrehistoricMob> list = blockEntity.level.getEntitiesOfClass(PrehistoricMob.class, blockEntity.getRenderBoundingBox().inflate(400.0D));
+		for (PrehistoricMob prehistoric : list) {
 			if (prehistoric.isHungry()) {
 				for (ItemStack items : blockEntity.items) {
 					if (prehistoric.isFood(items)) {
