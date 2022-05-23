@@ -12,6 +12,7 @@ import com.tterrag.registrate.builders.MenuBuilder;
 import com.tterrag.registrate.builders.MenuBuilder.ForgeMenuFactory;
 import com.tterrag.registrate.builders.MenuBuilder.ScreenFactory;
 import com.tterrag.registrate.providers.ProviderType;
+import com.tterrag.registrate.providers.RegistrateTagsProvider;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
@@ -32,11 +33,13 @@ import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.MenuAccess;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.DoorBlock;
@@ -66,6 +69,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrate> {
 	public static final ProviderType<RegistrateBookProvider> BOOKS = ProviderType.register("books", (parent, event) -> new RegistrateBookProvider(parent, event.getGenerator()));
 	public static final ProviderType<RegistrateSoundProvider> SOUNDS = ProviderType.register("sounds", (parent, event) -> new RegistrateSoundProvider(parent, event.getGenerator(), event.getExistingFileHelper()));
+
+	public static final ProviderType<RegistrateTagsProvider<Biome>> BIOME_TAGS = ProviderType.register("books", type -> (parent, event) -> new RegistrateTagsProvider(parent, type, "worldgen/biome", event.getGenerator(), Registry.BIOME_SOURCE, event.getExistingFileHelper()));
 
 	protected LostWorldsRegistrate(String modid) {
 		super(modid);

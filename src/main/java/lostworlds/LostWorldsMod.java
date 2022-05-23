@@ -15,12 +15,9 @@ import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.LostWorldsBiomes;
 import lostworlds.server.biome.LostWorldsBlockstateProviders;
-import lostworlds.server.biome.ModConfiguredStructures;
 import lostworlds.server.biome.surfacebuilders.LostWorldsSurfaceBuilders;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
-import lostworlds.server.container.LostWorldsContainers;
-import lostworlds.server.container.recipes.LostWorldsRecipes;
 import lostworlds.server.dimension.LostWorldsDimensions;
 import lostworlds.server.dimension.carver.LostWorldsConfiguredCarvers;
 import lostworlds.server.dimension.carver.LostWorldsWorldCarvers;
@@ -33,8 +30,11 @@ import lostworlds.server.item.LostWorldsBanners;
 import lostworlds.server.item.LostWorldsEnchantments;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.item.LostWorldsPotions;
+import lostworlds.server.menu.LostWorldsMenus;
+import lostworlds.server.menu.recipes.LostWorldsRecipes;
 import lostworlds.server.structure.LostWorldsStructurePecies;
 import lostworlds.server.structure.LostWorldsStructures;
+import lostworlds.server.structure.LostWorldsConfiguredStructures;
 import lostworlds.server.util.Version;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
 import lostworlds.server.world.BiomeGen;
@@ -99,7 +99,7 @@ public class LostWorldsMod {
 		LostWorldsEntities.registrate();
 		LostWorldsBanners.init();
 		LostWorldsBlockEntities.registrate();
-		LostWorldsContainers.registrate();
+		LostWorldsMenus.registrate();
 		LostWorldsRecipes.deferred(bus);
 		LostWorldsVillagerProfessions.deferred(bus);
 		LostWorldsPOIs.deferred(bus);
@@ -142,8 +142,7 @@ public class LostWorldsMod {
 		TyrannibookHelper.commonSetup(event);
 
 		event.enqueueWork(() -> {
-			LostWorldsStructurePecies.registerBiomeGeneration();
-			ModConfiguredStructures.init();
+			LostWorldsConfiguredStructures.init();
 
 			LostWorldsDimensions.initBiomeSourcesAndChunkGenerator();
 

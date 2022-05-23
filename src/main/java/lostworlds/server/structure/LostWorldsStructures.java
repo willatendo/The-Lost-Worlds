@@ -11,16 +11,11 @@ import net.minecraftforge.registries.RegistryObject;
 public class LostWorldsStructures {
 	public static final DeferredRegister<StructureFeature<?>> STRUCTURE_FEATURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, LostWorldsUtils.ID);
 
-	public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> BLACK_MARKET = register("black_market", new BlackMarketStructure(NoneFeatureConfiguration.CODEC));
-	public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> SURFACE_FOSSIL = register("surface_fossil", new SurfaceFossilStructure(NoneFeatureConfiguration.CODEC));
-	public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> SUBTERRANEAN_FOSSIL = register("subterranean_fossil", new SubterraneanFossilStructure(NoneFeatureConfiguration.CODEC));
-	public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> TRACE_FOSSIL = register("trace_fossil", new TraceFossilStructure(NoneFeatureConfiguration.CODEC));
-	public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> METEORITE = register("meteorite", new MeteoriteStructure(NoneFeatureConfiguration.CODEC));
-
-	public static RegistryObject<StructureFeature<NoneFeatureConfiguration>> register(String id, StructureFeature<NoneFeatureConfiguration> structure) {
-//		StructureFeature.STRUCTURES_REGISTRY.put("lostworlds:" + id, structure);
-		return STRUCTURE_FEATURES.register(id, () -> structure);
-	}
+	public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> BLACK_MARKET = STRUCTURE_FEATURES.register("black_market", () -> new BlackMarketStructure(NoneFeatureConfiguration.CODEC));
+	public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> SURFACE_FOSSIL = STRUCTURE_FEATURES.register("surface_fossil", () -> new SurfaceFossilStructure(NoneFeatureConfiguration.CODEC));
+	public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> SUBTERRANEAN_FOSSIL = STRUCTURE_FEATURES.register("subterranean_fossil", () -> new SubterraneanFossilStructure(NoneFeatureConfiguration.CODEC));
+	public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> TRACE_FOSSIL = STRUCTURE_FEATURES.register("trace_fossil", () -> new TraceFossilStructure(NoneFeatureConfiguration.CODEC));
+	public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> METEORITE = STRUCTURE_FEATURES.register("meteorite", () -> new MeteoriteStructure(NoneFeatureConfiguration.CODEC));
 
 	public static void deferred(IEventBus bus) {
 		STRUCTURE_FEATURES.register(bus);

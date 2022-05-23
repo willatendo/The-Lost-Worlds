@@ -1,22 +1,22 @@
 package lostworlds.client.screen;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.container.DNAExtractorContainer;
+import lostworlds.server.menu.DNAExtractorMenu;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class DNAExtractorScreen extends AbstractContainerScreen<DNAExtractorContainer> {
+public class DNAExtractorScreen extends AbstractContainerScreen<DNAExtractorMenu> {
 	private static final ResourceLocation TEXTURE = LostWorldsUtils.rL("textures/gui/machines/dna_extractor.png");
 
-	public DNAExtractorScreen(DNAExtractorContainer container, Inventory playerInv, Component text) {
+	public DNAExtractorScreen(DNAExtractorMenu container, Inventory playerInv, Component text) {
 		super(container, playerInv, text);
 	}
 
@@ -30,8 +30,8 @@ public class DNAExtractorScreen extends AbstractContainerScreen<DNAExtractorCont
 
 	@Override
 	protected void renderBg(PoseStack stack, float partialTicks, int x, int y) {
-		RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.minecraft.getTextureManager().bind(TEXTURE);
+		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+		RenderSystem.setShaderTexture(0, TEXTURE);
 		int i = this.leftPos;
 		int j = this.topPos;
 		this.blit(stack, i, j, 0, 0, this.imageWidth, this.imageHeight);

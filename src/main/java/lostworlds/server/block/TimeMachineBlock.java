@@ -3,7 +3,7 @@ package lostworlds.server.block;
 import javax.annotation.Nullable;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.container.LostWorldsContainers;
+import lostworlds.server.menu.LostWorldsMenus;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
@@ -42,7 +42,7 @@ public class TimeMachineBlock extends Block {
 	@Nullable
 	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
 		return new SimpleMenuProvider((windowId, playerInventory, player) -> {
-			return LostWorldsContainers.TIME_MACHINE_CONTAINER.create(windowId, playerInventory);
+			return LostWorldsMenus.TIME_MACHINE_CONTAINER.create(windowId, playerInventory);
 		}, CONTAINER_NAME);
 	}
 

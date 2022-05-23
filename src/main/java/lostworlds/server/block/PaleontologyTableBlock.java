@@ -1,8 +1,8 @@
 package lostworlds.server.block;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.container.LostWorldsContainers;
-import lostworlds.server.container.PaleontologyTableContainer;
+import lostworlds.server.menu.LostWorldsMenus;
+import lostworlds.server.menu.PaleontologyTableMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -72,7 +72,7 @@ public class PaleontologyTableBlock extends Block implements SimpleWaterloggedBl
 
 	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
 		return new SimpleMenuProvider((windowID, playerInventory, player) -> {
-			return new PaleontologyTableContainer(LostWorldsContainers.PALEONTOLOGY_CONTAINER.get(), windowID, playerInventory, ContainerLevelAccess.create(world, pos));
+			return new PaleontologyTableMenu(LostWorldsMenus.PALEONTOLOGY_CONTAINER.get(), windowID, playerInventory, ContainerLevelAccess.create(world, pos));
 		}, NAME);
 	}
 }

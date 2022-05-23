@@ -8,12 +8,12 @@ import javax.annotation.Nullable;
 
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.client.sounds.LostWorldsSounds;
-import lostworlds.server.block.entity.AnalyzerTileEntity;
-import lostworlds.server.block.entity.CultivatorTileEntity;
-import lostworlds.server.block.entity.DNAExtractorTileEntity;
-import lostworlds.server.block.entity.DNAInjectorTileEntity;
-import lostworlds.server.block.entity.FossilCleanerTileEntity;
-import lostworlds.server.block.entity.FossilGrinderTileEntity;
+import lostworlds.server.block.entity.AnalyzerBlockEntity;
+import lostworlds.server.block.entity.CultivatorBlockEntity;
+import lostworlds.server.block.entity.DNAExtractorBlockEntity;
+import lostworlds.server.block.entity.DNAInjectorBlockEntity;
+import lostworlds.server.block.entity.FossilCleanerBlockEntity;
+import lostworlds.server.block.entity.FossilGrinderBlockEntity;
 import lostworlds.server.block.properties.ModBlockStateProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -117,22 +117,22 @@ public abstract class MachineBlock extends Block implements EntityBlock {
 	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		if (!world.isClientSide) {
 			BlockEntity tile = world.getBlockEntity(pos);
-			if (tile instanceof FossilCleanerTileEntity) {
+			if (tile instanceof FossilCleanerBlockEntity) {
 				NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) tile, pos);
 				return InteractionResult.SUCCESS;
-			} else if (tile instanceof FossilGrinderTileEntity) {
+			} else if (tile instanceof FossilGrinderBlockEntity) {
 				NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) tile, pos);
 				return InteractionResult.SUCCESS;
-			} else if (tile instanceof DNAExtractorTileEntity) {
+			} else if (tile instanceof DNAExtractorBlockEntity) {
 				NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) tile, pos);
 				return InteractionResult.SUCCESS;
-			} else if (tile instanceof AnalyzerTileEntity) {
+			} else if (tile instanceof AnalyzerBlockEntity) {
 				NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) tile, pos);
 				return InteractionResult.SUCCESS;
-			} else if (tile instanceof DNAInjectorTileEntity) {
+			} else if (tile instanceof DNAInjectorBlockEntity) {
 				NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) tile, pos);
 				return InteractionResult.SUCCESS;
-			} else if (tile instanceof CultivatorTileEntity) {
+			} else if (tile instanceof CultivatorBlockEntity) {
 				NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) tile, pos);
 				return InteractionResult.SUCCESS;
 			}
@@ -144,18 +144,18 @@ public abstract class MachineBlock extends Block implements EntityBlock {
 	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
 		if (stack.hasCustomHoverName()) {
 			BlockEntity tileentity = world.getBlockEntity(pos);
-			if (tileentity instanceof FossilCleanerTileEntity) {
-				((FossilCleanerTileEntity) tileentity).setCustomName(stack.getHoverName());
-			} else if (tileentity instanceof FossilGrinderTileEntity) {
-				((FossilGrinderTileEntity) tileentity).setCustomName(stack.getHoverName());
-			} else if (tileentity instanceof DNAExtractorTileEntity) {
-				((DNAExtractorTileEntity) tileentity).setCustomName(stack.getHoverName());
-			} else if (tileentity instanceof AnalyzerTileEntity) {
-				((AnalyzerTileEntity) tileentity).setCustomName(stack.getHoverName());
-			} else if (tileentity instanceof DNAInjectorTileEntity) {
-				((DNAInjectorTileEntity) tileentity).setCustomName(stack.getHoverName());
-			} else if (tileentity instanceof CultivatorTileEntity) {
-				((CultivatorTileEntity) tileentity).setCustomName(stack.getHoverName());
+			if (tileentity instanceof FossilCleanerBlockEntity) {
+				((FossilCleanerBlockEntity) tileentity).setCustomName(stack.getHoverName());
+			} else if (tileentity instanceof FossilGrinderBlockEntity) {
+				((FossilGrinderBlockEntity) tileentity).setCustomName(stack.getHoverName());
+			} else if (tileentity instanceof DNAExtractorBlockEntity) {
+				((DNAExtractorBlockEntity) tileentity).setCustomName(stack.getHoverName());
+			} else if (tileentity instanceof AnalyzerBlockEntity) {
+				((AnalyzerBlockEntity) tileentity).setCustomName(stack.getHoverName());
+			} else if (tileentity instanceof DNAInjectorBlockEntity) {
+				((DNAInjectorBlockEntity) tileentity).setCustomName(stack.getHoverName());
+			} else if (tileentity instanceof CultivatorBlockEntity) {
+				((CultivatorBlockEntity) tileentity).setCustomName(stack.getHoverName());
 			}
 		}
 	}
@@ -164,23 +164,23 @@ public abstract class MachineBlock extends Block implements EntityBlock {
 	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean b) {
 		if (!state.is(newState.getBlock())) {
 			BlockEntity tileentity = world.getBlockEntity(pos);
-			if (tileentity instanceof FossilCleanerTileEntity) {
-				Containers.dropContents(world, pos, (FossilCleanerTileEntity) tileentity);
+			if (tileentity instanceof FossilCleanerBlockEntity) {
+				Containers.dropContents(world, pos, (FossilCleanerBlockEntity) tileentity);
 				world.updateNeighbourForOutputSignal(pos, this);
-			} else if (tileentity instanceof FossilGrinderTileEntity) {
-				Containers.dropContents(world, pos, (FossilGrinderTileEntity) tileentity);
+			} else if (tileentity instanceof FossilGrinderBlockEntity) {
+				Containers.dropContents(world, pos, (FossilGrinderBlockEntity) tileentity);
 				world.updateNeighbourForOutputSignal(pos, this);
-			} else if (tileentity instanceof DNAExtractorTileEntity) {
-				Containers.dropContents(world, pos, (DNAExtractorTileEntity) tileentity);
+			} else if (tileentity instanceof DNAExtractorBlockEntity) {
+				Containers.dropContents(world, pos, (DNAExtractorBlockEntity) tileentity);
 				world.updateNeighbourForOutputSignal(pos, this);
-			} else if (tileentity instanceof AnalyzerTileEntity) {
-				Containers.dropContents(world, pos, (AnalyzerTileEntity) tileentity);
+			} else if (tileentity instanceof AnalyzerBlockEntity) {
+				Containers.dropContents(world, pos, (AnalyzerBlockEntity) tileentity);
 				world.updateNeighbourForOutputSignal(pos, this);
-			} else if (tileentity instanceof DNAInjectorTileEntity) {
-				Containers.dropContents(world, pos, (DNAInjectorTileEntity) tileentity);
+			} else if (tileentity instanceof DNAInjectorBlockEntity) {
+				Containers.dropContents(world, pos, (DNAInjectorBlockEntity) tileentity);
 				world.updateNeighbourForOutputSignal(pos, this);
-			} else if (tileentity instanceof CultivatorTileEntity) {
-				Containers.dropContents(world, pos, (CultivatorTileEntity) tileentity);
+			} else if (tileentity instanceof CultivatorBlockEntity) {
+				Containers.dropContents(world, pos, (CultivatorBlockEntity) tileentity);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
 

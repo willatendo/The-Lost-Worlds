@@ -1,21 +1,21 @@
 package lostworlds.client.screen;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-import lostworlds.server.container.PaleontologyTableContainer;
+import lostworlds.server.menu.PaleontologyTableMenu;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class PaleontologyTableScreen extends AbstractContainerScreen<PaleontologyTableContainer> {
+public class PaleontologyTableScreen extends AbstractContainerScreen<PaleontologyTableMenu> {
 	private static final ResourceLocation TEXTURE = new ResourceLocation("textures/gui/container/crafting_table.png");
 
-	public PaleontologyTableScreen(PaleontologyTableContainer container, Inventory playerInv, Component text) {
+	public PaleontologyTableScreen(PaleontologyTableMenu container, Inventory playerInv, Component text) {
 		super(container, playerInv, text);
 	}
 
@@ -28,8 +28,8 @@ public class PaleontologyTableScreen extends AbstractContainerScreen<Paleontolog
 
 	@Override
 	protected void renderBg(PoseStack stack, float partialTicks, int x, int y) {
-		RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.minecraft.getTextureManager().bind(TEXTURE);
+		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+		RenderSystem.setShaderTexture(0, TEXTURE);
 		int leftPos = this.leftPos;
 		int topPos = this.topPos;
 		this.blit(stack, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight);

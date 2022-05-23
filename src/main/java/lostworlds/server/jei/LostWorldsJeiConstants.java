@@ -1,17 +1,17 @@
 package lostworlds.server.jei;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.container.recipes.AnalyzerRecipe;
-import lostworlds.server.container.recipes.ArchaeologyTableRecipe;
-import lostworlds.server.container.recipes.CultivatorRecipe;
-import lostworlds.server.container.recipes.DNAExtractorRecipe;
-import lostworlds.server.container.recipes.DNAInjectorRecipe;
-import lostworlds.server.container.recipes.FossilCleanerRecipe;
-import lostworlds.server.container.recipes.FossilGrinderRecipe;
-import lostworlds.server.container.recipes.PaleontologyTableRecipe;
-import lostworlds.server.container.recipes.TimeMachineRecipe;
 import lostworlds.server.jei.recipe.LightningRecipe;
 import lostworlds.server.jei.recipe.WaterFuelRecipe;
+import lostworlds.server.menu.recipes.AnalyzerRecipe;
+import lostworlds.server.menu.recipes.ArchaeologyTableRecipe;
+import lostworlds.server.menu.recipes.CultivatorRecipe;
+import lostworlds.server.menu.recipes.DNAExtractorRecipe;
+import lostworlds.server.menu.recipes.DNAInjectorRecipe;
+import lostworlds.server.menu.recipes.FossilCleanerRecipe;
+import lostworlds.server.menu.recipes.FossilGrinderRecipe;
+import lostworlds.server.menu.recipes.PaleontologyTableRecipe;
+import lostworlds.server.menu.recipes.TimeMachineRecipe;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.resources.ResourceLocation;
 

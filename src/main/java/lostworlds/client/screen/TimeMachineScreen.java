@@ -2,32 +2,32 @@ package lostworlds.client.screen;
 
 import java.util.List;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.container.TimeMachineContainer;
-import lostworlds.server.container.recipes.TimeMachineRecipe;
+import lostworlds.server.menu.TimeMachineMenu;
+import lostworlds.server.menu.recipes.TimeMachineRecipe;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
-import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineContainer> {
+public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> {
 	private static final ResourceLocation TEXTURE = LostWorldsUtils.rL("textures/gui/time_machine.png");
 	private float scrollOffs;
 	private boolean scrolling;
 	private int startIndex;
 	private boolean displayRecipes;
 
-	public TimeMachineScreen(TimeMachineContainer container, Inventory inv, Component text) {
+	public TimeMachineScreen(TimeMachineMenu container, Inventory inv, Component text) {
 		super(container, inv, text);
 		container.registerUpdateListener(this::containerChanged);
 		--this.titleLabelY;
@@ -42,8 +42,8 @@ public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineContai
 	@Override
 	protected void renderBg(PoseStack stack, float partialTicks, int x, int y) {
 		this.renderBackground(stack);
-		RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.minecraft.getTextureManager().bind(TEXTURE);
+		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+		RenderSystem.setShaderTexture(0, TEXTURE);
 		int i = this.leftPos;
 		int j = this.topPos;
 		this.blit(stack, i, j, 0, 0, this.imageWidth, this.imageHeight);

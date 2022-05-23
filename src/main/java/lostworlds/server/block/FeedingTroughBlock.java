@@ -2,7 +2,7 @@ package lostworlds.server.block;
 
 import javax.annotation.Nullable;
 
-import lostworlds.server.block.entity.FeedingTroughTileEntity;
+import lostworlds.server.block.entity.FeedingTroughBlockEntity;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
 import lostworlds.server.entity.utils.enums.CreatureDiet;
 import net.minecraft.core.BlockPos;
@@ -18,6 +18,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
@@ -27,7 +28,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 
-public class FeedingTroughBlock extends Block {
+public class FeedingTroughBlock extends Block implements EntityBlock {
 	private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 9, 16);
 	public static final EnumProperty<CreatureDiet> DIET = EnumProperty.create("diet", CreatureDiet.class);
 
@@ -58,7 +59,7 @@ public class FeedingTroughBlock extends Block {
 	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		if (!world.isClientSide) {
 			BlockEntity tile = world.getBlockEntity(pos);
-			if (tile instanceof FeedingTroughTileEntity) {
+			if (tile instanceof FeedingTroughBlockEntity) {
 				NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) tile, pos);
 				return InteractionResult.SUCCESS;
 			}
@@ -70,8 +71,8 @@ public class FeedingTroughBlock extends Block {
 	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
 		if (stack.hasCustomHoverName()) {
 			BlockEntity tileentity = world.getBlockEntity(pos);
-			if (tileentity instanceof FeedingTroughTileEntity) {
-				((FeedingTroughTileEntity) tileentity).setCustomName(stack.getHoverName());
+			if (tileentity instanceof FeedingTroughBlockEntity) {
+				((FeedingTroughBlockEntity) tileentity).setCustomName(stack.getHoverName());
 			}
 		}
 	}
@@ -80,8 +81,8 @@ public class FeedingTroughBlock extends Block {
 	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean b) {
 		if (!state.is(newState.getBlock())) {
 			BlockEntity tileentity = world.getBlockEntity(pos);
-			if (tileentity instanceof FeedingTroughTileEntity) {
-				Containers.dropContents(world, pos, (FeedingTroughTileEntity) tileentity);
+			if (tileentity instanceof FeedingTroughBlockEntity) {
+				Containers.dropContents(world, pos, (FeedingTroughBlockEntity) tileentity);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
 
@@ -105,12 +106,7 @@ public class FeedingTroughBlock extends Block {
 	}
 
 	@Override
-	public boolean hasTileEntity(BlockState state) {
-		return true;
-	}
-
-	@Override
-	public BlockEntity createTileEntity(BlockState state, BlockGetter world) {
-		return LostWorldsBlockEntities.FEEDING_TROUGH_TILE_ENTITY.create();
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return LostWorldsBlockEntities.FEEDING_TROUGH_BLOCK_ENTITY.create(pos, state);
 	}
 }

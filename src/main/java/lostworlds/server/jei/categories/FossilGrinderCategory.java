@@ -7,8 +7,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
-import lostworlds.server.container.recipes.FossilGrinderRecipe;
 import lostworlds.server.jei.LostWorldsJeiConstants;
+import lostworlds.server.menu.recipes.FossilGrinderRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;

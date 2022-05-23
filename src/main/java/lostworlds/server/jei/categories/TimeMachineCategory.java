@@ -2,8 +2,8 @@ package lostworlds.server.jei.categories;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
-import lostworlds.server.container.recipes.TimeMachineRecipe;
 import lostworlds.server.jei.LostWorldsJeiConstants;
+import lostworlds.server.menu.recipes.TimeMachineRecipe;
 import mezz.jei.api.constants.ModIds;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawable;

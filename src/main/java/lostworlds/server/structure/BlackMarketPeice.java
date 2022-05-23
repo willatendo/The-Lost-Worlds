@@ -1,74 +1,61 @@
 package lostworlds.server.structure;
 
-import java.util.List;
 import java.util.Random;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.illager.FossilPoacherEntity;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.StructureFeatureManager;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BarrelBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.StructureFeatureManager;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
 import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
+import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 
 public class BlackMarketPeice {
 	public static final ResourceLocation BLACK_MARKET_LOCATION = LostWorldsUtils.rL("black_market");
 
-	public static void addStructure(StructureManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> piece, Random rand, Biome biome) {
-		piece.add(new BlackMarketPeice.Piece(manager, BLACK_MARKET_LOCATION, pos, rotation));
+	public static void addStructure(StructureManager manager, BlockPos pos, Rotation rotation, StructurePieceAccessor accessor, Random rand) {
+		accessor.addPiece(new BlackMarketPeice.Piece(manager, BLACK_MARKET_LOCATION, pos, rotation));
 	}
 
 	public static class Piece extends TemplateStructurePiece {
-		private final ResourceLocation templateLocation;
-		private final Rotation rotation;
-
-		public Piece(StructureManager manager, ResourceLocation location, BlockPos pos, Rotation rotation) {
-			super(LostWorldsStructurePecies.BLACK_MARKET_PIECE, 0);
-			this.templateLocation = location;
-			this.templatePosition = pos;
-			this.rotation = rotation;
-			this.loadTemplate(manager);
+		public Piece(StructureManager manager, ResourceLocation templateLocation, BlockPos pos, Rotation rotation) {
+			super(LostWorldsStructurePecies.BLACK_MARKET_PIECE, 0, manager, templateLocation, templateLocation.toString(), makeSettings(rotation), pos);
 		}
 
-		public Piece(StructureManager manager, CompoundTag nbt) {
-			super(LostWorldsStructurePecies.BLACK_MARKET_PIECE, nbt);
-			this.templateLocation = new ResourceLocation(nbt.getString("Template"));
-			this.rotation = Rotation.valueOf(nbt.getString("Rot"));
-			this.loadTemplate(manager);
+		public Piece(StructureManager manager, CompoundTag tag) {
+			super(LostWorldsStructurePecies.BLACK_MARKET_PIECE, tag, manager, (template) -> {
+				return makeSettings(Rotation.valueOf(tag.getString("Rot")));
+			});
 		}
 
-		private void loadTemplate(StructureManager manager) {
-			StructureTemplate template = manager.getOrCreate(this.templateLocation);
-			StructurePlaceSettings placementsettings = (new StructurePlaceSettings()).setRotation(this.rotation).setMirror(Mirror.NONE).addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
-			this.setup(template, this.templatePosition, placementsettings);
+		private static StructurePlaceSettings makeSettings(Rotation rotation) {
+			return (new StructurePlaceSettings()).setRotation(rotation).setMirror(Mirror.NONE).addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
 		}
 
 		@Override
-		protected void addAdditionalSaveData(CompoundTag nbt) {
-			super.addAdditionalSaveData(nbt);
-			nbt.putString("Template", this.templateLocation.toString());
-			nbt.putString("Rot", this.rotation.name());
+		protected void addAdditionalSaveData(StructurePieceSerializationContext context, CompoundTag tag) {
+			super.addAdditionalSaveData(context, tag);
+			tag.putString("Rot", this.placeSettings.getRotation().name());
 		}
 
 		@Override
@@ -92,14 +79,13 @@ public class BlackMarketPeice {
 		}
 
 		@Override
-		public boolean postProcess(WorldGenLevel reader, StructureFeatureManager manager, ChunkGenerator chunkGenerator, Random rand, BoundingBox box, ChunkPos chunkPos, BlockPos pos) {
+		public void postProcess(WorldGenLevel reader, StructureFeatureManager manager, ChunkGenerator chunkGenerator, Random rand, BoundingBox box, ChunkPos chunkPos, BlockPos pos) {
 			BlockPos blockpos1 = this.templatePosition;
 			int i = reader.getHeight(Heightmap.Types.WORLD_SURFACE_WG, blockpos1.getX(), blockpos1.getZ());
 			BlockPos blockpos2 = this.templatePosition;
 			this.templatePosition = this.templatePosition.offset(0, i - 90 - 2, 0);
-			boolean flag = super.postProcess(reader, manager, chunkGenerator, rand, box, chunkPos, pos);
 			this.templatePosition = blockpos2;
-			return flag;
+			super.postProcess(reader, manager, chunkGenerator, rand, box, chunkPos, pos);
 		}
 	}
 }

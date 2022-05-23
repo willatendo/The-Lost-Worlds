@@ -2,7 +2,7 @@ package lostworlds.server.block;
 
 import javax.annotation.Nullable;
 
-import lostworlds.server.block.entity.DisplayCaseTileEntity;
+import lostworlds.server.block.entity.DisplayCaseBlockEntity;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,6 +20,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -30,7 +31,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 
-public class DisplayCaseBlock extends Block {
+public class DisplayCaseBlock extends Block implements EntityBlock {
 	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 
 	public DisplayCaseBlock(Properties properties) {
@@ -64,7 +65,7 @@ public class DisplayCaseBlock extends Block {
 	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		if (!world.isClientSide) {
 			BlockEntity tile = world.getBlockEntity(pos);
-			if (tile instanceof DisplayCaseTileEntity) {
+			if (tile instanceof DisplayCaseBlockEntity) {
 				NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) tile, pos);
 				return InteractionResult.SUCCESS;
 			}
@@ -76,8 +77,8 @@ public class DisplayCaseBlock extends Block {
 	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
 		if (stack.hasCustomHoverName()) {
 			BlockEntity tileentity = world.getBlockEntity(pos);
-			if (tileentity instanceof DisplayCaseTileEntity) {
-				((DisplayCaseTileEntity) tileentity).setCustomName(stack.getHoverName());
+			if (tileentity instanceof DisplayCaseBlockEntity) {
+				((DisplayCaseBlockEntity) tileentity).setCustomName(stack.getHoverName());
 			}
 		}
 	}
@@ -86,8 +87,8 @@ public class DisplayCaseBlock extends Block {
 	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean b) {
 		if (!state.is(newState.getBlock())) {
 			BlockEntity tileentity = world.getBlockEntity(pos);
-			if (tileentity instanceof DisplayCaseTileEntity) {
-				Containers.dropContents(world, pos, (DisplayCaseTileEntity) tileentity);
+			if (tileentity instanceof DisplayCaseBlockEntity) {
+				Containers.dropContents(world, pos, (DisplayCaseBlockEntity) tileentity);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
 
@@ -111,13 +112,8 @@ public class DisplayCaseBlock extends Block {
 	}
 
 	@Override
-	public boolean hasTileEntity(BlockState state) {
-		return true;
-	}
-
-	@Override
-	public BlockEntity createTileEntity(BlockState state, BlockGetter world) {
-		return LostWorldsBlockEntities.DISPLAY_CASE_TILE_ENTITY.create();
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return LostWorldsBlockEntities.DISPLAY_CASE_BLOCK_ENTITY.create(pos, state);
 	}
 
 	@Override

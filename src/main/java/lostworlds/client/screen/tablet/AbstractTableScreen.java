@@ -1,14 +1,13 @@
 package lostworlds.client.screen.tablet;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 import lostworlds.server.LostWorldsUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.resources.ResourceLocation;
 
 public abstract class AbstractTableScreen extends Screen {
 	public static final ResourceLocation TEXTURE = LostWorldsUtils.rL("textures/gui/tablet.png");
@@ -50,8 +49,8 @@ public abstract class AbstractTableScreen extends Screen {
 
 	public void renderBackgroundElements(PoseStack stack) {
 		this.renderBackground(stack, 0);
-		Minecraft.getInstance().getTextureManager().bind(TEXTURE);
-		RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+		RenderSystem.setShaderTexture(0, TEXTURE);
 		stack.translate((this.width / 2) - (this.texWidth / 2), (this.height / 2) - (this.texHeight / 2), 0);
 		blit(stack, 0, 0, 0, 0, this.texWidth, this.texHeight);
 	}

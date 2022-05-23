@@ -22,6 +22,7 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.block.Block;
@@ -145,7 +146,7 @@ public class WoodList {
 		return this;
 	}
 
-	public WoodList register(String id, MaterialColor colour, MaterialColor logSideColour, AbstractTreeGrower tree, WoodType type, ModBoatType boatType, Supplier<Item> bark, TagKey<Block> blockTags, TagKey<Item> itemTags) {
+	public WoodList register(String id, MaterialColor colour, MaterialColor logSideColour, AbstractTreeGrower tree, WoodType type, ModBoatType boatType, Supplier<ItemStack> bark, TagKey<Block> blockTags, TagKey<Item> itemTags) {
 		for (WoodTypes types : this.typesToMake) {
 			if (types == WoodTypes.LOG) {
 				BlockEntry<RotatedPillarBlock> log = this.registrate.rotatedBlock(id + "_" + types.toString().toLowerCase(), RotatedPillarBlock::new).properties(properties -> properties.of(Material.WOOD, (state) -> {
@@ -258,7 +259,7 @@ public class WoodList {
 		return this;
 	}
 
-	public WoodList register(String id, MaterialColor colour, MaterialColor logSideColour, CustomTree tree, WoodType type, ModBoatType boatType, Supplier<Item> bark, TagKey<Block> blockTags, TagKey<Item> itemTags) {
+	public WoodList register(String id, MaterialColor colour, MaterialColor logSideColour, CustomTree tree, WoodType type, ModBoatType boatType, Supplier<ItemStack> bark, TagKey<Block> blockTags, TagKey<Item> itemTags) {
 		for (WoodTypes types : this.typesToMake) {
 			if (types == WoodTypes.LOG) {
 				BlockEntry<RotatedPillarBlock> log = this.registrate.rotatedBlock(id + "_" + types.toString().toLowerCase(), RotatedPillarBlock::new).properties(properties -> properties.of(Material.WOOD, (state) -> {

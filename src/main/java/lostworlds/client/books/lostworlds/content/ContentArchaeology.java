@@ -16,7 +16,7 @@ import lostworlds.client.books.tyrannibook.client.data.element.TextData;
 import lostworlds.client.books.tyrannibook.client.data.element.TextElement;
 import lostworlds.client.books.tyrannibook.client.data.element.TyrannobookElement;
 import lostworlds.client.books.tyrannibook.client.screen.TyrannobookScreen;
-import lostworlds.server.container.recipes.ArchaeologyTableRecipe;
+import lostworlds.server.menu.recipes.ArchaeologyTableRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;

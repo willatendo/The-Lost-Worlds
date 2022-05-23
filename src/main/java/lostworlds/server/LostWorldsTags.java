@@ -12,6 +12,7 @@ import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -20,6 +21,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -207,7 +209,7 @@ public class LostWorldsTags {
 		}
 
 		public void includeIn(ModItemTags parent) {
-			includeIn(parent.tag);
+			this.includeIn(parent.tag);
 		}
 
 		public void includeAll(TagKey<Item> child) {
@@ -292,14 +294,26 @@ public class LostWorldsTags {
 		}
 
 		public void includeIn(ModBlockTags parent) {
-			includeIn(parent.tag);
+			this.includeIn(parent.tag);
 		}
 
 		public void includeAll(TagKey<Block>... children) {
-			for (TagKey<Block> tag : children)
+			for (TagKey<Block> tag : children) {
 				REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, prov -> prov.tag(this.tag).addTag(tag));
+			}
 		}
+	}
 
+	public static class ModBiomeTags {
+		public static final TagKey<Biome> HAS_BLACK_MARKET = create("has_structure/black_market");
+		public static final TagKey<Biome> HAS_SURFACE_FOSSIL = create("has_structure/surface_fossil");
+		public static final TagKey<Biome> HAS_SUBTERRANEAN_FOSSIL = create("has_structure/subterranean_fossil");
+		public static final TagKey<Biome> HAS_TRACE_FOSSIL = create("has_structure/trace_fossil");
+		public static final TagKey<Biome> HAS_METEORITE = create("has_structure/meteorite");
+
+		private static TagKey<Biome> create(String id) {
+			return TagKey.create(Registry.BIOME_REGISTRY, LostWorldsUtils.rL("id"));
+		}
 	}
 
 	public static void init() {

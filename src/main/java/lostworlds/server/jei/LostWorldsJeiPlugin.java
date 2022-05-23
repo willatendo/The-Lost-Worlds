@@ -12,15 +12,6 @@ import lostworlds.client.screen.FossilGrinderScreen;
 import lostworlds.client.screen.PaleontologyTableScreen;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
-import lostworlds.server.container.AnalyzerContainer;
-import lostworlds.server.container.ArchaeologyTableContainer;
-import lostworlds.server.container.CultivatorContainer;
-import lostworlds.server.container.DNAExtractorContainer;
-import lostworlds.server.container.FossilCleanerContainer;
-import lostworlds.server.container.FossilGrinderContainer;
-import lostworlds.server.container.PaleontologyTableContainer;
-import lostworlds.server.container.recipes.LostWorldsRecipeManager;
-import lostworlds.server.container.recipes.LostWorldsRecipes;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.jei.categories.AnalyzerCategory;
 import lostworlds.server.jei.categories.ArchaeologyTableCategory;
@@ -33,6 +24,15 @@ import lostworlds.server.jei.categories.LightningCategory;
 import lostworlds.server.jei.categories.PaleontologyTableCategory;
 import lostworlds.server.jei.categories.TimeMachineCategory;
 import lostworlds.server.jei.categories.WaterFuelCategory;
+import lostworlds.server.menu.AnalyzerMenu;
+import lostworlds.server.menu.ArchaeologyTableMenu;
+import lostworlds.server.menu.CultivatorMenu;
+import lostworlds.server.menu.DNAExtractorMenu;
+import lostworlds.server.menu.FossilCleanerMenu;
+import lostworlds.server.menu.FossilGrinderMenu;
+import lostworlds.server.menu.PaleontologyTableMenu;
+import lostworlds.server.menu.recipes.LostWorldsRecipeManager;
+import lostworlds.server.menu.recipes.LostWorldsRecipes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
@@ -108,15 +108,15 @@ public class LostWorldsJeiPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
-		registration.addRecipeTransferHandler(FossilCleanerContainer.class, LostWorldsJeiConstants.FOSSIL_CLEANER_CATEGORY, 0, 1, 3, 36);
-		registration.addRecipeTransferHandler(FossilCleanerContainer.class, LostWorldsJeiConstants.WATER_FUEL_CATEGORY, 1, 1, 3, 36);
-		registration.addRecipeTransferHandler(FossilGrinderContainer.class, LostWorldsJeiConstants.FOSSIL_GRINDER_CATEGORY, 0, 1, 3, 36);
-		registration.addRecipeTransferHandler(DNAExtractorContainer.class, LostWorldsJeiConstants.DNA_EXTRACTOR_CATEGORY, 0, 2, 3, 36);
-		registration.addRecipeTransferHandler(AnalyzerContainer.class, LostWorldsJeiConstants.ANALYZER_CATEGORY, 0, 2, 3, 36);
-		registration.addRecipeTransferHandler(DNAExtractorContainer.class, LostWorldsJeiConstants.DNA_INJECTOR_CATEGORY, 0, 2, 3, 36);
-		registration.addRecipeTransferHandler(CultivatorContainer.class, LostWorldsJeiConstants.CULTIVATOR_CATEGORY, 0, 1, 3, 18);
-		registration.addRecipeTransferHandler(ArchaeologyTableContainer.class, LostWorldsJeiConstants.ARCHAEOLOGY_TABLE_CATEGORY, 1, 9, 10, 36);
-		registration.addRecipeTransferHandler(PaleontologyTableContainer.class, LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY, 1, 9, 10, 36);
+		registration.addRecipeTransferHandler(FossilCleanerMenu.class, LostWorldsJeiConstants.FOSSIL_CLEANER_CATEGORY, 0, 1, 3, 36);
+		registration.addRecipeTransferHandler(FossilCleanerMenu.class, LostWorldsJeiConstants.WATER_FUEL_CATEGORY, 1, 1, 3, 36);
+		registration.addRecipeTransferHandler(FossilGrinderMenu.class, LostWorldsJeiConstants.FOSSIL_GRINDER_CATEGORY, 0, 1, 3, 36);
+		registration.addRecipeTransferHandler(DNAExtractorMenu.class, LostWorldsJeiConstants.DNA_EXTRACTOR_CATEGORY, 0, 2, 3, 36);
+		registration.addRecipeTransferHandler(AnalyzerMenu.class, LostWorldsJeiConstants.ANALYZER_CATEGORY, 0, 2, 3, 36);
+		registration.addRecipeTransferHandler(DNAExtractorMenu.class, LostWorldsJeiConstants.DNA_INJECTOR_CATEGORY, 0, 2, 3, 36);
+		registration.addRecipeTransferHandler(CultivatorMenu.class, LostWorldsJeiConstants.CULTIVATOR_CATEGORY, 0, 1, 3, 18);
+		registration.addRecipeTransferHandler(ArchaeologyTableMenu.class, LostWorldsJeiConstants.ARCHAEOLOGY_TABLE_CATEGORY, 1, 9, 10, 36);
+		registration.addRecipeTransferHandler(PaleontologyTableMenu.class, LostWorldsJeiConstants.PALEONTOLOGY_TABLE_CATEGORY, 1, 9, 10, 36);
 	}
 
 	@Override

@@ -3,18 +3,16 @@ package lostworlds.server.block;
 import java.util.Random;
 
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class CultivatorBlock extends MachineBlock {
 	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 16, 15);
@@ -31,12 +29,12 @@ public class CultivatorBlock extends MachineBlock {
 	}
 
 	@Override
-	public BlockEntity createTileEntity(BlockState state, BlockGetter world) {
-		return LostWorldsBlockEntities.CULTIVATOR_TILE_ENTITY.create();
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return LostWorldsBlockEntities.CULTIVATOR_BLOCK_ENTITY.create(pos, state);
 	}
 
 	@Override
-	public int getLightValue(BlockState state, BlockGetter world, BlockPos pos) {
+	public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
 		if (state.getValue(ON)) {
 			return 15;
 		} else {

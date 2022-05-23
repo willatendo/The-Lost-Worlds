@@ -31,10 +31,12 @@ import lostworlds.server.trades.EmeraldsForMultiItemTrade;
 import lostworlds.server.trades.MultiItemForEmeraldsTrade;
 import lostworlds.server.util.JigsawUtils;
 import lostworlds.server.util.registrate.WoodTypes;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FireBlock;
-import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -45,28 +47,26 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ShovelItem;
-import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.FireBlock;
+import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.saveddata.maps.MapDecoration;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.minecraftforge.event.server.ServerAboutToStartEvent;
+import net.minecraftforge.event.server.ServerStartedEvent;
+import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.server.FMLServerAboutToStartEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
-import net.minecraftforge.fml.event.server.FMLServerStoppedEvent;
 
 public class ServerSetup {
 	@EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.MOD)
@@ -80,7 +80,7 @@ public class ServerSetup {
 	@EventBusSubscriber
 	static class AddVillageStructures {
 		@SubscribeEvent
-		public static void onServerAboutToStartEvent(FMLServerAboutToStartEvent event) {
+		public static void onServerAboutToStartEvent(ServerAboutToStartEvent event) {
 			if (LostWorldsConfig.COMMON_CONFIG.villageStructures.get()) {
 				// Plains Village Structures
 				JigsawUtils.registerJigsaw(event.getServer(), new ResourceLocation("minecraft:village/plains/houses"), LostWorldsUtils.rL("village/plains/plains_archaeologist_hut"), LostWorldsConfig.COMMON_CONFIG.villageStructureWeights.get());
@@ -167,7 +167,7 @@ public class ServerSetup {
 				BlockPos clickedPos = event.getPos();
 				Direction direction = entity.getDirection().getOpposite();
 
-				if (!(world.getBlockState(clickedPos).getBlock() instanceof EntityBlock) || !(world.getBlockState(clickedPos).hasTileEntity())) {
+				if (!(world.getBlockState(clickedPos).getBlock() instanceof EntityBlock) || !(world.getBlockState(clickedPos).hasBlockEntity())) {
 					if (world.getBlockState(pos.below()).isFaceSturdy(world, pos, direction)) {
 						entity.swing(hand);
 						if (!entity.isCreative()) {
@@ -209,12 +209,12 @@ public class ServerSetup {
 		private static Map<ResourceLocation, FossilPoachingGroupSpawner> spawners = new HashMap<>();
 
 		@SubscribeEvent
-		public static void onServerStart(FMLServerStartedEvent event) {
+		public static void onServerStart(ServerStartedEvent event) {
 			spawners.put(DimensionType.OVERWORLD_EFFECTS, new FossilPoachingGroupSpawner());
 		}
 
 		@SubscribeEvent
-		public static void onServerStart(FMLServerStoppedEvent event) {
+		public static void onServerStart(ServerStoppedEvent event) {
 			spawners.clear();
 		}
 
@@ -236,7 +236,7 @@ public class ServerSetup {
 	@EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.MOD)
 	static class VanillaMaps {
 		@SubscribeEvent
-		public static void addToMaps(final FMLCommonSetupEvent event) {
+		public static void addToMaps(FMLCommonSetupEvent event) {
 			addToStrippingMap(LostWorldsBlocks.ARAUCARIA.getBlock(WoodTypes.PETRIFIED_LOG).get(), LostWorldsBlocks.ARAUCARIA.getBlock(WoodTypes.STRIPPED_PETRIFIED_LOG).get());
 			addToStrippingMap(LostWorldsBlocks.CALAMITES.getBlock(WoodTypes.PETRIFIED_LOG).get(), LostWorldsBlocks.CALAMITES.getBlock(WoodTypes.STRIPPED_PETRIFIED_LOG).get());
 			addToStrippingMap(LostWorldsBlocks.CONIFER.getBlock(WoodTypes.PETRIFIED_LOG).get(), LostWorldsBlocks.CONIFER.getBlock(WoodTypes.STRIPPED_PETRIFIED_LOG).get());
@@ -335,18 +335,18 @@ public class ServerSetup {
 		}
 
 		private static void addToStrippingMap(BlockEntry<? extends Block> logBlock, BlockEntry<? extends Block> strippedLogBlock) {
-			AxeItem.STRIPABLES = Maps.newHashMap(AxeItem.STRIPABLES);
-			AxeItem.STRIPABLES.put(logBlock.get(), strippedLogBlock.get());
+			AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
+			AxeItem.STRIPPABLES.put(logBlock.get(), strippedLogBlock.get());
 		}
 
 		private static void addToTillingMap(BlockEntry<? extends Block> dirt) {
 			HoeItem.TILLABLES = Maps.newHashMap(HoeItem.TILLABLES);
-			HoeItem.TILLABLES.put(dirt.get(), Blocks.FARMLAND.defaultBlockState());
+			HoeItem.TILLABLES.put(dirt.get(), Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(Blocks.FARMLAND.defaultBlockState())));
 		}
 
 		private static void addToFlatteningMap(BlockEntry<? extends Block> dirt) {
 			ShovelItem.FLATTENABLES = Maps.newHashMap(ShovelItem.FLATTENABLES);
-			ShovelItem.FLATTENABLES.put(dirt.get(), Blocks.GRASS_PATH.defaultBlockState());
+			ShovelItem.FLATTENABLES.put(dirt.get(), Blocks.DIRT_PATH.defaultBlockState());
 		}
 
 		private static void addToFlammables(BlockEntry<? extends Block> burnable, int catchFlame, int burn) {
