@@ -15,7 +15,6 @@ import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.LostWorldsBiomes;
 import lostworlds.server.biome.LostWorldsBlockstateProviders;
-import lostworlds.server.biome.surfacebuilders.LostWorldsSurfaceBuilders;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
 import lostworlds.server.dimension.LostWorldsDimensions;
@@ -32,15 +31,14 @@ import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.item.LostWorldsPotions;
 import lostworlds.server.menu.LostWorldsMenus;
 import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.structure.LostWorldsConfiguredStructures;
 import lostworlds.server.structure.LostWorldsStructurePecies;
 import lostworlds.server.structure.LostWorldsStructures;
-import lostworlds.server.structure.LostWorldsConfiguredStructures;
 import lostworlds.server.util.Version;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
-import lostworlds.server.world.BiomeGen;
 import lostworlds.server.world.EntitySpawns;
 import lostworlds.server.world.FeatureGen;
-import lostworlds.server.world.StructureGen;
+import lostworlds.terrablender.TerrablenderLoader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -106,7 +104,7 @@ public class LostWorldsMod {
 		LostWorldsBlockstateProviders.deferred(bus);
 		LostWorldsWorldCarvers.deferred(bus);
 		LostWorldsConfiguredCarvers.init();
-		LostWorldsSurfaceBuilders.deferred(bus);
+//		LostWorldsSurfaceBuilders.deferred(bus);
 		LostWorldsFeatures.deferred(bus);
 		LostWorldsStructures.deferred(bus);
 		LostWorldsStructurePecies.init();
@@ -142,6 +140,10 @@ public class LostWorldsMod {
 		TyrannibookHelper.commonSetup(event);
 
 		event.enqueueWork(() -> {
+			if (LostWorldsUtils.modLoaded("terrablender")) {
+				TerrablenderLoader.init();
+			}
+
 			LostWorldsConfiguredStructures.init();
 
 			LostWorldsDimensions.initBiomeSourcesAndChunkGenerator();
@@ -156,17 +158,11 @@ public class LostWorldsMod {
 	}
 
 	private void biomeStuff(BiomeLoadingEvent event) {
-		// Biomes
-		BiomeGen.init(event);
-
 		// Spawns
 		EntitySpawns.init(event);
 
 		// Features
 		FeatureGen.init(event);
-
-		// Structures
-		StructureGen.init(event);
 	}
 
 	private void clientSetup(FMLClientSetupEvent event) {

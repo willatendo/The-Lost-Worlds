@@ -2,24 +2,22 @@ package lostworlds.server.biome.biomes.cretaceous.shore;
 
 import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
-import lostworlds.server.biome.ModConfiguredSurfaceBuilders;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biome.BiomeCategory;
 import net.minecraft.world.level.biome.Biome.Precipitation;
-import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 
 public class CretaceousShoreBiome extends ModBiome {
 	@Override
 	public Biome getBiome() {
-		return this.biome(Precipitation.RAIN, BiomeCategory.BEACH, 0.0F, 0.025F, 0.8F, 0.7F, this.ambience(), this.generation(), this.spawn()).build();
+		return this.biome(Precipitation.RAIN, BiomeCategory.BEACH, 0.8F, 0.7F, this.ambience(), this.generation(), this.spawn()).build();
 	}
 
 	@Override
 	public BiomeGenerationSettings generation() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
-		generation.surfaceBuilder(() -> ModConfiguredSurfaceBuilders.CRETACEOUS_SHORE_BUILDER);
 		ModBiomeFeatures.cretaceousShore(generation);
 		return generation.build();
 	}

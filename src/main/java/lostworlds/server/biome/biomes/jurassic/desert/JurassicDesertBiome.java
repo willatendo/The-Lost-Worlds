@@ -2,37 +2,23 @@ package lostworlds.server.biome.biomes.jurassic.desert;
 
 import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
-import lostworlds.server.biome.ModSurfaceBuilderConfigs;
-import lostworlds.server.biome.surfacebuilders.LostWorldsSurfaceBuilders;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biome.BiomeCategory;
 import net.minecraft.world.level.biome.Biome.Precipitation;
-import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 
 public class JurassicDesertBiome extends ModBiome {
-	private float depth;
-	private float scale;
-
-	public JurassicDesertBiome(float depth, float scale) {
-		this.depth = depth;
-		this.scale = scale;
-	}
-
-	public JurassicDesertBiome() {
-		this(0.1F, 0.2F);
-	}
-
 	@Override
 	public Biome getBiome() {
-		return this.biome(Precipitation.NONE, BiomeCategory.DESERT, this.depth, this.scale, 0.0F, 2.0F, this.ambience(), this.generation(), this.spawn()).build();
+		return this.biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 2.0F, this.ambience(), this.generation(), this.spawn()).build();
 	}
 
 	@Override
 	public BiomeGenerationSettings generation() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
-		generation.surfaceBuilder(() -> LostWorldsSurfaceBuilders.NAKED_JURASSIC_DESERT.configured(ModSurfaceBuilderConfigs.ROCKY_SOIL_CONFIG.get()));
+//		generation.surfaceBuilder(() -> LostWorldsSurfaceBuilders.NAKED_JURASSIC_DESERT.configured(ModSurfaceBuilderConfigs.ROCKY_SOIL_CONFIG.get()));
 		ModBiomeFeatures.jurassicDesert(generation);
 		return generation.build();
 	}

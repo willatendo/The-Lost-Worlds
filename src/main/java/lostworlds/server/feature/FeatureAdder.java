@@ -1,13 +1,14 @@
 package lostworlds.server.feature;
 
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.MobSpawnSettings.SpawnerData;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeManager;
@@ -16,12 +17,12 @@ import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class FeatureAdder {
-	public static void addFeature(BiomeLoadingEvent event, GenerationStep.Decoration decoration, ConfiguredFeature feature) {
+	public static void addFeature(BiomeLoadingEvent event, GenerationStep.Decoration decoration, Holder<PlacedFeature> feature) {
 		BiomeGenerationSettingsBuilder generation = event.getGeneration();
 		generation.addFeature(decoration, feature);
 	}
 
-	public static void addOre(BiomeLoadingEvent event, ConfiguredFeature ore) {
+	public static void addOre(BiomeLoadingEvent event, Holder<PlacedFeature> ore) {
 		addFeature(event, GenerationStep.Decoration.UNDERGROUND_ORES, ore);
 	}
 

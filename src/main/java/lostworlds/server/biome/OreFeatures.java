@@ -26,7 +26,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.RangeDecoratorC
 
 public class OreFeatures {
 	// Overworld
-	public static final ConfiguredFeature<?, ?> COPPER_ORE = register("copper_ore", LostWorldsFeatures.MOD_ORE.configured(new ModOreFeatureConfig(Predicates.NATURAL_STONE, () -> LostWorldsBlocks.COPPER_ORE.getDefaultState(), LostWorldsConfig.COMMON_CONFIG.copperVeinSize.get())).range(LostWorldsConfig.COMMON_CONFIG.copperRange.get()).squared().count(LostWorldsConfig.COMMON_CONFIG.copperCountPerChunk.get()));
 	public static final ConfiguredFeature<?, ?> SILT_PATCH = register("silt_patch", LostWorldsFeatures.MOD_ORE.configured(new ModOreFeatureConfig(Predicates.NATURAL_STONE, () -> LostWorldsBlocks.SILT.getDefaultState(), LostWorldsConfig.COMMON_CONFIG.siltVeinSize.get())).range(LostWorldsConfig.COMMON_CONFIG.siltRange.get()).squared().count(LostWorldsConfig.COMMON_CONFIG.siltCountPerChunk.get()));
 
 	public static final ConfiguredFeature<?, ?> PETRIFIED_ARAUCARIA = register("petrified_araucaria", LostWorldsFeatures.MOD_REPLACE_BLOCK_FEATURE.configured(new ModReplaceBlockConfig(() -> Blocks.STONE.defaultBlockState(), () -> LostWorldsBlocks.ARAUCARIA.getBlock(WoodTypes.PETRIFIED_LOG).get().getDefaultState())).decorated(FeatureDecorator.EMERALD_ORE.configured(DecoratorConfiguration.NONE).chance(LostWorldsConfig.COMMON_CONFIG.petrifiedAraucariaChance.get())));

@@ -2,37 +2,23 @@ package lostworlds.server.biome.biomes.permian.desert;
 
 import lostworlds.server.biome.ModBiome;
 import lostworlds.server.biome.ModBiomeFeatures;
-import lostworlds.server.biome.ModSurfaceBuilderConfigs;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biome.BiomeCategory;
 import net.minecraft.world.level.biome.Biome.Precipitation;
-import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
-import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilder;
 
 public class PermianDesertBiome extends ModBiome {
-	private float depth;
-	private float scale;
-
-	public PermianDesertBiome(float depth, float scale) {
-		this.depth = depth;
-		this.scale = scale;
-	}
-
-	public PermianDesertBiome() {
-		this(0.125F, 0.05F);
-	}
-
 	@Override
 	public Biome getBiome() {
-		return this.biome(Precipitation.NONE, BiomeCategory.DESERT, this.depth, this.scale, 0.0F, 3.0F, this.ambience(), this.generation(), this.spawn()).build();
+		return this.biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 3.0F, this.ambience(), this.generation(), this.spawn()).build();
 	}
 
 	@Override
 	public BiomeGenerationSettings generation() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
-		generation.surfaceBuilder(() -> SurfaceBuilder.DEFAULT.configured(ModSurfaceBuilderConfigs.PERMIAN_SAND_CONFIG.get()));
+//		generation.surfaceBuilder(() -> SurfaceBuilder.DEFAULT.configured(ModSurfaceBuilderConfigs.PERMIAN_SAND_CONFIG.get()));
 		ModBiomeFeatures.permianDesert(generation);
 		return generation.build();
 	}

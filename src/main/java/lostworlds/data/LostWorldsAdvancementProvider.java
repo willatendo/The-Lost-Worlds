@@ -34,8 +34,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.feature.StructureFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class LostWorldsAdvancementProvider extends AdvancementProvider {
@@ -112,7 +111,7 @@ public class LostWorldsAdvancementProvider extends AdvancementProvider {
 		return Pair.of(LocationTrigger.TriggerInstance.located(LocationPredicate.inDimension(dimension)), "in_" + dimension.location().getPath());
 	}
 
-	public Pair<AbstractCriterionTriggerInstance, String> structureCriteria(StructureFeature<? extends FeatureConfiguration> structure) {
+	public Pair<AbstractCriterionTriggerInstance, String> structureCriteria(ResourceKey<ConfiguredStructureFeature<?, ?>> structure) {
 		return Pair.of(LocationTrigger.TriggerInstance.located(LocationPredicate.inFeature(structure)), "in_" + structure.getRegistryName().getPath());
 	}
 

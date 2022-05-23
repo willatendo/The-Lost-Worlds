@@ -2,8 +2,8 @@ package lostworlds.server.dimension.carver;
 
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.data.BuiltinRegistries;
-import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.carver.CarverConfiguration;
+import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration;
 
 public class LostWorldsConfiguredCarvers {
