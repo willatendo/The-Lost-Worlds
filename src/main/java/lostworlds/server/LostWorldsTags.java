@@ -25,6 +25,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -312,7 +313,15 @@ public class LostWorldsTags {
 		public static final TagKey<Biome> HAS_METEORITE = create("has_structure/meteorite");
 
 		private static TagKey<Biome> create(String id) {
-			return TagKey.create(Registry.BIOME_REGISTRY, LostWorldsUtils.rL("id"));
+			return TagKey.create(Registry.BIOME_REGISTRY, LostWorldsUtils.rL(id));
+		}
+	}
+
+	public static class ModConfiguredStructureTags {
+		public static final TagKey<ConfiguredStructureFeature<?, ?>> FOSSIL_MAP_LOCATION = create("fossil_map_location");
+
+		private static TagKey<ConfiguredStructureFeature<?, ?>> create(String id) {
+			return TagKey.create(Registry.CONFIGURED_STRUCTURE_FEATURE_REGISTRY, LostWorldsUtils.rL(id));
 		}
 	}
 

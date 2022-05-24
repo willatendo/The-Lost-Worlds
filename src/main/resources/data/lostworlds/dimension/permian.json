@@ -1,7 +1,7 @@
 {
 	"type": "lostworlds:permian",
 	"generator": {
-		"type": "lostworlds:permian_chunk_generator",
+		"type": "lostworlds:permian",
 		"settings": {
 			"bedrock_roof_position": -10,
 			"bedrock_floor_position": 0,
@@ -48,7 +48,7 @@
 			}
 		},
 		"biome_source": {
-			"type": "lostworlds:permian_biome_source"
+			"type": "lostworlds:permian"
 		}
 	}
 }

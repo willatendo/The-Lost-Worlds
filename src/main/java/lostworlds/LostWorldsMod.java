@@ -8,8 +8,6 @@ import com.google.common.collect.ImmutableSet;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
 import lostworlds.client.LostWorldsConfig;
-import lostworlds.client.books.TyrannibookHelper;
-import lostworlds.client.books.lostworlds.LostWorldsBooks;
 import lostworlds.client.sounds.LostWorldsSounds;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
@@ -18,8 +16,6 @@ import lostworlds.server.biome.LostWorldsBlockstateProviders;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
 import lostworlds.server.dimension.LostWorldsDimensions;
-import lostworlds.server.dimension.carver.LostWorldsConfiguredCarvers;
-import lostworlds.server.dimension.carver.LostWorldsWorldCarvers;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.LostWorldsPOIs;
 import lostworlds.server.entity.LostWorldsVillagerProfessions;
@@ -102,8 +98,6 @@ public class LostWorldsMod {
 		LostWorldsVillagerProfessions.deferred(bus);
 		LostWorldsPOIs.deferred(bus);
 		LostWorldsBlockstateProviders.deferred(bus);
-		LostWorldsWorldCarvers.deferred(bus);
-		LostWorldsConfiguredCarvers.init();
 //		LostWorldsSurfaceBuilders.deferred(bus);
 		LostWorldsFeatures.deferred(bus);
 		LostWorldsStructures.deferred(bus);
@@ -137,8 +131,6 @@ public class LostWorldsMod {
 		LostWorldsUtils.ITEMS.setIcon(() -> LostWorldsItems.LOST_WORLDS_LEXICON.asStack());
 		LostWorldsUtils.BLOCKS.setIcon(() -> LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.asStack());
 
-		TyrannibookHelper.commonSetup(event);
-
 		event.enqueueWork(() -> {
 			if (LostWorldsUtils.modLoaded("terrablender")) {
 				TerrablenderLoader.init();
@@ -166,9 +158,8 @@ public class LostWorldsMod {
 	}
 
 	private void clientSetup(FMLClientSetupEvent event) {
-		TyrannibookHelper.listenersSetup(event);
-
-		LostWorldsBooks.initBooks();
+//		TyrannibookHelper.listenersSetup(event);
+//		LostWorldsBooks.initBooks();
 
 		LostWorldsDimensions.initClient();
 	}

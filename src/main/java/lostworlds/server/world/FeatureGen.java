@@ -5,9 +5,9 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.biome.DisksFeatures;
-import lostworlds.server.biome.OreFeatures;
-import lostworlds.server.biome.TreeFeatures;
+import lostworlds.server.biome.features.configured.DisksFeatures;
+import lostworlds.server.biome.features.configured.OreFeatures;
+import lostworlds.server.biome.features.configured.TreeFeatures;
 import lostworlds.server.feature.FeatureAdder;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraftforge.event.world.BiomeLoadingEvent;

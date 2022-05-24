@@ -1,7 +1,7 @@
 {
 	"type": "lostworlds:cretaceous",
 	"generator": {
-		"type": "lostworlds:cretaceous_chunk_generator",
+		"type": "lostworlds:cretaceous",
 		"settings": {
 			"bedrock_roof_position": -10,
 			"bedrock_floor_position": 0,
@@ -48,7 +48,7 @@
 			}
 		},
 		"biome_source": {
-			"type": "lostworlds:cretaceous_biome_source"
+			"type": "lostworlds:cretaceous"
 		}
 	}
 }

@@ -2,7 +2,7 @@ package lostworlds.server.block.tree;
 
 import java.util.Random;
 
-import lostworlds.server.biome.TreeFeatures;
+import lostworlds.server.biome.features.configured.TreeFeatures;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;

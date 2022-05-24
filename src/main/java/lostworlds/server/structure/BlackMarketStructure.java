@@ -14,7 +14,7 @@ import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilde
 
 public class BlackMarketStructure extends StructureFeature<NoneFeatureConfiguration> {
 	public BlackMarketStructure(Codec<NoneFeatureConfiguration> codec) {
-		super(codec, PieceGeneratorSupplier.simple(PieceGeneratorSupplier.checkForBiomeOnTop(Heightmap.Types.WORLD_SURFACE_WG), null));
+		super(codec, PieceGeneratorSupplier.simple(PieceGeneratorSupplier.checkForBiomeOnTop(Heightmap.Types.WORLD_SURFACE_WG), BlackMarketStructure::generatePieces));
 	}
 
 	@Override
@@ -22,7 +22,7 @@ public class BlackMarketStructure extends StructureFeature<NoneFeatureConfigurat
 		return Decoration.SURFACE_STRUCTURES;
 	}
 
-	public void generatePieces(StructurePiecesBuilder builder, PieceGenerator.Context<NoneFeatureConfiguration> context) {
+	public static void generatePieces(StructurePiecesBuilder builder, PieceGenerator.Context<NoneFeatureConfiguration> context) {
 		BlockPos pos = new BlockPos(context.chunkPos().getMinBlockX(), 90, context.chunkPos().getMinBlockZ());
 		Rotation rotation = Rotation.getRandom(context.random());
 		BlackMarketPeice.addStructure(context.structureManager(), pos, rotation, builder, context.random());

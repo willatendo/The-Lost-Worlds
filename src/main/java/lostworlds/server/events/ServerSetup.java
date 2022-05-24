@@ -14,8 +14,10 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsTags.ModConfiguredStructureTags;
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.biome.LostWorldsConfiguredFeatures;
+import lostworlds.server.biome.features.configured.LostWorldsConfiguredFeatures;
+import lostworlds.server.biome.features.placed.LostWorldsPlacedFeatures;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.NautilusShellBlock;
 import lostworlds.server.block.Plants;
@@ -26,7 +28,6 @@ import lostworlds.server.entity.spawner.FossilPoachingGroupSpawner;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.item.SyringeItem;
-import lostworlds.server.structure.LostWorldsStructures;
 import lostworlds.server.trades.EmeraldsForMultiItemTrade;
 import lostworlds.server.trades.MultiItemForEmeraldsTrade;
 import lostworlds.server.util.JigsawUtils;
@@ -74,6 +75,7 @@ public class ServerSetup {
 		@SubscribeEvent
 		public static void registerFeatures(Register<Feature<?>> event) {
 			LostWorldsConfiguredFeatures.init();
+			LostWorldsPlacedFeatures.init();
 		}
 	}
 
@@ -118,7 +120,7 @@ public class ServerSetup {
 			// Paleontologist
 			VillagerTrades.ItemListing[] paleontology1 = new VillagerTrades.ItemListing[] { new VillagerTrades.EmeraldForItems(LostWorldsBlocks.TINY_FOSSILISED_EGG.get(), 4, 4, 10), new VillagerTrades.EmeraldForItems(LostWorldsBlocks.SMALL_PLASTERED_FOSSILISED_EGG.get(), 5, 4, 10), new VillagerTrades.ItemsForEmeralds(LostWorldsBlocks.PALEONTOLOGY_TABLE.get(), 4, 1, 12, 36) };
 
-			VillagerTrades.ItemListing[] paleontology2 = new VillagerTrades.ItemListing[] { new VillagerTrades.EmeraldForItems(LostWorldsBlocks.MEDIUM_PLASTERED_FOSSILISED_EGG.get(), 6, 4, 10), new VillagerTrades.ItemsForEmeralds(LostWorldsItems.FIELD_GUIDE.get(), 25, 1, 20), new VillagerTrades.ItemsForEmeralds(LostWorldsItems.WET_PAPER.get(), 3, 5, 12), new VillagerTrades.TreasureMapForEmeralds(4, LostWorldsStructures.SURFACE_FOSSIL.get(), MapDecoration.Type.RED_MARKER, 1, 42), new VillagerTrades.TreasureMapForEmeralds(4, LostWorldsStructures.SUBTERRANEAN_FOSSIL.get(), MapDecoration.Type.BANNER_RED, 1, 42) };
+			VillagerTrades.ItemListing[] paleontology2 = new VillagerTrades.ItemListing[] { new VillagerTrades.EmeraldForItems(LostWorldsBlocks.MEDIUM_PLASTERED_FOSSILISED_EGG.get(), 6, 4, 10), new VillagerTrades.ItemsForEmeralds(LostWorldsItems.FIELD_GUIDE.get(), 25, 1, 20), new VillagerTrades.ItemsForEmeralds(LostWorldsItems.WET_PAPER.get(), 3, 5, 12), new VillagerTrades.TreasureMapForEmeralds(4, ModConfiguredStructureTags.FOSSIL_MAP_LOCATION, "filled_map.fossil", MapDecoration.Type.RED_MARKER, 1, 42) };
 
 			VillagerTrades.ItemListing[] paleontology3 = new VillagerTrades.ItemListing[] { new VillagerTrades.EmeraldForItems(LostWorldsBlocks.LARGE_FOSSILISED_EGG.get(), 7, 2, 15), new VillagerTrades.ItemsForEmeralds(LostWorldsItems.HAMMER.get(), 16, 1, 20) };
 

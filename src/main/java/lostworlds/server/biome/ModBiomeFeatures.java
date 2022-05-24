@@ -1,5 +1,10 @@
 package lostworlds.server.biome;
 
+import lostworlds.server.biome.features.configured.LostWorldsConfiguredFeatures;
+import lostworlds.server.biome.features.configured.OreFeatures;
+import lostworlds.server.biome.features.configured.PlantPatchFeatures;
+import lostworlds.server.biome.features.configured.TreeFeatures;
+import lostworlds.server.biome.features.configured.WaterFeatures;
 import lostworlds.server.dimension.carver.LostWorldsConfiguredCarvers;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
