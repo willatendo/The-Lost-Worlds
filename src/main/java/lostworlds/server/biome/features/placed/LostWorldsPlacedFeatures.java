@@ -33,5 +33,7 @@ public class LostWorldsPlacedFeatures {
 		PlacedDisksFeatures.init();
 		PlacedOreFeatures.init();
 		PlacedPlantPatchFeatures.init();
+		PlacedTreeFeatures.init();
+		PlacedWaterFeatures.init();
 	}
 }

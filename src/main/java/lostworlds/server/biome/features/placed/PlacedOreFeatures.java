@@ -83,6 +83,21 @@ public class PlacedOreFeatures {
 	// Creataceous
 	public static final Holder<PlacedFeature> CRETACEOUS_MAGMA_ORE = register("cretaceous_magma_ore", OreFeatures.CRETACEOUS_MAGMA_ORE, commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.absolute(27), VerticalAnchor.absolute(36))));
 
+	public static final Holder<PlacedFeature> CRETACEOUS_COAL_ORE = register("cretaceous_coal_ore", OreFeatures.CRETACEOUS_COAL_ORE, commonOrePlacement(20, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128))));
+	public static final Holder<PlacedFeature> CRETACEOUS_IRON_ORE = register("cretaceous_iron_ore", OreFeatures.CRETACEOUS_IRON_ORE, commonOrePlacement(20, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(64))));
+	public static final Holder<PlacedFeature> CRETACEOUS_GOLD_ORE = register("cretaceous_gold_ore", OreFeatures.CRETACEOUS_GOLD_ORE, commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32))));
+	public static final Holder<PlacedFeature> CRETACEOUS_REDSTONE_ORE = register("cretaceous_redstone_ore", OreFeatures.CRETACEOUS_REDSTONE_ORE, commonOrePlacement(8, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(16))));
+	public static final Holder<PlacedFeature> CRETACEOUS_DIAMOND_ORE = register("cretaceous_diamond_ore", OreFeatures.CRETACEOUS_DIAMOND_ORE, commonOrePlacement(1, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(16))));
+	public static final Holder<PlacedFeature> CRETACEOUS_LAPIS_ORE = register("cretaceous_lapis_ore", OreFeatures.CRETACEOUS_LAPIS_ORE, commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(16))));
+	public static final Holder<PlacedFeature> CRETACEOUS_EMERALD_ORE = register("cretaceous_emerald_ore", OreFeatures.CRETACEOUS_EMERALD_ORE, commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128))));
+	public static final Holder<PlacedFeature> CRETACEOUS_COPPER_ORE = register("cretaceous_copper_ore", OreFeatures.CRETACEOUS_COPPER_ORE, commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.absolute(50))));
+
+	public static final Holder<PlacedFeature> CRETACEOUS_DIRT_ORE = register("cretaceous_dirt_ore", OreFeatures.CRETACEOUS_DIRT_ORE, commonOrePlacement(7, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
+	public static final Holder<PlacedFeature> CRETACEOUS_GRAVEL_ORE = register("cretaceous_gravel_ore", OreFeatures.CRETACEOUS_GRAVEL_ORE, commonOrePlacement(14, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
+	public static final Holder<PlacedFeature> CRETACEOUS_LATERLITE_ORE = register("cretaceous_laterlite_ore", OreFeatures.CRETACEOUS_LATERLITE_ORE, commonOrePlacement(6, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
+	public static final Holder<PlacedFeature> CRETACEOUS_RAW_MARBLE_ORE = register("cretaceous_raw_marble_ore", OreFeatures.CRETACEOUS_RAW_MARBLE_ORE, commonOrePlacement(6, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
+	public static final Holder<PlacedFeature> CRETACEOUS_LIMESTONE_ORE = register("cretaceous_limestone_ore", OreFeatures.CRETACEOUS_LIMESTONE_ORE, commonOrePlacement(6, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
+
 	// Mixed Era
 	public static final Holder<PlacedFeature> BASALT_DIAMOND_ORE = register("basalt_diamond_ore", OreFeatures.BASALT_DIAMOND_ORE, commonOrePlacement(1, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
 

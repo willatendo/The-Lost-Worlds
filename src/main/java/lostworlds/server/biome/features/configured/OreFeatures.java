@@ -99,6 +99,20 @@ public class OreFeatures {
 
 	// Creataceous
 	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_MAGMA_ORE = register("cretaceous_magma_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.MAGMA_BLOCK.defaultBlockState(), 33));
+	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_COAL_ORE = register("cretaceous_coal_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.COAL_ORE.defaultBlockState(), 17));
+	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_IRON_ORE = register("cretaceous_iron_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.IRON_ORE.defaultBlockState(), 9));
+	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_GOLD_ORE = register("cretaceous_gold_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.GOLD_ORE.defaultBlockState(), 9));
+	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_REDSTONE_ORE = register("cretaceous_redstone_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.REDSTONE_ORE.defaultBlockState(), 8));
+	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_DIAMOND_ORE = register("cretaceous_diamond_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.DIAMOND_ORE.defaultBlockState(), 8));
+	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_LAPIS_ORE = register("cretaceous_lapis_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.LAPIS_ORE.defaultBlockState(), 7));
+	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_EMERALD_ORE = register("cretaceous_emerald_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.EMERALD_ORE.defaultBlockState(), 1));
+	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_COPPER_ORE = register("cretaceous_copper_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.COPPER_ORE.defaultBlockState(), 10));
+
+	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_DIRT_ORE = register("cretaceous_dirt_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.DIRT.defaultBlockState(), 33));
+	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_GRAVEL_ORE = register("cretaceous_gravel_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.GRAVEL.defaultBlockState(), 33));
+	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_LATERLITE_ORE = register("cretaceous_laterlite_ore", Feature.ORE, new OreConfiguration(STONE, LostWorldsBlocks.LATERLITE.getDefaultState(), 33));
+	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_RAW_MARBLE_ORE = register("cretaceous_raw_marble_ore", Feature.ORE, new OreConfiguration(STONE, LostWorldsBlocks.RAW_MARBLE.getDefaultState(), 33));
+	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> CRETACEOUS_LIMESTONE_ORE = register("cretaceous_limestone_ore", Feature.ORE, new OreConfiguration(STONE, LostWorldsBlocks.LIMESTONE.getDefaultState(), 33));
 
 	// Mixed Era
 	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> BASALT_DIAMOND_ORE = register("basalt_diamond_ore", Feature.ORE, new OreConfiguration(BASALT, LostWorldsBlocks.BASALT_DIAMOND_ORE.getDefaultState(), 10));
