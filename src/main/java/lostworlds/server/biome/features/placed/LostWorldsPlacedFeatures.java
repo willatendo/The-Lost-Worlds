@@ -1,5 +1,7 @@
 package lostworlds.server.biome.features.placed;
 
+import java.util.List;
+
 import lostworlds.server.biome.features.configured.LostWorldsConfiguredFeatures;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -23,7 +25,13 @@ public class LostWorldsPlacedFeatures {
 		return PlacementUtils.register("lostworlds:" + id, feature, modifiers);
 	}
 
-	public static void init() {
+	public static Holder<PlacedFeature> register(String id, Holder<? extends ConfiguredFeature<?, ?>> feature, List<PlacementModifier> modifiers) {
+		return PlacementUtils.register("lostworlds:" + id, feature, modifiers);
+	}
 
+	public static void init() {
+		PlacedDisksFeatures.init();
+		PlacedOreFeatures.init();
+		PlacedPlantPatchFeatures.init();
 	}
 }

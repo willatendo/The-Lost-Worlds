@@ -2,12 +2,14 @@ package lostworlds.server.block.tree;
 
 import java.util.Random;
 
-import lostworlds.server.feature.LostWorldsFeatures;
-import net.minecraft.world.level.levelgen.feature.Feature;
+import lostworlds.server.biome.features.configured.TreeFeatures;
+import net.minecraft.core.Holder;
+import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
-public class GinkgoTree extends CustomTree {
+public class GinkgoTree extends AbstractTreeGrower {
 	@Override
-	protected Feature getFeature(Random random) {
-		return LostWorldsFeatures.GINKGO_TREE;
+	protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random p_204307_, boolean p_204308_) {
+		return TreeFeatures.GINKGO_TREE;
 	}
 }

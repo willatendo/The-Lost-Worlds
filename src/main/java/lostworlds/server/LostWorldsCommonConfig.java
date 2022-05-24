@@ -8,11 +8,6 @@ import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 public class LostWorldsCommonConfig {
 	protected static final String TRANSLATION_TEXT = "lostworlds.config.";
 
-	public final BooleanValue copperOreGeneration;
-	public final IntValue copperVeinSize;
-	public final IntValue copperRange;
-	public final IntValue copperCountPerChunk;
-
 	// Structures
 	public final IntValue blackMarketGenerationId;
 	public final BooleanValue blackMarketShouldSpawn;
@@ -265,11 +260,6 @@ public class LostWorldsCommonConfig {
 	public final IntValue zephyrosaurusSpawnGroupMaximum;
 
 	public LostWorldsCommonConfig(ForgeConfigSpec.Builder builder) {
-		this.copperOreGeneration = builder.comment("Sets if copper ore should spawn.").translation(TRANSLATION_TEXT + "copperOreGeneration").define("copperOreGeneration", true);
-		this.copperVeinSize = builder.comment("Sets the size a copper vein can spawn.").translation(TRANSLATION_TEXT + "copperVeinSize").defineInRange("copperVeinSize", 9, 1, 100);
-		this.copperRange = builder.comment("Sets the range copper can spawn in.").translation(TRANSLATION_TEXT + "copperRange").defineInRange("copperRange", 64, 1, 256);
-		this.copperCountPerChunk = builder.comment("Sets the amount of copper veins per chunk.").translation(TRANSLATION_TEXT + "copperCountPerChunk").defineInRange("copperCountPerChunk", 20, 1, 100);
-
 		// Ids
 		this.blackMarketGenerationId = builder.comment("Sets the Black Market's structure Id. Minecraft requires a number id, so this may conflict with another mod. If so, change it.").translation(TRANSLATION_TEXT + "blackMarketGenerationId").defineInRange("blackMarketGenerationId", 930134351, 111111111, 999999999);
 		this.blackMarketShouldSpawn = builder.comment("Sets if the Black Market should spawn in the overworld.").translation(TRANSLATION_TEXT + "blackMarketShouldSpawn").define("blackMarketShouldSpawn", true);

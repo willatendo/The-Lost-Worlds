@@ -15,8 +15,8 @@ public class DirtyFossil extends Fossil {
 		super(entity, world);
 	}
 
-	public DirtyFossil setPick(ItemStack stack) {
-		return this.setPick(stack);
+	public DirtyFossil setDirtyPick(ItemStack stack) {
+		return (DirtyFossil) this.setPick(stack);
 	}
 
 	@Override
