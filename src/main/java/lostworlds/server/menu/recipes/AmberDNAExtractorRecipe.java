@@ -1,14 +1,14 @@
 package lostworlds.server.menu.recipes;
 
 import lostworlds.server.block.LostWorldsBlocks;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.core.NonNullList;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 
 public class AmberDNAExtractorRecipe implements Recipe<Container> {
@@ -61,7 +61,7 @@ public class AmberDNAExtractorRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return LostWorldsRecipes.AMBER_DNA_EXTRACTOR_RECIPE_SERIALIZER;
+		return LostWorldsRecipeSerializers.AMBER_DNA_EXTRACTOR_RECIPE_SERIALIZER;
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class AmberDNAExtractorRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipes.AMBER_DNA_EXTRACTOR_RECIPE;
+		return LostWorldsRecipeTypes.AMBER_DNA_EXTRACTOR_RECIPE;
 	}
 
 	@Override

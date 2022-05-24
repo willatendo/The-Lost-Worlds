@@ -4,14 +4,14 @@ import java.util.Random;
 
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.item.LostWorldsItems;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.core.NonNullList;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 
 public class FossilGrinderRecipe implements Recipe<Container> {
@@ -88,7 +88,7 @@ public class FossilGrinderRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return LostWorldsRecipes.FOSSIL_GRINDER_SERIALIZER.get();
+		return LostWorldsRecipeSerializers.FOSSIL_GRINDER_SERIALIZER.get();
 	}
 
 	@Override
@@ -105,7 +105,7 @@ public class FossilGrinderRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipes.FOSSIL_GRINDER_RECIPE;
+		return LostWorldsRecipeTypes.FOSSIL_GRINDER_RECIPE;
 	}
 
 	@Override

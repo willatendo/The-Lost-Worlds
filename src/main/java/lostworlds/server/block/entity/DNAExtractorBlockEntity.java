@@ -12,9 +12,8 @@ import lostworlds.server.block.DNAExtractorBlock;
 import lostworlds.server.item.AmberItem;
 import lostworlds.server.menu.DNAExtractorMenu;
 import lostworlds.server.menu.LostWorldsMenus;
-import lostworlds.server.menu.recipes.AmberDNAExtractorRecipe;
 import lostworlds.server.menu.recipes.DNAExtractorRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -101,8 +100,7 @@ public class DNAExtractorBlockEntity extends BlockEntity implements Container, M
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final RecipeType<DNAExtractorRecipe> recipeType = LostWorldsRecipes.DNA_EXTRACTOR_RECIPE;
-	protected final RecipeType<AmberDNAExtractorRecipe> secondaryRecipeType = LostWorldsRecipes.AMBER_DNA_EXTRACTOR_RECIPE;
+	protected final RecipeType<DNAExtractorRecipe> recipeType = LostWorldsRecipeTypes.DNA_EXTRACTOR_RECIPE;
 
 	@SuppressWarnings("unused")
 	private Component name;

@@ -3,7 +3,7 @@ package lostworlds.server.menu;
 import lostworlds.server.block.FossilGrinderBlock;
 import lostworlds.server.block.entity.FossilGrinderBlockEntity;
 import lostworlds.server.menu.recipes.FossilGrinderRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import lostworlds.server.menu.slot.ResultSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.SimpleContainer;
@@ -24,7 +24,7 @@ public class FossilGrinderMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;
 	private final ContainerData data;
 	private final Level level;
-	private final RecipeType<FossilGrinderRecipe> recipeType = LostWorldsRecipes.FOSSIL_GRINDER_RECIPE;
+	private final RecipeType<FossilGrinderRecipe> recipeType = LostWorldsRecipeTypes.FOSSIL_GRINDER_RECIPE;
 
 	public FossilGrinderMenu(MenuType<? extends FossilGrinderMenu> containerType, int windowID, Inventory inventory, FossilGrinderBlockEntity blockEntity) {
 		super(containerType, windowID);

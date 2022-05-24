@@ -6,7 +6,7 @@ import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.menu.inventory.ArchaeologyTableInventory;
 import lostworlds.server.menu.inventory.ArchaeologyTableResultInventory;
 import lostworlds.server.menu.recipes.ArchaeologyTableRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import lostworlds.server.menu.slot.ArchaeologyTableResultSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
@@ -60,7 +60,7 @@ public class ArchaeologyTableMenu extends AbstractContainerMenu {
 		if (!world.isClientSide) {
 			ServerPlayer serverPlayer = (ServerPlayer) player;
 			ItemStack itemstack = ItemStack.EMPTY;
-			Optional<ArchaeologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(LostWorldsRecipes.ARCHAEOLOGY_TABLE_RECIPE, inv, world);
+			Optional<ArchaeologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(LostWorldsRecipeTypes.ARCHAEOLOGY_TABLE_RECIPE, inv, world);
 			if (optional.isPresent()) {
 				ArchaeologyTableRecipe recipe = optional.get();
 				if (result.setRecipeUsed(world, serverPlayer, recipe)) {

@@ -8,7 +8,7 @@ import lostworlds.server.block.CultivatorBlock;
 import lostworlds.server.menu.CultivatorMenu;
 import lostworlds.server.menu.LostWorldsMenus;
 import lostworlds.server.menu.recipes.CultivatorRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -93,7 +93,7 @@ public class CultivatorBlockEntity extends BlockEntity implements Container, Men
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final RecipeType<CultivatorRecipe> recipeType = LostWorldsRecipes.CULTIVATOR_RECIPE;
+	protected final RecipeType<CultivatorRecipe> recipeType = LostWorldsRecipeTypes.CULTIVATOR_RECIPE;
 
 	private Component name;
 

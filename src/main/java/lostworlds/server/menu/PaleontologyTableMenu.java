@@ -5,7 +5,7 @@ import java.util.Optional;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.menu.inventory.PaleontologyTableInventory;
 import lostworlds.server.menu.inventory.PaleontologyTableResultInventory;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import lostworlds.server.menu.recipes.PaleontologyTableRecipe;
 import lostworlds.server.menu.slot.PaleontologyTableResultSlot;
 import net.minecraft.network.FriendlyByteBuf;
@@ -60,7 +60,7 @@ public class PaleontologyTableMenu extends AbstractContainerMenu {
 		if (!world.isClientSide) {
 			ServerPlayer serverPlayer = (ServerPlayer) player;
 			ItemStack itemstack = ItemStack.EMPTY;
-			Optional<PaleontologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(LostWorldsRecipes.PALEONTOLOGY_TABLE_RECIPE, inv, world);
+			Optional<PaleontologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(LostWorldsRecipeTypes.PALEONTOLOGY_TABLE_RECIPE, inv, world);
 			if (optional.isPresent()) {
 				PaleontologyTableRecipe recipe = optional.get();
 				if (result.setRecipeUsed(world, serverPlayer, recipe)) {

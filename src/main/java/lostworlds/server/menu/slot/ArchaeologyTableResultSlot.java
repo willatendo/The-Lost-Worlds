@@ -1,7 +1,7 @@
 package lostworlds.server.menu.slot;
 
 import lostworlds.server.menu.inventory.ArchaeologyTableInventory;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
@@ -65,7 +65,7 @@ public class ArchaeologyTableResultSlot extends Slot {
 	public void onTake(Player player, ItemStack stack) {
 		this.checkTakeAchievements(stack);
 		ForgeHooks.setCraftingPlayer(player);
-		NonNullList<ItemStack> nonnulllist = player.level.getRecipeManager().getRemainingItemsFor(LostWorldsRecipes.ARCHAEOLOGY_TABLE_RECIPE, this.craftSlots, player.level);
+		NonNullList<ItemStack> nonnulllist = player.level.getRecipeManager().getRemainingItemsFor(LostWorldsRecipeTypes.ARCHAEOLOGY_TABLE_RECIPE, this.craftSlots, player.level);
 		ForgeHooks.setCraftingPlayer(null);
 		for (int i = 0; i < nonnulllist.size(); ++i) {
 			ItemStack itemstack = this.craftSlots.getItem(i);

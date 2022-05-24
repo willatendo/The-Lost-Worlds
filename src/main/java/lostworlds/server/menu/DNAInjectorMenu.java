@@ -3,7 +3,7 @@ package lostworlds.server.menu;
 import lostworlds.server.block.DNAInjectorBlock;
 import lostworlds.server.block.entity.DNAInjectorBlockEntity;
 import lostworlds.server.menu.recipes.DNAInjectorRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import lostworlds.server.menu.slot.DNADiscSlot;
 import lostworlds.server.menu.slot.EggSlot;
 import lostworlds.server.menu.slot.ResultSlot;
@@ -26,7 +26,7 @@ public class DNAInjectorMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;
 	private final ContainerData data;
 	private final Level level;
-	private final RecipeType<DNAInjectorRecipe> recipeType = LostWorldsRecipes.DNA_INJECTOR_RECIPE;
+	private final RecipeType<DNAInjectorRecipe> recipeType = LostWorldsRecipeTypes.DNA_INJECTOR_RECIPE;
 
 	public DNAInjectorMenu(MenuType<? extends DNAInjectorMenu> type, int windowID, Inventory inventory, DNAInjectorBlockEntity blockEntity) {
 		super(type, windowID);

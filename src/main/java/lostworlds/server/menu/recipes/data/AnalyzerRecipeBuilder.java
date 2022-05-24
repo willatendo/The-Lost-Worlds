@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 import com.google.gson.JsonObject;
 
 import lostworlds.server.item.LostWorldsItems;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeSerializers;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
@@ -96,7 +96,7 @@ public class AnalyzerRecipeBuilder {
 
 		@Override
 		public RecipeSerializer<?> getType() {
-			return LostWorldsRecipes.ANALYZER_RECIPE_SERIALIZER;
+			return LostWorldsRecipeSerializers.ANALYZER_RECIPE_SERIALIZER;
 		}
 
 		@Override

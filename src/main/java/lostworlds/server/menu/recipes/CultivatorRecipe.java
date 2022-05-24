@@ -1,14 +1,14 @@
 package lostworlds.server.menu.recipes;
 
 import lostworlds.server.block.LostWorldsBlocks;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.core.NonNullList;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 
 public class CultivatorRecipe implements Recipe<Container> {
@@ -57,7 +57,7 @@ public class CultivatorRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return LostWorldsRecipes.CULTIVATOR_RECIPE_SERIALIZER;
+		return LostWorldsRecipeSerializers.CULTIVATOR_RECIPE_SERIALIZER;
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class CultivatorRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipes.CULTIVATOR_RECIPE;
+		return LostWorldsRecipeTypes.CULTIVATOR_RECIPE;
 	}
 
 	@Override

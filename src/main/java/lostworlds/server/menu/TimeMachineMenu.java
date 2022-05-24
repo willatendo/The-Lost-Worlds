@@ -6,7 +6,7 @@ import com.google.common.collect.Lists;
 
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.item.LostWorldsItems;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import lostworlds.server.menu.recipes.TimeMachineRecipe;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.sounds.SoundEvents;
@@ -157,7 +157,7 @@ public class TimeMachineMenu extends AbstractContainerMenu {
 		this.selectedRecipeIndex.set(-1);
 		this.resultSlot.set(ItemStack.EMPTY);
 		if (!inv.isEmpty()) {
-			this.recipes = this.level.getRecipeManager().getRecipesFor(LostWorldsRecipes.TIME_MACHINE_RECIPE, inv, this.level);
+			this.recipes = this.level.getRecipeManager().getRecipesFor(LostWorldsRecipeTypes.TIME_MACHINE_RECIPE, inv, this.level);
 		}
 	}
 

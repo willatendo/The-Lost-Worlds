@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 
 import com.google.gson.JsonObject;
 
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeSerializers;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
@@ -99,7 +99,7 @@ public class FossilGrinderRecipeBuilder {
 
 		@Override
 		public RecipeSerializer<?> getType() {
-			return LostWorldsRecipes.FOSSIL_GRINDER_RECIPE_SERIALIZER;
+			return LostWorldsRecipeSerializers.FOSSIL_GRINDER_RECIPE_SERIALIZER;
 		}
 
 		@Override

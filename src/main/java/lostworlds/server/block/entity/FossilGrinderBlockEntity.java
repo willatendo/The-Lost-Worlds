@@ -9,7 +9,7 @@ import lostworlds.server.item.ModBoneMealItem;
 import lostworlds.server.menu.FossilGrinderMenu;
 import lostworlds.server.menu.LostWorldsMenus;
 import lostworlds.server.menu.recipes.FossilGrinderRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -94,7 +94,7 @@ public class FossilGrinderBlockEntity extends BlockEntity implements Container, 
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final RecipeType<FossilGrinderRecipe> recipeType = LostWorldsRecipes.FOSSIL_GRINDER_RECIPE;
+	protected final RecipeType<FossilGrinderRecipe> recipeType = LostWorldsRecipeTypes.FOSSIL_GRINDER_RECIPE;
 
 	private Component name;
 

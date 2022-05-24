@@ -3,7 +3,7 @@ package lostworlds.server.menu;
 import lostworlds.server.block.CultivatorBlock;
 import lostworlds.server.block.entity.CultivatorBlockEntity;
 import lostworlds.server.menu.recipes.CultivatorRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import lostworlds.server.menu.slot.ResultSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.SimpleContainer;
@@ -24,7 +24,7 @@ public class CultivatorMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;
 	private final ContainerData data;
 	private final Level level;
-	private final RecipeType<CultivatorRecipe> recipeType = LostWorldsRecipes.CULTIVATOR_RECIPE;
+	private final RecipeType<CultivatorRecipe> recipeType = LostWorldsRecipeTypes.CULTIVATOR_RECIPE;
 
 	public CultivatorMenu(MenuType<? extends CultivatorMenu> containerType, int windowID, Inventory inventory, CultivatorBlockEntity blockEntity) {
 		super(containerType, windowID);

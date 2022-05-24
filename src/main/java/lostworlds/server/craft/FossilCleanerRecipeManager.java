@@ -10,7 +10,7 @@ import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
 
 import lostworlds.server.menu.recipes.FossilCleanerRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeType;
 
@@ -31,6 +31,6 @@ public class FossilCleanerRecipeManager implements IRecipeManager {
 
 	@Override
 	public RecipeType getRecipeType() {
-		return LostWorldsRecipes.FOSSIL_CLEANER_RECIPE;
+		return LostWorldsRecipeTypes.FOSSIL_CLEANER_RECIPE;
 	}
 }

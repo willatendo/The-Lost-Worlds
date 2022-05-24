@@ -2,9 +2,8 @@ package lostworlds.server.menu;
 
 import lostworlds.server.block.DNAExtractorBlock;
 import lostworlds.server.block.entity.DNAExtractorBlockEntity;
-import lostworlds.server.menu.recipes.AmberDNAExtractorRecipe;
 import lostworlds.server.menu.recipes.DNAExtractorRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import lostworlds.server.menu.slot.DNAExtractorInputSlot;
 import lostworlds.server.menu.slot.ResultSlot;
 import lostworlds.server.menu.slot.VileSlot;
@@ -27,8 +26,7 @@ public class DNAExtractorMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;
 	private final ContainerData data;
 	private final Level level;
-	private final RecipeType<DNAExtractorRecipe> recipeType = LostWorldsRecipes.DNA_EXTRACTOR_RECIPE;
-	private final RecipeType<AmberDNAExtractorRecipe> secondaryRecipeType = LostWorldsRecipes.AMBER_DNA_EXTRACTOR_RECIPE;
+	private final RecipeType<DNAExtractorRecipe> recipeType = LostWorldsRecipeTypes.DNA_EXTRACTOR_RECIPE;
 
 	public DNAExtractorMenu(MenuType<? extends DNAExtractorMenu> type, int windowID, Inventory inventory, DNAExtractorBlockEntity blockEntity) {
 		super(type, windowID);
@@ -115,6 +113,6 @@ public class DNAExtractorMenu extends AbstractContainerMenu {
 	}
 
 	protected boolean canExtract(ItemStack stack) {
-		return this.level.getRecipeManager().getRecipeFor((RecipeType) this.recipeType, new SimpleContainer(stack), this.level).isPresent() || this.level.getRecipeManager().getRecipeFor((RecipeType) this.secondaryRecipeType, new SimpleContainer(stack), this.level).isPresent();
+		return this.level.getRecipeManager().getRecipeFor((RecipeType) this.recipeType, new SimpleContainer(stack), this.level).isPresent();
 	}
 }

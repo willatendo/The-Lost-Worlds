@@ -10,7 +10,7 @@ import lostworlds.server.block.DNAInjectorBlock;
 import lostworlds.server.menu.DNAInjectorMenu;
 import lostworlds.server.menu.LostWorldsMenus;
 import lostworlds.server.menu.recipes.DNAInjectorRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -95,7 +95,7 @@ public class DNAInjectorBlockEntity extends BlockEntity implements Container, Me
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final RecipeType<DNAInjectorRecipe> recipeType = LostWorldsRecipes.DNA_INJECTOR_RECIPE;
+	protected final RecipeType<DNAInjectorRecipe> recipeType = LostWorldsRecipeTypes.DNA_INJECTOR_RECIPE;
 
 	@SuppressWarnings("unused")
 	private Component name;

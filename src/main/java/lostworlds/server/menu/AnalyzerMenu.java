@@ -3,7 +3,7 @@ package lostworlds.server.menu;
 import lostworlds.server.block.AnalyzerBlock;
 import lostworlds.server.block.entity.AnalyzerBlockEntity;
 import lostworlds.server.menu.recipes.AnalyzerRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import lostworlds.server.menu.slot.DNASlot;
 import lostworlds.server.menu.slot.DiscSlot;
 import lostworlds.server.menu.slot.ResultSlot;
@@ -26,7 +26,7 @@ public class AnalyzerMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;
 	private final ContainerData data;
 	private final Level level;
-	private final RecipeType<AnalyzerRecipe> recipeType = LostWorldsRecipes.ANALYZER_RECIPE;
+	private final RecipeType<AnalyzerRecipe> recipeType = LostWorldsRecipeTypes.ANALYZER_RECIPE;
 
 	public AnalyzerMenu(MenuType<? extends AnalyzerMenu> containerType, int windowID, Inventory inventory, AnalyzerBlockEntity blockEntity) {
 		super(containerType, windowID);

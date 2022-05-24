@@ -1,14 +1,14 @@
 package lostworlds.server.menu.recipes;
 
 import lostworlds.server.block.LostWorldsBlocks;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.core.NonNullList;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 
 public class DNAInjectorRecipe implements Recipe<Container> {
@@ -62,7 +62,7 @@ public class DNAInjectorRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return LostWorldsRecipes.DNA_INJECTOR_SERIALIZER.get();
+		return LostWorldsRecipeSerializers.DNA_INJECTOR_SERIALIZER.get();
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class DNAInjectorRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipes.DNA_INJECTOR_RECIPE;
+		return LostWorldsRecipeTypes.DNA_INJECTOR_RECIPE;
 	}
 
 	@Override

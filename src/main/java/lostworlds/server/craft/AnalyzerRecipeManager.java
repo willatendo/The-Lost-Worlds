@@ -10,7 +10,7 @@ import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
 
 import lostworlds.server.menu.recipes.AnalyzerRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeType;
 
@@ -31,6 +31,6 @@ public class AnalyzerRecipeManager implements IRecipeManager {
 
 	@Override
 	public RecipeType getRecipeType() {
-		return LostWorldsRecipes.ANALYZER_RECIPE;
+		return LostWorldsRecipeTypes.ANALYZER_RECIPE;
 	}
 }

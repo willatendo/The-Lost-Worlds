@@ -10,7 +10,7 @@ import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
 
 import lostworlds.server.menu.recipes.DNAExtractorRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeType;
 
@@ -31,6 +31,6 @@ public class DNAExtractorRecipeManager implements IRecipeManager {
 
 	@Override
 	public RecipeType getRecipeType() {
-		return LostWorldsRecipes.DNA_EXTRACTOR_RECIPE;
+		return LostWorldsRecipeTypes.DNA_EXTRACTOR_RECIPE;
 	}
 }

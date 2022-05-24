@@ -8,7 +8,7 @@ import lostworlds.server.block.AnalyzerBlock;
 import lostworlds.server.menu.AnalyzerMenu;
 import lostworlds.server.menu.LostWorldsMenus;
 import lostworlds.server.menu.recipes.AnalyzerRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -93,7 +93,7 @@ public class AnalyzerBlockEntity extends BlockEntity implements Container, MenuP
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final RecipeType<AnalyzerRecipe> recipeType = LostWorldsRecipes.ANALYZER_RECIPE;
+	protected final RecipeType<AnalyzerRecipe> recipeType = LostWorldsRecipeTypes.ANALYZER_RECIPE;
 
 	private Component name;
 

@@ -3,7 +3,7 @@ package lostworlds.server.menu;
 import lostworlds.server.block.FossilCleanerBlock;
 import lostworlds.server.block.entity.FossilCleanerBlockEntity;
 import lostworlds.server.menu.recipes.FossilCleanerRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import lostworlds.server.menu.slot.FossilCleanerFuelSlot;
 import lostworlds.server.menu.slot.ResultSlot;
 import net.minecraft.network.FriendlyByteBuf;
@@ -28,7 +28,7 @@ public class FossilCleanerMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;
 	private final ContainerData data;
 	private final Level level;
-	private final RecipeType<FossilCleanerRecipe> recipeType = LostWorldsRecipes.FOSSIL_CLEANER_RECIPE;
+	private final RecipeType<FossilCleanerRecipe> recipeType = LostWorldsRecipeTypes.FOSSIL_CLEANER_RECIPE;
 
 	public FossilCleanerMenu(MenuType<? extends FossilCleanerMenu> containerType, int windowID, Inventory inventory, FossilCleanerBlockEntity blockEntity) {
 		super(containerType, windowID);

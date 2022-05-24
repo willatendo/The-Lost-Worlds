@@ -12,7 +12,7 @@ import lostworlds.server.block.AnalyzerBlock;
 import lostworlds.server.menu.FossilCleanerMenu;
 import lostworlds.server.menu.LostWorldsMenus;
 import lostworlds.server.menu.recipes.FossilCleanerRecipe;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -102,7 +102,7 @@ public class FossilCleanerBlockEntity extends BlockEntity implements Container, 
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final RecipeType<FossilCleanerRecipe> recipeType = LostWorldsRecipes.FOSSIL_CLEANER_RECIPE;
+	protected final RecipeType<FossilCleanerRecipe> recipeType = LostWorldsRecipeTypes.FOSSIL_CLEANER_RECIPE;
 
 	private Component name;
 

@@ -13,14 +13,14 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 
 import lostworlds.server.menu.inventory.ArchaeologyTableInventory;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.core.NonNullList;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.IShapedRecipe;
@@ -59,7 +59,7 @@ public class ArchaeologyTableRecipe implements Recipe<ArchaeologyTableInventory>
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return LostWorldsRecipes.ARCHAEOLOGY_TABLE_SERIALIZER.get();
+		return LostWorldsRecipeSerializers.ARCHAEOLOGY_TABLE_SERIALIZER.get();
 	}
 
 	@Override
@@ -275,6 +275,6 @@ public class ArchaeologyTableRecipe implements Recipe<ArchaeologyTableInventory>
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipes.ARCHAEOLOGY_TABLE_RECIPE;
+		return LostWorldsRecipeTypes.ARCHAEOLOGY_TABLE_RECIPE;
 	}
 }

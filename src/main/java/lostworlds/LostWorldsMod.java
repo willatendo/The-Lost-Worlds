@@ -26,7 +26,8 @@ import lostworlds.server.item.LostWorldsEnchantments;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.item.LostWorldsPotions;
 import lostworlds.server.menu.LostWorldsMenus;
-import lostworlds.server.menu.recipes.LostWorldsRecipes;
+import lostworlds.server.menu.recipes.LostWorldsRecipeSerializers;
+import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import lostworlds.server.structure.LostWorldsConfiguredStructures;
 import lostworlds.server.structure.LostWorldsStructurePecies;
 import lostworlds.server.structure.LostWorldsStructures;
@@ -47,6 +48,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -54,6 +56,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
+import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -94,20 +97,19 @@ public class LostWorldsMod {
 		LostWorldsBanners.init();
 		LostWorldsBlockEntities.registrate();
 		LostWorldsMenus.registrate();
-		LostWorldsRecipes.deferred(bus);
+		LostWorldsRecipeSerializers.deferred(bus);
 		LostWorldsVillagerProfessions.deferred(bus);
 		LostWorldsPOIs.deferred(bus);
 		LostWorldsBlockstateProviders.deferred(bus);
-//		LostWorldsSurfaceBuilders.deferred(bus);
 		LostWorldsFeatures.deferred(bus);
 		LostWorldsStructures.deferred(bus);
-		LostWorldsStructurePecies.init();
 		LostWorldsBiomes.deferred(bus);
 
 		LostWorldsTags.init();
 
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
+		bus.addGenericListener(RecipeSerializer.class, LostWorldsMod::registerRecipeTypes);
 
 		forge.addListener(this::biomeStuff);
 		forge.addListener(this::onPlayerLoggedIn);
@@ -118,6 +120,10 @@ public class LostWorldsMod {
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, LostWorldsConfig.commonSpec);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, LostWorldsConfig.clientSpec);
+	}
+
+	public static void registerRecipeTypes(Register<RecipeSerializer<?>> event) {
+		LostWorldsRecipeTypes.init();
 	}
 
 	@OnlyIn(Dist.CLIENT)
@@ -135,6 +141,8 @@ public class LostWorldsMod {
 			if (LostWorldsUtils.modLoaded("terrablender")) {
 				TerrablenderLoader.init();
 			}
+
+			LostWorldsStructurePecies.init();
 
 			LostWorldsConfiguredStructures.init();
 
