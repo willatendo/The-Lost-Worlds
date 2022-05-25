@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:magenta_glass"
+            "items": [
+              "lostworlds:magenta_glass"
+            ]
           }
         ]
       }

@@ -12,7 +12,6 @@ import lostworlds.client.sounds.LostWorldsSounds;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.LostWorldsBiomes;
-import lostworlds.server.biome.LostWorldsBlockstateProviders;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
 import lostworlds.server.dimension.LostWorldsDimensions;
@@ -100,7 +99,6 @@ public class LostWorldsMod {
 		LostWorldsRecipeSerializers.deferred(bus);
 		LostWorldsVillagerProfessions.deferred(bus);
 		LostWorldsPOIs.deferred(bus);
-		LostWorldsBlockstateProviders.deferred(bus);
 		LostWorldsFeatures.deferred(bus);
 		LostWorldsStructures.deferred(bus);
 		LostWorldsBiomes.deferred(bus);

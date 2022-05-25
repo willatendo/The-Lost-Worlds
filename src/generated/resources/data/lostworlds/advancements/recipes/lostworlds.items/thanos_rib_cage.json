@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:thanos_rib_cage"
+            "items": [
+              "lostworlds:thanos_rib_cage"
+            ]
           }
         ]
       }

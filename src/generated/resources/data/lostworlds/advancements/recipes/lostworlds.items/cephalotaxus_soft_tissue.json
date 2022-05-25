@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:cephalotaxus_fossil"
+            "items": [
+              "lostworlds:cephalotaxus_fossil"
+            ]
           }
         ]
       }

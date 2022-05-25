@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:jurassic_stone_brick_stairs"
+            "items": [
+              "lostworlds:jurassic_stone_brick_stairs"
+            ]
           }
         ]
       }

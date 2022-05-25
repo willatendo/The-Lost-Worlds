@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:great_auk_dna_disc"
+            "items": [
+              "lostworlds:great_auk_dna_disc"
+            ]
           }
         ]
       }

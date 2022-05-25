@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:cypress_dna"
+            "items": [
+              "lostworlds:cypress_dna"
+            ]
           }
         ]
       }

@@ -28,12 +28,4 @@ public class LostWorldsPlacedFeatures {
 	public static Holder<PlacedFeature> register(String id, Holder<? extends ConfiguredFeature<?, ?>> feature, List<PlacementModifier> modifiers) {
 		return PlacementUtils.register("lostworlds:" + id, feature, modifiers);
 	}
-
-	public static void init() {
-		PlacedDisksFeatures.init();
-		PlacedOreFeatures.init();
-		PlacedPlantPatchFeatures.init();
-		PlacedTreeFeatures.init();
-		PlacedWaterFeatures.init();
-	}
 }

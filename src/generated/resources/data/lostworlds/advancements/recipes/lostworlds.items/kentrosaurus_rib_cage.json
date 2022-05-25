@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:kentrosaurus_rib_cage"
+            "items": [
+              "lostworlds:kentrosaurus_rib_cage"
+            ]
           }
         ]
       }

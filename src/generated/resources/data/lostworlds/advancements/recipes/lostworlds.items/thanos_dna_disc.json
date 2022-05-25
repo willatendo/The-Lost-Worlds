@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:thanos_dna"
+            "items": [
+              "lostworlds:thanos_dna"
+            ]
           }
         ]
       }

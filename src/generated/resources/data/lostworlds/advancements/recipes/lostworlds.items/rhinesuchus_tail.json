@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:rhinesuchus_tail"
+            "items": [
+              "lostworlds:rhinesuchus_tail"
+            ]
           }
         ]
       }

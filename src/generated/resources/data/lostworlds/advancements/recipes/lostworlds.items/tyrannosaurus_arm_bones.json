@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:tyrannosaurus_arm_bones"
+            "items": [
+              "lostworlds:tyrannosaurus_arm_bones"
+            ]
           }
         ]
       }

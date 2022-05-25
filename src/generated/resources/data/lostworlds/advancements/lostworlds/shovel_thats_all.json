@@ -25,7 +25,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:crystal_scarab_shovel"
+            "items": [
+              "lostworlds:crystal_scarab_shovel"
+            ]
           }
         ]
       }

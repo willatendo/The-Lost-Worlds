@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:kentrosaurus_soft_tissue"
+            "items": [
+              "lostworlds:kentrosaurus_soft_tissue"
+            ]
           }
         ]
       }

@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:liaoningosaurus_tail"
+            "items": [
+              "lostworlds:liaoningosaurus_tail"
+            ]
           }
         ]
       }

@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:procompsognathus_dna_disc"
+            "items": [
+              "lostworlds:procompsognathus_dna_disc"
+            ]
           }
         ]
       }

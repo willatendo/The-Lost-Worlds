@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:raw_diictodon_meat"
+            "items": [
+              "lostworlds:raw_diictodon_meat"
+            ]
           }
         ]
       }

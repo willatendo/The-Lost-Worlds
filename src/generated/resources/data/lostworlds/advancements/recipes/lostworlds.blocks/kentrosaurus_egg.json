@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:kentrosaurus_dna_disc"
+            "items": [
+              "lostworlds:kentrosaurus_dna_disc"
+            ]
           }
         ]
       }

@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:dicksonia_dna_disc"
+            "items": [
+              "lostworlds:dicksonia_dna_disc"
+            ]
           }
         ]
       }

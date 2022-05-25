@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:raw_nautilus_tentacle"
+            "items": [
+              "lostworlds:raw_nautilus_tentacle"
+            ]
           }
         ]
       }

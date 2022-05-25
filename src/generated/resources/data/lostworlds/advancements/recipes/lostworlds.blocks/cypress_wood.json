@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:cypress_log"
+            "items": [
+              "lostworlds:cypress_log"
+            ]
           }
         ]
       }

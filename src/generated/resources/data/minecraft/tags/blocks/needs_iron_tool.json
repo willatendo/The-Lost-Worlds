@@ -1,0 +1,32 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:permian_diamond_ore",
+    "lostworlds:permian_emerald_ore",
+    "lostworlds:permian_redstone_ore",
+    "lostworlds:jurassic_diamond_ore",
+    "lostworlds:jurassic_emerald_ore",
+    "lostworlds:jurassic_redstone_ore",
+    "lostworlds:time_machine",
+    "lostworlds:light_concrete",
+    "lostworlds:light_concrete_stairs",
+    "lostworlds:light_concrete_slab",
+    "lostworlds:light_concrete_wall",
+    "lostworlds:light_concrete_pressure_plate",
+    "lostworlds:light_concrete_button",
+    "lostworlds:polished_light_concrete",
+    "lostworlds:accent_light_concrete",
+    "lostworlds:accent_light_concrete_stairs",
+    "lostworlds:accent_light_concrete_slab",
+    "lostworlds:dark_concrete",
+    "lostworlds:dark_concrete_stairs",
+    "lostworlds:dark_concrete_slab",
+    "lostworlds:dark_concrete_wall",
+    "lostworlds:dark_concrete_pressure_plate",
+    "lostworlds:dark_concrete_button",
+    "lostworlds:polished_dark_concrete",
+    "lostworlds:accent_dark_concrete",
+    "lostworlds:accent_dark_concrete_stairs",
+    "lostworlds:accent_dark_concrete_slab"
+  ]
+}

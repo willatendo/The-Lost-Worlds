@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:dimetrodon_dna_disc"
+            "items": [
+              "lostworlds:dimetrodon_dna_disc"
+            ]
           }
         ]
       }

@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:conifer_planks"
+            "items": [
+              "lostworlds:conifer_planks"
+            ]
           }
         ]
       }

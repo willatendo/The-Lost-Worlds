@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:mud_ball"
+            "items": [
+              "lostworlds:mud_ball"
+            ]
           }
         ]
       }

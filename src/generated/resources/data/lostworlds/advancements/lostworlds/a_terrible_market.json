@@ -17,7 +17,7 @@
     "hidden": false
   },
   "criteria": {
-    "in_black_market": {
+    "in_worldgen/configured_structure_feature": {
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
@@ -28,7 +28,7 @@
   },
   "requirements": [
     [
-      "in_black_market"
+      "in_worldgen/configured_structure_feature"
     ]
   ]
 }

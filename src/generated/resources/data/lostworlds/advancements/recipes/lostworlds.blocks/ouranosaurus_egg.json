@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:ouranosaurus_dna_disc"
+            "items": [
+              "lostworlds:ouranosaurus_dna_disc"
+            ]
           }
         ]
       }

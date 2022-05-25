@@ -27,14 +27,6 @@
         }
       }
     },
-    "in_cretaceous_araucaria_forest_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:cretaceous_araucaria_forest_hills"
-        }
-      }
-    },
     "in_cretaceous_conifer_forest": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -43,27 +35,11 @@
         }
       }
     },
-    "in_cretaceous_conifer_forest_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:cretaceous_conifer_forest_hills"
-        }
-      }
-    },
     "in_cretaceous_ginkgo_forest": {
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
           "biome": "lostworlds:cretaceous_ginkgo_forest"
-        }
-      }
-    },
-    "in_cretaceous_ginkgo_forest_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:cretaceous_ginkgo_forest_hills"
         }
       }
     },
@@ -91,14 +67,6 @@
         }
       }
     },
-    "in_cretaceous_plains_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:cretaceous_plains_hills"
-        }
-      }
-    },
     "in_cretaceous_flood_basalts": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -115,14 +83,6 @@
         }
       }
     },
-    "in_cretaceous_arctic_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:cretaceous_arctic_hills"
-        }
-      }
-    },
     "in_cretaceous_arctic_spires": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -136,14 +96,6 @@
       "conditions": {
         "location": {
           "biome": "lostworlds:cretaceous_frozen_forest"
-        }
-      }
-    },
-    "in_cretaceous_frozen_forest_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:cretaceous_frozen_forest_hills"
         }
       }
     },
@@ -171,27 +123,11 @@
         }
       }
     },
-    "in_cretaceous_desert_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:cretaceous_desert_hills"
-        }
-      }
-    },
     "in_cretaceous_red_desert": {
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
           "biome": "lostworlds:cretaceous_red_desert"
-        }
-      }
-    },
-    "in_cretaceous_red_desert_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:cretaceous_red_desert_hills"
         }
       }
     },
@@ -243,14 +179,6 @@
         }
       }
     },
-    "in_cold_deep_cretaceous_ocean": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:cold_deep_cretaceous_ocean"
-        }
-      }
-    },
     "in_cretaceous_ocean": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -259,27 +187,11 @@
         }
       }
     },
-    "in_deep_cretaceous_ocean": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:deep_cretaceous_ocean"
-        }
-      }
-    },
     "in_warm_cretaceous_ocean": {
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
           "biome": "lostworlds:warm_cretaceous_ocean"
-        }
-      }
-    },
-    "in_warm_deep_cretaceous_ocean": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:warm_deep_cretaceous_ocean"
         }
       }
     },
@@ -297,19 +209,10 @@
       "in_cretaceous_araucaria_forest"
     ],
     [
-      "in_cretaceous_araucaria_forest_hills"
-    ],
-    [
       "in_cretaceous_conifer_forest"
     ],
     [
-      "in_cretaceous_conifer_forest_hills"
-    ],
-    [
       "in_cretaceous_ginkgo_forest"
-    ],
-    [
-      "in_cretaceous_ginkgo_forest_hills"
     ],
     [
       "in_cretaceous_game_trail"
@@ -321,25 +224,16 @@
       "in_cretaceous_plains"
     ],
     [
-      "in_cretaceous_plains_hills"
-    ],
-    [
       "in_cretaceous_flood_basalts"
     ],
     [
       "in_cretaceous_arctic"
     ],
     [
-      "in_cretaceous_arctic_hills"
-    ],
-    [
       "in_cretaceous_arctic_spires"
     ],
     [
       "in_cretaceous_frozen_forest"
-    ],
-    [
-      "in_cretaceous_frozen_forest_hills"
     ],
     [
       "in_cretaceous_mountains"
@@ -351,13 +245,7 @@
       "in_cretaceous_desert"
     ],
     [
-      "in_cretaceous_desert_hills"
-    ],
-    [
       "in_cretaceous_red_desert"
-    ],
-    [
-      "in_cretaceous_red_desert_hills"
     ],
     [
       "in_cretaceous_marsh"
@@ -378,19 +266,10 @@
       "in_cold_cretaceous_ocean"
     ],
     [
-      "in_cold_deep_cretaceous_ocean"
-    ],
-    [
       "in_cretaceous_ocean"
     ],
     [
-      "in_deep_cretaceous_ocean"
-    ],
-    [
       "in_warm_cretaceous_ocean"
-    ],
-    [
-      "in_warm_deep_cretaceous_ocean"
     ],
     [
       "in_cretaceous_shore"

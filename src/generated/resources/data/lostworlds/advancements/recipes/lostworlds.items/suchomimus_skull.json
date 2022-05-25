@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:suchomimus_skull"
+            "items": [
+              "lostworlds:suchomimus_skull"
+            ]
           }
         ]
       }

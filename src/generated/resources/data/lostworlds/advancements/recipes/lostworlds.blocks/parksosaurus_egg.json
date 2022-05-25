@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:parksosaurus_dna_disc"
+            "items": [
+              "lostworlds:parksosaurus_dna_disc"
+            ]
           }
         ]
       }

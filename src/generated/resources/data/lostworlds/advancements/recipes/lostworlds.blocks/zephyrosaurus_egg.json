@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:zephyrosaurus_dna_disc"
+            "items": [
+              "lostworlds:zephyrosaurus_dna_disc"
+            ]
           }
         ]
       }

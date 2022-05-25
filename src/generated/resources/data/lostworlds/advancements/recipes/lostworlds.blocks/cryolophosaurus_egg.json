@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:cryolophosaurus_dna_disc"
+            "items": [
+              "lostworlds:cryolophosaurus_dna_disc"
+            ]
           }
         ]
       }

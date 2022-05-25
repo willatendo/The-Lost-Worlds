@@ -32,7 +32,4 @@ public class PlantPatchFeatures {
 
 	public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PERMIAN_DESERT_SHRUB_PATCH = register("permian_desert_shrub_patch", Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(LostWorldsBlocks.PERMIAN_DESERT_SHRUB.get()))));
 	public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PERMIAN_DESERT_FERNS_PATCH = register("permian_desert_ferns_patch", Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(LostWorldsBlocks.PERMIAN_DESERT_FERNS.get()))));
-
-	public static void init() {
-	}
 }

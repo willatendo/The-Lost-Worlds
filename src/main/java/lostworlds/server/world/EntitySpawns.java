@@ -92,11 +92,11 @@ public class EntitySpawns {
 		if (chilesaurusBiomes.contains(event.getName())) {
 			FeatureAdder.addSpawn(event, MobCategory.CREATURE, LostWorldsEntities.CHILESAURUS.get(), LostWorldsConfig.COMMON_CONFIG.chilesaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.chilesaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.chilesaurusSpawnGroupMaximum.get());
 		}
-		ArrayList<ResourceLocation> cryolophosaurusBiomes = Lists.newArrayList(LostWorldsBiomes.JURASSIC_MOUNTAINS.getFirst().get().getRegistryName(), LostWorldsBiomes.JURASSIC_ERRODED_MOUNTAINS.getFirst().get().getRegistryName());
+		ArrayList<ResourceLocation> cryolophosaurusBiomes = Lists.newArrayList(LostWorldsBiomes.JURASSIC_WINDSWEPT_HILLS.getFirst().get().getRegistryName(), LostWorldsBiomes.JURASSIC_ERRODED_WINDSWEPT_HILLS.getFirst().get().getRegistryName());
 		if (cryolophosaurusBiomes.contains(event.getName())) {
 			FeatureAdder.addSpawn(event, MobCategory.CREATURE, LostWorldsEntities.CRYOLOPHOSAURUS.get(), LostWorldsConfig.COMMON_CONFIG.cryolophosaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.cryolophosaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.cryolophosaurusSpawnGroupMaximum.get());
 		}
-		ArrayList<ResourceLocation> dilophosaurusBiomes = Lists.newArrayList(LostWorldsBiomes.JURASSIC_MOUNTAINS.getFirst().get().getRegistryName(), LostWorldsBiomes.JURASSIC_ERRODED_MOUNTAINS.getFirst().get().getRegistryName(), LostWorldsBiomes.JURASSIC_REDWOODS_FOREST.getFirst().get().getRegistryName(), LostWorldsBiomes.JURASSIC_CONIFER_FOREST.getFirst().get().getRegistryName());
+		ArrayList<ResourceLocation> dilophosaurusBiomes = Lists.newArrayList(LostWorldsBiomes.JURASSIC_WINDSWEPT_HILLS.getFirst().get().getRegistryName(), LostWorldsBiomes.JURASSIC_ERRODED_WINDSWEPT_HILLS.getFirst().get().getRegistryName(), LostWorldsBiomes.JURASSIC_REDWOODS_FOREST.getFirst().get().getRegistryName(), LostWorldsBiomes.JURASSIC_CONIFER_FOREST.getFirst().get().getRegistryName());
 		if (dilophosaurusBiomes.contains(event.getName())) {
 			FeatureAdder.addSpawn(event, MobCategory.CREATURE, LostWorldsEntities.DILOPHOSAURUS.get(), LostWorldsConfig.COMMON_CONFIG.dilophosaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.dilophosaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.dilophosaurusSpawnGroupMaximum.get());
 		}
@@ -147,7 +147,7 @@ public class EntitySpawns {
 			FeatureAdder.addSpawn(event, MobCategory.CREATURE, LostWorldsEntities.EDAPHOSAURUS.get(), LostWorldsConfig.COMMON_CONFIG.edaphosaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.edaphosaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.edaphosaurusSpawnGroupMaximum.get());
 		}
 
-		ArrayList<ResourceLocation> gorgonopsBiomes = Lists.newArrayList(LostWorldsBiomes.PERMIAN_DESERT.getFirst().get().getRegistryName(), LostWorldsBiomes.PERMIAN_MOUNTAINS.getFirst().get().getRegistryName());
+		ArrayList<ResourceLocation> gorgonopsBiomes = Lists.newArrayList(LostWorldsBiomes.PERMIAN_DESERT.getFirst().get().getRegistryName(), LostWorldsBiomes.PERMIAN_WINDSWEPT_HILLS.getFirst().get().getRegistryName());
 		if (gorgonopsBiomes.contains(event.getName())) {
 			FeatureAdder.addSpawn(event, MobCategory.CREATURE, LostWorldsEntities.GORGONOPS.get(), LostWorldsConfig.COMMON_CONFIG.gorgonopsSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.gorgonopsSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.gorgonopsSpawnGroupMaximum.get());
 		}

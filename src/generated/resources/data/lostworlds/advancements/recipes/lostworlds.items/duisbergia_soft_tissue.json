@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:duisbergia_fossil"
+            "items": [
+              "lostworlds:duisbergia_fossil"
+            ]
           }
         ]
       }

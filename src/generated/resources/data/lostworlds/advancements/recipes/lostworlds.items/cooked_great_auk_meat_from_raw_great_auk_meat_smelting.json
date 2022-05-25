@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:raw_great_auk_meat"
+            "items": [
+              "lostworlds:raw_great_auk_meat"
+            ]
           }
         ]
       }

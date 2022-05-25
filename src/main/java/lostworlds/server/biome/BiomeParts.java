@@ -40,7 +40,7 @@ public class BiomeParts {
 		return mobspawninfo$builder;
 	}
 
-	public Biome.BiomeBuilder biome(Precipitation rain, BiomeCategory category, float downfall, float temperature, BiomeSpecialEffects ambience, BiomeGenerationSettings settings, MobSpawnSettings spawningInfo) {
-		return new Biome.BiomeBuilder().precipitation(rain).biomeCategory(category).downfall(downfall).temperature(temperature).generationSettings(settings).specialEffects(ambience).mobSpawnSettings(spawningInfo);
+	public static Biome.BiomeBuilder biome(Precipitation precipitation, BiomeCategory category, float downfall, float temperature, BiomeSpecialEffects effects, BiomeGenerationSettings settings, MobSpawnSettings spawningInfo) {
+		return new Biome.BiomeBuilder().precipitation(precipitation).biomeCategory(category).downfall(downfall).temperature(temperature).generationSettings(settings).specialEffects(effects).mobSpawnSettings(spawningInfo);
 	}
 }

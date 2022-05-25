@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:conifer_dna_disc"
+            "items": [
+              "lostworlds:conifer_dna_disc"
+            ]
           }
         ]
       }

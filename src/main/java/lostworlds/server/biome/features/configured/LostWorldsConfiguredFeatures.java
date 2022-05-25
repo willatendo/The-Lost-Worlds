@@ -28,12 +28,4 @@ public class LostWorldsConfiguredFeatures {
 	public static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder<ConfiguredFeature<FC, ?>> register(String id, F feature, FC featureConfig) {
 		return FeatureUtils.register("lostworlds:" + id, feature, featureConfig);
 	}
-
-	public static void init() {
-		OreFeatures.init();
-		PlantPatchFeatures.init();
-		DisksFeatures.init();
-		TreeFeatures.init();
-		WaterFeatures.init();
-	}
 }

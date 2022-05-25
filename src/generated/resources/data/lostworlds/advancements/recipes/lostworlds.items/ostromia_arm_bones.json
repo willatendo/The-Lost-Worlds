@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:ostromia_arm_bones"
+            "items": [
+              "lostworlds:ostromia_arm_bones"
+            ]
           }
         ]
       }

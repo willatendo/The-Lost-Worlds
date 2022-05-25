@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:kentrosaurus_arm_bones"
+            "items": [
+              "lostworlds:kentrosaurus_arm_bones"
+            ]
           }
         ]
       }

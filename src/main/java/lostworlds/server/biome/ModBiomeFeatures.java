@@ -88,7 +88,7 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, NetherPlacements.LARGE_BASALT_COLUMNS);
 	}
 
-	public static void permianMountains(BiomeGenerationSettings.Builder builder) {
+	public static void permianWindsweptHills(BiomeGenerationSettings.Builder builder) {
 		addConiferTrees(builder);
 		addPermianRock(builder);
 		addPermianOres(builder);
@@ -117,7 +117,7 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedPlantPatchFeatures.CALAMITES_SUCKOWII);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedPlantPatchFeatures.BRAZILEA_PATCH);
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreeFeatures.CALAMITIES_TREES);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreeFeatures.CALAMITES_TREES);
 	}
 
 	public static void permianRiver(BiomeGenerationSettings.Builder builder) {
@@ -221,7 +221,7 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreeFeatures.SPARSE_CONIFER_TREES);
 	}
 
-	public static void jurassicMountains(BiomeGenerationSettings.Builder builder) {
+	public static void jurassicWindsweptHills(BiomeGenerationSettings.Builder builder) {
 		addModCarvers(builder);
 		addJurassicRock(builder);
 		addJurassicOres(builder);
@@ -259,7 +259,7 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DEAD_BUSH_BADLANDS);
 	}
 
-	public static void jurassicRedwoods(BiomeGenerationSettings.Builder builder) {
+	public static void jurassicRedwoodsForest(BiomeGenerationSettings.Builder builder) {
 		addJurassicRock(builder);
 		addJurassicOres(builder);
 		addModCarvers(builder);
@@ -403,7 +403,7 @@ public class ModBiomeFeatures {
 		addDicksonia(builder);
 	}
 
-	public static void cretaceousRedwoods(BiomeGenerationSettings.Builder builder) {
+	public static void cretaceousRedwoodsForest(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
 		addCretaceousOres(builder);
 		addModCarvers(builder);
@@ -456,7 +456,7 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreeFeatures.SPARSE_CONIFER_TREES);
 	}
 
-	public static void cretaceousMountains(BiomeGenerationSettings.Builder builder) {
+	public static void cretaceousWindsweptHills(BiomeGenerationSettings.Builder builder) {
 		addModCarvers(builder);
 		addCretaceousRock(builder);
 		addCretaceousOres(builder);

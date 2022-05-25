@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:stripped_araucaria_log"
+            "items": [
+              "lostworlds:stripped_araucaria_log"
+            ]
           }
         ]
       }

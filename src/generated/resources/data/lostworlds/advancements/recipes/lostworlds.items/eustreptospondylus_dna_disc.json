@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:eustreptospondylus_dna"
+            "items": [
+              "lostworlds:eustreptospondylus_dna"
+            ]
           }
         ]
       }

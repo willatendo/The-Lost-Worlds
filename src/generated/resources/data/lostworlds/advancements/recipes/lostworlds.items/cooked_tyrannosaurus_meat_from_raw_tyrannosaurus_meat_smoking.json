@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:raw_tyrannosaurus_meat"
+            "items": [
+              "lostworlds:raw_tyrannosaurus_meat"
+            ]
           }
         ]
       }

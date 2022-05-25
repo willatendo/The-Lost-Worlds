@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:protosuchus_soft_tissue"
+            "items": [
+              "lostworlds:protosuchus_soft_tissue"
+            ]
           }
         ]
       }

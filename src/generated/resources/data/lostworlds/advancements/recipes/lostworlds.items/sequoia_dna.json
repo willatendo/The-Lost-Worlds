@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:sequoia_soft_tissue"
+            "items": [
+              "lostworlds:sequoia_soft_tissue"
+            ]
           }
         ]
       }

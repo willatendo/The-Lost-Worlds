@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:gorgonops_skull"
+            "items": [
+              "lostworlds:gorgonops_skull"
+            ]
           }
         ]
       }

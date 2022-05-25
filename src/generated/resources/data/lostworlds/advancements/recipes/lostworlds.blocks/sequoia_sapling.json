@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:sequoia_dna_disc"
+            "items": [
+              "lostworlds:sequoia_dna_disc"
+            ]
           }
         ]
       }

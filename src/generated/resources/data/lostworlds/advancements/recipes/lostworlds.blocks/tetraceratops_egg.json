@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:tetraceratops_dna_disc"
+            "items": [
+              "lostworlds:tetraceratops_dna_disc"
+            ]
           }
         ]
       }

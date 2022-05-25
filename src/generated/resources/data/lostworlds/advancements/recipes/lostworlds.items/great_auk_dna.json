@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:great_auk_soft_tissue"
+            "items": [
+              "lostworlds:great_auk_soft_tissue"
+            ]
           }
         ]
       }

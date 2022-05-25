@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:conifer_bark_sample"
+            "items": [
+              "lostworlds:conifer_bark_sample"
+            ]
           }
         ]
       }

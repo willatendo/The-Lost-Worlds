@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:paved_road"
+            "items": [
+              "lostworlds:paved_road"
+            ]
           }
         ]
       }

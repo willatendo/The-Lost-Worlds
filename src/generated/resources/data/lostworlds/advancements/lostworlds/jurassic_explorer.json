@@ -27,27 +27,11 @@
         }
       }
     },
-    "in_jurassic_araucaria_forest_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:jurassic_araucaria_forest_hills"
-        }
-      }
-    },
     "in_jurassic_conifer_forest": {
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
           "biome": "lostworlds:jurassic_conifer_forest"
-        }
-      }
-    },
-    "in_jurassic_conifer_forest_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:jurassic_conifer_forest_hills"
         }
       }
     },
@@ -59,27 +43,11 @@
         }
       }
     },
-    "in_jurassic_ginkgo_forest_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:jurassic_ginkgo_forest_hills"
-        }
-      }
-    },
     "in_jurassic_redwoods_forest": {
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
           "biome": "lostworlds:jurassic_redwoods_forest"
-        }
-      }
-    },
-    "in_jurassic_redwoods_forest_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:jurassic_redwoods_forest_hills"
         }
       }
     },
@@ -91,27 +59,19 @@
         }
       }
     },
-    "in_jurassic_plains_hills": {
+    "in_jurassic_windswept_hills": {
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:jurassic_plains_hills"
+          "biome": "lostworlds:jurassic_windswept_hills"
         }
       }
     },
-    "in_jurassic_mountains": {
+    "in_jurassic_erroded_windswept_hills": {
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:jurassic_mountains"
-        }
-      }
-    },
-    "in_jurassic_erroded_mountains": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:jurassic_erroded_mountains"
+          "biome": "lostworlds:jurassic_erroded_windswept_hills"
         }
       }
     },
@@ -128,14 +88,6 @@
       "conditions": {
         "location": {
           "biome": "lostworlds:jurassic_desert"
-        }
-      }
-    },
-    "in_jurassic_desert_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:jurassic_desert_hills"
         }
       }
     },
@@ -187,27 +139,11 @@
         }
       }
     },
-    "in_deep_jurassic_ocean": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:deep_jurassic_ocean"
-        }
-      }
-    },
     "in_warm_jurassic_ocean": {
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
           "biome": "lostworlds:warm_jurassic_ocean"
-        }
-      }
-    },
-    "in_warm_deep_jurassic_ocean": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:warm_deep_jurassic_ocean"
         }
       }
     },
@@ -225,46 +161,28 @@
       "in_jurassic_araucaria_forest"
     ],
     [
-      "in_jurassic_araucaria_forest_hills"
-    ],
-    [
       "in_jurassic_conifer_forest"
-    ],
-    [
-      "in_jurassic_conifer_forest_hills"
     ],
     [
       "in_jurassic_ginkgo_forest"
     ],
     [
-      "in_jurassic_ginkgo_forest_hills"
-    ],
-    [
       "in_jurassic_redwoods_forest"
-    ],
-    [
-      "in_jurassic_redwoods_forest_hills"
     ],
     [
       "in_jurassic_plains"
     ],
     [
-      "in_jurassic_plains_hills"
+      "in_jurassic_windswept_hills"
     ],
     [
-      "in_jurassic_mountains"
-    ],
-    [
-      "in_jurassic_erroded_mountains"
+      "in_jurassic_erroded_windswept_hills"
     ],
     [
       "in_jurassic_volcanic_range"
     ],
     [
       "in_jurassic_desert"
-    ],
-    [
-      "in_jurassic_desert_hills"
     ],
     [
       "in_jurassic_marsh"
@@ -285,13 +203,7 @@
       "in_jurassic_ocean"
     ],
     [
-      "in_deep_jurassic_ocean"
-    ],
-    [
       "in_warm_jurassic_ocean"
-    ],
-    [
-      "in_warm_deep_jurassic_ocean"
     ],
     [
       "in_jurassic_shore"

@@ -24,27 +24,11 @@
         }
       }
     },
-    "in_araucaria_forest_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:araucaria_forest_hills"
-        }
-      }
-    },
     "in_conifer_forest": {
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
           "biome": "lostworlds:conifer_forest"
-        }
-      }
-    },
-    "in_conifer_forest_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:conifer_forest_hills"
         }
       }
     },
@@ -56,27 +40,11 @@
         }
       }
     },
-    "in_ginkgo_forest_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:ginkgo_forest_hills"
-        }
-      }
-    },
     "in_redwoods_forest": {
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
           "biome": "lostworlds:redwoods_forest"
-        }
-      }
-    },
-    "in_redwoods_forest_hills": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "lostworlds:redwoods_forest_hills"
         }
       }
     },
@@ -94,25 +62,13 @@
       "in_araucaria_forest"
     ],
     [
-      "in_araucaria_forest_hills"
-    ],
-    [
       "in_conifer_forest"
-    ],
-    [
-      "in_conifer_forest_hills"
     ],
     [
       "in_ginkgo_forest"
     ],
     [
-      "in_ginkgo_forest_hills"
-    ],
-    [
       "in_redwoods_forest"
-    ],
-    [
-      "in_redwoods_forest_hills"
     ],
     [
       "in_volcano"

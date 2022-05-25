@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:tetraceratops_rib_cage"
+            "items": [
+              "lostworlds:tetraceratops_rib_cage"
+            ]
           }
         ]
       }

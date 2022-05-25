@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:gorgonops_rib_cage"
+            "items": [
+              "lostworlds:gorgonops_rib_cage"
+            ]
           }
         ]
       }

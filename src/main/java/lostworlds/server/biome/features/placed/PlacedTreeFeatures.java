@@ -35,12 +35,12 @@ public class PlacedTreeFeatures {
 	public static final Holder<PlacedFeature> SPARSE_FROZEN_TREES = register("sparse_frozen_trees", TreeFeatures.FROZEN_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.1F, 1)));
 	public static final Holder<PlacedFeature> BROKEN_TREE = register("broken_tree", TreeFeatures.BROKEN_TREE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
 	public static final Holder<PlacedFeature> SPARSE_BROKEN_TREES = register("sparse_broken_trees", TreeFeatures.ARCTIC_CONIFER_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(5, 0.1F, 1)));
-	public static final Holder<PlacedFeature> CALAMITIES_TREE = register("calamties_tree", TreeFeatures.CALAMITIES_TREE, PlacementUtils.filteredByBlockSurvival(LostWorldsBlocks.CALAMITES.getBlock(WoodTypes.SAPLING).get().get()));
-	public static final Holder<PlacedFeature> CALAMITIES_TREES = register("calamities_trees", TreeFeatures.CALAMITIES_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
+	public static final Holder<PlacedFeature> CALAMITES_TREE = register("calamites_tree", TreeFeatures.CALAMITES_TREE, PlacementUtils.filteredByBlockSurvival(LostWorldsBlocks.CALAMITES.getBlock(WoodTypes.SAPLING).get().get()));
+	public static final Holder<PlacedFeature> CALAMITES_TREES = register("calamites_trees", TreeFeatures.CALAMITES_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
 	public static final Holder<PlacedFeature> CONIFER_TREE = register("conifer_tree", TreeFeatures.CONIFER_TREE, PlacementUtils.filteredByBlockSurvival(LostWorldsBlocks.CONIFER.getBlock(WoodTypes.SAPLING).get().get()));
-	public static final Holder<PlacedFeature> CONIFER_TREES = register("calamities_trees", TreeFeatures.CALAMITIES_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
-	public static final Holder<PlacedFeature> SCANT_CONIFER_TREES = register("scant_calamities_trees", TreeFeatures.CALAMITIES_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(5, 0.1F, 1)));
-	public static final Holder<PlacedFeature> SPARSE_CONIFER_TREES = register("sparse_calamities_trees", TreeFeatures.CALAMITIES_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.1F, 1)));
+	public static final Holder<PlacedFeature> CONIFER_TREES = register("calamities_trees", TreeFeatures.CALAMITES_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
+	public static final Holder<PlacedFeature> SCANT_CONIFER_TREES = register("scant_calamities_trees", TreeFeatures.CALAMITES_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(5, 0.1F, 1)));
+	public static final Holder<PlacedFeature> SPARSE_CONIFER_TREES = register("sparse_calamities_trees", TreeFeatures.CALAMITES_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.1F, 1)));
 	public static final Holder<PlacedFeature> CYPRESS_TREE = register("cypress_tree", TreeFeatures.CYPRESS_TREE, PlacementUtils.filteredByBlockSurvival(LostWorldsBlocks.CYPRESS.getBlock(WoodTypes.SAPLING).get().get()));
 	public static final Holder<PlacedFeature> SCANT_CYPRESS_TREES = register("scant_cypress_trees", TreeFeatures.CYPRESS_TREES, PlacementUtils.countExtra(5, 0.1F, 1), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(LostWorldsBlocks.CYPRESS.getBlock(WoodTypes.SAPLING).get().getDefaultState(), BlockPos.ZERO)));
 	public static final Holder<PlacedFeature> SPARSE_CYPRESS_TREES = register("sparse_cypress_trees", TreeFeatures.CYPRESS_TREES, PlacementUtils.countExtra(0, 0.1F, 1), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(LostWorldsBlocks.CYPRESS.getBlock(WoodTypes.SAPLING).get().getDefaultState(), BlockPos.ZERO)));
@@ -54,7 +54,4 @@ public class PlacedTreeFeatures {
 	public static final Holder<PlacedFeature> ARAUCARIA_TREES = register("araucaria_trees", TreeFeatures.ARAUCARIA_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
 	public static final Holder<PlacedFeature> SCORCHED_TREE = register("scorched_tree", TreeFeatures.SCORCHED_TREE, ASH_TREE_FILTER_DECORATOR);
 	public static final Holder<PlacedFeature> SINGLE_SCORCHED_TREE = register("single_scorched_tree", TreeFeatures.SCORCHED_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.05F, 1)));
-
-	public static void init() {
-	}
 }

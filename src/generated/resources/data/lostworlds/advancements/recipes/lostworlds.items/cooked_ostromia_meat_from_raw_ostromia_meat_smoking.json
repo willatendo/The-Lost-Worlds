@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:raw_ostromia_meat"
+            "items": [
+              "lostworlds:raw_ostromia_meat"
+            ]
           }
         ]
       }

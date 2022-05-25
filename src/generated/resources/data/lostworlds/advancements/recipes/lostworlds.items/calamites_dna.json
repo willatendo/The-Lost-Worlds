@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:calamites_soft_tissue"
+            "items": [
+              "lostworlds:calamites_soft_tissue"
+            ]
           }
         ]
       }

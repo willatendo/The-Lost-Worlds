@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "lostworlds:meteoric_stone",
+    "lostworlds:meteoric_stone_stairs",
+    "lostworlds:meteoric_stone_slab",
+    "lostworlds:meteoric_stone_wall",
+    "lostworlds:time_machine"
+  ]
+}

@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:giganotosaurus_leg_bones"
+            "items": [
+              "lostworlds:giganotosaurus_leg_bones"
+            ]
           }
         ]
       }

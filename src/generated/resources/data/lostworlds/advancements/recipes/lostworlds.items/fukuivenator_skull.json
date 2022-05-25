@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:fukuivenator_skull"
+            "items": [
+              "lostworlds:fukuivenator_skull"
+            ]
           }
         ]
       }

@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:parksosaurus_leg_bones"
+            "items": [
+              "lostworlds:parksosaurus_leg_bones"
+            ]
           }
         ]
       }

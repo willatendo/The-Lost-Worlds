@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:ophthalmosaurus_rib_cage"
+            "items": [
+              "lostworlds:ophthalmosaurus_rib_cage"
+            ]
           }
         ]
       }

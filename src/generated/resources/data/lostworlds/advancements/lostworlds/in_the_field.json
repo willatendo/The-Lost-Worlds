@@ -21,7 +21,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:field_guide"
+            "items": [
+              "lostworlds:field_guide"
+            ]
           }
         ]
       }

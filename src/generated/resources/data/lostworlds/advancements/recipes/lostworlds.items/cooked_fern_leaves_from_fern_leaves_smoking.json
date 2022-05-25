@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:fern_leaves"
+            "items": [
+              "lostworlds:fern_leaves"
+            ]
           }
         ]
       }

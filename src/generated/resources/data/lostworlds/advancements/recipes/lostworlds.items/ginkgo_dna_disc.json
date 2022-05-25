@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:ginkgo_dna"
+            "items": [
+              "lostworlds:ginkgo_dna"
+            ]
           }
         ]
       }

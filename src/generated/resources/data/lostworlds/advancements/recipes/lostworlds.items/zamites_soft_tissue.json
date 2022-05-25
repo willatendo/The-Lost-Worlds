@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:zamites_fossil"
+            "items": [
+              "lostworlds:zamites_fossil"
+            ]
           }
         ]
       }

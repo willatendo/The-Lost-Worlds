@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:nautilus_dna_disc"
+            "items": [
+              "lostworlds:nautilus_dna_disc"
+            ]
           }
         ]
       }

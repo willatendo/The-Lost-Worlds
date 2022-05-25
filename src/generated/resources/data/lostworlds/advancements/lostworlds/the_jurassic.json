@@ -21,7 +21,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:jurassic_period_time_book"
+            "items": [
+              "lostworlds:jurassic_period_time_book"
+            ]
           }
         ]
       }

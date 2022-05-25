@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:eoraptor_leg_bones"
+            "items": [
+              "lostworlds:eoraptor_leg_bones"
+            ]
           }
         ]
       }

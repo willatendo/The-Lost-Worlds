@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:utahraptor_dna"
+            "items": [
+              "lostworlds:utahraptor_dna"
+            ]
           }
         ]
       }
