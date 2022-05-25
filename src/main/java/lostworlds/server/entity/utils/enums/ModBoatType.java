@@ -21,7 +21,7 @@ public enum ModBoatType {
 	}
 
 	public ModelLayerLocation getLayer() {
-		return layer;
+		return this.layer;
 	}
 
 	public static ModBoatType byId(int id) {

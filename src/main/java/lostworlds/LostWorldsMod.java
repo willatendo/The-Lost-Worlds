@@ -34,7 +34,6 @@ import lostworlds.server.util.Version;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
 import lostworlds.server.world.EntitySpawns;
 import lostworlds.server.world.FeatureGen;
-import lostworlds.terrablender.TerrablenderLoader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -70,10 +69,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.items.ItemHandlerHelper;
 import software.bernie.geckolib3.GeckoLib;
 
-@Mod(LostWorldsMod.ID)
+@Mod(LostWorldsUtils.ID)
 public class LostWorldsMod {
-	public static final String ID = "lostworlds";
-	private static final NonNullSupplier<LostWorldsRegistrate> REGISTRATE = LostWorldsRegistrate.lazy(ID);
+	private static final NonNullSupplier<LostWorldsRegistrate> REGISTRATE = LostWorldsRegistrate.lazy(LostWorldsUtils.ID);
 
 	public LostWorldsMod() {
 		this.makeMod();
@@ -137,7 +135,7 @@ public class LostWorldsMod {
 
 		event.enqueueWork(() -> {
 			if (LostWorldsUtils.modLoaded("terrablender")) {
-				TerrablenderLoader.init();
+//				TerrablenderLoader.init();
 			}
 
 			LostWorldsStructurePecies.init();

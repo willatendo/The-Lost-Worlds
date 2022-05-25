@@ -11,7 +11,6 @@ import org.apache.commons.lang3.StringUtils;
 import com.mojang.datafixers.util.Pair;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
-import lostworlds.LostWorldsMod;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
 import net.minecraft.core.Registry;
@@ -25,7 +24,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class LostWorldsBiomes {
 	private static final LostWorldsRegistrate REGISTRATE = getRegistrate();
-	public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, LostWorldsMod.ID);
+	public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, LostWorldsUtils.ID);
 
 	// Permian
 	public static final Pair<RegistryObject<Biome>, ResourceKey<Biome>> PERMIAN_CONIFER_FOREST = register("permian_conifer_forest", PermianBiomes::permianConiferForest);

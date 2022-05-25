@@ -4,7 +4,6 @@ import java.util.function.Consumer;
 
 import com.mojang.datafixers.util.Pair;
 
-import lostworlds.client.LostWorldsConfig;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -20,9 +19,5 @@ public class LostWorldsRegion extends Region {
 
 	@Override
 	public void addBiomes(Registry<Biome> registry, Consumer<Pair<ParameterPoint, ResourceKey<Biome>>> mapper) {
-		if (LostWorldsConfig.COMMON_CONFIG.spawnOverworldBiomes.get()) {
-			this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
-			});
-		}
 	}
 }

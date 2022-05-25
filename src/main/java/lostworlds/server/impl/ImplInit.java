@@ -16,7 +16,6 @@ import lostworlds.server.impl.block.softstone.FossilizedNautilusStoneFunction;
 import lostworlds.server.impl.block.softstone.PalaeoniscumFossilStoneFunction;
 
 public class ImplInit {
-
 	public static void init() {
 		// APISoftDirtFunction
 		SOFT_DIRT_FUNCTIONS.add(new AnomalocarisFossilDirtFunction());

@@ -133,7 +133,6 @@ reobf {
     shadowJar {}
 }
 
-
 build.dependsOn shadowJar
 build.dependsOn reobfShadowJar
 
