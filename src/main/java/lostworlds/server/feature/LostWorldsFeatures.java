@@ -13,7 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsFeatures {
-	public static final DeferredRegister<Feature<?>> FEATURE = DeferredRegister.create(ForgeRegistries.FEATURES, LostWorldsUtils.ID);
+	public static final DeferredRegister<Feature<?>> FEATURE = DeferredRegister.create(ForgeRegistries.Keys.FEATURES, LostWorldsUtils.ID);
 
 	public static final Feature<NoneFeatureConfiguration> ANCIENT_SPRING = register("ancient_spring", new AncientSpringFeature(NoneFeatureConfiguration.CODEC));
 

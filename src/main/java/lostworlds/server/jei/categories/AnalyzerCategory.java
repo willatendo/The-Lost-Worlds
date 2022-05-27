@@ -10,9 +10,12 @@ import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.jei.LostWorldsJeiConstants;
 import lostworlds.server.menu.recipes.AnalyzerRecipe;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -70,22 +73,12 @@ public class AnalyzerCategory implements IRecipeCategory<AnalyzerRecipe> {
 		return this.icon;
 	}
 
-//	@Override
-//	public void setIngredients(AnalyzerRecipe recipe, IIngredients ingredients) {
-//		ingredients.setInputIngredients(recipe.getIngredients());
-//		ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputs());
-//	}
-//
-//	@Override
-//	public void setRecipe(IRecipeLayout recipeLayout, AnalyzerRecipe recipe, IIngredients ingredients) {
-//		IGuiItemStackGroup itemStackGroup = recipeLayout.getItemStacks();
-//
-//		itemStackGroup.init(0, true, 0, 0);
-//		itemStackGroup.init(1, true, 0, 20);
-//		itemStackGroup.init(2, false, 60, 10);
-//
-//		itemStackGroup.set(ingredients);
-//	}
+	@Override
+	public void setRecipe(IRecipeLayoutBuilder builder, AnalyzerRecipe recipe, IFocusGroup focuses) {
+		builder.addSlot(RecipeIngredientRole.INPUT, 1, 1).addIngredients(recipe.getIngredients().get(0));
+		builder.addSlot(RecipeIngredientRole.INPUT, 1, 21).addIngredients(recipe.getIngredients().get(1));
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 61, 11).addItemStack(recipe.getOutputs().get(0));
+	}
 
 	@Override
 	public void draw(AnalyzerRecipe recipe, PoseStack stack, double mouseX, double mouseY) {

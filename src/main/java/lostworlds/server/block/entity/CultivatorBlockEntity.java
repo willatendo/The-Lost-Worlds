@@ -329,7 +329,7 @@ public class CultivatorBlockEntity extends BlockEntity implements Container, Men
 
 	@Override
 	public Component getName() {
-		return LostWorldsUtils.tTC("container", "cultivator");
+		return LostWorldsUtils.tTC("menu", "cultivator");
 	}
 
 	@Override

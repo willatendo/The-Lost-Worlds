@@ -22,32 +22,32 @@ public class DisplayCaseRenderer implements BlockEntityRenderer<DisplayCaseBlock
 	}
 
 	@Override
-	public void render(DisplayCaseBlockEntity tile, float partialTicks, PoseStack matrix, MultiBufferSource buffer, int combinedLight, int combinedOverlay) {
+	public void render(DisplayCaseBlockEntity tile, float partialTicks, PoseStack stack, MultiBufferSource buffer, int combinedLight, int combinedOverlay) {
 		Direction direction = tile.getBlockState().getValue(DisplayCaseBlock.HORIZONTAL_FACING);
 		DisplayCaseInventory inventory = tile.handler;
-		ItemStack stack = inventory.getStackInSlot(0);
+		ItemStack item = inventory.getStackInSlot(0);
 
-		if (stack != ItemStack.EMPTY) {
-			matrix.pushPose();
+		if (item != ItemStack.EMPTY) {
+			stack.pushPose();
 			if (direction == Direction.NORTH) {
-				matrix.mulPose(ClientUtils.Y0);
-				matrix.translate(0.5, 0.6, 0.3);
-				matrix.mulPose(ClientUtils.X65);
+				stack.mulPose(ClientUtils.Y0);
+				stack.translate(0.5, 0.6, 0.3);
+				stack.mulPose(ClientUtils.X65);
 			} else if (direction == Direction.EAST) {
-				matrix.mulPose(ClientUtils.Y90);
-				matrix.translate(-0.5, 0.6, 0.7);
-				matrix.mulPose(ClientUtils.NX65);
+				stack.mulPose(ClientUtils.Y90);
+				stack.translate(-0.5, 0.6, 0.7);
+				stack.mulPose(ClientUtils.NX65);
 			} else if (direction == Direction.SOUTH) {
-				matrix.mulPose(ClientUtils.Y180);
-				matrix.translate(-0.5, 0.6, -0.7);
-				matrix.mulPose(ClientUtils.X65);
+				stack.mulPose(ClientUtils.Y180);
+				stack.translate(-0.5, 0.6, -0.7);
+				stack.mulPose(ClientUtils.X65);
 			} else if (direction == Direction.WEST) {
-				matrix.mulPose(ClientUtils.Y270);
-				matrix.translate(0.5, 0.6, -0.3);
-				matrix.mulPose(ClientUtils.NX65);
+				stack.mulPose(ClientUtils.Y270);
+				stack.translate(0.5, 0.6, -0.3);
+				stack.mulPose(ClientUtils.NX65);
 			}
-			Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.GROUND, combinedLight, combinedOverlay, matrix, buffer, combinedOverlay);
-			matrix.popPose();
+			Minecraft.getInstance().getItemRenderer().renderStatic(item, ItemTransforms.TransformType.GROUND, combinedLight, combinedOverlay, stack, buffer, combinedOverlay);
+			stack.popPose();
 		}
 	}
 }

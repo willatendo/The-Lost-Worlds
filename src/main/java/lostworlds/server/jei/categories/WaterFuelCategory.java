@@ -6,10 +6,13 @@ import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.jei.LostWorldsJeiConstants;
 import lostworlds.server.jei.recipe.WaterFuelRecipe;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -63,18 +66,10 @@ public class WaterFuelCategory implements IRecipeCategory<WaterFuelRecipe> {
 		return this.icon;
 	}
 
-//	@Override
-//	public void setIngredients(WaterFuelRecipe recipe, IIngredients ingredients) {
-//		ingredients.setInputs(VanillaTypes.ITEM, recipe.getInputs());
-//	}
-//
-//	@Override
-//	public void setRecipe(IRecipeLayout recipeLayout, WaterFuelRecipe recipe, IIngredients ingredients) {
-//		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
-//
-//		guiItemStacks.init(fuelSlot, true, 0, 18);
-//		guiItemStacks.set(ingredients);
-//	}
+	@Override
+	public void setRecipe(IRecipeLayoutBuilder builder, WaterFuelRecipe recipe, IFocusGroup focuses) {
+		builder.addSlot(RecipeIngredientRole.INPUT, 1, 19).addItemStack(recipe.getInputs().get(0));
+	}
 
 	@Override
 	public void draw(WaterFuelRecipe recipe, PoseStack matrixStack, double mouseX, double mouseY) {

@@ -352,7 +352,7 @@ public class FossilGrinderBlockEntity extends BlockEntity implements Container, 
 
 	@Override
 	public Component getName() {
-		return LostWorldsUtils.tTC("container", "fossil_grinder");
+		return LostWorldsUtils.tTC("menu", "fossil_grinder");
 	}
 
 	@Override

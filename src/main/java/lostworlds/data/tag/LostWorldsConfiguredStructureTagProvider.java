@@ -1,4 +1,4 @@
-package lostworlds.data;
+package lostworlds.data.tag;
 
 import org.jetbrains.annotations.Nullable;
 

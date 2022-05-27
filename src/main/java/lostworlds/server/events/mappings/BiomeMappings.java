@@ -19,15 +19,15 @@ public class BiomeMappings {
 	private static final Map<ResourceLocation, Supplier<Biome>> biomeRemappings = new HashMap<ResourceLocation, Supplier<Biome>>() {
 		private static final long serialVersionUID = 2729763913422843325L;
 		{
-			put(LostWorldsUtils.rL("overworld_araucaria_forest"), () -> LostWorldsBiomes.ARAUCARIA_FOREST.getFirst().get());
-			put(LostWorldsUtils.rL("overworld_araucaria_forest_hills"), () -> LostWorldsBiomes.ARAUCARIA_FOREST.getFirst().get());
-			put(LostWorldsUtils.rL("overworld_conifer_forest"), () -> LostWorldsBiomes.CONIFER_FOREST.getFirst().get());
-			put(LostWorldsUtils.rL("overworld_conifer_forest_hills"), () -> LostWorldsBiomes.CONIFER_FOREST.getFirst().get());
-			put(LostWorldsUtils.rL("conifer_forest_hills"), () -> LostWorldsBiomes.CONIFER_FOREST.getFirst().get());
-			put(LostWorldsUtils.rL("overworld_ginkgo_forest"), () -> LostWorldsBiomes.GINKGO_FOREST.getFirst().get());
-			put(LostWorldsUtils.rL("overworld_ginkgo_forest_hills"), () -> LostWorldsBiomes.GINKGO_FOREST.getFirst().get());
-			put(LostWorldsUtils.rL("ginkgo_forest_hills"), () -> LostWorldsBiomes.GINKGO_FOREST.getFirst().get());
-			put(LostWorldsUtils.rL("permian_flood_basalt_plains"), () -> LostWorldsBiomes.PERMIAN_FLOOD_BASALTS.getFirst().get());
+			put(LostWorldsUtils.rL("overworld_araucaria_forest"), () -> LostWorldsBiomes.ARAUCARIA_FOREST.get());
+			put(LostWorldsUtils.rL("overworld_araucaria_forest_hills"), () -> LostWorldsBiomes.ARAUCARIA_FOREST.get());
+			put(LostWorldsUtils.rL("overworld_conifer_forest"), () -> LostWorldsBiomes.CONIFER_FOREST.get());
+			put(LostWorldsUtils.rL("overworld_conifer_forest_hills"), () -> LostWorldsBiomes.CONIFER_FOREST.get());
+			put(LostWorldsUtils.rL("conifer_forest_hills"), () -> LostWorldsBiomes.CONIFER_FOREST.get());
+			put(LostWorldsUtils.rL("overworld_ginkgo_forest"), () -> LostWorldsBiomes.GINKGO_FOREST.get());
+			put(LostWorldsUtils.rL("overworld_ginkgo_forest_hills"), () -> LostWorldsBiomes.GINKGO_FOREST.get());
+			put(LostWorldsUtils.rL("ginkgo_forest_hills"), () -> LostWorldsBiomes.GINKGO_FOREST.get());
+			put(LostWorldsUtils.rL("permian_flood_basalt_plains"), () -> LostWorldsBiomes.PERMIAN_FLOOD_BASALTS.get());
 		}
 	};
 

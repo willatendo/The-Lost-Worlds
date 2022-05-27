@@ -18,7 +18,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class LostWorldsSounds {
 	private static final LostWorldsRegistrate REGISTRATE = getRegistrate();
-	public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, LostWorldsUtils.ID);
+	public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.Keys.SOUND_EVENTS, LostWorldsUtils.ID);
 
 	public static final RegistryObject<SoundEvent> MACHINE_WHIRLING = register("machine_whirling", "block");
 	public static final RegistryObject<SoundEvent> POT_SMASH = register("pot_smash", "block");

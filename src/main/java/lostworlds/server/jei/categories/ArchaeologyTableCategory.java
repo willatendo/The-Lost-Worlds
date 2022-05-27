@@ -50,37 +50,4 @@ public class ArchaeologyTableCategory implements IRecipeCategory<ArchaeologyTabl
 	public IDrawable getIcon() {
 		return this.icon;
 	}
-
-//	@Override
-//	public void setIngredients(ArchaeologyTableRecipe recipe, IIngredients ingredients) {
-//		ingredients.setInputIngredients(recipe.getIngredients());
-//		ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutput());
-//	}
-//
-//	@Override
-//	public void setRecipe(IRecipeLayout recipeLayout, ArchaeologyTableRecipe recipe, IIngredients ingredients) {
-//		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
-//
-//		guiItemStacks.init(craftOutputSlot, false, 94, 18);
-//
-//		for (int y = 0; y < 3; ++y) {
-//			for (int x = 0; x < 3; ++x) {
-//				int index = craftInputSlot1 + x + (y * 3);
-//				guiItemStacks.init(index, true, x * 18, y * 18);
-//			}
-//		}
-//
-//		List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
-//		List<List<ItemStack>> outputs = ingredients.getOutputs(VanillaTypes.ITEM);
-//
-//		Size2i size = new Size2i(3, 3);
-//		if (size != null && size.width > 0 && size.height > 0) {
-//			craftingGridHelper.setInputs(guiItemStacks, inputs, size.width, size.height);
-//		} else {
-//			craftingGridHelper.setInputs(guiItemStacks, inputs);
-//			recipeLayout.setShapeless();
-//		}
-//
-//		guiItemStacks.set(craftOutputSlot, outputs.get(0));
-//	}
 }

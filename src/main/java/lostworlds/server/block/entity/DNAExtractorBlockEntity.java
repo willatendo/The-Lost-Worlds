@@ -405,7 +405,7 @@ public class DNAExtractorBlockEntity extends BlockEntity implements Container, M
 
 	@Override
 	public Component getName() {
-		return LostWorldsUtils.tTC("container", "dna_extractor");
+		return LostWorldsUtils.tTC("menu", "dna_extractor");
 	}
 
 	@Override

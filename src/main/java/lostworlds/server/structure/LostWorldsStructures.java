@@ -9,7 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class LostWorldsStructures {
-	public static final DeferredRegister<StructureFeature<?>> STRUCTURE_FEATURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, LostWorldsUtils.ID);
+	public static final DeferredRegister<StructureFeature<?>> STRUCTURE_FEATURES = DeferredRegister.create(ForgeRegistries.Keys.STRUCTURE_FEATURES, LostWorldsUtils.ID);
 
 	public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> BLACK_MARKET = STRUCTURE_FEATURES.register("black_market", () -> new BlackMarketStructure(NoneFeatureConfiguration.CODEC));
 	public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> SURFACE_FOSSIL = STRUCTURE_FEATURES.register("surface_fossil", () -> new SurfaceFossilStructure(NoneFeatureConfiguration.CODEC));

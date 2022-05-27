@@ -353,7 +353,7 @@ public class FossilCleanerBlockEntity extends BlockEntity implements Container, 
 
 	@Override
 	public Component getName() {
-		return LostWorldsUtils.tTC("container", "fossil_cleaner");
+		return LostWorldsUtils.tTC("menu", "fossil_cleaner");
 	}
 
 	@Override

@@ -11,10 +11,8 @@ import lostworlds.client.LostWorldsConfig;
 import lostworlds.client.sounds.LostWorldsSounds;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.biome.LostWorldsBiomes;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
-import lostworlds.server.dimension.LostWorldsDimensions;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.LostWorldsPOIs;
 import lostworlds.server.entity.LostWorldsVillagerProfessions;
@@ -29,11 +27,10 @@ import lostworlds.server.menu.recipes.LostWorldsRecipeSerializers;
 import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import lostworlds.server.structure.LostWorldsConfiguredStructures;
 import lostworlds.server.structure.LostWorldsStructurePecies;
+import lostworlds.server.structure.LostWorldsStructureSets;
 import lostworlds.server.structure.LostWorldsStructures;
 import lostworlds.server.util.Version;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
-import lostworlds.server.world.EntitySpawns;
-import lostworlds.server.world.FeatureGen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -74,10 +71,6 @@ public class LostWorldsMod {
 	private static final NonNullSupplier<LostWorldsRegistrate> REGISTRATE = LostWorldsRegistrate.lazy(LostWorldsUtils.ID);
 
 	public LostWorldsMod() {
-		this.makeMod();
-	}
-
-	public void makeMod() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		IEventBus forge = MinecraftForge.EVENT_BUS;
 
@@ -99,9 +92,11 @@ public class LostWorldsMod {
 		LostWorldsPOIs.deferred(bus);
 		LostWorldsFeatures.deferred(bus);
 		LostWorldsStructures.deferred(bus);
-		LostWorldsBiomes.deferred(bus);
+//		LostWorldsBiomes.BIOMES.register(bus);
 
 		LostWorldsTags.init();
+
+		forge.register(this);
 
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
@@ -134,15 +129,10 @@ public class LostWorldsMod {
 		LostWorldsUtils.BLOCKS.setIcon(() -> LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.asStack());
 
 		event.enqueueWork(() -> {
-			if (LostWorldsUtils.modLoaded("terrablender")) {
-//				TerrablenderLoader.init();
-			}
-
 			LostWorldsStructurePecies.init();
+			LostWorldsStructureSets.init();
 
 			LostWorldsConfiguredStructures.init();
-
-			LostWorldsDimensions.initBiomeSourcesAndChunkGenerator();
 
 			ImmutableSet.Builder<Block> builder = ImmutableSet.builder();
 			builder.addAll(BlockEntityType.SIGN.validBlocks);
@@ -154,18 +144,12 @@ public class LostWorldsMod {
 	}
 
 	private void biomeStuff(BiomeLoadingEvent event) {
-		// Spawns
-		EntitySpawns.init(event);
-
-		// Features
-		FeatureGen.init(event);
+//		EntitySpawns.init(event);
+//
+//		FeatureGen.init(event);
 	}
 
 	private void clientSetup(FMLClientSetupEvent event) {
-//		TyrannibookHelper.listenersSetup(event);
-//		LostWorldsBooks.initBooks();
-
-		LostWorldsDimensions.initClient();
 	}
 
 	@OnlyIn(Dist.CLIENT)
@@ -210,9 +194,9 @@ public class LostWorldsMod {
 		}
 	}
 
-	public static boolean isWearingMask(LivingEntity living, EquipmentSlot pieceValue) {
+	public static boolean isWearingMask(LivingEntity entity, EquipmentSlot slot) {
 		List<Item> mask = ImmutableList.of(LostWorldsItems.CLOTH_MASK.get());
-		return mask.contains(living.getItemBySlot(pieceValue).getItem());
+		return mask.contains(entity.getItemBySlot(slot).getItem());
 	}
 
 	public static LostWorldsRegistrate getRegistrate() {

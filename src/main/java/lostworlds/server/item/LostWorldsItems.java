@@ -29,6 +29,7 @@ import lostworlds.server.menu.recipes.data.ArchaeologyTableRecipeBuilder;
 import lostworlds.server.menu.recipes.data.PaleontologyTableRecipeBuilder;
 import lostworlds.server.menu.recipes.data.TimeMachineRecipeBuilder;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
+import net.minecraft.client.renderer.block.model.ItemTransforms.TransformType;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.UpgradeRecipeBuilder;
@@ -47,7 +48,6 @@ import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.client.model.generators.ModelBuilder.Perspective;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
 
@@ -86,9 +86,24 @@ public class LostWorldsItems {
 	public static final ItemEntry<TabletItem> TABLET = REGISTRATE.item("tablet", TabletItem::new).properties(Properties -> Properties.stacksTo(1)).recipe((item, provider) -> ShapedRecipeBuilder.shaped(item.get()).pattern("#@#").pattern("#$#").define('#', Items.IRON_INGOT).define('@', LostWorldsItems.COMPUTER_SCREEN.get()).define('$', LostWorldsItems.COMPUTER_CORE.get()).unlockedBy("has_item", provider.has(Items.IRON_INGOT)).save(provider)).register();
 	public static final ItemEntry<Item> CONTRACEPTIVES = REGISTRATE.item("contraceptives", Item::new).register();
 
-	public static final ItemEntry<TimeBookItem> PERMIAN_PERIOD_TIME_BOOK = REGISTRATE.item("permian_period_time_book", properties -> new TimeBookItem(properties, TimeEras.PERMIAN_PERIOD/*, LostWorldsDimensions.PERMIAN_WORLD*/)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.has(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register(),
-			JURASSIC_PERIOD_TIME_BOOK = REGISTRATE.item("jurassic_period_time_book", properties -> new TimeBookItem(properties, TimeEras.JURASSIC_PERIOD/*, LostWorldsDimensions.JURASSIC_WORLD*/)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.has(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register(),
-			CRETACEOUS_PERIOD_TIME_BOOK = REGISTRATE.item("cretaceous_period_time_book", properties -> new TimeBookItem(properties, TimeEras.CRETACEOUS_PERIOD/*, LostWorldsDimensions.CRETACEOUS_WORLD*/)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.has(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register();
+	public static final ItemEntry<TimeBookItem> PERMIAN_PERIOD_TIME_BOOK = REGISTRATE.item("permian_period_time_book", properties -> new TimeBookItem(properties, TimeEras.PERMIAN_PERIOD/*
+																																															 * ,
+																																															 * LostWorldsDimensions
+																																															 * .
+																																															 * PERMIAN_WORLD
+																																															 */)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.has(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register(),
+			JURASSIC_PERIOD_TIME_BOOK = REGISTRATE.item("jurassic_period_time_book", properties -> new TimeBookItem(properties, TimeEras.JURASSIC_PERIOD/*
+																																						 * ,
+																																						 * LostWorldsDimensions
+																																						 * .
+																																						 * JURASSIC_WORLD
+																																						 */)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.has(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register(),
+			CRETACEOUS_PERIOD_TIME_BOOK = REGISTRATE.item("cretaceous_period_time_book", properties -> new TimeBookItem(properties, TimeEras.CRETACEOUS_PERIOD/*
+																																								 * ,
+																																								 * LostWorldsDimensions
+																																								 * .
+																																								 * CRETACEOUS_WORLD
+																																								 */)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.has(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register();
 
 	public static final ItemEntry<Item> MUD_BALL = REGISTRATE.item("mud_ball", Item::new).register();
 
@@ -266,7 +281,7 @@ public class LostWorldsItems {
 				return true;
 			}
 		};
-		return (item, provider) -> provider.getBuilder(item.get().getRegistryName().getPath()).parent(parent).transforms().transform(Perspective.THIRDPERSON_RIGHT).rotation(75, 45, 0).translation(0, 2.5F, 0).scale(0.375F).end().transform(Perspective.THIRDPERSON_LEFT).rotation(75, 45, 0).translation(0, 2.5F, 0).scale(0.375F).end().transform(Perspective.FIRSTPERSON_RIGHT).rotation(0, 45, 0).translation(1, -1.5F, 1.5F).scale(0.4F).end().transform(Perspective.FIRSTPERSON_LEFT).rotation(0, 45, 0).translation(1, -1.5F, 1.5F).scale(0.4F).end().transform(Perspective.GROUND).translation(0, 3, 0).scale(0.25F).end().transform(Perspective.GUI).rotation(30, 225, 0).translation(1.75F, -4.5F, 0).scale(0.3F).end().transform(Perspective.FIXED).rotation(0, -90, 0).translation(2.25F, -3.75F, 0).scale(0.3F).end().end();
+		return (item, provider) -> provider.getBuilder(item.get().getRegistryName().getPath()).parent(parent).transforms().transform(TransformType.THIRD_PERSON_RIGHT_HAND).rotation(75, 45, 0).translation(0, 2.5F, 0).scale(0.375F).end().transform(TransformType.THIRD_PERSON_LEFT_HAND).rotation(75, 45, 0).translation(0, 2.5F, 0).scale(0.375F).end().transform(TransformType.FIRST_PERSON_RIGHT_HAND).rotation(0, 45, 0).translation(1, -1.5F, 1.5F).scale(0.4F).end().transform(TransformType.FIRST_PERSON_LEFT_HAND).rotation(0, 45, 0).translation(1, -1.5F, 1.5F).scale(0.4F).end().transform(TransformType.GROUND).translation(0, 3, 0).scale(0.25F).end().transform(TransformType.GUI).rotation(30, 225, 0).translation(1.75F, -4.5F, 0).scale(0.3F).end().transform(TransformType.FIXED).rotation(0, -90, 0).translation(2.25F, -3.75F, 0).scale(0.3F).end().end();
 	}
 
 	public static <T extends Item> NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> spawnEgg() {

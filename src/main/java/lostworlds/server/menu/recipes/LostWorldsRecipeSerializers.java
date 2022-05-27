@@ -1,7 +1,6 @@
 package lostworlds.server.menu.recipes;
 
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.menu.recipes.serialiser.AmberDNAExtractorRecipeSerialiser;
 import lostworlds.server.menu.recipes.serialiser.AnalyzerRecipeSerialiser;
 import lostworlds.server.menu.recipes.serialiser.ArchaeologyTableRecipeSerialiser;
 import lostworlds.server.menu.recipes.serialiser.CultivatorRecipeSerialiser;
@@ -20,12 +19,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class LostWorldsRecipeSerializers {
-	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, LostWorldsUtils.ID);
+	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.Keys.RECIPE_SERIALIZERS, LostWorldsUtils.ID);
 
 	public static final RecipeSerializer<FossilCleanerRecipe> FOSSIL_CLEANER_RECIPE_SERIALIZER = new FossilCleanerRecipeSerialiser();
 	public static final RecipeSerializer<FossilGrinderRecipe> FOSSIL_GRINDER_RECIPE_SERIALIZER = new FossilGrinderRecipeSerialiser();
 	public static final RecipeSerializer<DNAExtractorRecipe> DNA_EXTRACTOR_RECIPE_SERIALIZER = new DNAExtractorRecipeSerialiser();
-	public static final RecipeSerializer<AmberDNAExtractorRecipe> AMBER_DNA_EXTRACTOR_RECIPE_SERIALIZER = new AmberDNAExtractorRecipeSerialiser();
 	public static final RecipeSerializer<AnalyzerRecipe> ANALYZER_RECIPE_SERIALIZER = new AnalyzerRecipeSerialiser();
 	public static final RecipeSerializer<DNAInjectorRecipe> DNA_INJECTOR_RECIPE_SERIALIZER = new DNAInjectorRecipeSerialiser();
 	public static final RecipeSerializer<CultivatorRecipe> CULTIVATOR_RECIPE_SERIALIZER = new CultivatorRecipeSerialiser();
@@ -35,7 +33,6 @@ public class LostWorldsRecipeSerializers {
 
 	public static final RegistryObject<RecipeSerializer<FossilCleanerRecipe>> FOSSIL_CLEANER_SERIALIZER = RECIPE_SERIALIZERS.register("fossil_cleaner", () -> FOSSIL_CLEANER_RECIPE_SERIALIZER);
 	public static final RegistryObject<RecipeSerializer<FossilGrinderRecipe>> FOSSIL_GRINDER_SERIALIZER = RECIPE_SERIALIZERS.register("fossil_grinder", () -> FOSSIL_GRINDER_RECIPE_SERIALIZER);
-	public static final RegistryObject<RecipeSerializer<AmberDNAExtractorRecipe>> AMBER_DNA_EXTRACTOR_SERIALIZER = RECIPE_SERIALIZERS.register("amber_dna_extractor", () -> AMBER_DNA_EXTRACTOR_RECIPE_SERIALIZER);
 	public static final RegistryObject<RecipeSerializer<DNAExtractorRecipe>> DNA_EXTRACTOR_SERIALIZER = RECIPE_SERIALIZERS.register("dna_extractor", () -> DNA_EXTRACTOR_RECIPE_SERIALIZER);
 	public static final RegistryObject<RecipeSerializer<AnalyzerRecipe>> ANALYZER_SERIALIZER = RECIPE_SERIALIZERS.register("analyzer", () -> ANALYZER_RECIPE_SERIALIZER);
 	public static final RegistryObject<RecipeSerializer<DNAInjectorRecipe>> DNA_INJECTOR_SERIALIZER = RECIPE_SERIALIZERS.register("dna_injector", () -> DNA_INJECTOR_RECIPE_SERIALIZER);

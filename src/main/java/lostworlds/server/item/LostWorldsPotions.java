@@ -9,7 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class LostWorldsPotions {
-	public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, LostWorldsUtils.ID);
+	public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(ForgeRegistries.Keys.MOB_EFFECTS, LostWorldsUtils.ID);
 
 	public static final RegistryObject<AshyLungEffect> ASHY_LUNG_EFFECT = MOB_EFFECTS.register("ashy_lung_effect", () -> new AshyLungEffect());
 

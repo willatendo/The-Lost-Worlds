@@ -62,7 +62,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	protected LostWorldsRegistrate(String modid) {
 		super(modid);
 		this.addSounds();
-		this.addBooks();
+//		this.addBooks();
 		this.extraLangStuff();
 	}
 
@@ -285,7 +285,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 
 	@Override
 	public <T extends AbstractContainerMenu, SC extends Screen & MenuAccess<T>> MenuBuilder<T, SC, LostWorldsRegistrate> menu(String name, ForgeMenuFactory<T> factory, NonNullSupplier<ScreenFactory<T, SC>> screenFactory) {
-		this.addRawLang("container.lostworlds." + name, Arrays.stream(name.toLowerCase(Locale.ROOT).split("_")).map(StringUtils::capitalize).collect(Collectors.joining(" ")));
+		this.addRawLang("menu.lostworlds." + name, Arrays.stream(name.toLowerCase(Locale.ROOT).split("_")).map(StringUtils::capitalize).collect(Collectors.joining(" ")));
 		return super.menu(name, factory, screenFactory);
 	}
 

@@ -16,7 +16,7 @@ import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -28,7 +28,7 @@ public class ModBoatRenderer extends EntityRenderer<ModBoat> {
 	private static final ResourceLocation[] BOAT_TEXTURES = new ResourceLocation[] { LostWorldsUtils.rL("textures/entity/boat/araucaria_boat.png"), LostWorldsUtils.rL("textures/entity/boat/calamites_boat.png"), LostWorldsUtils.rL("textures/entity/boat/conifer_boat.png"), LostWorldsUtils.rL("textures/entity/boat/cypress_boat.png"), LostWorldsUtils.rL("textures/entity/boat/ginkgo_boat.png"), LostWorldsUtils.rL("textures/entity/boat/scorched_boat.png"), LostWorldsUtils.rL("textures/entity/boat/sequoia_boat.png") };
 	private final Map<ModBoatType, BoatModel> boatResources;
 
-	public ModBoatRenderer(Context context) {
+	public ModBoatRenderer(EntityRendererProvider.Context context) {
 		super(context);
 		this.boatResources = Stream.of(ModBoatType.values()).collect(ImmutableMap.toImmutableMap((type) -> {
 			return type;
@@ -79,5 +79,4 @@ public class ModBoatRenderer extends EntityRenderer<ModBoat> {
 	public BoatModel getModelWithLocation(ModBoat boat) {
 		return this.boatResources.get(boat.getModBoatType());
 	}
-
 }

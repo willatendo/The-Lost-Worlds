@@ -10,9 +10,12 @@ import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.jei.LostWorldsJeiConstants;
 import lostworlds.server.menu.recipes.FossilGrinderRecipe;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -73,23 +76,13 @@ public class FossilGrinderCategory implements IRecipeCategory<FossilGrinderRecip
 		return this.icon;
 	}
 
-//	@Override
-//	public void setIngredients(FossilGrinderRecipe recipe, IIngredients ingredients) {
-//		ingredients.setInputIngredients(recipe.getIngredients());
-//		ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputs());
-//	}
-//
-//	@Override
-//	public void setRecipe(IRecipeLayout recipeLayout, FossilGrinderRecipe recipe, IIngredients ingredients) {
-//		IGuiItemStackGroup itemStackGroup = recipeLayout.getItemStacks();
-//
-//		itemStackGroup.init(0, true, 4, 4);
-//		itemStackGroup.init(1, false, 67, 4);
-//		itemStackGroup.init(2, false, 51, 27);
-//		itemStackGroup.init(3, false, 70, 27);
-//
-//		itemStackGroup.set(ingredients);
-//	}
+	@Override
+	public void setRecipe(IRecipeLayoutBuilder builder, FossilGrinderRecipe recipe, IFocusGroup focuses) {
+		builder.addSlot(RecipeIngredientRole.INPUT, 5, 5).addIngredients(recipe.getIngredients().get(0));
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 67, 5).addItemStack(recipe.getOutputs().get(0));
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 52, 28).addItemStack(recipe.getOutputs().get(1));
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 71, 28).addItemStack(recipe.getOutputs().get(2));
+	}
 
 	@Override
 	public void draw(FossilGrinderRecipe recipe, PoseStack stack, double mouseX, double mouseY) {

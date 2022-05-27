@@ -32,9 +32,9 @@ public class FossilGrinderMenu extends AbstractContainerMenu {
 		this.data = blockEntity.getGrinderData();
 		this.containerLevelAccess = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
 
-		this.addSlot(new Slot(inventory, 0, 53, 35));
-		this.addSlot(new ResultSlot(inventory.player, inventory, 1, 116, 35));
-		this.addSlot(new ResultSlot(inventory.player, inventory, 2, 139, 35));
+		this.addSlot(new Slot(blockEntity, 0, 53, 35));
+		this.addSlot(new ResultSlot(inventory.player, blockEntity, 1, 116, 35));
+		this.addSlot(new ResultSlot(inventory.player, blockEntity, 2, 139, 35));
 
 		for (int i = 0; i < 3; ++i) {
 			for (int j = 0; j < 9; ++j) {

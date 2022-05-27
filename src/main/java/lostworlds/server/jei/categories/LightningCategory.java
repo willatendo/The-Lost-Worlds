@@ -4,8 +4,11 @@ import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.jei.LostWorldsJeiConstants;
 import lostworlds.server.jei.recipe.LightningRecipe;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -48,19 +51,9 @@ public class LightningCategory implements IRecipeCategory<LightningRecipe> {
 		return this.icon;
 	}
 
-//	@Override
-//	public void setIngredients(LightningRecipe recipe, IIngredients ingredients) {
-//		ingredients.setInputIngredients(recipe.getIngredients());
-//		ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputs());
-//	}
-//
-//	@Override
-//	public void setRecipe(IRecipeLayout recipeLayout, LightningRecipe recipe, IIngredients ingredients) {
-//		IGuiItemStackGroup itemStackGroup = recipeLayout.getItemStacks();
-//
-//		itemStackGroup.init(0, true, 18, 36);
-//		itemStackGroup.init(1, false, 54, 19);
-//
-//		itemStackGroup.set(ingredients);
-//	}
+	@Override
+	public void setRecipe(IRecipeLayoutBuilder builder, LightningRecipe recipe, IFocusGroup focuses) {
+		builder.addSlot(RecipeIngredientRole.INPUT, 19, 37).addIngredients(recipe.getIngredients().get(0));
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 55, 20).addItemStack(recipe.getOutputs().get(0));
+	}
 }

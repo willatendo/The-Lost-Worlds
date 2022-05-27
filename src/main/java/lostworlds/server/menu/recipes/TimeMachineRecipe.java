@@ -44,7 +44,7 @@ public class TimeMachineRecipe implements Recipe<Container> {
 		return this.result;
 	}
 
-	public NonNullList<ItemStack> getOutput() {
+	public NonNullList<ItemStack> getOutputs() {
 		NonNullList<ItemStack> output = NonNullList.create();
 		output.add(this.result);
 		return output;

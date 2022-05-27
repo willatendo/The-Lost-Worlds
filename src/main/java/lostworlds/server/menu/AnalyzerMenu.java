@@ -28,8 +28,8 @@ public class AnalyzerMenu extends AbstractContainerMenu {
 	private final Level level;
 	private final RecipeType<AnalyzerRecipe> recipeType = LostWorldsRecipeTypes.ANALYZER_RECIPE;
 
-	public AnalyzerMenu(MenuType<? extends AnalyzerMenu> containerType, int windowID, Inventory inventory, AnalyzerBlockEntity blockEntity) {
-		super(containerType, windowID);
+	public AnalyzerMenu(MenuType<? extends AnalyzerMenu> type, int windowID, Inventory inventory, AnalyzerBlockEntity blockEntity) {
+		super(type, windowID);
 		this.level = inventory.player.level;
 		this.data = blockEntity.getAnalysingData();
 		this.containerLevelAccess = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
@@ -51,8 +51,8 @@ public class AnalyzerMenu extends AbstractContainerMenu {
 		this.addDataSlots(this.data);
 	}
 
-	public AnalyzerMenu(MenuType<? extends AnalyzerMenu> containerType, int windowID, Inventory inventory, FriendlyByteBuf buffer) {
-		this(containerType, windowID, inventory, (AnalyzerBlockEntity) inventory.player.level.getBlockEntity(buffer.readBlockPos()));
+	public AnalyzerMenu(MenuType<? extends AnalyzerMenu> type, int windowID, Inventory inventory, FriendlyByteBuf buffer) {
+		this(type, windowID, inventory, (AnalyzerBlockEntity) inventory.player.level.getBlockEntity(buffer.readBlockPos()));
 	}
 
 	@Override

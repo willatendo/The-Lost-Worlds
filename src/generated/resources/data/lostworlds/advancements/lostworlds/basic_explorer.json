@@ -20,7 +20,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:araucaria_forest"
+          "biome": "minecraft:araucaria_forest"
         }
       }
     },
@@ -28,7 +28,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:conifer_forest"
+          "biome": "minecraft:conifer_forest"
         }
       }
     },
@@ -36,7 +36,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:ginkgo_forest"
+          "biome": "minecraft:ginkgo_forest"
         }
       }
     },
@@ -44,7 +44,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:redwoods_forest"
+          "biome": "minecraft:redwoods_forest"
         }
       }
     },
@@ -52,7 +52,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:volcano"
+          "biome": "minecraft:volcano"
         }
       }
     }

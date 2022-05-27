@@ -10,9 +10,12 @@ import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.jei.LostWorldsJeiConstants;
 import lostworlds.server.menu.recipes.CultivatorRecipe;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -70,21 +73,11 @@ public class CultivatorCategory implements IRecipeCategory<CultivatorRecipe> {
 		return this.icon;
 	}
 
-//	@Override
-//	public void setIngredients(CultivatorRecipe recipe, IIngredients ingredients) {
-//		ingredients.setInputIngredients(recipe.getIngredients());
-//		ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputs());
-//	}
-//
-//	@Override
-//	public void setRecipe(IRecipeLayout recipeLayout, CultivatorRecipe recipe, IIngredients ingredients) {
-//		IGuiItemStackGroup itemStackGroup = recipeLayout.getItemStacks();
-//
-//		itemStackGroup.init(0, true, 4, 4);
-//		itemStackGroup.init(1, false, 72, 4);
-//
-//		itemStackGroup.set(ingredients);
-//	}
+	@Override
+	public void setRecipe(IRecipeLayoutBuilder builder, CultivatorRecipe recipe, IFocusGroup focuses) {
+		builder.addSlot(RecipeIngredientRole.INPUT, 5, 5).addIngredients(recipe.getIngredients().get(0));
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 73, 5).addItemStack(recipe.getOutputs().get(0));
+	}
 
 	@Override
 	public void draw(CultivatorRecipe recipe, PoseStack stack, double mouseX, double mouseY) {

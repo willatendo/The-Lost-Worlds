@@ -1,10 +1,9 @@
-package lostworlds.data;
+package lostworlds.data.tag;
 
 import org.jetbrains.annotations.Nullable;
 
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.biome.LostWorldsBiomes;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.tags.BiomeTags;
@@ -23,6 +22,6 @@ public class LostWorldsBiomeTagProvider extends BiomeTagsProvider {
 		this.tag(LostWorldsTags.ModBiomeTags.HAS_SURFACE_FOSSIL).addTag(BiomeTags.IS_FOREST).addTag(BiomeTags.IS_JUNGLE).addTag(BiomeTags.HAS_VILLAGE_DESERT).addTag(BiomeTags.HAS_VILLAGE_SAVANNA).addTag(BiomeTags.IS_BADLANDS).addTag(BiomeTags.IS_MOUNTAIN).addTag(BiomeTags.IS_HILL);
 		this.tag(LostWorldsTags.ModBiomeTags.HAS_SUBTERRANEAN_FOSSIL).addTag(BiomeTags.IS_FOREST).addTag(BiomeTags.IS_JUNGLE).addTag(BiomeTags.HAS_VILLAGE_DESERT).addTag(BiomeTags.HAS_VILLAGE_SAVANNA).addTag(BiomeTags.IS_BADLANDS).addTag(BiomeTags.IS_MOUNTAIN).addTag(BiomeTags.IS_HILL);
 
-		this.tag(BiomeTags.HAS_RUINED_PORTAL_STANDARD).add(LostWorldsBiomes.ARAUCARIA_FOREST.getSecond()).add(LostWorldsBiomes.CONIFER_FOREST.getSecond()).add(LostWorldsBiomes.GINKGO_FOREST.getSecond()).add(LostWorldsBiomes.REDWOODS_FOREST.getSecond());
+//		this.tag(BiomeTags.HAS_RUINED_PORTAL_STANDARD).add(LostWorldsBiomeKeys.ARAUCARIA_FOREST).add(LostWorldsBiomeKeys.CONIFER_FOREST).add(LostWorldsBiomeKeys.GINKGO_FOREST).add(LostWorldsBiomeKeys.REDWOODS_FOREST);
 	}
 }

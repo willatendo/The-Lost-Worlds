@@ -334,7 +334,7 @@ public class DNAInjectorBlockEntity extends BlockEntity implements Container, Me
 
 	@Override
 	public Component getName() {
-		return LostWorldsUtils.tTC("container", "dna_injector");
+		return LostWorldsUtils.tTC("menu", "dna_injector");
 	}
 
 	@Override

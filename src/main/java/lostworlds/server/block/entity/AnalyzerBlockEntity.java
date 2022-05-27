@@ -324,7 +324,7 @@ public class AnalyzerBlockEntity extends BlockEntity implements Container, MenuP
 
 	@Override
 	public Component getName() {
-		return LostWorldsUtils.tTC("container", "analyzer");
+		return LostWorldsUtils.tTC("menu", "analyzer");
 	}
 
 	@Override

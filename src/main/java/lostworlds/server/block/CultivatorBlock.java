@@ -2,6 +2,7 @@ package lostworlds.server.block;
 
 import java.util.Random;
 
+import lostworlds.server.block.entity.CultivatorBlockEntity;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -10,6 +11,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -52,5 +55,10 @@ public class CultivatorBlock extends MachineBlock {
 				world.playLocalSound(d0, d1, d2, SoundEvents.BUBBLE_COLUMN_BUBBLE_POP, SoundSource.BLOCKS, 1.0F, 1.0F, false);
 			}
 		}
+	}
+
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker tick(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+		return level.isClientSide ? null : createTickerHelper(blockEntityType, LostWorldsBlockEntities.CULTIVATOR_BLOCK_ENTITY.get(), CultivatorBlockEntity::serverTick);
 	}
 }

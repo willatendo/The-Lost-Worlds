@@ -124,7 +124,7 @@ public class DisplayCaseBlockEntity extends RandomizableContainerBlockEntity imp
 
 	@Override
 	protected Component getDefaultName() {
-		return LostWorldsUtils.tTC("container", "display_case");
+		return LostWorldsUtils.tTC("menu", "display_case");
 	}
 
 	@Override

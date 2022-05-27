@@ -135,7 +135,7 @@ public class FeedingTroughBlockEntity extends RandomizableContainerBlockEntity i
 
 	@Override
 	protected Component getDefaultName() {
-		return LostWorldsUtils.tTC("container", "feeding_trough");
+		return LostWorldsUtils.tTC("menu", "feeding_trough");
 	}
 
 	@Override

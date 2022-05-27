@@ -23,7 +23,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:permian_conifer_forest"
+          "biome": "minecraft:permian_conifer_forest"
         }
       }
     },
@@ -31,7 +31,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:permian_ginkgo_forest"
+          "biome": "minecraft:permian_ginkgo_forest"
         }
       }
     },
@@ -39,7 +39,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:permian_plains"
+          "biome": "minecraft:permian_plains"
         }
       }
     },
@@ -47,7 +47,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:permian_dried_plains"
+          "biome": "minecraft:permian_dried_plains"
         }
       }
     },
@@ -55,7 +55,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:permian_desert"
+          "biome": "minecraft:permian_desert"
         }
       }
     },
@@ -63,7 +63,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:permian_flood_basalts"
+          "biome": "minecraft:permian_flood_basalts"
         }
       }
     },
@@ -71,7 +71,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:permian_ashy_medows"
+          "biome": "minecraft:permian_ashy_medows"
         }
       }
     },
@@ -79,7 +79,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:permian_windswept_hills"
+          "biome": "minecraft:permian_windswept_hills"
         }
       }
     },
@@ -87,7 +87,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:permian_marsh"
+          "biome": "minecraft:permian_marsh"
         }
       }
     },
@@ -95,7 +95,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:permian_river"
+          "biome": "minecraft:permian_river"
         }
       }
     },
@@ -103,7 +103,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:permian_ocean"
+          "biome": "minecraft:permian_ocean"
         }
       }
     },
@@ -111,7 +111,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:warm_permian_ocean"
+          "biome": "minecraft:warm_permian_ocean"
         }
       }
     },
@@ -119,7 +119,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "lostworlds:permian_shore"
+          "biome": "minecraft:permian_shore"
         }
       }
     }

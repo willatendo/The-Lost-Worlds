@@ -6,8 +6,11 @@ import lostworlds.server.jei.LostWorldsJeiConstants;
 import lostworlds.server.menu.recipes.TimeMachineRecipe;
 import mezz.jei.api.constants.ModIds;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -50,20 +53,10 @@ public class TimeMachineCategory implements IRecipeCategory<TimeMachineRecipe> {
 		return this.icon;
 	}
 
-//	@Override
-//	public void setIngredients(TimeMachineRecipe recipe, IIngredients ingredients) {
-//		ingredients.setInputIngredients(recipe.getIngredients());
-//		ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutput());
-//	}
-//
-//	@Override
-//	public void setRecipe(IRecipeLayout recipeLayout, TimeMachineRecipe recipe, IIngredients ingredients) {
-//		IGuiItemStackGroup itemStackGroup = recipeLayout.getItemStacks();
-//
-//		itemStackGroup.init(0, true, 0, 0);
-//		itemStackGroup.init(1, true, 49, 0);
-//		itemStackGroup.init(2, false, 107, 0);
-//
-//		itemStackGroup.set(ingredients);
-//	}
+	@Override
+	public void setRecipe(IRecipeLayoutBuilder builder, TimeMachineRecipe recipe, IFocusGroup focuses) {
+		builder.addSlot(RecipeIngredientRole.INPUT, 1, 1).addIngredients(recipe.getIngredients().get(0));
+		builder.addSlot(RecipeIngredientRole.INPUT, 50, 1).addIngredients(recipe.getIngredients().get(1));
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 108, 1).addItemStack(recipe.getOutputs().get(0));
+	}
 }

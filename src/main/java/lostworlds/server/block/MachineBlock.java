@@ -37,6 +37,8 @@ import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -56,6 +58,13 @@ public abstract class MachineBlock extends Block implements EntityBlock {
 	public MachineBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(ON, Boolean.valueOf(false)).setValue(HORIZONTAL_FACING, Direction.NORTH));
+	}
+
+	public abstract <T extends BlockEntity> BlockEntityTicker tick(Level level, BlockState state, BlockEntityType<T> blockEntityType);
+
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+		return this.tick(level, state, blockEntityType);
 	}
 
 	@Override
@@ -220,5 +229,10 @@ public abstract class MachineBlock extends Block implements EntityBlock {
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(HORIZONTAL_FACING, ON);
+	}
+
+	@Nullable
+	protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> createTickerHelper(BlockEntityType<A> type, BlockEntityType<E> registered, BlockEntityTicker<? super E> ticker) {
+		return registered == type ? (BlockEntityTicker<A>) ticker : null;
 	}
 }
