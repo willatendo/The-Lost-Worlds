@@ -17,9 +17,9 @@ public class LostWorldsPlacedFeatures {
 	public static final Holder<PlacedFeature> PERMIAN_ROCK = register("permian_rock", LostWorldsConfiguredFeatures.PERMIAN_ROCK, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
 	public static final Holder<PlacedFeature> JURASSIC_ROCK = register("jurassic_rock", LostWorldsConfiguredFeatures.JURASSIC_ROCK, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
 	public static final Holder<PlacedFeature> CRETACEOUS_ROCK = register("cretaceous_rock", LostWorldsConfiguredFeatures.CRETACEOUS_ROCK, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-	public static final Holder<PlacedFeature> ASH_LAYER = PlacementUtils.register("ash_layer", LostWorldsConfiguredFeatures.ASH_LAYER, BiomeFilter.biome());
-	public static final Holder<PlacedFeature> GEYSER_BLOCK = PlacementUtils.register("geyser_block", LostWorldsConfiguredFeatures.GEYSER_BLOCK, CountPlacement.of(16), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-	public static final Holder<PlacedFeature> SPONGE_COLONEY = PlacementUtils.register("sponge_coloney", LostWorldsConfiguredFeatures.SPONGE_COLONEY, CountPlacement.of(16), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
+	public static final Holder<PlacedFeature> ASH_LAYER = register("ash_layer", LostWorldsConfiguredFeatures.ASH_LAYER, BiomeFilter.biome());
+	public static final Holder<PlacedFeature> GEYSER_BLOCK = register("geyser_block", LostWorldsConfiguredFeatures.GEYSER_BLOCK, CountPlacement.of(16), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+	public static final Holder<PlacedFeature> SPONGE_COLONEY = register("sponge_coloney", LostWorldsConfiguredFeatures.SPONGE_COLONEY, CountPlacement.of(16), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
 
 	public static Holder<PlacedFeature> register(String id, Holder<? extends ConfiguredFeature<?, ?>> feature, PlacementModifier... modifiers) {
 		return PlacementUtils.register("lostworlds:" + id, feature, modifiers);
@@ -27,5 +27,14 @@ public class LostWorldsPlacedFeatures {
 
 	public static Holder<PlacedFeature> register(String id, Holder<? extends ConfiguredFeature<?, ?>> feature, List<PlacementModifier> modifiers) {
 		return PlacementUtils.register("lostworlds:" + id, feature, modifiers);
+	}
+
+	public static void init() {
+		PlacedDisksFeatures.init();
+		PlacedOreFeatures.init();
+		PlacedPlantPatchFeatures.init();
+		PlacedTreeFeatures.init();
+		PlacedTreePatchFeatures.init();
+		PlacedWaterFeatures.init();
 	}
 }

@@ -112,4 +112,7 @@ public class PlacedOreFeatures {
 	private static List<PlacementModifier> rareOrePlacement(int count, PlacementModifier modifier) {
 		return orePlacement(RarityFilter.onAverageOnceEvery(count), modifier);
 	}
+
+	public static void init() {
+	}
 }

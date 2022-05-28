@@ -22,7 +22,7 @@ public class LostWorldsStructureSets {
 	public static final ResourceKey<StructureSet> SURFACE_FOSSIL_KEY = register("surface_fossil");
 	public static final Holder<StructureSet> SURFACE_FOSSIL = register(SURFACE_FOSSIL_KEY, LostWorldsConfiguredStructures.CONFIGURED_SURFACE_FOSSIL, new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, LostWorldsConfig.COMMON_CONFIG.surfaceFossilGenerationId.get()));
 	public static final ResourceKey<StructureSet> TRACE_FOSSIL_KEY = register("trace_fossil");
-	public static final Holder<StructureSet> TRACE_FOSSIL = register(SURFACE_FOSSIL_KEY, LostWorldsConfiguredStructures.CONFIGURED_TRACE_FOSSIL, new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, LostWorldsConfig.COMMON_CONFIG.traceFossilGenerationId.get()));
+	public static final Holder<StructureSet> TRACE_FOSSIL = register(TRACE_FOSSIL_KEY, LostWorldsConfiguredStructures.CONFIGURED_TRACE_FOSSIL, new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, LostWorldsConfig.COMMON_CONFIG.traceFossilGenerationId.get()));
 
 	public static Holder<StructureSet> register(ResourceKey<StructureSet> key, StructureSet structureSet) {
 		return BuiltinRegistries.register(BuiltinRegistries.STRUCTURE_SETS, key, structureSet);

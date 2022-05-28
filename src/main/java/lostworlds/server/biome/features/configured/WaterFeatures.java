@@ -9,4 +9,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 
 public class WaterFeatures {
 	public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> ANCIENT_SPRING = register("ancient_spring", LostWorldsFeatures.ANCIENT_SPRING);
+
+	public static void init() {
+	}
 }

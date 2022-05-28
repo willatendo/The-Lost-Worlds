@@ -1,4 +1,4 @@
-package lostworlds.server.feature.tree;
+package lostworlds.server.feature;
 
 import java.util.Random;
 

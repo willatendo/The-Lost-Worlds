@@ -7,7 +7,7 @@ import com.google.common.collect.Lists;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.features.placed.PlacedDisksFeatures;
 import lostworlds.server.biome.features.placed.PlacedOreFeatures;
-import lostworlds.server.biome.features.placed.PlacedTreeFeatures;
+import lostworlds.server.biome.features.placed.PlacedTreePatchFeatures;
 import lostworlds.server.feature.FeatureAdder;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -46,7 +46,7 @@ public class FeatureGen {
 			List<? extends String> biomes = Lists.newArrayList("minecraft:swamp", "minecraft:swamp_hills");
 
 			if (biomes.contains(event.getName().toString())) {
-				FeatureAdder.addFeature(event, GenerationStep.Decoration.TOP_LAYER_MODIFICATION, PlacedTreeFeatures.SCANT_CYPRESS_TREES);
+				FeatureAdder.addFeature(event, GenerationStep.Decoration.TOP_LAYER_MODIFICATION, PlacedTreePatchFeatures.SCANT_CYPRESS_TREES);
 			}
 		}
 

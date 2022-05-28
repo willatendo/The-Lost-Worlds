@@ -13,7 +13,6 @@ import lostworlds.server.menu.recipes.serialiser.TimeMachineRecipeSerialiser;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -43,9 +42,5 @@ public class LostWorldsRecipeSerializers {
 
 	public static <T extends RecipeType> T register(String id) {
 		return (T) Registry.register(Registry.RECIPE_TYPE, LostWorldsUtils.rL(id), new ModRecipeType<>());
-	}
-
-	public static void deferred(IEventBus bus) {
-		RECIPE_SERIALIZERS.register(bus);
 	}
 }

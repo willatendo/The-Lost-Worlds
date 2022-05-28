@@ -1,25 +1,25 @@
-package lostworlds.server.feature;
+package lostworlds.server.feature.mod;
 
 import java.util.Random;
 
 import com.mojang.serialization.Codec;
 
-import lostworlds.server.feature.config.ModBlockstateFeatureConfig;
+import lostworlds.server.feature.config.SuppliedBlockstateFeatureConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.material.Material;
 
-public class ModBlockBlobFeature extends Feature<ModBlockstateFeatureConfig> {
-	public ModBlockBlobFeature(Codec<ModBlockstateFeatureConfig> config) {
+public class ModBlockBlobFeature extends Feature<SuppliedBlockstateFeatureConfig> {
+	public ModBlockBlobFeature(Codec<SuppliedBlockstateFeatureConfig> config) {
 		super(config);
 	}
 
-	public boolean place(FeaturePlaceContext<ModBlockstateFeatureConfig> context) {
+	public boolean place(FeaturePlaceContext<SuppliedBlockstateFeatureConfig> context) {
 		BlockPos pos = context.origin();
 		WorldGenLevel level = context.level();
-		ModBlockstateFeatureConfig config = context.config();
+		SuppliedBlockstateFeatureConfig config = context.config();
 		Random rand = new Random();
 
 		while (true) {

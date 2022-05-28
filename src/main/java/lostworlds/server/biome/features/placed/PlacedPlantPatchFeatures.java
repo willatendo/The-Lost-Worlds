@@ -28,4 +28,7 @@ public class PlacedPlantPatchFeatures {
 
 	public static final Holder<PlacedFeature> PERMIAN_DESERT_SHRUB_PATCH = register("permian_desert_shrub_patch", PlantPatchFeatures.PERMIAN_DESERT_SHRUB_PATCH, RarityFilter.onAverageOnceEvery(7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
 	public static final Holder<PlacedFeature> PERMIAN_DESERT_FERNS_PATCH = register("permian_desert_ferns_patch", PlantPatchFeatures.PERMIAN_DESERT_FERNS_PATCH, RarityFilter.onAverageOnceEvery(7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+
+	public static void init() {
+	}
 }

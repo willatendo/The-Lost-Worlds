@@ -13,4 +13,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class PlacedWaterFeatures {
 	public static final Holder<PlacedFeature> ANCIENT_SPRING = register("ancient_spring", WaterFeatures.ANCIENT_SPRING, CountPlacement.of(25), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(192)), BiomeFilter.biome());
+
+	public static void init() {
+	}
 }

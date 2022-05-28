@@ -11,7 +11,6 @@ import org.apache.commons.lang3.StringUtils;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -40,9 +39,5 @@ public class LostWorldsSounds {
 		SoundEvent event = new SoundEvent(LostWorldsUtils.rL(type + ".sound." + id));
 		REGISTRATE.subtitle(type + "." + id, subtile);
 		return SOUND_EVENTS.register(id, () -> event);
-	}
-
-	public static void deferred(IEventBus bus) {
-		SOUND_EVENTS.register(bus);
 	}
 }

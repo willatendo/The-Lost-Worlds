@@ -7,17 +7,17 @@ import com.mojang.serialization.Codec;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 
-public class ModBlockstateFeatureConfig implements FeatureConfiguration {
-	public static final Codec<ModBlockstateFeatureConfig> CODEC = BlockState.CODEC.fieldOf("state").xmap(ModBlockstateFeatureConfig::new, (config) -> {
+public class SuppliedBlockstateFeatureConfig implements FeatureConfiguration {
+	public static final Codec<SuppliedBlockstateFeatureConfig> CODEC = BlockState.CODEC.fieldOf("state").xmap(SuppliedBlockstateFeatureConfig::new, (config) -> {
 		return config.state.get();
 	}).codec();
 	public final Supplier<BlockState> state;
 
-	public ModBlockstateFeatureConfig(Supplier<BlockState> state) {
+	public SuppliedBlockstateFeatureConfig(Supplier<BlockState> state) {
 		this.state = state;
 	}
 
-	private ModBlockstateFeatureConfig(BlockState state) {
+	private SuppliedBlockstateFeatureConfig(BlockState state) {
 		this(() -> state);
 	}
 }

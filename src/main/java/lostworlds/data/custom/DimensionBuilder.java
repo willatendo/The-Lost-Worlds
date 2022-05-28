@@ -23,8 +23,9 @@ public class DimensionBuilder {
 	private final int minY;
 	private final TagKey<Block> infiniburn;
 	private final String effects;
+	private final DimensionBiome[] dimensionBiomes;
 
-	public DimensionBuilder(String id, boolean ultrawarm, boolean natural, float coordinateScale, boolean hasSkylight, boolean hasCeiling, int ambientLight, boolean piglinSafe, boolean bedWorks, boolean respawnAnchorWorks, boolean hasRaids, int logicalHeight, int height, int minY, TagKey<Block> infiniburn, String effects) {
+	public DimensionBuilder(String id, boolean ultrawarm, boolean natural, float coordinateScale, boolean hasSkylight, boolean hasCeiling, int ambientLight, boolean piglinSafe, boolean bedWorks, boolean respawnAnchorWorks, boolean hasRaids, int logicalHeight, int height, int minY, TagKey<Block> infiniburn, String effects, DimensionBiome... dimensionBiomes) {
 		this.id = id;
 		this.ultrawarm = ultrawarm;
 		this.natural = natural;
@@ -41,6 +42,7 @@ public class DimensionBuilder {
 		this.minY = minY;
 		this.infiniburn = infiniburn;
 		this.effects = effects;
+		this.dimensionBiomes = dimensionBiomes;
 	}
 
 	public String getId() {
@@ -82,18 +84,9 @@ public class DimensionBuilder {
 		biomeSource.addProperty("type", "minecraft:multi_noise");
 		JsonArray biomes = new JsonArray();
 		biomeSource.add("biomes", biomes);
-		JsonObject bracket = new JsonObject();
-		biomes.add(bracket);
-		bracket.addProperty("biome", "minecraft:plains");
-		JsonObject parameters = new JsonObject();
-		bracket.add("parameters", parameters);
-		parameters.addProperty("temperature", 0);
-		parameters.addProperty("humidity", 0);
-		parameters.addProperty("depth", 0);
-		parameters.addProperty("weirdness", 0);
-		parameters.addProperty("continentalness", 0);
-		parameters.addProperty("erosion", 0);
-		parameters.addProperty("offset", 0);
+		for (DimensionBiome biome : this.dimensionBiomes) {
+			biomes.add(biome.writeBiome());
+		}
 		return dimensionJson;
 	}
 }

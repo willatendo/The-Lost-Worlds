@@ -116,4 +116,7 @@ public class OreFeatures {
 
 	// Mixed Era
 	public static final Holder<ConfiguredFeature<OreConfiguration, ?>> BASALT_DIAMOND_ORE = register("basalt_diamond_ore", Feature.ORE, new OreConfiguration(BASALT, LostWorldsBlocks.BASALT_DIAMOND_ORE.getDefaultState(), 10));
+
+	public static void init() {
+	}
 }
