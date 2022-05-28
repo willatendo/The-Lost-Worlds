@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "lostworlds:block/permian_deepslate_side",
+    "end": "lostworlds:block/permian_deepslate_end"
+  }
+}

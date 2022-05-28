@@ -13,6 +13,8 @@ import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
+import lostworlds.server.dimension.LostWorldsDimensionRenderInfo;
+import lostworlds.server.dimension.LostWorldsNoiseGeneratorSettings;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.LostWorldsPOIs;
 import lostworlds.server.entity.LostWorldsVillagerProfessions;
@@ -92,7 +94,6 @@ public class LostWorldsMod {
 		LostWorldsPOIs.deferred(bus);
 		LostWorldsFeatures.deferred(bus);
 		LostWorldsStructures.deferred(bus);
-//		LostWorldsBiomes.BIOMES.register(bus);
 
 		LostWorldsTags.init();
 
@@ -131,8 +132,10 @@ public class LostWorldsMod {
 		event.enqueueWork(() -> {
 			LostWorldsStructurePecies.init();
 			LostWorldsStructureSets.init();
-
 			LostWorldsConfiguredStructures.init();
+
+			// Dimension Setup
+			LostWorldsNoiseGeneratorSettings.init();
 
 			ImmutableSet.Builder<Block> builder = ImmutableSet.builder();
 			builder.addAll(BlockEntityType.SIGN.validBlocks);
@@ -145,11 +148,12 @@ public class LostWorldsMod {
 
 	private void biomeStuff(BiomeLoadingEvent event) {
 //		EntitySpawns.init(event);
-//
+
 //		FeatureGen.init(event);
 	}
 
 	private void clientSetup(FMLClientSetupEvent event) {
+		LostWorldsDimensionRenderInfo.initClient();
 	}
 
 	@OnlyIn(Dist.CLIENT)

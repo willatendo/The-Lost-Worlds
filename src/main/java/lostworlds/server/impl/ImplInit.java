@@ -25,7 +25,8 @@ public class ImplInit {
 		SOFT_DIRT_FUNCTIONS.add(new FossilizedSkinDirtFunction());
 		SOFT_DIRT_FUNCTIONS.add(new PalaeoniscumFossilDirtFunction());
 		SOFT_DIRT_FUNCTIONS.add(new SpawnEggDirtFunction());
-		//
+
+		// APISoftStoneFunction
 		SOFT_STONE_FUNCTIONS.add(new AnomalocarisFossilStoneFunction());
 		SOFT_STONE_FUNCTIONS.add(new FossilStoneFunction());
 		SOFT_STONE_FUNCTIONS.add(new FossilizedNautilusStoneFunction());

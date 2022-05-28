@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import lostworlds.client.screen.AnalyzerScreen;
 import lostworlds.client.screen.ArchaeologyTableScreen;
 import lostworlds.client.screen.CultivatorScreen;
+import lostworlds.client.screen.DNAExtractorScreen;
 import lostworlds.client.screen.DNAInjectorScreen;
 import lostworlds.client.screen.FossilCleanerScreen;
 import lostworlds.client.screen.FossilGrinderScreen;
@@ -99,6 +100,7 @@ public class LostWorldsJeiPlugin implements IModPlugin {
 	public void registerGuiHandlers(IGuiHandlerRegistration registration) {
 		registration.addRecipeClickArea(FossilCleanerScreen.class, 75, 37, 35, 15, LostWorldsJeiConstants.FOSSIL_CLEANER_CATEGORY, LostWorldsJeiConstants.WATER_FUEL_CATEGORY);
 		registration.addRecipeClickArea(FossilGrinderScreen.class, 75, 37, 35, 15, LostWorldsJeiConstants.FOSSIL_GRINDER_CATEGORY);
+		registration.addRecipeClickArea(DNAExtractorScreen.class, 75, 38, 34, 10, LostWorldsJeiConstants.DNA_EXTRACTOR_CATEGORY);
 		registration.addRecipeClickArea(AnalyzerScreen.class, 75, 38, 34, 12, LostWorldsJeiConstants.ANALYZER_CATEGORY);
 		registration.addRecipeClickArea(DNAInjectorScreen.class, 85, 34, 16, 16, LostWorldsJeiConstants.DNA_INJECTOR_CATEGORY);
 		registration.addRecipeClickArea(CultivatorScreen.class, 76, 34, 33, 17, LostWorldsJeiConstants.CULTIVATOR_CATEGORY);

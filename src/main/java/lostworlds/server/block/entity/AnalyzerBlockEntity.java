@@ -26,6 +26,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -39,7 +40,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-public class AnalyzerBlockEntity extends BlockEntity implements Container, MenuProvider, Nameable, WorldlyContainer {
+public class AnalyzerBlockEntity extends BlockEntity implements Container, MenuProvider, Nameable, WorldlyContainer, StackedContentsCompatible {
 	private static final int[] SLOTS_FOR_UP = new int[] { 0 };
 	private static final int[] SLOTS_FOR_DOWN = new int[] { 2 };
 	private static final int[] SLOTS_FOR_SIDES = new int[] { 1 };
@@ -311,9 +312,10 @@ public class AnalyzerBlockEntity extends BlockEntity implements Container, MenuP
 		return null;
 	}
 
-	public void fillStackedContents(StackedContents helper) {
+	@Override
+	public void fillStackedContents(StackedContents contents) {
 		for (ItemStack itemstack : this.items) {
-			helper.accountStack(itemstack);
+			contents.accountStack(itemstack);
 		}
 	}
 

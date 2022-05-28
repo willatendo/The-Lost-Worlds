@@ -2,6 +2,7 @@ package lostworlds.server.menu;
 
 import lostworlds.server.block.DNAExtractorBlock;
 import lostworlds.server.block.entity.DNAExtractorBlockEntity;
+import lostworlds.server.item.AmberItem;
 import lostworlds.server.menu.recipes.DNAExtractorRecipe;
 import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import lostworlds.server.menu.slot.DNAExtractorInputSlot;
@@ -113,6 +114,6 @@ public class DNAExtractorMenu extends AbstractContainerMenu {
 	}
 
 	protected boolean canExtract(ItemStack stack) {
-		return this.level.getRecipeManager().getRecipeFor((RecipeType) this.recipeType, new SimpleContainer(stack), this.level).isPresent();
+		return this.level.getRecipeManager().getRecipeFor((RecipeType) this.recipeType, new SimpleContainer(stack), this.level).isPresent() || stack.getItem() instanceof AmberItem;
 	}
 }

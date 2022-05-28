@@ -79,7 +79,7 @@ public class FossilGrinderCategory implements IRecipeCategory<FossilGrinderRecip
 	@Override
 	public void setRecipe(IRecipeLayoutBuilder builder, FossilGrinderRecipe recipe, IFocusGroup focuses) {
 		builder.addSlot(RecipeIngredientRole.INPUT, 5, 5).addIngredients(recipe.getIngredients().get(0));
-		builder.addSlot(RecipeIngredientRole.OUTPUT, 67, 5).addItemStack(recipe.getOutputs().get(0));
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 68, 5).addItemStack(recipe.getOutputs().get(0));
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 52, 28).addItemStack(recipe.getOutputs().get(1));
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 71, 28).addItemStack(recipe.getOutputs().get(2));
 	}

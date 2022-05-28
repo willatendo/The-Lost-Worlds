@@ -21,7 +21,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class TimeMachineBlock extends Block {
-	private static final Component CONTAINER_NAME = LostWorldsUtils.tTC("container", "time_machine");
+	private static final Component CONTAINER_NAME = LostWorldsUtils.tTC("menu", "time_machine");
 	public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 12, 16);
 
 	public TimeMachineBlock(Properties properties) {

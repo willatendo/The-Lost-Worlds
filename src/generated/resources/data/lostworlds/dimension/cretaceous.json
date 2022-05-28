@@ -1,0 +1,26 @@
+{
+  "type": "lostworlds:cretaceous",
+  "forge:use_server_seed": true,
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 0,
+    "settings": "lostworlds:cretaceous_noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "minecraft:plains",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "depth": 0,
+            "weirdness": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "offset": 0
+          }
+        }
+      ]
+    }
+  }
+}

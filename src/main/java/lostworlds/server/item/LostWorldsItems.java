@@ -226,7 +226,7 @@ public class LostWorldsItems {
 			dinos.setBloodVile(() -> bloodVile.get());
 			ItemEntry<Item> dna = REGISTRATE.item(dinos.name().toLowerCase() + "_dna", Item::new).tag(LostWorldsTags.ModItemTags.DNA.tag, LostWorldsTags.ModItemTags.AMBER_RESULTS.tag).register();
 			dinos.setDNA(() -> dna.get());
-			ItemEntry<Item> dnaDisc = REGISTRATE.item(dinos.name().toLowerCase() + "_dna_disc", Item::new).properties(properties -> properties.defaultDurability(5)).tag(LostWorldsTags.ModItemTags.DNA_DISCS.tag).model(textured("storage_disc")).register();
+			ItemEntry<DNADiscItem> dnaDisc = REGISTRATE.item(dinos.name().toLowerCase() + "_dna_disc", DNADiscItem::new).properties(properties -> properties.defaultDurability(5)).tag(LostWorldsTags.ModItemTags.DNA_DISCS.tag).model(textured("storage_disc")).register();
 			dinos.setDNADisc(() -> dnaDisc.get());
 			if (!dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS) {
 				ItemEntry<Item> raw = REGISTRATE.item("raw_" + dinos.name().toLowerCase() + "_meat", Item::new).properties(properties -> properties.food(new FoodProperties.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).register();

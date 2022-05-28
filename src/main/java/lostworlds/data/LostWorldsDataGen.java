@@ -21,5 +21,6 @@ public class LostWorldsDataGen {
 		dataGenerator.addProvider(new LostWorldsBiomeTagProvider(dataGenerator, fileHelper));
 		dataGenerator.addProvider(new LostWorldsConfiguredStructureTagProvider(dataGenerator, fileHelper));
 		dataGenerator.addProvider(new LostWorldsLootProvider(dataGenerator));
+		dataGenerator.addProvider(new LostWorldsDimensionProvider(dataGenerator));
 	}
 }

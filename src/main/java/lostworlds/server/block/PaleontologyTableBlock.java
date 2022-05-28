@@ -26,7 +26,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class PaleontologyTableBlock extends Block implements SimpleWaterloggedBlock {
-	private static final Component NAME = LostWorldsUtils.tTC("container", "paleontology_table");
+	private static final Component NAME = LostWorldsUtils.tTC("menu", "paleontology_table");
 	private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
 	public PaleontologyTableBlock(Properties properties) {

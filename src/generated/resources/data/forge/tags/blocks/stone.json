@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "lostworlds:permian_stone",
+    "lostworlds:permian_deepslate",
     "lostworlds:jurassic_stone"
   ]
 }

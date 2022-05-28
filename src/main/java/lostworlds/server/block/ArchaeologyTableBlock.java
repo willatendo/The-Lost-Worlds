@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class ArchaeologyTableBlock extends Block {
-	private static final Component NAME = LostWorldsUtils.tTC("container", "archaeology_table");
+	private static final Component NAME = LostWorldsUtils.tTC("menu", "archaeology_table");
 
 	public ArchaeologyTableBlock(Properties properties) {
 		super(properties);
