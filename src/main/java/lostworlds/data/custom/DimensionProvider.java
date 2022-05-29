@@ -34,8 +34,6 @@ public abstract class DimensionProvider implements DataProvider {
 			this.saveToJson(cache, dimensionBuilder.serializeDimension(this.modid), path.resolve("data/" + this.modid + "/dimension/" + dimensionBuilder.getId() + ".json"));
 			// dimension_type.json
 			this.saveToJson(cache, dimensionBuilder.serializeDimensionType(this.modid), path.resolve("data/" + this.modid + "/dimension_type/" + dimensionBuilder.getId() + ".json"));
-//			// worldgen/noise_settings.json
-//			this.saveToJson(cache, dimensionBuilder.serializeNoiseSettings(), path.resolve("data/" + this.modid + "/worldgen/noise_settings/" + dimensionBuilder.getId() + "_noise.json"));
 		});
 	}
 

@@ -23,9 +23,9 @@ public class DimensionBuilder {
 	private final int minY;
 	private final TagKey<Block> infiniburn;
 	private final String effects;
-	private final DimensionBiome[] dimensionBiomes;
+	private final AddBiome[] dimensionBiomes;
 
-	public DimensionBuilder(String id, boolean ultrawarm, boolean natural, float coordinateScale, boolean hasSkylight, boolean hasCeiling, int ambientLight, boolean piglinSafe, boolean bedWorks, boolean respawnAnchorWorks, boolean hasRaids, int logicalHeight, int height, int minY, TagKey<Block> infiniburn, String effects, DimensionBiome... dimensionBiomes) {
+	public DimensionBuilder(String id, boolean ultrawarm, boolean natural, float coordinateScale, boolean hasSkylight, boolean hasCeiling, int ambientLight, boolean piglinSafe, boolean bedWorks, boolean respawnAnchorWorks, boolean hasRaids, int logicalHeight, int height, int minY, TagKey<Block> infiniburn, String effects, AddBiome... dimensionBiomes) {
 		this.id = id;
 		this.ultrawarm = ultrawarm;
 		this.natural = natural;
@@ -84,7 +84,7 @@ public class DimensionBuilder {
 		biomeSource.addProperty("type", "minecraft:multi_noise");
 		JsonArray biomes = new JsonArray();
 		biomeSource.add("biomes", biomes);
-		for (DimensionBiome biome : this.dimensionBiomes) {
+		for (AddBiome biome : this.dimensionBiomes) {
 			biomes.add(biome.writeBiome());
 		}
 		return dimensionJson;

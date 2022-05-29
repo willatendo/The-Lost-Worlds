@@ -38,6 +38,7 @@ import lostworlds.server.util.Version;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
 import lostworlds.server.world.EntitySpawns;
 import lostworlds.server.world.FeatureGen;
+import lostworlds.server.world.terrablender.LostWorldsTerrablender;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -72,6 +73,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.items.ItemHandlerHelper;
 import software.bernie.geckolib3.GeckoLib;
+import terrablender.core.TerraBlender;
 
 @Mod(LostWorldsUtils.ID)
 public class LostWorldsMod {
@@ -133,6 +135,10 @@ public class LostWorldsMod {
 		LostWorldsUtils.BLOCKS.setIcon(() -> LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.asStack());
 
 		event.enqueueWork(() -> {
+			if (LostWorldsUtils.modLoaded(TerraBlender.MOD_ID)) {
+				LostWorldsTerrablender.init();
+			}
+
 			LostWorldsConfiguredFeatures.init();
 			LostWorldsPlacedFeatures.init();
 

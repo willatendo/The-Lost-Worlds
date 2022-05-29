@@ -23,7 +23,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_araucaria_forest"
+          "biome": "lostworlds:jurassic_araucaria_forest"
         }
       }
     },
@@ -31,7 +31,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_conifer_forest"
+          "biome": "lostworlds:jurassic_conifer_forest"
         }
       }
     },
@@ -39,7 +39,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_ginkgo_forest"
+          "biome": "lostworlds:jurassic_ginkgo_forest"
         }
       }
     },
@@ -47,7 +47,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_redwoods_forest"
+          "biome": "lostworlds:jurassic_redwoods_forest"
         }
       }
     },
@@ -55,7 +55,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_plains"
+          "biome": "lostworlds:jurassic_plains"
         }
       }
     },
@@ -63,7 +63,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_windswept_hills"
+          "biome": "lostworlds:jurassic_windswept_hills"
         }
       }
     },
@@ -71,7 +71,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_erroded_windswept_hills"
+          "biome": "lostworlds:jurassic_erroded_windswept_hills"
         }
       }
     },
@@ -79,7 +79,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_volcanic_range"
+          "biome": "lostworlds:jurassic_volcanic_range"
         }
       }
     },
@@ -87,7 +87,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_desert"
+          "biome": "lostworlds:jurassic_desert"
         }
       }
     },
@@ -95,7 +95,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_marsh"
+          "biome": "lostworlds:jurassic_marsh"
         }
       }
     },
@@ -103,7 +103,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_swamp"
+          "biome": "lostworlds:jurassic_swamp"
         }
       }
     },
@@ -111,7 +111,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_fen"
+          "biome": "lostworlds:jurassic_fen"
         }
       }
     },
@@ -119,7 +119,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_bog"
+          "biome": "lostworlds:jurassic_bog"
         }
       }
     },
@@ -127,7 +127,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_river"
+          "biome": "lostworlds:jurassic_river"
         }
       }
     },
@@ -135,7 +135,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_ocean"
+          "biome": "lostworlds:jurassic_ocean"
         }
       }
     },
@@ -143,7 +143,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:warm_jurassic_ocean"
+          "biome": "lostworlds:warm_jurassic_ocean"
         }
       }
     },
@@ -151,7 +151,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:jurassic_shore"
+          "biome": "lostworlds:jurassic_shore"
         }
       }
     }

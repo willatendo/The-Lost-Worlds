@@ -30,10 +30,10 @@ public class TimeBookItem extends ProjectileWeaponItem {
 	private final TimeEras era;
 	private final ResourceKey<Level> levelToTransportTo;
 
-	public TimeBookItem(Properties properites, TimeEras eras/* , ResourceKey<Level> level */) {
+	public TimeBookItem(Properties properites, TimeEras eras, ResourceKey<Level> level) {
 		super(properites);
 		this.era = eras;
-		this.levelToTransportTo = Level.OVERWORLD;
+		this.levelToTransportTo = level;
 	}
 
 	public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int time) {

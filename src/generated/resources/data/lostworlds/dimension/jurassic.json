@@ -1,15 +1,15 @@
 {
-  "type": "lostworlds:cretaceous",
+  "type": "lostworlds:jurassic",
   "forge:use_server_seed": true,
   "generator": {
     "type": "minecraft:noise",
     "seed": 0,
-    "settings": "lostworlds:cretaceous_noise",
+    "settings": "lostworlds:jurassic_noise",
     "biome_source": {
       "type": "minecraft:multi_noise",
       "biomes": [
         {
-          "biome": "lostworlds:cretaceous_araucaria_forest",
+          "biome": "lostworlds:jurassic_araucaria_forest",
           "parameters": {
             "temperature": 0.0,
             "humidity": 0.0,

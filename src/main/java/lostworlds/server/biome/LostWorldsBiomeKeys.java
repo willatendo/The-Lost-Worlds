@@ -1,8 +1,8 @@
 package lostworlds.server.biome;
 
+import lostworlds.server.LostWorldsUtils;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 
 public class LostWorldsBiomeKeys {
@@ -119,6 +119,6 @@ public class LostWorldsBiomeKeys {
 	public static final ResourceKey<Biome> VOLCANO = register("volcano");
 
 	private static ResourceKey<Biome> register(String id) {
-		return ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(id));
+		return ResourceKey.create(Registry.BIOME_REGISTRY, LostWorldsUtils.rL(id));
 	}
 }

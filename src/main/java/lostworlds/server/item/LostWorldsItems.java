@@ -13,6 +13,7 @@ import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.Plants;
 import lostworlds.server.block.Trees;
 import lostworlds.server.block.utils.Foods;
+import lostworlds.server.dimension.LostWorldsDimensions;
 import lostworlds.server.entity.terrestrial.PrehistoricMob;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.entity.utils.enums.TimeEras;
@@ -86,24 +87,9 @@ public class LostWorldsItems {
 	public static final ItemEntry<TabletItem> TABLET = REGISTRATE.item("tablet", TabletItem::new).properties(Properties -> Properties.stacksTo(1)).recipe((item, provider) -> ShapedRecipeBuilder.shaped(item.get()).pattern("#@#").pattern("#$#").define('#', Items.IRON_INGOT).define('@', LostWorldsItems.COMPUTER_SCREEN.get()).define('$', LostWorldsItems.COMPUTER_CORE.get()).unlockedBy("has_item", provider.has(Items.IRON_INGOT)).save(provider)).register();
 	public static final ItemEntry<Item> CONTRACEPTIVES = REGISTRATE.item("contraceptives", Item::new).register();
 
-	public static final ItemEntry<TimeBookItem> PERMIAN_PERIOD_TIME_BOOK = REGISTRATE.item("permian_period_time_book", properties -> new TimeBookItem(properties, TimeEras.PERMIAN_PERIOD/*
-																																															 * ,
-																																															 * LostWorldsDimensions
-																																															 * .
-																																															 * PERMIAN_WORLD
-																																															 */)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.has(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register(),
-			JURASSIC_PERIOD_TIME_BOOK = REGISTRATE.item("jurassic_period_time_book", properties -> new TimeBookItem(properties, TimeEras.JURASSIC_PERIOD/*
-																																						 * ,
-																																						 * LostWorldsDimensions
-																																						 * .
-																																						 * JURASSIC_WORLD
-																																						 */)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.has(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register(),
-			CRETACEOUS_PERIOD_TIME_BOOK = REGISTRATE.item("cretaceous_period_time_book", properties -> new TimeBookItem(properties, TimeEras.CRETACEOUS_PERIOD/*
-																																								 * ,
-																																								 * LostWorldsDimensions
-																																								 * .
-																																								 * CRETACEOUS_WORLD
-																																								 */)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.has(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register();
+	public static final ItemEntry<TimeBookItem> PERMIAN_PERIOD_TIME_BOOK = REGISTRATE.item("permian_period_time_book", properties -> new TimeBookItem(properties, TimeEras.PERMIAN_PERIOD, LostWorldsDimensions.PERMIAN_LEVEL)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.has(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register(),
+			JURASSIC_PERIOD_TIME_BOOK = REGISTRATE.item("jurassic_period_time_book", properties -> new TimeBookItem(properties, TimeEras.JURASSIC_PERIOD, LostWorldsDimensions.JURASSIC_LEVEL)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.has(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register(),
+			CRETACEOUS_PERIOD_TIME_BOOK = REGISTRATE.item("cretaceous_period_time_book", properties -> new TimeBookItem(properties, TimeEras.CRETACEOUS_PERIOD, LostWorldsDimensions.CRETACEOUS_LEVEL)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.has(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register();
 
 	public static final ItemEntry<Item> MUD_BALL = REGISTRATE.item("mud_ball", Item::new).register();
 
