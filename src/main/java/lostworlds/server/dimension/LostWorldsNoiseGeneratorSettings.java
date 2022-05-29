@@ -2,9 +2,10 @@ package lostworlds.server.dimension;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
+import lostworlds.server.dimension.surface.CretaceousSurfaceRules;
+import lostworlds.server.dimension.surface.JurassicSurfaceRules;
 import lostworlds.server.dimension.surface.PermianSurfaceRules;
 import net.minecraft.core.Registry;
-import net.minecraft.data.worldgen.SurfaceRuleData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
@@ -18,12 +19,12 @@ public class LostWorldsNoiseGeneratorSettings {
 
 	public static NoiseGeneratorSettings cretaceous() {
 		NoiseSettings noisesettings = NoiseSettings.overworldNoiseSettings(false);
-		return new NoiseGeneratorSettings(noisesettings, Blocks.STONE.defaultBlockState(), Blocks.WATER.defaultBlockState(), NoiseRouterData.overworld(noisesettings, false), SurfaceRuleData.overworld(), 63, false, true, true, true);
+		return new NoiseGeneratorSettings(noisesettings, Blocks.STONE.defaultBlockState(), Blocks.WATER.defaultBlockState(), NoiseRouterData.overworld(noisesettings, false), CretaceousSurfaceRules.cretaceous(), 63, false, true, true, true);
 	}
 
 	public static NoiseGeneratorSettings jurassic() {
 		NoiseSettings noisesettings = NoiseSettings.overworldNoiseSettings(false);
-		return new NoiseGeneratorSettings(noisesettings, LostWorldsBlocks.JURASSIC_STONE.getDefaultState(), Blocks.WATER.defaultBlockState(), NoiseRouterData.overworld(noisesettings, false), SurfaceRuleData.overworld(), 63, false, true, true, true);
+		return new NoiseGeneratorSettings(noisesettings, LostWorldsBlocks.JURASSIC_STONE.getDefaultState(), Blocks.WATER.defaultBlockState(), NoiseRouterData.overworld(noisesettings, false), JurassicSurfaceRules.jurassic(), 63, false, true, true, true);
 	}
 
 	public static NoiseGeneratorSettings permian() {

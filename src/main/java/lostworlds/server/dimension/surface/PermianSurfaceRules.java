@@ -3,6 +3,8 @@ package lostworlds.server.dimension.surface;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 
+import lostworlds.api.APIModSurfaceRuleAdder;
+import lostworlds.api.APIRegistry;
 import lostworlds.server.biome.LostWorldsBiomeKeys;
 import lostworlds.server.block.LostWorldsBlocks;
 import net.minecraft.world.level.levelgen.Noises;
@@ -44,10 +46,13 @@ public class PermianSurfaceRules extends SurfaceRuleParts {
 		SurfaceRules.RuleSource global = SurfaceRules.sequence(plains, desert, floodBasalts, ashyMedows, windsweptHills, marsh, SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.sequence(coniferForest, ginkgoForest, driedPlains, river, ocean, warmOcean, shore)), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, DIRT));
 
 		Builder<SurfaceRules.RuleSource> builder = ImmutableList.builder();
-		builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.0D), mossySoilOrDirt), podzolOrDirt)));
+		builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK));
+		builder.add(SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), global));
 
-		SurfaceRules.RuleSource doRules = SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), global);
-		builder.add(doRules);
+		for (APIModSurfaceRuleAdder adder : APIRegistry.PERMIAN_SURFACE_RULES) {
+			builder.add(adder.doSurfaceRules());
+		}
+
 		builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8)), DEEPSLATE));
 		return SurfaceRules.sequence(builder.build().toArray((rules) -> {
 			return new SurfaceRules.RuleSource[rules];

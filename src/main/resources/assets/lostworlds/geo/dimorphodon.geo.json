@@ -1,0 +1,316 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.dimorphodon",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Dimorphodon",
+					"pivot": [
+						0,
+						5,
+						-1
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Dimorphodon",
+					"pivot": [
+						0,
+						5,
+						-1
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2.5,
+								3,
+								-5
+							],
+							"size": [
+								5,
+								4,
+								7
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [
+						0,
+						6,
+						-5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.5,
+								5,
+								-12
+							],
+							"size": [
+								3,
+								3,
+								7
+							],
+							"uv": [
+								0,
+								11
+							]
+						}
+					]
+				},
+				{
+					"name": "rightwing",
+					"parent": "body",
+					"pivot": [
+						-2.5,
+						4.25,
+						-2.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3.5,
+								0,
+								-4
+							],
+							"size": [
+								1,
+								5,
+								3
+							],
+							"uv": [
+								20,
+								11
+							]
+						}
+					]
+				},
+				{
+					"name": "rightwing2",
+					"parent": "rightwing",
+					"pivot": [
+						-3.5,
+						0,
+						-2.5
+					],
+					"rotation": [
+						0,
+						0,
+						-5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3.5,
+								0,
+								-3
+							],
+							"size": [
+								0,
+								11,
+								2
+							],
+							"uv": [
+								18,
+								19
+							]
+						}
+					]
+				},
+				{
+					"name": "leftwing",
+					"parent": "body",
+					"pivot": [
+						2.5,
+						4.25,
+						-2.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								2.5,
+								0,
+								-4
+							],
+							"size": [
+								1,
+								5,
+								3
+							],
+							"uv": [
+								20,
+								11
+							],
+							"mirror": true
+						}
+					]
+				},
+				{
+					"name": "leftwing2",
+					"parent": "leftwing",
+					"pivot": [
+						3.5,
+						0,
+						-2.5
+					],
+					"rotation": [
+						0,
+						0,
+						5
+					],
+					"cubes": [
+						{
+							"origin": [
+								3.5,
+								0,
+								-3
+							],
+							"size": [
+								0,
+								11,
+								2
+							],
+							"uv": [
+								18,
+								19
+							],
+							"mirror": true
+						}
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "body",
+					"pivot": [
+						0,
+						4.5,
+						2
+					],
+					"cubes": [
+						{
+							"origin": [
+								0,
+								3,
+								2
+							],
+							"size": [
+								0,
+								3,
+								9
+							],
+							"uv": [
+								0,
+								12
+							]
+						}
+					]
+				},
+				{
+					"name": "leftleg",
+					"parent": "Dimorphodon",
+					"pivot": [
+						2,
+						3,
+						1
+					],
+					"cubes": [
+						{
+							"origin": [
+								1.5,
+								0,
+								1
+							],
+							"size": [
+								1,
+								3,
+								0
+							],
+							"uv": [
+								0,
+								3
+							]
+						},
+						{
+							"origin": [
+								1.5,
+								0,
+								-1
+							],
+							"size": [
+								1,
+								0,
+								2
+							],
+							"uv": [
+								0,
+								2
+							]
+						}
+					]
+				},
+				{
+					"name": "rightleg",
+					"parent": "Dimorphodon",
+					"pivot": [
+						-2,
+						3,
+						1
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2.5,
+								0,
+								1
+							],
+							"size": [
+								1,
+								3,
+								0
+							],
+							"uv": [
+								0,
+								0
+							]
+						},
+						{
+							"origin": [
+								-2.5,
+								0,
+								-1
+							],
+							"size": [
+								1,
+								0,
+								2
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

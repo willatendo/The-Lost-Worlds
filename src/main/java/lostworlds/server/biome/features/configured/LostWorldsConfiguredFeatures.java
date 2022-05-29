@@ -18,8 +18,8 @@ public class LostWorldsConfiguredFeatures {
 	public static final Holder<ConfiguredFeature<SuppliedBlockstateFeatureConfig, ?>> JURASSIC_ROCK = register("jurassic_rock", LostWorldsFeatures.MOD_ROCK, new SuppliedBlockstateFeatureConfig(() -> LostWorldsBlocks.JURASSIC_COBBLESTONE.getDefaultState()));
 	public static final Holder<ConfiguredFeature<SuppliedBlockstateFeatureConfig, ?>> CRETACEOUS_ROCK = register("cretaceous_rock", LostWorldsFeatures.MOD_ROCK, new SuppliedBlockstateFeatureConfig(() -> Blocks.COBBLESTONE.defaultBlockState()));
 	public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> ASH_LAYER = register("ash_layer", LostWorldsFeatures.ASH_LAYER);
-	public static final Holder<ConfiguredFeature<CountConfiguration, ?>> GEYSER_BLOCK = register("geyser_block", LostWorldsFeatures.GEYSER, new CountConfiguration(20));
-	public static final Holder<ConfiguredFeature<CountConfiguration, ?>> SPONGE_COLONEY = register("sponge_coloney", LostWorldsFeatures.SPONGE_COLONEY, new CountConfiguration(20));
+	public static final Holder<ConfiguredFeature<CountConfiguration, ?>> GEYSER_BLOCK = register("geyser_block", LostWorldsFeatures.GEYSER, new CountConfiguration(2));
+	public static final Holder<ConfiguredFeature<CountConfiguration, ?>> SPONGE_COLONEY = register("sponge_coloney", LostWorldsFeatures.SPONGE_COLONEY, new CountConfiguration(2));
 
 	public static Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> register(String id, Feature<NoneFeatureConfiguration> feature) {
 		return FeatureUtils.register("lostworlds:" + id, feature);

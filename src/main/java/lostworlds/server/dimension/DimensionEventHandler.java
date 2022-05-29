@@ -19,6 +19,16 @@ public class DimensionEventHandler {
 					((DerivedLevelData) level.getLevelData()).wrapped.setDayTime(event.getNewTime());
 				}
 			}
+			if (serverlevel.dimension() == LostWorldsDimensions.JURASSIC_LEVEL) {
+				if (level.getLevelData() instanceof DerivedLevelData) {
+					((DerivedLevelData) level.getLevelData()).wrapped.setDayTime(event.getNewTime());
+				}
+			}
+			if (serverlevel.dimension() == LostWorldsDimensions.PERMIAN_LEVEL) {
+				if (level.getLevelData() instanceof DerivedLevelData) {
+					((DerivedLevelData) level.getLevelData()).wrapped.setDayTime(event.getNewTime());
+				}
+			}
 		}
 	}
 }

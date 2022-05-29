@@ -17,6 +17,7 @@ import lostworlds.server.biome.features.placed.LostWorldsPlacedFeatures;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
 import lostworlds.server.dimension.LostWorldsDimensionRenderInfo;
+import lostworlds.server.dimension.LostWorldsNoise;
 import lostworlds.server.dimension.LostWorldsNoiseGeneratorSettings;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.LostWorldsPOIs;
@@ -147,6 +148,7 @@ public class LostWorldsMod {
 			LostWorldsConfiguredStructures.init();
 
 			LostWorldsNoiseGeneratorSettings.init();
+			LostWorldsNoise.init();
 
 			ImmutableSet.Builder<Block> builder = ImmutableSet.builder();
 			builder.addAll(BlockEntityType.SIGN.validBlocks);

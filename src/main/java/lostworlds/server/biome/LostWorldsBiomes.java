@@ -41,8 +41,10 @@ public class LostWorldsBiomes {
 	public static final RegistryObject<Biome> PERMIAN_RIVER = register("permian_river", () -> PermianBiomes.permianRiver());
 
 	public static final RegistryObject<Biome> PERMIAN_OCEAN = register("permian_ocean", () -> PermianBiomes.permianOcean());
+	public static final RegistryObject<Biome> DEEP_PERMIAN_OCEAN = register("deep_permian_ocean", () -> PermianBiomes.permianOcean());
 
 	public static final RegistryObject<Biome> WARM_PERMIAN_OCEAN = register("warm_permian_ocean", () -> PermianBiomes.permianWarmOcean());
+	public static final RegistryObject<Biome> DEEP_WARM_PERMIAN_OCEAN = register("deep_warm_permian_ocean", () -> PermianBiomes.permianWarmOcean());
 
 	public static final RegistryObject<Biome> PERMIAN_SHORE = register("permian_shore", () -> PermianBiomes.permianShore());
 

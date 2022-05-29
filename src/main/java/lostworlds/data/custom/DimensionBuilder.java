@@ -23,9 +23,9 @@ public class DimensionBuilder {
 	private final int minY;
 	private final TagKey<Block> infiniburn;
 	private final String effects;
-	private final AddBiome[] dimensionBiomes;
+	private final BiomeSource[] dimensionBiomes;
 
-	public DimensionBuilder(String id, boolean ultrawarm, boolean natural, float coordinateScale, boolean hasSkylight, boolean hasCeiling, int ambientLight, boolean piglinSafe, boolean bedWorks, boolean respawnAnchorWorks, boolean hasRaids, int logicalHeight, int height, int minY, TagKey<Block> infiniburn, String effects, AddBiome... dimensionBiomes) {
+	public DimensionBuilder(String id, boolean ultrawarm, boolean natural, float coordinateScale, boolean hasSkylight, boolean hasCeiling, int ambientLight, boolean piglinSafe, boolean bedWorks, boolean respawnAnchorWorks, boolean hasRaids, int logicalHeight, int height, int minY, TagKey<Block> infiniburn, String effects, BiomeSource... dimensionBiomes) {
 		this.id = id;
 		this.ultrawarm = ultrawarm;
 		this.natural = natural;
@@ -82,10 +82,14 @@ public class DimensionBuilder {
 		JsonObject biomeSource = new JsonObject();
 		generator.add("biome_source", biomeSource);
 		biomeSource.addProperty("type", "minecraft:multi_noise");
-		JsonArray biomes = new JsonArray();
-		biomeSource.add("biomes", biomes);
-		for (AddBiome biome : this.dimensionBiomes) {
-			biomes.add(biome.writeBiome());
+		if (this.dimensionBiomes[0] instanceof AddPreset preset) {
+			biomeSource.addProperty("preset", preset.preset().name.toString());
+		} else {
+			JsonArray biomes = new JsonArray();
+			biomeSource.add("biomes", biomes);
+			for (BiomeSource biome : this.dimensionBiomes) {
+				biomes.add(biome.writeBiome());
+			}
 		}
 		return dimensionJson;
 	}

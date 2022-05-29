@@ -19,15 +19,23 @@ public class BiomeMappings {
 	private static final Map<ResourceLocation, Supplier<Biome>> biomeRemappings = new HashMap<ResourceLocation, Supplier<Biome>>() {
 		private static final long serialVersionUID = 2729763913422843325L;
 		{
+			// Pre Alpha 11
 			put(LostWorldsUtils.rL("overworld_araucaria_forest"), () -> LostWorldsBiomes.ARAUCARIA_FOREST.get());
 			put(LostWorldsUtils.rL("overworld_araucaria_forest_hills"), () -> LostWorldsBiomes.ARAUCARIA_FOREST.get());
 			put(LostWorldsUtils.rL("overworld_conifer_forest"), () -> LostWorldsBiomes.CONIFER_FOREST.get());
 			put(LostWorldsUtils.rL("overworld_conifer_forest_hills"), () -> LostWorldsBiomes.CONIFER_FOREST.get());
-			put(LostWorldsUtils.rL("conifer_forest_hills"), () -> LostWorldsBiomes.CONIFER_FOREST.get());
 			put(LostWorldsUtils.rL("overworld_ginkgo_forest"), () -> LostWorldsBiomes.GINKGO_FOREST.get());
 			put(LostWorldsUtils.rL("overworld_ginkgo_forest_hills"), () -> LostWorldsBiomes.GINKGO_FOREST.get());
 			put(LostWorldsUtils.rL("ginkgo_forest_hills"), () -> LostWorldsBiomes.GINKGO_FOREST.get());
 			put(LostWorldsUtils.rL("permian_flood_basalt_plains"), () -> LostWorldsBiomes.PERMIAN_FLOOD_BASALTS.get());
+			// Pre Alpha 11.1
+			put(LostWorldsUtils.rL("permian_conifer_forest_hills"), () -> LostWorldsBiomes.PERMIAN_CONIFER_FOREST.get());
+			put(LostWorldsUtils.rL("permian_ginkgo_forest_hills"), () -> LostWorldsBiomes.PERMIAN_GINKGO_FOREST.get());
+			put(LostWorldsUtils.rL("permian_plains_hills"), () -> LostWorldsBiomes.PERMIAN_PLAINS.get());
+			put(LostWorldsUtils.rL("permian_dried_plains_hills"), () -> LostWorldsBiomes.PERMIAN_DRIED_PLAINS.get());
+			put(LostWorldsUtils.rL("permian_desert_hills"), () -> LostWorldsBiomes.PERMIAN_DESERT.get());
+			put(LostWorldsUtils.rL("permian_mountains"), () -> LostWorldsBiomes.PERMIAN_WINDSWEPT_HILLS.get());
+			put(LostWorldsUtils.rL("warm_deep_permian_ocean"), () -> LostWorldsBiomes.DEEP_WARM_PERMIAN_OCEAN.get());
 		}
 	};
 

@@ -27,8 +27,10 @@ public class LostWorldsBiomeKeys {
 	public static final ResourceKey<Biome> PERMIAN_RIVER = register("permian_river");
 
 	public static final ResourceKey<Biome> PERMIAN_OCEAN = register("permian_ocean");
+	public static final ResourceKey<Biome> DEEP_PERMIAN_OCEAN = register("deep_permian_ocean");
 
 	public static final ResourceKey<Biome> WARM_PERMIAN_OCEAN = register("warm_permian_ocean");
+	public static final ResourceKey<Biome> DEEP_WARM_PERMIAN_OCEAN = register("deep_warm_permian_ocean");
 
 	public static final ResourceKey<Biome> PERMIAN_SHORE = register("permian_shore");
 

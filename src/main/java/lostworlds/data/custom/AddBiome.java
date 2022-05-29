@@ -5,7 +5,8 @@ import com.google.gson.JsonObject;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 
-public record AddBiome(ResourceKey<Biome> biome, ClimateData parameters) {
+public record AddBiome(ResourceKey<Biome> biome, ClimateData parameters) implements BiomeSource {
+	@Override
 	public JsonObject writeBiome() {
 		JsonObject biome = new JsonObject();
 		biome.addProperty("biome", this.biome.location().toString());
