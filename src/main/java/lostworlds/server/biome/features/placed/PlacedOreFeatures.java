@@ -7,6 +7,7 @@ import java.util.List;
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.biome.features.configured.OreFeatures;
 import net.minecraft.core.Holder;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.levelgen.placement.CountPlacement;
@@ -47,14 +48,24 @@ public class PlacedOreFeatures {
 	// Permian
 	public static final Holder<PlacedFeature> PERMIAN_MAGMA_ORE = register("permian_magma_ore", OreFeatures.PERMIAN_MAGMA_ORE, commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.absolute(27), VerticalAnchor.absolute(36))));
 
-	public static final Holder<PlacedFeature> PERMIAN_COAL_ORE = register("permian_coal_ore", OreFeatures.PERMIAN_COAL_ORE, commonOrePlacement(20, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128))));
-	public static final Holder<PlacedFeature> PERMIAN_IRON_ORE = register("permian_iron_ore", OreFeatures.PERMIAN_IRON_ORE, commonOrePlacement(20, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(64))));
-	public static final Holder<PlacedFeature> PERMIAN_GOLD_ORE = register("permian_gold_ore", OreFeatures.PERMIAN_GOLD_ORE, commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32))));
-	public static final Holder<PlacedFeature> PERMIAN_REDSTONE_ORE = register("permian_redstone_ore", OreFeatures.PERMIAN_REDSTONE_ORE, commonOrePlacement(8, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(16))));
-	public static final Holder<PlacedFeature> PERMIAN_DIAMOND_ORE = register("permian_diamond_ore", OreFeatures.PERMIAN_DIAMOND_ORE, commonOrePlacement(1, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(16))));
-	public static final Holder<PlacedFeature> PERMIAN_LAPIS_ORE = register("permian_lapis_ore", OreFeatures.PERMIAN_LAPIS_ORE, commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(16))));
-	public static final Holder<PlacedFeature> PERMIAN_EMERALD_ORE = register("permian_emerald_ore", OreFeatures.PERMIAN_EMERALD_ORE, commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128))));
-	public static final Holder<PlacedFeature> PERMIAN_COPPER_ORE = register("permian_copper_ore", OreFeatures.PERMIAN_COPPER_ORE, commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.absolute(50))));
+	public static final Holder<PlacedFeature> PERMIAN_COAL_ORE_UPPER = register("permian_coal_ore_upper", OreFeatures.PERMIAN_COAL_ORE, commonOrePlacement(30, HeightRangePlacement.uniform(VerticalAnchor.absolute(136), VerticalAnchor.top())));
+	public static final Holder<PlacedFeature> PERMIAN_COAL_ORE_LOWER = register("permian_coal_ore_lower", OreFeatures.PERMIAN_COAL_ORE_BURIED, commonOrePlacement(20, HeightRangePlacement.triangle(VerticalAnchor.absolute(0), VerticalAnchor.absolute(192))));
+	public static final Holder<PlacedFeature> PERMIAN_IRON_ORE_UPPER = register("permian_iron_ore_upper", OreFeatures.PERMIAN_IRON_ORE, commonOrePlacement(90, HeightRangePlacement.triangle(VerticalAnchor.absolute(80), VerticalAnchor.absolute(384))));
+	public static final Holder<PlacedFeature> PERMIAN_IRON_ORE_MIDDLE = register("permian_iron_ore_middle", OreFeatures.PERMIAN_IRON_ORE, commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56))));
+	public static final Holder<PlacedFeature> PERMIAN_IRON_ORE_SMALL = register("permian_iron_ore_small", OreFeatures.PERMIAN_IRON_ORE_SMALL, commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(72))));
+	public static final Holder<PlacedFeature> PERMIAN_GOLD_ORE_EXTRA = register("permian_gold_ore_extra", OreFeatures.PERMIAN_GOLD_ORE, commonOrePlacement(50, HeightRangePlacement.uniform(VerticalAnchor.absolute(32), VerticalAnchor.absolute(256))));
+	public static final Holder<PlacedFeature> PERMIAN_GOLD_ORE = register("permian_gold_ore", OreFeatures.PERMIAN_GOLD_ORE_BURIED, commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(32))));
+	public static final Holder<PlacedFeature> PERMIAN_GOLD_ORE_LOWER = register("permian_gold_ore_lower", OreFeatures.PERMIAN_GOLD_ORE_BURIED, orePlacement(CountPlacement.of(UniformInt.of(0, 1)), HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-48))));
+	public static final Holder<PlacedFeature> PERMIAN_REDSTONE_ORE = register("permian_redstone_ore", OreFeatures.PERMIAN_REDSTONE_ORE, commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(15))));
+	public static final Holder<PlacedFeature> PERMIAN_REDSTONE_ORE_LOWER = register("permian_redstone_ore_lower", OreFeatures.PERMIAN_REDSTONE_ORE, commonOrePlacement(8, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(32))));
+	public static final Holder<PlacedFeature> PERMIAN_DIAMOND_ORE = register("permian_diamond_ore", OreFeatures.PERMIAN_DIAMOND_ORE_SMALL, commonOrePlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80))));
+	public static final Holder<PlacedFeature> PERMIAN_DIAMOND_ORE_LARGE = register("permian_diamond_ore_large", OreFeatures.PERMIAN_DIAMOND_ORE_LARGE, rareOrePlacement(9, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80))));
+	public static final Holder<PlacedFeature> PERMIAN_DIAMOND_ORE_BURIED = register("permian_diamond_ore_buried", OreFeatures.PERMIAN_DIAMOND_ORE_BURIED, commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80))));
+	public static final Holder<PlacedFeature> PERMIAN_LAPIS_ORE = register("permian_lapis_ore", OreFeatures.PERMIAN_LAPIS_ORE, commonOrePlacement(2, HeightRangePlacement.triangle(VerticalAnchor.absolute(-32), VerticalAnchor.absolute(32))));
+	public static final Holder<PlacedFeature> PERMIAN_LAPIS_ORE_BURIED = register("permian_lapis_ore_buried", OreFeatures.PERMIAN_LAPIS_ORE_BURIED, commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(64))));
+	public static final Holder<PlacedFeature> PERMIAN_EMERALD_ORE = register("permian_emerald_ore", OreFeatures.PERMIAN_EMERALD_ORE, commonOrePlacement(100, HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(480))));
+	public static final Holder<PlacedFeature> PERMIAN_COPPER_ORE = register("permian_copper_ore", OreFeatures.PERMIAN_COPPER_ORE_SMALL, commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(112))));
+	public static final Holder<PlacedFeature> PERMIAN_COPPER_ORE_LARGE = register("permian_copper_ore_large", OreFeatures.PERMIAN_COPPER_ORE_LARGE, commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(112))));
 
 	public static final Holder<PlacedFeature> PERMIAN_DIRT_ORE = register("permian_dirt_ore", OreFeatures.PERMIAN_DIRT_ORE, commonOrePlacement(7, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
 	public static final Holder<PlacedFeature> PERMIAN_GRAVEL_ORE = register("permian_gravel_ore", OreFeatures.PERMIAN_GRAVEL_ORE, commonOrePlacement(14, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));

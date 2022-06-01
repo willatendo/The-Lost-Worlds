@@ -17,7 +17,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(2.0F));
 
-		return biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 2.0F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 2.0F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicAraucariaForest() {
@@ -29,7 +29,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.8F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicConiferForest() {
@@ -41,7 +41,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.8F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicGinkgoForest() {
@@ -53,7 +53,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.8F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicRedwoodsForest() {
@@ -65,7 +65,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.5F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.5F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicWindsweptHills() {
@@ -77,7 +77,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.5F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.EXTREME_HILLS, 0.8F, 0.5F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.EXTREME_HILLS, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicVolcanicRange() {
@@ -89,7 +89,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(2.5F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.EXTREME_HILLS, 0.8F, 2.5F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.EXTREME_HILLS, 0.8F, 2.5F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicOcean() {
@@ -101,7 +101,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.5F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicWarmOcean() {
@@ -113,7 +113,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(WARM_OCEAN_WATER_COLOUR).waterFogColor(WARM_OCEAN_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicPlains() {
@@ -125,7 +125,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicRiver() {
@@ -137,7 +137,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.5F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.RIVER, 0.8F, 0.5F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.RIVER, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicShore() {
@@ -149,7 +149,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.5F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.BEACH, 0.8F, 0.5F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.BEACH, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicMarsh() {
@@ -161,7 +161,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicSwamp() {
@@ -173,7 +173,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicFen() {
@@ -185,7 +185,7 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome jurassicBog() {
@@ -197,6 +197,6 @@ public class JurassicBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 }

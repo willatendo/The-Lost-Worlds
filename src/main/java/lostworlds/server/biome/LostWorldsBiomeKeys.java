@@ -34,6 +34,14 @@ public class LostWorldsBiomeKeys {
 
 	public static final ResourceKey<Biome> PERMIAN_SHORE = register("permian_shore");
 
+	public static final ResourceKey<Biome> PERMIAN_DRIPSTONE_CAVES = register("permian_dripstone_caves");
+
+	public static final ResourceKey<Biome> PERMIAN_GROVE = register("permian_grove");
+	public static final ResourceKey<Biome> PERMIAN_SNOWY_SLOPES = register("permian_snowy_slopes");
+	public static final ResourceKey<Biome> PERMIAN_FROZEN_PEAKS = register("permian_frozen_peaks");
+	public static final ResourceKey<Biome> PERMIAN_JAGGED_PEAKS = register("permian_jagged_peaks");
+	public static final ResourceKey<Biome> PERMIAN_STONY_PEAKS = register("permian_stony_peaks");
+
 	// Jurassic
 	public static final ResourceKey<Biome> JURASSIC_ARAUCARIA_FOREST = register("jurassic_araucaria_forest");
 

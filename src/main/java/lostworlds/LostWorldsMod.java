@@ -132,9 +132,6 @@ public class LostWorldsMod {
 	private void commonSetup(FMLCommonSetupEvent event) {
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), LostWorldsItems.CONTRACEPTIVES.get().getDefaultInstance());
 
-		LostWorldsUtils.ITEMS.setIcon(() -> LostWorldsItems.LOST_WORLDS_LEXICON.asStack());
-		LostWorldsUtils.BLOCKS.setIcon(() -> LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.asStack());
-
 		event.enqueueWork(() -> {
 			if (LostWorldsUtils.modLoaded(TerraBlender.MOD_ID)) {
 				LostWorldsTerrablender.init();

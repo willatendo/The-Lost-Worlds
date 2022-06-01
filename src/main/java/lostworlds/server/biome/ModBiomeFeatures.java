@@ -6,7 +6,9 @@ import lostworlds.server.biome.features.placed.PlacedPlantPatchFeatures;
 import lostworlds.server.biome.features.placed.PlacedTreePatchFeatures;
 import lostworlds.server.biome.features.placed.PlacedWaterFeatures;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.data.worldgen.placement.AquaticPlacements;
+import net.minecraft.data.worldgen.placement.CavePlacements;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.data.worldgen.placement.NetherPlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
@@ -19,18 +21,13 @@ public class ModBiomeFeatures {
 		addScorchedTrees(builder);
 		addAshLayer(builder);
 		addPermianRock(builder);
-		addPermianOres(builder);
-		addModCarvers(builder);
-		addPermianUndergroundVariety(builder);
+		addUniversalPermianGeneration(builder);
 	}
 
 	public static void permianConiferForest(BiomeGenerationSettings.Builder builder) {
 		addFernGroundClutter(builder);
 		addPermianRock(builder);
-		addPermianOres(builder);
-		addModCarvers(builder);
-		addPermianUndergroundVariety(builder);
-		addSpring(builder);
+		addUniversalPermianGeneration(builder);
 		addAlethopteris(builder);
 		addCycad(builder);
 
@@ -41,18 +38,13 @@ public class ModBiomeFeatures {
 		addPermianDesertPlants(builder);
 		addFernGroundClutter(builder);
 		addPermianRock(builder);
-		addPermianOres(builder);
-		addModCarvers(builder);
-		addPermianUndergroundVariety(builder);
+		addUniversalPermianGeneration(builder);
 	}
 
 	public static void permianDriedPlains(BiomeGenerationSettings.Builder builder) {
 		addFernGroundClutter(builder);
 		addPermianRock(builder);
-		addPermianOres(builder);
-		addModCarvers(builder);
-		addPermianUndergroundVariety(builder);
-		addSpring(builder);
+		addUniversalPermianGeneration(builder);
 		addAlethopteris(builder);
 		addCycad(builder);
 
@@ -62,11 +54,8 @@ public class ModBiomeFeatures {
 	public static void permianGinkgoForest(BiomeGenerationSettings.Builder builder) {
 		addFernGroundClutter(builder);
 		addPermianRock(builder);
-		addPermianOres(builder);
 		addGinkgoTrees(builder);
-		addModCarvers(builder);
-		addPermianUndergroundVariety(builder);
-		addSpring(builder);
+		addUniversalPermianGeneration(builder);
 		addAlethopteris(builder);
 		addCycad(builder);
 
@@ -76,9 +65,7 @@ public class ModBiomeFeatures {
 	public static void permianFloodBasalts(BiomeGenerationSettings.Builder builder) {
 		addBasaltDiamondOre(builder);
 		addGeyser(builder);
-		addPermianOres(builder);
-		addModCarvers(builder);
-		addPermianUndergroundVariety(builder);
+		addUniversalPermianGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MiscOverworldPlacements.SPRING_LAVA);
 		builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, NetherPlacements.BASALT_BLOBS);
@@ -91,17 +78,12 @@ public class ModBiomeFeatures {
 	public static void permianWindsweptHills(BiomeGenerationSettings.Builder builder) {
 		addConiferTrees(builder);
 		addPermianRock(builder);
-		addPermianOres(builder);
 		addPermianEmerald(builder);
-		addModCarvers(builder);
-		addPermianUndergroundVariety(builder);
-
-		BiomeDefaultFeatures.addSurfaceFreezing(builder);
+		addUniversalPermianGeneration(builder);
 	}
 
 	public static void permianOcean(BiomeGenerationSettings.Builder builder) {
-		addPermianOres(builder);
-		addPermianUndergroundVariety(builder);
+		addUniversalCretaceousGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedPlantPatchFeatures.BRAZILEA_PATCH);
@@ -110,9 +92,7 @@ public class ModBiomeFeatures {
 
 	public static void permianMarsh(BiomeGenerationSettings.Builder builder) {
 		addPermianRock(builder);
-		addPermianOres(builder);
-		addModCarvers(builder);
-		addPermianUndergroundVariety(builder);
+		addUniversalPermianGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedPlantPatchFeatures.CALAMITES_SUCKOWII);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
@@ -121,26 +101,55 @@ public class ModBiomeFeatures {
 	}
 
 	public static void permianRiver(BiomeGenerationSettings.Builder builder) {
-		addPermianOres(builder);
-		addModCarvers(builder);
-		addPermianUndergroundVariety(builder);
+		addUniversalPermianGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedPlantPatchFeatures.BRAZILEA_PATCH);
 	}
 
 	public static void permianShore(BiomeGenerationSettings.Builder builder) {
-		addPermianOres(builder);
-		addModCarvers(builder);
-		addPermianUndergroundVariety(builder);
+		addUniversalPermianGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedPlantPatchFeatures.BRAZILEA_PATCH);
 	}
 
-	public static void permianCoralReef(BiomeGenerationSettings.Builder builder) {
-		addPermianOres(builder);
-		addPermianUndergroundVariety(builder);
+	public static void permianDripstoneCaves(BiomeGenerationSettings.Builder builder) {
+		addUniversalPermianGeneration(builder);
 
+		BiomeDefaultFeatures.addDripstone(builder);
+	}
+
+	public static void permianGrove(BiomeGenerationSettings.Builder builder) {
+		addUniversalPermianGeneration(builder);
+		addPermianEmerald(builder);
+		addConiferTrees(builder);
+	}
+
+	public static void permianSnowySlopes(BiomeGenerationSettings.Builder builder) {
+		addUniversalPermianGeneration(builder);
+		addPermianEmerald(builder);
+
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_CONIFER_TREES);
+	}
+
+	public static void permianFrozenPeaks(BiomeGenerationSettings.Builder builder) {
+		addUniversalPermianGeneration(builder);
+		addPermianEmerald(builder);
+	}
+
+	public static void permianJaggedPeaks(BiomeGenerationSettings.Builder builder) {
+		addUniversalPermianGeneration(builder);
+		addPermianEmerald(builder);
+	}
+
+	public static void permianStonyPeaks(BiomeGenerationSettings.Builder builder) {
+		addUniversalPermianGeneration(builder);
+		addPermianEmerald(builder);
+	}
+
+	public static void permianCoralReef(BiomeGenerationSettings.Builder builder) {
+		addUniversalPermianGeneration(builder);
+		
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_WARM);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.WARM_OCEAN_VEGETATION);
@@ -149,9 +158,7 @@ public class ModBiomeFeatures {
 	public static void permianPlains(BiomeGenerationSettings.Builder builder) {
 		addFernGroundClutter(builder);
 		addPermianRock(builder);
-		addPermianOres(builder);
-		addModCarvers(builder);
-		addPermianUndergroundVariety(builder);
+		addUniversalPermianGeneration(builder);
 		addAlethopteris(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_CONIFER_TREES);
@@ -159,12 +166,9 @@ public class ModBiomeFeatures {
 
 	// Jurassic
 	public static void jurassicConiferForest(BiomeGenerationSettings.Builder builder) {
-		addModCarvers(builder);
+		addUniversalJurassicGeneration(builder);
 		addConiferTrees(builder);
 		addJurassicRock(builder);
-		addJurassicOres(builder);
-		addSpring(builder);
-		addJurassicUndergroundVariety(builder);
 		addFernGroundClutter(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
@@ -174,12 +178,9 @@ public class ModBiomeFeatures {
 	}
 
 	public static void jurassicGinkgoForest(BiomeGenerationSettings.Builder builder) {
-		addModCarvers(builder);
+		addUniversalJurassicGeneration(builder);
 		addGinkgoTrees(builder);
 		addJurassicRock(builder);
-		addJurassicOres(builder);
-		addSpring(builder);
-		addJurassicUndergroundVariety(builder);
 		addFernGroundClutter(builder);
 		addZamites(builder);
 		addDuisbergia(builder);
@@ -191,12 +192,9 @@ public class ModBiomeFeatures {
 	}
 
 	public static void jurassicAraucariaForest(BiomeGenerationSettings.Builder builder) {
-		addModCarvers(builder);
+		addUniversalJurassicGeneration(builder);
 		addAraucariaTrees(builder);
 		addJurassicRock(builder);
-		addJurassicOres(builder);
-		addSpring(builder);
-		addJurassicUndergroundVariety(builder);
 		addFernGroundClutter(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
@@ -206,11 +204,8 @@ public class ModBiomeFeatures {
 	}
 
 	public static void jurassicPlains(BiomeGenerationSettings.Builder builder) {
-		addModCarvers(builder);
+		addUniversalJurassicGeneration(builder);
 		addJurassicRock(builder);
-		addJurassicOres(builder);
-		addSpring(builder);
-		addJurassicUndergroundVariety(builder);
 		addFernGroundClutter(builder);
 		addAlethopteris(builder);
 		addOsmunda(builder);
@@ -222,28 +217,22 @@ public class ModBiomeFeatures {
 	}
 
 	public static void jurassicWindsweptHills(BiomeGenerationSettings.Builder builder) {
-		addModCarvers(builder);
+		addUniversalJurassicGeneration(builder);
 		addJurassicRock(builder);
-		addJurassicOres(builder);
 		addJurassicEmerald(builder);
-		addJurassicUndergroundVariety(builder);
 		addFernGroundClutter(builder);
 		addDuisbergia(builder);
 		addAlethopteris(builder);
 		addDicksonia(builder);
 		addOsmunda(builder);
 
-		BiomeDefaultFeatures.addSurfaceFreezing(builder);
-
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_CONIFER_TREES);
 	}
 
 	public static void jurassicVolcanicRange(BiomeGenerationSettings.Builder builder) {
-		addModCarvers(builder);
-		addJurassicOres(builder);
+		addUniversalJurassicGeneration(builder);
 		addJurassicEmerald(builder);
 		addExtraJurassicDiamonds(builder);
-		addJurassicUndergroundVariety(builder);
 		addGeyser(builder);
 
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_MAGMA_ORE);
@@ -251,20 +240,14 @@ public class ModBiomeFeatures {
 
 	public static void jurassicDesert(BiomeGenerationSettings.Builder builder) {
 		addJurassicRock(builder);
-		addJurassicOres(builder);
-		addModCarvers(builder);
-		addSpring(builder);
-		addJurassicUndergroundVariety(builder);
+		addUniversalJurassicGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DEAD_BUSH_BADLANDS);
 	}
 
 	public static void jurassicRedwoodsForest(BiomeGenerationSettings.Builder builder) {
 		addJurassicRock(builder);
-		addJurassicOres(builder);
-		addModCarvers(builder);
-		addSpring(builder);
-		addJurassicUndergroundVariety(builder);
+		addUniversalJurassicGeneration(builder);
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
 
@@ -275,9 +258,7 @@ public class ModBiomeFeatures {
 
 	public static void jurassicMarsh(BiomeGenerationSettings.Builder builder) {
 		addJurassicRock(builder);
-		addJurassicOres(builder);
-		addModCarvers(builder);
-		addJurassicUndergroundVariety(builder);
+		addUniversalJurassicGeneration(builder);
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
 		addZamites(builder);
@@ -289,9 +270,7 @@ public class ModBiomeFeatures {
 
 	public static void jurassicSwamp(BiomeGenerationSettings.Builder builder) {
 		addJurassicRock(builder);
-		addJurassicOres(builder);
-		addModCarvers(builder);
-		addJurassicUndergroundVariety(builder);
+		addUniversalJurassicGeneration(builder);
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
 
@@ -303,9 +282,7 @@ public class ModBiomeFeatures {
 
 	public static void jurassicBog(BiomeGenerationSettings.Builder builder) {
 		addJurassicRock(builder);
-		addJurassicOres(builder);
-		addModCarvers(builder);
-		addJurassicUndergroundVariety(builder);
+		addUniversalJurassicGeneration(builder);
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
 
@@ -315,29 +292,23 @@ public class ModBiomeFeatures {
 
 	public static void jurassicFen(BiomeGenerationSettings.Builder builder) {
 		addJurassicRock(builder);
-		addJurassicOres(builder);
-		addModCarvers(builder);
-		addJurassicUndergroundVariety(builder);
+		addUniversalJurassicGeneration(builder);
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
-
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_SUGAR_CANE);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedPlantPatchFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SCANT_CONIFER_TREES);
 	}
 
 	public static void jurassicOcean(BiomeGenerationSettings.Builder builder) {
-		addJurassicOres(builder);
-		addPermianUndergroundVariety(builder);
+		addUniversalJurassicGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
 	}
 
 	public static void jurassicCoralReef(BiomeGenerationSettings.Builder builder) {
-		addJurassicOres(builder);
-		addJurassicUndergroundVariety(builder);
+		addUniversalJurassicGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_WARM);
@@ -345,25 +316,18 @@ public class ModBiomeFeatures {
 	}
 
 	public static void jurassicRiver(BiomeGenerationSettings.Builder builder) {
-		addJurassicOres(builder);
-		addModCarvers(builder);
-		addJurassicUndergroundVariety(builder);
+		addUniversalJurassicGeneration(builder);
 	}
 
 	public static void jurassicShore(BiomeGenerationSettings.Builder builder) {
-		addJurassicOres(builder);
-		addModCarvers(builder);
-		addJurassicUndergroundVariety(builder);
+		addUniversalJurassicGeneration(builder);
 	}
 
 	// Cretaceous
 	public static void cretaceousConiferForest(BiomeGenerationSettings.Builder builder) {
-		addModCarvers(builder);
+		addUniversalCretaceousGeneration(builder);
 		addConiferTrees(builder);
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addSpring(builder);
-		addCretaceousUndergroundVariety(builder);
 		addFernGroundClutter(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
@@ -373,12 +337,9 @@ public class ModBiomeFeatures {
 	}
 
 	public static void cretaceousGinkgoForest(BiomeGenerationSettings.Builder builder) {
-		addModCarvers(builder);
+		addUniversalCretaceousGeneration(builder);
 		addGinkgoTrees(builder);
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addSpring(builder);
-		addCretaceousUndergroundVariety(builder);
 		addFernGroundClutter(builder);
 		addZamites(builder);
 		addDuisbergia(builder);
@@ -390,12 +351,9 @@ public class ModBiomeFeatures {
 	}
 
 	public static void cretaceousAraucariaForest(BiomeGenerationSettings.Builder builder) {
-		addModCarvers(builder);
+		addUniversalCretaceousGeneration(builder);
 		addAraucariaTrees(builder);
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addSpring(builder);
-		addCretaceousUndergroundVariety(builder);
 		addFernGroundClutter(builder);
 		addZamites(builder);
 		addWilliamsonia(builder);
@@ -405,10 +363,7 @@ public class ModBiomeFeatures {
 
 	public static void cretaceousRedwoodsForest(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addModCarvers(builder);
-		addSpring(builder);
-		addCretaceousUndergroundVariety(builder);
+		addUniversalCretaceousGeneration(builder);
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
 
@@ -419,24 +374,17 @@ public class ModBiomeFeatures {
 
 	public static void cretaceousGameTrail(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addSpring(builder);
-		addCretaceousUndergroundVariety(builder);
 		addFernGroundClutter(builder);
-		addModCarvers(builder);
+		addUniversalCretaceousGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DEAD_BUSH_BADLANDS);
-
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_BROKEN_TREES);
 	}
 
 	public static void cretaceousMedow(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addSpring(builder);
-		addCretaceousUndergroundVariety(builder);
 		addFernGroundClutter(builder);
-		addModCarvers(builder);
+		addUniversalCretaceousGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedPlantPatchFeatures.ARCHAEFRUTUS_PATCH);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedPlantPatchFeatures.EUDICOTS_PATCH);
@@ -446,9 +394,6 @@ public class ModBiomeFeatures {
 
 	public static void cretaceousPlains(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addSpring(builder);
-		addCretaceousUndergroundVariety(builder);
 		addFernGroundClutter(builder);
 		addDicksonia(builder);
 		addOsmunda(builder);
@@ -457,42 +402,28 @@ public class ModBiomeFeatures {
 	}
 
 	public static void cretaceousWindsweptHills(BiomeGenerationSettings.Builder builder) {
-		addModCarvers(builder);
+		addUniversalCretaceousGeneration(builder);
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
 		addCretaceousEmerald(builder);
-		addCretaceousUndergroundVariety(builder);
 		addFernGroundClutter(builder);
 		addAlethopteris(builder);
 		addOsmunda(builder);
-
-		BiomeDefaultFeatures.addSurfaceFreezing(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_CONIFER_TREES);
 	}
 
 	public static void cretaceousArctic(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addSpring(builder);
-		addCretaceousUndergroundVariety(builder);
 		addFernGroundClutter(builder);
-		addModCarvers(builder);
-
-		BiomeDefaultFeatures.addSurfaceFreezing(builder);
+		addUniversalCretaceousGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_FROZEN_TREES);
 	}
 
 	public static void cretaceousArcticSpires(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addSpring(builder);
-		addCretaceousUndergroundVariety(builder);
 		addFernGroundClutter(builder);
-		addModCarvers(builder);
-
-		BiomeDefaultFeatures.addSurfaceFreezing(builder);
+		addUniversalCretaceousGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, MiscOverworldPlacements.ICE_SPIKE);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_FROZEN_TREES);
@@ -500,13 +431,8 @@ public class ModBiomeFeatures {
 
 	public static void cretaceousFrozenForest(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addSpring(builder);
-		addCretaceousUndergroundVariety(builder);
 		addFernGroundClutter(builder);
-		addModCarvers(builder);
-
-		BiomeDefaultFeatures.addSurfaceFreezing(builder);
+		addUniversalCretaceousGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SCANT_ARCTIC_CONIFER_TREES);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SCANT_FROZEN_TREES);
@@ -514,23 +440,17 @@ public class ModBiomeFeatures {
 
 	public static void cretaceousDesert(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addSpring(builder);
-		addCretaceousUndergroundVariety(builder);
 		addFernGroundClutter(builder);
-		addModCarvers(builder);
+		addUniversalCretaceousGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DEAD_BUSH_BADLANDS);
-
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_BROKEN_TREES);
 	}
 
 	public static void cretaceousFloodBasalts(BiomeGenerationSettings.Builder builder) {
 		addBasaltDiamondOre(builder);
 		addGeyser(builder);
-		addCretaceousOres(builder);
-		addModCarvers(builder);
-		addCretaceousUndergroundVariety(builder);
+		addUniversalCretaceousGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MiscOverworldPlacements.SPRING_LAVA);
 		builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, NetherPlacements.BASALT_BLOBS);
@@ -542,9 +462,7 @@ public class ModBiomeFeatures {
 
 	public static void cretaceousMarsh(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addModCarvers(builder);
-		addCretaceousUndergroundVariety(builder);
+		addUniversalCretaceousGeneration(builder);
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
 		addZamites(builder);
@@ -556,9 +474,7 @@ public class ModBiomeFeatures {
 
 	public static void cretaceousSwamp(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addModCarvers(builder);
-		addCretaceousUndergroundVariety(builder);
+		addUniversalCretaceousGeneration(builder);
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
 
@@ -570,9 +486,7 @@ public class ModBiomeFeatures {
 
 	public static void cretaceousBog(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addModCarvers(builder);
-		addCretaceousUndergroundVariety(builder);
+		addUniversalCretaceousGeneration(builder);
 		addFernGroundClutter(builder);
 
 		BiomeDefaultFeatures.addLightBambooVegetation(builder);
@@ -582,9 +496,7 @@ public class ModBiomeFeatures {
 
 	public static void cretaceousFen(BiomeGenerationSettings.Builder builder) {
 		addCretaceousRock(builder);
-		addCretaceousOres(builder);
-		addModCarvers(builder);
-		addCretaceousUndergroundVariety(builder);
+		addUniversalCretaceousGeneration(builder);
 		addAlethopteris(builder);
 		addFernGroundClutter(builder);
 
@@ -595,24 +507,21 @@ public class ModBiomeFeatures {
 	}
 
 	public static void coldCretaceousOcean(BiomeGenerationSettings.Builder builder) {
-		addCretaceousOres(builder);
-		addCretaceousUndergroundVariety(builder);
+		addUniversalCretaceousGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_COLD);
 	}
 
 	public static void cretaceousOcean(BiomeGenerationSettings.Builder builder) {
-		addCretaceousOres(builder);
-		addCretaceousUndergroundVariety(builder);
+		addUniversalCretaceousGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
 	}
 
 	public static void cretaceousCoralReef(BiomeGenerationSettings.Builder builder) {
-		addCretaceousOres(builder);
-		addCretaceousUndergroundVariety(builder);
+		addUniversalCretaceousGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_WARM);
@@ -620,19 +529,18 @@ public class ModBiomeFeatures {
 	}
 
 	public static void cretaceousShore(BiomeGenerationSettings.Builder builder) {
-		addCretaceousOres(builder);
-		addModCarvers(builder);
-		addCretaceousUndergroundVariety(builder);
+		addUniversalCretaceousGeneration(builder);
 	}
 
 	public static void cretaceousRiver(BiomeGenerationSettings.Builder builder) {
-		addCretaceousOres(builder);
-		addModCarvers(builder);
-		addCretaceousUndergroundVariety(builder);
+		addUniversalCretaceousGeneration(builder);
 	}
 
 	// Overworld
 	public static void araucariaForest(BiomeGenerationSettings.Builder builder) {
+		addAraucariaTrees(builder);
+		globalOverworldGeneration(builder);
+
 		BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
 		BiomeDefaultFeatures.addForestFlowers(builder);
 		BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
@@ -644,12 +552,12 @@ public class ModBiomeFeatures {
 		BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
 		BiomeDefaultFeatures.addDefaultSprings(builder);
 		BiomeDefaultFeatures.addSurfaceFreezing(builder);
-
-		addAraucariaTrees(builder);
-		globalOverworldGeneration(builder);
 	}
 
 	public static void coniferForest(BiomeGenerationSettings.Builder builder) {
+		addConiferTrees(builder);
+		globalOverworldGeneration(builder);
+
 		BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
 		BiomeDefaultFeatures.addForestFlowers(builder);
 		BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
@@ -661,14 +569,11 @@ public class ModBiomeFeatures {
 		BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
 		BiomeDefaultFeatures.addDefaultSprings(builder);
 		BiomeDefaultFeatures.addSurfaceFreezing(builder);
-
-		addConiferTrees(builder);
-		globalOverworldGeneration(builder);
 	}
 
 	public static void ginkgoForest(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.GINKGO_TREES);
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_BIRCH_AND_OAK);
+		globalOverworldGeneration(builder);
+
 		BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
 		BiomeDefaultFeatures.addForestFlowers(builder);
 		BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
@@ -681,10 +586,15 @@ public class ModBiomeFeatures {
 		BiomeDefaultFeatures.addDefaultSprings(builder);
 		BiomeDefaultFeatures.addSurfaceFreezing(builder);
 
-		globalOverworldGeneration(builder);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.GINKGO_TREES);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_BIRCH_AND_OAK);
 	}
 
 	public static void redwoodsForest(BiomeGenerationSettings.Builder builder) {
+		addConiferTrees(builder);
+		addSequoiaTrees(builder);
+		globalOverworldGeneration(builder);
+
 		BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
 		BiomeDefaultFeatures.addForestFlowers(builder);
 		BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
@@ -696,20 +606,17 @@ public class ModBiomeFeatures {
 		BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
 		BiomeDefaultFeatures.addDefaultSprings(builder);
 		BiomeDefaultFeatures.addSurfaceFreezing(builder);
-
-		addConiferTrees(builder);
-		addSequoiaTrees(builder);
-		globalOverworldGeneration(builder);
 	}
 
 	public static void volcano(BiomeGenerationSettings.Builder builder) {
+		addAshLayer(builder);
+		addScorchedTrees(builder);
+		globalOverworldGeneration(builder);
+
 		BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
 		BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
 		BiomeDefaultFeatures.addDefaultOres(builder);
 		BiomeDefaultFeatures.addDefaultMushrooms(builder);
-		addAshLayer(builder);
-		addScorchedTrees(builder);
-		globalOverworldGeneration(builder);
 	}
 
 	private static void globalOverworldGeneration(BiomeGenerationSettings.Builder builder) {
@@ -722,6 +629,16 @@ public class ModBiomeFeatures {
 	}
 
 	// Permian Features
+	private static void addUniversalPermianGeneration(BiomeGenerationSettings.Builder builder) {
+		addDefaultCarversAndLakes(builder);
+		addSpring(builder);
+		addPermianUndergroundVariety(builder);
+		addPermianOres(builder);
+		addSurfaceFreezing(builder);
+
+		builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, CavePlacements.AMETHYST_GEODE);
+	}
+
 	private static void addPermianUndergroundVariety(BiomeGenerationSettings.Builder builder) {
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_DIRT_ORE);
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_GRAVEL_ORE);
@@ -746,13 +663,22 @@ public class ModBiomeFeatures {
 	}
 
 	private static void addPermianOres(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_COAL_ORE);
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_DIAMOND_ORE);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_COAL_ORE_UPPER);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_COAL_ORE_LOWER);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_IRON_ORE_UPPER);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_IRON_ORE_MIDDLE);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_IRON_ORE_SMALL);
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_GOLD_ORE);
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_IRON_ORE);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_GOLD_ORE_LOWER);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_DIAMOND_ORE);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_DIAMOND_ORE_LARGE);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_DIAMOND_ORE_BURIED);
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_LAPIS_ORE);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_LAPIS_ORE_BURIED);
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_REDSTONE_ORE);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_REDSTONE_ORE_LOWER);
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_COPPER_ORE);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_COPPER_ORE_LARGE);
 	}
 
 	private static void addPermianEmerald(BiomeGenerationSettings.Builder builder) {
@@ -760,6 +686,16 @@ public class ModBiomeFeatures {
 	}
 
 	// Jurassic Features
+	private static void addUniversalJurassicGeneration(BiomeGenerationSettings.Builder builder) {
+		addDefaultCarversAndLakes(builder);
+		addSpring(builder);
+		addJurassicUndergroundVariety(builder);
+		addJurassicOres(builder);
+		addSurfaceFreezing(builder);
+
+		builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, CavePlacements.AMETHYST_GEODE);
+	}
+
 	private static void addJurassicUndergroundVariety(BiomeGenerationSettings.Builder builder) {
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_DIRT_ORE);
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_GRAVEL_ORE);
@@ -792,6 +728,16 @@ public class ModBiomeFeatures {
 	}
 
 	// Cretaceous Features
+	private static void addUniversalCretaceousGeneration(BiomeGenerationSettings.Builder builder) {
+		addDefaultCarversAndLakes(builder);
+		addSpring(builder);
+		addCretaceousUndergroundVariety(builder);
+		addCretaceousOres(builder);
+		addSurfaceFreezing(builder);
+
+		builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, CavePlacements.AMETHYST_GEODE);
+	}
+
 	private static void addCretaceousUndergroundVariety(BiomeGenerationSettings.Builder builder) {
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_DIRT_ORE);
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_GRAVEL_ORE);
@@ -820,9 +766,16 @@ public class ModBiomeFeatures {
 	}
 
 	// General Features
-	private static void addModCarvers(BiomeGenerationSettings.Builder builder) {
-//			builder.addCarver(GenerationStep.Carving.AIR, LostWorldsConfiguredCarvers.CAVE_CARVER);
-//			builder.addCarver(GenerationStep.Carving.AIR, LostWorldsConfiguredCarvers.CANYON_CARVER);
+	public static void addDefaultCarversAndLakes(BiomeGenerationSettings.Builder builder) {
+		builder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
+		builder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE_EXTRA_UNDERGROUND);
+		builder.addCarver(GenerationStep.Carving.AIR, Carvers.CANYON);
+		builder.addFeature(GenerationStep.Decoration.LAKES, MiscOverworldPlacements.LAKE_LAVA_UNDERGROUND);
+		builder.addFeature(GenerationStep.Decoration.LAKES, MiscOverworldPlacements.LAKE_LAVA_SURFACE);
+	}
+
+	public static void addSurfaceFreezing(BiomeGenerationSettings.Builder builder) {
+		builder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, MiscOverworldPlacements.FREEZE_TOP_LAYER);
 	}
 
 	private static void addSpring(BiomeGenerationSettings.Builder builder) {

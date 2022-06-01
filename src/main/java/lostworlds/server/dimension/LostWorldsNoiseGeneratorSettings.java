@@ -29,7 +29,7 @@ public class LostWorldsNoiseGeneratorSettings {
 
 	public static NoiseGeneratorSettings permian() {
 		NoiseSettings noisesettings = NoiseSettings.overworldNoiseSettings(false);
-		return new NoiseGeneratorSettings(noisesettings, LostWorldsBlocks.PERMIAN_STONE.getDefaultState(), Blocks.WATER.defaultBlockState(), NoiseRouterData.overworld(noisesettings, false), PermianSurfaceRules.permian(), 63, false, true, true, true);
+		return new NoiseGeneratorSettings(noisesettings, LostWorldsBlocks.PERMIAN_STONE.getDefaultState(), Blocks.WATER.defaultBlockState(), NoiseRouterData.overworld(noisesettings, false), PermianSurfaceRules.permian(), 63, false, true, true, false);
 	}
 
 	public static void init() {

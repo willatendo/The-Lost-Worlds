@@ -69,8 +69,8 @@ public abstract class DolphinLike extends BreedingWaterMob {
 	};
 	private static final Ingredient FOOD_ITEMS = FoodLists.PISCIVORE;
 
-	public DolphinLike(EntityType<? extends DolphinLike> entity, Level world) {
-		super(entity, world);
+	public DolphinLike(EntityType<? extends DolphinLike> entity, Level level) {
+		super(entity, level);
 		this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
 		this.lookControl = new SmoothSwimmingLookControl(this, 10);
 		this.setCanPickUpLoot(true);

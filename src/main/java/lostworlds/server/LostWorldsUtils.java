@@ -7,7 +7,8 @@ import org.apache.logging.log4j.Logger;
 
 import lostworlds.client.LostWorldsClientConfigs;
 import lostworlds.client.LostWorldsConfig;
-import lostworlds.server.tab.ModTab;
+import lostworlds.server.block.LostWorldsBlocks;
+import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.util.Version;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -15,6 +16,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.raid.Raid;
 import net.minecraft.world.entity.raid.Raider;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.ModList;
 
 public class LostWorldsUtils {
@@ -62,8 +65,18 @@ public class LostWorldsUtils {
 	public static final LostWorldsCommonConfig SERVER_CONFIG = LostWorldsConfig.COMMON_CONFIG;
 	public static final LostWorldsClientConfigs CLIENT_CONFIG = LostWorldsConfig.CLIENT_CONFIG;
 
-	public static final ModTab ITEMS = new ModTab("items");
-	public static final ModTab BLOCKS = new ModTab("blocks");
+	public static final CreativeModeTab ITEMS = new CreativeModeTab("lostworlds.items") {
+		@Override
+		public ItemStack makeIcon() {
+			return LostWorldsItems.LOST_WORLDS_LEXICON.asStack();
+		}
+	};
+	public static final CreativeModeTab BLOCKS = new CreativeModeTab("lostworlds.blocks") {
+		@Override
+		public ItemStack makeIcon() {
+			return LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.asStack();
+		}
+	};
 
 	public static void translateToWaves(EntityType<? extends Raider> type, List<? extends Integer> list) {
 		Raid.RaiderType.create(type.getRegistryName().toString(), type, new int[] { list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7) });

@@ -15,7 +15,7 @@ public class OverworldBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.8F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience.build(), generation.build(), defaultOverworldSpawns().build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience, generation, defaultOverworldSpawns());
 	}
 
 	public static Biome coniferForest() {
@@ -25,7 +25,7 @@ public class OverworldBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.8F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience.build(), generation.build(), defaultOverworldSpawns().build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience, generation, defaultOverworldSpawns());
 	}
 
 	public static Biome ginkgoForest() {
@@ -35,7 +35,7 @@ public class OverworldBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.8F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience.build(), generation.build(), defaultOverworldSpawns().build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience, generation, defaultOverworldSpawns());
 	}
 
 	public static Biome redwoodsForest() {
@@ -45,7 +45,7 @@ public class OverworldBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.4F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.4F, ambience.build(), generation.build(), defaultOverworldSpawns().build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.4F, ambience, generation, defaultOverworldSpawns());
 	}
 
 	public static Biome volcano() {
@@ -57,6 +57,6 @@ public class OverworldBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(2.5F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 2.5F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 2.5F, ambience, generation, spawns);
 	}
 }

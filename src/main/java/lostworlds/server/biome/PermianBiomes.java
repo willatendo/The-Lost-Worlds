@@ -1,5 +1,8 @@
 package lostworlds.server.biome;
 
+import net.minecraft.sounds.Music;
+import net.minecraft.sounds.Musics;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biome.BiomeCategory;
 import net.minecraft.world.level.biome.Biome.Precipitation;
@@ -17,7 +20,7 @@ public class PermianBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(2.0F));
 
-		return biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 3.0F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 3.0F, ambience, generation, spawns);
 	}
 
 	public static Biome permianConiferForest() {
@@ -29,7 +32,7 @@ public class PermianBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome permianGinkgoForest() {
@@ -41,7 +44,7 @@ public class PermianBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome permianWindsweptHills() {
@@ -53,7 +56,7 @@ public class PermianBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.3F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.EXTREME_HILLS, 0.8F, 0.3F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.EXTREME_HILLS, 0.8F, 0.3F, ambience, generation, spawns);
 	}
 
 	public static Biome permianOcean() {
@@ -65,7 +68,7 @@ public class PermianBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.5F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
 	public static Biome permianWarmOcean() {
@@ -77,7 +80,7 @@ public class PermianBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome permianAshyMedows() {
@@ -89,7 +92,7 @@ public class PermianBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(5.0F));
 
-		return biome(Precipitation.NONE, BiomeCategory.PLAINS, 0.0F, 5.0F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.NONE, BiomeCategory.PLAINS, 0.0F, 5.0F, ambience, generation, spawns);
 	}
 
 	public static Biome permianDriedPlains() {
@@ -101,7 +104,7 @@ public class PermianBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(2.0F));
 
-		return biome(Precipitation.NONE, BiomeCategory.PLAINS, 0.0F, 2.0F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.NONE, BiomeCategory.PLAINS, 0.0F, 2.0F, ambience, generation, spawns);
 	}
 
 	public static Biome permianFloodBasalts() {
@@ -113,7 +116,7 @@ public class PermianBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(4.0F));
 
-		return biome(Precipitation.NONE, BiomeCategory.PLAINS, 0.0F, 4.0F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.NONE, BiomeCategory.PLAINS, 0.0F, 4.0F, ambience, generation, spawns);
 	}
 
 	public static Biome permianPlains() {
@@ -125,7 +128,7 @@ public class PermianBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.0F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.0F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome permianRiver() {
@@ -137,7 +140,7 @@ public class PermianBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.RIVER, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.RIVER, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome permianShore() {
@@ -149,7 +152,7 @@ public class PermianBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.BEACH, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.BEACH, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome permianMarsh() {
@@ -161,6 +164,90 @@ public class PermianBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
+	}
+
+	public static Biome permianDripstoneCaves() {
+		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
+		ModBiomeFeatures.permianDripstoneCaves(generation);
+
+		MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+
+		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
+		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
+
+		Music music = Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES);
+
+		return biome(Precipitation.RAIN, BiomeCategory.BEACH, 0.8F, 0.7F, music, ambience, generation, spawns);
+	}
+
+	public static Biome permianGrove() {
+		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
+		ModBiomeFeatures.permianGrove(generation);
+
+		MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+
+		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
+		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(-0.2F));
+
+		Music music = Musics.createGameMusic(SoundEvents.MUSIC_BIOME_GROVE);
+
+		return biome(Precipitation.SNOW, BiomeCategory.FOREST, 0.8F, -0.2F, music, ambience, generation, spawns);
+	}
+
+	public static Biome permianSnowySlopes() {
+		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
+		ModBiomeFeatures.permianSnowySlopes(generation);
+
+		MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+
+		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
+		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(-0.3F));
+
+		Music music = Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SNOWY_SLOPES);
+
+		return biome(Precipitation.SNOW, BiomeCategory.MOUNTAIN, 0.9F, -0.3F, music, ambience, generation, spawns);
+	}
+
+	public static Biome permianFrozenPeaks() {
+		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
+		ModBiomeFeatures.permianFrozenPeaks(generation);
+
+		MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+
+		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
+		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(-0.7F));
+
+		Music music = Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FROZEN_PEAKS);
+
+		return biome(Precipitation.SNOW, BiomeCategory.MOUNTAIN, 0.9F, -0.7F, music, ambience, generation, spawns);
+	}
+
+	public static Biome permianJaggedPeaks() {
+		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
+		ModBiomeFeatures.permianJaggedPeaks(generation);
+
+		MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+
+		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
+		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(-0.7F));
+
+		Music music = Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JAGGED_PEAKS);
+
+		return biome(Precipitation.SNOW, BiomeCategory.MOUNTAIN, 0.9F, -0.7F, music, ambience, generation, spawns);
+	}
+
+	public static Biome permianStonyPeaks() {
+		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
+		ModBiomeFeatures.permianStonyPeaks(generation);
+
+		MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+
+		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
+		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.3F));
+
+		Music music = Musics.createGameMusic(SoundEvents.MUSIC_BIOME_STONY_PEAKS);
+
+		return biome(Precipitation.SNOW, BiomeCategory.MOUNTAIN, 1.0F, 0.3F, music, ambience, generation, spawns);
 	}
 }

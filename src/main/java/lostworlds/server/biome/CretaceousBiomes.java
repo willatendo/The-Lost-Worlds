@@ -17,7 +17,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.0F));
 
-		return biome(Precipitation.SNOW, BiomeCategory.ICY, 0.8F, 0.0F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.SNOW, BiomeCategory.ICY, 0.8F, 0.0F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousArcticSpires() {
@@ -29,7 +29,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.0F));
 
-		return biome(Precipitation.SNOW, BiomeCategory.ICY, 0.8F, 0.0F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.SNOW, BiomeCategory.ICY, 0.8F, 0.0F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousFrozenForest() {
@@ -41,7 +41,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.0F));
 
-		return biome(Precipitation.SNOW, BiomeCategory.ICY, 0.8F, 0.0F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.SNOW, BiomeCategory.ICY, 0.8F, 0.0F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousDesert() {
@@ -53,7 +53,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(2.0F));
 
-		return biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 2.0F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 2.0F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousRedDesert() {
@@ -65,7 +65,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(2.5F));
 
-		return biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 2.5F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 2.5F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousAraucariaForest() {
@@ -77,7 +77,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousConiferForest() {
@@ -89,7 +89,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousGinkgoForest() {
@@ -101,7 +101,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousRedwoodsForest() {
@@ -113,7 +113,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.5F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.5F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousWindsweptHills() {
@@ -125,7 +125,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.3F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.EXTREME_HILLS, 0.8F, 0.3F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.EXTREME_HILLS, 0.8F, 0.3F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousOceanBiome() {
@@ -137,7 +137,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.5F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousWarmOceanBiome() {
@@ -149,7 +149,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(WARM_OCEAN_WATER_COLOUR).waterFogColor(WARM_OCEAN_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousColdOceanBiome() {
@@ -161,7 +161,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(COLD_OCEAN_WATER_COLOUR).waterFogColor(COLD_OCEAN_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.3F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.3F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.3F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousFloodBasaltsBiome() {
@@ -173,7 +173,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(4.0F));
 
-		return biome(Precipitation.NONE, BiomeCategory.PLAINS, 0.8F, 4.0F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.NONE, BiomeCategory.PLAINS, 0.8F, 4.0F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousGameTrailBiome() {
@@ -185,7 +185,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(1.5F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.8F, 1.5F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.8F, 1.5F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousMedowBiome() {
@@ -197,7 +197,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(1.0F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.8F, 1.0F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.8F, 1.0F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousPlainsBiome() {
@@ -209,7 +209,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(1.0F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousRiverBiome() {
@@ -221,7 +221,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(1.0F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.RIVER, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.RIVER, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousShoreBiome() {
@@ -233,7 +233,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(1.0F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.BEACH, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.BEACH, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousMarsh() {
@@ -245,7 +245,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousSwamp() {
@@ -257,7 +257,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousFen() {
@@ -269,7 +269,7 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
 	public static Biome cretaceousBog() {
@@ -281,6 +281,6 @@ public class CretaceousBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.7F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience.build(), generation.build(), spawns.build()).build();
+		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 }

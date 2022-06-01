@@ -10,8 +10,8 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.Level;
 
 public abstract class BreedingWaterMob extends Animal {
-	public BreedingWaterMob(EntityType<? extends BreedingWaterMob> entity, Level world) {
-		super(entity, world);
+	public BreedingWaterMob(EntityType<? extends BreedingWaterMob> entity, Level level) {
+		super(entity, level);
 		this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
 	}
 

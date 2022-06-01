@@ -122,6 +122,14 @@
           "biome": "lostworlds:permian_shore"
         }
       }
+    },
+    "in_permian_dripstone_caves": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "lostworlds:permian_dripstone_caves"
+        }
+      }
     }
   },
   "requirements": [
@@ -163,6 +171,9 @@
     ],
     [
       "in_permian_shore"
+    ],
+    [
+      "in_permian_dripstone_caves"
     ]
   ]
 }

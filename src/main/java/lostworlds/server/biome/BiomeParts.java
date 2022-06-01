@@ -1,6 +1,7 @@
 package lostworlds.server.biome;
 
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.sounds.Music;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biome.BiomeCategory;
@@ -27,6 +28,8 @@ public class BiomeParts {
 
 	public static final int BASE_FOG_COLOUR = 12638463;
 
+	public static final Music NORMAL_MUSIC = null;
+
 	public static int calculateSkyColor(float temperature) {
 		float colour = temperature / 3.0F;
 		colour = Mth.clamp(colour, -1.0F, 1.0F);
@@ -40,7 +43,12 @@ public class BiomeParts {
 		return mobspawninfo$builder;
 	}
 
-	public static Biome.BiomeBuilder biome(Precipitation precipitation, BiomeCategory category, float downfall, float temperature, BiomeSpecialEffects effects, BiomeGenerationSettings settings, MobSpawnSettings spawningInfo) {
-		return new Biome.BiomeBuilder().precipitation(precipitation).biomeCategory(category).downfall(downfall).temperature(temperature).generationSettings(settings).specialEffects(effects).mobSpawnSettings(spawningInfo);
+	public static Biome biome(Precipitation precipitation, BiomeCategory category, float downfall, float temperature, BiomeSpecialEffects.Builder effects, BiomeGenerationSettings.Builder settings, MobSpawnSettings.Builder spawningInfo) {
+		return biome(precipitation, category, downfall, temperature, NORMAL_MUSIC, effects, settings, spawningInfo);
+	}
+
+	public static Biome biome(Precipitation precipitation, BiomeCategory category, float downfall, float temperature, Music music, BiomeSpecialEffects.Builder effects, BiomeGenerationSettings.Builder settings, MobSpawnSettings.Builder spawningInfo) {
+		effects.backgroundMusic(music);
+		return new Biome.BiomeBuilder().precipitation(precipitation).biomeCategory(category).downfall(downfall).temperature(temperature).generationSettings(settings.build()).specialEffects(effects.build()).mobSpawnSettings(spawningInfo.build()).build();
 	}
 }

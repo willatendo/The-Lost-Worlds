@@ -2,9 +2,13 @@
   "replace": false,
   "values": [
     "lostworlds:permian_copper_ore",
+    "lostworlds:permian_deepslate_copper_ore",
     "lostworlds:permian_gold_ore",
+    "lostworlds:permian_deepslate_gold_ore",
     "lostworlds:permian_iron_ore",
+    "lostworlds:permian_deepslate_iron_ore",
     "lostworlds:permian_lapis_ore",
+    "lostworlds:permian_deepslate_lapis_ore",
     "lostworlds:jurassic_copper_ore",
     "lostworlds:jurassic_gold_ore",
     "lostworlds:jurassic_iron_ore",

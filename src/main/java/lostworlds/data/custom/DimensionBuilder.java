@@ -6,49 +6,7 @@ import com.google.gson.JsonObject;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 
-public class DimensionBuilder {
-	private final String id;
-	private final boolean ultrawarm;
-	private final boolean natural;
-	private final float coordinateScale;
-	private final boolean hasSkylight;
-	private final boolean hasCeiling;
-	private final int ambientLight;
-	private final boolean piglinSafe;
-	private final boolean bedWorks;
-	private final boolean respawnAnchorWorks;
-	private final boolean hasRaids;
-	private final int logicalHeight;
-	private final int height;
-	private final int minY;
-	private final TagKey<Block> infiniburn;
-	private final String effects;
-	private final BiomeSource[] dimensionBiomes;
-
-	public DimensionBuilder(String id, boolean ultrawarm, boolean natural, float coordinateScale, boolean hasSkylight, boolean hasCeiling, int ambientLight, boolean piglinSafe, boolean bedWorks, boolean respawnAnchorWorks, boolean hasRaids, int logicalHeight, int height, int minY, TagKey<Block> infiniburn, String effects, BiomeSource... dimensionBiomes) {
-		this.id = id;
-		this.ultrawarm = ultrawarm;
-		this.natural = natural;
-		this.coordinateScale = coordinateScale;
-		this.hasSkylight = hasSkylight;
-		this.hasCeiling = hasCeiling;
-		this.ambientLight = ambientLight;
-		this.piglinSafe = piglinSafe;
-		this.bedWorks = bedWorks;
-		this.respawnAnchorWorks = respawnAnchorWorks;
-		this.hasRaids = hasRaids;
-		this.logicalHeight = logicalHeight;
-		this.height = height;
-		this.minY = minY;
-		this.infiniburn = infiniburn;
-		this.effects = effects;
-		this.dimensionBiomes = dimensionBiomes;
-	}
-
-	public String getId() {
-		return this.id;
-	}
-
+public record DimensionBuilder(String id, boolean ultrawarm, boolean natural, float coordinateScale, boolean hasSkylight, boolean hasCeiling, int ambientLight, boolean piglinSafe, boolean bedWorks, boolean respawnAnchorWorks, boolean hasRaids, int logicalHeight, int height, int minY, TagKey<Block> infiniburn, String effects, BiomeSource... dimensionBiomes) {
 	public JsonObject serializeDimensionType(String modid) {
 		JsonObject dimensionTypeJson = new JsonObject();
 		dimensionTypeJson.addProperty("name", modid + ":" + this.id);

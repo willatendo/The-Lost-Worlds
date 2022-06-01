@@ -10,7 +10,6 @@ import net.minecraft.SharedConstants;
 import net.minecraft.data.worldgen.TerrainProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.TerrainShaper;
 
@@ -109,7 +108,6 @@ public class PermianBiomeBuilder {
 				this.addSurfaceBiome(point, climate$parameter, climate$parameter1, Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness), this.erosions[6], parameter, 0.0F, resourcekey);
 			}
 		}
-
 	}
 
 	private void addHighSlice(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point, Climate.Parameter parameter) {
@@ -141,7 +139,6 @@ public class PermianBiomeBuilder {
 				this.addSurfaceBiome(point, climate$parameter, climate$parameter1, Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness), this.erosions[6], parameter, 0.0F, resourcekey);
 			}
 		}
-
 	}
 
 	private void addMidSlice(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point, Climate.Parameter parameter) {
@@ -191,7 +188,6 @@ public class PermianBiomeBuilder {
 				}
 			}
 		}
-
 	}
 
 	private void addLowSlice(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point, Climate.Parameter parameter) {
@@ -224,7 +220,6 @@ public class PermianBiomeBuilder {
 				}
 			}
 		}
-
 	}
 
 	private void addValleys(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point, Climate.Parameter parameter) {
@@ -248,11 +243,10 @@ public class PermianBiomeBuilder {
 				this.addSurfaceBiome(point, climate$parameter, climate$parameter1, Climate.Parameter.span(this.midInlandContinentalness, this.farInlandContinentalness), Climate.Parameter.span(this.erosions[0], this.erosions[1]), parameter, 0.0F, resourcekey);
 			}
 		}
-
 	}
 
 	private void addUndergroundBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point) {
-		this.addUndergroundBiome(point, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(0.8F, 1.0F), this.FULL_RANGE, this.FULL_RANGE, 0.0F, Biomes.DRIPSTONE_CAVES);
+		this.addUndergroundBiome(point, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(0.8F, 1.0F), this.FULL_RANGE, this.FULL_RANGE, 0.0F, LostWorldsBiomeKeys.PERMIAN_DRIPSTONE_CAVES);
 	}
 
 	private ResourceKey<Biome> pickMiddleBiome(int p_187164_, int p_187165_, Climate.Parameter parameter) {
@@ -293,11 +287,19 @@ public class PermianBiomeBuilder {
 	}
 
 	private ResourceKey<Biome> pickPeakBiome(int p_187241_, int p_187242_, Climate.Parameter parameter) {
-		return LostWorldsBiomeKeys.PERMIAN_WINDSWEPT_HILLS;
+		if (p_187241_ <= 2) {
+			return parameter.max() < 0L ? LostWorldsBiomeKeys.PERMIAN_JAGGED_PEAKS : LostWorldsBiomeKeys.PERMIAN_FROZEN_PEAKS;
+		} else {
+			return p_187241_ == 3 ? LostWorldsBiomeKeys.PERMIAN_STONY_PEAKS : this.pickFloodBasaltsBiome(p_187242_, parameter);
+		}
 	}
 
 	private ResourceKey<Biome> pickSlopeBiome(int p_187245_, int p_187246_, Climate.Parameter parameter) {
-		return LostWorldsBiomeKeys.PERMIAN_WINDSWEPT_HILLS;
+		if (p_187245_ >= 3) {
+			return this.pickPlateauBiome(p_187245_, p_187246_, parameter);
+		} else {
+			return p_187246_ <= 1 ? LostWorldsBiomeKeys.PERMIAN_SNOWY_SLOPES : LostWorldsBiomeKeys.PERMIAN_GROVE;
+		}
 	}
 
 	private ResourceKey<Biome> pickShatteredBiome(int p_202002_, int p_202003_, Climate.Parameter parameter) {

@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "lostworlds:permian_gold_ore",
+    "lostworlds:permian_deepslate_gold_ore",
     "lostworlds:jurassic_gold_ore"
   ]
 }

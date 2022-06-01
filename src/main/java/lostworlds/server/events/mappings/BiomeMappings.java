@@ -60,5 +60,4 @@ public class BiomeMappings {
 			LostWorldsUtils.LOGGER.warn("Could not find a mapping replacement for " + key + ". It was likely intentionally removed in an update.");
 		}
 	}
-
 }

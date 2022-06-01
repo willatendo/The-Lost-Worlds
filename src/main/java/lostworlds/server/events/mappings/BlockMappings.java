@@ -85,6 +85,7 @@ public class BlockMappings {
 			put(LostWorldsUtils.rL("white_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
 			put(LostWorldsUtils.rL("exposed_white_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
 			put(LostWorldsUtils.rL("plastered_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			put(LostWorldsUtils.rL("copper_ore"), () -> Blocks.COPPER_ORE);
 		}
 	};
 

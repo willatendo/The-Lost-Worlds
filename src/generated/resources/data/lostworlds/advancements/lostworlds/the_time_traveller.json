@@ -1,0 +1,55 @@
+{
+  "parent": "lostworlds:lostworlds/basic_explorer",
+  "display": {
+    "icon": {
+      "item": "lostworlds:time_machine"
+    },
+    "title": {
+      "translate": "advancement.lostworlds.the_time_traveller.title"
+    },
+    "description": {
+      "translate": "advancement.lostworlds.the_time_traveller.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "in_cretaceous": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "dimension": "lostworlds:cretaceous"
+        }
+      }
+    },
+    "in_jurassic": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "dimension": "lostworlds:jurassic"
+        }
+      }
+    },
+    "in_permian": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "dimension": "lostworlds:permian"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "in_cretaceous"
+    ],
+    [
+      "in_jurassic"
+    ],
+    [
+      "in_permian"
+    ]
+  ]
+}
