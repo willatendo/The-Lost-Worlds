@@ -1,0 +1,35 @@
+{
+  "text": [
+    {
+      "text": "Danger: Low"
+    },
+    {
+      "text": "Diet: Carnivore",
+      "paragraph": true
+    },
+    {
+      "text": "Range: Permian",
+      "paragraph": true
+    },
+    {
+      "text": "Class: Amphibia",
+      "paragraph": true
+    },
+    {
+      "text": "Order: Temnospondyli",
+      "paragraph": true
+    },
+    {
+      "text": "Suborder: Stereospondyli",
+      "paragraph": true
+    },
+    {
+      "text": "Family: Rhinesuchidae",
+      "paragraph": true
+    },
+    {
+      "text": "Genus: Rhinesuchus",
+      "paragraph": true
+    }
+  ]
+}

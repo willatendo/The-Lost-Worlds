@@ -1,0 +1,27 @@
+[
+  {
+    "name": "overview",
+    "type": "text",
+    "data": "world/overview.json"
+  },
+  {
+    "name": "archaeology",
+    "type": "text",
+    "data": "world/archaeology.json"
+  },
+  {
+    "name": "crystal_scarab_gems",
+    "type": "text",
+    "data": "world/crystal_scarab_gems.json"
+  },
+  {
+    "name": "crystal_scarab_gem",
+    "type": "archaeology",
+    "data": "world/crystal_scarab_gem.json"
+  },
+  {
+    "name": "charge_crystal_scarab_gem",
+    "type": "text",
+    "data": "world/charge_crystal_scarab_gem.json"
+  }
+]

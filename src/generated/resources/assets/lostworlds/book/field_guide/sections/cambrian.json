@@ -1,0 +1,17 @@
+[
+  {
+    "name": "anomalocaris_1",
+    "type": "text",
+    "data": "cambrian/anomalocaris_1.json"
+  },
+  {
+    "name": "anomalocaris_2",
+    "type": "text",
+    "data": "cambrian/anomalocaris_2.json"
+  },
+  {
+    "name": "anomalocaris_info",
+    "type": "text",
+    "data": "cambrian/anomalocaris_info.json"
+  }
+]

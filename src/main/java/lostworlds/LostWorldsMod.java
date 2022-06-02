@@ -7,7 +7,9 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
+import lostworlds.client.LostWorldsBooks;
 import lostworlds.client.LostWorldsConfig;
+import lostworlds.client.book.BookLoader;
 import lostworlds.client.sounds.LostWorldsSounds;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
@@ -31,13 +33,13 @@ import lostworlds.server.item.LostWorldsMobEffects;
 import lostworlds.server.menu.LostWorldsMenus;
 import lostworlds.server.menu.recipes.LostWorldsRecipeSerializers;
 import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
+import lostworlds.server.network.LostWorldsNetwork;
 import lostworlds.server.structure.LostWorldsConfiguredStructures;
 import lostworlds.server.structure.LostWorldsStructurePecies;
 import lostworlds.server.structure.LostWorldsStructureSets;
 import lostworlds.server.structure.LostWorldsStructures;
 import lostworlds.server.util.Version;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
-import lostworlds.server.world.EntitySpawns;
 import lostworlds.server.world.FeatureGen;
 import lostworlds.server.world.terrablender.LostWorldsTerrablender;
 import net.minecraft.core.BlockPos;
@@ -58,6 +60,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent.Register;
@@ -110,6 +113,7 @@ public class LostWorldsMod {
 
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
+		bus.addListener(this::listenersSetup);
 
 		bus.addGenericListener(RecipeSerializer.class, LostWorldsMod::registerRecipeTypes);
 
@@ -133,6 +137,8 @@ public class LostWorldsMod {
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.POISON)), Ingredient.of(Items.SUGAR), LostWorldsItems.CONTRACEPTIVES.get().getDefaultInstance());
 
 		event.enqueueWork(() -> {
+			LostWorldsNetwork.registerPackets();
+
 			if (LostWorldsUtils.modLoaded(TerraBlender.MOD_ID)) {
 				LostWorldsTerrablender.init();
 			}
@@ -161,13 +167,14 @@ public class LostWorldsMod {
 	}
 
 	private void biomeStuff(BiomeLoadingEvent event) {
-		EntitySpawns.init(event);
+//		EntitySpawns.init(event);
 
 		FeatureGen.init(event);
 	}
 
 	private void clientSetup(FMLClientSetupEvent event) {
 		LostWorldsDimensionRenderInfo.initClient();
+		LostWorldsBooks.initBooks();
 	}
 
 	@OnlyIn(Dist.CLIENT)
@@ -184,6 +191,10 @@ public class LostWorldsMod {
 			data.putBoolean("has_lexicon", true);
 			playerData.put(Player.PERSISTED_NBT_TAG, data);
 		}
+	}
+
+	private void listenersSetup(RegisterClientReloadListenersEvent event) {
+		event.registerReloadListener(new BookLoader());
 	}
 
 	public void onLivingTick(LivingEvent.LivingUpdateEvent event) {

@@ -75,6 +75,8 @@ repositories {
 	maven { url 'https://maven.blamejared.com' }
 	// Registrate
 	maven { url 'https://maven.tterrag.com/' }
+	// Terrablender
+	maven { url = "https://jitpack.io/" }
 }	
 
 configurations {

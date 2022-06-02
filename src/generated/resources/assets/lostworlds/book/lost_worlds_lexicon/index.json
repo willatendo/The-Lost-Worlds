@@ -1,0 +1,37 @@
+[
+  {
+    "name": "introduction",
+    "data": "sections/introduction.json",
+    "icon": {
+      "item": "lostworlds:leather_brush"
+    }
+  },
+  {
+    "name": "world",
+    "data": "sections/world.json",
+    "icon": {
+      "item": "lostworlds:jurassic_cobblestone"
+    }
+  },
+  {
+    "name": "creature_creation",
+    "data": "sections/creature_creation.json",
+    "icon": {
+      "item": "lostworlds:cultivator"
+    }
+  },
+  {
+    "name": "creature_care",
+    "data": "sections/creature_care.json",
+    "icon": {
+      "item": "minecraft:wheat"
+    }
+  },
+  {
+    "name": "time_traveling",
+    "data": "sections/time_traveling.json",
+    "icon": {
+      "item": "lostworlds:jurassic_period_time_book"
+    }
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "title": "Creature Creation: Hatching Eggs",
+  "text": [
+    {
+      "text": "The longest process is hatching an egg. It will take arround three days to hatch, like a turtle egg. Although it may take longer. All the while, the eggs are highly venerable to zombie attacks. It is imparative that you keep them safe."
+    },
+    {
+      "text": "Deepending on the creature, they may stack differently. Large eggs stack to 3, medium 6, small 10, and tiny 19.",
+      "paragraph": true
+    },
+    {
+      "text": "They need to be placed on a nesting block.",
+      "paragraph": true
+    }
+  ]
+}

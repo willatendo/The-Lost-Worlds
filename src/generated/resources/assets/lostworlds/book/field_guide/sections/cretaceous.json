@@ -1,0 +1,132 @@
+[
+  {
+    "name": "carnotaurus_1",
+    "type": "text",
+    "data": "cretaceous/carnotaurus_1.json"
+  },
+  {
+    "name": "carnotaurus_2",
+    "type": "text",
+    "data": "cretaceous/carnotaurus_2.json"
+  },
+  {
+    "name": "carnotaurus_info",
+    "type": "text",
+    "data": "cretaceous/carnotaurus_info.json"
+  },
+  {
+    "name": "fukuivenator_1",
+    "type": "text",
+    "data": "cretaceous/fukuivenator_1.json"
+  },
+  {
+    "name": "fukuivenator_info",
+    "type": "text",
+    "data": "cretaceous/fukuivenator_info.json"
+  },
+  {
+    "name": "giganotosaurus_1",
+    "type": "text",
+    "data": "cretaceous/giganotosaurus_1.json"
+  },
+  {
+    "name": "giganotosaurus_info",
+    "type": "text",
+    "data": "cretaceous/giganotosaurus_info.json"
+  },
+  {
+    "name": "ouranosaurus_1",
+    "type": "text",
+    "data": "cretaceous/ouranosaurus_1.json"
+  },
+  {
+    "name": "ouranosaurus_info",
+    "type": "text",
+    "data": "cretaceous/ouranosaurus_info.json"
+  },
+  {
+    "name": "parksosaurus_1",
+    "type": "text",
+    "data": "cretaceous/parksosaurus_1.json"
+  },
+  {
+    "name": "parksosaurus_info",
+    "type": "text",
+    "data": "cretaceous/parksosaurus_info.json"
+  },
+  {
+    "name": "psittacosaurus_1",
+    "type": "text",
+    "data": "cretaceous/psittacosaurus_1.json"
+  },
+  {
+    "name": "psittacosaurus_info",
+    "type": "text",
+    "data": "cretaceous/psittacosaurus_info.json"
+  },
+  {
+    "name": "suchomimus_1",
+    "type": "text",
+    "data": "cretaceous/suchomimus_1.json"
+  },
+  {
+    "name": "suchomimus_info",
+    "type": "text",
+    "data": "cretaceous/suchomimus_info.json"
+  },
+  {
+    "name": "thanos_1",
+    "type": "text",
+    "data": "cretaceous/thanos_1.json"
+  },
+  {
+    "name": "thanos_information",
+    "type": "text",
+    "data": "cretaceous/thanos_information.json"
+  },
+  {
+    "name": "tyrannosaurus_1",
+    "type": "text",
+    "data": "cretaceous/tyrannosaurus_1.json"
+  },
+  {
+    "name": "tyrannosaurus_2",
+    "type": "text",
+    "data": "cretaceous/tyrannosaurus_2.json"
+  },
+  {
+    "name": "tyrannosaurus_3",
+    "type": "text",
+    "data": "cretaceous/tyrannosaurus_3.json"
+  },
+  {
+    "name": "tyrannosaurus_4",
+    "type": "text",
+    "data": "cretaceous/tyrannosaurus_4.json"
+  },
+  {
+    "name": "tyrannosaurs_info",
+    "type": "text",
+    "data": "cretaceous/tyrannosaurs_info.json"
+  },
+  {
+    "name": "utahraptor_1",
+    "type": "text",
+    "data": "cretaceous/utahraptor_1.json"
+  },
+  {
+    "name": "utahraptor_info",
+    "type": "text",
+    "data": "cretaceous/utahraptor_info.json"
+  },
+  {
+    "name": "zephyrosaurus_1",
+    "type": "text",
+    "data": "cretaceous/zephyrosaurus_1.json"
+  },
+  {
+    "name": "zephyrosaurus_info",
+    "type": "text",
+    "data": "cretaceous/zephyrosaurus_info.json"
+  }
+]

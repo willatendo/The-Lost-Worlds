@@ -1,0 +1,107 @@
+[
+  {
+    "name": "where_to_start",
+    "type": "text",
+    "data": "creature_creation/where_to_start.json"
+  },
+  {
+    "name": "paleontology_101",
+    "type": "text",
+    "data": "creature_creation/paleontology_101.json"
+  },
+  {
+    "name": "paleontology_102",
+    "type": "text",
+    "data": "creature_creation/paleontology_102.json"
+  },
+  {
+    "name": "wet_paper_recipe",
+    "type": "crafting",
+    "data": "creature_creation/wet_paper_recipe.json"
+  },
+  {
+    "name": "first_machines",
+    "type": "text",
+    "data": "creature_creation/first_machines.json"
+  },
+  {
+    "name": "fossil_cleaner_recipe",
+    "type": "crafting",
+    "data": "creature_creation/fossil_cleaner_recipe.json"
+  },
+  {
+    "name": "fossil_cleaner",
+    "type": "text",
+    "data": "creature_creation/fossil_cleaner.json"
+  },
+  {
+    "name": "fossil_grinder_recipe",
+    "type": "crafting",
+    "data": "creature_creation/fossil_grinder_recipe.json"
+  },
+  {
+    "name": "fossil_grinder",
+    "type": "text",
+    "data": "creature_creation/fossil_grinder.json"
+  },
+  {
+    "name": "dna_extractor_recipe",
+    "type": "crafting",
+    "data": "creature_creation/dna_extractor_recipe.json"
+  },
+  {
+    "name": "dna_extractor",
+    "type": "text",
+    "data": "creature_creation/dna_extractor.json"
+  },
+  {
+    "name": "analyzer_recipe",
+    "type": "crafting",
+    "data": "creature_creation/analyzer_recipe.json"
+  },
+  {
+    "name": "analyzer",
+    "type": "text",
+    "data": "creature_creation/analyzer.json"
+  },
+  {
+    "name": "dna_injector_recipe",
+    "type": "crafting",
+    "data": "creature_creation/dna_injector_recipe.json"
+  },
+  {
+    "name": "dna_injector",
+    "type": "text",
+    "data": "creature_creation/dna_injector.json"
+  },
+  {
+    "name": "hatching_eggs",
+    "type": "text",
+    "data": "creature_creation/hatching_eggs.json"
+  },
+  {
+    "name": "nesting_block",
+    "type": "text",
+    "data": "creature_creation/nesting_block.json"
+  },
+  {
+    "name": "nesting_block_recipe",
+    "type": "crafting",
+    "data": "creature_creation/nesting_block_recipe.json"
+  },
+  {
+    "name": "nest_example",
+    "type": "image_with_text_below",
+    "data": "creature_creation/nest_example.json"
+  },
+  {
+    "name": "but_what_about_plants",
+    "type": "text",
+    "data": "creature_creation/but_what_about_plants.json"
+  },
+  {
+    "name": "cultivator_recipe",
+    "type": "crafting",
+    "data": "creature_creation/cultivator_recipe.json"
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "great_auk",
+    "type": "text",
+    "data": "modern/great_auk.json"
+  },
+  {
+    "name": "greak_auk_info",
+    "type": "text",
+    "data": "modern/greak_auk_info.json"
+  }
+]

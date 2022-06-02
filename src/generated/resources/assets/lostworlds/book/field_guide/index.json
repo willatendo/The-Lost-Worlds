@@ -1,0 +1,44 @@
+[
+  {
+    "name": "modern",
+    "data": "sections/modern.json",
+    "icon": {
+      "item": "lostworlds:great_auk_skeleton"
+    }
+  },
+  {
+    "name": "cretaceous",
+    "data": "sections/cretaceous.json",
+    "icon": {
+      "item": "lostworlds:tyrannosaurus_skeleton"
+    }
+  },
+  {
+    "name": "jurassic",
+    "data": "sections/jurassic.json",
+    "icon": {
+      "item": "lostworlds:allosaurus_skeleton"
+    }
+  },
+  {
+    "name": "triassic",
+    "data": "sections/triassic.json",
+    "icon": {
+      "item": "lostworlds:procompsognathus_skeleton"
+    }
+  },
+  {
+    "name": "permian",
+    "data": "sections/permian.json",
+    "icon": {
+      "item": "lostworlds:gorgonops_skeleton"
+    }
+  },
+  {
+    "name": "cambrian",
+    "data": "sections/cambrian.json",
+    "icon": {
+      "item": "lostworlds:anomalocaris_exoskeleton"
+    }
+  }
+]
