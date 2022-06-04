@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "lostworlds:allosaurus_fragilis",
-    "lostworlds:allosaurus_europaeus"
+    "lostworlds:allosaurus_fragilis"
   ]
 }
