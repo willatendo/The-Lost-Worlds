@@ -1,6 +1,6 @@
 package lostworlds.server.entity.utils;
 
-public interface ISemiAquatic {
+public interface SemiAquaticMob {
 	boolean shouldEnterWater();
 
 	boolean shouldLeaveWater();

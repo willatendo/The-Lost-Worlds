@@ -204,7 +204,7 @@ public class BookBuilder {
 				private final int height;
 
 				public PictureAndDescriptionPageBuilder(String page, String picture, int width, int height) {
-					super(page, "image_with_text_below");
+					super(page, "image_text");
 					this.picture = picture;
 					this.width = width;
 					this.height = height;

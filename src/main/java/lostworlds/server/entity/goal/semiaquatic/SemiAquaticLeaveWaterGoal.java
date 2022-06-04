@@ -2,7 +2,7 @@ package lostworlds.server.entity.goal.semiaquatic;
 
 import java.util.EnumSet;
 
-import lostworlds.server.entity.utils.ISemiAquatic;
+import lostworlds.server.entity.utils.SemiAquaticMob;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
@@ -24,7 +24,7 @@ public class SemiAquaticLeaveWaterGoal extends Goal {
 	@Override
 	public boolean canUse() {
 		if (this.creature.level.getFluidState(this.creature.blockPosition()).is(FluidTags.WATER) && (this.creature.getTarget() != null || this.creature.getRandom().nextInt(executionChance) == 0)) {
-			if (this.creature instanceof ISemiAquatic && ((ISemiAquatic) this.creature).shouldLeaveWater()) {
+			if (this.creature instanceof SemiAquaticMob && ((SemiAquaticMob) this.creature).shouldLeaveWater()) {
 				targetPos = generateTarget();
 				return targetPos != null;
 			}
@@ -53,7 +53,7 @@ public class SemiAquaticLeaveWaterGoal extends Goal {
 
 	@Override
 	public boolean canContinueToUse() {
-		if (this.creature instanceof ISemiAquatic && !((ISemiAquatic) this.creature).shouldLeaveWater()) {
+		if (this.creature instanceof SemiAquaticMob && !((SemiAquaticMob) this.creature).shouldLeaveWater()) {
 			this.creature.getNavigation().stop();
 			return false;
 		}

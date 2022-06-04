@@ -1,14 +1,18 @@
 package lostworlds.server.entity.terrestrial;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import lostworlds.server.LostWorldsRegistries;
 import lostworlds.server.LostWorldsTags;
+import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.semiaquatic.CarnivoreSemiAquaticMob;
-import lostworlds.server.entity.utils.IForTabletThings;
 import lostworlds.server.entity.utils.ModDamageSources;
+import lostworlds.server.entity.utils.TabletInfo;
 import lostworlds.server.item.LostWorldsItems;
+import lostworlds.server.species.SpeciesType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -37,7 +41,7 @@ import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 
-public abstract class PrehistoricMob extends Animal implements IAnimatable, IForTabletThings {
+public abstract class PrehistoricMob extends Animal implements IAnimatable, TabletInfo {
 	protected static final EntityDataAccessor<Byte> VARIENT = SynchedEntityData.defineId(PrehistoricMob.class, EntityDataSerializers.BYTE);
 	protected static final EntityDataAccessor<Byte> ANIMATION = SynchedEntityData.defineId(PrehistoricMob.class, EntityDataSerializers.BYTE);
 
@@ -185,7 +189,13 @@ public abstract class PrehistoricMob extends Animal implements IAnimatable, IFor
 	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(ANIMATION, ANIMATION_IDLE);
-		byte varient = (byte) random.nextInt(2);
+		byte varient;
+		if (this instanceof SpeciesTagModelAndTextureable species) {
+			List<SpeciesType> types = LostWorldsRegistries.SPECIES_TYPES_REGISTRY.get().tags().getTag(species.getTagToUse()).stream().toList();
+			varient = (byte) this.random.nextInt(types.size());
+		} else {
+			varient = (byte) random.nextInt(2);
+		}
 		this.entityData.define(VARIENT, varient);
 	}
 

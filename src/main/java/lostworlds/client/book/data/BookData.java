@@ -1,8 +1,7 @@
 package lostworlds.client.book.data;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -23,9 +22,11 @@ import lostworlds.server.network.book.DropLecternBookPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
+import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 
@@ -93,28 +94,11 @@ public class BookData implements DataItem {
 
 				this.appearance.load();
 
-				ResourceLocation languageLocation = repo.getResourceLocation("language.lang");
+				ResourceLocation languageLocation = repo.getResourceLocation("language.json");
 
 				if (repo.resourceExists(languageLocation)) {
-					try {
-						Resource resource = repo.getResource(languageLocation);
-						if (resource != null) {
-							BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8));
-							String next = br.readLine();
-
-							while (next != null) {
-								if (!next.startsWith("//") && next.contains("=")) {
-									String key = next.substring(0, next.indexOf('='));
-									String value = next.substring(next.indexOf('=') + 1);
-
-									this.strings.put(key, value);
-								}
-
-								next = br.readLine();
-							}
-						}
-					} catch (Exception ignored) {
-					}
+					ResourceManager resourceManager = Minecraft.getInstance().getResourceManager();
+					this.getFromJson(resourceManager.getResources(languageLocation));
 				}
 			}
 
@@ -178,6 +162,15 @@ public class BookData implements DataItem {
 			this.sections.add(section);
 
 			e.printStackTrace();
+		}
+	}
+
+	private void getFromJson(List<Resource> resource) {
+		for (Resource iresource : resource) {
+			try (InputStream inputstream = iresource.getInputStream()) {
+				Language.loadFromJson(inputstream, this.strings::put);
+			} catch (IOException ioexception) {
+			}
 		}
 	}
 

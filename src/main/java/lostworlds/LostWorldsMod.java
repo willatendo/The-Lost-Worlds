@@ -11,6 +11,7 @@ import lostworlds.client.LostWorldsBooks;
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.client.book.BookLoader;
 import lostworlds.client.sounds.LostWorldsSounds;
+import lostworlds.server.LostWorldsRegistries;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.LostWorldsBiomes;
@@ -34,6 +35,7 @@ import lostworlds.server.menu.LostWorldsMenus;
 import lostworlds.server.menu.recipes.LostWorldsRecipeSerializers;
 import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import lostworlds.server.network.LostWorldsNetwork;
+import lostworlds.server.species.LostWorldsSpeciesTypes;
 import lostworlds.server.structure.LostWorldsConfiguredStructures;
 import lostworlds.server.structure.LostWorldsStructurePecies;
 import lostworlds.server.structure.LostWorldsStructureSets;
@@ -87,6 +89,8 @@ public class LostWorldsMod {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		IEventBus forge = MinecraftForge.EVENT_BUS;
 
+		LostWorldsRegistries.DEFERRED_SPECIES_TYPES.register(bus);
+
 		GeckoLib.initialize();
 
 		ImplInit.init();
@@ -106,6 +110,9 @@ public class LostWorldsMod {
 		LostWorldsFeatures.FEATURES.register(bus);
 		LostWorldsStructures.STRUCTURE_FEATURES.register(bus);
 		LostWorldsBiomes.BIOMES.register(bus);
+		LostWorldsSpeciesTypes.SPECIES_TYPES.register(bus);
+
+		LostWorldsRegistries.init();
 
 		LostWorldsTags.init();
 

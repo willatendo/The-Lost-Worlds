@@ -7,9 +7,9 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import lostworlds.server.item.enchantment.CurseOfBreakingEnchantment;
 import lostworlds.server.item.enchantment.PrecisionEnchantment;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment.Rarity;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import net.minecraft.world.entity.EquipmentSlot;
 
 public class LostWorldsEnchantments {
 	public static final LostWorldsRegistrate REGISTRATE = getRegistrate();

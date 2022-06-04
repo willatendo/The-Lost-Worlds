@@ -4,7 +4,7 @@ import java.util.Random;
 
 import lostworlds.server.entity.controller.SemiAquaticMoveController;
 import lostworlds.server.entity.terrestrial.Carnivore;
-import lostworlds.server.entity.utils.ISemiAquatic;
+import lostworlds.server.entity.utils.SemiAquaticMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.MoverType;
@@ -23,7 +23,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.Level;
 
-public abstract class CarnivoreSemiAquaticMob extends Carnivore implements ISemiAquatic {
+public abstract class CarnivoreSemiAquaticMob extends Carnivore implements SemiAquaticMob {
 	public static final EntityDataAccessor<BlockPos> TRAVEL_POS = SynchedEntityData.defineId(CarnivoreSemiAquaticMob.class, EntityDataSerializers.BLOCK_POS);
 	public final Random random = new Random();
 	private boolean isLandNavigator;

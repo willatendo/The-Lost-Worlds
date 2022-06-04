@@ -18,7 +18,7 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.server.entity.terrestrial.EggLayingMob;
 import lostworlds.server.entity.utils.FoodLists;
-import lostworlds.server.entity.utils.IHerdPanic;
+import lostworlds.server.entity.utils.HerdPanicBehaviour;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.CreatureDiet;
 import lostworlds.server.entity.utils.enums.DinoTypes;
@@ -39,7 +39,7 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class Zephyrosaurus extends EggLayingMob implements IHerdPanic {
+public class Zephyrosaurus extends EggLayingMob implements HerdPanicBehaviour {
 	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);
 

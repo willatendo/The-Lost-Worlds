@@ -91,7 +91,7 @@
   },
   {
     "name": "nest_example",
-    "type": "image_with_text_below",
+    "type": "image_text",
     "data": "creature_creation/nest_example.json"
   },
   {

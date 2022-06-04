@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import lostworlds.client.LostWorldsClientConfigs;
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.block.LostWorldsBlocks;
+import lostworlds.server.item.LostWorldsEnchantments;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.util.Version;
 import net.minecraft.ChatFormatting;
@@ -65,12 +66,12 @@ public class LostWorldsUtils {
 	public static final LostWorldsCommonConfig SERVER_CONFIG = LostWorldsConfig.COMMON_CONFIG;
 	public static final LostWorldsClientConfigs CLIENT_CONFIG = LostWorldsConfig.CLIENT_CONFIG;
 
-	public static final CreativeModeTab ITEMS = new CreativeModeTab("lostworlds.items") {
+	public static final CreativeModeTab ITEMS = (new CreativeModeTab("lostworlds.items") {
 		@Override
 		public ItemStack makeIcon() {
 			return LostWorldsItems.LOST_WORLDS_LEXICON.asStack();
 		}
-	};
+	}).setEnchantmentCategories(LostWorldsEnchantments.HAMMER);
 	public static final CreativeModeTab BLOCKS = new CreativeModeTab("lostworlds.blocks") {
 		@Override
 		public ItemStack makeIcon() {

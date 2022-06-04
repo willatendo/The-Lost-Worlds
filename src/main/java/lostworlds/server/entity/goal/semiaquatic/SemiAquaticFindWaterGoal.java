@@ -4,7 +4,7 @@ import java.util.EnumSet;
 import java.util.Random;
 
 import lostworlds.server.entity.terrestrial.PrehistoricMob;
-import lostworlds.server.entity.utils.ISemiAquatic;
+import lostworlds.server.entity.utils.SemiAquaticMob;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -22,7 +22,7 @@ public class SemiAquaticFindWaterGoal extends Goal {
 	@Override
 	public boolean canUse() {
 		if (this.creature.isOnGround() && !this.creature.level.getFluidState(this.creature.blockPosition()).is(FluidTags.WATER) && !this.creature.isSleeping()) {
-			if (this.creature instanceof ISemiAquatic && ((ISemiAquatic) this.creature).shouldEnterWater() && (this.creature.getTarget() != null || this.creature.getRandom().nextInt(executionChance) == 0)) {
+			if (this.creature instanceof SemiAquaticMob && ((SemiAquaticMob) this.creature).shouldEnterWater() && (this.creature.getTarget() != null || this.creature.getRandom().nextInt(executionChance) == 0)) {
 				targetPos = generateTarget();
 				return targetPos != null;
 			}
@@ -46,7 +46,7 @@ public class SemiAquaticFindWaterGoal extends Goal {
 
 	@Override
 	public boolean canContinueToUse() {
-		if (this.creature instanceof ISemiAquatic && !((ISemiAquatic) this.creature).shouldEnterWater()) {
+		if (this.creature instanceof SemiAquaticMob && !((SemiAquaticMob) this.creature).shouldEnterWater()) {
 			this.creature.getNavigation().stop();
 			return false;
 		}
@@ -56,7 +56,7 @@ public class SemiAquaticFindWaterGoal extends Goal {
 	public BlockPos generateTarget() {
 		BlockPos blockpos = null;
 		Random random = new Random();
-		int range = this.creature instanceof ISemiAquatic ? ((ISemiAquatic) this.creature).getWaterSearchRange() : 14;
+		int range = this.creature instanceof SemiAquaticMob ? ((SemiAquaticMob) this.creature).getWaterSearchRange() : 14;
 		for (int i = 0; i < 15; i++) {
 			BlockPos blockpos1 = this.creature.blockPosition().offset(random.nextInt(range) - range / 2, 3, random.nextInt(range) - range / 2);
 			while (this.creature.level.isEmptyBlock(blockpos1) && blockpos1.getY() > 1) {

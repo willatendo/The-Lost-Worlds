@@ -11,6 +11,7 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 
+import lostworlds.server.species.SpeciesType;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -324,6 +325,14 @@ public class LostWorldsTags {
 
 		private static TagKey<ConfiguredStructureFeature<?, ?>> create(String id) {
 			return TagKey.create(Registry.CONFIGURED_STRUCTURE_FEATURE_REGISTRY, LostWorldsUtils.rL(id));
+		}
+	}
+
+	public static class ModSpeciesTypeTags {
+		public static final TagKey<SpeciesType> ALLOSAURUS = create("allosaurus");
+
+		private static TagKey<SpeciesType> create(String id) {
+			return TagKey.create(LostWorldsRegistries.SPECIES_TYPES, LostWorldsUtils.rL(id));
 		}
 	}
 

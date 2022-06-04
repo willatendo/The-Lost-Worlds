@@ -1,6 +1,6 @@
 package lostworlds.server.entity.controller;
 
-import lostworlds.server.entity.utils.ISemiAquatic;
+import lostworlds.server.entity.utils.SemiAquaticMob;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -28,7 +28,7 @@ public class AquaticMovementController extends MoveControl {
 		if (this.entity.isInWater()) {
 			this.entity.setDeltaMovement(this.entity.getDeltaMovement().add(0.0D, 0.005D, 0.0D));
 		}
-		if (entity instanceof ISemiAquatic && ((ISemiAquatic) entity).shouldStopMoving()) {
+		if (entity instanceof SemiAquaticMob && ((SemiAquaticMob) entity).shouldStopMoving()) {
 			this.entity.setSpeed(0.0F);
 			return;
 		}

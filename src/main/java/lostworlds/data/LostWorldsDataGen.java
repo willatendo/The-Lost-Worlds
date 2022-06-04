@@ -2,6 +2,7 @@ package lostworlds.data;
 
 import lostworlds.data.tag.LostWorldsBiomeTagProvider;
 import lostworlds.data.tag.LostWorldsConfiguredStructureTagProvider;
+import lostworlds.data.tag.LostWorldsSpeciesTypeTagProvider;
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -22,5 +23,6 @@ public class LostWorldsDataGen {
 		dataGenerator.addProvider(new LostWorldsConfiguredStructureTagProvider(dataGenerator, fileHelper));
 		dataGenerator.addProvider(new LostWorldsLootProvider(dataGenerator));
 		dataGenerator.addProvider(new LostWorldsDimensionProvider(dataGenerator));
+		dataGenerator.addProvider(new LostWorldsSpeciesTypeTagProvider(dataGenerator, fileHelper));
 	}
 }
