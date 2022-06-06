@@ -1,7 +1,9 @@
 package lostworlds.server.entity.terrestrial.permian;
 
 import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.LostWorldsEntities;
+import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.goal.terrestrial.SleepGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyAvoidEntityGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyBreedGoal;
@@ -21,7 +23,9 @@ import lostworlds.server.entity.terrestrial.EggLayingMob;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.CreatureDiet;
+import lostworlds.server.species.SpeciesType;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
@@ -37,12 +41,22 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class DiictodonEntity extends EggLayingMob {
+public class DiictodonEntity extends EggLayingMob implements SpeciesTagModelAndTextureable {
 	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);
 
 	public DiictodonEntity(EntityType<? extends DiictodonEntity> entity, Level world) {
 		super(entity, world);
+	}
+
+	@Override
+	public TagKey<SpeciesType> getTagToUse() {
+		return LostWorldsTags.ModSpeciesTypeTags.DIICTODON;
+	}
+
+	@Override
+	public byte getVarientData() {
+		return this.getVarient();
 	}
 
 	@Override

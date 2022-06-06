@@ -3,7 +3,9 @@ package lostworlds.server.entity.semiaquatic.modern;
 import java.util.Random;
 
 import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.LostWorldsEntities;
+import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.goal.ReasonedAttackableTargetGoal;
 import lostworlds.server.entity.goal.semiaquatic.SemiAquaticFindWaterGoal;
 import lostworlds.server.entity.goal.semiaquatic.SemiAquaticLeaveWaterGoal;
@@ -21,8 +23,10 @@ import lostworlds.server.entity.semiaquatic.CarnivoreSemiAquaticMob;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.species.SpeciesType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
@@ -43,12 +47,22 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class GreatAuk extends CarnivoreSemiAquaticMob {
+public class GreatAuk extends CarnivoreSemiAquaticMob implements SpeciesTagModelAndTextureable {
 	private static final Ingredient FOOD_ITEMS = FoodLists.PISCIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);
 
 	public GreatAuk(EntityType<? extends CarnivoreSemiAquaticMob> entity, Level world) {
 		super(entity, world);
+	}
+
+	@Override
+	public TagKey<SpeciesType> getTagToUse() {
+		return LostWorldsTags.ModSpeciesTypeTags.GREAT_AUK;
+	}
+
+	@Override
+	public byte getVarientData() {
+		return this.getVarient();
 	}
 
 	public static Builder createAttributes() {

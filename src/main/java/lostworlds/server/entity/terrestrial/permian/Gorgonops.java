@@ -5,7 +5,9 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.LostWorldsEntities;
+import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.goal.ReasonedAttackableTargetGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyAvoidEntityGoal;
@@ -23,11 +25,13 @@ import lostworlds.server.entity.terrestrial.Carnivore;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.species.SpeciesType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.AgeableMob;
@@ -48,7 +52,7 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class Gorgonops extends Carnivore implements NeutralMob {
+public class Gorgonops extends Carnivore implements NeutralMob, SpeciesTagModelAndTextureable {
 	private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(Gorgonops.class, EntityDataSerializers.INT);
 	private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
 	private static final Ingredient FOOD_ITEMS = FoodLists.CARNIVORE;
@@ -57,6 +61,16 @@ public class Gorgonops extends Carnivore implements NeutralMob {
 
 	public Gorgonops(EntityType<? extends Gorgonops> entity, Level world) {
 		super(entity, world);
+	}
+
+	@Override
+	public TagKey<SpeciesType> getTagToUse() {
+		return LostWorldsTags.ModSpeciesTypeTags.GORGONOPS;
+	}
+
+	@Override
+	public byte getVarientData() {
+		return this.getVarient();
 	}
 
 	@Override

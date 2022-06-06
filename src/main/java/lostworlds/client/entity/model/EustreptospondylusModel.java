@@ -7,24 +7,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class EustreptospondylusModel extends AnimatedGeoModel<Eustreptospondylus> {
+public class EustreptospondylusModel extends SpeciesTagModelAndTextureableModel<Eustreptospondylus> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(Eustreptospondylus entity) {
 		return LostWorldsUtils.rL("animations/eustreptospondylus.animations.json");
-	}
-
-	@Override
-	public ResourceLocation getModelLocation(Eustreptospondylus entity) {
-		return LostWorldsUtils.rL("geo/eustreptospondylus.geo.json");
-	}
-
-	@Override
-	public ResourceLocation getTextureLocation(Eustreptospondylus entity) {
-		return LostWorldsUtils.rL("textures/model/entity/eustreptospondylus/texture.png");
 	}
 
 	@Override

@@ -7,24 +7,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class CarnotaurusModel extends AnimatedGeoModel<Carnotaurus> {
+public class CarnotaurusModel extends SpeciesTagModelAndTextureableModel<Carnotaurus> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(Carnotaurus entity) {
 		return LostWorldsUtils.rL("animations/carnotaurus.animations.json");
-	}
-
-	@Override
-	public ResourceLocation getModelLocation(Carnotaurus entity) {
-		return LostWorldsUtils.rL("geo/carnotaurus.geo.json");
-	}
-
-	@Override
-	public ResourceLocation getTextureLocation(Carnotaurus entity) {
-		return LostWorldsUtils.rL("textures/model/entity/carnotaurus/texture.png");
 	}
 
 	@Override

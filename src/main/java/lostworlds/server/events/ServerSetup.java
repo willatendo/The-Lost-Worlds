@@ -49,6 +49,7 @@ import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.dimension.DimensionType;
@@ -317,6 +318,35 @@ public class ServerSetup {
 			addToFlammables(LostWorldsBlocks.SEQUOIA.getBlock(WoodTypes.WOOD).get(), 5, 5);
 			addToFlammables(LostWorldsBlocks.SEQUOIA.getBlock(WoodTypes.STRIPPED_LOG).get(), 5, 5);
 			addToFlammables(LostWorldsBlocks.SEQUOIA.getBlock(WoodTypes.STRIPPED_WOOD).get(), 5, 5);
+			addToComposterMap(LostWorldsBlocks.ARAUCARIA.getBlock(WoodTypes.SAPLING).get(), 0.3F);
+			addToComposterMap(LostWorldsBlocks.CALAMITES.getBlock(WoodTypes.SAPLING).get(), 0.3F);
+			addToComposterMap(LostWorldsBlocks.CONIFER.getBlock(WoodTypes.SAPLING).get(), 0.3F);
+			addToComposterMap(LostWorldsBlocks.CYPRESS.getBlock(WoodTypes.SAPLING).get(), 0.3F);
+			addToComposterMap(LostWorldsBlocks.GINKGO.getBlock(WoodTypes.SAPLING).get(), 0.3F);
+			addToComposterMap(LostWorldsBlocks.SEQUOIA.getBlock(WoodTypes.SAPLING).get(), 0.3F);
+			addToComposterMap(LostWorldsBlocks.ARAUCARIA.getBlock(WoodTypes.LEAVES).get(), 0.3F);
+			addToComposterMap(LostWorldsBlocks.CALAMITES.getBlock(WoodTypes.LEAVES).get(), 0.3F);
+			addToComposterMap(LostWorldsBlocks.CONIFER.getBlock(WoodTypes.LEAVES).get(), 0.3F);
+			addToComposterMap(LostWorldsBlocks.CYPRESS.getBlock(WoodTypes.LEAVES).get(), 0.3F);
+			addToComposterMap(LostWorldsBlocks.GINKGO.getBlock(WoodTypes.LEAVES).get(), 0.3F);
+			addToComposterMap(LostWorldsBlocks.SEQUOIA.getBlock(WoodTypes.LEAVES).get(), 0.3F);
+			addToComposterMap(LostWorldsBlocks.ARCHAEFRUTUS, 0.65F);
+			addToComposterMap(LostWorldsBlocks.ALETHOPTERIS, 0.5F);
+			addToComposterMap(LostWorldsBlocks.BRAZILEA, 0.65F);
+			addToComposterMap(LostWorldsBlocks.ALETHOPTERIS, 0.5F);
+			addToComposterMap(LostWorldsBlocks.CEPHALOTAXUS, 0.5F);
+			addToComposterMap(LostWorldsBlocks.CYCAD, 0.65F);
+			addToComposterMap(LostWorldsBlocks.DICKSONIA, 0.65F);
+			addToComposterMap(LostWorldsBlocks.DILLHOFFIA, 0.65F);
+			addToComposterMap(LostWorldsBlocks.DUISBERGIA, 0.65F);
+			addToComposterMap(LostWorldsBlocks.EUDICOTS, 0.65F);
+			addToComposterMap(LostWorldsBlocks.GROUND_FERNS, 0.65F);
+			addToComposterMap(LostWorldsBlocks.MAGNOLIA, 0.65F);
+			addToComposterMap(LostWorldsBlocks.OSMUNDA, 0.65F);
+			addToComposterMap(LostWorldsBlocks.PERMIAN_DESERT_FERNS, 0.65F);
+			addToComposterMap(LostWorldsBlocks.PERMIAN_DESERT_SHRUB, 0.65F);
+			addToComposterMap(LostWorldsBlocks.WILLIAMSONIA, 0.65F);
+			addToComposterMap(LostWorldsBlocks.ZAMITES, 0.65F);
 
 			for (DinoTypes types : DinoTypes.values()) {
 				SyringeItem.MAP.add(Pair.of(types.getEntityType(), types.getBloodSyringe()));
@@ -341,6 +371,10 @@ public class ServerSetup {
 		private static void addToFlammables(BlockEntry<? extends Block> burnable, int catchFlame, int burn) {
 			FireBlock fireblock = (FireBlock) Blocks.FIRE;
 			fireblock.setFlammable(burnable.get(), catchFlame, burn);
+		}
+
+		private static void addToComposterMap(BlockEntry<? extends Block> compostable, float chance) {
+			ComposterBlock.add(chance, compostable.asStack().getItem());
 		}
 	}
 }

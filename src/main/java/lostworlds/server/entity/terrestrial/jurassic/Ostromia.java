@@ -1,7 +1,9 @@
 package lostworlds.server.entity.terrestrial.jurassic;
 
 import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.LostWorldsEntities;
+import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.goal.ReasonedAttackableTargetGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyBreedGoal;
@@ -18,7 +20,9 @@ import lostworlds.server.entity.terrestrial.GlidingCarnivore;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.species.SpeciesType;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier.Builder;
@@ -33,12 +37,22 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class Ostromia extends GlidingCarnivore {
+public class Ostromia extends GlidingCarnivore implements SpeciesTagModelAndTextureable {
 	private static final Ingredient FOOD_ITEMS = FoodLists.CARNIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);
 
 	public Ostromia(EntityType<? extends Ostromia> entity, Level world) {
 		super(entity, world);
+	}
+
+	@Override
+	public TagKey<SpeciesType> getTagToUse() {
+		return LostWorldsTags.ModSpeciesTypeTags.OSTROMIA;
+	}
+
+	@Override
+	public byte getVarientData() {
+		return this.getVarient();
 	}
 
 	@Override

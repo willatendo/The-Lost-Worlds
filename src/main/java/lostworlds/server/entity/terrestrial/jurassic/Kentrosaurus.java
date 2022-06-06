@@ -5,7 +5,9 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.LostWorldsEntities;
+import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.goal.ReasonedAttackableTargetGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyBreedGoal;
@@ -25,11 +27,13 @@ import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.CreatureDiet;
 import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.species.SpeciesType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.AgeableMob;
@@ -49,7 +53,7 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class Kentrosaurus extends EggLayingMob implements NeutralMob {
+public class Kentrosaurus extends EggLayingMob implements NeutralMob, SpeciesTagModelAndTextureable {
 	private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(Kentrosaurus.class, EntityDataSerializers.INT);
 	private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
 	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
@@ -58,6 +62,16 @@ public class Kentrosaurus extends EggLayingMob implements NeutralMob {
 
 	public Kentrosaurus(EntityType<? extends Kentrosaurus> entity, Level world) {
 		super(entity, world);
+	}
+
+	@Override
+	public TagKey<SpeciesType> getTagToUse() {
+		return LostWorldsTags.ModSpeciesTypeTags.KENTROSAURUS;
+	}
+
+	@Override
+	public byte getVarientData() {
+		return this.getVarient();
 	}
 
 	@Override

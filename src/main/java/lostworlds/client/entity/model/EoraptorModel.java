@@ -7,24 +7,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class EoraptorModel extends AnimatedGeoModel<Eoraptor> {
+public class EoraptorModel extends SpeciesTagModelAndTextureableModel<Eoraptor> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(Eoraptor entity) {
 		return LostWorldsUtils.rL("animations/eoraptor.animations.json");
-	}
-
-	@Override
-	public ResourceLocation getModelLocation(Eoraptor entity) {
-		return LostWorldsUtils.rL("geo/eoraptor.geo.json");
-	}
-
-	@Override
-	public ResourceLocation getTextureLocation(Eoraptor entity) {
-		return LostWorldsUtils.rL("textures/model/entity/eoraptor/texture.png");
 	}
 
 	@Override

@@ -7,28 +7,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class ThanosModel extends AnimatedGeoModel<Thanos> {
-	private static final ResourceLocation TEXTURE_1 = LostWorldsUtils.rL("textures/model/entity/thanos/texture_1.png");
-	private static final ResourceLocation TEXTURE_2 = LostWorldsUtils.rL("textures/model/entity/thanos/texture_2.png");
-	private ResourceLocation texture;
-
+public class ThanosModel extends SpeciesTagModelAndTextureableModel<Thanos> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(Thanos entity) {
 		return LostWorldsUtils.rL("animations/thanos.animations.json");
-	}
-
-	@Override
-	public ResourceLocation getModelLocation(Thanos entity) {
-		return LostWorldsUtils.rL("geo/thanos.geo.json");
-	}
-
-	@Override
-	public ResourceLocation getTextureLocation(Thanos entity) {
-		return texture;
 	}
 
 	@Override
@@ -40,13 +25,6 @@ public class ThanosModel extends AnimatedGeoModel<Thanos> {
 		if (!(entity.isEating() || entity.isSleeping())) {
 			head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
 			head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
-		}
-
-		if (entity.getVarient() == 0) {
-			this.texture = this.TEXTURE_1;
-		}
-		if (entity.getVarient() == 1) {
-			this.texture = this.TEXTURE_2;
 		}
 	}
 }

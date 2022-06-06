@@ -1,7 +1,9 @@
 package lostworlds.server.entity.terrestrial.cretaceous;
 
 import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.LostWorldsEntities;
+import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.goal.terrestrial.SleepGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyAvoidEntityGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepyBreedGoal;
@@ -18,11 +20,12 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialGoHomeGoal;
 import lostworlds.server.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.server.entity.terrestrial.EggLayingMob;
 import lostworlds.server.entity.utils.FoodLists;
-import lostworlds.server.entity.utils.HerdPanicBehaviour;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.CreatureDiet;
 import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.species.SpeciesType;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
@@ -39,12 +42,22 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class Zephyrosaurus extends EggLayingMob implements HerdPanicBehaviour {
+public class Zephyrosaurus extends EggLayingMob implements SpeciesTagModelAndTextureable {
 	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
 	private AnimationFactory factory = new AnimationFactory(this);
 
 	public Zephyrosaurus(EntityType<? extends Zephyrosaurus> entity, Level world) {
 		super(entity, world);
+	}
+
+	@Override
+	public TagKey<SpeciesType> getTagToUse() {
+		return LostWorldsTags.ModSpeciesTypeTags.ZEPHYROSAURUS;
+	}
+
+	@Override
+	public byte getVarientData() {
+		return this.getVarient();
 	}
 
 	@Override
@@ -111,14 +124,5 @@ public class Zephyrosaurus extends EggLayingMob implements HerdPanicBehaviour {
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob entity) {
 		return LostWorldsEntities.ZEPHYROSAURUS.create(world);
-	}
-
-	@Override
-	public void onPanic() {
-	}
-
-	@Override
-	public boolean canPanic() {
-		return true;
 	}
 }

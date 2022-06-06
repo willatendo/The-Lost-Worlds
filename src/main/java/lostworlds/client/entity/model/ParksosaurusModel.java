@@ -7,24 +7,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class ParksosaurusModel extends AnimatedGeoModel<Parksosaurus> {
+public class ParksosaurusModel extends SpeciesTagModelAndTextureableModel<Parksosaurus> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(Parksosaurus entity) {
 		return LostWorldsUtils.rL("animations/parksosaurus.animations.json");
-	}
-
-	@Override
-	public ResourceLocation getModelLocation(Parksosaurus entity) {
-		return LostWorldsUtils.rL("geo/parksosaurus.geo.json");
-	}
-
-	@Override
-	public ResourceLocation getTextureLocation(Parksosaurus entity) {
-		return LostWorldsUtils.rL("textures/model/entity/parksosaurus/texture.png");
 	}
 
 	@Override

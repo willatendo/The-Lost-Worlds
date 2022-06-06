@@ -7,24 +7,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class GiganotosaurusModel extends AnimatedGeoModel<Giganotosaurus> {
+public class GiganotosaurusModel extends SpeciesTagModelAndTextureableModel<Giganotosaurus> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(Giganotosaurus entity) {
 		return LostWorldsUtils.rL("animations/giganotosaurus.animations.json");
-	}
-
-	@Override
-	public ResourceLocation getModelLocation(Giganotosaurus entity) {
-		return LostWorldsUtils.rL("geo/giganotosaurus.geo.json");
-	}
-
-	@Override
-	public ResourceLocation getTextureLocation(Giganotosaurus entity) {
-		return LostWorldsUtils.rL("textures/model/entity/giganotosaurus/texture.png");
 	}
 
 	@Override

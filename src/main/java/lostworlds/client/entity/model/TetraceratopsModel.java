@@ -7,24 +7,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class TetraceratopsModel extends AnimatedGeoModel<Tetraceratops> {
+public class TetraceratopsModel extends SpeciesTagModelAndTextureableModel<Tetraceratops> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(Tetraceratops entity) {
 		return LostWorldsUtils.rL("animations/tetraceratops.animations.json");
-	}
-
-	@Override
-	public ResourceLocation getModelLocation(Tetraceratops entity) {
-		return LostWorldsUtils.rL("geo/tetraceratops.geo.json");
-	}
-
-	@Override
-	public ResourceLocation getTextureLocation(Tetraceratops entity) {
-		return LostWorldsUtils.rL("textures/model/entity/tetraceratops/texture.png");
 	}
 
 	@Override

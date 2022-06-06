@@ -5,7 +5,9 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.LostWorldsEntities;
+import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.goal.ReasonedAttackableTargetGoal;
 import lostworlds.server.entity.goal.semiaquatic.SemiAquaticFindWaterGoal;
 import lostworlds.server.entity.goal.semiaquatic.SemiAquaticLeaveWaterGoal;
@@ -25,12 +27,14 @@ import lostworlds.server.entity.terrestrial.permian.DiictodonEntity;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.species.SpeciesType;
 import lostworlds.server.util.IngredientUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.damagesource.DamageSource;
@@ -53,7 +57,7 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class Rhinesuchus extends CarnivoreSemiAquaticMob implements NeutralMob {
+public class Rhinesuchus extends CarnivoreSemiAquaticMob implements NeutralMob, SpeciesTagModelAndTextureable {
 	private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(Rhinesuchus.class, EntityDataSerializers.INT);
 	private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
 	public static final EntityDataAccessor<Integer> MOISTNESS_LEVEL = SynchedEntityData.defineId(Rhinesuchus.class, EntityDataSerializers.INT);
@@ -63,6 +67,16 @@ public class Rhinesuchus extends CarnivoreSemiAquaticMob implements NeutralMob {
 
 	public Rhinesuchus(EntityType<? extends CarnivoreSemiAquaticMob> entity, Level world) {
 		super(entity, world);
+	}
+
+	@Override
+	public TagKey<SpeciesType> getTagToUse() {
+		return LostWorldsTags.ModSpeciesTypeTags.RHINESUCHUS;
+	}
+
+	@Override
+	public byte getVarientData() {
+		return this.getVarient();
 	}
 
 	public int getMoistnessLevel() {

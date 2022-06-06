@@ -7,28 +7,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class ChilesaurusModel extends AnimatedGeoModel<Chilesaurus> {
-	private static final ResourceLocation TEXTURE_1 = LostWorldsUtils.rL("textures/model/entity/chilesaurus/texture_1.png");
-	private static final ResourceLocation TEXTURE_2 = LostWorldsUtils.rL("textures/model/entity/chilesaurus/texture_2.png");
-	private ResourceLocation texture;
-
+public class ChilesaurusModel extends SpeciesTagModelAndTextureableModel<Chilesaurus> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(Chilesaurus entity) {
 		return LostWorldsUtils.rL("animations/chilesaurus.animations.json");
-	}
-
-	@Override
-	public ResourceLocation getModelLocation(Chilesaurus entity) {
-		return LostWorldsUtils.rL("geo/chilesaurus.geo.json");
-	}
-
-	@Override
-	public ResourceLocation getTextureLocation(Chilesaurus entity) {
-		return this.texture;
 	}
 
 	@Override
@@ -40,13 +25,6 @@ public class ChilesaurusModel extends AnimatedGeoModel<Chilesaurus> {
 		if (!(entity.isEating() || entity.isSleeping())) {
 			head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
 			head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
-		}
-
-		if (entity.getVarient() == 0) {
-			this.texture = this.TEXTURE_1;
-		}
-		if (entity.getVarient() == 1) {
-			this.texture = this.TEXTURE_2;
 		}
 	}
 }

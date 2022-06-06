@@ -6,23 +6,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 @OnlyIn(Dist.CLIENT)
-public class PalaeoniscumModel extends AnimatedGeoModel<Palaeoniscum> {
+public class PalaeoniscumModel extends SpeciesTagModelAndTextureableModel<Palaeoniscum> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(Palaeoniscum entity) {
 		return LostWorldsUtils.rL("animations/palaeoniscum.animations.json");
-	}
-
-	@Override
-	public ResourceLocation getModelLocation(Palaeoniscum entity) {
-		return LostWorldsUtils.rL("geo/palaeoniscum.geo.json");
-	}
-
-	@Override
-	public ResourceLocation getTextureLocation(Palaeoniscum entity) {
-		return LostWorldsUtils.rL("textures/model/entity/palaeoniscum/texture.png");
 	}
 
 	@Override

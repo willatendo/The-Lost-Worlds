@@ -330,6 +330,38 @@ public class LostWorldsTags {
 
 	public static class ModSpeciesTypeTags {
 		public static final TagKey<SpeciesType> ALLOSAURUS = create("allosaurus");
+		public static final TagKey<SpeciesType> ANOMALOCARIS = create("anomalocaris");
+		public static final TagKey<SpeciesType> CARNOTAURUS = create("carnotaurus");
+		public static final TagKey<SpeciesType> CHILESAURUS = create("chilesaurus");
+		public static final TagKey<SpeciesType> CRYOLOPHOSAURUS = create("cryolophosaurus");
+		public static final TagKey<SpeciesType> DIICTODON = create("diictodon");
+		public static final TagKey<SpeciesType> DILOPHOSAURUS = create("dilophosaurus");
+		public static final TagKey<SpeciesType> DIMETRODON = create("dimetrodon");
+		public static final TagKey<SpeciesType> EDAPHOSAURUS = create("edaphosaurus");
+		public static final TagKey<SpeciesType> EORAPTOR = create("eoraptor");
+		public static final TagKey<SpeciesType> EUSTREPTOSPONDYLUS = create("eustreptospondylus");
+		public static final TagKey<SpeciesType> FUKUIVENATOR = create("fukuivenator");
+		public static final TagKey<SpeciesType> GIGANOTOSAURUS = create("giganotosaurus");
+		public static final TagKey<SpeciesType> GORGONOPS = create("gorgonops");
+		public static final TagKey<SpeciesType> GREAT_AUK = create("great_auk");
+		public static final TagKey<SpeciesType> KENTROSAURUS = create("kentrosaurus");
+		public static final TagKey<SpeciesType> LIAONINGOSAURUS = create("liaoningosaurus");
+		public static final TagKey<SpeciesType> NAUTILUS = create("nautilus");
+		public static final TagKey<SpeciesType> OPHTHALMOSAURUS = create("ophthalmosaurus");
+		public static final TagKey<SpeciesType> OSTROMIA = create("ostromia");
+		public static final TagKey<SpeciesType> OURANOSAURUS = create("ouranosaurus");
+		public static final TagKey<SpeciesType> PARKSOSAURUS = create("parksosaurus");
+		public static final TagKey<SpeciesType> PALAEONISCUM = create("palaeoniscum");
+		public static final TagKey<SpeciesType> PROCOMPSOGNATHUS = create("procompsognathus");
+		public static final TagKey<SpeciesType> PROTOSUCHUS = create("protosuchus");
+		public static final TagKey<SpeciesType> PSITTACOSAURUS = create("psittacosaurus");
+		public static final TagKey<SpeciesType> RHINESUCHUS = create("rhinesuchus");
+		public static final TagKey<SpeciesType> SUCHOMIMUS = create("suchomimus");
+		public static final TagKey<SpeciesType> UTAHRAPTOR = create("utahraptor");
+		public static final TagKey<SpeciesType> THANOS = create("thanos");
+		public static final TagKey<SpeciesType> TETRACERATOPS = create("tetraceratops");
+		public static final TagKey<SpeciesType> TYRANNOSAURUS = create("tyrannosaurus");
+		public static final TagKey<SpeciesType> ZEPHYROSAURUS = create("zephyrosaurus");
 
 		private static TagKey<SpeciesType> create(String id) {
 			return TagKey.create(LostWorldsRegistries.SPECIES_TYPES, LostWorldsUtils.rL(id));

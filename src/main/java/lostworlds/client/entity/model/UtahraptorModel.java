@@ -7,24 +7,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
-public class UtahraptorModel extends AnimatedGeoModel<Utahraptor> {
+public class UtahraptorModel extends SpeciesTagModelAndTextureableModel<Utahraptor> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(Utahraptor entity) {
 		return LostWorldsUtils.rL("animations/utahraptor.animations.json");
-	}
-
-	@Override
-	public ResourceLocation getModelLocation(Utahraptor entity) {
-		return LostWorldsUtils.rL("geo/utahraptor.geo.json");
-	}
-
-	@Override
-	public ResourceLocation getTextureLocation(Utahraptor entity) {
-		return LostWorldsUtils.rL("textures/model/entity/utahraptor/texture.png");
 	}
 
 	@Override

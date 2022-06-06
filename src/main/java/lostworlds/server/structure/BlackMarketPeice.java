@@ -83,7 +83,7 @@ public class BlackMarketPeice {
 			BlockPos blockpos1 = this.templatePosition;
 			int i = reader.getHeight(Heightmap.Types.WORLD_SURFACE_WG, blockpos1.getX(), blockpos1.getZ());
 			BlockPos blockpos2 = this.templatePosition;
-			this.templatePosition = this.templatePosition.offset(0, i - 90 - 2, 0);
+			this.templatePosition = this.templatePosition.offset(0, i, 0);
 			this.templatePosition = blockpos2;
 			super.postProcess(reader, manager, chunkGenerator, rand, box, chunkPos, pos);
 		}
