@@ -1191,6 +1191,7 @@
   "item.lostworlds.dimetrodon_spawn_egg": "Dimetrodon Spawn Egg",
   "item.lostworlds.dimetrodon_tail": "Dimetrodon Tail",
   "item.lostworlds.dino_button": "Dino Button",
+  "item.lostworlds.dna.code": "Code: %s",
   "item.lostworlds.duisbergia_dna": "Duisbergia Dna",
   "item.lostworlds.duisbergia_dna_disc": "Duisbergia Dna Disc",
   "item.lostworlds.duisbergia_fossil": "Duisbergia Fossil",
@@ -1829,5 +1830,8 @@
   "timeBook.lostworlds.transport_to_cretaceous_period": "Transporting %s to the Cretaceous Period!",
   "timeBook.lostworlds.transport_to_jurassic_period": "Transporting %s to the Jurassic Period!",
   "timeBook.lostworlds.transport_to_overworld": "Transporting %s back home!",
-  "timeBook.lostworlds.transport_to_permian_period": "Transporting %s to the Permian Period!"
+  "timeBook.lostworlds.transport_to_permian_period": "Transporting %s to the Permian Period!",
+  "travelerstitles.lostworlds.cretaceous": "Cretaceous Period",
+  "travelerstitles.lostworlds.jurassic": "Jurassic Period",
+  "travelerstitles.lostworlds.permian": "Permian Period"
 }

@@ -1,15 +1,17 @@
 package lostworlds.server.block.entity;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import lostworlds.server.LostWorldsTags;
+import lostworlds.api.APIAmberRecipeType;
+import lostworlds.api.APIRegistry;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.DNAExtractorBlock;
 import lostworlds.server.item.AmberItem;
+import lostworlds.server.item.DNAItem;
 import lostworlds.server.menu.DNAExtractorMenu;
 import lostworlds.server.menu.LostWorldsMenus;
 import lostworlds.server.menu.recipes.DNAExtractorRecipe;
@@ -44,7 +46,6 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class DNAExtractorBlockEntity extends BlockEntity implements Container, MenuProvider, Nameable, WorldlyContainer {
 	private static final int[] SLOTS_FOR_UP = new int[] { 0 };
@@ -243,6 +244,10 @@ public class DNAExtractorBlockEntity extends BlockEntity implements Container, M
 				output.grow(result.getCount());
 			}
 
+			if (result.getItem() instanceof DNAItem) {
+				DNAItem.randomGenetics(new Random());
+			}
+
 			if (!this.level.isClientSide) {
 				this.setRecipeUsed(recipe);
 			}
@@ -259,7 +264,12 @@ public class DNAExtractorBlockEntity extends BlockEntity implements Container, M
 		Random rand = new Random();
 		if (!this.items.get(0).isEmpty() && !this.items.get(1).isEmpty()) {
 			if (!this.hasOutput) {
-				List<Item> tag = ForgeRegistries.ITEMS.tags().getTag(LostWorldsTags.ModItemTags.AMBER_RESULTS.tag).stream().toList();
+				ArrayList<Item> tag = new ArrayList<>();
+				for (APIAmberRecipeType recipeTypes : APIRegistry.AMBER_RECIPE_TYPES) {
+					for (Item item : recipeTypes.outputs()) {
+						tag.add(item);
+					}
+				}
 				this.output = tag.get(rand.nextInt(tag.size())).getDefaultInstance();
 				this.hasOutput = true;
 			}

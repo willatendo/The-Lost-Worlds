@@ -1,8 +1,10 @@
 package lostworlds.server.impl;
 
+import static lostworlds.api.APIRegistry.AMBER_RECIPE_TYPES;
 import static lostworlds.api.APIRegistry.SOFT_DIRT_FUNCTIONS;
 import static lostworlds.api.APIRegistry.SOFT_STONE_FUNCTIONS;
 
+import lostworlds.server.impl.block.DNAFromAmberRecipe;
 import lostworlds.server.impl.block.softdirt.AnomalocarisFossilDirtFunction;
 import lostworlds.server.impl.block.softdirt.FeatherDirtFunction;
 import lostworlds.server.impl.block.softdirt.FossilizedFeatherDirtFunction;
@@ -31,5 +33,8 @@ public class ImplInit {
 		SOFT_STONE_FUNCTIONS.add(new FossilStoneFunction());
 		SOFT_STONE_FUNCTIONS.add(new FossilizedNautilusStoneFunction());
 		SOFT_STONE_FUNCTIONS.add(new PalaeoniscumFossilStoneFunction());
+
+		// APIAmberRecipeType
+		AMBER_RECIPE_TYPES.add(new DNAFromAmberRecipe());
 	}
 }

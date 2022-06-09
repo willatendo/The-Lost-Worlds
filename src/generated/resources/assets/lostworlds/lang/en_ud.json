@@ -1191,6 +1191,7 @@
   "item.lostworlds.dimetrodon_spawn_egg": "bb\u018E u\u028D\u0250dS uopo\u0279\u0287\u01DD\u026F\u0131\u15E1",
   "item.lostworlds.dimetrodon_tail": "\u05DF\u0131\u0250\u27D8 uopo\u0279\u0287\u01DD\u026F\u0131\u15E1",
   "item.lostworlds.dino_button": "uo\u0287\u0287n\u15FA ou\u0131\u15E1",
+  "item.lostworlds.dna.code": "%s :\u01DDpo\u0186",
   "item.lostworlds.duisbergia_dna": "\u0250u\u15E1 \u0250\u0131b\u0279\u01DDqs\u0131n\u15E1",
   "item.lostworlds.duisbergia_dna_disc": "\u0254s\u0131\u15E1 \u0250u\u15E1 \u0250\u0131b\u0279\u01DDqs\u0131n\u15E1",
   "item.lostworlds.duisbergia_fossil": "\u05DF\u0131sso\u2132 \u0250\u0131b\u0279\u01DDqs\u0131n\u15E1",
@@ -1829,5 +1830,8 @@
   "timeBook.lostworlds.transport_to_cretaceous_period": "\u00A1po\u0131\u0279\u01DD\u0500 sno\u01DD\u0254\u0250\u0287\u01DD\u0279\u0186 \u01DD\u0265\u0287 o\u0287 %s bu\u0131\u0287\u0279odsu\u0250\u0279\u27D8",
   "timeBook.lostworlds.transport_to_jurassic_period": "\u00A1po\u0131\u0279\u01DD\u0500 \u0254\u0131ss\u0250\u0279n\u017F \u01DD\u0265\u0287 o\u0287 %s bu\u0131\u0287\u0279odsu\u0250\u0279\u27D8",
   "timeBook.lostworlds.transport_to_overworld": "\u00A1\u01DD\u026Fo\u0265 \u029E\u0254\u0250q %s bu\u0131\u0287\u0279odsu\u0250\u0279\u27D8",
-  "timeBook.lostworlds.transport_to_permian_period": "\u00A1po\u0131\u0279\u01DD\u0500 u\u0250\u0131\u026F\u0279\u01DD\u0500 \u01DD\u0265\u0287 o\u0287 %s bu\u0131\u0287\u0279odsu\u0250\u0279\u27D8"
+  "timeBook.lostworlds.transport_to_permian_period": "\u00A1po\u0131\u0279\u01DD\u0500 u\u0250\u0131\u026F\u0279\u01DD\u0500 \u01DD\u0265\u0287 o\u0287 %s bu\u0131\u0287\u0279odsu\u0250\u0279\u27D8",
+  "travelerstitles.lostworlds.cretaceous": "po\u0131\u0279\u01DD\u0500 sno\u01DD\u0254\u0250\u0287\u01DD\u0279\u0186",
+  "travelerstitles.lostworlds.jurassic": "po\u0131\u0279\u01DD\u0500 \u0254\u0131ss\u0250\u0279n\u017F",
+  "travelerstitles.lostworlds.permian": "po\u0131\u0279\u01DD\u0500 u\u0250\u0131\u026F\u0279\u01DD\u0500"
 }

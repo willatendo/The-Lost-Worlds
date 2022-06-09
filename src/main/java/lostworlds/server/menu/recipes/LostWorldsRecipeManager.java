@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import lostworlds.server.LostWorldsTags;
+import lostworlds.api.APIAmberRecipeType;
+import lostworlds.api.APIRegistry;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.jei.recipe.LightningRecipe;
@@ -18,12 +19,16 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsRecipeManager {
 	public static ArrayList<DNAExtractorRecipe> getAmberRecipes() {
 		ArrayList<DNAExtractorRecipe> recipes = new ArrayList<>();
-		List<Item> tag = ForgeRegistries.ITEMS.tags().getTag(LostWorldsTags.ModItemTags.AMBER_RESULTS.tag).stream().toList();
+		List<Item> tag = new ArrayList<>();
+		for (APIAmberRecipeType recipeTypes : APIRegistry.AMBER_RECIPE_TYPES) {
+			for (Item item : recipeTypes.outputs()) {
+				tag.add(item);
+			}
+		}
 		for (Item types : tag) {
 			recipes.add(new DNAExtractorRecipe(LostWorldsUtils.rL("amber_recipes"), Ingredient.of(LostWorldsItems.AMBER.get()), Ingredient.of(LostWorldsItems.EMPTY_VILE.get()), types.getDefaultInstance()));
 		}

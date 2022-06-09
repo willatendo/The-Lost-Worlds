@@ -24,5 +24,6 @@ public class LostWorldsDataGen {
 		dataGenerator.addProvider(new LostWorldsLootProvider(dataGenerator));
 		dataGenerator.addProvider(new LostWorldsDimensionProvider(dataGenerator));
 		dataGenerator.addProvider(new LostWorldsSpeciesTypeTagProvider(dataGenerator, fileHelper));
+		dataGenerator.addProvider(new LostWorldsGlobalLootModiferProvider(dataGenerator));
 	}
 }

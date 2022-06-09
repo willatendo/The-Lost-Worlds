@@ -31,6 +31,7 @@ import lostworlds.server.item.LostWorldsBanners;
 import lostworlds.server.item.LostWorldsEnchantments;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.item.LostWorldsMobEffects;
+import lostworlds.server.loot.LostWorldsGlobalLootModifers;
 import lostworlds.server.menu.LostWorldsMenus;
 import lostworlds.server.menu.recipes.LostWorldsRecipeSerializers;
 import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
@@ -97,6 +98,7 @@ public class LostWorldsMod {
 
 		LostWorldsBlocks.registrate();
 		LostWorldsItems.registrate();
+		LostWorldsGlobalLootModifers.LOOT_MODIFIER_SERIALIZERS.register(bus);
 		LostWorldsMobEffects.MOB_EFFECTS.register(bus);
 		LostWorldsSounds.SOUND_EVENTS.register(bus);
 		LostWorldsEnchantments.registrate();

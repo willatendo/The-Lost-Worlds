@@ -1,5 +1,10 @@
 package lostworlds.server.craft;
 
+import static lostworlds.api.APIRegistry.AMBER_RECIPE_TYPES;
+
+import java.util.ArrayList;
+
+import org.apache.commons.compress.utils.Lists;
 import org.openzen.zencode.java.ZenCodeType;
 
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
@@ -12,6 +17,7 @@ import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
 import lostworlds.server.menu.recipes.DNAExtractorRecipe;
 import lostworlds.server.menu.recipes.LostWorldsRecipeTypes;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeType;
 
 @ZenRegister
@@ -22,6 +28,15 @@ public class DNAExtractorRecipeManager implements IRecipeManager {
 		name = fixRecipeName(name);
 		DNAExtractorRecipe recipe = makeRecipe(name, softTissue, vile, output);
 		CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe, ""));
+	}
+
+	@ZenCodeType.Method
+	public void addAmberRecipeOutput(IItemStack... outputs) {
+		ArrayList<Item> amberOutput = Lists.newArrayList();
+		for (IItemStack item : outputs) {
+			amberOutput.add(item.getDefinition());
+		}
+		AMBER_RECIPE_TYPES.add(new AmberOutput(amberOutput));
 	}
 
 	private DNAExtractorRecipe makeRecipe(String name, IIngredient softTissue, IIngredient vile, IItemStack output) {

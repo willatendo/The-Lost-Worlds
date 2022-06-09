@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "entries": [
+    "lostworlds:crystal_scarab_top_left_leg",
+    "lostworlds:crystal_scarab_top_right_leg",
+    "lostworlds:crystal_scarab_thorax",
+    "lostworlds:crystal_scarab_abdomen",
+    "lostworlds:crystal_scarab_bottom_left_leg",
+    "lostworlds:crystal_scarab_bottom_right_leg"
+  ]
+}

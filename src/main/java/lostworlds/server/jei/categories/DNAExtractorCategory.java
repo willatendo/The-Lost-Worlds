@@ -7,6 +7,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
+import lostworlds.server.item.DNAItem;
 import lostworlds.server.jei.LostWorldsJeiConstants;
 import lostworlds.server.menu.recipes.DNAExtractorRecipe;
 import mezz.jei.api.constants.VanillaTypes;
@@ -17,8 +18,10 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 
 public class DNAExtractorCategory implements IRecipeCategory<DNAExtractorRecipe> {
 	public static final ResourceLocation TEXTURE_LOCATION = LostWorldsUtils.rL("textures/gui/lost_worlds_backgrounds.png");
@@ -77,7 +80,24 @@ public class DNAExtractorCategory implements IRecipeCategory<DNAExtractorRecipe>
 	public void setRecipe(IRecipeLayoutBuilder builder, DNAExtractorRecipe recipe, IFocusGroup focuses) {
 		builder.addSlot(RecipeIngredientRole.INPUT, 1, 1).addIngredients(recipe.getIngredients().get(0));
 		builder.addSlot(RecipeIngredientRole.INPUT, 1, 21).addIngredients(recipe.getIngredients().get(1));
-		builder.addSlot(RecipeIngredientRole.OUTPUT, 61, 11).addItemStack(recipe.getOutputs().get(0));
+		ItemStack dna = recipe.getOutputs().get(0);
+		if (dna.getItem() instanceof DNAItem) {
+			CompoundTag tag = dna.getOrCreateTag();
+			String genetics = "RANDOMIZED";
+
+			if (tag == null) {
+				tag = new CompoundTag();
+			}
+
+			if (tag.contains("Genetics")) {
+				genetics = tag.getString("Genetics");
+			} else {
+				tag.putString("Genetics", genetics);
+			}
+
+			dna.setTag(tag);
+		}
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 61, 11).addItemStack(dna);
 	}
 
 	@Override

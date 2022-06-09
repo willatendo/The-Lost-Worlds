@@ -215,6 +215,10 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.addRawLang("jei.lostworlds.paleontology_table.title", "Paleontology");
 		this.addRawLang("jei.lostworlds.time_machine.title", "Time Enchanting");
 
+		this.addRawLang("travelerstitles.lostworlds.permian", "Permian Period");
+		this.addRawLang("travelerstitles.lostworlds.jurassic", "Jurassic Period");
+		this.addRawLang("travelerstitles.lostworlds.cretaceous", "Cretaceous Period");
+
 		this.addRawLang("death.attack.ashyLung", "%1$s's lungs filled up with ash");
 		this.addRawLang("death.attack.suffication", "%1$s sufficated");
 		this.addRawLang("death.attack.hunger", "%1$s died of Hunger");
@@ -272,6 +276,8 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.advancement("the_permian", "The Permian", "Acquire volume 1 of the Time Lord's work!");
 		this.advancement("permian_explorer", "Permian Explorer", "Explore every biome in the Permian!");
 		this.advancement("time_travelling", "Time Travelling", "Just like Doc, you'll find yourself lost in time! Or, maybe, you'll be a lord of it!");
+
+		this.addRawLang("item.lostworlds.dna.code", "Code: %s");
 	}
 
 	public void addDescription(String item, String desc) {

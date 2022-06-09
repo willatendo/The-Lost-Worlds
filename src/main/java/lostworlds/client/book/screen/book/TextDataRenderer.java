@@ -19,7 +19,6 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraftforge.client.gui.GuiUtils;
 
 public class TextDataRenderer {
-	@Deprecated
 	public static String drawText(PoseStack stack, int x, int y, int boxWidth, int boxHeight, TextData[] data, int mouseX, int mouseY, Font fr, BookScreen parent) {
 		List<Component> tooltip = new ArrayList<>();
 		String action = drawText(stack, x, y, boxWidth, boxHeight, data, mouseX, mouseY, fr, tooltip);

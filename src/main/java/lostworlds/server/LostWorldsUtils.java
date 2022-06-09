@@ -57,6 +57,10 @@ public class LostWorldsUtils {
 		return text;
 	}
 
+	public static TranslatableComponent gTCA(String type, String key, String args) {
+		return cTCA(type, key, args, ChatFormatting.GRAY);
+	}
+
 	public static TranslatableComponent gTC(String type, String key) {
 		TranslatableComponent text = tTC(type, key);
 		text.withStyle(ChatFormatting.GRAY);
@@ -71,13 +75,13 @@ public class LostWorldsUtils {
 		public ItemStack makeIcon() {
 			return LostWorldsItems.LOST_WORLDS_LEXICON.asStack();
 		}
-	}).setEnchantmentCategories(LostWorldsEnchantments.HAMMER);
-	public static final CreativeModeTab BLOCKS = new CreativeModeTab("lostworlds.blocks") {
+	}).setRecipeFolderName("lostworlds_items").setEnchantmentCategories(LostWorldsEnchantments.HAMMER);
+	public static final CreativeModeTab BLOCKS = (new CreativeModeTab("lostworlds.blocks") {
 		@Override
 		public ItemStack makeIcon() {
 			return LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.asStack();
 		}
-	};
+	}).setRecipeFolderName("lostworlds_blocks");
 
 	public static void translateToWaves(EntityType<? extends Raider> type, List<? extends Integer> list) {
 		Raid.RaiderType.create(type.getRegistryName().toString(), type, new int[] { list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7) });

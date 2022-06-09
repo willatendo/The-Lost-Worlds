@@ -79,11 +79,6 @@ public class SeedItem extends Item {
 		}
 	}
 
-	@Deprecated
-	protected SoundEvent getPlaceSound(BlockState state) {
-		return state.getSoundType().getPlaceSound();
-	}
-
 	protected SoundEvent getPlaceSound(BlockState state, Level world, BlockPos pos, Player entity) {
 		return state.getSoundType(world, pos, entity).getPlaceSound();
 	}

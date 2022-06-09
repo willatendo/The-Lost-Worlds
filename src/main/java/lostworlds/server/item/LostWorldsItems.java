@@ -210,7 +210,7 @@ public class LostWorldsItems {
 			dinos.setBloodSyringe(() -> bloodSyringe.get());
 			ItemEntry<Item> bloodVile = REGISTRATE.item(dinos.name().toLowerCase() + "_blood_vile", Item::new).model(textured("blood_vile")).tag(LostWorldsTags.ModItemTags.BLOOD_VILES.tag).recipe((item, provider) -> ShapelessRecipeBuilder.shapeless(item.get()).requires(dinos.getBloodSyringe().get()).requires(LostWorldsItems.EMPTY_VILE.get()).unlockedBy("has_item", provider.has(LostWorldsTags.ModItemTags.BLOOD_SYRINGES.tag)).save(provider)).register();
 			dinos.setBloodVile(() -> bloodVile.get());
-			ItemEntry<Item> dna = REGISTRATE.item(dinos.name().toLowerCase() + "_dna", Item::new).tag(LostWorldsTags.ModItemTags.DNA.tag, LostWorldsTags.ModItemTags.AMBER_RESULTS.tag).register();
+			ItemEntry<DNAItem> dna = REGISTRATE.item(dinos.name().toLowerCase() + "_dna", DNAItem::new).properties(properties -> properties.stacksTo(1)).tag(LostWorldsTags.ModItemTags.DNA.tag, LostWorldsTags.ModItemTags.AMBER_RESULTS.tag).register();
 			dinos.setDNA(() -> dna.get());
 			ItemEntry<DNADiscItem> dnaDisc = REGISTRATE.item(dinos.name().toLowerCase() + "_dna_disc", DNADiscItem::new).properties(properties -> properties.defaultDurability(5)).tag(LostWorldsTags.ModItemTags.DNA_DISCS.tag).model(textured("storage_disc")).register();
 			dinos.setDNADisc(() -> dnaDisc.get());
