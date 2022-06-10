@@ -149,7 +149,7 @@ public class ModBiomeFeatures {
 
 	public static void permianCoralReef(BiomeGenerationSettings.Builder builder) {
 		addUniversalPermianGeneration(builder);
-		
+
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_WARM);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.WARM_OCEAN_VEGETATION);
@@ -538,53 +538,43 @@ public class ModBiomeFeatures {
 
 	// Overworld
 	public static void araucariaForest(BiomeGenerationSettings.Builder builder) {
-		addAraucariaTrees(builder);
 		globalOverworldGeneration(builder);
 
-		BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
 		BiomeDefaultFeatures.addForestFlowers(builder);
-		BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
 		BiomeDefaultFeatures.addDefaultOres(builder);
 		BiomeDefaultFeatures.addDefaultSoftDisks(builder);
 		BiomeDefaultFeatures.addDefaultFlowers(builder);
 		BiomeDefaultFeatures.addForestGrass(builder);
 		BiomeDefaultFeatures.addDefaultMushrooms(builder);
 		BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
-		BiomeDefaultFeatures.addDefaultSprings(builder);
-		BiomeDefaultFeatures.addSurfaceFreezing(builder);
+		BiomeDefaultFeatures.addJungleMelons(builder);
+
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_ARAUCARIA_TREES);
 	}
 
 	public static void coniferForest(BiomeGenerationSettings.Builder builder) {
 		addConiferTrees(builder);
 		globalOverworldGeneration(builder);
 
-		BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
 		BiomeDefaultFeatures.addForestFlowers(builder);
-		BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
 		BiomeDefaultFeatures.addDefaultOres(builder);
 		BiomeDefaultFeatures.addDefaultSoftDisks(builder);
 		BiomeDefaultFeatures.addDefaultFlowers(builder);
 		BiomeDefaultFeatures.addForestGrass(builder);
 		BiomeDefaultFeatures.addDefaultMushrooms(builder);
 		BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
-		BiomeDefaultFeatures.addDefaultSprings(builder);
-		BiomeDefaultFeatures.addSurfaceFreezing(builder);
 	}
 
 	public static void ginkgoForest(BiomeGenerationSettings.Builder builder) {
 		globalOverworldGeneration(builder);
 
-		BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
 		BiomeDefaultFeatures.addForestFlowers(builder);
-		BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
 		BiomeDefaultFeatures.addDefaultOres(builder);
 		BiomeDefaultFeatures.addDefaultSoftDisks(builder);
 		BiomeDefaultFeatures.addDefaultFlowers(builder);
 		BiomeDefaultFeatures.addForestGrass(builder);
 		BiomeDefaultFeatures.addDefaultMushrooms(builder);
 		BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
-		BiomeDefaultFeatures.addDefaultSprings(builder);
-		BiomeDefaultFeatures.addSurfaceFreezing(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.GINKGO_TREES);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_BIRCH_AND_OAK);
@@ -595,17 +585,13 @@ public class ModBiomeFeatures {
 		addSequoiaTrees(builder);
 		globalOverworldGeneration(builder);
 
-		BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
 		BiomeDefaultFeatures.addForestFlowers(builder);
-		BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
 		BiomeDefaultFeatures.addDefaultOres(builder);
 		BiomeDefaultFeatures.addDefaultSoftDisks(builder);
 		BiomeDefaultFeatures.addDefaultFlowers(builder);
 		BiomeDefaultFeatures.addForestGrass(builder);
 		BiomeDefaultFeatures.addDefaultMushrooms(builder);
 		BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
-		BiomeDefaultFeatures.addDefaultSprings(builder);
-		BiomeDefaultFeatures.addSurfaceFreezing(builder);
 	}
 
 	public static void volcano(BiomeGenerationSettings.Builder builder) {

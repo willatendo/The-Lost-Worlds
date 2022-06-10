@@ -29,7 +29,6 @@ public class ModSurfaceRules extends SurfaceRuleParts {
 		SurfaceRules.RuleSource mossySoilOrSilt = SurfaceRules.sequence(SurfaceRules.ifTrue(notUnderwater, MOSSY_SOIL), SILT);
 		SurfaceRules.RuleSource driedSoilOrDirt = SurfaceRules.sequence(SurfaceRules.ifTrue(notUnderwater, DRIED_SOIL), DIRT);
 
-		// Biomes
 		SurfaceRules.RuleSource coniferForest = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomeKeys.PERMIAN_CONIFER_FOREST), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.0D), mossySoilOrDirt), podzolOrDirt)));
 		SurfaceRules.RuleSource ginkgoForest = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomeKeys.PERMIAN_GINKGO_FOREST), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.0D), mossySoilOrDirt), podzolOrDirt)));
 		SurfaceRules.RuleSource plains = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomeKeys.PERMIAN_PLAINS), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.0D), driedSoilOrDirt), mossySoilOrDirt)), SurfaceRules.ifTrue(surfaceNoiseAbove(1.0D), driedSoilOrDirt), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, DIRT))));
@@ -49,7 +48,6 @@ public class ModSurfaceRules extends SurfaceRuleParts {
 		SurfaceRules.RuleSource jaggedPeaks = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(Biomes.JAGGED_PEAKS), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.steep(), STONE), SurfaceRules.ifTrue(notUnderwater, SNOW_BLOCK))));
 		SurfaceRules.RuleSource stonyPeaks = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomeKeys.PERMIAN_SNOWY_SLOPES), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.CALCITE, -0.0125D, 0.0125D), RAW_MARBLE), PERMIAN_STONE)));
 
-		// Permian Dimension
 		SurfaceRules.RuleSource extraRules = SurfaceRules.sequence(plains, desert, floodBasalts, ashyMedows, windsweptHills, marsh, river, ocean, warmOcean, shore, driedPlains, grove, snowySlopes, stonyPeaks, frozenPeaks, jaggedPeaks, SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.sequence(coniferForest, ginkgoForest)), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, DIRT));
 
 		Builder<SurfaceRules.RuleSource> builder = ImmutableList.builder();

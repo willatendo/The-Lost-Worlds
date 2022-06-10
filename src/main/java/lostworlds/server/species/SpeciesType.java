@@ -9,7 +9,7 @@ import net.minecraft.resources.RegistryFileCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class SpeciesType extends ForgeRegistryEntry.UncheckedRegistryEntry<SpeciesType> {
+public class SpeciesType extends ForgeRegistryEntry<SpeciesType> {
 	public static final Codec<SpeciesType> DIRECT_CODEC = RecordCodecBuilder.create((instance) -> {
 		return instance.group(ResourceLocation.CODEC.fieldOf("model").forGetter((speciesType) -> {
 			return speciesType.getModel();

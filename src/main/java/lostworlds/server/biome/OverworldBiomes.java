@@ -15,7 +15,7 @@ public class OverworldBiomes extends BiomeParts {
 		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
 		ambience.waterColor(BASE_WATER_COLOUR).waterFogColor(BASE_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.8F));
 
-		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience, generation, defaultOverworldSpawns());
+		return biome(Precipitation.NONE, BiomeCategory.FOREST, 0.0F, 2.0F, ambience, generation, defaultOverworldSpawns());
 	}
 
 	public static Biome coniferForest() {

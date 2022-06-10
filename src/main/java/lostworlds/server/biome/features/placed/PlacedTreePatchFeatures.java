@@ -30,6 +30,7 @@ public class PlacedTreePatchFeatures {
 	public static final Holder<PlacedFeature> SPARSE_BABY_SEQUOIA_TREES = register("sparse_baby_sequoia_trees", TreePatchFeatures.BABY_SEQUOIA_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.1F, 1)));
 	public static final Holder<PlacedFeature> SPARSE_SEQUOIA_TREES = register("sparse_sequoia_trees", TreePatchFeatures.SEQUOIA_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.1F, 1)));
 	public static final Holder<PlacedFeature> ARAUCARIA_TREES = register("araucaria_trees", TreePatchFeatures.ARAUCARIA_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
+	public static final Holder<PlacedFeature> SPARSE_ARAUCARIA_TREES = register("araucaria_trees", TreePatchFeatures.ARAUCARIA_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.1F, 1)));
 	public static final Holder<PlacedFeature> SINGLE_SCORCHED_TREE = register("single_scorched_tree", TreePatchFeatures.SCORCHED_TREES, VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.05F, 1)));
 
 	public static void init() {
