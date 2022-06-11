@@ -1,4 +1,4 @@
-package lostworlds.client.events;
+package lostworlds.client.setup;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.utils.enums.ModBoatType;
@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
 @EventBusSubscriber(bus = Bus.MOD, modid = LostWorldsUtils.ID, value = Dist.CLIENT)
-public class ClientSetup {
+public class ModelLayerSetup {
 	public static final ModelLayerLocation FOSSIL_POACHER = new ModelLayerLocation(LostWorldsUtils.rL("fossil_poacher"), "main");
 
 	@SubscribeEvent

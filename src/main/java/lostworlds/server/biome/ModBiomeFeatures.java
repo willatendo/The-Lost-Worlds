@@ -538,6 +538,7 @@ public class ModBiomeFeatures {
 
 	// Overworld
 	public static void araucariaForest(BiomeGenerationSettings.Builder builder) {
+		addAraucariaTrees(builder);
 		globalOverworldGeneration(builder);
 
 		BiomeDefaultFeatures.addForestFlowers(builder);
@@ -547,9 +548,8 @@ public class ModBiomeFeatures {
 		BiomeDefaultFeatures.addForestGrass(builder);
 		BiomeDefaultFeatures.addDefaultMushrooms(builder);
 		BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
-		BiomeDefaultFeatures.addJungleMelons(builder);
 
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_ARAUCARIA_TREES);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DEAD_BUSH_2);
 	}
 
 	public static void coniferForest(BiomeGenerationSettings.Builder builder) {

@@ -278,6 +278,8 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.advancement("time_travelling", "Time Travelling", "Just like Doc, you'll find yourself lost in time! Or, maybe, you'll be a lord of it!");
 
 		this.addRawLang("item.lostworlds.dna.code", "Code: %s");
+
+		this.addRawLang("command.lostworlds.getAllSpeciesTypes.success", "Registered SpeciesType: %s");
 	}
 
 	public void addDescription(String item, String desc) {

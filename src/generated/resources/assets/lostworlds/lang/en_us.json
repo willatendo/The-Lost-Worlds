@@ -583,6 +583,7 @@
   "block.minecraft.banner.scarab.red": "Red Scarab",
   "block.minecraft.banner.scarab.white": "White Scarab",
   "block.minecraft.banner.scarab.yellow": "Yellow Scarab",
+  "command.lostworlds.getAllSpeciesTypes.success": "Registered SpeciesType: %s",
   "death.attack.ashyLung": "%1$s's lungs filled up with ash",
   "death.attack.hunger": "%1$s died of Hunger",
   "death.attack.prick": "%1$s was pricked to death with a needle",

@@ -58,4 +58,22 @@ public class ModSurfaceRules extends SurfaceRuleParts {
 			return new SurfaceRules.RuleSource[rules];
 		}));
 	}
+
+	public static SurfaceRules.RuleSource overworldRules() {
+		SurfaceRules.ConditionSource notUnderwater = SurfaceRules.waterBlockCheck(0, 0);
+		SurfaceRules.RuleSource grassOrDirt = SurfaceRules.sequence(SurfaceRules.ifTrue(notUnderwater, GRASS_BLOCK), DIRT);
+
+		SurfaceRules.RuleSource araucariaForest = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomeKeys.ARAUCARIA_FOREST), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.0D), grassOrDirt), COARSE_DIRT))));
+
+		SurfaceRules.RuleSource extraRules = SurfaceRules.sequence(araucariaForest);
+
+		Builder<SurfaceRules.RuleSource> builder = ImmutableList.builder();
+
+		builder.add(SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), extraRules));
+
+		return SurfaceRules.sequence(builder.build().toArray((rules) -> {
+			return new SurfaceRules.RuleSource[rules];
+		}));
+	}
+
 }

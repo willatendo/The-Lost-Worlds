@@ -12,5 +12,6 @@ public class LostWorldsTerrablender {
 		Regions.register(new LostWorldsRegion(LostWorldsUtils.rL("lostworlds_region"), RegionType.OVERWORLD, LostWorldsConfig.COMMON_CONFIG.overworldBiomeWeight.get()));
 
 		SurfaceRuleManager.addSurfaceRules(RuleCategory.OVERWORLD, LostWorldsUtils.ID, ModSurfaceRules.extraPermianRules());
+		SurfaceRuleManager.addSurfaceRules(RuleCategory.OVERWORLD, LostWorldsUtils.ID, ModSurfaceRules.overworldRules());
 	}
 }

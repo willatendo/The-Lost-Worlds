@@ -583,6 +583,7 @@
   "block.minecraft.banner.scarab.red": "q\u0250\u0279\u0250\u0254S p\u01DD\u1D1A",
   "block.minecraft.banner.scarab.white": "q\u0250\u0279\u0250\u0254S \u01DD\u0287\u0131\u0265M",
   "block.minecraft.banner.scarab.yellow": "q\u0250\u0279\u0250\u0254S \u028Do\u05DF\u05DF\u01DD\u028E",
+  "command.lostworlds.getAllSpeciesTypes.success": "%s :\u01DDd\u028E\u27D8s\u01DD\u0131\u0254\u01DDdS p\u01DD\u0279\u01DD\u0287s\u0131b\u01DD\u1D1A",
   "death.attack.ashyLung": "\u0265s\u0250 \u0265\u0287\u0131\u028D dn p\u01DD\u05DF\u05DF\u0131\u025F sbun\u05DF s,%1$s",
   "death.attack.hunger": "\u0279\u01DDbunH \u025Fo p\u01DD\u0131p %1$s",
   "death.attack.prick": "\u01DD\u05DFp\u01DD\u01DDu \u0250 \u0265\u0287\u0131\u028D \u0265\u0287\u0250\u01DDp o\u0287 p\u01DD\u029E\u0254\u0131\u0279d s\u0250\u028D %1$s",
