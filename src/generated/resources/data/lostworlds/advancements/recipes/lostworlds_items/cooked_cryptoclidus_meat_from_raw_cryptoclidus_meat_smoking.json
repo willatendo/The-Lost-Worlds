@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:cooked_cryptoclidus_meat_from_raw_cryptoclidus_meat_smoking"
+    ]
+  },
+  "criteria": {
+    "has_raw_cryptoclidus_meat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lostworlds:raw_cryptoclidus_meat"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:cooked_cryptoclidus_meat_from_raw_cryptoclidus_meat_smoking"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_cryptoclidus_meat",
+      "has_the_recipe"
+    ]
+  ]
+}

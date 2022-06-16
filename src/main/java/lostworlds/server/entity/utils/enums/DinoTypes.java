@@ -29,6 +29,7 @@ public enum DinoTypes implements StringRepresentable {
 	CARNOTAURUS("carnotaurus", () -> LostWorldsEntities.CARNOTAURUS.get(), LostWorldsTags.ModItemTags.CARNOTAURUS_FOSSILS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xbd7868, 6, 9, 0.4F, 0.8F),
 	CHILESAURUS("chilesaurus", () -> LostWorldsEntities.CHILESAURUS.get(), LostWorldsTags.ModItemTags.CHILESAURUS_FOSSILS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0xb08533, 1, 3, 0.25F, 0.56F),
 	CRYOLOPHOSAURUS("cryolophosaurus", () -> LostWorldsEntities.CRYOLOPHOSAURUS.get(), LostWorldsTags.ModItemTags.CRYOLOPHOSAURUS_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0xab5a14, 5, 7, 0.5F, 0.6F),
+	CRYPTOCLIDUS("cryptoclidus", () -> LostWorldsEntities.CRYPTOCLIDUS.get(), LostWorldsTags.ModItemTags.CRYPTOCLIDUS_FOSSILS, false, false, false, Size.MEDIUM, CreatureDiet.PISCIVORE, 0x3f5d5a, 3, 5, 0.5F, 0.6F),
 	DIICTODON("diictodon", () -> LostWorldsEntities.DIICTODON.get(), LostWorldsTags.ModItemTags.DIICTODON_FOSSILS, false, false, false, Size.TINY, CreatureDiet.HERBIVORE, 0xdc8a54, 1, 2, 0.1F, 0.2F),
 	DILOPHOSAURUS("dilophosaurus", () -> LostWorldsEntities.DILOPHOSAURUS.get(), LostWorldsTags.ModItemTags.DILOPHOSAURUS_FOSSILS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xc49838, 5, 7, 0.5F, 0.76F),
 	DIMETRODON("dimetrodon", () -> LostWorldsEntities.DIMETRODON.get(), LostWorldsTags.ModItemTags.DIMETRODON_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x81644c, 5, 7, 0.5F, 0.76F),

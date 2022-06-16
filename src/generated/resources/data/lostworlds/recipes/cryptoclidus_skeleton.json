@@ -1,0 +1,28 @@
+{
+  "type": "lostworlds:paleontology_table",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:cryptoclidus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:cryptoclidus_skull"
+    },
+    "@": {
+      "item": "lostworlds:cryptoclidus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:cryptoclidus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:cryptoclidus_tail"
+    }
+  },
+  "output": {
+    "item": "lostworlds:cryptoclidus_skeleton"
+  }
+}

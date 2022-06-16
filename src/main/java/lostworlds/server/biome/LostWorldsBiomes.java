@@ -81,10 +81,20 @@ public class LostWorldsBiomes {
 	public static final RegistryObject<Biome> JURASSIC_RIVER = register("jurassic_river", JurassicBiomes::jurassicRiver);
 
 	public static final RegistryObject<Biome> JURASSIC_OCEAN = register("jurassic_ocean", JurassicBiomes::jurassicOcean);
+	public static final RegistryObject<Biome> DEEP_JURASSIC_OCEAN = register("deep_jurassic_ocean", JurassicBiomes::jurassicOcean);
 
 	public static final RegistryObject<Biome> WARM_JURASSIC_OCEAN = register("warm_jurassic_ocean", JurassicBiomes::jurassicWarmOcean);
+	public static final RegistryObject<Biome> DEEP_WARM_JURASSIC_OCEAN = register("deep_warm_jurassic_ocean", JurassicBiomes::jurassicWarmOcean);
 
 	public static final RegistryObject<Biome> JURASSIC_SHORE = register("jurassic_shore", JurassicBiomes::jurassicShore);
+
+	public static final RegistryObject<Biome> JURASSIC_DRIPSTONE_CAVES = register("jurassic_dripstone_caves", PermianBiomes::permianDripstoneCaves);
+
+	public static final RegistryObject<Biome> JURASSIC_GROVE = register("jurassic_grove", PermianBiomes::permianGrove);
+	public static final RegistryObject<Biome> JURASSIC_SNOWY_SLOPES = register("jurassic_snowy_slopes", PermianBiomes::permianSnowySlopes);
+	public static final RegistryObject<Biome> JURASSIC_FROZEN_PEAKS = register("jurassic_frozen_peaks", PermianBiomes::permianFrozenPeaks);
+	public static final RegistryObject<Biome> JURASSIC_JAGGED_PEAKS = register("jurassic_jagged_peaks", PermianBiomes::permianJaggedPeaks);
+	public static final RegistryObject<Biome> JURASSIC_STONY_PEAKS = register("jurassic_stony_peaks", PermianBiomes::permianStonyPeaks);
 
 	// Creataceous
 	public static final RegistryObject<Biome> CRETACEOUS_ARAUCARIA_FOREST = register("cretaceous_araucaria_forest", CretaceousBiomes::cretaceousAraucariaForest);
@@ -109,8 +119,8 @@ public class LostWorldsBiomes {
 
 	public static final RegistryObject<Biome> CRETACEOUS_FROZEN_FOREST = register("cretaceous_frozen_forest", CretaceousBiomes::cretaceousFrozenForest);
 
-	public static final RegistryObject<Biome> CRETACEOUS_MOUNTAINS = register("cretaceous_mountains", CretaceousBiomes::cretaceousWindsweptHills);
-	public static final RegistryObject<Biome> CRETACEOUS_ERRODED_MOUNTAINS = register("cretaceous_erroded_mountains", CretaceousBiomes::cretaceousWindsweptHills);
+	public static final RegistryObject<Biome> CRETACEOUS_WINDSWEPT_HILLS = register("cretaceous_windswept_hills", CretaceousBiomes::cretaceousWindsweptHills);
+	public static final RegistryObject<Biome> CRETACEOUS_ERRODED_WINDSWEPT_HILLS = register("cretaceous_erroded_windswept_hills", CretaceousBiomes::cretaceousWindsweptHills);
 
 	public static final RegistryObject<Biome> CRETACEOUS_DESERT = register("cretaceous_desert", CretaceousBiomes::cretaceousDesert);
 
@@ -124,12 +134,23 @@ public class LostWorldsBiomes {
 	public static final RegistryObject<Biome> CRETACEOUS_RIVER = register("cretaceous_river", CretaceousBiomes::cretaceousRiverBiome);
 
 	public static final RegistryObject<Biome> COLD_CRETACEOUS_OCEAN = register("cold_cretaceous_ocean", CretaceousBiomes::cretaceousColdOceanBiome);
+	public static final RegistryObject<Biome> DEEP_COLD_CRETACEOUS_OCEAN = register("deep_cold_cretaceous_ocean", CretaceousBiomes::cretaceousColdOceanBiome);
 
 	public static final RegistryObject<Biome> CRETACEOUS_OCEAN = register("cretaceous_ocean", CretaceousBiomes::cretaceousOceanBiome);
+	public static final RegistryObject<Biome> DEEP_CRETACEOUS_OCEAN = register("deep_cretaceous_ocean", CretaceousBiomes::cretaceousOceanBiome);
 
 	public static final RegistryObject<Biome> WARM_CRETACEOUS_OCEAN = register("warm_cretaceous_ocean", CretaceousBiomes::cretaceousWarmOceanBiome);
+	public static final RegistryObject<Biome> DEEP_WARM_CRETACEOUS_OCEAN = register("deep_warm_cretaceous_ocean", CretaceousBiomes::cretaceousWarmOceanBiome);
 
 	public static final RegistryObject<Biome> CRETACEOUS_SHORE = register("cretaceous_shore", CretaceousBiomes::cretaceousShoreBiome);
+
+	public static final RegistryObject<Biome> CRETACEOUS_DRIPSTONE_CAVES = register("cretaceous_dripstone_caves", PermianBiomes::permianDripstoneCaves);
+
+	public static final RegistryObject<Biome> CRETACEOUS_GROVE = register("cretaceous_grove", PermianBiomes::permianGrove);
+	public static final RegistryObject<Biome> CRETACEOUS_SNOWY_SLOPES = register("cretaceous_snowy_slopes", PermianBiomes::permianSnowySlopes);
+	public static final RegistryObject<Biome> CRETACEOUS_FROZEN_PEAKS = register("cretaceous_frozen_peaks", PermianBiomes::permianFrozenPeaks);
+	public static final RegistryObject<Biome> CRETACEOUS_JAGGED_PEAKS = register("cretaceous_jagged_peaks", PermianBiomes::permianJaggedPeaks);
+	public static final RegistryObject<Biome> CRETACEOUS_STONY_PEAKS = register("cretaceous_stony_peaks", PermianBiomes::permianStonyPeaks);
 
 	// Overworld
 	public static final RegistryObject<Biome> ARAUCARIA_FOREST = register("araucaria_forest", OverworldBiomes::araucariaForest);

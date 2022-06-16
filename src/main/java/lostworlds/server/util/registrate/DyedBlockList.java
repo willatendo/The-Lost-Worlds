@@ -45,7 +45,7 @@ public class DyedBlockList<T extends Block> implements Iterable<BlockEntry<T>> {
 
 			@Override
 			public boolean hasNext() {
-				return index < values.length;
+				return this.index < values.length;
 			}
 
 			@Override
@@ -53,7 +53,7 @@ public class DyedBlockList<T extends Block> implements Iterable<BlockEntry<T>> {
 				if (!hasNext()) {
 					throw new NoSuchElementException();
 				}
-				return (BlockEntry<T>) values[index++];
+				return (BlockEntry<T>) values[this.index++];
 			}
 		};
 	}

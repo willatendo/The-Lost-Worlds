@@ -9,7 +9,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
-@EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.MOD)
+@EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.FORGE)
 public class EntityJoinWorldEvents {
 	@SubscribeEvent
 	public static void onEntityJoin(EntityJoinWorldEvent event) {

@@ -155,6 +155,20 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.WARM_OCEAN_VEGETATION);
 	}
 
+	public static void permianColdOcean(BiomeGenerationSettings.Builder builder) {
+		addUniversalPermianGeneration(builder);
+
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_COLD);
+	}
+
+	public static void permianLukeWarmOcean(BiomeGenerationSettings.Builder builder) {
+		addUniversalPermianGeneration(builder);
+
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
+	}
+
 	public static void permianPlains(BiomeGenerationSettings.Builder builder) {
 		addFernGroundClutter(builder);
 		addPermianRock(builder);
@@ -514,6 +528,13 @@ public class ModBiomeFeatures {
 	}
 
 	public static void cretaceousOcean(BiomeGenerationSettings.Builder builder) {
+		addUniversalCretaceousGeneration(builder);
+
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
+	}
+
+	public static void cretaceousLukeWarmOcean(BiomeGenerationSettings.Builder builder) {
 		addUniversalCretaceousGeneration(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);

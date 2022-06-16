@@ -103,6 +103,7 @@ public class LostWorldsTags {
 		CALAMITES_LOGS,
 		CHILESAURUS_FOSSILS,
 		CRYOLOPHOSAURUS_FOSSILS,
+		CRYPTOCLIDUS_FOSSILS,
 		CREATURE_ITEMS,
 		CONIFER_LOGS,
 		CYPRESS_LOGS,
@@ -334,6 +335,7 @@ public class LostWorldsTags {
 		public static final TagKey<SpeciesType> CARNOTAURUS = create("carnotaurus");
 		public static final TagKey<SpeciesType> CHILESAURUS = create("chilesaurus");
 		public static final TagKey<SpeciesType> CRYOLOPHOSAURUS = create("cryolophosaurus");
+		public static final TagKey<SpeciesType> CRYPTOCLIDUS = create("cryptoclidus");
 		public static final TagKey<SpeciesType> DIICTODON = create("diictodon");
 		public static final TagKey<SpeciesType> DILOPHOSAURUS = create("dilophosaurus");
 		public static final TagKey<SpeciesType> DIMETRODON = create("dimetrodon");

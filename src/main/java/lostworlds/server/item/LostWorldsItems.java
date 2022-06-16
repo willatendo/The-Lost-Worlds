@@ -14,11 +14,10 @@ import lostworlds.server.block.Plants;
 import lostworlds.server.block.Trees;
 import lostworlds.server.block.utils.Foods;
 import lostworlds.server.dimension.LostWorldsDimensions;
+import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.terrestrial.PrehistoricMob;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import lostworlds.server.entity.utils.enums.TimeEras;
-import lostworlds.server.item.CrystalScarabGemItem.CEChargedCrystalScarabGemItem;
-import lostworlds.server.item.CrystalScarabGemItem.CECrystalScarabGemItem;
 import lostworlds.server.item.armour.MaskItem;
 import lostworlds.server.item.armour.ModArmourMaterial;
 import lostworlds.server.item.armour.PinItem;
@@ -127,9 +126,9 @@ public class LostWorldsItems {
 	public static final ItemEntry<BannerPatternItem> SCARAB_BANNER_PATTERN = REGISTRATE.item("scarab_banner_pattern", properties -> new BannerPatternItem(LostWorldsBanners.SCARAB, properties)).lang("Banner Pattern").register();
 
 	// Fossils
-	public static final ItemEntry<CEChargedCrystalScarabGemItem> CHARGED_CRYSTAL_SCARAB_GEM = REGISTRATE.item("charged_crystal_scarab_gem", CEChargedCrystalScarabGemItem::new).properties(properties -> properties.fireResistant().rarity(Rarity.RARE)).model(textured("crystal_scarab_gem")).register();
+	public static final ItemEntry<ChargedCrystalScarabGemItem> CHARGED_CRYSTAL_SCARAB_GEM = REGISTRATE.item("charged_crystal_scarab_gem", ChargedCrystalScarabGemItem::new).properties(properties -> properties.fireResistant().rarity(Rarity.RARE)).model(textured("crystal_scarab_gem")).register();
 
-	public static final ItemEntry<CECrystalScarabGemItem> CRYSTAL_SCARAB_GEM = REGISTRATE.item("crystal_scarab_gem", CECrystalScarabGemItem::new).properties(properties -> properties.fireResistant().rarity(Rarity.RARE)).recipe((item, provider) -> ArchaeologyTableRecipeBuilder.shaped(item.get()).pattern("@%^").pattern("#$!").define('@', LostWorldsItems.CRYSTAL_SCARAB_TOP_LEFT_LEG.get()).define('$', LostWorldsItems.CRYSTAL_SCARAB_ABDOMEN.get()).define('^', LostWorldsItems.CRYSTAL_SCARAB_TOP_RIGHT_LEG.get()).define('#', LostWorldsItems.CRYSTAL_SCARAB_BOTTOM_LEFT_LEG.get()).define('%', LostWorldsItems.CRYSTAL_SCARAB_THORAX.get()).define('!', LostWorldsItems.CRYSTAL_SCARAB_BOTTOM_RIGHT_LEG.get()).unlockedBy("has_item", provider.has(LostWorldsTags.ModItemTags.BROKEN_CRYSTAL_SCARAB_GEMS.tag)).save(provider)).register();
+	public static final ItemEntry<CustomEntityItem> CRYSTAL_SCARAB_GEM = REGISTRATE.item("crystal_scarab_gem", properties -> new CustomEntityItem(() -> LostWorldsEntities.CRYSTAL_SCARAB_GEM_ITEM.get(), Integer.MAX_VALUE, properties)).properties(properties -> properties.fireResistant().rarity(Rarity.RARE)).recipe((item, provider) -> ArchaeologyTableRecipeBuilder.shaped(item.get()).pattern("@%^").pattern("#$!").define('@', LostWorldsItems.CRYSTAL_SCARAB_TOP_LEFT_LEG.get()).define('$', LostWorldsItems.CRYSTAL_SCARAB_ABDOMEN.get()).define('^', LostWorldsItems.CRYSTAL_SCARAB_TOP_RIGHT_LEG.get()).define('#', LostWorldsItems.CRYSTAL_SCARAB_BOTTOM_LEFT_LEG.get()).define('%', LostWorldsItems.CRYSTAL_SCARAB_THORAX.get()).define('!', LostWorldsItems.CRYSTAL_SCARAB_BOTTOM_RIGHT_LEG.get()).unlockedBy("has_item", provider.has(LostWorldsTags.ModItemTags.BROKEN_CRYSTAL_SCARAB_GEMS.tag)).save(provider)).register();
 	public static final ItemEntry<Item> CRYSTAL_SCARAB_ABDOMEN = REGISTRATE.item("crystal_scarab_abdomen", Item::new).properties(properties -> properties.fireResistant().rarity(Rarity.UNCOMMON)).tag(LostWorldsTags.ModItemTags.BROKEN_CRYSTAL_SCARAB_GEMS.tag).register(),
 			CRYSTAL_SCARAB_BOTTOM_LEFT_LEG = REGISTRATE.item("crystal_scarab_bottom_left_leg", Item::new).properties(properties -> properties.fireResistant().rarity(Rarity.UNCOMMON)).tag(LostWorldsTags.ModItemTags.BROKEN_CRYSTAL_SCARAB_GEMS.tag).register(),
 			CRYSTAL_SCARAB_BOTTOM_RIGHT_LEG = REGISTRATE.item("crystal_scarab_bottom_right_leg", Item::new).properties(properties -> properties.fireResistant().rarity(Rarity.UNCOMMON)).tag(LostWorldsTags.ModItemTags.BROKEN_CRYSTAL_SCARAB_GEMS.tag).register(),

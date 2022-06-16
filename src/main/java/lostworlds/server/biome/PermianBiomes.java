@@ -83,6 +83,30 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
+	public static Biome permianColdOceanBiome() {
+		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
+		ModBiomeFeatures.permianColdOcean(generation);
+
+		MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+
+		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
+		ambience.waterColor(COLD_OCEAN_WATER_COLOUR).waterFogColor(COLD_OCEAN_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.3F));
+
+		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.3F, ambience, generation, spawns);
+	}
+
+	public static Biome permianLukeWarmOceanBiome() {
+		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
+		ModBiomeFeatures.permianLukeWarmOcean(generation);
+
+		MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+
+		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
+		ambience.waterColor(LUKE_WARM_OCEAN_WATER_COLOUR).waterFogColor(LUKE_WARM_OCEAN_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.5F));
+
+		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience, generation, spawns);
+	}
+
 	public static Biome permianAshyMedows() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianAshyMedows(generation);

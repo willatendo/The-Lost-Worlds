@@ -1,0 +1,197 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.cryptoclidus",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Cryptoclidus",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Cryptoclidus",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "body",
+					"pivot": [
+						0,
+						3,
+						-4
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.5,
+								2,
+								-4
+							],
+							"size": [
+								3,
+								3,
+								7
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										38,
+										18
+									],
+									"uv_size": [
+										3,
+										3
+									]
+								},
+								"east": {
+									"uv": [
+										24,
+										18
+									],
+									"uv_size": [
+										7,
+										3
+									]
+								},
+								"south": {
+									"uv": [
+										16,
+										51
+									],
+									"uv_size": [
+										3,
+										3
+									]
+								},
+								"west": {
+									"uv": [
+										31,
+										18
+									],
+									"uv_size": [
+										7,
+										3
+									]
+								},
+								"up": {
+									"uv": [
+										48,
+										42
+									],
+									"uv_size": [
+										3,
+										7
+									]
+								},
+								"down": {
+									"uv": [
+										0,
+										56
+									],
+									"uv_size": [
+										3,
+										-7
+									]
+								}
+							}
+						},
+						{
+							"origin": [
+								-0.5,
+								0,
+								-1
+							],
+							"size": [
+								1,
+								8,
+								5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										23,
+										49
+									],
+									"uv_size": [
+										1,
+										8
+									]
+								},
+								"east": {
+									"uv": [
+										9,
+										43
+									],
+									"uv_size": [
+										5,
+										8
+									]
+								},
+								"south": {
+									"uv": [
+										46,
+										51
+									],
+									"uv_size": [
+										1,
+										8
+									]
+								},
+								"west": {
+									"uv": [
+										14,
+										43
+									],
+									"uv_size": [
+										5,
+										8
+									]
+								},
+								"up": {
+									"uv": [
+										51,
+										42
+									],
+									"uv_size": [
+										1,
+										5
+									]
+								},
+								"down": {
+									"uv": [
+										47,
+										56
+									],
+									"uv_size": [
+										1,
+										-5
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

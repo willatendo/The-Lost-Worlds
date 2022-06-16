@@ -21,11 +21,11 @@ public class CrystalScarabGemItemEntity extends ModItemEntity {
 	}
 
 	@Override
-	public void thunderHit(ServerLevel world, LightningBolt lightning) {
-		ItemEntity entity = EntityType.ITEM.create(world);
+	public void thunderHit(ServerLevel level, LightningBolt lightning) {
+		ItemEntity entity = LostWorldsEntities.CHARGED_CRYSTAL_SCARAB_GEM_ITEM.create(level);
 		entity.moveTo(this.getX(), this.getY(), this.getZ(), this.yRot, this.xRot);
 		entity.setItem(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get().getDefaultInstance());
-		world.addFreshEntity(entity);
+		level.addFreshEntity(entity);
 		this.kill();
 	}
 

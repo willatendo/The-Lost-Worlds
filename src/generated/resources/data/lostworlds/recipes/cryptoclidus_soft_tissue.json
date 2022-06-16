@@ -1,0 +1,8 @@
+{
+  "type": "lostworlds:fossil_grinder",
+  "input": {
+    "tag": "lostworlds:cryptoclidus_fossils"
+  },
+  "plant": false,
+  "output": "lostworlds:cryptoclidus_soft_tissue"
+}

@@ -1,0 +1,282 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.cryptoclidus",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "Cryptoclidus",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "body",
+					"parent": "Cryptoclidus",
+					"pivot": [
+						0,
+						-2,
+						27
+					]
+				},
+				{
+					"name": "neck",
+					"parent": "body",
+					"pivot": [
+						0,
+						-1.75,
+						16
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2.5,
+								0,
+								-9
+							],
+							"size": [
+								5,
+								6,
+								23
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										19,
+										43
+									],
+									"uv_size": [
+										5,
+										6
+									]
+								},
+								"east": {
+									"uv": [
+										24,
+										0
+									],
+									"uv_size": [
+										23,
+										6
+									]
+								},
+								"south": {
+									"uv": [
+										43,
+										42
+									],
+									"uv_size": [
+										5,
+										6
+									]
+								},
+								"west": {
+									"uv": [
+										24,
+										6
+									],
+									"uv_size": [
+										23,
+										6
+									]
+								},
+								"up": {
+									"uv": [
+										24,
+										32
+									],
+									"uv_size": [
+										5,
+										23
+									]
+								},
+								"down": {
+									"uv": [
+										29,
+										55
+									],
+									"uv_size": [
+										5,
+										-23
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "neck",
+					"pivot": [
+						0,
+						0.4,
+						16
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3,
+								0.9,
+								-10
+							],
+							"size": [
+								6,
+								5,
+								6
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										34,
+										44
+									],
+									"uv_size": [
+										6,
+										5
+									]
+								},
+								"east": {
+									"uv": [
+										47,
+										0
+									],
+									"uv_size": [
+										6,
+										5
+									]
+								},
+								"south": {
+									"uv": [
+										47,
+										5
+									],
+									"uv_size": [
+										6,
+										5
+									]
+								},
+								"west": {
+									"uv": [
+										40,
+										48
+									],
+									"uv_size": [
+										6,
+										5
+									]
+								},
+								"up": {
+									"uv": [
+										43,
+										30
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										43,
+										42
+									],
+									"uv_size": [
+										6,
+										-6
+									]
+								}
+							}
+						},
+						{
+							"origin": [
+								-1.5,
+								0.9,
+								-14
+							],
+							"size": [
+								3,
+								4,
+								4
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										40,
+										44
+									],
+									"uv_size": [
+										3,
+										4
+									]
+								},
+								"east": {
+									"uv": [
+										3,
+										49
+									],
+									"uv_size": [
+										4,
+										4
+									]
+								},
+								"south": {
+									"uv": [
+										34,
+										49
+									],
+									"uv_size": [
+										3,
+										4
+									]
+								},
+								"west": {
+									"uv": [
+										19,
+										49
+									],
+									"uv_size": [
+										4,
+										4
+									]
+								},
+								"up": {
+									"uv": [
+										37,
+										49
+									],
+									"uv_size": [
+										3,
+										4
+									]
+								},
+								"down": {
+									"uv": [
+										7,
+										55
+									],
+									"uv_size": [
+										3,
+										-4
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

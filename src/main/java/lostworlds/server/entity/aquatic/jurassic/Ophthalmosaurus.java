@@ -32,8 +32,8 @@ public class Ophthalmosaurus extends DolphinLike implements IAnimatable, Species
 	protected static final EntityDataAccessor<Byte> VARIENT = SynchedEntityData.defineId(Ophthalmosaurus.class, EntityDataSerializers.BYTE);
 	private AnimationFactory factory = new AnimationFactory(this);
 
-	public Ophthalmosaurus(EntityType<? extends DolphinLike> entity, Level world) {
-		super(entity, world);
+	public Ophthalmosaurus(EntityType<? extends DolphinLike> entity, Level level) {
+		super(entity, level);
 	}
 
 	@Override

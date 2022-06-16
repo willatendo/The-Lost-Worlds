@@ -140,6 +140,18 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
+	public static Biome cretaceousLukeWarmOceanBiome() {
+		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
+		ModBiomeFeatures.cretaceousLukeWarmOcean(generation);
+
+		MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+
+		BiomeSpecialEffects.Builder ambience = new BiomeSpecialEffects.Builder();
+		ambience.waterColor(LUKE_WARM_OCEAN_WATER_COLOUR).waterFogColor(LUKE_WARM_OCEAN_WATER_FOG_COLOUR).fogColor(BASE_FOG_COLOUR).skyColor(calculateSkyColor(0.5F));
+
+		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience, generation, spawns);
+	}
+
 	public static Biome cretaceousWarmOceanBiome() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousCoralReef(generation);
