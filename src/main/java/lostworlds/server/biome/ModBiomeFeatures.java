@@ -97,7 +97,7 @@ public class ModBiomeFeatures {
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedPlantPatchFeatures.CALAMITES_SUCKOWII);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LostWorldsPlacedFeatures.SPONGE_COLONEY);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedPlantPatchFeatures.BRAZILEA_PATCH);
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.CALAMITES_TREES);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.FULL_CALAMITES_TREES);
 	}
 
 	public static void permianRiver(BiomeGenerationSettings.Builder builder) {
@@ -597,7 +597,7 @@ public class ModBiomeFeatures {
 		BiomeDefaultFeatures.addDefaultMushrooms(builder);
 		BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
 
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.GINKGO_TREES);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.FULL_GINKGO_TREES);
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_BIRCH_AND_OAK);
 	}
 
@@ -790,15 +790,15 @@ public class ModBiomeFeatures {
 	}
 
 	public static void addAraucariaTrees(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.ARAUCARIA_TREES);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.FULL_ARAUCARIA_TREES);
 	}
 
 	public static void addConiferTrees(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.CONIFER_TREES);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.FULL_CONIFER_TREES);
 	}
 
 	private static void addGinkgoTrees(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.GINKGO_TREES);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.FULL_GINKGO_TREES);
 	}
 
 	public static void addSequoiaTrees(BiomeGenerationSettings.Builder builder) {

@@ -12,24 +12,14 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
-import net.minecraft.world.level.biome.TerrainShaper;
 
 public final class PermianBiomeBuilder {
-	public static final float HIGH_START = 0.4F;
-	public static final float PEAK_START = 0.56666666F;
-	public static final float NEAR_INLAND_START = -0.11F;
-	public static final float MID_INLAND_START = 0.03F;
-	public static final float FAR_INLAND_START = 0.3F;
-	public static final float EROSION_INDEX_1_START = -0.78F;
-	public static final float EROSION_INDEX_2_START = -0.375F;
-
 	private final Climate.Parameter fullRange = Climate.Parameter.span(-1.0F, 1.0F);
 	private final Climate.Parameter[] temperatures = new Climate.Parameter[] { Climate.Parameter.span(-1.0F, -0.45F), Climate.Parameter.span(-0.45F, -0.15F), Climate.Parameter.span(-0.15F, 0.2F), Climate.Parameter.span(0.2F, 0.55F), Climate.Parameter.span(0.55F, 1.0F) };
 	private final Climate.Parameter[] humidities = new Climate.Parameter[] { Climate.Parameter.span(-1.0F, -0.35F), Climate.Parameter.span(-0.35F, -0.1F), Climate.Parameter.span(-0.1F, 0.1F), Climate.Parameter.span(0.1F, 0.3F), Climate.Parameter.span(0.3F, 1.0F) };
 	private final Climate.Parameter[] erosions = new Climate.Parameter[] { Climate.Parameter.span(-1.0F, -0.78F), Climate.Parameter.span(-0.78F, -0.375F), Climate.Parameter.span(-0.375F, -0.2225F), Climate.Parameter.span(-0.2225F, 0.05F), Climate.Parameter.span(0.05F, 0.45F), Climate.Parameter.span(0.45F, 0.55F), Climate.Parameter.span(0.55F, 1.0F) };
 	private final Climate.Parameter frozenRange = this.temperatures[0];
 	private final Climate.Parameter unfrozenRange = Climate.Parameter.span(this.temperatures[1], this.temperatures[4]);
-	private final Climate.Parameter mushroomFieldsContinentalness = Climate.Parameter.span(-1.2F, -1.05F);
 	private final Climate.Parameter deepOceanContinentalness = Climate.Parameter.span(-1.05F, -0.455F);
 	private final Climate.Parameter oceanContinentalness = Climate.Parameter.span(-0.455F, -0.19F);
 	private final Climate.Parameter coastContinentalness = Climate.Parameter.span(-0.19F, -0.11F);
@@ -38,7 +28,7 @@ public final class PermianBiomeBuilder {
 	private final Climate.Parameter midInlandContinentalness = Climate.Parameter.span(0.03F, 0.3F);
 	private final Climate.Parameter farInlandContinentalness = Climate.Parameter.span(0.3F, 1.0F);
 
-	private final ResourceKey<Biome>[][] OCEANS = new ResourceKey[][] { { Biomes.DEEP_FROZEN_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.DEEP_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN, Biomes.WARM_OCEAN }, { Biomes.FROZEN_OCEAN, Biomes.COLD_OCEAN, Biomes.OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.WARM_OCEAN } };
+	private final ResourceKey<Biome>[][] permianOceans = new ResourceKey[][] { { Biomes.DEEP_FROZEN_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.DEEP_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN, Biomes.WARM_OCEAN }, { Biomes.FROZEN_OCEAN, Biomes.COLD_OCEAN, Biomes.OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.WARM_OCEAN } };
 	private final ResourceKey<Biome>[][] MIDDLE_BIOMES = new ResourceKey[][] { { Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA, Biomes.TAIGA }, { Biomes.PLAINS, Biomes.PLAINS, LostWorldsBiomeKeys.PERMIAN_CONIFER_FOREST, Biomes.TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA }, { LostWorldsBiomeKeys.PERMIAN_CONIFER_FOREST, Biomes.PLAINS, LostWorldsBiomeKeys.PERMIAN_CONIFER_FOREST, LostWorldsBiomeKeys.PERMIAN_GINKGO_FOREST, Biomes.DARK_FOREST }, { Biomes.SAVANNA, Biomes.SAVANNA, LostWorldsBiomeKeys.PERMIAN_CONIFER_FOREST, Biomes.JUNGLE, Biomes.JUNGLE }, { Biomes.DESERT, Biomes.DESERT, Biomes.DESERT, Biomes.DESERT, Biomes.DESERT } };
 	private final ResourceKey<Biome>[][] MIDDLE_BIOMES_VARIANT = new ResourceKey[][] { { Biomes.ICE_SPIKES, null, Biomes.SNOWY_TAIGA, null, null }, { null, null, null, null, Biomes.OLD_GROWTH_PINE_TAIGA }, { Biomes.SUNFLOWER_PLAINS, null, null, Biomes.OLD_GROWTH_BIRCH_FOREST, null }, { null, null, Biomes.PLAINS, Biomes.SPARSE_JUNGLE, Biomes.BAMBOO_JUNGLE }, { null, null, null, null, null } };
 	private final ResourceKey<Biome>[][] PLATEAU_BIOMES = new ResourceKey[][] { { Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA, Biomes.SNOWY_TAIGA }, { Biomes.MEADOW, Biomes.MEADOW, LostWorldsBiomeKeys.PERMIAN_CONIFER_FOREST, Biomes.TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA }, { Biomes.MEADOW, Biomes.MEADOW, Biomes.MEADOW, Biomes.MEADOW, Biomes.DARK_FOREST }, { Biomes.SAVANNA_PLATEAU, Biomes.SAVANNA_PLATEAU, LostWorldsBiomeKeys.PERMIAN_CONIFER_FOREST, LostWorldsBiomeKeys.PERMIAN_CONIFER_FOREST, Biomes.JUNGLE }, { Biomes.BADLANDS, Biomes.BADLANDS, Biomes.BADLANDS, Biomes.WOODED_BADLANDS, Biomes.WOODED_BADLANDS } };
@@ -61,12 +51,10 @@ public final class PermianBiomeBuilder {
 	}
 
 	private void addOffCoastBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point) {
-		this.addSurfaceBiome(point, this.fullRange, this.fullRange, this.mushroomFieldsContinentalness, this.fullRange, this.fullRange, 0.0F, Biomes.MUSHROOM_FIELDS);
-
 		for (int i = 0; i < this.temperatures.length; ++i) {
 			Climate.Parameter climate$parameter = this.temperatures[i];
-			this.addSurfaceBiome(point, climate$parameter, this.fullRange, this.deepOceanContinentalness, this.fullRange, this.fullRange, 0.0F, this.OCEANS[0][i]);
-			this.addSurfaceBiome(point, climate$parameter, this.fullRange, this.oceanContinentalness, this.fullRange, this.fullRange, 0.0F, this.OCEANS[1][i]);
+			this.addSurfaceBiome(point, climate$parameter, this.fullRange, this.deepOceanContinentalness, this.fullRange, this.fullRange, 0.0F, this.permianOceans[0][i]);
+			this.addSurfaceBiome(point, climate$parameter, this.fullRange, this.oceanContinentalness, this.fullRange, this.fullRange, 0.0F, this.permianOceans[1][i]);
 		}
 
 	}
@@ -339,58 +327,5 @@ public final class PermianBiomeBuilder {
 
 	private void addUndergroundBiome(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point, Climate.Parameter temperature, Climate.Parameter humidity, Climate.Parameter continentalness, Climate.Parameter erosion, Climate.Parameter v, float offset, ResourceKey<Biome> biome) {
 		point.accept(Pair.of(Climate.parameters(temperature, humidity, continentalness, erosion, Climate.Parameter.span(0.2F, 0.9F), v, offset), biome));
-	}
-
-	public static String getDebugStringForPeaksAndValleys(double noise) {
-		if (noise < (double) TerrainShaper.peaksAndValleys(0.05F)) {
-			return "Valley";
-		} else if (noise < (double) TerrainShaper.peaksAndValleys(0.26666668F)) {
-			return "Low";
-		} else if (noise < (double) TerrainShaper.peaksAndValleys(0.4F)) {
-			return "Mid";
-		} else {
-			return noise < (double) TerrainShaper.peaksAndValleys(0.56666666F) ? "High" : "Peak";
-		}
-	}
-
-	public String getDebugStringForContinentalness(double noise) {
-		double d0 = (double) Climate.quantizeCoord((float) noise);
-		if (d0 < (double) this.mushroomFieldsContinentalness.max()) {
-			return "Mushroom fields";
-		} else if (d0 < (double) this.deepOceanContinentalness.max()) {
-			return "Deep ocean";
-		} else if (d0 < (double) this.oceanContinentalness.max()) {
-			return "Ocean";
-		} else if (d0 < (double) this.coastContinentalness.max()) {
-			return "Coast";
-		} else if (d0 < (double) this.nearInlandContinentalness.max()) {
-			return "Near inland";
-		} else {
-			return d0 < (double) this.midInlandContinentalness.max() ? "Mid inland" : "Far inland";
-		}
-	}
-
-	public String getDebugStringForErosion(double noise) {
-		return getDebugStringForNoiseValue(noise, this.erosions);
-	}
-
-	public String getDebugStringForTemperature(double noise) {
-		return getDebugStringForNoiseValue(noise, this.temperatures);
-	}
-
-	public String getDebugStringForHumidity(double noise) {
-		return getDebugStringForNoiseValue(noise, this.humidities);
-	}
-
-	private static String getDebugStringForNoiseValue(double noise, Climate.Parameter[] parameters) {
-		double d0 = (double) Climate.quantizeCoord((float) noise);
-
-		for (int i = 0; i < parameters.length; ++i) {
-			if (d0 < (double) parameters[i].max()) {
-				return "" + i;
-			}
-		}
-
-		return "?";
 	}
 }
