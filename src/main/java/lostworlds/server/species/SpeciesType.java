@@ -15,23 +15,31 @@ public class SpeciesType extends ForgeRegistryEntry<SpeciesType> {
 			return speciesType.getModel();
 		}), ResourceLocation.CODEC.fieldOf("texture").forGetter((speciesType) -> {
 			return speciesType.getTexture();
+		}), ResourceLocation.CODEC.fieldOf("animations").forGetter((speciesType) -> {
+			return speciesType.getAnimations();
 		})).apply(instance, SpeciesType::new);
 	});
 	public static final Codec<Holder<SpeciesType>> CODEC = RegistryFileCodec.create(LostWorldsRegistries.SPECIES_TYPES, DIRECT_CODEC);
 
 	private final ResourceLocation model;
 	private final ResourceLocation texture;
+	private final ResourceLocation animations;
 
-	public SpeciesType(ResourceLocation model, ResourceLocation texture) {
+	public SpeciesType(ResourceLocation model, ResourceLocation texture, ResourceLocation animations) {
 		this.model = model;
 		this.texture = texture;
+		this.animations = animations;
 	}
 
 	public ResourceLocation getModel() {
-		return model;
+		return this.model;
 	}
 
 	public ResourceLocation getTexture() {
-		return texture;
+		return this.texture;
+	}
+
+	public ResourceLocation getAnimations() {
+		return this.animations;
 	}
 }

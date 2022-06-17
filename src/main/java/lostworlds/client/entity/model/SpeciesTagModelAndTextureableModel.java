@@ -11,6 +11,12 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public abstract class SpeciesTagModelAndTextureableModel<T extends SpeciesTagModelAndTextureable & IAnimatable> extends AnimatedGeoModel<T> {
 	@Override
+	public ResourceLocation getAnimationFileLocation(T entity) {
+		List<SpeciesType> types = LostWorldsRegistries.SPECIES_TYPES_REGISTRY.get().tags().getTag(entity.getTagToUse()).stream().toList();
+		return types.get((int) entity.getVarientData()).getAnimations();
+	}
+
+	@Override
 	public ResourceLocation getModelLocation(T entity) {
 		List<SpeciesType> types = LostWorldsRegistries.SPECIES_TYPES_REGISTRY.get().tags().getTag(entity.getTagToUse()).stream().toList();
 		return types.get((int) entity.getVarientData()).getModel();

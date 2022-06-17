@@ -1,8 +1,6 @@
 package lostworlds.client.entity.model;
 
-import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.terrestrial.cretaceous.Utahraptor;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
@@ -11,11 +9,6 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
 public class UtahraptorModel extends SpeciesTagModelAndTextureableModel<Utahraptor> {
-	@Override
-	public ResourceLocation getAnimationFileLocation(Utahraptor entity) {
-		return LostWorldsUtils.rL("animations/utahraptor.animations.json");
-	}
-
 	@Override
 	public void setLivingAnimations(Utahraptor entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);

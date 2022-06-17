@@ -25,7 +25,7 @@ public class ModelLayerSetup {
 			event.registerLayerDefinition(types.getLayer(), BoatModel::createBodyModel);
 		}
 
-		for (WoodType types : LostWorldsWoodTypes.WOOD_TYPES) {
+		for (WoodType types : LostWorldsWoodTypes.getWoodTypes()) {
 			event.registerLayerDefinition(ModelLayers.createSignModelName(types), SignRenderer::createSignLayer);
 		}
 

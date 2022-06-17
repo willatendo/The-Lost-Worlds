@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
@@ -49,7 +48,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FireBlock;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.saveddata.maps.MapDecoration;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -72,16 +70,24 @@ public class CommonSetup {
 		VillagerTrades.ItemListing[] paleontology3 = new VillagerTrades.ItemListing[] { new VillagerTrades.EmeraldForItems(LostWorldsBlocks.LARGE_FOSSILISED_EGG.get(), 7, 2, 15), new VillagerTrades.ItemsForEmeralds(LostWorldsItems.HAMMER.get(), 16, 1, 20) };
 		VillagerTrades.ItemListing[] paleontology4 = new VillagerTrades.ItemListing[] { new MultiItemForEmeraldsTrade(ImmutableList.of(LostWorldsItems.DIAMOND_BRUSH.get(), LostWorldsItems.GOLD_BRUSH.get(), LostWorldsItems.IRON_BRUSH.get(), LostWorldsItems.LEATHER_BRUSH.get()), ImmutableList.of(1, 1, 1, 1), ImmutableList.of(64, 32, 16, 4), 1, 26) };
 		ArrayList<Item> dnaForSale = Lists.newArrayList();
+		ArrayList<Integer> dnaAmountSold = Lists.newArrayList();
+		ArrayList<Integer> dnaCost = Lists.newArrayList();
 		for (Trees trees : Trees.values()) {
 			dnaForSale.add(trees.getDNA().get());
+			dnaAmountSold.add(1);
+			dnaCost.add(64);
 		}
 		for (Plants plants : Plants.values()) {
 			dnaForSale.add(plants.getDNA().get());
+			dnaAmountSold.add(1);
+			dnaCost.add(64);
 		}
 		for (DinoTypes dinos : DinoTypes.values()) {
 			dnaForSale.add(dinos.getDNA().get());
+			dnaAmountSold.add(1);
+			dnaCost.add(64);
 		}
-		VillagerTrades.ItemListing[] paleontology5 = new VillagerTrades.ItemListing[] { new VillagerTrades.ItemsForEmeralds(LostWorldsItems.CONTRACEPTIVES.get(), 12, 5, 20), new MultiItemForEmeraldsTrade(dnaForSale, ImmutableList.of(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), ImmutableList.of(64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64), 1, 200) };
+		VillagerTrades.ItemListing[] paleontology5 = new VillagerTrades.ItemListing[] { new VillagerTrades.ItemsForEmeralds(LostWorldsItems.CONTRACEPTIVES.get(), 12, 5, 20), new MultiItemForEmeraldsTrade(dnaForSale, dnaAmountSold, dnaCost, 1, 200) };
 
 		VillagerTrades.TRADES.put(LostWorldsVillagerProfessions.ARCHAEOLOGIST.get(), toIntMap(ImmutableMap.of(1, archaeology1, 2, archaeology2, 3, archaeology3, 4, archaeology4, 5, archaeology5)));
 		VillagerTrades.TRADES.put(LostWorldsVillagerProfessions.PALEONTOLOGIST.get(), toIntMap(ImmutableMap.of(1, paleontology1, 2, paleontology2, 3, paleontology3, 4, paleontology4, 5, paleontology5)));
@@ -262,11 +268,6 @@ public class CommonSetup {
 
 			LostWorldsNoiseGeneratorSettings.init();
 			LostWorldsNoise.init();
-
-			ImmutableSet.Builder<Block> builder = ImmutableSet.builder();
-			builder.addAll(BlockEntityType.SIGN.validBlocks);
-			LostWorldsBlocks.forEachSignBlock(builder::add);
-			BlockEntityType.SIGN.validBlocks = builder.build();
 		});
 
 		LostWorldsUtils.translateToWaves(LostWorldsEntities.FOSSIL_POACHER.get(), Arrays.asList(1, 0, 0, 0, 1, 2, 2, 3));

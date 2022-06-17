@@ -3,6 +3,7 @@ package lostworlds.server.block.entity;
 import static lostworlds.LostWorldsMod.getRegistrate;
 
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
+import com.tterrag.registrate.util.entry.BlockEntry;
 
 import lostworlds.client.entity.render.block.DisplayCaseRenderer;
 import lostworlds.server.block.LostWorldsBlocks;
@@ -21,6 +22,8 @@ public class LostWorldsBlockEntities {
 	public static final BlockEntityEntry<FeedingTroughBlockEntity> FEEDING_TROUGH_BLOCK_ENTITY = REGISTRATE.blockEntity("feeding_trough", FeedingTroughBlockEntity::new).validBlock(() -> LostWorldsBlocks.FEEDING_TROUGH.get()).register();
 
 	public static final BlockEntityEntry<DisplayCaseBlockEntity> DISPLAY_CASE_BLOCK_ENTITY = REGISTRATE.blockEntity("display_case", DisplayCaseBlockEntity::new).validBlock(() -> LostWorldsBlocks.DISPLAY_CASE.get()).renderer(() -> DisplayCaseRenderer::new).register();
+
+	public static final BlockEntityEntry<LostWorldsSignBlockEntity> LOST_WORLDS_SIGN = REGISTRATE.blockEntity("lost_worlds_sign", LostWorldsSignBlockEntity::new).validBlocks(LostWorldsBlocks.SIGN_BLOCKS.stream().toArray(BlockEntry[]::new)).register();
 
 	public static void registrate() {
 	}

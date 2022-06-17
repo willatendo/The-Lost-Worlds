@@ -1,8 +1,6 @@
 package lostworlds.client.entity.model;
 
-import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.terrestrial.cretaceous.Psittacosaurus;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
@@ -11,11 +9,6 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
 public class PsittacosaurusModel extends SpeciesTagModelAndTextureableModel<Psittacosaurus> {
-	@Override
-	public ResourceLocation getAnimationFileLocation(Psittacosaurus entity) {
-		return LostWorldsUtils.rL("animations/psittacosaurus.animations.json");
-	}
-
 	@Override
 	public void setLivingAnimations(Psittacosaurus entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);

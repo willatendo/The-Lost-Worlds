@@ -1,8 +1,6 @@
 package lostworlds.client.entity.model;
 
-import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.semiaquatic.permian.Rhinesuchus;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
@@ -11,11 +9,6 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @OnlyIn(Dist.CLIENT)
 public class RhinesuchusModel extends SpeciesTagModelAndTextureableModel<Rhinesuchus> {
-	@Override
-	public ResourceLocation getAnimationFileLocation(Rhinesuchus entity) {
-		return LostWorldsUtils.rL("animations/rhinesuchus.animations.json");
-	}
-
 	@Override
 	public void setLivingAnimations(Rhinesuchus entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);

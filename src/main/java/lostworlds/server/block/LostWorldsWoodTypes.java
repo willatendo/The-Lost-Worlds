@@ -7,7 +7,7 @@ import org.apache.commons.compress.utils.Lists;
 import net.minecraft.world.level.block.state.properties.WoodType;
 
 public class LostWorldsWoodTypes {
-	public static final ArrayList<WoodType> WOOD_TYPES = Lists.newArrayList();
+	private static final ArrayList<WoodType> WOOD_TYPES = Lists.newArrayList();
 
 	public static final WoodType ARAUCARIA = registerMod("araucaria");
 	public static final WoodType CALAMITES = registerMod("calamites");
@@ -17,6 +17,10 @@ public class LostWorldsWoodTypes {
 	public static final WoodType GLASS = registerMod("glass");
 	public static final WoodType SCORCHED = registerMod("scorched");
 	public static final WoodType SEQUOIA = registerMod("sequoia");
+
+	public static ArrayList<WoodType> getWoodTypes() {
+		return WOOD_TYPES;
+	}
 
 	public static WoodType registerMod(String woodType) {
 		WoodType type = WoodType.create("lostworlds:" + woodType);

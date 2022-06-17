@@ -9,6 +9,8 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.block.LostWorldsBlocks;
+import lostworlds.server.block.LostWorldsStandingSignBlock;
+import lostworlds.server.block.LostWorldsWallSignBlock;
 import lostworlds.server.block.ModFlowerPotBlock;
 import lostworlds.server.block.PetrifiedWoodBlock;
 import lostworlds.server.entity.utils.enums.ModBoatType;
@@ -36,9 +38,7 @@ import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.TrapDoorBlock;
-import net.minecraft.world.level.block.WallSignBlock;
 import net.minecraft.world.level.block.WoodButtonBlock;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -127,8 +127,8 @@ public class WoodList {
 			}
 
 			if (types == WoodTypes.SIGN) {
-				BlockEntry<StandingSignBlock> standing = this.registrate.signBlock(id + "_" + types.toString().toLowerCase(), id + "_planks", properties -> new StandingSignBlock(properties, type)).properties(properties -> BlockBehaviour.Properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD)).tag(BlockTags.STANDING_SIGNS, BlockTags.MINEABLE_WITH_AXE).register();
-				BlockEntry<WallSignBlock> wall = this.registrate.signBlock(id + "_wall_" + types.toString().toLowerCase(), id + "_planks", properties -> new WallSignBlock(properties, type)).properties(properties -> BlockBehaviour.Properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).lootFrom(() -> standing.get())).tag(BlockTags.WALL_SIGNS, BlockTags.MINEABLE_WITH_AXE).register();
+				BlockEntry<LostWorldsStandingSignBlock> standing = this.registrate.signBlock(id + "_" + types.toString().toLowerCase(), id + "_planks", properties -> new LostWorldsStandingSignBlock(properties, type)).properties(properties -> BlockBehaviour.Properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD)).tag(BlockTags.STANDING_SIGNS, BlockTags.MINEABLE_WITH_AXE).register();
+				BlockEntry<LostWorldsWallSignBlock> wall = this.registrate.signBlock(id + "_wall_" + types.toString().toLowerCase(), id + "_planks", properties -> new LostWorldsWallSignBlock(properties, type)).properties(properties -> BlockBehaviour.Properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).lootFrom(() -> standing.get())).tag(BlockTags.WALL_SIGNS, BlockTags.MINEABLE_WITH_AXE).register();
 				this.blocks.add(() -> standing);
 				this.blocks.add(() -> wall);
 				this.registrate.item(id + "_" + types.toString().toLowerCase(), properties -> new SignItem(properties, standing.get(), wall.get())).properties((properties) -> properties.stacksTo(16)).recipe((item, provider) -> ShapedRecipeBuilder.shaped(item.get(), 3).group("sign").pattern("###").pattern("###").pattern(" $ ").define('#', this.getBlock(WoodTypes.PLANKS).get().get()).define('$', Items.STICK).unlockedBy("has_planks", provider.has(this.getBlock(WoodTypes.PLANKS).get().get())).save(provider)).register();
@@ -229,8 +229,8 @@ public class WoodList {
 			}
 
 			if (types == WoodTypes.SIGN) {
-				BlockEntry<StandingSignBlock> standing = this.registrate.signBlock(id + "_" + types.toString().toLowerCase(), id + "_planks", properties -> new StandingSignBlock(properties, type)).properties(properties -> BlockBehaviour.Properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD)).register();
-				BlockEntry<WallSignBlock> wall = this.registrate.signBlock(id + "_wall_" + types.toString().toLowerCase(), id + "_planks", properties -> new WallSignBlock(properties, type)).properties(properties -> BlockBehaviour.Properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).lootFrom(() -> standing.get())).register();
+				BlockEntry<LostWorldsStandingSignBlock> standing = this.registrate.signBlock(id + "_" + types.toString().toLowerCase(), id + "_planks", properties -> new LostWorldsStandingSignBlock(properties, type)).properties(properties -> BlockBehaviour.Properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD)).register();
+				BlockEntry<LostWorldsWallSignBlock> wall = this.registrate.signBlock(id + "_wall_" + types.toString().toLowerCase(), id + "_planks", properties -> new LostWorldsWallSignBlock(properties, type)).properties(properties -> BlockBehaviour.Properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().noCollission().sound(SoundType.WOOD).lootFrom(() -> standing.get())).register();
 				this.blocks.add(() -> standing);
 				this.blocks.add(() -> wall);
 				this.registrate.item(id + "_" + types.toString().toLowerCase(), properties -> new SignItem(properties, standing.get(), wall.get())).properties((properties) -> properties.stacksTo(16)).recipe((item, provider) -> ShapedRecipeBuilder.shaped(item.get(), 3).group("sign").pattern("###").pattern("###").pattern(" $ ").define('#', this.getBlock(WoodTypes.PLANKS).get().get()).define('$', Items.STICK).unlockedBy("has_planks", provider.has(this.getBlock(WoodTypes.PLANKS).get().get())).save(provider)).register();
