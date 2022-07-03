@@ -34,7 +34,7 @@ public class DNAExtractorCategory implements IRecipeCategory<DNAExtractorRecipe>
 	public DNAExtractorCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 0, 100, 82, 38);
-		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, LostWorldsBlocks.DNA_EXTRACTOR.asStack());
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, LostWorldsBlocks.DNA_EXTRACTOR.asStack());
 		this.extractionProgessBar = CacheBuilder.newBuilder().maximumSize(25).build(new CacheLoader<Integer, IDrawableAnimated>() {
 			@Override
 			public IDrawableAnimated load(Integer cookTime) {

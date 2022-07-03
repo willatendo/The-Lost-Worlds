@@ -24,7 +24,6 @@ import net.minecraft.world.item.Items;
 public class WaterFuelCategory implements IRecipeCategory<WaterFuelRecipe> {
 	public static final ResourceLocation TEXTURE_LOCATION = LostWorldsUtils.rL("textures/gui/lost_worlds_backgrounds.png");
 
-	protected static final int fuelSlot = 1;
 	private final IDrawableStatic background;
 	private final IDrawable icon;
 	protected final IDrawableStatic bucket;
@@ -36,7 +35,7 @@ public class WaterFuelCategory implements IRecipeCategory<WaterFuelRecipe> {
 		Component smeltCountText = WaterFuelRecipe.createSmeltCountText(100000);
 		int stringWidth = fontRenderer.width(smeltCountText.getString());
 		this.background = helper.drawableBuilder(TEXTURE_LOCATION, 0, 18, 18, 35).addPadding(0, 0, 0, stringWidth + 20).build();
-		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, new ItemStack(Items.WATER_BUCKET));
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(Items.WATER_BUCKET));
 		this.bucket = helper.createDrawable(TEXTURE_LOCATION, 82, 0, 22, 22);
 		this.animatedBucket = helper.createAnimatedDrawable(this.bucket, 300, IDrawableAnimated.StartDirection.TOP, true);
 	}

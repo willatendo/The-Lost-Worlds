@@ -31,7 +31,7 @@ public class FossilCleanerCategory implements IRecipeCategory<FossilCleanerRecip
 	public FossilCleanerCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 0, 0, 82, 54);
-		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, LostWorldsBlocks.FOSSIL_CLEANER.asStack());
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, LostWorldsBlocks.FOSSIL_CLEANER.asStack());
 		this.cleanerProgessBar = CacheBuilder.newBuilder().maximumSize(25).build(new CacheLoader<Integer, IDrawableAnimated>() {
 			@Override
 			public IDrawableAnimated load(Integer cookTime) {

@@ -22,7 +22,7 @@ import lostworlds.server.entity.terrestrial.EggLayingMob;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
 import lostworlds.server.entity.utils.enums.CreatureDiet;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.species.SpeciesType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
@@ -95,7 +95,7 @@ public class Chilesaurus extends EggLayingMob implements SpeciesTagModelAndTextu
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, Dilophosaurus.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new TerrestrialCreateTerritoryGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));
-		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.CHILESAURUS));
+		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, AncientCreatures.CHILESAURUS));
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 	}

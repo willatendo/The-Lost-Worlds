@@ -23,7 +23,7 @@ public class LightningCategory implements IRecipeCategory<LightningRecipe> {
 	public LightningCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 124, 54, 72, 54);
-		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, Items.REDSTONE.getDefaultInstance());
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, Items.REDSTONE.getDefaultInstance());
 	}
 
 	@Override

@@ -7,7 +7,7 @@ import lostworlds.server.LostWorldsRegistries;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.aquatic.BasicFishLikeMob;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.species.SpeciesType;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -77,7 +77,7 @@ public class Nautilus extends BasicFishLikeMob implements IAnimatable, SpeciesTa
 
 	@Override
 	protected ItemStack getBucketItemStack() {
-		return DinoTypes.NAUTILUS.getFishBucket().get().getDefaultInstance();
+		return AncientCreatures.NAUTILUS.getFishBucket().get().getDefaultInstance();
 	}
 
 	@Override

@@ -6,7 +6,7 @@ import lostworlds.server.LostWorldsRegistries;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.aquatic.BasicFishLikeMob;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.species.SpeciesType;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -67,7 +67,7 @@ public class Palaeoniscum extends BasicFishLikeMob implements IAnimatable, Speci
 
 	@Override
 	protected ItemStack getBucketItemStack() {
-		return DinoTypes.PALAEONISCUM.getFishBucket().get().getDefaultInstance();
+		return AncientCreatures.PALAEONISCUM.getFishBucket().get().getDefaultInstance();
 	}
 
 	@Override

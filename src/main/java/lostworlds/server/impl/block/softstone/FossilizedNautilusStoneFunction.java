@@ -5,7 +5,7 @@ import java.util.Random;
 import lostworlds.api.APISoftStoneFunction;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.SoftStoneBlock;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.item.LostWorldsEnchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,9 +18,9 @@ public class FossilizedNautilusStoneFunction implements APISoftStoneFunction {
 	@Override
 	public void doFunction(BlockState state, ServerLevel world, BlockPos pos, ItemStack stack) {
 		Random rand = new Random();
-		DinoTypes creature = state.getValue(SoftStoneBlock.POTENTIAL_CREATURE);
+		AncientCreatures creature = state.getValue(SoftStoneBlock.POTENTIAL_CREATURE);
 
-		if (creature == DinoTypes.NAUTILUS) {
+		if (creature == AncientCreatures.NAUTILUS) {
 			if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
 				int breakchance = rand.nextInt(2);
 				if (breakchance != 0) {

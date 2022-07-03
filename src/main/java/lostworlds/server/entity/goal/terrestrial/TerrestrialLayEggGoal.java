@@ -8,7 +8,7 @@ import lostworlds.server.block.MediumEggBlock;
 import lostworlds.server.block.SmallEggBlock;
 import lostworlds.server.block.TinyEggBlock;
 import lostworlds.server.entity.terrestrial.EggLayingMob;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -22,9 +22,9 @@ import net.minecraft.world.level.block.Block;
 
 public class TerrestrialLayEggGoal extends MoveToBlockGoal {
 	private final EggLayingMob entity;
-	private final DinoTypes dino;
+	private final AncientCreatures dino;
 
-	public TerrestrialLayEggGoal(EggLayingMob entity, double speedModifer, DinoTypes dino) {
+	public TerrestrialLayEggGoal(EggLayingMob entity, double speedModifer, AncientCreatures dino) {
 		super(entity, speedModifer, 16);
 		this.entity = entity;
 		this.dino = dino;

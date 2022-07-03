@@ -194,7 +194,7 @@ public abstract class PrehistoricMob extends Animal implements IAnimatable, Tabl
 			List<SpeciesType> types = LostWorldsRegistries.SPECIES_TYPES_REGISTRY.get().tags().getTag(species.getTagToUse()).stream().toList();
 			varient = (byte) this.random.nextInt(types.size());
 		} else {
-			varient = (byte) random.nextInt(2);
+			varient = (byte) this.random.nextInt(2);
 		}
 		this.entityData.define(VARIENT, varient);
 	}

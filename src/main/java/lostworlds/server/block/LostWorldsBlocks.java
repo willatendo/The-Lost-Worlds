@@ -25,7 +25,7 @@ import lostworlds.server.block.tree.ConiferTree;
 import lostworlds.server.block.tree.CypressTree;
 import lostworlds.server.block.tree.GinkgoTree;
 import lostworlds.server.block.tree.SequoiaTree;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.entity.utils.enums.ModBoatType;
 import lostworlds.server.entity.utils.enums.Size;
 import lostworlds.server.item.LostWorldsItems;
@@ -357,7 +357,7 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<NautilusShellBlock> FOSSILIZED_NAUTILUS_SHELL = REGISTRATE.block("fossilized_nautilus_shell", NautilusShellBlock::new).properties(properties -> properties.of(Material.SHULKER_SHELL).instabreak().noOcclusion().sound(SoundType.ANVIL)).blockstate((block, provider) -> provider.horizontalBlock(block.get(), provider.models().withExistingParent(block.getName(), provider.modLoc("shell")).texture("shell", LostWorldsUtils.rL("block/fossilized_nautilus_shell")).texture("particle", LostWorldsUtils.rL("block/fossilized_nautilus_shell")))).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("item/fossilized_nautilus_shell"))).tag(LostWorldsTags.ModItemTags.NAUTILUS_FOSSILS.tag).build().register();
 
 	static {
-		for (DinoTypes types : DinoTypes.eggLaying()) {
+		for (AncientCreatures types : AncientCreatures.eggLaying()) {
 			Size size = types.getEggSize();
 			if (size == Size.TINY) {
 				BlockEntry<TinyEggBlock> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", size.getName(), types, properties -> new TinyEggBlock(properties, types.getEntityType())).initialProperties(() -> Blocks.TURTLE_EGG).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.tinyEgg()).tag(LostWorldsTags.ModBlockTags.EGGS.tag).register();
@@ -377,8 +377,8 @@ public class LostWorldsBlocks {
 			}
 		}
 
-		for (DinoTypes types : DinoTypes.values()) {
-			if (types == DinoTypes.NAUTILUS) {
+		for (AncientCreatures types : AncientCreatures.values()) {
+			if (types == AncientCreatures.NAUTILUS) {
 				types.setExtraBlock(() -> FOSSILIZED_NAUTILUS_SHELL.get());
 			}
 		}
@@ -542,7 +542,7 @@ public class LostWorldsBlocks {
 		return (state, world, pos, layer) -> world != null && pos != null ? BiomeColors.getAverageWaterColor(world, pos) : -1;
 	}
 
-	public static BlockColor getEggBlock(DinoTypes types) {
+	public static BlockColor getEggBlock(AncientCreatures types) {
 		if (LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get()) {
 			return new BlockColor() {
 				@Override
@@ -555,7 +555,7 @@ public class LostWorldsBlocks {
 		}
 	}
 
-	public static ItemColor getEggItem(DinoTypes types) {
+	public static ItemColor getEggItem(AncientCreatures types) {
 		if (LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get()) {
 			return new ItemColor() {
 				@Override

@@ -31,7 +31,7 @@ public class CultivatorCategory implements IRecipeCategory<CultivatorRecipe> {
 	public CultivatorCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 0, 230, 94, 26);
-		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, LostWorldsBlocks.CULTIVATOR.asStack());
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, LostWorldsBlocks.CULTIVATOR.asStack());
 		this.cultivatorProgessBar = CacheBuilder.newBuilder().maximumSize(25).build(new CacheLoader<Integer, IDrawableAnimated>() {
 			@Override
 			public IDrawableAnimated load(Integer cookTime) {

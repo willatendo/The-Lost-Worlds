@@ -24,7 +24,7 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialReasonableAttackGoal
 import lostworlds.server.entity.terrestrial.Carnivore;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.species.SpeciesType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -101,7 +101,7 @@ public class Utahraptor extends Carnivore implements NeutralMob, SpeciesTagModel
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, Tyrannosaurus.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(5, new SleepyAvoidEntityGoal<>(this, Giganotosaurus.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));
-		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.UTAHRAPTOR));
+		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, AncientCreatures.UTAHRAPTOR));
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, Player.class, this::isHungry));

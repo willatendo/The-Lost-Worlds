@@ -8,7 +8,7 @@ import lostworlds.server.block.Damage;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.PotentialPart;
 import lostworlds.server.block.SoftStoneBlock;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.entity.utils.enums.TimeEras;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -41,14 +41,14 @@ public class FossilPeice {
 		locations.add(LostWorldsUtils.rL("fossil/fossil_6"));
 
 		int fossil = rand.nextInt(locations.size());
-		int type = rand.nextInt(DinoTypes.hasNoSpecialFossil().size());
-		accessor.addPiece(new FossilPeice.Piece(manager, locations.get(fossil), DinoTypes.values()[type], pos, rotation));
+		int type = rand.nextInt(AncientCreatures.hasNoSpecialFossil().size());
+		accessor.addPiece(new FossilPeice.Piece(manager, locations.get(fossil), AncientCreatures.values()[type], pos, rotation));
 	}
 
 	public static class Piece extends TemplateStructurePiece {
-		private final DinoTypes type;
+		private final AncientCreatures type;
 
-		public Piece(StructureManager manager, ResourceLocation templateLocation, DinoTypes type, BlockPos pos, Rotation rotation) {
+		public Piece(StructureManager manager, ResourceLocation templateLocation, AncientCreatures type, BlockPos pos, Rotation rotation) {
 			super(LostWorldsStructurePecies.FOSSIL_PIECE, 0, manager, templateLocation, templateLocation.toString(), makeSettings(rotation), pos);
 			this.type = type;
 		}
@@ -57,7 +57,7 @@ public class FossilPeice {
 			super(LostWorldsStructurePecies.FOSSIL_PIECE, tag, manager, (template) -> {
 				return makeSettings(Rotation.valueOf(tag.getString("Rot")));
 			});
-			this.type = DinoTypes.byName(tag.getString("Type"));
+			this.type = AncientCreatures.byName(tag.getString("Type"));
 		}
 
 		private static StructurePlaceSettings makeSettings(Rotation rotation) {
@@ -68,7 +68,7 @@ public class FossilPeice {
 		protected void addAdditionalSaveData(StructurePieceSerializationContext context, CompoundTag tag) {
 			super.addAdditionalSaveData(context, tag);
 			tag.putString("Rot", this.placeSettings.getRotation().name());
-			tag.putString("Type", this.type.getId());
+			tag.putString("Type", this.type.getSerializedName());
 		}
 
 		@Override

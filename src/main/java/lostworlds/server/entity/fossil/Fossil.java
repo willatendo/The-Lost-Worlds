@@ -154,8 +154,8 @@ public class Fossil extends Animal implements IAnimatable {
 						playerentity.broadcastBreakEvent(player.getUsedItemHand());
 					});
 					this.kill();
-					if (!this.level.isClientSide)
-						this.dropAllDeathLoot(source);
+//					if (!this.level.isClientSide)
+//						this.dropAllDeathLoot(source);
 					this.playBrokenSound();
 					this.playParticles();
 				}

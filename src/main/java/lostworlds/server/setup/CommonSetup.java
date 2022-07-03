@@ -23,7 +23,7 @@ import lostworlds.server.dimension.LostWorldsNoise;
 import lostworlds.server.dimension.LostWorldsNoiseGeneratorSettings;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.LostWorldsVillagerProfessions;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.item.SyringeItem;
 import lostworlds.server.network.LostWorldsNetwork;
@@ -82,7 +82,7 @@ public class CommonSetup {
 			dnaAmountSold.add(1);
 			dnaCost.add(64);
 		}
-		for (DinoTypes dinos : DinoTypes.values()) {
+		for (AncientCreatures dinos : AncientCreatures.values()) {
 			dnaForSale.add(dinos.getDNA().get());
 			dnaAmountSold.add(1);
 			dnaCost.add(64);
@@ -246,7 +246,7 @@ public class CommonSetup {
 		addToComposterMap(LostWorldsBlocks.WILLIAMSONIA, 0.65F);
 		addToComposterMap(LostWorldsBlocks.ZAMITES, 0.65F);
 
-		for (DinoTypes types : DinoTypes.values()) {
+		for (AncientCreatures types : AncientCreatures.values()) {
 			SyringeItem.MAP.add(Pair.of(types.getEntityType(), types.getBloodSyringe()));
 		}
 

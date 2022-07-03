@@ -2,40 +2,92 @@ package lostworlds.client.screen.tablet;
 
 import java.text.NumberFormat;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.terrestrial.TaggedMob;
 import lostworlds.server.entity.utils.enums.ActivityType;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.resources.ResourceLocation;
 
-public class TabletScreen extends AbstractTableScreen {
+public class TabletScreen extends Screen {
+	public static final ResourceLocation TEXTURE = LostWorldsUtils.rL("textures/gui/tablet.png");
+	public static final int FONT_COLOUR = 0x000000;
 	private final TaggedMob entity;
+	public final int texWidth;
+	public final int texHeight;
+	protected int titleLabelX;
+	protected int titleLabelY;
+	public int left;
+	public int top;
+	public float xMouse;
+	public float yMouse;
+	protected int imageWidth = 256;
+	protected int imageHeight = 180;
 
 	public TabletScreen(TaggedMob entity) {
 		super(entity.getDisplayName());
 
 		this.entity = entity;
+
+		this.titleLabelX = 22;
+		this.titleLabelY = 20;
+
+		this.texWidth = 255;
+		this.texHeight = 192;
 	}
 
 	@Override
-	public void render(PoseStack stack, int mouseX, int mouseY, float partialTicks) {
-		super.render(stack, mouseX, mouseY, partialTicks);
-		this.font.draw(stack, TabletLang.AGE, 22.0F, 100.0F, FONT_COLOUR);
-		this.font.draw(stack, age(), 110.0F, 100.0F, FONT_COLOUR);
-		this.font.draw(stack, TabletLang.HEATH, 22.0F, 110.0F, FONT_COLOUR);
-		this.font.draw(stack, heath(), 110.0F, 110.0F, FONT_COLOUR);
-		this.font.draw(stack, TabletLang.HUNGER, 22.0F, 120.0F, FONT_COLOUR);
-		this.font.draw(stack, hunger(), 110.0F, 120.0F, FONT_COLOUR);
-		this.font.draw(stack, TabletLang.DIET, 22.0F, 130.0F, FONT_COLOUR);
-		this.font.draw(stack, diet(), 110.0F, 130.0F, FONT_COLOUR);
-		this.font.draw(stack, TabletLang.ACTIVITY_TYPE, 22.0F, 140.0F, FONT_COLOUR);
-		this.font.draw(stack, activity(), 110.0F, 140.0F, FONT_COLOUR);
-		this.font.draw(stack, TabletLang.CONTRACEPTIVES, 22.0F, 150.0F, FONT_COLOUR);
-		this.font.draw(stack, contraceptives(), 110.0F, 150.0F, FONT_COLOUR);
-		this.font.draw(stack, TabletLang.TAGGED_TO, 22.0F, 160.0F, FONT_COLOUR);
-		this.font.draw(stack, owner(), 110.0F, 160.0F, FONT_COLOUR);
+	public boolean isPauseScreen() {
+		return false;
+	}
+
+	@Override
+	public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
+		this.xMouse = (float) mouseX;
+		this.yMouse = (float) mouseY;
+		this.renderBackgroundElements(poseStack);
+		this.font.draw(poseStack, this.title, (float) this.titleLabelX, (float) this.titleLabelY, FONT_COLOUR);
+		this.renderTextStuff(poseStack, mouseX, mouseY, partialTicks);
+		super.render(poseStack, mouseX, mouseY, partialTicks);
+		this.renderComponentHoverEffect(poseStack, Style.EMPTY, mouseX, mouseY);
+		int i = (this.width - this.imageWidth) / 2;
+		int j = (this.height - this.imageHeight) / 2;
+
+		poseStack.pushPose();
+		poseStack.scale(0.25F, 0.25F, 0.25F);
+		InventoryScreen.renderEntityInInventory(i + 140, j + 100, 17, (float) (i + 51) - this.xMouse, (float) (j + 75 - 50) - this.yMouse, this.entity);
+		poseStack.popPose();
+	}
+
+	public void renderBackgroundElements(PoseStack stack) {
+		this.renderBackground(stack, 0);
+		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+		RenderSystem.setShaderTexture(0, TEXTURE);
+		stack.translate((this.width / 2) - (this.texWidth / 2), (this.height / 2) - (this.texHeight / 2), 0);
+		blit(stack, 0, 0, 0, 0, this.texWidth, this.texHeight);
+	}
+
+	public void renderTextStuff(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
+		this.font.draw(poseStack, TabletLang.AGE, 22.0F, 100.0F, FONT_COLOUR);
+		this.font.draw(poseStack, age(), 110.0F, 100.0F, FONT_COLOUR);
+		this.font.draw(poseStack, TabletLang.HEATH, 22.0F, 110.0F, FONT_COLOUR);
+		this.font.draw(poseStack, heath(), 110.0F, 110.0F, FONT_COLOUR);
+		this.font.draw(poseStack, TabletLang.HUNGER, 22.0F, 120.0F, FONT_COLOUR);
+		this.font.draw(poseStack, hunger(), 110.0F, 120.0F, FONT_COLOUR);
+		this.font.draw(poseStack, TabletLang.DIET, 22.0F, 130.0F, FONT_COLOUR);
+		this.font.draw(poseStack, diet(), 110.0F, 130.0F, FONT_COLOUR);
+		this.font.draw(poseStack, TabletLang.ACTIVITY_TYPE, 22.0F, 140.0F, FONT_COLOUR);
+		this.font.draw(poseStack, activity(), 110.0F, 140.0F, FONT_COLOUR);
+		this.font.draw(poseStack, TabletLang.CONTRACEPTIVES, 22.0F, 150.0F, FONT_COLOUR);
+		this.font.draw(poseStack, contraceptives(), 110.0F, 150.0F, FONT_COLOUR);
+		this.font.draw(poseStack, TabletLang.TAGGED_TO, 22.0F, 160.0F, FONT_COLOUR);
+		this.font.draw(poseStack, owner(), 110.0F, 160.0F, FONT_COLOUR);
 	}
 
 	private Component activity() {

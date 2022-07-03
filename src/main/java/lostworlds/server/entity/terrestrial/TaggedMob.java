@@ -5,26 +5,29 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
+import lostworlds.client.screen.tablet.TabletScreen;
 import lostworlds.server.item.LostWorldsItems;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
+import lostworlds.server.item.TabletItem;
+import net.minecraft.Util;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.scores.Team;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.Util;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.scores.Team;
 
 public abstract class TaggedMob extends PrehistoricMob {
 	protected static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(TaggedMob.class, EntityDataSerializers.BYTE);
@@ -153,8 +156,18 @@ public abstract class TaggedMob extends PrehistoricMob {
 	}
 
 	@Override
-	public InteractionResult mobInteract(Player entity, InteractionHand hand) {
-		ItemStack itemstack = entity.getItemInHand(hand);
+	public InteractionResult mobInteract(Player player, InteractionHand interactionHand) {
+		ItemStack itemstack = player.getItemInHand(interactionHand);
+		if (itemstack.getItem() instanceof TabletItem) {
+			if (this.level.isClientSide) {
+				Minecraft instance = Minecraft.getInstance();
+				if (this.isTagged()) {
+					instance.setScreen(new TabletScreen(this));
+					return InteractionResult.sidedSuccess(this.level.isClientSide);
+				}
+			}
+		}
+
 		if (this.isTag(itemstack)) {
 			if (itemstack.hasCustomHoverName()) {
 				if (!this.level.isClientSide && this.isAlive()) {
@@ -164,20 +177,20 @@ public abstract class TaggedMob extends PrehistoricMob {
 		}
 
 		if (this.level.isClientSide) {
-			if (this.isTagged() && this.isTaggedBy(entity)) {
+			if (this.isTagged() && this.isTaggedBy(player)) {
 				return InteractionResult.SUCCESS;
 			} else {
 				return !this.isFood(itemstack) || !(this.getHealth() < this.getMaxHealth()) && this.isTagged() ? InteractionResult.PASS : InteractionResult.SUCCESS;
 			}
 		} else if (this.isTag(itemstack)) {
-			this.usePlayerItem(entity, itemstack);
-			this.tag(entity);
+			this.usePlayerItem(player, itemstack);
+			this.tag(player);
 			this.level.broadcastEntityEvent(this, (byte) 6);
 			this.setPersistenceRequired();
 			return InteractionResult.CONSUME;
 		}
 
-		InteractionResult actionresulttype1 = super.mobInteract(entity, hand);
+		InteractionResult actionresulttype1 = super.mobInteract(player, interactionHand);
 		if (actionresulttype1.consumesAction()) {
 			this.setPersistenceRequired();
 		}

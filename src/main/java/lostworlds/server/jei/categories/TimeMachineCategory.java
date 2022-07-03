@@ -25,7 +25,7 @@ public class TimeMachineCategory implements IRecipeCategory<TimeMachineRecipe> {
 	public TimeMachineCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
 		this.background = helper.createDrawable(location, 0, 168, 125, 18);
-		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, LostWorldsBlocks.TIME_MACHINE.asStack());
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, LostWorldsBlocks.TIME_MACHINE.asStack());
 	}
 
 	@Override

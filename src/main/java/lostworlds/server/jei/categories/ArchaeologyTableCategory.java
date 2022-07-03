@@ -14,16 +14,13 @@ import net.minecraft.resources.ResourceLocation;
 public class ArchaeologyTableCategory implements IRecipeCategory<ArchaeologyTableRecipe> {
 	public static final ResourceLocation TEXTURE_LOCATION = LostWorldsUtils.rL("textures/gui/lost_worlds_backgrounds.png");
 
-	public static final int width = 116;
-	public static final int height = 54;
-
 	private final IDrawable background;
 	private final IDrawable icon;
 
 	public ArchaeologyTableCategory(IGuiHelper helper) {
 		ResourceLocation location = TEXTURE_LOCATION;
-		this.background = helper.createDrawable(location, 124, 0, width, height);
-		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, LostWorldsBlocks.ARCHAEOLOGY_TABLE.asStack());
+		this.background = helper.createDrawable(location, 124, 0, 116, 54);
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, LostWorldsBlocks.ARCHAEOLOGY_TABLE.asStack());
 	}
 
 	@Override

@@ -6,7 +6,7 @@ import lostworlds.api.APISoftStoneFunction;
 import lostworlds.server.block.PotentialPart;
 import lostworlds.server.block.SoftStoneBlock;
 import lostworlds.server.entity.fossil.Fossil;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.item.LostWorldsEnchantments;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -19,7 +19,7 @@ public class FossilStoneFunction implements APISoftStoneFunction {
 	public void doFunction(BlockState state, ServerLevel world, BlockPos pos, ItemStack stack) {
 		Random rand = new Random();
 		PotentialPart part = state.getValue(SoftStoneBlock.POTENTIAL_PART);
-		DinoTypes creature = state.getValue(SoftStoneBlock.POTENTIAL_CREATURE);
+		AncientCreatures creature = state.getValue(SoftStoneBlock.POTENTIAL_CREATURE);
 
 		if (EnchantmentHelper.getItemEnchantmentLevel(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), stack) == 1) {
 			int breakchance = rand.nextInt(2);

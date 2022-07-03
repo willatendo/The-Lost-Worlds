@@ -6,7 +6,7 @@ import java.util.Random;
 
 import lostworlds.server.entity.fossil.Fossil;
 import lostworlds.server.entity.illager.FossilPoacherEntity;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.entity.utils.enums.TimeEras;
 import lostworlds.server.item.HammerItem;
 import net.minecraft.core.BlockPos;
@@ -28,12 +28,12 @@ import net.minecraftforge.event.ForgeEventFactory;
 public class SoftStoneBlock extends Block {
 	public static final EnumProperty<TimeEras> ERA = EnumProperty.create("era", TimeEras.class);
 	public static final EnumProperty<PotentialPart> POTENTIAL_PART = EnumProperty.create("potential_part", PotentialPart.class);
-	public static final EnumProperty<DinoTypes> POTENTIAL_CREATURE = EnumProperty.create("potential_creature", DinoTypes.class);
+	public static final EnumProperty<AncientCreatures> POTENTIAL_CREATURE = EnumProperty.create("potential_creature", AncientCreatures.class);
 	public static final EnumProperty<Damage> DAMAGE = EnumProperty.create("damage", Damage.class);
 
 	public SoftStoneBlock(Properties properties) {
 		super(properties);
-		this.registerDefaultState(this.stateDefinition.any().setValue(ERA, TimeEras.MODERN_MINECRAFT).setValue(POTENTIAL_PART, PotentialPart.NONE).setValue(POTENTIAL_CREATURE, DinoTypes.CHILESAURUS).setValue(DAMAGE, Damage.NONE));
+		this.registerDefaultState(this.stateDefinition.any().setValue(ERA, TimeEras.MODERN_MINECRAFT).setValue(POTENTIAL_PART, PotentialPart.NONE).setValue(POTENTIAL_CREATURE, AncientCreatures.ALLOSAURUS).setValue(DAMAGE, Damage.NONE));
 	}
 
 	@Override

@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 import com.google.common.collect.Lists;
 
 import lostworlds.server.block.Plants;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
@@ -17,7 +17,7 @@ public class Foods {
 	public static final ArrayList<Supplier<Item>> INSECTIVORE_FOODS = Lists.newArrayList();
 
 	static {
-		for (DinoTypes dinos : DinoTypes.values()) {
+		for (AncientCreatures dinos : AncientCreatures.values()) {
 			CARNIVORE_FOODS.add(dinos.getMeat());
 		}
 

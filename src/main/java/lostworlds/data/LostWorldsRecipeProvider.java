@@ -6,7 +6,7 @@ import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.Plants;
 import lostworlds.server.block.Trees;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.menu.recipes.data.AnalyzerRecipeBuilder;
 import lostworlds.server.menu.recipes.data.CultivatorRecipeBuilder;
 import lostworlds.server.menu.recipes.data.DnaExtractorRecipeBuilder;
@@ -28,8 +28,8 @@ public class LostWorldsRecipeProvider extends RecipeProvider {
 
 	@Override
 	protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
-		for (DinoTypes dinos : DinoTypes.values()) {
-			if (dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS) {
+		for (AncientCreatures dinos : AncientCreatures.values()) {
+			if (dinos != AncientCreatures.NAUTILUS && dinos != AncientCreatures.PALAEONISCUM && dinos != AncientCreatures.ANOMALOCARIS) {
 				FossilCleanerRecipeBuilder.simple(Ingredient.of(dinos.getPlasteredSkullItem().get()), dinos.getSkullItem().get()).unlockedBy("has_item", has(dinos.getSkullItem().get())).save(consumer);
 				FossilCleanerRecipeBuilder.simple(Ingredient.of(dinos.getPlasteredArmBonesItem().get()), dinos.getArmBonesItem().get()).unlockedBy("has_item", has(dinos.getArmBonesItem().get())).save(consumer);
 				FossilCleanerRecipeBuilder.simple(Ingredient.of(dinos.getPlasteredLegBonesItem().get()), dinos.getLegBonesItem().get()).unlockedBy("has_item", has(dinos.getLegBonesItem().get())).save(consumer);
@@ -42,11 +42,11 @@ public class LostWorldsRecipeProvider extends RecipeProvider {
 			AnalyzerRecipeBuilder.simple(Ingredient.of(dinos.getDNA().get()), dinos.getDNADisc().get()).unlockedBy("has_item", has(dinos.getDNA().get())).save(consumer);
 		}
 
-		for (DinoTypes dinos : DinoTypes.hasSpawn()) {
+		for (AncientCreatures dinos : AncientCreatures.hasSpawn()) {
 			CultivatorRecipeBuilder.simple(Ingredient.of(dinos.getDNADisc().get()), dinos.getSpawn().get()).unlockedBy("has_item", has(dinos.getDNADisc().get())).save(consumer);
 		}
 
-		for (DinoTypes dinos : DinoTypes.eggLaying()) {
+		for (AncientCreatures dinos : AncientCreatures.eggLaying()) {
 			DnaInjectorRecipeBuilder.simple(Ingredient.of(dinos.getDNADisc().get()), dinos.getEgg().get()).unlockedBy("has_item", has(dinos.getDNADisc().get())).save(consumer);
 		}
 

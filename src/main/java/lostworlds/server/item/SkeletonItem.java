@@ -5,8 +5,8 @@ import java.util.function.Consumer;
 
 import javax.annotation.Nullable;
 
+import lostworlds.api.APIBlockEntityWithoutLevelRendererGetter;
 import lostworlds.server.entity.fossil.Fossil;
-import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -49,11 +49,11 @@ public class SkeletonItem extends Item implements IAnimatable {
 		return PlayState.CONTINUE;
 	}
 
-	private final DinoTypes type;
+	private final APIBlockEntityWithoutLevelRendererGetter type;
 	private final Lazy<? extends EntityType<?>> entityTypeSupplier;
 	private final boolean isPlastered;
 
-	public SkeletonItem(Properties properties, DinoTypes type, NonNullSupplier<? extends EntityType<Fossil>> entityTypeSupplier, boolean isPlastered) {
+	public SkeletonItem(Properties properties, APIBlockEntityWithoutLevelRendererGetter type, NonNullSupplier<? extends EntityType<Fossil>> entityTypeSupplier, boolean isPlastered) {
 		super(properties);
 		this.type = type;
 		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);

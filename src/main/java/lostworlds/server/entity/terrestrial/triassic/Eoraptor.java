@@ -26,7 +26,7 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialReasonableAttackGoal
 import lostworlds.server.entity.terrestrial.Carnivore;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.species.SpeciesType;
 import lostworlds.server.util.IngredientUtil;
 import net.minecraft.nbt.CompoundTag;
@@ -93,7 +93,7 @@ public class Eoraptor extends Carnivore implements NeutralMob, SpeciesTagModelAn
 		this.goalSelector.addGoal(5, new SleepGoal(this));
 		this.goalSelector.addGoal(5, new TerrestrialCreateTerritoryGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new SleepyBreedGoal.Egg(this, 1.0D));
-		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, DinoTypes.EORAPTOR));
+		this.goalSelector.addGoal(6, new TerrestrialLayEggGoal(this, 1.0D, AncientCreatures.EORAPTOR));
 		this.goalSelector.addGoal(9, new TerrestrialGoHomeGoal(this, 1.0D));
 		this.goalSelector.addGoal(10, new SleepyTemptGoal(this, 1.0D, false, FOOD_ITEMS));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, Procompsognathus.class, this::isHungry));

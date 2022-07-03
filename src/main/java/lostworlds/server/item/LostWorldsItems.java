@@ -16,7 +16,7 @@ import lostworlds.server.block.utils.Foods;
 import lostworlds.server.dimension.LostWorldsDimensions;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.terrestrial.PrehistoricMob;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.entity.utils.enums.TimeEras;
 import lostworlds.server.item.armour.MaskItem;
 import lostworlds.server.item.armour.ModArmourMaterial;
@@ -150,8 +150,8 @@ public class LostWorldsItems {
 			SEQUOIA_BARK_SAMPLE = REGISTRATE.item("sequoia_bark_sample", Item::new).tag(LostWorldsTags.ModItemTags.BARK_SAMPLES.tag).register();
 
 	static {
-		for (DinoTypes dinos : DinoTypes.values()) {
-			if (dinos != DinoTypes.NAUTILUS && dinos != DinoTypes.PALAEONISCUM && dinos != DinoTypes.ANOMALOCARIS) {
+		for (AncientCreatures dinos : AncientCreatures.values()) {
+			if (dinos != AncientCreatures.NAUTILUS && dinos != AncientCreatures.PALAEONISCUM && dinos != AncientCreatures.ANOMALOCARIS) {
 				ItemEntry<Item> plasteredRibCage = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_rib_cage", Item::new).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
 				dinos.setPlasteredRibCageItem(() -> plasteredRibCage.get());
 				ItemEntry<Item> plasteredLegBones = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_leg_bones", Item::new).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
@@ -176,14 +176,14 @@ public class LostWorldsItems {
 				dinos.setSkeletonPick(() -> skeleton.get());
 			}
 
-			if (dinos == DinoTypes.ANOMALOCARIS) {
+			if (dinos == AncientCreatures.ANOMALOCARIS) {
 				ItemEntry<Item> plasteredExoskeleton = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_exoskeleton", Item::new).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
 				dinos.setPlasteredExoskeletonItem(() -> plasteredExoskeleton.get());
 				ItemEntry<Item> exoskeleton = REGISTRATE.item(dinos.name().toLowerCase() + "_exoskeleton", Item::new).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
 				dinos.setSkeletonPick(() -> exoskeleton.get());
 			}
 
-			if (dinos == DinoTypes.PALAEONISCUM) {
+			if (dinos == AncientCreatures.PALAEONISCUM) {
 				ItemEntry<Item> plasteredBody = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_body", Item::new).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
 				dinos.setPlasteredBodyItem(() -> plasteredBody.get());
 				ItemEntry<Item> body = REGISTRATE.item(dinos.name().toLowerCase() + "_body", Item::new).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
@@ -213,18 +213,18 @@ public class LostWorldsItems {
 			dinos.setDNA(() -> dna.get());
 			ItemEntry<DNADiscItem> dnaDisc = REGISTRATE.item(dinos.name().toLowerCase() + "_dna_disc", DNADiscItem::new).properties(properties -> properties.defaultDurability(5)).tag(LostWorldsTags.ModItemTags.DNA_DISCS.tag).model(textured("storage_disc")).register();
 			dinos.setDNADisc(() -> dnaDisc.get());
-			if (!dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS) {
+			if (!dinos.fish().contains(dinos) && dinos != AncientCreatures.NAUTILUS) {
 				ItemEntry<Item> raw = REGISTRATE.item("raw_" + dinos.name().toLowerCase() + "_meat", Item::new).properties(properties -> properties.food(new FoodProperties.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).register();
 				REGISTRATE.item("cooked_" + dinos.name().toLowerCase() + "_meat", Item::new).properties(properties -> properties.food(new FoodProperties.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build())).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).recipe((item, provider) -> provider.food(DataIngredient.items(raw.get()), () -> item.get(), 0.7F)).register();
 				dinos.setMeat(() -> raw.get());
-			} else if (dinos == DinoTypes.NAUTILUS) {
+			} else if (dinos == AncientCreatures.NAUTILUS) {
 				ItemEntry<Item> raw = REGISTRATE.item("raw_" + dinos.name().toLowerCase() + "_tentacle", Item::new).properties(properties -> properties.food(new FoodProperties.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).fast().build())).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).register();
 				REGISTRATE.item("cooked_" + dinos.name().toLowerCase() + "_tentacle", Item::new).properties(properties -> properties.food(new FoodProperties.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).fast().build())).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).recipe((item, provider) -> provider.food(DataIngredient.items(raw.get()), () -> item.get(), 0.7F)).register();
 				dinos.setMeat(() -> raw.get());
-			} else if (dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS) {
+			} else if (dinos.fish().contains(dinos) && dinos != AncientCreatures.NAUTILUS) {
 				ItemEntry<MobBucketItem> bucket = REGISTRATE.item(dinos.name().toLowerCase() + "_bucket", properties -> new MobBucketItem(() -> dinos.getEntityType().get(), () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, properties)).register();
 				dinos.setFishBucket(() -> bucket.get());
-				if (dinos != DinoTypes.ANOMALOCARIS) {
+				if (dinos != AncientCreatures.ANOMALOCARIS) {
 					ItemEntry<Item> raw = REGISTRATE.item(dinos.name().toLowerCase(), Item::new).properties(properties -> properties.food(new FoodProperties.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).register();
 					REGISTRATE.item("cooked_" + dinos.name().toLowerCase(), Item::new).properties(properties -> properties.food(new FoodProperties.Builder().nutrition(dinos.getCookedNutrition()).saturationMod(dinos.getCookedSaturation()).build())).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).recipe((item, provider) -> provider.food(DataIngredient.items(raw.get()), () -> item.get(), 0.7F)).register();
 					dinos.setMeat(() -> raw.get());

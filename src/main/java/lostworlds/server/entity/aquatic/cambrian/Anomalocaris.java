@@ -7,7 +7,7 @@ import lostworlds.server.LostWorldsRegistries;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.aquatic.BasicFishLikeMob;
-import lostworlds.server.entity.utils.enums.DinoTypes;
+import lostworlds.server.entity.utils.enums.AncientCreatures;
 import lostworlds.server.species.SpeciesType;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -85,7 +85,7 @@ public class Anomalocaris extends BasicFishLikeMob implements IAnimatable, Speci
 
 	@Override
 	protected ItemStack getBucketItemStack() {
-		return DinoTypes.ANOMALOCARIS.getFishBucket().get().getDefaultInstance();
+		return AncientCreatures.ANOMALOCARIS.getFishBucket().get().getDefaultInstance();
 	}
 
 	@Override
