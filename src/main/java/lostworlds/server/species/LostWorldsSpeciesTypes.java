@@ -8,6 +8,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class LostWorldsSpeciesTypes {
 	public static final DeferredRegister<SpeciesType> SPECIES_TYPES = DeferredRegister.create(LostWorldsRegistries.SPECIES_TYPES, LostWorldsUtils.ID);
 
+	public static final RegistryObject<SpeciesType> ABSALOMICHTHYS_VELIFER = SPECIES_TYPES.register("absalomichthys_velifer", () -> new SpeciesType(LostWorldsUtils.rL("geo/absalomichthys.geo.json"), LostWorldsUtils.rL("textures/model/entity/absalomichthys/texture.png"), LostWorldsUtils.rL("animations/absalomichthys.animations.json")));
 	public static final RegistryObject<SpeciesType> ALLOSAURUS_FRAGILIS = SPECIES_TYPES.register("allosaurus_fragilis", () -> new SpeciesType(LostWorldsUtils.rL("geo/allosaurus.geo.json"), LostWorldsUtils.rL("textures/model/entity/allosaurus/texture.png"), LostWorldsUtils.rL("animations/allosaurus.animations.json")));
 	public static final RegistryObject<SpeciesType> ANOMALOCARIS_CANADENSIS = SPECIES_TYPES.register("anomalocaris_canadensis", () -> new SpeciesType(LostWorldsUtils.rL("geo/anomalocaris.geo.json"), LostWorldsUtils.rL("textures/model/entity/anomalocaris/texture.png"), LostWorldsUtils.rL("animations/anomalocaris.animations.json")));
 	public static final RegistryObject<SpeciesType> CARNOTAURUS_SASTREI = SPECIES_TYPES.register("carnotaurus_sastrei", () -> new SpeciesType(LostWorldsUtils.rL("geo/carnotaurus.geo.json"), LostWorldsUtils.rL("textures/model/entity/carnotaurus/texture.png"), LostWorldsUtils.rL("animations/carnotaurus.animations.json")));

@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "lostworlds:plastered_absalomichthys_body",
+    "lostworlds:absalomichthys_body",
     "lostworlds:plastered_allosaurus_rib_cage",
     "lostworlds:plastered_allosaurus_leg_bones",
     "lostworlds:plastered_allosaurus_arm_bones",

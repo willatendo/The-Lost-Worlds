@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "lostworlds:absalomichthys_body",
     "lostworlds:allosaurus_skeleton",
     "lostworlds:anomalocaris_exoskeleton",
     "lostworlds:carnotaurus_skeleton",

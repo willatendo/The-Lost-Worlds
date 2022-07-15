@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "lostworlds:absalomichthys"
+  },
+  "result": "lostworlds:cooked_absalomichthys",
+  "experience": 0.7,
+  "cookingtime": 100
+}

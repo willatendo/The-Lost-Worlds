@@ -158,7 +158,7 @@ public class LostWorldsEntities {
 
 	static {
 		for (AncientCreatures dinos : AncientCreatures.values()) {
-			if (dinos != AncientCreatures.NAUTILUS && dinos != AncientCreatures.PALAEONISCUM && dinos != AncientCreatures.ANOMALOCARIS) {
+			if (dinos != AncientCreatures.NAUTILUS && dinos != AncientCreatures.PALAEONISCUM && dinos != AncientCreatures.ANOMALOCARIS && dinos != AncientCreatures.ABSALOMICHTHYS) {
 				EntityEntry<DirtyFossil> dirtyskull = REGISTRATE.<DirtyFossil>entity("dirty_" + dinos.toString().toLowerCase() + "_skull", (entity, level) -> new DirtyFossil(entity, level).setDirtyPick(dinos.getSkullItem().get().getDefaultInstance()), MobCategory.CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> context -> new CustomisableRenderer(context, dinos.getId() + "_skull", dinos.getId(), 0.5F)).attributes(() -> Fossil.createAttributes()).loot((provider, entity) -> provider.add(entity, LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(dinos.getPlasteredSkullItem().get()))))).register();
 				dinos.setDirtySkull(() -> dirtyskull.get());
 				EntityEntry<DirtyFossil> dirtyarmbones = REGISTRATE.<DirtyFossil>entity("dirty_" + dinos.toString().toLowerCase() + "_arm_bones", (entity, level) -> new DirtyFossil(entity, level).setDirtyPick(dinos.getArmBonesItem().get().getDefaultInstance()), MobCategory.CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> context -> new CustomisableRenderer(context, dinos.getId() + "_arm_bones", dinos.getId(), 0.5F)).attributes(() -> Fossil.createAttributes()).loot((provider, entity) -> provider.add(entity, LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(dinos.getPlasteredArmBonesItem().get()))))).register();

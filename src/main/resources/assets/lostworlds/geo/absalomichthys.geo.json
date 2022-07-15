@@ -3,70 +3,238 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.unknown",
+				"identifier": "geometry.absalomichthys",
 				"texture_width": 32,
 				"texture_height": 32,
 				"visible_bounds_width": 2,
 				"visible_bounds_height": 2.5,
-				"visible_bounds_offset": [0, 0.75, 0]
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
 			},
 			"bones": [
 				{
 					"name": "Absalomichthys",
-					"pivot": [0, 6, 0.5]
+					"pivot": [
+						0,
+						6,
+						0.5
+					]
 				},
 				{
 					"name": "body",
 					"parent": "Absalomichthys",
-					"pivot": [0, 6, 0.5],
+					"pivot": [
+						0,
+						6,
+						0.5
+					],
 					"cubes": [
-						{"origin": [-1, 4, -2], "size": [2, 4, 5], "uv": [0, 0]},
-						{"origin": [0, 3, 1], "size": [0, 2, 3], "uv": [9, 0]},
-						{"origin": [0, 8, -2], "size": [0, 6, 5], "uv": [0, 4]}
+						{
+							"origin": [
+								-1,
+								4,
+								-2
+							],
+							"size": [
+								2,
+								4,
+								5
+							],
+							"uv": [
+								0,
+								0
+							]
+						},
+						{
+							"origin": [
+								0,
+								3,
+								1
+							],
+							"size": [
+								0,
+								2,
+								3
+							],
+							"uv": [
+								9,
+								0
+							]
+						},
+						{
+							"origin": [
+								0,
+								8,
+								-2
+							],
+							"size": [
+								0,
+								6,
+								5
+							],
+							"uv": [
+								0,
+								4
+							]
+						}
 					]
 				},
 				{
 					"name": "leftpectoralfin",
 					"parent": "body",
-					"pivot": [1, 6, 0],
-					"rotation": [0, 0, 45],
+					"pivot": [
+						1,
+						6,
+						0
+					],
+					"rotation": [
+						0,
+						0,
+						45
+					],
 					"cubes": [
-						{"origin": [1, 6, -1], "size": [2, 0, 2], "uv": [11, 0]}
+						{
+							"origin": [
+								1,
+								6,
+								-1
+							],
+							"size": [
+								2,
+								0,
+								2
+							],
+							"uv": [
+								11,
+								0
+							]
+						}
 					]
 				},
 				{
 					"name": "rightpectoralfin",
 					"parent": "body",
-					"pivot": [-1, 6, 0],
-					"rotation": [0, 0, -45],
+					"pivot": [
+						-1,
+						6,
+						0
+					],
+					"rotation": [
+						0,
+						0,
+						-45
+					],
 					"cubes": [
-						{"origin": [-3, 6, -1], "size": [2, 0, 2], "uv": [7, 0]}
+						{
+							"origin": [
+								-3,
+								6,
+								-1
+							],
+							"size": [
+								2,
+								0,
+								2
+							],
+							"uv": [
+								7,
+								0
+							]
+						}
 					]
 				},
 				{
 					"name": "leftpelvicfin",
 					"parent": "body",
-					"pivot": [0.5, 4, -1],
-					"rotation": [0, 0, -30],
+					"pivot": [
+						0.5,
+						4,
+						-1
+					],
+					"rotation": [
+						0,
+						0,
+						-30
+					],
 					"cubes": [
-						{"origin": [0.5, 2, -2], "size": [0, 2, 2], "uv": [10, 11]}
+						{
+							"origin": [
+								0.5,
+								2,
+								-2
+							],
+							"size": [
+								0,
+								2,
+								2
+							],
+							"uv": [
+								10,
+								11
+							]
+						}
 					]
 				},
 				{
 					"name": "rightpelvicfin",
 					"parent": "body",
-					"pivot": [-0.5, 4, -1],
-					"rotation": [0, 0, 30],
+					"pivot": [
+						-0.5,
+						4,
+						-1
+					],
+					"rotation": [
+						0,
+						0,
+						30
+					],
 					"cubes": [
-						{"origin": [-0.5, 2, -2], "size": [0, 2, 2], "uv": [0, 0]}
+						{
+							"origin": [
+								-0.5,
+								2,
+								-2
+							],
+							"size": [
+								0,
+								2,
+								2
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
 					]
 				},
 				{
 					"name": "tailfin",
 					"parent": "body",
-					"pivot": [0, 6.5, 3],
+					"pivot": [
+						0,
+						6.5,
+						3
+					],
 					"cubes": [
-						{"origin": [0, 5, 3], "size": [0, 4, 2], "uv": [10, 7]}
+						{
+							"origin": [
+								0,
+								5,
+								3
+							],
+							"size": [
+								0,
+								4,
+								2
+							],
+							"uv": [
+								10,
+								7
+							]
+						}
 					]
 				}
 			]
