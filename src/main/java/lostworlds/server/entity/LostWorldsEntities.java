@@ -6,6 +6,7 @@ import com.tterrag.registrate.providers.loot.RegistrateEntityLootTables;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 
+import lostworlds.client.entity.render.AbsalomichthysRenderer;
 import lostworlds.client.entity.render.AllosaurusRenderer;
 import lostworlds.client.entity.render.AnomalocarisRenderer;
 import lostworlds.client.entity.render.CarnotaurusRenderer;
@@ -46,6 +47,7 @@ import lostworlds.client.entity.render.ZephyrosaurusRenderer;
 import lostworlds.server.entity.aquatic.cambrian.Anomalocaris;
 import lostworlds.server.entity.aquatic.jurassic.Cryptoclidus;
 import lostworlds.server.entity.aquatic.jurassic.Ophthalmosaurus;
+import lostworlds.server.entity.aquatic.miocene.Absalomichthys;
 import lostworlds.server.entity.aquatic.modern.Nautilus;
 import lostworlds.server.entity.aquatic.permian.Palaeoniscum;
 import lostworlds.server.entity.fossil.DirtyFossil;
@@ -118,6 +120,7 @@ public class LostWorldsEntities {
 	public static final EntityEntry<ChargedCrystalScarabGemItemEntity> CHARGED_CRYSTAL_SCARAB_GEM_ITEM = REGISTRATE.<ChargedCrystalScarabGemItemEntity>entity("charged_crystal_scarab_gem_item", ChargedCrystalScarabGemItemEntity::new, MobCategory.MISC).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> context -> new ItemEntityRenderer(context)).register();
 	public static final EntityEntry<CrystalScarabGemItemEntity> CRYSTAL_SCARAB_GEM_ITEM = REGISTRATE.<CrystalScarabGemItemEntity>entity("crystal_scarab_gem_item", CrystalScarabGemItemEntity::new, MobCategory.MISC).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> context -> new ItemEntityRenderer(context)).register();
 
+	public static final EntityEntry<Absalomichthys> ABSALOMICHTHYS = REGISTRATE.entity("absalomichthys", Absalomichthys::new, MobCategory.WATER_CREATURE).properties(properties -> properties.sized(0.5F, 0.5F)).renderer(() -> AbsalomichthysRenderer::new).defaultSpawnEgg(0xc6362a, 0x6f3e48).attributes(() -> Absalomichthys.createAttributes()).spawnPlacement(Type.IN_WATER, Types.OCEAN_FLOOR, Absalomichthys::canFishLikeSpawn).loot(dinosaurDrop(AncientCreatures.ABSALOMICHTHYS, 1, 1)).register();
 	public static final EntityEntry<Allosaurus> ALLOSAURUS = REGISTRATE.entity("allosaurus", Allosaurus::new, MobCategory.CREATURE).properties(properties -> properties.sized(2.0F, 1.5F)).renderer(() -> AllosaurusRenderer::new).defaultSpawnEgg(0x9f9f5a, 0xd68812).attributes(() -> Allosaurus.createAttributes()).spawnPlacement(Type.ON_GROUND, Types.MOTION_BLOCKING_NO_LEAVES, PrehistoricMob::canPrehistoricSpawn).loot(dinosaurDrop(AncientCreatures.ALLOSAURUS, 2, 7)).register();
 	public static final EntityEntry<Anomalocaris> ANOMALOCARIS = REGISTRATE.entity("anomalocaris", Anomalocaris::new, MobCategory.WATER_CREATURE).properties(properties -> properties.sized(1.0F, 1.0F)).renderer(() -> AnomalocarisRenderer::new).defaultSpawnEgg(0xb94f33, 0x631312).attributes(() -> Anomalocaris.createAttributes()).spawnPlacement(Type.IN_WATER, Types.OCEAN_FLOOR, Anomalocaris::canFishLikeSpawn).loot(dinosaurDrop(AncientCreatures.ANOMALOCARIS, 0, 2)).register();
 	public static final EntityEntry<Carnotaurus> CARNOTAURUS = REGISTRATE.entity("carnotaurus", Carnotaurus::new, MobCategory.CREATURE).properties(properties -> properties.sized(2.0F, 1.5F)).renderer(() -> CarnotaurusRenderer::new).defaultSpawnEgg(0x605645, 0xb5a187).attributes(() -> Carnotaurus.createAttributes()).spawnPlacement(Type.ON_GROUND, Types.MOTION_BLOCKING_NO_LEAVES, PrehistoricMob::canPrehistoricSpawn).loot(dinosaurDrop(AncientCreatures.CARNOTAURUS, 1, 5)).register();

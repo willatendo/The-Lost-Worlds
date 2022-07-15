@@ -25,6 +25,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 public enum AncientCreatures implements StringRepresentable, APIBlockEntityWithoutLevelRendererGetter {
+	ABSALOMICHTHYS("absalomichthys", () -> LostWorldsEntities.ABSALOMICHTHYS.get(), LostWorldsTags.ModItemTags.ABSALOMICHTHYS_FOSSILS, false, false, false, Size.TINY, CreatureDiet.NONE, 0xc6362a, 2, 5, 0.3F, 0.5F),
 	ALLOSAURUS("allosaurus", () -> LostWorldsEntities.ALLOSAURUS.get(), LostWorldsTags.ModItemTags.ALLOSAURUS_FOSSILS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x9f9f5a, 5, 8, 0.4F, 0.8F),
 	ANOMALOCARIS("anomalocaris", () -> LostWorldsEntities.ANOMALOCARIS.get(), LostWorldsTags.ModItemTags.ANOMALOCARIS_FOSSILS, false, false, false, Size.SMALL, CreatureDiet.CARNIVORE, 0xb94f33, 2, 4, 0.2F, 0.4F),
 	CARNOTAURUS("carnotaurus", () -> LostWorldsEntities.CARNOTAURUS.get(), LostWorldsTags.ModItemTags.CARNOTAURUS_FOSSILS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0xbd7868, 6, 9, 0.4F, 0.8F),
@@ -476,7 +477,7 @@ public enum AncientCreatures implements StringRepresentable, APIBlockEntityWitho
 	public static ArrayList<AncientCreatures> hasNoSpecialFossil() {
 		ArrayList<AncientCreatures> list = new ArrayList<>();
 		for (AncientCreatures dinos : AncientCreatures.values()) {
-			if (dinos != AncientCreatures.NAUTILUS && dinos != AncientCreatures.PALAEONISCUM && dinos != AncientCreatures.ANOMALOCARIS) {
+			if (dinos != AncientCreatures.ABSALOMICHTHYS && dinos != AncientCreatures.NAUTILUS && dinos != AncientCreatures.PALAEONISCUM && dinos != AncientCreatures.ANOMALOCARIS) {
 				list.add(dinos);
 			}
 		}
@@ -534,8 +535,9 @@ public enum AncientCreatures implements StringRepresentable, APIBlockEntityWitho
 
 	public static ArrayList<AncientCreatures> fish() {
 		ArrayList<AncientCreatures> list = new ArrayList<>();
-		list.add(PALAEONISCUM);
+		list.add(ABSALOMICHTHYS);
 		list.add(ANOMALOCARIS);
+		list.add(PALAEONISCUM);
 		return list;
 	}
 

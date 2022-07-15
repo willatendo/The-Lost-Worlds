@@ -151,7 +151,7 @@ public class LostWorldsItems {
 
 	static {
 		for (AncientCreatures dinos : AncientCreatures.values()) {
-			if (dinos != AncientCreatures.NAUTILUS && dinos != AncientCreatures.PALAEONISCUM && dinos != AncientCreatures.ANOMALOCARIS) {
+			if (dinos != AncientCreatures.NAUTILUS && dinos != AncientCreatures.ABSALOMICHTHYS && dinos != AncientCreatures.PALAEONISCUM && dinos != AncientCreatures.ANOMALOCARIS) {
 				ItemEntry<Item> plasteredRibCage = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_rib_cage", Item::new).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
 				dinos.setPlasteredRibCageItem(() -> plasteredRibCage.get());
 				ItemEntry<Item> plasteredLegBones = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_leg_bones", Item::new).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
@@ -184,6 +184,13 @@ public class LostWorldsItems {
 			}
 
 			if (dinos == AncientCreatures.PALAEONISCUM) {
+				ItemEntry<Item> plasteredBody = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_body", Item::new).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
+				dinos.setPlasteredBodyItem(() -> plasteredBody.get());
+				ItemEntry<Item> body = REGISTRATE.item(dinos.name().toLowerCase() + "_body", Item::new).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();
+				dinos.setSkeletonPick(() -> body.get());
+			}
+
+			if (dinos == AncientCreatures.ABSALOMICHTHYS) {
 				ItemEntry<Item> plasteredBody = REGISTRATE.item("plastered_" + dinos.name().toLowerCase() + "_body", Item::new).model(textured("plastered_fossil")).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES).register();
 				dinos.setPlasteredBodyItem(() -> plasteredBody.get());
 				ItemEntry<Item> body = REGISTRATE.item(dinos.name().toLowerCase() + "_body", Item::new).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag, LostWorldsTags.ModItemTags.SKELETONS.tag, LostWorldsTags.ModItemTags.FOSSILS.tag, Tags.Items.BONES, dinos.getFossilTag()).register();

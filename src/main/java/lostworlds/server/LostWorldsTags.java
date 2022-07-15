@@ -88,6 +88,7 @@ public class LostWorldsTags {
 	}
 
 	public enum ModItemTags {
+		ABSALOMICHTHYS_FOSSILS,
 		ALLOSAURUS_FOSSILS,
 		AMBER_RESULTS,
 		ANOMALOCARIS_FOSSILS,
@@ -330,6 +331,7 @@ public class LostWorldsTags {
 	}
 
 	public static class ModSpeciesTypeTags {
+		public static final TagKey<SpeciesType> ABSALOMICHTHYS = create("absalomichthys");
 		public static final TagKey<SpeciesType> ALLOSAURUS = create("allosaurus");
 		public static final TagKey<SpeciesType> ANOMALOCARIS = create("anomalocaris");
 		public static final TagKey<SpeciesType> CARNOTAURUS = create("carnotaurus");
