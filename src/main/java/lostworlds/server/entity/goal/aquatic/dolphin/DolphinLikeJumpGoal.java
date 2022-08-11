@@ -30,7 +30,7 @@ public class DolphinLikeJumpGoal extends JumpGoal {
 			Direction direction = this.entity.getMotionDirection();
 			int i = direction.getStepX();
 			int j = direction.getStepZ();
-			BlockPos blockpos = this.entity.blockPosition();
+			BlockPos blockpos = this.entity.blockPosition().offset(0, 2, 0);
 
 			for (int k : STEPS_TO_CHECK) {
 				if (!this.waterIsClear(blockpos, i, j, k) || !this.surfaceIsClear(blockpos, i, j, k)) {
