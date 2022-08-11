@@ -152,7 +152,9 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 										/* Palaeoniscum */
 										.addPages(new TextPageBuilder("palaeoniscum_1").addTitle("Palaeoniscum freieslebeni").addFirst("Palaeoniscum, a ray-fined fish from Permian Europe and Greenland. It was 30 centimeters long, and was discovered in 1818.")).addPages(new TextPageBuilder("palaeoniscum_info").addFirst("Danger: None").addNext("Diet: Carnivore").addNext("Range: Permian").addNext("Class: Actinopterygii").addNext("Order: Palaeonisciformes").addNext("Family: Palaeoniscidae").addNext("Genus: Palaeoniscum"))
 										/* Rhinesuchus */
-										.addPages(new TextPageBuilder("rhinesuchus_1").addTitle("Rhinesuchus whaitsi").addFirst("Rhinesuchus, a amphibian from the Permian South Africa. It was named after the Greek word for nose, though it is oftan thought it's named after the Rhine River.")).addPages(new TextPageBuilder("rhinesuchus_info").addFirst("Danger: Low").addNext("Diet: Carnivore").addNext("Range: Permian").addNext("Class: Amphibia").addNext("Order: Temnospondyli").addNext("Suborder: Stereospondyli").addNext("Family: Rhinesuchidae").addNext("Genus: Rhinesuchus"))).addSections(new SectionBuilder("cambrian", DinoTypes.ANOMALOCARIS.getSkeletonPick().get())
+										.addPages(new TextPageBuilder("rhinesuchus_1").addTitle("Rhinesuchus whaitsi").addFirst("Rhinesuchus, a amphibian from the Permian South Africa. It was named after the Greek word for nose, though it is oftan thought it's named after the Rhine River.")).addPages(new TextPageBuilder("rhinesuchus_info").addFirst("Danger: Low").addNext("Diet: Carnivore").addNext("Range: Permian").addNext("Class: Amphibia").addNext("Order: Temnospondyli").addNext("Suborder: Stereospondyli").addNext("Family: Rhinesuchidae").addNext("Genus: Rhinesuchus"))
+										/* Tetraceratops */
+										.addPages(new TextPageBuilder("tetraceratops_1").addTitle("Tetraceratops insignis").addFirst("Tetraceratops, a tiny sphenacodontia from the earth Permian in Texas. Only known from a single 90 millameter skull, little is known about it."))).addSections(new SectionBuilder("cambrian", DinoTypes.ANOMALOCARIS.getSkeletonPick().get())
 												/* Anomalocaris */
 												.addPages(new TextPageBuilder("anomalocaris_1").addTitle("Anomalocaris canadensis").addFirst("Anomalocaris was large cambrian apex predator. Found in formations across Canada, China, Greenland, Australia, and Utah. Anomalocaris ate the bottem dwelling trilobites of the Cambrian ocean. Should you find yourself infront of one, you'll find no danger.").addNext("Anomalocaris was first discovered in 1886, it was described in 1892.").addNext("Anomalocaris was 2 meters from head to tail. Trilobies and other bottom feeders were the Anomalocaris's")).addPages(new TextPageBuilder("anomalocaris_2").addFirst("main food source. It's large mandibles could crack a trilobite in half before consumption. Using large, compact eyes atop of it's head, Anomalocaris scaned the ocean floor for food, with large, theorized, gill-like structures to each side.")).addPages(new TextPageBuilder("anomalocaris_info").addFirst("Danger: Low").addNext("Diet: Carnivore").addNext("Range: Cambrian - 520-499 mya").addNext("Class: Dinocaridida").addNext("Order: Radiodonta").addNext("Family: Anomalocarididae").addNext("Genus: Anomalocaris"))), provider));
 
@@ -274,6 +276,8 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.advancement("the_permian", "The Permian", "Acquire volume 1 of the Time Lord's work!");
 		this.advancement("permian_explorer", "Permian Explorer", "Explore every biome in the Permian!");
 		this.advancement("time_travelling", "Time Travelling", "Just like Doc, you'll find yourself lost in time! Or, maybe, you'll be a lord of it!");
+
+		this.addRawLang("item.lostworlds.dna.code", "Code: %s");
 	}
 
 	public void addDescription(String item, String desc) {

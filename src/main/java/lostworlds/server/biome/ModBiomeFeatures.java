@@ -342,8 +342,6 @@ public class ModBiomeFeatures {
 		addFernGroundClutter(builder);
 		addJurassicLakes(builder);
 
-		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_SUGAR_CANE);
-
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PlantPatchFeatures.BRAZILEA_PATCH);
 		builder.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TreeFeatures.SCANT_CONIFER_TREES);
 	}

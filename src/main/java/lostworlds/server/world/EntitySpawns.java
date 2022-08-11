@@ -81,7 +81,7 @@ public class EntitySpawns {
 			FeatureAdder.addSpawn(event, EntityClassification.CREATURE, LostWorldsEntities.ZEPHYROSAURUS.get(), LostWorldsConfig.COMMON_CONFIG.zephyrosaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.zephyrosaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.zephyrosaurusSpawnGroupMaximum.get());
 		}
 
-		// Jurassic
+		// 
 
 		// Terrestrial
 		ArrayList<ResourceLocation> allosaurusBiomes = Lists.newArrayList(LostWorldsBiomes.JURASSIC_ARAUCARIA_FOREST.get().getRegistryName(), LostWorldsBiomes.JURASSIC_ARAUCARIA_FOREST_HILLS.get().getRegistryName(), LostWorldsBiomes.JURASSIC_CONIFER_FOREST.get().getRegistryName(), LostWorldsBiomes.JURASSIC_CONIFER_FOREST_HILLS.get().getRegistryName(), LostWorldsBiomes.JURASSIC_GINKGO_FOREST.get().getRegistryName(), LostWorldsBiomes.JURASSIC_GINKGO_FOREST_HILLS.get().getRegistryName(), LostWorldsBiomes.JURASSIC_DESERT.get().getRegistryName(), LostWorldsBiomes.JURASSIC_DESERT_HILLS.get().getRegistryName());
@@ -100,7 +100,7 @@ public class EntitySpawns {
 		if (dilophosaurusBiomes.contains(event.getName())) {
 			FeatureAdder.addSpawn(event, EntityClassification.CREATURE, LostWorldsEntities.DILOPHOSAURUS.get(), LostWorldsConfig.COMMON_CONFIG.dilophosaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.dilophosaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.dilophosaurusSpawnGroupMaximum.get());
 		}
-		ArrayList<ResourceLocation> eustreptospondylusBiomes = Lists.newArrayList(LostWorldsBiomes.JURASSIC_BOG.get().getRegistryName(), LostWorldsBiomes.JURASSIC_FEN.get().getRegistryName(), LostWorldsBiomes.JURASSIC_REDWOODS_FOREST.get().getRegistryName(), LostWorldsBiomes.JURASSIC_REDWOODS_FOREST_HILLS.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_MARSH.get().getRegistryName(), LostWorldsBiomes.JURASSIC_SWAMP.get().getRegistryName());
+		ArrayList<ResourceLocation> eustreptospondylusBiomes = Lists.newArrayList(LostWorldsBiomes.JURASSIC_BOG.get().getRegistryName(), LostWorldsBiomes.JURASSIC_FEN.get().getRegistryName(), LostWorldsBiomes.JURASSIC_REDWOODS_FOREST.get().getRegistryName(), LostWorldsBiomes.JURASSIC_REDWOODS_FOREST_HILLS.get().getRegistryName(), LostWorldsBiomes.JURASSIC_MARSH.get().getRegistryName(), LostWorldsBiomes.JURASSIC_SWAMP.get().getRegistryName());
 		if (eustreptospondylusBiomes.contains(event.getName())) {
 			FeatureAdder.addSpawn(event, EntityClassification.CREATURE, LostWorldsEntities.EUSTREPTOSPONDYLUS.get(), LostWorldsConfig.COMMON_CONFIG.eustreptospondylusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.eustreptospondylusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.eustreptospondylusSpawnGroupMaximum.get());
 		}

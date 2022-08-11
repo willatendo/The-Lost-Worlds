@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.tterrag.registrate.util.NonNullLazyValue;
 
 import lostworlds.client.LostWorldsConfig;
@@ -33,6 +32,7 @@ import lostworlds.server.item.LostWorldsBanners;
 import lostworlds.server.item.LostWorldsEnchantments;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.item.LostWorldsPotions;
+import lostworlds.server.loot.LostWorldsGlobalLootModifers;
 import lostworlds.server.placement.LostWorldsPlacements;
 import lostworlds.server.structure.LostWorldsStructurePecies;
 import lostworlds.server.structure.LostWorldsStructures;
@@ -42,7 +42,7 @@ import lostworlds.server.world.BiomeGen;
 import lostworlds.server.world.EntitySpawns;
 import lostworlds.server.world.FeatureGen;
 import lostworlds.server.world.StructureGen;
-import net.minecraft.block.Block;
+import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -54,7 +54,6 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.potion.Potions;
-import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -67,6 +66,7 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -113,6 +113,7 @@ public class LostWorldsMod {
 		LostWorldsStructurePecies.init();
 		LostWorldsPlacements.deferred(bus);
 		LostWorldsBiomes.deferred(bus);
+		LostWorldsGlobalLootModifers.deferred(bus);
 
 		LostWorldsTags.init();
 
@@ -148,11 +149,6 @@ public class LostWorldsMod {
 			ModConfiguredStructures.init();
 
 			LostWorldsDimensions.initBiomeSourcesAndChunkGenerator();
-
-			ImmutableSet.Builder<Block> builder = ImmutableSet.builder();
-			builder.addAll(TileEntityType.SIGN.validBlocks);
-			LostWorldsBlocks.forEachSignBlock(builder::add);
-			TileEntityType.SIGN.validBlocks = builder.build();
 		});
 
 		LostWorldsUtils.translateToWaves(LostWorldsEntities.FOSSIL_POACHER.get(), Arrays.asList(1, 0, 0, 0, 1, 2, 2, 3));
@@ -178,6 +174,8 @@ public class LostWorldsMod {
 		LostWorldsBooks.initBooks();
 
 		LostWorldsDimensions.initClient();
+
+		ClientRegistry.bindTileEntityRenderer(LostWorldsBlockEntities.LOST_WORLDS_SIGN.get(), SignTileEntityRenderer::new);
 	}
 
 	@OnlyIn(Dist.CLIENT)

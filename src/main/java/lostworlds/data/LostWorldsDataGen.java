@@ -16,5 +16,6 @@ public class LostWorldsDataGen {
 		ExistingFileHelper fileHelper = event.getExistingFileHelper();
 		dataGenerator.addProvider(new LostWorldsAdvancementProvider(dataGenerator, fileHelper));
 		dataGenerator.addProvider(new LostWorldsRecipeProvider(dataGenerator));
+		dataGenerator.addProvider(new LostWorldsGlobalLootModiferProvider(dataGenerator));
 	}
 }

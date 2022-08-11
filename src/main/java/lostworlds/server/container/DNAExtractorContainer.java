@@ -10,6 +10,7 @@ import lostworlds.server.container.recipes.LostWorldsRecipes;
 import lostworlds.server.container.slot.DNAExtractorInputSlot;
 import lostworlds.server.container.slot.ResultSlot;
 import lostworlds.server.container.slot.VileSlot;
+import lostworlds.server.item.AmberItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -131,6 +132,6 @@ public class DNAExtractorContainer extends Container {
 	}
 
 	protected boolean canExtract(ItemStack stack) {
-		return this.level.getRecipeManager().getRecipeFor((IRecipeType) this.recipeType, new Inventory(stack), this.level).isPresent() || this.level.getRecipeManager().getRecipeFor((IRecipeType) this.secondaryRecipeType, new Inventory(stack), this.level).isPresent();
+		return this.level.getRecipeManager().getRecipeFor((IRecipeType) this.recipeType, new Inventory(stack), this.level).isPresent() || stack.getItem() instanceof AmberItem;
 	}
 }

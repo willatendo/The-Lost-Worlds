@@ -90,9 +90,9 @@ public class LostWorldsItems {
 	public static final ItemEntry<TabletItem> TABLET = REGISTRATE.item("tablet", TabletItem::new).properties(Properties -> Properties.stacksTo(1)).recipe((item, provider) -> ShapedRecipeBuilder.shaped(item.get()).pattern("#@#").pattern("#$#").define('#', Items.IRON_INGOT).define('@', LostWorldsItems.COMPUTER_SCREEN.get()).define('$', LostWorldsItems.COMPUTER_CORE.get()).unlockedBy("has_item", provider.hasItem(Items.IRON_INGOT)).save(provider)).register();
 	public static final ItemEntry<Item> CONTRACEPTIVES = REGISTRATE.item("contraceptives", Item::new).register();
 
-	public static final ItemEntry<TimeBookItem> PERMIAN_PERIOD_TIME_BOOK = REGISTRATE.item("permian_period_time_book", properties -> new TimeBookItem(properties, TimeEras.PERMIAN_PERIOD, LostWorldsDimensions.PERMIAN_WORLD)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.hasItem(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register(),
-			JURASSIC_PERIOD_TIME_BOOK = REGISTRATE.item("jurassic_period_time_book", properties -> new TimeBookItem(properties, TimeEras.JURASSIC_PERIOD, LostWorldsDimensions.JURASSIC_WORLD)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.hasItem(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register(),
-			CRETACEOUS_PERIOD_TIME_BOOK = REGISTRATE.item("cretaceous_period_time_book", properties -> new TimeBookItem(properties, TimeEras.CRETACEOUS_PERIOD, LostWorldsDimensions.CRETACEOUS_WORLD)).properties(properties -> properties.setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.hasItem(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register();
+	public static final ItemEntry<TimeBookItem> PERMIAN_PERIOD_TIME_BOOK = REGISTRATE.item("permian_period_time_book", properties -> new TimeBookItem(properties, TimeEras.PERMIAN_PERIOD, LostWorldsDimensions.PERMIAN_WORLD)).properties(properties -> properties.stacksTo(1).setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.hasItem(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register(),
+			JURASSIC_PERIOD_TIME_BOOK = REGISTRATE.item("jurassic_period_time_book", properties -> new TimeBookItem(properties, TimeEras.JURASSIC_PERIOD, LostWorldsDimensions.JURASSIC_WORLD)).properties(properties -> properties.stacksTo(1).setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.hasItem(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register(),
+			CRETACEOUS_PERIOD_TIME_BOOK = REGISTRATE.item("cretaceous_period_time_book", properties -> new TimeBookItem(properties, TimeEras.CRETACEOUS_PERIOD, LostWorldsDimensions.CRETACEOUS_WORLD)).properties(properties -> properties.stacksTo(1).setNoRepair().rarity(Rarity.RARE)).tag(LostWorldsTags.ModItemTags.TIME_BOOKS.tag).recipe((item, provider) -> TimeMachineRecipeBuilder.simple(item.get(), 1).unlockedBy("has_item", provider.hasItem(LostWorldsItems.CHARGED_CRYSTAL_SCARAB_GEM.get())).save(provider)).register();
 
 	public static final ItemEntry<Item> MUD_BALL = REGISTRATE.item("mud_ball", Item::new).register();
 
@@ -213,9 +213,9 @@ public class LostWorldsItems {
 			dinos.setBloodSyringe(() -> bloodSyringe.get());
 			ItemEntry<Item> bloodVile = REGISTRATE.item(dinos.name().toLowerCase() + "_blood_vile", Item::new).model(textured("blood_vile")).tag(LostWorldsTags.ModItemTags.BLOOD_VILES.tag).recipe((item, provider) -> ShapelessRecipeBuilder.shapeless(item.get()).requires(dinos.getBloodSyringe().get()).requires(LostWorldsItems.EMPTY_VILE.get()).unlockedBy("has_item", provider.hasItem(LostWorldsTags.ModItemTags.BLOOD_SYRINGES.tag)).save(provider)).register();
 			dinos.setBloodVile(() -> bloodVile.get());
-			ItemEntry<Item> dna = REGISTRATE.item(dinos.name().toLowerCase() + "_dna", Item::new).tag(LostWorldsTags.ModItemTags.DNA.tag, LostWorldsTags.ModItemTags.AMBER_RESULTS.tag).register();
+			ItemEntry<DNAItem> dna = REGISTRATE.item(dinos.name().toLowerCase() + "_dna", DNAItem::new).properties(properties -> properties.stacksTo(1)).tag(LostWorldsTags.ModItemTags.DNA.tag, LostWorldsTags.ModItemTags.AMBER_RESULTS.tag).register();
 			dinos.setDNA(() -> dna.get());
-			ItemEntry<Item> dnaDisc = REGISTRATE.item(dinos.name().toLowerCase() + "_dna_disc", Item::new).properties(properties -> properties.defaultDurability(5)).tag(LostWorldsTags.ModItemTags.DNA_DISCS.tag).model(textured("storage_disc")).register();
+			ItemEntry<DNADiscItem> dnaDisc = REGISTRATE.item(dinos.name().toLowerCase() + "_dna_disc", DNADiscItem::new).properties(properties -> properties.defaultDurability(5)).tag(LostWorldsTags.ModItemTags.DNA_DISCS.tag).model(textured("storage_disc")).register();
 			dinos.setDNADisc(() -> dnaDisc.get());
 			if (!dinos.fish().contains(dinos) && dinos != DinoTypes.NAUTILUS) {
 				ItemEntry<Item> raw = REGISTRATE.item("raw_" + dinos.name().toLowerCase() + "_meat", Item::new).properties(properties -> properties.food(new Food.Builder().nutrition(dinos.getRawNutrition()).saturationMod(dinos.getRawSaturation()).build())).tag(LostWorldsTags.ModItemTags.CREATURE_ITEMS.tag).register();
@@ -247,7 +247,7 @@ public class LostWorldsItems {
 			plants.setSoftTissue(() -> softTissue.get());
 			ItemEntry<Item> dna = REGISTRATE.item(plants.toString().toLowerCase() + "_dna", Item::new).tag(LostWorldsTags.ModItemTags.DNA.tag).model(textured("plant_dna")).register();
 			plants.setDNA(() -> dna.get());
-			ItemEntry<Item> dnaDisc = REGISTRATE.item(plants.toString().toLowerCase() + "_dna_disc", Item::new).tag(LostWorldsTags.ModItemTags.DNA_DISCS.tag).model(textured("storage_disc")).register();
+			ItemEntry<DNADiscItem> dnaDisc = REGISTRATE.item(plants.toString().toLowerCase() + "_dna_disc", DNADiscItem::new).tag(LostWorldsTags.ModItemTags.DNA_DISCS.tag).model(textured("storage_disc")).register();
 			plants.setDNADisc(() -> dnaDisc.get());
 			ItemEntry<SeedItem> seed = REGISTRATE.item(plants.toString().toLowerCase() + "_seeds", properties -> new SeedItem(plants.getPlant(), properties)).tag(LostWorldsTags.ModItemTags.ANCIENT_SEEDS.tag).register();
 			plants.setSeed(() -> seed.get());
@@ -258,7 +258,7 @@ public class LostWorldsItems {
 			trees.setSoftTissue(() -> softTissue.get());
 			ItemEntry<Item> dna = REGISTRATE.item(trees.toString().toLowerCase() + "_dna", Item::new).tag(LostWorldsTags.ModItemTags.DNA.tag).model(textured("plant_dna")).register();
 			trees.setDNA(() -> dna.get());
-			ItemEntry<Item> dnaDisc = REGISTRATE.item(trees.toString().toLowerCase() + "_dna_disc", Item::new).tag(LostWorldsTags.ModItemTags.DNA_DISCS.tag).model(textured("storage_disc")).register();
+			ItemEntry<DNADiscItem> dnaDisc = REGISTRATE.item(trees.toString().toLowerCase() + "_dna_disc", DNADiscItem::new).tag(LostWorldsTags.ModItemTags.DNA_DISCS.tag).model(textured("storage_disc")).register();
 			trees.setDNADisc(() -> dnaDisc.get());
 		}
 	}

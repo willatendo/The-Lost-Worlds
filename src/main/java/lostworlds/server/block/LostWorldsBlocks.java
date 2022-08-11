@@ -8,7 +8,6 @@ import static lostworlds.server.block.LostWorldsBlockModels.parent;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
@@ -58,10 +57,8 @@ import net.minecraft.block.SandBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.StairsBlock;
-import net.minecraft.block.StandingSignBlock;
 import net.minecraft.block.StoneButtonBlock;
 import net.minecraft.block.WallBlock;
-import net.minecraft.block.WallSignBlock;
 import net.minecraft.block.WoodButtonBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -464,8 +461,8 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<StairsBlock> TILE_STAIRS = REGISTRATE.stairBlock("tile_stairs", "tile", properties -> new StairsBlock(() -> LostWorldsBlocks.TILE.getDefaultState(), properties)).properties(properties -> properties.of(Material.WOOD, MaterialColor.WOOD).harvestTool(ToolType.AXE).harvestLevel(0).strength(2.7F, 1.9F).sound(SoundType.WOOD)).tag(LostWorldsTags.ModBlockTags.JURASSIC_WORLD_ERA.tag).recipe((block, provider) -> provider.stairs(DataIngredient.items(LostWorldsBlocks.TILE), () -> block.get(), null, false)).register();
 	public static final BlockEntry<SlabBlock> TILE_SLAB = REGISTRATE.slabBlock("tile_slab", "tile", SlabBlock::new).properties(properties -> properties.of(Material.WOOD, MaterialColor.WOOD).harvestTool(ToolType.AXE).harvestLevel(0).strength(2.7F, 1.9F).sound(SoundType.WOOD)).tag(LostWorldsTags.ModBlockTags.JURASSIC_WORLD_ERA.tag).recipe((block, provider) -> provider.slab(DataIngredient.items(LostWorldsBlocks.TILE), () -> block.get(), null, false)).loot((provider, block) -> provider.add(block, provider.droppingSlab(block))).register();
 
-	public static final BlockEntry<StandingSignBlock> GLASS_SIGN = REGISTRATE.signBlock("glass_sign", "glass_sign_particle", properties -> new StandingSignBlock(properties, ModWoodType.GLASS)).properties(properties -> properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS)).register();
-	public static final BlockEntry<WallSignBlock> GLASS_WALL_SIGN = REGISTRATE.signBlock("glass_wall_sign", "glass_sign_particle", properties -> new WallSignBlock(properties, ModWoodType.GLASS)).properties(properties -> properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS)).register();
+	public static final BlockEntry<LostWorldsStandingSignBlock> GLASS_SIGN = REGISTRATE.signBlock("glass_sign", "glass_sign_particle", properties -> new LostWorldsStandingSignBlock(properties, ModWoodType.GLASS)).properties(properties -> properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS)).register();
+	public static final BlockEntry<LostWorldsWallSignBlock> GLASS_WALL_SIGN = REGISTRATE.signBlock("glass_wall_sign", "glass_sign_particle", properties -> new LostWorldsWallSignBlock(properties, ModWoodType.GLASS)).properties(properties -> properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().noCollission().sound(SoundType.GLASS)).register();
 	public static final ItemEntry<SignItem> GLASS_SIGN_ITEM = REGISTRATE.item("glass_sign", properties -> new SignItem(properties, GLASS_SIGN.get(), GLASS_WALL_SIGN.get())).properties(properties -> properties.stacksTo(16)).tag(LostWorldsTags.ModItemTags.JURASSIC_WORLD_ERA.tag).recipe((block, provider) -> ShapedRecipeBuilder.shaped(block.get(), 3).pattern("###").pattern("###").pattern(" @ ").define('#', Tags.Items.GLASS).define('@', Items.STICK).unlockedBy("has_item", provider.hasItem(Tags.Items.GLASS)).save(provider)).tag(LostWorldsTags.ModItemTags.JURASSIC_WORLD_ERA.tag).register();
 
 	public static final BlockEntry<DoorBlock> GLASS_SHOP_DOOR = REGISTRATE.doorBlock("glass_shop_door", DoorBlock::new).properties(properties -> properties.copy(Blocks.OAK_DOOR)).addLayer(() -> RenderType::cutout).tag(LostWorldsTags.ModBlockTags.DECORATIVE_DOORS.tag, LostWorldsTags.ModBlockTags.JURASSIC_WORLD_ERA.tag).recipe((block, provider) -> ShapedRecipeBuilder.shaped(block.get(), 3).pattern("##").pattern("$$").pattern("##").define('#', Tags.Items.GLASS).define('$', Items.IRON_INGOT).unlockedBy("has_item", provider.hasItem(Tags.Items.GLASS)).save(provider)).register();
@@ -565,10 +562,6 @@ public class LostWorldsBlocks {
 		synchronized (SIGN_BLOCKS) {
 			SIGN_BLOCKS.add(sign.get());
 		}
-	}
-
-	public static void forEachSignBlock(Consumer<? super Block> consumer) {
-		SIGN_BLOCKS.forEach(block -> consumer.accept(block.get()));
 	}
 
 	public static void registrate() {
