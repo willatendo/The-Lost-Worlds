@@ -12,13 +12,16 @@ import lostworlds.server.item.LostWorldsEnchantments;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.util.Version;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.raid.Raid;
 import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraftforge.fml.ModList;
 
 public class LostWorldsUtils {
@@ -75,7 +78,16 @@ public class LostWorldsUtils {
 		public ItemStack makeIcon() {
 			return LostWorldsItems.LOST_WORLDS_LEXICON.asStack();
 		}
-	}).setRecipeFolderName("lostworlds_items").setEnchantmentCategories(LostWorldsEnchantments.HAMMER);
+
+		@Override
+		public void fillItemList(NonNullList<ItemStack> itemStacks) {
+			super.fillItemList(itemStacks);
+			itemStacks.add(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(LostWorldsEnchantments.PRECISION.get(), 1)));
+			itemStacks.add(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(LostWorldsEnchantments.PRECISION.get(), 2)));
+			itemStacks.add(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(LostWorldsEnchantments.PRECISION.get(), 3)));
+			itemStacks.add(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), 1)));
+		}
+	}).setRecipeFolderName("lostworlds_items");
 	public static final CreativeModeTab BLOCKS = (new CreativeModeTab("lostworlds.blocks") {
 		@Override
 		public ItemStack makeIcon() {
