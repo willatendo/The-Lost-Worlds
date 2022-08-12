@@ -43,12 +43,12 @@ public class BiomeParts {
 		return mobspawninfo$builder;
 	}
 
-	public static Biome biome(Precipitation precipitation, BiomeCategory category, float downfall, float temperature, BiomeSpecialEffects.Builder effects, BiomeGenerationSettings.Builder settings, MobSpawnSettings.Builder spawningInfo) {
+	public static Biome.BiomeBuilder biome(Precipitation precipitation, BiomeCategory category, float downfall, float temperature, BiomeSpecialEffects.Builder effects, BiomeGenerationSettings.Builder settings, MobSpawnSettings.Builder spawningInfo) {
 		return biome(precipitation, category, downfall, temperature, NORMAL_MUSIC, effects, settings, spawningInfo);
 	}
 
-	public static Biome biome(Precipitation precipitation, BiomeCategory category, float downfall, float temperature, Music music, BiomeSpecialEffects.Builder effects, BiomeGenerationSettings.Builder settings, MobSpawnSettings.Builder spawningInfo) {
+	public static Biome.BiomeBuilder biome(Precipitation precipitation, BiomeCategory category, float downfall, float temperature, Music music, BiomeSpecialEffects.Builder effects, BiomeGenerationSettings.Builder settings, MobSpawnSettings.Builder spawningInfo) {
 		effects.backgroundMusic(music);
-		return new Biome.BiomeBuilder().precipitation(precipitation).biomeCategory(category).downfall(downfall).temperature(temperature).generationSettings(settings.build()).specialEffects(effects.build()).mobSpawnSettings(spawningInfo.build()).build();
+		return new Biome.BiomeBuilder().precipitation(precipitation).biomeCategory(category).downfall(downfall).temperature(temperature).generationSettings(settings.build()).specialEffects(effects.build()).mobSpawnSettings(spawningInfo.build());
 	}
 }

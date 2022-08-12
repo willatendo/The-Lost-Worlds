@@ -77,7 +77,7 @@ public class PaleontologyTableRecipe implements Recipe<PaleontologyTableInventor
 		return width >= this.width && height >= this.height;
 	}
 
-	public NonNullList<ItemStack> getOutput() {
+	public NonNullList<ItemStack> getOutputs() {
 		NonNullList<ItemStack> output = NonNullList.create();
 		output.add(this.result);
 		return output;

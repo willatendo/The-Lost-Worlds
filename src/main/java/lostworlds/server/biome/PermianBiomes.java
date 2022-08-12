@@ -11,7 +11,7 @@ import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 
 public class PermianBiomes extends BiomeParts {
-	public static Biome permianDesert() {
+	public static Biome.BiomeBuilder permianDesert() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianDesert(generation);
 
@@ -23,7 +23,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 3.0F, ambience, generation, spawns);
 	}
 
-	public static Biome permianConiferForest() {
+	public static Biome.BiomeBuilder permianConiferForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianConiferForest(generation);
 
@@ -35,7 +35,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome permianGinkgoForest() {
+	public static Biome.BiomeBuilder permianGinkgoForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianGinkgoForest(generation);
 
@@ -47,7 +47,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome permianWindsweptHills() {
+	public static Biome.BiomeBuilder permianWindsweptHills() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianWindsweptHills(generation);
 
@@ -59,7 +59,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.EXTREME_HILLS, 0.8F, 0.3F, ambience, generation, spawns);
 	}
 
-	public static Biome permianOcean() {
+	public static Biome.BiomeBuilder permianOcean() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianOcean(generation);
 
@@ -71,7 +71,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
-	public static Biome permianWarmOcean() {
+	public static Biome.BiomeBuilder permianWarmOcean() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianCoralReef(generation);
 
@@ -83,7 +83,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome permianColdOceanBiome() {
+	public static Biome.BiomeBuilder permianColdOceanBiome() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianColdOcean(generation);
 
@@ -95,7 +95,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.3F, ambience, generation, spawns);
 	}
 
-	public static Biome permianLukeWarmOceanBiome() {
+	public static Biome.BiomeBuilder permianLukeWarmOceanBiome() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianLukeWarmOcean(generation);
 
@@ -107,7 +107,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
-	public static Biome permianAshyMedows() {
+	public static Biome.BiomeBuilder permianAshyMedows() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianAshyMedows(generation);
 
@@ -119,7 +119,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.NONE, BiomeCategory.PLAINS, 0.0F, 5.0F, ambience, generation, spawns);
 	}
 
-	public static Biome permianDriedPlains() {
+	public static Biome.BiomeBuilder permianDriedPlains() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianDriedPlains(generation);
 
@@ -131,7 +131,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.NONE, BiomeCategory.PLAINS, 0.0F, 2.0F, ambience, generation, spawns);
 	}
 
-	public static Biome permianFloodBasalts() {
+	public static Biome.BiomeBuilder permianFloodBasalts() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianFloodBasalts(generation);
 
@@ -143,7 +143,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.NONE, BiomeCategory.PLAINS, 0.0F, 4.0F, ambience, generation, spawns);
 	}
 
-	public static Biome permianPlains() {
+	public static Biome.BiomeBuilder permianPlains() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianPlains(generation);
 
@@ -155,7 +155,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.0F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome permianRiver() {
+	public static Biome.BiomeBuilder permianRiver() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianRiver(generation);
 
@@ -167,7 +167,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.RIVER, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome permianShore() {
+	public static Biome.BiomeBuilder permianShore() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianShore(generation);
 
@@ -179,7 +179,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.BEACH, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome permianMarsh() {
+	public static Biome.BiomeBuilder permianMarsh() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianMarsh(generation);
 
@@ -191,7 +191,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome permianDripstoneCaves() {
+	public static Biome.BiomeBuilder permianDripstoneCaves() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianDripstoneCaves(generation);
 
@@ -205,7 +205,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.BEACH, 0.8F, 0.7F, music, ambience, generation, spawns);
 	}
 
-	public static Biome permianGrove() {
+	public static Biome.BiomeBuilder permianGrove() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianGrove(generation);
 
@@ -219,7 +219,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.SNOW, BiomeCategory.FOREST, 0.8F, -0.2F, music, ambience, generation, spawns);
 	}
 
-	public static Biome permianSnowySlopes() {
+	public static Biome.BiomeBuilder permianSnowySlopes() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianSnowySlopes(generation);
 
@@ -233,7 +233,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.SNOW, BiomeCategory.MOUNTAIN, 0.9F, -0.3F, music, ambience, generation, spawns);
 	}
 
-	public static Biome permianFrozenPeaks() {
+	public static Biome.BiomeBuilder permianFrozenPeaks() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianFrozenPeaks(generation);
 
@@ -247,7 +247,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.SNOW, BiomeCategory.MOUNTAIN, 0.9F, -0.7F, music, ambience, generation, spawns);
 	}
 
-	public static Biome permianJaggedPeaks() {
+	public static Biome.BiomeBuilder permianJaggedPeaks() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianJaggedPeaks(generation);
 
@@ -261,7 +261,7 @@ public class PermianBiomes extends BiomeParts {
 		return biome(Precipitation.SNOW, BiomeCategory.MOUNTAIN, 0.9F, -0.7F, music, ambience, generation, spawns);
 	}
 
-	public static Biome permianStonyPeaks() {
+	public static Biome.BiomeBuilder permianStonyPeaks() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.permianStonyPeaks(generation);
 

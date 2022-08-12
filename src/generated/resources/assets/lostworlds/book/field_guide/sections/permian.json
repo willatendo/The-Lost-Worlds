@@ -58,5 +58,10 @@
     "name": "rhinesuchus_info",
     "type": "text",
     "data": "permian/rhinesuchus_info.json"
+  },
+  {
+    "name": "tetraceratops_1",
+    "type": "text",
+    "data": "permian/tetraceratops_1.json"
   }
 ]

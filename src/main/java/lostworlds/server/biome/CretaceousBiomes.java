@@ -8,7 +8,7 @@ import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 
 public class CretaceousBiomes extends BiomeParts {
-	public static Biome cretaceousArctic() {
+	public static Biome.BiomeBuilder cretaceousArctic() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousArctic(generation);
 
@@ -20,7 +20,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.SNOW, BiomeCategory.ICY, 0.8F, 0.0F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousArcticSpires() {
+	public static Biome.BiomeBuilder cretaceousArcticSpires() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousArcticSpires(generation);
 
@@ -32,7 +32,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.SNOW, BiomeCategory.ICY, 0.8F, 0.0F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousFrozenForest() {
+	public static Biome.BiomeBuilder cretaceousFrozenForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousFrozenForest(generation);
 
@@ -44,7 +44,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.SNOW, BiomeCategory.ICY, 0.8F, 0.0F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousDesert() {
+	public static Biome.BiomeBuilder cretaceousDesert() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousDesert(generation);
 
@@ -56,7 +56,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 2.0F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousRedDesert() {
+	public static Biome.BiomeBuilder cretaceousRedDesert() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousDesert(generation);
 
@@ -68,7 +68,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 2.5F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousAraucariaForest() {
+	public static Biome.BiomeBuilder cretaceousAraucariaForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousAraucariaForest(generation);
 
@@ -80,7 +80,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousConiferForest() {
+	public static Biome.BiomeBuilder cretaceousConiferForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousConiferForest(generation);
 
@@ -92,7 +92,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousGinkgoForest() {
+	public static Biome.BiomeBuilder cretaceousGinkgoForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousGinkgoForest(generation);
 
@@ -104,7 +104,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousRedwoodsForest() {
+	public static Biome.BiomeBuilder cretaceousRedwoodsForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousRedwoodsForest(generation);
 
@@ -116,7 +116,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousWindsweptHills() {
+	public static Biome.BiomeBuilder cretaceousWindsweptHills() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousWindsweptHills(generation);
 
@@ -128,7 +128,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.EXTREME_HILLS, 0.8F, 0.3F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousOceanBiome() {
+	public static Biome.BiomeBuilder cretaceousOceanBiome() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousOcean(generation);
 
@@ -140,7 +140,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousLukeWarmOceanBiome() {
+	public static Biome.BiomeBuilder cretaceousLukeWarmOceanBiome() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousLukeWarmOcean(generation);
 
@@ -152,7 +152,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousWarmOceanBiome() {
+	public static Biome.BiomeBuilder cretaceousWarmOceanBiome() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousCoralReef(generation);
 
@@ -164,7 +164,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousColdOceanBiome() {
+	public static Biome.BiomeBuilder cretaceousColdOceanBiome() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.coldCretaceousOcean(generation);
 
@@ -176,7 +176,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.3F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousFloodBasaltsBiome() {
+	public static Biome.BiomeBuilder cretaceousFloodBasaltsBiome() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousFloodBasalts(generation);
 
@@ -188,7 +188,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.NONE, BiomeCategory.PLAINS, 0.8F, 4.0F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousGameTrailBiome() {
+	public static Biome.BiomeBuilder cretaceousGameTrailBiome() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousGameTrail(generation);
 
@@ -200,7 +200,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.8F, 1.5F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousMedowBiome() {
+	public static Biome.BiomeBuilder cretaceousMedowBiome() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousMedow(generation);
 
@@ -212,7 +212,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.8F, 1.0F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousPlainsBiome() {
+	public static Biome.BiomeBuilder cretaceousPlainsBiome() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousPlains(generation);
 
@@ -224,7 +224,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousRiverBiome() {
+	public static Biome.BiomeBuilder cretaceousRiverBiome() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousRiver(generation);
 
@@ -236,7 +236,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.RIVER, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousShoreBiome() {
+	public static Biome.BiomeBuilder cretaceousShoreBiome() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousShore(generation);
 
@@ -248,7 +248,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.BEACH, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousMarsh() {
+	public static Biome.BiomeBuilder cretaceousMarsh() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousMarsh(generation);
 
@@ -260,7 +260,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousSwamp() {
+	public static Biome.BiomeBuilder cretaceousSwamp() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousSwamp(generation);
 
@@ -272,7 +272,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousFen() {
+	public static Biome.BiomeBuilder cretaceousFen() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousFen(generation);
 
@@ -284,7 +284,7 @@ public class CretaceousBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome cretaceousBog() {
+	public static Biome.BiomeBuilder cretaceousBog() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.cretaceousBog(generation);
 

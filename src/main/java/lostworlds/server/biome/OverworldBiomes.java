@@ -8,7 +8,7 @@ import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 
 public class OverworldBiomes extends BiomeParts {
-	public static Biome araucariaForest() {
+	public static Biome.BiomeBuilder araucariaForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.araucariaForest(generation);
 
@@ -18,7 +18,7 @@ public class OverworldBiomes extends BiomeParts {
 		return biome(Precipitation.NONE, BiomeCategory.FOREST, 0.0F, 2.0F, ambience, generation, defaultOverworldSpawns());
 	}
 
-	public static Biome coniferForest() {
+	public static Biome.BiomeBuilder coniferForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.coniferForest(generation);
 
@@ -28,7 +28,7 @@ public class OverworldBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience, generation, defaultOverworldSpawns());
 	}
 
-	public static Biome ginkgoForest() {
+	public static Biome.BiomeBuilder ginkgoForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.ginkgoForest(generation);
 
@@ -38,7 +38,7 @@ public class OverworldBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience, generation, defaultOverworldSpawns());
 	}
 
-	public static Biome redwoodsForest() {
+	public static Biome.BiomeBuilder redwoodsForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.redwoodsForest(generation);
 
@@ -48,7 +48,7 @@ public class OverworldBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.4F, ambience, generation, defaultOverworldSpawns());
 	}
 
-	public static Biome volcano() {
+	public static Biome.BiomeBuilder volcano() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.volcano(generation);
 

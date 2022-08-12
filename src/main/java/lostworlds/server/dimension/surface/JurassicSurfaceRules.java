@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableList.Builder;
 
 import lostworlds.api.APIModSurfaceRuleAdder;
 import lostworlds.api.APIRegistry;
-import lostworlds.server.biome.LostWorldsBiomeKeys;
+import lostworlds.server.biome.LostWorldsBiomes;
 import lostworlds.server.block.LostWorldsBlocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -20,11 +20,11 @@ public class JurassicSurfaceRules extends SurfaceRuleParts {
 		SurfaceRules.RuleSource podzolOrDirt = SurfaceRules.sequence(SurfaceRules.ifTrue(notUnderwater, PODZOL), DIRT);
 
 		// Biomes
-		SurfaceRules.RuleSource araucariaForest = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomeKeys.JURASSIC_ARAUCARIA_FOREST), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.0D), mossySoilOrDirt), podzolOrDirt)));
-		SurfaceRules.RuleSource coniferForest = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomeKeys.JURASSIC_CONIFER_FOREST), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.0D), mossySoilOrDirt), podzolOrDirt)));
-		SurfaceRules.RuleSource ginkgoForest = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomeKeys.JURASSIC_GINKGO_FOREST), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.0D), mossySoilOrDirt), podzolOrDirt)));
-		SurfaceRules.RuleSource redwoodsForest = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomeKeys.JURASSIC_REDWOODS_FOREST), podzolOrDirt));
-		SurfaceRules.RuleSource plains = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomeKeys.JURASSIC_PLAINS), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.75D), ROCKY_SOIL), SurfaceRules.ifTrue(SurfaceRules.not(surfaceNoiseAbove(-0.95D)), MOSSY_SOIL), podzolOrDirt)));
+		SurfaceRules.RuleSource araucariaForest = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomes.JURASSIC_ARAUCARIA_FOREST.getResourceKey()), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.0D), mossySoilOrDirt), podzolOrDirt)));
+		SurfaceRules.RuleSource coniferForest = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomes.JURASSIC_CONIFER_FOREST.getResourceKey()), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.0D), mossySoilOrDirt), podzolOrDirt)));
+		SurfaceRules.RuleSource ginkgoForest = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomes.JURASSIC_GINKGO_FOREST.getResourceKey()), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.0D), mossySoilOrDirt), podzolOrDirt)));
+		SurfaceRules.RuleSource redwoodsForest = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomes.JURASSIC_REDWOODS_FOREST.getResourceKey()), podzolOrDirt));
+		SurfaceRules.RuleSource plains = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomes.JURASSIC_PLAINS.getResourceKey()), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.75D), ROCKY_SOIL), SurfaceRules.ifTrue(SurfaceRules.not(surfaceNoiseAbove(-0.95D)), MOSSY_SOIL), podzolOrDirt)));
 
 		// Jurassic Dimension
 		SurfaceRules.RuleSource global = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.sequence(araucariaForest, coniferForest, ginkgoForest, redwoodsForest, plains)), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, DIRT));

@@ -8,7 +8,7 @@ import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 
 public class JurassicBiomes extends BiomeParts {
-	public static Biome jurassicDesert() {
+	public static Biome.BiomeBuilder jurassicDesert() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicDesert(generation);
 
@@ -20,7 +20,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.NONE, BiomeCategory.DESERT, 0.0F, 2.0F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicAraucariaForest() {
+	public static Biome.BiomeBuilder jurassicAraucariaForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicAraucariaForest(generation);
 
@@ -32,7 +32,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicConiferForest() {
+	public static Biome.BiomeBuilder jurassicConiferForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicConiferForest(generation);
 
@@ -44,7 +44,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicGinkgoForest() {
+	public static Biome.BiomeBuilder jurassicGinkgoForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicGinkgoForest(generation);
 
@@ -56,7 +56,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.8F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicRedwoodsForest() {
+	public static Biome.BiomeBuilder jurassicRedwoodsForest() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicRedwoodsForest(generation);
 
@@ -68,7 +68,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.FOREST, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicWindsweptHills() {
+	public static Biome.BiomeBuilder jurassicWindsweptHills() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicWindsweptHills(generation);
 
@@ -80,7 +80,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.EXTREME_HILLS, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicVolcanicRange() {
+	public static Biome.BiomeBuilder jurassicVolcanicRange() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicVolcanicRange(generation);
 
@@ -92,7 +92,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.EXTREME_HILLS, 0.8F, 2.5F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicOcean() {
+	public static Biome.BiomeBuilder jurassicOcean() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicOcean(generation);
 
@@ -104,7 +104,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicWarmOcean() {
+	public static Biome.BiomeBuilder jurassicWarmOcean() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicCoralReef(generation);
 
@@ -116,7 +116,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.OCEAN, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicPlains() {
+	public static Biome.BiomeBuilder jurassicPlains() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicPlains(generation);
 
@@ -128,7 +128,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.PLAINS, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicRiver() {
+	public static Biome.BiomeBuilder jurassicRiver() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicRiver(generation);
 
@@ -140,7 +140,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.RIVER, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicShore() {
+	public static Biome.BiomeBuilder jurassicShore() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicShore(generation);
 
@@ -152,7 +152,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.BEACH, 0.8F, 0.5F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicMarsh() {
+	public static Biome.BiomeBuilder jurassicMarsh() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicMarsh(generation);
 
@@ -164,7 +164,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicSwamp() {
+	public static Biome.BiomeBuilder jurassicSwamp() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicSwamp(generation);
 
@@ -176,7 +176,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicFen() {
+	public static Biome.BiomeBuilder jurassicFen() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicFen(generation);
 
@@ -188,7 +188,7 @@ public class JurassicBiomes extends BiomeParts {
 		return biome(Precipitation.RAIN, BiomeCategory.SWAMP, 0.8F, 0.7F, ambience, generation, spawns);
 	}
 
-	public static Biome jurassicBog() {
+	public static Biome.BiomeBuilder jurassicBog() {
 		BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder();
 		ModBiomeFeatures.jurassicBog(generation);
 
