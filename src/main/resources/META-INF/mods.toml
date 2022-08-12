@@ -5,7 +5,7 @@ issueTrackerURL="https://github.com/willatendo/Lost-Worlds/issues"
 
 [[mods]]
 modId="lostworlds"
-version="11-alpha"
+version="11b-alpha"
 displayName="Lost Worlds"
 updateJSONURL="https://github.com/willatendo/The-Lost-Worlds/raw/main/updates.json"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/the-lost-worlds-forge"

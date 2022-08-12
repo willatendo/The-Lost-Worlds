@@ -46,12 +46,12 @@ public class EntitySpawns {
 			FeatureAdder.addSpawn(event, EntityClassification.CREATURE, LostWorldsEntities.OURANOSAURUS.get(), LostWorldsConfig.COMMON_CONFIG.ouranosaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.ouranosaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.ouranosaurusSpawnGroupMaximum.get());
 		}
 
-		ArrayList<ResourceLocation> parksosaurusBiomes = Lists.newArrayList(LostWorldsBiomes.CRETACEOUS_PLAINS.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_PLAINS_HILLS.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_ARAUCARIA_FOREST.get().getRegistryName(), LostWorldsBiomes.ARAUCARIA_FOREST_HILLS.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_SWAMP.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_BOG.get().getRegistryName());
+		ArrayList<ResourceLocation> parksosaurusBiomes = Lists.newArrayList(LostWorldsBiomes.CRETACEOUS_PLAINS.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_PLAINS_HILLS.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_ARAUCARIA_FOREST.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_ARAUCARIA_FOREST_HILLS.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_SWAMP.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_BOG.get().getRegistryName());
 		if (parksosaurusBiomes.contains(event.getName())) {
 			FeatureAdder.addSpawn(event, EntityClassification.CREATURE, LostWorldsEntities.PARKSOSAURUS.get(), LostWorldsConfig.COMMON_CONFIG.parksosaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.parksosaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.parksosaurusSpawnGroupMaximum.get());
 		}
 
-		ArrayList<ResourceLocation> psittacosaurusBiomes = Lists.newArrayList(LostWorldsBiomes.CRETACEOUS_PLAINS.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_PLAINS_HILLS.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_ARAUCARIA_FOREST.get().getRegistryName(), LostWorldsBiomes.ARAUCARIA_FOREST_HILLS.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_CONIFER_FOREST.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_CONIFER_FOREST_HILLS.get().getRegistryName());
+		ArrayList<ResourceLocation> psittacosaurusBiomes = Lists.newArrayList(LostWorldsBiomes.CRETACEOUS_PLAINS.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_PLAINS_HILLS.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_ARAUCARIA_FOREST.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_ARAUCARIA_FOREST_HILLS.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_CONIFER_FOREST.get().getRegistryName(), LostWorldsBiomes.CRETACEOUS_CONIFER_FOREST_HILLS.get().getRegistryName());
 		if (psittacosaurusBiomes.contains(event.getName())) {
 			FeatureAdder.addSpawn(event, EntityClassification.CREATURE, LostWorldsEntities.PSITTACOSAURUS.get(), LostWorldsConfig.COMMON_CONFIG.psittacosaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.psittacosaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.psittacosaurusSpawnGroupMaximum.get());
 		}
@@ -81,7 +81,7 @@ public class EntitySpawns {
 			FeatureAdder.addSpawn(event, EntityClassification.CREATURE, LostWorldsEntities.ZEPHYROSAURUS.get(), LostWorldsConfig.COMMON_CONFIG.zephyrosaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.zephyrosaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.zephyrosaurusSpawnGroupMaximum.get());
 		}
 
-		// 
+		//
 
 		// Terrestrial
 		ArrayList<ResourceLocation> allosaurusBiomes = Lists.newArrayList(LostWorldsBiomes.JURASSIC_ARAUCARIA_FOREST.get().getRegistryName(), LostWorldsBiomes.JURASSIC_ARAUCARIA_FOREST_HILLS.get().getRegistryName(), LostWorldsBiomes.JURASSIC_CONIFER_FOREST.get().getRegistryName(), LostWorldsBiomes.JURASSIC_CONIFER_FOREST_HILLS.get().getRegistryName(), LostWorldsBiomes.JURASSIC_GINKGO_FOREST.get().getRegistryName(), LostWorldsBiomes.JURASSIC_GINKGO_FOREST_HILLS.get().getRegistryName(), LostWorldsBiomes.JURASSIC_DESERT.get().getRegistryName(), LostWorldsBiomes.JURASSIC_DESERT_HILLS.get().getRegistryName());
@@ -142,7 +142,7 @@ public class EntitySpawns {
 			FeatureAdder.addSpawn(event, EntityClassification.CREATURE, LostWorldsEntities.DIMETRODON.get(), LostWorldsConfig.COMMON_CONFIG.dimetrodonSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.dimetrodonSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.dimetrodonSpawnGroupMaximum.get());
 		}
 
-		ArrayList<ResourceLocation> edaphosaurusBiomes = Lists.newArrayList(LostWorldsBiomes.PERMIAN_DRIED_PLAINS.get().getRegistryName(), LostWorldsBiomes.PERMIAN_DRIED_PLAINS_HILLS.get().getRegistryName(), LostWorldsBiomes.PERMIAN_CONIFER_FOREST.get().getRegistryName(), LostWorldsBiomes.PERMIAN_CONIFER_FOREST_HILLS.get().getRegistryName(), LostWorldsBiomes.ARAUCARIA_FOREST.get().getRegistryName(), LostWorldsBiomes.ARAUCARIA_FOREST_HILLS.get().getRegistryName());
+		ArrayList<ResourceLocation> edaphosaurusBiomes = Lists.newArrayList(LostWorldsBiomes.PERMIAN_DRIED_PLAINS.get().getRegistryName(), LostWorldsBiomes.PERMIAN_DRIED_PLAINS_HILLS.get().getRegistryName(), LostWorldsBiomes.PERMIAN_CONIFER_FOREST.get().getRegistryName(), LostWorldsBiomes.PERMIAN_CONIFER_FOREST_HILLS.get().getRegistryName());
 		if (edaphosaurusBiomes.contains(event.getName())) {
 			FeatureAdder.addSpawn(event, EntityClassification.CREATURE, LostWorldsEntities.EDAPHOSAURUS.get(), LostWorldsConfig.COMMON_CONFIG.edaphosaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.edaphosaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.edaphosaurusSpawnGroupMaximum.get());
 		}
