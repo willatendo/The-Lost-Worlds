@@ -22,9 +22,9 @@ public class LostWorldsRegion extends Region {
 	@Override
 	public void addBiomes(Registry<Biome> registry, Consumer<Pair<ParameterPoint, ResourceKey<Biome>>> mapper) {
 		this.addBiomeSimilar(mapper, Biomes.SAVANNA, LostWorldsBiomes.ARAUCARIA_FOREST.getResourceKey());
-		this.addBiomeSimilar(mapper, Biomes.FOREST, LostWorldsBiomes.CONIFER_FOREST.getResourceKey());
-		this.addBiomeSimilar(mapper, Biomes.FOREST, LostWorldsBiomes.GINKGO_FOREST.getResourceKey());
-		this.addBiomeSimilar(mapper, Biomes.FOREST, LostWorldsBiomes.REDWOODS_FOREST.getResourceKey());
+		this.addBiomeSimilar(mapper, Biomes.FLOWER_FOREST, LostWorldsBiomes.CONIFER_FOREST.getResourceKey());
+		this.addBiomeSimilar(mapper, Biomes.FLOWER_FOREST, LostWorldsBiomes.GINKGO_FOREST.getResourceKey());
+		this.addBiomeSimilar(mapper, Biomes.OLD_GROWTH_PINE_TAIGA, LostWorldsBiomes.REDWOODS_FOREST.getResourceKey());
 		this.addBiomeSimilar(mapper, Biomes.STONY_PEAKS, LostWorldsBiomes.VOLCANO.getResourceKey());
 	}
 }
