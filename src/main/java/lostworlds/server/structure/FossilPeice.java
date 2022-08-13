@@ -49,12 +49,12 @@ public class FossilPeice {
 		private final AncientCreatures type;
 
 		public Piece(StructureManager manager, ResourceLocation templateLocation, AncientCreatures type, BlockPos pos, Rotation rotation) {
-			super(LostWorldsStructurePecies.FOSSIL_PIECE, 0, manager, templateLocation, templateLocation.toString(), makeSettings(rotation), pos);
+			super(LostWorldsStructurePecies.FOSSIL_PIECE.get(), 0, manager, templateLocation, templateLocation.toString(), makeSettings(rotation), pos);
 			this.type = type;
 		}
 
 		public Piece(StructureManager manager, CompoundTag tag) {
-			super(LostWorldsStructurePecies.FOSSIL_PIECE, tag, manager, (template) -> {
+			super(LostWorldsStructurePecies.FOSSIL_PIECE.get(), tag, manager, (template) -> {
 				return makeSettings(Rotation.valueOf(tag.getString("Rot")));
 			});
 			this.type = AncientCreatures.byName(tag.getString("Type"));

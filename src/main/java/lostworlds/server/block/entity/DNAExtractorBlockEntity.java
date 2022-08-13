@@ -101,7 +101,7 @@ public class DNAExtractorBlockEntity extends BlockEntity implements Container, M
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final RecipeType<DNAExtractorRecipe> recipeType = LostWorldsRecipeTypes.DNA_EXTRACTOR_RECIPE;
+	protected final RecipeType<DNAExtractorRecipe> recipeType = LostWorldsRecipeTypes.DNA_EXTRACTOR_RECIPE.get();
 
 	@SuppressWarnings("unused")
 	private Component name;

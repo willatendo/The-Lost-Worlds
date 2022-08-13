@@ -24,7 +24,7 @@ public class FossilGrinderMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;
 	private final ContainerData data;
 	private final Level level;
-	private final RecipeType<FossilGrinderRecipe> recipeType = LostWorldsRecipeTypes.FOSSIL_GRINDER_RECIPE;
+	private final RecipeType<FossilGrinderRecipe> recipeType = LostWorldsRecipeTypes.FOSSIL_GRINDER_RECIPE.get();
 
 	public FossilGrinderMenu(MenuType<? extends FossilGrinderMenu> containerType, int windowID, Inventory inventory, FossilGrinderBlockEntity blockEntity) {
 		super(containerType, windowID);

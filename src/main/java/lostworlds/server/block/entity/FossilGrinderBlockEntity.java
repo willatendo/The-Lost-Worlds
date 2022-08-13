@@ -94,7 +94,7 @@ public class FossilGrinderBlockEntity extends BlockEntity implements Container, 
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final RecipeType<FossilGrinderRecipe> recipeType = LostWorldsRecipeTypes.FOSSIL_GRINDER_RECIPE;
+	protected final RecipeType<FossilGrinderRecipe> recipeType = LostWorldsRecipeTypes.FOSSIL_GRINDER_RECIPE.get();
 
 	private Component name;
 

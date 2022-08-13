@@ -37,10 +37,10 @@ public class BiomeParts {
 	}
 
 	public static MobSpawnSettings.Builder defaultOverworldSpawns() {
-		MobSpawnSettings.Builder mobspawninfo$builder = new MobSpawnSettings.Builder();
-		BiomeDefaultFeatures.farmAnimals(mobspawninfo$builder);
-		BiomeDefaultFeatures.commonSpawns(mobspawninfo$builder);
-		return mobspawninfo$builder;
+		MobSpawnSettings.Builder builder = new MobSpawnSettings.Builder();
+		BiomeDefaultFeatures.farmAnimals(builder);
+		BiomeDefaultFeatures.commonSpawns(builder);
+		return builder;
 	}
 
 	public static Biome.BiomeBuilder biome(Precipitation precipitation, BiomeCategory category, float downfall, float temperature, BiomeSpecialEffects.Builder effects, BiomeGenerationSettings.Builder settings, MobSpawnSettings.Builder spawningInfo) {

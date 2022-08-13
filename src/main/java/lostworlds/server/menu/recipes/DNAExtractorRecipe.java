@@ -80,7 +80,7 @@ public class DNAExtractorRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipeTypes.DNA_EXTRACTOR_RECIPE;
+		return LostWorldsRecipeTypes.DNA_EXTRACTOR_RECIPE.get();
 	}
 
 	@Override

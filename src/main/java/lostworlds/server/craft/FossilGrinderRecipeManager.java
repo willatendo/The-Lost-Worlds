@@ -31,6 +31,6 @@ public class FossilGrinderRecipeManager implements IRecipeManager {
 
 	@Override
 	public RecipeType getRecipeType() {
-		return LostWorldsRecipeTypes.FOSSIL_GRINDER_RECIPE;
+		return LostWorldsRecipeTypes.FOSSIL_GRINDER_RECIPE.get();
 	}
 }

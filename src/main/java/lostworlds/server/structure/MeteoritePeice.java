@@ -45,11 +45,11 @@ public class MeteoritePeice {
 
 	public static class Piece extends TemplateStructurePiece {
 		public Piece(StructureManager manager, ResourceLocation templateLocation, BlockPos pos, Rotation rotation) {
-			super(LostWorldsStructurePecies.METEORITE_PIECE, 0, manager, templateLocation, templateLocation.toString(), makeSettings(rotation), pos);
+			super(LostWorldsStructurePecies.METEORITE_PIECE.get(), 0, manager, templateLocation, templateLocation.toString(), makeSettings(rotation), pos);
 		}
 
 		public Piece(StructureManager manager, CompoundTag tag) {
-			super(LostWorldsStructurePecies.METEORITE_PIECE, tag, manager, (template) -> {
+			super(LostWorldsStructurePecies.METEORITE_PIECE.get(), tag, manager, (template) -> {
 				return makeSettings(Rotation.valueOf(tag.getString("Rot")));
 			});
 		}

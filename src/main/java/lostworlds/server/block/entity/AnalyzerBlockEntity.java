@@ -94,7 +94,7 @@ public class AnalyzerBlockEntity extends BlockEntity implements Container, MenuP
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final RecipeType<AnalyzerRecipe> recipeType = LostWorldsRecipeTypes.ANALYZER_RECIPE;
+	protected final RecipeType<AnalyzerRecipe> recipeType = LostWorldsRecipeTypes.ANALYZER_RECIPE.get();
 
 	private Component name;
 

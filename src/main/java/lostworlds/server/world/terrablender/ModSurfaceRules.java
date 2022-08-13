@@ -64,8 +64,10 @@ public class ModSurfaceRules extends SurfaceRuleParts {
 		SurfaceRules.RuleSource grassOrDirt = SurfaceRules.sequence(SurfaceRules.ifTrue(notUnderwater, GRASS_BLOCK), DIRT);
 
 		SurfaceRules.RuleSource araucariaForest = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomes.ARAUCARIA_FOREST.getResourceKey()), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.0D), grassOrDirt), COARSE_DIRT))));
+		SurfaceRules.RuleSource redwoodsForest = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomes.REDWOODS_FOREST.getResourceKey()), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.75D), COARSE_DIRT), SurfaceRules.ifTrue(surfaceNoiseAbove(-0.95D), PODZOL))));
+		SurfaceRules.RuleSource volcano = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(LostWorldsBiomes.VOLCANO.getResourceKey()), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, VOLCANIC_ASH), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, VOLCANIC_ASH))));
 
-		SurfaceRules.RuleSource extraRules = SurfaceRules.sequence(araucariaForest);
+		SurfaceRules.RuleSource extraRules = SurfaceRules.sequence(araucariaForest, redwoodsForest, volcano);
 
 		Builder<SurfaceRules.RuleSource> builder = ImmutableList.builder();
 

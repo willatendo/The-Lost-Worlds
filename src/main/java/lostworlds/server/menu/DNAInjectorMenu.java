@@ -26,7 +26,7 @@ public class DNAInjectorMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;
 	private final ContainerData data;
 	private final Level level;
-	private final RecipeType<DNAInjectorRecipe> recipeType = LostWorldsRecipeTypes.DNA_INJECTOR_RECIPE;
+	private final RecipeType<DNAInjectorRecipe> recipeType = LostWorldsRecipeTypes.DNA_INJECTOR_RECIPE.get();
 
 	public DNAInjectorMenu(MenuType<? extends DNAInjectorMenu> type, int windowID, Inventory inventory, DNAInjectorBlockEntity blockEntity) {
 		super(type, windowID);

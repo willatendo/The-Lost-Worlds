@@ -10,6 +10,6 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 public class CypressTree extends AbstractTreeGrower {
 	@Override
 	protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random rand, boolean big) {
-		return TreeFeatures.CYPRESS_TREE;
+		return Holder.direct(TreeFeatures.CYPRESS_TREE.get());
 	}
 }

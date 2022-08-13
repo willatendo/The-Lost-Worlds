@@ -60,7 +60,7 @@ public class PaleontologyTableMenu extends AbstractContainerMenu {
 		if (!world.isClientSide) {
 			ServerPlayer serverPlayer = (ServerPlayer) player;
 			ItemStack itemstack = ItemStack.EMPTY;
-			Optional<PaleontologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(LostWorldsRecipeTypes.PALEONTOLOGY_TABLE_RECIPE, inv, world);
+			Optional<PaleontologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(LostWorldsRecipeTypes.PALEONTOLOGY_TABLE_RECIPE.get(), inv, world);
 			if (optional.isPresent()) {
 				PaleontologyTableRecipe recipe = optional.get();
 				if (result.setRecipeUsed(world, serverPlayer, recipe)) {

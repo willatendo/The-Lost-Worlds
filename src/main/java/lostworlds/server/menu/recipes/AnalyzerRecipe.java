@@ -80,7 +80,7 @@ public class AnalyzerRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipeTypes.ANALYZER_RECIPE;
+		return LostWorldsRecipeTypes.ANALYZER_RECIPE.get();
 	}
 
 	@Override

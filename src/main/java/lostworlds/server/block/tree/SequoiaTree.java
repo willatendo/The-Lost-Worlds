@@ -12,11 +12,11 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 public class SequoiaTree extends AbstractMegaTreeGrower {
 	@Nullable
 	protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random rand, boolean big) {
-		return TreeFeatures.BABY_SEQUOIA_TREE;
+		return Holder.direct(TreeFeatures.BABY_SEQUOIA_TREE.get());
 	}
 
 	@Nullable
 	protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredMegaFeature(Random rand) {
-		return TreeFeatures.SEQUOIA_TREE;
+		return Holder.direct(TreeFeatures.SEQUOIA_TREE.get());
 	}
 }

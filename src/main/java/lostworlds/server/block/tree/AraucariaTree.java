@@ -13,6 +13,6 @@ public class AraucariaTree extends AbstractTreeGrower {
 	@Nullable
 	@Override
 	public Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random rand, boolean big) {
-		return TreeFeatures.ARAUCARIA_TREE;
+		return Holder.direct(TreeFeatures.ARAUCARIA_TREE.get());
 	}
 }

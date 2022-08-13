@@ -46,6 +46,6 @@ public class DNAExtractorRecipeManager implements IRecipeManager {
 
 	@Override
 	public RecipeType getRecipeType() {
-		return LostWorldsRecipeTypes.DNA_EXTRACTOR_RECIPE;
+		return LostWorldsRecipeTypes.DNA_EXTRACTOR_RECIPE.get();
 	}
 }

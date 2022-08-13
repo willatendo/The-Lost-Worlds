@@ -31,6 +31,6 @@ public class DNAInjectorRecipeManager implements IRecipeManager {
 
 	@Override
 	public RecipeType getRecipeType() {
-		return LostWorldsRecipeTypes.DNA_INJECTOR_RECIPE;
+		return LostWorldsRecipeTypes.DNA_INJECTOR_RECIPE.get();
 	}
 }

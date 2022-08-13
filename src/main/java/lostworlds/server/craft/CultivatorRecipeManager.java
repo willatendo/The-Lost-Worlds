@@ -31,6 +31,6 @@ public class CultivatorRecipeManager implements IRecipeManager {
 
 	@Override
 	public RecipeType getRecipeType() {
-		return LostWorldsRecipeTypes.CULTIVATOR_RECIPE;
+		return LostWorldsRecipeTypes.CULTIVATOR_RECIPE.get();
 	}
 }

@@ -27,7 +27,7 @@ public class DNAExtractorMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;
 	private final ContainerData data;
 	private final Level level;
-	private final RecipeType<DNAExtractorRecipe> recipeType = LostWorldsRecipeTypes.DNA_EXTRACTOR_RECIPE;
+	private final RecipeType<DNAExtractorRecipe> recipeType = LostWorldsRecipeTypes.DNA_EXTRACTOR_RECIPE.get();
 
 	public DNAExtractorMenu(MenuType<? extends DNAExtractorMenu> type, int windowID, Inventory inventory, DNAExtractorBlockEntity blockEntity) {
 		super(type, windowID);

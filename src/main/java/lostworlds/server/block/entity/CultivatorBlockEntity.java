@@ -93,7 +93,7 @@ public class CultivatorBlockEntity extends BlockEntity implements Container, Men
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final RecipeType<CultivatorRecipe> recipeType = LostWorldsRecipeTypes.CULTIVATOR_RECIPE;
+	protected final RecipeType<CultivatorRecipe> recipeType = LostWorldsRecipeTypes.CULTIVATOR_RECIPE.get();
 
 	private Component name;
 

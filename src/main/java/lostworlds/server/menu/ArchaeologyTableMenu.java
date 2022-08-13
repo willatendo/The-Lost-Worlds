@@ -60,7 +60,7 @@ public class ArchaeologyTableMenu extends AbstractContainerMenu {
 		if (!world.isClientSide) {
 			ServerPlayer serverPlayer = (ServerPlayer) player;
 			ItemStack itemstack = ItemStack.EMPTY;
-			Optional<ArchaeologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(LostWorldsRecipeTypes.ARCHAEOLOGY_TABLE_RECIPE, inv, world);
+			Optional<ArchaeologyTableRecipe> optional = world.getServer().getRecipeManager().getRecipeFor(LostWorldsRecipeTypes.ARCHAEOLOGY_TABLE_RECIPE.get(), inv, world);
 			if (optional.isPresent()) {
 				ArchaeologyTableRecipe recipe = optional.get();
 				if (result.setRecipeUsed(world, serverPlayer, recipe)) {

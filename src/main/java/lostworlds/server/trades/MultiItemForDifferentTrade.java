@@ -10,14 +10,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 
-public class MultiItemForEmeraldsTrade implements ItemListing {
+public class MultiItemForDifferentTrade implements ItemListing {
 	private final List<Item> itemsForSale;
-	private final int amountSold;
-	private final int cost;
+	private final List<Integer> amountSold;
+	private final List<Integer> cost;
 	private final int tradeUses;
 	private final int villagerXp;
 
-	public MultiItemForEmeraldsTrade(List<Item> itemsForSale, int amountSold, int cost, int tradeUses, int villagerXp) {
+	public MultiItemForDifferentTrade(List<Item> itemsForSale, List<Integer> amountSold, List<Integer> cost, int tradeUses, int villagerXp) {
 		this.itemsForSale = itemsForSale;
 		this.amountSold = amountSold;
 		this.cost = cost;
@@ -28,6 +28,6 @@ public class MultiItemForEmeraldsTrade implements ItemListing {
 	@Override
 	public MerchantOffer getOffer(Entity entity, Random rand) {
 		int choose = (int) (rand.nextFloat() * itemsForSale.size());
-		return new MerchantOffer(new ItemStack(Items.EMERALD, this.cost), new ItemStack(this.itemsForSale.get(choose), this.amountSold), this.tradeUses, this.villagerXp, 0.05F);
+		return new MerchantOffer(new ItemStack(Items.EMERALD, this.cost.get(choose)), new ItemStack(this.itemsForSale.get(choose), this.amountSold.get(choose)), this.tradeUses, this.villagerXp, 0.05F);
 	}
 }

@@ -80,7 +80,7 @@ public class DNAInjectorRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipeTypes.DNA_INJECTOR_RECIPE;
+		return LostWorldsRecipeTypes.DNA_INJECTOR_RECIPE.get();
 	}
 
 	@Override

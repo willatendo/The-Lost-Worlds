@@ -65,7 +65,7 @@ public class ArchaeologyTableResultSlot extends Slot {
 	public void onTake(Player player, ItemStack stack) {
 		this.checkTakeAchievements(stack);
 		ForgeHooks.setCraftingPlayer(player);
-		NonNullList<ItemStack> nonnulllist = player.level.getRecipeManager().getRemainingItemsFor(LostWorldsRecipeTypes.ARCHAEOLOGY_TABLE_RECIPE, this.craftSlots, player.level);
+		NonNullList<ItemStack> nonnulllist = player.level.getRecipeManager().getRemainingItemsFor(LostWorldsRecipeTypes.ARCHAEOLOGY_TABLE_RECIPE.get(), this.craftSlots, player.level);
 		ForgeHooks.setCraftingPlayer(null);
 		for (int i = 0; i < nonnulllist.size(); ++i) {
 			ItemStack itemstack = this.craftSlots.getItem(i);

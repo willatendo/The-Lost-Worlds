@@ -275,6 +275,6 @@ public class ArchaeologyTableRecipe implements Recipe<ArchaeologyTableInventory>
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipeTypes.ARCHAEOLOGY_TABLE_RECIPE;
+		return LostWorldsRecipeTypes.ARCHAEOLOGY_TABLE_RECIPE.get();
 	}
 }

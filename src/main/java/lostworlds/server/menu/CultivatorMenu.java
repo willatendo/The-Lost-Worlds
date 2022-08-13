@@ -24,7 +24,7 @@ public class CultivatorMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;
 	private final ContainerData data;
 	private final Level level;
-	private final RecipeType<CultivatorRecipe> recipeType = LostWorldsRecipeTypes.CULTIVATOR_RECIPE;
+	private final RecipeType<CultivatorRecipe> recipeType = LostWorldsRecipeTypes.CULTIVATOR_RECIPE.get();
 
 	public CultivatorMenu(MenuType<? extends CultivatorMenu> containerType, int windowID, Inventory inventory, CultivatorBlockEntity blockEntity) {
 		super(containerType, windowID);

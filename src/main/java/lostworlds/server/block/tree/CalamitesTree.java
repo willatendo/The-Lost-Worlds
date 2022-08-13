@@ -13,6 +13,6 @@ public class CalamitesTree extends AbstractTreeGrower {
 	@Nullable
 	@Override
 	public Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random rand, boolean big) {
-		return TreeFeatures.CALAMITES_TREE;
+		return Holder.direct(TreeFeatures.CALAMITES_TREE.get());
 	}
 }

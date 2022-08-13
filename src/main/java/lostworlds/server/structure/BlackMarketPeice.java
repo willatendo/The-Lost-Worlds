@@ -39,11 +39,11 @@ public class BlackMarketPeice {
 
 	public static class Piece extends TemplateStructurePiece {
 		public Piece(StructureManager manager, ResourceLocation templateLocation, BlockPos pos, Rotation rotation) {
-			super(LostWorldsStructurePecies.BLACK_MARKET_PIECE, 0, manager, templateLocation, templateLocation.toString(), makeSettings(rotation), pos);
+			super(LostWorldsStructurePecies.BLACK_MARKET_PIECE.get(), 0, manager, templateLocation, templateLocation.toString(), makeSettings(rotation), pos);
 		}
 
 		public Piece(StructureManager manager, CompoundTag tag) {
-			super(LostWorldsStructurePecies.BLACK_MARKET_PIECE, tag, manager, (template) -> {
+			super(LostWorldsStructurePecies.BLACK_MARKET_PIECE.get(), tag, manager, (template) -> {
 				return makeSettings(Rotation.valueOf(tag.getString("Rot")));
 			});
 		}

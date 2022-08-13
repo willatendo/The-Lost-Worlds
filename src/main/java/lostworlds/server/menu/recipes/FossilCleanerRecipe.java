@@ -74,7 +74,7 @@ public class FossilCleanerRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipeTypes.FOSSIL_CLEANER_RECIPE;
+		return LostWorldsRecipeTypes.FOSSIL_CLEANER_RECIPE.get();
 	}
 
 	@Override

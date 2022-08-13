@@ -31,6 +31,6 @@ public class AnalyzerRecipeManager implements IRecipeManager {
 
 	@Override
 	public RecipeType getRecipeType() {
-		return LostWorldsRecipeTypes.ANALYZER_RECIPE;
+		return LostWorldsRecipeTypes.ANALYZER_RECIPE.get();
 	}
 }

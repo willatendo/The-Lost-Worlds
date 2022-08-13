@@ -157,7 +157,7 @@ public class TimeMachineMenu extends AbstractContainerMenu {
 		this.selectedRecipeIndex.set(-1);
 		this.resultSlot.set(ItemStack.EMPTY);
 		if (!inv.isEmpty()) {
-			this.recipes = this.level.getRecipeManager().getRecipesFor(LostWorldsRecipeTypes.TIME_MACHINE_RECIPE, inv, this.level);
+			this.recipes = this.level.getRecipeManager().getRecipesFor(LostWorldsRecipeTypes.TIME_MACHINE_RECIPE.get(), inv, this.level);
 		}
 	}
 

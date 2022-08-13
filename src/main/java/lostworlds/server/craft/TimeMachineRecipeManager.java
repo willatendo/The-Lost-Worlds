@@ -31,6 +31,6 @@ public class TimeMachineRecipeManager implements IRecipeManager {
 
 	@Override
 	public RecipeType getRecipeType() {
-		return LostWorldsRecipeTypes.FOSSIL_CLEANER_RECIPE;
+		return LostWorldsRecipeTypes.FOSSIL_CLEANER_RECIPE.get();
 	}
 }

@@ -105,7 +105,7 @@ public class FossilGrinderRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipeTypes.FOSSIL_GRINDER_RECIPE;
+		return LostWorldsRecipeTypes.FOSSIL_GRINDER_RECIPE.get();
 	}
 
 	@Override

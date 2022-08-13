@@ -2,16 +2,12 @@ package lostworlds.server.biome;
 
 import static lostworlds.LostWorldsMod.getRegistrate;
 
-import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.util.registrate.BiomeEntry;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsBiomes {
 	private static final LostWorldsRegistrate REGISTRATE = getRegistrate();
-	public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.Keys.BIOMES, LostWorldsUtils.ID);
 
 	// Permian
 	public static final BiomeEntry<Biome> PERMIAN_CONIFER_FOREST = REGISTRATE.biome("permian_conifer_forest", b -> b.build()).properties(biomeBuilder -> builder -> PermianBiomes.permianConiferForest()).register();
@@ -155,4 +151,7 @@ public class LostWorldsBiomes {
 	public static final BiomeEntry<Biome> REDWOODS_FOREST = REGISTRATE.biome("redwoods_forest", b -> b.build()).properties(biomeBuilder -> builder -> OverworldBiomes.redwoodsForest()).register();
 
 	public static final BiomeEntry<Biome> VOLCANO = REGISTRATE.biome("volcano", b -> b.build()).properties(biomeBuilder -> builder -> OverworldBiomes.volcano()).register();
+
+	public static void registrate() {
+	}
 }

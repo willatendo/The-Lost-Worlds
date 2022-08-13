@@ -26,7 +26,7 @@ public class TimeMachineRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipeTypes.TIME_MACHINE_RECIPE;
+		return LostWorldsRecipeTypes.TIME_MACHINE_RECIPE.get();
 	}
 
 	@Override

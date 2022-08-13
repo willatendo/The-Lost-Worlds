@@ -38,11 +38,11 @@ public class TraceFossilPeice {
 
 	public static class Piece extends TemplateStructurePiece {
 		public Piece(StructureManager manager, ResourceLocation templateLocation, BlockPos pos, Rotation rotation) {
-			super(LostWorldsStructurePecies.TRACE_FOSSIL_PIECE, 0, manager, templateLocation, templateLocation.toString(), makeSettings(rotation), pos);
+			super(LostWorldsStructurePecies.TRACE_FOSSIL_PIECE.get(), 0, manager, templateLocation, templateLocation.toString(), makeSettings(rotation), pos);
 		}
 
 		public Piece(StructureManager manager, CompoundTag tag) {
-			super(LostWorldsStructurePecies.TRACE_FOSSIL_PIECE, tag, manager, (template) -> {
+			super(LostWorldsStructurePecies.TRACE_FOSSIL_PIECE.get(), tag, manager, (template) -> {
 				return makeSettings(Rotation.valueOf(tag.getString("Rot")));
 			});
 		}

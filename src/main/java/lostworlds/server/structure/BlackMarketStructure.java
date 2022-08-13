@@ -28,5 +28,6 @@ public class BlackMarketStructure extends StructureFeature<NoneFeatureConfigurat
 		pos = pos.above(topLandY);
 		Rotation rotation = Rotation.getRandom(context.random());
 		BlackMarketPeice.addStructure(context.structureManager(), pos, rotation, builder, context.random());
+		
 	}
 }

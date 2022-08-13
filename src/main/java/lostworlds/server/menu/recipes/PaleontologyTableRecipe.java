@@ -275,6 +275,6 @@ public class PaleontologyTableRecipe implements Recipe<PaleontologyTableInventor
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipeTypes.PALEONTOLOGY_TABLE_RECIPE;
+		return LostWorldsRecipeTypes.PALEONTOLOGY_TABLE_RECIPE.get();
 	}
 }

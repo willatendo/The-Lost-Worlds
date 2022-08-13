@@ -95,7 +95,7 @@ public class DNAInjectorBlockEntity extends BlockEntity implements Container, Me
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final RecipeType<DNAInjectorRecipe> recipeType = LostWorldsRecipeTypes.DNA_INJECTOR_RECIPE;
+	protected final RecipeType<DNAInjectorRecipe> recipeType = LostWorldsRecipeTypes.DNA_INJECTOR_RECIPE.get();
 
 	@SuppressWarnings("unused")
 	private Component name;

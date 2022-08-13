@@ -74,7 +74,7 @@ public class CultivatorRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return LostWorldsRecipeTypes.CULTIVATOR_RECIPE;
+		return LostWorldsRecipeTypes.CULTIVATOR_RECIPE.get();
 	}
 
 	@Override

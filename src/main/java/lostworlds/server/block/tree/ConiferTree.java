@@ -13,6 +13,6 @@ public class ConiferTree extends AbstractTreeGrower {
 	@Nullable
 	@Override
 	public Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random rand, boolean big) {
-		return TreeFeatures.CONIFER_TREE;
+		return Holder.direct(TreeFeatures.CONIFER_TREE.get());
 	}
 }

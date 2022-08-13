@@ -102,7 +102,7 @@ public class FossilCleanerBlockEntity extends BlockEntity implements Container, 
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	protected final RecipeType<FossilCleanerRecipe> recipeType = LostWorldsRecipeTypes.FOSSIL_CLEANER_RECIPE;
+	protected final RecipeType<FossilCleanerRecipe> recipeType = LostWorldsRecipeTypes.FOSSIL_CLEANER_RECIPE.get();
 
 	private Component name;
 

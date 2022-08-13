@@ -10,9 +10,7 @@ import lostworlds.server.menu.recipes.serialiser.FossilCleanerRecipeSerialiser;
 import lostworlds.server.menu.recipes.serialiser.FossilGrinderRecipeSerialiser;
 import lostworlds.server.menu.recipes.serialiser.PaleontologyTableRecipeSerialiser;
 import lostworlds.server.menu.recipes.serialiser.TimeMachineRecipeSerialiser;
-import net.minecraft.core.Registry;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -39,8 +37,4 @@ public class LostWorldsRecipeSerializers {
 	public static final RegistryObject<RecipeSerializer<ArchaeologyTableRecipe>> ARCHAEOLOGY_TABLE_SERIALIZER = RECIPE_SERIALIZERS.register("archaeology_table", () -> ARCHAEOLOGY_TABLE_RECIPE_SERIALIZER);
 	public static final RegistryObject<RecipeSerializer<PaleontologyTableRecipe>> PALEONTOLOGY_TABLE_SERIALIZER = RECIPE_SERIALIZERS.register("paleontology_table", () -> PALEONTOLOGY_TABLE_RECIPE_SERIALIZER);
 	public static final RegistryObject<RecipeSerializer<TimeMachineRecipe>> TIME_MACHINE_SERIALIZER = RECIPE_SERIALIZERS.register("time_machine", () -> TIME_MACHINE_RECIPE_SERIALIZER);
-
-	public static <T extends RecipeType> T register(String id) {
-		return (T) Registry.register(Registry.RECIPE_TYPE, LostWorldsUtils.rL(id), new ModRecipeType<>());
-	}
 }

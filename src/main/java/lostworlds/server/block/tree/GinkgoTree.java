@@ -10,6 +10,6 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 public class GinkgoTree extends AbstractTreeGrower {
 	@Override
 	protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random rand, boolean big) {
-		return TreeFeatures.GINKGO_TREE;
+		return Holder.direct(TreeFeatures.GINKGO_TREE.get());
 	}
 }

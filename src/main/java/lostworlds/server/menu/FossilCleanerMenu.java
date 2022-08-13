@@ -28,7 +28,7 @@ public class FossilCleanerMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;
 	private final ContainerData data;
 	private final Level level;
-	private final RecipeType<FossilCleanerRecipe> recipeType = LostWorldsRecipeTypes.FOSSIL_CLEANER_RECIPE;
+	private final RecipeType<FossilCleanerRecipe> recipeType = LostWorldsRecipeTypes.FOSSIL_CLEANER_RECIPE.get();
 
 	public FossilCleanerMenu(MenuType<? extends FossilCleanerMenu> containerType, int windowID, Inventory inventory, FossilCleanerBlockEntity blockEntity) {
 		super(containerType, windowID);

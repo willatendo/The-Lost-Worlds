@@ -26,7 +26,7 @@ public class AnalyzerMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;
 	private final ContainerData data;
 	private final Level level;
-	private final RecipeType<AnalyzerRecipe> recipeType = LostWorldsRecipeTypes.ANALYZER_RECIPE;
+	private final RecipeType<AnalyzerRecipe> recipeType = LostWorldsRecipeTypes.ANALYZER_RECIPE.get();
 
 	public AnalyzerMenu(MenuType<? extends AnalyzerMenu> type, int windowID, Inventory inventory, AnalyzerBlockEntity blockEntity) {
 		super(type, windowID);
