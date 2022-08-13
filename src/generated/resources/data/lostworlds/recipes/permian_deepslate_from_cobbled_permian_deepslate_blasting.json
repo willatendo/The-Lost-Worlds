@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "lostworlds:cobbled_permian_deepslate"
+  },
+  "result": "lostworlds:permian_deepslate",
+  "experience": 0.3,
+  "cookingtime": 100
+}

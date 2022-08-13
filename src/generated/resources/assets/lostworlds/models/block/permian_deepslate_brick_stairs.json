@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "lostworlds:block/permian_deepslate_bricks",
+    "bottom": "lostworlds:block/permian_deepslate_bricks",
+    "top": "lostworlds:block/permian_deepslate_bricks"
+  }
+}

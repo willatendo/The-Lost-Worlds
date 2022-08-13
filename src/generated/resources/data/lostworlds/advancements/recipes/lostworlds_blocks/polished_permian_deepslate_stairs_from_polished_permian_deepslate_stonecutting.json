@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:polished_permian_deepslate_stairs_from_polished_permian_deepslate_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_polished_permian_deepslate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lostworlds:polished_permian_deepslate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:polished_permian_deepslate_stairs_from_polished_permian_deepslate_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_polished_permian_deepslate",
+      "has_the_recipe"
+    ]
+  ]
+}

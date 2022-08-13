@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "lostworlds:cobbled_permian_deepslate"
+    }
+  },
+  "result": {
+    "item": "lostworlds:polished_permian_deepslate",
+    "count": 4
+  }
+}

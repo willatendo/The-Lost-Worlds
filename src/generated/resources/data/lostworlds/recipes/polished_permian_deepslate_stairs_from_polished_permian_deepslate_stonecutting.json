@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lostworlds:polished_permian_deepslate"
+  },
+  "result": "lostworlds:polished_permian_deepslate_stairs",
+  "count": 1
+}

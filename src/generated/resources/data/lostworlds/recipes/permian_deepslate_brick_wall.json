@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "lostworlds:permian_deepslate_bricks"
+    }
+  },
+  "result": {
+    "item": "lostworlds:permian_deepslate_brick_wall",
+    "count": 6
+  }
+}

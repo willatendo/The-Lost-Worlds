@@ -61,6 +61,6 @@ public abstract class DimensionProvider implements DataProvider {
 
 	@Override
 	public String getName() {
-		return "Dimension Types / Noise Settings / Dimensions";
+		return "Dimension Types / Dimensions";
 	}
 }

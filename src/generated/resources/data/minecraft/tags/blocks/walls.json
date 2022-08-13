@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
+    "lostworlds:cobbled_permian_deepslate_wall",
+    "lostworlds:polished_permian_deepslate_wall",
+    "lostworlds:permian_deepslate_brick_wall",
     "lostworlds:permian_cobblestone_wall",
     "lostworlds:permian_stone_brick_wall",
     "lostworlds:jurassic_cobblestone_wall",
