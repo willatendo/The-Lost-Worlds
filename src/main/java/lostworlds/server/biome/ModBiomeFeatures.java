@@ -585,7 +585,7 @@ public class ModBiomeFeatures {
 	}
 
 	public static void ginkgoForest(BiomeGenerationSettings.Builder builder) {
-		addOakAndBirch(builder);
+//		addOakAndBirch(builder);
 		addGinkgoTrees(builder);
 		globalOverworldGeneration(builder);
 
@@ -794,10 +794,6 @@ public class ModBiomeFeatures {
 
 	private static void addGinkgoTrees(BiomeGenerationSettings.Builder builder) {
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.FULL_GINKGO_TREES.getHolder().get());
-	}
-
-	private static void addOakAndBirch(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_BIRCH_AND_OAK);
 	}
 
 	public static void addSequoiaTrees(BiomeGenerationSettings.Builder builder) {

@@ -3,6 +3,7 @@ package lostworlds.client.event;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.util.Version;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
@@ -28,5 +29,9 @@ public class PlayerLoggedInEvents {
 		// Message
 		Player player = event.getPlayer();
 		player.sendMessage(Version.getMessage(LostWorldsUtils.VERSION_PARSER, Version.toStringVersion(LostWorldsUtils.VERSION)), player.getUUID());
+
+		if (!LostWorldsUtils.modLoaded("terrablender")) {
+			player.sendMessage(LostWorldsUtils.cTC("event", "best_with_terrablender", ChatFormatting.DARK_RED, ChatFormatting.BOLD), player.getUUID());
+		}
 	}
 }

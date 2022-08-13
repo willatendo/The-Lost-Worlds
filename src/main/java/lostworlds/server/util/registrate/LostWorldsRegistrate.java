@@ -234,6 +234,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		this.addRawLang("event.lostworlds.load_snapshot_build", "You are running an %s snapshot. Do not redistribute and report any and all bugs.");
 		this.addRawLang("event.lostworlds.load_youtube_build", "Thank you for playing with the mod! I greatly appreciate the distrabution of the mod. You are running Youtube Version %s.");
 		this.addRawLang("event.lostworlds.load", "Thank you for downloading the mod! You are running Public %s.");
+		this.addRawLang("event.lostworlds.best_with_terrablender", "This mod works best with Terrablender; though not required, if you want the overworld biomes to spawn in the world, you'll need it.");
 
 		this.addRawLang("timeBook.lostworlds.doesnt_work", "Time doesn't exist in this dimension!");
 		this.addRawLang("timeBook.lostworlds.transport_to_overworld", "Transporting %s back home!");

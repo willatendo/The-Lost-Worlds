@@ -20,7 +20,6 @@ import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.Plants;
 import lostworlds.server.block.Trees;
 import lostworlds.server.dimension.LostWorldsNoise;
-import lostworlds.server.dimension.LostWorldsNoiseGeneratorSettings;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.LostWorldsVillagerProfessions;
 import lostworlds.server.entity.utils.enums.AncientCreatures;
@@ -250,8 +249,6 @@ public class CommonSetup {
 
 			LostWorldsConfiguredFeatures.init();
 			LostWorldsPlacedFeatures.init();
-
-			LostWorldsNoiseGeneratorSettings.init();
 
 			LostWorldsNoise.init();
 		});
