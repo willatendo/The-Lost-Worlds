@@ -1,6 +1,5 @@
 package lostworlds.data.custom;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import net.minecraft.tags.TagKey;
@@ -26,29 +25,5 @@ public record DimensionBuilder(String id, boolean ultrawarm, boolean natural, fl
 		dimensionTypeJson.addProperty("infiniburn", "#" + this.infiniburn.location().toString());
 		dimensionTypeJson.addProperty("effects", this.effects);
 		return dimensionTypeJson;
-	}
-
-	public JsonObject serializeDimension(String modid) {
-		JsonObject dimensionJson = new JsonObject();
-		dimensionJson.addProperty("type", modid + ":" + this.id);
-		dimensionJson.addProperty("forge:use_server_seed", true);
-		JsonObject generator = new JsonObject();
-		dimensionJson.add("generator", generator);
-		generator.addProperty("type", "minecraft:noise");
-		generator.addProperty("seed", 0);
-		generator.addProperty("settings", modid + ":" + this.id + "_noise");
-		JsonObject biomeSource = new JsonObject();
-		generator.add("biome_source", biomeSource);
-		biomeSource.addProperty("type", "minecraft:multi_noise");
-		if (this.dimensionBiomes[0] instanceof AddPreset preset) {
-			biomeSource.addProperty("preset", preset.preset().name.toString());
-		} else {
-			JsonArray biomes = new JsonArray();
-			biomeSource.add("biomes", biomes);
-			for (BiomeSource biome : this.dimensionBiomes) {
-				biomes.add(biome.writeBiome());
-			}
-		}
-		return dimensionJson;
 	}
 }

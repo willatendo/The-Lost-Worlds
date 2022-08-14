@@ -29,20 +29,21 @@ public class RegistryCodecsMixin<E> {
 	@Inject(method = "decode", at = @At(value = "INVOKE", target = "Lnet/minecraft/resources/RegistryOps;registryLoader()Ljava/util/Optional;"), locals = LocalCapture.CAPTURE_FAILHARD)
 	private <T> void decode(DynamicOps<T> ops, T input, CallbackInfoReturnable<DataResult<Pair<Registry<E>, T>>> ci, DataResult<Pair<WritableRegistry<E>, T>> decodedRegistry, RegistryOps<T> registryOps) {
 		decodedRegistry.result().map(Pair::getFirst).ifPresent(registry -> {
-			final ResourceKey<?> registryKey = registry.key();
+			ResourceKey<?> registryKey = registry.key();
 			if (registryKey == Registry.LEVEL_STEM_REGISTRY && registry.get(LostWorldsUtils.rL("permian")) == null) {
-				addDimensions(LostWorldsDimensions.PERMIAN_DIMENSION_TYPE, LostWorldsDimensions.PERMIAN_DIMENSION, LostWorldsNoiseGeneratorSettings.PERMIAN_KEY, registryOps, (WritableRegistry<LevelStem>) registry);
+				this.addDimensions(LostWorldsDimensions.PERMIAN_DIMENSION_TYPE, LostWorldsDimensions.PERMIAN_DIMENSION, LostWorldsNoiseGeneratorSettings.PERMIAN_KEY, registryOps, (WritableRegistry<LevelStem>) registry);
 			}
 			if (registryKey == Registry.LEVEL_STEM_REGISTRY && registry.get(LostWorldsUtils.rL("jurassic")) == null) {
-				addDimensions(LostWorldsDimensions.JURASSIC_DIMENSION_TYPE, LostWorldsDimensions.JURASSIC_DIMENSION, LostWorldsNoiseGeneratorSettings.JURASSIC_KEY, registryOps, (WritableRegistry<LevelStem>) registry);
+				this.addDimensions(LostWorldsDimensions.JURASSIC_DIMENSION_TYPE, LostWorldsDimensions.JURASSIC_DIMENSION, LostWorldsNoiseGeneratorSettings.JURASSIC_KEY, registryOps, (WritableRegistry<LevelStem>) registry);
 			}
 			if (registryKey == Registry.LEVEL_STEM_REGISTRY && registry.get(LostWorldsUtils.rL("cretaceous")) == null) {
-				addDimensions(LostWorldsDimensions.CRETACEOUS_DIMENSION_TYPE, LostWorldsDimensions.CRETACEOUS_DIMENSION, LostWorldsNoiseGeneratorSettings.CRETACEOUS_KEY, registryOps, (WritableRegistry<LevelStem>) registry);
+				this.addDimensions(LostWorldsDimensions.CRETACEOUS_DIMENSION_TYPE, LostWorldsDimensions.CRETACEOUS_DIMENSION, LostWorldsNoiseGeneratorSettings.CRETACEOUS_KEY, registryOps, (WritableRegistry<LevelStem>) registry);
 			}
 		});
 	}
 
 	private void addDimensions(ResourceKey<DimensionType> dimensionType, ResourceKey<LevelStem> dimension, ResourceKey<NoiseGeneratorSettings> noiseGeneratorSettings, RegistryOps<?> ops, WritableRegistry<LevelStem> registry) {
+		System.out.print("GenDim");
 		LevelStem overworld = registry.get(LevelStem.OVERWORLD);
 		if (overworld == null) {
 			return;

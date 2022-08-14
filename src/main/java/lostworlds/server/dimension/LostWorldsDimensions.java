@@ -39,4 +39,7 @@ public class LostWorldsDimensions {
 
 		return new LevelStem(dimensionTypeRegistry.getHolderOrThrow(dimensionType), generator);
 	}
+
+	public static void init() {
+	}
 }

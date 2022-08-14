@@ -266,8 +266,8 @@ public class ModBiomeFeatures {
 		addFernGroundClutter(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SCANT_CONIFER_TREES.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_BABY_SEQUOIA_TREES.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_SEQUOIA_TREES.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.FULL_BABY_SEQUOIA_TREES.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.FULL_SEQUOIA_TREES.getHolder().get());
 	}
 
 	public static void jurassicMarsh(BiomeGenerationSettings.Builder builder) {
@@ -382,8 +382,8 @@ public class ModBiomeFeatures {
 		addFernGroundClutter(builder);
 
 		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SCANT_CONIFER_TREES.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_BABY_SEQUOIA_TREES.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_SEQUOIA_TREES.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.FULL_BABY_SEQUOIA_TREES.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.FULL_SEQUOIA_TREES.getHolder().get());
 	}
 
 	public static void cretaceousGameTrail(BiomeGenerationSettings.Builder builder) {
@@ -797,8 +797,8 @@ public class ModBiomeFeatures {
 	}
 
 	public static void addSequoiaTrees(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_BABY_SEQUOIA_TREES.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.SPARSE_SEQUOIA_TREES.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.FULL_BABY_SEQUOIA_TREES.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedTreePatchFeatures.FULL_SEQUOIA_TREES.getHolder().get());
 	}
 
 	private static void addScorchedTrees(BiomeGenerationSettings.Builder builder) {

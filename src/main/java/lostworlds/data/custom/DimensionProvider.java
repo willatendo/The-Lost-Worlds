@@ -30,8 +30,6 @@ public abstract class DimensionProvider implements DataProvider {
 	public void run(HashCache cache) throws IOException {
 		Path path = this.generator.getOutputFolder();
 		this.makeDimensions((dimensionBuilder) -> {
-			// dimension.json
-			this.saveToJson(cache, dimensionBuilder.serializeDimension(this.modid), path.resolve("data/" + this.modid + "/dimension/" + dimensionBuilder.id() + ".json"));
 			// dimension_type.json
 			this.saveToJson(cache, dimensionBuilder.serializeDimensionType(this.modid), path.resolve("data/" + this.modid + "/dimension_type/" + dimensionBuilder.id() + ".json"));
 		});

@@ -19,6 +19,7 @@ import lostworlds.server.biome.features.placed.LostWorldsPlacedFeatures;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.Plants;
 import lostworlds.server.block.Trees;
+import lostworlds.server.dimension.LostWorldsDimensions;
 import lostworlds.server.dimension.LostWorldsNoise;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.LostWorldsVillagerProfessions;
@@ -246,6 +247,8 @@ public class CommonSetup {
 			if (LostWorldsUtils.modLoaded("terrablender")) {
 				LostWorldsTerrablender.init();
 			}
+
+			LostWorldsDimensions.init();
 
 			LostWorldsConfiguredFeatures.init();
 			LostWorldsPlacedFeatures.init();
