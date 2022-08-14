@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "has_permian_stone_bricks": {
+    "has_jurassic_stone_bricks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "lostworlds:permian_stone_bricks"
+              "lostworlds:jurassic_stone_bricks"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_permian_stone_bricks",
+      "has_jurassic_stone_bricks",
       "has_the_recipe"
     ]
   ]

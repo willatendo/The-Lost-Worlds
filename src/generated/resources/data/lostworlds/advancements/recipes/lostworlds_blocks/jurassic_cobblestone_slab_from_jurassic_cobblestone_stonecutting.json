@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "lostworlds:jurassic_cobblestone_slab_from_permian_cobblestone_stonecutting"
+      "lostworlds:jurassic_cobblestone_slab_from_jurassic_cobblestone_stonecutting"
     ]
   },
   "criteria": {
-    "has_permian_cobblestone": {
+    "has_jurassic_cobblestone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "lostworlds:permian_cobblestone"
+              "lostworlds:jurassic_cobblestone"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "lostworlds:jurassic_cobblestone_slab_from_permian_cobblestone_stonecutting"
+        "recipe": "lostworlds:jurassic_cobblestone_slab_from_jurassic_cobblestone_stonecutting"
       }
     }
   },
   "requirements": [
     [
-      "has_permian_cobblestone",
+      "has_jurassic_cobblestone",
       "has_the_recipe"
     ]
   ]

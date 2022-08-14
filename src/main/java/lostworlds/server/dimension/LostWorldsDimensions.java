@@ -1,7 +1,11 @@
 package lostworlds.server.dimension;
 
+import java.util.Set;
 import java.util.function.Supplier;
 
+import com.google.common.collect.ImmutableSet;
+
+import lostworlds.mixin.LevelStemAccessor;
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
@@ -38,6 +42,11 @@ public class LostWorldsDimensions {
 		ChunkGenerator generator = new NoiseBasedChunkGenerator(structureSetRegistry, noiseParametersRegistry, biomeSource, seed, dimensionSettingsRegistry.getHolderOrThrow(dimensionSettingsRegistry.getResourceKey(dimensionSettings.get()).get()));
 
 		return new LevelStem(dimensionTypeRegistry.getHolderOrThrow(dimensionType), generator);
+	}
+
+	public static void addDefaultDimensionKey() {
+		Set<ResourceKey<LevelStem>> order = ImmutableSet.<ResourceKey<LevelStem>>builder().addAll(LevelStemAccessor.getBuiltinOrder()).add(CRETACEOUS_DIMENSION).add(JURASSIC_DIMENSION).add(PERMIAN_DIMENSION).build();
+		LevelStemAccessor.setBuiltinOrder(order);
 	}
 
 	public static void init() {

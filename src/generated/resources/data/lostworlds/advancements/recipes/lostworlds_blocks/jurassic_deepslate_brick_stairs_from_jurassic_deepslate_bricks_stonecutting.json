@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "lostworlds:jurassic_stone_brick_stairs_from_permian_stone_bricks_stonecutting"
+      "lostworlds:jurassic_deepslate_brick_stairs_from_jurassic_deepslate_bricks_stonecutting"
     ]
   },
   "criteria": {
-    "has_permian_stone_bricks": {
+    "has_jurassic_deepslate_bricks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "lostworlds:permian_stone_bricks"
+              "lostworlds:jurassic_deepslate_bricks"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "lostworlds:jurassic_stone_brick_stairs_from_permian_stone_bricks_stonecutting"
+        "recipe": "lostworlds:jurassic_deepslate_brick_stairs_from_jurassic_deepslate_bricks_stonecutting"
       }
     }
   },
   "requirements": [
     [
-      "has_permian_stone_bricks",
+      "has_jurassic_deepslate_bricks",
       "has_the_recipe"
     ]
   ]

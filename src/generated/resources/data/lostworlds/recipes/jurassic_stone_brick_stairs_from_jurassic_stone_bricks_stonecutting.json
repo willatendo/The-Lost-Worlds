@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "lostworlds:permian_stone_bricks"
+    "item": "lostworlds:jurassic_stone_bricks"
   },
   "result": "lostworlds:jurassic_stone_brick_stairs",
   "count": 1

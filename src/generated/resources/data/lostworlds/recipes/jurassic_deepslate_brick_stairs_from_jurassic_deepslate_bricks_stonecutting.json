@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lostworlds:jurassic_deepslate_bricks"
+  },
+  "result": "lostworlds:jurassic_deepslate_brick_stairs",
+  "count": 1
+}

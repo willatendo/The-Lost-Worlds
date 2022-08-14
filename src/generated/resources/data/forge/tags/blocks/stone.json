@@ -15,6 +15,19 @@
     "lostworlds:permian_deepslate_brick_stairs",
     "lostworlds:permian_deepslate_brick_slab",
     "lostworlds:permian_deepslate_brick_wall",
-    "lostworlds:jurassic_stone"
+    "lostworlds:jurassic_stone",
+    "lostworlds:jurassic_deepslate",
+    "lostworlds:cobbled_jurassic_deepslate",
+    "lostworlds:cobbled_jurassic_deepslate_stairs",
+    "lostworlds:cobbled_jurassic_deepslate_slab",
+    "lostworlds:cobbled_jurassic_deepslate_wall",
+    "lostworlds:polished_jurassic_deepslate",
+    "lostworlds:polished_jurassic_deepslate_stairs",
+    "lostworlds:polished_jurassic_deepslate_slab",
+    "lostworlds:polished_jurassic_deepslate_wall",
+    "lostworlds:jurassic_deepslate_bricks",
+    "lostworlds:jurassic_deepslate_brick_stairs",
+    "lostworlds:jurassic_deepslate_brick_slab",
+    "lostworlds:jurassic_deepslate_brick_wall"
   ]
 }

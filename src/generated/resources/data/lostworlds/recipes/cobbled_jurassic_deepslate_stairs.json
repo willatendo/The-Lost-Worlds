@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "lostworlds:cobbled_jurassic_deepslate"
+    }
+  },
+  "result": {
+    "item": "lostworlds:cobbled_jurassic_deepslate_stairs",
+    "count": 4
+  }
+}

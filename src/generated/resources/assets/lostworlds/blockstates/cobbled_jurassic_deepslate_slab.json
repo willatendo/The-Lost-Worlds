@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "lostworlds:block/cobbled_jurassic_deepslate_slab_top"
+    },
+    "type=bottom": {
+      "model": "lostworlds:block/cobbled_jurassic_deepslate_slab"
+    },
+    "type=double": {
+      "model": "lostworlds:block/cobbled_jurassic_deepslate"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostworlds:block/jurassic_deepslate_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostworlds:block/jurassic_deepslate"
+    },
+    "axis=z": {
+      "model": "lostworlds:block/jurassic_deepslate_horizontal",
+      "x": 90
+    }
+  }
+}
