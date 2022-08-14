@@ -35,6 +35,8 @@ public class OreFeatures {
 	public static final RuleTest PERMIAN_STONE_ORE_REPLACEABLES = new TagMatchTest(LostWorldsTags.ModBlockTags.PERMIAN_STONE_ORE_REPLACEABLES.tag);
 	public static final RuleTest PERMIAN_DEEPSLATE_ORE_REPLACEABLES = new TagMatchTest(LostWorldsTags.ModBlockTags.PERMIAN_DEEPSLATE_ORE_REPLACEABLES.tag);
 	public static final RuleTest JURASSIC_STONE = new TagMatchTest(LostWorldsTags.ModBlockTags.BASE_STONE_JURASSIC.tag);
+	public static final RuleTest JURASSIC_STONE_ORE_REPLACEABLES = new TagMatchTest(LostWorldsTags.ModBlockTags.JURASSIC_STONE_ORE_REPLACEABLES.tag);
+	public static final RuleTest JURASSIC_DEEPSLATE_ORE_REPLACEABLES = new TagMatchTest(LostWorldsTags.ModBlockTags.JURASSIC_DEEPSLATE_ORE_REPLACEABLES.tag);
 
 	// Overworld
 	public static final RegistryObject<ConfiguredFeature<?, ?>> SILT_PATCH = register("silt_patch", Feature.ORE, new OreConfiguration(STONE, LostWorldsBlocks.SILT.getDefaultState(), LostWorldsConfig.COMMON_CONFIG.siltVeinSize.get()));
@@ -99,14 +101,30 @@ public class OreFeatures {
 
 	// Jurassic
 	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_MAGMA_ORE = register("jurassic_magma_ore", Feature.ORE, new OreConfiguration(JURASSIC_STONE, Blocks.MAGMA_BLOCK.defaultBlockState(), 33));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_COAL_ORE = register("jurassic_coal_ore", Feature.ORE, new OreConfiguration(JURASSIC_STONE, LostWorldsBlocks.JURASSIC_COAL_ORE.getDefaultState(), 17));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_IRON_ORE = register("jurassic_iron_ore", Feature.ORE, new OreConfiguration(JURASSIC_STONE, LostWorldsBlocks.JURASSIC_IRON_ORE.getDefaultState(), 9));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_GOLD_ORE = register("jurassic_gold_ore", Feature.ORE, new OreConfiguration(JURASSIC_STONE, LostWorldsBlocks.JURASSIC_GOLD_ORE.getDefaultState(), 9));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_REDSTONE_ORE = register("jurassic_redstone_ore", Feature.ORE, new OreConfiguration(JURASSIC_STONE, LostWorldsBlocks.JURASSIC_REDSTONE_ORE.getDefaultState(), 8));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_DIAMOND_ORE = register("jurassic_diamond_ore", Feature.ORE, new OreConfiguration(JURASSIC_STONE, LostWorldsBlocks.JURASSIC_DIAMOND_ORE.getDefaultState(), 8));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_LAPIS_ORE = register("jurassic_lapis_ore", Feature.ORE, new OreConfiguration(JURASSIC_STONE, LostWorldsBlocks.JURASSIC_LAPIS_ORE.getDefaultState(), 7));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_EMERALD_ORE = register("jurassic_emerald_ore", Feature.ORE, new OreConfiguration(JURASSIC_STONE, LostWorldsBlocks.JURASSIC_EMERALD_ORE.getDefaultState(), 1));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_COPPER_ORE = register("jurassic_copper_ore", Feature.ORE, new OreConfiguration(JURASSIC_STONE, LostWorldsBlocks.JURASSIC_COPPER_ORE.getDefaultState(), 10));
+
+	public static final List<OreConfiguration.TargetBlockState> JURASSIC_COAL_ORE_TARGET_LIST = List.of(OreConfiguration.target(JURASSIC_STONE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_COAL_ORE.getDefaultState()), OreConfiguration.target(JURASSIC_DEEPSLATE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_DEEPSLATE_COAL_ORE.getDefaultState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_COAL_ORE = register("jurassic_coal_ore", Feature.ORE, new OreConfiguration(JURASSIC_COAL_ORE_TARGET_LIST, 17));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_COAL_ORE_BURIED = register("jurassic_coal_ore_buried", Feature.ORE, new OreConfiguration(JURASSIC_COAL_ORE_TARGET_LIST, 17, 0.5F));
+	public static final List<OreConfiguration.TargetBlockState> JURASSIC_IRON_ORE_TARGET_LIST = List.of(OreConfiguration.target(JURASSIC_STONE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_IRON_ORE.getDefaultState()), OreConfiguration.target(JURASSIC_DEEPSLATE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_DEEPSLATE_IRON_ORE.getDefaultState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_IRON_ORE = register("jurassic_iron_ore", Feature.ORE, new OreConfiguration(JURASSIC_IRON_ORE_TARGET_LIST, 9));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_IRON_ORE_SMALL = register("jurassic_iron_ore_small", Feature.ORE, new OreConfiguration(JURASSIC_IRON_ORE_TARGET_LIST, 4));
+	public static final List<OreConfiguration.TargetBlockState> JURASSIC_GOLD_ORE_TARGET_LIST = List.of(OreConfiguration.target(JURASSIC_STONE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_GOLD_ORE.getDefaultState()), OreConfiguration.target(JURASSIC_DEEPSLATE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_DEEPSLATE_GOLD_ORE.getDefaultState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_GOLD_ORE = register("jurassic_gold_ore", Feature.ORE, new OreConfiguration(JURASSIC_GOLD_ORE_TARGET_LIST, 9));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_GOLD_ORE_BURIED = register("jurassic_gold_ore_buried", Feature.ORE, new OreConfiguration(JURASSIC_GOLD_ORE_TARGET_LIST, 9, 0.5F));
+	public static final List<OreConfiguration.TargetBlockState> JURASSIC_REDSTONE_ORE_TARGET_LIST = List.of(OreConfiguration.target(JURASSIC_STONE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_REDSTONE_ORE.getDefaultState()), OreConfiguration.target(JURASSIC_DEEPSLATE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_DEEPSLATE_REDSTONE_ORE.getDefaultState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_REDSTONE_ORE = register("jurassic_redstone_ore", Feature.ORE, new OreConfiguration(JURASSIC_REDSTONE_ORE_TARGET_LIST, 8));
+	public static final List<OreConfiguration.TargetBlockState> JURASSIC_DIAMOND_ORE_TARGET_LIST = List.of(OreConfiguration.target(JURASSIC_STONE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_DIAMOND_ORE.getDefaultState()), OreConfiguration.target(JURASSIC_DEEPSLATE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_DEEPSLATE_DIAMOND_ORE.getDefaultState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_DIAMOND_ORE_SMALL = register("jurassic_diamond_ore_small", Feature.ORE, new OreConfiguration(JURASSIC_DIAMOND_ORE_TARGET_LIST, 4, 0.5F));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_DIAMOND_ORE_LARGE = register("jurassic_diamond_ore_large", Feature.ORE, new OreConfiguration(JURASSIC_DIAMOND_ORE_TARGET_LIST, 12, 0.7F));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_DIAMOND_ORE_BURIED = register("jurassic_diamond_ore_buried", Feature.ORE, new OreConfiguration(JURASSIC_DIAMOND_ORE_TARGET_LIST, 8, 1.0F));
+	public static final List<OreConfiguration.TargetBlockState> JURASSIC_LAPIS_ORE_TARGET_LIST = List.of(OreConfiguration.target(JURASSIC_STONE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_LAPIS_ORE.getDefaultState()), OreConfiguration.target(JURASSIC_DEEPSLATE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_DEEPSLATE_LAPIS_ORE.getDefaultState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_LAPIS_ORE = register("jurassic_lapis_ore", Feature.ORE, new OreConfiguration(JURASSIC_LAPIS_ORE_TARGET_LIST, 7));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_LAPIS_ORE_BURIED = register("jurassic_lapis_ore_buried", Feature.ORE, new OreConfiguration(JURASSIC_LAPIS_ORE_TARGET_LIST, 7, 1.0F));
+	public static final List<OreConfiguration.TargetBlockState> JURASSIC_EMERALD_ORE_TARGET_LIST = List.of(OreConfiguration.target(JURASSIC_STONE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_EMERALD_ORE.getDefaultState()), OreConfiguration.target(JURASSIC_DEEPSLATE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_DEEPSLATE_EMERALD_ORE.getDefaultState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_EMERALD_ORE = register("jurassic_emerald_ore", Feature.ORE, new OreConfiguration(JURASSIC_EMERALD_ORE_TARGET_LIST, 3));
+	public static final List<OreConfiguration.TargetBlockState> JURASSIC_COPPER_ORE_TARGET_LIST = List.of(OreConfiguration.target(JURASSIC_STONE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_COPPER_ORE.getDefaultState()), OreConfiguration.target(JURASSIC_DEEPSLATE_ORE_REPLACEABLES, LostWorldsBlocks.JURASSIC_DEEPSLATE_COPPER_ORE.getDefaultState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_COPPER_ORE_SMALL = register("jurassic_copper_ore_small", Feature.ORE, new OreConfiguration(JURASSIC_COPPER_ORE_TARGET_LIST, 10));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_COPPER_ORE_LARGE = register("jurassic_copper_ore_large", Feature.ORE, new OreConfiguration(JURASSIC_COPPER_ORE_TARGET_LIST, 20));
 
 	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_DIRT_ORE = register("jurassic_dirt_ore", Feature.ORE, new OreConfiguration(JURASSIC_STONE, Blocks.DIRT.defaultBlockState(), 33));
 	public static final RegistryObject<ConfiguredFeature<?, ?>> JURASSIC_GRAVEL_ORE = register("jurassic_gravel_ore", Feature.ORE, new OreConfiguration(JURASSIC_STONE, Blocks.GRAVEL.defaultBlockState(), 33));
