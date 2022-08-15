@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:cooked_mesosaurus_meat_from_raw_mesosaurus_meat_campfire"
+    ]
+  },
+  "criteria": {
+    "has_raw_mesosaurus_meat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lostworlds:raw_mesosaurus_meat"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:cooked_mesosaurus_meat_from_raw_mesosaurus_meat_campfire"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_mesosaurus_meat",
+      "has_the_recipe"
+    ]
+  ]
+}

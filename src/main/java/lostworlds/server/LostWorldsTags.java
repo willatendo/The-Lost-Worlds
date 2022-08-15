@@ -133,6 +133,7 @@ public class LostWorldsTags {
 		JURASSIC_PARK_ERA,
 		JURASSIC_WORLD_ERA,
 		LIAONINGOSAURUS_FOSSILS,
+		MESOSAURUS_FOSSILS,
 		LIGHT_CONCRETE,
 		NAUTILUS_FOSSILS,
 		OPHTHALMOSAURUS_FOSSILS,
@@ -352,6 +353,7 @@ public class LostWorldsTags {
 		public static final TagKey<SpeciesType> GREAT_AUK = create("great_auk");
 		public static final TagKey<SpeciesType> KENTROSAURUS = create("kentrosaurus");
 		public static final TagKey<SpeciesType> LIAONINGOSAURUS = create("liaoningosaurus");
+		public static final TagKey<SpeciesType> MESOSAURUS = create("mesosaurus");
 		public static final TagKey<SpeciesType> NAUTILUS = create("nautilus");
 		public static final TagKey<SpeciesType> OPHTHALMOSAURUS = create("ophthalmosaurus");
 		public static final TagKey<SpeciesType> OSTROMIA = create("ostromia");
@@ -366,6 +368,7 @@ public class LostWorldsTags {
 		public static final TagKey<SpeciesType> UTAHRAPTOR = create("utahraptor");
 		public static final TagKey<SpeciesType> THANOS = create("thanos");
 		public static final TagKey<SpeciesType> TETRACERATOPS = create("tetraceratops");
+		public static final TagKey<SpeciesType> TOYOTAMAPHIMEIA = create("toyotamaphimeia");
 		public static final TagKey<SpeciesType> TYRANNOSAURUS = create("tyrannosaurus");
 		public static final TagKey<SpeciesType> ZEPHYROSAURUS = create("zephyrosaurus");
 

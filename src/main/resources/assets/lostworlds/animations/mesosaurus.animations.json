@@ -1,0 +1,397 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"into_swim": {
+			"animation_length": 0.5,
+			"bones": {
+				"body": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [5, 0, 0]
+						}
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [-12.5, 5, 0]
+						}
+					}
+				},
+				"frontleftleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [55, -55, 0]
+						}
+					}
+				},
+				"frontrightleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [55, 55, 0]
+						}
+					}
+				},
+				"backleftleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [55, 55, 0]
+						}
+					}
+				},
+				"backrightleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [55, -55, 0]
+						}
+					}
+				},
+				"tail": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [-5, 10, 0]
+						}
+					}
+				}
+			}
+		},
+		"swim": {
+			"loop": true,
+			"animation_length": 1.04,
+			"bones": {
+				"Mesosaurus": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 1, 0]
+					}
+				},
+				"body": {
+					"rotation": {
+						"vector": [5, 0, 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [-12.5, 5, 0]
+						},
+						"0.52": {
+							"vector": [-12.5, -5, 0],
+							"easing": "easeInOutSine"
+						},
+						"1.04": {
+							"vector": [-12.5, 5, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"frontleftleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [55, -55, 0]
+						},
+						"0.52": {
+							"vector": [-55, 55, 0],
+							"easing": "easeInOutCubic"
+						},
+						"1.04": {
+							"vector": [55, -55, 0],
+							"easing": "easeInOutCubic"
+						}
+					}
+				},
+				"frontrightleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [55, 55, 0]
+						},
+						"0.52": {
+							"vector": [-55, -55, 0],
+							"easing": "easeInOutCubic"
+						},
+						"1.04": {
+							"vector": [55, 55, 0],
+							"easing": "easeInOutCubic"
+						}
+					}
+				},
+				"backleftleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [55, 55, 0]
+						},
+						"0.52": {
+							"vector": [55, -55, 0],
+							"easing": "easeInOutCubic"
+						},
+						"1.04": {
+							"vector": [55, 55, 0],
+							"easing": "easeInOutCubic"
+						}
+					}
+				},
+				"backrightleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [55, -55, 0]
+						},
+						"0.52": {
+							"vector": [55, 55, 0],
+							"easing": "easeInOutCubic"
+						},
+						"1.04": {
+							"vector": [55, -55, 0],
+							"easing": "easeInOutCubic"
+						}
+					}
+				},
+				"tail": {
+					"rotation": {
+						"0.0": {
+							"vector": [-5, 10, 0]
+						},
+						"0.52": {
+							"vector": [-5, -10, 0],
+							"easing": "easeInOutQuad"
+						},
+						"1.04": {
+							"vector": [-5, 10, 0],
+							"easing": "easeInOutQuad"
+						}
+					}
+				}
+			}
+		},
+		"out_of_swim": {
+			"animation_length": 0.5,
+			"bones": {
+				"body": {
+					"rotation": {
+						"0.0": {
+							"vector": [5, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [-12.5, 5, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"frontleftleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [55, -55, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"frontrightleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [55, 55, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"backleftleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [55, 55, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"backrightleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [55, -55, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"tail": {
+					"rotation": {
+						"0.0": {
+							"vector": [-5, 10, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"walk": {
+			"loop": true,
+			"animation_length": 2.08,
+			"bones": {
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 12.5, 0]
+						},
+						"1.04": {
+							"vector": [0, -12.5, 0],
+							"easing": "easeInOutQuad"
+						},
+						"2.08": {
+							"vector": [0, 12.5, 0],
+							"easing": "easeInOutQuad"
+						}
+					}
+				},
+				"frontleftleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 30, 0]
+						},
+						"1.04": {
+							"vector": [0, -30, 0],
+							"easing": "easeInOutSine"
+						},
+						"1.56": {
+							"vector": [0, 0, -35]
+						},
+						"2.08": {
+							"vector": [0, 30, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"frontrightleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 30, 0]
+						},
+						"0.52": {
+							"vector": [0, 0, 35],
+							"easing": "linear"
+						},
+						"1.04": {
+							"vector": [0, -30, 0],
+							"easing": "easeInOutSine"
+						},
+						"2.08": {
+							"vector": [0, 30, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"backleftleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, -30, 0]
+						},
+						"0.52": {
+							"vector": [0, 0, -35],
+							"easing": "linear"
+						},
+						"1.04": {
+							"vector": [0, 30, 0],
+							"easing": "easeInOutSine"
+						},
+						"2.08": {
+							"vector": [0, -30, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"backrightleg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, -30, 0]
+						},
+						"1.04": {
+							"vector": [0, 30, 0],
+							"easing": "easeInOutSine"
+						},
+						"1.56": {
+							"vector": [0, 0, 35],
+							"easing": "linear"
+						},
+						"2.08": {
+							"vector": [0, -30, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"tail": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 12.5, 0]
+						},
+						"1.04": {
+							"vector": [0, -12.5, 0],
+							"easing": "easeInOutCubic"
+						},
+						"2.08": {
+							"vector": [0, 12.5, 0],
+							"easing": "easeInOutCubic"
+						}
+					}
+				}
+			}
+		},
+		"idle": {
+			"loop": true,
+			"animation_length": 2.08,
+			"bones": {
+				"tail": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 2.5, 0]
+						},
+						"1.04": {
+							"vector": [0, -2.5, 0],
+							"easing": "easeInOutSine"
+						},
+						"2.08": {
+							"vector": [0, 2.5, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

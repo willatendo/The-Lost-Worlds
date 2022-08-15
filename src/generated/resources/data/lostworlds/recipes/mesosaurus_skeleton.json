@@ -1,0 +1,28 @@
+{
+  "type": "lostworlds:paleontology_table",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:mesosaurus_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:mesosaurus_skull"
+    },
+    "@": {
+      "item": "lostworlds:mesosaurus_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:mesosaurus_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:mesosaurus_tail"
+    }
+  },
+  "output": {
+    "item": "lostworlds:mesosaurus_skeleton"
+  }
+}

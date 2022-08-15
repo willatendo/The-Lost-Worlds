@@ -169,6 +169,12 @@ public class LostWorldsCommonConfig {
 	public final IntValue liaoningosaurusSpawnGroupMinimum;
 	public final IntValue liaoningosaurusSpawnGroupMaximum;
 
+	public final DoubleValue mesosaurusHeath;
+	public final DoubleValue mesosaurusAttackDamage;
+	public final IntValue mesosaurusSpawnWeight;
+	public final IntValue mesosaurusSpawnGroupMinimum;
+	public final IntValue mesosaurusSpawnGroupMaximum;
+
 	public final DoubleValue nautilusHeath;
 	public final DoubleValue nautilusArmour;
 	public final IntValue nautilusSpawnWeight;
@@ -247,6 +253,12 @@ public class LostWorldsCommonConfig {
 	public final IntValue thanosSpawnWeight;
 	public final IntValue thanosSpawnGroupMinimum;
 	public final IntValue thanosSpawnGroupMaximum;
+
+	public final DoubleValue toyotamaphimeiaHeath;
+	public final DoubleValue toyotamaphimeiaAttackDamage;
+	public final IntValue toyotamaphimeiaSpawnWeight;
+	public final IntValue toyotamaphimeiaSpawnGroupMinimum;
+	public final IntValue toyotamaphimeiaSpawnGroupMaximum;
 
 	public final DoubleValue tyrannosaurusHeath;
 	public final DoubleValue tyrannosaurusAttackDamage;
@@ -423,6 +435,12 @@ public class LostWorldsCommonConfig {
 		this.liaoningosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Liaoningosaurus in a spawn group").translation(TRANSLATION_TEXT + "liaoningosaurusSpawnGroupMinimum").defineInRange("liaoningosaurusSpawnGroupMinimum", 1, 1, 100);
 		this.liaoningosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Liaoningosaurus in a spawn group").translation(TRANSLATION_TEXT + "liaoningosaurusSpawnGroupMaximum").defineInRange("liaoningosaurusSpawnGroupMaximum", 3, 1, 100);
 
+		this.mesosaurusHeath = builder.comment("Sets the heath of the Mesosaurus").translation(TRANSLATION_TEXT + "mesosaurusHeath").defineInRange("mesosaurusHeath", 6.0D, 1.0D, 999.0D);
+		this.mesosaurusAttackDamage = builder.comment("Sets the attack damage of the Mesosaurus").translation(TRANSLATION_TEXT + "mesosaurusAttackDamage").defineInRange("mesosaurusAttackDamage", 2.0D, 1.0D, 999.0D);
+		this.mesosaurusSpawnWeight = builder.comment("Sets the weight of Mesosaurus spawning").translation(TRANSLATION_TEXT + "liaoningosaurusSpawnWeight").defineInRange("liaoningosaurusSpawnWeight", 3, 1, 100);
+		this.mesosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Mesosaurus in a spawn group").translation(TRANSLATION_TEXT + "liaoningosaurusSpawnGroupMinimum").defineInRange("liaoningosaurusSpawnGroupMinimum", 1, 1, 100);
+		this.mesosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Mesosaurus in a spawn group").translation(TRANSLATION_TEXT + "liaoningosaurusSpawnGroupMaximum").defineInRange("liaoningosaurusSpawnGroupMaximum", 3, 1, 100);
+
 		this.nautilusHeath = builder.comment("Sets the heath of the Nautilus").translation(TRANSLATION_TEXT + "nautilusHeath").defineInRange("nautilusHeath", 20.0D, 1.0D, 999.0D);
 		this.nautilusArmour = builder.comment("Sets the armour of the Nautilus").translation(TRANSLATION_TEXT + "nautilusArmour").defineInRange("nautilusArmour", 30.0D, 1.0D, 999.0D);
 		this.nautilusSpawnWeight = builder.comment("Sets the weight of Nautilus spawning").translation(TRANSLATION_TEXT + "nautilusSpawnWeight").defineInRange("nautilusSpawnWeight", 1, 1, 100);
@@ -495,6 +513,12 @@ public class LostWorldsCommonConfig {
 		this.thanosSpawnWeight = builder.comment("Sets the weight of Thanos spawning").translation(TRANSLATION_TEXT + "thanosSpawnWeight").defineInRange("thanosSpawnWeight", 3, 1, 100);
 		this.thanosSpawnGroupMinimum = builder.comment("Sets the minimum amount of Thanos in a spawn group").translation(TRANSLATION_TEXT + "thanosSpawnGroupMinimum").defineInRange("thanosSpawnGroupMinimum", 1, 1, 100);
 		this.thanosSpawnGroupMaximum = builder.comment("Sets the maximum amount of Thanos in a spawn group").translation(TRANSLATION_TEXT + "thanosSpawnGroupMaximum").defineInRange("thanosSpawnGroupMaximum", 2, 1, 100);
+
+		this.toyotamaphimeiaHeath = builder.comment("Sets the heath of the Toyotamaphimeia").translation(TRANSLATION_TEXT + "toyotamaphimeiaHeath").defineInRange("toyotamaphimeiaHeath", 6.0D, 1.0D, 999.0D);
+		this.toyotamaphimeiaAttackDamage = builder.comment("Sets the attack damage of the Toyotamaphimeia").translation(TRANSLATION_TEXT + "toyotamaphimeiaAttackDamage").defineInRange("toyotamaphimeiaAttackDamage", 20.0D, 1.0D, 999.0D);
+		this.toyotamaphimeiaSpawnWeight = builder.comment("Sets the weight of Toyotamaphimeia spawning").translation(TRANSLATION_TEXT + "toyotamaphimeiaSpawnWeight").defineInRange("toyotamaphimeiaSpawnWeight", 3, 1, 100);
+		this.toyotamaphimeiaSpawnGroupMinimum = builder.comment("Sets the minimum amount of Toyotamaphimeia in a spawn group").translation(TRANSLATION_TEXT + "toyotamaphimeiaSpawnGroupMinimum").defineInRange("toyotamaphimeiaSpawnGroupMinimum", 1, 1, 100);
+		this.toyotamaphimeiaSpawnGroupMaximum = builder.comment("Sets the maximum amount of Toyotamaphimeia in a spawn group").translation(TRANSLATION_TEXT + "toyotamaphimeiaSpawnGroupMaximum").defineInRange("toyotamaphimeiaSpawnGroupMaximum", 3, 1, 100);
 
 		this.tyrannosaurusHeath = builder.comment("Sets the heath of the Tyrannosaurus").translation(TRANSLATION_TEXT + "tyrannosaurusHeath").defineInRange("tyrannosaurusHeath", 80.0D, 1.0D, 999.0D);
 		this.tyrannosaurusAttackDamage = builder.comment("Sets the attack damage of the Tyrannosaurus").translation(TRANSLATION_TEXT + "tyrannosaurusAttackDamage").defineInRange("tyrannosaurusAttackDamage", 20.0D, 1.0D, 999.0D);

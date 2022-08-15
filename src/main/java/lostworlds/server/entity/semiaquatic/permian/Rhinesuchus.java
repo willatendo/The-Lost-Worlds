@@ -136,6 +136,7 @@ public class Rhinesuchus extends CarnivoreSemiAquaticMob implements NeutralMob, 
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, DiictodonEntity.class, this::isHungry));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, Protosuchus.class, this::isHungry));
 		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, Protosuchus.class, this::isAngryAt));
+		this.targetSelector.addGoal(1, new ReasonedAttackableTargetGoal<>(this, Player.class, this::isAngryAt));
 		this.targetSelector.addGoal(8, new ResetUniversalAngerTargetGoal<>(this, true));
 	}
 

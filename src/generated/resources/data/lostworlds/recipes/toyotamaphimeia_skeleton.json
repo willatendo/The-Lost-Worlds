@@ -1,0 +1,28 @@
+{
+  "type": "lostworlds:paleontology_table",
+  "pattern": [
+    "#$#",
+    "@%@",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "item": "lostworlds:toyotamaphimeia_arm_bones"
+    },
+    "$": {
+      "item": "lostworlds:toyotamaphimeia_skull"
+    },
+    "@": {
+      "item": "lostworlds:toyotamaphimeia_leg_bones"
+    },
+    "%": {
+      "item": "lostworlds:toyotamaphimeia_rib_cage"
+    },
+    "!": {
+      "item": "lostworlds:toyotamaphimeia_tail"
+    }
+  },
+  "output": {
+    "item": "lostworlds:toyotamaphimeia_skeleton"
+  }
+}

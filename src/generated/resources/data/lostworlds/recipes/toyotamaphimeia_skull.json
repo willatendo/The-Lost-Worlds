@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:fossil_cleaner",
+  "input": {
+    "item": "lostworlds:plastered_toyotamaphimeia_skull"
+  },
+  "output": "lostworlds:toyotamaphimeia_skull"
+}

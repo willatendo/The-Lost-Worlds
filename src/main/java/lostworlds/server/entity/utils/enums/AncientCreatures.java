@@ -44,6 +44,7 @@ public enum AncientCreatures implements StringRepresentable, APIBlockEntityWitho
 	GREAT_AUK("great_auk", () -> LostWorldsEntities.GREAT_AUK.get(), LostWorldsTags.ModItemTags.GREAT_AUK_FOSSILS, true, true, false, Size.SMALL, CreatureDiet.PISCIVORE, 0x000000, 3, 5, 0.3F, 0.46F),
 	KENTROSAURUS("kentrosaurus", () -> LostWorldsEntities.KENTROSAURUS.get(), LostWorldsTags.ModItemTags.KENTROSAURUS_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0xd99760, 3, 6, 0.4F, 0.66F),
 	LIAONINGOSAURUS("liaoningosaurus", () -> LostWorldsEntities.LIAONINGOSAURUS.get(), LostWorldsTags.ModItemTags.LIAONINGOSAURUS_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.HERBIVORE, 0x712d0d, 4, 7, 0.45F, 0.68F),
+	MESOSAURUS("mesosaurus", () -> LostWorldsEntities.MESOSAURUS.get(), LostWorldsTags.ModItemTags.MESOSAURUS_FOSSILS, true, false, false, Size.SMALL, CreatureDiet.PISCIVORE, 0x65768c, 3, 5, 0.3F, 0.5F),
 	NAUTILUS("nautilus", () -> LostWorldsEntities.NAUTILUS.get(), LostWorldsTags.ModItemTags.NAUTILUS_FOSSILS, false, false, false, Size.SMALL, CreatureDiet.NONE, 0xd4ccc3, 2, 5, 0.3F, 0.5F),
 	OPHTHALMOSAURUS("ophthalmosaurus", () -> LostWorldsEntities.OPHTHALMOSAURUS.get(), LostWorldsTags.ModItemTags.OPHTHALMOSAURUS_FOSSILS, false, false, false, Size.MEDIUM, CreatureDiet.PISCIVORE, 0x858794, 4, 7, 0.4F, 0.6F),
 	OSTROMIA("ostromia", () -> LostWorldsEntities.OSTROMIA.get(), LostWorldsTags.ModItemTags.OSTROMIA_FOSSILS, true, true, true, Size.SMALL, CreatureDiet.CARNIVORE, 0x47a373, 2, 4, 0.2F, 0.3F),
@@ -57,6 +58,7 @@ public enum AncientCreatures implements StringRepresentable, APIBlockEntityWitho
 	SUCHOMIMUS("suchomimus", () -> LostWorldsEntities.SUCHOMIMUS.get(), LostWorldsTags.ModItemTags.SUCHOMIMUS_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x57737b, 5, 7, 0.5F, 0.64F),
 	TETRACERATOPS("tetraceratops", () -> LostWorldsEntities.TETRACERATOPS.get(), LostWorldsTags.ModItemTags.TETRACERATOPS_FOSSILS, true, false, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x623015, 3, 5, 0.3F, 0.54F),
 	THANOS("thanos", () -> LostWorldsEntities.THANOS.get(), LostWorldsTags.ModItemTags.THANOS_FOSSILS, true, false, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0xca2018, 6, 9, 0.4F, 0.8F),
+	TOYOTAMAPHIMEIA("toyotamaphimeia", () -> LostWorldsEntities.MESOSAURUS.get(), LostWorldsTags.ModItemTags.MESOSAURUS_FOSSILS, true, false, false, Size.SMALL, CreatureDiet.PISCIVORE, 0x65768c, 3, 5, 0.3F, 0.5F),
 	TYRANNOSAURUS("tyrannosaurus", () -> LostWorldsEntities.TYRANNOSAURUS.get(), LostWorldsTags.ModItemTags.TYRANNOSAURUS_FOSSILS, true, false, true, Size.LARGE, CreatureDiet.CARNIVORE, 0x889a55, 8, 11, 0.5F, 0.8F),
 	UTAHRAPTOR("utahraptor", () -> LostWorldsEntities.UTAHRAPTOR.get(), LostWorldsTags.ModItemTags.UTAHRAPTOR_FOSSILS, true, true, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x503524, 5, 7, 0.5F, 0.64F),
 	ZEPHYROSAURUS("zephyrosaurus", () -> LostWorldsEntities.ZEPHYROSAURUS.get(), LostWorldsTags.ModItemTags.ZEPHYROSAURUS_FOSSILS, true, true, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x577476, 3, 5, 0.3F, 0.54F),;
