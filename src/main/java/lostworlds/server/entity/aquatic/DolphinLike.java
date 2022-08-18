@@ -58,8 +58,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 public abstract class DolphinLike extends BreedingWaterMob {
 	public static final EntityDataAccessor<Integer> MOISTNESS_LEVEL = SynchedEntityData.defineId(DolphinLike.class, EntityDataSerializers.INT);
@@ -253,7 +251,6 @@ public abstract class DolphinLike extends BreedingWaterMob {
 	}
 
 	@Override
-	@OnlyIn(Dist.CLIENT)
 	public void handleEntityEvent(byte event) {
 		if (event == 38) {
 			this.addParticlesAroundSelf(ParticleTypes.HAPPY_VILLAGER);
@@ -263,7 +260,6 @@ public abstract class DolphinLike extends BreedingWaterMob {
 
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	private void addParticlesAroundSelf(ParticleOptions data) {
 		for (int i = 0; i < 7; ++i) {
 			double d0 = this.random.nextGaussian() * 0.01D;

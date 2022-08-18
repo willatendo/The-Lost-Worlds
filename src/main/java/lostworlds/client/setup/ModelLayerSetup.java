@@ -18,11 +18,12 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 @EventBusSubscriber(bus = Bus.MOD, modid = LostWorldsUtils.ID, value = Dist.CLIENT)
 public class ModelLayerSetup {
 	public static final ModelLayerLocation FOSSIL_POACHER = new ModelLayerLocation(LostWorldsUtils.rL("fossil_poacher"), "main");
+	public static final ModelLayerLocation[] BOATS = new ModelLayerLocation[ModBoatType.values().length];
 
 	@SubscribeEvent
 	public static void layerSetup(RegisterLayerDefinitions event) {
 		for (ModBoatType types : ModBoatType.values()) {
-			event.registerLayerDefinition(types.getLayer(), BoatModel::createBodyModel);
+			event.registerLayerDefinition(BOATS[types.ordinal()] = new ModelLayerLocation(LostWorldsUtils.rL(types.getName()), "main"), BoatModel::createBodyModel);
 		}
 
 		for (WoodType types : LostWorldsWoodTypes.getWoodTypes()) {

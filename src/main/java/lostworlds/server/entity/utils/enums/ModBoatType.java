@@ -1,8 +1,5 @@
 package lostworlds.server.entity.utils.enums;
 
-import lostworlds.server.LostWorldsUtils;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-
 public enum ModBoatType {
 	ARAUCARIA("araucaria"),
 	CALAMITES("calamites"),
@@ -13,15 +10,9 @@ public enum ModBoatType {
 	SEQUOIA("seqouia");
 
 	private final String name;
-	private final ModelLayerLocation layer;
 
 	private ModBoatType(String name) {
 		this.name = name;
-		this.layer = new ModelLayerLocation(LostWorldsUtils.rL(name), "main");
-	}
-
-	public ModelLayerLocation getLayer() {
-		return this.layer;
 	}
 
 	public static ModBoatType byId(int id) {

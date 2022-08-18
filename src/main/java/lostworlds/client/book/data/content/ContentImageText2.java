@@ -10,10 +10,7 @@ import lostworlds.client.book.screen.book.element.ImageElement;
 import lostworlds.client.book.screen.book.element.TextElement;
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class ContentImageText2 extends ImageTextContent {
 	public static final transient ResourceLocation ID = LostWorldsUtils.rL("image_text_2");
 

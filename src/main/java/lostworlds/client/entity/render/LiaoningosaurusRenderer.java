@@ -6,11 +6,8 @@ import lostworlds.client.entity.model.LiaoningosaurusModel;
 import lostworlds.server.entity.terrestrial.jurassic.Liaoningosaurus;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
-@OnlyIn(Dist.CLIENT)
 public class LiaoningosaurusRenderer extends GeoEntityRenderer<Liaoningosaurus> {
 	public LiaoningosaurusRenderer(Context context) {
 		super(context, new LiaoningosaurusModel());

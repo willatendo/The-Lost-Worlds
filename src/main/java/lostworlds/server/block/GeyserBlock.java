@@ -25,8 +25,6 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class GeyserBlock extends Block implements SimpleLavaloggedBlock {
 	public static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 16, 14);
@@ -105,7 +103,6 @@ public class GeyserBlock extends Block implements SimpleLavaloggedBlock {
 		}
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void animateTick(BlockState state, Level world, BlockPos pos, Random rand) {
 		if (rand.nextInt(10) == 0) {

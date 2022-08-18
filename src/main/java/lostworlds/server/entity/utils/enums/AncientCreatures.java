@@ -23,6 +23,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public enum AncientCreatures implements StringRepresentable, APIBlockEntityWithoutLevelRendererGetter {
 	ABSALOMICHTHYS("absalomichthys", () -> LostWorldsEntities.ABSALOMICHTHYS.get(), LostWorldsTags.ModItemTags.ABSALOMICHTHYS_FOSSILS, false, false, false, Size.TINY, CreatureDiet.NONE, 0xc6362a, 2, 5, 0.3F, 0.5F),
@@ -442,11 +444,13 @@ public enum AncientCreatures implements StringRepresentable, APIBlockEntityWitho
 		return this.bloodVile = item;
 	}
 
+	@OnlyIn(Dist.CLIENT)
 	@Override
 	public BlockEntityWithoutLevelRenderer getISTER() {
 		return new ItemCustomisableRenderer(this.id);
 	}
 
+	@OnlyIn(Dist.CLIENT)
 	@Override
 	public BlockEntityWithoutLevelRenderer getISTER(String part) {
 		return new ItemCustomisableRenderer(this.id + "_" + part, this.id);

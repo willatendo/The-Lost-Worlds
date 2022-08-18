@@ -16,7 +16,7 @@ import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 
-import lostworlds.client.LostWorldsConfig;
+import lostworlds.client.ClientUtils;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.tree.AraucariaTree;
@@ -37,9 +37,6 @@ import lostworlds.server.util.registrate.LostWorldsRegistrate;
 import lostworlds.server.util.registrate.WoodList;
 import lostworlds.server.util.registrate.WoodTypes;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.client.color.block.BlockColor;
-import net.minecraft.client.color.item.ItemColor;
-import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -50,13 +47,10 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SignItem;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -371,15 +365,15 @@ public class LostWorldsBlocks {
 
 	// Plants
 	public static final BlockEntry<WaterPlantBlock> ARCHAEFRUTUS = REGISTRATE.block("archaefrutus", properties -> new WaterPlantBlock(MobEffects.DAMAGE_BOOST, 3, properties)).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).item(WaterPlantItem::new).model((block, provider) -> provider.generated(() -> block.get(), LostWorldsUtils.rL("block/archaefrutus"))).build().addLayer(() -> RenderType::cutout).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().cross(block.getName(), new ResourceLocation(block.get().getRegistryName().getNamespace(), "block/" + block.getName()))))).register();
-	public static final BlockEntry<ModFlowerPotBlock> POTTED_ARCHAEFRUTUS = REGISTRATE.pottedBlock("potted_archaefrutus", "archaefrutus", properties -> new ModFlowerPotBlock(() -> LostWorldsBlocks.ARCHAEFRUTUS.get().delegate.get(), properties)).properties(properties -> properties.of(Material.DECORATION).instabreak().noOcclusion()).addLayer(() -> RenderType::translucent).color(() -> LostWorldsBlocks::getWaterColour).loot((provider, block) -> provider.dropPottedContents(block)).register();
-	public static final BlockEntry<ModDoublePlantBlock> ALETHOPTERIS = REGISTRATE.blockItemModel("alethopteris", "alethopteris_top", ModDoublePlantBlock::new).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).color(() -> LostWorldsBlocks::getGrassyColour).blockstate(LostWorldsBlockModels.alethopteris()).loot((provider, block) -> provider.add(block, LootTable.lootTable().withPool(provider.applyExplosionDecay(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))))).register();
-	public static final BlockEntry<BrazileaBlock> BRAZILEA = REGISTRATE.parentNameNoItem("brazilea", BrazileaBlock::new).properties(properties -> properties.of(Material.PLANT).instabreak().sound(SoundType.GRASS).noOcclusion().noCollission()).item(BrazileaItem::new).color(() -> LostWorldsBlocks::getGrassyItemColour).model((item, provider) -> provider.generated(() -> item.get(), LostWorldsUtils.rL("block/brazilea"))).build().addLayer(() -> RenderType::cutout).color(() -> LostWorldsBlocks::getGrassyColour).register();
+	public static final BlockEntry<ModFlowerPotBlock> POTTED_ARCHAEFRUTUS = REGISTRATE.pottedBlock("potted_archaefrutus", "archaefrutus", properties -> new ModFlowerPotBlock(() -> LostWorldsBlocks.ARCHAEFRUTUS.get().delegate.get(), properties)).properties(properties -> properties.of(Material.DECORATION).instabreak().noOcclusion()).addLayer(() -> RenderType::translucent).color(() -> ClientUtils::getWaterColour).loot((provider, block) -> provider.dropPottedContents(block)).register();
+	public static final BlockEntry<ModDoublePlantBlock> ALETHOPTERIS = REGISTRATE.blockItemModel("alethopteris", "alethopteris_top", ModDoublePlantBlock::new).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).color(() -> ClientUtils::getGrassyColour).blockstate(LostWorldsBlockModels.alethopteris()).loot((provider, block) -> provider.add(block, LootTable.lootTable().withPool(provider.applyExplosionDecay(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))))).register();
+	public static final BlockEntry<BrazileaBlock> BRAZILEA = REGISTRATE.parentNameNoItem("brazilea", BrazileaBlock::new).properties(properties -> properties.of(Material.PLANT).instabreak().sound(SoundType.GRASS).noOcclusion().noCollission()).item(BrazileaItem::new).color(() -> ClientUtils::getGrassyItemColour).model((item, provider) -> provider.generated(() -> item.get(), LostWorldsUtils.rL("block/brazilea"))).build().addLayer(() -> RenderType::cutout).color(() -> ClientUtils::getGrassyColour).register();
 	public static final BlockEntry<CalamtiesSuckowiiSaplingBlock> CALAMITES_SUCKOWII_SAPLING = REGISTRATE.block("calamites_suckowii_sapling", CalamtiesSuckowiiSaplingBlock::new).properties(properties -> properties.of(Material.BAMBOO_SAPLING).randomTicks().instabreak().noCollission().sound(SoundType.BAMBOO_SAPLING)).tag(LostWorldsTags.ModBlockTags.CALAMITES_PLACEABLES.tag).addLayer(() -> RenderType::cutout).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().cross(block.getName(), provider.modLoc("block/calamites_suckowii_stage0"))))).loot((provider, block) -> provider.dropOther(block, LostWorldsBlocks.CALAMITES_SUCKOWII.asStack().getItem())).register();
 	public static final BlockEntry<CalamtiesSuckowiiBlock> CALAMITES_SUCKOWII = REGISTRATE.blockItemFlat("calamites_suckowii", CalamtiesSuckowiiBlock::new).properties(properties -> properties.of(Material.BAMBOO, MaterialColor.PLANT).randomTicks().instabreak().dynamicShape().sound(SoundType.BAMBOO).noOcclusion()).tag(LostWorldsTags.ModBlockTags.CALAMITES_PLACEABLES.tag).addLayer(() -> RenderType::cutout).blockstate(LostWorldsBlockModels.calamitesSuckowii()).register();
-	public static final BlockEntry<ModFlowerPotBlock> POTTED_CALAMITES_SUCKOWII = REGISTRATE.pottedBlock("potted_calamites_suckowii", "calamites_suckowii", properties -> new ModFlowerPotBlock(() -> LostWorldsBlocks.CALAMITES_SUCKOWII.get().delegate.get(), properties)).properties(properties -> properties.of(Material.DECORATION).instabreak().noOcclusion()).addLayer(() -> RenderType::translucent).color(() -> LostWorldsBlocks::getWaterColour).loot((provider, block) -> provider.dropPottedContents(block)).register();
-	public static final BlockEntry<ModDoublePlantBlock> CEPHALOTAXUS = REGISTRATE.cephalotaxus("cephalotaxus", ModDoublePlantBlock::new).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).color(() -> LostWorldsBlocks::getGrassyColour).loot((provider, block) -> provider.add(block, LootTable.lootTable().withPool(provider.applyExplosionDecay(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))))).register();
-	public static final BlockEntry<CycadBlock> CYCAD = REGISTRATE.parentName("cycad", CycadBlock::new).properties(properties -> properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).strength(1.0F, 1.5F).randomTicks().noOcclusion().dynamicShape().sound(SoundType.WOOD)).addLayer(() -> RenderType::cutout).color(() -> LostWorldsBlocks::getGrassyColour).tag(BlockTags.MINEABLE_WITH_AXE).loot((provider, block) -> provider.add(block, provider.createShearsDispatchTable(block, provider.applyExplosionDecay(block, LootItem.lootTableItem(LostWorldsItems.FERN_LEAVES.get()).when(LootItemRandomChanceCondition.randomChance(0.125F)).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2)))))).register();
-	public static final BlockEntry<CycadBlock> DICKSONIA = REGISTRATE.parentName("dicksonia", CycadBlock::new).properties(properties -> properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).strength(1.0F, 1.5F).randomTicks().noOcclusion().dynamicShape().sound(SoundType.WOOD)).addLayer(() -> RenderType::cutout).color(() -> LostWorldsBlocks::getGrassyColour).tag(BlockTags.MINEABLE_WITH_AXE).loot((provider, block) -> provider.add(block, provider.createShearsDispatchTable(block, provider.applyExplosionDecay(block, LootItem.lootTableItem(LostWorldsItems.FERN_LEAVES.get()).when(LootItemRandomChanceCondition.randomChance(0.125F)).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2)))))).register();
+	public static final BlockEntry<ModFlowerPotBlock> POTTED_CALAMITES_SUCKOWII = REGISTRATE.pottedBlock("potted_calamites_suckowii", "calamites_suckowii", properties -> new ModFlowerPotBlock(() -> LostWorldsBlocks.CALAMITES_SUCKOWII.get().delegate.get(), properties)).properties(properties -> properties.of(Material.DECORATION).instabreak().noOcclusion()).addLayer(() -> RenderType::translucent).color(() -> ClientUtils::getWaterColour).loot((provider, block) -> provider.dropPottedContents(block)).register();
+	public static final BlockEntry<ModDoublePlantBlock> CEPHALOTAXUS = REGISTRATE.cephalotaxus("cephalotaxus", ModDoublePlantBlock::new).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).color(() -> ClientUtils::getGrassyColour).loot((provider, block) -> provider.add(block, LootTable.lootTable().withPool(provider.applyExplosionDecay(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))))).register();
+	public static final BlockEntry<CycadBlock> CYCAD = REGISTRATE.parentName("cycad", CycadBlock::new).properties(properties -> properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).strength(1.0F, 1.5F).randomTicks().noOcclusion().dynamicShape().sound(SoundType.WOOD)).addLayer(() -> RenderType::cutout).color(() -> ClientUtils::getGrassyColour).tag(BlockTags.MINEABLE_WITH_AXE).loot((provider, block) -> provider.add(block, provider.createShearsDispatchTable(block, provider.applyExplosionDecay(block, LootItem.lootTableItem(LostWorldsItems.FERN_LEAVES.get()).when(LootItemRandomChanceCondition.randomChance(0.125F)).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2)))))).register();
+	public static final BlockEntry<CycadBlock> DICKSONIA = REGISTRATE.parentName("dicksonia", CycadBlock::new).properties(properties -> properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).strength(1.0F, 1.5F).randomTicks().noOcclusion().dynamicShape().sound(SoundType.WOOD)).addLayer(() -> RenderType::cutout).color(() -> ClientUtils::getGrassyColour).tag(BlockTags.MINEABLE_WITH_AXE).loot((provider, block) -> provider.add(block, provider.createShearsDispatchTable(block, provider.applyExplosionDecay(block, LootItem.lootTableItem(LostWorldsItems.FERN_LEAVES.get()).when(LootItemRandomChanceCondition.randomChance(0.125F)).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2)))))).register();
 	public static final BlockEntry<FlowerBlock> DILLHOFFIA = REGISTRATE.plant("dillhoffia", properties -> new FlowerBlock(MobEffects.BLINDNESS, 7, properties)).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).tag(BlockTags.SMALL_FLOWERS).register();
 	public static final BlockEntry<ModFlowerPotBlock> POTTED_DILLHOFFIA = REGISTRATE.pottedBlock("potted_dillhoffia", "dillhoffia", properties -> new ModFlowerPotBlock(() -> LostWorldsBlocks.DILLHOFFIA.get().delegate.get(), properties)).properties(properties -> properties.of(Material.DECORATION).instabreak().noOcclusion()).addLayer(() -> RenderType::cutout).loot((provider, block) -> provider.dropPottedContents(block)).register();
 	public static final BlockEntry<ModDoublePlantBlock> DUISBERGIA = REGISTRATE.doublePlant("duisbergia", ModDoublePlantBlock::new).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).loot((provider, block) -> provider.add(block, LootTable.lootTable().withPool(provider.applyExplosionDecay(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))))).register();
@@ -388,11 +382,11 @@ public class LostWorldsBlocks {
 	public static final BlockEntry<GroundFernsBlock> GROUND_FERNS = REGISTRATE.parentName("ground_ferns", GroundFernsBlock::new).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).loot((provider, block) -> provider.add(block, provider.createShearsDispatchTable(block, provider.applyExplosionDecay(block, LootItem.lootTableItem(LostWorldsItems.FERN_LEAVES.get()).when(LootItemRandomChanceCondition.randomChance(0.125F)).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2)))))).register();
 	public static final BlockEntry<FlowerBlock> MAGNOLIA = REGISTRATE.plant("magnolia", properties -> new FlowerBlock(MobEffects.MOVEMENT_SLOWDOWN, 8, properties)).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).tag(BlockTags.SMALL_FLOWERS).register();
 	public static final BlockEntry<ModFlowerPotBlock> POTTED_MAGNOLIA = REGISTRATE.pottedBlock("potted_magnolia", "magnolia", properties -> new ModFlowerPotBlock(() -> LostWorldsBlocks.MAGNOLIA.get().delegate.get(), properties)).properties(properties -> properties.of(Material.DECORATION).instabreak().noOcclusion()).addLayer(() -> RenderType::cutout).loot((provider, block) -> provider.dropPottedContents(block)).register();
-	public static final BlockEntry<ModBushBlock> OSMUNDA = REGISTRATE.parentName("osmunda", ModBushBlock::new).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).color(() -> LostWorldsBlocks::getGrassyColour).loot((provider, block) -> provider.add(block, provider.createShearsDispatchTable(block, provider.applyExplosionDecay(block, LootItem.lootTableItem(LostWorldsItems.FERN_LEAVES.get()).when(LootItemRandomChanceCondition.randomChance(0.125F)).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2)))))).register();
+	public static final BlockEntry<ModBushBlock> OSMUNDA = REGISTRATE.parentName("osmunda", ModBushBlock::new).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).color(() -> ClientUtils::getGrassyColour).loot((provider, block) -> provider.add(block, provider.createShearsDispatchTable(block, provider.applyExplosionDecay(block, LootItem.lootTableItem(LostWorldsItems.FERN_LEAVES.get()).when(LootItemRandomChanceCondition.randomChance(0.125F)).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2)))))).register();
 	public static final BlockEntry<ModBushBlock> PERMIAN_DESERT_FERNS = REGISTRATE.plant("permian_desert_ferns", ModBushBlock::new).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).loot((provider, block) -> provider.add(block, provider.createShearsDispatchTable(block, provider.applyExplosionDecay(block, LootItem.lootTableItem(LostWorldsItems.FERN_LEAVES.get()).when(LootItemRandomChanceCondition.randomChance(0.125F)).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2)))))).register();
 	public static final BlockEntry<ModBushBlock> PERMIAN_DESERT_SHRUB = REGISTRATE.plant("permian_desert_shrub", ModBushBlock::new).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_BROWN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).loot((provider, block) -> provider.add(block, provider.createShearsDispatchTable(block, provider.applyExplosionDecay(block, LootItem.lootTableItem(LostWorldsItems.FERN_LEAVES.get()).when(LootItemRandomChanceCondition.randomChance(0.125F)).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2)))))).register();
-	public static final BlockEntry<ModDoublePlantBlock> WILLIAMSONIA = REGISTRATE.doublePlantColoured("williamsonia", ModDoublePlantBlock::new).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).color(() -> LostWorldsBlocks::getGrassyColour).addLayer(() -> RenderType::cutout).loot((provider, block) -> provider.add(block, LootTable.lootTable().withPool(provider.applyExplosionDecay(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))))).register();
-	public static final BlockEntry<ModBushBlock> ZAMITES = REGISTRATE.plantColoured("zamites", ModBushBlock::new).properties(properties -> BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).color(() -> LostWorldsBlocks::getGrassyColour).loot((provider, block) -> provider.add(block, provider.createShearsDispatchTable(block, provider.applyExplosionDecay(block, LootItem.lootTableItem(LostWorldsItems.FERN_LEAVES.get()).when(LootItemRandomChanceCondition.randomChance(0.125F)).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2)))))).register();
+	public static final BlockEntry<ModDoublePlantBlock> WILLIAMSONIA = REGISTRATE.doublePlantColoured("williamsonia", ModDoublePlantBlock::new).properties(properties -> properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).color(() -> ClientUtils::getGrassyColour).addLayer(() -> RenderType::cutout).loot((provider, block) -> provider.add(block, LootTable.lootTable().withPool(provider.applyExplosionDecay(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))))).register();
+	public static final BlockEntry<ModBushBlock> ZAMITES = REGISTRATE.plantColoured("zamites", ModBushBlock::new).properties(properties -> BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).color(() -> ClientUtils::getGrassyColour).loot((provider, block) -> provider.add(block, provider.createShearsDispatchTable(block, provider.applyExplosionDecay(block, LootItem.lootTableItem(LostWorldsItems.FERN_LEAVES.get()).when(LootItemRandomChanceCondition.randomChance(0.125F)).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2)))))).register();
 
 	public static final BlockEntry<NautilusShellBlock> FOSSILIZED_NAUTILUS_SHELL = REGISTRATE.block("fossilized_nautilus_shell", NautilusShellBlock::new).properties(properties -> properties.of(Material.SHULKER_SHELL).instabreak().noOcclusion().sound(SoundType.ANVIL)).blockstate((block, provider) -> provider.horizontalBlock(block.get(), provider.models().withExistingParent(block.getName(), provider.modLoc("shell")).texture("shell", LostWorldsUtils.rL("block/fossilized_nautilus_shell")).texture("particle", LostWorldsUtils.rL("block/fossilized_nautilus_shell")))).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("item/fossilized_nautilus_shell"))).tag(LostWorldsTags.ModItemTags.NAUTILUS_FOSSILS.tag).build().register();
 
@@ -400,19 +394,19 @@ public class LostWorldsBlocks {
 		for (AncientCreatures types : AncientCreatures.eggLaying()) {
 			Size size = types.getEggSize();
 			if (size == Size.TINY) {
-				BlockEntry<TinyEggBlock> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", size.getName(), types, properties -> new TinyEggBlock(properties, types.getEntityType())).initialProperties(() -> Blocks.TURTLE_EGG).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.tinyEgg()).tag(LostWorldsTags.ModBlockTags.EGGS.tag).register();
+				BlockEntry<TinyEggBlock> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", size.getName(), types, properties -> new TinyEggBlock(properties, types.getEntityType())).initialProperties(() -> Blocks.TURTLE_EGG).color(() -> () -> ClientUtils.getEggBlock(types)).blockstate(LostWorldsBlockModels.tinyEgg()).tag(LostWorldsTags.ModBlockTags.EGGS.tag).register();
 				types.setEgg(() -> egg.get());
 			}
 			if (size == Size.SMALL) {
-				BlockEntry<SmallEggBlock> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", size.getName(), types, properties -> new SmallEggBlock(properties, types.getEntityType())).initialProperties(() -> Blocks.TURTLE_EGG).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.smallEgg()).tag(LostWorldsTags.ModBlockTags.EGGS.tag).register();
+				BlockEntry<SmallEggBlock> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", size.getName(), types, properties -> new SmallEggBlock(properties, types.getEntityType())).initialProperties(() -> Blocks.TURTLE_EGG).color(() -> () -> ClientUtils.getEggBlock(types)).blockstate(LostWorldsBlockModels.smallEgg()).tag(LostWorldsTags.ModBlockTags.EGGS.tag).register();
 				types.setEgg(() -> egg.get());
 			}
 			if (size == Size.MEDIUM) {
-				BlockEntry<MediumEggBlock> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", size.getName(), types, properties -> new MediumEggBlock(properties, types.getEntityType())).initialProperties(() -> Blocks.TURTLE_EGG).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.mediumEgg()).tag(LostWorldsTags.ModBlockTags.EGGS.tag).register();
+				BlockEntry<MediumEggBlock> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", size.getName(), types, properties -> new MediumEggBlock(properties, types.getEntityType())).initialProperties(() -> Blocks.TURTLE_EGG).color(() -> () -> ClientUtils.getEggBlock(types)).blockstate(LostWorldsBlockModels.mediumEgg()).tag(LostWorldsTags.ModBlockTags.EGGS.tag).register();
 				types.setEgg(() -> egg.get());
 			}
 			if (size == Size.LARGE) {
-				BlockEntry<LargeEggBlock> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", size.getName(), types, properties -> new LargeEggBlock(properties, types.getEntityType())).initialProperties(() -> Blocks.TURTLE_EGG).color(() -> () -> LostWorldsBlocks.getEggBlock(types)).blockstate(LostWorldsBlockModels.largeEgg()).tag(LostWorldsTags.ModBlockTags.EGGS.tag).register();
+				BlockEntry<LargeEggBlock> egg = REGISTRATE.blockItemFlatColoured(types.getId() + "_egg", size.getName(), types, properties -> new LargeEggBlock(properties, types.getEntityType())).initialProperties(() -> Blocks.TURTLE_EGG).color(() -> () -> ClientUtils.getEggBlock(types)).blockstate(LostWorldsBlockModels.largeEgg()).tag(LostWorldsTags.ModBlockTags.EGGS.tag).register();
 				types.setEgg(() -> egg.get());
 			}
 		}
@@ -568,44 +562,6 @@ public class LostWorldsBlocks {
 
 	public static boolean never(BlockState state, BlockGetter reader, BlockPos pos) {
 		return false;
-	}
-
-	public static BlockColor getGrassyColour() {
-		return (state, world, pos, layer) -> pos != null && world != null ? BiomeColors.getAverageGrassColor(world, pos) : FoliageColor.get(0.5D, 1.0D);
-	}
-
-	public static ItemColor getGrassyItemColour() {
-		return (stack, layer) -> FoliageColor.get(0.5D, 1.0D);
-	}
-
-	public static BlockColor getWaterColour() {
-		return (state, world, pos, layer) -> world != null && pos != null ? BiomeColors.getAverageWaterColor(world, pos) : -1;
-	}
-
-	public static BlockColor getEggBlock(AncientCreatures types) {
-		if (LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get()) {
-			return new BlockColor() {
-				@Override
-				public int getColor(BlockState state, BlockAndTintGetter reader, BlockPos pos, int layer) {
-					return types.getSetEggColour();
-				}
-			};
-		} else {
-			return (state, world, pos, layer) -> pos != null && world != null ? BiomeColors.getAverageGrassColor(world, pos) : FoliageColor.get(0.5D, 1.0D);
-		}
-	}
-
-	public static ItemColor getEggItem(AncientCreatures types) {
-		if (LostWorldsConfig.CLIENT_CONFIG.eggsSetColour.get()) {
-			return new ItemColor() {
-				@Override
-				public int getColor(ItemStack stack, int layer) {
-					return types.getSetEggColour();
-				}
-			};
-		} else {
-			return (stack, layer) -> FoliageColor.get(0.5D, 1.0D);
-		}
 	}
 
 	public static void registerSignBlock(Supplier<? extends BlockEntry<? extends Block>> sign) {

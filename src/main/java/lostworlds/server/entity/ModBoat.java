@@ -23,8 +23,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
 public class ModBoat extends Boat {
@@ -114,7 +112,6 @@ public class ModBoat extends Boat {
 		}
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void animateHurt() {
 		this.setHurtDir(-this.getHurtDir());

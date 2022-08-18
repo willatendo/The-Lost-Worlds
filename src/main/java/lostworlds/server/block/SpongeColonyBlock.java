@@ -12,8 +12,6 @@ import net.minecraft.world.level.block.CoralPlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.NonNullSupplier;
 
 public class SpongeColonyBlock extends CoralPlantBlock {
@@ -28,7 +26,6 @@ public class SpongeColonyBlock extends CoralPlantBlock {
 		return SHAPE;
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void animateTick(BlockState state, Level world, BlockPos pos, Random rand) {
 		if (state.getValue(WATERLOGGED)) {

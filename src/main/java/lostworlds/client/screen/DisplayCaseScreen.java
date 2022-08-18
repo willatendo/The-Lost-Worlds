@@ -9,10 +9,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class DisplayCaseScreen extends AbstractContainerScreen<DisplayCaseMenu> {
 	private static final ResourceLocation TEXTURE = LostWorldsUtils.rL("textures/gui/single_item_inventory.png");
 

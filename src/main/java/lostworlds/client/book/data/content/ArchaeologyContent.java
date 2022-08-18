@@ -23,11 +23,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.crafting.IShapedRecipe;
 
-@OnlyIn(Dist.CLIENT)
 public class ArchaeologyContent extends PageContent {
 	public static final transient ResourceLocation ID = LostWorldsUtils.rL("archaeology");
 

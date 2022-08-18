@@ -9,6 +9,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
 
+import lostworlds.client.setup.ModelLayerSetup;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.ModBoat;
 import lostworlds.server.entity.utils.enums.ModBoatType;
@@ -20,10 +21,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class ModBoatRenderer extends EntityRenderer<ModBoat> {
 	private static final ResourceLocation[] BOAT_TEXTURES = new ResourceLocation[] { LostWorldsUtils.rL("textures/entity/boat/araucaria_boat.png"), LostWorldsUtils.rL("textures/entity/boat/calamites_boat.png"), LostWorldsUtils.rL("textures/entity/boat/conifer_boat.png"), LostWorldsUtils.rL("textures/entity/boat/cypress_boat.png"), LostWorldsUtils.rL("textures/entity/boat/ginkgo_boat.png"), LostWorldsUtils.rL("textures/entity/boat/scorched_boat.png"), LostWorldsUtils.rL("textures/entity/boat/sequoia_boat.png") };
 	private final Map<ModBoatType, BoatModel> boatResources;
@@ -33,7 +31,7 @@ public class ModBoatRenderer extends EntityRenderer<ModBoat> {
 		this.boatResources = Stream.of(ModBoatType.values()).collect(ImmutableMap.toImmutableMap((type) -> {
 			return type;
 		}, (type) -> {
-			return new BoatModel(context.bakeLayer(type.getLayer()));
+			return new BoatModel(context.bakeLayer(ModelLayerSetup.BOATS[type.ordinal()]));
 		}));
 		this.shadowRadius = 0.8F;
 	}

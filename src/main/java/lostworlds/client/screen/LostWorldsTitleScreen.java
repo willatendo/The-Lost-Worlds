@@ -30,7 +30,7 @@ public class LostWorldsTitleScreen extends TitleScreen {
 //					list.add(s);
 //				}
 //			}
-//
+//	
 //			if (!list.isEmpty()) {
 //				do {
 //					this.lw_splash = list.get(new Random().nextInt(list.size()));

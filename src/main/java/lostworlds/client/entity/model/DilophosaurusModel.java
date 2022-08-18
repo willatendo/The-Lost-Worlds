@@ -1,13 +1,10 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.entity.terrestrial.jurassic.Dilophosaurus;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
-@OnlyIn(Dist.CLIENT)
 public class DilophosaurusModel extends SpeciesTagModelAndTextureableModel<Dilophosaurus> {
 	@Override
 	public void setLivingAnimations(Dilophosaurus entity, Integer uniqueID, AnimationEvent customPredicate) {

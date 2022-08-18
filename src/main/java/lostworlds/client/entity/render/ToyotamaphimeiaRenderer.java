@@ -6,11 +6,8 @@ import lostworlds.client.entity.model.ToyotamaphimeiaModel;
 import lostworlds.server.entity.semiaquatic.pleistocene.Toyotamaphimeia;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
-@OnlyIn(Dist.CLIENT)
 public class ToyotamaphimeiaRenderer extends GeoEntityRenderer<Toyotamaphimeia> {
 	public ToyotamaphimeiaRenderer(Context context) {
 		super(context, new ToyotamaphimeiaModel());

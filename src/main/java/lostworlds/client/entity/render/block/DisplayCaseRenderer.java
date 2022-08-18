@@ -13,10 +13,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class DisplayCaseRenderer implements BlockEntityRenderer<DisplayCaseBlockEntity> {
 	public DisplayCaseRenderer(BlockEntityRendererProvider.Context context) {
 	}

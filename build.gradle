@@ -44,6 +44,19 @@ minecraft {
 			}
 		}
 		
+		server {
+            workingDirectory project.file('run')
+
+            property 'forge.enabledGameTestNamespaces', 'lostworlds'
+
+            mods {
+                lostworlds {
+                    source sourceSets.main
+                }
+            }
+        }
+		
+		
 		data {
 			workingDirectory project.file('run')
 			

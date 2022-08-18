@@ -1,13 +1,10 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.entity.terrestrial.jurassic.Ostromia;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
-@OnlyIn(Dist.CLIENT)
 public class OstromiaModel extends SpeciesTagModelAndTextureableModel<Ostromia> {
 	@Override
 	public void setLivingAnimations(Ostromia entity, Integer uniqueID, AnimationEvent customPredicate) {

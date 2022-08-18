@@ -1,13 +1,10 @@
 package lostworlds.client.entity.model;
 
 import lostworlds.server.entity.semiaquatic.permian.Mesosaurus;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
-@OnlyIn(Dist.CLIENT)
 public class MesosaurusModel extends SpeciesTagModelAndTextureableModel<Mesosaurus> {
 	@Override
 	public void setLivingAnimations(Mesosaurus entity, Integer uniqueID, AnimationEvent customPredicate) {

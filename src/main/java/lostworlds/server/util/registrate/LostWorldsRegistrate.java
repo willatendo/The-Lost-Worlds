@@ -15,6 +15,7 @@ import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
+import lostworlds.client.ClientUtils;
 import lostworlds.client.sounds.LostWorldsSounds;
 import lostworlds.data.custom.BookBuilder;
 import lostworlds.data.custom.BookBuilder.SectionBuilder;
@@ -318,7 +319,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> leaves(String name, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).color(() -> LostWorldsBlocks::getGrassyColour).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().withExistingParent(block.getName(), provider.mcLoc("block/leaves")).texture("all", provider.modLoc("block/" + name))))).item().color(() -> LostWorldsBlocks::getGrassyItemColour).build();
+		return super.block(name, factory).color(() -> ClientUtils::getGrassyColour).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().withExistingParent(block.getName(), provider.mcLoc("block/leaves")).texture("all", provider.modLoc("block/" + name))))).item().color(() -> ClientUtils::getGrassyItemColour).build();
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> blockItemModel(String name, String parent, NonNullFunction<Properties, T> factory) {
@@ -334,7 +335,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> blockItemFlatColoured(String name, String texture, AncientCreatures types, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("item/" + texture))).color(() -> () -> LostWorldsBlocks.getEggItem(types)).build();
+		return super.block(name, factory).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("item/" + texture))).color(() -> () -> ClientUtils.getEggItem(types)).build();
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> sapling(String name, NonNullFunction<Properties, T> factory) {
@@ -375,7 +376,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 			} else {
 				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_top", provider.modLoc("block/dense_cross")).texture("plant", provider.modLoc("block/cephalotaxus_top"))).build();
 			}
-		})).loot((provider, block) -> provider.add(block, LootTable.lootTable().withPool(provider.applyExplosionDecay(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))))).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("block/" + name + "_top"))).color(() -> LostWorldsBlocks::getGrassyItemColour).build();
+		})).loot((provider, block) -> provider.add(block, LootTable.lootTable().withPool(provider.applyExplosionDecay(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))))).item().model((item, provider) -> provider.generated(() -> item.get(), provider.modLoc("block/" + name + "_top"))).color(() -> ClientUtils::getGrassyItemColour).build();
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> plant(String name, NonNullFunction<Properties, T> factory) {
@@ -383,7 +384,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> parentName(String name, NonNullFunction<Properties, T> factory) {
-		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().addModels(new ConfiguredModel(provider.models().withExistingParent(block.getName() + "_gen", LostWorldsUtils.rL(block.getName()))))).item().color(() -> LostWorldsBlocks::getGrassyItemColour).build();
+		return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().addModels(new ConfiguredModel(provider.models().withExistingParent(block.getName() + "_gen", LostWorldsUtils.rL(block.getName()))))).item().color(() -> ClientUtils::getGrassyItemColour).build();
 	}
 
 	public <T extends Block> BlockBuilder<T, LostWorldsRegistrate> parentNameNoItem(String name, NonNullFunction<Properties, T> factory) {
@@ -396,7 +397,7 @@ public class LostWorldsRegistrate extends AbstractRegistrate<LostWorldsRegistrat
 		} else if (texture == "calamites_suckowii") {
 			return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().withExistingParent(block.getName(), new ResourceLocation("block/potted_bamboo")).texture("bamboo", LostWorldsUtils.rL("block/calamites_suckowii_stalk")).texture("leaf", LostWorldsUtils.rL("block/calamites_suckowii_singleleaf"))))).tag(BlockTags.FLOWER_POTS);
 		} else {
-			return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().singleTexture(block.getName(), LostWorldsUtils.rL("block/water_flower_pot_cross"), "plant", new ResourceLocation(block.get().getRegistryName().getNamespace(), "block/" + texture))))).addLayer(() -> RenderType::translucent).color(() -> LostWorldsBlocks::getWaterColour).tag(BlockTags.FLOWER_POTS);
+			return super.block(name, factory).blockstate((block, provider) -> provider.getVariantBuilder(block.get()).partialState().setModels(new ConfiguredModel(provider.models().singleTexture(block.getName(), LostWorldsUtils.rL("block/water_flower_pot_cross"), "plant", new ResourceLocation(block.get().getRegistryName().getNamespace(), "block/" + texture))))).addLayer(() -> RenderType::translucent).color(() -> ClientUtils::getWaterColour).tag(BlockTags.FLOWER_POTS);
 		}
 	}
 

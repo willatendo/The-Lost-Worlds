@@ -6,11 +6,8 @@ import lostworlds.client.entity.model.OphthalmosaurusModel;
 import lostworlds.server.entity.aquatic.jurassic.Ophthalmosaurus;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
-@OnlyIn(Dist.CLIENT)
 public class OphthalmosaurusRenderer extends GeoEntityRenderer<Ophthalmosaurus> {
 	public OphthalmosaurusRenderer(Context context) {
 		super(context, new OphthalmosaurusModel());
