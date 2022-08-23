@@ -82,7 +82,6 @@ public class LostWorldsMod {
 
 	public LostWorldsMod() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-		IEventBus forge = MinecraftForge.EVENT_BUS;
 
 		GeckoLib.initialize();
 
@@ -115,6 +114,8 @@ public class LostWorldsMod {
 
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
+
+		IEventBus forge = MinecraftForge.EVENT_BUS;
 
 		forge.addListener(this::biomeStuff);
 		forge.addListener(this::onPlayerLoggedIn);
