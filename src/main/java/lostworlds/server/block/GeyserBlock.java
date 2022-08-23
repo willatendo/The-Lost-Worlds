@@ -25,8 +25,6 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class GeyserBlock extends Block implements ILavaLoggable {
 	public static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 16, 14);
@@ -105,7 +103,6 @@ public class GeyserBlock extends Block implements ILavaLoggable {
 		}
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {
 		if (rand.nextInt(10) == 0) {

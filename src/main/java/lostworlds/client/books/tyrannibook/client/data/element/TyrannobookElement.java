@@ -13,11 +13,8 @@ import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.gui.GuiUtils;
 
-@OnlyIn(Dist.CLIENT)
 public abstract class TyrannobookElement extends AbstractGui {
 	public TyrannobookScreen parent;
 

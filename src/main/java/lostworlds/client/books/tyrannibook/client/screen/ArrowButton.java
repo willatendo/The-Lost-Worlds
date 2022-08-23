@@ -7,10 +7,7 @@ import lostworlds.client.books.tyrannibook.client.TyrannibookTextures;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class ArrowButton extends Button {
 	public static final int WIDTH = 18;
 	public static final int HEIGHT = 10;

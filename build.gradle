@@ -46,6 +46,18 @@ minecraft {
 			}
 		}
 		
+		server {
+			workingDirectory project.file('run')
+
+			property 'forge.enabledGameTestNamespaces', 'lostworlds'
+
+			mods {
+				lostworlds {
+					source sourceSets.main
+				}
+			}
+		}
+		
 		data {
 			workingDirectory project.file('run')
 			
@@ -121,13 +133,13 @@ jar {
 }
 
 shadowJar {
-    classifier = ''
-    configurations = [project.configurations.shade]
-    relocate 'com.tterrag.registrate', 'lostworlds.repack.registrate'
+	classifier = ''
+	configurations = [project.configurations.shade]
+	relocate 'com.tterrag.registrate', 'lostworlds.repack.registrate'
 }
 
 reobf {
-    shadowJar {}
+	shadowJar {}
 }
 
 

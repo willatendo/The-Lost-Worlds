@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "lostworlds.core",
+	"package": "lostworlds.mixin",
 	"minVersion": "0.8",
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [

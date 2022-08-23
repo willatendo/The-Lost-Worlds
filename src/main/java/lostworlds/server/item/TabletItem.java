@@ -21,12 +21,12 @@ public class TabletItem extends ModItem {
 	@Override
 	public ActionResultType interactLivingEntity(ItemStack stack, PlayerEntity playerEntity, LivingEntity entity, Hand hand) {
 		Minecraft instance = Minecraft.getInstance();
-
 		if (entity instanceof PrehistoricEntity) {
 			if (entity instanceof TaggedEntity) {
 				TaggedEntity tagged = (TaggedEntity) entity;
 				if (tagged.isTagged()) {
 					instance.setScreen(new TabletScreen(tagged));
+					playerEntity.openItemGui(stack, hand);
 					return ActionResultType.SUCCESS;
 				}
 			}

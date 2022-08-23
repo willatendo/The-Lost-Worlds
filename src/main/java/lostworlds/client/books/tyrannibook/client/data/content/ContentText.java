@@ -7,10 +7,7 @@ import lostworlds.client.books.tyrannibook.client.data.element.TextData;
 import lostworlds.client.books.tyrannibook.client.data.element.TextElement;
 import lostworlds.client.books.tyrannibook.client.data.element.TyrannobookElement;
 import lostworlds.client.books.tyrannibook.client.screen.TyrannobookScreen;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class ContentText extends PageContent {
 	public String title = null;
 	public TextData[] text;

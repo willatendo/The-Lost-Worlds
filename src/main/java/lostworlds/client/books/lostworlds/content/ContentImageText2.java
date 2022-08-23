@@ -9,10 +9,7 @@ import lostworlds.client.books.tyrannibook.client.data.element.ImageElement;
 import lostworlds.client.books.tyrannibook.client.data.element.TextElement;
 import lostworlds.client.books.tyrannibook.client.data.element.TyrannobookElement;
 import lostworlds.client.books.tyrannibook.client.screen.TyrannobookScreen;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class ContentImageText2 extends ContentImageText {
 	public static final transient String ID = "imageText2";
 

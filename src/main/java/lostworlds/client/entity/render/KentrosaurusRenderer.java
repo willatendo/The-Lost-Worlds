@@ -6,11 +6,8 @@ import lostworlds.client.entity.model.KentrosaurusModel;
 import lostworlds.server.entity.terrestrial.jurassic.KentrosaurusEntity;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
-@OnlyIn(Dist.CLIENT)
 public class KentrosaurusRenderer extends GeoEntityRenderer<KentrosaurusEntity> {
 	public KentrosaurusRenderer(EntityRendererManager renderManager) {
 		super(renderManager, new KentrosaurusModel());

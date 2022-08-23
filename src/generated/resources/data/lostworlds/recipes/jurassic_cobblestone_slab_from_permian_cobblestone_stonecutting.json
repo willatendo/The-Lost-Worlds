@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "lostworlds:permian_cobblestone"
-  },
-  "result": "lostworlds:jurassic_cobblestone_slab",
-  "count": 2
-}

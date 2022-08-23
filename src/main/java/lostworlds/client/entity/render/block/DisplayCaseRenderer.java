@@ -13,10 +13,7 @@ import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class DisplayCaseRenderer extends TileEntityRenderer<DisplayCaseTileEntity> {
 	public DisplayCaseRenderer(TileEntityRendererDispatcher dispatcher) {
 		super(dispatcher);

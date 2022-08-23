@@ -12,8 +12,6 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.NonNullSupplier;
 
 public class SpongeColonyBlock extends CoralPlantBlock {
@@ -28,7 +26,6 @@ public class SpongeColonyBlock extends CoralPlantBlock {
 		return SHAPE;
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {
 		if (state.getValue(WATERLOGGED)) {

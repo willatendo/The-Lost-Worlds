@@ -6,12 +6,9 @@ import lostworlds.client.entity.model.OstromiaWingsModel;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.terrestrial.jurassic.OstromiaEntity;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.renderers.geo.GeoLayerRenderer;
 import software.bernie.geckolib3.renderers.geo.IGeoRenderer;
 
-@OnlyIn(Dist.CLIENT)
 public class OstromiaWingsRenderer extends GeoLayerRenderer<OstromiaEntity> {
 	public OstromiaWingsRenderer(IGeoRenderer<OstromiaEntity> renderer) {
 		super(renderer);

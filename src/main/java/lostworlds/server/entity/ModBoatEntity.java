@@ -23,8 +23,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.fml.network.NetworkHooks;
 
@@ -115,7 +113,6 @@ public class ModBoatEntity extends BoatEntity {
 		}
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void animateHurt() {
 		this.setHurtDir(-this.getHurtDir());

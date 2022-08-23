@@ -36,6 +36,5 @@ public class FieldGuideItem extends TyrannobookItem {
 	@Override
 	public void openLecternScreenClient(BlockPos pos, ItemStack stack) {
 		LostWorldsBooks.FIELD_GUIDE.openGui(pos, stack);
-		;
 	}
 }

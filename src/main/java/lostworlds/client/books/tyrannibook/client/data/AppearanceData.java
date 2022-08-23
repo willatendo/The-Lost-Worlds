@@ -1,9 +1,5 @@
 package lostworlds.client.books.tyrannibook.client.data;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
 public class AppearanceData implements DataItem {
 	public int coverColor = 0x8B4631;
 	public int arrowColor = 0xFFFFD3;

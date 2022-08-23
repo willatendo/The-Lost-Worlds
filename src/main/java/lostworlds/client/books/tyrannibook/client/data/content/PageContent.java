@@ -9,10 +9,7 @@ import lostworlds.client.books.tyrannibook.client.data.element.TextElement;
 import lostworlds.client.books.tyrannibook.client.data.element.TyrannobookElement;
 import lostworlds.client.books.tyrannibook.client.repository.TyrannobookRepository;
 import lostworlds.client.books.tyrannibook.client.screen.TyrannobookScreen;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public abstract class PageContent {
 	public static final transient int TITLE_HEIGHT = 16;
 

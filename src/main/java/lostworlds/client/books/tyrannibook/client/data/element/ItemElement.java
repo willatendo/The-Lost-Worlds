@@ -18,10 +18,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class ItemElement extends SizedTyrannobookElement {
 	public static final int ITEM_SIZE_HARDCODED = 16;
 	public static final long ITEM_SWITCH_TIME = 3000000000L;

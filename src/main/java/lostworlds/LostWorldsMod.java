@@ -81,10 +81,6 @@ public class LostWorldsMod {
 	private static final NonNullLazyValue<LostWorldsRegistrate> REGISTRATE = LostWorldsRegistrate.lazy(ID);
 
 	public LostWorldsMod() {
-		this.makeMod();
-	}
-
-	public void makeMod() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		IEventBus forge = MinecraftForge.EVENT_BUS;
 

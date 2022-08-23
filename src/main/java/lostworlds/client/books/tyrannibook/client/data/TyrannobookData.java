@@ -31,10 +31,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.LanguageMap;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class TyrannobookData implements DataItem {
 	public transient int unnamedSectionCounter = 0;
 	public transient ArrayList<SectionData> sections = new ArrayList<>();

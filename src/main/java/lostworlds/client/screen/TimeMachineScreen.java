@@ -16,10 +16,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class TimeMachineScreen extends ContainerScreen<TimeMachineContainer> {
 	private static final ResourceLocation TEXTURE = LostWorldsUtils.rL("textures/gui/time_machine.png");
 	private float scrollOffs;

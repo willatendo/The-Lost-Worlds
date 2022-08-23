@@ -1,13 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "X  ",
-    "XX ",
-    "XXX"
+    "XX",
+    "XX"
   ],
   "key": {
     "X": {
-      "item": "lostworlds:marble"
+      "item": "lostworlds:raw_marble"
     }
   },
   "result": {

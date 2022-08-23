@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:iron_ingot_from_jurassic_iron_ore_smelting"
+    ]
+  },
+  "criteria": {
+    "has_jurassic_iron_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lostworlds:jurassic_iron_ore"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:iron_ingot_from_jurassic_iron_ore_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_jurassic_iron_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

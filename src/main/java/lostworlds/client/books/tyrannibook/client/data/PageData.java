@@ -12,10 +12,7 @@ import lostworlds.client.books.tyrannibook.client.data.content.PageContent;
 import lostworlds.client.books.tyrannibook.client.data.element.DataElement;
 import lostworlds.client.books.tyrannibook.client.repository.TyrannobookRepository;
 import net.minecraft.resources.IResource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class PageData implements DataItem {
 	public String name = null;
 	public String type = "";

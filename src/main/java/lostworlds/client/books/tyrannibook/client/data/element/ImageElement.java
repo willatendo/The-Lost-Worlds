@@ -5,10 +5,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class ImageElement extends SizedTyrannobookElement {
 	public ImageData image;
 	public int colorMultiplier;

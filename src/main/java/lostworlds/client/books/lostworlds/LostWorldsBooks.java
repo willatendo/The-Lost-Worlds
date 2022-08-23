@@ -9,10 +9,7 @@ import lostworlds.client.books.tyrannibook.client.TyrannobookTransformer;
 import lostworlds.client.books.tyrannibook.client.data.TyrannobookData;
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class LostWorldsBooks extends TyrannobookData {
 	private static final ResourceLocation LOST_WORLDS_LEXICON_ID = LostWorldsUtils.rL("lost_worlds_lexicon");
 	public static final TyrannobookData LOST_WORLDS_LEXICON = TyrannobookLoader.registerBook(LOST_WORLDS_LEXICON_ID.toString(), false, false);

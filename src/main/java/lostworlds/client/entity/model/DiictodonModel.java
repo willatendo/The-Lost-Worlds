@@ -3,12 +3,9 @@ package lostworlds.client.entity.model;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.terrestrial.permian.DiictodonEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
-@OnlyIn(Dist.CLIENT)
 public class DiictodonModel extends AnimatedGeoModel<DiictodonEntity> {
 	@Override
 	public ResourceLocation getAnimationFileLocation(DiictodonEntity entity) {

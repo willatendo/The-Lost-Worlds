@@ -10,7 +10,7 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 @OnlyIn(Dist.CLIENT)
 public class CustomisableRenderer extends GeoEntityRenderer<FossilEntity> {
 	public CustomisableRenderer(EntityRendererManager renderManager, String model, String texture, float shadow) {
-		super(renderManager, new CustomisableModel(model, texture));
+		super(renderManager, new CustomisableModel<FossilEntity>(model, texture));
 		this.shadowRadius = shadow;
 	}
 }

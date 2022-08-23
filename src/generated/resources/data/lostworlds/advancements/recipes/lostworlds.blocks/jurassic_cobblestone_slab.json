@@ -6,12 +6,12 @@
     ]
   },
   "criteria": {
-    "has_permian_cobblestone": {
+    "has_jurassic_cobblestone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:permian_cobblestone"
+            "item": "lostworlds:jurassic_cobblestone"
           }
         ]
       }
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_permian_cobblestone",
+      "has_jurassic_cobblestone",
       "has_the_recipe"
     ]
   ]

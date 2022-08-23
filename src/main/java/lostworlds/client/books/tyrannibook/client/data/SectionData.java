@@ -15,10 +15,7 @@ import lostworlds.client.books.tyrannibook.client.repository.TyrannobookReposito
 import lostworlds.client.books.tyrannibook.client.screen.TyrannobookScreen;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.resources.IResource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class SectionData implements DataItem {
 	public String name = null;
 	public ImageData icon = new ImageData();

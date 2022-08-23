@@ -23,11 +23,8 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.crafting.IShapedRecipe;
 
-@OnlyIn(Dist.CLIENT)
 public class ContentArchaeology extends PageContent {
 	public static final transient String ID = "archaeology";
 

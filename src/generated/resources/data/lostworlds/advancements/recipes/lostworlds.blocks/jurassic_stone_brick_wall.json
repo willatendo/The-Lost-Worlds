@@ -6,12 +6,12 @@
     ]
   },
   "criteria": {
-    "has_jurassic_stone_brick_stairs": {
+    "has_jurassic_stone_bricks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:jurassic_stone_brick_stairs"
+            "item": "lostworlds:jurassic_stone_bricks"
           }
         ]
       }
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_jurassic_stone_brick_stairs",
+      "has_jurassic_stone_bricks",
       "has_the_recipe"
     ]
   ]

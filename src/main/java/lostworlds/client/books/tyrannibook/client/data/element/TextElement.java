@@ -10,10 +10,7 @@ import lostworlds.client.books.tyrannibook.client.action.StringActionProcessor;
 import lostworlds.client.books.tyrannibook.client.screen.TextDataRenderer;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class TextElement extends SizedTyrannobookElement {
 	public TextData[] text;
 	private final List<ITextComponent> tooltip = new ArrayList<ITextComponent>();

@@ -1,12 +1,8 @@
 package lostworlds.client.books.tyrannibook.client.data.element;
 
 import net.minecraft.util.text.ITextComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
-public class TextData 
-{
+public class TextData {
 	public static final TextData LINEBREAK = new TextData("\n");
 
 	public String text;
@@ -25,10 +21,10 @@ public class TextData
 	public String action = "";
 	public ITextComponent[] tooltip = null;
 
-	public TextData() { }
+	public TextData() {
+	}
 
-	public TextData(String text) 
-	{
+	public TextData(String text) {
 		this.text = text;
 	}
 }

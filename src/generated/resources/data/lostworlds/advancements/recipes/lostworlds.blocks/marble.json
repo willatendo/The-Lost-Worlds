@@ -6,12 +6,12 @@
     ]
   },
   "criteria": {
-    "has_marble": {
+    "has_item": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "lostworlds:marble"
+            "item": "lostworlds:raw_marble"
           }
         ]
       }
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_marble",
+      "has_item",
       "has_the_recipe"
     ]
   ]

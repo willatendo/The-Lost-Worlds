@@ -7,10 +7,7 @@ import lostworlds.client.books.tyrannibook.client.data.element.ImageData;
 import lostworlds.client.books.tyrannibook.client.data.element.ImageElement;
 import lostworlds.client.books.tyrannibook.client.data.element.TyrannobookElement;
 import lostworlds.client.books.tyrannibook.client.screen.TyrannobookScreen;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class ContentImage extends PageContent {
 	public String title = null;
 	public ImageData image;

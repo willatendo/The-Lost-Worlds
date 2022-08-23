@@ -7,10 +7,7 @@ import net.minecraft.client.renderer.entity.IllagerRenderer;
 import net.minecraft.client.renderer.entity.layers.HeldItemLayer;
 import net.minecraft.client.renderer.entity.model.IllagerModel;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class FossilPoacherRenderer extends IllagerRenderer<FossilPoacherEntity> {
 	private static final ResourceLocation FOSSIL_POACHER_TEXTURE = LostWorldsUtils.rL("textures/entity/fossil_poacher/texture.png");
 
