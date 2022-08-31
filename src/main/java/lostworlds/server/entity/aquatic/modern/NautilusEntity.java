@@ -1,6 +1,6 @@
 package lostworlds.server.entity.aquatic.modern;
 
-import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsConfig;
 import lostworlds.server.entity.aquatic.BasicFishLikeEntity;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.entity.CreatureEntity;

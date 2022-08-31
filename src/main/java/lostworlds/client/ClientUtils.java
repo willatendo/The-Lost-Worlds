@@ -2,6 +2,7 @@ package lostworlds.client;
 
 import org.lwjgl.glfw.GLFW;
 
+import lostworlds.server.LostWorldsConfig;
 import lostworlds.server.entity.utils.enums.DinoTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;

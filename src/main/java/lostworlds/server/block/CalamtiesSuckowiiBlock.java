@@ -85,7 +85,7 @@ public class CalamtiesSuckowiiBlock extends Block implements IGrowable {
 			return null;
 		} else {
 			BlockState blockstate = context.getLevel().getBlockState(context.getClickedPos().below());
-			if (blockstate.is(LostWorldsTags.ModBlockTags.CALAMITES_PLACEABLES.tag)) {
+			if (blockstate.is(LostWorldsTags.ModBlockTags.CALAMITES_PLACEABLES)) {
 				if (blockstate.is(LostWorldsBlocks.CALAMITES_SUCKOWII_SAPLING.get())) {
 					return this.defaultBlockState().setValue(AGE, Integer.valueOf(0));
 				} else if (blockstate.is(LostWorldsBlocks.CALAMITES_SUCKOWII.get())) {
@@ -128,7 +128,7 @@ public class CalamtiesSuckowiiBlock extends Block implements IGrowable {
 
 	@Override
 	public boolean canSurvive(BlockState state, IWorldReader reader, BlockPos pos) {
-		return reader.getBlockState(pos.below()).is(LostWorldsTags.ModBlockTags.CALAMITES_PLACEABLES.tag);
+		return reader.getBlockState(pos.below()).is(LostWorldsTags.ModBlockTags.CALAMITES_PLACEABLES);
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package lostworlds.server.placement;
 
-import lostworlds.LostWorldsMod;
+import lostworlds.server.LostWorldsUtils;
 import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.NoPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
@@ -9,7 +9,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsPlacements {
-	public static final DeferredRegister<Placement<?>> DECORATORS = DeferredRegister.create(ForgeRegistries.DECORATORS, LostWorldsMod.ID);
+	public static final DeferredRegister<Placement<?>> DECORATORS = DeferredRegister.create(ForgeRegistries.DECORATORS, LostWorldsUtils.ID);
 
 	public static final Placement<NoPlacementConfig> NEST = register("nest", new Height55To60(NoPlacementConfig.CODEC));
 

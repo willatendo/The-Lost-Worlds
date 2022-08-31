@@ -1,6 +1,6 @@
 package lostworlds.server.entity.terrestrial.cretaceous;
 
-import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsConfig;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.goal.terrestrial.PanicGoal;
 import lostworlds.server.entity.goal.terrestrial.SleepGoal;

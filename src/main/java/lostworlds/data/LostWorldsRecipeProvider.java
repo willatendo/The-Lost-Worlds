@@ -64,6 +64,6 @@ public class LostWorldsRecipeProvider extends RecipeProvider {
 			CultivatorRecipeBuilder.simple(Ingredient.of(plants.getDNADisc().get()), plants.getSeed().get()).unlockedBy("has_item", has(plants.getDNADisc().get())).save(consumer);
 		}
 
-		ShapelessRecipeBuilder.shapeless(Items.BONE_MEAL, 4).requires(Tags.Items.BONES).unlockedBy("has_item", has(LostWorldsTags.ModItemTags.FOSSILS.tag)).save(consumer, LostWorldsUtils.rL("bone_meal_from_bone"));
+		ShapelessRecipeBuilder.shapeless(Items.BONE_MEAL, 4).requires(Tags.Items.BONES).unlockedBy("has_item", has(LostWorldsTags.ModItemTags.FOSSILS)).save(consumer, LostWorldsUtils.rL("bone_meal_from_bone"));
 	}
 }

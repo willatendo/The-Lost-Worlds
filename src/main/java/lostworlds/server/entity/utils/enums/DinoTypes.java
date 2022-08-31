@@ -114,10 +114,10 @@ public enum DinoTypes implements IStringSerializable {
 	private final float rawSaturation;
 	private final float cookedSaturation;
 
-	private DinoTypes(String id, Supplier<EntityType<? extends CreatureEntity>> entityType, LostWorldsTags.ModItemTags fossilTag, boolean eggLaying, boolean feathered, boolean createHide, Size eggSize, CreatureDiet diet, int eggSetColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation) {
+	private DinoTypes(String id, Supplier<EntityType<? extends CreatureEntity>> entityType, ITag.INamedTag<Item> fossilTag, boolean eggLaying, boolean feathered, boolean createHide, Size eggSize, CreatureDiet diet, int eggSetColour, int rawNutrition, int cookedNutrition, float rawSaturation, float cookedSaturation) {
 		this.id = id;
 		this.entityType = entityType;
-		this.fossilTag = fossilTag.tag;
+		this.fossilTag = fossilTag;
 		this.eggLaying = eggLaying;
 		this.feathered = feathered;
 		this.createHide = createHide;

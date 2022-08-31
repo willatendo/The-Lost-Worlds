@@ -1,6 +1,6 @@
 package lostworlds.server.entity.aquatic.jurassic;
 
-import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsConfig;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.aquatic.DolphinLikeEntity;
 import net.minecraft.entity.AgeableEntity;

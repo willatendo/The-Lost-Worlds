@@ -2,7 +2,7 @@ package lostworlds.server.biome;
 
 import static lostworlds.server.biome.LostWorldsConfiguredFeatures.register;
 
-import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsConfig;
 import lostworlds.server.block.Damage;
 import lostworlds.server.block.Egg;
 import lostworlds.server.block.LostWorldsBlocks;

@@ -178,7 +178,7 @@ public abstract class PrehistoricEntity extends AnimalEntity implements IAnimata
 	}
 
 	public static boolean canPrehistoricSpawn(EntityType type, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
-		boolean spawnBlock = BlockTags.getAllTags().getTag(LostWorldsTags.ModBlockTags.DINO_SPAWNABLES.tag.getName()).contains(world.getBlockState(pos.below()).getBlock());
+		boolean spawnBlock = BlockTags.getAllTags().getTag(LostWorldsTags.ModBlockTags.DINO_SPAWNABLES.getName()).contains(world.getBlockState(pos.below()).getBlock());
 		return spawnBlock;
 	}
 

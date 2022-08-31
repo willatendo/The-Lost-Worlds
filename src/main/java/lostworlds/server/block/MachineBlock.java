@@ -6,8 +6,8 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import lostworlds.client.LostWorldsConfig;
 import lostworlds.client.sounds.LostWorldsSounds;
+import lostworlds.server.LostWorldsConfig;
 import lostworlds.server.block.entity.AnalyzerTileEntity;
 import lostworlds.server.block.entity.CultivatorTileEntity;
 import lostworlds.server.block.entity.DNAExtractorTileEntity;

@@ -172,7 +172,7 @@ public class WoodList {
 			}
 
 			if (types == WoodTypes.SAPLING) {
-				BlockEntry<SaplingBlock> sapling = this.registrate.sapling(id + "_" + types.toString().toLowerCase(), properties -> new SaplingBlock(tree, properties)).properties(properties -> properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).tag(LostWorldsTags.ModBlockTags.ANCIENT_SAPLINGS.tag, BlockTags.SAPLINGS).register();
+				BlockEntry<SaplingBlock> sapling = this.registrate.sapling(id + "_" + types.toString().toLowerCase(), properties -> new SaplingBlock(tree, properties)).properties(properties -> properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).tag(LostWorldsTags.ModBlockTags.ANCIENT_SAPLINGS, BlockTags.SAPLINGS).register();
 				this.blocks.add(() -> sapling);
 			}
 
@@ -247,12 +247,12 @@ public class WoodList {
 			}
 
 			if (types == WoodTypes.PETRIFIED_LOG) {
-				BlockEntry<PetrifiedWoodBlock> petrifiedLog = this.registrate.rotatedBlock("petrified_" + id + "_log", properties -> new PetrifiedWoodBlock(bark, properties)).properties(properties -> properties.of(Material.STONE, colour).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)).tag(LostWorldsTags.ModBlockTags.PETRIFIED_LOGS.tag).register();
+				BlockEntry<PetrifiedWoodBlock> petrifiedLog = this.registrate.rotatedBlock("petrified_" + id + "_log", properties -> new PetrifiedWoodBlock(bark, properties)).properties(properties -> properties.of(Material.STONE, colour).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)).tag(LostWorldsTags.ModBlockTags.PETRIFIED_LOGS).register();
 				this.blocks.add(() -> petrifiedLog);
 			}
 
 			if (types == WoodTypes.STRIPPED_PETRIFIED_LOG) {
-				BlockEntry<RotatedPillarBlock> strippedPetrifiedLog = this.registrate.rotatedBlock("stripped_petrified_" + id + "_log", RotatedPillarBlock::new).properties(properties -> properties.of(Material.STONE, colour).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)).tag(LostWorldsTags.ModBlockTags.PETRIFIED_LOGS.tag).register();
+				BlockEntry<RotatedPillarBlock> strippedPetrifiedLog = this.registrate.rotatedBlock("stripped_petrified_" + id + "_log", RotatedPillarBlock::new).properties(properties -> properties.of(Material.STONE, colour).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)).tag(LostWorldsTags.ModBlockTags.PETRIFIED_LOGS).register();
 				this.blocks.add(() -> strippedPetrifiedLog);
 			}
 		}
@@ -285,7 +285,7 @@ public class WoodList {
 			}
 
 			if (types == WoodTypes.SAPLING) {
-				BlockEntry<CustomTreeSaplingBlock> sapling = this.registrate.sapling(id + "_" + types.toString().toLowerCase(), properties -> new CustomTreeSaplingBlock(tree, properties)).properties(properties -> properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).tag(LostWorldsTags.ModBlockTags.ANCIENT_SAPLINGS.tag, BlockTags.SAPLINGS).register();
+				BlockEntry<CustomTreeSaplingBlock> sapling = this.registrate.sapling(id + "_" + types.toString().toLowerCase(), properties -> new CustomTreeSaplingBlock(tree, properties)).properties(properties -> properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).tag(LostWorldsTags.ModBlockTags.ANCIENT_SAPLINGS, BlockTags.SAPLINGS).register();
 				this.blocks.add(() -> sapling);
 			}
 
@@ -360,12 +360,12 @@ public class WoodList {
 			}
 
 			if (types == WoodTypes.PETRIFIED_LOG) {
-				BlockEntry<PetrifiedWoodBlock> petrifiedLog = this.registrate.rotatedBlock("petrified_" + id + "_log", properties -> new PetrifiedWoodBlock(bark, properties)).properties(properties -> properties.of(Material.STONE, colour).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)).tag(LostWorldsTags.ModBlockTags.PETRIFIED_LOGS.tag).register();
+				BlockEntry<PetrifiedWoodBlock> petrifiedLog = this.registrate.rotatedBlock("petrified_" + id + "_log", properties -> new PetrifiedWoodBlock(bark, properties)).properties(properties -> properties.of(Material.STONE, colour).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)).tag(LostWorldsTags.ModBlockTags.PETRIFIED_LOGS).register();
 				this.blocks.add(() -> petrifiedLog);
 			}
 
 			if (types == WoodTypes.STRIPPED_PETRIFIED_LOG) {
-				BlockEntry<RotatedPillarBlock> strippedPetrifiedLog = this.registrate.rotatedBlock("stripped_petrified_" + id + "_log", RotatedPillarBlock::new).properties(properties -> properties.of(Material.STONE, colour).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)).tag(LostWorldsTags.ModBlockTags.PETRIFIED_LOGS.tag).register();
+				BlockEntry<RotatedPillarBlock> strippedPetrifiedLog = this.registrate.rotatedBlock("stripped_petrified_" + id + "_log", RotatedPillarBlock::new).properties(properties -> properties.of(Material.STONE, colour).strength(2.0F, 3.0F).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)).tag(LostWorldsTags.ModBlockTags.PETRIFIED_LOGS).register();
 				this.blocks.add(() -> strippedPetrifiedLog);
 			}
 		}

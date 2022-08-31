@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 
-import lostworlds.LostWorldsMod;
+import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.biomes.cretaceous.arctic.CretaceousArcticBiome;
 import lostworlds.server.biome.biomes.cretaceous.arctic.CretaceousArcticSpiresBiome;
 import lostworlds.server.biome.biomes.cretaceous.arctic.CretaceousFrozenForestBiome;
@@ -77,7 +77,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsBiomes {
 	private static final LostWorldsRegistrate REGISTRATE = getRegistrate();
-	public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, LostWorldsMod.ID);
+	public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, LostWorldsUtils.ID);
 
 	// Permian
 	public static final RegistryObject<Biome> PERMIAN_CONIFER_FOREST = register("permian_conifer_forest", new PermianConiferForestBiome());

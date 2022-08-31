@@ -13,7 +13,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsConfig;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.LostWorldsConfiguredFeatures;
 import lostworlds.server.block.LostWorldsBlocks;

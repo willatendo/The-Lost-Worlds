@@ -6,7 +6,7 @@ issueTrackerURL="https://github.com/willatendo/Lost-Worlds/issues"
 [[mods]]
 modId="lostworlds"
 version="11c-alpha"
-displayName="Lost Worlds"
+displayName="The Lost Worlds"
 updateJSONURL="https://github.com/willatendo/The-Lost-Worlds/raw/main/updates.json"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/the-lost-worlds-forge"
 logoFile="lostworlds.png"
@@ -46,7 +46,7 @@ Animators:
     modId="geckolib3"
     mandatory=true
     versionRange="[3.0.66,)"
-    ordering="NONE"
+    ordering="BEFORE"
     side="BOTH"
     
 [[dependencies.lostworlds]]

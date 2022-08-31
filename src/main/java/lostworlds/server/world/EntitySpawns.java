@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
-import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsConfig;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.biome.LostWorldsBiomes;
 import lostworlds.server.entity.LostWorldsEntities;
@@ -164,7 +164,6 @@ public class EntitySpawns {
 		}
 
 		// Aquatic
-
 		ArrayList<ResourceLocation> palaeoniscumBiomes = Lists.newArrayList(LostWorldsBiomes.PERMIAN_OCEAN.get().getRegistryName(), LostWorldsBiomes.DEEP_PERMIAN_OCEAN.get().getRegistryName(), LostWorldsBiomes.WARM_PERMIAN_OCEAN.get().getRegistryName(), LostWorldsBiomes.WARM_DEEP_PERMIAN_OCEAN.get().getRegistryName());
 		if (palaeoniscumBiomes.contains(event.getName())) {
 			FeatureAdder.addSpawn(event, EntityClassification.CREATURE, LostWorldsEntities.PALAEONISCUM.get(), LostWorldsConfig.COMMON_CONFIG.palaeoniscumSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.palaeoniscumSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.palaeoniscumSpawnGroupMaximum.get());

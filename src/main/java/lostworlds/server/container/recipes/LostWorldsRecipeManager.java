@@ -21,7 +21,7 @@ import net.minecraft.potion.Potions;
 public class LostWorldsRecipeManager {
 	public static ArrayList<DNAExtractorRecipe> getAmberRecipes() {
 		ArrayList<DNAExtractorRecipe> recipes = new ArrayList<>();
-		for (Item types : LostWorldsTags.ModItemTags.AMBER_RESULTS.tag.getValues()) {
+		for (Item types : LostWorldsTags.ModItemTags.AMBER_RESULTS.getValues()) {
 			recipes.add(new DNAExtractorRecipe(LostWorldsUtils.rL("amber_recipes"), Ingredient.of(LostWorldsItems.AMBER.get()), Ingredient.of(LostWorldsItems.EMPTY_VILE.get()), types.getDefaultInstance()));
 		}
 		return recipes;

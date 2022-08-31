@@ -2,7 +2,7 @@ package lostworlds.server.structure;
 
 import java.util.Locale;
 
-import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsConfig;
 import lostworlds.server.LostWorldsUtils;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;

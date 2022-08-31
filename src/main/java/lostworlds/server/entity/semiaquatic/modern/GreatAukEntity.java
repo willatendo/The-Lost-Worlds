@@ -2,7 +2,7 @@ package lostworlds.server.entity.semiaquatic.modern;
 
 import java.util.Random;
 
-import lostworlds.client.LostWorldsConfig;
+import lostworlds.server.LostWorldsConfig;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.goal.ReasonedAttackableTargetGoal;
 import lostworlds.server.entity.goal.semiaquatic.SemiAquaticFindWaterGoal;

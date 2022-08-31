@@ -1,8 +1,8 @@
-package lostworlds.client;
+package lostworlds.server;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-import lostworlds.server.LostWorldsCommonConfig;
+import lostworlds.client.LostWorldsClientConfigs;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class LostWorldsConfig {

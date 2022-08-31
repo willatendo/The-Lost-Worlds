@@ -258,7 +258,7 @@ public class DNAExtractorTileEntity extends TileEntity implements IInventory, IN
 		Random rand = new Random();
 		if (!this.items.get(0).isEmpty() && !this.items.get(1).isEmpty()) {
 			if (!this.hasOutput) {
-				this.output = LostWorldsTags.ModItemTags.AMBER_RESULTS.tag.getValues().get(rand.nextInt(LostWorldsTags.ModItemTags.AMBER_RESULTS.tag.getValues().size())).getDefaultInstance();
+				this.output = LostWorldsTags.ModItemTags.AMBER_RESULTS.getValues().get(rand.nextInt(LostWorldsTags.ModItemTags.AMBER_RESULTS.getValues().size())).getDefaultInstance();
 				this.hasOutput = true;
 			}
 

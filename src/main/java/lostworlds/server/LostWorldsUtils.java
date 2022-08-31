@@ -9,11 +9,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import lostworlds.client.LostWorldsClientConfigs;
-import lostworlds.client.LostWorldsConfig;
-import lostworlds.server.tab.ModTab;
+import lostworlds.server.block.LostWorldsBlocks;
+import lostworlds.server.item.LostWorldsEnchantments;
+import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.util.Version;
+import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
+import net.minecraft.item.EnchantedBookItem;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -21,7 +27,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.raid.Raid;
 import net.minecraftforge.fml.ModList;
 
-//Random Constantly Called Things
 public class LostWorldsUtils {
 	public static final Logger LOGGER = LogManager.getLogger(LostWorldsUtils.ID);
 
@@ -67,8 +72,26 @@ public class LostWorldsUtils {
 	public static final LostWorldsCommonConfig SERVER_CONFIG = LostWorldsConfig.COMMON_CONFIG;
 	public static final LostWorldsClientConfigs CLIENT_CONFIG = LostWorldsConfig.CLIENT_CONFIG;
 
-	public static final ModTab ITEMS = new ModTab("items");
-	public static final ModTab BLOCKS = new ModTab("blocks");
+	public static final ItemGroup ITEMS = new ItemGroup(LostWorldsUtils.ID + ".items") {
+		@Override
+		public ItemStack makeIcon() {
+			return LostWorldsItems.LOST_WORLDS_LEXICON.asStack();
+		}
+
+		public void fillItemList(NonNullList<ItemStack> itemStacks) {
+			super.fillItemList(itemStacks);
+			itemStacks.add(EnchantedBookItem.createForEnchantment(new EnchantmentData(LostWorldsEnchantments.PRECISION.get(), 1)));
+			itemStacks.add(EnchantedBookItem.createForEnchantment(new EnchantmentData(LostWorldsEnchantments.PRECISION.get(), 2)));
+			itemStacks.add(EnchantedBookItem.createForEnchantment(new EnchantmentData(LostWorldsEnchantments.PRECISION.get(), 3)));
+			itemStacks.add(EnchantedBookItem.createForEnchantment(new EnchantmentData(LostWorldsEnchantments.CURSE_OF_BREAKING.get(), 1)));
+		}
+	};
+	public static final ItemGroup BLOCKS = new ItemGroup(LostWorldsUtils.ID + ".blocks") {
+		@Override
+		public ItemStack makeIcon() {
+			return LostWorldsBlocks.PLASTERED_FOSSILIZED_TRACK.asStack();
+		}
+	};
 
 	public static final HashSet<Biome.Category> SIMPLE_SPAWNABLE_BIOME_CATEGORIES = Stream.of(Biome.Category.FOREST, Biome.Category.JUNGLE, Biome.Category.DESERT, Biome.Category.PLAINS, Biome.Category.SAVANNA).collect(Collectors.toCollection(HashSet::new));
 	public static final HashSet<Biome.Category> FOSSIL_BIOMES = Stream.of(Biome.Category.FOREST, Biome.Category.EXTREME_HILLS, Biome.Category.DESERT, Biome.Category.PLAINS, Biome.Category.SAVANNA, Biome.Category.MUSHROOM, Biome.Category.SWAMP).collect(Collectors.toCollection(HashSet::new));

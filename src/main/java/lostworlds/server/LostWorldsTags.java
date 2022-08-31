@@ -1,290 +1,134 @@
 package lostworlds.server;
 
 import static lostworlds.LostWorldsMod.getRegistrate;
-import static lostworlds.server.LostWorldsTags.NameSpace.MOD;
-
-import java.util.function.Function;
-
-import com.tterrag.registrate.builders.BlockBuilder;
-import com.tterrag.registrate.builders.ItemBuilder;
-import com.tterrag.registrate.providers.ProviderType;
-import com.tterrag.registrate.util.nullness.NonNullFunction;
 
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 
 public class LostWorldsTags {
 	private static final LostWorldsRegistrate REGISTRATE = getRegistrate();
 
-	public static <T> ITag.INamedTag<T> tag(Function<ResourceLocation, ITag.INamedTag<T>> wrapperFactory, String namespace, String path) {
-		return wrapperFactory.apply(new ResourceLocation(namespace, path));
-	}
+	public static class ModItemTags {
+		public static final ITag.INamedTag<Item> ALLOSAURUS_FOSSILS = create("allosaurus_fossils");
+		public static final ITag.INamedTag<Item> AMBER_RESULTS = create("amber_results");
+		public static final ITag.INamedTag<Item> ANOMALOCARIS_FOSSILS = create("anomalocaris_fossils");
+		public static final ITag.INamedTag<Item> ARAUCARIA_LOGS = create("araucaria_logs");
+		public static final ITag.INamedTag<Item> ANCIENT_SAPLINGS = create("ancient_saplings");
+		public static final ITag.INamedTag<Item> ANCIENT_SEEDS = create("ancient_seeds");
+		public static final ITag.INamedTag<Item> BARK_SAMPLES = create("bark_samples");
+		public static final ITag.INamedTag<Item> BLOOD_SYRINGES = create("blood_syringes");
+		public static final ITag.INamedTag<Item> BLOOD_VILES = create("blood_viles");
+		public static final ITag.INamedTag<Item> BROKEN_CRYSTAL_SCARAB_GEMS = create("broken_crystal_scarab_gems");
+		public static final ITag.INamedTag<Item> BRUSHES = create("brushes");
+		public static final ITag.INamedTag<Item> CARNOTAURUS_FOSSILS = create("carnotaurus_fossils");
+		public static final ITag.INamedTag<Item> CALAMITES_LOGS = create("calamites_logs");
+		public static final ITag.INamedTag<Item> CHILESAURUS_FOSSILS = create("chilesaurus_fossils");
+		public static final ITag.INamedTag<Item> CRYOLOPHOSAURUS_FOSSILS = create("cryolophosaurus_fossils");
+		public static final ITag.INamedTag<Item> CREATURE_ITEMS = create("creature_items");
+		public static final ITag.INamedTag<Item> CONIFER_LOGS = create("conifer_logs");
+		public static final ITag.INamedTag<Item> CYPRESS_LOGS = create("cypress_logs");
+		public static final ITag.INamedTag<Item> DARK_CONCRETE = create("dark_concrete");
+		public static final ITag.INamedTag<Item> DECORATIVE_ITEMS = create("decorative_items");
+		public static final ITag.INamedTag<Item> DECORATIVE_BLOCKS = create("decorative_blocks");
+		public static final ITag.INamedTag<Item> DECORATIVE_DOORS = create("decorative_doors");
+		public static final ITag.INamedTag<Item> DIICTODON_FOSSILS = create("diictodon_fossils");
+		public static final ITag.INamedTag<Item> DILOPHOSAURUS_FOSSILS = create("dilophosaurus_fossils");
+		public static final ITag.INamedTag<Item> DIMETRODON_FOSSILS = create("dimetrodon_fossils");
+		public static final ITag.INamedTag<Item> DNA_DISCS = create("dna_discs");
+		public static final ITag.INamedTag<Item> DNA = create("dna");
+		public static final ITag.INamedTag<Item> EDAPHOSAURUS_FOSSILS = create("edaphosaurus_fossils");
+		public static final ITag.INamedTag<Item> EGGS = create("eggs");
+		public static final ITag.INamedTag<Item> EORAPTOR_FOSSILS = create("eoraptor_fossils");
+		public static final ITag.INamedTag<Item> ELECTRONICS = create("electronics");
+		public static final ITag.INamedTag<Item> EUSTREPTOSPONDYLUS_FOSSILS = create("eustreptospondylus_fossils");
+		public static final ITag.INamedTag<Item> FOOD_SEEDS = create("food_seeds");
+		public static final ITag.INamedTag<Item> FOSSILS = create("fossils");
+		public static final ITag.INamedTag<Item> FUKUIVENATOR_FOSSILS = create("fukuivenator_fossils");
+		public static final ITag.INamedTag<Item> GINKGO_LOGS = create("ginkgo_logs");
+		public static final ITag.INamedTag<Item> GIGANOTOSAURUS_FOSSILS = create("giganotosaurus_fossils");
+		public static final ITag.INamedTag<Item> GORGONOPS_FOSSILS = create("gorgonops_fossils");
+		public static final ITag.INamedTag<Item> GREAT_AUK_FOSSILS = create("great_auk_fossils");
+		public static final ITag.INamedTag<Item> KENTROSAURUS_FOSSILS = create("kentrosaurus_fossils");
+		public static final ITag.INamedTag<Item> JURASSIC_PARK_ERA = create("jurassic_park_era");
+		public static final ITag.INamedTag<Item> JURASSIC_WORLD_ERA = create("jurassic_world_era");
+		public static final ITag.INamedTag<Item> LIAONINGOSAURUS_FOSSILS = create("liaoningosaurus_fossils");
+		public static final ITag.INamedTag<Item> LIGHT_CONCRETE = create("light_concrete");
+		public static final ITag.INamedTag<Item> NAUTILUS_FOSSILS = create("nautilus_fossils");
+		public static final ITag.INamedTag<Item> OPHTHALMOSAURUS_FOSSILS = create("ophthalmosaurus_fossils");
+		public static final ITag.INamedTag<Item> OSTROMIA_FOSSILS = create("ostromia_fossils");
+		public static final ITag.INamedTag<Item> OURANOSAURUS_FOSSILS = create("ouranosaurus_fossils");
+		public static final ITag.INamedTag<Item> PARKSOSAURUS_FOSSILS = create("parksosaurus_fossils");
+		public static final ITag.INamedTag<Item> PALAEONISCUM_FOSSILS = create("palaeoniscum_fossils");
+		public static final ITag.INamedTag<Item> PAVEMENT = create("pavement");
+		public static final ITag.INamedTag<Item> PETRIFIED_LOGS = create("petrified_logs");
+		public static final ITag.INamedTag<Item> PLANT_FOSSILS = create("plant_fossils");
+		public static final ITag.INamedTag<Item> PLANT_SOFT_TISSUE = create("plant_soft_tissue");
+		public static final ITag.INamedTag<Item> PLASTERED_FOSSILS = create("plastered_fossils");
+		public static final ITag.INamedTag<Item> PROCOMPSOGNATHUS_FOSSILS = create("procompsognathus_fossils");
+		public static final ITag.INamedTag<Item> PROTOSUCHUS_FOSSILS = create("protosuchus_fossils");
+		public static final ITag.INamedTag<Item> PSITTACOSAURUS_FOSSILS = create("psittacosaurus_fossils");
+		public static final ITag.INamedTag<Item> REFINED_WOODEN_PLANKS = create("refined_wooden_planks");
+		public static final ITag.INamedTag<Item> RHINESUCHUS_FOSSILS = create("rhinesuchus_fossils");
+		public static final ITag.INamedTag<Item> ROADS = create("roads");
+		public static final ITag.INamedTag<Item> SCORCHED_LOGS = create("scorched_logs");
+		public static final ITag.INamedTag<Item> SEQUOIA_LOGS = create("sequoia_logs");
+		public static final ITag.INamedTag<Item> SKELETONS = create("skeletons");
+		public static final ITag.INamedTag<Item> SOFT_TISSUE = create("soft_tissue");
+		public static final ITag.INamedTag<Item> SUCHOMIMUS_FOSSILS = create("suchomimus_fossils");
+		public static final ITag.INamedTag<Item> TETRACERATOPS_FOSSILS = create("tetraceratops_fossils");
+		public static final ITag.INamedTag<Item> TIME_BOOK_FUEL = create("time_book_fuel");
+		public static final ITag.INamedTag<Item> TIME_BOOKS = create("time_books");
+		public static final ITag.INamedTag<Item> THANOS_FOSSILS = create("thanos_fossils");
+		public static final ITag.INamedTag<Item> TRACE_FOSSILS = create("trace_fossils");
+		public static final ITag.INamedTag<Item> TYRANNOSAURUS_FOSSILS = create("tyrannosaurus_fossils");
+		public static final ITag.INamedTag<Item> UTAHRAPTOR_FOSSILS = create("utahraptor_fossils");
+		public static final ITag.INamedTag<Item> WOODEN_PLANKS = create("wooden_planks");
+		public static final ITag.INamedTag<Item> ZEPHYROSAURUS_FOSSILS = create("zephyrosaurus_fossils");
 
-	public static <T> ITag.INamedTag<T> forgeTag(Function<ResourceLocation, ITag.INamedTag<T>> wrapperFactory, String path) {
-		return tag(wrapperFactory, "forge", path);
-	}
-
-	public static ITag.INamedTag<Block> forgeBlockTag(String path) {
-		return forgeTag(BlockTags::createOptional, path);
-	}
-
-	public static ITag.INamedTag<Item> forgeItemTag(String path) {
-		return forgeTag(ItemTags::createOptional, path);
-	}
-
-	public static <T extends Block, P> NonNullFunction<BlockBuilder<T, P>, ItemBuilder<BlockItem, BlockBuilder<T, P>>> tagBlockAndItem(String path) {
-		return b -> b.tag(forgeBlockTag(path)).item().tag(forgeItemTag(path));
-	}
-
-	public static void addToTag(ITag.INamedTag<Item> itemTag, Item... item) {
-		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, provider -> provider.tag(itemTag).add(item));
-	}
-
-	public enum NameSpace {
-		MOD(LostWorldsUtils.ID, false, true);
-
-		public final String id;
-		public final boolean optionalDefault;
-		public final boolean alwaysDatagenDefault;
-
-		NameSpace(String id) {
-			this(id, true, false);
-		}
-
-		NameSpace(String id, boolean optionalDefault, boolean alwaysDatagenDefault) {
-			this.id = id;
-			this.optionalDefault = optionalDefault;
-			this.alwaysDatagenDefault = alwaysDatagenDefault;
-		}
-
-	}
-
-	public enum ModItemTags {
-		ALLOSAURUS_FOSSILS,
-		AMBER_RESULTS,
-		ANOMALOCARIS_FOSSILS,
-		ARAUCARIA_LOGS,
-		ANCIENT_SAPLINGS,
-		ANCIENT_SEEDS,
-		BARK_SAMPLES,
-		BLOOD_SYRINGES,
-		BLOOD_VILES,
-		BROKEN_CRYSTAL_SCARAB_GEMS,
-		BRUSHES,
-		CARNOTAURUS_FOSSILS,
-		CALAMITES_LOGS,
-		CHILESAURUS_FOSSILS,
-		CRYOLOPHOSAURUS_FOSSILS,
-		CREATURE_ITEMS,
-		CONIFER_LOGS,
-		CYPRESS_LOGS,
-		DARK_CONCRETE,
-		DECORATIVE_ITEMS,
-		DECORATIVE_BLOCKS,
-		DECORATIVE_DOORS,
-		DIICTODON_FOSSILS,
-		DILOPHOSAURUS_FOSSILS,
-		DIMETRODON_FOSSILS,
-		DNA_DISCS,
-		DNA,
-		EDAPHOSAURUS_FOSSILS,
-		EGGS,
-		EORAPTOR_FOSSILS,
-		ELECTRONICS,
-		EUSTREPTOSPONDYLUS_FOSSILS,
-		FOOD_SEEDS,
-		FOSSILS,
-		FUKUIVENATOR_FOSSILS,
-		GINKGO_LOGS,
-		GIGANOTOSAURUS_FOSSILS,
-		GORGONOPS_FOSSILS,
-		GREAT_AUK_FOSSILS,
-		KENTROSAURUS_FOSSILS,
-		JURASSIC_PARK_ERA,
-		JURASSIC_WORLD_ERA,
-		LIAONINGOSAURUS_FOSSILS,
-		LIGHT_CONCRETE,
-		NAUTILUS_FOSSILS,
-		OPHTHALMOSAURUS_FOSSILS,
-		OSTROMIA_FOSSILS,
-		OURANOSAURUS_FOSSILS,
-		PARKSOSAURUS_FOSSILS,
-		PALAEONISCUM_FOSSILS,
-		PAVEMENT,
-		PETRIFIED_LOGS,
-		PLANT_FOSSILS,
-		PLANT_SOFT_TISSUE,
-		PLASTERED_FOSSILS,
-		PROCOMPSOGNATHUS_FOSSILS,
-		PROTOSUCHUS_FOSSILS,
-		PSITTACOSAURUS_FOSSILS,
-		REFINED_WOODEN_PLANKS,
-		RHINESUCHUS_FOSSILS,
-		ROADS,
-		SCORCHED_LOGS,
-		SEQUOIA_LOGS,
-		SKELETONS,
-		SOFT_TISSUE,
-		SUCHOMIMUS_FOSSILS,
-		TETRACERATOPS_FOSSILS,
-		TIME_BOOK_FUEL,
-		TIME_BOOKS,
-		THANOS_FOSSILS,
-		TRACE_FOSSILS,
-		TYRANNOSAURUS_FOSSILS,
-		UTAHRAPTOR_FOSSILS,
-		WOODEN_PLANKS,
-		ZEPHYROSAURUS_FOSSILS;
-
-		public final ITag.INamedTag<Item> tag;
-
-		ModItemTags() {
-			this(MOD);
-		}
-
-		ModItemTags(NameSpace namespace) {
-			this(namespace, namespace.optionalDefault, namespace.alwaysDatagenDefault);
-		}
-
-		ModItemTags(NameSpace namespace, String path) {
-			this(namespace, path, namespace.optionalDefault, namespace.alwaysDatagenDefault);
-		}
-
-		ModItemTags(NameSpace namespace, boolean optional, boolean alwaysDatagen) {
-			this(namespace, null, optional, alwaysDatagen);
-		}
-
-		ModItemTags(NameSpace namespace, String path, boolean optional, boolean alwaysDatagen) {
-			ResourceLocation id = new ResourceLocation(namespace.id, path == null ? name().toLowerCase() : path);
-			if (optional) {
-				tag = ItemTags.createOptional(id);
-			} else {
-				tag = ItemTags.bind(id.toString());
-			}
-			if (alwaysDatagen) {
-				REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, prov -> prov.tag(tag));
-			}
-		}
-
-		public boolean matches(Item item) {
-			return this.tag.contains(item);
-		}
-
-		public boolean matches(ItemStack stack) {
-			return this.tag.contains(stack.getItem());
-		}
-
-		public void add(Item... values) {
-			REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, prov -> prov.tag(tag).add(values));
-		}
-
-		public void includeIn(ITag.INamedTag<Item> parent) {
-			REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, prov -> prov.tag(parent).addTag(tag));
-		}
-
-		public void includeIn(ModItemTags parent) {
-			includeIn(parent.tag);
-		}
-
-		public void includeAll(ITag.INamedTag<Item> child) {
-			REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, prov -> prov.tag(tag).addTag(child));
+		public static ITag.INamedTag<Item> create(String id) {
+			return ItemTags.createOptional(LostWorldsUtils.rL(id));
 		}
 	}
 
-	public enum ModBlockTags {
-		ARAUCARIA_LOGS,
-		ANCIENT_SAPLINGS,
-		BASE_STONE_PERMIAN,
-		BASE_STONE_JURASSIC,
-		CARVER_BLOCKS,
-		CALAMITES_PLACEABLES,
-		CALAMITES_LOGS,
-		CONIFER_LOGS,
-		CYPRESS_LOGS,
-		DARK_CONCRETE,
-		DECORATIVE_BLOCKS,
-		DECORATIVE_DOORS,
-		DINO_SPAWNABLES,
-		EGGS,
-		FOSSILS,
-		GINKGO_LOGS,
-		JURASSIC_PARK_ERA,
-		JURASSIC_WORLD_ERA,
-		LIGHT_CONCRETE,
-		PAVEMENT,
-		PETRIFIED_LOGS,
-		REFINED_WOODEN_PLANKS,
-		ROADS,
-		SCORCHED_LOGS,
-		SEQUOIA_LOGS,
-		WOODEN_PLANKS;
+	public static class ModBlockTags {
+		public static final ITag.INamedTag<Block> ARAUCARIA_LOGS = create("araucaria_logs");
+		public static final ITag.INamedTag<Block> ANCIENT_SAPLINGS = create("ancient_saplings");
+		public static final ITag.INamedTag<Block> BASE_STONE_PERMIAN = create("base_stone_permian");
+		public static final ITag.INamedTag<Block> BASE_STONE_JURASSIC = create("base_stone_jurassic");
+		public static final ITag.INamedTag<Block> CARVER_BLOCKS = create("carver_blocks");
+		public static final ITag.INamedTag<Block> CALAMITES_PLACEABLES = create("calamites_placeables");
+		public static final ITag.INamedTag<Block> CALAMITES_LOGS = create("calamites_logs");
+		public static final ITag.INamedTag<Block> CONIFER_LOGS = create("conifer_logs");
+		public static final ITag.INamedTag<Block> CYPRESS_LOGS = create("cypress_logs");
+		public static final ITag.INamedTag<Block> DARK_CONCRETE = create("dark_concrete");
+		public static final ITag.INamedTag<Block> DECORATIVE_BLOCKS = create("decorative_blocks");
+		public static final ITag.INamedTag<Block> DECORATIVE_DOORS = create("decorative_doors");
+		public static final ITag.INamedTag<Block> DINO_SPAWNABLES = create("dino_spawnables");
+		public static final ITag.INamedTag<Block> EGGS = create("eggs");
+		public static final ITag.INamedTag<Block> FOSSILS = create("fossils");
+		public static final ITag.INamedTag<Block> GINKGO_LOGS = create("ginkgo_logs");
+		public static final ITag.INamedTag<Block> JURASSIC_PARK_ERA = create("jurassic_park_era");
+		public static final ITag.INamedTag<Block> JURASSIC_WORLD_ERA = create("jurassic_world_era");
+		public static final ITag.INamedTag<Block> LIGHT_CONCRETE = create("light_concrete");
+		public static final ITag.INamedTag<Block> PAVEMENT = create("pavement");
+		public static final ITag.INamedTag<Block> PETRIFIED_LOGS = create("petrified_logs");
+		public static final ITag.INamedTag<Block> REFINED_WOODEN_PLANKS = create("refined_wooden_planks");
+		public static final ITag.INamedTag<Block> ROADS = create("roads");
+		public static final ITag.INamedTag<Block> SCORCHED_LOGS = create("scorched_logs");
+		public static final ITag.INamedTag<Block> SEQUOIA_LOGS = create("sequoia_logs");
+		public static final ITag.INamedTag<Block> WOODEN_PLANKS = create("wooden_planks");
 
-		public final ITag.INamedTag<Block> tag;
-
-		ModBlockTags() {
-			this(MOD);
-		}
-
-		ModBlockTags(NameSpace namespace) {
-			this(namespace, namespace.optionalDefault, namespace.alwaysDatagenDefault);
-		}
-
-		ModBlockTags(NameSpace namespace, String path) {
-			this(namespace, path, namespace.optionalDefault, namespace.alwaysDatagenDefault);
-		}
-
-		ModBlockTags(NameSpace namespace, boolean optional, boolean alwaysDatagen) {
-			this(namespace, null, optional, alwaysDatagen);
-		}
-
-		ModBlockTags(NameSpace namespace, String path, boolean optional, boolean alwaysDatagen) {
-			ResourceLocation id = new ResourceLocation(namespace.id, path == null ? name().toLowerCase() : path);
-			if (optional) {
-				tag = BlockTags.createOptional(id);
-			} else {
-				tag = BlockTags.bind(id.toString());
-			}
-			if (alwaysDatagen) {
-				REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, prov -> prov.tag(tag));
-				LostWorldsUtils.LOGGER.debug("Made " + tag.toString());
-			}
-		}
-
-		public boolean matches(Block block) {
-			return tag.contains(block.getBlock());
-		}
-
-		public boolean matches(BlockState state) {
-			return matches(state.getBlock());
-		}
-
-		public void add(Block... values) {
-			REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, prov -> prov.tag(tag).add(values));
-		}
-
-		public void includeIn(ITag.INamedTag<Block> parent) {
-			REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, prov -> prov.tag(parent).addTag(tag));
-		}
-
-		public void includeIn(ModBlockTags parent) {
-			includeIn(parent.tag);
-		}
-
-		public void includeAll(ITag.INamedTag<Block>... childen) {
-			REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, prov -> prov.tag(tag).addTags(childen));
+		public static ITag.INamedTag<Block> create(String id) {
+			return BlockTags.createOptional(LostWorldsUtils.rL(id));
 		}
 	}
 
@@ -298,18 +142,18 @@ public class LostWorldsTags {
 	}
 
 	public static void init() {
-		ModItemTags.TIME_BOOK_FUEL.add(Items.REDSTONE);
-		ModItemTags.NAUTILUS_FOSSILS.add(Items.NAUTILUS_SHELL);
+		REGISTRATE.add(ModItemTags.TIME_BOOK_FUEL, Items.REDSTONE);
+		REGISTRATE.add(ModItemTags.NAUTILUS_FOSSILS, Items.NAUTILUS_SHELL);
 
-		ModBlockTags.CALAMITES_PLACEABLES.includeAll(BlockTags.SAND, Tags.Blocks.DIRT, Tags.Blocks.GRAVEL);
+		REGISTRATE.addTags(ModBlockTags.CALAMITES_PLACEABLES, BlockTags.SAND, Tags.Blocks.DIRT, Tags.Blocks.GRAVEL);
 
-		ModBlockTags.DINO_SPAWNABLES.includeAll(BlockTags.SAND, Tags.Blocks.DIRT, Tags.Blocks.GRAVEL, Tags.Blocks.STONE);
+		REGISTRATE.addTags(ModBlockTags.DINO_SPAWNABLES, BlockTags.SAND, Tags.Blocks.DIRT, Tags.Blocks.GRAVEL, Tags.Blocks.STONE);
 
-		ModBlockTags.JURASSIC_PARK_ERA.includeAll(ModBlockTags.LIGHT_CONCRETE.tag, ModBlockTags.WOODEN_PLANKS.tag);
+		REGISTRATE.addTags(ModBlockTags.JURASSIC_PARK_ERA, ModBlockTags.LIGHT_CONCRETE, ModBlockTags.WOODEN_PLANKS);
 
-		ModBlockTags.JURASSIC_WORLD_ERA.includeAll(ModBlockTags.DARK_CONCRETE.tag, ModBlockTags.REFINED_WOODEN_PLANKS.tag);
+		REGISTRATE.addTags(ModBlockTags.JURASSIC_WORLD_ERA, ModBlockTags.DARK_CONCRETE, ModBlockTags.REFINED_WOODEN_PLANKS);
 
-		ModBlockTags.CARVER_BLOCKS.add(Blocks.BASALT, Blocks.BLACKSTONE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRAVEL, Blocks.MAGMA_BLOCK, Blocks.STONE, Blocks.COBBLESTONE, Blocks.SNOW_BLOCK);
+		REGISTRATE.blockAdd(ModBlockTags.CARVER_BLOCKS, Blocks.BASALT, Blocks.BLACKSTONE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRAVEL, Blocks.MAGMA_BLOCK, Blocks.STONE, Blocks.COBBLESTONE, Blocks.SNOW_BLOCK);
 
 		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.ANCIENT_SAPLINGS, LostWorldsTags.ModItemTags.ANCIENT_SAPLINGS);
 		REGISTRATE.copyTag(LostWorldsTags.ModBlockTags.ARAUCARIA_LOGS, LostWorldsTags.ModItemTags.ARAUCARIA_LOGS);

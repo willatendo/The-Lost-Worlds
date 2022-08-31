@@ -12,6 +12,6 @@ public class DNASlot extends Slot {
 
 	@Override
 	public boolean mayPlace(ItemStack stack) {
-		return stack.getItem().is(LostWorldsTags.ModItemTags.DNA.tag);
+		return stack.getItem().is(LostWorldsTags.ModItemTags.DNA);
 	}
 }
