@@ -26,26 +26,20 @@ import lostworlds.server.entity.LostWorldsVillagerProfessions;
 import lostworlds.server.feature.LostWorldsFeatures;
 import lostworlds.server.impl.ImplInit;
 import lostworlds.server.item.LostWorldsBanners;
+import lostworlds.server.item.LostWorldsEffects;
 import lostworlds.server.item.LostWorldsEnchantments;
 import lostworlds.server.item.LostWorldsItems;
-import lostworlds.server.item.LostWorldsPotions;
 import lostworlds.server.loot.LostWorldsGlobalLootModifers;
 import lostworlds.server.placement.LostWorldsPlacements;
 import lostworlds.server.structure.LostWorldsStructurePecies;
 import lostworlds.server.structure.LostWorldsStructures;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
-import lostworlds.server.world.BiomeGen;
-import lostworlds.server.world.EntitySpawns;
-import lostworlds.server.world.FeatureGen;
-import lostworlds.server.world.StructureGen;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.potion.Potions;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
-import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -67,7 +61,7 @@ public class LostWorldsMod {
 
 		LostWorldsBlocks.registrate();
 		LostWorldsItems.registrate();
-		LostWorldsPotions.deferred(bus);
+		LostWorldsEffects.deferred(bus);
 		LostWorldsSounds.deferred(bus);
 		LostWorldsEnchantments.registrate();
 		LostWorldsEntities.registrate();
@@ -92,10 +86,6 @@ public class LostWorldsMod {
 
 		bus.addListener(this::commonSetup);
 
-		IEventBus forge = MinecraftForge.EVENT_BUS;
-
-		forge.addListener(this::biomeStuff);
-
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, LostWorldsConfig.commonSpec);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, LostWorldsConfig.clientSpec);
 	}
@@ -113,20 +103,6 @@ public class LostWorldsMod {
 		});
 
 		LostWorldsUtils.translateToWaves(LostWorldsEntities.FOSSIL_POACHER.get(), Arrays.asList(1, 0, 0, 0, 1, 2, 2, 3));
-	}
-
-	private void biomeStuff(BiomeLoadingEvent event) {
-		// Biomes
-		BiomeGen.init(event);
-
-		// Spawns
-		EntitySpawns.init(event);
-
-		// Features
-		FeatureGen.init(event);
-
-		// Structures
-		StructureGen.init(event);
 	}
 
 	public static LostWorldsRegistrate getRegistrate() {

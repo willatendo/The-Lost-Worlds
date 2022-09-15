@@ -29,7 +29,7 @@ public class JigsawUtils {
 			elements.add(element);
 		}
 
-		List<Pair<JigsawPiece, Integer>> elementCounts = new ArrayList(pool.rawTemplates);
+		List<Pair<JigsawPiece, Integer>> elementCounts = new ArrayList<>(pool.rawTemplates);
 
 		elements.addAll(pool.templates);
 		elementCounts.addAll(pool.rawTemplates);

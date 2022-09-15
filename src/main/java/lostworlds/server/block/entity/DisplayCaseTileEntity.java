@@ -129,6 +129,6 @@ public class DisplayCaseTileEntity extends LockableLootTileEntity implements INa
 
 	@Override
 	protected Container createMenu(int windowID, PlayerInventory playerInventory) {
-		return new DisplayCaseContainer(LostWorldsContainers.DISPLAY_CASE_CONTAINER.get(), windowID, playerInventory, this, this.handler);
+		return new DisplayCaseContainer(LostWorldsContainers.DISPLAY_CASE_CONTAINER.get(), windowID, playerInventory, this);
 	}
 }

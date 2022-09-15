@@ -21,10 +21,10 @@ public class CretaceousAddWeightedSubBiomeLayer implements IC0Transformer {
 
 	public CretaceousAddWeightedSubBiomeLayer(final int baseID, final int[] subBiomeIDs, WeightedRandom.Item... weights) {
 		if (weights.length > 0) {
-			biomeWeights = Lists.newArrayList(weights);
-			totalWeight = WeightedRandom.getTotalWeight(biomeWeights);
+			this.biomeWeights = Lists.newArrayList(weights);
+			this.totalWeight = WeightedRandom.getTotalWeight(biomeWeights);
 			for (int i = 0; i < weights.length; i++) {
-				biomeLookup.put(weights[i], subBiomeIDs[i]);
+				this.biomeLookup.put(weights[i], subBiomeIDs[i]);
 			}
 		}
 		this.baseID = baseID;

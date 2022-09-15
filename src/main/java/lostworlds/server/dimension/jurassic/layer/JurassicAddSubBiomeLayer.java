@@ -6,8 +6,8 @@ import net.minecraft.world.gen.INoiseRandom;
 import net.minecraft.world.gen.layer.traits.IC0Transformer;
 
 public class JurassicAddSubBiomeLayer implements IC0Transformer {
-	final int baseID;
-	final int[] subBiomeIDs;
+	private final int baseID;
+	private final int[] subBiomeIDs;
 
 	public JurassicAddSubBiomeLayer(final int baseID, final int[] subBiomeIDs) {
 		this.baseID = baseID;

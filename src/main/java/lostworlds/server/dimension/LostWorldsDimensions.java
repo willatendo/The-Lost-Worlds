@@ -1,6 +1,5 @@
 package lostworlds.server.dimension;
 
-import lostworlds.client.StandardDimensionRenderInfo;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.dimension.cretaceous.CretaceousBiomeProvider;
 import lostworlds.server.dimension.cretaceous.CretaceousChunkGenerator;
@@ -8,7 +7,6 @@ import lostworlds.server.dimension.jurassic.JurassicBiomeProvider;
 import lostworlds.server.dimension.jurassic.JurassicChunkGenerator;
 import lostworlds.server.dimension.permian.PermianBiomeProvider;
 import lostworlds.server.dimension.permian.PermianChunkGenerator;
-import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.DimensionType;
@@ -42,14 +40,6 @@ public class LostWorldsDimensions {
 
 		Registry.register(Registry.BIOME_SOURCE, LostWorldsUtils.rL("cretaceous_biome_source"), CretaceousBiomeProvider.CODEC);
 		Registry.register(Registry.CHUNK_GENERATOR, LostWorldsUtils.rL("cretaceous_chunk_generator"), CretaceousChunkGenerator.CODEC);
-	}
-
-	public static void initClient() {
-		DimensionRenderInfo baseRenderer = new StandardDimensionRenderInfo();
-
-		DimensionRenderInfo.EFFECTS.put(LostWorldsUtils.rL("permian_render"), baseRenderer);
-		DimensionRenderInfo.EFFECTS.put(LostWorldsUtils.rL("jurassic_render"), baseRenderer);
-		DimensionRenderInfo.EFFECTS.put(LostWorldsUtils.rL("cretaceous_render"), baseRenderer);
 	}
 
 	@SubscribeEvent

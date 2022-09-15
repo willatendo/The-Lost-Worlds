@@ -15,16 +15,16 @@ import net.minecraft.world.gen.layer.traits.IC0Transformer;
 public class JurassicAddWeightedSubBiomeLayer implements IC0Transformer {
 	private List<WeightedRandom.Item> biomeWeights;
 	private int totalWeight;
-	final int baseID;
-	final int[] subBiomeIDs;
+	private final int baseID;
+	private final int[] subBiomeIDs;
 	private final Object2IntMap<WeightedRandom.Item> biomeLookup = new Object2IntOpenHashMap<>();
 
 	public JurassicAddWeightedSubBiomeLayer(final int baseID, final int[] subBiomeIDs, WeightedRandom.Item... weights) {
 		if (weights.length > 0) {
-			biomeWeights = Lists.newArrayList(weights);
-			totalWeight = WeightedRandom.getTotalWeight(biomeWeights);
+			this.biomeWeights = Lists.newArrayList(weights);
+			this.totalWeight = WeightedRandom.getTotalWeight(biomeWeights);
 			for (int i = 0; i < weights.length; i++) {
-				biomeLookup.put(weights[i], subBiomeIDs[i]);
+				this.biomeLookup.put(weights[i], subBiomeIDs[i]);
 			}
 		}
 		this.baseID = baseID;

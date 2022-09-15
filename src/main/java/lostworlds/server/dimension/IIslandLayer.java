@@ -10,6 +10,6 @@ public interface IIslandLayer extends IAreaTransformer0 {
 
 	@Override
 	default int applyPixel(INoiseRandom rand, int x, int y) {
-		return rand.nextRandom(3) == 0 ? land() : ocean();
+		return rand.nextRandom(3) == 0 ? this.land() : this.ocean();
 	}
 }

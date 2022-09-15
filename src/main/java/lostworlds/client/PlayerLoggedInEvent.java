@@ -7,7 +7,7 @@ import com.google.common.collect.ImmutableList;
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.item.LostWorldsItems;
-import lostworlds.server.item.LostWorldsPotions;
+import lostworlds.server.item.LostWorldsEffects;
 import lostworlds.server.util.Version;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -49,7 +49,7 @@ public class PlayerLoggedInEvent {
 			BlockPos pos = entity.blockPosition();
 			if (world.getBlockState(pos).is(LostWorldsBlocks.VOLCANIC_ASH_LAYER.get())) {
 				if (!isWearingMask(entity, EquipmentSlotType.HEAD)) {
-					entity.addEffect(new EffectInstance(LostWorldsPotions.ASHY_LUNG_EFFECT.get(), 200));
+					entity.addEffect(new EffectInstance(LostWorldsEffects.ASHY_LUNG_EFFECT.get(), 200));
 				}
 			}
 		}
@@ -61,7 +61,7 @@ public class PlayerLoggedInEvent {
 		if (entity != null) {
 			if (event.getState().is(LostWorldsBlocks.VOLCANIC_ASH_LAYER.get())) {
 				if (!isWearingMask(entity, EquipmentSlotType.HEAD)) {
-					entity.addEffect(new EffectInstance(LostWorldsPotions.ASHY_LUNG_EFFECT.get(), 200));
+					entity.addEffect(new EffectInstance(LostWorldsEffects.ASHY_LUNG_EFFECT.get(), 200));
 				}
 			}
 		}

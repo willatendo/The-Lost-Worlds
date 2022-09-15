@@ -31,6 +31,10 @@ import lostworlds.server.trades.EmeraldsForMultiItemTrade;
 import lostworlds.server.trades.MultiItemForEmeraldsTrade;
 import lostworlds.server.util.JigsawUtils;
 import lostworlds.server.util.registrate.WoodTypes;
+import lostworlds.server.world.BiomeGen;
+import lostworlds.server.world.EntityGen;
+import lostworlds.server.world.FeatureGen;
+import lostworlds.server.world.StructureGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ComposterBlock;
@@ -60,6 +64,8 @@ import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -231,6 +237,24 @@ public class ServerSetup {
 			if (spawner != null) {
 				spawner.tick((ServerWorld) event.world);
 			}
+		}
+	}
+
+	@EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.FORGE)
+	static class BiomeHandler {
+		@SubscribeEvent(priority = EventPriority.HIGH)
+		public static void biomeStuff(BiomeLoadingEvent event) {
+			// Biomes
+			BiomeGen.init(event);
+
+			// Spawns
+			EntityGen.init(event);
+
+			// Features
+			FeatureGen.init(event);
+
+			// Structures
+			StructureGen.init(event);
 		}
 	}
 

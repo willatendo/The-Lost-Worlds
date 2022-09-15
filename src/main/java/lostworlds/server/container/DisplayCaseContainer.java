@@ -4,7 +4,6 @@ import java.util.Objects;
 
 import lostworlds.server.block.entity.DisplayCaseTileEntity;
 import lostworlds.server.item.FossilItem;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -15,23 +14,18 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.SlotItemHandler;
 
 public class DisplayCaseContainer extends Container {
-	private ItemStackHandler handler;
-
-	public DisplayCaseContainer(ContainerType<? extends DisplayCaseContainer> containerType, int windowId, PlayerInventory inv, IInventory inventory, ItemStackHandler handler) {
+	public DisplayCaseContainer(ContainerType<? extends DisplayCaseContainer> containerType, int windowId, PlayerInventory inv, IInventory inventory) {
 		super(containerType, windowId);
-		this.handler = handler;
 
-		this.addSlot(new SlotItemHandler(handler, 0, 80, 20) {
+		this.addSlot(new Slot(inventory, 0, 80, 20) {
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return correctTypeOfItem(stack);
+				return this.notBlockOrFossil(stack);
 			}
 
-			public boolean correctTypeOfItem(ItemStack stack) {
+			public boolean notBlockOrFossil(ItemStack stack) {
 				if (stack.getItem() instanceof BlockItem) {
 					return false;
 				} else if (stack.getItem() instanceof FossilItem) {
@@ -54,7 +48,7 @@ public class DisplayCaseContainer extends Container {
 	}
 
 	public DisplayCaseContainer(ContainerType<? extends DisplayCaseContainer> containerType, int windowId, PlayerInventory playerInventory, PacketBuffer buffer) {
-		this(containerType, windowId, playerInventory, getTileEntity(playerInventory, buffer), ((DisplayCaseTileEntity) Minecraft.getInstance().level.getBlockEntity(buffer.readBlockPos())).handler);
+		this(containerType, windowId, playerInventory, getTileEntity(playerInventory, buffer));
 	}
 
 	private static DisplayCaseTileEntity getTileEntity(final PlayerInventory playerInventory, final PacketBuffer data) {
@@ -83,12 +77,12 @@ public class DisplayCaseContainer extends Container {
 			ItemStack current = slot.getItem();
 			previous = current.copy();
 
-			if (fromSlot < this.handler.getSlots()) {
-				if (!this.moveItemStackTo(current, this.handler.getSlots(), this.handler.getSlots() + 36, true)) {
+			if (fromSlot < 1) {
+				if (!this.moveItemStackTo(current, 1, this.slots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
 			} else {
-				if (!this.moveItemStackTo(current, 0, 6, false)) {
+				if (!this.moveItemStackTo(current, 0, 1, false)) {
 					return ItemStack.EMPTY;
 				}
 			}

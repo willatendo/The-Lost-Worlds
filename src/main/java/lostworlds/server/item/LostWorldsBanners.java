@@ -8,7 +8,7 @@ public class LostWorldsBanners {
 	public static final BannerPattern SCARAB = register("scarab");
 
 	public static BannerPattern register(String id) {
-		return BannerPattern.create(id.toUpperCase(Locale.ROOT), id, id, false);
+		return BannerPattern.create(id.toUpperCase(Locale.ROOT), id, id, true);
 	}
 
 	public static void init() {
