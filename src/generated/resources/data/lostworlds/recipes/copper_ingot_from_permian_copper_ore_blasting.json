@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "lostworlds:permian_copper_ore"
+  },
+  "result": "minecraft:copper_ingot",
+  "experience": 0.5,
+  "cookingtime": 100
+}

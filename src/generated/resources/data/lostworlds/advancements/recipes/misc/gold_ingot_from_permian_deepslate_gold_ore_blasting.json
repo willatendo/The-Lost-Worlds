@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:gold_ingot_from_permian_deepslate_gold_ore_blasting"
+    ]
+  },
+  "criteria": {
+    "has_permian_deepslate_gold_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lostworlds:permian_deepslate_gold_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:gold_ingot_from_permian_deepslate_gold_ore_blasting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_permian_deepslate_gold_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "lostworlds:permian_deepslate_iron_ore"
+  },
+  "result": "minecraft:iron_ingot",
+  "experience": 0.5,
+  "cookingtime": 200
+}

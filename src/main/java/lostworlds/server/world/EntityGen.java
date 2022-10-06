@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
-public class EntitySpawns {
+public class EntityGen {
 	public static void init(BiomeLoadingEvent event) {
 		if (LostWorldsUtils.SERVER_CONFIG.livingFossils.get()) {
 			List<? extends String> nautilusBiomes = Lists.newArrayList("minecraft:warm_ocean");

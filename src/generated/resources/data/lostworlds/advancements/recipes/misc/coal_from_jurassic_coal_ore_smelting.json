@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "lostworlds:marble_from_marble_stonecutting"
+      "lostworlds:coal_from_jurassic_coal_ore_smelting"
     ]
   },
   "criteria": {
-    "has_marble": {
+    "has_jurassic_coal_ore": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "lostworlds:marble"
+              "lostworlds:jurassic_coal_ore"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "lostworlds:marble_from_marble_stonecutting"
+        "recipe": "lostworlds:coal_from_jurassic_coal_ore_smelting"
       }
     }
   },
   "requirements": [
     [
-      "has_marble",
+      "has_jurassic_coal_ore",
       "has_the_recipe"
     ]
   ]

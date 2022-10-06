@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "lostworlds:permian_deepslate_coal_ore"
+  },
+  "result": "minecraft:coal",
+  "experience": 0.5,
+  "cookingtime": 200
+}

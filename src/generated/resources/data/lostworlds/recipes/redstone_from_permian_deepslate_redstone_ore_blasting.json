@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "lostworlds:permian_deepslate_redstone_ore"
+  },
+  "result": "minecraft:redstone",
+  "experience": 0.5,
+  "cookingtime": 100
+}

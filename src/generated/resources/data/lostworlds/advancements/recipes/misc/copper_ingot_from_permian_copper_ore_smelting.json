@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lostworlds:copper_ingot_from_permian_copper_ore_smelting"
+    ]
+  },
+  "criteria": {
+    "has_permian_copper_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lostworlds:permian_copper_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lostworlds:copper_ingot_from_permian_copper_ore_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_permian_copper_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

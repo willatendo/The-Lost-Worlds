@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "lostworlds:jurassic_deepslate_diamond_ore"
+  },
+  "result": "minecraft:diamond",
+  "experience": 0.5,
+  "cookingtime": 200
+}

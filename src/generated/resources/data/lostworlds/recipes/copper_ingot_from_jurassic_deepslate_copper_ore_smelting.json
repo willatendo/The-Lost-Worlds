@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "lostworlds:jurassic_deepslate_copper_ore"
+  },
+  "result": "minecraft:copper_ingot",
+  "experience": 0.5,
+  "cookingtime": 200
+}

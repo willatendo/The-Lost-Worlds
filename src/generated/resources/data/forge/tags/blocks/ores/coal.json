@@ -3,6 +3,7 @@
   "values": [
     "lostworlds:permian_coal_ore",
     "lostworlds:permian_deepslate_coal_ore",
-    "lostworlds:jurassic_coal_ore"
+    "lostworlds:jurassic_coal_ore",
+    "lostworlds:jurassic_deepslate_coal_ore"
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "lostworlds:permian_deepslate_emerald_ore"
+  },
+  "result": "minecraft:emerald",
+  "experience": 0.5,
+  "cookingtime": 100
+}
