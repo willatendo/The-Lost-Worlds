@@ -4,7 +4,6 @@ import java.util.Objects;
 
 import lostworlds.server.block.DNAExtractorBlock;
 import lostworlds.server.block.entity.DNAExtractorTileEntity;
-import lostworlds.server.container.recipes.AmberDNAExtractorRecipe;
 import lostworlds.server.container.recipes.DNAExtractorRecipe;
 import lostworlds.server.container.recipes.LostWorldsRecipes;
 import lostworlds.server.container.slot.DNAExtractorInputSlot;
@@ -33,7 +32,6 @@ public class DNAExtractorContainer extends Container {
 	private final IIntArray data;
 	private final World level;
 	private final IRecipeType<DNAExtractorRecipe> recipeType = LostWorldsRecipes.DNA_EXTRACTOR_RECIPE;
-	private final IRecipeType<AmberDNAExtractorRecipe> secondaryRecipeType = LostWorldsRecipes.AMBER_DNA_EXTRACTOR_RECIPE;
 
 	public DNAExtractorContainer(ContainerType<? extends DNAExtractorContainer> containerType, int windowID, PlayerInventory playerInventory, DNAExtractorTileEntity tileEntity, IInventory inventory) {
 		super(containerType, windowID);

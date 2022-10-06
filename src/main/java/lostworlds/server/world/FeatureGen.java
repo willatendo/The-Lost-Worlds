@@ -14,6 +14,10 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class FeatureGen {
 	public static void init(BiomeLoadingEvent event) {
+		if (LostWorldsUtils.SERVER_CONFIG.copperOreGeneration.get()) {
+			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.COPPER_ORE);
+		}
+
 		if (LostWorldsUtils.SERVER_CONFIG.amberOre.get()) {
 			FeatureAdder.addFeature(event, GenerationStage.Decoration.UNDERGROUND_ORES, OreFeatures.OVERWORLD_AMBER_ORE);
 		}
