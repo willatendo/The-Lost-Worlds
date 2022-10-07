@@ -180,7 +180,7 @@ public class BookData implements DataItem {
 	}
 
 	@Nullable
-	public SectionData findSection(String name, @Nullable BookScreen.AdvancementCache advancementCache) {
+	public SectionData findSection(String name, BookScreen.AdvancementCache advancementCache) {
 		for (SectionData section : this.sections) {
 			section.update(advancementCache);
 
@@ -192,7 +192,7 @@ public class BookData implements DataItem {
 		return null;
 	}
 
-	public int getFirstPageNumber(SectionData section, @Nullable BookScreen.AdvancementCache advancementCache) {
+	public int getFirstPageNumber(SectionData section, BookScreen.AdvancementCache advancementCache) {
 		int pages = 0;
 
 		for (SectionData sect : this.sections) {
@@ -213,7 +213,7 @@ public class BookData implements DataItem {
 	}
 
 	@Nullable
-	public PageData findPage(int number, @Nullable BookScreen.AdvancementCache advancementCache) {
+	public PageData findPage(int number, BookScreen.AdvancementCache advancementCache) {
 		if (number < 0) {
 			return null;
 		}
@@ -238,7 +238,7 @@ public class BookData implements DataItem {
 	}
 
 	@Nullable
-	public PageData findPage(String location, @Nullable BookScreen.AdvancementCache advancementCache) {
+	public PageData findPage(String location, BookScreen.AdvancementCache advancementCache) {
 		return this.findPage(this.findPageNumber(location, advancementCache), advancementCache);
 	}
 
@@ -246,7 +246,7 @@ public class BookData implements DataItem {
 		return this.findPageNumber(location, null);
 	}
 
-	public int findPageNumber(String location, @Nullable BookScreen.AdvancementCache advancementCache) {
+	public int findPageNumber(String location, BookScreen.AdvancementCache advancementCache) {
 		location = location.toLowerCase();
 
 		int pages = 0;
@@ -283,7 +283,7 @@ public class BookData implements DataItem {
 		return -1;
 	}
 
-	public int getPageCount(@Nullable BookScreen.AdvancementCache advancementCache) {
+	public int getPageCount(BookScreen.AdvancementCache advancementCache) {
 		int pages = 0;
 		for (SectionData section : this.sections) {
 			section.update(advancementCache);
@@ -293,11 +293,11 @@ public class BookData implements DataItem {
 		return pages;
 	}
 
-	public int getFullPageCount(@Nullable BookScreen.AdvancementCache advancementCache) {
+	public int getFullPageCount(BookScreen.AdvancementCache advancementCache) {
 		return (int) Math.ceil((this.getPageCount(advancementCache) - 1) / 2F) + 1;
 	}
 
-	public List<SectionData> getVisibleSections(@Nullable BookScreen.AdvancementCache advancementCache) {
+	public List<SectionData> getVisibleSections(BookScreen.AdvancementCache advancementCache) {
 		List<SectionData> visible = new ArrayList<>();
 
 		for (SectionData section : this.sections) {
@@ -314,18 +314,18 @@ public class BookData implements DataItem {
 		return out != null ? out : string;
 	}
 
-	public void openGui(Component title, String page, @Nullable Consumer<String> pageUpdater) {
+	public void openGui(Component title, String page, Consumer<String> pageUpdater) {
 		this.openGui(title, page, pageUpdater, null);
 	}
 
-	public void openGui(Component title, String page, @Nullable Consumer<String> pageUpdater, @Nullable Consumer<?> bookPickup) {
+	public void openGui(Component title, String page, Consumer<String> pageUpdater, Consumer<?> bookPickup) {
 		this.load();
 		Minecraft.getInstance().setScreen(new BookScreen(title, this, page, pageUpdater, bookPickup));
 	}
 
 	public void openGui(InteractionHand hand, ItemStack stack) {
 		String page = BookHelper.getCurrentSavedPage(stack);
-		openGui(stack.getHoverName(), page, newPage -> BookLoader.updateSavedPage(Minecraft.getInstance().player, hand, newPage));
+		this.openGui(stack.getHoverName(), page, newPage -> BookLoader.updateSavedPage(Minecraft.getInstance().player, hand, newPage));
 	}
 
 	public void openGui(BlockPos pos, ItemStack stack) {
@@ -333,16 +333,16 @@ public class BookData implements DataItem {
 
 		Consumer<?> bookPickup = (v) -> LostWorldsNetwork.INSTANCE.network.sendToServer(new DropLecternBookPacket(pos));
 
-		openGui(stack.getHoverName(), page, newPage -> BookLoader.updateSavedPage(pos, newPage), bookPickup);
+		this.openGui(stack.getHoverName(), page, newPage -> BookLoader.updateSavedPage(pos, newPage), bookPickup);
 	}
 
-	public void addRepository(@Nullable BookRepository repository) {
+	public void addRepository(BookRepository repository) {
 		if (repository != null && !this.repositories.contains(repository)) {
 			this.repositories.add(repository);
 		}
 	}
 
-	public void addTransformer(@Nullable BookTransformer transformer) {
+	public void addTransformer(BookTransformer transformer) {
 		if (transformer != null && !this.transformers.contains(transformer)) {
 			this.transformers.add(transformer);
 		}

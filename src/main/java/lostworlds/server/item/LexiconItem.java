@@ -7,6 +7,7 @@ import lostworlds.server.LostWorldsUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -29,7 +30,7 @@ public class LexiconItem extends LecternBookItem {
 		if (level.isClientSide) {
 			LostWorldsBooks.LOST_WORLDS_LEXICON.openGui(hand, stack);
 		}
-		return InteractionResultHolder.success(stack);
+		return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
 	}
 
 	@Override

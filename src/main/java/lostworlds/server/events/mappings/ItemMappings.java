@@ -20,11 +20,12 @@ public class ItemMappings {
 	private static final Map<ResourceLocation, Supplier<Item>> itemRemappings = new HashMap<ResourceLocation, Supplier<Item>>() {
 		private static final long serialVersionUID = 2729763913422843325L;
 		{
-			put(LostWorldsUtils.rL("copper_ingot"), () -> Items.COPPER_INGOT);
-
+			// Alpha 10 -> Alpha 11
 			put(LostWorldsUtils.rL("permian_time_book"), () -> LostWorldsItems.PERMIAN_PERIOD_TIME_BOOK.get());
 			put(LostWorldsUtils.rL("jurassic_time_book"), () -> LostWorldsItems.JURASSIC_PERIOD_TIME_BOOK.get());
 			put(LostWorldsUtils.rL("broken_crystal_scarab_gem"), () -> LostWorldsItems.CRYSTAL_SCARAB_ABDOMEN.get());
+			// Alpha 11 -> Alpha 11.1
+			put(LostWorldsUtils.rL("copper_ingot"), () -> Items.COPPER_INGOT);
 		}
 	};
 

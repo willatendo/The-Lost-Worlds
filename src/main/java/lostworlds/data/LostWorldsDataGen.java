@@ -4,6 +4,7 @@ import lostworlds.data.tag.LostWorldsBiomeTagProvider;
 import lostworlds.data.tag.LostWorldsConfiguredStructureTagProvider;
 import lostworlds.data.tag.LostWorldsSpeciesTypeTagProvider;
 import lostworlds.server.LostWorldsUtils;
+import lostworlds.server.block.LostWorldsBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,5 +26,8 @@ public class LostWorldsDataGen {
 		dataGenerator.addProvider(new LostWorldsDimensionProvider(dataGenerator));
 		dataGenerator.addProvider(new LostWorldsSpeciesTypeTagProvider(dataGenerator, fileHelper));
 		dataGenerator.addProvider(new LostWorldsGlobalLootModiferProvider(dataGenerator));
+		dataGenerator.addProvider(new LostWorldsTranslationLanguageProvider(dataGenerator, "sv_se", provider -> {
+			provider.add(LostWorldsBlocks.ACCENT_DARK_CONCRETE.get(), "Acc");
+		}));
 	}
 }

@@ -20,6 +20,7 @@ public class BlockMappings {
 	private static final Map<ResourceLocation, Supplier<Block>> blockRemappings = new HashMap<ResourceLocation, Supplier<Block>>() {
 		private static final long serialVersionUID = 2729764913422843323L;
 		{
+			// Alpha 10 -> Alpha 11
 			put(LostWorldsUtils.rL("small_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB.get());
 			put(LostWorldsUtils.rL("medium_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB.get());
 			put(LostWorldsUtils.rL("large_permian_desert_plant"), () -> LostWorldsBlocks.PERMIAN_DESERT_SHRUB.get());
@@ -85,6 +86,7 @@ public class BlockMappings {
 			put(LostWorldsUtils.rL("white_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
 			put(LostWorldsUtils.rL("exposed_white_terracotta_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
 			put(LostWorldsUtils.rL("plastered_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
+			// Alpha 11 -> Alpha 11.1
 			put(LostWorldsUtils.rL("copper_ore"), () -> Blocks.COPPER_ORE);
 		}
 	};
