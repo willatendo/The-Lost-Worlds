@@ -4,7 +4,6 @@ import lostworlds.data.tag.LostWorldsBiomeTagProvider;
 import lostworlds.data.tag.LostWorldsConfiguredStructureTagProvider;
 import lostworlds.data.tag.LostWorldsSpeciesTypeTagProvider;
 import lostworlds.server.LostWorldsUtils;
-import lostworlds.server.block.LostWorldsBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,8 +25,15 @@ public class LostWorldsDataGen {
 		dataGenerator.addProvider(new LostWorldsDimensionProvider(dataGenerator));
 		dataGenerator.addProvider(new LostWorldsSpeciesTypeTagProvider(dataGenerator, fileHelper));
 		dataGenerator.addProvider(new LostWorldsGlobalLootModiferProvider(dataGenerator));
-		dataGenerator.addProvider(new LostWorldsTranslationLanguageProvider(dataGenerator, "sv_se", provider -> {
-			provider.add(LostWorldsBlocks.ACCENT_DARK_CONCRETE.get(), "Acc");
-		}));
+		/*
+		 * dataGenerator.addProvider(new
+		 * LostWorldsTranslationLanguageProvider(dataGenerator, "sv_se", provider -> {
+		 * provider.addAdvancement("a_terrible_market", "En hemsk marknad",
+		 * "Finna in svart marknad. En plats full av girig plundringer, men viktigt en hammare."
+		 * ); provider.addAdvancement("ancient_seeds", "Antik frö",
+		 * "Efter högar av arbeta, du fått några frö!");
+		 * provider.addAdvancement("basic_explorer", "Basisk upptäcktsresande",
+		 * "Precis den starta av din utforskar resa."); })); //
+		 */
 	}
 }

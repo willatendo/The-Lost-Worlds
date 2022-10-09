@@ -17,7 +17,12 @@ public class LostWorldsTranslationLanguageProvider extends LanguageProvider {
 		this.translations.run(this);
 	}
 
+	public void addAdvancement(String advancement, String title, String description) {
+		this.add("advancement.lostworlds." + advancement + ".title", title);
+		this.add("advancement.lostworlds." + advancement + ".desc", description);
+	}
+
 	public static interface AddTranslations {
-		void run(LanguageProvider languageProvider);
+		void run(LostWorldsTranslationLanguageProvider languageProvider);
 	}
 }

@@ -54,6 +54,7 @@ public class LostWorldsMod {
 
 		GeckoLib.initialize();
 		ImplInit.init();
+
 		LostWorldsBlocks.registrate();
 		LostWorldsItems.registrate();
 		LostWorldsGlobalLootModifers.LOOT_MODIFIER_SERIALIZERS.register(bus);

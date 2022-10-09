@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 
-public final class PermianBiomeBuilder {
+public final class CretaceousBiomeBuilder {
 	private final Climate.Parameter fullRange = Climate.Parameter.span(-1.0F, 1.0F);
 	private final Climate.Parameter[] temperatures = new Climate.Parameter[] { Climate.Parameter.span(-1.0F, -0.45F), Climate.Parameter.span(-0.45F, -0.15F), Climate.Parameter.span(-0.15F, 0.2F), Climate.Parameter.span(0.2F, 0.55F), Climate.Parameter.span(0.55F, 1.0F) };
 	private final Climate.Parameter[] humidities = new Climate.Parameter[] { Climate.Parameter.span(-1.0F, -0.35F), Climate.Parameter.span(-0.35F, -0.1F), Climate.Parameter.span(-0.1F, 0.1F), Climate.Parameter.span(0.1F, 0.3F), Climate.Parameter.span(0.3F, 1.0F) };
@@ -25,8 +25,10 @@ public final class PermianBiomeBuilder {
 	private final Climate.Parameter midInlandContinentalness = Climate.Parameter.span(0.03F, 0.3F);
 	private final Climate.Parameter farInlandContinentalness = Climate.Parameter.span(0.3F, 1.0F);
 
-	private final ResourceKey<Biome>[][] middleBiomes = new ResourceKey[][] { { LostWorldsBiomes.PERMIAN_WINDSWEPT_HILLS.getResourceKey(), LostWorldsBiomes.PERMIAN_PLAINS.getResourceKey(), LostWorldsBiomes.PERMIAN_CONIFER_FOREST.getResourceKey(), LostWorldsBiomes.PERMIAN_GINKGO_FOREST.getResourceKey(), LostWorldsBiomes.PERMIAN_PLAINS.getResourceKey() }, { LostWorldsBiomes.PERMIAN_PLAINS.getResourceKey(), LostWorldsBiomes.PERMIAN_PLAINS.getResourceKey(), LostWorldsBiomes.PERMIAN_CONIFER_FOREST.getResourceKey(), LostWorldsBiomes.PERMIAN_GINKGO_FOREST.getResourceKey(), LostWorldsBiomes.PERMIAN_PLAINS.getResourceKey() }, { LostWorldsBiomes.PERMIAN_GINKGO_FOREST.getResourceKey(), LostWorldsBiomes.PERMIAN_PLAINS.getResourceKey(), LostWorldsBiomes.PERMIAN_CONIFER_FOREST.getResourceKey(), LostWorldsBiomes.PERMIAN_PLAINS.getResourceKey(), LostWorldsBiomes.PERMIAN_GINKGO_FOREST.getResourceKey() }, { LostWorldsBiomes.PERMIAN_PLAINS.getResourceKey(), LostWorldsBiomes.PERMIAN_PLAINS.getResourceKey(), LostWorldsBiomes.PERMIAN_PLAINS.getResourceKey(), LostWorldsBiomes.PERMIAN_DRIED_PLAINS.getResourceKey(), LostWorldsBiomes.PERMIAN_DRIED_PLAINS.getResourceKey() }, { LostWorldsBiomes.PERMIAN_DESERT.getResourceKey(), LostWorldsBiomes.PERMIAN_DESERT.getResourceKey(), LostWorldsBiomes.PERMIAN_DRIED_PLAINS.getResourceKey(), LostWorldsBiomes.PERMIAN_DRIED_PLAINS.getResourceKey(), LostWorldsBiomes.PERMIAN_ASHY_MEDOWS.getResourceKey() } };
-	private final ResourceKey<Biome>[][] middleBiomeVariants = new ResourceKey[][] { { null, null, LostWorldsBiomes.PERMIAN_GINKGO_FOREST.getResourceKey(), LostWorldsBiomes.PERMIAN_CONIFER_FOREST.getResourceKey(), null }, { null, null, LostWorldsBiomes.PERMIAN_GINKGO_FOREST.getResourceKey(), LostWorldsBiomes.PERMIAN_CONIFER_FOREST.getResourceKey(), null }, { null, null, null, null, null }, { LostWorldsBiomes.PERMIAN_DRIED_PLAINS.getResourceKey(), null, null, LostWorldsBiomes.PERMIAN_DESERT.getResourceKey(), null }, { null, null, null, null, LostWorldsBiomes.PERMIAN_FLOOD_BASALTS.getResourceKey() } };
+	private final ResourceKey<Biome>[][] oceans = new ResourceKey[][] { { LostWorldsBiomes.DEEP_COLD_CRETACEOUS_OCEAN.getResourceKey(), LostWorldsBiomes.DEEP_COLD_CRETACEOUS_OCEAN.getResourceKey(), LostWorldsBiomes.DEEP_CRETACEOUS_OCEAN.getResourceKey(), LostWorldsBiomes.DEEP_WARM_CRETACEOUS_OCEAN.getResourceKey(), LostWorldsBiomes.WARM_CRETACEOUS_OCEAN.getResourceKey() }, { LostWorldsBiomes.COLD_CRETACEOUS_OCEAN.getResourceKey(), LostWorldsBiomes.COLD_CRETACEOUS_OCEAN.getResourceKey(), LostWorldsBiomes.CRETACEOUS_OCEAN.getResourceKey(), LostWorldsBiomes.WARM_CRETACEOUS_OCEAN.getResourceKey(), LostWorldsBiomes.WARM_CRETACEOUS_OCEAN.getResourceKey() } };
+	private final ResourceKey<Biome>[][] wetlands = new ResourceKey[][] { { LostWorldsBiomes.CRETACEOUS_MARSH.getResourceKey() }, { LostWorldsBiomes.CRETACEOUS_MARSH.getResourceKey() }, { LostWorldsBiomes.CRETACEOUS_SWAMP.getResourceKey() }, { LostWorldsBiomes.CRETACEOUS_FEN.getResourceKey() }, { LostWorldsBiomes.CRETACEOUS_BOG.getResourceKey() } };
+	private final ResourceKey<Biome>[][] middleBiomes = new ResourceKey[][] { { LostWorldsBiomes.CRETACEOUS_WINDSWEPT_HILLS.getResourceKey(), LostWorldsBiomes.CRETACEOUS_REDWOODS_FOREST.getResourceKey(), LostWorldsBiomes.CRETACEOUS_CONIFER_FOREST.getResourceKey(), LostWorldsBiomes.CRETACEOUS_GINKGO_FOREST.getResourceKey(), LostWorldsBiomes.CRETACEOUS_WINDSWEPT_HILLS.getResourceKey() }, { LostWorldsBiomes.CRETACEOUS_PLAINS.getResourceKey(), LostWorldsBiomes.CRETACEOUS_REDWOODS_FOREST.getResourceKey(), LostWorldsBiomes.CRETACEOUS_CONIFER_FOREST.getResourceKey(), LostWorldsBiomes.CRETACEOUS_GINKGO_FOREST.getResourceKey(), LostWorldsBiomes.CRETACEOUS_ARAUCARIA_FOREST.getResourceKey() }, { LostWorldsBiomes.CRETACEOUS_GINKGO_FOREST.getResourceKey(), LostWorldsBiomes.CRETACEOUS_PLAINS.getResourceKey(), LostWorldsBiomes.CRETACEOUS_CONIFER_FOREST.getResourceKey(), LostWorldsBiomes.CRETACEOUS_PLAINS.getResourceKey(), LostWorldsBiomes.CRETACEOUS_GINKGO_FOREST.getResourceKey() }, { LostWorldsBiomes.CRETACEOUS_PLAINS.getResourceKey(), LostWorldsBiomes.CRETACEOUS_PLAINS.getResourceKey(), LostWorldsBiomes.CRETACEOUS_PLAINS.getResourceKey(), LostWorldsBiomes.CRETACEOUS_ARAUCARIA_FOREST.getResourceKey(), LostWorldsBiomes.CRETACEOUS_ARAUCARIA_FOREST.getResourceKey() }, { LostWorldsBiomes.CRETACEOUS_DESERT.getResourceKey(), LostWorldsBiomes.CRETACEOUS_DESERT.getResourceKey(), LostWorldsBiomes.CRETACEOUS_ARAUCARIA_FOREST.getResourceKey(), LostWorldsBiomes.CRETACEOUS_ARAUCARIA_FOREST.getResourceKey(), LostWorldsBiomes.CRETACEOUS_FLOOD_BASALTS.getResourceKey() } };
+	private final ResourceKey<Biome>[][] middleBiomeVariants = new ResourceKey[][] { { LostWorldsBiomes.CRETACEOUS_ERRODED_WINDSWEPT_HILLS.getResourceKey(), null, null, null, null }, { LostWorldsBiomes.CRETACEOUS_MEDOW.getResourceKey(), null, null, null, null }, { null, null, null, null, null }, { null, null, null, LostWorldsBiomes.CRETACEOUS_GAME_TRAIL.getResourceKey(), null }, { LostWorldsBiomes.CRETACEOUS_RED_DESERT.getResourceKey(), null, null, null, null } };
 
 	public List<Climate.ParameterPoint> spawnTarget() {
 		Climate.Parameter climate$parameter = Climate.Parameter.point(0.0F);
@@ -44,11 +46,11 @@ public final class PermianBiomeBuilder {
 	}
 
 	private void addOffCoastBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point) {
-		this.addSurfaceBiome(point, Climate.Parameter.span(-1.0F, 0.2F), this.fullRange, this.deepOceanContinentalness, this.fullRange, this.fullRange, 0.0F, LostWorldsBiomes.DEEP_PERMIAN_OCEAN.getResourceKey());
-		this.addSurfaceBiome(point, Climate.Parameter.span(0.2F, 1.0F), this.fullRange, this.deepOceanContinentalness, this.fullRange, this.fullRange, 0.0F, LostWorldsBiomes.DEEP_WARM_PERMIAN_OCEAN.getResourceKey());
-		this.addSurfaceBiome(point, Climate.Parameter.span(-1.0F, 0.2F), this.fullRange, this.oceanContinentalness, this.fullRange, this.fullRange, 0.0F, LostWorldsBiomes.PERMIAN_OCEAN.getResourceKey());
-		this.addSurfaceBiome(point, Climate.Parameter.span(0.2F, 1.0F), this.fullRange, this.oceanContinentalness, this.fullRange, this.fullRange, 0.0F, LostWorldsBiomes.WARM_PERMIAN_OCEAN.getResourceKey());
-
+		for (int i = 0; i < this.temperatures.length; ++i) {
+			Climate.Parameter temperatures = this.temperatures[i];
+			this.addSurfaceBiome(point, temperatures, this.fullRange, this.deepOceanContinentalness, this.fullRange, this.fullRange, 0.0F, this.oceans[0][i]);
+			this.addSurfaceBiome(point, temperatures, this.fullRange, this.oceanContinentalness, this.fullRange, this.fullRange, 0.0F, this.oceans[1][i]);
+		}
 	}
 
 	private void addInlandBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point) {
@@ -120,15 +122,14 @@ public final class PermianBiomeBuilder {
 	}
 
 	private void addMidSlice(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point, Climate.Parameter parameter) {
-		this.addSurfaceBiome(point, this.fullRange, this.fullRange, Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], parameter, 0.0F, LostWorldsBiomes.PERMIAN_MARSH.getResourceKey());
-
 		for (int i = 0; i < this.temperatures.length; ++i) {
 			Climate.Parameter temperatures = this.temperatures[i];
 
+			this.addSurfaceBiome(point, temperatures, this.fullRange, Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], parameter, 0.0F, this.wetlands[i][0]);
 			for (int j = 0; j < this.humidities.length; ++j) {
 				Climate.Parameter humidities = this.humidities[j];
 				ResourceKey<Biome> middleBiome = this.pickMiddleBiome(i, j, parameter);
-				ResourceKey<Biome> beachBiome = LostWorldsBiomes.PERMIAN_SHORE.getResourceKey();
+				ResourceKey<Biome> beachBiome = LostWorldsBiomes.CRETACEOUS_SHORE.getResourceKey();
 				ResourceKey<Biome> slopeBiome = this.pickSlopeBiome(i, j, parameter);
 				this.addSurfaceBiome(point, temperatures, humidities, Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[0], parameter, 0.0F, slopeBiome);
 				this.addSurfaceBiome(point, temperatures, humidities, Climate.Parameter.span(this.nearInlandContinentalness, this.midInlandContinentalness), this.erosions[1], parameter, 0.0F, slopeBiome);
@@ -163,15 +164,14 @@ public final class PermianBiomeBuilder {
 	}
 
 	private void addLowSlice(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point, Climate.Parameter parameter) {
-		this.addSurfaceBiome(point, this.fullRange, this.fullRange, Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], parameter, 0.0F, LostWorldsBiomes.PERMIAN_MARSH.getResourceKey());
-
 		for (int i = 0; i < this.temperatures.length; ++i) {
 			Climate.Parameter temperatures = this.temperatures[i];
 
+			this.addSurfaceBiome(point, temperatures, this.fullRange, Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], parameter, 0.0F, this.wetlands[i][0]);
 			for (int j = 0; j < this.humidities.length; ++j) {
 				Climate.Parameter humidities = this.humidities[j];
 				ResourceKey<Biome> middleBiome = this.pickMiddleBiome(i, j, parameter);
-				ResourceKey<Biome> beachBiome = LostWorldsBiomes.PERMIAN_SHORE.getResourceKey();
+				ResourceKey<Biome> beachBiome = LostWorldsBiomes.CRETACEOUS_SHORE.getResourceKey();
 				this.addSurfaceBiome(point, temperatures, humidities, this.nearInlandContinentalness, Climate.Parameter.span(this.erosions[0], this.erosions[1]), parameter, 0.0F, middleBiome);
 				this.addSurfaceBiome(point, temperatures, humidities, Climate.Parameter.span(this.midInlandContinentalness, this.farInlandContinentalness), Climate.Parameter.span(this.erosions[0], this.erosions[1]), parameter, 0.0F, middleBiome);
 				this.addSurfaceBiome(point, temperatures, humidities, this.nearInlandContinentalness, Climate.Parameter.span(this.erosions[2], this.erosions[3]), parameter, 0.0F, middleBiome);
@@ -191,16 +191,20 @@ public final class PermianBiomeBuilder {
 	}
 
 	private void addValleys(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point, Climate.Parameter parameter) {
-		this.addSurfaceBiome(point, this.fullRange, this.fullRange, this.coastContinentalness, Climate.Parameter.span(this.erosions[0], this.erosions[1]), parameter, 0.0F, parameter.max() < 0L ? LostWorldsBiomes.PERMIAN_SHORE.getResourceKey() : LostWorldsBiomes.PERMIAN_RIVER.getResourceKey());
-		this.addSurfaceBiome(point, this.fullRange, this.fullRange, this.nearInlandContinentalness, Climate.Parameter.span(this.erosions[0], this.erosions[1]), parameter, 0.0F, LostWorldsBiomes.PERMIAN_RIVER.getResourceKey());
-		this.addSurfaceBiome(point, this.fullRange, this.fullRange, Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness), Climate.Parameter.span(this.erosions[2], this.erosions[5]), parameter, 0.0F, LostWorldsBiomes.PERMIAN_RIVER.getResourceKey());
-		this.addSurfaceBiome(point, this.fullRange, this.fullRange, this.coastContinentalness, this.erosions[6], parameter, 0.0F, LostWorldsBiomes.PERMIAN_RIVER.getResourceKey());
-		this.addSurfaceBiome(point, this.fullRange, this.fullRange, Climate.Parameter.span(this.inlandContinentalness, this.farInlandContinentalness), this.erosions[6], parameter, 0.0F, LostWorldsBiomes.PERMIAN_MARSH.getResourceKey());
-		this.addSurfaceBiome(point, this.fullRange, this.fullRange, Climate.Parameter.span(this.inlandContinentalness, this.farInlandContinentalness), this.erosions[6], parameter, 0.0F, LostWorldsBiomes.PERMIAN_RIVER.getResourceKey());
+		this.addSurfaceBiome(point, this.fullRange, this.fullRange, this.coastContinentalness, Climate.Parameter.span(this.erosions[0], this.erosions[1]), parameter, 0.0F, parameter.max() < 0L ? LostWorldsBiomes.CRETACEOUS_SHORE.getResourceKey() : LostWorldsBiomes.CRETACEOUS_RIVER.getResourceKey());
+		this.addSurfaceBiome(point, this.fullRange, this.fullRange, this.nearInlandContinentalness, Climate.Parameter.span(this.erosions[0], this.erosions[1]), parameter, 0.0F, LostWorldsBiomes.CRETACEOUS_RIVER.getResourceKey());
+		this.addSurfaceBiome(point, this.fullRange, this.fullRange, Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness), Climate.Parameter.span(this.erosions[2], this.erosions[5]), parameter, 0.0F, LostWorldsBiomes.CRETACEOUS_RIVER.getResourceKey());
+		this.addSurfaceBiome(point, this.fullRange, this.fullRange, this.coastContinentalness, this.erosions[6], parameter, 0.0F, LostWorldsBiomes.CRETACEOUS_RIVER.getResourceKey());
+
+		for (int i = 0; i < this.temperatures.length; ++i) {
+			Climate.Parameter temperatures = this.temperatures[i];
+			this.addSurfaceBiome(point, temperatures, this.fullRange, Climate.Parameter.span(this.inlandContinentalness, this.farInlandContinentalness), this.erosions[6], parameter, 0.0F, this.wetlands[i][0]);
+		}
+		this.addSurfaceBiome(point, this.fullRange, this.fullRange, Climate.Parameter.span(this.inlandContinentalness, this.farInlandContinentalness), this.erosions[6], parameter, 0.0F, LostWorldsBiomes.CRETACEOUS_RIVER.getResourceKey());
 	}
 
 	private void addUndergroundBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point) {
-		this.addUndergroundBiome(point, this.fullRange, this.fullRange, Climate.Parameter.span(0.8F, 1.0F), this.fullRange, this.fullRange, 0.0F, LostWorldsBiomes.PERMIAN_DRIPSTONE_CAVES.getResourceKey());
+		this.addUndergroundBiome(point, this.fullRange, this.fullRange, Climate.Parameter.span(0.8F, 1.0F), this.fullRange, this.fullRange, 0.0F, LostWorldsBiomes.CRETACEOUS_DRIPSTONE_CAVES.getResourceKey());
 	}
 
 	private ResourceKey<Biome> pickMiddleBiome(int temperature, int biome, Climate.Parameter parameter) {
@@ -214,17 +218,17 @@ public final class PermianBiomeBuilder {
 
 	private ResourceKey<Biome> pickPeakBiome(int temperature, int biome, Climate.Parameter parameter) {
 		if (temperature <= 2) {
-			return parameter.max() < 0L ? LostWorldsBiomes.PERMIAN_JAGGED_PEAKS.getResourceKey() : LostWorldsBiomes.PERMIAN_FROZEN_PEAKS.getResourceKey();
+			return parameter.max() < 0L ? LostWorldsBiomes.CRETACEOUS_JAGGED_PEAKS.getResourceKey() : LostWorldsBiomes.CRETACEOUS_FROZEN_PEAKS.getResourceKey();
 		} else {
-			return LostWorldsBiomes.PERMIAN_STONY_PEAKS.getResourceKey();
+			return LostWorldsBiomes.CRETACEOUS_STONY_PEAKS.getResourceKey();
 		}
 	}
 
 	private ResourceKey<Biome> pickSlopeBiome(int temperature, int biome, Climate.Parameter parameter) {
 		if (temperature >= 3) {
-			return LostWorldsBiomes.PERMIAN_PLAINS.getResourceKey();
+			return LostWorldsBiomes.CRETACEOUS_PLAINS.getResourceKey();
 		} else {
-			return biome <= 1 ? LostWorldsBiomes.PERMIAN_SNOWY_SLOPES.getResourceKey() : LostWorldsBiomes.PERMIAN_GROVE.getResourceKey();
+			return biome <= 1 ? LostWorldsBiomes.CRETACEOUS_SNOWY_SLOPES.getResourceKey() : LostWorldsBiomes.CRETACEOUS_GROVE.getResourceKey();
 		}
 	}
 
