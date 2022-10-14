@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import org.apache.commons.io.IOUtils;
 
 import lostworlds.client.book.BookLoader;
@@ -30,7 +28,7 @@ public class FileRepository extends BookRepository {
 	}
 
 	@Override
-	public ResourceLocation getResourceLocation(@Nullable String path, boolean safe) {
+	public ResourceLocation getResourceLocation(String path, boolean safe) {
 		if (path == null) {
 			return safe ? new ResourceLocation("") : null;
 		}
@@ -44,26 +42,26 @@ public class FileRepository extends BookRepository {
 
 			String defaultLangPath = "en_us";
 
-			ResourceLocation res;
+			ResourceLocation resourcelocation;
 
 			if (langPath != null) {
-				res = new ResourceLocation(this.location + "/" + langPath + "/" + path);
-				if (this.resourceExists(res)) {
-					return res;
+				resourcelocation = new ResourceLocation(this.location + "/" + langPath + "/" + path);
+				if (this.resourceExists(resourcelocation)) {
+					return resourcelocation;
 				}
 			}
-			res = new ResourceLocation(this.location + "/" + defaultLangPath + "/" + path);
-			if (this.resourceExists(res)) {
-				return res;
+			resourcelocation = new ResourceLocation(this.location + "/" + defaultLangPath + "/" + path);
+			if (this.resourceExists(resourcelocation)) {
+				return resourcelocation;
 			}
-			res = new ResourceLocation(this.location + "/" + path);
-			if (this.resourceExists(res)) {
-				return res;
+			resourcelocation = new ResourceLocation(this.location + "/" + path);
+			if (this.resourceExists(resourcelocation)) {
+				return resourcelocation;
 			}
 		} else {
-			ResourceLocation res = new ResourceLocation(path);
-			if (this.resourceExists(res)) {
-				return res;
+			ResourceLocation resourcelocation = new ResourceLocation(path);
+			if (this.resourceExists(resourcelocation)) {
+				return resourcelocation;
 			}
 		}
 
@@ -71,7 +69,7 @@ public class FileRepository extends BookRepository {
 	}
 
 	@Override
-	public Resource getResource(@Nullable ResourceLocation loc) {
+	public Resource getResource(ResourceLocation loc) {
 		if (loc == null) {
 			return null;
 		}
@@ -84,7 +82,7 @@ public class FileRepository extends BookRepository {
 	}
 
 	@Override
-	public boolean resourceExists(@Nullable ResourceLocation location) {
+	public boolean resourceExists(ResourceLocation location) {
 		if (location == null) {
 			return false;
 		}
@@ -92,7 +90,7 @@ public class FileRepository extends BookRepository {
 	}
 
 	@Override
-	public String resourceToString(@Nullable Resource resource, boolean skipComments) {
+	public String resourceToString(Resource resource, boolean skipComments) {
 		if (resource == null) {
 			return "";
 		}

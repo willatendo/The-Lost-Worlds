@@ -4,7 +4,11 @@
       "text": "Danger: Small"
     },
     {
-      "text": "Range: Piscivore - 125-112 mya",
+      "text": "Diet: Piscivore",
+      "paragraph": true
+    },
+    {
+      "text": "Range: Cretaceous - 125-112 mya",
       "paragraph": true
     },
     {

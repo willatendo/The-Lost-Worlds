@@ -24,9 +24,9 @@ public class LostWorldsBooks extends BookData {
 		addStandardData(FIELD_GUIDE, FIELD_GUIDE_ID);
 	}
 
-	private static void addStandardData(BookData book, ResourceLocation id) {
-		book.addRepository(new FileRepository(LostWorldsUtils.rL("book/" + id.getPath())));
-		book.addTransformer(BookTransformer.indexTranformer());
-		book.addTransformer(PaddingBookTransformer.INSTANCE);
+	private static void addStandardData(BookData bookData, ResourceLocation id) {
+		bookData.addRepository(new FileRepository(LostWorldsUtils.rL("book/" + id.getPath())));
+		bookData.addTransformer(BookTransformer.indexTranformer());
+		bookData.addTransformer(PaddingBookTransformer.INSTANCE);
 	}
 }
