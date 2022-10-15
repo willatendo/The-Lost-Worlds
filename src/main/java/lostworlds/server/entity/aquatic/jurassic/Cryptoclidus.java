@@ -5,6 +5,7 @@ import java.util.List;
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.LostWorldsRegistries;
 import lostworlds.server.LostWorldsTags;
+import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.aquatic.DolphinLike;
 import lostworlds.server.species.SpeciesType;
@@ -87,7 +88,7 @@ public class Cryptoclidus extends DolphinLike implements IAnimatable, SpeciesTag
 	}
 
 	@Override
-	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
-		return null;
+	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
+		return LostWorldsEntities.CRYPTOCLIDUS.create(serverLevel);
 	}
 }

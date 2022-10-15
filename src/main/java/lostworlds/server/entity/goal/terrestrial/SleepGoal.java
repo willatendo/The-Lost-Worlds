@@ -39,6 +39,10 @@ public class SleepGoal extends Goal {
 	}
 
 	private boolean getTime() {
-		return this.entity.activity() == ActivityType.DIURNAL ? this.entity.level.isNight() : this.entity.activity() == ActivityType.NOCTURNAL ? this.entity.level.isDay() : false;
+		return this.entity.activity() == ActivityType.DIURNAL ? this.entity.level.isNight() : this.entity.activity() == ActivityType.NOCTURNAL ? this.entity.level.isDay() : this.entity.activity() == ActivityType.CREPUSCULAR ? this.isDawnOrDusk() : false;
+	}
+
+	private boolean isDawnOrDusk() {
+		return !this.entity.level.dimensionType().hasFixedTime() && this.entity.level.getSkyDarken() < 3 && this.entity.level.getSkyDarken() > 1;
 	}
 }

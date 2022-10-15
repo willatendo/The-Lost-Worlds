@@ -88,7 +88,7 @@ public class Ophthalmosaurus extends DolphinLike implements IAnimatable, Species
 	}
 
 	@Override
-	public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob entity) {
-		return LostWorldsEntities.OPHTHALMOSAURUS.create(world);
+	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
+		return LostWorldsEntities.OPHTHALMOSAURUS.create(serverLevel);
 	}
 }

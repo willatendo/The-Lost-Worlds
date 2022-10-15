@@ -19,6 +19,7 @@ public class LostWorldsSpeciesTypeTagProvider extends SpeciesTypeTagProvider {
 		this.tag(LostWorldsTags.ModSpeciesTypeTags.ABSALOMICHTHYS).add(LostWorldsSpeciesTypes.ABSALOMICHTHYS_VELIFER.get());
 		this.tag(LostWorldsTags.ModSpeciesTypeTags.ALLOSAURUS).add(LostWorldsSpeciesTypes.ALLOSAURUS_FRAGILIS.get());
 		this.tag(LostWorldsTags.ModSpeciesTypeTags.ANOMALOCARIS).add(LostWorldsSpeciesTypes.ANOMALOCARIS_CANADENSIS.get());
+		this.tag(LostWorldsTags.ModSpeciesTypeTags.ANUROGNATHUS).add(LostWorldsSpeciesTypes.ANUROGNATHUS_AMMONI.get());
 		this.tag(LostWorldsTags.ModSpeciesTypeTags.CARNOTAURUS).add(LostWorldsSpeciesTypes.CARNOTAURUS_SASTREI.get());
 		this.tag(LostWorldsTags.ModSpeciesTypeTags.CHILESAURUS).add(LostWorldsSpeciesTypes.CHILESAURUS_DIEGOSUAREZI.get());
 		this.tag(LostWorldsTags.ModSpeciesTypeTags.CRYOLOPHOSAURUS).add(LostWorldsSpeciesTypes.CRYOLOPHOSAURUS_ELLIOTI_A.get(), LostWorldsSpeciesTypes.CRYOLOPHOSAURUS_ELLIOTI_B.get());

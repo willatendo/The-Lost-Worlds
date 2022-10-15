@@ -337,6 +337,7 @@ public class LostWorldsTags {
 		public static final TagKey<SpeciesType> ABSALOMICHTHYS = create("absalomichthys");
 		public static final TagKey<SpeciesType> ALLOSAURUS = create("allosaurus");
 		public static final TagKey<SpeciesType> ANOMALOCARIS = create("anomalocaris");
+		public static final TagKey<SpeciesType> ANUROGNATHUS = create("anurognathus");
 		public static final TagKey<SpeciesType> CARNOTAURUS = create("carnotaurus");
 		public static final TagKey<SpeciesType> CHILESAURUS = create("chilesaurus");
 		public static final TagKey<SpeciesType> CRYOLOPHOSAURUS = create("cryolophosaurus");

@@ -44,6 +44,7 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
@@ -123,6 +124,7 @@ public abstract class DolphinLike extends BreedingWaterMob {
 		this.goalSelector.addGoal(2, new SwimWithPlayerGoal(this, 4.0D));
 		this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.0D, 10));
 		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
+		this.goalSelector.addGoal(4, new TemptGoal(this, 1.2D, FOOD_ITEMS, false));
 		this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(5, new AquaticTemptGoal(this, 1.0F, FOOD_ITEMS));
 		this.goalSelector.addGoal(5, new BreedGoal(this, 1.0F));
