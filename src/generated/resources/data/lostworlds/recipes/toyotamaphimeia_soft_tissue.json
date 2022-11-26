@@ -1,7 +1,7 @@
 {
   "type": "lostworlds:fossil_grinder",
   "input": {
-    "tag": "lostworlds:mesosaurus_fossils"
+    "tag": "lostworlds:toyotamaphimeia_fossils"
   },
   "plant": false,
   "output": "lostworlds:toyotamaphimeia_soft_tissue"

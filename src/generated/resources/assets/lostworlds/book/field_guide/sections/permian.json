@@ -40,6 +40,16 @@
     "data": "permian/gorgonops_info.json"
   },
   {
+    "name": "mesosaurus_1",
+    "type": "text",
+    "data": "permian/mesosaurus_1.json"
+  },
+  {
+    "name": "mesosaurus_info",
+    "type": "text",
+    "data": "permian/mesosaurus_info.json"
+  },
+  {
     "name": "palaeoniscum_1",
     "type": "text",
     "data": "permian/palaeoniscum_1.json"

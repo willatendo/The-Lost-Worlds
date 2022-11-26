@@ -56,4 +56,6 @@ public abstract class Pterosaur extends EggLayingMob implements IAnimatable {
 	public Pterosaur(EntityType<? extends Pterosaur> entityType, Level level) {
 		super(entityType, level);
 	}
+	
+	public abstract int maxFlyHeight();
 }

@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "lostworlds:toyotamaphimeia_skeleton"
+      "lostworlds:ophthalmosaurus_egg"
     ]
   },
   "criteria": {
@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "tag": "lostworlds:toyotamaphimeia_fossils"
+            "items": [
+              "lostworlds:ophthalmosaurus_dna_disc"
+            ]
           }
         ]
       }
@@ -19,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "lostworlds:toyotamaphimeia_skeleton"
+        "recipe": "lostworlds:ophthalmosaurus_egg"
       }
     }
   },

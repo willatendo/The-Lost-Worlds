@@ -6,12 +6,6 @@
     "lostworlds:mesosaurus_arm_bones",
     "lostworlds:mesosaurus_tail",
     "lostworlds:mesosaurus_skull",
-    "lostworlds:mesosaurus_skeleton",
-    "lostworlds:toyotamaphimeia_rib_cage",
-    "lostworlds:toyotamaphimeia_leg_bones",
-    "lostworlds:toyotamaphimeia_arm_bones",
-    "lostworlds:toyotamaphimeia_tail",
-    "lostworlds:toyotamaphimeia_skull",
-    "lostworlds:toyotamaphimeia_skeleton"
+    "lostworlds:mesosaurus_skeleton"
   ]
 }

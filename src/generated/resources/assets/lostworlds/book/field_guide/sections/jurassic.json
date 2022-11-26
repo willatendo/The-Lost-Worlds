@@ -20,9 +20,9 @@
     "data": "jurassic/allosaurus_info.json"
   },
   {
-    "name": "chilesaurus",
+    "name": "chilesaurus_1",
     "type": "text",
-    "data": "jurassic/chilesaurus.json"
+    "data": "jurassic/chilesaurus_1.json"
   },
   {
     "name": "chilesaurus_info",
@@ -30,9 +30,9 @@
     "data": "jurassic/chilesaurus_info.json"
   },
   {
-    "name": "cryolophosaurus",
+    "name": "cryolophosaurus_1",
     "type": "text",
-    "data": "jurassic/cryolophosaurus.json"
+    "data": "jurassic/cryolophosaurus_1.json"
   },
   {
     "name": "cryolophosaurus_info",
@@ -40,9 +40,19 @@
     "data": "jurassic/cryolophosaurus_info.json"
   },
   {
-    "name": "dilophosaurus",
+    "name": "cryptoclidus_1",
     "type": "text",
-    "data": "jurassic/dilophosaurus.json"
+    "data": "jurassic/cryptoclidus_1.json"
+  },
+  {
+    "name": "cryptoclidus_info",
+    "type": "text",
+    "data": "jurassic/cryptoclidus_info.json"
+  },
+  {
+    "name": "dilophosaurus_1",
+    "type": "text",
+    "data": "jurassic/dilophosaurus_1.json"
   },
   {
     "name": "dilophosaurus_info",
@@ -50,9 +60,9 @@
     "data": "jurassic/dilophosaurus_info.json"
   },
   {
-    "name": "eustreptospondylus",
+    "name": "eustreptospondylus_1",
     "type": "text",
-    "data": "jurassic/eustreptospondylus.json"
+    "data": "jurassic/eustreptospondylus_1.json"
   },
   {
     "name": "eustreptospondylus_info",
@@ -60,9 +70,9 @@
     "data": "jurassic/eustreptospondylus_info.json"
   },
   {
-    "name": "kentrosaurus",
+    "name": "kentrosaurus_1",
     "type": "text",
-    "data": "jurassic/kentrosaurus.json"
+    "data": "jurassic/kentrosaurus_1.json"
   },
   {
     "name": "kentrosaurus_info",
@@ -70,9 +80,9 @@
     "data": "jurassic/kentrosaurus_info.json"
   },
   {
-    "name": "liaoningosaurus",
+    "name": "liaoningosaurus_1",
     "type": "text",
-    "data": "jurassic/liaoningosaurus.json"
+    "data": "jurassic/liaoningosaurus_1.json"
   },
   {
     "name": "liaoningosaurus_info",
@@ -80,9 +90,9 @@
     "data": "jurassic/liaoningosaurus_info.json"
   },
   {
-    "name": "ostromia",
+    "name": "ostromia_1",
     "type": "text",
-    "data": "jurassic/ostromia.json"
+    "data": "jurassic/ostromia_1.json"
   },
   {
     "name": "ostromia_info",
@@ -90,9 +100,9 @@
     "data": "jurassic/ostromia_info.json"
   },
   {
-    "name": "ophthalmosaurus",
+    "name": "ophthalmosaurus_1",
     "type": "text",
-    "data": "jurassic/ophthalmosaurus.json"
+    "data": "jurassic/ophthalmosaurus_1.json"
   },
   {
     "name": "ophthalmosaurus_info",

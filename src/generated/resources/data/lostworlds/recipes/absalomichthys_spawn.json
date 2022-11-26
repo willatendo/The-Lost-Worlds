@@ -1,0 +1,7 @@
+{
+  "type": "lostworlds:cultivator",
+  "input": {
+    "item": "lostworlds:absalomichthys_dna_disc"
+  },
+  "output": "lostworlds:absalomichthys_spawn"
+}

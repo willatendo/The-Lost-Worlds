@@ -62,4 +62,9 @@ public class Anurognathus extends Pterosaur implements SpeciesTagModelAndTexture
 	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
 		return null;
 	}
+
+	@Override
+	public int maxFlyHeight() {
+		return 10;
+	}
 }
