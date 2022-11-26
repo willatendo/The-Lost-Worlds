@@ -22,14 +22,14 @@ apply plugin: 'org.spongepowered.mixin'
 
 apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remapper/main/classremapper.gradle'
 
-version = 'alpha.11.1'
+version = 'alpha.11.2'
 group = 'lostworlds'
 archivesBaseName = 'lostworlds'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-	mappings channel: 'official', version: '1.18.2'
+	mappings channel: 'official', version: minecraft_version
 	
 	accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 	
@@ -100,16 +100,17 @@ configurations {
 dependencies {
 	minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 	
-	def registrate = "com.tterrag.registrate:Registrate:MC${minecraft_version}-${registrate_version}"
+	def registrate = "com.tterrag.registrate:Registrate:MC${major_version}-${registrate_version}"
 	implementation fg.deobf(registrate)
 	shade registrate
 	
-	compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api")
-	runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
+	compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+	compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+	runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 	
 	compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${minecraft_version}:${crafttweaker_version}")
 	
-	implementation fg.deobf("software.bernie.geckolib:geckolib-1.18-forge:${geckolib_verison}")
+	implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${major_version}:${geckolib_verison}")
 	
 	implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${minecraft_version}-${terrablender_version}")
 	
@@ -121,9 +122,9 @@ jar {
 		attributes([
 			"Specification-Title" : "Lost Worlds",
 			"Specification-Vendor" : "Willatendo",
-			"Specification-Version" : "1",
+			"Specification-Version" : "alpha.11.2",
 			"Implementation-Title" : project.name,
-			"Implementation-Version": "alpha.11.1",
+			"Implementation-Version": "alpha.11.2",
 			"Implementation-Vendor" : "Willatendo",
 			"Implementation-Timestamp" : new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
 			"MixinConfigs": "lostworlds.mixins.json"
