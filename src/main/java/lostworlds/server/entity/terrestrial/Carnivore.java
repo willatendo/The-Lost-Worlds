@@ -1,10 +1,10 @@
 package lostworlds.server.entity.terrestrial;
 
 import lostworlds.server.entity.utils.enums.CreatureDiet;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.minecraft.server.level.ServerLevel;
 
 public abstract class Carnivore extends EggLayingMob {
 	public Carnivore(EntityType<? extends Carnivore> entity, Level world) {

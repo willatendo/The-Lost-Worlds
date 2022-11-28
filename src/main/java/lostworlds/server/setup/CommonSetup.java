@@ -256,6 +256,6 @@ public class CommonSetup {
 			LostWorldsNoise.init();
 		});
 
-		LostWorldsUtils.translateToWaves(LostWorldsEntities.FOSSIL_POACHER.get(), Arrays.asList(1, 0, 0, 0, 1, 2, 2, 3));
+		LostWorldsUtils.translateToWaves("fossilPoacher", LostWorldsEntities.FOSSIL_POACHER.get(), Arrays.asList(1, 0, 0, 0, 1, 2, 2, 3));
 	}
 }

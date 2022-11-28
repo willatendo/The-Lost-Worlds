@@ -7,27 +7,28 @@ import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.properties.ModBlockStateProperties;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.HayBlock;
 import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.WoodButtonBlock;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.BambooLeaves;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class LostWorldsBlockModels {
 	public static VariantBlockStateBuilder mossySoil(Block block, RegistrateBlockstateProvider provider) {
-		return provider.getVariantBuilder(block).partialState().setModels(new ConfiguredModel(provider.models().cubeBottomTop(block.getRegistryName().getPath(), provider.modLoc("block/mossy_soil_side"), provider.mcLoc("block/dirt"), provider.modLoc("block/mossy_soil_top"))));
+		return provider.getVariantBuilder(block).partialState().setModels(new ConfiguredModel(provider.models().cubeBottomTop(ForgeRegistries.BLOCKS.getKey(block).getPath(), provider.modLoc("block/mossy_soil_side"), provider.mcLoc("block/dirt"), provider.modLoc("block/mossy_soil_top"))));
 	}
 
 	public static VariantBlockStateBuilder volcanicAshLayer(Block block, RegistrateBlockstateProvider provider) {
@@ -58,17 +59,17 @@ public class LostWorldsBlockModels {
 		return provider.getVariantBuilder(block).forAllStates(state -> {
 			boolean powered = state.getValue(PressurePlateBlock.POWERED);
 			if (!powered) {
-				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getRegistryName().getPath(), provider.mcLoc("block/pressure_plate_up")).texture("texture", provider.modLoc("block/" + texture))).build();
+				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(ForgeRegistries.BLOCKS.getKey(block).getPath(), provider.mcLoc("block/pressure_plate_up")).texture("texture", provider.modLoc("block/" + texture))).build();
 			} else {
-				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getRegistryName().getPath() + "_down", provider.mcLoc("block/pressure_plate_down")).texture("texture", provider.modLoc("block/" + texture))).build();
+				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_down", provider.mcLoc("block/pressure_plate_down")).texture("texture", provider.modLoc("block/" + texture))).build();
 			}
 		});
 	}
 
 	public static VariantBlockStateBuilder button(Block block, String texture, RegistrateBlockstateProvider provider) {
-		ModelFile button = provider.models().singleTexture(block.getRegistryName().getPath(), provider.mcLoc("block/button"), provider.modLoc("block/" + texture));
-		ModelFile buttonPressed = provider.models().singleTexture(block.getRegistryName().getPath() + "_pressed", provider.mcLoc("block/button_pressed"), provider.modLoc("block/" + texture));
-		ModelFile buttonInventory = provider.models().singleTexture(block.getRegistryName().getPath() + "_inventory", provider.mcLoc("block/button_inventory"), provider.modLoc("block/" + texture));
+		ModelFile button = provider.models().singleTexture(ForgeRegistries.BLOCKS.getKey(block).getPath(), provider.mcLoc("block/button"), provider.modLoc("block/" + texture));
+		ModelFile buttonPressed = provider.models().singleTexture(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_pressed", provider.mcLoc("block/button_pressed"), provider.modLoc("block/" + texture));
+		ModelFile buttonInventory = provider.models().singleTexture(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_inventory", provider.mcLoc("block/button_inventory"), provider.modLoc("block/" + texture));
 		int angleOffset = 180;
 		ConfiguredModel.builder().modelFile(buttonInventory).build();
 		return provider.getVariantBuilder(block).forAllStates(state -> {
@@ -86,7 +87,7 @@ public class LostWorldsBlockModels {
 	}
 
 	public static ItemModelBuilder buttonInv(BlockItem block, RegistrateItemModelProvider provider) {
-		return provider.withExistingParent(block.getRegistryName().getPath(), provider.modLoc("block/" + block.getRegistryName().getPath() + "_inventory"));
+		return provider.withExistingParent(ForgeRegistries.ITEMS.getKey(block).getPath(), provider.modLoc("block/" + ForgeRegistries.ITEMS.getKey(block).getPath() + "_inventory"));
 	}
 
 	public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> softStone() {
@@ -123,9 +124,9 @@ public class LostWorldsBlockModels {
 	public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> alethopteris() {
 		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> {
 			if (state.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.LOWER) {
-				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_bottom", provider.modLoc("block/large_seed_fern_stem")).texture("stem", provider.modLoc("block/alethopteris_stem"))).build();
+				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_bottom", provider.modLoc("block/large_seed_fern_stem")).texture("stem", provider.modLoc("block/alethopteris_stem")).renderType(new ResourceLocation("cutout"))).build();
 			} else {
-				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_top", provider.modLoc("block/large_seed_fern_leaves")).texture("leaves_end", provider.modLoc("block/alethopteris_leaves_end")).texture("leaves", provider.modLoc("block/alethopteris_leaves")).texture("stem", provider.modLoc("block/alethopteris_stem_top"))).build();
+				return ConfiguredModel.builder().modelFile(provider.models().withExistingParent(block.getName() + "_top", provider.modLoc("block/large_seed_fern_leaves")).texture("leaves_end", provider.modLoc("block/alethopteris_leaves_end")).texture("leaves", provider.modLoc("block/alethopteris_leaves")).texture("stem", provider.modLoc("block/alethopteris_stem_top")).renderType(new ResourceLocation("cutout"))).build();
 			}
 		});
 	}
@@ -187,40 +188,7 @@ public class LostWorldsBlockModels {
 	}
 
 	public static <T extends CalamtiesSuckowiiBlock> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> calamitesSuckowii() {
-		return (block, provider) -> provider.getMultipartBuilder(block.get()).part().modelFile(provider.models().withExistingParent("calamites_suckowii1_age0",
-				provider.mcLoc("block/bamboo1_age0")).texture("all",
-						provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
-						provider.modLoc("block/calamites_suckowii_stalk"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii2_age0",
-								provider.mcLoc("block/bamboo2_age0")).texture("all",
-										 provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
-										provider.modLoc("block/calamites_suckowii_stalk"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii3_age0",
-												provider.mcLoc("block/bamboo3_age0")).texture("all",
-														provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
-														provider.modLoc("block/calamites_suckowii_stalk")))
-				.nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii4_age0",
-						 provider.mcLoc("block/bamboo4_age0")).texture("all",
-								 provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
-								 provider.modLoc("block/calamites_suckowii_stalk"))).addModel().condition(BlockStateProperties.AGE_1, 0).end().part().modelFile(provider.models().withExistingParent("calamites_suckowii1_age1",
-											provider.mcLoc("block/bamboo1_age1")).texture("all",
-													provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
-													provider.modLoc("block/calamites_suckowii_stalk"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii2_age1",
-															provider.mcLoc("block/bamboo2_age1")).texture("all",
-																	 provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
-																	provider.modLoc("block/calamites_suckowii_stalk"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii3_age1",
-																			provider.mcLoc("block/bamboo3_age1")).texture("all",
-																					provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
-																					provider.modLoc("block/calamites_suckowii_stalk")))
-											.nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii4_age1",
-													 provider.mcLoc("block/bamboo4_age1")).texture("all",
-															 provider.modLoc("block/calamites_suckowii_stalk")).texture("particle",
-															 provider.modLoc("block/calamites_suckowii_stalk"))).addModel().condition(BlockStateProperties.AGE_1, 1).end()
-			.part().modelFile(provider.models().withExistingParent("calamites_suckowii_small_leaves",
-					provider.mcLoc("block/bamboo_small_leaves")).texture("texture",
-							provider.modLoc("block/calamites_suckowii_small_leaves")).texture("particle",
-							provider.modLoc("block/calamites_suckowii_small_leaves"))).addModel().condition(BlockStateProperties.BAMBOO_LEAVES, BambooLeaves.SMALL).end().part().modelFile(provider.models().withExistingParent("calamites_suckowii_large_leaves",
-									provider.mcLoc("block/bamboo_large_leaves")).texture("texture",
-											provider.modLoc("block/calamites_suckowii_large_leaves")).texture("particle",
-											provider.modLoc("block/calamites_suckowii_large_leaves"))).addModel().condition(BlockStateProperties.BAMBOO_LEAVES, BambooLeaves.LARGE).end();
+		return (block, provider) -> provider.getMultipartBuilder(block.get()).part().modelFile(provider.models().withExistingParent("calamites_suckowii1_age0", provider.mcLoc("block/bamboo1_age0")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk")).renderType(new ResourceLocation("cutout"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii2_age0", provider.mcLoc("block/bamboo2_age0")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk")).renderType(new ResourceLocation("cutout"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii3_age0", provider.mcLoc("block/bamboo3_age0")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk")).renderType(new ResourceLocation("cutout"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii4_age0", provider.mcLoc("block/bamboo4_age0")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk")).renderType(new ResourceLocation("cutout"))).addModel().condition(BlockStateProperties.AGE_1, 0).end().part().modelFile(provider.models().withExistingParent("calamites_suckowii1_age1", provider.mcLoc("block/bamboo1_age1")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk")).renderType(new ResourceLocation("cutout"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii2_age1", provider.mcLoc("block/bamboo2_age1")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk")).renderType(new ResourceLocation("cutout"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii3_age1", provider.mcLoc("block/bamboo3_age1")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk")).renderType(new ResourceLocation("cutout"))).nextModel().modelFile(provider.models().withExistingParent("calamites_suckowii4_age1", provider.mcLoc("block/bamboo4_age1")).texture("all", provider.modLoc("block/calamites_suckowii_stalk")).texture("particle", provider.modLoc("block/calamites_suckowii_stalk")).renderType(new ResourceLocation("cutout"))).addModel().condition(BlockStateProperties.AGE_1, 1).end().part().modelFile(provider.models().withExistingParent("calamites_suckowii_small_leaves", provider.mcLoc("block/bamboo_small_leaves")).texture("texture", provider.modLoc("block/calamites_suckowii_small_leaves")).texture("particle", provider.modLoc("block/calamites_suckowii_small_leaves")).renderType(new ResourceLocation("cutout"))).addModel().condition(BlockStateProperties.BAMBOO_LEAVES, BambooLeaves.SMALL).end().part().modelFile(provider.models().withExistingParent("calamites_suckowii_large_leaves", provider.mcLoc("block/bamboo_large_leaves")).texture("texture", provider.modLoc("block/calamites_suckowii_large_leaves")).texture("particle", provider.modLoc("block/calamites_suckowii_large_leaves")).renderType(new ResourceLocation("cutout"))).addModel().condition(BlockStateProperties.BAMBOO_LEAVES, BambooLeaves.LARGE).end();
 	}
 
 	public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> diffTextureMC(String texture) {
@@ -238,7 +206,7 @@ public class LostWorldsBlockModels {
 	public static <T extends MachineBlock> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> machine() {
 		return (block, provider) -> provider.getVariantBuilder(block.get()).forAllStates(state -> {
 			boolean on = state.getValue(MachineBlock.ON);
-			BlockModelBuilder model = on ? provider.models().withExistingParent(block.getName() + "_on", provider.modLoc("block/" + block.getName())) : provider.models().withExistingParent(block.getName() + "_off", provider.modLoc("block/" + block.getName()));
+			BlockModelBuilder model = on ? provider.models().withExistingParent(block.getName() + "_on", provider.modLoc("block/" + block.getName())) : provider.models().withExistingParent(block.getName() + "_off", provider.modLoc("block/" + block.getName())).renderType(new ResourceLocation("cutout"));
 			if (on) {
 				model.texture("texture", provider.modLoc("block/" + block.getName() + "_on"));
 			} else {

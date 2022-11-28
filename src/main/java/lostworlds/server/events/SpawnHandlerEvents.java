@@ -7,7 +7,7 @@ import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.entity.spawner.FossilPoachingGroupSpawner;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
@@ -21,7 +21,7 @@ public class SpawnHandlerEvents {
 
 	@SubscribeEvent
 	public static void onServerStart(ServerStartedEvent event) {
-		spawners.put(DimensionType.OVERWORLD_EFFECTS, new FossilPoachingGroupSpawner());
+		spawners.put(BuiltinDimensionTypes.OVERWORLD_EFFECTS, new FossilPoachingGroupSpawner());
 	}
 
 	@SubscribeEvent
@@ -30,7 +30,7 @@ public class SpawnHandlerEvents {
 	}
 
 	@SubscribeEvent
-	public static void onWorldTick(TickEvent.WorldTickEvent event) {
+	public static void onWorldTick(TickEvent.LevelTickEvent event) {
 		if (event.phase != TickEvent.Phase.START) {
 			return;
 		}
@@ -39,9 +39,9 @@ public class SpawnHandlerEvents {
 			return;
 		}
 
-		FossilPoachingGroupSpawner spawner = spawners.get(event.world.dimension().location());
+		FossilPoachingGroupSpawner spawner = spawners.get(event.level.dimension().location());
 		if (spawner != null) {
-			spawner.tick((ServerLevel) event.world);
+			spawner.tick((ServerLevel) event.level);
 		}
 	}
 }

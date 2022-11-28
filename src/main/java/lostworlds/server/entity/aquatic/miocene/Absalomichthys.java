@@ -4,6 +4,7 @@ import java.util.List;
 
 import lostworlds.server.LostWorldsRegistries;
 import lostworlds.server.LostWorldsTags;
+import lostworlds.server.entity.Loop;
 import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.aquatic.BasicFishLikeMob;
 import lostworlds.server.entity.utils.enums.AncientCreatures;
@@ -24,10 +25,11 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class Absalomichthys extends BasicFishLikeMob implements IAnimatable, SpeciesTagModelAndTextureable {
 	protected static final EntityDataAccessor<Byte> VARIENT = SynchedEntityData.defineId(Absalomichthys.class, EntityDataSerializers.BYTE);
-	private AnimationFactory factory = new AnimationFactory(this);
+	private AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
 	public Absalomichthys(EntityType<? extends Absalomichthys> entity, Level level) {
 		super(entity, level);
@@ -44,7 +46,7 @@ public class Absalomichthys extends BasicFishLikeMob implements IAnimatable, Spe
 	}
 
 	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-		event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.absalomichthys", true));
+		event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.absalomichthys", new Loop(true)));
 		return PlayState.CONTINUE;
 	}
 

@@ -26,8 +26,8 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialReasonableAttackGoal
 import lostworlds.server.entity.terrestrial.EggLayingMob;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
-import lostworlds.server.entity.utils.enums.CreatureDiet;
 import lostworlds.server.entity.utils.enums.AncientCreatures;
+import lostworlds.server.entity.utils.enums.CreatureDiet;
 import lostworlds.server.species.SpeciesType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -53,12 +53,13 @@ import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class Ouranosaurus extends EggLayingMob implements NeutralMob, SpeciesTagModelAndTextureable {
 	private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(Ouranosaurus.class, EntityDataSerializers.INT);
 	private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
 	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
-	private AnimationFactory factory = new AnimationFactory(this);
+	private AnimationFactory factory = GeckoLibUtil.createFactory(this);
 	private UUID persistentAngerTarget;
 
 	public Ouranosaurus(EntityType<? extends Ouranosaurus> entity, Level world) {

@@ -10,10 +10,9 @@ import net.minecraft.data.tags.TagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.GameData;
 import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public abstract class SpeciesTypeTagProvider extends TagsProvider<SpeciesType> {
-	private static <T extends IForgeRegistryEntry<T>> Registry<T> wrapRegistry(IForgeRegistry<T> forgeRegistry) {
+	private static <T> Registry<T> wrapRegistry(IForgeRegistry<T> forgeRegistry) {
 		if (forgeRegistry.tags() == null)
 			throw new IllegalArgumentException("Forge registry " + forgeRegistry.getRegistryName() + " does not have support for tags");
 		if (forgeRegistry.getDefaultKey() == null)

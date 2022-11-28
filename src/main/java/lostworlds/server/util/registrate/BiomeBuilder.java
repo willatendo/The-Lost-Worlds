@@ -14,7 +14,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.sounds.Music;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biome.BiomeCategory;
 import net.minecraft.world.level.biome.Biome.Precipitation;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
@@ -63,13 +62,13 @@ public class BiomeBuilder<T extends Biome, P> extends AbstractBuilder<Biome, T, 
 		return Mth.hsvToRgb(0.62222224F - $$1 * 0.05F, 0.5F + $$1 * 0.1F, 1.0F);
 	}
 
-	public static Biome.BiomeBuilder biome(Precipitation precipitation, BiomeCategory category, float downfall, float temperature, BiomeSpecialEffects.Builder effects, BiomeGenerationSettings.Builder settings, MobSpawnSettings.Builder spawningInfo) {
-		return biome(precipitation, category, downfall, temperature, NORMAL_MUSIC, effects, settings, spawningInfo);
+	public static Biome.BiomeBuilder biome(Precipitation precipitation, float downfall, float temperature, BiomeSpecialEffects.Builder effects, BiomeGenerationSettings.Builder settings, MobSpawnSettings.Builder spawningInfo) {
+		return biome(precipitation, downfall, temperature, NORMAL_MUSIC, effects, settings, spawningInfo);
 	}
 
-	public static Biome.BiomeBuilder biome(Precipitation precipitation, BiomeCategory category, float downfall, float temperature, Music music, BiomeSpecialEffects.Builder effects, BiomeGenerationSettings.Builder settings, MobSpawnSettings.Builder spawningInfo) {
+	public static Biome.BiomeBuilder biome(Precipitation precipitation, float downfall, float temperature, Music music, BiomeSpecialEffects.Builder effects, BiomeGenerationSettings.Builder settings, MobSpawnSettings.Builder spawningInfo) {
 		effects.backgroundMusic(music);
-		return new Biome.BiomeBuilder().precipitation(precipitation).biomeCategory(category).downfall(downfall).temperature(temperature).generationSettings(settings.build()).specialEffects(effects.build()).mobSpawnSettings(spawningInfo.build());
+		return new Biome.BiomeBuilder().precipitation(precipitation).temperature(temperature).generationSettings(settings.build()).specialEffects(effects.build()).mobSpawnSettings(spawningInfo.build());
 	}
 
 	public BiomeBuilder<T, P> properties(NonNullFunction<BiomeBuilder<T, P>, NonNullUnaryOperator<Biome.BiomeBuilder>> func) {

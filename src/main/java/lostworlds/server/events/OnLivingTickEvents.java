@@ -22,8 +22,8 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 @EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.FORGE)
 public class OnLivingTickEvents {
 	@SubscribeEvent
-	public static void onLivingTick(LivingEvent.LivingUpdateEvent event) {
-		LivingEntity entity = event.getEntityLiving();
+	public static void onLivingTick(LivingEvent.LivingTickEvent event) {
+		LivingEntity entity = event.getEntity();
 
 		if (entity != null) {
 			Level world = entity.level;

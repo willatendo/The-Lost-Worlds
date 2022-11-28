@@ -65,7 +65,7 @@ public enum AncientCreatures implements StringRepresentable, APIBlockEntityWitho
 	UTAHRAPTOR("utahraptor", () -> LostWorldsEntities.UTAHRAPTOR.get(), LostWorldsTags.ModItemTags.UTAHRAPTOR_FOSSILS, true, true, true, Size.MEDIUM, CreatureDiet.CARNIVORE, 0x503524, 5, 7, 0.5F, 0.64F),
 	ZEPHYROSAURUS("zephyrosaurus", () -> LostWorldsEntities.ZEPHYROSAURUS.get(), LostWorldsTags.ModItemTags.ZEPHYROSAURUS_FOSSILS, true, true, true, Size.SMALL, CreatureDiet.HERBIVORE, 0x577476, 3, 5, 0.3F, 0.54F),;
 
-	public static final Codec<AncientCreatures> CODEC = StringRepresentable.fromEnum(AncientCreatures::values, AncientCreatures::byName);
+	public static final Codec<AncientCreatures> CODEC = StringRepresentable.fromEnum(AncientCreatures::values);
 	private static final Map<String, AncientCreatures> BY_NAME = Arrays.stream(values()).collect(Collectors.toMap(AncientCreatures::getId, (types) -> {
 		return types;
 	}));

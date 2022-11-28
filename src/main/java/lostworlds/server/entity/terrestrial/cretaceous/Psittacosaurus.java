@@ -21,8 +21,8 @@ import lostworlds.server.entity.goal.terrestrial.TerrestrialLayEggGoal;
 import lostworlds.server.entity.terrestrial.EggLayingMob;
 import lostworlds.server.entity.utils.FoodLists;
 import lostworlds.server.entity.utils.enums.ActivityType;
-import lostworlds.server.entity.utils.enums.CreatureDiet;
 import lostworlds.server.entity.utils.enums.AncientCreatures;
+import lostworlds.server.entity.utils.enums.CreatureDiet;
 import lostworlds.server.species.SpeciesType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
@@ -40,10 +40,11 @@ import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class Psittacosaurus extends EggLayingMob implements SpeciesTagModelAndTextureable {
 	private static final Ingredient FOOD_ITEMS = FoodLists.HERBIVORE;
-	private AnimationFactory factory = new AnimationFactory(this);
+	private AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
 	public Psittacosaurus(EntityType<? extends Psittacosaurus> entity, Level world) {
 		super(entity, world);

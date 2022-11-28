@@ -5,6 +5,7 @@ import java.util.List;
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.LostWorldsRegistries;
 import lostworlds.server.LostWorldsTags;
+import lostworlds.server.entity.Loop;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.aquatic.DolphinLike;
@@ -27,10 +28,11 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class Ophthalmosaurus extends DolphinLike implements IAnimatable, SpeciesTagModelAndTextureable {
 	protected static final EntityDataAccessor<Byte> VARIENT = SynchedEntityData.defineId(Ophthalmosaurus.class, EntityDataSerializers.BYTE);
-	private AnimationFactory factory = new AnimationFactory(this);
+	private AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
 	public Ophthalmosaurus(EntityType<? extends DolphinLike> entity, Level level) {
 		super(entity, level);
@@ -48,10 +50,10 @@ public class Ophthalmosaurus extends DolphinLike implements IAnimatable, Species
 
 	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
 		if (event.isMoving()) {
-			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ophthalmosaurus.swim", true));
+			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ophthalmosaurus.swim", new Loop(true)));
 			return PlayState.CONTINUE;
 		} else {
-			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ophthalmosaurus.idle", true));
+			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ophthalmosaurus.idle", new Loop(true)));
 			return PlayState.CONTINUE;
 		}
 	}

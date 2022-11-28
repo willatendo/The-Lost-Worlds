@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.mojang.datafixers.util.Pair;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
@@ -22,7 +23,7 @@ public class JigsawUtils {
 		StructureTemplatePool pool = pools.get(poolLocation);
 
 		StructureProcessorList processorList = manager.registryOrThrow(Registry.PROCESSOR_LIST_REGISTRY).getOptional(poolLocation).orElse(ProcessorLists.EMPTY.value());
-		List<StructurePoolElement> elements = pool.templates;
+		ObjectArrayList<StructurePoolElement> elements = pool.templates;
 
 		StructurePoolElement element = StructurePoolElement.legacy(nbtLocation.toString(), Holder.direct(processorList)).apply(StructureTemplatePool.Projection.RIGID);
 		for (int i = 0; i < weight; i++) {

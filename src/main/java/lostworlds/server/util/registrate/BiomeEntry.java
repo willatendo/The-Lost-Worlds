@@ -19,6 +19,6 @@ public class BiomeEntry<T extends Biome> extends RegistryEntry<T> {
 	}
 
 	public ResourceLocation getRegistryName() {
-		return this.getResourceKey().getRegistryName();
+		return this.getResourceKey().location();
 	}
 }

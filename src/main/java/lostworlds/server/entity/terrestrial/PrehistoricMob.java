@@ -1,12 +1,12 @@
 package lostworlds.server.entity.terrestrial;
 
 import java.util.List;
-import java.util.Random;
 
 import javax.annotation.Nullable;
 
 import lostworlds.server.LostWorldsRegistries;
 import lostworlds.server.LostWorldsTags;
+import lostworlds.server.entity.Loop;
 import lostworlds.server.entity.SpeciesTagModelAndTextureable;
 import lostworlds.server.entity.semiaquatic.CarnivoreSemiAquaticMob;
 import lostworlds.server.entity.utils.ModDamageSources;
@@ -21,6 +21,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -33,7 +34,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -52,14 +52,14 @@ public abstract class PrehistoricMob extends Animal implements IAnimatable, Tabl
 	public static final byte ANIMATION_WALL_WALK = 4;
 	public static final byte ANIMATION_FLY = 5;
 
-	public static final AnimationBuilder WALK_ANIMATION = new AnimationBuilder().addAnimation("walk", true);
-	public static final AnimationBuilder SWIM_ANIMATION = new AnimationBuilder().addAnimation("into_swim").addAnimation("swim", true).addAnimation("out_of_swim");
-	public static final AnimationBuilder IDLE_ANIMATION = new AnimationBuilder().addAnimation("idle", true);
-	public static final AnimationBuilder GLIDE_ANIMATION = new AnimationBuilder().addAnimation("into_glide").addAnimation("glide", true).addAnimation("out_of_glide");
-	public static final AnimationBuilder SLEEP_ANIMATION = new AnimationBuilder().addAnimation("into_sleep").addAnimation("sleep", true).addAnimation("out_of_sleep");
-	public static final AnimationBuilder EAT_ANIMATION = new AnimationBuilder().addAnimation("eat", false);
-	public static final AnimationBuilder WALL_WALK_ANIMATION = new AnimationBuilder().addAnimation("into_wall_walk").addAnimation("wall_walk", true).addAnimation("out_of_wall_walk");
-	public static final AnimationBuilder FLY_ANIMATION = new AnimationBuilder().addAnimation("fly_animation", true);
+	public static final AnimationBuilder WALK_ANIMATION = new AnimationBuilder().addAnimation("walk", new Loop(true));
+	public static final AnimationBuilder SWIM_ANIMATION = new AnimationBuilder().addAnimation("into_swim").addAnimation("swim", new Loop(true)).addAnimation("out_of_swim");
+	public static final AnimationBuilder IDLE_ANIMATION = new AnimationBuilder().addAnimation("idle", new Loop(true));
+	public static final AnimationBuilder GLIDE_ANIMATION = new AnimationBuilder().addAnimation("into_glide").addAnimation("glide", new Loop(true)).addAnimation("out_of_glide");
+	public static final AnimationBuilder SLEEP_ANIMATION = new AnimationBuilder().addAnimation("into_sleep").addAnimation("sleep", new Loop(true)).addAnimation("out_of_sleep");
+	public static final AnimationBuilder EAT_ANIMATION = new AnimationBuilder().addAnimation("eat", new Loop(false));
+	public static final AnimationBuilder WALL_WALK_ANIMATION = new AnimationBuilder().addAnimation("into_wall_walk").addAnimation("wall_walk", new Loop(true)).addAnimation("out_of_wall_walk");
+	public static final AnimationBuilder FLY_ANIMATION = new AnimationBuilder().addAnimation("fly_animation", new Loop(true));
 
 	private int hunger;
 	private boolean contraceptives;
@@ -180,8 +180,8 @@ public abstract class PrehistoricMob extends Animal implements IAnimatable, Tabl
 		}
 	}
 
-	public static boolean canPrehistoricSpawn(EntityType type, LevelAccessor world, MobSpawnType reason, BlockPos pos, Random rand) {
-		boolean spawnBlock = world.getBlockState(pos.below()).is(LostWorldsTags.ModBlockTags.DINO_SPAWNABLES.tag);
+	public static boolean canPrehistoricSpawn(EntityType<? extends PrehistoricMob> entityType, ServerLevelAccessor serverLevelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
+		boolean spawnBlock = serverLevelAccessor.getBlockState(blockPos.below()).is(LostWorldsTags.ModBlockTags.DINO_SPAWNABLES.tag);
 		return spawnBlock;
 	}
 
@@ -241,7 +241,7 @@ public abstract class PrehistoricMob extends Animal implements IAnimatable, Tabl
 	}
 
 	@Override
-	protected int getExperienceReward(Player entity) {
+	public int getExperienceReward() {
 		return 1 + this.level.random.nextInt(3);
 	}
 

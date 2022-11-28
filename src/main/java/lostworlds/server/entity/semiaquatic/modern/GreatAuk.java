@@ -1,7 +1,5 @@
 package lostworlds.server.entity.semiaquatic.modern;
 
-import java.util.Random;
-
 import lostworlds.client.LostWorldsConfig;
 import lostworlds.server.LostWorldsTags;
 import lostworlds.server.entity.LostWorldsEntities;
@@ -27,6 +25,7 @@ import lostworlds.server.species.SpeciesType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
@@ -40,16 +39,17 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.TurtleEggBlock;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class GreatAuk extends CarnivoreSemiAquaticMob implements SpeciesTagModelAndTextureable {
 	private static final Ingredient FOOD_ITEMS = FoodLists.PISCIVORE;
-	private AnimationFactory factory = new AnimationFactory(this);
+	private AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
 	public GreatAuk(EntityType<? extends CarnivoreSemiAquaticMob> entity, Level world) {
 		super(entity, world);
@@ -69,8 +69,8 @@ public class GreatAuk extends CarnivoreSemiAquaticMob implements SpeciesTagModel
 		return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.35F).add(Attributes.MAX_HEALTH, LostWorldsConfig.COMMON_CONFIG.greatAukHeath.get()).add(Attributes.ATTACK_DAMAGE, LostWorldsConfig.COMMON_CONFIG.greatAukAttackDamage.get());
 	}
 
-	public static boolean canGreatAukSpawn(EntityType<GreatAuk> entity, LevelAccessor world, MobSpawnType reason, BlockPos pos, Random rand) {
-		return pos.getY() < world.getSeaLevel() + 4 && TurtleEggBlock.onSand(world, pos) && world.getRawBrightness(pos, 0) > 8;
+	public static boolean canGreatAukSpawn(EntityType<GreatAuk> entity, ServerLevelAccessor serverLevelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
+		return blockPos.getY() < serverLevelAccessor.getSeaLevel() + 4 && TurtleEggBlock.onSand(serverLevelAccessor, blockPos) && serverLevelAccessor.getRawBrightness(blockPos, 0) > 8;
 	}
 
 	@Override

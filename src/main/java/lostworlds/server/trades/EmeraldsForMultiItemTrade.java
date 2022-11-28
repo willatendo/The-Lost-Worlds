@@ -1,8 +1,8 @@
 package lostworlds.server.trades;
 
 import java.util.List;
-import java.util.Random;
 
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerTrades.ItemListing;
 import net.minecraft.world.item.Item;
@@ -26,8 +26,8 @@ public class EmeraldsForMultiItemTrade implements ItemListing {
 	}
 
 	@Override
-	public MerchantOffer getOffer(Entity entity, Random rand) {
-		int choose = (int) (rand.nextFloat() * itemsWanted.size());
+	public MerchantOffer getOffer(Entity entity, RandomSource randomSource) {
+		int choose = (int) (randomSource.nextFloat() * itemsWanted.size());
 		return new MerchantOffer(new ItemStack(itemsWanted.get(choose), ammount.get(choose)), new ItemStack(Items.EMERALD, offer.get(choose)), this.tradeUses, this.villagerXp, 0.05F);
 	}
 }

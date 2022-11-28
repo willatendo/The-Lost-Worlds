@@ -16,6 +16,7 @@ import lostworlds.server.structure.LostWorldsConfiguredStructures;
 import lostworlds.server.util.registrate.WoodTypes;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.AbstractCriterionTriggerInstance;
@@ -23,8 +24,7 @@ import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.LocationPredicate;
-import net.minecraft.advancements.critereon.LocationTrigger;
-import net.minecraft.advancements.critereon.TickTrigger;
+import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.resources.ResourceKey;
@@ -34,7 +34,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
+import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class LostWorldsAdvancementProvider extends AdvancementProvider {
@@ -44,7 +44,7 @@ public class LostWorldsAdvancementProvider extends AdvancementProvider {
 
 	@Override
 	protected void registerAdvancements(Consumer<Advancement> consumer, ExistingFileHelper fileHelper) {
-		Advancement root = Advancement.Builder.advancement().display(LostWorldsItems.LOST_WORLDS_LEXICON.asStack(), LostWorldsUtils.tTC("advancement", "root.title"), LostWorldsUtils.tTC("advancement", "root.desc"), LostWorldsUtils.rL("textures/block/dried_soil.png"), FrameType.TASK, false, false, false).addCriterion("tick", new TickTrigger.TriggerInstance(EntityPredicate.Composite.ANY)).save(consumer, LostWorldsUtils.rL("lostworlds/root"), fileHelper);
+		Advancement root = Advancement.Builder.advancement().display(LostWorldsItems.LOST_WORLDS_LEXICON.asStack(), LostWorldsUtils.tTC("advancement", "root.title"), LostWorldsUtils.tTC("advancement", "root.desc"), LostWorldsUtils.rL("textures/block/dried_soil.png"), FrameType.TASK, false, false, false).addCriterion("tick", new PlayerTrigger.TriggerInstance(CriteriaTriggers.TICK.getId(), EntityPredicate.Composite.ANY)).save(consumer, LostWorldsUtils.rL("lostworlds/root"), fileHelper);
 		Advancement aTerribleMarket = this.addAdvancement(consumer, fileHelper, root, LostWorldsItems.HAMMER.get(), "a_terrible_market", FrameType.TASK, true, true, false, structureCriteria(LostWorldsConfiguredStructures.BLACK_MARKET_KEY, "black_market"));
 		Advancement basicExplorer = this.addAdvancement(consumer, fileHelper, root, LostWorldsBlocks.CONIFER.getBlock(WoodTypes.LOG).get().get(), "basic_explorer", FrameType.GOAL, true, true, false, this.biomeCriteria(LostWorldsBiomes.ARAUCARIA_FOREST.getResourceKey()), this.biomeCriteria(LostWorldsBiomes.CONIFER_FOREST.getResourceKey()), this.biomeCriteria(LostWorldsBiomes.GINKGO_FOREST.getResourceKey()), this.biomeCriteria(LostWorldsBiomes.REDWOODS_FOREST.getResourceKey()), this.biomeCriteria(LostWorldsBiomes.VOLCANO.getResourceKey()));
 		Advancement fossils = this.addAdvancement(consumer, fileHelper, aTerribleMarket, LostWorldsItems.HAMMER.get(), "fossils", FrameType.TASK, true, true, false, this.itemCriteria(LostWorldsTags.ModItemTags.PLASTERED_FOSSILS.tag));
@@ -104,15 +104,15 @@ public class LostWorldsAdvancementProvider extends AdvancementProvider {
 	}
 
 	public Pair<AbstractCriterionTriggerInstance, String> biomeCriteria(ResourceKey<Biome> biome) {
-		return Pair.of(LocationTrigger.TriggerInstance.located(LocationPredicate.inBiome(biome)), "in_" + biome.location().getPath());
+		return Pair.of(PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(biome)), "in_" + biome.location().getPath());
 	}
 
 	public Pair<AbstractCriterionTriggerInstance, String> dimensionCriteria(ResourceKey<Level> dimension) {
-		return Pair.of(LocationTrigger.TriggerInstance.located(LocationPredicate.inDimension(dimension)), "in_" + dimension.location().getPath());
+		return Pair.of(PlayerTrigger.TriggerInstance.located(LocationPredicate.inDimension(dimension)), "in_" + dimension.location().getPath());
 	}
 
-	public Pair<AbstractCriterionTriggerInstance, String> structureCriteria(ResourceKey<ConfiguredStructureFeature<?, ?>> structure, String structureName) {
-		return Pair.of(LocationTrigger.TriggerInstance.located(LocationPredicate.inFeature(structure)), "in_" + structureName);
+	public Pair<AbstractCriterionTriggerInstance, String> structureCriteria(ResourceKey<Structure> structure, String structureName) {
+		return Pair.of(PlayerTrigger.TriggerInstance.located(LocationPredicate.inStructure(structure)), "in_" + structureName);
 	}
 
 	public Pair<AbstractCriterionTriggerInstance, String> itemCriteria(ItemLike item) {

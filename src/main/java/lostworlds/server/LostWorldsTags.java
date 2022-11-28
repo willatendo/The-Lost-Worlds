@@ -26,20 +26,19 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
+import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public class LostWorldsTags {
 	private static final LostWorldsRegistrate REGISTRATE = getRegistrate();
 
-	public static <T extends IForgeRegistryEntry<T>> TagKey<T> optionalTag(IForgeRegistry<T> registry, ResourceLocation id) {
+	public static <T> TagKey<T> optionalTag(IForgeRegistry<T> registry, ResourceLocation id) {
 		return registry.tags().createOptionalTagKey(id, Collections.emptySet());
 	}
 
-	public static <T extends IForgeRegistryEntry<T>> TagKey<T> forgeTag(IForgeRegistry<T> registry, String path) {
+	public static <T> TagKey<T> forgeTag(IForgeRegistry<T> registry, String path) {
 		return optionalTag(registry, new ResourceLocation("forge", path));
 	}
 
@@ -327,10 +326,10 @@ public class LostWorldsTags {
 	}
 
 	public static class ModConfiguredStructureTags {
-		public static final TagKey<ConfiguredStructureFeature<?, ?>> FOSSIL_MAP_LOCATION = create("fossil_map_location");
+		public static final TagKey<Structure> FOSSIL_MAP_LOCATION = create("fossil_map_location");
 
-		private static TagKey<ConfiguredStructureFeature<?, ?>> create(String id) {
-			return TagKey.create(Registry.CONFIGURED_STRUCTURE_FEATURE_REGISTRY, LostWorldsUtils.rL(id));
+		private static TagKey<Structure> create(String id) {
+			return TagKey.create(Registry.STRUCTURE_REGISTRY, LostWorldsUtils.rL(id));
 		}
 	}
 

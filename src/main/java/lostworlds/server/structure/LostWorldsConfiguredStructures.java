@@ -6,11 +6,12 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
 public class LostWorldsConfiguredStructures {
-	public static final DeferredRegister<ConfiguredStructureFeature<?, ?>> CONFIGURED_STRUCTURE_FEATURES = DeferredRegister.create(Registry.CONFIGURED_STRUCTURE_FEATURE_REGISTRY, LostWorldsUtils.ID);
+	public static final DeferredRegister<Structure> CONFIGURED_STRUCTURE_FEATURES = DeferredRegister.create(Registry.STRUCTURE_REGISTRY, LostWorldsUtils.ID);
 
 	public static final ResourceKey<ConfiguredStructureFeature<?, ?>> BLACK_MARKET_KEY = createKey("black_market");
 	public static final RegistryObject<ConfiguredStructureFeature<?, ?>> CONFIGURED_BLACK_MARKET = CONFIGURED_STRUCTURE_FEATURES.register("black_market", () -> LostWorldsStructures.BLACK_MARKET.get().configured(NoneFeatureConfiguration.INSTANCE, LostWorldsTags.ModBiomeTags.HAS_BLACK_MARKET));

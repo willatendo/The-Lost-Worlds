@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 public class BreakSpeedEvents {
 	@SubscribeEvent
 	public static void breakSpeed(PlayerEvent.BreakSpeed event) {
-		Player entity = event.getPlayer();
+		Player entity = event.getEntity();
 
 		if (entity != null) {
 			if (event.getState().is(LostWorldsBlocks.VOLCANIC_ASH_LAYER.get())) {

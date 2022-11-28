@@ -8,7 +8,6 @@ import javax.annotation.Nullable;
 import lostworlds.client.screen.tablet.TabletScreen;
 import lostworlds.server.item.LostWorldsItems;
 import lostworlds.server.item.TabletItem;
-import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -115,7 +114,7 @@ public abstract class TaggedMob extends PrehistoricMob {
 	}
 
 	public String getTaggedToName() {
-		return this.getOwner().getName().getContents();
+		return this.getOwner().getName().getString();
 	}
 
 	@Override
@@ -149,7 +148,7 @@ public abstract class TaggedMob extends PrehistoricMob {
 	@Override
 	public void die(DamageSource source) {
 		if (!this.level.isClientSide && this.level.getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer) {
-			this.getOwner().sendMessage(this.getCombatTracker().getDeathMessage(), Util.NIL_UUID);
+			this.getOwner().sendSystemMessage(this.getCombatTracker().getDeathMessage());
 		}
 
 		super.die(source);

@@ -15,7 +15,6 @@ import lostworlds.server.block.ModFlowerPotBlock;
 import lostworlds.server.block.PetrifiedWoodBlock;
 import lostworlds.server.entity.utils.enums.ModBoatType;
 import lostworlds.server.item.ModBoatItem;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
@@ -117,12 +116,12 @@ public class WoodList {
 			}
 
 			if (types == WoodTypes.TRAPDOOR) {
-				BlockEntry<TrapDoorBlock> trapdoor = this.registrate.trapdoorBlock(id + "_" + types.toString().toLowerCase(), TrapDoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_TRAPDOORS, BlockTags.MINEABLE_WITH_AXE).addLayer(() -> RenderType::cutout).recipe((block, provider) -> provider.trapDoor(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_trapdoor")).register();
+				BlockEntry<TrapDoorBlock> trapdoor = this.registrate.trapdoorBlock(id + "_" + types.toString().toLowerCase(), TrapDoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_TRAPDOORS, BlockTags.MINEABLE_WITH_AXE).recipe((block, provider) -> provider.trapDoor(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_trapdoor")).register();
 				this.blocks.add(() -> trapdoor);
 			}
 
 			if (types == WoodTypes.DOOR) {
-				BlockEntry<DoorBlock> door = this.registrate.doorBlock(id + "_" + types.toString().toLowerCase(), DoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_DOORS, BlockTags.MINEABLE_WITH_AXE).addLayer(() -> RenderType::cutout).recipe((block, provider) -> provider.door(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_door")).loot((provider, block) -> provider.add(block, provider.createDoorTable(block))).register();
+				BlockEntry<DoorBlock> door = this.registrate.doorBlock(id + "_" + types.toString().toLowerCase(), DoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_DOORS, BlockTags.MINEABLE_WITH_AXE).recipe((block, provider) -> provider.door(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_door")).loot((provider, block) -> provider.add(block, provider.createDoorTable(block))).register();
 				this.blocks.add(() -> door);
 			}
 
@@ -169,17 +168,17 @@ public class WoodList {
 			}
 
 			if (types == WoodTypes.SAPLING) {
-				BlockEntry<SaplingBlock> sapling = this.registrate.sapling(id + "_" + types.toString().toLowerCase(), properties -> new SaplingBlock(tree, properties)).properties(properties -> properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)).addLayer(() -> RenderType::cutout).tag(LostWorldsTags.ModBlockTags.ANCIENT_SAPLINGS.tag, BlockTags.SAPLINGS).register();
+				BlockEntry<SaplingBlock> sapling = this.registrate.sapling(id + "_" + types.toString().toLowerCase(), properties -> new SaplingBlock(tree, properties)).properties(properties -> properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)).tag(LostWorldsTags.ModBlockTags.ANCIENT_SAPLINGS.tag, BlockTags.SAPLINGS).register();
 				this.blocks.add(() -> sapling);
 			}
 
 			if (types == WoodTypes.POTTED_SAPLING) {
-				BlockEntry<ModFlowerPotBlock> pottedSapling = this.registrate.pottedBlock("potted_" + id + "_sapling", id + "_sapling", properties -> new ModFlowerPotBlock(() -> this.getBlock(WoodTypes.SAPLING).get().get().delegate.get(), properties)).properties(properties -> properties.of(Material.DECORATION).instabreak().noOcclusion()).addLayer(() -> RenderType::cutout).loot((provider, block) -> provider.dropPottedContents(block)).register();
+				BlockEntry<ModFlowerPotBlock> pottedSapling = this.registrate.pottedBlock("potted_" + id + "_sapling", id + "_sapling", properties -> new ModFlowerPotBlock(() -> this.getBlock(WoodTypes.SAPLING).get().get(), properties)).properties(properties -> properties.of(Material.DECORATION).instabreak().noOcclusion()).loot((provider, block) -> provider.dropPottedContents(block)).register();
 				this.blocks.add(() -> pottedSapling);
 			}
 
 			if (types == WoodTypes.LEAVES) {
-				BlockEntry<LeavesBlock> leaves = this.registrate.leaves(id + "_" + types.toString().toLowerCase(), LeavesBlock::new).properties(properties -> properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(LostWorldsBlocks::ocelotOrParrot).isSuffocating(LostWorldsBlocks::never).isViewBlocking(LostWorldsBlocks::never)).addLayer(() -> RenderType::cutout).tag(BlockTags.LEAVES, BlockTags.MINEABLE_WITH_HOE).loot((provider, block) -> provider.add(block, provider.createLeavesDrops(block, this.getBlock(WoodTypes.SAPLING).get().get(), 0.05F, 0.0625F, 0.083333336F, 0.1F))).register();
+				BlockEntry<LeavesBlock> leaves = this.registrate.leaves(id + "_" + types.toString().toLowerCase(), LeavesBlock::new).properties(properties -> properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(LostWorldsBlocks::ocelotOrParrot).isSuffocating(LostWorldsBlocks::never).isViewBlocking(LostWorldsBlocks::never)).tag(BlockTags.LEAVES, BlockTags.MINEABLE_WITH_HOE).loot((provider, block) -> provider.add(block, provider.createLeavesDrops(block, this.getBlock(WoodTypes.SAPLING).get().get(), 0.05F, 0.0625F, 0.083333336F, 0.1F))).register();
 				this.blocks.add(() -> leaves);
 			}
 
@@ -219,12 +218,12 @@ public class WoodList {
 			}
 
 			if (types == WoodTypes.TRAPDOOR) {
-				BlockEntry<TrapDoorBlock> trapdoor = this.registrate.trapdoorBlock(id + "_" + types.toString().toLowerCase(), TrapDoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_TRAPDOORS, BlockTags.MINEABLE_WITH_AXE).addLayer(() -> RenderType::cutout).recipe((block, provider) -> provider.trapDoor(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_trapdoor")).register();
+				BlockEntry<TrapDoorBlock> trapdoor = this.registrate.trapdoorBlock(id + "_" + types.toString().toLowerCase(), TrapDoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_TRAPDOORS, BlockTags.MINEABLE_WITH_AXE).recipe((block, provider) -> provider.trapDoor(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_trapdoor")).register();
 				this.blocks.add(() -> trapdoor);
 			}
 
 			if (types == WoodTypes.DOOR) {
-				BlockEntry<DoorBlock> door = this.registrate.doorBlock(id + "_" + types.toString().toLowerCase(), DoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_DOORS, BlockTags.MINEABLE_WITH_AXE).addLayer(() -> RenderType::cutout).recipe((block, provider) -> provider.door(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_door")).register();
+				BlockEntry<DoorBlock> door = this.registrate.doorBlock(id + "_" + types.toString().toLowerCase(), DoorBlock::new).properties(properties -> properties.of(Material.WOOD, colour).strength(2.0F, 3.0F).noOcclusion().sound(SoundType.WOOD)).tag(BlockTags.WOODEN_DOORS, BlockTags.MINEABLE_WITH_AXE).recipe((block, provider) -> provider.door(DataIngredient.items(this.getBlock(WoodTypes.PLANKS).get()), () -> block.get(), "wooden_door")).register();
 				this.blocks.add(() -> door);
 			}
 

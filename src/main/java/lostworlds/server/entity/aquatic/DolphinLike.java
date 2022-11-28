@@ -1,6 +1,5 @@
 package lostworlds.server.entity.aquatic;
 
-import java.util.Random;
 import java.util.function.Predicate;
 
 import javax.annotation.Nullable;
@@ -21,6 +20,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -56,7 +56,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 
@@ -76,7 +75,6 @@ public abstract class DolphinLike extends BreedingWaterMob {
 	}
 
 	@Override
-	@Nullable
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData data, @Nullable CompoundTag nbt) {
 		this.setAirSupply(this.getMaxAirSupply());
 		this.xRot = 0.0F;
@@ -271,9 +269,9 @@ public abstract class DolphinLike extends BreedingWaterMob {
 		}
 	}
 
-	public static boolean canDolphinLikeSpawn(EntityType<? extends DolphinLike> entity, LevelAccessor world, MobSpawnType reason, BlockPos pos, Random rand) {
-		if (pos.getY() > 45 && pos.getY() < world.getSeaLevel()) {
-			return world.getFluidState(pos).is(FluidTags.WATER);
+	public static boolean canDolphinLikeSpawn(EntityType<? extends DolphinLike> entityType, ServerLevelAccessor world, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
+		if (blockPos.getY() > 45 && blockPos.getY() < world.getSeaLevel()) {
+			return world.getFluidState(blockPos).is(FluidTags.WATER);
 		} else {
 			return false;
 		}

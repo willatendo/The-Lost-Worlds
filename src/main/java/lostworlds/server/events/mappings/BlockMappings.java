@@ -6,14 +6,15 @@ import java.util.function.Supplier;
 
 import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.block.LostWorldsBlocks;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
-import net.minecraftforge.registries.IForgeRegistryEntry;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.MissingMappingsEvent;
 
 @EventBusSubscriber(modid = LostWorldsUtils.ID, bus = Bus.MOD)
 public class BlockMappings {
@@ -88,29 +89,30 @@ public class BlockMappings {
 			put(LostWorldsUtils.rL("plastered_fossil"), () -> LostWorldsBlocks.AMBER_ORE.get());
 			// Alpha 11 -> Alpha 11.1
 			put(LostWorldsUtils.rL("copper_ore"), () -> Blocks.COPPER_ORE);
+			// Alpha 11.1 -> Alpha 11.2
+			put(LostWorldsUtils.rL("mud"), () -> Blocks.MUD);
 		}
 	};
 
 	@SubscribeEvent
-	public void updateBlockMappings(RegistryEvent.MissingMappings<Block> event) {
-		if (event.getAllMappings().stream().filter(mapping -> mapping.key.getNamespace().equals(LostWorldsUtils.ID)).findAny().isPresent()) {
-			event.getAllMappings().stream().filter(m -> m.key.getNamespace().equals(LostWorldsUtils.ID)).forEach(mapping -> {
-				if (blockRemappings.containsKey(mapping.key)) {
+	public void updateBlockMappings(MissingMappingsEvent event) {
+		if (event.getAllMappings(Registry.BLOCK_REGISTRY).stream().filter(mapping -> mapping.getKey().getNamespace().equals(LostWorldsUtils.ID)).findAny().isPresent()) {
+			event.getAllMappings(Registry.BLOCK_REGISTRY).stream().filter(m -> m.getKey().getNamespace().equals(LostWorldsUtils.ID)).forEach(mapping -> {
+				if (blockRemappings.containsKey(mapping.getKey())) {
 					remap(mapping, blockRemappings);
 				}
 			});
 		}
 	}
 
-	private <T extends IForgeRegistryEntry<T>> void remap(RegistryEvent.MissingMappings.Mapping<T> mapping, Map<ResourceLocation, Supplier<T>> remappings) {
-		ResourceLocation key = mapping.key;
+	private <T extends Block> void remap(MissingMappingsEvent.Mapping<T> mapping, Map<ResourceLocation, Supplier<T>> remappings) {
+		ResourceLocation key = mapping.getKey();
 		if (remappings.containsKey(key)) {
 			mapping.remap(remappings.get(key).get());
-			LostWorldsUtils.LOGGER.warn("Replaced " + key + " with " + remappings.get(key).get().getRegistryName());
+			LostWorldsUtils.LOGGER.warn("Replaced " + key + " with " + ForgeRegistries.BLOCKS.getKey(remappings.get(key).get()));
 		} else {
 			mapping.ignore();
 			LostWorldsUtils.LOGGER.warn("Could not find a mapping replacement for " + key + ". It was likely intentionally removed in an update.");
 		}
 	}
-
 }

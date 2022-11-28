@@ -22,36 +22,36 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 public class RightClickBlockEvents {
 	@SubscribeEvent
 	public static void addNautilusShell(RightClickBlock event) {
-		Player player = event.getPlayer();
+		Player player = event.getEntity();
 		InteractionHand hand = event.getHand();
 		ItemStack stack = player.getItemInHand(hand);
 		Item item = stack.getItem();
 
 		if (item == Items.NAUTILUS_SHELL) {
-			Level world = event.getWorld();
+			Level level = event.getLevel();
 			BlockPos pos = event.getPos().relative(event.getFace());
 			BlockPos clickedPos = event.getPos();
 			Direction direction = player.getDirection().getOpposite();
 
-			if (!(world.getBlockState(clickedPos).getBlock() instanceof EntityBlock) || !(world.getBlockState(clickedPos).hasBlockEntity())) {
-				if (world.getBlockState(pos.below()).isFaceSturdy(world, pos, direction)) {
+			if (!(level.getBlockState(clickedPos).getBlock() instanceof EntityBlock) || !(level.getBlockState(clickedPos).hasBlockEntity())) {
+				if (level.getBlockState(pos.below()).isFaceSturdy(level, pos, direction)) {
 					player.swing(hand);
 					if (!player.isCreative()) {
 						stack.shrink(1);
 					}
-					world.setBlockAndUpdate(pos, LostWorldsBlocks.NAUTILUS_SHELL.getDefaultState().setValue(NautilusShellBlock.HORIZONTAL_FACING, direction));
-					world.playSound(player, pos, LostWorldsBlocks.NAUTILUS_SHELL.getDefaultState().getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
+					level.setBlockAndUpdate(pos, LostWorldsBlocks.NAUTILUS_SHELL.getDefaultState().setValue(NautilusShellBlock.HORIZONTAL_FACING, direction));
+					level.playSound(player, pos, LostWorldsBlocks.NAUTILUS_SHELL.getDefaultState().getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
 				}
 			}
 
 			if (player.isCrouching()) {
-				if (world.getBlockState(pos.below()).isFaceSturdy(world, pos, direction)) {
+				if (level.getBlockState(pos.below()).isFaceSturdy(level, pos, direction)) {
 					player.swing(hand);
 					if (!player.isCreative()) {
 						stack.shrink(1);
 					}
-					world.setBlockAndUpdate(pos, LostWorldsBlocks.NAUTILUS_SHELL.getDefaultState().setValue(NautilusShellBlock.HORIZONTAL_FACING, direction));
-					world.playSound(player, pos, LostWorldsBlocks.NAUTILUS_SHELL.getDefaultState().getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
+					level.setBlockAndUpdate(pos, LostWorldsBlocks.NAUTILUS_SHELL.getDefaultState().setValue(NautilusShellBlock.HORIZONTAL_FACING, direction));
+					level.playSound(player, pos, LostWorldsBlocks.NAUTILUS_SHELL.getDefaultState().getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
 				}
 				event.setCanceled(true);
 			}

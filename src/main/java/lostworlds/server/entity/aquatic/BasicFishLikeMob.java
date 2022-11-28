@@ -1,7 +1,5 @@
 package lostworlds.server.entity.aquatic;
 
-import java.util.Random;
-
 import lostworlds.server.entity.goal.aquatic.FishLikeSwimGoal;
 import lostworlds.server.entity.helper.FishLikeMoveHelper;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -13,6 +11,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -35,8 +34,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -63,8 +62,8 @@ public abstract class BasicFishLikeMob extends PathfinderMob {
 		return super.requiresCustomPersistence() || this.fromBucket();
 	}
 
-	public static boolean canFishLikeSpawn(EntityType<? extends BasicFishLikeMob> entity, LevelAccessor world, MobSpawnType reason, BlockPos pos, Random rand) {
-		return world.getBlockState(pos).is(Blocks.WATER) && world.getBlockState(pos.above()).is(Blocks.WATER);
+	public static boolean canFishLikeSpawn(EntityType<? extends BasicFishLikeMob> entityType, ServerLevelAccessor serverLevelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
+		return serverLevelAccessor.getBlockState(blockPos).is(Blocks.WATER) && serverLevelAccessor.getBlockState(blockPos.above()).is(Blocks.WATER);
 	}
 
 	@Override
@@ -211,7 +210,7 @@ public abstract class BasicFishLikeMob extends PathfinderMob {
 	}
 
 	@Override
-	protected int getExperienceReward(Player entity) {
+	public int getExperienceReward() {
 		return 1 + this.level.random.nextInt(3);
 	}
 
