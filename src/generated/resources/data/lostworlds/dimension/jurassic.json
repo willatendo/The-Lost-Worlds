@@ -1,0 +1,11 @@
+{
+  "type": "lostworlds:jurassic",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "minecraft:overworld",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "preset": "lostworlds:jurassic_noise"
+    }
+  }
+}

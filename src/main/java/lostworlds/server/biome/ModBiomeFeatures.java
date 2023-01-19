@@ -712,22 +712,22 @@ public class ModBiomeFeatures {
 	}
 
 	private static void addJurassicOres(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_COAL_ORE_UPPER.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_COAL_ORE_LOWER.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_IRON_ORE_UPPER.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_IRON_ORE_MIDDLE.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_IRON_ORE_SMALL.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_GOLD_ORE.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_GOLD_ORE_LOWER.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_DIAMOND_ORE.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_DIAMOND_ORE_LARGE.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_DIAMOND_ORE_BURIED.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_LAPIS_ORE.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_LAPIS_ORE_BURIED.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_REDSTONE_ORE.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_REDSTONE_ORE_LOWER.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_COPPER_ORE.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.PERMIAN_COPPER_ORE_LARGE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_COAL_ORE_UPPER.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_COAL_ORE_LOWER.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_IRON_ORE_UPPER.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_IRON_ORE_MIDDLE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_IRON_ORE_SMALL.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_GOLD_ORE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_GOLD_ORE_LOWER.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_DIAMOND_ORE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_DIAMOND_ORE_LARGE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_DIAMOND_ORE_BURIED.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_LAPIS_ORE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_LAPIS_ORE_BURIED.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_REDSTONE_ORE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_REDSTONE_ORE_LOWER.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_COPPER_ORE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.JURASSIC_COPPER_ORE_LARGE.getHolder().get());
 	}
 
 	private static void addJurassicEmerald(BiomeGenerationSettings.Builder builder) {
@@ -763,13 +763,22 @@ public class ModBiomeFeatures {
 	}
 
 	private static void addCretaceousOres(BiomeGenerationSettings.Builder builder) {
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_COAL_ORE.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_DIAMOND_ORE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_COAL_ORE_UPPER.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_COAL_ORE_LOWER.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_IRON_ORE_UPPER.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_IRON_ORE_MIDDLE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_IRON_ORE_SMALL.getHolder().get());
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_GOLD_ORE.getHolder().get());
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_IRON_ORE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_GOLD_ORE_LOWER.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_DIAMOND_ORE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_DIAMOND_ORE_LARGE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_DIAMOND_ORE_BURIED.getHolder().get());
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_LAPIS_ORE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_LAPIS_ORE_BURIED.getHolder().get());
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_REDSTONE_ORE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_REDSTONE_ORE_LOWER.getHolder().get());
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_COPPER_ORE.getHolder().get());
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedOreFeatures.CRETACEOUS_COPPER_ORE_LARGE.getHolder().get());
 	}
 
 	private static void addCretaceousEmerald(BiomeGenerationSettings.Builder builder) {

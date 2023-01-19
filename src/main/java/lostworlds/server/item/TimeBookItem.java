@@ -36,11 +36,10 @@ public class TimeBookItem extends ProjectileWeaponItem {
 		this.levelToTransportTo = level;
 	}
 
-	public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int time) {
-		if (entity instanceof Player) {
-			Player playerentity = (Player) entity;
-			boolean flag = playerentity.isCreative();
-			ItemStack itemstack = playerentity.getProjectile(stack);
+	public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int time) {
+		if (livingEntity instanceof Player player) {
+			boolean flag = player.isCreative();
+			ItemStack itemstack = player.getProjectile(stack);
 
 			int i = this.getUseDuration(stack) - time;
 			if (i < 0)
@@ -54,38 +53,38 @@ public class TimeBookItem extends ProjectileWeaponItem {
 				float f = getPowerForTime(i);
 				if (!((double) f < 0.1D)) {
 					if (!level.isClientSide) {
-						if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
-							if (entity.level instanceof ServerLevel) {
-								if (entity.level.dimension() == Level.NETHER || entity.level.dimension() == Level.END) {
-									entity.sendMessage(LostWorldsUtils.tTC("timeBook", "doesnt_work"), entity.getUUID());
+						if (!livingEntity.isPassenger() && !livingEntity.isVehicle() && livingEntity.canChangeDimensions()) {
+							if (livingEntity.level instanceof ServerLevel) {
+								if (livingEntity.level.dimension() == Level.NETHER || livingEntity.level.dimension() == Level.END) {
+									livingEntity.sendMessage(LostWorldsUtils.tTC("timeBook", "doesnt_work"), livingEntity.getUUID());
 									return;
 								}
-								ServerLevel serverworld = (ServerLevel) entity.level;
+								ServerLevel serverworld = (ServerLevel) livingEntity.level;
 								MinecraftServer minecraftserver = serverworld.getServer();
-								ResourceKey<Level> registrykey = entity.level.dimension() == this.levelToTransportTo ? Level.OVERWORLD : this.levelToTransportTo;
+								ResourceKey<Level> registrykey = livingEntity.level.dimension() == this.levelToTransportTo ? Level.OVERWORLD : this.levelToTransportTo;
 								ServerLevel serverworld1 = minecraftserver.getLevel(registrykey);
-								if (serverworld1 != null && !entity.isPassenger()) {
-									playerentity.changeDimension(serverworld1, new ModTeleporter());
+								if (serverworld1 != null && !livingEntity.isPassenger()) {
+									player.changeDimension(serverworld1, new ModTeleporter());
 									if (!registrykey.equals(Level.OVERWORLD)) {
-										entity.sendMessage(LostWorldsUtils.tTCA("timeBook", "transport_to_" + era.toString().toLowerCase(), playerentity.getName().getString()), entity.getUUID());
+										livingEntity.sendMessage(LostWorldsUtils.tTCA("timeBook", "transport_to_" + era.toString().toLowerCase(), player.getName().getString()), livingEntity.getUUID());
 									} else {
-										entity.sendMessage(LostWorldsUtils.tTCA("timeBook", "transport_to_overworld", playerentity.getName().getString()), entity.getUUID());
+										livingEntity.sendMessage(LostWorldsUtils.tTCA("timeBook", "transport_to_overworld", player.getName().getString()), livingEntity.getUUID());
 									}
 								}
 
 								if (!flag) {
 									itemstack.shrink(1);
 									if (itemstack.isEmpty()) {
-										playerentity.getInventory().removeItem(itemstack);
+										player.getInventory().removeItem(itemstack);
 									}
 								}
 
-								level.playSound((Player) null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 1.0F, 1.0F / (new Random().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+								level.playSound((Player) null, player.getX(), player.getY(), player.getZ(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 1.0F, 1.0F / (new Random().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 							}
 						}
 					}
 
-					playerentity.awardStat(Stats.ITEM_USED.get(this));
+					player.awardStat(Stats.ITEM_USED.get(this));
 				}
 			}
 		}

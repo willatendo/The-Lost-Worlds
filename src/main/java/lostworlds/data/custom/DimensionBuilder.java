@@ -6,9 +6,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 
 public record DimensionBuilder(String id, boolean ultrawarm, boolean natural, float coordinateScale, boolean hasSkylight, boolean hasCeiling, int ambientLight, boolean piglinSafe, boolean bedWorks, boolean respawnAnchorWorks, boolean hasRaids, int logicalHeight, int height, int minY, TagKey<Block> infiniburn, String effects, BiomeSource... dimensionBiomes) {
-	public JsonObject serializeDimensionType(String modid) {
+	public JsonObject serializeDimensionType() {
 		JsonObject dimensionTypeJson = new JsonObject();
-		dimensionTypeJson.addProperty("name", modid + ":" + this.id);
 		dimensionTypeJson.addProperty("ultrawarm", this.ultrawarm);
 		dimensionTypeJson.addProperty("natural", this.natural);
 		dimensionTypeJson.addProperty("coordinate_scale", this.coordinateScale);
@@ -25,5 +24,19 @@ public record DimensionBuilder(String id, boolean ultrawarm, boolean natural, fl
 		dimensionTypeJson.addProperty("infiniburn", "#" + this.infiniburn.location().toString());
 		dimensionTypeJson.addProperty("effects", this.effects);
 		return dimensionTypeJson;
+	}
+
+	public JsonObject serializeDimension(String id) {
+		JsonObject dimensionJson = new JsonObject();
+		dimensionJson.addProperty("type", id + ":" + this.id);
+		JsonObject generator = new JsonObject();
+		dimensionJson.add("generator", generator);
+		generator.addProperty("type", "minecraft:noise");
+		generator.addProperty("settings", "minecraft:overworld");
+		JsonObject biomeSource = new JsonObject();
+		generator.add("biome_source", biomeSource);
+		biomeSource.addProperty("type", "minecraft:multi_noise");
+		biomeSource.addProperty("preset", id + ":" + this.id + "_noise");
+		return dimensionJson;
 	}
 }

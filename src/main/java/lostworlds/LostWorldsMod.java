@@ -12,7 +12,6 @@ import lostworlds.server.biome.features.configured.LostWorldsConfiguredFeatures;
 import lostworlds.server.biome.features.placed.LostWorldsPlacedFeatures;
 import lostworlds.server.block.LostWorldsBlocks;
 import lostworlds.server.block.entity.LostWorldsBlockEntities;
-import lostworlds.server.dimension.LostWorldsDimensions;
 import lostworlds.server.dimension.LostWorldsNoiseGeneratorSettings;
 import lostworlds.server.entity.LostWorldsEntities;
 import lostworlds.server.entity.LostWorldsPOIs;
@@ -49,8 +48,6 @@ public class LostWorldsMod {
 
 		LostWorldsRegistries.DEFERRED_SPECIES_TYPES.register(bus);
 		LostWorldsRegistries.init();
-
-		LostWorldsDimensions.addDefaultDimensionKey();
 
 		GeckoLib.initialize();
 		ImplInit.init();

@@ -3,10 +3,6 @@
 	"package": "lostworlds.mixin",
 	"minVersion": "0.8",
 	"compatibilityLevel": "JAVA_17",
-	"mixins": [
-		"LevelStemAccessor",
-		"RegistryCodecsMixin"
-	],
 	"injectors": {
 		"defaultRequire": 1
 	},

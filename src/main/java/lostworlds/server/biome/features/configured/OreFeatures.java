@@ -134,14 +134,30 @@ public class OreFeatures {
 
 	// Creataceous
 	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_MAGMA_ORE = register("cretaceous_magma_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.MAGMA_BLOCK.defaultBlockState(), 33));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_COAL_ORE = register("cretaceous_coal_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.COAL_ORE.defaultBlockState(), 17));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_IRON_ORE = register("cretaceous_iron_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.IRON_ORE.defaultBlockState(), 9));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_GOLD_ORE = register("cretaceous_gold_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.GOLD_ORE.defaultBlockState(), 9));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_REDSTONE_ORE = register("cretaceous_redstone_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.REDSTONE_ORE.defaultBlockState(), 8));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_DIAMOND_ORE = register("cretaceous_diamond_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.DIAMOND_ORE.defaultBlockState(), 8));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_LAPIS_ORE = register("cretaceous_lapis_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.LAPIS_ORE.defaultBlockState(), 7));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_EMERALD_ORE = register("cretaceous_emerald_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.EMERALD_ORE.defaultBlockState(), 1));
-	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_COPPER_ORE = register("cretaceous_copper_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.COPPER_ORE.defaultBlockState(), 10));
+
+	public static final List<OreConfiguration.TargetBlockState> CRETACEOUS_COAL_ORE_TARGET_LIST = List.of(OreConfiguration.target(STONE_ORE_REPLACEABLES, Blocks.COAL_ORE.defaultBlockState()), OreConfiguration.target(DEEPSLATE_ORE_REPLACEABLES, Blocks.DEEPSLATE_COAL_ORE.defaultBlockState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_COAL_ORE = register("cretaceous_coal_ore", Feature.ORE, new OreConfiguration(CRETACEOUS_COAL_ORE_TARGET_LIST, 17));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_COAL_ORE_BURIED = register("cretaceous_coal_ore_buried", Feature.ORE, new OreConfiguration(CRETACEOUS_COAL_ORE_TARGET_LIST, 17, 0.5F));
+	public static final List<OreConfiguration.TargetBlockState> CRETACEOUS_IRON_ORE_TARGET_LIST = List.of(OreConfiguration.target(STONE_ORE_REPLACEABLES, Blocks.IRON_ORE.defaultBlockState()), OreConfiguration.target(DEEPSLATE_ORE_REPLACEABLES, Blocks.DEEPSLATE_IRON_ORE.defaultBlockState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_IRON_ORE = register("cretaceous_iron_ore", Feature.ORE, new OreConfiguration(CRETACEOUS_IRON_ORE_TARGET_LIST, 9));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_IRON_ORE_SMALL = register("cretaceous_iron_ore_small", Feature.ORE, new OreConfiguration(CRETACEOUS_IRON_ORE_TARGET_LIST, 4));
+	public static final List<OreConfiguration.TargetBlockState> CRETACEOUS_GOLD_ORE_TARGET_LIST = List.of(OreConfiguration.target(STONE_ORE_REPLACEABLES, Blocks.GOLD_ORE.defaultBlockState()), OreConfiguration.target(DEEPSLATE_ORE_REPLACEABLES, Blocks.DEEPSLATE_GOLD_ORE.defaultBlockState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_GOLD_ORE = register("cretaceous_gold_ore", Feature.ORE, new OreConfiguration(CRETACEOUS_GOLD_ORE_TARGET_LIST, 9));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_GOLD_ORE_BURIED = register("cretaceous_gold_ore_buried", Feature.ORE, new OreConfiguration(CRETACEOUS_GOLD_ORE_TARGET_LIST, 9, 0.5F));
+	public static final List<OreConfiguration.TargetBlockState> CRETACEOUS_REDSTONE_ORE_TARGET_LIST = List.of(OreConfiguration.target(STONE_ORE_REPLACEABLES, Blocks.REDSTONE_ORE.defaultBlockState()), OreConfiguration.target(DEEPSLATE_ORE_REPLACEABLES, Blocks.DEEPSLATE_REDSTONE_ORE.defaultBlockState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_REDSTONE_ORE = register("cretaceous_redstone_ore", Feature.ORE, new OreConfiguration(CRETACEOUS_REDSTONE_ORE_TARGET_LIST, 8));
+	public static final List<OreConfiguration.TargetBlockState> CRETACEOUS_DIAMOND_ORE_TARGET_LIST = List.of(OreConfiguration.target(STONE_ORE_REPLACEABLES, Blocks.DIAMOND_ORE.defaultBlockState()), OreConfiguration.target(DEEPSLATE_ORE_REPLACEABLES, Blocks.DEEPSLATE_DIAMOND_ORE.defaultBlockState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_DIAMOND_ORE_SMALL = register("cretaceous_diamond_ore_small", Feature.ORE, new OreConfiguration(CRETACEOUS_DIAMOND_ORE_TARGET_LIST, 4, 0.5F));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_DIAMOND_ORE_LARGE = register("cretaceous_diamond_ore_large", Feature.ORE, new OreConfiguration(CRETACEOUS_DIAMOND_ORE_TARGET_LIST, 12, 0.7F));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_DIAMOND_ORE_BURIED = register("cretaceous_diamond_ore_buried", Feature.ORE, new OreConfiguration(CRETACEOUS_DIAMOND_ORE_TARGET_LIST, 8, 1.0F));
+	public static final List<OreConfiguration.TargetBlockState> CRETACEOUS_LAPIS_ORE_TARGET_LIST = List.of(OreConfiguration.target(STONE_ORE_REPLACEABLES, Blocks.LAPIS_ORE.defaultBlockState()), OreConfiguration.target(DEEPSLATE_ORE_REPLACEABLES, Blocks.DEEPSLATE_LAPIS_ORE.defaultBlockState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_LAPIS_ORE = register("cretaceous_lapis_ore", Feature.ORE, new OreConfiguration(CRETACEOUS_LAPIS_ORE_TARGET_LIST, 7));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_LAPIS_ORE_BURIED = register("cretaceous_lapis_ore_buried", Feature.ORE, new OreConfiguration(CRETACEOUS_LAPIS_ORE_TARGET_LIST, 7, 1.0F));
+	public static final List<OreConfiguration.TargetBlockState> CRETACEOUS_EMERALD_ORE_TARGET_LIST = List.of(OreConfiguration.target(STONE_ORE_REPLACEABLES, Blocks.EMERALD_ORE.defaultBlockState()), OreConfiguration.target(DEEPSLATE_ORE_REPLACEABLES, Blocks.DEEPSLATE_EMERALD_ORE.defaultBlockState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_EMERALD_ORE = register("cretaceous_emerald_ore", Feature.ORE, new OreConfiguration(CRETACEOUS_EMERALD_ORE_TARGET_LIST, 3));
+	public static final List<OreConfiguration.TargetBlockState> CRETACEOUS_COPPER_ORE_TARGET_LIST = List.of(OreConfiguration.target(STONE_ORE_REPLACEABLES, Blocks.COPPER_ORE.defaultBlockState()), OreConfiguration.target(DEEPSLATE_ORE_REPLACEABLES, Blocks.DEEPSLATE_COPPER_ORE.defaultBlockState()));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_COPPER_ORE_SMALL = register("cretaceous_copper_ore_small", Feature.ORE, new OreConfiguration(CRETACEOUS_COPPER_ORE_TARGET_LIST, 10));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_COPPER_ORE_LARGE = register("cretaceous_copper_ore_large", Feature.ORE, new OreConfiguration(CRETACEOUS_COPPER_ORE_TARGET_LIST, 20));
 
 	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_DIRT_ORE = register("cretaceous_dirt_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.DIRT.defaultBlockState(), 33));
 	public static final RegistryObject<ConfiguredFeature<?, ?>> CRETACEOUS_GRAVEL_ORE = register("cretaceous_gravel_ore", Feature.ORE, new OreConfiguration(STONE, Blocks.GRAVEL.defaultBlockState(), 33));

@@ -1,0 +1,11 @@
+{
+  "type": "lostworlds:cretaceous",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "minecraft:overworld",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "preset": "lostworlds:cretaceous_noise"
+    }
+  }
+}

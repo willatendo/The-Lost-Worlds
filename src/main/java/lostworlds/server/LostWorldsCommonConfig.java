@@ -101,6 +101,13 @@ public class LostWorldsCommonConfig {
 	public final IntValue cryolophosaurusSpawnGroupMinimum;
 	public final IntValue cryolophosaurusSpawnGroupMaximum;
 
+	public final DoubleValue cryptoclidusHeath;
+	public final DoubleValue cryptoclidusAttackDamage;
+	public final DoubleValue cryptoclidusSpeed;
+	public final IntValue cryptoclidusSpawnWeight;
+	public final IntValue cryptoclidusSpawnGroupMinimum;
+	public final IntValue cryptoclidusSpawnGroupMaximum;
+
 	public final DoubleValue diictodonHeath;
 	public final IntValue diictodonSpawnWeight;
 	public final IntValue diictodonSpawnGroupMinimum;
@@ -366,6 +373,13 @@ public class LostWorldsCommonConfig {
 		this.cryolophosaurusSpawnWeight = builder.comment("Sets the weight of Cryolophosaurus spawning").translation(TRANSLATION_TEXT + "cryolophosaurusSpawnWeight").defineInRange("cryolophosaurusSpawnWeight", 3, 1, 100);
 		this.cryolophosaurusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Carnotaurus in a spawn group").translation(TRANSLATION_TEXT + "cryolophosaurusSpawnGroupMinimum").defineInRange("cryolophosaurusSpawnGroupMinimum", 2, 1, 100);
 		this.cryolophosaurusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Carnotaurus in a spawn group").translation(TRANSLATION_TEXT + "cryolophosaurusSpawnGroupMaximum").defineInRange("cryolophosaurusSpawnGroupMaximum", 3, 1, 100);
+
+		this.cryptoclidusHeath = builder.comment("Sets the heath of the Cryptoclidus").translation(TRANSLATION_TEXT + "cryptoclidusHeath").defineInRange("cryptoclidusHeath", 17.0D, 1.0D, 999.0D);
+		this.cryptoclidusSpeed = builder.comment("Sets the speedModifer of the Cryptoclidus").translation(TRANSLATION_TEXT + "cryptoclidusSpeed").defineInRange("cryptoclidusSpeed", 1.6D, 1.0D, 999.0D);
+		this.cryptoclidusAttackDamage = builder.comment("Sets the attack damage of the Cryptoclidus").translation(TRANSLATION_TEXT + "cryptoclidusAttackDamage").defineInRange("cryptoclidusAttackDamage", 8.0D, 1.0D, 999.0D);
+		this.cryptoclidusSpawnWeight = builder.comment("Sets the weight of Cryptoclidus spawning").translation(TRANSLATION_TEXT + "cryptoclidusSpawnWeight").defineInRange("cryptoclidusSpawnWeight", 1, 1, 100);
+		this.cryptoclidusSpawnGroupMinimum = builder.comment("Sets the minimum amount of Cryptoclidus in a spawn group").translation(TRANSLATION_TEXT + "cryptoclidusSpawnGroupMinimum").defineInRange("cryptoclidusSpawnGroupMinimum", 1, 1, 100);
+		this.cryptoclidusSpawnGroupMaximum = builder.comment("Sets the maximum amount of Cryptoclidus in a spawn group").translation(TRANSLATION_TEXT + "cryptoclidusSpawnGroupMaximum").defineInRange("cryptoclidusSpawnGroupMaximum", 1, 1, 100);
 
 		this.diictodonHeath = builder.comment("Sets the heath of the Diictodon").translation(TRANSLATION_TEXT + "diictodonHeath").defineInRange("diictodonHeath", 4.0D, 1.0D, 999.0D);
 		this.diictodonSpawnWeight = builder.comment("Sets the weight of Diictodon spawning").translation(TRANSLATION_TEXT + "diictodonSpawnWeight").defineInRange("diictodonSpawnWeight", 4, 1, 100);
