@@ -2,8 +2,11 @@ package lostworlds.server.biome;
 
 import static lostworlds.LostWorldsMod.getRegistrate;
 
+import lostworlds.server.LostWorldsUtils;
 import lostworlds.server.util.registrate.BiomeEntry;
 import lostworlds.server.util.registrate.LostWorldsRegistrate;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 
 public class LostWorldsBiomes {
@@ -18,7 +21,7 @@ public class LostWorldsBiomes {
 
 	public static final BiomeEntry<Biome> PERMIAN_DRIED_PLAINS = REGISTRATE.biome("permian_dried_plains", b -> b.build()).properties(biomeBuilder -> builder -> PermianBiomes.permianDriedPlains()).register();
 
-	public static final BiomeEntry<Biome> PERMIAN_DESERT = REGISTRATE.biome("permian_desert", b -> b.build()).properties(biomeBuilder -> builder -> PermianBiomes.permianDesert()).register();
+	public static final ResourceKey<Biome> PERMIAN_DESERT = create("permian_desert");
 
 	public static final BiomeEntry<Biome> PERMIAN_FLOOD_BASALTS = REGISTRATE.biome("permian_flood_basalts", b -> b.build()).properties(biomeBuilder -> builder -> PermianBiomes.permianFloodBasalts()).register();
 	public static final BiomeEntry<Biome> PERMIAN_ASHY_MEDOWS = REGISTRATE.biome("permian_ashy_medows", b -> b.build()).properties(biomeBuilder -> builder -> PermianBiomes.permianAshyMedows()).register();
@@ -151,6 +154,10 @@ public class LostWorldsBiomes {
 	public static final BiomeEntry<Biome> REDWOODS_FOREST = REGISTRATE.biome("redwoods_forest", b -> b.build()).properties(biomeBuilder -> builder -> OverworldBiomes.redwoodsForest()).register();
 
 	public static final BiomeEntry<Biome> VOLCANO = REGISTRATE.biome("volcano", b -> b.build()).properties(biomeBuilder -> builder -> OverworldBiomes.volcano()).register();
+
+	public static ResourceKey<Biome> create(String id) {
+		return ResourceKey.create(Registry.BIOME_REGISTRY, LostWorldsUtils.rL(id));
+	}
 
 	public static void registrate() {
 	}

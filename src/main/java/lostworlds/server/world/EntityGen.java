@@ -137,7 +137,7 @@ public class EntityGen {
 		// Permian
 
 		// Terrestrial
-		ArrayList<ResourceLocation> diictodonBiomes = Lists.newArrayList(LostWorldsBiomes.PERMIAN_DESERT.getRegistryName());
+		ArrayList<ResourceLocation> diictodonBiomes = Lists.newArrayList(LostWorldsBiomes.PERMIAN_DESERT.location());
 		if (diictodonBiomes.contains(event.getName())) {
 			BiomeLoadingEventHelper.addSpawn(event, MobCategory.CREATURE, LostWorldsEntities.DIICTODON.get(), LostWorldsConfig.COMMON_CONFIG.diictodonSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.diictodonSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.diictodonSpawnGroupMaximum.get());
 		}
@@ -152,18 +152,18 @@ public class EntityGen {
 			BiomeLoadingEventHelper.addSpawn(event, MobCategory.CREATURE, LostWorldsEntities.EDAPHOSAURUS.get(), LostWorldsConfig.COMMON_CONFIG.edaphosaurusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.edaphosaurusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.edaphosaurusSpawnGroupMaximum.get());
 		}
 
-		ArrayList<ResourceLocation> gorgonopsBiomes = Lists.newArrayList(LostWorldsBiomes.PERMIAN_DESERT.getRegistryName(), LostWorldsBiomes.PERMIAN_WINDSWEPT_HILLS.getRegistryName());
+		ArrayList<ResourceLocation> gorgonopsBiomes = Lists.newArrayList(LostWorldsBiomes.PERMIAN_DESERT.location(), LostWorldsBiomes.PERMIAN_WINDSWEPT_HILLS.getRegistryName());
 		if (gorgonopsBiomes.contains(event.getName())) {
 			BiomeLoadingEventHelper.addSpawn(event, MobCategory.CREATURE, LostWorldsEntities.GORGONOPS.get(), LostWorldsConfig.COMMON_CONFIG.gorgonopsSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.gorgonopsSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.gorgonopsSpawnGroupMaximum.get());
 		}
 
-		ArrayList<ResourceLocation> tetraceratopsBiomes = Lists.newArrayList(LostWorldsBiomes.PERMIAN_DESERT.getRegistryName(), LostWorldsBiomes.PERMIAN_GINKGO_FOREST.getRegistryName());
+		ArrayList<ResourceLocation> tetraceratopsBiomes = Lists.newArrayList(LostWorldsBiomes.PERMIAN_DESERT.location(), LostWorldsBiomes.PERMIAN_GINKGO_FOREST.getRegistryName());
 		if (tetraceratopsBiomes.contains(event.getName())) {
 			BiomeLoadingEventHelper.addSpawn(event, MobCategory.CREATURE, LostWorldsEntities.TETRACERATOPS.get(), LostWorldsConfig.COMMON_CONFIG.tetraceratopsSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.tetraceratopsSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.tetraceratopsSpawnGroupMaximum.get());
 		}
 
 		// Semi-Aquatic
-		ArrayList<ResourceLocation> rhinesuchusBiomes = Lists.newArrayList(LostWorldsBiomes.PERMIAN_DESERT.getRegistryName());
+		ArrayList<ResourceLocation> rhinesuchusBiomes = Lists.newArrayList(LostWorldsBiomes.PERMIAN_DESERT.location());
 		if (rhinesuchusBiomes.contains(event.getName())) {
 			BiomeLoadingEventHelper.addSpawn(event, MobCategory.CREATURE, LostWorldsEntities.RHINESUCHUS.get(), LostWorldsConfig.COMMON_CONFIG.rhinesuchusSpawnWeight.get(), LostWorldsConfig.COMMON_CONFIG.rhinesuchusSpawnGroupMinimum.get(), LostWorldsConfig.COMMON_CONFIG.rhinesuchusSpawnGroupMaximum.get());
 		}

@@ -33,7 +33,7 @@ public class BiomeMappings {
 			put(LostWorldsUtils.rL("permian_ginkgo_forest_hills"), () -> LostWorldsBiomes.PERMIAN_GINKGO_FOREST.get());
 			put(LostWorldsUtils.rL("permian_plains_hills"), () -> LostWorldsBiomes.PERMIAN_PLAINS.get());
 			put(LostWorldsUtils.rL("permian_dried_plains_hills"), () -> LostWorldsBiomes.PERMIAN_DRIED_PLAINS.get());
-			put(LostWorldsUtils.rL("permian_desert_hills"), () -> LostWorldsBiomes.PERMIAN_DESERT.get());
+//			put(LostWorldsUtils.rL("permian_desert_hills"), () -> LostWorldsBiomes.PERMIAN_DESERT.get());
 			put(LostWorldsUtils.rL("permian_mountains"), () -> LostWorldsBiomes.PERMIAN_WINDSWEPT_HILLS.get());
 			put(LostWorldsUtils.rL("warm_deep_permian_ocean"), () -> LostWorldsBiomes.DEEP_WARM_PERMIAN_OCEAN.get());
 			put(LostWorldsUtils.rL("jurassic_araucaria_forest_hills"), () -> LostWorldsBiomes.JURASSIC_ARAUCARIA_FOREST.get());

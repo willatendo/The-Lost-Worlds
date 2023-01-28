@@ -18,9 +18,18 @@ import lostworlds.data.custom.BiomeBuilder;
 import lostworlds.data.custom.BiomeEffectsBuilder;
 import lostworlds.data.custom.BiomeFeaturesBuilder;
 import lostworlds.data.custom.BiomeSpawnersBuilder;
+import lostworlds.data.custom.BiomeCavesBuilder;
+import lostworlds.server.biome.features.placed.LostWorldsPlacedFeatures;
+import lostworlds.server.biome.features.placed.PlacedOreFeatures;
+import lostworlds.server.biome.features.placed.PlacedPlantPatchFeatures;
+import lostworlds.server.biome.features.placed.PlacedWaterFeatures;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
+import net.minecraft.data.worldgen.Carvers;
+import net.minecraft.data.worldgen.placement.CavePlacements;
+import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.biome.AmbientMoodSettings;
 import net.minecraft.world.level.biome.Biome.BiomeCategory;
@@ -63,7 +72,7 @@ public class LostWorldsBiomeProvider implements DataProvider {
 	}
 
 	public void makeAllBiomes(Consumer<BiomeBuilder> consumer) {
-		consumer.accept(new BiomeBuilder("permain_desert", 0.0F, 3.0F, Precipitation.NONE, Optional.empty(), BiomeCategory.DESERT, new BiomeEffectsBuilder(Optional.empty(), BASE_FOG_COLOUR, BASE_WATER_COLOUR, BASE_WATER_FOG_COLOUR, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), new AmbientMoodSettings(SoundEvents.AMBIENT_CAVE, 6000, 8, 2), Optional.empty(), Optional.empty(), Optional.empty()), new BiomeSpawnersBuilder(List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of()), new BiomeFeaturesBuilder(List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of())));
+		consumer.accept(new BiomeBuilder("permain_desert", 0.0F, 3.0F, Precipitation.NONE, Optional.empty(), BiomeCategory.DESERT, new BiomeEffectsBuilder(Optional.empty(), BASE_FOG_COLOUR, BASE_WATER_COLOUR, BASE_WATER_FOG_COLOUR, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), new AmbientMoodSettings(SoundEvents.AMBIENT_CAVE, 6000, 8, 2), Optional.empty(), Optional.empty(), Optional.empty()), new BiomeSpawnersBuilder(List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of()), Optional.of(new BiomeCavesBuilder(List.of(Carvers.CAVE, Carvers.CAVE_EXTRA_UNDERGROUND, Carvers.CANYON))), new BiomeFeaturesBuilder(List.of(), List.of(MiscOverworldPlacements.LAKE_LAVA_UNDERGROUND, MiscOverworldPlacements.LAKE_LAVA_SURFACE), List.of(CavePlacements.AMETHYST_GEODE, LostWorldsPlacedFeatures.PERMIAN_ROCK.getHolder().get()), List.of(), List.of(), List.of(), List.of(PlacedOreFeatures.PERMIAN_COAL_ORE_LOWER.getHolder().get(), PlacedOreFeatures.PERMIAN_COAL_ORE_UPPER.getHolder().get(), PlacedOreFeatures.PERMIAN_COPPER_ORE.getHolder().get(), PlacedOreFeatures.PERMIAN_COPPER_ORE_LARGE.getHolder().get(), PlacedOreFeatures.PERMIAN_DIAMOND_ORE.getHolder().get(), PlacedOreFeatures.PERMIAN_DIAMOND_ORE_BURIED.getHolder().get(), PlacedOreFeatures.PERMIAN_DIAMOND_ORE_LARGE.getHolder().get(), PlacedOreFeatures.PERMIAN_DIRT_ORE.getHolder().get(), PlacedOreFeatures.PERMIAN_EMERALD_ORE.getHolder().get(), PlacedOreFeatures.PERMIAN_GOLD_ORE.getHolder().get(), PlacedOreFeatures.PERMIAN_GOLD_ORE_LOWER.getHolder().get(), PlacedOreFeatures.PERMIAN_GRAVEL_ORE.getHolder().get(), PlacedOreFeatures.PERMIAN_IRON_ORE_MIDDLE.getHolder().get(), PlacedOreFeatures.PERMIAN_IRON_ORE_SMALL.getHolder().get(), PlacedOreFeatures.PERMIAN_IRON_ORE_UPPER.getHolder().get(), PlacedOreFeatures.PERMIAN_LAPIS_ORE.getHolder().get(), PlacedOreFeatures.PERMIAN_LAPIS_ORE_BURIED.getHolder().get(), PlacedOreFeatures.PERMIAN_LATERLITE_ORE.getHolder().get(), PlacedOreFeatures.PERMIAN_LIMESTONE_ORE.getHolder().get(), PlacedOreFeatures.PERMIAN_RAW_MARBLE_ORE.getHolder().get(), PlacedOreFeatures.PERMIAN_REDSTONE_ORE.getHolder().get(), PlacedOreFeatures.PERMIAN_REDSTONE_ORE_LOWER.getHolder().get()), List.of(), List.of(PlacedWaterFeatures.ANCIENT_SPRING.getHolder().get()), List.of(PlacedPlantPatchFeatures.PERMIAN_DESERT_SHRUB_PATCH.getHolder().get(), PlacedPlantPatchFeatures.PERMIAN_DESERT_FERNS_PATCH.getHolder().get(), VegetationPlacements.PATCH_LARGE_FERN, PlacedPlantPatchFeatures.FERN_PATCH.getHolder().get()), List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))));
 	}
 
 	@Override
